@@ -1,0 +1,105 @@
+(~"@{MediaManager}") {
+
+    .navigation {
+        position: relative;
+        text-align: left;
+        padding: 0;
+        margin: 0;
+        border: none;
+
+        .navigationInfo {
+            height: 14px;
+            line-height: 18px; /* From 14px to 18px for visual compensation. */
+            font-size: 10px;
+            color: #888;
+            text-shadow: 1px 1px 0px #FCFCFC;
+        }
+
+        .navigationPathway {
+
+            height: 22px;
+            width: 200%; // Ensure long filenames don't fall below
+            overflow: hidden; // Ensure long filenames are hidden
+
+            .showNavigationArrow() {
+                margin: 0 0 0 4px;
+                padding: 0 0 0 11px;
+                position: relative;
+
+                i {
+                    .icon-media(11, 1);
+                    width: 8px;
+                    height: 22px;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                }
+            }
+
+            .navigationItemGroup {
+
+                height: 22px;
+                line-height: 22px;
+                float: left;
+
+                .navigationItem {
+                    display: none;
+                }
+
+                .navigationItemStub {
+                    background: lighten(#A8BFEA, 10%);
+                    border: 1px solid #91AAD6;
+                    .rounded(3px);
+                    padding: 0 3px;
+                }
+
+                &.expand {
+
+                    .navigationItem {
+                        display: inline;
+                    }
+
+                    .navigationItemStub {
+                        display: none;
+                    }
+                }
+
+                + .navigationItem {
+                    .showNavigationArrow();
+                }
+
+                + .navigationItemGroup {
+                    .showNavigationArrow();
+                }
+            }
+
+            .navigationItem {
+
+                height: 22px;
+                line-height: 22px;
+                font-size: 13px;
+                float: left;
+
+                + .navigationItem {
+                    .showNavigationArrow();
+                }
+
+                + .navigationItemGroup {
+                    .showNavigationArrow();
+                }
+            }
+
+            &.canActivate {
+
+                .navigationItem {
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

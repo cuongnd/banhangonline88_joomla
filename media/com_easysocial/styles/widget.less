@@ -1,0 +1,214 @@
+/*------------------------------------*\
+    $widget.less
+\*------------------------------------*/
+
+/* Simple widget box */
+.widget-box{
+	background: @esBackground;
+	border: 1px solid @esBorder;
+	padding: 10px;
+	border-radius: 3px;
+	margin-bottom: 20px;
+
+	h3 {
+		border-bottom: 1px solid @esBorder;
+		padding: 5px 0 10px 0;
+		margin-top: 0;
+		font-size: 14px;
+		font-weight: 700;
+		color: #626D7F;
+	}
+
+}
+
+/* =Widget and widget head/body elements
+================================================== */
+
+.dialog-content {
+	.widget,
+	.widget-box {
+		border: none;
+	}
+}
+.widget {
+	background: @esBackground;
+	border: 1px solid lighten(@esBorder, 5%);
+	border-radius: 3px;
+	// .box-shadow( 0 2px 2px -2px #ccc);
+	margin: 0px auto 20px;
+	position: relative;
+
+	&.widget-alert {
+		background: #F0F3F8;
+
+		hr{
+			border: 1px solid #C5CFD6;
+		}
+	}
+
+	> [class*="whead"] {
+		color: #636363;
+		background: #f9f9f9;
+		border-bottom: 1px solid @esBorder;
+		text-shadow: 0 1px @esBackground;
+		border-radius: 3px 3px 0 0;
+		position: relative;
+		.box-shadow( 0 1px 0 @esBackground);
+		.clearfix();
+		.user-select(none);
+		h6 {
+			float: left;
+			display: block;
+			padding: 14px 14px 11px 14px;
+			font-size: 16px !important;
+			font-weight: normal;
+			.user-select(none);
+		}
+		> a {
+			color: #636363;
+			display: block;
+			height: 50px;
+			.no-focus-outline();
+			span {
+				position: absolute;
+				right: 20px;
+				top: 10px;
+				background: url(../images/bg-accordion.png);
+				display: block;
+				width:25px;
+				height: 25px;
+				padding: 0;
+				> i {
+					width: 12px;
+					height: 12px;
+					position: relative;
+					top: 4px;
+					left: 6px;
+					background: url(../images/icon-sprite.png) no-repeat;
+					background-position: 0px 0px;
+					display: block;
+				}
+			}
+			&.collapsed {
+				span > i {
+					top: 5px;
+					background-position: -32px 0px;
+				}
+			}
+		}//a
+		input[type="text"] {
+			margin: 5px 0;
+		}
+		.es-control-sort {
+			&.pull-right {
+				margin: 6px 16px 0 0;
+			}
+
+		}
+	}//whead
+	.accordion-body {
+		overflow: hidden;
+	}
+	.wcontrol {
+		clear: both;
+		// background: red;
+		border-bottom: 1px solid @esBorder;
+		padding: 14px 15px;
+		.box-shadow( 0 1px 4px rgba(0,0,0,.1));
+		.clearfix();
+		p:last-child {
+			margin-bottom:0;
+		}
+	}
+	.wbody {
+		font-size: 12px;
+		padding:0;
+		.clearfix();
+		&.wbody-padding {
+			padding: 14px 16px;
+		}
+		&.wbody-tab {
+			.es-nav-stacked--tab {
+				padding: 10px 0;
+
+				margin: 0;
+				> li {
+					position: relative;
+					padding: 5px 0 5px 10px;
+					font-weight: bold;
+					> a {
+						&:focus {
+							outline: none;
+						}
+					}
+					&.active {
+						background: #f5f5f5;
+						font-weight: bold;
+						&:before, &:after {
+							content: "";
+							position: absolute;
+							border-color: transparent;
+							border-style: solid;
+							display: inline-block;
+						}
+						&:before {
+							z-index: 2;
+							top: 3px;
+							right: -0px;
+							border-width: 8px 8px 8px 0;
+							border-color: rgba(255,255,255,0) @esBorder rgba(255,255,255,0) rgba(255,255,255,0);
+						}
+						&:after {
+							z-index: 3;
+							top: 3px;
+							right: -1px;
+							border-width: 8px 8px 8px 0;
+							border-color: rgba(255,255,255,0) @white rgba(255,255,255,0) rgba(255,255,255,0);
+						}
+					}//active
+				}
+			}//es-nav-stacked--tab
+			.es-controls-row {
+				padding: 16px 0;
+			}
+		}//wbody-tab
+
+		.wbody-tab-left {
+			display: block;
+
+			float: left;
+			width: 22%;
+			position: absolute;
+		}
+		.wbody-tab-right {
+			display: inline-block;
+			border-left: 1px solid @esBorder;
+			margin-bottom: -5px;
+			min-height: 100px;
+			overflow: hidden;
+			margin-bottom: -5px;
+			margin-left: 22%;
+			width: 78%;
+		}
+		.tab-content-title {
+			margin: 0 0 10px;
+		}
+
+	}//wbody
+
+
+	h6 {
+		margin:0;
+	}
+	.in {
+		// overflow: visible;
+	}
+	// .circle-avatar {
+	// 	width: 58px; /*IE */
+	// 	height: 58px; /*IE */
+	// 	.es-user-avatar {
+	// 		width: 58px;
+	// 		height: 58px;
+	// 	}
+	// }
+}//widget

@@ -1,0 +1,160 @@
+<!doctype html>
+<html class="z-white z-width1200">
+<head>
+    <title>Underlined Tabs</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width = device-width, initial-scale = 1.0" />
+
+    <!-- Examples CSS (Not needed) -->
+    <link href="../css/zozo.examples.min.css" rel="stylesheet" />
+
+    <!-- Zozo Tabs css -->
+    <link href="../css/zozo.tabs.min.css" rel="stylesheet" />
+
+    <!-- Zozo Tabs js -->
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/zozo.tabs.min.js"></script>
+</head>
+
+<body>
+    <div id="ribbon"></div>
+    <div id="page">
+        <a class="z-btn z-back" href="index.html">Back</a>
+
+        <!-- Start First Tabs-->
+        <div id="tabbed-nav">
+
+            <!-- Tab Navigation Menu -->
+            <ul>
+                <li><a>Overview</a></li>
+                <li><a>Features</a></li>
+                <li><a>Docs</a></li>
+                <li><a>Themes</a></li>
+                <li><a>Purchase</a></li>
+            </ul>
+
+            <!-- Content container -->
+            <div>
+
+                <!-- Overview -->
+                <div>
+                    <h4>Overview</h4>
+                    <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer</p>
+                </div>
+
+                <!-- Features -->
+                <div>
+                    <h4>Features</h4>
+                    <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer</p>
+                </div>
+
+                <!-- Docs -->
+                <div>
+                    <h4>Docs</h4>
+                    <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer</p>
+                </div>
+
+                <!-- Themes -->
+                <div>
+                    <h4>Themes</h4>
+                    <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer</p>
+                </div>
+
+                <!-- Purchase -->
+                <div>
+                    <h4>Purchase</h4>
+                    <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer</p>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- End First Tabs-->
+
+        <!-- Start Second tabs-->
+        <div id="tabbed-nav2">
+
+            <!-- Tab Navigation Menu -->
+            <ul>
+                <li><a>Overview</a></li>
+                <li><a>Features</a></li>
+                <li><a>Docs</a></li>
+                <li><a>Themes</a></li>
+                <li><a>Purchase</a></li>
+            </ul>
+
+            <!-- Content container -->
+            <div>
+
+                <!-- Overview -->
+                <div>
+                    <h4>Overview</h4>
+                    <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer</p>
+                </div>
+
+                <!-- Features -->
+                <div>
+                    <h4>Features</h4>
+                    <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer</p>
+                </div>
+
+                <!-- Docs -->
+                <div>
+                    <h4>Docs</h4>
+                    <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer</p>
+                </div>
+
+                <!-- Themes -->
+                <div>
+                    <h4>Themes</h4>
+                    <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer</p>
+                </div>
+
+                <!-- Purchase -->
+                <div>
+                    <h4>Purchase</h4>
+                    <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer</p>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- Zozo Tabs End-->
+    </div>
+
+
+    <script>
+        jQuery(document).ready(function ($) {
+            /* jQuery activation and setting options for first tabs*/
+            $("#tabbed-nav").zozoTabs({
+                theme: "blue",
+                position: "top-left",
+                style: "underlined",
+                orientation: "vertical",
+                size: "medium",
+                animation: {
+                    easing: "easeInOutExpo",
+                    duration: 400,
+                    effects: "slideV",
+                    type: "jquery"
+                }
+            });
+
+            /* jQuery activation and setting options for second tabs*/
+            $("#tabbed-nav2").zozoTabs({
+                theme: "red",
+                style: "underlined",
+                defaultTab: "tab3",
+                size: "medium",
+                animation: {
+                    easing: "easeInOutExpo",
+                    duration: 400,
+                    effects: "slideH",
+                    type: "css"
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

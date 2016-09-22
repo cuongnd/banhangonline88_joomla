@@ -1,0 +1,97 @@
+//
+// Button groups
+// --------------------------------------------------
+.btn-group-yesno {
+	.btn-group();
+	padding: 3px;
+	background: @esYesnoBackground;
+	display: inline-block;
+	min-width: 135px;
+	&.disabled {
+
+	}
+	border-radius: 3px;
+	.box-shadow(~"inset 0 1px 2px rgba(0,0,0,.2), 0 1px 2px rgba(0,0,0,.05)");
+	.btn {
+		padding: 1px 16px !important;
+		margin: 0 !important;
+		outline: 0 !important;
+		background: none;
+		.box-shadow(none);
+		border: 1px solid transparent !important;
+		text-shadow: none !important;
+		font-weight: bold !important;
+		font-size: 11px !important;
+		color: @esYesnoColor !important;
+		height: 20px !important;
+		line-height: 18px !important;
+		width: 48%;
+		&.active {
+			background: none;
+
+			display: inline-block !important;
+			// .ie7-inline-block();
+			margin-bottom: 0 !important; // For input.btn
+			line-height: 18px !important;
+			text-align: center !important;
+			vertical-align: middle !important;
+			cursor: pointer;
+			.button-variant(@esYesnoColor; @esYesnoBtnActiveBackground; rgba(0,0,0,0)) !important;
+			//.buttonBackground(@esYesnoBtnActiveBackground, @esYesnoBtnBackgroundHighlight, @esYesnoActiveColor, @esYesnoTextShadow);
+
+			border-radius: @baseBorderRadius;
+			.box-shadow(~"inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05)");
+			&.btn-yes {
+				color: #7cc110 !important;
+			}
+			&.btn-no {
+				color: #bb4a3b !important;
+			}
+		}
+	}
+}
+
+// BS2 Classes
+
+// Reposition the caret
+// .btn .caret {
+//   margin-top: 6px;
+//   margin-left: 0;
+// }
+// // Carets in other button sizes
+// .btn-mini .caret,
+// .btn-small .caret,
+// .btn-large .caret {
+//   margin-top: 6px;
+// }
+// .btn-large .caret {
+//   border-left-width:  5px;
+//   border-right-width: 5px;
+//   border-top-width:   5px;
+// }
+// // Upside down carets for .dropup
+// .dropup .btn-large .caret {
+//   border-bottom-width: 5px;
+// }
+
+// btn group for friends listed page
+.btn-group > .btn-dropdown:first-child,
+.btn-dropdown {
+	height: 16px;
+	padding: 2px 3px;
+	width: 16px;
+	border-radius: @borderRadiusSmall;
+	outline: none;
+	.button-variant(@esBorder; @esBackground; @esBorder) !important;
+	> i {
+		position: relative;
+		top: 2px;
+        margin-top: 0;
+	}
+}
+
+.btn-group {
+	> .dropdown-menu {
+		font-size: 11px;
+	}
+}

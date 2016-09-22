@@ -1,0 +1,331 @@
+/**
+ * @package    HikaSerials for Joomla!
+ * @version    1.10.4
+ * @author     Obsidev S.A.R.L.
+ * @copyright  (C) 2011-2016 OBSIDEV. All rights reserved.
+ * @license    GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
+ */
+table.pad5 th, table.pad5 td {
+	padding:5px;
+}
+
+div#iframedoc {
+	border:1px solid black;
+	background-color: white;
+}
+
+#hikaserial_menu {
+	font-size:11px;
+	line-height:20px;
+	font-weight:normal;
+	height:20px;
+}
+#hikaserial_menu a:link {
+	color:#377D9F;
+}
+#hikaserial_menu ul {
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+#hikaserial_menu > ul > li {
+	float:left;
+}
+#hikaserial_menu li a {
+	display:block;
+	line-height:20px;
+	padding:0px 6px;
+	text-decoration:none;
+	background-repeat:no-repeat;
+	width:auto;
+	height:auto;
+}
+#hikaserial_menu li:hover ul a {
+	color:#069;
+}
+#hikaserial_menu > ul > li:hover, #hikaserial_menu > ul > li.sel {
+	background-color:#377D9F;
+	-webkit-border-top-left-radius:5px;
+	   -moz-border-top-left-radius:5px;
+			border-top-left-radius:5px;
+	-webkit-border-top-right-radius:5px;
+	   -moz-border-top-right-radius:5px;
+			border-top-right-radius:5px;
+}
+#hikaserial_menu > ul > li.sel {
+	-webkit-border-bottom-left-radius:5px;
+	   -moz-border-bottom-left-radius:5px;
+			border-bottom-left-radius:5px;
+	-webkit-border-bottom-right-radius:5px;
+	   -moz-border-bottom-right-radius:5px;
+			border-bottom-right-radius:5px;
+}
+#hikaserial_menu > ul > li.sel:hover {
+	-webkit-border-bottom-left-radius:0px;
+	   -moz-border-bottom-left-radius:0px;
+			border-bottom-left-radius:0px;
+	-webkit-border-bottom-right-radius:0px;
+	   -moz-border-bottom-right-radius:0px;
+			border-bottom-right-radius:0px;
+}
+#hikaserial_menu > ul > li > a:focus, #hikaserial_menu > ul > li:hover > a, #hikaserial_menu > ul > li.sel > a {
+	color:#ffffff;
+}
+#hikaserial_menu li ul {
+	background:#377D9F;
+	display:none;
+	height:auto;
+	position:absolute;
+	z-index:200;
+	padding:1px;
+}
+#hikaserial_menu li:hover ul {
+	display:block;
+}
+#hikaserial_menu li li {
+	display:block;
+	float:none;
+}
+#hikaserial_menu li ul a {
+	display:block;
+	font-style:normal;
+	font-weight:normal;
+	text-align:left;
+	background-color:#F8F8F8;
+	background-position:5px 50%;
+	border-bottom:1px dotted #AAC6D4;
+	padding-left:25px;
+	padding-right:15px;
+	min-width:85px;
+}
+#hikaserial_menu li ul li.sep {
+	display:block;
+	font-style:normal;
+	font-weight:normal;
+	text-align:center;
+	color:white;
+	min-height:5px;
+}
+#hikaserial_menu li ul li.sel a {
+	background-color:#BFE3F5;
+}
+#hikaserial_menu li ul a.last {
+	border-bottom:0px;
+}
+#hikaserial_menu li ul a:hover, #hikaserial_menu li ul li.sel a:hover {
+	background-color:#6FB7DB;
+	color:#ffffff;
+}
+#hikaserial_menu .e1 {
+	padding-left:25px;
+	padding-bottom:2px;
+	background-position: 5px 3px;
+}
+#hikaserial_menu .l1 {
+	padding-right:0px;
+	margin-right:2px;
+}
+#hikaserial_menu .singlemenu a {
+	padding-right:0px;
+}
+#hikaserial_menu .parentmenu {
+	padding-right:10px;
+	background:url(../images/arrow_menu.png) no-repeat;
+	background-position:right 8px;
+}
+#hikaserial_menu .parentmenu:hover, #hikaserial_menu li.sel {
+	background-position:right -7px;
+}
+#hikaserial_menu.hikaserial_menu_top {
+	margin-bottom: 10px;
+}
+
+#hikaserial_menu_j3 > li.sel {
+	background-color:#BFE3F5;
+}
+#hikaserial_menu_j3 .dropdown-menu li.sel {
+	background-color:#6FB7DB;
+	color:#ffffff;
+}
+#hikaserial_menu_j3 i {
+	width:16px;
+	height:16px;
+}
+#hikaserial_main_content .navbar {
+	padding-bottom: 5px;
+}
+
+.icon-16-new {background-image:url(../images/icon-16/new.png);}
+.icon-16-list {background-image:url(../images/icon-16/list.png);}
+.icon-16-pack {background-image:url(../images/icon-16/pack.png);}
+.icon-16-serial {background-image:url(../images/icon-16/hikaserial.png);}
+.icon-16-config {background-image:url(../images/icon-16/config.png);}
+.icon-16-help {background-image:url(../images/icon-16/help.png);}
+.icon-16-plugin {background-image:url(../images/icon-16/plugin.png);}
+.icon-16-settings {background-image:url(../images/icon-16/settings.png);}
+.icon-16-import {background-image:url(../images/icon-16/import.png);}
+.icon-16-views {background-image:url(../images/icon-16/views.png);}
+.icon-16-update {background-image:url(../images/icon-16/update.png);}
+.icon-16-info {background-image:url(../images/icon-16/info.png);}
+
+.icon-16-hikaserial {background-image:url(../images/icon-16/hikaserial.png);}
+.icon-32-hikaserial {background-image:url(../images/icon-32/hikaserial.png);}
+.icon-48-hikaserial {background-image:url(../images/icon-48/hikaserial.png);}
+
+.icon-48-add-serials {background-image:url(../images/icon-48/add-serials.png);}
+.icon-48-serials {background-image:url(../images/icon-48/hikaserial.png);}
+.icon-48-serial {background-image:url(../images/icon-48/hikaserial.png);}
+.icon-48-pack {background-image:url(../images/icon-48/pack.png);}
+#hikaserial_main_content .icon-48-import, .icon-48-import {background-image:url(../images/icon-48/import.png);}
+#hikaserial_main_content .icon-48-plugin, .icon-48-plugin {background-image:url(../images/icon-48/plugin.png);}
+#hikaserial_main_content .icon-48-config, .icon-48-config {background-image:url(../images/icon-48/config.png);}
+
+#hikaserial_main_content input,
+#hikaserial_main_content textarea,
+#hikaserial_main_content select,
+#hikaserial_main_content fieldset input,
+#hikaserial_main_content fieldset textarea,
+#hikaserial_main_content fieldset select,
+#hikaserial_main_content fieldset img,
+#hikaserial_main_content fieldset button {
+	float:none;
+}
+#hikaserial_main_content label {
+	float:none;
+	display:inline;
+}
+#hikaserial_main_content fieldset {
+	border:1px solid #CCCCCC;
+	background-color:#FFFFFF;
+	overflow:visible !important;
+}
+#hikaserial_main_content table.admintable td.key,
+#hikaserial_main_content table.admintable td.paramlist_key {
+	background-color:#F6F6F6;
+	border-bottom:1px solid #E9E9E9;
+	border-right:1px solid #E9E9E9;
+	color:#666666;
+	font-weight:bold;
+	text-align:right;
+	width:140px;
+}
+#hikaserial_main_content div.row-fluid table.admintable td.key,
+#hikaserial_main_content div.row-fluid table.admintable td.paramlist_key {
+	white-space:normal;
+}
+
+th.hikaserial_pack_stats_title {
+	width: 130px;
+}
+span.hikaserial_packlist_status {
+	display: inline-block;
+	width: 105px;
+}
+span.hikaserial_packlist_value {
+}
+span.attachserial_filename {
+	color:#666666;
+}
+
+div.hikaserial_dynamic_selector {
+	background-color: #f0f0f0;
+	padding:8px;
+	border:1px solid #aeaeae;
+	-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
+	margin:3px;
+}
+
+body.com_hikaserial h1.page-title a { color:white; }
+body.com_hikaserial h1.page-title span.icon-hikaserial {
+	background-image:url(../images/icon-32/hikaserial.png);
+	width:32px; height: 32px;
+	vertical-align:middle;
+}
+.btn-small .icon-hikaserial {
+	background-image:url(../images/icon-14-hikaserial.png);
+	vertical-align:middle;
+}
+
+#hikaserial_main_content #cpanel .icon-wrapper {
+	width:auto;
+	height:auto;
+	display:block;
+}
+
+#hikaserial_main_content #cpanel div.icon {
+	text-align: center;
+	margin-right: 15px;
+	float: left;
+	margin-bottom: 15px;
+
+}
+
+#hikaserial_main_content #cpanel div.icon a {
+	background-color: #fff;
+	background-position: -30px;
+	display: block;
+	float: left;
+	height: 97px;
+	width: 108px;
+	color: #565656;
+	vertical-align: middle;
+	text-decoration: none;
+	border: 1px solid #CCC;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-transition-property: background-position, -webkit-border-bottom-left-radius, -webkit-box-shadow;
+	-moz-transition-property: background-position, -moz-border-radius-bottomleft, -moz-box-shadow;
+	-webkit-transition-duration: 0.8s;
+	-moz-transition-duration: 0.8s;
+}
+
+#hikaserial_main_content #cpanel div.icon a:hover,
+#hikaserial_main_content #cpanel div.icon a:focus,
+#hikaserial_main_content #cpanel div.icon a:active {
+	background-position: 0px center;
+
+	background-color: #fafafa;
+	box-shadow: -5px 10px 15px rgba(0, 0, 0, 0.25);
+	position: relative;
+	z-index: 10;
+}
+
+#hikaserial_main_content #cpanel div.icon a span {
+	width:auto;
+}
+#hikaserial_main_content fieldset.radio {
+	border: 0;
+	margin-bottom: 5px;
+}
+#hikaserial_main_content #cpanel span {
+	display: block;
+	text-align: center;
+}
+
+#hikaserial_main_content fieldset.adminform {
+	padding: 5px 17px 17px;
+}
+#hikaserial_main_content fieldset.adminform legend {
+	margin: 0px;
+	padding: 0px 3px;
+	border: 0px solid;
+	width: auto;
+}
+#hikaserial_main_content table td.order input {
+	width:20px;
+}
+#hikaserial_main_content button.btn, #hikaserial_main_content a img {
+	margin-bottom: 9px;
+	max-width: none;
+}
+#price_listing input, #price_listing select {
+	width:auto;
+}
+
+body.com_hikaserial div.modal-body iframe {
+	border: 0px;
+}
+body.com_hikaserial .modal-body {
+	max-height: none !important;
+}

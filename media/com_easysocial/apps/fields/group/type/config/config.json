@@ -1,0 +1,15 @@
+{
+	"title": {
+		"default": "PLG_FIELDS_GROUP_TYPE_DEFAULT_TITLE"
+	},
+
+	"description": {
+		"default": "PLG_FIELDS_GROUP_TYPE_DEFAULT_DESCRIPTION"
+	},
+
+	"privacy"	: false,
+
+	"default": 0,
+
+    "visible_registration": true
+}

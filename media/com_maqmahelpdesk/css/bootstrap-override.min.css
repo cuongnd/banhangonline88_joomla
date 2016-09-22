@@ -1,0 +1,17 @@
+.popover.larger{width:520px}
+.popover-inner.larger{width:520px}
+ul.dropdown-menu{margin:2px 0 0;padding:5px 0}
+.popover-inner{margin:0}
+.maqmahelpdesk .nav-tabs>li{padding:0}
+.maqmahelpdesk a.btn{color:#333}
+.maqmahelpdesk a.btn-primary,.maqmahelpdesk a.btn-info,.maqmahelpdesk a.btn-success,.maqmahelpdesk a.btn-warning,.maqmahelpdesk a.btn-danger,.maqmahelpdesk a.btn-inverse{color:#fff}
+.maqmahelpdesk .dropdown-menu li{padding:0;background:0}
+.popover-inner{width:300px;}
+.popover{width:auto;max-width:520px;}
+.maqmahelpdesk .nav a{font-size:100%;}
+.maqmahelpdesk .navbar-inner{min-height:inherit;}
+.maqmahelpdesk .navbar .nav .dropdown-toggle .caret{margin-top:8px;}
+.maqmahelpdesk #profileForm img#selectedavatar{width:32px;height:32px;}
+.maqmahelpdesk #tickettable td img.useravatar,.maqmahelpdesk .nav a img{width:16px;height:16px;}
+.maqmahelpdesk #contentbox .table-bordered thead:first-child tr:first-child th:first-child,.maqmahelpdesk #contentbox .table-bordered tbody:first-child tr:first-child td:first-child{-webkit-border-top-left-radius:0;border-top-left-radius:0;-moz-border-radius-topleft:0;}
+.maqmahelpdesk #contentbox .table-bordered thead:first-child th:first-child,.maqmahelpdesk #contentbox .table-bordered tbody:first-child td:first-child{border-left:0;}

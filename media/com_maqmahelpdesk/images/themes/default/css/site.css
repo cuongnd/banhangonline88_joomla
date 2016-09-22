@@ -1,0 +1,17 @@
+/* TICKET MANAGER */
+a.filters-expand {
+    background: url(../16px/collapse.png) no-repeat;
+}
+
+a.filters-collapse {
+    background: url(../16px/expand2.png) no-repeat;
+}
+
+/* KB */
+ul.kbbullet li.category {
+    background: transparent url(../16px/categories.png) no-repeat scroll;
+}
+
+ul.kbbullet li.article {
+    background: transparent url(../16px/kb.png) no-repeat scroll;
+}

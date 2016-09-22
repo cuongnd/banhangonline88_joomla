@@ -1,0 +1,13 @@
+[
+    {
+        "library": [
+            "uniform",
+            "chosen",
+            "flot"
+        ],
+        "script": [
+            "admin/sidebar/sidebar"
+        ],
+        "adapter": "EasySocial"
+    }
+]

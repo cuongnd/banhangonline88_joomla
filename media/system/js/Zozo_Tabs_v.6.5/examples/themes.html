@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+<head>
+    <title>Styling</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width = device-width, initial-scale = 1.0" />
+
+    <!-- Examples CSS (Not needed) -->
+    <link href="../css/zozo.examples.min.css" rel="stylesheet" />
+
+    <!-- Zozo Tabs css -->
+    <link href="../css/zozo.tabs.min.css" rel="stylesheet" />
+
+    <!-- Zozo Tabs js -->
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/zozo.tabs.min.js"></script>
+</head>
+<body>
+    <div id="ribbon"></div>
+    <div id="page">
+
+        <a class="z-btn z-back" href="index.html">Back</a>
+        <div class="z-row">
+
+            <div class="col8">
+                <div id="tabbed-nav">
+                    <ul>
+                        <li><a>Overview</a></li>
+                        <li><a>Features</a></li>
+                        <li><a>Docs</a></li>
+                        <li><a>Themes</a></li>
+                        <li><a>Purchase</a></li>
+                    </ul>
+
+                    <div>
+                        <div>
+                            <h4>Overview</h4>
+                            <p><strong>Slick Design</strong> and Limitless Customization</p>
+                        </div>
+                        <div>
+                            <h4>Some of it's key features</h4>
+                            <ul class="icons">
+                                <li>10 unique skins in 6 sizes</li>
+                                <li>10 flexible ways to position</li>
+                                <li>Autoplay support & SEO friendly </li>
+                                <li>Horizontal & vertical tabs</li>
+                                <li>Nested tabs</li>
+                                <li>Multiple instances </li>
+                                <li>Free updates & support </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>Documentation</h4>
+                            <p>Fully documented and step-by-step guide provided to help you get up and running with Zozo Tabs.</p>
+                            <p>Documentation can be found on <a href="http://docs.zozoui.com/tabs">docs.zozoui.com/tabs</a>. </p>
+                        </div>
+                        <div>
+                            <h4>10 Preset themes</h4>
+                            <ul class="icons">
+                                <li>White</li>
+                                <li>Crystal</li>
+                                <li>Silver</li>
+                                <li>Gray</li>
+                                <li>Black</li>
+                                <li>Orange</li>
+                                <li>Red</li>
+                                <li>Green</li>
+                                <li>Blue</li>
+                                <li>DeepBlue</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>Purchase</h4>
+                            <p><a href="http://codecanyon.net/item/zozo-tabs/3327836?ref=ZozoUI">Get Zozo Tabs from CodeCanyon.net</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col4">
+                <div id="config-wrapper">
+                    <div id="config" class="switcher" style="display: block;">
+                        <div class="config-title">Styling</div>
+                        <div class="content">
+                            <div class="box-title">Themes</div>
+                            <div class="switcher-box theme small" data-option="theme">
+                                <a data-value="white" class="styleswitch color white "><span></span></a>
+                                <a data-value="crystal" class="styleswitch color crystal"><span></span></a>
+                                <a data-value="silver" class="styleswitch color silver active"><span></span></a>
+                                <a data-value="gray" class="styleswitch color gray"><span></span></a>
+                                <a data-value="black" class="styleswitch color black"><span></span></a>
+                                <a data-value="orange" class="styleswitch color orange"><span></span></a>
+                                <a data-value="red" class="styleswitch color red"><span></span></a>
+                                <a data-value="green" class="styleswitch color green"><span></span></a>
+                                <a data-value="blue" class="styleswitch color blue "><span></span></a>
+                                <a data-value="deepblue" class="styleswitch color deepblue"><span></span></a>
+                            </div>
+
+                            <ul class="options">
+                                <li>
+                                    <input id="shadows" type="checkbox" checked="checked" />
+                                    <label for="shadows">Shadows</label>
+                                </li>
+                                <li>
+                                    <input id="rounded" type="checkbox" checked="checked" />
+                                    <label for="rounded">Rounded</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script>
+        jQuery(document).ready(function ($) {
+            /* jQuery activation and setting options for the tabs*/
+            var tabbedNav = $("#tabbed-nav").zozoTabs({
+                position: "top-left",
+                theme: "silver",
+                rounded: true,
+                shadows: true,
+                size: "large",
+                defaultTab: "tab3"
+            });
+
+            $(".switcher-box a").bind("click", function (e) {
+                e.preventDefault();
+                $(this).addClass("active").parent().find("a").not($(this)).removeClass("active");
+                tabbedNav.data('zozoTabs').setOptions({ "theme": $(this).attr("data-value") });
+            });
+
+            $("#shadows").change(function () {
+                var shadows = $(this).is(':checked');
+                tabbedNav.data('zozoTabs').setOptions({ "shadows": shadows });
+            });
+
+            $("#rounded").change(function () {
+                var rouned = $(this).is(':checked');
+                tabbedNav.data('zozoTabs').setOptions({ "rounded": rouned });
+            });
+        });
+    </script>
+</body>
+</html>

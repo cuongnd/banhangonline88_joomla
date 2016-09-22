@@ -1,0 +1,24 @@
+[
+	{
+		"title"		: "APP_GROUP_FILES_SETTINGS_WIDGET",
+		"desc"		: "APP_GROUP_FILES_SETTINGS_WIDGET_DESC",
+		"fields"	:
+		[
+			{
+				"label"		: "APP_GROUP_FILES_SETTINGS_WIDGET_ENABLE",
+				"tooltip"	: "APP_GROUP_FILES_SETTINGS_WIDGET_ENABLE_DESC",
+				"name"		: "widget",
+				"type"		: "boolean",
+				"default"	: true
+			},
+			{
+				"label"		: "APP_GROUP_FILES_SETTINGS_WIDGET_TOTAL_FILES",
+				"tooltip"	: "APP_GROUP_FILES_SETTINGS_WIDGET_TOTAL_FILES_DESC",
+				"name"		: "widget_total",
+				"class"		: "input-mini center",
+				"type"		: "text",
+				"default"	: 5
+			}
+		]
+	}
+]

@@ -1,0 +1,199 @@
+<!doctype html>
+<html class="z-width960">
+<head>
+    <title>Nested Tabs</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width = device-width, initial-scale = 1.0" />
+
+    <!-- Examples CSS (Not needed) -->
+    <link href="../css/zozo.examples.min.css" rel="stylesheet" />
+
+    <!-- Zozo Tabs css -->
+    <link href="../css/zozo.tabs.min.css" rel="stylesheet" />
+
+    <!-- Zozo Tabs js -->
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/zozo.tabs.min.js"></script>
+</head>
+
+<body>
+    <div id="ribbon"></div>
+    <div id="page">
+        <a class="z-btn z-back" href="index.html">Back</a>
+
+        <!-- Zozo Tabs Start-->
+        <div id="tabbed-nav">
+
+            <!-- Tab Navigation Menu -->
+            <ul>
+                <li><a>Overview<span>New Features in Zozo Tab</span></a></li>
+                <li><a>Subscribe<span>New Releases and Updates</span></a></li>
+                <li><a>Themes<span>10 Preset themes</span></a></li>
+                <li><a>Support<span>Step-by-step Guide</span></a></li>
+                <li><a>Purchase<span>Get Zozo Tabs Now!</span></a></li>
+            </ul>
+
+            <!-- Content container -->
+            <div>
+
+                <!-- Overview -->
+                <div>
+                    <h4>Overview</h4>
+                    <p><strong>Slick Design</strong> and Limitless Customization</p>
+                </div>
+
+                <!-- Subscribe -->
+                <div class="z-content-pad">
+                    <!-- Zozo Tabs 2 (nested) Start-->
+                    <div class="nested-tabs">
+
+                        <!-- Nested Tab Navigation Menu -->
+                        <ul>
+                            <li><a>Twitter</a></li>
+                            <li><a>Facebook</a></li>
+                            <li><a>Google+</a></li>
+                            <li><a>Pinterest</a></li>
+                        </ul>
+
+                        <!-- Nested Content container -->
+                        <div>
+                            <!-- Twitter -->
+                            <div>
+                                <h4>Twitter</h4>
+                                <p><a href="http://twitter.com/zozoui">Follow Zozo UI on Twitter</a></p>
+                            </div>
+                            <!-- Facebook -->
+                            <div>
+                                <h4>Facebook</h4>
+                                <p><a href="https://www.facebook.com/pages/Zozo-UI/454240371295483">Follow Zozo UI on Facebook</a></p>
+                            </div>
+                            <!-- Google+ -->
+                            <div>
+                                <h4>Google+</h4>
+                                <p><a href="https://plus.google.com/101523111550453173471/posts">Follow Zozo UI on Google+</a></p>
+                            </div>
+                            <!-- Pinterest -->
+                            <div>
+                                <h4>Pinterest</h4>
+                                <p><a href="http://www.pinterest.com/zozoui/">Follow Zozo UI on Pinterest</a></p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Zozo Tabs 2 (nested) End-->
+                </div>
+
+                <!-- Themes -->
+                <div>
+                    <h4>10 Preset themes</h4>
+                    <ul class="icons">
+                        <li>White</li>
+                        <li>Crystal</li>
+                        <li>Silver</li>
+                        <li>Gray</li>
+                        <li>Black</li>
+                        <li>Orange</li>
+                        <li>Red</li>
+                        <li>Green</li>
+                        <li>Blue</li>
+                        <li>DeepBlue</li>
+                    </ul>
+                </div>
+
+                <!-- Support -->
+                <div class="z-content-pad">
+                    <!-- Zozo Tabs 3 (nested) Start-->
+                    <div class="nested-tabs">
+
+                        <!-- Nested Tab Navigation Menu -->
+                        <ul>
+                            <li><a>Docs</a></li>
+                            <li><a>Blog</a></li>                            
+                            <li><a>Knowledge Base</a></li>
+                            <li><a>Forums</a></li>
+                        </ul>
+
+                        <!-- Nested Content container -->
+                        <div>
+                            <!-- Docs -->
+                            <div>
+                                <h4>Documentation</h4>
+                                <p>The following default options are provided by the plugin. They can be overridden and customized by passing options object to the initialization of the pluqin and by using HTML5 data attributes on the container element.</p>
+                            </div>
+                            <!-- Blog -->
+                            <div>
+                                <h4>Blog</h4>
+                                <p>Zozo Tabs comes with complete API. Check it out at zozoui.com</p>
+                            </div>
+                            <!-- Knowledge Base -->
+                            <div>
+                                <h4>Knowledge Base</h4>
+                                <p>Zozo Tabs comes with complete API. Check it out at zozoui.com</p>
+                            </div>
+                            <!-- Forums -->
+                            <div>
+                                <h4>Forums</h4>
+                                <p>Zozo Tabs comes with complete API. Check it out at zozoui.com</p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Zozo Tabs 3 (nested) End-->
+
+                </div>
+
+                <!-- Purchase -->
+                <div>
+                    <h4>Purchase</h4>
+                    <p><a href="http://codecanyon.net/item/zozo-tabs/3327836?ref=ZozoUI">Get Zozo Tabs from CodeCanyon.net</a></p>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- Zozo Tabs End-->
+
+    </div>
+
+    <style>
+        .z-tabs > .z-container > .z-content.z-content-pad > .z-content-inner
+        {
+            padding-top: 10px;
+        }
+    </style>
+
+    <script>
+        jQuery(document).ready(function ($) {
+            /* jQuery activation and setting options for parent tabs with id selector*/
+            $("#tabbed-nav").zozoTabs({
+                rounded: false,
+                multiline: true,
+                theme: "white",                
+                size: "medium",
+                responsive: true,
+                animation: {
+                    effects: "slideH",
+                    easing: "easeInOutCirc",
+                    type: "jquery"
+                },
+                defaultTab: "tab2"
+            });
+
+            /* jQuery activation and setting options for nested tabs with class selector*/
+            $(".nested-tabs").zozoTabs({
+                position: "top-left",
+                theme: "red",
+                style: "underlined",
+                rounded: false,
+                shadows: false,
+                defaultTab: "tab1",
+                animation: {
+                    easing: "easeInOutCirc",
+                    effects: "slideV"
+                },
+                size: "medium"
+            });
+        });
+    </script>
+</body>
+</html>

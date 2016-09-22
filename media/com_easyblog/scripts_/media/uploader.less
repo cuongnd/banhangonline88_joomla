@@ -1,0 +1,346 @@
+.uploadInstructions {
+
+    font-weight: bold;
+    top: 39px;
+    right: 0px;
+    font-size: 12px;
+    line-height: 16px;
+    display: none;
+
+    .uploadExtensions {
+        font-size: 10px;
+        font-weight: normal;
+        line-height: 14px;
+        margin-top: 4px;
+        display: block;
+        color: #888;
+    }
+
+    &.show {
+        display: block;
+        z-index: 9999;
+    }
+}
+
+(~"@{MediaManager}") {
+
+    .uploader {
+
+        > form {
+            // Fixes unable to click uploader button on IE.
+            z-index: 99999 !important;
+            cursor: pointer;
+        }
+
+        .plupload {
+            cursor: pointer;
+
+            input {
+                cursor: pointer;
+            }
+        }
+
+        background: #fff;
+
+        .uploadDropHint {
+
+            z-index: 1;
+
+            .hint.hint-dropUpload {
+
+                margin-top: -244px / 2;
+
+                i {
+                    .icon-media(1, 5);
+                    width: 210px;
+                    height: 210px;
+                    display: inline-block;
+                }
+            }
+        }
+
+        .uploadItemGroup {
+            position: relative;
+            z-index: 2;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            height: 100%;
+            .opacity(1);
+            background: #fff;
+            .transition();
+
+            &.empty {
+                .opacity(0);
+                .transition();
+            }
+
+            &.indefinite-progress {
+
+                .uploadItem {
+
+                    .uploadProgressBar {
+                        progress {
+                            display: none;
+                        }
+
+                        .progress-alt {
+                            display: block;
+                        }
+                    }
+                }
+            }
+
+            &.blogimage {
+
+                .uploadItem .uploadActions {
+
+                    .insertItemButton {
+                        display: none !important;
+                    }
+
+                    .insertBlogImageButton {
+                        display: block !important;
+                    }
+                }
+            }
+
+            // start: .uploadItem
+            .uploadItem {
+
+                padding: 8px;
+                padding-left: 32px !important; // 12px + 16px icon + 4px gap
+                .unselectable();
+
+                + .uploadItem {
+                    border-top: 1px solid #ccc;
+                }
+
+                .item-wrap {
+                    position: relative;
+                }
+
+                .uploadFilename {
+                    display: block;
+                    height: 16px;
+                    line-height: 16px;
+                    padding: 0;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    font-size: 12px;
+                }
+
+                .uploadStatus {
+                    display: block;
+                    color: #777;
+                    font-weight: normal;
+                    line-height: 14px;
+                    font-size: 10px;
+                }
+
+                .uploadProgressBar {
+
+                    display: none;
+
+                    .progress() {
+                        width: 99%;
+                        height: 8px;
+                        margin: 6px 0 2px;
+                        background: #fff;
+                        border: 1px solid #aaa;
+                    }
+
+                    .progressBar() {
+                        background: #E5EEFF !important;
+                        .rounded(3px);
+                    }
+
+                    progress {
+
+                        .progress();
+                        .rounded(3px);
+
+                        &::-moz-progress-bar          { .progressBar(); }
+                        &::-webkit-progress-bar       { .progressBar(); }
+                        &::-webkit-progress-value     { .progressBar(); }
+                        &[role][aria-valuenow]:before { .progressBar(); }
+                    }
+
+                    .progress-alt {
+
+                        .progress();
+                        display: none;
+
+                        img {
+                            height: 8px;
+                            width: 100%;
+                        }
+                    }
+                }
+
+                .uploadActions {
+
+                    display: none;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+
+                    button {
+                        float: right;
+                        margin-left: 5px;
+                        padding-left: 8px + 16px + 2px !important; // 1px for cosmetic
+
+                        > i {
+                            position: absolute;
+                            top: 4px;
+                            left: 6px;
+                            width: 16px;
+                            height: 16px;
+                        }
+                    }
+
+                    .locateItemButton {
+                        > i {
+                            .icon-media(3, 3);
+                            height: 17px;
+                        }
+                    }
+
+                    .insertItemButton {
+                        > i {
+                            .icon-media(7, 4);
+                        }
+                    }
+
+                    .insertBlogImageButton {
+                        display: none;
+                        > i {
+                            .icon-media(7, 4);
+                        }
+                    }
+                }
+
+                .uploadIcon {
+                    position: absolute;
+                    width: 16px;
+                    height: 16px;
+                    top: 0;
+                    left: -22px;
+                    display: block;
+                    cursor: pointer;
+                }
+
+                &.upload-state-queued {
+
+                    .uploadIcon {
+                        .icon-media(6, 3);
+                    }
+                }
+
+                &.upload-state-uploading {
+
+                    .uploadProgressBar {
+                        display: block;
+                    }
+
+                    .uploadIcon {
+                        background-image: url("loader.gif");
+                        background-position: center center;
+                        background-repeat: no-repeat;
+                    }
+                }
+
+                &.upload-state-done {
+
+                    .uploadIcon {
+                        .icon-media(7, 3);
+                    }
+
+                    .uploadActions {
+                        display: block;
+                        opacity: 0.3;
+                    }
+
+                    &:hover .uploadActions {
+                        opacity: 1;
+                    }
+                }
+
+                &.upload-state-failed {
+
+                    .uploadIcon {
+                        .icon-media(8, 3);
+                    }
+                }
+
+                &:hover {
+
+                    .uploadIcon.uploadRemoveButton {
+                        .icon-media(5, 3);
+
+                        &:hover {
+                            .icon-media(4, 3);
+                        }
+                    }
+                }
+            }
+            // end: .uploadItem
+        }
+
+        .modalContent {
+            .unselectable();
+        }
+
+        .modalToolbar {
+
+            .uploadButton {
+
+                > i {
+                   .icon-media(7, 2);
+                }
+            }
+
+            .changeUploadFolderButton {
+
+                > i {
+                    .icon-media(11, 3);
+                    width: 18px !important;
+                    top: 9px !important;
+                }
+            }
+        }
+
+        .modalFooter {
+
+            .clearListButton {
+
+                > i {
+
+                }
+            }
+        }
+
+        .modalPrompt {
+
+            .changeUploadFolderPrompt {
+
+                .promptContent {
+                    padding: 5px 15px;
+                }
+
+                .browserTreeItemField {
+                    border: 1px solid #ccc;
+                    width: auto;
+                    float: none;
+                    height: 145px;
+
+                    .browserTreeItemGroup .browserTreeItem.type-place i,
+                    .browserTreeItemGroup .browserTreeItem.type-place.active i {
+                        .icon-media(10, 3);
+                    }
+                }
+            }
+
+        }
+    }
+
+}

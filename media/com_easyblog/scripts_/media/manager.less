@@ -1,0 +1,197 @@
+(~"@{MediaManager}") {
+
+	font-size: 12px !important;
+    line-height: 12px !important;
+    font-family: "Lucida Grande", "Arial", sans-serif !important;
+
+    input, button, select, textarea {
+        font-family: "Lucida Grande", "Arial", sans-serif !important;
+    }
+
+    background: transparent !important;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    z-index: 9999999;
+    width: 100%;
+    height: 100%;
+    color: #111;
+
+    position: fixed;
+    top: -99999px;
+    left: 0;
+
+    display: table;
+
+    .media-overlay {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 1;
+        .transition();
+        display: none; //prevent dashboard toolbar unclickable in FF3.6
+    }
+
+    &.active {
+        top: 0;
+        left: 0;
+
+        .media-overlay {
+            .transition();
+        }
+    }
+
+    .loaderModal {
+
+        .modalContent {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+        }
+    }
+
+    .assetItemGroup {
+        width: 130px;
+        margin: 0 auto;
+        height: 110px;
+        top: 50%;
+        margin-top: -190px;
+        position: relative;
+    }
+
+    .assetItem {
+
+        padding: 6px;
+        padding-left: 28px;
+        text-align: left;
+        position: relative;
+
+        i {
+            width: 16px;
+            height: 16px;
+            top: 4px;
+            left: 4px;
+            display: none;
+            position: absolute;
+        }
+
+        &.loading {
+        }
+
+        &.done {
+            i {
+                .icon-media(7, 3);
+                display: block;
+            }
+        }
+
+        &.failed {
+            i {
+                .icon-media(8, 3);
+                display: block;
+            }
+        }
+    }
+
+    .recentActivities {
+
+        .promptContent {
+            padding: 5px 15px;
+        }
+
+        .recentItemGroup {
+            background: #F5F5F5;
+            border: 1px solid #CCCCCC;
+            height: 145px;
+            overflow: auto;
+        }
+
+        .recentItem {
+            position: relative;
+            height: 32px;
+            border-bottom: 1px solid #ddd;
+
+            .item-wrap {
+                position: relative;
+                overflow: hidden;
+            }
+
+            height: 32px;
+            padding: 4px 8px;
+
+            .item-image {
+                display: table;
+                width: 32px;
+                height: 32px;
+            }
+
+            .item-image-wrap {
+                display: table-cell;
+                text-align: center;
+                vertical-align: middle;
+            }
+
+            .itemIcon {
+                max-width: 32px;
+                max-height: 32px;
+                display: inline;
+                z-index: 1;
+                vertical-align: middle;
+            }
+
+            .itemTitle {
+                display: block;
+                text-align: left;
+                position: absolute;
+                z-index: 2;
+                font-size: 12px;
+                .unselectable();
+                top: 0px;
+                left: 40px;
+                width: 270px;
+                overflow: hidden;
+                white-space: nowrap;
+                .text-overflow();
+                padding-top: 4px;
+            }
+
+            .itemProgress {
+                color: #888888;
+                font-size: 10px;
+                display: block;
+                line-height: 16px;
+            }
+
+            i {
+                width: 16px;
+                height: 16px;
+                position: absolute;
+                top: 7px;
+                right: 4px;
+                display: none;
+            }
+
+            &.loading {
+                i {
+                    background: url(loader.gif) center center no-repeat;
+                    display: block;
+                }
+            }
+
+            &.done {
+                i {
+                    .icon-media(7, 3);
+                    display: block;
+                }
+            }
+
+            &.failed {
+                i {
+                    .icon-media(8, 3);
+                    display: block;
+                }
+            }
+        }
+    }
+}

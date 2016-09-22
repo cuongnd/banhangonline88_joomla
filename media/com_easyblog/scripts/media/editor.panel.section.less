@@ -1,0 +1,58 @@
+(~"@{MediaManager}") {
+
+    // .panelSection (common) start
+    .panelSection {
+
+        text-align: left;
+
+        .panelSectionHeader {
+            border-top: 1px solid #ccc;
+            padding: 8px 16px;
+            cursor: pointer;
+
+            .panelSectionTitle {
+                .text-shadow(1px, 1px, 0, darken(#fff, 5%));
+                position: relative;
+                height: 16px;
+                line-height: 16px;
+                padding-left: 8px;
+                .unselectable();
+
+                > i {
+                    .icon-media(14, 2);
+                    display: block;
+                    position: absolute;
+                    width: 16px;
+                    height: 16px;
+                    top: 0px;
+                    left: -12px;
+                }
+            }
+        }
+
+        .panelSectionContent {
+            padding: 8px 24px 16px;
+            display: none;
+            position: relative;
+        }
+
+        &.active {
+
+            .panelSectionHeader {
+                padding: 8px 16px 0px;
+
+                .panelSectionTitle {
+
+                    > i {
+                        .icon-media(14, 4);
+                    }
+                }
+            }
+
+            .panelSectionContent {
+                display: block;
+            }
+        }
+    }
+
+}

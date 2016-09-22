@@ -1,0 +1,1 @@
+EasyBlog.module("dashboard",function(e){var t=this;EasyBlog.Controller("Dashboard",{defaultOptions:function(){}},function(e){return{init:function(){EasyBlog.dashboard=e},registerPlugin:function(t,n){e[t]===undefined&&(e[t]=n)}}}),t.resolve()});

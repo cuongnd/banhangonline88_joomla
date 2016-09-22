@@ -1,0 +1,9 @@
+[
+    {
+        "view": [
+            "media/editor.audio",
+            "media/editor.audio.player"
+        ],
+        "adapter": "EasyBlog"
+    }
+]

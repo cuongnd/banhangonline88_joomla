@@ -1,0 +1,222 @@
+/* TOOLBAR IMAGES */
+.icon-32-save_f2 {
+    background: url(../../../../images/themes/default/32px/save.png);
+}
+
+.icon-32-print_f2 {
+    background: url(../../../../images/themes/default/32px/print.png);
+}
+
+.icon-32-groups_f2 {
+    background: url(../../../../images/themes/default/32px/groups.png);
+}
+
+.icon-32-preview_f2 {
+    background: url(../../../../images/themes/default/32px/preview.png);
+}
+
+.icon-32-move_f2 {
+    background: url(../../../../images/themes/default/32px/move.png);
+}
+
+.icon-32-upload_f2 {
+    background: url(../../../../images/themes/default/32px/upload.png);
+}
+
+.icon-32-back_f2 {
+    background: url(../../../../images/themes/default/32px/back.png);
+}
+
+.icon-32-new_f2 {
+    background: url(../../../../images/themes/default/32px/new.png);
+}
+
+.icon-32-cancel_f2 {
+    background: url(../../../../images/themes/default/32px/cancel.png);
+}
+
+.icon-32-pdf_link {
+    background: url(../../../../images/themes/default/32px/pdf_link.png);
+}
+
+/* PAGE TITLES */
+.icon-48-sc-about {
+    background: url(../../../../images/themes/default/48px/help.png) no-repeat left;
+}
+
+.icon-48-sc-cpanel {
+    background: url(../../../../images/themes/default/48px/config.png) no-repeat left;
+}
+
+.icon-48-sc-calendars {
+    background: url(../../../../images/themes/default/48px/calendar.png) no-repeat left;
+}
+
+.icon-48-sc-customfield {
+    background: url(../../../../images/themes/default/48px/fields.png) no-repeat left;
+}
+
+.icon-48-sc-forms {
+    background: url(../../../../images/themes/default/48px/forms.png) no-repeat left;
+}
+
+.icon-48-sc-workgroup {
+    background: url(../../../../images/themes/default/48px/workgroup.png) no-repeat left;
+}
+
+.icon-48-sc-update {
+    background: url(../../../../images/themes/default/48px/installer.png) no-repeat left;
+}
+
+.icon-48-sc-tickets {
+    background: url(../../../../images/themes/default/48px/tickets.png) no-repeat left;
+}
+
+.icon-48-sc-reports {
+    background: url(../../../../images/themes/default/48px/reports.png) no-repeat left;
+}
+
+.icon-48-sc-priority {
+    background: url(../../../../images/themes/default/48px/priorities.png) no-repeat left;
+}
+
+.icon-48-sc-permission {
+    background: url(../../../../images/themes/default/48px/support_staff.png) no-repeat left;
+}
+
+.icon-48-sc-kb {
+    background: url(../../../../images/themes/default/48px/kb.png) no-repeat left;
+}
+
+.icon-48-sc-announces {
+    background: url(../../../../images/themes/default/48px/announcements.png) no-repeat left;
+}
+
+.icon-48-sc-autoclose {
+    background: url(../../../../images/themes/default/48px/clean.png) no-repeat left;
+}
+
+.icon-48-sc-category {
+    background: url(../../../../images/themes/default/48px/categories.png) no-repeat left;
+}
+
+.icon-48-sc-client {
+    background: url(../../../../images/themes/default/48px/clients.png) no-repeat left;
+}
+
+.icon-48-sc-configuration {
+    background: url(../../../../images/themes/default/48px/config.png) no-repeat left;
+}
+
+.icon-48-sc-mail {
+    background: url(../../../../images/themes/default/48px/email.png) no-repeat left;
+}
+
+.icon-48-sc-trouble {
+    background: url(../../../../images/themes/default/48px/troubleshooter.png) no-repeat left;
+}
+
+.icon-48-sc-status {
+    background: url(../../../../images/themes/default/48px/status.png) no-repeat left;
+}
+
+.icon-48-sc-glossary {
+    background: url(../../../../images/themes/default/48px/glossary.png) no-repeat left;
+}
+
+.icon-48-sc-rates {
+    background: url(../../../../images/themes/default/48px/activity_rates.png) no-repeat left;
+}
+
+.icon-48-sc-types {
+    background: url(../../../../images/themes/default/48px/activity_types.png) no-repeat left;
+}
+
+.icon-48-sc-export {
+    background: url(../../../../images/themes/default/48px/export.png) no-repeat left;
+}
+
+.icon-48-sc-staff {
+    background: url(../../../../images/themes/default/48px/support_staff.png) no-repeat left;
+}
+
+.icon-48-sc-components {
+    background: url(../../../../images/themes/default/48px/components.png) no-repeat left;
+}
+
+.icon-48-sc-replies {
+    background: url(../../../../images/themes/default/48px/replies.png) no-repeat left;
+}
+
+.icon-48-sc-db {
+    background: url(../../../../images/themes/default/48px/database-clean.png) no-repeat left;
+}
+
+.icon-48-sc-help {
+    background: url(../../../../images/themes/default/48px/help.png) no-repeat left;
+}
+
+.icon-48-sc-users {
+    background: url(../../../../images/themes/default/48px/users.png) no-repeat left;
+}
+
+.icon-48-sc-dl_licenses {
+    background: url(../../../../images/themes/default/48px/licenses.png) no-repeat left;
+}
+
+.icon-48-sc-dl_downloads {
+    background: url(../../../../images/themes/default/48px/files.png) no-repeat left;
+}
+
+.icon-48-sc-dl_category {
+    background: url(../../../../images/themes/default/48px/categories.png) no-repeat left;
+}
+
+.icon-48-sc-dl_groups {
+    background: url(../../../../images/themes/default/48px/groups.png) no-repeat left;
+}
+
+.icon-48-sc-dl_customers {
+    background: url(../../../../images/themes/default/48px/access.png) no-repeat left;
+}
+
+.icon-48-sc-dl_products {
+    background: url(../../../../images/themes/default/48px/files.png) no-repeat left;
+}
+
+.icon-48-sc-dl_stats {
+    background: url(../../../../images/themes/default/48px/reports.png) no-repeat left;
+}
+
+.icon-48-sc-contracts {
+    background: url(../../../../images/themes/default/48px/contract_type.png) no-repeat left;
+}
+
+.icon-48-sc-send {
+    background: url(../../../../images/themes/default/48px/send.png) no-repeat left;
+}
+
+.icon-48-sc-holidays {
+    background: url(../../../../images/themes/default/48px/holidays.png) no-repeat left;
+}
+
+.icon-48-sc-schedule {
+    background: url(../../../../images/themes/default/48px/schedule.png) no-repeat left;
+}
+
+.icon-48-sc-vacances {
+    background: url(../../../../images/themes/default/48px/vacances.png) no-repeat left;
+}
+
+.icon-48-sc-discussions {
+    background: url(../../../../images/themes/default/48px/discussions.png) no-repeat left;
+}
+
+.icon-48-sc-bugtracker {
+    background: url(../../../../images/themes/default/48px/bug.png) no-repeat left;
+}
+
+/* BREADCRUMBS */
+.maqmahelpdesk .breadcrumbs {
+    background: #f7f7f7 url(../../../../images/themes/default/16px/help.png) no-repeat 8px 7px;
+}

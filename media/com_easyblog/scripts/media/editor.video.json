@@ -1,0 +1,9 @@
+[
+    {
+        "view": [
+            "media/editor.video",
+            "media/editor.video.player"
+        ],
+        "adapter": "EasyBlog"
+    }
+]

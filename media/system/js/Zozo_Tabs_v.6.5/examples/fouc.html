@@ -1,0 +1,64 @@
+﻿<!doctype html>
+<html class="z-width960">
+<head>
+    <title>Spinner</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width = device-width, initial-scale = 1.0" />
+
+    <!-- Examples CSS (Not needed) -->
+    <link href="../css/zozo.examples.min.css" rel="stylesheet" />
+
+    <!-- Zozo Tabs css -->
+    <link href="../css/zozo.tabs.min.css" rel="stylesheet" />
+
+    <!-- Zozo Tabs js -->
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/zozo.tabs.min.js"></script>
+</head>
+
+<body>
+    <div id="ribbon"></div>
+    <div id="page">
+        <a class="z-btn z-back" href="index.html">Back</a>
+
+        <!-- Zozo Tabs Start-->
+        <div id="tabbed-nav" class="z-tabs-loading">
+            <ul>
+                <li><a>Design</a></li>
+                <li><a>Specs</a></li>
+                <li><a>Price</a></li>
+                <li><a>Release Date</a></li>
+            </ul>
+            <div>
+                <div>Design</div>
+                <div>Specs</div>
+                <div>Price</div>
+                <div>Release Date</div>
+            </div>
+            <!-- this span with class z-spinner should be added also the main element should contain class z-tabs-loading-->
+            <span class="z-spinner"></span>
+        </div>
+        <!-- Zozo Tabs End-->
+    </div>
+
+
+    <script>
+        jQuery(document).ready(function ($) {
+            /*  jQuery activation and setting options. Visit docs.zozoui.com/tabs for 
+                complete documentation, option list, public methods, callback events.*/
+           
+
+            /* For test purpse activating zozo tabs after 1 sec. to see te spinner. 
+             but the settimeout should not be used in the production. its only to show the spinner*/
+            setTimeout(function () {
+                $("#tabbed-nav").zozoTabs({
+                    theme: "silver",
+                    orientation: "horizontal",
+                    position: "top-left"
+                });
+            }, 1000);
+        });
+    </script>
+
+</body>
+</html>

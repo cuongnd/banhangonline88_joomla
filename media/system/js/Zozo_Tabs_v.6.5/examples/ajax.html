@@ -1,0 +1,47 @@
+<!doctype html>
+<html class=" z-width1200">
+<head>
+    <title>AJAX</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width = device-width, initial-scale = 1.0" />
+
+    <!-- Examples CSS (Not needed) -->
+    <link href="../css/zozo.examples.min.css" rel="stylesheet" />
+
+    <!-- Zozo Tabs css -->
+    <link href="../css/zozo.tabs.min.css" rel="stylesheet" />
+
+    <!-- Zozo Tabs js -->
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/zozo.tabs.js"></script>
+</head>
+
+<body>
+    <div id="ribbon"></div>
+    <div id="page">
+        <a class="z-btn z-back" href="index.html">Back</a>
+
+        <!-- Zozo Tabs Start-->
+        <div id='tabbed-nav' data-role='z-tabs' data-options='{"theme": "silver"}'>
+            <ul>
+                <li><a>Overview</a></li>
+                <li><a>Features</a></li>
+                <li><a>Docs</a></li>
+                <li><a>Themes</a></li>
+                <li><a>Purchase</a></li>
+
+            </ul>
+            <div>
+                <div data-content-url='ajax-content/content1.html'></div>
+                <div data-content-url='ajax-content/content2.html'></div>
+                <div data-content-url='ajax-content/content3.html'></div>
+                <div data-content-url='ajax-content/content4.html'></div>
+                <div data-content-url='ajax-content/content5.html'></div>
+            </div>
+        </div>
+        <!-- Zozo Tabs End-->
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+[
+    {
+        "script": [
+            "media/navigation",
+            "media/uploader",
+            "media/browser",
+            "media/editor"
+        ],
+        "view": [
+            "media/recent.item",
+            "media/browser",
+            "media/browser.item-group",
+            "media/browser.item",
+            "media/browser.tree-item-group",
+            "media/browser.tree-item",
+            "media/browser.pagination-page",
+            "media/browser.uploader",
+            "media/browser.uploader.item",
+            "media/editor",
+            "media/editor.viewport",
+            "media/navigation.item",
+            "media/navigation.itemgroup"
+        ],
+        "language": [
+            "COM_EASYBLOG_MM_UNABLE_TO_FIND_EXPORTER",
+            "COM_EASYBLOG_MM_GETTING_IMAGE_SIZES",
+            "COM_EASYBLOG_MM_UNABLE_TO_RETRIEVE_VARIATIONS",
+            "COM_EASYBLOG_MM_ITEM_INSERTED",
+            "COM_EASYBLOG_MM_UPLOADING",
+            "COM_EASYBLOG_MM_UPLOADING_STATE",
+            "COM_EASYBLOG_MM_UPLOADING_PENDING",
+            "COM_EASYBLOG_MM_UPLOAD_COMPLETE",
+            "COM_EASYBLOG_MM_UPLOAD_PREPARING",
+            "COM_EASYBLOG_MM_UPLOAD_UNABLE_PARSE_RESPONSE",
+            "COM_EASYBLOG_MM_UPLOADING_LEFT",
+            "COM_EASYBLOG_MM_CONFIRM_DELETE_ITEM",
+            "COM_EASYBLOG_MM_CANCEL_BUTTON",
+            "COM_EASYBLOG_MM_YES_BUTTON",
+            "COM_EASYBLOG_MM_ITEM_DELETE_CONFIRMATION"
+        ],
+        "adapter": "EasyBlog"
+    }
+]

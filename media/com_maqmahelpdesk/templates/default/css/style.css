@@ -1,0 +1,1845 @@
+div.clear, .clear {
+    clear: both;
+}
+
+.component-content div.current {
+    max-width: 95%;
+}
+
+form div {
+    margin: 0;
+}
+
+tr, td {
+    border: 0px;
+}
+
+.mgbt20 {
+    margin-bottom: 20px;
+}
+
+.fllf {
+    float: left;
+}
+
+.flrg {
+    float: right;
+}
+
+.h20 {
+    height: 20px;
+}
+
+.h30 {
+    height: 30px;
+}
+
+.w100 {
+    width: 100%;
+}
+
+.w50 {
+    width: 50%;
+}
+
+.maqmahelpdesk .table th.tar,
+.maqmahelpdesk .table td.tar,
+.tar {
+    text-align: right;
+}
+
+.maqmahelpdesk .table th.tal,
+.maqmahelpdesk .table td.tal,
+.tal {
+    text-align: left;
+}
+
+.maqmahelpdesk .table th.tac,
+.maqmahelpdesk .table td.tac,
+.tac{
+    text-align: center;
+}
+
+/* Ajax Rating */
+#rating .star-rating, .star-rating a:hover, .star-rating a:active, .star-rating a:focus, .star-rating .current-rating {
+    background: url(../../../../../media/com_maqmahelpdesk/images/rating/star.gif) left -1000px repeat-x;
+}
+
+#rating .star-rating {
+    position: relative;
+    width: 125px;
+    height: 25px;
+    overflow: hidden;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-position: left top;
+}
+
+.star-rating li {
+    display: inline;
+}
+
+.star-rating a, .star-rating .current-rating {
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-indent: -1000em;
+    height: 25px;
+    line-height: 25px;
+    outline: none;
+    overflow: hidden;
+    border: none;
+}
+
+.star-rating a:hover, .star-rating a:active, .star-rating a:focus {
+    background-position: left bottom;
+}
+
+.star-rating .current-rating {
+    z-index: 1;
+    background-position: left center;
+}
+
+.inline-rating {
+    display: -moz-inline-block;
+    display: -moz-inline-box;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.small-star {
+    width: 50px;
+    height: 10px;
+}
+
+.small-star, .small-star a:hover, .small-star a:active, .small-star a:focus, .small-star .current-rating {
+    background-image: url(../../../../../../media/com_maqmahelpdesk/images/rating/star_small.gif);
+    line-height: 10px;
+    height: 10px;
+}
+
+/* Dashboard */
+.dashboard {
+    margin-bottom: 20px;
+    font-family: Arial;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.dashboard ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.dashboard ul li:first-child {
+    margin: 0;
+}
+
+.dashboard ul li {
+    display: block;
+    float: left;
+    margin-left: 40px;
+    width: 27%;
+    vertical-align: middle;
+    background: transparent;
+}
+
+.dashboard a.grey {
+    text-decoration: none;
+    background: #EFEFEF;
+    border: 1px solid #D5D5D5;
+    color: #B55D5C;
+    cursor: default;
+}
+
+.count {
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -khtml-border-radius: 2px;
+    border-radius: 2px;
+    font-size: 26px;
+    height: 40px;
+    display: inline-block;
+    float: left;
+    line-height: 41px;
+    padding: 0 10px;
+    -moz-box-shadow: 0 1px 0 #fff;
+    -webkit-box-shadow: 0 1px 0 #fff;
+    box-shadow: 0 1px 0 #fff;
+    margin-right: 10px;
+}
+
+.dashboard ul li span {
+    color: #424242;
+    font-size: 16px;
+    display: block;
+    vertical-align: middle;
+    white-space: normal;
+    width: 150px;
+}
+
+/* Glossary */
+.listNav {
+    margin: 0 0 10px;
+}
+
+.ln-letters {
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.ln-letters a {
+    font-size: 0.9em;
+    display: block;
+    float: left;
+    padding: 2px 6px;
+    border: 1px solid silver;
+    border-right: none;
+    text-decoration: none;
+}
+
+.ln-letters a.ln-last {
+    border-right: 1px solid silver;
+}
+
+.ln-letters a:hover,
+.ln-letters a.ln-selected {
+    background-color: #eaeaea;
+}
+
+.ln-letters a.ln-disabled {
+    color: #ccc;
+}
+
+.ln-letter-count {
+    text-align: center;
+    font-size: 0.8em;
+    line-height: 1;
+    margin-bottom: 3px;
+    color: #336699;
+    margin-top: -60px;
+}
+
+#myList li {
+    list-style: none;
+}
+
+/* Subtitle with line */
+h4 .divider {
+    z-index: 0;
+    background: url("../../../images/ui/divpixel.gif") repeat-x scroll center bottom transparent;
+}
+
+h4 span {
+    background: none repeat scroll 0 0 white;
+    display: block;
+    float: left;
+    font-size: 11px;
+    line-height: 32px;
+    padding-right: 6px;
+    position: relative;
+    z-index: 2;
+    text-align: right;
+    width: 125px;
+}
+
+.clearfix {
+    display: block;
+}
+
+h4 {
+    color: #333333;
+    margin: 0;
+    padding: 0;
+}
+
+h4 span.downloads {
+    width: auto;
+}
+
+/* Forms */
+.form .field, .form .note {
+    margin-bottom: 1.5em;
+    width: 100%;
+}
+
+.form .field label.allfield, .form .field span.label.allfield {
+    display: block;
+    float: left;
+    font-weight: bold;
+    padding-right: 20px;
+    position: relative;
+    text-align: right;
+    width: 125px;
+    font-size: 85%;
+    line-height: 13px;
+    margin-top: 5px;
+}
+
+.form .field input, .form .field input[type="textarea"], .form .field select {
+    -moz-border-radius: 3px 3px 3px 3px;
+    -webkit-border-radius: 3px 3px 3px 3px;
+    border-radius: 3px 3px 3px 3px;
+    border: 1px solid #CCCCCC;
+    padding: 4px;
+}
+
+.form .medium {
+    width: 200px;
+}
+
+.form .large {
+    width: 500px;
+}
+
+.form .fieldtip {
+    color: #777777;
+    font-size: 90%;
+    margin-left: 145px;
+    margin-top: 10px;
+}
+
+.controlset .controlset-pad {
+    float: left;
+    width: 300px;
+}
+
+.controlset {
+    float: left;
+    margin-bottom: 2.5em;
+}
+
+span.required {
+    color: #ff0000;
+    font-weight: bold;
+    padding: 5px;
+}
+
+.buttonsbox {
+    text-align: right;
+    background: none repeat scroll 0 0 #EEEEEE;
+    border-bottom: 1px solid #CCCCCC;
+    border-top: 1px solid #CCCCCC;
+    color: #555555;
+    margin-bottom: 8px;
+    padding: 8px;
+    height: 28px;
+}
+
+#pdiv {
+    padding-bottom: 20px;
+}
+
+.inputbox:focus {
+    border: 1px solid #77B3D8;
+    -moz-box-shadow: 0 0 7px #C8E0EF;
+    -webkit-box-shadow: 0 0 7px #C8E0EF;
+    -o-box-shadow: 0 0 7px #C8E0EF;
+    box-shadow: 0 0 7px #C8E0EF;
+}
+
+#mqmbuttonsbox {
+    text-align: right;
+}
+
+.form .field.mb5 {
+    margin-bottom: 5px;
+}
+
+.form .field.pt20 {
+    padding-top: 20px;
+}
+
+/* KB */
+ul.kbbullet {
+    margin: 5px 5px;
+    list-style: none;
+    padding: 0;
+}
+
+ul.kbbullet li {
+    list-style-type: none;
+    margin: 0px -5px;
+    text-indent: 3px;
+}
+
+ul.kbbullet li a {
+    text-decoration: none;
+    padding-left: 1.5em;
+    font-weight: normal;
+}
+
+/* FAQ */
+.faq-answer {
+    display: none;
+}
+
+/* Tables */
+.contenttable {
+    width: 100%;
+    margin-bottom: 5px;
+    border: 1px solid #bbb;
+    -webkit-border-radius-topleft: 5px;
+    -webkit-border-radius-topright: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+}
+
+.contenttable th {
+    padding: 5px 5px 4px 5px;
+}
+
+.contenttable td {
+    padding: 2px 2px 2px 2px;
+}
+
+.contenttable td.title {
+    font-size: 100%;
+}
+
+.contenttable th {
+    text-align: left;
+    font-weight: normal;
+}
+
+.contenttable tr.even th,
+.contenttable tr.even td {
+    background: #f5f5f5;
+}
+
+.contenttable thead th {
+    text-shadow: #fff 0 1px 0;
+    border-bottom: 1px solid #bbb;
+}
+
+.contenttable thead td {
+    border-left: 1px solid #bbb;
+    border-right: 1px solid #bbb;
+    text-shadow: #fff 0 1px 0;
+}
+
+/* f2f2f2 d5d5d5 */
+.contenttable thead tr {
+    background: #ddd url("../../../../../media/com_maqmahelpdesk/images/table/thead.gif") repeat-x;
+}
+
+.contenttable tbody tr.first th,
+.contenttable tbody tr.first td {
+    border-top: 1px solid #bbb;
+}
+
+.contenttable tbody {
+    color: #333;
+}
+
+.contenttable tfoot th,
+.contenttable tfoot td {
+    border-top: 1px solid #ccc;
+    background: #fff url("../../../../../media/com_maqmahelpdesk/images/table/tfoot.gif") repeat-x;
+}
+
+.contenttable tr.even th {
+    background: #f5f5f5;
+}
+
+#tableoptions {
+    text-align: right;
+}
+
+#tableoptiondesc {
+    font-size: 10px;
+    color: #c5c5c5;
+}
+
+#logs .contenttable {
+    border: 0;
+}
+
+/* Workgroup list / Workgroup options / Download Categories / Download Products List - TO REMOVE/CHANGE */
+div.depicon {
+    text-align: left;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    width: 49%;
+    float: left;
+}
+
+div.depicon a {
+    display: block;
+    border: 1px solid #f0f0f0;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    height: 60px;
+    width: 93%;
+    color: #666;
+    vertical-align: middle;
+    text-decoration: none;
+    padding: 10px;
+}
+
+div.depicon a:hover {
+    border: 1px solid #ccc;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    background: #f9f9f9;
+    color: #000;
+}
+
+div.depicon a:hover img.imglogo {
+    opacity: 1;
+}
+
+div.depicon img.imglogo {
+    float: left;
+    padding-right: 10px;
+    margin: 0 auto;
+    border: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    opacity: 0.75;
+}
+
+div.depicon img.imglogo:hover {
+    opacity: 1.0;
+}
+
+div.depicon div.flag {
+    position: absolute;
+    border: 0;
+    width: 50px;
+    height: 18px;
+    margin-top: 60px;
+    margin-left: -2px;
+}
+
+div.depicon small {
+    font-size: 11px;
+    font-weight: normal;
+}
+
+/* Ticket Manager */
+.noreply {
+    background: #fae2e2;
+}
+
+#filters {
+    display: none;
+}
+
+#filters-simple table, #filters table, #filters-simple table tr, #filters table tr, #filters-simple table td, #filters table td {
+    border: 0;
+}
+
+#filters td {
+    padding: 5px;
+}
+
+#filters span, #filters-simple {
+    font-weight: bold;
+    color: #444;
+}
+
+#filters input[type="text"], #filters-simple input[type="text"], #filters select, #filters-simple select {
+    background: #fff;
+    margin: 0;
+    border: 1px solid #ccc;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+#filters select, #filters-simple select {
+    height: 30px;
+}
+
+#filters-simple {
+}
+
+#filters-simple #filters2 {
+    text-align: right;
+}
+
+#filters-simple #filters2 .customStyleSelectBoxInner {
+    text-align: left;
+}
+
+a.filters-expand, a.filters-collapse {
+    display: block;
+    width: 16px;
+    height: 16px;
+    position: relative;
+    float: right;
+    margin-right: 10px;
+    margin-top: 3px;
+}
+
+a.filters-expand:hover, a.filters-collapse:hover {
+    background-color: #f5f5f5;
+}
+
+#limitchange {
+    width: 60px;
+    margin-bottom: 31px;
+    height: 36px;
+    text-align: center;
+}
+
+/* Ticket details */
+.ticket_body {
+    padding: 10px;
+}
+
+.ticket_subject {
+    font-size: 16pt;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #505050;
+    text-shadow: 1px 1px 0 white;
+}
+
+.ticket_message {
+    padding-left: 25px;
+    font-size: 10pt;
+}
+
+.ticket_message img {
+    padding: 5px;
+}
+
+.ticket_options {
+    padding: 3px;
+    margin-top: 4px;
+    font-size: 10pt;
+    text-align: right;
+    height: 20px;
+}
+
+.ticket_options div {
+    font-size: 10pt;
+}
+
+.js_status{
+    background:url(../../../../../media/com_maqmahelpdesk/images/integrations/jomsocial.png) no-repeat 50% 50%;
+}
+
+/* Announcements */
+#announcements {
+    text-align: center;
+}
+
+#announcements .announce_left {
+    float: left;
+    margin-right: 14px;
+    padding: 5px;
+    width: 40px;
+    border-radius: 8px 8px;
+    -webkit-border-radius: 8px 8px;
+    -moz-border-radius: 8px 8px;
+    text-align: center;
+    background: #e0e0e0 url("../../../images/ui/smooth-gradient-light.jpg") repeat-x scroll 0 0;
+    border: 1px solid #C0C0C0;
+    margin-bottom: 10px;
+}
+
+#announcements .announce_right {
+    float: left;
+}
+
+#announcements .announce_right h3 {
+    font-size: 22px;
+    line-height: 20px;
+    margin-top: 14px;
+}
+
+#announcements .date {
+    color: #555;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    text-shadow: 0 1px white;
+}
+
+#announcements .month {
+    color: #555;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+    text-shadow: 0 1px white;
+}
+
+/* Logs */
+.contenttable .log.date {
+    background: #eeeeee;
+    border-top: 2px solid #e0e0e0;
+    width: 55px;
+}
+
+.contenttable .log.daterow {
+    background: #fff;
+    border-top: 2px solid #e0e0e0;
+}
+
+.contenttable .log.empty {
+    background: #fff;
+}
+
+/* Auto complete */
+.control-group .controls input[type="text"]#ac_me{
+    width: 75%;
+}
+
+.ac_input {
+    width: 200px;
+}
+
+.ac_results {
+    padding: 0px;
+    z-index: 9999999;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27);
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 0 0 7px 7px;
+    padding-bottom: 5px;
+    overflow: auto;
+}
+
+.ac_results ul {
+    width: 100%;
+    list-style-position: outside;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ac_results li {
+    text-align: left;
+    margin: 0px;
+    padding: 2px 5px;
+    cursor: pointer;
+    display: block;
+    width: 98%;
+    font: menu;
+    font-size: 12px;
+    overflow: hidden;
+}
+
+.ac_results li i {
+    color: #666;
+}
+
+.ac_loading {
+    background: url('../../../images/loading.gif') right center no-repeat;
+}
+
+.ac_select {
+    background-color: #ddd;
+    color: #666;
+}
+
+.ac_even {
+}
+
+.ac_odd {
+    background: #f5f5f5;
+}
+
+.ac_over {
+    background: #ddd;
+}
+
+/* CC and BCC */
+#cc_emails, #bcc_emails {
+    margin-top: 3px;
+    margin-bottom: 3px;
+    display: block;
+    height: auto;
+    min-height: 0;
+}
+
+#cc_emails div, #bcc_emails div {
+    height: 20px;
+    float: left;
+    padding: 2px 4px;
+    border: 1px solid #ccc;
+    margin-right: 4px;
+    margin-bottom: 4px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+#cc_emails div a, #bcc_emails div a {
+    width: 7px;
+    height: 7px;
+    background: url("../../../images/close.gif") no-repeat top left;
+    display: block;
+    margin: -14px 4px 0 6px;
+    float: right;
+}
+
+/* Discussions */
+#discussions {
+    margin-top: 15px;
+}
+
+#discussions .discussion-category {
+    float: left;
+    width: 45%;
+    margin-right: 5px;
+    padding: 10px 10px 20px 10px;
+    background-color: #F5F5F5;
+    border: 1px solid #EEE;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+#discussions .discussion-category h2 {
+    margin: 0 0 10px 0;
+}
+
+#discussions .discussion-category .viewmore {
+    text-align: right;
+}
+
+#discussions {
+    border-top: 1px solid #DFE0E1;
+    padding-top: 10px;
+}
+
+#discussions h3 {
+    margin: 0 0 10px 0;
+}
+
+#discussions .tags span {
+    padding: 3px;
+    background: #ddd;
+    color: #777;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    margin-top: 5px;
+    margin-right: 5px;
+    text-shadow: 0 1px white;
+}
+
+#discussions .votes {
+    padding-top: 5px;
+    font-size: 30px;
+    font-weight: bold;
+    text-shadow: 0 1px white;
+    text-align: center;
+    border-radius: 8px 8px;
+    -webkit-border-radius: 8px 8px;
+    -moz-border-radius: 8px 8px;
+    text-align: center;
+    border: 1px solid #C0C0C0;
+    float: left;
+    margin-left: -86px;
+    margin-top: 81px;
+    width: 71px;
+}
+
+#discussions .nrvotes {
+    padding-top: 12px;
+    line-height: 16px;
+    float: left;
+    height: 50px;
+    width: 60px;
+}
+
+#discussions .votes.normal {
+    background: #e0e0e0 url("../../../images/ui/normal.jpg") repeat-x scroll 0 0;
+}
+
+#discussions .votes.selected {
+    background: #e0e0e0 url("../../../images/ui/selected.jpg") repeat-x scroll 0 0;
+}
+
+#discussions .votes.answers {
+    background: #e0e0e0 url("../../../images/ui/answers.jpg") repeat-x scroll 0 0;
+}
+
+#discussions .votes small {
+    font-size: 10px;
+}
+
+/* Discussion detail */
+#discussions .details {
+    width: 100%;
+    padding-top: 10px;
+    text-align: right;
+}
+
+#discussions .tags {
+    margin-top: 5px;
+}
+
+#discussions .discussion_left {
+    float: left;
+    margin-right: 14px;
+    width: 10%;
+}
+
+#discussions .discussion_right {
+    float: left;
+    width: 85%;
+}
+
+#discussions .discussion_right h3 {
+    font-size: 22px;
+    line-height: 20px;
+    margin-top: 0;
+}
+
+#discussions .discussion_right h3.selected {
+    font-size: 22px;
+    line-height: 20px;
+    margin-top: 0;
+    color: #87C457;
+    text-shadow: 0 1px white;
+    font-weight: bold;
+}
+
+#discussions .posted {
+    color: #555;
+    font-size: 10px;
+    line-height: 13px;
+    text-align: right;
+    text-shadow: 0 1px white;
+}
+
+#discussions .votes .vote_up, #discussions .votes .vote_down {
+    padding-left: 48px;
+    margin-top: 5px;
+}
+
+#discussions .votes .vote_up a {
+    display: block;
+    height: 20px;
+    background: url("../../../images/ui/plus_minus.png") no-repeat top left;
+}
+
+#discussions .votes .vote_down a {
+    display: block;
+    height: 20px;
+    background: url("../../../images/ui/plus_minus.png") no-repeat bottom left;
+}
+
+#discussions .selected_answer {
+    padding: 10px;
+    border: 1px solid #87C457;
+    background: #c5f0c5 url("../../../images/ui/selected.jpg") repeat-x scroll 0 0;
+}
+
+#discussions .answer {
+    margin-top: 10px;
+}
+
+#discussions #answer_text {
+    width: 100%;
+    height: 150px;
+}
+
+.unpublished {
+    color: #fff;
+    font-size: 10px;
+    font-family: Verdana;
+    background: #f00000;
+    padding: 3px;
+    margin-left: 5px;
+}
+
+/* DataTable */
+.dataTables_wrapper {
+    position: relative;
+    min-height: 302px;
+    clear: both;
+    _height: 302px;
+    zoom: 1;
+    border-bottom: 1px solid #ddd;
+}
+
+.dataTables_empty {
+    font-size: 10px;
+    height: 20px;
+    text-align: center;
+}
+
+.dataTables_processing {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 250px;
+    height: 30px;
+    margin-left: -125px;
+    margin-top: -15px;
+    padding: 14px 0 2px 0;
+    border: 1px solid #ddd;
+    text-align: center;
+    color: #999;
+    font-size: 14px;
+    background-color: #fff;
+}
+
+.dataTables_length {
+    width: 40%;
+    float: left;
+    padding-bottom: 5px;
+}
+
+#tickettable {
+    margin: 0 auto;
+    clear: both;
+    width: 100%;
+}
+
+#tickettable thead a:link, #tickettable thead a:visited, #tickettable thead a:hover {
+    color: #666;
+    text-decoration: none;
+    background: transparent;
+    display: block;
+}
+
+#tickettable thead a:hover {
+    color: #666;
+}
+
+.sorting_ASC {
+    background: url('../../../../../media/com_maqmahelpdesk/images/table/sort_asc.png') no-repeat center right;
+    cursor: pointer;
+}
+
+.sorting_DESC {
+    background: url('../../../../../media/com_maqmahelpdesk/images/table/sort_desc.png') no-repeat center right;
+    cursor: pointer;
+}
+
+.sorting {
+    background: url('../../../../../media/com_maqmahelpdesk/images/table/sort_both.png') no-repeat center right;
+    cursor: pointer;
+}
+
+.sorting_asc_disabled {
+    background: url('../../../../../media/com_maqmahelpdesk/images/table/sort_asc_disabled.png') no-repeat center right;
+}
+
+.sorting_desc_disabled {
+    background: url('../../../../../media/com_maqmahelpdesk/images/table/sort_desc_disabled.png') no-repeat center right;
+}
+
+/* kb_frontpage.php */
+#kbsearch {
+    width: 100%;
+    float: left;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #EEE;
+}
+
+.artbycat {
+    float: left;
+    padding-bottom: 20px;
+    margin-right: 3%;
+}
+
+.artbycat.pb5 {
+    padding-bottom: 5px;
+}
+
+.artbycat.pb10 {
+    padding-bottom: 10px;
+}
+
+.artbycat p {
+    margin-top: 0;
+}
+
+#exact_phrase {
+    width: 75%;
+    text-align: left;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-right: 10px;
+    height: 22px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+#kbrecent {
+    width: 30%;
+    float: right;
+    padding: 3px;
+}
+
+/* Popover (user and client creation in ticket view for agents) */
+.popin {
+    display: none;
+    background: #fff;
+    border: 1px solid #D6D6D6;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    margin: 0 0 20px;
+    padding: 21px 10px;
+    -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+#searchclient {
+    display: none;
+}
+
+#cancelSearchClientBtn {
+    display: none;
+}
+
+/* Ticket activities - messages and notes */
+#messages h3{
+    font-size:26px;
+    border-bottom:4px solid #DDD;
+    margin-bottom:25px;
+}
+ol.messagelist{
+    margin-bottom:40px;
+    list-style-type: none;
+    padding: 0;
+}
+.message-body{
+    margin-bottom:24px;
+}
+.maqmahelpdesk img.message-avatar{
+    border:1px solid #CCC;
+    float:left;
+    margin-right:14px;
+    padding: 5px;
+}
+.message-arrow{
+    background: url(../../../../../media/com_maqmahelpdesk/images/ui/message_arrow.png) no-repeat;
+    width: 8px;
+    height: 20px;
+    float: left;
+    margin-top: 16px;
+    margin-right: -1px;
+}
+.message-box{
+    background: url(../../../../../media/com_maqmahelpdesk/images/ui/message_bg.png) repeat-x;
+    border: 1px solid #CCC;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    padding: 14px;
+    overflow: hidden;
+}
+.message-box.note{
+    background: #FFFFAA;
+}
+.message-author{
+    margin-bottom: 10px;
+}
+.message-author small{
+    color: #888;
+    float: right;
+}
+.message-text{
+    line-height: 18px;
+}
+#messages .children{
+    margin: 20px 0 0 83px;
+}
+#messages .children li.message{
+    margin: 0 0 20px 0;
+}
+.message-author a{
+    color: #3a3a3a;
+}
+
+.msgattach {
+    background: url("attach.png") no-repeat 5px 50% #fff;
+    margin-top: 10px;
+    padding: 5px 5px 5px 25px;
+    font-size: 11px;
+    font-family: Verdana;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.msgattach a:link, .msgattach a:visited {
+    text-decoration: none;
+}
+
+.msgattach a:hover {
+    text-decoration: underline;
+}
+
+/* Shadow effect */
+.curved:before {
+    top: 10px;
+    bottom: 10px;
+    left: 0;
+    right: 50%;
+    -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+    -moz-border-radius: 10px / 100px;
+    border-radius: 10px / 100px;
+}
+
+.curved-hz-1:before {
+    top: 50%;
+    bottom: 0;
+    left: 10px;
+    right: 10px;
+    -moz-border-radius: 100px / 10px;
+    border-radius: 100px / 10px;
+}
+
+.drop-shadow {
+    position: relative;
+    float: left;
+    background: #fff;
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+
+.drop-shadow:before, .drop-shadow:after {
+    content: "";
+    position: absolute;
+    z-index: -2;
+}
+
+/* Code */
+.code {
+    border: 1px solid #cbc8c2;
+    background: #fefbf3;
+    padding: 10px;
+    color: #93a1a1;
+    font-family: "Courier";
+}
+
+/* Time Picker */
+.control-group .controls input[type="text"].timepicker,
+.control-group .controls .span2,
+.control-group .controls .timepicker,
+.timepicker,
+.maqmahelpdesk #time.timepicker,
+.maqmahelpdesk .timepicker {
+    width: 50px;
+    text-align: center;
+}
+
+#timepicker {
+    z-index: 9999;
+    display: none;
+    position: absolute;
+    width: 184px;
+    height: 80px;
+    font-size: 9px;
+    font-family: Verdana;
+    color: #666;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27);
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 0 0 7px 7px;
+}
+
+#timepicker #hours, #timepicker #mins {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+}
+
+#timepicker #mins {
+    border-right: 1px solid #ddd;
+}
+
+#timepicker #hours a, #timepicker #mins a {
+    width: 17px;
+    height: 17px;
+    float: left;
+    display: block;
+    padding: 3px 0 0 3px;
+    cursor: pointer;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+}
+
+#timepicker #hours a:link, #timepicker #hours a:visited, #timepicker #mins a:link, #timepicker #mins a:visited {
+    color: #666;
+}
+
+#timepicker #hours a:hover, #timepicker #mins a:hover {
+    background: #666;
+    color: #fff;
+}
+
+#timepicker a.closepicker {
+    display: block;
+    width: 183px;
+    height: 10px;
+    clear: both;
+    text-align: center;
+    color: #fff;
+    background: #666;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Modal alert message */
+#alertMessage {
+    display: none;
+}
+
+/* Toolbar */
+.maqmahelpdesk .navbar-inner{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Avatar */
+.mqmavatar {
+    background: #fff;
+    -webkit-box-shadow: 2px 2px 5px 0px #bec0c4;
+    -moz-box-shadow: 2px 2px 5px 0px #bec0c4;
+    box-shadow: 2px 2px 5px 0px #bec0c4;
+    width: 48px;
+    height: 48px;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+}
+
+/* Bug tracker */
+.maqmahelpdesk table td.priority_1,
+.maqmahelpdesk .table-striped tbody tr:nth-child(odd) td.priority_1 {
+    background-color: #ff3131;
+    color: #fff;
+}
+
+.maqmahelpdesk table td.priority_2,
+.maqmahelpdesk .table-striped tbody tr:nth-child(odd) td.priority_2 {
+    background-color: #ff563f;
+    color: #fff;
+}
+
+.maqmahelpdesk table td.priority_3,
+.maqmahelpdesk .table-striped tbody tr:nth-child(odd) td.priority_3 {
+    background-color: #ff884d;
+}
+
+.maqmahelpdesk table td.priority_4,
+.maqmahelpdesk .table-striped tbody tr:nth-child(odd) td.priority_4 {
+    background-color: #ffad56;
+}
+
+.maqmahelpdesk table td.priority_5,
+.maqmahelpdesk .table-striped tbody tr:nth-child(odd) td.priority_5 {
+    background-color: #ffd668;
+}
+
+.maqmahelpdesk table td.priority_1 a:link,
+.maqmahelpdesk table td.priority_1 a:visited,
+.maqmahelpdesk table td.priority_1 a:hover,
+.maqmahelpdesk .table-striped tbody tr:nth-child(odd) td.priority_1 a:link,
+.maqmahelpdesk .table-striped tbody tr:nth-child(odd) td.priority_1 a:visited,
+.maqmahelpdesk .table-striped tbody tr:nth-child(odd) td.priority_1 a:hover,
+.maqmahelpdesk table td.priority_2 a:link,
+.maqmahelpdesk table td.priority_2 a:visited,
+.maqmahelpdesk table td.priority_2 a:hover,
+.maqmahelpdesk .table-striped tbody tr:nth-child(odd) td.priority_2 a:link,
+.maqmahelpdesk .table-striped tbody tr:nth-child(odd) td.priority_2 a:visited,
+.maqmahelpdesk .table-striped tbody tr:nth-child(odd) td.priority_2 a:hover,
+.maqmahelpdesk table td.priority_3 a:link,
+.maqmahelpdesk table td.priority_3 a:visited,
+.maqmahelpdesk table td.priority_3 a:hover,
+.maqmahelpdesk .table-striped tbody tr:nth-child(odd) td.priority_3 a:link,
+.maqmahelpdesk .table-striped tbody tr:nth-child(odd) td.priority_3 a:visited,
+.maqmahelpdesk .table-striped tbody tr:nth-child(odd) td.priority_3 a:hover,
+.maqmahelpdesk table td.priority_4 a:link,
+.maqmahelpdesk table td.priority_4 a:visited,
+.maqmahelpdesk table td.priority_4 a:hover,
+.maqmahelpdesk .table-striped tbody tr:nth-child(odd) td.priority_4 a:link,
+.maqmahelpdesk .table-striped tbody tr:nth-child(odd) td.priority_4 a:visited,
+.maqmahelpdesk .table-striped tbody tr:nth-child(odd) td.priority_4 a:hover,
+.maqmahelpdesk table td.priority_5 a:link,
+.maqmahelpdesk table td.priority_5 a:visited,
+.maqmahelpdesk table td.priority_5 a:hover,
+.maqmahelpdesk .table-striped tbody tr:nth-child(odd) td.priority_5 a:link,
+.maqmahelpdesk .table-striped tbody tr:nth-child(odd) td.priority_5 a:visited,
+.maqmahelpdesk .table-striped tbody tr:nth-child(odd) td.priority_5 a:hover {
+    color: #ffffff;
+    text-shadow: none;
+}
+
+#bugtracker {
+    margin-top: 15px;
+    padding-top: 10px;
+}
+
+#bugtracker h3 {
+    margin: 0 0 10px 0;
+}
+
+#bugtracker .tags span {
+    padding: 3px;
+    background: #ddd;
+    color: #777;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    margin-top: 5px;
+    margin-right: 5px;
+    text-shadow: 0 1px white;
+}
+
+/* Bug tracker detail */
+#bugtracker .details {
+    width: 100%;
+    padding-top: 10px;
+    text-align: right;
+}
+
+#bugtracker .tags {
+    margin-top: 5px;
+}
+
+#bugtracker .posted {
+    color: #555;
+    font-size: 10px;
+    line-height: 13px;
+    text-align: right;
+    text-shadow: 0 1px white;
+}
+
+#bugtracker .answer {
+    margin-top: 10px;
+}
+
+#bugtracker #reply {
+    width: 100%;
+    height: 150px;
+}
+
+/* Highlight itens */
+.highlight {
+    background-color: #ffd76e;
+}
+
+/* KB section in the Workgroup list and workgroup options - TO REMOVE/CHANGE */
+#kb_details {
+    width: 100%;
+    margin-top: 15px;
+}
+
+.kb_title {
+    border: 1px solid #f0f0f0;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    padding: 5px;
+    font-weight: bold;
+    font-size: 11px;
+    color: #666;
+}
+
+.kb_link {
+    margin-bottom: 10px;
+}
+
+#kb_featured a {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+#kb_featured {
+    padding-left: 5px;
+}
+
+#kb_viewed a {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+#kb_viewed {
+    padding-left: 5px;
+}
+
+/* KB All Categories Dropdown - TO REMOVE/CHANGE */
+#category_header {
+    width: 100%;
+    height: 30px;
+}
+
+#category_title {
+    width: 85%;
+    height: 30px;
+    padding: 5px;
+    float: left;
+}
+
+#category_back {
+    width: 10%;
+    text-align: right;
+    float: right;
+    height: 30px;
+    margin-top: 10px;
+}
+
+#allcategories {
+    display: none;
+    position: absolute;
+    text-align: left;
+    background-color: #fff;
+    width: 600px;
+    height: 250px;
+}
+
+#allcategories table {
+    background-color: #fff;
+    padding: 5px;
+    border: 1px solid #f0f0f0;
+    width: 600px;
+    height: 250px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+/* Forms - TO REMOVE/CHANGE */
+div.fieldsetform div label {
+    width: 130px;
+    display: block;
+    float: left;
+    cursor: pointer;
+}
+
+div.fieldsetform div input, div.fieldsetform div select, div.fieldsetform div textarea {
+    padding: 2px 2px 3px;
+}
+
+div.fieldsetform fieldset {
+    border: 0;
+}
+
+.submit_buttons {
+    text-align: right;
+    width: 100%;
+}
+
+.form_options {
+    float: left;
+    padding-left: 5px;
+    margin-left: 15px;
+    text-align: center;
+}
+
+.form_options_left {
+    float: left;
+    padding-right: 5px;
+    margin-right: 15px;
+    text-align: left;
+}
+
+/* KB sub categories - TO REMOVE/CHANGE */
+.subcategory {
+    float: left;
+    width: 30%;
+    padding: 5px;
+    height: 15px;
+}
+
+/* KB Articles List - TO REMOVE/CHANGE */
+#kbarticles {
+    margin-top: 20px;
+}
+
+/* KB Details - TO REMOVE/CHANGE */
+#kbtools {
+    margin-bottom: 20px;
+    float: left;
+    margin-top: 5px;
+}
+
+#kbrating {
+    text-align: right;
+    margin-bottom: 20px;
+    float: right;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+#rating {
+    float: right;
+    margin-bottom: 20px;
+}
+
+#question {
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+#resolution {
+}
+
+#comments div {
+    margin-bottom: 5px;
+}
+
+#comments div div {
+    float: left;
+}
+
+#comments div div img {
+    padding: 10px;
+    border: 3px solid #f0f0f0;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#kbrelated a {
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+.kbrelated_link {
+    margin-bottom: 10px;
+    margin-right: 20px;
+    float: left;
+}
+
+/* Tickets - TO REMOVE/CHANGE */
+#tickettools {
+    text-align: right;
+    margin-bottom: 20px;
+    float: right;
+    margin-top: 5px;
+}
+
+#ticket_history div {
+    margin-bottom: 5px;
+}
+
+#ticket_history div div {
+    float: left;
+}
+
+#ticket_history div div img.avatar {
+    padding: 5px;
+}
+
+.activity_odd {
+    width: 100%;
+    padding-top: 5px;
+}
+
+.activity_even {
+    width: 100%;
+    padding-top: 5px;
+}
+
+.calendar_task{
+    min-height: 50px;
+    width: 12%;
+}
+
+.calendar_header{
+    font-weight: bold;
+    width: 12%;
+}
+
+/* RocketTheme */
+#rt-main .maqmahelpdesk .navbar .nav > li > a {
+    padding: 5px 10px 6px;
+}
+#rt-main .maqmahelpdesk .navbar .nav .dropdown-toggle .caret {
+    margin-top: 11px;
+}
+
+/* JoomlArt */
+#ja-container .badge {
+    background-image: none;
+    background-repeat: no-repeat;
+    height: auto;
+    position: inherit;
+    right: auto;
+    top: auto;
+    width: auto;
+}
+#ja-container .maqmahelpdesk .navbar .nav > li {
+    background: none;
+    line-height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: inherit;
+}
+.container-main ul li,
+#ja-container .container-main ul li {
+    background: transparent;
+    padding-left: 0;
+}
+
+/* Joomla Editor Buttons */
+#editor-xtd-buttons {
+    padding: 5px;
+}
+.button2-left,
+.button2-right,
+.button2-left div,
+.button2-right div {
+    float: left;
+}
+.button2-left a,
+.button2-right a,
+.button2-left span,
+.button2-right span {
+    display: block;
+    height: 22px;
+    float: left;
+    line-height: 22px;
+    font-size: 11px;
+    color: #666;
+    cursor: pointer;
+}
+.button2-left span,
+.button2-right span {
+    cursor: default;
+    color: #999;
+}
+.button2-left .page a,
+.button2-right .page a,
+.button2-left .page span,
+.button2-right .page span {
+    padding: 0 6px;
+}
+.button2-left a:hover,
+.button2-right a:hover {
+    text-decoration: none;
+    color: #0B55C4;
+}
+.button2-left a,
+.button2-left span {
+    padding: 0 24px 0 6px;
+}
+.button2-right a,
+.button2-right span {
+    padding: 0 6px 0 24px;
+}
+.button2-left {
+    background: url(../../../../../templates/system/images/j_button2_left.png) no-repeat;
+    float: left;
+    margin-left: 5px;
+}
+.button2-right {
+    background: url(../../../../../templates/system/images/j_button2_right.png) 100% 0 no-repeat;
+    float: left;
+    margin-left: 5px;
+}
+.button2-left .image {
+    background: url(../../../../../templates/system/images/j_button2_image.png) 100% 0 no-repeat;
+}
+.button2-left .readmore,
+.button2-left .article {
+    background: url(../../../../../templates/system/images/j_button2_readmore.png) 100% 0 no-repeat;
+}
+.button2-left .pagebreak {
+    background: url(../../../../../templates/system/images/j_button2_pagebreak.png) 100% 0 no-repeat;
+}
+.button2-left .blank {
+    background: url(../../../../../templates/system/images/j_button2_blank.png) 100% 0 no-repeat;
+}
+
+.maqmahelpdesk .control-group .controls textarea,
+.maqmahelpdesk .control-group .controls input[type="text"],
+.maqmahelpdesk .control-group .controls input[type="select"]{
+    width: 90%;
+}
+
+.maqmahelpdesk .control-group .controls input[type="text"].timepicker{
+    width: 75px;
+}
+
+#jsn-menu{z-index:1;}
+
+.button,
+button{
+    background-image: none;
+}
+
+.control-group .controls textarea .redactor_user,
+.control-group .controls textarea .redactor_agent
+.maqmahelpdesk textarea.redactor_user,
+.maqmahelpdesk textarea.redactor_agent{
+    width: 100%;
+}
+
+.redactor_editor{
+    height: 300px;
+    color: #000;
+}
+
+#s5_component_wrap .maqmahelpdesk ul {
+    list-style: none;
+    margin-left: 0;
+}
+
+table th {
+    background: none;
+    color: #666;
+}
+
+table th a {
+    color:  #666 !important;
+}
+
+.art-postcontent .maqmahelpdesk ul.redactor_toolbar > li,
+.art-postcontent .maqmahelpdesk .navbar .nav > li {
+    background-image: none;
+    padding-left: 0;
+    overflow-x: inherit;
+    overflow-y: inherit;
+}
+
+.maqmahelpdesk .container {
+    min-width: auto;
+}
+#ja-main #ja-content .maqmahelpdesk .navbar-inner {
+     padding-left: 0;
+     padding-right: 0;
+     padding: 8px;
+}
+#ja-container li a{
+     padding: 3px 5px;
+}
+
+.art-postcontent ul.redactor_toolbar>li:before,
+.art-post ul.redactor_toolbar>li:before,
+.art-textblock ul.redactor_toolbar>li:before{
+    content:none;
+}
+
+.maqmahelpdesk .table-striped tbody tr.noreply:nth-child(odd) td,
+.maqmahelpdesk .table-striped tbody tr.noreply:nth-child(odd) th{
+    background: #fae2e2;
+}
+
+.maqmahelpdesk #maqmaSearchBugs select{
+    width:100%;
+}
+
+.maqmahelpdesk .issection{
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+}

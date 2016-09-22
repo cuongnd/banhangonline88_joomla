@@ -1,0 +1,9 @@
+.header {
+    font-weight: bold;
+    background: #f3f3f3;
+    width: 150px;
+}
+
+.bb {
+    border-bottom: 1px solid #999;
+}

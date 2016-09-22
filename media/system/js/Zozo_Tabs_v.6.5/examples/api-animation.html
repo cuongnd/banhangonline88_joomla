@@ -1,0 +1,166 @@
+<!doctype html>
+<html class="z-width960">
+<head>
+    <title>Animation effects</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width = device-width, initial-scale = 1.0" />
+
+    <!-- Examples CSS (Not needed) -->
+    <link href="../css/zozo.examples.min.css" rel="stylesheet" />
+
+    <!-- Zozo Tabs css -->
+    <link href="../css/zozo.tabs.min.css" rel="stylesheet" />
+
+    <!-- Zozo Tabs js -->
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/zozo.tabs.min.js"></script>
+</head>
+<body>
+    <div id="ribbon"></div>
+    <div id="page">
+        <a class="z-btn z-back" href="index.html">Back</a>
+        <div class="z-row">
+
+            <div class="col8">
+                <div id="tabbed-nav">
+                    <ul>
+                        <li><a>Overview</a></li>
+                        <li><a>Features</a></li>
+                        <li><a>Docs</a></li>
+                        <li><a>Themes</a></li>
+                        <li><a>Purchase</a></li>
+                    </ul>
+
+                    <div>
+                        <div>
+                            <h4>Overview</h4>
+                            <p>The brand-new version (v3.0) of Zozo Tabs is <strong>Full Responsive and Touch-Enabled</strong> using HTML5 and CSS3 standards for impeccable speed and performance on desktop browsers and most importantly on mobile browsers. It runs and feels just like a <strong>native app!</strong>.</p>
+                        </div>
+                        <div>
+                            <h4>Some of it's key features</h4>
+                            <ul class="icons">
+                                <li>Fully responsive & touch-enabled</li>
+                                <li>10 unique skins in 6 sizes</li>
+                                <li>10 flexible ways to position</li>
+                                <li>Deep-linking & SEO-friendly</li>
+                                <li>Horizontal & vertical tabs</li>
+                                <li>Nested & multiple instances</li>
+                                <li>Multiple instances </li>
+                                <li>Powerfull API & autoplay support</li>
+                                <li>Free updates & support</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>Documentation</h4>
+                            <p>Fully documented and step-by-step guide provided to help you get up and running with Zozo Tabs.</p>
+                            <p>Documentation can be found on <a href="http://docs.zozoui.com/tabs">docs.zozoui.com/tabs</a>. </p>
+                        </div>
+                        <div>
+                            <h4>10 Preset themes</h4>
+                            <ul class="icons">
+                                <li>White</li>
+                                <li>Crystal</li>
+                                <li>Silver</li>
+                                <li>Gray</li>
+                                <li>Black</li>
+                                <li>Orange</li>
+                                <li>Red</li>
+                                <li>Green</li>
+                                <li>Blue</li>
+                                <li>DeepBlue</li>
+                            </ul>
+                        </div>
+                        <div>
+
+                            <h4>Purchase</h4>
+                            <p><a href="http://codecanyon.net/item/zozo-tabs/3327836?ref=ZozoUI">Get Zozo Tabs from CodeCanyon.net</a></p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col4">
+                <div id="config-wrapper">
+                    <div id="config" class="switcher" style="display: block;">
+                        <div class="config-title">Animation Settings</div>
+                        <div class="content">
+                            <ul class="options">
+                                <li>
+                                    <label for="expand">Duration (ms)</label><input type="text" value="600" id="duration" class="z-textbox" />
+                                </li>
+                                <li>
+                                    <input id="slideH" name="animation" class="effects" type="radio" checked="checked" />
+                                    <label for="slideH">slideH</label>
+                                </li>
+                                <li>
+                                    <input id="slideV" name="animation" class="effects" type="radio" />
+                                    <label for="slideV">slideV</label>
+                                </li>
+                                <li>
+                                    <input id="fade" name="animation" class="effects" type="radio" />
+                                    <label for="fade">fade</label>
+                                </li>
+                                <li>
+                                    <input id="none" name="animation" class="effects" type="radio" />
+                                    <label for="none">none</label>
+                                </li>
+                            </ul>
+                            <br />
+                            <label for="expand">Animation type</label>
+                            <ul class="options">
+                                <li>
+                                    <input id="css" name="animationType" class="type" type="radio" checked="checked" />
+                                    <label for="css">CSS Transitions</label>
+                                </li>
+                                <li>
+                                    <input id="jquery" name="animationType" class="type" type="radio" />
+                                    <label for="jquery">jQuery</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script>
+        jQuery(document).ready(function ($) {
+            /* jQuery activation and setting options for the tabs*/
+            var tabbedNav = $("#tabbed-nav").zozoTabs({
+                orientation: "horizontal",
+                theme: "silver",
+                position: "top-left",
+                size: "medium",
+                animation: {
+                    duration: 600,
+                    easing: "easeOutQuint",
+                    effects: "slideH"
+                },
+                defaultTab: "tab3"
+            });
+
+            /* Changing animation duration*/
+            $("#duration").change(function () {
+                var duration = parseInt($("#duration").val());
+                tabbedNav.data("zozoTabs").setOptions({ "animation": { "duration": duration } });
+            });
+
+            /* Changing animation effects*/
+            $("#config input.effects").change(function () {
+                var effects = $('input[type=radio]:checked').attr("id");
+                tabbedNav.data("zozoTabs").setOptions({ "animation": { "effects": effects } });
+            });
+
+            /* Changing animation type*/
+            $("#config input.type").change(function () {
+                var type = $('input[type=radio]:checked').attr("id");
+                tabbedNav.data("zozoTabs").setOptions({ "animation": { "type": type } });
+            });
+        });
+    </script>
+</body>
+</html>

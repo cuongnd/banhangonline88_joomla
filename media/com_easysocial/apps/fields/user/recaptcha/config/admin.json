@@ -1,0 +1,97 @@
+[
+	{
+		"title"		: "Recaptcha Configuration",
+		"fields"	:
+		[
+			{
+				"label"		: "Use SSL",
+				"tooltip"	: "If enabled, recaptcha would be loaded with SSL",
+				"name"		: "ssl",
+				"type"		: "boolean",
+				"default"	: true
+			},
+			{
+				"label"		: "Public Key",
+				"tooltip"	: "Set the public key that you obtained from http://recaptcha.net",
+				"name"		: "public",
+				"type"		: "text",
+				"default"	: ""
+			},
+			{
+				"label"		: "Private Key",
+				"tooltip"	: "Set the private key that you obtained from http://recaptcha.net",
+				"name"		: "private",
+				"type"		: "text",
+				"default" 	: ""
+			},
+			{
+				"label"		: "Recaptcha Theme",
+				"tooltip"	: "Set the recaptcha theme that you would like to use",
+				"name"		: "theme",
+				"type"		: "select",
+				"options"	:
+				[
+					{
+						"title"	: "Clean",
+						"value" : "clean"
+					},
+					{
+						"title"	: "White",
+						"value" : "white"
+					},
+					{
+						"title"	: "Red",
+						"value" : "red"
+					},
+					{
+						"title"	: "Black Glass",
+						"value" : "blackglass"
+					}
+				],
+				"default"	: "red"
+			},
+			{
+				"label"		: "APP_RECAPTCHA_SETTINGS_LANGUAGE",
+				"tooltip"	: "APP_RECAPTCHA_SETTINGS_LANGUAGE_DESC",
+				"name"		: "language",
+				"type"		: "select",
+				"options"	:
+				[
+					{
+						"title"	: "English",
+						"value" : "en"
+					},
+					{
+						"title"	: "Dutch",
+						"value" : "nl"
+					},
+					{
+						"title"	: "French",
+						"value" : "fr"
+					},
+					{
+						"title"	: "German",
+						"value" : "de"
+					},
+					{
+						"title"	: "Portuguese",
+						"value" : "pt"
+					},
+					{
+						"title"	: "Russian",
+						"value" : "ru"
+					},
+					{
+						"title"	: "Spanish",
+						"value" : "es"
+					},
+					{
+						"title"	: "Turkish",
+						"value" : "tr"
+					}
+				],
+				"default"	: "en"
+			}
+		]
+	}
+]

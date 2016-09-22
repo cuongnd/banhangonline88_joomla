@@ -1,0 +1,68 @@
+<!doctype html>
+<html class="z-white z-width1200">
+<head>
+    <title>Iframe Content</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width = device-width, initial-scale = 1.0" />
+
+    <!-- Examples CSS (Not needed) -->
+    <link href="../css/zozo.examples.min.css" rel="stylesheet" />
+
+    <!-- Zozo Tabs css -->
+    <link href="../css/zozo.tabs.min.css" rel="stylesheet" />
+
+    <!-- Zozo Tabs js -->
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/zozo.tabs.min.js"></script>
+</head>
+
+<body>
+    <div id="ribbon"></div>
+    <div id="page">
+        <a class="z-btn z-back" href="index.html">Back</a>
+
+        <!-- Zozo Tabs Start-->
+        <div id="tabbed-nav">
+
+            <!-- Tab titles, extra titles added between spans for multiline tabs -->
+            <ul>
+                <li><a>ThemeForest <span>iFrame via AJAX</span></a></li>
+                <li><a>CodeCanyon <span>iFrame via AJAX</span></a></li>
+                <li><a>Maps<span>Google Maps</span></a></li>
+                <li><a>Apple<span>iFrame via AJAX</span></a></li>
+                <li><a>Youtube<span>Video via AJAX</span></a></li>
+            </ul>
+
+            <!-- Content container -->
+            <div>
+                <div class="z-nopadding" data-content-url="http://www.themeforest.net" data-content-type="iframe"></div>
+                <div class="z-nopadding" data-content-url="http://www.codecanyon.net" data-content-type="iframe"></div>
+                <div class="z-nopadding" data-content-url="https://maps.google.co.uk/maps?q=is+london+a+city&amp;ie=UTF8&amp;hl=en&amp;hq=&amp;hnear=London,+United+Kingdom&amp;t=m&amp;z=10&amp;ll=51.511214,-0.119824&amp;output=embed" data-content-type="iframe"></div>                
+                <div class="z-nopadding" data-content-url="http://www.apple.com/" data-content-type="iframe"></div>
+                <div class="z-nopadding" data-content-url="http://www.youtube.com/embed/MOiyD26cJ2A?wmode=transparent" data-content-type="iframe"></div>
+            </div>
+        </div>
+        <!-- Zozo Tabs End-->
+
+    </div>
+
+    <script>
+        jQuery(document).ready(function ($) {
+            /* jQuery activation and setting options for the tabs*/
+            $("#tabbed-nav").zozoTabs({
+                defaultTab: "tab1",
+                multiline: true,
+                theme: "white",
+                position: "top-compact",
+                size: "medium",
+                animation: {
+                    easing: "easeInOutExpo",
+                    duration: 450,
+                    effects: "fade"
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

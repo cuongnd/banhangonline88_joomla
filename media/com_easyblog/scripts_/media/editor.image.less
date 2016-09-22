@@ -1,0 +1,242 @@
+(~"@{MediaManager}") {
+
+    .imageVariationMessage {
+        position: relative;
+        line-height: 16px;
+        color: #900;
+        display: block;
+        text-align: center;
+        font-size: 12px;
+    }
+
+    .imageVariationList {
+
+        .imageVariations {
+
+            background: #fff;
+            border: 1px solid #bbb;
+            border-bottom: none;
+            .border-radius(3px, 0, 0, 3px);
+            overflow-y: auto;
+
+            &.busy {
+                background: url(loader.gif) #fff no-repeat center center;
+            }
+
+            height: 88px;
+
+            .imageVariation {
+
+                padding: 4px;
+                font-size: 11px;
+                position: relative;
+
+                .variationName {
+                    // padding-left: 14px;
+                    background-repeat: no-repeat;
+                    background-position: left center;
+                    white-space: nowrap;
+                }
+
+                &.locked i {
+                    // background-image: url(variation.locked.gif);
+                    display:inline-block;
+                    width:10px;
+                    height:10px;
+                    .icon-media (17, 3);
+                }
+
+                &.busy .variationName {
+                    background-image: url(variation.busy.gif);
+                }
+
+                .variationDimension {
+                    position: absolute;
+                    top: 4px;
+                    right: 4px;
+                }
+
+                &.active {
+                    .activeItemColorScheme();
+                }
+
+                &:hover{
+                	cursor: pointer;
+                }
+            }
+        }
+
+        &.readOnly {
+            .imageVariations {
+                border: 1px solid #bbb;
+                .border-radius(3px, 3px, 3px, 3px);
+            }
+        }
+    }
+
+    .imageVariationForm {
+
+        position: relative;
+
+        form {
+            background: #fff;
+            border: 1px solid #bbb;
+            border-bottom: none;
+            .border-radius(3px, 0, 0, 3px);
+            padding: 10px;
+        }
+
+        .newVariationRatio {
+            display: block;
+            width: 24px;
+            height: 30px;
+            position: absolute;
+            top: 80px;
+            right: 90px;
+
+            // background-image: url("variation.ratio.unlocked.png");
+            .icon-media (17, 2);
+            // background-repeat: no-repeat;
+            // background-position: top left;
+            cursor: pointer;
+
+            &.locked {
+                // background-image: url("variation.ratio.locked.png");
+                .icon-media (17, 1);
+            }
+        }
+
+        .newVariationLockRatio {
+            display: none;
+        }
+    }
+
+    .imageVariationActions {
+
+        position: relative;
+
+        .vertical-gradient-4(#ffffff, #f3f3f3, #ededed, #ffffff);
+        border: 1px solid #bbb;
+        border-top: 1px solid #ccc;
+        .border-radius(0, 3px, 3px, 0);
+
+        height: 24px;
+
+        button {
+
+            display: block;
+            position: absolute;
+            background: none;
+            border: none;
+            height: 24px;
+            line-height: 24px;
+            padding: 0 6px;
+            padding-left: 18px; // 6px padding-left, 12px icon
+            cursor: pointer;
+            margin: 0 !important;
+            text-transform: normal !important;
+            font-size: 11px !important;
+
+            i {
+                width: 12px;
+                height: 24px;
+                background-repeat: no-repeat;
+                background-position: center 8px;
+                position: absolute;
+                top: 2px;
+                left: 6px; // 6px padding left
+                .opacity(0.75);
+            }
+
+            .leftButton() {
+                .border-radius(0, 0, 3px, 0);
+                top: 0;
+                left: 0;
+                border-right: 1px solid #ccc;
+            }
+
+            .rightButton() {
+                .border-radius(0, 3px, 0, 0);
+                top: 0;
+                right: 0;
+                border-left: 1px solid #ccc;
+            }
+
+            &:hover {
+                .vertical-gradient-4(lighten(#ffffff, 3%), lighten(#f3f3f3, 3%), lighten(#ededed, 3%), lighten(#ffffff, 3%));
+            }
+
+            &.addVariationButton {
+
+                .rightButton();
+
+                i {
+                    .icon-media (18, 1);
+                }
+            }
+
+            &.removeVariationButton {
+
+                .leftButton();
+
+                i {
+                    .icon-media (18, 2);
+                }
+            }
+
+            &.createVariationButton {
+
+                .rightButton();
+
+                i {
+                    .icon-media (19, 1);
+                }
+            }
+
+            &.backVariationButton {
+
+                .leftButton();
+
+                i {
+                    .icon-media (19, 2);
+                }
+            }
+        }
+    }
+
+    .imageEnforceDimension {
+
+        position: relative;
+
+        .imageEnforceRatio {
+            display: block;
+            width: 24px;
+            height: 30px;
+            position: absolute;
+            top: 85px;
+            right: 58px;
+
+            // background-image: url("variation.ratio.unlocked.png");
+            .icon-media (17, 2);
+            // background-repeat: no-repeat;
+            // background-position: top left;
+            cursor: pointer;
+
+            &.locked {
+                // background-image: url("variation.ratio.locked.png");
+                .icon-media (17, 1);
+            }
+        }
+
+        .imageEnforceLockRatio {
+            display: none !important;
+        }
+
+        &.field-content {
+            .imageEnforceRatio {
+                top: 10px;
+                right: 20px;
+            }
+        }
+    }
+}

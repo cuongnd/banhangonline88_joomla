@@ -1,0 +1,32 @@
+/**
+ * @package    HikaSerials for Joomla!
+ * @version    1.10.4
+ * @author     Obsidev S.A.R.L.
+ * @copyright  (C) 2011-2016 OBSIDEV. All rights reserved.
+ * @license    GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
+ */
+.icon-48-serial {background-image:url(../images/icon-48/hikaserial.png) !important;}
+.iconM-48-serial {background-image:url(../images/icon-48/hikaserial.png) !important;}
+
+td.hikaserial_pack_header {
+	background-color: #f5f5f5;
+}
+
+table.hikaserial_pack_listing_table {
+	width:100%;
+	margin-bottom:15px;
+
+	border: 1px solid #ddd;
+	border-collapse: separate;
+	*border-collapse: collapse;
+	border-left: 0;
+	border-spacing: 0px;
+}
+
+table.hikaserial_pack_listing_table td {
+	padding: 8px;
+	text-align: left;
+	vertical-align: top;
+	border:0px;
+	border-left: 1px solid #DDD;
+}

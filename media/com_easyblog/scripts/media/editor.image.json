@@ -1,0 +1,16 @@
+[
+    {
+        "library": [
+            "ui/position"
+        ],
+        "script": [
+            "media/constrain"
+        ],
+        "view": [
+            "media/editor.image",
+            "media/editor.image.variation",
+            "media/editor.image.caption"
+        ],
+        "adapter": "EasyBlog"
+    }
+]
