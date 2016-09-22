@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<template>
+  <install target="<?php echo $template->type; ?>" com="<?php echo $template->component; ?>" name="<?php echo $template->name; ?>">
+    <title><?php echo $template->title; ?></title>
+    <description><?php echo $template->description; ?></description>
+  </install>
+
+  
+  <?php foreach ($template->params->tmpl as $id => $value): ?>
+  
+  <section name="<?php echo $id; ?>">
+    <![CDATA[<?php echo $value; ?>]]>
+  </section>
+  
+  <?php endforeach; ?>
+  
+  
+  <css>
+    <![CDATA[<?php echo $template->params->css; ?>]]>
+  </css>
+</template>

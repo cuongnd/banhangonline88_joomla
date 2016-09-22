@@ -1,0 +1,157 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<form>
+  <authorEmail>support@freestyle-joomla.com</authorEmail>
+  <author>Freestyle Joomla</author>
+  <copyright>(C) 2013 Freestyle Joomla. All rights reserved.</copyright>
+  <license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html </license>
+  <authorUrl>http://www.freestyle-joomla.com</authorUrl>
+
+  <fieldset addfieldpath="/administrator/components/com_fsj_transman/models/fields" />
+  <fieldset addfieldpath="components/com_fsj_transman/models/fields" />
+  <fieldset addfieldpath="/libraries/fsj_core/html/field" />
+
+  <fieldset>
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+			<field name="client_id" type="list"
+			label="FSJ_TRANSMAN_FORM_TRANSMAN_LANGUAGE_CLIENT_ID" description="" class="inputbox"
+			default=""
+			>
+			<!-- AG_Field Object
+(
+    [id] => client_id
+    [type] => combo
+    [list] => 0
+    [edit] => 0
+    [title] => FSJ_TRANSMAN_FORM_TRANSMAN_LANGUAGE_CLIENT_ID
+    [nowrap] => 
+    [width] => 
+    [listtile] => 
+    [default] => 
+    [link] => 0
+    [sqlfield] => a.client_id
+    [notinsql] => 0
+    [displayonly] => 0
+    [fromjoin] => 
+    [calc] => 0
+    [search] => 0
+    [align] => 
+    [custom] => 0
+    [help_style] => 
+    [exblock] => 
+    [filter_hide] => 0
+    [small] => 1
+    [class] => 
+    [multiple] => 
+    [desc] => 
+    [listtitle] => FSJ_TRANSMAN_FORM_TRANSMAN_LANGUAGE_CLIENT_ID
+    [use_set] => 
+    [size] => 
+    [combo] => AG_Combo Object
+        (
+            [default] => 
+            [options] => Array
+                (
+                    [0] => AG_Combo_Option Object
+                        (
+                            [id] => 0
+                            [value] => FSJ_TM_SITE
+                        )
+
+                    [1] => AG_Combo_Option Object
+                        (
+                            [id] => 1
+                            [value] => FSJ_TM_ADMIN
+                        )
+
+                )
+
+        )
+
+)
+ -->
+					<option value="0">FSJ_TM_SITE</option>
+					<option value="1">FSJ_TM_ADMIN</option>
+				
+		</field>
+		
+	
+		
+			<field
+			name="name"
+			type="fsjtmlangname"
+			label="FSJ_TRANSMAN_FORM_TRANSMAN_LANGUAGE_NAME"
+			description=""
+			use_set=""
+			size=""
+			default=""
+									
+						>	
+
+					</field>
+	
+		
+		<field name="element" type="text"
+			label="FSJ_TRANSMAN_FORM_TRANSMAN_LANGUAGE_ELEMENT" description=""
+			class="inputbox " size="60"
+			default=""
+			/>		
+	
+		
+			<field
+			name="files"
+			type="fsjtmfiles"
+			label="FSJ_TRANSMAN_FORM_TRANSMAN_LANGUAGE_FILES"
+			description=""
+			use_set=""
+			size=""
+			default=""
+									
+						>	
+
+					</field>
+	
+		
+			<field
+			name="xpath"
+			type="fsjtmpath"
+			label="FSJ_TRANSMAN_FORM_TRANSMAN_LANGUAGE_XPATH"
+			description=""
+			use_set=""
+			size=""
+			default=""
+									
+						>	
+
+					</field>
+	
+		
+		<field name="component" type="text"
+			label="FSJ_TRANSMAN_FORM_TRANSMAN_LANGUAGE_COMPONENT" description=""
+			class="inputbox " size="60"
+			default=""
+			/>		
+	
+
+  </fieldset>
+
+
+
+</form>

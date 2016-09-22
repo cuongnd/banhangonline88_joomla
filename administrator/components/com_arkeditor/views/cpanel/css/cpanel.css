@@ -1,0 +1,224 @@
+/*------------------------------------------------------------------------
+# Copyright (C) 2005-2012 WebxSolution Ltd. All Rights Reserved.
+# @license - GPLv2.0
+# Author: WebxSolution Ltd
+# Websites:  http://webx.solutions
+# Terms of Use: An extension that is derived from the Ark Editor will only be allowed under the following conditions: http://arkextensions.com/terms-of-use
+# ------------------------------------------------------------------------*/ 
+
+/* STYLE MODULES */
+.well > div
+{
+	overflow				: hidden;
+}
+
+#main-container .well .module-title
+{
+	padding-left			: 0px;
+}
+
+.well .module-title i
+{
+	width					: 16px; /* Make Icons Clearer */
+	height					: 16px;
+	font-size				: 16px;
+	font-weight				: normal;
+	line-height				: 16px;
+	text-transform			: none; /* Icons Swapped if Uppcase Applied to Parent! */
+}
+
+.well .table
+{
+	margin-bottom			: 0px;
+	word-wrap				: break-word;
+}
+
+.well .table p
+{
+	margin-bottom			: 0px;
+}
+
+.well .table td.buttoncol
+{
+	padding-right 			: 0px;
+	padding-bottom 			: 0px;
+	padding-left 			: 0px;
+}
+
+.well .table td.buttoncol a
+{
+	margin-left 			: 8px;
+}
+
+/* ICONS */
+.box-arkstats:hover i		{ color : #3A87AD; }
+.box-arkvote:hover i		{ color : #B94A48; }
+.box-arkupdate:hover i		{ color : #468847; }
+.box-arkinfo:hover i		{ color : #3A87AD; }
+.box-arkpro:hover i			{ color : #DDD509; }
+
+/* STATISTICS */
+#arkstats a 				{ color : #333333; }
+#arkstats a:hover 			{ text-decoration : underline; }
+
+#arkstats .badge
+{
+	display					: inline; /* Make stats module same height as info mod */
+}
+
+#arkstats a.badge-link:hover,
+#arkstats a.badge-link:focus
+{
+	text-decoration			: none;
+}
+
+#arkstats a .badge
+{
+	border					: 1px solid transparent;
+}
+
+#arkstats a:hover .badge,
+#arkstats a:focus .badge
+{
+	color 					: #666666;
+	background-color		: #FFFFFF;
+	border					: 1px solid #BBBBBB;
+	box-shadow 				: 0px 0px 3px #BBBBBB inset;
+}
+
+#sidebar
+{
+	padding-bottom			: 15px; /* for mobiles benefit */
+}
+
+/* INFO Module/LOGO */
+.pos-right .table td[rowspan]
+{
+	text-align				: center;
+	vertical-align			: middle;
+}
+
+/* UPGRADE */
+#arkpro .stat a
+{
+	display					: none;
+}
+
+#arkpro .stat a:hover
+{
+	text-decoration			: none;
+}
+
+#arkpro .stat:hover a
+{
+	display					: block;
+}
+
+#arkpro .stat:hover span
+{
+	display					: none;
+}
+
+
+/* DASHBOARD */
+#arkcpanel
+{
+	min-height				: 150px;
+	padding-top				: 12px;
+	overflow				: hidden;
+	clear					: both;
+}
+
+#arkcpanel a
+{
+	display					: block;
+	float					: left;
+	width					: 84px;
+	height					: 74px;
+	margin					: 15px;
+	padding					: 25px 17px 15px;
+	overflow				: hidden;
+
+	text-align				: center;
+	background-color		: #CCCCCC;
+	border-radius			: 100px;
+	-webkit-border-radius	: 100px;
+	-moz-border-radius		: 100px;
+
+	transition				: all 0.2s;
+	-moz-transition			: all 0.2s;
+	-webkit-transition		: all 0.2s;
+	-o-transition			: all 0.2s;
+	-ms-transition			: all 0.2s;
+}
+
+#arkcpanel a:hover,
+#arkcpanel a:focus
+{
+	text-decoration			: none;
+	background-color		: #7CC5EB;
+
+	transition				: all 0.2s;
+	-moz-transition			: all 0.2s;
+	-webkit-transition		: all 0.2s;
+	-o-transition			: all 0.2s;
+	-ms-transition			: all 0.2s;
+}
+
+#arkcpanel a [class^="icon-"], [class*=" icon-"]
+{
+	width					: 64px;
+	height					: 64px;
+
+	color					: #FFFFFF;
+	font-size				: 64px;
+	line-height				: 64px;
+	text-shadow				: 1px 1px 0px #BBBBBB;
+
+	transition				: all 0.2s;
+	-moz-transition			: all 0.2s;
+	-webkit-transition		: all 0.2s;
+	-o-transition			: all 0.2s;
+	-ms-transition			: all 0.2s;
+}
+
+#arkcpanel a:hover [class^="icon-"], [class*=" icon-"]
+{
+	color					: #62B4E0;
+	text-shadow				: 1px 1px 0px #7CC5EB;
+
+	transition				: all 0.2s;
+	-moz-transition			: all 0.2s;
+	-webkit-transition		: all 0.2s;
+	-o-transition			: all 0.2s;
+	-ms-transition			: all 0.2s;
+}
+
+#arkcpanel a div
+{
+	margin-top				: 31%;
+	opacity					: 0;
+
+	color					: #FFFFFF;
+	font-size				: 150%;
+	line-height				: 120%;
+	word-wrap				: break-word;
+
+	transition				: all 0.2s;
+	-moz-transition			: all 0.2s;
+	-webkit-transition		: all 0.2s;
+	-o-transition			: all 0.2s;
+	-ms-transition			: all 0.2s;
+}
+
+#arkcpanel a:hover div
+{
+	margin-top				: -59%;
+	opacity					: 1;
+
+	transition				: all 0.2s;
+	-moz-transition			: all 0.2s;
+	-webkit-transition		: all 0.2s;
+	-o-transition			: all 0.2s;
+	-ms-transition			: all 0.2s;
+}

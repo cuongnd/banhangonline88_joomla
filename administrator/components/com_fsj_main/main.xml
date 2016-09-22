@@ -1,0 +1,302 @@
+<?xml version="1.0"?>
+<com>
+  <authorEmail>support@freestyle-joomla.com</authorEmail>
+  <author>Freestyle Joomla</author>
+  <copyright>(C) 2013 Freestyle Joomla. All rights reserved.</copyright>
+  <license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html </license>
+  <authorUrl>http://www.freestyle-joomla.com</authorUrl>
+  <!-- Additional Requirements -->
+  <require>
+    <autobuild>plugintype</autobuild>
+    <autobuild>plugin</autobuild>
+    <autobuild>tpl_type</autobuild>
+    <autobuild>tpl</autobuild>
+    <autobuild>cronlog</autobuild>
+    <autobuild>cronlog_inline</autobuild>
+  </require>
+  <image>freestyle</image>
+  <!--<template name="general" com="main">
+    <path>libraries/fsj_core/smart_tpl/general.tmpltype.xml</path>
+    <templates>libraries/fsj_core/smart_tpl/general/</templates>
+  </template>-->
+  <template name="page">
+    <path>libraries/fsj_core/smart_tpl/page.tmpltype.xml</path>
+    <templates>libraries/fsj_core/smart_tpl/page/</templates>
+  </template>
+  <name>
+    <item id="plugin_type">
+      <name>COM_FSJ_MAIN_ITEMS_PLUGIN_TYPE</name>
+      <names>COM_FSJ_MAIN_ITEMS_PLUGIN_TYPES</names>
+    </item>
+    <item id="plugin">
+      <name>COM_FSJ_MAIN_ITEMS_PLUGIN</name>
+      <names>COM_FSJ_MAIN_ITEMS_PLUGINS</names>
+    </item>
+    <item id="tpl_type">
+      <name>COM_FSJ_MAIN_ITEMS_TPL_TYPE</name>
+      <names>COM_FSJ_MAIN_ITEMS_TPL_TYPES</names>
+    </item>
+    <item id="tpl">
+      <name>COM_FSJ_MAIN_ITEMS_TPL</name>
+      <names>COM_FSJ_MAIN_ITEMS_TPLS</names>
+    </item>
+  </name>
+  <images>
+    <image w="48">componentsettings</image>
+    <image w="48">globalsettings</image>
+    <image w="48">viewsettings</image>
+    <image w="48">template</image>
+    <image w="48">com_fss</image>
+    <image w="48">com_fst</image>
+    <image w="48">com_fsf</image>
+  </images>
+  <admin>
+    <section name="FSJ_M_UPDATE" nonmenu="1">
+      <auth com="com_fsj_main" perm="core.manager"/>
+      <!--<item id="update_check" icon="update" link="index.php?option=com_fsj_main&amp;view=update&amp;task=check">
+        <title>Check For Updates</title>
+        <description>Check for updates to your Freestyle Joomla components</description>
+      </item>-->
+      <item id="validate_install" icon="validate" link="index.php?option=com_fsj_main&amp;view=update&amp;task=validate">
+        <title>COM_FSJ_MAIN_DATA_VALIDATE_INSTALL</title>
+        <description>COM_FSJ_MAIN_DATA_VALIDATE_INSTALL_DESC</description>
+      </item>
+    </section>
+    <section name="FSJ_M_PLUGIN_MANAGER" nonmenusection="1">
+      <auth com="com_fsj_main" perm="core.manager"/>
+      <item id="plugintype" icon="plugins">
+        <title>FSJ_M_PLUGIN_MANAGER</title>
+        <description>COM_FSJ_MAIN_DATA_PLUGINTYPE_DESC</description>
+      </item>
+    </section>
+    <section name="Templates" nonmenusection="1">
+      <auth com="com_fsj_main" perm="core.manager"/>
+      <item id="tpl_type" icon="template">
+        <title>COM_FSJ_MAIN_DATA_TPL_TYPE</title>
+        <description>COM_FSJ_MAIN_DATA_TPL_TYPE_DESC</description>
+      </item>
+    </section>
+  </admin>
+  <globalsettings>
+    <tab id="general" name="FSJ_MAIN_GLOBAL_TAB_GENERAL"/>
+    <tab id="page" name="FSJ_MAIN_GLOBAL_TAB_PAGE"/>
+    <!--<tab id="date" name="Dates" />-->
+    <fields display="FSJ_MAIN_GLOBAL_SET_GENERAL" name="general" tab="general">
+      <field name="hide_powered" type="fsjyesno" default="0" label="FSJ_MAIN_GLOBAL_GENERAL_HIDE_POWERED" description="FSJ_MAIN_GLOBAL_GENERAL_HIDE_POWERED_DESC"/>
+    </fields>
+    <fields display="FSJ_MAIN_GLOBAL_SET_COMMENTS" name="comments" tab="general">
+      <field name="provider" type="fsjcombo" default="none" label="FSJ_MAIN_GLOBAL_COMMENTS_PROVIDER" description="FSJ_MAIN_GLOBAL_COMMENTS_PROVIDER_DESC">
+        <option value="none">FSJ_MAIN_GLOBAL_COMMENTS_PROVIDER_OPT_NONE</option>
+        <option value="jcomments">FSJ_MAIN_GLOBAL_COMMENTS_PROVIDER_OPT_JCOMMENTS</option>
+        <option value="disqus">FSJ_MAIN_GLOBAL_COMMENTS_PROVIDER_OPT_DISQUS</option>
+        <!--<option value="facebook">Facebook</option>-->
+        <option value="komento">FSJ_MAIN_GLOBAL_COMMENTS_PROVIDER_OPT_KOMENTO</option>
+      </field>
+    </fields>
+    <fields display="FSJ_MAIN_GLOBAL_SET_SEARCH" name="search" tab="general">
+      <field name="type" type="fsjcombo" default="default" label="FSJ_MAIN_GLOBAL_SEARCH_TYPE" description="FSJ_MAIN_GLOBAL_SEARCH_TYPE_DESC">
+        <option value="default">FSJ_MAIN_GLOBAL_SEARCH_TYPE_OPT_DEFAULT</option>
+        <option value="fulltext">FSJ_MAIN_GLOBAL_SEARCH_TYPE_OPT_FULLTEXT</option>
+        <option value="like">FSJ_MAIN_GLOBAL_SEARCH_TYPE_OPT_LIKE</option>
+      </field>
+    </fields>
+    <fields display="FSJ_MAIN_GLOBAL_SET_CSS_SETTINGS" name="css_settings" tab="general">
+      <field name="cache_bypass" type="fsjyesno" default="0" label="FSJ_MAIN_GLOBAL_CSS_SETTINGS_CACHE_BYPASS" description="FSJ_MAIN_GLOBAL_CSS_SETTINGS_CACHE_BYPASS_DESC"/>
+    </fields>
+    <fields display="FSJ_MAIN_GLOBAL_SET_CORE_PAGEINCLUDE" name="core_pageinclude" tab="page">
+      <!-- jQuery inclusion -->
+      <field name="inc_jquery" type="fsjcombo" default="auto" label="FSJ_MAIN_GLOBAL_CORE_PAGEINCLUDE_INC_JQUERY" description="FSJ_MAIN_GLOBAL_CORE_PAGEINCLUDE_INC_JQUERY_DESC">
+        <option value="auto">FSJ_MAIN_GLOBAL_CORE_PAGEINCLUDE_INC_JQUERY_OPT_AUTO</option>
+        <option value="yes">FSJ_MAIN_GLOBAL_CORE_PAGEINCLUDE_INC_JQUERY_OPT_YES</option>
+        <option value="yesnonc">FSJ_MAIN_GLOBAL_CORE_PAGEINCLUDE_INC_JQUERY_OPT_YESNONC</option>
+        <option value="no">FSJ_MAIN_GLOBAL_CORE_PAGEINCLUDE_INC_JQUERY_OPT_NO</option>
+      </field>
+      <field name="inc_bootstrapjs" type="fsjcombo" default="auto" label="FSJ_MAIN_GLOBAL_CORE_PAGEINCLUDE_INC_BOOTSTRAPJS" description="FSJ_MAIN_GLOBAL_CORE_PAGEINCLUDE_INC_BOOTSTRAPJS_DESC">
+        <option value="auto">FSJ_MAIN_GLOBAL_CORE_PAGEINCLUDE_INC_BOOTSTRAPJS_OPT_AUTO</option>
+        <option value="yes">FSJ_MAIN_GLOBAL_CORE_PAGEINCLUDE_INC_BOOTSTRAPJS_OPT_YES</option>
+        <option value="no">FSJ_MAIN_GLOBAL_CORE_PAGEINCLUDE_INC_BOOTSTRAPJS_OPT_NO</option>
+      </field>
+      <!-- Bootstrap inclusion -->
+      <field name="inc_bootstrap" type="fsjcombo" default="fsj" label="FSJ_MAIN_GLOBAL_CORE_PAGEINCLUDE_INC_BOOTSTRAP" description="FSJ_MAIN_GLOBAL_CORE_PAGEINCLUDE_INC_BOOTSTRAP_DESC">
+        <option value="yes">FSJ_MAIN_GLOBAL_CORE_PAGEINCLUDE_INC_BOOTSTRAP_OPT_YES</option>
+        <option value="fsj">FSJ_MAIN_GLOBAL_CORE_PAGEINCLUDE_INC_BOOTSTRAP_OPT_FSJ</option>
+        <option value="partial">FSJ_MAIN_GLOBAL_CORE_PAGEINCLUDE_INC_BOOTSTRAP_OPT_PARTIAL</option>
+        <option value="no">FSJ_MAIN_GLOBAL_CORE_PAGEINCLUDE_INC_BOOTSTRAP_OPT_NO</option>
+      </field>
+      <field name="artisteerfixes" type="fsjyesno" default="0" label="FSJ_MAIN_GLOBAL_CORE_PAGEINCLUDE_ARTISTEERFIXES" description="FSJ_MAIN_GLOBAL_CORE_PAGEINCLUDE_ARTISTEERFIXES_DESC"/>
+    </fields>
+    <fields display="FSJ_MAIN_GLOBAL_SET_CORE_BOOTSTRAP" name="core_bootstrap" tab="page">
+      <field name="textcolor" type="fsjyesno" default="0" label="FSJ_MAIN_GLOBAL_CORE_BOOTSTRAP_TEXTCOLOR" description="FSJ_MAIN_GLOBAL_CORE_BOOTSTRAP_TEXTCOLOR_DESC"/>
+      <field name="modal" type="fsjyesno" default="0" label="FSJ_MAIN_GLOBAL_CORE_BOOTSTRAP_MODAL" description="FSJ_MAIN_GLOBAL_CORE_BOOTSTRAP_MODAL_DESC"/>
+      <field name="icomoon" type="fsjyesno" default="0" label="FSJ_MAIN_GLOBAL_CORE_BOOTSTRAP_ICOMOON" description="FSJ_MAIN_GLOBAL_CORE_BOOTSTRAP_ICOMOON_DESC"/>
+    </fields>
+    <fields display="FSJ_MAIN_GLOBAL_SET_CORE_TEMPLATE" name="core_template" tab="page">
+      <field name="template" type="fsjlookup" default="default" load_lang="com_fsj_main" lu_sql="SELECT name as value, title as text FROM #__fsj_tpl_template WHERE component = 'main' AND type = 'page'" label="FSJ_MAIN_GLOBAL_CORE_TEMPLATE_TEMPLATE" description="FSJ_MAIN_GLOBAL_CORE_TEMPLATE_TEMPLATE_DESC"/>
+    </fields>
+    <fields display="FSJ_MAIN_GLOBAL_SET_CORE_TITLE" name="core_title" tab="page">
+      <field name="use_joomla" type="fsjyesno" default="0" label="FSJ_MAIN_GLOBAL_CORE_TITLE_USE_JOOMLA" description="FSJ_MAIN_GLOBAL_CORE_TITLE_USE_JOOMLA_DESC"/>
+      <field name="title_format" type="fsjcombo" default="5" label="FSJ_MAIN_GLOBAL_CORE_TITLE_TITLE_FORMAT" description="FSJ_MAIN_GLOBAL_CORE_TITLE_TITLE_FORMAT_DESC">
+        <option value="1">FSJ_MAIN_GLOBAL_CORE_TITLE_TITLE_FORMAT_OPT_1</option>
+        <option value="2">FSJ_MAIN_GLOBAL_CORE_TITLE_TITLE_FORMAT_OPT_2</option>
+        <option value="3">FSJ_MAIN_GLOBAL_CORE_TITLE_TITLE_FORMAT_OPT_3</option>
+        <option value="4">FSJ_MAIN_GLOBAL_CORE_TITLE_TITLE_FORMAT_OPT_4</option>
+        <option value="5">FSJ_MAIN_GLOBAL_CORE_TITLE_TITLE_FORMAT_OPT_5</option>
+        <option value="6">FSJ_MAIN_GLOBAL_CORE_TITLE_TITLE_FORMAT_OPT_6</option>
+        <option value="7">FSJ_MAIN_GLOBAL_CORE_TITLE_TITLE_FORMAT_OPT_7</option>
+        <option value="99">FSJ_MAIN_GLOBAL_CORE_TITLE_TITLE_FORMAT_OPT_99</option>
+      </field>
+      <field name="browser_title_format" type="fsjcombo" default="100" label="FSJ_MAIN_GLOBAL_CORE_TITLE_BROWSER_TITLE_FORMAT" description="FSJ_MAIN_GLOBAL_CORE_TITLE_BROWSER_TITLE_FORMAT_DESC">
+        <option value="100">FSJ_MAIN_GLOBAL_CORE_TITLE_BROWSER_TITLE_FORMAT_OPT_100</option>
+        <option value="1">FSJ_MAIN_GLOBAL_CORE_TITLE_BROWSER_TITLE_FORMAT_OPT_1</option>
+        <option value="2">FSJ_MAIN_GLOBAL_CORE_TITLE_BROWSER_TITLE_FORMAT_OPT_2</option>
+        <option value="3">FSJ_MAIN_GLOBAL_CORE_TITLE_BROWSER_TITLE_FORMAT_OPT_3</option>
+        <option value="4">FSJ_MAIN_GLOBAL_CORE_TITLE_BROWSER_TITLE_FORMAT_OPT_4</option>
+        <option value="5">FSJ_MAIN_GLOBAL_CORE_TITLE_BROWSER_TITLE_FORMAT_OPT_5</option>
+        <option value="6">FSJ_MAIN_GLOBAL_CORE_TITLE_BROWSER_TITLE_FORMAT_OPT_6</option>
+        <option value="7">FSJ_MAIN_GLOBAL_CORE_TITLE_BROWSER_TITLE_FORMAT_OPT_7</option>
+        <option value="99">FSJ_MAIN_GLOBAL_CORE_TITLE_BROWSER_TITLE_FORMAT_OPT_99</option>
+      </field>
+    </fields>
+    <fields display="FSJ_MAIN_GLOBAL_SET_CORE_MODAL" name="core_modal" tab="page">
+      <field name="css" type="fsjtext" default="" wide="1" fsjtext_style="width:100%; height:80px;" label="FSJ_MAIN_GLOBAL_CORE_MODAL_CSS" description="FSJ_MAIN_GLOBAL_CORE_MODAL_CSS_DESC"/>
+      <field name="js" type="fsjtext" default="" wide="1" fsjtext_style="width:100%; height:80px;" label="FSJ_MAIN_GLOBAL_CORE_MODAL_JS" description="FSJ_MAIN_GLOBAL_CORE_MODAL_JS_DESC"/>
+    </fields>
+    <fields display="FSJ_MAIN_GLOBAL_SET_CORE_CSS" name="core_css" tab="page">
+      <field name="overrides" type="fsjeditor" fsjeditor_mode="code" fsjeditor_codetype="text/css" default="" wide="1" fsjtext_style="width:100%; height:80px;" label="FSJ_MAIN_GLOBAL_CORE_CSS_OVERRIDES" description="FSJ_MAIN_GLOBAL_CORE_CSS_OVERRIDES_DESC"/>
+      <field name="scripts" type="fsjeditor" fsjeditor_mode="code" fsjeditor_codetype="text/css" default="" wide="1" fsjtext_style="width:100%; height:80px;" label="FSJ_MAIN_GLOBAL_CORE_CSS_SCRIPTS" description="FSJ_MAIN_GLOBAL_CORE_CSS_SCRIPTS_DESC"/>
+    </fields>
+    <!--<fields display="Dates" name="core_dates" tab="date">
+      <field name="date_dt_short" type="fsjdateformat" default="" helprows="6">
+        <label>Short Date and Time Format</label>
+        <description>
+          <![CDATA[Please see <a href="http://php.net/manual/en/function.date.php" target="_blank">http://php.net/manual/en/function.date.php</a> for formats supported. Leave blank to use Joomla built in formats.<br><br>Examples:<br><ul><li><b>F j, Y, g:i a</b>: March 10, 2001, 5:16 pm</li><li><b>m.d.y</b>: 03.10.01</li><li><b>j, n, Y</b>: 10, 3, 2001</li><li><b>D M j G:i:s Y</b>: Sat Mar 10 17:16:18 2001</li></ul><br /><br /><br /><a href='#' onclick='fsj_text_times();return false' class='btn btn-success'>Test Times</a>]]>
+        </description>
+      </field>
+      <field name="date_dt_long" type="fsjdateformat" default="">
+        <label>Long Date and Time Format</label>
+      </field>
+      <field name="date_d_short" type="fsjdateformat" default="">
+        <label>Short Date Format</label>
+      </field>
+      <field name="date_d_long" type="fsjdateformat" default="">
+        <label>Long Date Format</label>
+      </field>
+      <field name="date_t_short" type="fsjdateformat" default="">
+        <label>Short Time Format</label>
+      </field>
+      <field name="date_t_long" type="fsjdateformat" default="">
+        <label>Long Time Format</label>
+      </field>
+    </fields>
+    <fields display="Timezone" name="core_timezone" tab="date">
+      <field name="offset" type="fsjtimezone" default="0">
+        <label>Timezone Offset</label>
+        <description>Change this from 0 to modify the timezones used. This should only be used if the times displayed are in the incorrect timezone</description>
+      </field>  
+    </fields>-->
+  </globalsettings>
+  <settings/>
+  <views/>
+  <!-- Permission -->
+  <permissions/>
+  <tables>
+    <!-- Settings table -->
+    <table name="settings" id="1" nested="1" alias="1">
+      <field name="j_asset" type="int(11)"/>
+      <field name="name" type="varchar(50)"/>
+      <field name="title" type="varchar(100)"/>
+      <field name="value" type="text"/>
+      <index name="idx_asset_id" fields="j_asset"/>
+      <index name="idx_name" fields="name"/>
+      <index name="idx_lft_rgt" fields="lft;rgt"/>
+      <index name="parent_id" fields="parent_id"/>
+      <index name="idx_id_lft_rgt" fields="id;lft;rgt"/>
+    </table>
+    <!-- Attachments -->
+    <table name="attachment" params="1" id="1">
+      <field name="source" type="varchar(50)"/>
+      <field name="source_id" type="int(11)"/>
+      <field name="dest" type="varchar(50)"/>
+      <field name="dest_id" type="int(11)"/>
+      <field name="ordering" type="int(11)"/>
+      <index name="Lookup" fields="source;source_id;dest;dest_id"/>
+    </table>
+    <!-- Related items -->
+    <table name="related" params="1" id="1">
+      <field name="source" type="varchar(50)"/>
+      <field name="source_id" type="int(11)"/>
+      <field name="dest" type="varchar(50)"/>
+      <field name="dest_id" type="int(11)"/>
+      <field name="ordering" type="int(11)"/>
+      <index name="Lookup" fields="source;source_id;dest;dest_id"/>
+    </table>
+    <!-- Plugin table -->
+    <table name="plugin" id="1" params="1" state="1" prefix="plg">
+      <field name="type" type="varchar(50)"/>
+      <field name="name" type="varchar(50)"/>
+      <field name="path" type="varchar(250)"/>
+      <index name="idx_name" fields="type;name" unique="1"/>
+      <field name="title" type="varchar(50)"/>
+      <field name="description" type="varchar(250)"/>
+      <field name="author" type="varchar(50)"/>
+      <field name="settings" type="text"/>
+      <index name="Main" fields="type;name"/>
+    </table>
+    <table name="type" id="1" params="1" prefix="plg">
+      <field name="name" type="varchar(50)"/>
+      <field name="path" type="varchar(250)"/>
+      <field name="component" type="varchar(250)"/>
+      <index name="idx_name" fields="name" unique="1"/>
+      <field name="title" type="varchar(50)"/>
+      <field name="description" type="varchar(250)"/>
+      <field name="author" type="varchar(50)"/>
+      <field name="settings" type="text"/>
+    </table>
+    <table name="type" prefix="tpl" id="1">
+      <field name="component" type="varchar(50)"/>
+      <field name="type" type="varchar(50)"/>
+      <field name="xmlfile" type="varchar(250)"/>
+      <field name="instpath" type="varchar(250)"/>
+      <field name="title" type="varchar(250)"/>
+      <field name="description" type="text"/>
+      <index name="Main" fields="component;type" unique="1"/>
+    </table>
+    <table name="template" prefix="tpl" id="1">
+      <field name="component" type="varchar(50)"/>
+      <field name="type" type="varchar(50)"/>
+      <field name="name" type="varchar(50)"/>
+      <field name="title" type="varchar(250)"/>
+      <field name="description" type="text"/>
+      <field name="parsed" type="text"/>
+      <field name="params" type="text"/>
+      <field name="updated" type="int(11)"/>
+      <field name="noedit" type="int(11)"/>
+      <field name="base" type="varchar(50)"/>
+      <index name="Main" fields="component;type;name" unique="1"/>
+    </table>
+    <table name="cron" prefix="main" id="1">
+      <field name="source" type="varchar(50)"/>
+      <field name="source_id" type="int(10)"/>
+      <field name="event" type="varchar(50)"/>
+      <field name="file" type="varchar(250)"/>
+      <field name="class" type="varchar(250)"/>
+      <field name="function" type="varchar(250)"/>
+      <field name="param" type="varchar(250)"/>
+      <field name="interval" type="int(10)"/>
+      <field name="state" type="int(10)"/>
+      <field name="lastrun" type="int(11)"/>
+      <field name="runkey" type="varchar(50)"/>
+    </table>
+    <table name="cronlog" prefix="main" id="1">
+      <field name="source" type="varchar(50)"/>
+      <field name="source_id" type="int(10)"/>
+      <field name="event" type="varchar(50)"/>
+      <field name="whentime" type="int(11)"/>
+      <field name="whendate" type="date" default="0000-00-00"/>
+      <field name="success" type="int(11)"/>
+      <field name="result" type="varchar(250)"/>
+      <field name="log" type="mediumtext"/>
+    </table>
+  </tables>
+  <global_defaults>{"general":{"hide_powered":"0"},"comments":{"provider":"none"},"search":{"type":"default"},"css_settings":{"cache_bypass":"0"},"core_pageinclude":{"inc_jquery":"auto","inc_bootstrapjs":"auto","inc_bootstrap":"fsj","artisteerfixes":"0"},"core_bootstrap":{"textcolor":"0","modal":"0","icomoon":"0"},"core_template":{"template":"default"},"core_title":{"use_joomla":"0","title_format":"5","browser_title_format":"100"},"core_modal":{"css":"","js":""},"core_css":{"overrides":"","scripts":""}}</global_defaults>
+</com>

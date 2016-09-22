@@ -1,0 +1,79 @@
+body .subhead-collapse >.subhead {
+  margin-bottom: 0;
+}
+body button {
+  margin: 0;
+}
+body div#fd.es ol,
+body div#fd.es ul {
+  margin-left: 20px;
+}
+body div#fd.es .list-unstyled {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+body div#fd.es #element-box .btn {
+  height: 34px;
+}
+body div#fd.es #element-box .btn-sm {
+  height: 30px;
+}
+body div#fd.es .small {
+  font-size: 11px;
+}
+body div#fd.es .form-group {
+  overflow: visible;
+  margin-top: 15px;
+}
+body div#fd.es .form-group:before,
+body div#fd.es .form-group:after {
+  content: " ";
+  display: table;
+}
+body div#fd.es .form-group:after {
+  clear: both;
+}
+body div#fd.es .form-group >label {
+  padding: 6px;
+  text-align: right;
+}
+body div#fd.es .form-group >label .icon-es-help.pull-right {
+  margin-left: 5px;
+}
+body div#fd.es .form-inline .form-group {
+  margin-top: 0;
+}
+body div#fd.es .form-control {
+  margin-bottom: 0;
+}
+body div#fd.es .form-control.input-short,
+body div#fd.es .form-control.input-mini {
+  width: 50px;
+  display: inline-block;
+}
+body div#fd.es .form-control.input-short +strong,
+body div#fd.es .form-control.input-mini +strong {
+  display: inline-block;
+  vertical-align: top;
+  line-height: 30px;
+  margin: 0 0 0 5px;
+}
+body div#fd.es .form-control.input-medium {
+  width: 200px;
+  min-width: 50%;
+}
+body div#fd.es .btn-group-yesno {
+  min-width: 120px;
+}
+body div#fd.es .btn-group-yesno >.btn {
+  font-size: 12px !important;
+  line-height: 24px !important;
+  height: 24px !important;
+}
+body div#fd.es .popbox-content {
+  padding: 15px;
+}
+body div#fd.es .es-stat .es-stat-items .es-stat-item > a span i {
+  line-height: 52px;
+}

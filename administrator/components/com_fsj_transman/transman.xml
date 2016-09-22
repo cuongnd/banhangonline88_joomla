@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<com>
+  <image>com_fsj_transman</image>
+  <require>
+    <autobuild>language</autobuild>
+    <autobuild>file</autobuild>
+    <!--  -->
+    <autobuild>package</autobuild>
+    <!--  -->
+  </require>
+  <images>
+    <image w="32">arrow-up</image>
+    <image w="48">file</image>
+    <!--  -->
+    <image w="48">package</image>
+    <!--  -->
+  </images>
+  <name>
+    <item id="transman_language">
+      <name>COM_FSJ_TRANSMAN_ITEMS_TRANSMAN_LANGUAGE</name>
+      <names>COM_FSJ_TRANSMAN_ITEMS_TRANSMAN_LANGUAGES</names>
+      <long_prefix id="transman.language"/>
+    </item>
+    <item id="transman_file">
+      <name>COM_FSJ_TRANSMAN_ITEMS_TRANSMAN_FILE</name>
+      <names>COM_FSJ_TRANSMAN_ITEMS_TRANSMAN_FILES</names>
+      <long_prefix id="transman.file"/>
+    </item>
+    <!--  -->
+    <item id="transman_package">
+      <name>COM_FSJ_TRANSMAN_ITEMS_TRANSMAN_PACKAGE</name>
+      <names>COM_FSJ_TRANSMAN_ITEMS_TRANSMAN_PACKAGES</names>
+      <long_prefix id="transman.package"/>
+    </item>
+    <!--  -->
+  </name>
+  <admin>
+    <section nonmenusection="1" name="FSJ_TM_TRANSLATIONS">
+      <item id="language" icon="language">
+        <title>COM_FSJ_TRANSMAN_DATA_LANGUAGE</title>
+        <description>COM_FSJ_TRANSMAN_DATA_LANGUAGE_DESC</description>
+      </item>
+      <!--  -->
+      <item id="package" icon="package">
+        <title>COM_FSJ_TRANSMAN_DATA_PACKAGE</title>
+        <description>COM_FSJ_TRANSMAN_DATA_PACKAGE_DESC</description>
+      </item>
+      <!--  -->
+    </section>
+  </admin>
+  <settings>
+    <tab id="options" name="FSJ_TRANSMAN_SETTING_TAB_OPTIONS"/>
+    <fields display="FSJ_TRANSMAN_SETTING_SET_TM_OPTIONS" name="tm_options" tab="options">
+      <field name="save_notify" type="fsjyesno" default="1" label="FSJ_TRANSMAN_SETTING_TM_OPTIONS_SAVE_NOTIFY" description="FSJ_TRANSMAN_SETTING_TM_OPTIONS_SAVE_NOTIFY_DESC"/>
+      <field name="backup" type="fsjyesno" default="1" label="FSJ_TRANSMAN_SETTING_TM_OPTIONS_BACKUP" description="FSJ_TRANSMAN_SETTING_TM_OPTIONS_BACKUP_DESC"/>
+      <field name="quotes" type="fsjyesno" default="1" label="FSJ_TRANSMAN_SETTING_TM_OPTIONS_QUOTES" description="FSJ_TRANSMAN_SETTING_TM_OPTIONS_QUOTES_DESC"/>
+      <!--  -->
+      <field name="collapse_headers" type="fsjyesno" default="0" label="FSJ_TRANSMAN_SETTING_TM_OPTIONS_COLLAPSE_HEADERS" description="FSJ_TRANSMAN_SETTING_TM_OPTIONS_COLLAPSE_HEADERS_DESC"/>
+      <field name="branding" type="fsjyesno" default="1" label="FSJ_TRANSMAN_SETTING_TM_OPTIONS_BRANDING" description="FSJ_TRANSMAN_SETTING_TM_OPTIONS_BRANDING_DESC"/>
+      <field name="yandexkey" type="string" default="25" label="FSJ_TRANSMAN_SETTING_TM_OPTIONS_YANDEXKEY" description="FSJ_TRANSMAN_SETTING_TM_OPTIONS_YANDEXKEY_DESC"/>
+      <!--  -->
+    </fields>
+    <fields display="FSJ_TRANSMAN_SETTING_SET_TM_BASE" name="tm_base" tab="options">
+      <field name="baselang" type="fsjsqlcombo" default="en-GB" label="FSJ_TRANSMAN_SETTING_TM_BASE_BASELANG" description="FSJ_TRANSMAN_SETTING_TM_BASE_BASELANG_DESC">
+        <fsjsqlcombo>
+          <sql>SELECT element as value, name as text FROM #__extensions WHERE type = 'language' GROUP BY element ORDER BY name</sql>
+        </fsjsqlcombo>
+      </field>
+    </fields>
+  </settings>
+  <!--  -->
+  <tables>
+    <table name="package" id="1" title="1">
+      <field name="alias" type="varchar(250)"/>
+      <field name="ver" type="varchar(50)"/>
+      <field name="author" type="varchar(250)"/>
+      <field name="creationDate" type="varchar(250)"/>
+      <field name="email" type="varchar(250)"/>
+      <field name="url" type="varchar(250)"/>
+      <field name="copyright" type="varchar(250)"/>
+      <field name="license" type="varchar(250)"/>
+      <field name="description" type="text"/>
+      <field name="files" type="mediumtext"/>
+      <field name="langcode" type="varchar(50)"/>
+      <field name="sitefiles" type="text"/>
+      <field name="adminfiles" type="text"/>
+      <field name="filename" type="varchar(250)"/>
+      <field name="pubfolder" type="varchar(512)"/>
+      <field name="updateserver" type="varchar(512)"/>
+    </table>
+  </tables>
+  <!--  -->
+  <settings_defaults>{"tm_options":{"save_notify":"1","backup":"1","quotes":"1","collapse_headers":"0","branding":"1","yandexkey":"25"},"tm_base":{"baselang":"en-GB"}}</settings_defaults>
+</com>

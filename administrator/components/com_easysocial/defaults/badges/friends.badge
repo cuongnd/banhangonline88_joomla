@@ -1,0 +1,33 @@
+
+[
+	{
+		"title" 		: "COM_EASYSOCIAL_BADGES_FRIEND_HATER_TITLE",
+		"alias"			: "friend-hater",
+		"description"	: "COM_EASYSOCIAL_BADGES_FRIEND_HATER_DESC",
+		"howto"			: "COM_EASYSOCIAL_BADGES_FRIEND_HATER_HOWTO",
+		"command"		: "friends.remove",
+		"extension"		: "com_easysocial",
+		"avatar"		: "media/com_easysocial/badges/friend-hater.png",
+		"frequency"		: 10
+	},
+	{
+		"title" 		: "COM_EASYSOCIAL_BADGES_FRIEND_SEEKER_TITLE",
+		"alias"			: "friend-seeker",
+		"description"	: "COM_EASYSOCIAL_BADGES_FRIEND_SEEKER_DESC",
+		"howto"			: "COM_EASYSOCIAL_BADGES_FRIEND_SEEKER_HOWTO",
+		"command"		: "friends.create",
+		"extension"		: "com_easysocial",
+		"avatar"		: "media/com_easysocial/badges/friend-seeker.png",
+		"frequency"		: 30
+	},
+	{
+		"title" 		: "COM_EASYSOCIAL_BADGES_FRIEND_ORGANIZER_TITLE",
+		"alias"			: "friend-organizer",
+		"description"	: "COM_EASYSOCIAL_BADGES_FRIEND_ORGANIZER_DESC",
+		"howto"			: "COM_EASYSOCIAL_BADGES_FRIEND_ORGANIZER_HOWTO",
+		"command"		: "friends.list.create",
+		"extension"		: "com_easysocial",
+		"avatar"		: "media/com_easysocial/badges/friend-organizer.png",
+		"frequency"		: 10
+	}
+]

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.0.0">
+	<name>Ark Editor Vote Module</name>
+	<author>WebxSolution Ltd</author>
+	<creationDate>June 2014</creationDate>
+	<copyright>2009 - 2014 WebxSolutions Ltd.</copyright>
+	<license>GNU/GPLv2</license>
+	<authorEmail>info@arkextensions.com</authorEmail>
+	<authorUrl>http://www.arkextensions.com</authorUrl>
+	<version>1.0.0</version>
+	<description>Ark Editor Vote Module</description>
+	<files>
+		<filename module="mod_arkvote">mod_arkvote.php</filename>
+		<filename module="mod_arkvote">index.html</filename>
+	</files>
+	<params>
+		<param name="cache" type="list" default="1" label="Caching" description="Select whether to cache the content of this module">
+			<option value="1">Use global</option>
+			<option value="0">No caching</option>
+		</param>
+	</params>
+</install>

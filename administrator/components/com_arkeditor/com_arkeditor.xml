@@ -1,0 +1,66 @@
+<extension type="component" version="3.2" method="upgrade">
+	<name>com_arkeditor</name>
+	<version>1.9.0</version>
+	<creationDate>Aug 2016</creationDate>
+	<description><![CDATA[ 
+	<p>Welcome to the Ark Editor v1.9.0</p> 
+	]]></description>
+	<license>GNU/GPLv2</license>
+	<author>WebxSolution Ltd</author>
+	<authorEmail>info@arkextensions.com</authorEmail>
+	<authorUrl>http://www.arkextensions.com</authorUrl>
+	<copyright>2016 WebxSolutions Ltd</copyright>
+	<scriptfile>install.php</scriptfile>
+	<install>
+		<sql>
+			<file driver="mysql" charset="utf8">sql/mysql.sql</file>
+			<file driver="sqlsrv" charset="utf8">sql/sqlsrv.sql</file>
+			<file driver="sqlazure" charset="utf8">sql/sqlsrv.sql</file>
+			<file driver="postgresql" charset="utf8">sql/postgres.sql</file>
+		</sql>
+	</install>
+	<uninstall>
+		<sql>
+			<file driver="mysql" charset="utf8">sql/uninstall.sql</file>
+			<file driver="sqlsrv" charset="utf8">sql/uninstall.sql</file>
+			<file driver="sqlazure" charset="utf8">sql/uninstall.sql</file>
+			<file driver="postgresql" charset="utf8">sql/uninstall.sql</file>
+		</sql>
+	</uninstall>
+	<administration>
+		<languages>
+			<language tag="en-GB">language/en-GB/en-GB.com_arkeditor.ini</language>
+			<language tag="en-GB">language/en-GB/en-GB.com_arkeditor.sys.ini</language>
+		</languages>
+		<menu>COM_ARKEDITOR</menu>
+		<submenu>
+			<menu link="option=com_arkeditor&amp;view=cpanel">COM_ARKEDITOR_SUBMENU_CPANEL_NAME</menu>
+			<menu link="option=com_arkeditor&amp;view=list">COM_ARKEDITOR_SUBMENU_PLUGIN_NAME</menu>
+			<menu link="option=com_arkeditor&amp;view=toolbars">COM_ARKEDITOR_SUBMENU_LAYOUT_NAME</menu>
+			<menu link="option=com_arkeditor&amp;view=cpanel&amp;task=cpanel.editor">COM_ARKEDITOR_SUBMENU_ARKEDITOR_NAME</menu>
+		</submenu>
+		<files folder="admin">
+			<filename>config.xml</filename>
+			<filename>arkeditor.php</filename>
+			<filename>helper.php</filename>
+			<filename>access.xml</filename>
+			<filename>index.html</filename>
+			<folder>base</folder>
+			<folder>config</folder>
+			<folder>controllers</folder>
+			<folder>css</folder>
+			<folder>editor</folder>
+			<folder>event</folder>
+			<folder>help</folder>
+			<folder>helpers</folder>
+			<folder>icons</folder>
+			<folder>js</folder>
+			<folder>language</folder>
+			<folder>tables</folder>
+			<folder>models</folder>
+			<folder>views</folder>
+			<folder>modules</folder>
+			<folder>sql</folder>
+		</files>
+	</administration>
+</extension>

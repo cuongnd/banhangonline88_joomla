@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<install version="1.5" type="plugin" plugin="scayt" method="upgrade">
+	<version>0.1</version>
+	<creationDate>June2010</creationDate>
+	<author>WebxSolution Ltd</author>
+	<authorUrl>http://www.arkextensions.com</authorUrl>
+	<license>GNU/GPLv2</license>
+	<description>PLG_ARKEDITOR_DESC</description>
+	<languages>
+	</languages>
+	<files>	
+	<filename>plugin.js</filename>
+	<folder>dialogs</folder>
+    </files>
+
+	<params group="options">
+		<param name="scayt_autoStartup" type="radio" default="0" label="PLG_ARKEDITOR_DESC" description="PLG_ARKEDITOR_AUTOSTART_SPELL_CHECK_DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="scayt_maxSuggestions" type="text" default="5" label="PLG_ARKEDITOR_MAXIMUM_SUGGESTIONS" description="PLG_ARKEDITOR_MAXIMUM_SUGGESTIONS_DESC"/>
+		<param name="scayt_moreSuggestions" type="radio" default="on" label="PLG_ARKEDITOR_ENABLE_MORE_SUGGESTIONS" description="PLG_ARKEDITOR_ENABLE_MORE_SUGGESTIONS_DESC">
+			<option value="off">No</option>
+			<option value="on">Yes</option>
+		</param>
+		<param name="scayt_sLang" type="text" default="en_GB" label="PLG_ARKEDITOR_SPELL_CHECK_DEFAULT_LANGUAGE" description="PLG_ARKEDITOR_SPELL_CHECK_DEFAULT_LANGUAGE_DESC"/>
+	</params>
+</install>

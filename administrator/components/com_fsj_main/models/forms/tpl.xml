@@ -1,0 +1,138 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<form>
+  <authorEmail>support@freestyle-joomla.com</authorEmail>
+  <author>Freestyle Joomla</author>
+  <copyright>(C) 2013 Freestyle Joomla. All rights reserved.</copyright>
+  <license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html </license>
+  <authorUrl>http://www.freestyle-joomla.com</authorUrl>
+
+  <fieldset addfieldpath="/administrator/components/com_fsj_main/models/fields" />
+  <fieldset addfieldpath="components/com_fsj_main/models/fields" />
+  <fieldset addfieldpath="/libraries/fsj_core/html/field" />
+
+  <fieldset>
+	<field name="id"  type="text" class="readonly" label="JGLOBAL_FIELD_ID_LABEL"
+			description ="JGLOBAL_FIELD_ID_DESC" size="10" default="0"
+			readonly="true"  />
+
+	
+	<field name="title" type="text" label="JGLOBAL_TITLE"
+			description="JGLOBAL_TITLE"
+			class="inputbox input-xxlarge input-large-text"
+			size="40"
+			required="true" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+			<field
+			name="type"
+			type="fsjlookup"
+			label="FSJ_MAIN_FORM_TPL_TYPE"
+			description=""
+			lu_table="#__fsj_tpl_type"
+			lu_field="type"
+			lu_display="title"
+			lu_nested="0"
+			lu_sql=""
+			use_state="0"
+			state=""
+			use_set=""
+			onchange=""
+			readonly="true"
+		>
+					</field>
+
+	
+		
+		<field name="component" type="text"
+			label="FSJ_MAIN_FORM_TPL_COMPONENT" description=""
+			class="inputbox " size="60"
+			default=""
+			/>		
+	
+		
+		<field name="name" type="text"
+			label="FSJ_MAIN_FORM_TPL_NAME" description=""
+			class="inputbox " size="60"
+			default=""
+			/>		
+	
+		
+			<field
+			name="noedit"
+			type="fsjyesno"
+			label="FSJ_MAIN_FORM_TPL_NOEDIT"
+			description=""
+			use_set=""
+			size=""
+			default=""
+									
+						>	
+
+					</field>
+	
+		
+			<field
+			name="description"
+			type="fsjtext"
+			label="FSJ_FORM_DESCRIPTION"
+			description=""
+			use_set=""
+			size=""
+			default=""
+									
+										fsjtext_fullfield = ""	
+										fsjtext_introfield = ""	
+										fsjtext_readmore = "0"	
+										fsjtext_pagebreak = "0"	
+										fsjtext_image = "1"	
+										fsjtext_width = "550"	
+										fsjtext_height = "400"	
+										fsjtext_cols = "60"	
+										fsjtext_rows = "20"	
+										fsjtext_strip = "0"	
+										fsjtext_maxsize = "0"	
+										fsjtext_preformat = "0"	
+										fsjtext_divwidth = "0"	
+										fsjtext_divheight = "0"	
+										fsjtext_rawtoggle = ""	
+										fsjtext_htmledit = "1"	
+										fsjtext_style = "width:50%;height:80px;"	
+						>	
+
+																																																																																																																												</field>
+	
+		
+			<field
+			name="params"
+			type="fsjtemplateedit"
+			label="FSJ_MAIN_FORM_TPL_PARAMS"
+			description=""
+			use_set=""
+			size=""
+			default=""
+									
+						>	
+
+					</field>
+	
+
+  </fieldset>
+
+
+
+</form>

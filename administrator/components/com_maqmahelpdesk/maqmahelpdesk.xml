@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<extension type="component" version="2.5.0" method="upgrade">
+    <name>COM_MAQMAHELPDESK</name>
+    <creationDate>May 2013</creationDate>
+    <author>iMaQma</author>
+    <copyright>(C) Copyright 2006-2013 Components Lab, Lda.</copyright>
+    <authorEmail>support@imaqma.com</authorEmail>
+    <authorUrl>www.imaqma.com</authorUrl>
+    <version>4.1.0</version>
+    <license>GNU/GPL</license>
+    <description>All-in-one Helpdesk extension for Joomla!</description>
+
+    <scriptfile>script.php</scriptfile>
+
+    <install>
+        <sql>
+            <file driver="mysql" charset="utf8">sql/install.mysql.sql</file>
+        </sql>
+    </install>
+
+    <uninstall>
+        <sql>
+            <file driver="mysql" charset="utf8">sql/uninstall.mysql.sql</file>
+        </sql>
+    </uninstall>
+
+    <update>
+        <schemas>
+            <schemapath type="mysql">sql/updates/mysql</schemapath>
+        </schemas>
+    </update>
+
+    <media folder="media" destination="com_maqmahelpdesk">
+        <folder>css</folder>
+        <folder>images</folder>
+        <folder>js</folder>
+        <folder>templates</folder>
+        <filename>index.html</filename>
+    </media>
+
+    <files folder="site">
+        <folder>addon</folder>
+        <folder>attachments</folder>
+        <folder>functions</folder>
+        <folder>helpers</folder>
+        <folder>images</folder>
+        <folder>includes</folder>
+        <folder>language</folder>
+        <folder>pdf</folder>
+        <folder>views</folder>
+        <filename>discussions_rss.php</filename>
+        <filename>feed-discussions</filename>
+        <filename>feed-kb</filename>
+        <filename>index.html</filename>
+        <filename>jomsocial_rule.xml</filename>
+        <filename>maqmahelpdesk.php</filename>
+        <filename>router.php</filename>
+        <filename>rss.php</filename>
+        <filename>version.txt</filename>
+    </files>
+
+    <administration>
+        <menu img="../media/com_maqmahelpdesk/images/themes/default/16px/help.png">COM_MAQMAHELPDESK</menu>
+        <files folder="admin">
+            <folder>controllers</folder>
+            <folder>elements</folder>
+            <folder>helpers</folder>
+            <folder>images</folder>
+            <folder>language</folder>
+            <folder>models</folder>
+            <folder>modules</folder>
+            <folder>sql</folder>
+            <folder>tables</folder>
+            <folder>views</folder>
+            <filename>index.html</filename>
+            <filename>maqmahelpdesk.php</filename>
+            <filename>license_agreement.txt</filename>
+            <filename>config.xml</filename>
+            <filename>access.xml</filename>
+        </files>
+    </administration>
+</extension>

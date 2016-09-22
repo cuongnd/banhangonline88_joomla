@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<install version="1.5" type="plugin" plugin="sourcearea" method="upgrade">
+	<version>0.1</version>
+	<creationDate>Feb 2012</creationDate>
+	<author>WebxSolution Ltd</author>
+	<authorUrl>http://www.arkextensions.com</authorUrl>
+	<license>GNU/GPLv2</license>
+	<description>PLG_ARKEDITOR_DESC</description>
+	<languages>
+	</languages>
+<params group="options">
+			<param name="autoUpdateElement" type="radio" default="1" label="PLG_ARKEDITOR_AUTO_UPDATE_ELEMENT" description="PLG_ARKEDITOR_AUTO_UPDATE_ELEMENT_DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+</params>
+</install>

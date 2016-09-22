@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" version="2.5" method="upgrade" group="hikaserial">
+	<name>Secure eBook - HikaSerial Generator plugin</name>
+	<creationDate>{__MONTH__} {__YEAR__}</creationDate>
+	<version>{__VERSION__}</version>
+	<author>Obsidev</author>
+	<authorEmail>contact@obsidev.com</authorEmail>
+	<authorUrl>http://www.obsidev.com</authorUrl>
+	<copyright>Copyright (C) 2012-{__YEAR__} OBSIDEV SARL - All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<description>This plugin allow to generate Secure eBook serials for HikaSerials</description>
+	<files>
+		<filename plugin="secureebook">secureebook.php</filename>
+	</files>
+	<params addpath="/components/com_hikaserial/params">
+		<param name="pluginoptions" type="pluginoptions" default="plugin" label="hikaserial" description="HikaSerial options" />
+	</params>
+	<config>
+		<fields name="params" addfieldpath="/components/com_hikaserial/fields">
+			<fieldset name="basic">
+				<field name="pluginoptions" type="pluginoptions" label="hikaserial" description="HikaSerial options" />
+			</fieldset>
+		</fields>
+	</config>
+</extension>

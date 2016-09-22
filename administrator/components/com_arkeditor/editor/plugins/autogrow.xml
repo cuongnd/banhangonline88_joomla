@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<install version="1.5" type="plugin" plugin="autogrow" method="upgrade">
+	<version>0.1</version>
+	<creationDate>Feb 2012</creationDate>
+	<author>WebxSolution Ltd</author>
+	<authorUrl>http://www.arkextensions.com</authorUrl>
+	<license>GNU/GPLv2</license>
+	<description>PLG_ARKEDITOR_DESC</description>
+	<languages>
+	</languages>
+<params group="options">
+		<param name="autoGrow_maxHeight" type="list" default="500" label="PLG_ARKEDITOR_AUTOGROW_MAX_HEIGHT" description="PLG_ARKEDITOR_AUTOGROW_MAX_HEIGHT_DESC">
+			<option value="500">500</option>
+			<option value="1000">1000</option>
+			<option value="1500">1500</option>
+			<option value="2000">2000</option>
+			<option value="2500">2500</option>
+			<option value="3000">3000</option>
+			<option value="0">Unlimted</option>
+		</param>
+		<param name="autoGrow_minHeight" type="list" default="250" label="PLG_ARKEDITOR_AUTOGROW_MIN_HEIGHT" description="PLG_ARKEDITOR_AUTOGROW_MIN_HEIGHT_DESC">
+			<option value="250">250</option>
+			<option value="300">300</option>
+			<option value="350">350</option>
+			<option value="400">400</option>
+			<option value="450">450</option>
+			<option value="500">500</option>
+		</param>
+		<param name="autoGrow_onStartup" type="radio" default="0" label="PLG_ARKEDITOR_ENABLE_AUTO_GROW_ON_STARTUP" description="PLG_ARKEDITOR_ENABLE_AUTO_GROW_ON_STARTUP_DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+</params>
+</install>

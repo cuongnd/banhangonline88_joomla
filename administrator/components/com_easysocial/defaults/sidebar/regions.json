@@ -1,0 +1,31 @@
+{
+    "title"  : "COM_EASYSOCIAL_MENU_GROUP_REGIONS",
+    "link"   : "index.php?option=com_easysocial&view=regions",
+    "access" : "easysocial.access.regions",
+    "class"  : "ies-earth",
+    "view"   : "regions",
+    "active" : "layout",
+    "childs" :
+    [
+        {
+            "title" : "COM_EASYSOCIAL_MENU_ITEM_REGIONS_COUNTRIES",
+            "class" : "ies-earth",
+            "url"   :
+            {
+                "view"  : "regions",
+                "layout": ""
+            },
+            "childs": []
+        },
+        {
+            "title" : "COM_EASYSOCIAL_MENU_ITEM_REGIONS_STATES",
+            "class" : "ies-earth",
+            "url"   :
+            {
+                "view"  : "regions",
+                "layout": "state"
+            },
+            "childs": []
+        }
+    ]
+}

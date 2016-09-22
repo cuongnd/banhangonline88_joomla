@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<install version="1.5" type="plugin" plugin="editingblock" method="upgrade">
+	<version>0.1</version>
+	<creationDate>Feb 2012</creationDate>
+	<author>WebxSolution Ltd</author>
+	<authorUrl>http://www.arkextensions.com</authorUrl>
+	<license>GNU/GPLv2</license>
+	<description>PLG_ARKEDITOR_DESC</description>
+	<languages>
+	</languages>
+	<params group="options">
+		<param name="autoParagraph" type="radio" default="1" label="PLG_ARKEDITOR_AUTO_PARAGRAH" description="PLG_ARKEDITOR_AUTO_PARAGRAH_DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="startupMode" type="radio" default="wysiwyg" label="PLG_ARKEDITOR_STARTUP_MODE" description="PLG_ARKEDITOR_STARTUP_MODE_DESC">
+			<option value="wysiwyg">WYSISYG</option>
+			<option value="source">Source</option>
+		</param>
+		<param name="useComputedState" type="radio" default="0" label="PLG_ARKEDITOR_USE_COMPUTED_STATE" description="PLG_ARKEDITOR_USE_COMPUTED_STATE_DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+	</params>
+</install>

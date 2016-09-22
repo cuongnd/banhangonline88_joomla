@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="2.5.0" method="upgrade">
+	<name>com_fsj_main</name>
+	<!-- The following elements are optional and free of formatting constraints -->
+	<creationDate>August 29, 2016</creationDate>
+  <authorEmail>support@freestyle-joomla.com</authorEmail>
+  <author>Freestyle Joomla</author>
+  <copyright>(C) 2013 Freestyle Joomla. All rights reserved.</copyright>
+  <license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html </license>
+  <authorUrl>http://www.freestyle-joomla.com</authorUrl>
+  <version>2.1.0.2080</version>
+	<description>Freestyle Joomla Overview</description>
+  <ispro>pro</ispro>
+  <!-- Site Main File Copy Section -->
+	<files folder="site">
+		<filename>controller.php</filename>
+		<filename>fsj_main.php</filename>
+		<filename>_powered.php</filename>
+		<folder>controllers</folder> 
+		<folder>views</folder> 
+	</files>
+  <languages folder="site_lang">
+    <language tag="en-GB">en-GB/en-GB.com_fsj_main.ini</language>
+  </languages> 
+	<administration>
+		<menu img="components/com_fsj_main/assets/images/freestyle-16.png">Freestyle Joomla</menu>
+		<!-- Administration Main File Copy Section -->
+		<files folder="admin">
+			<folder>assets</folder>
+			<folder>controllers</folder>
+			<folder>helpers</folder>
+			<folder>models</folder>
+			<folder>tables</folder>
+			<folder>tmpl</folder>
+			<folder>views</folder>
+			<filename>access.xml</filename>
+			<filename>controller.php</filename>
+			<filename>fsj_main.php</filename>
+			<filename>install.php</filename>
+			<filename>main.xml</filename>
+			<filename>menu.lang.ini</filename>
+		</files>
+		<languages folder="admin_lang">
+			<language tag="en-GB">en-GB/en-GB.com_fsj_main.ini</language>
+			<language tag="en-GB">en-GB/en-GB.com_fsj_main.sys.ini</language>
+		</languages>
+	</administration>
+</extension>

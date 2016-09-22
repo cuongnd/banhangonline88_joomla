@@ -1,0 +1,1 @@
+EasySocial.require().script("admin").done();

@@ -1,0 +1,27 @@
+[
+	{
+		// The title of the badge.
+		"title" 		: "Commentator",
+
+		// The description of the badge
+		"description"	: "Loves posting comments on blog posts.",
+
+		// The steps needed to unlock this badge.
+		"howto"			: "To unlock this badge, you need to comment on the blogs for more than 30 times.",
+
+		// The alias of the badge.
+		"alias"			: "commentator",
+
+		// The extension for this badge.
+		"extension"		: "com_easyblog",
+
+		// The badge command.
+		"command"		: "comment.create",
+
+		// The default avatar for this rule. Relative to the site URL.
+		"avatar"		: "components/com_easyblog/assets/images/badges/commentator.png",
+
+		// When user creates a new discussion for 15 times.
+		"frequency"		: 30
+	}
+]

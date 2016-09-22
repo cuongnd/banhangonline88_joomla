@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<extension method="upgrade" type="library" version="2.5">
+  <name>Freestyle Joomla Core</name>
+  <libraryname>fsj_core</libraryname>
+  <description>Freestyle Joomla Core</description>
+  <creationDate>August 29, 2016</creationDate>
+  <authorEmail>support@freestyle-joomla.com</authorEmail>
+  <author>Freestyle Joomla</author>
+  <copyright>(C) 2013 Freestyle Joomla. All rights reserved.</copyright>
+  <license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html </license>
+  <authorUrl>http://www.freestyle-joomla.com</authorUrl>
+  <version>2.1.0.2080</version>
+  <files folder=".">
+    <folder>admin</folder>
+    <folder>assets</folder>
+    <folder>html</folder>
+    <folder>lib</folder>
+    <folder>plugins</folder>
+    <folder>smart_tpl</folder>
+    <folder>tables</folder>
+    <folder>third</folder>
+    <folder>tmpl</folder>
+  </files>
+  <languages folder="site_lang">
+    <language tag="en-GB">en-GB.lib_fsj_core.ini</language>
+  </languages>
+  <administration>
+    <languages folder="admin_lang">
+      <language tag="en-GB">en-GB.lib_fsj_core.ini</language>
+    </languages>   
+  </administration>
+</extension>

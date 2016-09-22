@@ -1,0 +1,121 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<form>
+  <authorEmail>support@freestyle-joomla.com</authorEmail>
+  <author>Freestyle Joomla</author>
+  <copyright>(C) 2013 Freestyle Joomla. All rights reserved.</copyright>
+  <license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html </license>
+  <authorUrl>http://www.freestyle-joomla.com</authorUrl>
+
+  <fieldset addfieldpath="/administrator/components/com_fsj_main/models/fields" />
+  <fieldset addfieldpath="components/com_fsj_main/models/fields" />
+  <fieldset addfieldpath="/libraries/fsj_core/html/field" />
+
+  <fieldset>
+	<field name="id"  type="text" class="readonly" label="JGLOBAL_FIELD_ID_LABEL"
+			description ="JGLOBAL_FIELD_ID_DESC" size="10" default="0"
+			readonly="true"  />
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+		<field name="source" type="text"
+			label="FSJ_MAIN_FORM_MAIN_CRONLOG_SOURCE" description=""
+			class="inputbox " size="60"
+			default=""
+			/>		
+	
+		
+		<field name="source_id" type="text"
+			label="FSJ_MAIN_FORM_MAIN_CRONLOG_SOURCE_ID" description=""
+			class="inputbox " size="60"
+			default=""
+			/>		
+	
+		
+		<field name="event" type="text"
+			label="FSJ_MAIN_FORM_MAIN_CRONLOG_EVENT" description=""
+			class="inputbox " size="60"
+			default=""
+			/>		
+	
+		
+			<field
+			name="whentime"
+			type="fsjcron"
+			label="FSJ_MAIN_FORM_MAIN_CRONLOG_WHENTIME"
+			description=""
+			use_set=""
+			size=""
+			default=""
+									
+										fsjcron_type = "runat"	
+						>	
+
+												</field>
+	
+		
+		<field name="whendate" type="text"
+			label="FSJ_MAIN_FORM_MAIN_CRONLOG_WHENDATE" description=""
+			class="inputbox " size="60"
+			default=""
+			/>		
+	
+		
+			<field
+			name="success"
+			type="fsjyesno"
+			label="FSJ_MAIN_FORM_MAIN_CRONLOG_SUCCESS"
+			description=""
+			use_set=""
+			size=""
+			default=""
+									
+										fsjyesno_custom_yes = "Success"	
+										fsjyesno_custom_no = "Fail"	
+						>	
+
+																			</field>
+	
+		
+		<field name="result" type="text"
+			label="FSJ_MAIN_FORM_MAIN_CRONLOG_RESULT" description=""
+			class="inputbox " size="60"
+			default=""
+			/>		
+	
+		
+			<field
+			name="log"
+			type="fsjcron"
+			label="FSJ_MAIN_FORM_MAIN_CRONLOG_LOG"
+			description=""
+			use_set=""
+			size=""
+			default=""
+									
+										fsjcron_type = "log"	
+						>	
+
+												</field>
+	
+
+  </fieldset>
+
+
+
+</form>

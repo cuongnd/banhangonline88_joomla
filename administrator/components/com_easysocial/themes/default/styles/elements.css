@@ -1,0 +1,280 @@
+body div#fd.es {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: #f8f8f8;
+  font-size: 12px;
+  line-height: 18px;
+}
+body div#fd.es p {
+  font-size: 12px;
+  line-height: 18px;
+}
+body div#fd.es table {
+  border-collapse: collapse;
+}
+body div#fd.es hr {
+  clear: both;
+}
+body div#fd.es .dropdown > a {
+  outline: none !important;
+}
+body div#fd.es .dropdown > a::-moz-focus-inner {
+  border: 0 !important;
+}
+body div#fd.es .panel-title {
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: normal;
+  margin: 0 0 0px;
+  padding: 0;
+  color: #626d7f;
+}
+body div#fd.es .privacy-custom-menu {
+  position: absolute;
+  padding: 10px;
+  min-width: 350px;
+}
+body div#fd.es .priority-1 {
+  color: #2aacd2;
+}
+body div#fd.es .priority-2 {
+  color: #51a351;
+}
+body div#fd.es .priority-3 {
+  color: #FBB450;
+}
+body div#fd.es .priority-4 {
+  color: #EE5F5B;
+}
+body div#fd.es .filter-bar {
+  padding: 10px;
+}
+body div#fd.es .filter-bar .form-group {
+  display: inline-block;
+}
+body div#fd.es .filter-bar .form-group:before,
+body div#fd.es .filter-bar .form-group:after {
+  content: " ";
+  display: table;
+}
+body div#fd.es .filter-bar .form-group:after {
+  clear: both;
+}
+body div#fd.es .filter-bar .form-group +.form-group {
+  margin-left: 20px;
+}
+body div#fd.es .filter-bar .form-group > strong,
+body div#fd.es .filter-bar .form-group > div {
+  float: left;
+}
+body div#fd.es .filter-bar .form-group > strong {
+  color: #888;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 30px;
+  margin-right: 5px;
+}
+body div#fd.es .filter-bar .form-group .input-group {
+  max-width: 320px;
+}
+body div#fd.es.es-window .filter-bar {
+  margin-top: 20px;
+}
+body div#fd.es.es-window .filter-bar .form-group {
+  display: inline-block;
+  margin-bottom: 0;
+  vertical-align: top;
+}
+body div#fd.es.es-window .filter-bar .input-group {
+  max-width: 220px;
+}
+body div#fd.es .es-avatar {
+  line-height: 0;
+  display: inline-block;
+  border: 2px solid white;
+  box-shadow: 0px 0px 2px rgba(0,0,0,0.4);
+}
+body div#fd.es .es-avatar img {
+  display: block;
+}
+body div#fd.es .es-avatar-circle {
+  border-radius: 50%;
+}
+body div#fd.es .es-avatar-circle img {
+  border-radius: 50%;
+}
+body div#fd.es a.es-avatar {
+  color: transparent;
+}
+body div#fd.es .es-avatar-lg {
+  width: 120px;
+  height: 120px;
+}
+body div#fd.es .es-avatar-md {
+  width: 58px;
+  height: 58px;
+}
+body div#fd.es .es-avatar-sm {
+  width: 32px;
+  height: 32px;
+}
+body div#fd.es .btn-es:hover {
+  background-position: 0 0px;
+  border: 1px solid #BBB;
+}
+body div#fd.es .btn-es-social {
+  border-radius: 10px;
+  font-size: 11px;
+  position: relative;
+  padding-left: 22px;
+}
+body div#fd.es .btn-es-social:before {
+  content: "";
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-image: url('../../../../../../media/com_easysocial/images/icons/icons-btn-social.png');
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+}
+body div#fd.es .btn-es-facebook {
+  color: #fff;
+  background-color: #5692ce;
+  border-color: #2b6cb3;
+}
+body div#fd.es .btn-es-facebook:hover,
+body div#fd.es .btn-es-facebook:focus,
+body div#fd.es .btn-es-facebook:active,
+body div#fd.es .btn-es-facebook.active,
+.open .dropdown-toggle_body div#fd.es .btn-es-facebook {
+  color: #fff;
+  background-color: #387ec3;
+  border-color: #1f4e82;
+}
+body div#fd.es .btn-es-facebook:active,
+body div#fd.es .btn-es-facebook.active,
+.open .dropdown-toggle_body div#fd.es .btn-es-facebook {
+  background-image: none;
+}
+body div#fd.es .btn-es-facebook.disabled,
+body div#fd.es .btn-es-facebook.disabled:hover,
+body div#fd.es .btn-es-facebook.disabled:focus,
+body div#fd.es .btn-es-facebook.disabled:active,
+body div#fd.es .btn-es-facebook.disabled.active,
+body div#fd.es .btn-es-facebook[disabled],
+body div#fd.es .btn-es-facebook[disabled]:hover,
+body div#fd.es .btn-es-facebook[disabled]:focus,
+body div#fd.es .btn-es-facebook[disabled]:active,
+body div#fd.es .btn-es-facebook[disabled].active,
+fieldset[disabled] body div#fd.es .btn-es-facebook,
+fieldset[disabled] body div#fd.es .btn-es-facebook:hover,
+fieldset[disabled] body div#fd.es .btn-es-facebook:focus,
+fieldset[disabled] body div#fd.es .btn-es-facebook:active,
+fieldset[disabled] body div#fd.es .btn-es-facebook.active {
+  background-color: #5692ce;
+  border-color: #2b6cb3;
+}
+body div#fd.es .btn-es-facebook .badge {
+  color: #5692ce;
+  background-color: #fff;
+}
+body div#fd.es .btn-es-facebook:before {
+  background-position: 0 0;
+}
+body div#fd.es .btn-es-twitter {
+  color: #fff;
+  background-color: #61cef4;
+  border-color: #05b3f4;
+}
+body div#fd.es .btn-es-twitter:hover,
+body div#fd.es .btn-es-twitter:focus,
+body div#fd.es .btn-es-twitter:active,
+body div#fd.es .btn-es-twitter.active,
+.open .dropdown-toggle_body div#fd.es .btn-es-twitter {
+  color: #fff;
+  background-color: #3bc2f1;
+  border-color: #0487b8;
+}
+body div#fd.es .btn-es-twitter:active,
+body div#fd.es .btn-es-twitter.active,
+.open .dropdown-toggle_body div#fd.es .btn-es-twitter {
+  background-image: none;
+}
+body div#fd.es .btn-es-twitter.disabled,
+body div#fd.es .btn-es-twitter.disabled:hover,
+body div#fd.es .btn-es-twitter.disabled:focus,
+body div#fd.es .btn-es-twitter.disabled:active,
+body div#fd.es .btn-es-twitter.disabled.active,
+body div#fd.es .btn-es-twitter[disabled],
+body div#fd.es .btn-es-twitter[disabled]:hover,
+body div#fd.es .btn-es-twitter[disabled]:focus,
+body div#fd.es .btn-es-twitter[disabled]:active,
+body div#fd.es .btn-es-twitter[disabled].active,
+fieldset[disabled] body div#fd.es .btn-es-twitter,
+fieldset[disabled] body div#fd.es .btn-es-twitter:hover,
+fieldset[disabled] body div#fd.es .btn-es-twitter:focus,
+fieldset[disabled] body div#fd.es .btn-es-twitter:active,
+fieldset[disabled] body div#fd.es .btn-es-twitter.active {
+  background-color: #61cef4;
+  border-color: #05b3f4;
+}
+body div#fd.es .btn-es-twitter .badge {
+  color: #61cef4;
+  background-color: #fff;
+}
+body div#fd.es .btn-es-twitter:before {
+  background-position: -16px 0;
+}
+body div#fd.es .btn-es-linkedin {
+  color: #fff;
+  background-color: #6cb3d3;
+  border-color: #4b97c3;
+}
+body div#fd.es .btn-es-linkedin:hover,
+body div#fd.es .btn-es-linkedin:focus,
+body div#fd.es .btn-es-linkedin:active,
+body div#fd.es .btn-es-linkedin.active,
+.open .dropdown-toggle_body div#fd.es .btn-es-linkedin {
+  color: #fff;
+  background-color: #4da3ca;
+  border-color: #34769d;
+}
+body div#fd.es .btn-es-linkedin:active,
+body div#fd.es .btn-es-linkedin.active,
+.open .dropdown-toggle_body div#fd.es .btn-es-linkedin {
+  background-image: none;
+}
+body div#fd.es .btn-es-linkedin.disabled,
+body div#fd.es .btn-es-linkedin.disabled:hover,
+body div#fd.es .btn-es-linkedin.disabled:focus,
+body div#fd.es .btn-es-linkedin.disabled:active,
+body div#fd.es .btn-es-linkedin.disabled.active,
+body div#fd.es .btn-es-linkedin[disabled],
+body div#fd.es .btn-es-linkedin[disabled]:hover,
+body div#fd.es .btn-es-linkedin[disabled]:focus,
+body div#fd.es .btn-es-linkedin[disabled]:active,
+body div#fd.es .btn-es-linkedin[disabled].active,
+fieldset[disabled] body div#fd.es .btn-es-linkedin,
+fieldset[disabled] body div#fd.es .btn-es-linkedin:hover,
+fieldset[disabled] body div#fd.es .btn-es-linkedin:focus,
+fieldset[disabled] body div#fd.es .btn-es-linkedin:active,
+fieldset[disabled] body div#fd.es .btn-es-linkedin.active {
+  background-color: #6cb3d3;
+  border-color: #4b97c3;
+}
+body div#fd.es .btn-es-linkedin .badge {
+  color: #6cb3d3;
+  background-color: #fff;
+}
+body div#fd.es .btn-es-linkedin:before {
+  background-position: -32px 0;
+}
+body div#fd.es .btn-toolbar .btn-group {
+  display: inline-block;
+}
+body div#fd.es .btn-micro {
+  font-size: 10px;
+  line-height: 8px;
+  padding: 1px 4px;
+}

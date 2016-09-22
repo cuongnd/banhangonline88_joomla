@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset name="buttons">
+		<field name="show_versions" type="list"
+			class="chzn-color"
+			label="COM_ARKEDITOR_FIELD_SHOW_VERSIONS"
+			description="COM_ARKEDITOR_FIELD_SHOW_VERSIONS_DESC"
+			default=""
+		>
+			<option value="">JGLOBAL_USE_GLOBAL</option>
+			<option value="1">JSHOW</option>
+			<option value="0">JHIDE</option>
+		</field>
+		<field name="show_new" type="list"
+			class="chzn-color"
+			label="COM_ARKEDITOR_FIELD_SHOW_NEW"
+			description="COM_ARKEDITOR_FIELD_SHOW_NEW_DESC"
+			default=""
+		>
+			<option value="">JGLOBAL_USE_GLOBAL</option>
+			<option value="1">JSHOW</option>
+			<option value="0">JHIDE</option>
+		</field>
+		<field name="show_save" type="list"
+			class="chzn-color"
+			label="COM_ARKEDITOR_FIELD_SHOW_SAVE"
+			description="COM_ARKEDITOR_FIELD_SHOW_SAVE_DESC"
+			default=""
+		>
+			<option value="">JGLOBAL_USE_GLOBAL</option>
+			<option value="1">JSHOW</option>
+			<option value="0">JHIDE</option>
+		</field>
+		<field name="show_undo" type="list"
+			class="chzn-color"
+			label="COM_ARKEDITOR_FIELD_SHOW_UNDO"
+			description="COM_ARKEDITOR_FIELD_SHOW_UNDO_DESC"
+			default=""
+		>
+			<option value="">JGLOBAL_USE_GLOBAL</option>
+			<option value="1">JSHOW</option>
+			<option value="0">JHIDE</option>
+		</field>
+		<field name="show_redo" type="list"
+			class="chzn-color"
+			label="COM_ARKEDITOR_FIELD_SHOW_REDO"
+			description="COM_ARKEDITOR_FIELD_SHOW_REDO_DESC"
+			default=""
+		>
+			<option value="">JGLOBAL_USE_GLOBAL</option>
+			<option value="1">JSHOW</option>
+			<option value="0">JHIDE</option>
+		</field>
+		<field name="show_find" type="list"
+			class="chzn-color"
+			label="COM_ARKEDITOR_FIELD_SHOW_FIND"
+			description="COM_ARKEDITOR_FIELD_SHOW_FIND_DESC"
+			default=""
+		>
+			<option value="">JGLOBAL_USE_GLOBAL</option>
+			<option value="1">JSHOW</option>
+			<option value="0">JHIDE</option>
+		</field>
+		<field name="show_close" type="list"
+			class="chzn-color"
+			label="COM_ARKEDITOR_FIELD_SHOW_CLOSE"
+			description="COM_ARKEDITOR_FIELD_SHOW_CLOSE_DESC"
+			default=""
+		>
+			<option value="">JGLOBAL_USE_GLOBAL</option>
+			<option value="1">JSHOW</option>
+			<option value="0">JHIDE</option>
+		</field>
+	</fieldset>
+	<fieldset name="tabs">
+		<field name="show_source" type="list"
+		class="chzn-color"
+		label="COM_ARKEDITOR_FIELD_SHOW_SOURCE"
+		description="COM_ARKEDITOR_FIELD_SHOW_SOURCE_DESC"
+		default=""
+		>
+			<option value="">JGLOBAL_USE_GLOBAL</option>
+			<option value="1">JSHOW</option>
+			<option value="0">JHIDE</option>
+		</field>
+		<field name="show_design" type="list"
+		class="chzn-color"
+		label="COM_ARKEDITOR_FIELD_SHOW_DESIGN"
+		description="COM_ARKEDITOR_FIELD_SHOW_DESIGN_DESC"
+		default=""
+		>
+			<option value="">JGLOBAL_USE_GLOBAL</option>
+			<option value="1">JSHOW</option>
+			<option value="0">JHIDE</option>
+		</field>
+		<field name="show_maximum" type="list"
+		class="chzn-color"
+		label="COM_ARKEDITOR_FIELD_SHOW_ELEMENTS"
+		description="COM_ARKEDITOR_FIELD_SHOW_ELEMENTS_DESC"
+		default=""
+		>
+			<option value="">JGLOBAL_USE_GLOBAL</option>
+			<option value="1">JSHOW</option>
+			<option value="0">JHIDE</option>
+		</field>
+	</fieldset>
+</form>

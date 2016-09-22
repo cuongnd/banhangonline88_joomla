@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config addfieldpath="/administrator/components/com_arkeditor/models/fields">
+	<fieldset name="buttons" label="COM_ARKEDITOR_TOOLBARS_HEADER_LABEL">
+	
+		<field 
+			name="spacer-buttons"
+			type="spacer"
+			label="COM_ARKEDITOR_HEADER_BUTTONS_LABEL"
+			description="COM_ARKEDITOR_HEADER_BUTTONS_LABEL" />
+		
+		<field name="show_versions" type="radio"
+			class="btn-group btn-group-yesno"
+			label="COM_ARKEDITOR_FIELD_SHOW_VERSIONS"
+			description="COM_ARKEDITOR_FIELD_SHOW_VERSIONS_DESC"
+			default="1"
+		>
+			<option value="1">JSHOW</option>
+			<option value="0">JHIDE</option>
+		</field>
+		<field name="show_new" type="radio"
+			class="btn-group btn-group-yesno"
+			label="COM_ARKEDITOR_FIELD_SHOW_NEW"
+			description="COM_ARKEDITOR_FIELD_SHOW_NEW_DESC"
+			default="1"
+		>
+			<option value="1">JSHOW</option>
+			<option value="0">JHIDE</option>
+		</field>
+		<field name="show_save" type="radio"
+			class="btn-group btn-group-yesno"
+			label="COM_ARKEDITOR_FIELD_SHOW_SAVE"
+			description="COM_ARKEDITOR_FIELD_SHOW_SAVE_DESC"
+			default="1"
+		>
+			<option value="1">JSHOW</option>
+			<option value="0">JHIDE</option>
+		</field>
+		<field name="show_undo" type="radio"
+			class="btn-group btn-group-yesno"
+			label="COM_ARKEDITOR_FIELD_SHOW_UNDO"
+			description="COM_ARKEDITOR_FIELD_SHOW_UNDO_DESC"
+			default="1"
+		>
+			<option value="1">JSHOW</option>
+			<option value="0">JHIDE</option>
+		</field>
+		<field name="show_redo" type="radio"
+			class="btn-group btn-group-yesno"
+			label="COM_ARKEDITOR_FIELD_SHOW_REDO"
+			description="COM_ARKEDITOR_FIELD_SHOW_REDO_DESC"
+			default="1"
+		>
+			<option value="1">JSHOW</option>
+			<option value="0">JHIDE</option>
+		</field>
+		<field name="show_find" type="radio"
+			class="btn-group btn-group-yesno"
+			label="COM_ARKEDITOR_FIELD_SHOW_FIND"
+			description="COM_ARKEDITOR_FIELD_SHOW_FIND_DESC"
+			default="1"
+		>
+			<option value="1">JSHOW</option>
+			<option value="0">JHIDE</option>
+		</field>
+		<field name="show_close" type="radio"
+			class="btn-group btn-group-yesno"
+			label="COM_ARKEDITOR_FIELD_SHOW_CLOSE"
+			description="COM_ARKEDITOR_FIELD_SHOW_CLOSE_DESC"
+			default="1"
+		>
+			<option value="1">JSHOW</option>
+			<option value="0">JHIDE</option>
+		</field>
+		
+		<field 
+			name="spacer-tabs"
+			type="spacer"
+			label="COM_ARKEDITOR_HEADER_TABS_LABEL"
+			description="COM_ARKEDITOR_HEADER_TABS_LABEL" />
+		
+		<field name="show_source" type="radio"
+		class="btn-group btn-group-yesno"
+		label="COM_ARKEDITOR_FIELD_SHOW_SOURCE"
+		description="COM_ARKEDITOR_FIELD_SHOW_SOURCE_DESC"
+		default="1"
+		>
+			<option value="1">JSHOW</option>
+			<option value="0">JHIDE</option>
+		</field>
+		<field name="show_design" type="radio"
+		class="btn-group btn-group-yesno"
+		label="COM_ARKEDITOR_FIELD_SHOW_DESIGN"
+		description="COM_ARKEDITOR_FIELD_SHOW_DESIGN_DESC"
+		default="1"
+		>
+			<option value="1">JSHOW</option>
+			<option value="0">JHIDE</option>
+		</field>
+		<field name="show_maximum" type="radio"
+		class="btn-group btn-group-yesno"
+		label="COM_ARKEDITOR_FIELD_SHOW_ELEMENTS"
+		description="COM_ARKEDITOR_FIELD_SHOW_ELEMENTS_DESC"
+		default="1"
+		>
+			<option value="1">JSHOW</option>
+			<option value="0">JHIDE</option>
+		</field>
+		
+	</fieldset>
+	<fieldset name="inline" label="COM_ARKEDITOR_INLINE_LABEL">
+		<field name="enable_inline" type="radio"
+		class="btn-group btn-group-yesno"
+		label="COM_ARKEDITOR_FIELD_ENABLE_INLINE"
+		description="COM_ARKEDITOR_FIELD_ENABLE_INLINE_DESC"
+		default="1"
+		>
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+		<field name="auto_disable_inline" type="radio"
+		class="btn-group btn-group-yesno"
+		label="COM_ARKEDITOR_FIELD_AUTO_DISABLE_INLINE"
+		description="COM_ARKEDITOR_FIELD_AUTO_DISABLE_INLINE_DESC"
+		default="1"
+		>
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+		<field name="enable_autosave" type="radio"
+		class="btn-group btn-group-yesno"
+		label="COM_ARKEDITOR_FIELD_ENABLE_AUTOSAVE"
+		description="COM_ARKEDITOR_FIELD_ENABLE_AUTOSAVE_DESC"
+		default="1"
+		>
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+		<field name="enable_sefbasepath" type="radio"
+		class="btn-group btn-group-yesno"
+		label="COM_ARKEDITOR_FIELD_ENABLE_SEFBASEPATH"
+		description="COM_ARKEDITOR_FIELD_ENABLE_SEFBASEPATH_DESC"
+		default="1"
+		>
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+		<field name="enable_toolbarswitcher" type="radio"
+		class="btn-group btn-group-yesno"
+		label="COM_ARKEDITOR_FIELD_ENABLE_TOOLBARSWITCHER"
+		description="COM_ARKEDITOR_FIELD_ENABLE_TOOLBARSWITCHER_DESC"
+		default="1"
+		>
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+		<field name="enable_modulehistory" type="radio"
+		class="btn-group btn-group-yesno"
+		label="COM_ARKEDITOR_FIELD_ENABLE_MODULEHISTORY"
+		description="COM_ARKEDITOR_FIELD_ENABLE_MODULEHISTORY_DESC"
+		default="1"
+		>
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+		<field
+		name="enable_editable_titles"
+		type="radio"
+		class="btn-group btn-group-yesno"
+		default="1"
+		label="COM_ARKEDITOR_FIELD_ENABLE_EDITABLE_TITLES"
+		description="COM_ARKEDITOR_FIELD_ENABLE_EDITABLE_TITLES_DESC">
+		<option value="1">JYES</option>
+		<option value="0">JNO</option>
+		</field>
+		
+		<field
+		name="enable_editable_modules_titles"
+		type="radio"
+		class="btn-group btn-group-yesno"
+		default="0"
+		label="COM_ARKEDITOR_FIELD_ENABLE_EDITABLE_MODULES_TITLES"
+		description="COM_ARKEDITOR_FIELD_ENABLE_EDITABLE_MODULES_TITLES_DESC">
+		<option value="1">JYES</option>
+		<option value="0">JNO</option>
+		</field>
+		
+		<field
+		name="enable_user_warnings"
+		type="radio"
+		class="btn-group btn-group-yesno"
+		default="1"
+		label="COM_ARKEDITOR_FIELD_ENABLE_USER_WARNINGS"
+		description="COM_ARKEDITOR_FIELD_ENABLE_USER_WARNINGS_DESC">
+		<option value="1">JYES</option>
+		<option value="0">JNO</option>
+		</field>
+		
+		
+		<field 
+			name="component_auto_enable_editable_regions_list"
+			type="adercomponentList"
+			label="COM_ARKEDITOR_FIELD_COMPONENT_AUTO_ENABLE_EDITABLE_REGIONS_LIST"
+			description="COM_ARKEDITOR_FIELD_COMPONENT_AUTO_ENABLE_EDITABLE_REGIONS_LIST_DESC"/>	
+			
+			
+		<field name="enable_magicline" type="radio"
+		class="btn-group btn-group-yesno"
+		label="COM_ARKEDITOR_FIELD_ENABLE_MAGICLINE"
+		description="COM_ARKEDITOR_FIELD_ENABLE_MAGICLINE_DESC"
+		default="0"
+		>
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>	
+				
+	</fieldset>
+	<fieldset name="filebrowser" label="COM_ARKEDITOR_FILEBROWSER_LABEL">
+		<field name="imagePath" 
+		type="text" 
+		default="images" 
+		label="COM_ARKEDITOR_IMGPATH" 
+		description="COM_ARKEDITOR_IMGPATH_DESC" />
+		<field name="filePath" 
+		type="text" 
+		default="files" 
+		label="COM_ARKEDITOR_FILEPATH"
+		description="COM_ARKEDITOR_FILEPATH_DESC" />
+	</fieldset>
+	<fieldset addfieldpath="plugins/editors/arkeditor/form/fields" name="typography" label="COM_ARKEDITOR_TYPOGRAPHY_LABEL">
+		
+		<field name="usetemplatecss" type="radio"
+		class="btn-group btn-group-yesno"
+		label="COM_ARKEDITOR_FIELD_ENABLE_TEMPLATECSS"
+		description="COM_ARKEDITOR_FIELD_ENABLE_TEMPLATECSS_DESC"
+		default="1"
+		>
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+		
+		<field name="arktypography" 
+		type="list"
+		label="COM_ARKEDITOR_FIELD_ENABLE_TYPOGRAPHY"
+		description="COM_ARKEDITOR_FIELD_ENABLE_TYPOGRAPHY_DESC"
+		default="1"
+		>
+			<option value="1">ARKTYPOGRAPHY</option>
+			<option value="0">ARKCUSTOM</option>
+		</field>
+		
+		<field name="arktypographycontent" 
+		type="stylesheettextarea"  
+		cols="45" 
+		rows="10" 
+		default="" 
+		filter="base64_encode" 
+		label="COM_ARKEDITOR_FIELD_TYPOGRAPHY" 
+		description="COM_ARKEDITOR_FIELD_TYPOGRAPHY_DESC"/>
+		
+		<field name="arkcustomtypographycontent" 
+		type="stylesheettextarea"  
+		cols="45" 
+		rows="10" 
+		default="" 
+		filter="base64_encode" 
+		label="COM_ARKEDITOR_FIELD_CUSTOM_TYPOGRAPHY" 
+		description="COM_ARKEDITOR_FIELD_CUSTOM_TYPOGRAPHY_DESC"/>
+		
+		<field name="arkcustomtypographyfile" 
+		text="stylesheettextarea" 
+		hint="templates/"	
+		default="" 
+		label="COM_ARKEDITOR_FIELD_CUSTOM_TYPOGRAPHY_FILE" 
+		description="COM_ARKEDITOR_FIELD_CUSTOM_TYPOGRAPHY_FILE_DESC"/>
+				
+		<field 
+			name="spacer-stylesheet"
+			type="spacer"
+			label="COM_ARKEDITOR_FIELD_EXCLUDE_STYLESHEET_TITLE"
+			description="COM_ARKEDITOR_FIELD_EXCLUDE_STYLESHEET_TITLE" />
+		
+		<field 
+			name="default_exclude_stylesheet"
+			type="listmultiple"
+			multiple="true"
+			default="*"
+			label="COM_ARKEDITOR_FIELD_DEFAULT_EXCLUDE_STYLESHEET"
+			description="COM_ARKEDITOR_FIELD_DEFAULT_EXCLUDE_STYLESHEET_DESC"
+			filter="array">
+			<option value="modal">modal</option>
+			<option value="bootstrap">bootstrap</option>
+			<option value="frontediting">frontediting</option>
+			<option value="s5_responsive_rtl.css">s5_responsive_rtl.css</option>
+			<option value="s5_vertex_addons.php">s5_vertex_addons.php</option>
+			<option value="thirdparty.css">thirdparty.css</option>
+			<option value="s5_flex_menu.css">s5_flex_menu.css</option>
+			<option value="s5_responsive_bars.css">s5_responsive_bars.css</option>
+			<option value="s5_responsive_hide_classes.css">s5_responsive_hide_classes.css</option>
+			<option value="error.css">error.css</option>
+		</field>
+		
+		<field 
+		name="exclude_stylesheets"
+		type="repeatablefix"
+		multiple="true"
+		label="COM_ARKEDITOR_FIELD_EXCLUDE_STYLESHEET"
+		description="COM_ARKEDITOR_FIELD_EXCLUDE_STYLESHEET_DESC">
+			<fieldset hidden="true" repeat="true">
+				<field 
+					name="exclude_stylesheet" 
+					type="text" 
+					hint="COM_ARKEDITOR_FIELD_EXCLUDE_STYLESHEET_HINT" 
+					label="COM_ARKEDITOR_FIELD_EXCLUDE_STYLESHEET" 
+					description="COM_ARKEDITOR_FIELD_EXCLUDE_STYLESHEET_DESC"
+					filter="cmd" />
+			</fieldset>
+		</field>
+		
+		
+		<field 
+			name="spacer-selectors"
+			type="spacer"
+			label="COM_ARKEDITOR_FIELD_EXCLUDE_STYLESHEET_PARSER_TITLE"
+			description="COM_ARKEDITOR_FIELD_EXCLUDE_STYLESHEET_PARSER_TITLE" />
+		
+		<field 
+			name="default_exclude_selectors"
+			type="listmultiple"
+			multiple="true"
+			default="*"
+			label="COM_ARKEDITOR_FIELD_DEFAULT_EXCLUDE_STYLESHEET_PARSER_LIST"
+			description="COM_ARKEDITOR_FIELD_DEFAULT_EXCLUDE_STYLESHEET_PARSER_LIST_DESC"
+			filter="array">
+			<option value="body">body</option>
+			<option value="cke_">cke_</option>
+			<option value="__">__</option>
+			<option value="sbox">sbox</option>
+			<option value="input">input</option>
+			<option value="textarea">textarea</option>
+			<option value="button">button</option>
+			<option value="select">select</option>
+			<option value="form">form</option>
+			<option value="fieldset">fieldset</option>
+			<option value=".modal-backdrop">.modal-backdrop</option>
+			<option value="div.modal">div.modal</option>
+			<option value=".dropdown-backdrop">.dropdown-backdrop</option>
+			<option value=".chzn">.chzn</option>
+			<option value=".uk-slideshow-swipe">.uk-slideshow-swipe</option>
+			<option value=".fa-">.fa-</option>
+			<option value=".fa-">.fa.</option>
+			<option value="#jcemediabox-">#jcemediabox-</option>
+			<option value=".jcemediabox-">.jcemediabox-</option>
+			<option value=".pweb-">.pweb-</option>
+			<option value=".uk-position">.uk-position</option>
+			<option value=".uk-accordion-icon-title">.uk-accordion-icon-title</option>
+		</field>
+		
+		<field 
+		name="exclude_selectors"
+		type="repeatablefix"
+		multiple="true"
+		label="COM_ARKEDITOR_FIELD_EXCLUDE_STYLESHEET_PARSER_LIST"
+		description="COM_ARKEDITOR_FIELD_EXCLUDE_STYLESHEET_PARSER_LIST_DESC">
+			<fieldset hidden="true" repeat="true">
+				<field 
+					name="exclude_selector" 
+					type="text" 
+					hint="COM_ARKEDITOR_FIELD_EXCLUDE_SELECTOR_HINT" 
+					label="COM_ARKEDITOR_FIELD_EXCLUDE_SELECTOR" 
+					description="COM_ARKEDITOR_FIELD_EXCLUDE_SELECTOR_DESC"
+					filter="cmd" />
+			</fieldset>
+		</field>
+		
+		<field name="useArkProxy" default="0" type="hidden" />
+		
+	</fieldset>
+	<fieldset name="editor" label="COM_ARKEDITOR_EDITOR_LABEL">
+		<field
+			name="enable_preloader"
+			type="radio"
+			class="btn-group btn-group-yesno"
+			default="1"
+			label="COM_ARKEDITOR_FIELD_ENABLE_PRELOADER"
+			description="COM_ARKEDITOR_FIELD_ENABLE_PRELOADER_DESC">
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+		<field
+			name="enable_debug"
+			type="radio"
+			class="btn-group btn-group-yesno"
+			default="0"
+			label="COM_ARKEDITOR_FIELD_ENABLE_DEBUG"
+			description="COM_ARKEDITOR_FIELD_ENABLE_DEBUG_DESC">
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+	</fieldset>
+	<fieldset
+		name="permissions"
+		label="JCONFIG_PERMISSIONS_LABEL"
+		description="JCONFIG_PERMISSIONS_DESC"
+		>
+
+		<field
+			name="rules"
+			type="rules"
+			label="JCONFIG_PERMISSIONS_LABEL"
+			filter="rules"
+			validate="rules"
+			component="com_arkeditor"
+			section="component"/>
+	</fieldset>
+</config>                                  

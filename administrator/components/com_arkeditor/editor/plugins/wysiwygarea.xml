@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<install version="1.5" type="plugin" plugin="wysiwygarea" method="upgrade">
+	<version>0.1</version>
+	<creationDate>Feb 2012</creationDate>
+	<author>WebxSolution Ltd</author>
+	<authorUrl>http://www.arkextensions.com</authorUrl>
+	<license>GNU/GPLv2</license>
+	<description>PLG_ARKEDITOR_DESC</description>
+	<languages>
+	</languages>
+<params group="options">
+		<param name="resize_enabled" type="resizeradio" default="1" label="PLG_ARKEDITOR_ENABLE_RESIZING" description="PLG_ARKEDITOR_ENABLE_RESIZING_DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="resize_dir" type="list" default="both" label="PLG_ARKEDITOR_RESIZE_DIRECTION" description="PLG_ARKEDITOR_RESIZE_DIRECTION_DESC">
+			<option value="both">Both</option>
+			<option value="vertical">Vertical</option>
+			<option value="horizontal">Horizontal</option>
+		</param>
+		<param name="resize_maxHeight" type="list" default="1500" label="PLG_ARKEDITOR_RESIZE_MAX_HEIGHT" description="PLG_ARKEDITOR_RESIZE_MAX_HEIGHT_DESC">
+			<option value="500">500</option>
+			<option value="1000">1000</option>
+			<option value="1500">1500</option>
+			<option value="2000">2000</option>
+			<option value="2500">2500</option>
+			<option value="3000">3000</option>
+		</param>
+		<param name="resize_maxWidth" type="list" default="1500" label="PLG_ARKEDITOR_RESIZE_MAX_WIDTH" description="PLG_ARKEDITOR_RESIZE_MAX_WIDTH_DESC">
+			<option value="750">750</option>
+			<option value="1000">1000</option>
+			<option value="1500">1500</option>
+			<option value="2000">2000</option>
+			<option value="2500">2500</option>
+			<option value="3000">3000</option>
+		</param>
+		<param name="resize_minHeight" type="list" default="250" label="PLG_ARKEDITOR_RESIZE_MIN_HEIGHT" description="PLG_ARKEDITOR_RESIZE_MIN_HEIGHT_DESC">
+			<option value="250">250</option>
+			<option value="300">300</option>
+			<option value="350">350</option>
+			<option value="400">400</option>
+			<option value="450">450</option>
+			<option value="500">500</option>
+		</param>
+			<param name="resize_minWidth" type="list" default="300" label="PLG_ARKEDITOR_RESIZE_MIN_WIDTH" description="PLG_ARKEDITOR_RESIZE_MIN_WIDTH_DESC">
+			<option value="300">300</option>
+			<option value="400">400</option>
+			<option value="450">450</option>
+			<option value="500">500</option>
+			<option value="550">550</option>
+			<option value="600">600</option>
+			<option value="650">650</option>
+			<option value="700">700</option>
+			<option value="750">750</option>
+		</param>
+		<param name="startupFocus" type="radio" default="0" label="PLG_ARKEDITOR_ENABLE_FOCUS_ON_STARTUP" description="PLG_ARKEDITOR_ENABLE_FOCUS_ON_STARTUP_DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="ignoreEmptyParagraph" type="radio" default="1" label="PLG_ARKEDITOR_IGNORE_EMPTY_PARAGRAPH" description="PLG_ARKEDITOR_IGNORE_EMPTY_PARAGRAPH_DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="bodyClass" type="text" default="" label="PLG_ARKEDITOR_RESIZE_BODY_CLASS" description="PLG_ARKEDITOR_RESIZE_BODY_CLASS_DESC"/>
+		<param name="bodyId" type="text" default="" label="PLG_ARKEDITOR_RESIZE_BODY_ID" description="PLG_ARKEDITOR_RESIZE_BODY_ID_DESC"/>
+		<param name="disableObjectResizing" type="radio" default="0" label="PLG_ARKEDITOR_DISABLE_OBJECT_RESIZING" description="PLG_ARKEDITOR_DISABLE_OBJECT_RESIZING_DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="docType" type="documenttypelist" default="&lt;!DOCTYPE html&gt;" label="PLG_ARKEDITOR_RESIZE_HTML_DOCUMENT_TYPE" description="PLG_ARKEDITOR_RESIZE_HTML_DOCUMENT_TYPE_DESC">
+			<option value="&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;">XHTML</option>
+			<option value="&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.0 Transitional//EN&quot;&gt;">HTML4</option>
+			<option value="&lt;!DOCTYPE html&gt;">HTML5</option>
+		</param>
+</params>
+</install>

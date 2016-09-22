@@ -1,0 +1,29 @@
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+License for use of MaQma Helpdesk Component (the product)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. This End-User License Agreement ("EULA") is a legal agreement between you (either an individual or a single entity) and Components Lab, Lda. ("CLAB") and describes your rights and obligations regarding the use of the MaQma Helpdesk Component ("SOFTWARE PRODUCT").
+
+2. The SOFTWARE PRODUCT is the intellectual property of and is owned by CLAB.
+
+3. The SOFTWARE PRODUCT is protected by copyright laws and international copyright treaties, as well as other intellectual property laws and treaties. The SOFTWARE PRODUCT is licensed, not sold.
+
+4. This license issued for the product is:
+A single site USAGE license. The purchaser of this license can use the product on a single site / domain. For usage on more than one site the user must buy additional licenses. Once purchased, the user is granted a non-exclusive license to use the product as defined by these licensing terms, for any legal purpose.
+
+5. This SOFTWARE PRODUCT is provided "AS IS" without warranty of any kind including, but not limited to, warranties of merchantability, fitness for a particular purpose and non-infringement. In no event will the FOSS be liable for any direct, indirect, incidental, special, exemplary or consequential damages, including damages for loss of profits, loss or inaccuracy of data, incurred by any person from such person's usage of this SOFTWARE PRODUCT even if advised of the possibility of such damages.
+
+6. This SOFTWARE PRODUCT is NOT open source software. Buying it does not grant you access to its source code. Thus, the product can not be modified apart from configurations described in it's manual. The product's source code can not be received or bought.
+
+7. There's an optional Yearly Subscription to be able to receive updates, patches and/or new releases to the SOFTWARE PRODUCT.
+
+8. You may not use, copy, emulate, clone, rent, lease, sell, or transfer the licensed product, or any subset of it, except as provided for in this agreement. You may not distribute licensed product, or any part of it. You may not reverse engineer the product in order to gain access to its source code.
+Any such unauthorized use shall result in immediate and automatic termination of this license and may result in criminal and/or civil prosecution.
+
+9. Due to the non-tangible nature of the product, the refunds are not offered. You are responsible of making sure that you can run the product and that it fulfills your requirements prior to purchase. You can do so by reading the documentation and FAQ, testing the demo and downloading and installing the free trial.
+
+10. Installing and using the product signifies acceptance of these terms and conditions of the license.
+
+11. If you do not agree with the terms of this license do not purchase the product. If you already purchased it, you must remove the product files from your storage devices and cease to use the product.
+
+All rights not expressly granted here are reserved by Components Lab, Lda., http://www.imaqma.com

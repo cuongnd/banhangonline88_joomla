@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="3.0.0" method="upgrade">
+	<name>com_easyblog</name>
+	<creationDate>12/02/2010</creationDate>
+	<author>Stack Ideas</author>
+	<authorEmail>support@stackideas.com</authorEmail>
+	<authorUrl>http://www.stackideas.com</authorUrl>
+	<copyright>Copyright 2009-2012 Stack Ideas. All rights reserved</copyright>
+	<license>GPL License</license>
+	<version>3.9.24862</version>
+	<description>
+		EasyBlog is a Joomla! blogging component that transforms your Joomla! site into a powerful multi-blogging website.
+	</description>
+	<scriptfile>script.php</scriptfile>
+	<install>
+		<sql>
+			<file driver="mysql" charset="utf8">install.mysql.utf8.sql</file>
+		</sql>
+	</install>
+	<uninstall>
+		<sql>
+			<file driver="mysql" charset="utf8">uninstall.mysql.utf8.sql</file>
+		</sql>
+	</uninstall>
+	<update>
+		<schemas>
+			<schemapath type="mysql">sql/updates/mysql</schemapath>
+		</schemas>
+	</update>
+	<files folder="site">
+		<folder>assets</folder>
+		<folder>classes</folder>
+		<folder>controllers</folder>
+		<folder>helpers</folder>
+		<folder>models</folder>
+		<folder>sef_ext</folder>
+		<folder>themes</folder>
+		<folder>views</folder>
+		<filename>constants.php</filename>
+		<filename>controller.php</filename>
+		<filename>COPYRIGHT.PHP</filename>
+		<filename>easyblog.php</filename>
+		<filename>index.html</filename>
+		<filename>jomsocial_rule.xml</filename>
+		<filename>LICENSE.php</filename>
+		<filename>router.php</filename>
+		<filename>sef_ext.php</filename>
+		<filename>views.php</filename>
+	</files>
+
+	<media folder="media">
+        <folder>com_easyblog</folder>
+	</media>
+
+	<administration>
+		<menu link="option=com_easyblog" img="../media/com_easyblog/images/easyblog-16x16.png">COM_EASYBLOG</menu>
+		<submenu>
+			<menu view="acls" img="components/com_easyblog/assets/images/acls-favicon.png">COM_EASYBLOG_ADMIN_MENU_ACL</menu>
+			<menu view="blogs" img="components/com_easyblog/assets/images/blogs-favicon.png">COM_EASYBLOG_ADMIN_MENU_BLOGS</menu>
+			<menu view="categories" img="components/com_easyblog/assets/images/categories-favicon.png">COM_EASYBLOG_ADMIN_MENU_CATEGORIES</menu>
+			<menu view="comments" img="components/com_easyblog/assets/images/comments-favicon.png">COM_EASYBLOG_ADMIN_MENU_COMMENTS</menu>
+			<menu view="metas" img="components/com_easyblog/assets/images/meta-favicon.png">COM_EASYBLOG_ADMIN_MENU_METATAGS</menu>
+			<menu view="migrators" img="components/com_easyblog/assets/images/migrators-favicon.png">COM_EASYBLOG_ADMIN_MENU_MIGRATORS</menu>
+			<menu view="pending" img="components/com_easyblog/assets/images/pending-favicon.png">COM_EASYBLOG_ADMIN_MENU_PENDING</menu>
+			<menu view="settings" img="components/com_easyblog/assets/images/settings-favicon.png">COM_EASYBLOG_ADMIN_MENU_SETTINGS</menu>
+			<menu view="subscriptions" img="components/com_easyblog/assets/images/subscriptions-favicon.png">COM_EASYBLOG_ADMIN_MENU_SUBSCRIPTIONS</menu>
+			<menu view="tags" img="components/com_easyblog/assets/images/tags-favicon.png">COM_EASYBLOG_ADMIN_MENU_TAGS</menu>
+			<menu view="teamblogs" img="components/com_easyblog/assets/images/teamblogs-favicon.png">COM_EASYBLOG_ADMIN_MENU_TEAMBLOGS</menu>
+			<menu view="themes" img="components/com_easyblog/assets/images/themes-favicon.png">COM_EASYBLOG_ADMIN_MENU_THEMES</menu>
+			<menu view="trackbacks" img="components/com_easyblog/assets/images/trackback-favicon.png">COM_EASYBLOG_ADMIN_MENU_TRACKBACKS</menu>
+			<menu view="users" img="components/com_easyblog/assets/images/users-favicon.png">COM_EASYBLOG_ADMIN_MENU_USERS</menu>
+		</submenu>
+		<files folder="admin">
+			<folder>assets</folder>
+			<folder>controllers</folder>
+			<folder>elements</folder>
+			<folder>models</folder>
+			<folder>tables</folder>
+			<folder>views</folder>
+			<folder>sql</folder>
+			<folder>xmlfiles</folder>
+			<folder>easysocial</folder>
+			<filename>admin.easyblog.php</filename>
+			<filename>configuration.ini</filename>
+			<filename>easyblog.php</filename>
+			<filename>install.defaultvalue.php</filename>
+			<filename>install.mysql.utf8.sql</filename>
+			<filename>toolbar.easyblog.php</filename>
+			<filename>uninstall.mysql.utf8.sql</filename>
+			<filename>views.php</filename>
+			<filename>foundry.php</filename>
+			<filename>config.xml</filename>
+			<filename>access.xml</filename>
+		</files>
+		<languages>
+			<language tag="en-GB">languages/admin/en-GB.com_easyblog.ini</language>
+			<language tag="en-GB">languages/admin/en-GB.com_easyblog.sys.ini</language>
+		</languages>
+	</administration>
+	<languages>
+		<language tag="en-GB">languages/site/en-GB.com_easyblog.ini</language>
+	</languages>
+</extension>

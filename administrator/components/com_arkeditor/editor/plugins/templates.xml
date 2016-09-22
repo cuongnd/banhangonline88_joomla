@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<install version="1.5" type="plugin" plugin="templates" method="upgrade">
+	<version>0.1</version>
+	<creationDate>Feb 2012</creationDate>
+	<author>WebxSolution Ltd</author>
+	<authorUrl>http://www.arkextensions.com</authorUrl>
+	<license>GNU/GPLv2</license>
+	<description>PLG_ARKEDITOR_DESC</description>
+	<languages>
+	</languages>
+	<params group="options">
+		<param name="templates_replaceContent" type="radio" default="0" label="PLG_ARKEDITOR_REPLACE_CONTENT" description="PLG_ARKEDITOR_REPLACE_CONTENT_DESC.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+	</params>
+</install>

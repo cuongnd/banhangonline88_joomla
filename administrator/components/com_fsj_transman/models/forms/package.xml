@@ -1,0 +1,227 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<form>
+  <authorEmail>support@freestyle-joomla.com</authorEmail>
+  <author>Freestyle Joomla</author>
+  <copyright>(C) 2013 Freestyle Joomla. All rights reserved.</copyright>
+  <license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html </license>
+  <authorUrl>http://www.freestyle-joomla.com</authorUrl>
+
+  <fieldset addfieldpath="/administrator/components/com_fsj_transman/models/fields" />
+  <fieldset addfieldpath="components/com_fsj_transman/models/fields" />
+  <fieldset addfieldpath="/libraries/fsj_core/html/field" />
+
+  <fieldset>
+	<field name="id"  type="text" class="readonly" label="JGLOBAL_FIELD_ID_LABEL"
+			description ="JGLOBAL_FIELD_ID_DESC" size="10" default="0"
+			readonly="true"  />
+
+	
+	<field name="title" type="text" label="JGLOBAL_TITLE"
+			description="JGLOBAL_TITLE"
+			class="inputbox input-xxlarge input-large-text"
+			size="40"
+			required="true" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+			<field
+			name="langcode"
+			type="fsjlookup"
+			label="FSJ_TRANSMAN_FORM_TRANSMAN_PACKAGE_LANGCODE"
+			description=""
+			lu_table="(SELECT element, element as text, element as value FROM #__extensions WHERE type = 'language' GROUP BY element ORDER BY element)"
+			lu_field="element"
+			lu_display="text"
+			lu_nested="0"
+			lu_sql=""
+			use_state="0"
+			state=""
+			use_set=""
+			onchange=""
+			readonly="0"
+		>
+					</field>
+
+	
+		
+		<field name="ver" type="text"
+			label="FSJ_TRANSMAN_FORM_TRANSMAN_PACKAGE_VER" description=""
+			class="inputbox " size="56"
+			default=""
+			/>		
+	
+		
+		<field name="author" type="text"
+			label="FSJ_TRANSMAN_FORM_TRANSMAN_PACKAGE_AUTHOR" description=""
+			class="inputbox " size="56"
+			default=""
+			/>		
+	
+		
+		<field name="creationDate" type="text"
+			label="FSJ_TRANSMAN_FORM_TRANSMAN_PACKAGE_CREATIONDATE" description=""
+			class="inputbox " size="56"
+			default=""
+			/>		
+	
+		
+		<field name="email" type="text"
+			label="FSJ_TRANSMAN_FORM_TRANSMAN_PACKAGE_EMAIL" description=""
+			class="inputbox " size="56"
+			default=""
+			/>		
+	
+		
+		<field name="url" type="text"
+			label="FSJ_TRANSMAN_FORM_TRANSMAN_PACKAGE_URL" description=""
+			class="inputbox " size="56"
+			default=""
+			/>		
+	
+		
+		<field name="copyright" type="text"
+			label="FSJ_TRANSMAN_FORM_TRANSMAN_PACKAGE_COPYRIGHT" description=""
+			class="inputbox " size="56"
+			default=""
+			/>		
+	
+		
+		<field name="license" type="text"
+			label="FSJ_TRANSMAN_FORM_TRANSMAN_PACKAGE_LICENSE" description=""
+			class="inputbox " size="56"
+			default=""
+			/>		
+	
+		
+		<field name="filename" type="text"
+			label="FSJ_TRANSMAN_FORM_TRANSMAN_PACKAGE_FILENAME" description="Filename template for the package."
+			class="inputbox input-xxlarge" size="60"
+			default=""
+			/>		
+	
+		
+								<field name="description" type="editor" class="inputbox"
+			label="FSJ_TRANSMAN_FORM_TRANSMAN_PACKAGE_DESCRIPTION" description=""
+			filter="JComponentHelper::filterText" buttons="true"
+			 hide="readmore,pagebreak" 			default=""
+			 />
+				
+	
+		
+		<field name="adminfiles" type="text"
+			label="" description=""
+			class="inputbox " size="60"
+			default=""
+			/>		
+	
+		
+		<field name="sitefiles" type="text"
+			label="" description=""
+			class="inputbox " size="60"
+			default=""
+			/>		
+	
+		
+			<field
+			name="files"
+			type="fsjtmaddfiles"
+			label="FSJ_TRANSMAN_FORM_TRANSMAN_PACKAGE_FILES"
+			description=""
+			use_set=""
+			size=""
+			default=""
+									
+						>	
+
+					</field>
+	
+		
+			<field
+			name="makepackage"
+			type="fsjtmmakepackage"
+			label="FSJ_TRANSMAN_FORM_TRANSMAN_PACKAGE_MAKEPACKAGE"
+			description=""
+			use_set=""
+			size=""
+			default=""
+									
+						>	
+
+					</field>
+	
+		
+		<field name="pubfolder" type="text"
+			label="FSJ_TRANSMAN_FORM_TRANSMAN_PACKAGE_PUBFOLDER" description="Folder to publish the package to. This is relative to the root of your Joomla install."
+			class="inputbox input-xxlarge" size="60"
+			default=""
+			/>		
+	
+		
+			<field
+			name="pubdisp"
+			type="fsjtmpubdisp"
+			label="FSJ_TRANSMAN_FORM_TRANSMAN_PACKAGE_PUBDISP"
+			description=""
+			use_set=""
+			size=""
+			default=""
+									
+						>	
+
+					</field>
+	
+		
+		<field name="updateserver" type="text"
+			label="FSJ_TRANSMAN_FORM_TRANSMAN_PACKAGE_UPDATESERVER" description="URL for the update server to be used within the package. This needs to be a full url, including http://domain.com etc"
+			class="inputbox input-xxlarge" size="60"
+			default=""
+			/>		
+	
+		
+			<field
+			name="statichelp"
+			type="fsjstatic"
+			label=""
+			description=""
+			use_set=""
+			size=""
+			default=""
+									
+										fsjstatic_html = "&lt;p&gt;If a publish folder is enabled, the 'Publish' button will be displayed. It will save the package to the folder specified when used.&lt;/p&gt;
+            &lt;p&gt;Within the path text and download filename, the following tags will be replaced:&lt;/p&gt;
+            &lt;ul&gt;
+              &lt;li&gt;{title} - Title&lt;/li&gt;
+              &lt;li&gt;{alias} - Alias&lt;/li&gt;
+              &lt;li&gt;{ver} - Version&lt;/li&gt;
+              &lt;li&gt;{author} - Author&lt;/li&gt;
+              &lt;li&gt;{date} - Date&lt;/li&gt;
+              &lt;li&gt;{email} - EMail&lt;/li&gt;
+              &lt;li&gt;{url} - URL&lt;/li&gt;
+              &lt;li&gt;{langcode} - Language Code&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;p&gt;You can also add a _c to the tag to make a sanitized url save version of the tag, such as {title_c}&lt;/p&gt;
+            &lt;p&gt;Note: Please save your changes before using the Download or Publish buttons.&lt;/p&gt;"	
+						>	
+
+												</field>
+	
+
+  </fieldset>
+
+
+
+</form>

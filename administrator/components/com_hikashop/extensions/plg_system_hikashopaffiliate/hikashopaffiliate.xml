@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install version="1.5" type="plugin" group="system" method="upgrade">
+	<name>System - HikaShop Affiliate</name>
+	<creationDate>11 mai 2016</creationDate>
+	<version>2.6.3</version>
+	<author>HikaShop</author>
+	<authorEmail>dev@hikashop.com</authorEmail>
+	<authorUrl>http://www.hikashop.com</authorUrl>
+	<copyright>(C) 2010-2016 HIKARI SOFTWARE. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<description>HikaShop System plugin to handle affiliates</description>
+	<files>
+		<filename plugin="hikashopaffiliate">hikashopaffiliate.php</filename>
+	</files>
+	<params addpath="/components/com_hikashop/params">
+		<param name="partner_key_name" type="text" label="HIKA_PARTNER_KEY_NAME" description="PARTNER_KEY_NAME" default="partner_id"/>
+		<param name="after_init" type="radio" label="AFTER_INITIALISATION" default="1" description="AFFILIATE_AFTER_INITIALISATION" >
+			<option value="0">HIKASHOP_NO</option>
+			<option value="1">HIKASHOP_YES</option>
+		</param>
+	</params>
+	<config>
+		<fields name="params" addfieldpath="/components/com_hikashop/fields">
+			<fieldset name="basic">
+				<field
+					name="partner_key_name"
+					type="text"
+					label="HIKA_PARTNER_KEY_NAME"
+					default="partner_id"
+					description="PARTNER_KEY_NAME" />
+				<field
+					name="after_init"
+					type="radio"
+					label="AFTER_INITIALISATION"
+					default="0"
+					description="AFFILIATE_AFTER_INITIALISATION" >
+					<option value="0">HIKASHOP_NO</option>
+					<option value="1">HIKASHOP_YES</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</install>

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<install version="1.5" type="plugin" plugin="toolbar" method="upgrade">
+	<version>0.1</version>
+	<creationDate>Feb 2012</creationDate>
+	<author>WebxSolution Ltd</author>
+	<authorUrl>http://www.arkextensions.com</authorUrl>
+	<license>GNU/GPLv2</license>
+	<description>PLG_ARKEDITOR_DESC</description>
+	<languages>
+	</languages>
+<params group="options">
+		<param name="toolbarCanCollapse" type="radio" default="1" label="PLG_ARKEDITOR_ENABLE_TOOLBAR_COLLAPSE" description="PLG_ARKEDITOR_ENABLE_TOOLBAR_COLLAPSE_DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="toolbarLocation" type="radio" default="top" label="PLG_ARKEDITOR_TOOLBAR_LOCATION" description="PLG_ARKEDITOR_TOOLBAR_LOCATION_DESC">
+			<option value="top">Top</option>
+			<option value="bottom">Bottom</option>
+		</param>
+		<param name="toolbarGroupCycling" type="radio" default="1" label="PLG_ARKEDITOR_ENABLE_TOOLBAR_GROUP_CYCLING" description="PLG_ARKEDITOR_ENABLE_TOOLBAR_GROUP_CYCLING_DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="toolbarStartupExpanded" type="radio" default="1" label="PLG_ARKEDITOR_SPELL_TOOLBAR_STARTUP_EXPANDED" description="PLG_ARKEDITOR_SPELL_TOOLBAR_STARTUP_EXPANDED_DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+</params>
+</install>
+
+

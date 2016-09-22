@@ -1,0 +1,81 @@
+{
+	"title"	: "COM_EASYSOCIAL_MENU_GROUP_MIGRATORS",
+	"link"	: "index.php?option=com_easysocial&view=migrators",
+	"class"	: "ies-loop",
+	"access": "easysocial.access.migrators",
+	"view"	: "migrators",
+	"active": "layout",
+	"childs":
+	[
+		{
+			"title"	: "COM_EASYSOCIAL_MENU_ITEM_MIGRAORS_JOMSOCIAL",
+			"class"	: "ies-puzzle",
+			"url"	:
+			{
+				"view"	: "migrators",
+				"layout": "jomsocial"
+			},
+			"childs": []
+		},
+		{
+			"title"	: "COM_EASYSOCIAL_MENU_ITEM_MIGRAORS_EASYBLOG",
+			"class"	: "ies-puzzle",
+			"url"	:
+			{
+				"view"	: "migrators",
+				"layout": "easyblog"
+			},
+			"childs": []
+		},
+		{
+			"title"	: "COM_EASYSOCIAL_MENU_ITEM_MIGRAORS_KUNENA",
+			"class"	: "ies-puzzle",
+			"url"	:
+			{
+				"view"	: "migrators",
+				"layout": "kunena"
+			},
+			"childs": []
+		},
+		{
+			"title"	: "COM_EASYSOCIAL_MENU_ITEM_MIGRAORS_JOOMLA",
+			"class"	: "ies-puzzle",
+			"url"	:
+			{
+				"view"	: "migrators",
+				"layout": "joomla"
+			},
+			"childs": []
+		},
+		{
+			"title"	: "COM_EASYSOCIAL_MENU_ITEM_MIGRAORS_JOMSOCIAL_GROUP",
+			"class"	: "ies-puzzle",
+			"url"	:
+			{
+				"view"	: "migrators",
+				"layout": "jomsocialgroup"
+			},
+			"childs": []
+		},
+		{
+			"title"	: "COM_EASYSOCIAL_MENU_ITEM_MIGRAORS_JOMSOCIAL_EVENT",
+			"class"	: "ies-puzzle",
+			"url"	:
+			{
+				"view"	: "migrators",
+				"layout": "jomsocialevent"
+			},
+			"childs": []
+		},
+		{
+			"title"	: "COM_EASYSOCIAL_MENU_ITEM_MIGRAORS_CB",
+			"class"	: "ies-puzzle",
+			"url"	:
+			{
+				"view"	: "migrators",
+				"layout": "cb"
+			},
+			"childs": []
+		}
+	]
+}

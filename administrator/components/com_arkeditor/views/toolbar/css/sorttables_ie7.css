@@ -1,0 +1,9 @@
+/*------------------------------------------------------------------------
+# Copyright (C) 2005-2012 WebxSolution Ltd. All Rights Reserved.
+# @license - GPLv2.0
+# Author: WebxSolution Ltd
+# Websites:  http://webx.solutions
+# Terms of Use: An extension that is derived from the Ark Editor will only be allowed under the following conditions: http://arkextensions.com/terms-of-use
+# ------------------------------------------------------------------------*/ 
+
+@import url('sorttables.css');body div.sortableList div.sortableListDiv span.sortableListSpan ul{padding-bottom:3px}body li.sortableItem{float:left;display:inline}

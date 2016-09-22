@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<install version="1.5" type="plugin" plugin="treelink" method="upgrade">
+	<name>TreeLink</name>
+	<version>1.1</version>
+	<creationDate>MARCH 2011</creationDate>
+	<author>WebxSolution Ltd</author>
+	<authorUrl>http://www.arkextensions.com</authorUrl>
+	<copyright>Copyright (C) 2011 - 2013 WebxSolution Ltd</copyright>
+	<license>GNU/GPLv2</license>
+	<description>PLG_ARKEDITOR_DESC</description>
+	<languages>
+	</languages>
+	<icon>images/jtreelink.png</icon>
+	<files>	
+	<filename>plugin.js</filename>
+	<folder>dialogs</folder>
+	<folder>images</folder>
+	<folder>lang</folder>
+    </files>
+	<params>
+		<param name="dialogtitle_switcher" type="jsradio" default="0" label="PLG_ARKEDITOR_DIALOG_TITLESHWN" description="PLG_ARKEDITOR_DIALOG_TITLESHWN_DESC">
+			<option value="0">Default</option>
+			<option value="1">Enter new title</option>
+		</param>
+		<param name="dialogtitle" type="text" default="" label="PLG_ARKEDITOR_DIALOG_TITLEENT" description="PLG_ARKEDITOR_DIALOG_TITLEENT_DESC" />
+		<param name="height" type="text" default="330" label="PLG_ARKEDITOR_DIALOG_HEIGHT" description="PLG_ARKEDITOR_DIALOG_HEIGHT_DESC" />
+		<param name="width" type="text" default="590" label="PLG_ARKEDITOR_DIALOG_WIDTH" description="PLG_ARKEDITOR_DIALOG_WIDTH_DESCg"/>
+	</params>
+</install>
