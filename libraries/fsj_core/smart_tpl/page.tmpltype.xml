@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<template_type>
+  <authorEmail>support@freestyle-joomla.com</authorEmail>
+  <author>Freestyle Joomla</author>
+  <copyright>(C) 2013 Freestyle Joomla. All rights reserved.</copyright>
+  <license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html </license>
+  <authorUrl>http://www.freestyle-joomla.com</authorUrl>
+
+  <overview com="main" name="page" title="Page Layout">
+    <description>
+      Page header and footer styles
+    </description>
+    <layout>
+      <![CDATA[
+      ]]>
+    </layout>
+  </overview>
+
+  <!-- No linked on this template -->
+
+  <!-- No page titles on this template -->
+
+  <tabs>
+    <tab name="normal" title="Page" />
+    <!--<tab name="popup" title="Popup" />-->
+  </tabs>
+
+  <section name="page_header" title="Header" tab="normal">
+    <replaces>
+      <replace name="include_title">
+        {if $show_title}
+          {include "fsjtpl:main.page.page_title" page_title=$page_title title=$title subtitle=$subtitle menutitle=$menutitle}
+        {/if}
+      </replace>
+    </replaces>
+  </section>
+  <section name="page_footer" title="Footer" tab="normal" />
+  <section name="page_title" title="Title" tab="normal" />
+  <section name="page_subtitle" title="Sub-Title" tab="normal" />
+
+  <!--<section name="popup_header" title="Header" tab="popup" />
+  <section name="popup_footer" title="Footer" tab="popup" />-->
+
+</template_type>

@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<plugin>
+  <authorEmail>support@freestyle-joomla.com</authorEmail>
+  <author>Freestyle Joomla</author>
+  <copyright>(C) 2013 Freestyle Joomla. All rights reserved.</copyright>
+  <license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html </license>
+  <authorUrl>http://www.freestyle-joomla.com</authorUrl>
+
+  <name>Article</name>
+  <description>Link to a Joomla! content article</description>
+
+  <params>
+    <pick>
+      <type>table</type>
+      <reference>article</reference>
+      <component></component><!-- if component is blank use fsj_core, otherwise look in component folder -->
+      <!-- if reference isnt defined, then should be local -->
+    </pick>
+
+    <display>
+      <type>table</type>
+      <data>
+        <table>content</table>
+        <field>title</field>
+        <id>id</id>
+        <use_access>1</use_access>
+        <use_state>1</use_state>
+      </data>
+    </display>
+    
+    <settings>
+      <plugin>
+        <image>fsj/plugins/related/related_article.png</image>
+      </plugin>
+    </settings>
+  </params>
+
+  <plugin_settings>
+
+    <!--<fields display="Test Settings" name="test" tab="test">
+      <field name="yesno_1" type="fsjyesno" default="" label="Yes No 1" />
+      <field name="yesno_2" type="fsjyesno" default="" label="Yes No 2" />
+      <field name="yesno_3" type="fsjyesno" default="" label="Yes No 3" />
+    </fields>-->
+
+  </plugin_settings>
+
+</plugin>

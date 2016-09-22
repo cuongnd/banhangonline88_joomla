@@ -1,0 +1,42 @@
+div.fsj_fsjchecklist_cont 
+{
+	float: left;
+	margin-bottom: 8px;
+
+	div.fsj_fsjchecklist
+	{
+		margin-top: 4px;
+		max-height: 200px;
+		min-width: 300px;
+		overflow-y: auto;
+		border: 1px solid #ccc;
+		/*clear: both;*/
+		padding: 4px;
+		border-radius: 4px;
+
+		input[type="text"] {
+			display: none;
+		}
+
+		div.item {
+			/*border-bottom: 1px solid #ccc;*/
+			clear: both;
+			padding: 3px;
+
+			input {
+				margin: 1px 4px 0px 3px;
+			}
+		}
+	}
+
+	div.fsj_fsjchecklist.cols-4
+    {
+		width: 300px;
+    	div.item
+        {
+        	clear: none;
+			float: left;
+			width: 22%;
+        }
+    }
+}

@@ -1,0 +1,31 @@
+/* Display Form */
+.fsj_pickimage_form_controls_cont
+{
+    position: relative;
+    top: 9px;    
+}
+
+/* Pick Image Popup */
+
+.fsj_pickimage_imageblock
+{
+    border:1px solid #E9E9E9;
+    padding:2px;
+    font-size: 11px;
+    float:left; 
+    width: 100px;
+    margin:6px;
+    padding:6px;
+}
+
+.fsj_imgpick_none
+{
+    border: 1px solid #E9E9E9;
+    font-size: 11px;
+    float: left;
+    margin: 6px;
+    padding: 6px;
+    width: 200px;
+    height: 78px;
+    background-color: #fff5f5;
+}

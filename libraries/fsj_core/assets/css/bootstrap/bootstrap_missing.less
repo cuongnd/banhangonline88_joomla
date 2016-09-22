@@ -1,0 +1,47 @@
+// Bootstrap missing elements
+
+// Add stuff in here if the styling is missing from your templates bootstrap implementation
+
+// Comment if your template includes the relevent css
+.fsj
+{
+	@import "variables.less";
+	@import "mixins.less";
+	<?php /*if (FSS_Settings::get('bootstrap_modal')): ?>
+	@import "modals.less"; // only needed on some templates
+	<?php endif;*/ ?>
+	@import "media.less";
+	@import "pagination-sizing.less";
+	<?php /*if (FSS_Settings::get('bootstrap_textcolor')): ?>
+	@import "text-colors.less";
+	<?php endif;*/ ?>
+
+	
+	// Override the image based icons
+	<?php /*if (FSS_Settings::get('bootstrap_textcolor')): ?>
+	@import "icomoon.less";
+	[class^="icon-"], [class*=" icon-"] {
+		background-image: none !important;
+	}
+	<?php endif;*/ ?>
+
+	@import "freestyle.less"; // Freestyle Joomla additions (Things that are normally in Joomla templates)
+}
+
+// needed for some other templates, but not all
+// default yes! (Rt- yes, yoo - no)
+// This seems to work fine when allways included so keep it in!
+@import "modal-core.less";
+
+.collapse {
+  position:relative;
+  height:0;
+  overflow:hidden;
+  -webkit-transition:height 0.35s ease;
+  -moz-transition:height 0.35s ease;
+  -o-transition:height 0.35s ease;
+  transition:height 0.35s ease;
+}
+.collapse.in {
+  height:auto;
+}

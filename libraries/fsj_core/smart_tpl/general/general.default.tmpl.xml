@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<template>
+  <install target="general" com="main" name="default">
+    <title>Default Template</title>
+    <description>Default site template</description>
+  </install>
+</template>

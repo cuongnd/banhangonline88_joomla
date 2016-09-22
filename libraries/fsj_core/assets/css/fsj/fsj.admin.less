@@ -1,0 +1,147 @@
+.fsj
+{
+
+		
+	/* iframe popup admin windows, buttons at bottom */
+	.modal-footer 
+    {
+    	.btn-toolbar
+        {
+        	margin: 0px !important;
+			div.btn-wrapper
+            {
+            	margin-bottom: 0px !important;
+            }
+        }
+    }
+	
+	/* Hide iframe borders */
+	iframe.fsj_iframe {
+		border: none;
+		width: 100%;
+	}
+
+	/* Include the css for the search tools box etc */
+	@import "fsj.searchtools.less";
+
+	/* Fixes to ordering on Joomla 3.2 */
+	td.order 
+    {
+		white-space: nowrap;
+		span
+        {
+        	display: inline-block;
+			width: 24px;
+        }
+
+		input
+        {
+        	padding: 2px;
+			width: 32px;
+			margin: 0px !important;
+        }
+    }
+
+	/* Fixes to ordering on Joomla 3.2 */
+	th.order 
+    {
+    	white-space: nowrap !important;
+
+		a.saveorder
+        {
+        	float: none;
+        }
+    }
+
+	/* Toolbars on popup windows - remove padding */
+	.fsj-modal-foot
+    {
+		.btn-toolbar
+        {
+        	margin-top: 0;
+			margin-bottom: 0;
+		}
+    }
+
+    .fsj-modal-body {
+        width: 96%;
+    }
+
+	/* inline iframes */
+	.fsj_inline_frame_outer
+    {
+		position: relative;
+    }
+	.fsj_inline_frame_wait
+    {
+		position: absolute;
+		left: 0px;
+		top: 0px;
+		right: 0px;
+		bottom: 0px;
+		text-align: center;
+		font-size: 24px;
+		padding-top: 40px;
+		background-color: rgba(255,255,255,0.75);
+	}
+
+	.well h4
+    {
+    	margin-top: 0px;
+    }
+
+	td.order a.btn-micro {
+		padding: 1px 1px;
+	}
+}	
+
+/* Some of the popup windows have padding - j3 */
+@media (max-width: 767px)
+{
+	body.fsj {
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+	}
+}
+
+/* J3 menu list on left hand side - separators */
+span.fsj_admin_menu_set
+{
+	font-weight: bold;
+	font-size: 1.1em;
+	color: #146295;
+	font-style: italic;
+	margin-left: -12px;
+	display: inline-block;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+
+.sidebar-nav hr {
+	margin: 3px 0px;
+}
+
+.sidebar-nav .fsj_admin_menu_header
+{
+    padding: 3px 0px;
+	margin-left: -6px;
+	font-size: 11px;
+	font-weight: bold;
+	line-height: 20px;
+	color: #999;
+	text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.5);
+	text-transform: uppercase;
+}
+
+.nav-list .divider {
+	margin: 3px 0px;
+}
+
+.fsj_inline
+{
+    #j-main-container{
+        width: inherit;
+        float: inherit;
+    }
+} 
