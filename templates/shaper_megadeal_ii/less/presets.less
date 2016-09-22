@@ -1,0 +1,832 @@
+/**
+ * @package Helix Framework
+ * @author JoomShaper http://www.joomshaper.com
+ * @copyright Copyright (c) 2010 - 2014 JoomShaper
+ * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 or later
+*/
+
+@import 'variables';
+@import 'mixins';
+
+
+// Anchor
+a{
+	color: @major_color;
+	&:hover {
+		color: darken(@major_color, 10%);
+	}
+}
+
+// Megamenu 
+.sp-megamenu-parent {
+	>li {
+		&.active>a,
+		&:hover>a {
+			color: @major_color;
+		}
+	}
+
+	.sp-dropdown {
+		li.sp-menu-item {
+			>a:not(.sp-group-title) {
+
+				&:hover {
+					color: @major_color;
+				}
+			}
+			&.active>a {
+				color: @major_color;
+			}
+		}
+	}
+
+}
+
+// Off Canvas
+#offcanvas-toggler {
+	>i {
+		color: @text_color;
+		&:hover {
+			color: @major_color;
+		}
+	}
+}
+
+//Button
+.btn-primary,
+.sppb-btn-primary {
+	border-color: darken(@major_color, 6%);
+	background-color: @major_color;
+
+	&:hover {
+		border-color: darken(@major_color, 15%);
+		background-color: darken(@major_color, 10%);
+	}
+}
+
+// Topbar Social
+ul.social-icons {
+
+	>li {
+
+		a {
+
+			&:hover {
+				color: @major_color;
+			}
+		}
+	}
+}
+
+// Body Innerwrapper
+
+.layout-boxed .body-innerwrapper {
+	background: @bg_color;
+}
+
+// Module
+.sp-module {
+	ul {
+		>li {
+			>a {
+				color: @text_color;
+				&:hover {
+					color: @major_color;
+				}
+			}
+		}
+	}
+
+	.latestnews {
+		>div {
+			>a {
+				color: @text_color;
+				&:hover {
+					color: @major_color;
+				}
+			}
+		}
+	}
+
+	.tagscloud {
+		.tag-name {
+			&:hover {
+				background: @major_color;
+			}	
+		}
+	}
+}
+
+// sp Simple Portfolio
+.sp-simpleportfolio .sp-simpleportfolio-filter > ul > li.active > a,
+.sp-simpleportfolio .sp-simpleportfolio-filter > ul > li > a:hover {
+	background: @major_color;
+}
+
+// Search
+.search {
+	.btn-toolbar {
+		button {
+			background: @major_color;
+		}
+	}
+}
+
+
+// Blog
+.post-format {
+	background: @major_color;
+}
+
+.voting-symbol{
+	span.star.active:before{
+		color: @major_color;
+	}
+}
+
+.sp-rating {
+	span.star:hover:before,
+	span.star:hover ~ span.star:before {
+		color: darken(@major_color, 10%);
+	}
+}
+
+.entry-link,
+.entry-quote {
+	background: @major_color;
+}
+
+blockquote {
+	border-color: @major_color;
+}
+
+.carousel-left,
+.carousel-right {
+
+	&:hover {
+		background: @major_color;
+	}
+}
+
+// Pagination 
+.pagination>li>a,
+.pagination>li>span {
+	color: @text_color;
+	&:hover,
+	&:focus {
+		color: @text_color;
+	}
+}
+
+.pagination>.active>a,
+.pagination>.active>span {
+	border-color: @major_color;
+	background-color: @major_color;
+	&:hover,
+	&:focus {
+		border-color: @major_color;
+		background-color: @major_color;
+	}
+}
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////      Shaper Megadeal-ii    //////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////
+
+
+.megadeal-vm-carts-product-wrapper{
+	.show-cart{
+		>a{
+			color: @text_color;
+		}
+	}
+}
+
+//OFfcanvas
+ .close-offcanvas {
+ 	&:hover {
+ 		border: 1px solid @major_color;
+ 		color: @major_color;
+ 	}
+ }
+
+ .offcanvas-menu {
+ 	.offcanvas-inner {
+ 		.sp-module {
+ 			ul {
+ 				> li{
+ 					&:hover, &.active{
+ 						>a{
+ 							color: @major_color;
+ 						}
+ 					}
+ 				}
+ 			}			
+ 		}
+ 	}
+ }
+
+//Currency Module
+.vm_currency_module {
+	.sp-select-result{
+		color: @major_color;
+	}
+}
+
+//Pagenation
+.pagination-wraper{
+	.pagination > .active > a{
+		background-color: @major_color;
+	}
+	.pagination >li > a:hover{
+		background-color: @major_color;
+	}
+}
+
+.sp-select {
+	ul {
+		>li {
+
+			&:hover,
+			&.active {
+				background-color: @major_color;
+			}
+		}
+	}
+}
+
+.mod-sp-vmajaxsearch .sp-vmajaxsearch-results .results-list::-webkit-scrollbar-thumb,
+.sp-select-dropdown::-webkit-scrollbar-thumb {
+	background: @major_color;
+}
+
+//acymiling
+.sp-position-comingsoon{
+	.acymailing_module{
+		.acysubbuttons{
+			input.btn{
+				background-color: @major_color;
+				&:hover{
+					background-color: darken(@major_color, 10%);
+				}
+			}
+		}
+	}
+}
+
+//Image content addon for category
+.slider-bottom-category{
+	.slider-bottom-category-img{
+		.sppb-addon-content{
+			&:after{
+				background-color: fade(@major_color, 90%);
+			}
+		}
+		a.sppb-btn{
+			&:hover{
+				color: @major_color;
+			}
+
+		}
+	}
+}
+
+//owl-controls
+.owl-controls{
+    .owl-dots{
+        .owl-dot{
+            &.active{
+                span{
+                    background: @major_color;
+                }
+            }
+        }
+    }
+}
+
+// top login
+.sp-mod-login {
+	span.sp-login{
+		.info-text{
+			a{
+				&:hover,
+				&:focus{
+					color: @major_color;
+				}
+			}
+		}
+	}
+	.forget-name-link{
+		a:hover{
+			color: @major_color;
+		}
+	}
+}
+
+//virtuemart cart
+.vmCartModule{
+	.megadeal-vm-cart-icon-wrapper{
+		.spvm-cart-toggle{
+			&:hover{
+				color: @major_color;
+			}
+			.spvm-total-product{
+				background: @major_color;
+			}
+		}
+	}
+	.megadeal-vm-carts-product-wrapper{
+		.show-cart{
+			>a{
+				border: 2px solid @major_color;
+				&:hover{
+					background-color: @major_color;
+				}
+			}
+		}
+	}
+}
+
+// carousel-nav
+.carousel-nav-left:hover,
+.carousel-nav-right:hover{
+    color: @major_color;
+}
+
+//Layout-2
+.home-category-slider-layout-2{
+    .layout-leadinglayout {
+        .sp-vmslider-wrapper{
+            .owl-stage-outer{
+                .leading-item{
+                    .sp-vmproduct-info {
+                        .addtocart-button{
+                            &:hover{
+                                background-color: @major_color;
+                            }
+                        }
+                        a:hover{
+                        	color: @major_color;
+                        }
+                    }
+                }               
+                a:hover{
+                	color: @major_color;
+                }
+            }          
+        }
+    }
+}
+
+//Layout-3
+.home-category-slider-layout-3{
+    .layout-listing{
+        .owl-stage-outer{
+            .owl-item{
+                .spvmslider-ii-items{
+                    .spvmslider-ii-item{
+                        .sp-vmproduct-info{
+                            a{
+                                &:hover{
+                                    color: @major_color;
+                                }
+                            }
+                            .sp-price-box{
+                                ins{
+                                    color: @major_color;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+//virtuemart product list
+.vmproduct-list {
+    .spacer {
+        a {
+            &:hover {
+                color: @major_color;
+            }
+        }
+    }
+}
+
+//virtuemart product details
+.productdetails-view .vm-product-details-container .addtocart-area .addtocart-bar .quantity-controls{
+	button{
+		&:hover{
+			color: @major_color;
+		}
+	}
+}
+
+//related categories
+.product-related-products,
+.product-related-categories,
+.product-related-categories{
+	.product-field{
+		.product-field-display{
+			a{
+				color: @text_color;
+				&:hover{
+					color: @major_color;
+				}
+			}
+			.PricesalesPrice{
+				color: @major_color;
+			}
+		}
+	}
+}
+
+//virtuemart category menu
+.sp-vmmenu {
+ 	>ul>li {
+ 		&.parent{
+			&:hover{
+				>a{
+					color: @major_color;
+					&:after {
+						color: @major_color;
+					}
+				}
+			}
+			>a{
+				&:before{
+					background-color: @major_color;
+				}
+				
+			}
+		}
+		a {
+			&:hover{
+				color: @major_color;
+			}
+		}
+	}
+}
+
+
+//START Blog Listing & Details
+.view-category,
+.view-article{
+	.item{
+		.entry-header{
+			.article-info{
+				dd.category-name{
+					background-color: @major_color;
+				}
+			}
+		}
+		p.readmore{
+			a.btn{
+				background-color: @major_color;
+				&:hover{
+					background-color: darken(@major_color, 10%);
+				}
+			}
+		}
+		.tags{
+			a.label-info{
+				&:hover{
+					background-color: @major_color;
+				}
+			}
+		}
+	}
+	//Tag Cloud
+	.tag-cloud{
+		.tagspopular{
+			ul{
+				li{
+					a{
+						&:hover{
+							background-color: @major_color;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.view-article{
+	.pagenav{
+		li.previous,
+		li.next{
+			a{
+				background-color: @major_color;
+			}
+		}
+	}
+}
+
+//Bottom-2
+#sp-bottom2{
+	a{
+		&:hover{
+			color: @major_color;
+		}
+	}
+}
+
+//select input menu
+.chzn-container-single{
+    .chzn-results li.highlighted{
+        background-color: @major_color !important;
+    }
+}
+
+.sp-price-box ins{
+    color: @major_color;
+}
+
+#fancybox-close{
+    &:hover{
+        color: @major_color;
+    }
+}
+
+.vmproduct-more-action{
+    >ul{
+        li{
+            a{
+                background-color: fade(@major_color, 80%);
+                &:hover{
+                    background-color: @major_color;
+                }
+            }
+        }
+    }
+    .addtocart-button, .vm-add-to-cart-wrap{
+        background-color: fade(@major_color, 80%) !important;
+        &:hover{
+            background-color: @major_color !important;
+        }
+    }
+}
+
+.addtocart-button.btn{
+    &:hover{
+        background-color: @major_color;
+    }
+}
+
+.category-view{
+    .category{
+        .spacer{
+            .title {
+                a{
+                    &:hover{
+                        color: @major_color;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// addtocart-button
+.ask-a-question.btn,
+input.addtocart-button{
+    &:hover{
+        background-color: @major_color !important;
+    }
+}
+.vm-details-button .product-details{
+    background-color: @major_color !important;
+    &:hover{
+        background-color: darken(@major_color, 15%) !important;
+    }
+}
+
+//call-for-price-login
+.call-for-price-login,
+.ask-a-question-view{
+    input.btn{
+        &:hover{
+            background-color: @major_color !important;
+        }
+    }
+}
+
+.view-category{
+	.orderby-displaynumber{
+		.orderlist{
+			> div {
+				&:hover{
+					background-color: @major_color;
+				}
+			}
+		}
+	}
+}
+
+.productdetails-view{
+	.back-to-category{
+		a{
+			background: @major_color;
+		}
+	}
+}
+
+//Vm product Details
+
+.productdetails-view{
+	.vm-product-details-container{		
+		.addtocart-area{
+			.addtocart-bar{
+				.vm-addtocart-ask-wrap{
+					.addtocart-button{
+						background-color: @major_color !important;
+						border: solid 2px @major_color !important;
+						&:hover{
+							background-color: darken(@major_color, 5%) !important;
+							border: solid 2px darken(@major_color, 5%) !important; 
+						}
+					}
+					a.ask-a-question{
+						border: solid 2px @major_color !important;
+						&:hover{
+							background-color: @major_color !important;
+						}
+					}
+				}
+			}
+		}		
+	}
+}
+
+//Vm Order list
+.vm-orders-list{
+    .order-view {
+        .button{
+            background-color: @major_color;
+            &:hover{
+                background-color: darken(@major_color, 15%);
+            }
+        }
+    }
+}
+
+//VM popup notify
+.view-cart{
+    .vm-continue-shopping{
+        a{
+            &:hover{
+                background-color: @major_color;
+            }
+        }
+    }
+    .vm-cart-item-name{
+        a{
+            &:hover{
+                color: @major_color;
+            }
+        }
+    }
+    input[type="submit"].button,
+    input[type="submit"].details-button,
+    .some-product-info .buttonBar-right button,
+    .checkout-button-top button,
+    .vm-button-correct{
+        &:hover{
+            background-color: @major_color !important;
+        }
+    }
+}
+
+.view-user{
+	#form-login input[value="Logout"]{
+		background: @major_color;
+	}
+}
+
+#com-form-login{
+    #com-form-login-remember{
+        input.btn {
+            background-color: @major_color !important;
+            &:hover{
+                background-color: darken(@major_color, 5%) !important;
+            }
+        }
+    }
+}
+
+#adminForm{
+    .buttonBar-right{
+        .button{
+            background-color: @major_color;
+        }
+    }
+}
+
+.vm-adminform{
+    button{
+        &:hover{
+            background-color: @major_color !important;
+        }
+    }
+}
+
+.about-feature{
+	.sppb-icon{
+		i{
+			color: @major_color;
+		}
+	}
+}
+
+//Progress-bar
+.about-progress{
+	.sppb-progress {
+		.sppb-progress-bar{
+			background-color: @major_color;
+		}
+	}
+}
+
+//FAQ
+.about-faq{
+	.sppb-addon-accordion{
+		.sppb-panel-group{
+			.sppb-panel{
+				.sppb-panel-heading{
+					&.active{
+						span.sppb-panel-title{
+							i{
+								color: @major_color;
+							}
+						}
+					}
+				}
+				&:hover{
+					.sppb-panel-heading{
+						span.sppb-panel-title{
+							i{
+								color: @major_color;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+//Team
+.about-team{
+	.sppb-addon-persion{
+		.sppb-person-information{
+			span.sppb-person-name{
+				&:hover{
+					color: @major_color;
+				}
+			}
+		}
+	}
+}
+
+//Contact From
+.sppb-ajaxt-contact-form{
+	.sppb-btn-success{
+		background-color: @major_color;
+		&:hover{
+			background-color: darken(@major_color, 10%);
+		}
+	}
+}
+
+//Coming-Soon
+.sp-comingsoon{
+	.days .number,
+	.hours .number,
+	.seconds .number,
+	.minutes .number{
+		color: @major_color;
+	}
+	.days,
+	.hours,
+	.seconds,
+	.minutes {
+		&:after{
+			background-color: darken(@major_color, 5%);
+		}
+	}
+	.days .string,
+	.minutes .string,
+	.seconds .string,
+	.hours .string{
+		color: darken(@major_color, 5%);
+	}
+}
+
+
+

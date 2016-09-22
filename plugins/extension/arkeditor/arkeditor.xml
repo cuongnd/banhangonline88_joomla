@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.1" type="plugin" group="extension" method="upgrade">
+	<name>Extension - Arkeditor</name>
+	<author>WebxSolution Ltd</author>
+	<creationDate>Sept 2015</creationDate>
+	<copyright>>Copyright (C) 2013 - 2015 All rights reserved</copyright>
+	<license>GNU General Public License version 2</license>
+	<authorEmail>info@arkextensions.com</authorEmail>
+	<authorUrl>http://www.arkextensions.com</authorUrl>
+	<version>1.0</version>
+	<description>Plugin Helper for uninistaller ArkEditor plugins</description>
+	<files>
+		<filename plugin="arkeditor">arkeditor.php</filename>
+		<filename>index.html</filename>
+	</files>
+</extension>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension  version="3.2" type="plugin" group="system" method="upgrade">
+	<name>System - Reset SEF Base</name>
+	<author>WebxSolution Ltd</author>
+	<creationDate>OCT 2012</creationDate>
+	<copyright>Copyright (C) 2012 Webxsolution</copyright>
+	<license>http://www.gnu.org/copyleft/gpl.html</license>
+	<authorEmail>info@arkextensions.com</authorEmail>
+	<authorUrl>http://www.arkextensions.com</authorUrl>
+	<version>3.0</version>
+	<description>This plugin sets base path to URL root to resolve relative images when SEF is switched on</description>
+	<files>
+		<filename plugin="sefbase">sefbase.php</filename>
+	</files>
+</extension>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.2" type="plugin" group="arkeditor" method="upgrade">
+	<name>ArkEditor - XML Templates</name>
+	<author>WebxSolution Ltd</author>
+	<creationDate>June 2015</creationDate>
+	<copyright>>Copyright (C) 2014- 2015 All rights reserved</copyright>
+	<license>GNU General Public License version 2</license>
+	<authorEmail>info@arkextensions.com</authorEmail>
+	<authorUrl>http://www.arkextensions.com</authorUrl>
+	<version>1.1</version>
+	<description>The ArkEditor Template Manager plugin</description>
+	<files>
+		<filename plugin="xmltemplates">index.html</filename>
+		<folder>xmltemplates</folder>
+	</files>
+	<scriptfile>install.php</scriptfile>
+</extension>

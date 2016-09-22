@@ -1,0 +1,506 @@
+/**
+ * @package Helix Framework
+ * @author JoomShaper http://www.joomshaper.com
+ * @copyright Copyright (c) 2010 - 2016 JoomShaper
+ * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 or later
+*/
+
+
+/* ************************************************************************************** */
+/* *****************	 	           Start Buttons	 	          ****************** */
+/* ************************************************************************************ */
+.btn,
+.sppb-btn {
+	.transition(~'color 400ms, background-color 400ms, border-color 400ms');
+}
+
+//Offline
+.offline-inner {
+	margin-top: 100px;
+}
+
+.btn,
+.sppb-btn {
+	border: none;
+	border-radius: 30px;
+	line-height: 40px;
+	padding: 0 30px;
+	text-transform: uppercase;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	letter-spacing: 1px;
+	&:hover,
+	&:focus{
+		border-color: transparent;
+		box-shadow: none;
+		-webkit-box-shadow: none;
+	}
+}
+input.btn,
+input.sppb-btn{
+	height: 40px !important;
+	line-height: 40px !important;
+	border: none;
+	&:hover,
+	&:focus,
+	&:active,
+	&:focus:active{
+		outline: none;
+	}
+}
+.btn.btn-sm,
+.sppb-btn.sppb-btn-sm {
+	line-height: 35px;
+	padding: 0 20px;
+}
+
+.btn.btn-xs,
+.sppb-btn.sppb-btn-xs {
+	line-height: 25px;
+	padding: 0 15px;
+	font-size: 12px;
+}
+
+.btn.btn-lg,
+.sppb-btn.sppb-btn-lg {
+	line-height: 50px;
+	padding: 0 45px;
+}
+.btn-default,
+.sppb-btn-default{
+	color: #939393;
+	background-color: #e9eaed;	
+	&:hover,
+	&:focus,
+	&:active{	
+		background-color: darken(#e9eaed, 10%);	
+	}
+}
+.btn-primary,
+.sppb-btn-primary{
+	color: #fff;
+	background-color: @major_color;
+	&:hover,
+	&:focus,
+	&:active{
+		background-color: darken(@major_color, 10%);	
+	}
+}
+.btn-success,
+.sppb-btn-success{
+	color: #fff;
+	background-color: #00a651;
+	&:hover,
+	&:focus,
+	&:active{
+		background-color: darken(#00a651, 10%);	
+	}
+}
+.btn-info,
+.sppb-btn-info{
+	color: #fff;
+	background-color: #00aeef;	
+	&:hover,
+	&:focus,
+	&:active{
+		background-color: darken(#00aeef, 10%);	
+	}
+}
+.btn-warning,
+.sppb-btn-warning{
+	color: #fff;
+	background-color: #f7941d;
+	&:hover,
+	&:focus,
+	&:active{
+		background-color: darken(#f7941d, 10%);	
+	}
+}
+.btn-danger,
+.sppb-btn-danger{
+	color: #fff;
+	background-color: #ed1c24;
+	&:hover,
+	&:focus,
+	&:active{
+		background-color: darken(#ed1c24, 10%);	
+	}
+}
+.btn-link,
+.sppb-btn-link{
+	color: @major_color;
+	&:hover,
+	&:focus,
+	&:active{
+		color: darken(@major_color, 10%);	
+	}
+}
+.btn-border{
+    background-color: transparent;
+    border: 2px solid @major_color;
+    line-height: 36px;
+    color: #000;
+	&:hover,
+	&:focus,
+	&:active{
+	    background-color: @major_color;
+	    color: #fff;
+	}
+}
+.btn-gray{
+    background-color: #e9eaed !important;
+    line-height: 40px !important;
+    color: #939393 !important;
+    padding: 0 30px !important;
+    border-radius: 30px !important;
+    background-image: none !important;
+    border: none !important;
+	&:hover,
+	&:focus,
+	&:active{
+	    background-color: @major_color !important;
+	    color: #fff !important;
+	}
+}
+/* ************************************************************************************** */
+/* *****************	 	           End:: Buttons	 	          ****************** */
+/* ************************************************************************************ */
+
+
+
+
+/* ************************************************************************************** */
+/* *****************	 	           Start Accordion	 	          ****************** */
+/* ************************************************************************************ */
+
+//Accordion Default
+.sppb-addon-accordion{
+	.sppb-panel-default{
+		border: 0;
+		box-shadow: none;
+		.sppb-panel-heading{
+			border-top-right-radius: 0;
+			border-top-left-radius: 0;
+			padding: 0;
+			span.sppb-panel-title{
+				color: #2e3327;
+				font-size: 14px;
+				font-weight: 500;
+				i{
+					margin-right: 18px;
+					background-color: #ebedf0;
+					padding: 15px 20px;
+				}
+			}
+		}
+		.sppb-panel-body{
+			padding: 30px 0 10px 0;
+			border-top: 0 !important;
+		}
+	}
+	.sppb-panel-group .sppb-panel + .sppb-panel{
+		margin-top: 20px;
+	}
+}
+
+//Accordion Primary
+.sppb-addon-accordion{
+	.sppb-panel-primary{
+		border: 0;
+		box-shadow: none;
+		.sppb-panel-heading{
+			border-top-right-radius: 0;
+			border-top-left-radius: 0;
+			padding: 0;
+			background-color: @major_color;
+			span.sppb-panel-title{
+				color: #2e3327;
+				font-size: 14px;
+				font-weight: 500;
+				color: #fff;
+				i{
+					margin-right: 18px;
+					background-color: darken(@major_color, 5%);
+					padding: 15px 20px;
+				}
+			}
+		}
+		.sppb-panel-body{
+			padding: 30px 0 10px 0;
+			border-top: 0 !important;
+		}
+	}
+	.sppb-panel-group .sppb-panel + .sppb-panel{
+		margin-top: 20px;
+	}
+}
+
+//Accordion Success
+.sppb-addon-accordion{
+	.sppb-panel-success{
+		border: 0;
+		box-shadow: none;
+		.sppb-panel-heading{
+			border-top-right-radius: 0;
+			border-top-left-radius: 0;
+			padding: 0;
+			background-color: #00a651;
+			span.sppb-panel-title{
+				color: #2e3327;
+				font-size: 14px;
+				font-weight: 500;
+				color: #fff;
+				i{
+					margin-right: 18px;
+					background-color: darken(#00a651, 5%);
+					padding: 15px 20px;
+				}
+			}
+		}
+		.sppb-panel-body{
+			padding: 30px 0 10px 0;
+			border-top: 0 !important;
+		}
+	}
+	.sppb-panel-group .sppb-panel + .sppb-panel{
+		margin-top: 20px;
+	}
+}
+
+//Accordion Info
+.sppb-addon-accordion{
+	.sppb-panel-info{
+		border: 0;
+		box-shadow: none;
+		.sppb-panel-heading{
+			border-top-right-radius: 0;
+			border-top-left-radius: 0;
+			padding: 0;
+			background-color: #00aeef;
+			span.sppb-panel-title{
+				color: #2e3327;
+				font-size: 14px;
+				font-weight: 500;
+				color: #fff;
+				i{
+					margin-right: 18px;
+					background-color: darken(#00aeef, 5%);
+					padding: 15px 20px;
+				}
+			}
+		}
+		.sppb-panel-body{
+			padding: 30px 0 10px 0;
+			border-top: 0 !important;
+		}
+	}
+	.sppb-panel-group .sppb-panel + .sppb-panel{
+		margin-top: 20px;
+	}
+}
+
+//Accordion Warning
+.sppb-addon-accordion{
+	.sppb-panel-warning{
+		border: 0;
+		box-shadow: none;
+		.sppb-panel-heading{
+			border-top-right-radius: 0;
+			border-top-left-radius: 0;
+			padding: 0;
+			background-color: #f7941d;
+			span.sppb-panel-title{
+				color: #2e3327;
+				font-size: 14px;
+				font-weight: 500;
+				color: #fff;
+				i{
+					margin-right: 18px;
+					background-color: darken(#f7941d, 5%);
+					padding: 15px 20px;
+				}
+			}
+		}
+		.sppb-panel-body{
+			padding: 30px 0 10px 0;
+			border-top: 0 !important;
+		}
+	}
+	.sppb-panel-group .sppb-panel + .sppb-panel{
+		margin-top: 20px;
+	}
+}
+
+//Accordion Danger
+.sppb-addon-accordion{
+	.sppb-panel-danger{
+		border: 0;
+		box-shadow: none;
+		.sppb-panel-heading{
+			border-top-right-radius: 0;
+			border-top-left-radius: 0;
+			padding: 0;
+			background-color: #ed1c24;
+			span.sppb-panel-title{
+				color: #2e3327;
+				font-size: 14px;
+				font-weight: 500;
+				color: #fff;
+				i{
+					margin-right: 18px;
+					background-color: darken(#ed1c24, 5%);
+					padding: 15px 20px;
+				}
+			}
+		}
+		.sppb-panel-body{
+			padding: 30px 0 10px 0;
+			border-top: 0 !important;
+		}
+	}
+	.sppb-panel-group .sppb-panel + .sppb-panel{
+		margin-top: 20px;
+	}
+}
+
+
+/* ************************************************************************************** */
+/* *****************	 	           End:: Accordion	 	          ****************** */
+/* ************************************************************************************ */
+
+
+
+
+/* ************************************************************************************** */
+/* *****************	 	              Start Tab	 	              ****************** */
+/* ************************************************************************************ */
+
+.sppb-addon-tab{
+	.sppb-nav-tabs{
+		background-color: #f5f5f7;
+		border-bottom: solid 1px #f5f5f7;
+		li{
+			> a{
+				font-size: 16px;
+				font-weight: 500;
+				padding: 15px 25px;
+				color: #000;
+				border: 0;
+				border-radius: 0;
+				.border-radius(0);
+				&:hover,
+				&:focus{
+					background-color: transparent;
+					border-color: transparent;
+					outline: 0;
+				}
+			}
+		}
+		li.active > a{
+			background-color: @major_color;
+			border: 0;
+			border-radius: 0;
+			.border-radius(0);
+			color: #fff;
+		}
+	}
+	.sppb-nav-pills{
+		li {
+			a{
+				font-size: 16px;
+				font-weight: 500;
+				color: #000;
+				padding: 15px 25px;
+				border-radius: 100px;
+				.border-radius(100px);		
+				&:hover,
+				&:focus{
+					background-color: transparent;
+					border-color: transparent;
+					outline: 0;
+				}
+			}
+		}
+		li.active a{
+			background-color: @major_color;
+			color: #fff;			
+			border-radius: 100px;
+			.border-radius(100px);
+			&:hover{
+				background-color: @major_color;
+			}
+		}
+	}
+	.sppb-tab-pane{
+		padding: 40px 0;
+	}
+}
+
+
+/* ************************************************************************************** */
+/* *****************	 	              End:: Tab	 	              ****************** */
+/* ************************************************************************************ */
+
+
+
+/* ************************************************************************************** */
+/* *****************	 	              Start input	 	              ************** */
+/* ************************************************************************************ */
+//input
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+	border-radius: 3px;
+	min-height: 40px !important;
+	margin-bottom: 20px;
+	padding: 6px 20px !important; 
+	font-weight: 400;
+	border-color: #e6e6e6;
+	.form-control();
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	&:focus{
+		box-shadow: none;
+		-webkit-box-shadow: none;
+	}
+}
+
+.group-control {
+	select,
+	textarea,
+	input[type="text"],
+	input[type="password"],
+	input[type="datetime"],
+	input[type="datetime-local"],
+	input[type="date"],
+	input[type="month"],
+	input[type="time"],
+	input[type="week"],
+	input[type="number"],
+	input[type="email"],
+	input[type="url"],
+	input[type="search"],
+	input[type="tel"],
+	input[type="color"],
+	.uneditable-input {
+		width: 100%;
+	}
+}
+
+/* ************************************************************************************** */
+/* *****************	 	           End:: input	 	          ****************** */
+/* ************************************************************************************ */

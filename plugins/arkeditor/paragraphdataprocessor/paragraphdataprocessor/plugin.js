@@ -1,0 +1,5 @@
+/**
+ * @license Copyright (c) 2003-2013, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md or http://ckeditor.com/license
+ */
+CKEDITOR.plugins.add("paragraphdataprocessor",{init:function(){},afterInit:function(n){var t=n.dataProcessor,i=t&&t.dataFilter,r=t&&t.htmlFilter;i&&i.addRules({elements:{p:function(n){var i,t;n.children.length>0&&n.children.length<2&&(i=n.children[0],i&&i.name=="img"&&(t=i.attributes["class"],t=t?t.replace("ark_noblock",""):"",t?t+=" ark_noblock":t="ark_noblock",n.attributes["class"]=t))}}});r&&r.addRules({elements:{p:function(n){if(n.attributes["class"]){var t=n.attributes["class"];t&&/ark_noblock/.test(t)&&delete n.name}}}});n.on("insertHtml",function(n){var t=n.data&&n.data.dataValue||"";t.match(/^\<img/)&&(n.data.dataValue='<p class="ark_noblock">'+t+"<\/p>")})}})

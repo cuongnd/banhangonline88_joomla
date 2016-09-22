@@ -1,0 +1,101 @@
+@font-face {
+    font-family: 'megadeal';
+    src: url('../fonts/megadeal.eot?67m8qc');
+    src: url('../fonts/megadeal.eot?67m8qc#iefix') format('embedded-opentype'),
+        url('../fonts/megadeal.ttf?67m8qc') format('truetype'),
+        url('../fonts/megadeal.woff?67m8qc') format('woff'),
+        url('../fonts/megadeal.svg?67m8qc#megadeal') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="megadeal-icon-"], [class*=" megadeal-icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'megadeal' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.megadeal-icon-angle-down:before {
+    content: "\e900";
+}
+.megadeal-icon-angle-up:before {
+    content: "\e901";
+}
+.megadeal-icon-angle-left:before {
+    content: "\e902";
+}
+.megadeal-icon-angle-right:before {
+    content: "\e903";
+}
+.megadeal-icon-bin:before {
+    content: "\e904";
+}
+.megadeal-icon-camera:before {
+    content: "\e905";
+}
+.megadeal-icon-cart:before {
+    content: "\e906";
+}
+.megadeal-icon-cart-checked:before {
+    content: "\e907";
+}
+.megadeal-icon-check:before {
+    content: "\e908";
+}
+.megadeal-icon-compare:before {
+    content: "\e909";
+}
+.megadeal-icon-deal-ribbon:before {
+    content: "\e90a";
+}
+.megadeal-icon-equalizer:before {
+    content: "\e90b";
+}
+.megadeal-icon-eye:before {
+    content: "\e90c";
+}
+.megadeal-icon-joystick:before {
+    content: "\e90d";
+}
+.megadeal-icon-like:before {
+    content: "\e90e";
+}
+.megadeal-icon-link:before {
+    content: "\e90f";
+}
+.megadeal-icon-menu:before {
+    content: "\e910";
+}
+.megadeal-icon-mobile-devices:before {
+    content: "\e911";
+}
+.megadeal-icon-monitor:before {
+    content: "\e912";
+}
+.megadeal-icon-music-note:before {
+    content: "\e913";
+}
+.megadeal-icon-pencil:before {
+    content: "\e914";
+}
+.megadeal-icon-search:before {
+    content: "\e915";
+}
+.megadeal-icon-user:before {
+    content: "\e916";
+}
+.megadeal-icon-close:before {
+    content: "\e917";
+}
+.megadeal-icon-add-to-cart:before {
+    content: "\e918";
+}

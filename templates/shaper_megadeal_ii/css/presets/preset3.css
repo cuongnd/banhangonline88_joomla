@@ -1,0 +1,380 @@
+a {
+  color: #e72e37;
+}
+a:hover {
+  color: #cb1720;
+}
+.sp-megamenu-parent >li.active>a,
+.sp-megamenu-parent >li:hover>a {
+  color: #e72e37;
+}
+.sp-megamenu-parent .sp-dropdown li.sp-menu-item >a:not(.sp-group-title):hover {
+  color: #e72e37;
+}
+.sp-megamenu-parent .sp-dropdown li.sp-menu-item.active>a {
+  color: #e72e37;
+}
+#offcanvas-toggler >i {
+  color: #000000;
+}
+#offcanvas-toggler >i:hover {
+  color: #e72e37;
+}
+.btn-primary,
+.sppb-btn-primary {
+  border-color: #dd1923;
+  background-color: #e72e37;
+}
+.btn-primary:hover,
+.sppb-btn-primary:hover {
+  border-color: #b4151c;
+  background-color: #cb1720;
+}
+ul.social-icons >li a:hover {
+  color: #e72e37;
+}
+.layout-boxed .body-innerwrapper {
+  background: #e9eaed;
+}
+.sp-module ul >li >a {
+  color: #000000;
+}
+.sp-module ul >li >a:hover {
+  color: #e72e37;
+}
+.sp-module .latestnews >div >a {
+  color: #000000;
+}
+.sp-module .latestnews >div >a:hover {
+  color: #e72e37;
+}
+.sp-module .tagscloud .tag-name:hover {
+  background: #e72e37;
+}
+.sp-simpleportfolio .sp-simpleportfolio-filter > ul > li.active > a,
+.sp-simpleportfolio .sp-simpleportfolio-filter > ul > li > a:hover {
+  background: #e72e37;
+}
+.search .btn-toolbar button {
+  background: #e72e37;
+}
+.post-format {
+  background: #e72e37;
+}
+.voting-symbol span.star.active:before {
+  color: #e72e37;
+}
+.sp-rating span.star:hover:before,
+.sp-rating span.star:hover ~ span.star:before {
+  color: #cb1720;
+}
+.entry-link,
+.entry-quote {
+  background: #e72e37;
+}
+blockquote {
+  border-color: #e72e37;
+}
+.carousel-left:hover,
+.carousel-right:hover {
+  background: #e72e37;
+}
+.pagination>li>a,
+.pagination>li>span {
+  color: #000000;
+}
+.pagination>li>a:hover,
+.pagination>li>a:focus,
+.pagination>li>span:hover,
+.pagination>li>span:focus {
+  color: #000000;
+}
+.pagination>.active>a,
+.pagination>.active>span {
+  border-color: #e72e37;
+  background-color: #e72e37;
+}
+.pagination>.active>a:hover,
+.pagination>.active>a:focus,
+.pagination>.active>span:hover,
+.pagination>.active>span:focus {
+  border-color: #e72e37;
+  background-color: #e72e37;
+}
+.megadeal-vm-carts-product-wrapper .show-cart >a {
+  color: #000000;
+}
+.close-offcanvas:hover {
+  border: 1px solid #e72e37;
+  color: #e72e37;
+}
+.offcanvas-menu .offcanvas-inner .sp-module ul > li:hover >a,
+.offcanvas-menu .offcanvas-inner .sp-module ul > li.active >a {
+  color: #e72e37;
+}
+.vm_currency_module .sp-select-result {
+  color: #e72e37;
+}
+.pagination-wraper .pagination > .active > a {
+  background-color: #e72e37;
+}
+.pagination-wraper .pagination >li > a:hover {
+  background-color: #e72e37;
+}
+.sp-select ul >li:hover,
+.sp-select ul >li.active {
+  background-color: #e72e37;
+}
+.mod-sp-vmajaxsearch .sp-vmajaxsearch-results .results-list::-webkit-scrollbar-thumb,
+.sp-select-dropdown::-webkit-scrollbar-thumb {
+  background: #e72e37;
+}
+.sp-position-comingsoon .acymailing_module .acysubbuttons input.btn {
+  background-color: #e72e37;
+}
+.sp-position-comingsoon .acymailing_module .acysubbuttons input.btn:hover {
+  background-color: #cb1720;
+}
+.slider-bottom-category .slider-bottom-category-img .sppb-addon-content:after {
+  background-color: rgba(231,46,55,0.9);
+}
+.slider-bottom-category .slider-bottom-category-img a.sppb-btn:hover {
+  color: #e72e37;
+}
+.owl-controls .owl-dots .owl-dot.active span {
+  background: #e72e37;
+}
+.sp-mod-login span.sp-login .info-text a:hover,
+.sp-mod-login span.sp-login .info-text a:focus {
+  color: #e72e37;
+}
+.sp-mod-login .forget-name-link a:hover {
+  color: #e72e37;
+}
+.vmCartModule .megadeal-vm-cart-icon-wrapper .spvm-cart-toggle:hover {
+  color: #e72e37;
+}
+.vmCartModule .megadeal-vm-cart-icon-wrapper .spvm-cart-toggle .spvm-total-product {
+  background: #e72e37;
+}
+.vmCartModule .megadeal-vm-carts-product-wrapper .show-cart >a {
+  border: 2px solid #e72e37;
+}
+.vmCartModule .megadeal-vm-carts-product-wrapper .show-cart >a:hover {
+  background-color: #e72e37;
+}
+.carousel-nav-left:hover,
+.carousel-nav-right:hover {
+  color: #e72e37;
+}
+.home-category-slider-layout-2 .layout-leadinglayout .sp-vmslider-wrapper .owl-stage-outer .leading-item .sp-vmproduct-info .addtocart-button:hover {
+  background-color: #e72e37;
+}
+.home-category-slider-layout-2 .layout-leadinglayout .sp-vmslider-wrapper .owl-stage-outer .leading-item .sp-vmproduct-info a:hover {
+  color: #e72e37;
+}
+.home-category-slider-layout-2 .layout-leadinglayout .sp-vmslider-wrapper .owl-stage-outer a:hover {
+  color: #e72e37;
+}
+.home-category-slider-layout-3 .layout-listing .owl-stage-outer .owl-item .spvmslider-ii-items .spvmslider-ii-item .sp-vmproduct-info a:hover {
+  color: #e72e37;
+}
+.home-category-slider-layout-3 .layout-listing .owl-stage-outer .owl-item .spvmslider-ii-items .spvmslider-ii-item .sp-vmproduct-info .sp-price-box ins {
+  color: #e72e37;
+}
+.vmproduct-list .spacer a:hover {
+  color: #e72e37;
+}
+.productdetails-view .vm-product-details-container .addtocart-area .addtocart-bar .quantity-controls button:hover {
+  color: #e72e37;
+}
+.product-related-products .product-field .product-field-display a,
+.product-related-categories .product-field .product-field-display a,
+.product-related-categories .product-field .product-field-display a {
+  color: #000000;
+}
+.product-related-products .product-field .product-field-display a:hover,
+.product-related-categories .product-field .product-field-display a:hover,
+.product-related-categories .product-field .product-field-display a:hover {
+  color: #e72e37;
+}
+.product-related-products .product-field .product-field-display .PricesalesPrice,
+.product-related-categories .product-field .product-field-display .PricesalesPrice,
+.product-related-categories .product-field .product-field-display .PricesalesPrice {
+  color: #e72e37;
+}
+.sp-vmmenu >ul>li.parent:hover >a {
+  color: #e72e37;
+}
+.sp-vmmenu >ul>li.parent:hover >a:after {
+  color: #e72e37;
+}
+.sp-vmmenu >ul>li.parent >a:before {
+  background-color: #e72e37;
+}
+.sp-vmmenu >ul>li a:hover {
+  color: #e72e37;
+}
+.view-category .item .entry-header .article-info dd.category-name,
+.view-article .item .entry-header .article-info dd.category-name {
+  background-color: #e72e37;
+}
+.view-category .item p.readmore a.btn,
+.view-article .item p.readmore a.btn {
+  background-color: #e72e37;
+}
+.view-category .item p.readmore a.btn:hover,
+.view-article .item p.readmore a.btn:hover {
+  background-color: #cb1720;
+}
+.view-category .item .tags a.label-info:hover,
+.view-article .item .tags a.label-info:hover {
+  background-color: #e72e37;
+}
+.view-category .tag-cloud .tagspopular ul li a:hover,
+.view-article .tag-cloud .tagspopular ul li a:hover {
+  background-color: #e72e37;
+}
+.view-article .pagenav li.previous a,
+.view-article .pagenav li.next a {
+  background-color: #e72e37;
+}
+#sp-bottom2 a:hover {
+  color: #e72e37;
+}
+.chzn-container-single .chzn-results li.highlighted {
+  background-color: #e72e37 !important;
+}
+.sp-price-box ins {
+  color: #e72e37;
+}
+#fancybox-close:hover {
+  color: #e72e37;
+}
+.vmproduct-more-action >ul li a {
+  background-color: rgba(231,46,55,0.8);
+}
+.vmproduct-more-action >ul li a:hover {
+  background-color: #e72e37;
+}
+.vmproduct-more-action .addtocart-button,
+.vmproduct-more-action .vm-add-to-cart-wrap {
+  background-color: rgba(231,46,55,0.8) !important;
+}
+.vmproduct-more-action .addtocart-button:hover,
+.vmproduct-more-action .vm-add-to-cart-wrap:hover {
+  background-color: #e72e37 !important;
+}
+.addtocart-button.btn:hover {
+  background-color: #e72e37;
+}
+.category-view .category .spacer .title a:hover {
+  color: #e72e37;
+}
+.ask-a-question.btn:hover,
+input.addtocart-button:hover {
+  background-color: #e72e37 !important;
+}
+.vm-details-button .product-details {
+  background-color: #e72e37 !important;
+}
+.vm-details-button .product-details:hover {
+  background-color: #b4151c !important;
+}
+.call-for-price-login input.btn:hover,
+.ask-a-question-view input.btn:hover {
+  background-color: #e72e37 !important;
+}
+.view-category .orderby-displaynumber .orderlist > div:hover {
+  background-color: #e72e37;
+}
+.productdetails-view .back-to-category a {
+  background: #e72e37;
+}
+.productdetails-view .vm-product-details-container .addtocart-area .addtocart-bar .vm-addtocart-ask-wrap .addtocart-button {
+  background-color: #e72e37 !important;
+  border: solid 2px #e72e37 !important;
+}
+.productdetails-view .vm-product-details-container .addtocart-area .addtocart-bar .vm-addtocart-ask-wrap .addtocart-button:hover {
+  background-color: #e21a24 !important;
+  border: solid 2px #e21a24 !important;
+}
+.productdetails-view .vm-product-details-container .addtocart-area .addtocart-bar .vm-addtocart-ask-wrap a.ask-a-question {
+  border: solid 2px #e72e37 !important;
+}
+.productdetails-view .vm-product-details-container .addtocart-area .addtocart-bar .vm-addtocart-ask-wrap a.ask-a-question:hover {
+  background-color: #e72e37 !important;
+}
+.vm-orders-list .order-view .button {
+  background-color: #e72e37;
+}
+.vm-orders-list .order-view .button:hover {
+  background-color: #b4151c;
+}
+.view-cart .vm-continue-shopping a:hover {
+  background-color: #e72e37;
+}
+.view-cart .vm-cart-item-name a:hover {
+  color: #e72e37;
+}
+.view-cart input[type="submit"].button:hover,
+.view-cart input[type="submit"].details-button:hover,
+.view-cart .some-product-info .buttonBar-right button:hover,
+.view-cart .checkout-button-top button:hover,
+.view-cart .vm-button-correct:hover {
+  background-color: #e72e37 !important;
+}
+.view-user #form-login input[value="Logout"] {
+  background: #e72e37;
+}
+#com-form-login #com-form-login-remember input.btn {
+  background-color: #e72e37 !important;
+}
+#com-form-login #com-form-login-remember input.btn:hover {
+  background-color: #e21a24 !important;
+}
+#adminForm .buttonBar-right .button {
+  background-color: #e72e37;
+}
+.vm-adminform button:hover {
+  background-color: #e72e37 !important;
+}
+.about-feature .sppb-icon i {
+  color: #e72e37;
+}
+.about-progress .sppb-progress .sppb-progress-bar {
+  background-color: #e72e37;
+}
+.about-faq .sppb-addon-accordion .sppb-panel-group .sppb-panel .sppb-panel-heading.active span.sppb-panel-title i {
+  color: #e72e37;
+}
+.about-faq .sppb-addon-accordion .sppb-panel-group .sppb-panel:hover .sppb-panel-heading span.sppb-panel-title i {
+  color: #e72e37;
+}
+.about-team .sppb-addon-persion .sppb-person-information span.sppb-person-name:hover {
+  color: #e72e37;
+}
+.sppb-ajaxt-contact-form .sppb-btn-success {
+  background-color: #e72e37;
+}
+.sppb-ajaxt-contact-form .sppb-btn-success:hover {
+  background-color: #cb1720;
+}
+.sp-comingsoon .days .number,
+.sp-comingsoon .hours .number,
+.sp-comingsoon .seconds .number,
+.sp-comingsoon .minutes .number {
+  color: #e72e37;
+}
+.sp-comingsoon .days:after,
+.sp-comingsoon .hours:after,
+.sp-comingsoon .seconds:after,
+.sp-comingsoon .minutes:after {
+  background-color: #e21a24;
+}
+.sp-comingsoon .days .string,
+.sp-comingsoon .minutes .string,
+.sp-comingsoon .seconds .string,
+.sp-comingsoon .hours .string {
+  color: #e21a24;
+}

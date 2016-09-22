@@ -1,0 +1,93 @@
+<extension version="3.4" type="plugin" group="editors" method="upgrade">
+	<name>Editor - ARKEditor</name>
+	<version>1.9.0</version>
+	<creationDate>Aug 2016</creationDate>
+	<author>WebxSolution Ltd</author>
+	<authorUrl>http://www.arkextensions.com</authorUrl>
+	<license>GPLv2.0</license>
+	<description>PLG_ARK_XML_DESC</description>
+	<files>
+		<filename plugin="arkeditor">arkeditor.php</filename>
+		<folder>ckeditor</folder>
+		<folder>layouts</folder>
+        <folder>form</folder>
+	</files>
+	<languages>
+		<language tag="en-GB">language/en-GB/en-GB.plg_editors_arkeditor.ini</language>
+		<language tag="en-GB">language/en-GB/en-GB.plg_editors_arkeditor.sys.ini</language>
+	</languages>
+	<scriptfile>install.php</scriptfile>
+	<config>
+		<fields name="params">
+			<fieldset name="basic" addfieldpath="plugins/editors/arkeditor/form/fields">
+				<!-- Style up in J3.0 -->
+				<field name="j3_style" type="script" style=".form-horizontal #options .controls { margin-left : 250px; }" />
+			
+				<field name="toolbar" type="list" default="back" label="PLG_ARK_ADMINISTRATOR_END_TOOLBAR_MODE" description="PLG_ARK_FUNCTIONBK">
+					<option value="back">Back</option>
+					<option value="front">Front</option>
+					<option value="inline">Inline</option>
+					<option value="mobile">Mobile</option>
+				</field>
+				<field name="toolbar_ft" type="list" default="front" label="PLG_ARK_FRONTEND_TOOLBAR_MODE" description="PLG_ARK_FUNCTIONFT">
+					<option value="back">Back</option>
+					<option value="front">Front</option>
+					<option value="inline">Inline</option>
+					<option value="title">Title</option>
+					<option value="mobile">Mobile</option>
+				</field>
+				<field name="skin" type="list" default="officemetro" label="PLG_ARK_SKIN" description="PLG_ARK_EDITORSKIN">
+					<option value="officemetro">Office Metro</option>
+				</field>
+				<field name="entermode" type="list" default="1" label="PLG_ARK_ENTER_MODE" description="PLG_ARK_DESCENTERMODE">
+					<option value="1">P Elements</option>
+					<option value="2">BR Elements</option>
+					<option value="3">Div Elements</option>
+				</field>
+				<field name="shiftentermode" type="list" default="2" label="PLG_ARK_SHIFT_ENTER_MODE" description="PLG_ARK_DESCSHIFTENTERMODE">
+					<option value="1">P Elements</option>
+					<option value="2">BR Elements</option>
+					<option value="3">Div Elements</option>
+				</field>
+				<field name="width" type="text" default="" label="PLG_ARK_WIDTH" description="PLG_ARK_WIDTH_DESC" />
+				<field name="height" type="text" default="" label="PLG_ARK_HEIGHT" description="PLG_ARK_HEIGHT_DESC" />
+			</fieldset>
+			<fieldset name="advanced">
+				<field name="showerrors" type="radio" class="btn-group" default="1" label="PLG_ARK_DISPLAY_ERRORS" description="PLG_ARK_DESCSHOWERROR">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="lang_mode" type="radio" class="btn-group" default="1" label="PLG_ARK_LANGUAGE_SELECTION_MODE" description="PLG_ARK_DESCLANGMODE">
+					<option value="0">Manual</option>
+					<option value="1">Joomla! Default</option>
+					<option value="2">Browser Default</option>
+				</field>
+				<field name="lang_code" type="text" default="en" label="PLG_ARK_LANGUAGE_CODE" description="PLG_ARK_DESCLANGCODE" />
+				<field name="@spacer" type="spacer" default="" label="" description="" />
+				<field name="bgcolor" type="jscolor" default="" label="PLG_ARK_BACKGROUND_COLOUR" description="PLG_ARK_DESCBKCOLOR" />
+				<field name="ftcolor" type="jscolor"  default="" label="PLG_ARK_FONT_COLOUR" description="PLG_ARK_DESCCOLOR" />
+				<field name="ftsize" type="text"  default="" label="Font Size" description="Font Size" />
+				<field name="ftfamily" type="text"  default="" label="Font Family" description="Font Family"/>
+				<field name="textalign" type="list" default="0" label="PLG_ARK_TXT_ALIGNMENT" description="PLG_ARK_TXT_ALIGNMENT_DESC">
+					<option value="0">Default</option>
+					<option value="left">Left</option>
+					<option value="center">Center</option>
+					<option value="right">Right</option>
+					<option value="justify">Justify</option>
+					<option value="inherit">Inherit</option>
+				</field>
+				<field name="entities" type="radio" class="btn-group" default="0" label="PLG_ARK_PROCESS_HTML_ENTITIES" description="PLG_ARK_DESCPROCHTMLENT">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="formatsource" type="radio" class="btn-group" default="1" label="PLG_ARK_AUTO_FORMAT_SOURCE" description="PLG_ARK_FMTSRC">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="toolbars" type="toolbars" default=""/>
+				<field name="dialog_backgroundCoverColor" type="text" default="black" label="PLG_ARK_DIALOG_BACKGROUND_COVER_COLOR" description="PLG_ARK_DIALOG_BACKGROUND_COVER_COLOR_DESC" />
+				<field name="dialog_backgroundCoverOpacity" type="text" default="0.5" label="PLG_ARK_DIALOG_BACKGROUND_COVER_OPACITY" description="PLG_ARK_DIALOG_BACKGROUND_COVER_OPACITY_DESC" />
+			</fieldset>
+		</fields>
+	</config>
+</extension>

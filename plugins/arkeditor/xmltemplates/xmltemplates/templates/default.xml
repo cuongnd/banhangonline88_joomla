@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+
+ *
+
+ * This is the sample templates definitions file from FCKeditor
+
+ *
+
+ * It's provided as a sample for the backwards compatible plugin xmltemplates
+
+-->
+
+<Templates imagesBasePath="plugins/arkeditor/xmltemplates/xmltemplates/templates/" templateName="default">
+
+	
+	
+	<Template title="Bootstrap tab" image="tabbable.png">
+
+		<Description>Add quick, dynamic tab functionality to your site and inline edit tabs. Use the active class to set an active tab.</Description>
+
+		<Html> <![CDATA[
+
+		    <div class="ark tabbable">
+              <ul class="ark nav nav-tabs">
+                <li class=""><a data-toggle="tab" href="#tab1">Section 1</a></li>
+                <li class=""><a data-toggle="tab" href="#tab2">Section 2</a></li>
+                <li class="active"><a data-toggle="tab" href="#tab3">Section 3</a></li>
+              </ul>
+              <div class="ark tab-content">
+                <div id="tab1" class="ark tab-pane">
+                  <p>This is Section 1.</p>
+                </div>
+                <div id="tab2" class="ark tab-pane">
+                  <p>This is Section 2.</p>
+                </div>
+                <div id="tab3" class="ark tab-pane active">
+                  <p>This is Section 3.</p>
+                </div>
+              </div>
+            </div>
+
+		 ]]> </Html>
+
+	</Template>
+	
+	<Template title="Bootstrap tab left" image="tabbable-left.png">
+
+		<Description>Switch it to the left, and inline edit the content of your tabs.</Description>
+
+		<Html> <![CDATA[
+
+		<div class="ark tabbable tabs-left">
+              <ul class="ark nav nav-tabs">
+                <li class=""><a data-toggle="tab" href="#lA">Section 1</a></li>
+                <li class=""><a data-toggle="tab" href="#lB">Section 2</a></li>
+                <li class="active"><a data-toggle="tab" href="#lC">Section 3</a></li>
+              </ul>
+              <div class="ark tab-content">
+                <div id="lA" class="ark tab-pane">
+                  <p>This is Section A.</p>
+                </div>
+                <div id="lB" class="ark tab-pane">
+                  <p>This is Section B.</p>
+                </div>
+                <div id="lC" class="ark tab-pane active">
+                  <p>This is Section C.</p>
+                </div>
+              </div>
+            </div>
+
+		 ]]> </Html>
+
+	</Template>	
+	
+	
+	<Template title="accordion" image="accordion.png">
+
+		<Description>Flexible inline editing support for Bootstrap accordions.</Description>
+
+		<Html> <![CDATA[
+
+		    <div class="ark accordion" id="accordion2">
+			  <div class="ark accordion-group">
+				<div class="ark accordion-heading"><a class="ark accordion-toggle" data-parent="#accordion2" data-toggle="collapse" href="#collapseOne">Collapsible Group Item #1 </a>
+				</div>
+				<div class="ark accordion-body collapse" id="collapseOne" style="height: 0px;">
+				  <div class="ark accordion-inner">Lorem ipsum dolor sit amet, antioche in rei finibus veteres hoc ambulare dolor Jesus Circumdat, dabo potest contremiscunt eum in modo cavendum es.
+				  </div>
+				</div>
+			  </div>
+			  <div class="ark accordion-group">
+				<div class="ark accordion-heading"><a class="ark accordion-toggle" data-parent="#accordion2" data-toggle="collapse" href="#collapseTwo">Collapsible Group Item #2 </a>
+				</div>
+				<div class="ark accordion-body in collapse" id="collapseTwo" style="height: auto;">
+				  <div class="ark accordion-inner">Lorem ipsum dolor sit amet, antioche in rei finibus veteres hoc ambulare dolor Jesus Circumdat, dabo potest contremiscunt eum in modo cavendum es.
+				  </div>
+				</div>
+			  </div>
+			</div>
+
+		 ]]> </Html>
+
+	</Template>	
+	
+	
+	
+	
+		<Template title="Carousel" image="carousel.png">
+
+		<Description>Realtime inline editing for Bootstrap's carousel.</Description>
+
+		<Html> <![CDATA[
+
+		<div class="ark carousel slide" id="myCarousel">
+				<ol class="ark carousel-indicators">
+				  <li data-slide-to="0" data-target="#myCarousel">&nbsp;</li>
+				  <li data-slide-to="1" data-target="#myCarousel">&nbsp;</li>
+				  <li data-slide-to="2" data-target="#myCarousel">&nbsp;</li>
+				</ol>
+				<div class="ark carousel-inner">
+				  <div class="ark item active left"><img alt="" src="plugins/arkeditor/xmltemplates/xmltemplates/templates/img-sample-dark.png" style="width: 100%; height: 500px;" />
+					<div class="ark carousel-caption">
+					  <h4>First Thumbnail label
+					  </h4>
+					  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+					  </p>
+					</div>
+				  </div>
+				  <div class="ark item next left"><img alt="" src="plugins/arkeditor/xmltemplates/xmltemplates/templates/img-sample-mid.png" style="width: 100%; height: 500px;" />
+					<div class="ark carousel-caption">
+					  <h4>Second Thumbnail label
+					  </h4>
+					  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+					  </p>
+					</div>
+				  </div>
+				  <div class="ark item"><img alt="" src="plugins/arkeditor/xmltemplates/xmltemplates/templates/img-sample.png" style="width: 100%; height: 500px;" />
+					<div class="ark carousel-caption">
+					  <h4>Third Thumbnail label
+					  </h4>
+					  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+					  </p>
+					</div>
+				  </div>
+				</div>
+				<a class="ark left carousel-control" data-slide="prev" href="#myCarousel">‹</a> <a class="ark right carousel-control" data-slide="next" href="#myCarousel">›</a>
+		 </div>
+
+		 ]]> </Html>
+
+	</Template>	
+	
+	<Template title="Bootstrap thumbnails" image="default-thumbnails.png">
+
+		<Description>Bootstrap's thumbnails are designed to showcase linked images with minimal required markup.</Description>
+
+		<Html> <![CDATA[
+
+		 <ul class="ark thumbnails">
+              <li class="ark span3">
+                <a class="ark thumbnail" href="#">
+                  <img src="plugins/arkeditor/xmltemplates/xmltemplates/templates/img-sample.png" style="width: 100%; height: auto;" alt="thumbnails">
+                </a>
+              </li>
+              <li class="ark span3">
+                <a class="ark thumbnail" href="#">
+                  <img src="plugins/arkeditor/xmltemplates/xmltemplates/templates/img-sample-mid.png" style="width: 100%; height: auto;" alt="thumbnails">
+                </a>
+              </li>
+              <li class="ark span3">
+                <a class="ark thumbnail" href="#">
+                  <img src="plugins/arkeditor/xmltemplates/xmltemplates/templates/img-sample.png" style="width: 100%; height: auto;" alt="thumbnails">
+                </a>
+              </li>
+              <li class="ark span3">
+                <a class="ark thumbnail" href="#">
+                  <img src="plugins/arkeditor/xmltemplates/xmltemplates/templates/img-sample-mid.png" style="width: 100%; height: auto;" alt="thumbnails">
+                </a>
+              </li>
+         </ul>
+		<p> &nbsp; </p>
+		
+		 ]]> </Html>
+
+	</Template>	
+	
+	<Template title="Bootstrap Alerts" image="alerts.png">
+
+		<Description>Wrap any text and an optional dismiss button in .alert for a basic warning alert message.</Description>
+
+		<Html> <![CDATA[
+		
+				<div class="ark alert alert-block">
+					<button type="button" class="close" data-dismiss="alert">×</button>
+					<h4>Warning!</h4>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					</div>
+
+				<div class="ark alert alert-success">
+					<button data-dismiss="alert" class="close" type="button">×</button>
+					<strong>Well done!</strong> You successfully read this important alert message.
+					</div>
+
+				<div class="ark alert alert-error">
+					<button type="button" class="close" data-dismiss="alert">×</button>
+					<strong>Oh snap!</strong> Change a few things up and try submitting again.
+					</div>
+
+				<div class="ark alert alert-info">
+					<button data-dismiss="alert" class="close" type="button">×</button>
+					<strong>Heads up!</strong> This alert needs your attention, but it's not super important.
+					</div>
+
+		 ]]> </Html>
+
+	</Template>	
+	
+		<Template title="Bootstrap progress bars" image="progress-bars.png">
+
+		<Description>Progress bars for action status. You can quickly adjust the progress by changing the width % value.</Description>
+
+		<Html> <![CDATA[
+
+		<div class="ark progress progress-info">
+			<div class="bar" style="width: 20%"></div>
+			</div>
+			<div class="ark progress progress-success">
+			<div class="bar" style="width: 40%"></div>
+			</div>
+			<div class="ark progress progress-warning">
+			<div class="bar" style="width: 60%"></div>
+			</div>
+			<div class="ark progress progress-danger">
+			<div class="bar" style="width: 80%"></div>
+		</div>
+		<div class="progress">
+			<div class="ark bar bar-success" style="width: 35%;"></div>
+			<div class="ark bar bar-warning" style="width: 20%;"></div>
+			<div class="ark bar bar-danger" style="width: 10%;"></div>
+		</div>
+		
+		 ]]> </Html>
+
+	</Template>	
+	
+	
+	<Template title="Bootstrap fluid grid system" image="fluid-grid.png">
+
+		<Description>The fluid grid system uses percents nesting columns up to 12. It has responsive capabilities ensuring proper proportions for resolutions and devices.</Description>
+
+		<Html> <![CDATA[
+		
+		  <div class="ark row-fluid">
+			<div class="ark span1">
+				  1
+				</div>
+				<div class="ark span1">
+				  1
+				</div>
+				<div class="ark span1">
+				  1
+				</div>
+				<div class="ark span1">
+				  1
+				</div>
+				<div class="ark span1">
+				  1
+				</div>
+				<div class="ark span1">
+				  1
+				</div>
+				<div class="ark span1">
+				  1
+				</div>
+				<div class="ark span1">
+				  1
+				</div>
+				<div class="ark span1">
+				  1
+				</div>
+				<div class="ark span1">
+				  1
+				</div>
+				<div class="ark span1">
+				  1
+				</div>
+				<div class="ark span1">
+				  1
+			</div>
+			<p> &nbsp; </p>
+		  </div>  
+		  <div class="ark row-fluid">
+				<div class="ark span4">
+				  4
+				</div>
+				<div class="ark span4">
+				  4
+				</div>
+				<div class="ark span4">
+				  4
+				</div>
+		  </div> 
+		  <p> &nbsp; </p>
+		  <div class="ark row-fluid">
+				<div class="ark span4">
+				  4
+				</div>
+				<div class="ark span8">
+				  8
+				</div>
+		  </div>
+		  <p> &nbsp; </p>
+		  <div class="ark row-fluid">
+				<div class="ark span6">
+				  6
+				</div>
+				<div class="ark span6">
+				  6
+				</div>
+		  </div>
+		  <p> &nbsp; </p>
+		  <div class="ark row-fluid">
+				<div class="ark span12">
+				  12
+				</div>
+		  </div>
+		  <p> &nbsp; </p>
+		
+		 ]]> </Html>
+
+	</Template>	
+	
+	<Template title="Create your own template" image="template_demo.gif">
+
+		<Description>Its easy to add a content snippet to your website. Here's what to do!</Description>
+
+		<Html> <![CDATA[
+
+				<h3>
+				  Its never been easier to add a content template or snippet to your content.
+				</h3>
+				<p>
+				  The first thing to do is work out what you would like as a template and customise it to fit your project. The file where these templates are stored is located in the default.xml file found here:
+				</p>
+				<pre>
+				/plugins/arkeditor/xmltemplates/xmltemplates/templates/
+				</pre>
+				<p>
+				  You can quickly create a new templates by simply pasting your custom HTML code to the default.xml file as seen below.
+				</p>
+				<pre>
+				&lt;Template title=&quot;My title&quot; image=&quot;myimage.gif&quot;&gt;
+				&nbsp;&nbsp; &nbsp;&lt;Description&gt;My Description.&lt;/Description&gt;
+				&nbsp;&nbsp; &nbsp;&lt;Html&gt; &lt;![CDATA[
+				&nbsp;&nbsp; &nbsp;&lt;p&gt; My HTML code snippets&lt;/p&gt;
+				&nbsp;&nbsp; &nbsp;]]&gt; &lt;/Html&gt;
+				&lt;/Template&gt; 	
+				</pre>
+				<p>
+				  Then take a screenshot of your template, crop it down to 100 x 70 pixels and upload your new icon to same directory located here:
+				</p>
+				<pre>
+				/plugins/arkeditor/xmltemplates/xmltemplates/templates/
+				</pre>
+				<p>
+				  Job done!
+				</p>
+
+		 ]]> </Html>
+
+	</Template>
+	
+</Templates>

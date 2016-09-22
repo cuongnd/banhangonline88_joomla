@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.2" type="plugin" group="arkeditor" method="upgrade">
+	<name>ArkEditor - Magicline</name>
+	<author>WebxSolution Ltd</author>
+	<creationDate>May 2015</creationDate>
+	<copyright>>Copyright (C) 2014- 2015 All rights reserved</copyright>
+	<license>GNU General Public License version 2</license>
+	<authorEmail>info@arkextensions.com</authorEmail>
+	<authorUrl>http://www.arkextensions.com</authorUrl>
+	<version>1.0</version>
+	<description>The Magicline plugin</description>
+	<files>
+		<filename plugin="magicline">magicline.php</filename>
+		<filename>index.html</filename>
+		<folder>magicline</folder>
+	</files>
+</extension>

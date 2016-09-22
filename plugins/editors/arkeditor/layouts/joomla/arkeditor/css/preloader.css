@@ -1,0 +1,51 @@
+.animate.icon-cog
+{
+	animation: spin 1000ms infinite linear;
+	width: auto; 
+	height: auto; 
+	display: inline-block; 
+	margin: 0px; 
+	line-height: 1;
+}
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(359deg);
+    }
+}	
+.cog1-pos 
+{
+	color: rgb(205, 205, 205); 
+	font-size: 700%; 
+	z-index: 1;	
+	position: relative;
+}
+.cog2-pos 
+{
+	position: absolute; 
+	left: 67px; 
+	color: rgb(227, 227, 227); 
+	font-size: 400%;
+}
+.cog3-pos
+{
+	position: absolute; 
+	left: -29px; top: 16px; 
+	color: rgb(231, 231, 231);
+	font-size: 400%;
+}
+.ark_preloader
+{
+	position:relative;
+	padding-bottom:50%
+}
+
+.ark_preloader .inner_container
+{
+	top: 40%; 
+	left: 45%; 
+	position: absolute; 
+	font-size: 14px;
+}

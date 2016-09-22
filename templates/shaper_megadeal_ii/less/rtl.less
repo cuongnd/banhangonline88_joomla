@@ -1,0 +1,334 @@
+/**
+ * @package Helix Framework
+ * @author JoomShaper http://www.joomshaper.com
+ * @copyright Copyright (c) 2010 - 2016 JoomShaper
+ * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 or later
+*/
+
+@import 'variables';
+@import 'mixins';
+
+
+/* RTL Direction
+ *=======================================*/
+
+body {
+ 	&.rtl {
+
+		#sp-top-bar .sp-module {
+			margin: 0 20px 0 0;
+		}
+
+		//top address
+		.sp-contact-info {
+			float: left;
+		}
+
+		// lang switcher
+		.sp-module-content .mod-languages ul.lang-inline li {
+			margin: 0 0 0 5px;
+		}
+
+
+		//Offcanvas
+		#offcanvas-toggler {
+			float: left;
+		}
+		#offcanvas-toggler >i {
+			padding: 0 10px 0 0;
+
+		}
+		.close-offcanvas {
+			right: auto;
+			left: 10px;
+		}
+		.offcanvas-menu {
+			-webkit-transition: opacity 400ms cubic-bezier(0.7,0,0.3,1), left 400ms cubic-bezier(0.7,0,0.3,1);
+			transition: opacity 400ms cubic-bezier(0.7,0,0.3,1), left 400ms cubic-bezier(0.7,0,0.3,1);
+		}
+
+		.body-innerwrapper:after {
+			left: 0;
+		}
+
+		.offcanvas-menu {
+			left: -280px;
+		}
+
+		&.offcanvas {
+			.offcanvas-menu {
+				left: 0;
+			}
+		}
+
+		//mega menu
+		.sp-megamenu-parent {
+			float: left;
+		}
+
+		.sp-megamenu-parent >li.sp-has-child>a:after {
+			display: none;
+		}
+
+		.sp-megamenu-parent >li.sp-has-child>a:before {
+			content: " \f107";
+			font-family: FontAwesome;
+			margin-right: 5px;
+		}
+
+		.sp-megamenu-parent .sp-dropdown .sp-dropdown-items .sp-has-child>a:after {
+			float: left;
+			content: " \f104";
+		}
+
+		//module
+		.sp-module ul >li >a:before {
+			margin-right: 0;
+			margin-left: 8px;
+			content: "\f104";
+			float: right;
+		}
+
+		//blog
+		.entry-header.has-post-format {
+			margin-left: 0;
+			margin-right: 68px;
+		}
+		.post-format {
+			left: auto;
+			right: -68px;
+		}
+		.article-info >dt >i, .article-info >dd >i {
+			margin-right: 0;
+			margin-left: 3px;
+		}
+		.entry-link:before {
+			top:auto;
+			left: auto;
+			right: -60px;
+			transform: rotate(-90deg);
+		}
+		.entry-quote:before {
+			left: auto;
+			transform: rotate(-15deg);
+			top:auto;
+			right: -40px;
+		}
+		.categories-list .page-header a.pull-right {
+			float: left !important;
+		}
+		.newsfeed-category .category li .pull-left{
+			float: right !important;
+		}
+
+		//search
+		.search .btn-toolbar .pull-left{
+			float: right !important;
+		}
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////     Shaper Megadeal-ii     //////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////
+
+
+		//Top Bar
+		.sp-megamenu-wrapper{
+			float: right;
+		}
+		#sp-top-bar #sp-menu .sp-module{
+			margin: 0 15px 0 0;
+			padding: 0 15px 0 0;
+			float: right;
+			border-left: 0;
+			border-right: solid 1px #e3e4e7;
+		}
+		.sp-megamenu-parent .sp-dropdown li.sp-menu-item >a{
+			text-align: right;
+		}
+
+		//Header
+
+		#sp-header{
+			.pull-right{
+				float: left !important;
+			}
+		}
+		#sp-header #sp-header-right .sp-column > .sp-module.pull-right:not(:first-child){
+			margin-right: 0;
+			margin-left: 25px;
+		}
+
+		//Slider
+		.sp-vmcountdown-slide{
+			direction: ltr;
+		}
+		.sp-vmcountdown-slide .sp-vmcountdown-info{
+			padding: 55px 0 55px 20px;
+		}
+
+		.sp-vmslider-wrapper{
+			direction: ltr;
+		}
+		.owl-controls .owl-dots{
+			right: inherit;
+			left: 0;
+		}
+
+		.home-category-slider-layout-2 .layout-leadinglayout .sp-vmslider-wrapper .owl-stage-outer .leading-item {
+		    border-right: 0;
+		    border-left: solid 1px #e9eaed;
+		}
+
+		.vmproduct-list .spacer img{
+			float: right;
+			margin-right: 0;
+			margin-left: 15px;
+		}
+
+		.mod-sp-vmajaxsearch .input-group-addon:first-child{
+			border-right: 0;
+			border-left: 1px solid #dcdde0;	
+		}
+
+		.mod-sp-vmajaxsearch .form-group .sp-vmajaxsearch-clear{
+			right: inherit;
+			left: 10px;
+		}
+
+		.floatleft{
+			float: right;
+		}
+
+		.category-view .category {
+		    border-right: 0;
+		    border-left: 1px solid #e9e8e8;
+		}
+
+		.productdetails-view .vm-product-details-container .vm-product-countdown-wrapper .vm-price-save{
+			float: left;
+		}
+
+		.productdetails-view .vm-product-details-container .addtocart-area .addtocart-bar .vm-quantity-wrap .quantity-input{
+			display: inline-block;
+			border-right: solid 1px #d6d6d6;
+		}
+
+		.sp-price-box ins{
+			float: left;
+			margin-right: 10px;
+			margin-left: 0;
+		}
+
+		.productdetails-view .vm-product-details-container .addtocart-area .addtocart-bar .vm-addtocart-ask-wrap a.ask-a-question{
+			margin: 0 20px 0 0;
+		}
+
+		.cart-summary th,
+		.cart-summary td{
+		    border: 1px solid #ddd;
+		}
+
+		.billto-shipto{
+			.width50{
+				margin-left: 50px;
+			}
+		}
+
+		h1.title{
+			font-size: 20px;
+			margin: 0;
+		}
+
+		.view-cart .vm-continue-shopping a{
+			margin-right: 50px;
+		}
+
+		.view-user #sp-component h2{
+			text-align: right;
+		}
+
+		.productdetails-view .addtocart-bar{
+			text-align: right;
+		}
+
+		.productdetails-view .vm-product-details-container .addtocart-area .addtocart-bar .vm-quantity-wrap .quantity-text{
+			margin-right: 0;
+			margin-left: 25px;
+		}
+		.productdetails-view .vm-product-details-container .addtocart-area .addtocart-bar .quantity-controls{
+			margin: 0 -2px 0 0;
+		}
+
+		.sp-vmproduct-wrapper .vm-product-info-container .addtocart-bar .vm-quantity-wrap .quantity-text{
+			margin-right: 0;
+			margin-left: 15px;
+		}
+
+
+		//about page
+		.sppb-progress-bar{
+			float: right;
+		}
+
+		.sppb-progress-wrap{
+			.pull-left{
+				float: right !important;
+			}
+			.pull-right{
+				float: left !important;
+			}
+		}
+
+		.about-faq .sppb-addon-accordion .sppb-panel-group .sppb-panel .sppb-panel-heading span.sppb-panel-title i{
+			margin-right: 0;
+			margin-left: 12px;
+		}
+
+		.about-team .sppb-addon-persion .sppb-person-information{
+			left: inherit;
+			right: 30px;
+		}
+
+		.sppb-nav-tabs > li,
+		.sppb-nav-pills > li{
+			float: right;
+		}
+
+		.sppb-addon-accordion .sppb-panel-heading span.sppb-panel-title i{
+			margin-right: 0;
+			margin-left: 18px;
+		}
+
+		.popular-post .latestnews > div img{
+			float: right;
+			margin-right: 0;
+			margin-left: 15px;
+		}
+
+		.box-shadow .sppb-addon{
+			text-align: right;
+		}
+
+		#sp-footer2 p img{
+			float: left;
+		}
+
+		.contact-info{
+			text-align: right;
+		}
+
+		//Blog
+		.article-info >dd{
+			margin-right: 0;
+			margin-left: 30px;
+		}
+		.sp-vmmenu-right >ul>li:hover ul{
+			left: 100% !important;
+			right: inherit !important;
+		}
+
+ 	}
+}
