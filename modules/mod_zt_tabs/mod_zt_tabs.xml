@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension
+        type="module"
+        version="2.5"
+        client="site"
+        method="upgrade">
+    <name>ZT Tabs</name>
+    <author>DucNA</author>
+    <creationDate>April, 2014</creationDate>
+    <copyright>Copyright (C) 2008 http://www.ZooTemplate.com. All rights reserved.</copyright>
+    <license>http://www.ZooTemplate.com GNU/GPL</license>
+    <authorEmail>support@ZooTemplate.com</authorEmail>
+    <authorUrl>www.ZooTemplate.com</authorUrl>
+    <version>2.5.1</version>
+    <description>ZT_INSTALLATION</description>
+    <files>
+        <filename>mod_zt_tabs.xml</filename>
+        <filename module="mod_zt_tabs">mod_zt_tabs.php</filename>
+        <filename>helper.php</filename>
+        <filename>index.html</filename>
+        <folder>assets/</folder>
+        <folder>admin/</folder>
+        <folder>language</folder>
+        <folder>tmpl/</folder>
+
+    </files>
+    <languages>
+        <language tag="en-GB">language/en-GB.mod_zt_tabs.ini</language>
+    </languages>
+    <config addfieldpath="modules/mod_zt_tabs/admin/elements/">
+        <fields name="params">
+
+            <fieldset name="basic">
+
+                <field name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="PARAMMODULECLASSSUFFIX" />
+
+                <field name="type" type="jvtype" default="moduleID" label="Type tabs:" description="Do you want to use the content code to display with tab">
+                    <option value="">- Select type -</option>
+                    <option value="moduleID">Modules</option>
+                    <option value="categoryID">Contents</option>
+                </field>
+
+                <field name="moduleID-position" type="jvposition" default="left" label="Select a position" description="Select module position which will display in tabs" />
+                <field name="jv_selection" type="jvselection" default="" label="Select" description="Select">
+                </field>
+
+                <field name="@spacer" type="spacer" default="" label="" description="" />
+                <field name="@spacer" type="spacer" default=" Only For Content" label="" description="" />
+                 <field name="tab_maxItem" type="text" default="5" label="Max number tabs" description="The number of tabs to display(default 5)" />
+
+                <field name="theme" type="list" default="silver" label="theme" description="theme">
+                    <option value="silver">silver</option>
+                    <option value="white">white</option>
+                    <option value="crystal">crystal</option>
+                    <option value="gray">gray</option>
+                    <option value="black">black</option>
+                    <option value="orange">orange</option>
+                    <option value="red">red</option>
+                    <option value="green">green</option>
+                    <option value="blue">blue</option>
+                    <option value="deepblue">deepblue</option>
+                </field>
+                <field name="classes" type="list" default="z-tabs" label="classes" description="classes">
+                    <option value="z-tabs">z-tabs</option>
+                    <option value="z-tabs-nav">z-tabs-nav</option>
+                    <option value="z-tab">z-tab</option>
+                    <option value="z-first">z-first</option>
+                    <option value="z-last">z-last</option>
+                    <option value="z-left">z-left</option>
+                    <option value="z-right">z-right</option>
+                    <option value="z-first-col">z-first-col</option>
+                    <option value="z-last-col">z-last-col</option>
+                    <option value="z-first-row">z-first-row</option>
+                </field>
+                <field name="orientation" type="list" default="horizontal" label="orientation" description="orientation">
+                    <option value="horizontal">horizontal</option>
+                    <option value="vertical">vertical</option>
+                </field>
+                <field name="effects" type="list" default="fade" label="effects" description="effects">
+                    <option value="fade">fade</option>
+                    <option value="slideV">slideV</option>
+                    <option value="slideH">slideH</option>
+                    <option value="slideLeft">slideLeft</option>
+                    <option value="slideRight">slideRight</option>
+                    <option value="slideUp">slideUp</option>
+                    <option value="slideUpDown">slideUpDown</option>
+                    <option value="slideDown">slideDown</option>
+                </field>
+                <field name="event" type="list" default="click" label="event" description="event">
+                    <option value="click">Click</option>
+                    <option value="hover">Hover</option>
+                </field>
+                <field name="position" type="list" default="top-right" label="position" description="position">
+                    <option value="top-right">top-right</option>
+                    <option value="bottom-center">bottom-center</option>
+                    <option value="bottom-compact">bottom-compact</option>
+                    <option value="bottom-left">bottom-left</option>
+                    <option value="bottom-right">bottom-right</option>
+                    <option value="top-center">top-center</option>
+                    <option value="top-compact">top-compact</option>
+                    <option value="top-left">top-left</option>
+                </field>
+                <field name="defaultTab" type="list" default="tab1" label="defaultTab" description="defaultTab">
+                    <option value="tab1">tab1</option>
+                    <option value="tab2">tab2</option>
+                    <option value="tab3">tab3</option>
+                    <option value="tab4">tab4</option>
+                    <option value="tab5">tab5</option>
+                    <option value="tab6">tab6</option>
+                    <option value="tab7">tab7</option>
+                    <option value="tab8">tab8</option>
+                    <option value="tab9">tab9</option>
+                    <option value="tab10">ta10</option>
+                    <option value="tab11">tab11</option>
+                    <option value="tab12">tab12</option>
+                    <option value="tab13">tab13</option>
+                    <option value="tab14">tab14</option>
+                    <option value="tab15">tab15</option>
+                </field>
+
+
+
+            </fieldset>
+             <fieldset name="MOD_ZT_TABS_CONTENT_SETTING">
+                <field name="categoryID-maxItem" type="text" default="5" label="Max number item" description="The number of items to display in content(default 5)" />
+                <field name="categoryID-ordering" type="list" default="default" label="Items Ordering" description="Ordering options">
+                    <option value="default">Default</option>
+                    <option value="c_dsc">Recently Added First</option>
+                    <option value="m_dsc">Recently Modified First</option>
+                </field>
+
+                <field name="intro_length" type="text" default="200" label="Introtext length" description="Introtext length" />
+             </fieldset>
+
+            <fieldset name="MOD_ZT_TABS_SETTING">
+                <field name="asset" type="asset"></field>
+                <field name="tab_style" default="zt_style4" type="list" label="Style" description="Select zt tab style">
+                    <option value="default">ZT default</option>
+                    <option value="style2">ZT style 2</option>
+                    <option value="style3">ZT style 3</option>
+                    <option value="style4">ZT style 4</option>
+                </field>
+
+                 <field name="title_position" default="top" type="list" label="Select position title" description="Select position title">
+                        <option value="top">Top position</option>
+                        <option value="bot">Bottom position</option>
+                        <option value="left">Left position</option>
+                        <option value="right">Right position</option>
+                    </field>
+
+                 <field name="tab_alignment" default="top" type="list" label="Select tab alignment" description="Select tab alignment(only for position top/bottom)">
+                                    <option value="zt-left">Left</option>
+                                    <option value="zt-right">Right</option>
+                                    <option value="zt-center">Center</option>
+                </field>
+
+                <field name="effect_type" default="scroll_tb" type="list" label="Select Effect" description="Select Effect">
+                    <option value="move">Move</option>
+                    <option value="fade">Fade</option>
+                </field>
+
+
+
+                <field name="tHeight" type="text" default="auto" label="Tabs title Height:" description="Enter the Tabs title Height of tab module" />
+                <field name="tWidth" type="text" default="auto" label="Tabs title Width:" description="Enter the Tabs title Width of tab module" />
+
+                <field name="showIntroImage" type="radio" default="display" label="Image intro display" description="Image intro display(Only for category)">
+                    <option value="display">Display</option>
+                    <option value="hide">Hide</option>
+                </field>
+
+                <field name="intro_image_width" type="text" label="Intro Image Width" default="100" description="" />
+                <field name="intro_image_height" type="text" label="Intro Image Height" default="100" description="Auto change follow width" />
+
+
+            </fieldset>
+
+        </fields>
+    </config>
+</extension>

@@ -1,0 +1,59 @@
+div#zt-module {
+  overflow: hidden;
+  ul.zt-tabs, ul.nav {
+    border-bottom: none;
+    margin-right: 10px;
+    float: left;
+    li {
+      float: none;
+      &.active {
+        &:after {
+          content: "";
+          position: relative;
+          top: -24px;
+          left: 2px;
+
+          float: right;
+          border-left:4px solid #ddd;
+          border-top: 8px solid transparent;
+          border-bottom: 4px solid transparent;
+
+
+
+
+
+        }
+        a {
+          border: 1px solid #ddd;
+        }
+      }
+
+      a {
+      }
+    }
+  }
+
+
+  div.tab-content {
+    margin-right: 5px;
+    //margin-bottom: 30px;
+    padding-left: 15px;
+    padding-top: 15px;
+    //border: 1px solid #ddd;
+    min-height: 50px;
+    min-width: 50px;
+
+    display: flex;
+
+
+
+    //border: 1px solid #ddd;
+
+
+
+    div.tab-pane, div.active {
+      margin-bottom: 0px;
+
+    }
+  }
+}

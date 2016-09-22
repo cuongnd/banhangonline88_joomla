@@ -1,0 +1,84 @@
+div#zt-module {
+  font-size: 13px;
+  overflow: auto;
+}
+div#zt-module ul.zt-tabs,
+div#zt-module ul.nav {
+  float: right;
+  margin-left: -1px;
+  border-left: 1px solid #ddd;
+  font-size: medium;
+  font-weight: bold;
+}
+div#zt-module ul.zt-tabs li,
+div#zt-module ul.nav li {
+  float: none;
+  margin-top: 5px;
+  -webkit-border-radius: 0px 4px 4px 0;
+  -moz-border-radius: 0px 4px 4px 0;
+  border-radius: 0px 4px 4px 0;
+  border-right-color: transparent;
+  border: 1px solid #ddd;
+  border-left: none;
+}
+div#zt-module ul.zt-tabs li:first-child,
+div#zt-module ul.nav li:first-child {
+  margin-top: 0px;
+}
+div#zt-module ul.zt-tabs li a,
+div#zt-module ul.nav li a {
+  border-radius: 0px 4px 4px 0px;
+}
+div#zt-module ul.zt-tabs li a,
+div#zt-module ul.nav li a,
+div#zt-module ul.zt-tabs li a:hover,
+div#zt-module ul.nav li a:hover,
+div#zt-module ul.zt-tabs li a:focus,
+div#zt-module ul.nav li a:focus {
+  border: none;
+  margin-left: 0px;
+  background-color: white;
+  color: #444444;
+  background: -webkit-linear-gradient(left, #dddddd, #ffffff);
+  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, #dddddd, #ffffff);
+  /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, #dddddd, #ffffff);
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to right, #dddddd, #ffffff);
+  /* Standard syntax */
+}
+div#zt-module ul.zt-tabs li.active a,
+div#zt-module ul.nav li.active a,
+div#zt-module ul.zt-tabs li.active a:hover,
+div#zt-module ul.nav li.active a:hover,
+div#zt-module ul.zt-tabs li.active a:focus,
+div#zt-module ul.nav li.active a:focus {
+  border: none;
+  margin-right: 0px;
+  margin-left: -1px;
+  color: #EE9900;
+  background: -webkit-linear-gradient(left, #ffffff, #dddddd);
+  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, #ffffff, #dddddd);
+  /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, #ffffff, #dddddd);
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to right, #ffffff, #dddddd);
+  /* Standard syntax */
+}
+div#zt-module div.tab-content {
+  margin-right: 5px;
+  padding-left: 15px;
+  padding-top: 15px;
+  padding-right: 15px;
+  min-height: 50px;
+  min-width: 50px;
+  display: flex;
+  padding-bottom: 5px;
+  border: 1px solid #ddd;
+}
+div#zt-module div.tab-content div.tab-pane,
+div#zt-module div.tab-content div.active {
+  margin-bottom: 0px;
+}

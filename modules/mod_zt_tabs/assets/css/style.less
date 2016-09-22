@@ -1,0 +1,103 @@
+#zt-module-tabs {
+  margin-bottom: 20px;
+  .zt-center {
+    text-align: center;
+    li {
+      float: none;
+      display: inline-block;
+    }
+  }
+  .zt-left {
+    text-align: left;
+    li {
+      float: none;
+      display: inline-block;
+    }
+  }
+  .zt-right {
+    text-align: right;
+    li {
+      float: none;
+      display: inline-block;
+    }
+  }
+  .zt-justify {
+    text-align: justify;
+    display: table;
+    margin: 0 auto !important;
+    li {
+      float: none;
+      display: inline-block;
+    }
+  }
+  ul.nav, ul.zt-tabs {
+    margin-bottom: 0px;
+
+
+  }
+  div.tab-content{
+    margin-bottom: 0px;
+    div.tab-pane{
+      margin-bottom: 30px;
+    }
+  }
+
+  div.tab-content {
+    div.tab-pane, div.active {
+      margin-bottom: 0px;
+    }
+    div.zt-article {
+      &:first-child{
+        padding-top: 0px;
+      }
+      font-family: Arial,Helvetica,sans-serif;
+      padding: 30px 0;
+      border-bottom: 1px solid #e5e5e5;
+      float: left;
+      width: 100%;
+
+      div.zt-intro-img {
+        float: left;
+        display: block;
+        overflow: hidden;
+        margin-right: 10px;
+      }
+      div.zt-container {
+        float: left;
+
+        div.zt-title {
+          h4 {
+            margin-top: 0px ;
+            font-size: 20px;
+
+            a, a:active, a:visited  {
+              color: #000000;
+              text-decoration:none
+            }
+            a:hover, a:active {
+              color: #D82731;
+              text-decoration:none
+            }
+          }
+        }
+        div.zt-intro-text {
+          p{
+            line-height: 1.5;
+            margin-bottom: 0px;
+            font-size: 14px;
+          }
+        }
+        div.zt-create {
+          padding-top: 15px;
+          color: #999;
+          font-size: 11px;
+          i {
+            padding: 0px 5px 0px 15px;
+          }
+        }
+      }
+    }
+  }
+}
+
+//div#zt-module div.tab-content div.tab-pane, div#zt-module div.tab-content div.active

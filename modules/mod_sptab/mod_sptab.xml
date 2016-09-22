@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3" client="site" method="upgrade">
+	<name>SP Tab</name>
+	<author>JoomShaper.com</author>
+	<creationDate>May 2011</creationDate>
+	<copyright>Copyright (C) 2010 - 2012 JoomShaper.com. All rights reserved.</copyright>
+	<license>GNU/GPL V2 or Later</license>
+	<authorEmail>support@joomshaper.com</authorEmail>
+	<authorUrl>www.joomshaper.com</authorUrl>
+	<version>2.0</version>
+	<description>SP Tab - Next generation tab module for joomla</description>
+	<languages>
+		<language tag="en-GB">language/en-GB.mod_sptab.ini</language>
+	</languages>
+	<files>
+		<filename module="mod_sptab">mod_sptab.php</filename>
+		<folder>tmpl</folder>
+		<folder>language</folder>
+		<folder>assets</folder>
+		<folder>elements</folder>
+		<filename>helper.php</filename>
+		<filename>index.html</filename>
+	</files>
+	<config>
+		<fields name="params" addfieldpath="/modules/mod_sptab/elements">	
+			<fieldset name="Basic">
+
+				<field name="mods" id="mods" type="sql" default="0" multiple="multiple" size="10" label="MODS" description="MODS_DESC" query="SELECT id,  module, CONCAT(title,'-',note) AS title FROM #__modules WHERE  `client_id`=0 AND ( `published` !=-2 AND `published` !=0 ) ORDER BY position ASC" key_field="id" value_field="title" />
+				<field name="ordering" type="list" default="ordering" label="ORDERING" description="ORDERING_DESC">
+					<option value="ordering">ORDERING</option>
+					<option value="title">TITLE</option>
+				</field>
+				<field name="ordering_direction" type="list" default="ASC" label="ORDERING_FILTER" description="ORDERING_FILTER_DESC">
+					<option value="DESC">FILTER_DESC</option>
+					<option value="ASC">FILTER_ASC</option>
+				</field>
+				<field name="nav_height" type="text" size="8" default="30" label="NAV_HEIGHT" description="NAV_HEIGHT_DESC" />
+				<field name="nav_pos" type="list" default="top" label="NAV_POS" description="NAV_POS_DESC">
+					<option value="top">TOP</option>
+					<option value="bottom">BOTTOM</option>
+				</field>
+				<field name="body_padding" type="text" size="40" default="10px" label="BODY_PADDING" description="BODY_PADDING_DESC" />
+			</fieldset>
+			<fieldset name="STYLES">
+				<field name="tab_style" type="list" default="custom" label="STLYES" description="STLYES_DESC">
+					<option value="style1">Style1</option>
+					<option value="style2">Style2</option>
+					<option value="style3">Style3</option>
+					<option value="style4">Style4</option>
+					<option value="style5">Style5</option>
+					<option value="style6">Style6</option>
+					<option value="style7">Style7</option>
+					<option value="style8">Style8</option>
+					<option value="style9">Style9</option>
+					<option value="style10">Style10</option>
+					<option value="raw">Raw</option>
+					<option value="custom">Custom</option>
+				</field>
+				<field name="color" type="list" default="sptab_red" label="COLORS" description="COLORS_DESC">
+					<option value="sptab_red">Red</option>
+					<option value="sptab_green">Green</option>
+					<option value="sptab_blue">Blue</option>
+				</field>
+				<field name="header_bg" type="color" default="#333333" label="HEADER_BG" description="HEADER_BG_DESC" />
+				<field name="nav_bg" type="color" default="#333333" label="NAV_BG" description="NAV_BG_DESC" />
+				<field name="nav_text" type="color" default="#FFFFFF" label="NAV_TEXT" description="NAV_TEXT_DESC" />
+				<field name="nav_hover" type="color" default="#057ea6" label="NAV_HOVER" description="NAV_HOVER_DESC" />
+				<field name="nav_hover_text" type="color" default="#FFFFFF" label="NAV_HOVER_TEXT" description="NAV_HOVER_TEXT_DESC" />
+				<field name="nav_active" type="color" default="#729c00" label="NAV_ACTIVE" description="NAV_ACTIVE_DESC" />
+				<field name="nav_active_text" type="color" default="#FFFFFF" label="NAV_ACTIVE_TEXT" description="NAV_ACTIVE_TEXT_DESC" />
+				<field name="nav_border_color" type="color" default="#666666" label="NAV_CBORDER" description="NAV_CBORDER_DESC" />
+				<field name="nav_border_pos" type="list" class="sp-input" default="right" label="NAV_BORDER_POS" description="NAV_BORDER_POS_DESC">
+					<option value="left">LEFT</option>
+					<option value="right">RIGHT</option>
+				</field>					
+				<field name="nav_wborder" type="text" size="8" class="sp-input" default="1" label="NAV_WBORDER" description="NAV_WBORDER_DESC" />
+				<field name="nav_margin" type="list" class="sp-input" default="right" label="NAV_MARGIN" description="NAV_MARGIN_DESC">
+					<option value="left">LEFT</option>
+					<option value="right">RIGHT</option>
+				</field>	
+				<field name="nav_margin_val" type="text" size="8" class="sp-input" default="0" label="NAV_MARGIN_VAL" description="NAV_MARGIN_VAL_DESC" />
+				<field name="body_bg" type="color" default="#FFFFFF" label="BODY_BG" description="BODY_BG_DESC" />
+				<field name="body_text" type="color" default="#444444" label="BODY_TEXT" description="BODY_TEXT_DESC" />
+				<field name="border_color" type="color" default="#e1e1e1" label="BODY_CBORDER" description="BODY_CBORDER_DESC" />			
+				<field name="body_wborder" type="text" size="8" class="sp-input" default="1" label="BODY_WBORDER" description="BODY_WBORDER_DESC" />
+			</fieldset>
+			<fieldset name="ANIMATION">	
+				<field name="activator" type="list" default="click" label="ACTIVATOR" description="ACTIVATOR_DESC">
+					<option value="click">CLICK</option>
+					<option value="mouseenter">HOVER</option>
+				</field>			
+				<field name="fx_speed" type="text" default="400" label="SPEED" description="SPEED_DESC" />
+				<field name="animation" type="list" default="scroll:fade" label="ANIMATION_TYPE" description="ANIMATION_TYPE_DESC">
+					<option value="fade">Fade</option>
+					<option value="scroll:horizontal">Horizontal Scroll</option>
+					<option value="scroll:vertical">Vertical Scroll</option>
+					<option value="none">No Animation</option>
+				</field>
+				<field name="transition" type="list" default="linear" label="TRANSITION" description="TRANSITION_DESC">
+					<option value="linear">linear</option>
+					<option value="swing">swing</option>
+					<option value="easeInQuad">easeInQuad</option>
+					<option value="easeOutQuad">easeOutQuad</option>
+					<option value="easeInOutQuad">easeInOutQuad</option>
+					<option value="easeInCubic">easeInCubic</option>
+					<option value="easeOutCubic">easeOutCubic</option>
+					<option value="easeInOutCubic">easeInOutCubic</option>
+					<option value="easeInQuart">easeInQuart</option>
+					<option value="easeOutQuart">easeOutQuart</option>
+					<option value="easeInOutQuart">easeInOutQuart</option>
+					<option value="easeInQuint">easeInQuint</option>
+					<option value="easeOutQuint">easeOutQuint</option>
+					<option value="easeInOutQuint">easeInOutQuint</option>
+					<option value="easeInSine">easeInSine</option>
+					<option value="easeOutSine">easeOutSine</option>
+					<option value="easeInOutSine">easeInOutSine</option>
+					<option value="easeInExpo">easeInExpo</option>
+					<option value="easeOutExpo">easeOutExpo</option>
+					<option value="easeInOutExpo">easeInOutExpo</option>
+					<option value="easeInCirc">easeInCirc</option>
+					<option value="easeOutCirc">easeOutCirc</option>
+					<option value="easeInOutCirc">easeInOutCirc</option>
+					<option value="easeInElastic">easeInElastic</option>
+					<option value="easeOutElastic">easeOutElastic</option>
+					<option value="easeInOutElastic">easeInOutElastic</option>
+					<option value="easeInBack">easeInBack</option>
+					<option value="easeOutBack">easeOutBack</option>
+					<option value="easeInOutBack">easeInOutBack</option>
+					<option value="easeInBounce">easeInBounce</option>
+					<option value="easeOutBounce">easeOutBounce</option>
+					<option value="easeInOutBounce">easeInOutBounce</option>
+				</field>
+				<field type="asset" />
+			</fieldset>
+			<fieldset name="advanced">
+				<field name="layout" type="modulelayout" label="JFIELD_ALT_LAYOUT_LABEL" description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+				<field name="moduleclass_sfx" type="text" default="" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+				<field name="cache" type="list" default="1" label="COM_MODULES_FIELD_CACHING_LABEL" description="COM_MODULES_FIELD_CACHING_DESC">
+					<option value="1">JGLOBAL_USE_GLOBAL</option>
+					<option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+				<field name="cache_time" type="text" default="900" label="COM_MODULES_FIELD_CACHE_TIME_LABEL" description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
+			</fieldset>
+		</fields>
+	</config>
+</extension>

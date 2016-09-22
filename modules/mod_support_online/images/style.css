@@ -1,0 +1,50 @@
+.sp_yh {
+}
+.sp_sk {
+    display: inline;
+}
+.sp_copyright {
+    text-align: center;
+    font-weight: bold;
+    font-size: 10px;
+}
+.sp_copyright a {
+    font-size: 10px !important;
+}
+.sp_yahoo {
+	background: url('hotline-img.png') no-repeat top;
+	padding-top: 120px;
+}
+.sp_yahoo_customlogo {}
+.sp_yahoo_customlogo img{
+    max-width: 80%;
+}
+.sp_dotted {
+	background: url('dot.gif') repeat-x bottom; margin-bottom: 5px;padding-bottom: 5px;
+}
+.sp_address {
+	background:url(addr.gif) center left no-repeat;
+	margin-top:7px;
+	padding-left: 25px;
+	margin-top: 5px;
+}
+.sp_tel {
+	background:url(tel.gif) center left no-repeat;
+	padding-left: 25px;
+	margin-top: 5px;
+}
+.sp_fax {
+	background:url(fax.gif) center left no-repeat;
+	padding-left: 25px;
+	margin-top: 5px;
+}
+.sp_email {
+	background:url(mail.gif) center left no-repeat;
+	padding-left: 25px;
+	margin-top: 5px;
+}
+.sp_hotline {
+	background:url(hotl.gif) center left no-repeat;
+	padding-left: 25px;
+	margin-top: 5px;
+}

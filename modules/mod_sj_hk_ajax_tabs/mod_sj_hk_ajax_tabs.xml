@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.2.0" method="upgrade" client="site">
+	<name>SJ Ajax Tabs for HikaShop</name>
+	<creationDate>April 2014</creationDate>
+	<author>YouTech Company</author>
+	<copyright>Copyright (c) 2014 YouTech Company</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>contact@ytcvn.com</authorEmail>
+	<authorUrl>http://www.smartaddons.com</authorUrl>
+	<version>1.0.0</version>
+	<description>TPL_YTFRAMEWORK_XML_DESCRIPTION</description>
+	<files>
+		<filename module="mod_sj_hk_ajax_tabs">mod_sj_hk_ajax_tabs.php</filename>
+		<filename>index.html</filename>
+		<folder>core</folder>
+		<folder>assets</folder>
+		<folder>language</folder>
+		<folder>tmpl</folder>
+	</files>
+	<languages/>
+	<config>
+		<fields name="params" addfieldpath="/modules/mod_sj_hk_ajax_tabs/core/fields">
+			<fieldset name="basic">
+				<field name="item_link_target" type="list" default="_blank" label="Link Target"
+					   description="The Type shows when you click on the link">
+					<option value="_blank">New Window</option>
+					<option value="_self">Same Window</option>
+					<option value="_windowopen">Popup window</option>
+				</field>
+				<field name="position" type="list" default="theme1" label="Tabs position"
+					   description="Please select a theme for the module">
+					<option value="top">Top</option>
+					<option value="bottom">Bottom</option>
+					<option value="left">Left</option>
+					<option value="right">Right</option>
+				</field>
+				<field name="nb_column" default="3" type="text" label="Number column"
+					   description="Number column. 6 is maximum."/>
+				<field name="nb_row" default="1" type="text" label="Number row" description="Number row"/>
+				<field name="pager_display" type="radio" class="btn-group" default="1" label="Display page"
+					   description="Display page">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
+				<field name="swipe_enable" type="radio" class="btn-group" default="1" label="SWIPE_LABEL"
+					   description="SWIPE_DESC">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
+				<field name="mouse_enable" type="radio" class="btn-group" default="1" label="MOUSE_LABEL"
+					   description="MOUSE_DESC">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
+			</fieldset>
+			<fieldset name="SOURCE_OPTIONS_LABEL" label="SOURCE_OPTIONS_LABEL">
+				<field name="catid" type="sjhkcategories" default="" multiple="multiple" label="Select Category"
+					   description="Select Category"/>
+				<field name="category_preload" type="sjhkcategories" default=""
+					   label="DATA_SOURCE_PRELOAD_LABEL" description="DATA_SOURCE_PRELOAD_DESC"/>
+				<field name="show_child_category_products" type="radio" class="btn-group" default="1"
+					   label="CHILD_CATEGORY_PRODUCTS_LABEL" description="CHILD_CATEGORY_PRODUCTS_DESC">
+					<option value="1">Include</option>
+					<option value="0">Exclude
+					</option>
+				</field>
+				<field name="depth" type="text" default="1" label="CATEGORY_DEPTH_LABEL"
+					   description="CATEGORY_DEPTH_DESC"/>
+				<field type="list" name="product_order" label="Product Order" default="ordering"
+					   description="Product Order">
+					<option value="ordering">Ordering</option>
+					<option value="product_average_score">Product Average Score</option>
+					<option value="product_canonical">Product Canonical</option>
+					<option value="product_code">Product Code</option>
+					<option value="product_created">Product Created</option>
+					<option value="product_hit">Product Hit</option>
+					<option value="product_id">Product Id</option>
+					<option value="product_last_seen_date">Product Last Seen Date</option>
+					<option value="product_modified">Product Modified</option>
+					<option value="product_name">Product Name</option>
+					<option value="product_sale_end">Product Sale End</option>
+					<option value="product_sale_start">Product Sale Start</option>
+					<option value="product_sales">Product Sales</option>
+					<option value="product_total_vote">Product Total Vote</option>
+					<option value="rand()">Random</option>
+				</field>
+				<field name="product_ordering_direction" type="list" default="ASC" label="ORDERING_DIRECTION_LABEl"
+					   description="ORDERING_DIRECTION_DESC">
+					<option value="DESC">Descending</option>
+					<option value="ASC">Ascending</option>
+				</field>
+				<field name="count" type="text" default="5" label="COUNT_LABEl" description="COUNT_DESC"/>
+			</fieldset>
+			<fieldset name="ITEM_OPTIONS_LABEL" label="ITEM_OPTIONS_LABEL">
+				<field name="category_title_maxchars" type="text" default="20" label="CAT_TITLE_LENGTH_LABEL"
+					   description="CAT_TITLE_LENGTH_DESC"/>
+				<field name="item_title_display" type="radio" class="btn-group" default="1" label="DISPLAY_TITLE_LABEL"
+					   description="DISPLAY_TITLE_DESC">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
+				<field name="item_title_max_characs" type="text" default="20" label="TITLE_MAXLENGTH_LABEL"
+					   description="TITLE_MAXLENGTH_DESC"/>
+				<field name="item_desc_display" type="radio" class="btn-group" default="1"
+					   label="DISPLAY_DESCRIPTION_LABEL" description="DISPLAY_DESCRIPTION_DESC">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
+				<field name="item_desc_max_characs" type="text" default="100" label="DESCRIPTION_MAXLENGTH_LABEL"
+					   description="DESCRIPTION_MAXLENGTH_DESC"/>
+				<field name="item_prices_display" type="radio" class="btn-group" default="1"
+					   label="PRICES_DISPLAY_LABEL" description="PRICES_DISPLAY_DESC">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
+				<field name="item_per_unit_display" type="radio" class="btn-group" default="0"
+					   label="PER_UNIT_DISPLAY_LABEL" description="PER_UNIT_DISPLAY_DESC">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
+				<field name="display_votes" type="radio" class="btn-group" default="1"
+				       label="DISPLAY_VOTES_LABEL" description="DISPLAY_VOTES_DESC">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
+				<field name="display_add_to_cart" type="radio" class="btn-group" default="0"
+				       label="ADD_TO_CART_LABEL" description="ADD_TO_CART_DESC">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
+				<field name="display_add_to_wishlist" type="radio" class="btn-group" default="0"
+				       label="ADD_TO_WISHLIST_LABEL" description="ADD_TO_WISHLIST_DESC">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
+				<field name="item_detail_display" type="radio" default="1" class="btn-group"
+					   label="DISPLAY_DETAIL_LABEL" description="DISPLAY_DETAIL_DESC">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
+				<field name="item_detail_text" type="text" default="Detail" label="DETAIL_TEXT_LABEL"
+					   description="DETAIL_TEXT_DESC"/>
+			</fieldset>
+			<fieldset name="IMAGE_OPTIONS_LABEL" label="IMAGE_OPTIONS_LABEL">
+				<field type="sjheading" label="Get Images From Product Image"/>
+				<field name="imgcfg_from_product_image" label="IMAGE_PRODUCT_IMAGE_LABEL" class="btn-group"
+					   description="IMAGE_PRODUCT_IMAGE_DESC" type="radio" default="1">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
+				<field type="sjheading" label="Get Images From Description"/>
+				<field name="imgcfg_from_product_description" label="IMAGE_PRODUCT_DESCRIPTION_LABEL" class="btn-group"
+					   description="IMAGE_PRODUCT_DESCRIPTION_DESC" type="radio" default="1">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
+				<field type="sjheading" label="Get images From Extend Folder"/>
+				<field name="imgcfg_from_external" label="EXTEND_FOLDER_LABEL" class="btn-group"
+					   description="EXTEND_FOLDER_DESC" type="radio" default="1">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
+				<field name="imgcfg_external_url" type="text" default="images/{id}.jpg" label="EXTEND_FOLDER_LABEL"
+					   description="EXTEND_FOLDER_DESC"/>
+				<field name="imgcfg_order" type="text" default="product_image,product_description,external"
+					   label="ORDER_GET_LABEL" description="ORDER_GET_DESC"/>
+				<field name="imgcfg_function" default="resize_stretch" type="list" label="RESIZE_MODE_LABEL"
+					   description="RESIZE_MODE_DESC">
+					<option value="none">None</option>
+					<option value="resize_center">Center</option>
+					<option value="resize_fill">Fill</option>
+					<option value="resize_fit">Fit</option>
+					<option value="resize_stretch">Stretch</option>
+				</field>
+				<field name="imgcfg_type" type="list" default="" label="IMAGE_TYPE_LABEL" description="IMAGE_TYPE_DESC">
+					<option value="">Default</option>
+					<option value="1">GIF</option>
+					<option value="2">JPEG</option>
+					<option value="3">PNG</option>
+				</field>
+				<field name="imgcfg_transparency" label="KEEP_TRANSPARENCY_LABEL" class="btn-group"
+					   description="KEEP_TRANSPARENCY_DESC" type="radio" default="1">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
+				<field name="imgcfg_width" type="text" default="700" label="IMAGE_WIDTH_LABEL"
+					   description="IMAGE_WIDTH_DESC"/>
+				<field name="imgcfg_height" type="text" default="400" label="IMAGE_HEIGHT_LABEL"
+					   description="IMAGE_HEIGHT_DESC"/>
+				<field name="imgcfg_background" type="color" default="#FFFFFF" label="BACKGROUND_LABEL"
+					   description="BACKGROUND_DESC"/>
+				<field name="imgcfg_placeholder_path" type="text"
+					   default="modules/mod_sj_hk_ajax_tabs/assets/images/nophoto.jpg" label="PLACE_HOLDER_PATH_LABEL"
+					   description="PLACE_HOLDER_PATH_DESC"/>
+			</fieldset>
+			<fieldset name="advanced">
+				<field name="moduleclass_sfx" type="text"
+					   label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+					   description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC"/>
+				<field name="layout" type="modulelayout" default="basic" class="btn-group"
+					   label="JFIELD_ALT_LAYOUT_LABEL" description="JFIELD_ALT_MODULE_LAYOUT_DESC"/>
+				<field name="include_jquery" type="radio" class="btn-group" default="0" label="Include Jquery"
+					   description="select Yes if you want use for joomla 2.5">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
+				<field name="pretext" type="textarea" default="" label="Pre-text" description="Intro text of module"
+					   cols="40" rows="4" filter="raw"/>
+				<field name="posttext" type="textarea" default="" label="Post-text" description="Footer text of module"
+					   cols="40" rows="4" filter="raw"/>
+			</fieldset>
+
+		</fields>
+	</config>
+</extension>

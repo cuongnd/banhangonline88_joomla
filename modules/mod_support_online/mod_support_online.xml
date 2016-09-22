@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="2.5.0" client="site" method="upgrade">
+	<name>Mod hỗ trợ trực tuyến</name>
+	<author>HoangAnhIT</author>
+	<creationDate>April 2014</creationDate>
+	<copyright>HoangAnhIT</copyright>
+	<authorEmail>webquangnam@gmail.com</authorEmail>
+	<authorUrl>www.webquangnam.com</authorUrl>
+	<version>1.0</version>
+	<description>Module hỗ trợ trực tuyến Yahoo - Skype</description>
+	<files>
+	<filename module="mod_support_online">mod_support_online.php</filename>
+	<filename>mod_support_online.xml</filename>
+	<filename>index.html</filename>
+	<folder>images</folder>
+	</files>
+		<config>
+			<fields name="params">
+				<fieldset name="basic">
+					<field name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="fieldMODULECLASSSUFFIX" />
+					<field name="@spacer" type="spacer" default="" label="" description="" />
+					<field name="yahooID" type="text" default="" label="Yahoo ID" description="Nick Yahoo - Cách nhau bằng dấu ," size="80px"></field>
+					<field name="skypeID" type="text" default="" label="Skype ID" description="Nick Skype - Cách nhau bằng dấu ," size="80px"></field>					
+					<field name="nameYahoo" type="text" default="" label="Name" description="Tên người dùng - Cách nhau bằng dấu ," size="80px"></field>
+					<field name="telYahoo" type="text" default="" label="Tel" description="Điện thoại - Cách nhau bằng dấu ," size="80px"></field>
+					<field name="ClogoLink" type="text" default="" label="CustomLogo Link" description="Hình ảnh logo tùy chỉnh" size="80px"></field>
+					<field name="showYahoo" type="list" default="1" label="Show Yahoo" description="">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+					</field>
+					<field name="showSkype" type="list" default="1" label="Show Skype" description="">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+					</field>
+					<field name="showName" type="list" default="1" label="Show Name" description="">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+					</field>
+					<field name="showTel" type="list" default="0" label="Show Tel" description="">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+					</field>
+					<field name="@spacer" type="spacer" default="" label="" description="" />
+					<field name="Address" type="text" default="" label="Address" description="Địa chỉ doanh nghiệp" size="80px"></field>
+					<field name="Phone" type="text" default="" label="Phone" description="Số điện thoại" size="80px"></field>
+					<field name="Fax" type="text" default="" label="Fax" description="Số Fax" size="80px"></field>
+					<field name="Email" type="text" default="" label="Email" description="Địa chỉ mail" size="80px"></field>
+					<field name="Hotline" type="text" default="" label="Hotline" description="Số di động hotline" size="80px"></field>
+				</fieldset>
+				<fieldset name="advanced">
+					<field name="cache" type="list" default="0" label="Caching" description="Select whether to cache the content of this module">
+					<option value="1">Use global</option>
+					<option value="0">No caching</option>
+					</field>
+					<field name="cache_time" type="text" default="900" label="Cache Time" description="The time before the module is recached" />
+				</fieldset>
+			</fields>
+		</config>
+</extension>

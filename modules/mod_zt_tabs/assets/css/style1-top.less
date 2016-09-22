@@ -1,0 +1,70 @@
+div#zt-module {
+  font-size: 13px;
+  ul.zt-tabs, ul.nav, ul.nav-tabs {
+    //border-bottom: 1px solid #ddd;
+    //text-align: left;
+    margin-right: 5px;
+    border-bottom: 1px solid #ddd;;
+
+
+    li:last-child{
+      margin-right: 0px;
+    }
+    li {
+      text-align: center;
+
+      margin-bottom: 0px;
+      margin-right: 3px;
+
+
+      //
+      a, a:hover, a:focus{
+        border: 1px solid #ddd;
+        border-bottom: transparent;
+        border-radius: 4px 4px 0 0;
+
+        margin-right: 0px;
+        background-color: white;
+
+        color: #444444;
+
+        background: -webkit-linear-gradient(top, white , #ddd); /* For Safari 5.1 to 6.0 */
+        background: -o-linear-gradient(bottom, white, #ddd); /* For Opera 11.1 to 12.0 */
+        background: -moz-linear-gradient(bottom, white, #ddd); /* For Firefox 3.6 to 15 */
+        background: linear-gradient(to bottom, white , #ddd); /* Standard syntax */
+      }
+      &.active {
+        li {
+
+        }
+        a, a:hover, a:focus{
+          //margin-top: -1px;
+          color: #EE9900;
+          background: -webkit-linear-gradient(top, white , #ddd); /* For Safari 5.1 to 6.0 */
+          background: -o-linear-gradient(bottom, #ddd, white); /* For Opera 11.1 to 12.0 */
+          background: -moz-linear-gradient(bottom, #ddd, white); /* For Firefox 3.6 to 15 */
+          background: linear-gradient(to bottom, #ddd , white); /* Standard syntax */
+        }
+      }
+    }
+  }
+  div.tab-content {
+    border: 1px solid #ddd;
+    border-top: none;
+
+    margin-right: 5px;
+    //margin-bottom: 30px;
+    padding-left: 15px;
+    padding-top: 15px;
+    padding-right: 15px;
+    // border: 1px solid #ddd;
+    min-height: 50px;
+    min-width: 50px;
+    //border-right-color: transparent;
+
+    display: flex;
+    div.tab-pane, div.active {
+      margin-bottom: 0px;
+    }
+  }
+}

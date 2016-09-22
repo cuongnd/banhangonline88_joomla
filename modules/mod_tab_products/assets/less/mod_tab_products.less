@@ -1,0 +1,123 @@
+.mod_tab_products {
+  .list-sub-category {
+    display: inline-block;
+    padding-bottom: 10px;
+    ul {
+      li {
+        min-width: 101px;
+        text-align: center;
+        .icon {
+          width: 40px;
+          margin: 0 auto;
+        }
+        float: left;
+        padding: 5px;
+        .category-name {
+          font-size: 10px;
+        }
+      }
+      li:hover{
+        opacity: 0.8;
+      }
+    }
+  }
+  .list-sub-category.vertical
+  {
+    border-bottom:none;
+  }
+  ul.vertical{
+    li{
+      float: none;
+    }
+
+  }
+  .price{
+    color: #c63829;
+    font-weight: bold;
+
+  }
+  > h3.title {
+    border-bottom: 2px solid #d13636;
+    margin-bottom: 0;
+    line-height: 30px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  .small-product
+  {
+    width: 18%;
+    padding: 1%;
+    text-align: center;
+    .image
+    {
+      margin: 0 auto;
+      max-height: 85px;
+      min-height: 85px;
+    }
+    .product-name
+    {
+      a{
+        font-size: 10px;
+        text-transform: lowercase;
+      }
+
+
+    }
+  }
+  .product_slide
+  {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    .control
+    {
+      position: absolute;
+      cursor: pointer;
+      top: 50%;
+      left: 0;
+    }
+    .control.next{
+      right: 0;
+      left: auto;
+    }
+  }
+  .tab-product {
+    >ul{
+
+    }
+    > ul > li > a {
+      padding: 10px 0px;
+    }
+    > .z-container > .z-content > .z-content-inner
+    {
+      padding: 10px;
+    }
+    .item {
+      border: 1px solid #f5f5f5;
+      border-radius: 3px;
+      padding: 10px;
+      .title {
+        text-align: center;
+      }
+      .image {
+
+        margin: 0 auto;
+        max-height: 225px;
+        min-height: 225px;
+        width: 100%;
+
+      }
+      .price {
+        text-align: center;
+      }
+    }
+  }
+  .tab-product.z-tabs.vertical > ul
+  {
+    width: 20%;
+  }
+  .tab-product.hot_product,.tab-product.new_product
+  {
+    margin-top: 30px;
+  }
+}

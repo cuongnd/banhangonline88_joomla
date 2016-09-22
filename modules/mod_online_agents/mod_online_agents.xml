@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<extension type="module" version="2.5.0" client="site" method="upgrade">
+    <name>Online Agents</name>
+    <author>iMaQma</author>
+    <creationDate>March 2013</creationDate>
+    <copyright>(C) 2006-2013 Components Lab, Lda.. All rights reserved.</copyright>
+    <license>GNU/GPL</license>
+    <authorEmail>support@imaqma.com</authorEmail>
+    <authorUrl>www.imaqma.com</authorUrl>
+    <version>1.0.0</version>
+    <description>Shows online agents from Joomla sessions table.</description>
+
+    <files>
+        <filename module="mod_online_agents">mod_online_agents.php</filename>
+    </files>
+</extension>

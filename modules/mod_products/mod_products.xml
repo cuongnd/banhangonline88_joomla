@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+/**
+ * @copyright	Copyright © 2016 - All rights reserved.
+ * @license		GNU General Public License v2.0
+ * @generator	http://xdsoft/joomla-module-generator/
+ */
+-->
+<extension type="module" method="upgrade" client="site">
+    <name>MOD_PRODUCTS</name>
+    <creationDate>Sep 2016</creationDate>
+    <author>nguyendinhcuong</author>
+    <authorEmail>nguyendinhcuong@gmail.com</authorEmail>
+    <authorUrl>http://banhangonline88.com</authorUrl>
+    <copyright>Copyright © 2016 - All rights reserved.</copyright>
+    <license>GNU General Public License v2.0</license>
+    <version>0.0.1</version>
+    <description>MOD_PRODUCTS_DESCRIPTION</description>
+    <files>
+        <filename module="mod_products">mod_products.php</filename>
+        <filename>mod_products.xml</filename>
+        <filename>index.html</filename>
+        <folder>language</folder>
+        <folder>tmpl</folder>
+        <folder>assets</folder>
+    </files>
+    <config>
+        <fields name="params" addfieldpath="/modules/mod_products/elements">
+            <fieldset
+                    name="basic">
+                <field
+                        name="categories"
+                        type="productcategory"
+                        label="categories"
+                        multiple="true"
+                        filter="product"
+                        description="categories"/>
+                <field
+                        name="manufacturer"
+                        type="productcategory"
+                        label="manufacturer"
+                        multiple="true"
+                        filter="manufacturer"
+                        description="manufacturer"/>
+                <field
+                        name="vendor"
+                        type="productcategory"
+                        label="vendor"
+                        multiple="true"
+                        filter="vendor"
+                        description="vendor"/>
+
+                <field
+                        name="order_by"
+                        type="list"
+                        default="best_sale"
+                        label="style"
+                        description="style">
+                    <option
+                            value="best_sale">Best sale
+                    </option>
+                    <option
+                            value="last_product">last product
+                    </option>
+                    <option
+                            value="new_update">new update
+                    </option>
+
+                    <option
+                            value="random">random
+                    </option>
+                    <option
+                            value="hot">hot product
+                    </option>
+                    <option
+                            value="hot">hit
+                    </option>
+                </field>
+                <field
+                        name="sort_type"
+                        type="list"
+                        default="ASC"
+                        label="Sort type"
+                        description="Sort type">
+                    <option
+                            value="ASC">ASC</option>
+                    <option
+                            value="DESC">DESC
+                    </option>
+
+                </field>
+
+                <field
+                        name="max_product"
+                        type="text"
+                        label="max_product"
+                        description="max_product"/>
+
+                <field
+                        name="product_style"
+                        type="list"
+                        default="table"
+                        label="style"
+                        description="style">
+                    <option
+                            value="table">table
+                    </option>
+                    <option
+                            value="slider">slider
+                    </option>
+                </field>
+
+
+
+                <field name="total_table_row"
+                       type="integer"
+                       default="2"
+                       first="0"
+                       last="10"
+                       step="1"
+                       label="total table row"
+                       description="total table row">
+
+                </field>
+                <field name="total_table_column"
+                       type="integer"
+                       default="4"
+                       first="0"
+                       last="10"
+                       step="1"
+                       label="Total table column"
+                       description="Total table column">
+
+                </field>
+                <field name="total_item_on_slide_screen"
+                       type="integer"
+                       default="4"
+                       first="0"
+                       last="10"
+                       step="1"
+                       label="Total item on slide screen"
+                       description="Total item on slide screen">
+
+                </field>
+
+
+            </fieldset>
+            <fieldset
+                    name="advanced">
+                <field
+                        name="layout"
+                        type="modulelayout"
+                        label="JFIELD_ALT_LAYOUT_LABEL"
+                        description="JFIELD_ALT_MODULE_LAYOUT_DESC"/>
+
+                <field
+                        name="moduleclass_sfx"
+                        type="textarea" rows="3"
+                        label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+                        description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC"/>
+
+                <field
+                        name="cache"
+                        type="list"
+                        default="1"
+                        label="COM_MODULES_FIELD_CACHING_LABEL"
+                        description="COM_MODULES_FIELD_CACHING_DESC">
+                    <option
+                            value="1">JGLOBAL_USE_GLOBAL
+                    </option>
+                    <option
+                            value="0">COM_MODULES_FIELD_VALUE_NOCACHING
+                    </option>
+                </field>
+
+                <field
+                        name="cache_time"
+                        type="text"
+                        default="900"
+                        label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+                        description="COM_MODULES_FIELD_CACHE_TIME_DESC"/>
+                <field
+                        name="cachemode"
+                        type="hidden"
+                        default="static">
+                    <option
+                            value="static"></option>
+                </field>
+            </fieldset>
+        </fields>
+
+        <!--
+        ########################################################################################
+        The following are a list of all the different types of fields you can add to this file
+        They are here for copy pasting - neat eh?
+        Full list https://docs.joomla.org/Standard_form_field_types
+        ########################################################################################
+
+        https://docs.joomla.org/Calendar_form_field_type
+        <field name="mycalendar" type="calendar" default="5-10-2008" label="Select a date" description="" format="%d-%m-%Y" />
+
+        https://docs.joomla.org/Category_form_field_type
+        <field name="mycategory" type="category" label="Select a category" description="" section="3" />
+
+        https://docs.joomla.org/Editor_form_field_type
+        <field name="myeditor" type="editors" default="none" label="Select an editor" />
+
+        https://docs.joomla.org/Filelist_form_field_type
+        <field name="myfile" type="filelist" default="" label="Select a file" description="" directory="administrator" filter="" exclude="" stripext="" />
+
+        https://docs.joomla.org/Folderlist_form_field_type
+        <field name="myfolder" type="folderlist" default="" label="Select a folder" directory="administrator" filter="" exclude="" stripext="" />
+
+        https://docs.joomla.org/Helpsite_form_field_type
+        <field name="myhelpsite" type="helpsites" default="" label="Select a help site" description="" />
+
+        https://docs.joomla.org/Hidden_form_field_type
+        <field name="mysecretvariable" type="hidden" default="" />
+
+        https://docs.joomla.org/Imagelist_form_field_type
+        <field name="myimage" type="imagelist" default="" label="Select an image" description="" directory="" exclude="" stripext="" />
+
+        https://docs.joomla.org/Language_form_field_type
+        <field name="mylanguage" type="languages" client="site" default="en-GB" label="Select a language" description="" />
+
+        https://docs.joomla.org/List_form_field_type
+        <field name="mylistvalue" type="list" default="" label="Select an option" description="">
+          <option value="0">Option 1</option>
+          <option value="1">Option 2</option>
+        </field>
+
+        https://docs.joomla.org/Menu_form_field_type
+        <field name="mymenu" type="menu" default="mainmenu" label="Select a menu" description="Select a menu" />
+
+        https://docs.joomla.org/Menuitem_form_field_type
+        <field name="mymenuitem" type="menuitem" default="45" label="Select a menu item" description="Select a menu item" />
+
+        https://docs.joomla.org/Password_form_field_type
+        <field name="mypassword" type="password" default="secret" label="Enter a password" description="" size="5" />
+
+        https://docs.joomla.org/Radio_form_field_type
+        <field name="myradiovalue" type="radio" default="0" label="Select an option" description="" class="btn-group btn-group-yesno">
+          <option value="0">JYES</option>
+          <option value="1">JNO</option>
+        </field>
+
+        https://docs.joomla.org/Spacer_form_field_type
+        <field type="spacer" default="&lt;b&gt;Advanced parameters&lt;/b&gt;" />
+        <field type="spacer" name="myspacer" hr="true" />
+
+        https://docs.joomla.org/SQL_form_field_type
+        <field name="myfield" type="sql" default="10" label="Select an article" query="SELECT id, title FROM #__content" key_field="id" value_field="title" />
+
+        https://docs.joomla.org/Text_form_field_type
+        <field name="mytextvalue" type="text" default="Some text" label="Enter some text" description="" size="10" />
+
+        https://docs.joomla.org/Textarea_form_field_type
+        <field name="mytextarea" type="textarea" default="default" label="Enter some text" description="" rows="10" cols="5" />
+
+        https://docs.joomla.org/Timezone_form_field_type
+        <field name="mytimezone" type="timezones" default="-10" label="Select a timezone" description="" />
+
+        https://docs.joomla.org/Usergroup_form_field_type
+        <field name="myusergroups" type="usergroup" default="" label="Select a user group" description="" />
+        -->
+    </config>
+    <languages folder="language">
+        <language tag="en-GB">en-GB/en-GB.mod_products.sys.ini</language>
+        <language tag="en-GB">en-GB/en-GB.mod_products.ini</language>
+    </languages>
+</extension>

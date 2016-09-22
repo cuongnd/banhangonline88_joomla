@@ -1,0 +1,393 @@
+/**
+ * Tabs GK5 -back-end stylesheet
+ * @package Joomla!
+ * @Copyright (C) 2007-2012 Gavick.com
+ * @ All rights reserved
+ * @ Joomla! is Free Software
+ * @ Released under GNU/GPL License :  http://www.gnu.org/copyleft/gpl.html
+ * @version $Revision:  GK5 1.0 $
+ **/
+ 
+div#invisible,
+div#options-TABS_MANAGER .control-label,
+select.gk_tab_edit_type + div,
+select.gk_tab_edit_content_module + div,
+select.gk_tab_add_type + div,
+select.gk_tab_add_content_module + div,
+select.gk_tab_add_content_access + div,
+select.gk_tab_edit_content_access + div,
+select.gk_tab_edit_published + div,
+select.gk_tab_add_published + div,
+select.gk_tab_edit_animation + div,
+select.gk_tab_add_animation + div,
+label#jform_params_about_us,
+#jform_params_about_us-lbl {
+	display: none;
+}
+div#options-TABS_MANAGER .controls {
+	margin-left: 10px !important;
+}
+.control-label {
+	max-width: 140px;
+}
+/* tabs manager */
+#tabs_list.dragging .gk_tab_item,
+#tabs_list.dragging .gk_tab_item_desc {
+	cursor: move !important;
+}
+
+#tabs_list.dragging .gk_tab_item_clone {
+	border: 2px dashed #d7e6f7;
+	background: #f4f9ff;
+}
+
+.gk_tab_item .gk_tab_item_desc {
+	height: 40px;
+	line-height: 40px;
+	font-size: 14px;
+	padding: 2px 10px;
+	margin: 21px 0 0;
+	border-bottom: 1px solid #e5e5e5;
+}
+
+.gk_tab_item:nth-child(2n) {
+	background: #fbfbfb;
+}
+
+.gk_tab_item:hover {
+	background: #fefef4;
+}
+
+#gk_tab_add_header {
+	height: 40px;
+	line-height: 40px;
+	margin: 21px 0 0;
+	padding: 0 0 18px;
+	border-bottom: 1px solid #e5e5e5;
+}
+
+#gk_tab_add_header > span {
+	color: #333;
+	font-size: 11px;
+	float: right;
+	line-height: 30px;
+}
+
+.gk_tab_editor_scroll > div,
+.gk_tab_add {
+	margin: 0;
+	background: #fdfdfd;
+	border: none;
+	border-bottom: 1px solid #e5e5e5;
+	overflow: hidden;
+	padding: 24px 12px;
+}
+
+.gk_tab_editor_scroll p,
+.gk_tab_add p {
+	overflow: visible;
+	margin: 0 0 5px;
+}
+
+.gk_tab_editor_scroll label,
+.gk_tab_add label {
+	color: #444;
+	font-size: 11px;
+	font-weight: bold;
+	height: 24px;
+	line-height: 24px;
+	padding: 0 20px 0 0 !important;
+	text-align: left;
+	max-width: 20% !important;
+}
+
+.gk_tab_editor_scroll textarea,
+.gk_tab_add textarea {
+	width: 250px;
+	height: 100px;
+}
+
+.gk_tab_editor_scroll .gk_tab_edit_content_module,
+.gk_tab_add .gk_tab_add_content_module {
+	display: none;
+}
+
+.gk_tab_edit_submit,
+.gk_tab_add_submit {
+	clear: both;
+	padding: 10px;
+}
+
+.gk_tab_editor_scroll,
+#gk_tab_add_form .height_scroll {
+	overflow: hidden;
+	height: 0;
+}
+
+.gk_tab_item .gk_tab_item_desc {
+	clear: both;
+	margin: 0;
+	font-size: 14px;
+	cursor: pointer;
+}
+
+.gk_tab_item_access,
+.gk_tab_item_type,
+.gk_tab_item_state {
+	float: right;
+	margin: 0 12px 0 0;
+	width: 40px;
+	font-weight: bold;
+	font-size: 11px;
+	color: #444;
+}
+
+.gk_tab_item_access {
+	-o-text-overflow: ellipsis;
+	-ms-text-overflow: ellipsis;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	height: 36px;
+}
+
+#gkDemoLink {
+	color: #415e7f;
+	line-height: 36px;
+	margin: 0 0 0 10px;
+}
+
+#gkDemoLink:hover {
+	text-decoration: none;
+	color: #222;
+}
+
+#jform_params_tabs_data {
+	display: none;
+}
+
+.gk_tab_item_desc a {
+	display: block;
+	float: right;
+	height: 14px;
+	width: 14px;
+	margin: 13px 0 0 9px;
+	background: url('icons.png') no-repeat 0 0;
+	text-indent: -9999em;
+}
+
+.gk_tab_item_desc a.gk_tab_item_remove {
+	background-position: -15px 0;
+}
+
+.gk_tab_item_desc a:hover.gk_tab_item_remove {
+	background-position: 0 0;
+}
+
+.gk_tab_item_state {
+	width: 14px;
+	height: 14px;
+	margin: 13px 15px 0 0;
+	background: url('icons.png') no-repeat -45px 0;
+	cursor: pointer;
+}
+
+.gk_tab_item_state.published:hover {
+	background-position: -30px 0;
+}
+
+.gk_tab_item_state.unpublished {
+	background-position: -75px 0;
+}
+
+/* Config manager */
+#jform_params_config_manager-lbl {
+	display: none;
+}
+
+#config_manager_form > div.gk_ok {
+	text-align: center;
+	font-weight: bold;
+	background: #5a5;
+	margin: 10px;
+	color: #fff;
+	padding: 8px 0;
+
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
+#config_manager_form > div.gk_error {
+	text-align: center;
+	font-weight: bold;
+	background: #a55;
+	margin: 10px;
+	color: #fff;
+	padding: 8px 0;
+
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
+#config_manager_form label {
+	margin: 11px 0 0 0;
+}
+
+button#config_manager_load,
+button#config_manager_delete {
+	min-width: 85px;
+	position: relative;
+	margin-left: 12px;
+	vertical-align: top;
+}
+button#config_manager_save {
+	min-width: 85px;
+	margin-left: 12px;
+}
+div.gkUnvisible {
+	display: none;
+}
+div.invisible {
+	display: none;
+}
+div#jform_params_module_data_source_chzn {
+	display: none;
+}
+select#jform_params_module_data_source,
+select.gk_tab_edit_type,
+select.gk_tab_add_type,
+select.gk_tab_add_content_access,
+select.gk_tab_edit_content_access,
+select.gk_tab_edit_published,
+select.gk_tab_add_published,
+select.gk_tab_edit_animation,
+select.gk_tab_add_animation {
+	display: inline-block!important;
+}
+.gk_tab_edit label,
+.gk_tab_add label {
+	display: inline-block;
+	min-width: 160px;
+}
+.gk_tab_edit textarea,
+.gk_tab_add textarea {
+	display: inline-block;
+}
+div#config_manager_form {
+	padding: 15px;
+	border: 1px solid #eee;
+	border-radius: 10px;
+	background: #fafafa;
+}
+div#config_manager_form label {
+	display: inline-block;
+	min-width: 160px;
+	margin: 0;
+}
+div#config_manager_form > div {
+	margin: 6px 0;	
+}
+#config_manager_form {
+	word-wrap: break-word !important;
+}
+div#config_manager_form > div:last-child {
+	margin: 10px 0 7px;	
+}
+div#config_manager_form button i {
+	margin-right:5px;
+}
+div#config_manager_form span.label-warning {
+	margin-right: 64px;
+}
+div.gk_tab_edit_submit,
+div.gk_tab_add_submit {
+	padding: 15px;
+	margin-left: 165px;
+}
+div.gk_tab_edit_submit .btn,
+div.gk_tab_add_submit .btn {
+	margin-right: 10px;
+}
+
+/* Support for mobile */
+@media (max-width: 480px) {
+	.form-horizontal .controls { clear: both!important; }
+	.form-horizontal .control-label { width: 100%!important; }
+	div#config_manager_form span.label {
+		clear: both;
+		display: block;
+		margin: 0;
+	}
+	.chzn-container, .chzn-drop {
+		width: auto !important;
+	}
+
+}
+
+/* Social media */
+#gk-social {
+	margin: 10px 0;
+}
+
+#gk-social > span:first-child {
+	display: inline-block;
+	font-size: 12px;
+	line-height: 1.6;
+	margin-right: 20px;
+	margin-left: 10px;
+	vertical-align: top;  
+}
+#gk-social iframe {
+	min-width: 140px
+}
+
+/* Joomla! 3.2.x styles */
+.j32 ul#myTabTabs {
+	width: 20%;
+	float: left;
+	min-width: 150px;
+	border-bottom: 0;
+	border-right: 1px solid #fafafa;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.j32 ul#myTabTabs > li {
+	width: 90%;
+	margin: 2px 0;
+}
+.j32 ul#myTabTabs > li > a {
+	color: #666;
+	border: 1px solid #ddd;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+.j32 ul#myTabTabs > li.active > a {
+	color: #fff;
+	background: #59B1F6;
+	border-color: #2587d3;
+}
+.j32 div#myTabContent {
+	float: right;
+	width: 80%;
+}
+.j32 div#myTabContent > div { margin-left: 35px }
+.j32 #general .span3 { width: 100% }
+.j32 #general .span9 { display: none }
+.j32 #jform_menuselect {
+	clear: both;
+	width: 100%;
+	margin: 0;
+}
+.j32 #config_manager_form {
+	position: relative;
+}
+.j32 > .form-inline-header > .control-group {
+	width: 100%;
+}
+.j32 > .form-inline-header > .control-group > .control-label { width: 10%; float: left; padding: 0!important; line-height: 32px }
+.j32 > .form-inline-header > .control-group > .controls { width: 90%; float: left; padding: 0!important }
+.j32 > .form-inline-header > .control-group > .controls > input { max-width: 99%; width: 99%}
+.j32 #attrib-IMAGE_SHOW_INTERFACE div.controls { margin: 0!important }

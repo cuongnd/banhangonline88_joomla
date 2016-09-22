@@ -1,0 +1,254 @@
+/*
+* Pixel Point Creative - Cinch Menu Module
+* License: GNU General Public License version
+* See: http://www.gnu.org/copyleft/gpl.html
+* Copyright (c) Pixel Point Creative LLC.
+* More info at http://www.pixelpointcreative.com
+* Last Updated: 5/13/14
+* Additional improvements by Paul @ Protopia.co.uk
+*/
+
+ul.flyout-menu {
+	border:1px solid #1a1a1a;
+	margin:0px;
+	padding:0px;
+	line-height:16px;
+	list-style:none;
+}
+ul.flyout-menu.text-right {
+	text-align:right;
+}
+ul.flyout-menu.text-left {
+	text-align:left;
+}
+ul.flyout-menu.horizontal {
+	width:100%;
+	float:left;
+}
+ul.flyout-menu li {
+	position:relative;
+	border-bottom:1px solid #1A1A1A;
+	vertical-align:middle;
+}
+ul.flyout-menu li.last,
+ul.flyout-menu li:last-of-type {
+	border:none;
+}
+ul.flyout-menu.horizontal.msie6 > li,
+ul.flyout-menu.horizontal.msie7 > li,
+ul.flyout-menu.horizontal.msie8 > li {
+	margin-top:0px;
+	margin-bottom:0px;
+}
+ul.flyout-menu.horizontal.msie8 > li {
+	margin-left:-5px;
+}
+ul.flyout-menu.horizontal.msie6 > li,
+ul.flyout-menu.horizontal.msie7 > li {
+	margin-left:-1px;
+	display:inline;
+}
+ul.flyout-menu.horizontal > li.first,
+ul.flyout-menu.horizontal > li:first-child {
+	margin-left:0px;
+}
+
+ul.flyout-menu .item-wrapper {
+	min-height:35px;
+	overflow-y:hidden;
+	}
+ul.flyout-menu.vertical .item-wrapper {
+	width:100%;
+}
+ul.flyout-menu .menu-button {
+	line-height:8px;
+	padding:12px 0;
+	min-height:11px;
+	cursor:pointer;
+}
+ul.flyout-menu.vertical.msie6 .menu-button,
+ul.flyout-menu.vertical.msie7 .menu-button,
+ul.flyout-menu.vertical.msie8 .menu-button {
+	padding:10px 0;
+}
+ul.flyout-menu.button-right .menu-button {
+	float:right;
+}
+ul.flyout-menu.button-left .menu-button {
+	float:left;
+}
+ul.flyout-menu.button-right .menu-button img {
+	padding-right:10px;
+}
+ul.flyout-menu.button-left .menu-button img {
+	padding-left:10px;
+}
+ul.flyout-menu > li > .item-wrapper > .menu-link > a {
+	font-weight:bold;
+}
+ul.flyout-menu.text-left .menu-link {
+/*	float:left; */
+	margin-right: 21px;
+}
+ul.flyout-menu.text-right .menu-link {
+/*	float:right; */
+	margin-left: 21px;
+}
+
+ul.flyout-menu.vertical.msie6 > li > .item-wrapper > .menu-link,
+ul.flyout-menu.vertical.msie7 > li > .item-wrapper > .menu-link,
+ul.flyout-menu.vertical.msie8 > li > .item-wrapper > .menu-link {
+	float:none;
+}
+ul.flyout-menu .menu-link a {
+	min-height:15px;
+	font-size:12px;
+	text-decoration:none;
+	display:block;
+	padding:9px;
+	box-sizing:border-box;
+	font-family:arial;
+}
+ul.flyout-menu .menu-link img {
+	vertical-align:middle;
+	border:0 none;
+	height:auto;
+	max-width:100%;
+	padding-right:5px;
+}
+
+ul.flyout-menu .ul-wrapper {
+	display:none;
+	z-index:1000;
+}
+ul.flyout-menu.horizontal.flyout-right.msie6 .ul-wrapper,
+ul.flyout-menu.horizontal.flyout-right.msie7 .ul-wrapper,
+ul.flyout-menu.horizontal.flyout-right.msie8 .ul-wrapper {
+	left:0;
+}
+ul.flyout-menu.horizontal.flyout-left.msie6 .ul-wrapper,
+ul.flyout-menu.horizontal.flyout-left.msie7 .ul-wrapper,
+ul.flyout-menu.horizontal.flyout-left.msie8 .ul-wrapper {
+	right:0;
+}
+ul.flyout-menu.horizontal.msie6 > li > .ul-wrapper,
+ul.flyout-menu.horizontal.msie7 > li > .ul-wrapper,
+ul.flyout-menu.horizontal.msie8 > li > .ul-wrapper {
+	left:0;
+}
+
+/* Responsive switch to accordion-like behaviour. */
+@media screen and (max-width:767px) {
+	ul.flyout-menu.vertical li,
+	ul.flyout-menu.horizontal li {
+		display:block;
+		margin-left:0;
+		border-right:none;
+		border-bottom:1px solid #1A1A1A;
+	}
+	ul.flyout-menu.vertical li.last,
+	ul.flyout-menu.horizontal li.last,
+	ul.flyout-menu.vertical li:last-of-type,
+	ul.flyout-menu.horizontal li:last-of-type {
+		margin-bottom:1px;
+		border-bottom:none;
+	}
+	ul.flyout-menu.horizontal .item-wrapper {
+		width:100%;
+	}
+	ul.flyout-menu .ul-wrapper {
+		position:relative;
+		top:0;
+	}
+	ul.flyout-menu.horizontal > li > .ul-wrapper {
+		left:auto;
+	}
+	ul.flyout-menu.vertical ul,
+	ul.flyout-menu.horizontal ul {
+		border-left:0;
+		border-bottom:0;
+		border-right:0;
+		border-top:1px solid #1a1a1a;
+	}
+	/* Following needs direction classes so it has sufficient specificity to override non-responsive css */
+	ul.flyout-menu.flyout-right .ul-wrapper,
+	ul.flyout-menu.flyout-left .ul-wrapper {
+		left:auto;
+		right:auto;
+	}
+/*
+	ul.flyout-menu.horizontal.flyout-right ul .ul-wrapper {
+		left:0;
+	}
+	ul.flyout-menu.horizontal.flyout-left ul .ul-wrapper {
+		right:0;
+	}
+*/
+	ul.flyout-menu.text-left li li > .item-wrapper > .menu-link > a {
+		padding-left:20px;
+	}
+	ul.flyout-menu.text-left li li li > .item-wrapper > .menu-link > a {
+		padding-left:30px;
+	}
+	ul.flyout-menu.text-left li li li li > .item-wrapper > .menu-link > a {
+		padding-left:40px;
+	}
+	ul.flyout-menu.text-left li li li li li > .item-wrapper > .menu-link > a {
+		padding-left:50px;
+	}
+}
+
+/* IE8/FF3 and earlier do not understand @media and apply above regardless - so undo */
+@media screen and (min-width:768px) {
+	ul.flyout-menu.horizontal > li {
+		display:inline-block;
+		border-right:1px solid #1A1A1A;
+		border-bottom:none;
+		float: left;
+	}
+	ul.flyout-menu .ul-wrapper {
+		position:absolute;
+		top:-1px;
+	}
+	ul.flyout-menu.horizontal > li > .ul-wrapper {
+		left:-1px;
+		top:auto;
+	}
+	ul.flyout-menu.vertical ul,
+	ul.flyout-menu.horizontal ul {
+		border:1px solid #1a1a1a;
+		margin: 0px;
+                padding: 0px;
+	}
+	/* Following needs direction classes so it has sufficient specificity to override non-responsive css */
+	ul.flyout-menu.flyout-right .ul-wrapper {
+		left:100%;
+	}
+	ul.flyout-menu.flyout-left .ul-wrapper {
+		right:100%;
+	}
+/*
+	ul.flyout-menu.horizontal.flyout-right ul .ul-wrapper {
+		left:0;
+	}
+	ul.flyout-menu.horizontal.flyout-left ul .ul-wrapper {
+		right:0;
+	}
+*/
+	ul.flyout-menu.text-left li li > .item-wrapper > .menu-link > a,
+	ul.flyout-menu.text-left li li li > .item-wrapper > .menu-link > a,
+	ul.flyout-menu.text-left li li li li > .item-wrapper > .menu-link > a,
+	ul.flyout-menu.text-left li li li li li > .item-wrapper > .menu-link > a {
+		padding-left:9px;
+	}
+}
+
+ul.flyout-menu li, 
+ul.flyout-menu li li, 
+ul.flyout-menu li li li,
+ul.flyout-menu li li li li { 
+list-style-type: none; 
+} 
+
+
+ul.flyout-menu > li.separator  > .item-wrapper > .menu-link > a {cursor:text!important}

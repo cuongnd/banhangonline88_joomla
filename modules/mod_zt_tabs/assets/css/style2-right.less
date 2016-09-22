@@ -1,0 +1,76 @@
+div#zt-module {
+  overflow: auto;
+  font-size: 13px;
+  ul.zt-tabs, ul.nav {
+    float: right;
+    margin-top: -1px;
+    margin-left: -4px;
+    border-left: 4px solid #EE9900;
+    font-size: medium;
+    font-weight: bold;
+
+
+    li {
+      float: none;
+      margin-top: 5px;
+      -webkit-border-radius: 0px 4px 4px 0;
+      -moz-border-radius:0px 4px 4px 0;
+      border-radius: 0px 4px 4px 0;
+      border-right-color: transparent;
+      &:first-child {
+        margin-top: 0px;
+      }
+      &:hover, a:hover {
+        color: white;
+        background: #EE9900;
+      }
+      a {
+        border-radius: 0px 4px 4px 0px;
+      }
+      //margin-right: -1px;
+      border: 1px solid #ddd;
+      border-left: none;
+
+      //
+      a, a:focus{
+        border: none;
+        margin-left: 0px;
+        background-color: white;
+
+        color: #444444;
+
+        background: -webkit-linear-gradient(left, #ddd , white); /* For Safari 5.1 to 6.0 */
+        background: -o-linear-gradient(right, #ddd, white); /* For Opera 11.1 to 12.0 */
+        background: -moz-linear-gradient(right, #ddd, white); /* For Firefox 3.6 to 15 */
+        background: linear-gradient(to right, #ddd , white); /* Standard syntax */
+      }
+
+      &.active {
+        a, a:hover, a:focus{
+          border: none;
+          margin-right: 0px;
+          margin-left: -3px;
+          color: white;
+          background: #EE9900;;
+
+        }
+      }
+    }
+  }
+  div.tab-content {
+    border: 4px solid #EE9900;
+    margin-right: 5px;
+    //margin-bottom: 30px;
+    padding-left: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 15px;
+    // border: 1px solid #ddd;
+    min-height: 50px;
+    min-width: 50px;
+    display: flex;
+    div.tab-pane, div.active {
+      margin-bottom: 0px;
+    }
+  }
+}

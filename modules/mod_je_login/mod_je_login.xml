@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="2.5" client="site" method="upgrade">
+	<name>jE Login</name>
+	<author>jExtensions</author>
+	<creationDate>September 2012</creationDate>
+	<copyright>Copyright (C) 2012 jExtensions.com - All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later;</license>
+	<authorEmail>info@jextensions.com</authorEmail>
+	<authorUrl>www.jextensions.com</authorUrl>
+	<version>2.5.0</version>
+	<description>
+	<![CDATA[
+	<h1>JE Login - Advanced jQuery Drop-Down Login Module</h1>
+	<div style="margin:0 0 0 10px; font-size:15px;">Download more free joomla templates and extensions - <a href="http://jextensions.com" target="_blank">jExtensions.com</a>;
+	<br/> Get support for this Joomla 2.5 module on the official <a href="http://jextensions.com/je-login-joomla-2.5" target="_blank">JE Login Module</a> page.</div><br/>
+	<div style="margin:0 0 0 10px; font-size:11px;">Credits: <a href="http://twitter.github.com/bootstrap/" target="_blank" >Bootstrap</a></div>
+	<br/>
+		]]>
+	</description>
+	<files>
+		<filename module="mod_je_login">mod_je_login.php</filename>
+		<folder>css</folder>
+		<folder>img</folder>
+		<folder>tmpl</folder>
+		<filename>helper.php</filename>
+		<filename>index.html</filename>
+		<filename>mod_je_login.xml</filename>
+	</files>
+	<languages>
+		<language tag="en-GB">lang/en-GB.mod_je_login.ini</language>
+		<language tag="en-GB">lang/en-GB.mod_je_login.sys.ini</language>
+	</languages>	
+	<help key="JHELP_EXTENSIONS_MODULE_MANAGER_LOGIN" />
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+			
+				<field name="jQuery" type="list" default="1" label="jQuery" description="Enable or Disable the latest jQuery version. The DropDown feature works with Enabled jQuery. Make sure that jQuery is loaded only once on your website.">
+					<option value="0">Disable</option>
+					<option	value="1">Enable</option>
+				</field>
+							
+				<field name="display" type="list" default="1" label="Module Display" description="Choose between the normal login form layout and drop down button login form.">
+					<option value="0">Drop-Down</option>
+					<option	value="1">Normal</option>
+				</field>
+
+				<field name="button" type="list" default="left" label="DropDown Button" description="Align the drop down login button.">
+					<option value="left">Left</option>
+					<option	value="right">Right</option>
+				</field>
+				
+				<field name="container" type="list" default="left" label="DropDown Login Box" description="Select the fading direction for the Login Box.">
+					<option value="left">Left to Right</option>
+					<option	value="right">Right to Left</option>
+				</field>					
+				
+				<field name="horvert" type="list" default="1" label="Login Box Layout" description="Select a layout for the Login Box.">
+					<option value="0">Horizontal</option>
+					<option	value="1">Vertical</option>
+				</field>							
+
+				<field name="moduleclass_sfx" type="text" label="Module Class Suffix" description="Add a module class suffix." />
+							
+				<field name="pretext" type="textarea" filter="safehtml" cols="30" rows="5" label="Pre-Text" description="This is the text or HTML that is displayed above the login form." />
+				<field name="posttext" type="textarea" filter="safehtml" cols="30" rows="5" label="Post-Text" description="This is the text or HTML that is displayed below the login form." />
+				<field name="login"	type="menuitem"	disable="separator"	label="Login Redirection Page"	description="MOD_JE_LOGIN_FIELD_LOGIN_REDIRECTURL_DESC" >
+					<option	value="">JDEFAULT</option>
+				</field>
+				<field	name="logout" type="menuitem" disable="separator" label="Logout Redirection Page" description="MOD_JE_LOGIN_FIELD_LOGOUT_REDIRECTURL_DESC" >
+					<option value="">JDEFAULT</option>
+				</field>
+				<field name="greeting" type="radio" default="1" label="MOD_JE_LOGIN_FIELD_GREETING_LABEL" description="MOD_JE_LOGIN_FIELD_GREETING_DESC">
+					<option	value="0">JNo</option>
+					<option value="1">JYes</option>
+				</field>
+				<field name="name" type="list" default="0" label="MOD_JE_LOGIN_FIELD_NAME_LABEL" description="MOD_JE_LOGIN_FIELD_NAME_DESC">
+					<option value="0">MOD_JE_LOGIN_VALUE_NAME</option>
+					<option	value="1">MOD_JE_LOGIN_VALUE_USERNAME</option>
+				</field>
+				<field name="usesecure"	type="radio" default="0" label="MOD_JE_LOGIN_FIELD_USESECURE_LABEL" description="MOD_JE_LOGIN_FIELD_USESECURE_DESC">
+					<option	value="0">JNo</option>
+					<option	value="1">JYes</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>
