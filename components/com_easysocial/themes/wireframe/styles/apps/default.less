@@ -1,0 +1,181 @@
+/**
+* @package 		EasySocial
+* @copyright	Copyright (C) 2010 - 2014 Stack Ideas Sdn Bhd. All rights reserved.
+* @license 		Proprietary Use License http://stackideas.com/licensing.html
+* @author 		Stack Ideas Sdn Bhd
+**/
+/*------------------------------------*\
+	application.less
+\*------------------------------------*/
+// Blocks aka modules in html apply rely on few classes
+// 220x120
+//
+//featured apps
+
+.es-featured-apps {
+	display: table;
+	.col1,
+	.col2,
+	.col3 {
+		display: table-cell;
+		width: 100%;
+		// min-height: 100px;
+		// padding: 1px;
+		overflow: hidden;
+		position: relative;
+		vertical-align: top;
+	}
+	.col1,
+	.col3 {
+		// background: red;
+		width: 220px;
+	}
+	.col2 {
+		// background: blue;
+		min-width: 320px;
+		padding: 0 15px;
+	}
+	.col3 {
+		// background: yellow;
+		// width: 220px;
+	}
+
+	.es-featured-app {
+		position: relative;
+		overflow: hidden;
+		top: 0;
+		background: black;
+		border-radius: 3px;
+		width: 220px;
+		img {
+			position: relative;
+			top: 0;
+			width: 220px;
+			height: 120px;
+		}
+		+ .es-featured-app {
+			// margin-top: 20px;
+		}
+	}
+	.es-app-link {
+		display: block;
+		+ .es-app-link {
+			margin-top: 20px;
+		}
+	}
+	.es-featured-app-main {
+		width: 100%;
+		position: relative;
+		height: 260px;
+		img {
+			width: 100%;
+			height: auto;
+		}
+	}
+
+	.app-featured-info {
+		position: absolute;
+		width: 100%;
+		height: 30px;
+		line-height: 26px;
+		padding: 0 10px;
+		bottom: 0;
+		z-index: 2;
+		background: rgba(0,0,0,.6);
+		color: white;
+	}
+}
+
+
+//wrap single app
+.es-app {
+	display: inline-block;
+	width: 100%;
+	padding: 20px 10px;
+	border-radius: 3px;
+	&.es-app-width {
+		width: 220px;
+	}
+}
+
+//listing
+.es-apps-grid {
+	.clearfix();
+	> li {
+		.clearfix();
+		margin-bottom: 10px;
+	}
+}
+
+.es-apps-grid {
+	line-height: normal;
+	>li + li{
+		border-top: 1px solid @esBorder;
+	}
+	> li {
+		position: relative;
+		margin-right: 1%;
+	}
+
+
+	.media-object {
+		width: 80px;
+		text-align: center;
+	}
+
+	.app-name {
+		font-size: 18px;
+		line-height: 18px;
+	}
+
+	.app-used {
+		margin-top: 3px;
+		font-size: 11px;
+	}
+
+	.app-description {
+		margin-top: 20px;
+		font-size: 11px;
+	}
+
+	.app-image {
+		width: 32px;
+	}
+
+	.app-actions {
+		margin-top: 25px;
+		float: right;
+	}
+}
+
+
+.application-tool {
+	form {
+		margin: 0;
+	}
+}
+
+
+//view apps
+//Sorting button group
+.btn-group-view-apps {
+	.btn {
+		font-size: 11px;
+		padding: 3px 10px;
+	}
+}
+
+
+&.w320{
+	table.fc-header{
+		td{
+			width: 100%;
+			display: block;
+
+			&.fc-header-left,
+			&.fc-header-right{
+				text-align: center;
+			}
+		}
+	}
+}

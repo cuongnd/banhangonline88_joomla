@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_JCHAT_CONFERENCE_VIEW_DEFAULT_TITLE">
+		<message>
+			<![CDATA[COM_JCHAT_CONFERENCE]]>
+		</message>
+	</layout>
+	<state>
+		<name>COM_JCHAT_CONFERENCE</name>
+	</state>
+
+	<!-- Add parameters for conference view -->
+	<fields name="params">
+		<fieldset name="features" label="COM_JCHAT_CONFERENCE_PREFERENCES" addfieldpath="/administrator/components/com_jchat/framework/html">
+			<field name="conference_chain" type="radio" default="1" class="btn-group" label="COM_JCHAT_CONFERENCE_CHAIN" description="COM_JCHAT_CONFERENCE_CHAIN_DESC">
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+			<field name="show_search" type="radio" default="1" class="btn-group" label="COM_JCHAT_SHOW_SEARCH" description="COM_JCHAT_SHOW_SEARCH_DESC">
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+			<field name="hide_sidebar" type="radio" default="0" class="btn-group" label="COM_JCHAT_HIDE_SIDEBAR" description="COM_JCHAT_HIDE_SIDEBAR_DESC">
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+			<field name="conference_maximized" type="radio" default="1" class="btn-group" label="COM_JCHAT_CONFERENCE_MAXIMIZED" description="COM_JCHAT_CONFERENCE_MAXIMIZED_DESC">
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+			<field name="conference_access_guest" type="radio" default="0" class="btn-group" label="COM_JCHAT_CONFERENCE_ACCESS_GUEST" description="COM_JCHAT_CONFERENCE_ACCESS_GUEST_DESC">
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+ 		</fieldset>
+	</fields>
+</metadata>

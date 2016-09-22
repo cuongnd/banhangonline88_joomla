@@ -1,0 +1,80 @@
+/* -------------------------------------------------------------------
+// markItUp!
+// By Jay Salvat - http://markitup.jaysalvat.com/
+// ------------------------------------------------------------------*/
+
+/**
+ * @package		EasyBlog
+ * @copyright	Copyright (C) 2010 Stack Ideas Private Limited. All rights reserved.
+ * @license		GNU/GPL, see LICENSE.php
+ *
+ * EasyBlog is free software. This version may have been modified pursuant
+ * to the GNU General Public License, and as distributed it includes or
+ * is derivative of works licensed under the GNU General Public License or
+ * other free or open source software licenses.
+ * See COPYRIGHT.php for copyright notices and details.
+ */
+
+#eblog-wrapper .markItUp .markItUpButton1 a	{
+	background-image:url(images/bold.png) !important;
+}
+#eblog-wrapper .markItUp .markItUpButton2 a	{
+	background-image:url(images/italic.png) !important;
+}
+#eblog-wrapper .markItUp .markItUpButton3 a	{
+	background-image:url(images/underline.png) !important;
+}
+
+#eblog-wrapper .markItUp .markItUpButton4 a	{
+	background-image:url(images/picture.png) !important;
+}
+
+#eblog-wrapper .markItUp .markItUpButton5 a	{
+	background-image:url(images/list-bullet.png) !important;
+}
+#eblog-wrapper .markItUp .markItUpButton6 a	{
+	background-image:url(images/list-numeric.png) !important;
+}
+#eblog-wrapper .markItUp .markItUpButton7 a	{
+	background-image:url(images/list-item.png) !important;
+}
+
+#eblog-wrapper .markItUp .markItUpButton8 a	{
+	background-image:url(images/quotes.png) !important;
+}
+#eblog-wrapper .markItUp .markItUpButton9 a	{
+	background-image:url(images/code.png) !important;
+}
+
+
+/* smiley */
+#eblog-wrapper .markItUp .markItUpButton10 a	{
+	background-image:url(images/emoticon-happy.png) !important;
+}
+
+#eblog-wrapper .markItUp .markItUpButton11 a	{
+	background-image:url(images/emoticon-smile.png) !important;
+}
+
+#eblog-wrapper .markItUp .markItUpButton12 a	{
+	background-image:url(images/emoticon-surprised.png) !important;
+}
+
+#eblog-wrapper .markItUp .markItUpButton13 a	{
+	background-image:url(images/emoticon-tongue.png) !important;
+}
+
+#eblog-wrapper .markItUp .markItUpButton14 a	{
+	background-image:url(images/emoticon-unhappy.png) !important;
+}
+
+#eblog-wrapper .markItUp .markItUpButton15 a	{
+	background-image:url(images/emoticon-wink.png) !important;
+}
+
+#eblog-wrapper .markItUp .clean a {
+	background-image:url(images/clean.png) !important;
+}
+#eblog-wrapper .markItUp .preview a {
+	background-image:url(images/preview.png) !important;
+}

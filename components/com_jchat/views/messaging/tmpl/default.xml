@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_JCHAT_PRIVATEMESSAGING_VIEW_DEFAULT_TITLE">
+		<message>
+			<![CDATA[COM_JCHAT_PRIVATEMESSAGING]]>
+		</message>
+	</layout>
+	<state>
+		<name>COM_JCHAT_PRIVATEMESSAGING</name>
+	</state>
+
+	<!-- Add parameters for form fields available -->
+	<fields name="params">
+		<fieldset name="features" label="COM_JCHAT_PM_PREFERENCES" addfieldpath="/administrator/components/com_jchat/framework/html">
+			<field type="text" name="pm_num_loading_msgs" default="100" label="COM_JCHAT_NUMBER_OFLOADING_MSGS" description="COM_JCHAT_NUMBER_OFLOADING_MSGS_DESC"/>
+			<field name="show_search" type="radio" default="1" class="btn-group" label="COM_JCHAT_SHOW_SEARCH" description="COM_JCHAT_SHOW_SEARCH_DESC">
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+			<field name="hide_sidebar" type="radio" default="0" class="btn-group" label="COM_JCHAT_HIDE_SIDEBAR" description="COM_JCHAT_HIDE_SIDEBAR_DESC">
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+			<field name="privatemessaging_maximized" type="radio" default="0" class="btn-group" label="COM_JCHAT_PRIVATE_MESSAGING_MAXIMIZED" description="COM_JCHAT_PRIVATE_MESSAGING_MAXIMIZED_DESC">
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+			<field name="auto_open_msgspopup" type="radio" default="1" class="btn-group" label="COM_JCHAT_AUTO_OPEN_MSGSPOPUP" description="COM_JCHAT_AUTO_OPEN_MSGSPOPUP_DESC">
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+ 		</fieldset>
+	</fields>
+</metadata>

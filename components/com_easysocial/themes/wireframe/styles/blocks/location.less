@@ -1,0 +1,213 @@
+/**
+* @package 		EasySocial
+* @copyright	Copyright (C) 2010 - 2014 Stack Ideas Sdn Bhd. All rights reserved.
+* @license 		Proprietary Use License http://stackideas.com/licensing.html
+* @author 		Stack Ideas Sdn Bhd
+**/
+/**
+ * Location area.
+ */
+
+.form-location{
+
+	.location-coordinates{
+
+		margin-top: 20px;
+		display: none;
+
+		background: @esLocationBackground;
+		border: 1px solid @esLocationBorder;
+		color: @esLocationColor;
+		padding: 12px;
+
+		> h5{
+			margin-top: 0;
+			height: 30px;
+			line-height: 30px;
+		}
+
+		hr.separator{
+			margin-top: 3px;
+		}
+
+		.removeLocation{
+			font-size: 11px;
+			font-weight: normal;
+		}
+
+		.coordinate-actions{
+			display: none;
+			margin-top: 20px;
+
+			a{
+				font-size: 11px;
+			}
+		}
+
+		.editCoordinates{
+			font-size: 11px;
+		}
+
+		input{
+			text-align: center;
+			width: 80px;
+		}
+
+		&.editMode{
+			input {
+				display: inline-block;
+			}
+			.coordinates-info{
+				display: none;
+			}
+
+			.coordinate-actions{
+				display: block;
+			}
+		}
+
+		input{
+			display: none;
+		}
+	}
+
+	.location-map{
+		margin: 10px 2px 0 0;
+		display: none;
+
+		.map{
+			border: 1px solid @esLocationBorder;
+			background: @esLocationBackground;
+		}
+	}
+
+	.location-address{
+		width: 100%;
+
+		input{
+			width: 70%;
+		}
+
+		a.btn{
+			font-size: 11px;
+		}
+	}
+
+}
+
+
+
+
+//location content
+.es-location {
+	// .arrow(4px, #eee, top, 14px, auto, 4px, #eee);
+	position: relative;
+
+	.es-location-buttons {
+		position: absolute;
+		top: 0px;
+		right: 0px;
+		// width: 16px;
+		display: inline-block;
+		z-index: 2;
+
+		.btn {
+			height: 32px;
+			font-size: 11px;
+			line-height: 20px;
+			border-radius: 0 3px 3px 0;
+		}
+	}
+
+	[data-detect-location-button] {
+		display: none;
+	}
+
+	.es-location-suggestions {
+		border: 1px solid @esLocationSuggestionsBorder;
+		background: @esBackground;
+		margin-top: 10px;
+		max-height: 100px;
+		overflow: hidden;
+		overflow-y: auto;
+		display: none;
+	}
+
+	.es-story-location-suggestion {
+
+		padding: 5px;
+		cursor: pointer;
+
+		+ .es-location-suggestion {
+			border-top: 1px solid @esLocationSuggestionsBorder;
+		}
+
+		&.active {
+			background: @dropdownLinkBackgroundHover;
+		}
+	}
+
+	.es-location-textbox {
+		.clearfix();
+		padding: 0;
+		height: 32px;
+		width: 100%;
+		border: 1px solid @esLocationTextboxBorder;
+		background: @esLocationBackground;
+		border-radius: 3px;
+		display: block;
+
+		input {
+			width: 100%;
+			height: 30px !important;
+			padding-left: 4px !important;
+			border: none !important;
+			background: none !important;
+		}
+	}
+	.es-location-map {
+		height: 180px;
+		width: 100%;
+		margin-top: 10px;
+		border: 1px solid @esLocationTextboxBorder;
+		clear: both;
+		display: none;
+	}
+}
+.es-story-locations[data-location-base] {
+    position: relative;
+
+    &:hover {
+        .es-story-location-help {
+            display: block;
+        }
+    }
+}
+.es-story-location-help {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 2px 4px;
+    z-index: 5;
+}
+
+// #fd.es.popbox-location
+&.popbox-location {
+	width : 400px;
+	height: 200px;
+	padding: 3px;
+    .arrow {
+        display: none;
+    }
+    * {
+        .box-sizing(border-box);
+    }
+	img {
+		// Fixes overflowing border when location image is still loading in popbox
+		height: 200px;
+        max-width: 100%;
+	}
+}

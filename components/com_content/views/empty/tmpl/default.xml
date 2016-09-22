@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="empty" option="empty">
+		<help
+			key = "empty"
+		/>
+		<message>
+			<![CDATA[com_content_article_view_default_desc]]>
+		</message>
+	</layout>
+
+	<!-- Add fields to the request variables for the layout. -->
+
+	<!-- Add fields to the parameters object for the layout. -->
+	<fields name="params"></fields>
+</metadata>

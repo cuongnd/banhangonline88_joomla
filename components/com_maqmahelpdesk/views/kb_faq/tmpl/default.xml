@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+    <layout title="FAQ">
+        <message><![CDATA[FAQ]]></message>
+    </layout>
+    <fields name="params">
+        <fieldset name="basic"
+                  addfieldpath="/administrator/components/com_maqmahelpdesk/elements">
+            <field
+                    name="id_workgroup"
+                    required="true"
+                    type="workgroupj17"
+                    default="0"
+                    label="Department"
+                    description="Set the department to be accessed.">
+            </field>
+            <field
+                    name="show_toolbar"
+                    type="radio"
+                    default="1"
+                    description="Set if you want to show the MaQma Helpdesk toolbar on this menu item."
+                    label="Show toolbar">
+                <option value="1">JYes</option>
+                <option value="0">JNo</option>
+            </field>
+        </fieldset>
+    </fields>
+</metadata>

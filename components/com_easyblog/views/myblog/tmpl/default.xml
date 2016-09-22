@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_EASYBLOG_MENU_MYBLOG_LAYOUT">
+		<message>
+			<![CDATA[COM_EASYBLOG_MENU_MYBLOG_LAYOUT_DESC]]>
+		</message>
+		<view>myblog</view>
+	</layout>
+	<state>
+		<name><![CDATA[COM_EASYBLOG_MENU_MYBLOG_LAYOUT]]></name>
+		<description><![CDATA[COM_EASYBLOG_MENU_MYBLOG_LAYOUT_DESC]]></description>
+		<params>
+			<param name="limit" type="list" default="-2" label="Pagination" description="Set how many items to be displayed per page">
+				<option value="-1">Use Global</option>
+				<option value="5">5</option>
+				<option value="10">10</option>
+				<option value="15">15</option>
+				<option value="20">20</option>
+				<option value="25">25</option>
+				<option value="30">30</option>
+				<option value="50">50</option>
+				<option value="100">100</option>
+				<option value="-2">Use EasyBlog List Length</option>
+			</param>			
+		</params>		
+	</state>
+	
+	<fields name="request">
+		<fieldset name="request">
+		    <field name="limit" type="list" default="-2" label="Pagination" description="Set how many items to be displayed per page">
+				<option value="-1">Use Global</option>
+				<option value="5">5</option>
+				<option value="10">10</option>
+				<option value="15">15</option>
+				<option value="20">20</option>
+				<option value="25">25</option>
+				<option value="30">30</option>
+				<option value="50">50</option>
+				<option value="100">100</option>
+				<option value="-2">Use EasyBlog List Length</option>
+			</field>
+		</fieldset>
+	</fields>	
+</metadata>

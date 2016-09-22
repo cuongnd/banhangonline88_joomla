@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_EASYBLOG_MENU_FRONTPAGE_LAYOUT">
+		<message>
+			<![CDATA[COM_EASYBLOG_MENU_FRONTPAGE_LAYOUT_DESC]]>
+		</message>
+		<view>latest</view>
+	</layout>
+	<state>
+		<name><![CDATA[COM_EASYBLOG_MENU_FRONTPAGE_LAYOUT]]></name>
+		<description><![CDATA[COM_EASYBLOG_MENU_FRONTPAGE_LAYOUT_DESC]]></description>
+		<params addpath="/administrator/components/com_easyblog/elements">
+		    <param name="limit" type="list" default="-2" label="Pagination" description="Set how many items to be displayed per page">
+				<option value="-1">Use Global</option>
+				<option value="5">5</option>
+				<option value="10">10</option>
+				<option value="15">15</option>
+				<option value="20">20</option>
+				<option value="25">25</option>
+				<option value="30">30</option>
+				<option value="50">50</option>
+				<option value="100">100</option>
+				<option value="-2">Use EasyBlog List Length</option>
+			</param>
+			<param name="inclusion" type="multicategories" default="" label="Categories" description="Select the categories that you want to display in this page" />
+			<param name="includesubcategories" type="list" default="0" label="Include Sub-categories" description="Include sub categories for the categories specified.">
+				<option value="0">No</option>
+				<option value="1">Yes</option>
+			</param>
+		</params>		
+	</state>
+	
+	<fields name="params">
+		<fieldset name="advanced" addfieldpath="/administrator/components/com_easyblog/elements/fields">
+		    <field name="limit" type="list" default="-2" label="Pagination" description="Set how many items to be displayed per page">
+				<option value="-1">Use Global</option>
+				<option value="5">5</option>
+				<option value="10">10</option>
+				<option value="15">15</option>
+				<option value="20">20</option>
+				<option value="25">25</option>
+				<option value="30">30</option>
+				<option value="50">50</option>
+				<option value="100">100</option>
+				<option value="-2">Use EasyBlog List Length</option>
+			</field>
+			<field name="inclusion" type="modal_multicategories" default="" label="Categories" description="Select the categories that you want to display in this page" />
+			<field name="includesubcategories" type="list" default="0" label="Include Sub-categories" description="Include sub categories for the categories specified.">
+				<option value="0">No</option>
+				<option value="1">Yes</option>
+			</field>
+		</fieldset>
+	</fields>	
+</metadata>

@@ -1,0 +1,16 @@
+<div class="uploadItem">
+	<div class="item-wrap">
+		<i class="uploadIcon uploadRemoveButton"></i>
+		<span class="uploadFilename"></span>
+		<div class="uploadProgressBar">
+			<progress max="100" value="0"></progress>
+			<div class="progress-alt"><img src="<?php echo JURI::root(); ?>media/com_easyblog/scripts/media/progress.gif"/></div>
+		</div>
+		<span class="uploadStatus"><?php echo JText::_( 'COM_EASYBLOG_MM_UPLOADING_PENDING' ); ?></span>
+		<div class="uploadActions">
+			<button class="insertBlogImageButton button green-button"><i></i><?php echo JText::_( 'COM_EASYBLOG_MM_USE_AS_BLOG_IMAGE_BUTTON' ); ?></button>
+			<button class="insertItemButton green-button button"><i></i><?php echo JText::_( 'COM_EASYBLOG_MM_INSERT_BUTTON' ); ?></button>
+			<button class="locateItemButton button"><i></i><?php echo JText::_( 'COM_EASYBLOG_MM_LOCATE_BUTTON' ); ?></button>
+		</div>
+	</div>
+</div>

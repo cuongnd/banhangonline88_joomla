@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_EASYBLOG_MENU_CATEGORY_LAYOUT">
+		<message>
+			<![CDATA[COM_EASYBLOG_MENU_CATEGORY_LAYOUT_DESC]]>
+		</message>
+		<view>categories</view>
+	</layout>
+	<state>
+		<name><![CDATA[COM_EASYBLOG_MENU_CATEGORY_LAYOUT]]></name>
+		<description><![CDATA[COM_EASYBLOG_MENU_CATEGORY_LAYOUT_DESC]]></description>
+		<url addpath="/administrator/components/com_easyblog/elements">
+			<param name="id" type="categories" label="Category" default="0" description="Choose a category..." />
+		</url>
+		<params>
+		    <param name="limit" type="list" default="-2" label="Pagination" description="Set how many items to be displayed per page">
+				<option value="-1">Use Global</option>
+				<option value="5">5</option>
+				<option value="10">10</option>
+				<option value="15">15</option>
+				<option value="20">20</option>
+				<option value="25">25</option>
+				<option value="30">30</option>
+				<option value="50">50</option>
+				<option value="100">100</option>
+				<option value="-2">Use EasyBlog List Length</option>
+			</param>
+		</params>
+		<advanced>
+			<param name="cat_bloggerid" type="text" default="" label="Blogger Id" description="Enter blogger id here to filter blog posts from the specified blogger. Leave empty if to ignore this option." />
+		</advanced>		
+	</state>
+	
+	<!-- Add fields to the request variables for the layout. -->
+	<fields name="request">
+		<fieldset name="request"
+			addfieldpath="/administrator/components/com_easyblog/elements/fields">
+
+			<field name="id" type="modal_categories"
+				label="Category"
+				required="true"
+				description="Choose a category..."
+			/>
+		</fieldset>
+	</fields>	
+	<fields name="params">
+		<fieldset name="advanced">
+			<field
+			name="cat_bloggerid"
+			type="text"
+			default=""
+			label="Blogger Id"
+			description="Enter blogger id here to filter blog posts from the specified blogger. Leave empty if to ignore this option." />
+			<field name="limit" type="list" default="-2" label="Pagination" description="Set how many items to be displayed per page">
+				<option value="-1">Use Global</option>
+				<option value="5">5</option>
+				<option value="10">10</option>
+				<option value="15">15</option>
+				<option value="20">20</option>
+				<option value="25">25</option>
+				<option value="30">30</option>
+				<option value="50">50</option>
+				<option value="100">100</option>
+				<option value="-2">Use EasyBlog List Length</option>
+			</field>
+		</fieldset>	
+	</fields>
+</metadata>
