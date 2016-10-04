@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.6" client="site" type="language" method="upgrade">
+	<name>Irish (ga-IE)</name>
+	<tag>ga-IE</tag>
+    <version>3.6.0.1</version>
+	<creationDate>2016-06-21</creationDate>
+	<author>Irish translation team</author>
+	<authorEmail>kscanne@gmail.com</authorEmail>
+	<authorUrl>http://borel.slu.edu/</authorUrl>
+	<copyright>Copyright (C) 2005 - 2016 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<description>ga-IE site language</description>
+	<files>
+        <filename>ga-IE.com_ajax.ini</filename>
+        <filename>ga-IE.com_config.ini</filename>
+        <filename>ga-IE.com_contact.ini</filename>
+        <filename>ga-IE.com_content.ini</filename>
+        <filename>ga-IE.com_finder.ini</filename>
+        <filename>ga-IE.com_mailto.ini</filename>
+        <filename>ga-IE.com_media.ini</filename>
+        <filename>ga-IE.com_messages.ini</filename>
+        <filename>ga-IE.com_newsfeeds.ini</filename>
+        <filename>ga-IE.com_search.ini</filename>
+        <filename>ga-IE.com_tags.ini</filename>
+        <filename>ga-IE.com_users.ini</filename>
+        <filename>ga-IE.com_weblinks.ini</filename>
+        <filename>ga-IE.com_wrapper.ini</filename>
+        <filename>ga-IE.files_joomla.sys.ini</filename>
+        <filename>ga-IE.finder_cli.ini</filename>
+        <filename>ga-IE.ini</filename>
+        <filename>ga-IE.lib_fof.ini</filename>
+        <filename>ga-IE.lib_fof.sys.ini</filename>
+        <filename>ga-IE.lib_idna_convert.sys.ini</filename>
+        <filename>ga-IE.lib_joomla.ini</filename>
+        <filename>ga-IE.lib_joomla.sys.ini</filename>
+        <filename>ga-IE.lib_phpass.sys.ini</filename>
+        <filename>ga-IE.lib_phputf8.sys.ini</filename>
+        <filename>ga-IE.lib_simplepie.sys.ini</filename>
+        <filename>ga-IE.mod_articles_archive.ini</filename>
+        <filename>ga-IE.mod_articles_archive.sys.ini</filename>
+        <filename>ga-IE.mod_articles_categories.ini</filename>
+        <filename>ga-IE.mod_articles_categories.sys.ini</filename>
+        <filename>ga-IE.mod_articles_category.ini</filename>
+        <filename>ga-IE.mod_articles_category.sys.ini</filename>
+        <filename>ga-IE.mod_articles_latest.ini</filename>
+        <filename>ga-IE.mod_articles_latest.sys.ini</filename>
+        <filename>ga-IE.mod_articles_news.ini</filename>
+        <filename>ga-IE.mod_articles_news.sys.ini</filename>
+        <filename>ga-IE.mod_articles_popular.ini</filename>
+        <filename>ga-IE.mod_articles_popular.sys.ini</filename>
+        <filename>ga-IE.mod_banners.ini</filename>
+        <filename>ga-IE.mod_banners.sys.ini</filename>
+        <filename>ga-IE.mod_breadcrumbs.ini</filename>
+        <filename>ga-IE.mod_breadcrumbs.sys.ini</filename>
+        <filename>ga-IE.mod_custom.ini</filename>
+        <filename>ga-IE.mod_custom.sys.ini</filename>
+        <filename>ga-IE.mod_feed.ini</filename>
+        <filename>ga-IE.mod_feed.sys.ini</filename>
+        <filename>ga-IE.mod_finder.ini</filename>
+        <filename>ga-IE.mod_finder.sys.ini</filename>
+        <filename>ga-IE.mod_footer.ini</filename>
+        <filename>ga-IE.mod_footer.sys.ini</filename>
+        <filename>ga-IE.mod_languages.ini</filename>
+        <filename>ga-IE.mod_languages.sys.ini</filename>
+        <filename>ga-IE.mod_login.ini</filename>
+        <filename>ga-IE.mod_login.sys.ini</filename>
+        <filename>ga-IE.mod_menu.ini</filename>
+        <filename>ga-IE.mod_menu.sys.ini</filename>
+        <filename>ga-IE.mod_random_image.ini</filename>
+        <filename>ga-IE.mod_random_image.sys.ini</filename>
+        <filename>ga-IE.mod_related_items.ini</filename>
+        <filename>ga-IE.mod_related_items.sys.ini</filename>
+        <filename>ga-IE.mod_search.ini</filename>
+        <filename>ga-IE.mod_search.sys.ini</filename>
+        <filename>ga-IE.mod_stats.ini</filename>
+        <filename>ga-IE.mod_stats.sys.ini</filename>
+        <filename>ga-IE.mod_syndicate.ini</filename>
+        <filename>ga-IE.mod_syndicate.sys.ini</filename>
+        <filename>ga-IE.mod_tags_popular.ini</filename>
+        <filename>ga-IE.mod_tags_popular.sys.ini</filename>
+        <filename>ga-IE.mod_tags_similar.ini</filename>
+        <filename>ga-IE.mod_tags_similar.sys.ini</filename>
+        <filename>ga-IE.mod_users_latest.ini</filename>
+        <filename>ga-IE.mod_users_latest.sys.ini</filename>
+        <filename>ga-IE.mod_weblinks.ini</filename>
+        <filename>ga-IE.mod_weblinks.sys.ini</filename>
+        <filename>ga-IE.mod_whosonline.ini</filename>
+        <filename>ga-IE.mod_whosonline.sys.ini</filename>
+        <filename>ga-IE.mod_wrapper.ini</filename>
+        <filename>ga-IE.mod_wrapper.sys.ini</filename>
+        <filename>ga-IE.tpl_beez3.ini</filename>
+        <filename>ga-IE.tpl_beez3.sys.ini</filename>
+        <filename>ga-IE.tpl_protostar.ini</filename>
+        <filename>ga-IE.tpl_protostar.sys.ini</filename>
+		<filename>ga-IE.localise.php</filename>
+		<filename file="meta">install.xml</filename>
+		<filename file="meta">ga-IE.xml</filename>
+	</files>
+	<params />
+</extension>

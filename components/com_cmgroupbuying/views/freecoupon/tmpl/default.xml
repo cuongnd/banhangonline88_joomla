@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_CMGROUPBUYING_FREE_COUPON_TITLE" option="COM_CMGROUPBUYING_FREE_COUPON_OPTION">
+		<message>
+			<![CDATA[COM_CMGROUPBUYING_FREE_COUPON_DESC]]>
+		</message>
+	</layout>
+</metadata>

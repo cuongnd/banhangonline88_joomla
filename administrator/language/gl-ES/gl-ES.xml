@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metafile version="3.3" client="administrator" method="upgrade">
+	<name>Galician (Galego)</name>
+	<version>3.3.1.2</version>
+	<creationDate>2014-07-21</creationDate>
+	<author>Proxecto Trasno</author>
+	<authorEmail>proxecto@trasno.net</authorEmail>
+	<authorUrl>http://www.trasno.net</authorUrl>
+	<copyright>Copyright (C) 2005 - 2014 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <description>gl-ES administrator language</description>
+	<metadata>
+		<name>Galician (Galego)</name>
+		<tag>gl-ES</tag>
+		<rtl>0</rtl>
+		<locale>gl_ES.utf8, gl_ES.UTF-8, gl_ES.UTF-8@euro, gl_ES, gal_ES, gl, galician</locale>
+		<firstDay>1</firstDay>
+		<weekEnd>0,6</weekEnd>
+	</metadata>
+	<params />
+</metafile>

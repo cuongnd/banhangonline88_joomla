@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_CMGROUPBUYING_ORDERS_TITLE" option="COM_CMGROUPBUYING_ORDERS_OPTION">
+		<message>
+			<![CDATA[COM_CMGROUPBUYING_ORDERS_DESC]]>
+		</message>
+	</layout>
+</metadata>

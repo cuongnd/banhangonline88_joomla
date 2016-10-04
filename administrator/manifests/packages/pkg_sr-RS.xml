@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="package" version="3.6" method="upgrade">
+	<name>sr-RS_joomla_lang_full_3.6.2.1</name>
+	<packagename>sr-RS</packagename>
+	<version>3.6.2.1</version>
+	<creationDate>30/06/2016</creationDate>
+	<author>Joomla! Serbia - Translation Team</author>
+	<authorEmail>translation@joomla-serbia.com</authorEmail>
+	<authorUrl>http://www.joomla-serbia.com/</authorUrl>
+	<copyright>Copyright (C) 2005 - 2016 Open Source Matters. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<url></url>
+	<packager></packager>
+	<packagerurl></packagerurl>
+	<description><![CDATA[Joomla 3.6.x Serbian Cyrillic Language Package]]></description>
+	<files>
+		<file type="language" client="site" id="sr-RS">site_sr-RS.zip</file>
+		<file type="language" client="administrator" id="sr-RS">admin_sr-RS.zip</file>
+	</files>
+</extension>

@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5" type="plugin" group="system" method="upgrade">
+	<name>Adsmanager Disclaimer</name>
+	<author>Adonay R. M.</author>
+	<creationDate>July 2012</creationDate>
+	<copyright>Copyright (C) 2012 Adonay R. M. All Rights Reserved.</copyright>
+	<license>GNU General Public License</license>
+	<authorEmail>contentdisclaimer@adonay.name</authorEmail>
+	<authorUrl>http://adonay.name/</authorUrl>
+	<version>1.0</version>
+	<description>Disclaimer per categories for AdsManager</description>
+	<files>
+		<filename plugin="adsmanager_disclaimer">adsmanager_disclaimer.php</filename>
+		<filename>index.html</filename>
+		<filename>css/style.css</filename>
+		<filename>css/index.html</filename>
+		<filename>js/scripts.js</filename>
+		<filename>js/index.html</filename>
+		<folder>images</folder>
+	</files>
+	<languages folder="language">
+		<language tag="fr-FR">fr-FR.plg_system_adsmanager_disclaimer.ini</language>
+        <language tag="fr-FR">fr-FR.plg_system_adsmanager_disclaimer.sys.ini</language>
+		<language tag="en-GB">en-GB.plg_system_adsmanager_disclaimer.ini</language>
+        <language tag="en-GB">en-GB.plg_system_adsmanager_disclaimer.sys.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="image" type="media" directory="images" preview="true" label="IMG_LAB" description="IMG_DESC" />
+				<field name="separator1" type="spacer" label=" " />
+				<field name="colortext" type="text" size="15" label="TEXT_CUST_COLOR_LAB" description="TEXT_CUST_COLOR_DESC" />
+				<field name="align" type="radio" default="0" label="ALIGN_TEXT_LAB" description="ALIGN_TEXT_DESC">
+					<option value="0">VALUE_NO</option>
+					<option value="1">VALUE_YES</option>
+				</field>
+				<field name="warningtext" type="radio" default="1" label="SHOW_WARNING_LAB" description="SHOW_WARNING_DESC">
+					<option value="0">VALUE_NO</option>
+					<option value="1">VALUE_YES</option>
+				</field>
+				<field name="blinktext" type="text" size="15" label="WARNING_TEXT_LAB" description="WARNING_TEXT_DESC" />
+				<field name="backgroundcolor" type="list" label="BACKGR_COLOR_LAB" description="BACKGR_COLOR_DESC">
+					<option value="0">BACKGR_COLOR_SELECT</option>
+					<option value="Black">Black</option>
+					<option value="BlueViolet">BlueViolet</option>
+					<option value="Brown">Brown</option>
+					<option value="CadetBlue">CadetBlue</option>
+					<option value="Chocolate">Chocolate</option>
+					<option value="Coral">Coral</option>
+					<option value="CornflowerBlue">CornflowerBlue</option>
+					<option value="DarkBlue">DarkBlue</option>
+					<option value="DarkCyan">DarkCyan</option>
+					<option value="DarkGoldenRod">DarkGoldenRod</option>
+					<option value="DarkGray">DarkGray</option>
+					<option value="DarkGreen">DarkGreen</option>
+					<option value="DarkKhaki">DarkKhaki</option>
+					<option value="DarkOliveGreen">DarkOliveGreen</option>
+					<option value="DarkMagenta">DarkMagenta</option>
+					<option value="DarkOrange">DarkOrange</option>
+					<option value="DarkOrchid">DarkOrchid</option>
+					<option value="DarkRed">DarkRed</option>
+					<option value="DarkSalmon">DarkSalmon</option>
+					<option value="DarkSeaGreen">DarkSeaGreen</option>
+					<option value="DarkSlateBlue">DarkSlateBlue</option>
+					<option value="DarkSlateGray">DarkSlateGray</option>
+					<option value="DarkViolet">DarkViolet</option>
+					<option value="DimGray">DimGray</option>
+					<option value="FireBrick">FireBrick</option>
+					<option value="Grey">Grey</option>
+					<option value="HotPink">HotPink</option>
+					<option value="IndianRed">IndianRed</option>
+					<option value="Indigo">Indigo</option>
+					<option value="LightCoral">LighCoral</option>
+					<option value="LightSalmon">LightSalmon</option>
+					<option value="Maroon">Maroon</option>
+					<option value="PaleVioletRed">PaleVioletRed</option>
+					<option value="Peru">Peru</option>
+					<option value="Plum">Plum</option>
+					<option value="Purple">Purple</option>
+					<option value="Red">Red</option>
+					<option value="RosyBrown">RosyBrown</option>
+					<option value="SeaGreen">SeaGreen</option>
+					<option value="Teal">Teal</option>
+					<option value="Transparent">Transparent</option>
+				</field>
+				<field name="mybackgroundcolor" type="text" size="15" label="BACKGR_CUST_COLOR_LAB" description="BACKGR_CUST_COLOR_DESC" />
+				<field name="textopen" type="text" size="15" label="TEXT_BUT_ENTER_LAB" description="TEXT_BUT_ENTER_DESC" />
+				<field name="textexit" type="text" size="15" label="TEXT_BUT_EXIT_LAB" description="TEXT_BUT_EXIT_DESC" />
+				<field name="separator2" type="spacer" hr="true" />
+				<field name="duration" type="text" size="10" label="COOKIE_TIME_LAB" description="COOKIE_TIME_DESC" />
+				<field name="redir" type="text" size="40" label="REDIR_URL_LAB" description="REDIR_URL_DESC" />
+			</fieldset>
+		</fields>
+	</config>
+</extension>

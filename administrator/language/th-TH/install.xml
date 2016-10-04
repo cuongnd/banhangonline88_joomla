@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.6" client="administrator" type="language" method="upgrade">
+	<name>Thai (ภาษาไทย)</name>
+	<tag>th-TH</tag>
+	<version>3.6.2.1</version>
+	<creationDate>August 2016</creationDate>
+	<author>Thai Translation Team</author>
+	<authorEmail>tt@joomlacorner.com</authorEmail>
+	<authorUrl>www.joomlacorner.com</authorUrl>
+	<copyright>Copyright (C) 2005 - 2016 Open Source Matters &amp; JoomlaCorner.com. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<description><![CDATA[
+    <div align="center">
+      <table border="0" width="100%">
+  	    <tr>
+  		    <td width="100%" colspan="2">
+  		      <div class="alert alert-success center" align="center">
+  		        <h3 class="alert-heading">ภาษาไทยสำหรับ จูมล่า 3.6 จากทีมจูมล่าคอร์เนอร์ <br />ภายใต้การสนับสนุนโดย บริษัท มาร์เวลิค เอ็นจิ้น จำกัด</h3>
+  		      </div>
+  		      <hr />
+  		    </td>
+  	    </tr>
+  	    <tr>
+  		    <td width="40%"><u><strong>รายละเอียด :</strong></u></td>
+  		    <td width="60%">ภาษาไทยสำหรับผู้ดูแลระบบ (ด้านหน้าผู้ดูแล)</td>
+  	    </tr>
+  	    <tr>
+  		    <td width="40%"><u><strong>เวอร์ชัน จูมล่า :</strong></u></td>
+  		    <td width="60%">3.6</td>
+  	    </tr>
+  	    <tr>
+  		    <td width="40%"><u><strong>เวอร์ชัน ไฟล์ภาษา :</strong></u></td>
+  		    <td width="60%">3.6.2v1</td>
+  	    </tr>
+  	    <td width="100%" colspan="2"><hr /></td>
+   	    <tr>
+  		    <td width="40%"><u><strong>เว็บไซต์ จูมล่าคอร์เนอร์ :</strong></u></td>
+  		    <td width="60%"><a href="http://www.joomlacorner.com" target="_blank">http://www.joomlacorner.com</a></td>
+  		 </tr>
+  		 <tr>
+   		    <td width="40%"><u><strong>เว็บไซต์ บริษัท มาร์เวลิค เอ็นจิ้น จำกัด :</strong></u></td>
+  		    <td width="60%"><a href="http://www.marvelic.co.th" target="_blank">http://www.marvelic.co.th</a></td>
+  	    </tr>
+  	    <tr>
+  		    <td width="100%" colspan="2">
+  		      <strong><font color="#008000">ท่านสามารถติดตามข่าวสารและเวอร์ชันล่าสุด จากเว็บไซต์ของเราข้างต้น</font></strong>
+          </td>
+  	    </tr>
+      </table>
+    </div>]]>
+    </description>
+	<files>
+		<filename>th-TH.com_admin.ini</filename>
+		<filename>th-TH.com_admin.sys.ini</filename>
+		<filename>th-TH.com_ajax.ini</filename>
+		<filename>th-TH.com_ajax.sys.ini</filename>
+		<filename>th-TH.com_banners.ini</filename>
+		<filename>th-TH.com_banners.sys.ini</filename>
+		<filename>th-TH.com_cache.ini</filename>
+		<filename>th-TH.com_cache.sys.ini</filename>
+		<filename>th-TH.com_categories.ini</filename>
+		<filename>th-TH.com_categories.sys.ini</filename>
+		<filename>th-TH.com_checkin.ini</filename>
+		<filename>th-TH.com_checkin.sys.ini</filename>
+		<filename>th-TH.com_config.ini</filename>
+		<filename>th-TH.com_config.sys.ini</filename>
+		<filename>th-TH.com_contact.ini</filename>
+		<filename>th-TH.com_contact.sys.ini</filename>
+		<filename>th-TH.com_content.ini</filename>
+		<filename>th-TH.com_content.sys.ini</filename>
+		<filename>th-TH.com_contenthistory.ini</filename>
+		<filename>th-TH.com_contenthistory.sys.ini</filename>
+		<filename>th-TH.com_cpanel.ini</filename>
+		<filename>th-TH.com_cpanel.sys.ini</filename>
+		<filename>th-TH.com_finder.ini</filename>
+		<filename>th-TH.com_finder.sys.ini</filename>
+		<filename>th-TH.com_installer.ini</filename>
+		<filename>th-TH.com_installer.sys.ini</filename>
+		<filename>th-TH.com_joomlaupdate.ini</filename>
+		<filename>th-TH.com_joomlaupdate.sys.ini</filename>
+		<filename>th-TH.com_languages.ini</filename>
+		<filename>th-TH.com_languages.sys.ini</filename>
+		<filename>th-TH.com_login.ini</filename>
+		<filename>th-TH.com_login.sys.ini</filename>
+		<filename>th-TH.com_mailto.sys.ini</filename>
+		<filename>th-TH.com_media.ini</filename>
+		<filename>th-TH.com_media.sys.ini</filename>
+		<filename>th-TH.com_menus.ini</filename>
+		<filename>th-TH.com_menus.sys.ini</filename>
+		<filename>th-TH.com_messages.ini</filename>
+		<filename>th-TH.com_messages.sys.ini</filename>
+		<filename>th-TH.com_modules.ini</filename>
+		<filename>th-TH.com_modules.sys.ini</filename>
+		<filename>th-TH.com_newsfeeds.ini</filename>
+		<filename>th-TH.com_newsfeeds.sys.ini</filename>
+		<filename>th-TH.com_plugins.ini</filename>
+		<filename>th-TH.com_plugins.sys.ini</filename>
+		<filename>th-TH.com_postinstall.ini</filename>
+		<filename>th-TH.com_postinstall.sys.ini</filename>
+		<filename>th-TH.com_redirect.ini</filename>
+		<filename>th-TH.com_redirect.sys.ini</filename>
+		<filename>th-TH.com_search.ini</filename>
+		<filename>th-TH.com_search.sys.ini</filename>
+		<filename>th-TH.com_tags.ini</filename>
+		<filename>th-TH.com_tags.sys.ini</filename>
+		<filename>th-TH.com_templates.ini</filename>
+		<filename>th-TH.com_templates.sys.ini</filename>
+		<filename>th-TH.com_users.ini</filename>
+		<filename>th-TH.com_users.sys.ini</filename>
+		<filename>th-TH.com_weblinks.ini</filename>
+		<filename>th-TH.com_weblinks.sys.ini</filename>
+		<filename>th-TH.com_wrapper.ini</filename>
+		<filename>th-TH.com_wrapper.sys.ini</filename>
+		<filename>th-TH.ini</filename>
+		<filename>th-TH.lib_joomla.ini</filename>
+		<filename>th-TH.localise.php</filename>
+		<filename>th-TH.mod_custom.ini</filename>
+		<filename>th-TH.mod_custom.sys.ini</filename>
+		<filename>th-TH.mod_feed.ini</filename>
+		<filename>th-TH.mod_feed.sys.ini</filename>
+		<filename>th-TH.mod_latest.ini</filename>
+		<filename>th-TH.mod_latest.sys.ini</filename>
+		<filename>th-TH.mod_logged.ini</filename>
+		<filename>th-TH.mod_logged.sys.ini</filename>
+		<filename>th-TH.mod_login.ini</filename>
+		<filename>th-TH.mod_login.sys.ini</filename>
+		<filename>th-TH.mod_menu.ini</filename>
+		<filename>th-TH.mod_menu.sys.ini</filename>
+		<filename>th-TH.mod_multilangstatus.ini</filename>
+		<filename>th-TH.mod_multilangstatus.sys.ini</filename>
+		<filename>th-TH.mod_popular.ini</filename>
+		<filename>th-TH.mod_popular.sys.ini</filename>
+		<filename>th-TH.mod_quickicon.ini</filename>
+		<filename>th-TH.mod_quickicon.sys.ini</filename>
+		<filename>th-TH.mod_stats_admin.ini</filename>
+		<filename>th-TH.mod_stats_admin.sys.ini</filename>
+		<filename>th-TH.mod_status.ini</filename>
+		<filename>th-TH.mod_status.sys.ini</filename>
+		<filename>th-TH.mod_submenu.ini</filename>
+		<filename>th-TH.mod_submenu.sys.ini</filename>
+		<filename>th-TH.mod_title.ini</filename>
+		<filename>th-TH.mod_title.sys.ini</filename>
+		<filename>th-TH.mod_toolbar.ini</filename>
+		<filename>th-TH.mod_toolbar.sys.ini</filename>
+		<filename>th-TH.mod_version.ini</filename>
+		<filename>th-TH.mod_version.sys.ini</filename>
+		<filename>th-TH.plg_authentication_cookie.ini</filename>
+		<filename>th-TH.plg_authentication_cookie.sys.ini</filename>
+		<filename>th-TH.plg_authentication_gmail.ini</filename>
+		<filename>th-TH.plg_authentication_gmail.sys.ini</filename>
+		<filename>th-TH.plg_authentication_joomla.ini</filename>
+		<filename>th-TH.plg_authentication_joomla.sys.ini</filename>
+		<filename>th-TH.plg_authentication_ldap.ini</filename>
+		<filename>th-TH.plg_authentication_ldap.sys.ini</filename>
+		<filename>th-TH.plg_captcha_recaptcha.ini</filename>
+		<filename>th-TH.plg_captcha_recaptcha.sys.ini</filename>
+		<filename>th-TH.plg_content_contact.ini</filename>
+		<filename>th-TH.plg_content_contact.sys.ini</filename>
+    <filename>th-TH.plg_content_emailcloak.ini</filename>
+    <filename>th-TH.plg_content_emailcloak.sys.ini</filename>
+		<filename>th-TH.plg_content_finder.ini</filename>
+		<filename>th-TH.plg_content_finder.sys.ini</filename>
+		<filename>th-TH.plg_content_joomla.ini</filename>
+		<filename>th-TH.plg_content_joomla.sys.ini</filename>
+		<filename>th-TH.plg_content_loadmodule.ini</filename>
+		<filename>th-TH.plg_content_loadmodule.sys.ini</filename>
+		<filename>th-TH.plg_content_pagebreak.ini</filename>
+		<filename>th-TH.plg_content_pagebreak.sys.ini</filename>
+		<filename>th-TH.plg_content_pagenavigation.ini</filename>
+		<filename>th-TH.plg_content_pagenavigation.sys.ini</filename>
+		<filename>th-TH.plg_content_vote.ini</filename>
+		<filename>th-TH.plg_content_vote.sys.ini</filename>
+		<filename>th-TH.plg_editors_codemirror.ini</filename>
+		<filename>th-TH.plg_editors_codemirror.sys.ini</filename>
+		<filename>th-TH.plg_editors_none.ini</filename>
+		<filename>th-TH.plg_editors_none.sys.ini</filename>
+		<filename>th-TH.plg_editors_tinymce.ini</filename>
+		<filename>th-TH.plg_editors_tinymce.sys.ini</filename>
+		<filename>th-TH.plg_editors-xtd_article.ini</filename>
+		<filename>th-TH.plg_editors-xtd_article.sys.ini</filename>
+		<filename>th-TH.plg_editors-xtd_image.ini</filename>
+		<filename>th-TH.plg_editors-xtd_image.sys.ini</filename>
+		<filename>th-TH.plg_editors-xtd_module.ini</filename>
+		<filename>th-TH.plg_editors-xtd_module.sys.ini</filename>
+		<filename>th-TH.plg_editors-xtd_pagebreak.ini</filename>
+		<filename>th-TH.plg_editors-xtd_pagebreak.sys.ini</filename>
+		<filename>th-TH.plg_editors-xtd_readmore.ini</filename>
+		<filename>th-TH.plg_editors-xtd_readmore.sys.ini</filename>
+		<filename>th-TH.plg_extension_joomla.ini</filename>
+		<filename>th-TH.plg_extension_joomla.sys.ini</filename>
+		<filename>th-TH.plg_finder_categories.ini</filename>
+		<filename>th-TH.plg_finder_categories.sys.ini</filename>
+		<filename>th-TH.plg_finder_contacts.ini</filename>
+		<filename>th-TH.plg_finder_contacts.sys.ini</filename>
+		<filename>th-TH.plg_finder_content.ini</filename>
+		<filename>th-TH.plg_finder_content.sys.ini</filename>
+		<filename>th-TH.plg_finder_newsfeeds.ini</filename>
+		<filename>th-TH.plg_finder_newsfeeds.sys.ini</filename>
+		<filename>th-TH.plg_finder_tags.ini</filename>
+		<filename>th-TH.plg_finder_tags.sys.ini</filename>
+		<filename>th-TH.plg_finder_weblinks.ini</filename>
+		<filename>th-TH.plg_finder_weblinks.sys.ini</filename>
+		<filename>th-TH.plg_installer_folderinstaller.ini</filename>
+		<filename>th-TH.plg_installer_folderinstaller.sys.ini</filename>
+		<filename>th-TH.plg_installer_packageinstaller.ini</filename>
+		<filename>th-TH.plg_installer_packageinstaller.sys.ini</filename>
+		<filename>th-TH.plg_installer_urlinstaller.ini</filename>
+		<filename>th-TH.plg_installer_urlinstaller.sys.ini</filename>
+		<filename>th-TH.plg_installer_webinstaller.ini</filename>
+		<filename>th-TH.plg_installer_webinstaller.sys.ini</filename>
+		<filename>th-TH.plg_quickicon_extensionupdate.ini</filename>
+		<filename>th-TH.plg_quickicon_extensionupdate.sys.ini</filename>
+		<filename>th-TH.plg_quickicon_joomlaupdate.ini</filename>
+		<filename>th-TH.plg_quickicon_joomlaupdate.sys.ini</filename>
+		<filename>th-TH.plg_search_categories.ini</filename>
+		<filename>th-TH.plg_search_categories.sys.ini</filename>
+		<filename>th-TH.plg_search_contacts.ini</filename>
+		<filename>th-TH.plg_search_contacts.sys.ini</filename>
+		<filename>th-TH.plg_search_content.ini</filename>
+		<filename>th-TH.plg_search_content.sys.ini</filename>
+		<filename>th-TH.plg_search_newsfeeds.ini</filename>
+		<filename>th-TH.plg_search_newsfeeds.sys.ini</filename>
+		<filename>th-TH.plg_search_tags.ini</filename>
+		<filename>th-TH.plg_search_tags.sys.ini</filename>
+		<filename>th-TH.plg_search_weblinks.ini</filename>
+		<filename>th-TH.plg_search_weblinks.sys.ini</filename>
+		<filename>th-TH.plg_system_cache.ini</filename>
+		<filename>th-TH.plg_system_cache.sys.ini</filename>
+		<filename>th-TH.plg_system_debug.ini</filename>
+		<filename>th-TH.plg_system_debug.sys.ini</filename>
+		<filename>th-TH.plg_system_highlight.ini</filename>
+		<filename>th-TH.plg_system_highlight.sys.ini</filename>
+		<filename>th-TH.plg_system_languagecode.ini</filename>
+		<filename>th-TH.plg_system_languagecode.sys.ini</filename>
+		<filename>th-TH.plg_system_languagefilter.ini</filename>
+		<filename>th-TH.plg_system_languagefilter.sys.ini</filename>
+		<filename>th-TH.plg_system_log.ini</filename>
+		<filename>th-TH.plg_system_log.sys.ini</filename>
+		<filename>th-TH.plg_system_logout.ini</filename>
+		<filename>th-TH.plg_system_logout.sys.ini</filename>
+		<filename>th-TH.plg_system_p3p.ini</filename>
+		<filename>th-TH.plg_system_p3p.sys.ini</filename>
+		<filename>th-TH.plg_system_redirect.ini</filename>
+		<filename>th-TH.plg_system_redirect.sys.ini</filename>
+		<filename>th-TH.plg_system_remember.ini</filename>
+		<filename>th-TH.plg_system_remember.sys.ini</filename>
+		<filename>th-TH.plg_system_sef.ini</filename>
+		<filename>th-TH.plg_system_sef.sys.ini</filename>
+		<filename>th-TH.plg_system_stats.ini</filename>
+		<filename>th-TH.plg_system_stats.sys.ini</filename>
+		<filename>th-TH.plg_system_updatenotification.ini</filename>
+		<filename>th-TH.plg_system_updatenotification.sys.ini</filename>
+		<filename>th-TH.plg_twofactorauth_totp.ini</filename>
+		<filename>th-TH.plg_twofactorauth_totp.sys.ini</filename>
+		<filename>th-TH.plg_twofactorauth_yubikey.ini</filename>
+		<filename>th-TH.plg_twofactorauth_yubikey.sys.ini</filename>
+		<filename>th-TH.plg_user_contactcreator.ini</filename>
+		<filename>th-TH.plg_user_contactcreator.sys.ini</filename>
+		<filename>th-TH.plg_user_joomla.ini</filename>
+		<filename>th-TH.plg_user_joomla.sys.ini</filename>
+		<filename>th-TH.plg_user_profile.ini</filename>
+		<filename>th-TH.plg_user_profile.sys.ini</filename>
+		<filename>th-TH.tpl_hathor.ini</filename>
+		<filename>th-TH.tpl_hathor.sys.ini</filename>
+		<filename>th-TH.tpl_isis.ini</filename>
+		<filename>th-TH.tpl_isis.sys.ini</filename>
+		<filename>index.html</filename>
+		<filename file="meta">th-TH.xml</filename>
+		<filename file="meta">install.xml</filename>
+	</files>
+	<params />
+</extension>

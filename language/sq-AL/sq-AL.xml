@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metafile version="3.1" client="site">
+	<tag>sq-AL</tag>
+	<name>Albanian(sq-AL)</name>
+	<description>Albanian site language for Joomla 3.1</description>
+	<version>3.1.1.1</version>
+	<creationDate>2013-04-26</creationDate>
+	<author>Albanian Translation Team Besiana Bici </author>
+	<authorEmail>besianabici@gmail.com</authorEmail>
+	<authorUrl> </authorUrl>
+	<copyright>Copyright (C) 2005 - 2013 Open Source Matters . All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<metadata>
+		<name>Albanian(sq-AL)</name>
+		<tag>sq-AL</tag>
+		<rtl>0</rtl>
+		<locale>sq_AL.utf8, sq_AL.UTF-8, sq_AL, alb_AL, al, albanian, albanian-al, AL, alb, albanian, sq_AL.UTF-8@euro, Albanian_Standard, sq-AL</locale>
+		<firstDay>1</firstDay>
+	</metadata>
+	<params />
+</metafile>

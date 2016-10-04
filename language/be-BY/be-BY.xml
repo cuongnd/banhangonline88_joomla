@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metafile version="3.2" client="site">
+	<tag>be-BY</tag>
+	<name>Belarusian (be-BY)</name>
+	<version>3.2.1.1</version>
+	<creationDate>2013-11-20</creationDate>
+	<author>Dennis Hermatski</author>
+	<authorEmail>sirdionisiy@gmail.com</authorEmail>
+	<authorUrl>www.joomla.com</authorUrl>
+	<copyright>Copyright (C) 2005 - 2013 Open Source Matters. All rights reserved</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<description>Belarusian site language pack Joomla! 3</description>
+	<metadata>
+		<name>Belarusian (be-BY)</name>
+		<tag>be-BY</tag>
+		<rtl>0</rtl>
+		<locale>be-BY.utf8, be-BY.UTF-8, be_BY.utf8, be-BY.UTF-8, be-BY, be_BY, be, belarusian, belarusian-by</locale>
+		<firstDay>1</firstDay>
+		<weekEnd>0,6</weekEnd>
+	</metadata>
+	<params />
+</metafile>

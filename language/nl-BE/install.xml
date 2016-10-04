@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.6" client="site" type="language" method="upgrade">
+	<name>Nederlands (België)</name>
+	<tag>nl-BE</tag>
+	<version>3.6.2</version>
+	<creationDate>Augustus 2016</creationDate>
+	<author>Dutch (BE) translation team</author>
+	<authorEmail>admin@joomla.org</authorEmail>
+	<authorUrl>http://community.joomla.org/translations/joomla-3-translations.html#nl-be</authorUrl>
+	<copyright>Copyright (C) 2005 - 2016 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<description>nl-BE site language</description>
+	<files>
+		<filename>nl-BE.com_ajax.ini</filename>
+		<filename>nl-BE.com_config.ini</filename>
+		<filename>nl-BE.com_contact.ini</filename>
+		<filename>nl-BE.com_content.ini</filename>
+		<filename>nl-BE.com_finder.ini</filename>
+		<filename>nl-BE.com_mailto.ini</filename>
+		<filename>nl-BE.com_media.ini</filename>
+		<filename>nl-BE.com_messages.ini</filename>
+		<filename>nl-BE.com_newsfeeds.ini</filename>
+		<filename>nl-BE.com_search.ini</filename>
+		<filename>nl-BE.com_tags.ini</filename>
+		<filename>nl-BE.com_users.ini</filename>
+		<filename>nl-BE.com_weblinks.ini</filename>
+		<filename>nl-BE.com_wrapper.ini</filename>
+		<filename>nl-BE.files_joomla.sys.ini</filename>
+		<filename>nl-BE.finder_cli.ini</filename>
+		<filename>nl-BE.ini</filename>
+		<filename>nl-BE.lib_fof.ini</filename>
+		<filename>nl-BE.lib_fof.sys.ini</filename>
+		<filename>nl-BE.lib_idna_convert.sys.ini</filename>
+		<filename>nl-BE.lib_joomla.ini</filename>
+		<filename>nl-BE.lib_joomla.sys.ini</filename>
+		<filename>nl-BE.lib_phpass.sys.ini</filename>
+		<filename>nl-BE.lib_phputf8.sys.ini</filename>
+		<filename>nl-BE.lib_simplepie.sys.ini</filename>
+		<filename>nl-BE.localise.php</filename>
+		<filename>nl-BE.mod_articles_archive.ini</filename>
+		<filename>nl-BE.mod_articles_archive.sys.ini</filename>
+		<filename>nl-BE.mod_articles_categories.ini</filename>
+		<filename>nl-BE.mod_articles_categories.sys.ini</filename>
+		<filename>nl-BE.mod_articles_category.ini</filename>
+		<filename>nl-BE.mod_articles_category.sys.ini</filename>
+		<filename>nl-BE.mod_articles_latest.ini</filename>
+		<filename>nl-BE.mod_articles_latest.sys.ini</filename>
+		<filename>nl-BE.mod_articles_news.ini</filename>
+		<filename>nl-BE.mod_articles_news.sys.ini</filename>
+		<filename>nl-BE.mod_articles_popular.ini</filename>
+		<filename>nl-BE.mod_articles_popular.sys.ini</filename>
+		<filename>nl-BE.mod_banners.ini</filename>
+		<filename>nl-BE.mod_banners.sys.ini</filename>
+		<filename>nl-BE.mod_breadcrumbs.ini</filename>
+		<filename>nl-BE.mod_breadcrumbs.sys.ini</filename>
+		<filename>nl-BE.mod_custom.ini</filename>
+		<filename>nl-BE.mod_custom.sys.ini</filename>
+		<filename>nl-BE.mod_feed.ini</filename>
+		<filename>nl-BE.mod_feed.sys.ini</filename>
+		<filename>nl-BE.mod_finder.ini</filename>
+		<filename>nl-BE.mod_finder.sys.ini</filename>
+		<filename>nl-BE.mod_footer.ini</filename>
+		<filename>nl-BE.mod_footer.sys.ini</filename>
+		<filename>nl-BE.mod_languages.ini</filename>
+		<filename>nl-BE.mod_languages.sys.ini</filename>
+		<filename>nl-BE.mod_login.ini</filename>
+		<filename>nl-BE.mod_login.sys.ini</filename>
+		<filename>nl-BE.mod_menu.ini</filename>
+		<filename>nl-BE.mod_menu.sys.ini</filename>
+		<filename>nl-BE.mod_random_image.ini</filename>
+		<filename>nl-BE.mod_random_image.sys.ini</filename>
+		<filename>nl-BE.mod_related_items.ini</filename>
+		<filename>nl-BE.mod_related_items.sys.ini</filename>
+		<filename>nl-BE.mod_search.ini</filename>
+		<filename>nl-BE.mod_search.sys.ini</filename>
+		<filename>nl-BE.mod_stats.ini</filename>
+		<filename>nl-BE.mod_stats.sys.ini</filename>
+		<filename>nl-BE.mod_syndicate.ini</filename>
+		<filename>nl-BE.mod_syndicate.sys.ini</filename>
+		<filename>nl-BE.mod_tags_popular.ini</filename>
+		<filename>nl-BE.mod_tags_popular.sys.ini</filename>
+		<filename>nl-BE.mod_tags_similar.ini</filename>
+		<filename>nl-BE.mod_tags_similar.sys.ini</filename>
+		<filename>nl-BE.mod_users_latest.ini</filename>
+		<filename>nl-BE.mod_users_latest.sys.ini</filename>
+		<filename>nl-BE.mod_weblinks.ini</filename>
+		<filename>nl-BE.mod_weblinks.sys.ini</filename>
+		<filename>nl-BE.mod_whosonline.ini</filename>
+		<filename>nl-BE.mod_whosonline.sys.ini</filename>
+		<filename>nl-BE.mod_wrapper.ini</filename>
+		<filename>nl-BE.mod_wrapper.sys.ini</filename>
+		<filename>nl-BE.tpl_beez3.ini</filename>
+		<filename>nl-BE.tpl_beez3.sys.ini</filename>
+		<filename>nl-BE.tpl_protostar.ini</filename>
+		<filename>nl-BE.tpl_protostar.sys.ini</filename>
+		<filename file="meta">install.xml</filename>
+		<filename file="meta">nl-BE.xml</filename>
+	</files>
+	<params />
+</extension>

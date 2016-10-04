@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metafile version="3.6" client="site">
+	<name>Estonian</name>
+	<version>3.6.0</version>
+	<creationDate>07.07.2016</creationDate>
+	<author>Rivo Zängov and team</author>
+	<authorEmail>eraser@eraser.ee</authorEmail>
+	<authorUrl>www.eraser.ee</authorUrl>
+	<copyright>Copyright (C) 2005 - 2016 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<description>Estonian language pack for Joomla! 3.6.0</description>
+	<metadata>
+		<name>Estonian</name>
+		<tag>et-EE</tag>
+		<rtl>0</rtl>
+		<locale>et_EE.utf8, et_EE.UTF-8, et_EE, est_EE, et, estonian</locale>
+		<firstDay>1</firstDay>
+		<weekEnd>0,6</weekEnd>
+	</metadata>
+	<params />
+</metafile>

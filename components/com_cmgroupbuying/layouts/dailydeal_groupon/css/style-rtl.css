@@ -1,0 +1,205 @@
+/**
+ * @package     CMGroupBuying component
+ * @copyright   Copyright (C) 2012-2014 CMExtension Team http://www.cmext.vn/
+ * @license     http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL
+ */
+
+.deal_section_1_left {
+	float: right;
+}
+
+.deal_section_1_right {
+	float: right;
+	margin: 0 15px 0 0;
+}
+
+.deal_section_1 .tag {
+	background: url("../images/tag_rtl.png") no-repeat scroll right top transparent;
+	left: 62px;
+	position: relative;
+	top: -1px;
+	width: 277px;
+}
+
+.deal_section_1  {
+	float: right;
+	margin-left: 0px;
+}
+
+div.buy_button, div.upcoming_button, div.expired_button,
+div.voided_button, div.not_avail_button {
+	float: left;
+	margin: 12px 0px 0px 10px;
+}
+
+.deal_section_1 dl.deal_value,
+.deal_section_1 dl.deal_discount,
+.deal_section_1 dl.deal_save {
+	float: right;
+}
+
+.deal_section_1 .bought_block .tip_meter .progress_bar .pre_tipped,
+.deal_section_1 .bought_block .tip_meter .progress_bar .pre_tipped {
+	float: right;
+}
+
+.deal_section_1 .bought_block .tip_meter .progress_bar .pre_tipped.left_end_cap,
+.deal_section_1 .bought_block .tip_meter .progress_bar .pre_tipped.left_end_cap {
+	background: url("../images/right_bought_counter.gif") no-repeat scroll left top transparent;
+}
+
+.deal_section_1 .bought_block .tip_meter .progress_bar .pre_tipped.right_end_cap,
+.deal_section_1 .bought_block .tip_meter .progress_bar .pre_tipped.right_end_cap {
+	background: url("../images/left_bought_counter.gif") no-repeat scroll left top transparent;
+}
+
+.deal_section_1 .bought_block .tip_meter .progress_bar {
+	background: url("../images/right_bought_count_bg.gif") no-repeat scroll left top transparent;
+}
+
+.deal_section_1 .deal_highlight {
+	float: right;
+}
+
+.deal_section_1 .deal_terms {
+	float: left;
+}
+
+.deal_section_1 .bought_block .tip_meter .min_max .min {
+	float: right;
+}
+
+.deal_section_1 .bought_block .tip_meter .min_max .max {
+	float: left;
+}
+
+.share_buttons, .share_buttons li {
+	float: right;
+}
+
+.deal_section_1 p.price {
+	margin-right: 25px;
+	margin-left: 0px;
+	float: right;
+}
+
+.deal_section_1 p.price .price_label {
+	text-align: right;
+}
+
+.category_navigation,
+#cm_category_browsing .category_column,
+#cm_category_browsing .deal_column,
+#cm_category_browsing .deal,
+#cm_category_browsing .deal .deal_price,
+#cm_category_browsing .deal .deal_original_price,
+#cm_category_browsing .deal .deal_discount {
+	float: right;
+}
+
+#cm_category_browsing .deal .deal_original_price,
+#cm_category_browsing .deal .deal_discount{
+	margin-left: 0px;
+	margin-right: 10px;
+}
+
+table.deal_submission .media-preview {
+	margin-left: 0px;
+	margin-right: 5px;
+}
+
+table.deal_submission input,
+table.deal_submission .button2-left,
+table.deal_submission .media-preview {
+	float: right;
+}
+
+.deal_submission_action_buttons {
+	text-align: left;
+}
+
+ul.deal_list li.deal {
+	float: right;
+}
+
+ul.deal_list li.deal .deal_price,
+ul.deal_list li.deal .deal_original_price {
+	float: left;
+}
+
+ul.deal_list li.deal .deal_photo img {
+	float: right;
+}
+
+ul.deal_list li.deal .deal_original_price {
+	margin: 8px 0px 0px 20px;
+}
+
+ul.deal_list li.deal .deal_view_button {
+	float: right;
+}
+
+.cmgroupbuying_pagination .list-footer li {
+	float: right;
+}
+
+.cmgroupbuying_pagination .counter {
+	clear:both;
+	float: right;
+}
+
+.popup_view_button {
+	text-align: left;
+}
+
+.deal_section_2 {
+	background: url("../images/section_2_bg_rtl.png") repeat-y scroll right top #EDF6FF;
+}
+.deal_section_2_left {
+	float: right;
+}
+
+.deal_section_2_right {
+	float: left;
+}
+
+.align_right {
+	text-align: left;
+}
+
+/* Product list */
+.products .product_image,
+.products .product_detail,
+.products .thumbnail {
+	float: right;
+}
+
+/* Search form */
+.search-form .row,
+.search-form .label,
+.search-form .control {
+	float: right;
+}
+
+/* Product list */
+.item-list .item-description {
+	float: right;
+}
+
+.item-list .price,
+.item-list .original-price {
+	float: left;
+	margin-left: 0px;
+	margin-right: 10px;
+}
+
+.item-list .item-price,
+.item-list .item-type {
+	float: left;
+}
+
+.search-result .item,
+.search-result .item-image,
+.search-result .item-detail {
+	float: right;
+}

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.0" client="site" type="language" method="upgrade">
+	<name>Belarusian</name>
+	<tag>be-BY</tag>
+	<version>3.0.2</version>
+	<creationDate>2012-11-20</creationDate>
+	<author>Dennis Hermatski</author>
+	<authorEmail>sirdionisiy@gmail.com</authorEmail>
+	<authorUrl>www.joomla.com</authorUrl>
+	<copyright>Copyright (C) 2005 - 2012 Open Source Matters. All rights reserved</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<description>be-BY site language</description>
+	<files>
+        	<filename>index.html</filename>
+		<filename>be-BY.com_contact.ini</filename>
+		<filename>be-BY.com_content.ini</filename>
+		<filename>be-BY.com_finder.ini</filename>
+		<filename>be-BY.com_mailto.ini</filename>
+		<filename>be-BY.com_media.ini</filename>
+		<filename>be-BY.com_messages.ini</filename>
+		<filename>be-BY.com_newsfeeds.ini</filename>
+		<filename>be-BY.com_search.ini</filename>
+		<filename>be-BY.com_users.ini</filename>
+		<filename>be-BY.com_weblinks.ini</filename>
+		<filename>be-BY.com_wrapper.ini</filename>
+		<filename>be-BY.files_joomla.sys.ini</filename>
+		<filename>be-BY.finder_cli.ini</filename>
+		<filename>be-BY.ini</filename>
+		<filename>be-BY.lib_joomla.ini</filename>
+		<filename>be-BY.lib_joomla.sys.ini</filename>
+		<filename>be-BY.lib_phpmailer.sys.ini</filename>
+		<filename>be-BY.lib_phputf8.sys.ini</filename>
+		<filename>be-BY.lib_simplepie.sys.ini</filename>
+		<filename>be-BY.localise.php</filename>
+		<filename>be-BY.mod_articles_archive.ini</filename>
+		<filename>be-BY.mod_articles_archive.sys.ini</filename>
+		<filename>be-BY.mod_articles_categories.ini</filename>
+		<filename>be-BY.mod_articles_categories.sys.ini</filename>
+		<filename>be-BY.mod_articles_category.ini</filename>
+		<filename>be-BY.mod_articles_category.sys.ini</filename>
+		<filename>be-BY.mod_articles_latest.ini</filename>
+		<filename>be-BY.mod_articles_latest.sys.ini</filename>
+		<filename>be-BY.mod_articles_news.ini</filename>
+		<filename>be-BY.mod_articles_news.sys.ini</filename>
+		<filename>be-BY.mod_articles_popular.ini</filename>
+		<filename>be-BY.mod_articles_popular.sys.ini</filename>
+		<filename>be-BY.mod_banners.ini</filename>
+		<filename>be-BY.mod_banners.sys.ini</filename>
+		<filename>be-BY.mod_breadcrumbs.ini</filename>
+		<filename>be-BY.mod_breadcrumbs.sys.ini</filename>
+		<filename>be-BY.mod_custom.ini</filename>
+		<filename>be-BY.mod_custom.sys.ini</filename>
+		<filename>be-BY.mod_feed.ini</filename>
+		<filename>be-BY.mod_feed.sys.ini</filename>
+		<filename>be-BY.mod_finder.ini</filename>
+		<filename>be-BY.mod_finder.sys.ini</filename>
+		<filename>be-BY.mod_footer.ini</filename>
+		<filename>be-BY.mod_footer.sys.ini</filename>
+		<filename>be-BY.mod_languages.ini</filename>
+		<filename>be-BY.mod_languages.sys.ini</filename>
+		<filename>be-BY.mod_login.ini</filename>
+		<filename>be-BY.mod_login.sys.ini</filename>
+		<filename>be-BY.mod_menu.ini</filename>
+		<filename>be-BY.mod_menu.sys.ini</filename>
+		<filename>be-BY.mod_random_image.ini</filename>
+		<filename>be-BY.mod_random_image.sys.ini</filename>
+		<filename>be-BY.mod_related_items.ini</filename>
+		<filename>be-BY.mod_related_items.sys.ini</filename>
+		<filename>be-BY.mod_search.ini</filename>
+		<filename>be-BY.mod_search.sys.ini</filename>
+		<filename>be-BY.mod_stats.ini</filename>
+		<filename>be-BY.mod_stats.sys.ini</filename>
+		<filename>be-BY.mod_syndicate.ini</filename>
+		<filename>be-BY.mod_syndicate.sys.ini</filename>
+		<filename>be-BY.mod_users_latest.ini</filename>
+		<filename>be-BY.mod_users_latest.sys.ini</filename>
+		<filename>be-BY.mod_weblinks.ini</filename>
+		<filename>be-BY.mod_weblinks.sys.ini</filename>
+		<filename>be-BY.mod_whosonline.ini</filename>
+		<filename>be-BY.mod_whosonline.sys.ini</filename>
+		<filename>be-BY.mod_wrapper.ini</filename>
+		<filename>be-BY.mod_wrapper.sys.ini</filename>
+		<filename>be-BY.tpl_beez3.ini</filename>
+		<filename>be-BY.tpl_beez3.sys.ini</filename>
+		<filename>be-BY.tpl_protostar.ini</filename>
+		<filename>be-BY.tpl_protostar.sys.ini</filename>
+		<filename file="meta">install.xml</filename>
+		<filename file="meta">be-BY.xml</filename>
+	</files>
+	<params />
+</extension>

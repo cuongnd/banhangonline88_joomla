@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<extension version="3.6" client="site" type="language" method="upgrade">
+	<name>Korean(Republic of Korea)</name>
+	<tag>ko-KR</tag>
+	<version>3.6.2.1</version>
+	<creationDate>2016-08-07</creationDate>
+	<author>Korean Translation Team</author>
+	<authorEmail>ko-kr_joomla@kilmeny.net</authorEmail>
+	<authorUrl>http://joomla.ecfirm.net/</authorUrl>
+	<copyright>Copyright (C) 2011 - 2016 Korean Translation Team and 2005 - 2016 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<description>ko-KR site language</description>
+	<files>
+		<filename>index.html</filename>
+		<filename>ko-KR.com_ajax.ini</filename>
+		<filename>ko-KR.com_config.ini</filename>
+		<filename>ko-KR.com_contact.ini</filename>
+		<filename>ko-KR.com_content.ini</filename>
+		<filename>ko-KR.com_finder.ini</filename>
+		<filename>ko-KR.com_mailto.ini</filename>
+		<filename>ko-KR.com_media.ini</filename>
+		<filename>ko-KR.com_messages.ini</filename>
+		<filename>ko-KR.com_newsfeeds.ini</filename>
+		<filename>ko-KR.com_search.ini</filename>
+		<filename>ko-KR.com_tags.ini</filename>
+		<filename>ko-KR.com_users.ini</filename>
+		<filename>ko-KR.com_weblinks.ini</filename>
+		<filename>ko-KR.com_wrapper.ini</filename>
+		<filename>ko-KR.files_joomla.sys.ini</filename>
+		<filename>ko-KR.finder_cli.ini</filename>
+		<filename>ko-KR.ini</filename>
+		<filename>ko-KR.lib_fof.ini</filename>
+		<filename>ko-KR.lib_fof.sys.ini</filename>
+		<filename>ko-KR.lib_idna_convert.sys.ini</filename>
+		<filename>ko-KR.lib_joomla.ini</filename>
+		<filename>ko-KR.lib_joomla.sys.ini</filename>
+		<filename>ko-KR.lib_phpass.sys.ini</filename>
+		<filename>ko-KR.lib_phpmailer.sys.ini</filename>
+		<filename>ko-KR.lib_phputf8.sys.ini</filename>
+		<filename>ko-KR.lib_simplepie.sys.ini</filename>
+		<filename>ko-KR.localise.php</filename>
+		<filename>ko-KR.mod_articles_archive.ini</filename>
+		<filename>ko-KR.mod_articles_archive.sys.ini</filename>
+		<filename>ko-KR.mod_articles_categories.ini</filename>
+		<filename>ko-KR.mod_articles_categories.sys.ini</filename>
+		<filename>ko-KR.mod_articles_category.ini</filename>
+		<filename>ko-KR.mod_articles_category.sys.ini</filename>
+		<filename>ko-KR.mod_articles_latest.ini</filename>
+		<filename>ko-KR.mod_articles_latest.sys.ini</filename>
+		<filename>ko-KR.mod_articles_news.ini</filename>
+		<filename>ko-KR.mod_articles_news.sys.ini</filename>
+		<filename>ko-KR.mod_articles_popular.ini</filename>
+		<filename>ko-KR.mod_articles_popular.sys.ini</filename>
+		<filename>ko-KR.mod_banners.ini</filename>
+		<filename>ko-KR.mod_banners.sys.ini</filename>
+		<filename>ko-KR.mod_breadcrumbs.ini</filename>
+		<filename>ko-KR.mod_breadcrumbs.sys.ini</filename>
+		<filename>ko-KR.mod_custom.ini</filename>
+		<filename>ko-KR.mod_custom.sys.ini</filename>
+		<filename>ko-KR.mod_feed.ini</filename>
+		<filename>ko-KR.mod_feed.sys.ini</filename>
+		<filename>ko-KR.mod_finder.ini</filename>
+		<filename>ko-KR.mod_finder.sys.ini</filename>
+		<filename>ko-KR.mod_footer.ini</filename>
+		<filename>ko-KR.mod_footer.sys.ini</filename>
+		<filename>ko-KR.mod_languages.ini</filename>
+		<filename>ko-KR.mod_languages.sys.ini</filename>
+		<filename>ko-KR.mod_login.ini</filename>
+		<filename>ko-KR.mod_login.sys.ini</filename>
+		<filename>ko-KR.mod_menu.ini</filename>
+		<filename>ko-KR.mod_menu.sys.ini</filename>
+		<filename>ko-KR.mod_random_image.ini</filename>
+		<filename>ko-KR.mod_random_image.sys.ini</filename>
+		<filename>ko-KR.mod_related_items.ini</filename>
+		<filename>ko-KR.mod_related_items.sys.ini</filename>
+		<filename>ko-KR.mod_search.ini</filename>
+		<filename>ko-KR.mod_search.sys.ini</filename>
+		<filename>ko-KR.mod_stats.ini</filename>
+		<filename>ko-KR.mod_stats.sys.ini</filename>
+		<filename>ko-KR.mod_syndicate.ini</filename>
+		<filename>ko-KR.mod_syndicate.sys.ini</filename>
+		<filename>ko-KR.mod_tags_popular.ini</filename>
+		<filename>ko-KR.mod_tags_popular.sys.ini</filename>
+		<filename>ko-KR.mod_tags_similar.ini</filename>
+		<filename>ko-KR.mod_tags_similar.sys.ini</filename>
+		<filename>ko-KR.mod_users_latest.ini</filename>
+		<filename>ko-KR.mod_users_latest.sys.ini</filename>
+		<filename>ko-KR.mod_weblinks.ini</filename>
+		<filename>ko-KR.mod_weblinks.sys.ini</filename>
+		<filename>ko-KR.mod_whosonline.ini</filename>
+		<filename>ko-KR.mod_whosonline.sys.ini</filename>
+		<filename>ko-KR.mod_wrapper.ini</filename>
+		<filename>ko-KR.mod_wrapper.sys.ini</filename>
+		<filename>ko-KR.tpl_beez3.ini</filename>
+		<filename>ko-KR.tpl_beez3.sys.ini</filename>
+		<filename>ko-KR.tpl_protostar.ini</filename>
+		<filename>ko-KR.tpl_protostar.sys.ini</filename>
+		<filename file="meta">ko-KR.xml</filename>
+		<filename file="meta">install.xml</filename>
+	</files>
+</extension>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="package" version="3.2">
+	<name>Belarusian Language Pack</name>
+	<packagename>be-BY</packagename>
+	<version>3.2.1.1</version>
+	<creationDate>2013-05-01</creationDate>
+	<author>Dennis Hermatski</author>
+	<authorEmail>sirdionisiy@gmail.com</authorEmail>
+	<authorUrl>www.joomla.org</authorUrl>
+    <copyright>Copyright (C) 2005 - 2013 Open Source Matters.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<url></url>
+	<packager>Joomla! Belarusian</packager>
+	<packagerurl>www.joomla.org</packagerurl>
+	<description>Joomla 3.2 Belarusian Language Package</description>
+	<files>
+		<file type="language" client="site" id="be-BY">site_be-BY.zip</file>
+		<file type="language" client="administrator" id="be-BY">admin_be-BY.zip</file>
+	</files>
+    <updateservers>
+        <server type="collection" priority="1" name="Accredited Joomla! Translations">http://update.joomla.org/language/translationlist_3.xml</server>
+    </updateservers>
+</extension>

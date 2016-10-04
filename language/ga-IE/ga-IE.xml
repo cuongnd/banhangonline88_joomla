@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metafile version="3.6" client="site">
+	<name>Irish (ga-IE)</name>
+	<version>3.6.0.1</version>
+	<creationDate>2016-06-21</creationDate>
+	<author>Irish translation team</author>
+	<copyright>Copyright (C) 2005 - 2016 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<description>Irish site language</description>
+	<metadata>
+		<name>Gaeilge (Éire)</name>
+		<tag>ga-IE</tag>
+		<rtl>0</rtl>
+		<locale>ga_IE.utf8, ga_IE.UTF-8, ga_IE, gle_IE, ga, irish, gaeilge, ireland, eire, éire</locale>
+		<firstDay>1</firstDay>
+		<weekEnd>0,6</weekEnd>
+	</metadata>
+	<params />
+</metafile>

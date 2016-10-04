@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="package" version="3.6" method="upgrade">
+<name>Swahili</name>
+<packagename>sw-KE</packagename>
+<version>3.6.2.1</version>
+	<creationDate>2016-08-05</creationDate>
+	<author>Hassan Abdalla</author>
+	<authorEmail>hassan@att-center.de</authorEmail>
+	<authorUrl>www.att-center.de</authorUrl>
+	<copyright>Copyright (C) 2005 - 2016 Open Source Matters &amp; Hassan Abdalla (kwa lugha ya kiswahili). Haki zote zimehifadhiwa.</copyright>
+	<license>Leseni GNU General Public License toleo 2 au linalofuata; angalia LICENSE.txt</license>
+<url></url>
+<packager></packager>
+<packagerurl></packagerurl>
+<description>Swahili language pack for Joomla! 3.6.2.1</description>
+<files>
+	<file type="language" client="administrator" id="sw-KE">admin_sw-KE.zip</file>
+	<file type="language" client="site" id="sw-KE">site_sw-KE.zip</file>
+</files>
+<updateservers>
+<server type="collection" priority="1" name="Accredited Joomla! Translations">http://update.joomla.org/language/translationlist_3.xml</server>
+</updateservers>
+</extension>

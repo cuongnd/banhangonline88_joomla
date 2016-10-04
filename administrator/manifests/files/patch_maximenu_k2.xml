@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="file" version="3.0" method="upgrade">
+	<name>patch_maximenu_k2</name>
+	<author>Cédric KEIFLIN</author>
+	<creationDate>Janvier 2013</creationDate>
+	<copyright>(C) 2012 Cédric KEIFLIN</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail></authorEmail>
+	<authorUrl>http://www.joomlack.fr</authorUrl>
+	<version>1.0.1</version>
+	<description>This is a patch for Maximenu CK with K2</description>
+ 
+	<fileset>
+		<files folder="" target="modules/mod_maximenuck">
+			<filename>helper_k2.php</filename>
+		</files>
+	</fileset>
+</extension>

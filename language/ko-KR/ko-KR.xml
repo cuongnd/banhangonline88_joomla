@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metafile version="3.6"  client="site">
+	<name>Korean(Republic of Korea)</name>
+	<description>ko-KR site language</description>
+	<version>3.6.2.1</version>
+	<creationDate>2016-08-06</creationDate>
+	<author>Korean Translation Team</author>
+	<authorEmail>ko-kr_joomla@kilmeny.net</authorEmail>
+	<authorUrl>http://joomla.ecfirm.net/</authorUrl>
+	<copyright>Copyright (C) 2011 - 2016 Korean Translation Team and 2005 - 2016 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<metadata>
+		<name>Korean(Republic of Korea)</name>
+		<tag>ko-KR</tag>
+		<rtl>0</rtl>
+		<locale>ko_KR.utf8, ko_KR.UTF-8, ko_KR, kor_KR, ko, korean, korea-KO, Republic of Korea, KO, Korea, korea</locale>
+		<firstDay>0</firstDay>
+	</metadata>
+	<params />
+</metafile>

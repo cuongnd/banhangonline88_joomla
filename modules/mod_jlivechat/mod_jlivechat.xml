@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="1.6.0" client="site" method="upgrade">
+	<name>mod_jlivechat</name>
+	<author>CMS Fruit</author>
+	<creationDate>April 2013</creationDate>
+	<copyright>Copyright (C) 2008-2013 CMS Fruit. All rights reserved.</copyright>
+	<license>GNU/LGPL http://www.gnu.org/licenses/lgpl-3.0.txt</license>
+	<authorEmail>info@cmsfruit.com</authorEmail>
+	<authorUrl>www.cmsfruit.com</authorUrl>
+	<version>4.3.3</version>
+	<description>This module displays a JLive! Chat online/offline image.</description>
+	<files>
+		<filename module="mod_jlivechat">mod_jlivechat.php</filename>
+		<filename>tmpl/default.php</filename>
+		<filename>helper.php</filename>
+		<filename>livechat-large-offline.jpg</filename>
+		<filename>livechat-offline.jpg</filename>
+		<filename>livechat-online.jpg</filename>
+		<filename>livechat-large-online.jpg</filename>
+		<filename>language/ar-MA.mod_jlivechat.ini</filename>
+		<filename>language/de-DE.mod_jlivechat.ini</filename>
+		<filename>language/en-GB.mod_jlivechat.ini</filename>
+		<filename>language/pt-BR.mod_jlivechat.ini</filename>
+		<filename>language/nl-NL.mod_jlivechat.ini</filename>
+		<filename>language/in-ID.mod_jlivechat.ini</filename>
+		<filename>language/th-TH.mod_jlivechat.ini</filename>
+		<filename>language/fr-FR.mod_jlivechat.ini</filename>
+		<filename>language/it-IT.mod_jlivechat.ini</filename>
+		<filename>language/ms-MY.mod_jlivechat.ini</filename>
+		<filename>language/es-ES.mod_jlivechat.ini</filename>
+		<filename>language/fi-FI.mod_jlivechat.ini</filename>
+		<filename>language/hu-HU.mod_jlivechat.ini</filename>
+		<filename>language/ru-RU.mod_jlivechat.ini</filename>
+		<filename>language/mn-MN.mod_jlivechat.ini</filename>
+		<filename>language/cs-CZ.mod_jlivechat.ini</filename>
+		<filename>language/vi-VN.mod_jlivechat.ini</filename>
+		<filename>language/ur-PK.mod_jlivechat.ini</filename>
+		<filename>language/ar-DZ.mod_jlivechat.ini</filename>
+		<filename>language/el-GR.mod_jlivechat.ini</filename>
+		<filename>language/bm-MY.mod_jlivechat.ini</filename>
+		<filename>language/sl-SI.mod_jlivechat.ini</filename>
+		<filename>language/id-ID.mod_jlivechat.ini</filename>
+		<filename>language/nb-NO.mod_jlivechat.ini</filename>
+		<filename>language/sk-SK.mod_jlivechat.ini</filename>
+		<filename>language/en-US.mod_jlivechat.ini</filename>
+		<filename>language/ro-RO.mod_jlivechat.ini</filename>
+		<filename>language/sv-SE.mod_jlivechat.ini</filename>
+		<filename>language/fa-IR.mod_jlivechat.ini</filename>
+		<filename>language/uk-UA.mod_jlivechat.ini</filename>
+		<filename>language/tr-TR.mod_jlivechat.ini</filename>
+		<filename>language/pt-PT.mod_jlivechat.ini</filename>
+		<filename>language/is-IS.mod_jlivechat.ini</filename>
+		<filename>language/ja-JP.mod_jlivechat.ini</filename>
+		<filename>language/pl-PL.mod_jlivechat.ini</filename>
+		<filename>language/zh-TW.mod_jlivechat.ini</filename>
+		<filename>language/nn-NO.mod_jlivechat.ini</filename>
+		<filename>language/mk-MK.mod_jlivechat.ini</filename>
+		<filename>language/hi-IN.mod_jlivechat.ini</filename>
+		<filename>language/zh-CN.mod_jlivechat.ini</filename>
+		<filename>language/af-ZA.mod_jlivechat.ini</filename>
+		<filename>language/da-DK.mod_jlivechat.ini</filename>
+
+		<filename>language/ar-MA.mod_jlivechat.sys.ini</filename>
+		<filename>language/de-DE.mod_jlivechat.sys.ini</filename>
+		<filename>language/en-GB.mod_jlivechat.sys.ini</filename>
+		<filename>language/pt-BR.mod_jlivechat.sys.ini</filename>
+		<filename>language/nl-NL.mod_jlivechat.sys.ini</filename>
+		<filename>language/in-ID.mod_jlivechat.sys.ini</filename>
+		<filename>language/th-TH.mod_jlivechat.sys.ini</filename>
+		<filename>language/fr-FR.mod_jlivechat.sys.ini</filename>
+		<filename>language/it-IT.mod_jlivechat.sys.ini</filename>
+		<filename>language/ms-MY.mod_jlivechat.sys.ini</filename>
+		<filename>language/es-ES.mod_jlivechat.sys.ini</filename>
+		<filename>language/fi-FI.mod_jlivechat.sys.ini</filename>
+		<filename>language/hu-HU.mod_jlivechat.sys.ini</filename>
+		<filename>language/ru-RU.mod_jlivechat.sys.ini</filename>
+		<filename>language/mn-MN.mod_jlivechat.sys.ini</filename>
+		<filename>language/cs-CZ.mod_jlivechat.sys.ini</filename>
+		<filename>language/vi-VN.mod_jlivechat.sys.ini</filename>
+		<filename>language/ur-PK.mod_jlivechat.sys.ini</filename>
+		<filename>language/ar-DZ.mod_jlivechat.sys.ini</filename>
+		<filename>language/el-GR.mod_jlivechat.sys.ini</filename>
+		<filename>language/bm-MY.mod_jlivechat.sys.ini</filename>
+		<filename>language/sl-SI.mod_jlivechat.sys.ini</filename>
+		<filename>language/id-ID.mod_jlivechat.sys.ini</filename>
+		<filename>language/nb-NO.mod_jlivechat.sys.ini</filename>
+		<filename>language/sk-SK.mod_jlivechat.sys.ini</filename>
+		<filename>language/en-US.mod_jlivechat.sys.ini</filename>
+		<filename>language/ro-RO.mod_jlivechat.sys.ini</filename>
+		<filename>language/sv-SE.mod_jlivechat.sys.ini</filename>
+		<filename>language/fa-IR.mod_jlivechat.sys.ini</filename>
+		<filename>language/uk-UA.mod_jlivechat.sys.ini</filename>
+		<filename>language/tr-TR.mod_jlivechat.sys.ini</filename>
+		<filename>language/pt-PT.mod_jlivechat.sys.ini</filename>
+		<filename>language/is-IS.mod_jlivechat.sys.ini</filename>
+		<filename>language/ja-JP.mod_jlivechat.sys.ini</filename>
+		<filename>language/pl-PL.mod_jlivechat.sys.ini</filename>
+		<filename>language/zh-TW.mod_jlivechat.sys.ini</filename>
+		<filename>language/nn-NO.mod_jlivechat.sys.ini</filename>
+		<filename>language/mk-MK.mod_jlivechat.sys.ini</filename>
+		<filename>language/hi-IN.mod_jlivechat.sys.ini</filename>
+		<filename>language/zh-CN.mod_jlivechat.sys.ini</filename>
+		<filename>language/af-ZA.mod_jlivechat.sys.ini</filename>
+		<filename>language/da-DK.mod_jlivechat.sys.ini</filename>
+	
+	</files>
+	<languages>
+		<language tag="th-TH">language/th-TH.mod_jlivechat.ini</language>
+		<language tag="pt-PT">language/pt-PT.mod_jlivechat.ini</language>
+		<language tag="fr-FR">language/fr-FR.mod_jlivechat.ini</language>
+		<language tag="sk-SK">language/sk-SK.mod_jlivechat.ini</language>
+		<language tag="zh-CN">language/zh-CN.mod_jlivechat.ini</language>
+		<language tag="en-GB">language/en-GB.mod_jlivechat.ini</language>
+		<language tag="ar-DZ">language/ar-DZ.mod_jlivechat.ini</language>
+		<language tag="es-ES">language/es-ES.mod_jlivechat.ini</language>
+		<language tag="ar-MA">language/ar-MA.mod_jlivechat.ini</language>
+		<language tag="is-IS">language/is-IS.mod_jlivechat.ini</language>
+		<language tag="tr-TR">language/tr-TR.mod_jlivechat.ini</language>
+		<language tag="fa-IR">language/fa-IR.mod_jlivechat.ini</language>
+		<language tag="vi-VN">language/vi-VN.mod_jlivechat.ini</language>
+		<language tag="pt-BR">language/pt-BR.mod_jlivechat.ini</language>
+		<language tag="bm-MY">language/bm-MY.mod_jlivechat.ini</language>
+		<language tag="sv-SE">language/sv-SE.mod_jlivechat.ini</language>
+		<language tag="it-IT">language/it-IT.mod_jlivechat.ini</language>
+		<language tag="zh-TW">language/zh-TW.mod_jlivechat.ini</language>
+		<language tag="hu-HU">language/hu-HU.mod_jlivechat.ini</language>
+		<language tag="fi-FI">language/fi-FI.mod_jlivechat.ini</language>
+		<language tag="cs-CZ">language/cs-CZ.mod_jlivechat.ini</language>
+		<language tag="af-ZA">language/af-ZA.mod_jlivechat.ini</language>
+		<language tag="ms-MY">language/ms-MY.mod_jlivechat.ini</language>
+		<language tag="nl-NL">language/nl-NL.mod_jlivechat.ini</language>
+		<language tag="ja-JP">language/ja-JP.mod_jlivechat.ini</language>
+		<language tag="id-ID">language/id-ID.mod_jlivechat.ini</language>
+		<language tag="uk-UA">language/uk-UA.mod_jlivechat.ini</language>
+		<language tag="nn-NO">language/nn-NO.mod_jlivechat.ini</language>
+		<language tag="ru-RU">language/ru-RU.mod_jlivechat.ini</language>
+		<language tag="hi-IN">language/hi-IN.mod_jlivechat.ini</language>
+		<language tag="da-DK">language/da-DK.mod_jlivechat.ini</language>
+		<language tag="mn-MN">language/mn-MN.mod_jlivechat.ini</language>
+		<language tag="mk-MK">language/mk-MK.mod_jlivechat.ini</language>
+		<language tag="nb-NO">language/nb-NO.mod_jlivechat.ini</language>
+		<language tag="ro-RO">language/ro-RO.mod_jlivechat.ini</language>
+		<language tag="pl-PL">language/pl-PL.mod_jlivechat.ini</language>
+		<language tag="en-US">language/en-US.mod_jlivechat.ini</language>
+		<language tag="in-ID">language/in-ID.mod_jlivechat.ini</language>
+		<language tag="de-DE">language/de-DE.mod_jlivechat.ini</language>
+		<language tag="el-GR">language/el-GR.mod_jlivechat.ini</language>
+		<language tag="sl-SI">language/sl-SI.mod_jlivechat.ini</language>
+		<language tag="ur-PK">language/ur-PK.mod_jlivechat.ini</language>
+
+		<language tag="th-TH">language/th-TH.mod_jlivechat.sys.ini</language>
+		<language tag="pt-PT">language/pt-PT.mod_jlivechat.sys.ini</language>
+		<language tag="fr-FR">language/fr-FR.mod_jlivechat.sys.ini</language>
+		<language tag="sk-SK">language/sk-SK.mod_jlivechat.sys.ini</language>
+		<language tag="zh-CN">language/zh-CN.mod_jlivechat.sys.ini</language>
+		<language tag="en-GB">language/en-GB.mod_jlivechat.sys.ini</language>
+		<language tag="ar-DZ">language/ar-DZ.mod_jlivechat.sys.ini</language>
+		<language tag="es-ES">language/es-ES.mod_jlivechat.sys.ini</language>
+		<language tag="ar-MA">language/ar-MA.mod_jlivechat.sys.ini</language>
+		<language tag="is-IS">language/is-IS.mod_jlivechat.sys.ini</language>
+		<language tag="tr-TR">language/tr-TR.mod_jlivechat.sys.ini</language>
+		<language tag="fa-IR">language/fa-IR.mod_jlivechat.sys.ini</language>
+		<language tag="vi-VN">language/vi-VN.mod_jlivechat.sys.ini</language>
+		<language tag="pt-BR">language/pt-BR.mod_jlivechat.sys.ini</language>
+		<language tag="bm-MY">language/bm-MY.mod_jlivechat.sys.ini</language>
+		<language tag="sv-SE">language/sv-SE.mod_jlivechat.sys.ini</language>
+		<language tag="it-IT">language/it-IT.mod_jlivechat.sys.ini</language>
+		<language tag="zh-TW">language/zh-TW.mod_jlivechat.sys.ini</language>
+		<language tag="hu-HU">language/hu-HU.mod_jlivechat.sys.ini</language>
+		<language tag="fi-FI">language/fi-FI.mod_jlivechat.sys.ini</language>
+		<language tag="cs-CZ">language/cs-CZ.mod_jlivechat.sys.ini</language>
+		<language tag="af-ZA">language/af-ZA.mod_jlivechat.sys.ini</language>
+		<language tag="ms-MY">language/ms-MY.mod_jlivechat.sys.ini</language>
+		<language tag="nl-NL">language/nl-NL.mod_jlivechat.sys.ini</language>
+		<language tag="ja-JP">language/ja-JP.mod_jlivechat.sys.ini</language>
+		<language tag="id-ID">language/id-ID.mod_jlivechat.sys.ini</language>
+		<language tag="uk-UA">language/uk-UA.mod_jlivechat.sys.ini</language>
+		<language tag="nn-NO">language/nn-NO.mod_jlivechat.sys.ini</language>
+		<language tag="ru-RU">language/ru-RU.mod_jlivechat.sys.ini</language>
+		<language tag="hi-IN">language/hi-IN.mod_jlivechat.sys.ini</language>
+		<language tag="da-DK">language/da-DK.mod_jlivechat.sys.ini</language>
+		<language tag="mn-MN">language/mn-MN.mod_jlivechat.sys.ini</language>
+		<language tag="mk-MK">language/mk-MK.mod_jlivechat.sys.ini</language>
+		<language tag="nb-NO">language/nb-NO.mod_jlivechat.sys.ini</language>
+		<language tag="ro-RO">language/ro-RO.mod_jlivechat.sys.ini</language>
+		<language tag="pl-PL">language/pl-PL.mod_jlivechat.sys.ini</language>
+		<language tag="en-US">language/en-US.mod_jlivechat.sys.ini</language>
+		<language tag="in-ID">language/in-ID.mod_jlivechat.sys.ini</language>
+		<language tag="de-DE">language/de-DE.mod_jlivechat.sys.ini</language>
+		<language tag="el-GR">language/el-GR.mod_jlivechat.sys.ini</language>
+		<language tag="sl-SI">language/sl-SI.mod_jlivechat.sys.ini</language>
+		<language tag="ur-PK">language/ur-PK.mod_jlivechat.sys.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="popup_mode" type="list" default="" label="Popup Mode:" description="Open livechat popup in iframe or popup mode?">
+					<option value="">- Use Default -</option>
+					<option value="popup">Popup Mode</option>
+					<option value="iframe">IFrame Mode</option>
+				</field>
+				<field name="image_size" type="radio" default="large" label="Image Size" description="Which size image to display">
+					<option value="large">Larger</option>
+					<option value="small">Smaller</option>
+				</field>
+			</fieldset>
+			<fieldset name="advanced">
+				<field name="specific_operators" type="text" default="" label="SEND_TO_SPECIFIC_OPERATORS_LBL" description="SEND_TO_SPECIFIC_OPERATORS_LBL_DESC" />
+				<field name="specific_department" type="text" default="" label="SEND_TO_SPECIFIC_DEPARTMENT_LBL" description="SEND_TO_SPECIFIC_DEPARTMENT_LBL_DESC" />
+				<field name="specific_route_id" type="text" default="" label="SEND_TO_SPECIFIC_ROUTEID_LBL" description="SEND_TO_SPECIFIC_ROUTEID_LBL_DESC" />
+				<field name="@spacer" type="spacer" default="" label="" description="" />
+				<field name="online_img_override" type="text" default="" label="ONLINE_IMG_OVERRIDE_LBL" description="ONLINE_IMG_OVERRIDE_LBL_DESC" />
+				<field name="offline_img_override" type="text" default="" label="OFFLINE_IMG_OVERRIDE_LBL" description="OFFLINE_IMG_OVERRIDE_LBL_DESC" />
+				<field name="@spacer" type="spacer" default="" label="" description="" />
+				<field name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="PARAMMODULECLASSSUFFIX" />
+				<field name="@spacer" type="spacer" default="" label="" description="" />
+				<field name="cache" type="list" default="0" label="Caching" description="ENABLE_CACHING_DESC">
+					<option value="0">Never</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

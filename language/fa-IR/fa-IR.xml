@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id: fa-IR.xml 0506753738 2016-01-31 07:07:16 Joomla Farsi Team $ -->
+<metafile version="3.6" client="site" >
+	<tag>fa-IR</tag>
+	<name>Persian</name>
+	<description>Persian language for Joomla 3.6.2</description>
+	<version>3.6.2.1</version>
+	<creationDate>August 2016</creationDate>
+    <author>Persian Translation Team, Joomlafarsi.com</author>
+    <authorEmail>info@joomlafarsi.com</authorEmail>
+    <authorUrl>www.JoomlaFarsi.com</authorUrl>
+    <copyright>Copyright (C) 2005 - 2016 Open Source Matters. All rights reserved.</copyright>
+	<copyright>joomlafarsi.com</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <description>Persian site language pack for Joomla 3.6.2</description>
+	<metadata>
+		<name>Persian</name>
+		<tag>fa-IR</tag>
+		<rtl>1</rtl>
+        <locale>fa_IR.utf8, fa_IR.UTF-8, fa_IR, Persian_IR, Persian, fa_IR, far_fa, fa, iran, ir, farsi_ir</locale>
+        <firstDay>6</firstDay>
+		<weekEnd>0,6</weekEnd>
+	</metadata>
+	<params />
+</metafile>

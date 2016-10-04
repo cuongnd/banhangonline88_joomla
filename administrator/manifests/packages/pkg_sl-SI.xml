@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="package" version="3.6" method="upgrade">
+  <name>Slovenian (Slovenia)</name>
+  <packagename>sl-SI</packagename>
+  <version>3.6.2.1</version>
+  <creationDate>Avgust 2016</creationDate>
+  <author>Chico</author>
+  <authorEmail>admin@joomla.org</authorEmail>
+  <authorUrl>www.joomla.org</authorUrl>
+  <description>sl-SI jezikovni paket</description>
+  <files>
+    <folder type="language" client="site" id="sl-SI">site_sl-SI</folder>
+    <folder type="language" client="administrator" id="sl-SI">admin_sl-SI</folder>
+  </files>
+  <updateservers>
+    <server type="collection" priority="1" name="Accredited Joomla! Translations">https://update.joomla.org/language/translationlist_3.xml</server>
+  </updateservers>
+</extension>

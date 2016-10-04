@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="package" version="3.6" method="upgrade">
+	<name>Turkish Language Pack</name>
+	<packagename>tr-TR</packagename>
+	<version>3.6.2.1</version>
+	<creationDate>July 2016</creationDate>
+	<author>Ümit Kenan Gönüllü</author>
+	<authorEmail>bilgi@jt.gen.tr</authorEmail>
+	<authorUrl>www.jt.gen.tr</authorUrl>
+	<copyright>Copyright (C) 2005 - 2016 Open Source Matters. Tüm hakları saklıdır.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<url></url>
+	<packager>Joomla! Türkçe</packager>
+	<packagerurl>www.jt.gen.tr</packagerurl>
+	<description>
+		<![CDATA[
+		<h3>Joomla 3.6 Türkçe (tr-TR) Dil Dosyaları Paketi</h3>
+		<br />
+		<strong>Site ve denetim masası dil dosyalarını içerir.</strong>
+		<br />
+		<a href="http://www.jt.gen.tr" target="_blank" />Joomla Yetkili Dil Çevirileri</a>
+		<br />
+		<br />
+		<small>Güvenliğiniz için sadece Joomla tarafından onaylanmış olan çeviri dosyalarımızı kullanmanızı öneririz.</small>
+		]]>
+	</description>
+	<files>
+		<file type="language" client="site" id="tr-TR">site_tr-TR.zip</file>
+		<file type="language" client="administrator" id="tr-TR">admin_tr-TR.zip</file>
+	</files>
+	<updateservers>
+		<server type="collection" priority="1" name="Accredited Joomla! Translations">http://update.joomla.org/language/translationlist_3.xml</server>
+	</updateservers>
+</extension>

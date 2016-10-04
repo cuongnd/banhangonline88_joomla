@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="package" version="3.6" method="upgrade">
+	<name>Latvian (lv-LV) Languge Pack</name>
+	<packagename>lv-LV</packagename>
+	<version>3.6.2.2</version>
+	<creationDate>2016. gada augusts</creationDate>
+	<author>Latvian Translation Team</author>
+	<authorEmail>lemings@inbox.lv</authorEmail>
+	<authorUrl>www.Joomla.org</authorUrl>
+	<copyright>Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<url>https://github.com/joomla/joomla-cms</url>
+	<packager>Joomla! Project</packager>
+	<packagerurl>www.joomla.org</packagerurl>
+	<description>latviešu valodas tulkojuma pakotne</description>
+	<files>
+		<folder type="language" client="site" id="lv-LV">site_lv-LV</folder>
+		<folder type="language" client="administrator" id="lv-LV">admin_lv-LV</folder>
+	</files>
+	<updateservers>
+		<server type="collection" priority="1" name="Accredited Joomla! Translations">
+			https://update.joomla.org/language/translationlist_3.xml
+		</server>
+	</updateservers>
+</extension>

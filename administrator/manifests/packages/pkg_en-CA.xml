@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="package" version="3.6" method="upgrade">
+	<name>English Canadian Language Pack</name>
+	<packagename>en-CA</packagename>
+	<version>3.6.2.2</version>
+	<creationDate>August 2016</creationDate>
+	<author>stevec4</author>
+	<authorEmail>stevec4@comcast.net</authorEmail>
+	<authorUrl>www.joomla.org</authorUrl>
+	<copyright>Copyright (C) 2005 - 2016 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<description>Joomla! 3.6.2.2 English (Canada) Language Package</description>
+	<files>
+	        <file type="language" client="administrator" id="en-CA">admin_en-CA.zip</file>
+	        <file type="language" client="site" id="en-CA">site_en-CA.zip</file>
+	</files>
+	<updateservers>
+	        <server type="collection" priority="1" name="Accredited Joomla! Translations">http://update.joomla.org/language/translationlist_3.xml</server>
+    </updateservers>
+</extension>

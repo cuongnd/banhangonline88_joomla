@@ -1,0 +1,1471 @@
+/**
+ * @package     CMGroupBuying component
+ * @copyright   Copyright (C) 2012-2014 CMExtension Team http://www.cmext.vn/
+ * @license     http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL
+ */
+
+ /* Deal detail - Start */
+
+.deal_section_1,
+.all_deal_section {
+	background: none repeat scroll 0 0 #FFFFFF;
+	margin: 0;
+	position: relative;
+	z-index: 2;
+}
+
+.deal_section_1 form, form.cmform {
+	margin: 0;
+}
+
+.deal_section_1_top {
+	margin-left: 10px;
+}
+
+.deal_section_1_left {
+	float: left;
+	width: 214px;
+}
+
+.deal_section_1_right {
+	width: 470px;
+	float: left;
+	margin: 0 0 0 20px;
+}
+
+.deal_section_2_left {
+	float: left;
+	margin: 0 0 0 10px;
+	width: 445px;
+}
+
+.deal_section_2_right {
+	float: right;
+	margin: 0;
+	padding: 10px;
+	width: 220px;
+}
+
+.deal_section_2 {
+	margin: 10px 0 10px 0;
+	position: relative;
+	width: 700px;
+	background: url("../images/section_2_bg.png") repeat-y scroll left top #EDF6FF;
+}
+
+.deal_section_2_right .partner_address {
+	margin-left: 5px;
+}
+
+.deal_section_2_right .partner_address p {
+	line-height: 1.5em;
+	margin: 0;
+}
+
+.deal_section_2_right .partner_address .address_name {
+	font-weight: bold;
+	margin-top: 5px;
+}
+
+.deal_section_2_right .partner_address .address_name span:hover {
+	cursor: pointer;
+}
+
+.deal_section_2_right .partner_logo img {
+	width: 100%;
+}
+
+.deal_section_1 dl.deal_value,
+.deal_section_1 dl.deal_discount,
+.deal_section_1 dl.deal_save {
+	color: #333333;
+	float: left;
+	font-size: 12px;
+	margin-bottom: 10px;
+	text-align: center;
+	width: 68px;
+}
+
+.deal_section_1 dl.deal_value dd,
+.deal_section_1 dl.deal_discount dd,
+.deal_section_1 dl.deal_save dd {
+	font-size: 14px;
+	font-weight: 700;
+	margin: 0;
+}
+
+.deal_section_1 .time_left {
+	font-weight: bold;
+}
+
+.deal_section_1 .discount_info {
+	margin-top: 10px
+}
+
+.deal_section_1 p.deal_name {
+	line-height: 1em;
+	color: #333333;
+	font-family: Arial;
+	font-size: 2.5em;
+	font-weight: bold;
+	margin: 0px 10px 5px 0px;
+}
+
+.deal_section_1 p.deal_short_description {
+	color: #949494;
+	font-size: 1.5em;
+	font-weight: bold;
+	line-height: 1.5em;
+}
+
+.deal_section_1 .remaining_time_block .countdown_block {
+	font-size: 15px;
+	font-weight: bold;
+	float: left;
+	overflow: auto;
+	padding-bottom: 10px;
+	text-align: center;
+	width: 100%;
+}
+
+.deal_section_1 .coupon_code_block {
+	display: none;
+}
+
+.deal_section_1 .remaining_time_block,
+.deal_section_1 .coupon_code_block,
+.deal_section_1 .bought_block,
+.deal_section_1 .advance_payment_block {
+	margin: 5px 0 0;
+	width: 214px;
+}
+
+.deal_section_1 .advance_payment_block .advance_payment_info {
+	padding: 10px
+}
+
+.advance_payment_prices {
+	font-weight: bold;
+}
+
+.deal_section_1 .remaining_time_block h3,
+.deal_section_1 .bought_block h3 {
+	color: #007B9C;
+	font-size: 20px;
+	font-weight: 400;
+	text-align: center;
+	margin: 10px !important;
+}
+
+.deal_section_1 .deal_on {
+	font-size: 15px;
+	font-weight: 700;
+	text-align: center;
+	color: #007B9C;
+	margin: 10px 0;
+}
+
+.deal_section_1 .deal_on img {
+	top: 9px;
+	position: relative;
+}
+
+.deal_section_1 .bought_block p {
+	color: #007B9C;
+	margin: 10px 0;
+	text-align: center;
+}
+
+.deal_section_1 .deal_highlight,
+.deal_section_1 .deal_terms {
+	width: 220px;
+}
+
+.deal_section_1 .deal_highlight {
+	float: left;
+}
+
+.deal_section_1 .deal_terms {
+	float: right;
+}
+
+.deal_section_1 #slideshow {
+	position: relative;
+	margin: auto;
+}
+
+.deal_section_1 #slideshow img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 8;
+}
+.deal_section_1 #slideshow img.active {
+	z-index: 10;
+}
+
+.deal_section_1 #slideshow img.last_active {
+	z-index: 9;
+}
+
+.deal_section_2 #map_canvas {
+	border: 1px solid;
+	width: 215px;
+	height: 215px;
+	position: relative;
+}
+
+.deal_section_1 .deal_detail_block {
+	background: none repeat scroll 0 0 #E0EFFF;
+	border: 1px solid #65C8DF;
+}
+
+.deal_section_1 .price_block {
+	height: 140px;
+	width: 214px;
+}
+
+.deal_section_1 .coupon_price_block {
+	height: 78px !important;
+}
+
+.deal_section_1 .tag {
+	background: url("../images/tag.png") no-repeat scroll right top transparent;
+	height: 80px;
+	left: -62px;
+	position: relative;
+	top: -1px;
+	width: 277px;
+}
+
+.deal_section_1 .coupon_code {
+	color: white;
+	text-align: center;
+	line-height: 30px;
+	font-size: 30px;
+	height: 55px;
+	margin: 25px 0 0 32px;
+	position: absolute;
+	width: 245px
+}
+.deal_section_1 p.price {
+	color: white;
+	float: left;
+	font-size: 22px;
+	font-weight: 700;
+	line-height: 16px;
+	margin-left: 25px;
+	margin-top: 30px;
+	text-align: center;
+	width: 125px;
+}
+
+.deal_section_1 p.price .price_label {
+	display: block;
+	font-size: 16px;
+	line-height: 1.5em;
+	text-align: left;
+	font-weight: normal;
+}
+
+.deal_section_1 p.price_multi_option {
+	margin-top: 10px;
+}
+
+.deal_section_1 .bought_block .tip_meter {
+	margin: 7px;
+	position: relative;
+	width: 200px;
+}
+
+.deal_section_1 .bought_block .tip_meter .tipping_point {
+	background: url("../images/tipping_point.gif") no-repeat scroll left top transparent;
+	height: 13px;
+	position: absolute;
+	top: 0;
+	width: 14px;
+	z-index: 2;
+}
+
+.deal_section_1 .bought_block .tip_meter .progress_bar {
+	background: url("../images/left_bought_count_bg.gif") no-repeat scroll left top transparent;
+	height: 15px;
+	position: relative;
+	top: 15px;
+	width: 200px;
+}
+
+.deal_section_1 .bought_block .tip_meter .progress_bar .pre_tipped.left_end_cap,
+.deal_section_1 .bought_block .tip_meter .progress_bar .pre_tipped.left_end_cap {
+	background: url("../images/left_bought_counter.gif") no-repeat scroll left top transparent;
+	width: 4px;
+}
+
+.deal_section_1 .bought_block .tip_meter .progress_bar .pre_tipped.right_end_cap,
+.deal_section_1 .bought_block .tip_meter .progress_bar .pre_tipped.right_end_cap {
+	background: url("../images/right_bought_counter.gif") no-repeat scroll left top transparent;
+	width: 4px;
+}
+
+.deal_section_1 .bought_block .tip_meter .progress_bar .pre_tipped,
+.deal_section_1 .bought_block .tip_meter .progress_bar .pre_tipped {
+	background: url("../images/bought_counter.gif") no-repeat scroll right top transparent;
+	float: left;
+	height: 7px;
+	margin-top: 2px;
+}
+
+.deal_section_1 .bought_block .tip_meter span,
+.deal_section_1 .bought_block .tip_meter span {
+	font-weight: bold;
+	height: 18px;
+	top: 28px;
+}
+
+.deal_section_1 .bought_block .tip_meter .need_more {
+	padding-top: 35px;
+	position: relative;
+	text-align: center;
+}
+
+.deal_section_1 .free_coupon_views {
+	text-align: center;
+	margin: 10px;
+	font-weight: bold;
+}
+
+div.buy_button:hover {
+	cursor: pointer;
+}
+
+div.upcoming_button:hover,
+div.expired_button:hover,
+div.voided_button:hover,
+div.not_avail_button:hover {
+	cursor: default;
+}
+
+div.buy_button,
+div.upcoming_button,
+div.expired_button,
+div.voided_button,
+div.not_avail_button {
+	background: url("../images/buy_button.png") no-repeat scroll left top transparent;
+	display: block;
+	float: right;
+	height: 43px;
+	margin: 12px 10px 0px 0px;
+	padding: 5px 0px 7px 0px;
+	text-align: center;
+	width: 116px;
+}
+
+div.buy_button p,
+div.upcoming_button p,
+div.expired_button p,
+div.voided_button p {
+	color: #FFFFFF;
+	font-size: 20px;
+	line-height: 42px;
+	margin: 0;
+	text-decoration: none;
+}
+
+div.not_avail_button p {
+	margin: 0;
+	color: #FFFFFF;
+	font-size: 20px;
+	line-height: 20px;
+	text-decoration:none;
+}
+
+.deal_section_1 .bought_block .tip_meter .min_max {
+	width: 100%;
+	height: 10px;
+	position: absolute;
+	margin-top: 12px;
+	font-weight: bold;
+}
+
+.deal_section_1 .bought_block .tip_meter .min_max .min {
+	float: left;
+}
+
+.deal_section_1 .bought_block .tip_meter .min_max .max {
+	float: right;
+}
+
+.deal_section_1 .highlight_terms {
+	position: relative;
+}
+
+.deal_section_1 .highlight_terms div {
+	margin-top: 10px;
+}
+
+ /* Deal detail - End */
+
+.clearfix:after {
+	clear: both;
+	content: ".";
+	display: block;
+	height: 0;
+	visibility: hidden;
+}
+
+.clearfix {
+	display: block;
+}
+
+.page_title {
+	margin-left: 10px;
+}
+
+.page_title p {
+	padding:3px 0px;
+	font-size: 2em;
+	font-weight: bold;
+}
+
+p.cmgroupbuying_error {
+	padding: 10px;
+}
+
+.cmgroupbuying_pagination {
+	display: inline-block;
+	margin: 0 auto;
+	padding: 10px;
+	width: 100%;
+	text-align: center;
+}
+
+.cmgroupbuying_pagination .list-footer ul {
+	margin: 0 !important;
+}
+
+.cmgroupbuying_pagination .list-footer li,
+.cmgroupbuying_pagination .counter {
+	display: inline;
+	padding: 2px 5px !important;
+	text-align: left;
+	border: solid 0 #eee;
+	margin: 0 2px;
+	font-size: 12px
+}
+
+.cmgroupbuying_pagination .list-footer li.pagination-start,
+.cmgroupbuying_pagination .list-footer li.pagination-next,
+.cmgroupbuying_pagination .list-footer li.pagination-end,
+.cmgroupbuying_pagination .list-footer li.pagination-prev {
+	 border: 0;
+}
+
+.cmgroupbuying_pagination .list-footer li.pagination-start ,
+.cmgroupbuying_pagination .list-footer li.pagination-start span {
+	padding: 4px;
+}
+
+table.check_out,
+table.profile_table {
+	width: 100%;
+	border: 0;
+}
+
+table.check_out tr,
+table.check_out td,
+table.profile_table tr,
+table.profile_table td {
+	border: 0;
+}
+
+table.cmtable {
+	width: 100%;
+}
+
+.align_center {
+	text-align: center;
+}
+
+.align_right {
+	text-align: right;
+}
+
+table.order_detail_table {
+	width: 100%;
+}
+
+table.order_detail_table td.title {
+	font-weight: bold;
+	width: 20%;
+	vertical-align: top;
+}
+
+.left_aligned_button {
+	text-align: left;
+	padding: 10px;
+}
+
+.right_aligned_button {
+	text-align: right;
+	padding: 10px;
+}
+
+fieldset.order_fieldset {
+	border: 1px solid #CCCCCC !important;
+	padding: 10px;
+	margin: 10px;
+}
+
+fieldset.order_fieldset legend {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+fieldset.order_fieldset .order_fieldset_payment {
+	line-height: 1.8em;
+}
+
+fieldset.order_fieldset .order_fieldset_payment input {
+	margin: 0px 5px 0px 0px;
+}
+
+#buy_for_friend_message {
+	margin-bottom: 20px;
+}
+
+table.order_detail_table tr,
+table.order_detail_table td {
+	border: 0
+}
+
+.guest_check_out_message {
+	text-align: center;
+}
+
+table#cart_table {
+	width: 100%;
+	border: 1px;
+}
+
+table#cart_table td.center_aligned {
+	text-align: center;
+}
+
+table#cart_table th {
+	background-color: #444;
+	border-left: 1px solid #FFFFFF;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: normal;
+	padding: 10px;
+}
+
+table#cart_table th.left {
+	border-left: medium none;
+	text-align: left;
+}
+
+table#cart_table td {
+	color: #59595B;
+	font-size: 14px;
+	padding: 10px;
+	background: #FFFFFF;
+}
+
+table#cart_table .option_name {
+	padding-left: 10px;
+	font-size: 12px;
+}
+
+table#cart_table input#order_quantity {
+	text-align: center;
+}
+
+.error {
+	color: red;
+}
+
+fieldset.profile_fieldset {
+	margin: 10px 0 15px;
+	padding: 15px;
+	border: 1px solid #DDDDDD;
+}
+
+.all_deal_section ul {
+	list-style-type: none !important;
+}
+
+.share_buttons {
+	height: 20px;
+	padding-top: 10px;
+	width: 96%;
+	float: left;
+}
+
+.share_buttons ul {
+	margin: 0px !important;
+	padding: 0px !important;
+}
+
+.share_buttons li {
+	padding-right: 5px !important;
+	float: left;
+	height: 20px;
+	line-height: 2em !important;
+	list-style: none outside none;
+	font-size: 10px;
+}
+
+.fb_iframe_widget iframe {
+	vertical-align: baseline !important;
+}
+
+#custom_tweet_button {
+	cursor: pointer;
+	display: block;
+	background: url("../images/twitter.png") no-repeat scroll left top #FFFFFF;
+	height: 20px;
+	width: 20px;
+}
+
+.popupbox {
+	width: 400px;
+	color: #000;
+	float: left;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	z-index: 99999;
+}
+
+.popupbox #top_header {
+	background: #262626;
+	margin-bottom: 0;
+	padding: 10px 0;
+	border-radius: 5px 5px 0 0;
+}
+
+.popupbox #top_header {
+	padding: 5px;
+	color: #ffffff;
+	text-align: center;
+	font-size: 20px;
+}
+
+.popupbox #subscription_form {
+	background: #ffffff;
+	padding: 20px;
+	border-radius: 0 0 5px 5px;
+}
+
+.popupbox #subscription_form #skip_subscription_popup {
+	color:#0185C6;
+}
+
+.popupbox #subscription_form #skip_subscription_popup:hover {
+	cursor: pointer;
+}
+
+.popupbox #subscription_form .subscription_form_error {
+	color: #C00;
+	padding: 0px;
+}
+
+.popupbox #subscription_form form {
+	text-align: center;
+}
+
+.popupbox #subscription_form label {
+	float: left;
+	position: relative;
+}
+
+.popupbox #subscription_form select {
+	border: 1px solid #949494;
+	font-size: 14px !important;
+	height: 30px;
+	padding: 5px;
+	width: 200px !important;
+}
+
+.popupbox #subscription_form input[type=text] {
+	width: 200px;
+}
+
+.popupbox #subscription_form a {
+	color: #0084B4;
+	text-decoration: none;
+	text-transform: none;
+}
+
+.popupbox #subscription_form table#subscription_table {
+	width: 100%;
+}
+
+.multi_option_modal {
+	position: absolute;
+	z-index: 10;
+	width: 491px;
+}
+
+.multi_option_modal .modal_top {
+	background: transparent url('../images/multi_option_top.png') no-repeat;
+	padding: 8px 13px 0 27px;
+	height: auto;
+}
+
+.multi_option_modal .page_header {
+	border-bottom: 1px #CCC dashed;
+	padding: 0 10px;
+}
+
+.multi_option_modal .modal_bottom {
+	background: transparent url('../images/multi_option_bottom.png') no-repeat;
+	height: 13px;
+}
+
+.multi_option_modal table {
+	width: 100%;
+}
+
+.multi_option_modal table tr td.purchase {
+	width: 80px;
+	text-align: center;
+}
+
+.multi_option_modal table tr td.purchase .buy_button {
+	padding-left: 5px;
+	display: block;
+	text-decoration: none;
+	color: white;
+	width: 75px;
+	height: 34px;
+	line-height: 2.8;
+	margin: auto;
+	background: url('../images/multi_deal_option_price_button.png') no-repeat center right;
+	font-size: 14px;
+	font-weight: bold;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+.multi_option_modal table tr td.status {
+	width: 100px;
+	text-align: center;
+	color: #666;
+	font-size: 15px;
+}
+
+.multi_option_modal table tr td .details div {
+	display: inline;
+}
+
+.multi_option_modal table tr td .option_name {
+	cursor: pointer;
+	font-weight: bold;
+	font-size: 15px;
+	line-height: 16px;
+	color: #0185C6;
+	text-decoration: none;
+}
+
+.multi_option_modal table tr td .option_name:hover {
+	text-decoration: underline;
+}
+
+.multi_option_modal table tr td em {
+	font-weight: bold;
+}
+
+.multi_option_modal table tr td {
+	border-bottom: 1px #CCC dashed;
+}
+
+.multi_option_modal .advance_details {
+	float: left;
+}
+
+table.deal_map {
+	width: 520px;
+}
+
+table.deal_map td.left {
+	vertical-align: top;
+	width: 150px;
+}
+
+table.deal_map td.right {
+	vertical-align: top;
+	width: 350px;
+}
+
+table.deal_map .deal_name {
+	font-weight: bold;
+	font-size: 18px;
+	color: #069;
+	width: 350px;
+}
+
+table.deal_map img.deal_image {
+	width: 150px;
+}
+
+table.deal_map .deal_description {
+	width: 300px;
+}
+
+table.deal_map table.deal_price_info {
+	text-align: center;
+	width: 100%;
+	margin-top: 10px;
+}
+
+table.deal_map table.deal_price_info td {
+	width: 33%;
+}
+
+table.deal_map table.deal_price_info div.text {
+	font-weight: bold;
+	font-size: 14px;
+}
+
+table.deal_map .deal_bought {
+	float: left;
+	font-style: italic;
+}
+
+table.deal_map .deal_button {
+	text-align: right;
+	padding-right: 20px;
+}
+
+#map img {
+	max-width: none;
+}
+
+#cm_category_browsing {
+	position: relative;
+}
+
+#cm_category_browsing #map {
+	width: auto;
+	height: 100%;
+}
+
+#cm_category_browsing .category_navigation {
+	background: white;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	float: left;
+}
+
+#cm_category_browsing .category_column {
+	float: left;
+	width: 160px;
+	padding: 0px 10px 0 10px;
+	overflow-y: auto;
+}
+
+#cm_category_browsing ul.category_ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+#cm_category_browsing .deal_column {
+	width: 245px;
+	overflow-y: auto;
+	float: left;
+	padding: 0px 10px 0 10px;
+	position: relative;
+	border-left: 1px solid #D7D7D7;
+	border-right: 1px solid #D7D7D7;
+}
+
+#cm_category_browsing li.category_li {
+	padding: 5px 5px;
+}
+
+#cm_category_browsing li.category_li:hover {
+	background-color:#f7f8f8
+}
+
+#cm_category_browsing li.selected {
+	color: #0891BE;
+	background-color: #E6FAFF;
+}
+
+#cm_category_browsing li.category_li:hover {
+	cursor: pointer;
+}
+
+#cm_category_browsing .loading {
+	width: 100%;
+	height: 100%;
+	background: url("../images/loading.gif") no-repeat center;
+}
+
+#cm_category_browsing .deal {
+	float: left;
+	margin-bottom: 10px;
+	position: relative;
+}
+
+#cm_category_browsing .deal .deal_location {
+	color: #4E9700;
+}
+
+ #cm_category_browsing .deal .deal_price {
+	float: left;
+	color: #DA1B75;
+	font-weight: bold;
+}
+
+#cm_category_browsing .deal .deal_original_price {
+	float: left;
+	margin-left: 10px;
+	color: #DA1B75;
+}
+
+#cm_category_browsing .deal .deal_discount {
+	float: left;
+	margin-left: 10px;
+}
+
+#cm_category_browsing .deal .deal_original_price {
+	text-decoration: line-through;
+}
+
+#cm_category_browsing .deal .deal_name {
+	font-size: 1.1em;
+	display: block;
+	font-weight: bold;
+	text-decoration: none;
+	color: #007B9C;
+}
+
+#cm_category_browsing .deal .deal_name:hover {
+	cursor: pointer;
+}
+
+table.category_browsing_map td.deal_name {
+	color: #007B9C;
+	font-weight: bold;
+	width: 250px;
+}
+
+table.category_browsing_map td.deal_image img {
+	width: 250px;
+}
+
+table.category_browsing_map td.deal_button {
+	float: right;
+}
+
+form#partner_filter_form {
+	margin-bottom: 1em;
+}
+
+form#partner_filter_form #filter_deal {
+	width: 200px;
+}
+
+.float_right {
+	float: right;
+}
+
+table.deal_submission {
+	width: 100%;
+}
+
+table.deal_submission .media-preview {
+	margin: 0 5px;
+}
+
+table.deal_submission input,
+table.deal_submission .button2-left,
+table.deal_submission .media-preview {
+	float: left;
+}
+
+
+table.deal_submission input.invalid,
+table.deal_submission select.invalid {
+	border: 1px solid red;
+}
+
+table.deal_submission td {
+	padding: 5px 0;
+}
+
+table.cmtable tr.even th, .even {
+	background: #DFDFDF;
+}
+
+.deal_submission_action_buttons {
+	text-align: right;
+}
+
+ul.deal_list {
+	list-style-type: none !important;
+	padding-bottom: 10px;
+	margin: 0px;
+}
+
+ul.deal_list li.deal {
+	float: left;
+	border: 1px solid #CCC;
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+	-o-border-radius: 7px;
+	-ms-border-radius: 7px;
+	-khtml-border-radius: 7px;
+	border-radius: 7px;
+}
+
+ul.deal_list a:hover {
+	text-decoration: none;
+}
+
+ul.deal_list li.deal a {
+	color: #333;
+	font-size: 13px;
+}
+
+ul.deal_list li.deal .deal_photo {
+	position: relative;
+}
+
+ul.deal_list li.deal .deal_photo img,
+ul.deal_list li.deal .deal_list_short_description {
+	border: none;
+	float: left;
+	border-radius: 6px 6px 0 0;
+	-webkit-border-radius: 6px 6px 0 0;
+	-moz-border-radius: 6px 6px 0 0;
+	-ms-border-radius: 6px 6px 0 0;
+	-o-border-radius: 6px 6px 0 0;
+}
+
+ul.deal_list li.deal .deal_info {
+	padding: 5px;
+}
+
+ul.deal_list li.deal .deal_name {
+	color: #333;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 20px;
+	margin-bottom: 3px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 100%;
+}
+
+ul.deal_list li.deal .deal_price, ul.deal_list li.deal .deal_original_price {
+	float: right;
+}
+
+ul.deal_list li.deal .deal_price {
+	font-weight: bold;
+	color: #C00;
+	font-size: 20px;
+}
+
+ul.deal_list li.deal .deal_original_price {
+	text-decoration: line-through;
+	margin: 16px 10px 8px 0px;
+	color: #069;
+	font-size: 16px;
+}
+
+ul.deal_list li.deal .deal_view_button {
+	float: left;
+}
+
+ul.deal_list li.deal .deal_view_button {
+	margin: 8px 0px 8px 0px;
+}
+
+ul.deal_list li.deal .deal_price {
+	margin: 13px 0px 8px 0px;
+	height: 0px;
+}
+
+table.deal_map .deal_button a {
+	font-size: 16px;
+}
+
+ul.deal_list li.deal .deal_list_short_description {
+	color: #333;
+	font-size: 15px;
+	font-weight: bold;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background-color: #FFFFFF;
+	opacity: 0.9;
+	display: none;
+}
+
+ul.deal_list li.deal .deal_list_short_description div {
+	padding: 10px;
+}
+
+ul.deal_list li.deal .deal_photo_slideshow {
+	float: left;
+	position: absolute;
+}
+
+.cm_button {
+	background: #3F8C23;
+	background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, white), color-stop(2%, #9DC282), color-stop(100%, #3F8C23));
+	background-image: -webkit-linear-gradient(white,#9DC282 2%,#3F8C23);
+	background-image: -moz-linear-gradient(white,#9DC282 2%,#3F8C23);
+	background-image: -o-linear-gradient(white,#9DC282 2%,#3F8C23);
+	background-image: -ms-linear-gradient(white,#9DC282 2%,#3F8C23);
+	background-image: linear-gradient(white,#9DC282 2%,#3F8C23);
+	border-color: #3F8C23;
+	display: inline-block;
+	text-decoration: none;
+	line-height: 1em;
+	cursor: pointer;
+	color: white;
+	font-weight: bold;
+	font-size: 14px;
+	padding: 7px 16px;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-o-border-radius: 6px;
+	-ms-border-radius: 6px;
+	-khtml-border-radius: 6px;
+	border-radius: 6px;
+	background-clip: padding-box;
+	text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+	-webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+	-moz-background-clip: padding-box !important;
+	-webkit-background-clip: padding-box !important;
+	background-clip: padding-box !important;
+}
+
+.cm_button:hover {
+	background-image:-webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(2%, #8db86d), color-stop(100%, #34741d));
+	background-image:-webkit-linear-gradient(#ffffff,#8db86d 2%,#34741d);
+	background-image:-moz-linear-gradient(#ffffff,#8db86d 2%,#34741d);
+	background-image:-o-linear-gradient(#ffffff,#8db86d 2%,#34741d);
+	background-image:-ms-linear-gradient(#ffffff,#8db86d 2%,#34741d);
+	background-image:linear-gradient(#ffffff,#8db86d 2%,#34741d);
+	border-color:#34741d;
+}
+
+.cm_button a {
+	color: #FFF;
+	text-decoration: none;
+}
+
+.cm_button a:hover {
+	text-decoration: none;
+}
+
+.deal_view_button .cm_button {
+	padding: 10px 15px;
+	font-size: 15px
+}
+
+.popup_view_button {
+	text-align: right;
+}
+
+select[id=order_quantity] {
+	text-align: center;
+	width: auto;
+}
+
+#cm_deals_component select,
+#cm_deals_component textarea,
+#cm_deals_component input {
+	margin-bottom: 0 !important;
+}
+
+#cm_deals_component img {
+	vertical-align: baseline !important;
+}
+
+.label, .badge {
+	background: none !important;
+	text-shadow: none;
+}
+
+legend {
+	border: 0 !important;
+	width: auto !important;
+	margin-bottom: 0px;
+}
+
+.cmbtn {
+	float: left;
+}
+
+#cart_table select {
+	height: auto;
+	width: auto;
+}
+
+table#cart_table select.order_quantity {
+	width: auto;
+}
+
+#cart_table td.shipping_cost {
+	font-style: italic;
+}
+
+#cart_table td.discount {
+	background-color: #F2F2F2;
+}
+
+#cart_table td.point_instruction {
+	padding: 0px 0px 0px 10px;
+}
+
+#cart_table td.total {
+	font-weight: bold;
+	background-color: #CCC;
+}
+
+#cart_table tr.deal td {
+	border-top: 1px solid #CCC;
+}
+
+#cart_table tr.first td {
+	border-top: none;
+}
+
+#cart_table th.name {
+	width: 55%;
+}
+
+#cart_table th.quantity {
+	width: 4%;
+}
+
+#cart_table th.price {
+	width: 20%;
+}
+
+#cart_table th.remove {
+	width: 1%;
+}
+
+/* Tooltip for cart - Start */
+span.cmquestion {
+	cursor: pointer;
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	background-color: #89A4CC;
+	line-height: 16px;
+	color: White;
+	font-size: 13px;
+	font-weight: bold;
+	border-radius: 8px;
+	text-align: center;
+	position: relative;
+}
+
+span.cmquestion:hover {
+	background-color: #3D6199;
+}
+
+div.cmtooltip {
+	background-color: #3D6199;
+	color: white;
+	position: absolute;
+	left: 22px;
+	top: -8px;
+	z-index: 100;
+	width: 250px;
+	border-radius: 5px;
+	display: none;
+}
+
+div.cmtooltip:before {
+	border-color: transparent #3D6199 transparent transparent;
+	border-right: 6px solid #3D6199;
+	border-style: solid;
+	border-width: 6px 6px 6px 0px;
+	content: "";
+	display: block;
+	height: 0;
+	width: 0;
+	line-height: 0;
+	position: absolute;
+	top: 35%;
+	left: -6px;
+}
+
+div.cmtooltip p {
+	margin: 10px;
+	color: White;
+}
+/* Tooltip for cart - End */
+
+.order_item_option_name {
+	font-weight: bold;
+}
+
+input.tos_checkbox {
+	margin: 0 10px 0 0;
+}
+
+/* Product list */
+.products .product_name {
+	color: #333333;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 20px;
+	margin-bottom: 3px;
+}
+
+.products .product_deals {
+	margin-top: 20px;
+}
+
+.products .product_image,
+.products .product_detail {
+	float: left;
+	padding: 5px;
+}
+
+.products .thumbnail {
+	border: 1px solid #DDDDDD;
+	border-radius: 4px 4px 4px 4px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+	display: block;
+	line-height: 18px;
+	transition: all 0.2s ease-in-out 0s;
+	margin-bottom: 9px;
+	float: left;
+	width: 100%;
+}
+
+/* Search form */
+.search-form {
+	margin-bottom: 10px;
+}
+
+.search-form .row {
+	margin: 5px 0;
+	width: 100%;
+}
+
+.search-form .row,
+.search-form .label,
+.search-form .control {
+	float: left;
+}
+
+.search-form .label {
+	width: 15%;
+}
+
+.search-form .control {
+	width: 85%;
+}
+
+/* Product list */
+.products .product_name {
+	color: #333333;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 20px;
+	margin-bottom: 3px;
+}
+
+.products .product_deals {
+	margin-top: 20px;
+}
+
+.item-list .item-name {
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.item-list .item-description {
+	float: left;
+}
+
+.item-list .price,
+.item-list .original-price {
+	float: right;
+	margin-left: 10px;
+}
+
+.item-list .price {
+	color: #CC0000;
+	font-weight: bold;
+}
+
+.item-list .original-price {
+	text-decoration: line-through;
+	color: #006699;
+}
+
+.item-list .item-price {
+	font-size: 20px;
+}
+
+.item-list .item-price,
+.item-list .item-type {
+	float: right;
+	clear: both;
+	margin-top: 10px;
+}
+
+.item-list .item-type {
+	margin-bottom: 10px;
+	font-size: 11px;
+	background-color: #468847;
+	border-radius: 3px 3px 3px 3px;
+	padding: 1px 4px 2px;
+	color: #FFFFFF;
+	font-weight: bold;
+	line-height: 14px;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	vertical-align: baseline;
+	white-space: nowrap;
+}
+
+.search-result .item {
+	border: 1px solid #DDDDDD;
+	border-radius: 4px 4px 4px 4px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+	display: block;
+	margin-bottom: 9px;
+	float: left;
+	width: 100%;
+}
+
+.search-result .item-image,
+.search-result .item-detail {
+	float: left;
+}
+
+.search-result .item-image {
+	width: 30%;
+}
+
+.search-result .item-image img {
+	width: 100%;
+}
+
+.search-result .item-detail {
+	width: 70%;
+}
+
+.search-result .item-container {
+	padding: 4px;
+}

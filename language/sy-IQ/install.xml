@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.4" client="site" type="language" method="upgrade">
+	<name>Syriac (sy-IQ)</name>
+	<tag>sy-IQ</tag>
+	<version>3.4.5.1</version>
+	<creationDate>2015-12-06</creationDate>
+	<author>East Syriac translation team</author>
+	<authorEmail>pauls@nohadra.com</authorEmail>
+	<authorUrl>http://syriac.nohadra.com</authorUrl>
+	<copyright>Copyright (C) 2005 - 2015 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<description>sy-IQ site language</description>
+	<files>
+		<filename>sy-IQ.com_ajax.ini</filename>
+		<filename>sy-IQ.com_config.ini</filename>
+		<filename>sy-IQ.com_contact.ini</filename>
+		<filename>sy-IQ.com_content.ini</filename>
+		<filename>sy-IQ.com_finder.ini</filename>
+		<filename>sy-IQ.com_mailto.ini</filename>
+		<filename>sy-IQ.com_media.ini</filename>
+		<filename>sy-IQ.com_messages.ini</filename>
+		<filename>sy-IQ.com_newsfeeds.ini</filename>
+		<filename>sy-IQ.com_search.ini</filename>
+		<filename>sy-IQ.com_tags.ini</filename>
+		<filename>sy-IQ.com_users.ini</filename>
+		<filename>sy-IQ.com_weblinks.ini</filename>
+		<filename>sy-IQ.com_wrapper.ini</filename>
+		<filename>sy-IQ.files_joomla.sys.ini</filename>
+		<filename>sy-IQ.finder_cli.ini</filename>
+		<filename>sy-IQ.ini</filename>
+		<filename>sy-IQ.lib_fof.ini</filename>
+		<filename>sy-IQ.lib_fof.sys.ini</filename>
+		<filename>sy-IQ.lib_idna_convert.sys.ini</filename>
+		<filename>sy-IQ.lib_joomla.ini</filename>
+		<filename>sy-IQ.lib_joomla.sys.ini</filename>
+		<filename>sy-IQ.lib_phpass.sys.ini</filename>
+		<filename>sy-IQ.lib_phputf8.sys.ini</filename>
+		<filename>sy-IQ.lib_simplepie.sys.ini</filename>
+		<filename>sy-IQ.localise.php</filename>
+		<filename>sy-IQ.mod_articles_archive.ini</filename>
+		<filename>sy-IQ.mod_articles_archive.sys.ini</filename>
+		<filename>sy-IQ.mod_articles_categories.ini</filename>
+		<filename>sy-IQ.mod_articles_categories.sys.ini</filename>
+		<filename>sy-IQ.mod_articles_category.ini</filename>
+		<filename>sy-IQ.mod_articles_category.sys.ini</filename>
+		<filename>sy-IQ.mod_articles_latest.ini</filename>
+		<filename>sy-IQ.mod_articles_latest.sys.ini</filename>
+		<filename>sy-IQ.mod_articles_news.ini</filename>
+		<filename>sy-IQ.mod_articles_news.sys.ini</filename>
+		<filename>sy-IQ.mod_articles_popular.ini</filename>
+		<filename>sy-IQ.mod_articles_popular.sys.ini</filename>
+		<filename>sy-IQ.mod_banners.ini</filename>
+		<filename>sy-IQ.mod_banners.sys.ini</filename>
+		<filename>sy-IQ.mod_breadcrumbs.ini</filename>
+		<filename>sy-IQ.mod_breadcrumbs.sys.ini</filename>
+		<filename>sy-IQ.mod_custom.ini</filename>
+		<filename>sy-IQ.mod_custom.sys.ini</filename>
+		<filename>sy-IQ.mod_feed.ini</filename>
+		<filename>sy-IQ.mod_feed.sys.ini</filename>
+		<filename>sy-IQ.mod_finder.ini</filename>
+		<filename>sy-IQ.mod_finder.sys.ini</filename>
+		<filename>sy-IQ.mod_footer.ini</filename>
+		<filename>sy-IQ.mod_footer.sys.ini</filename>
+		<filename>sy-IQ.mod_languages.ini</filename>
+		<filename>sy-IQ.mod_languages.sys.ini</filename>
+		<filename>sy-IQ.mod_login.ini</filename>
+		<filename>sy-IQ.mod_login.sys.ini</filename>
+		<filename>sy-IQ.mod_menu.ini</filename>
+		<filename>sy-IQ.mod_menu.sys.ini</filename>
+		<filename>sy-IQ.mod_random_image.ini</filename>
+		<filename>sy-IQ.mod_random_image.sys.ini</filename>
+		<filename>sy-IQ.mod_related_items.ini</filename>
+		<filename>sy-IQ.mod_related_items.sys.ini</filename>
+		<filename>sy-IQ.mod_search.ini</filename>
+		<filename>sy-IQ.mod_search.sys.ini</filename>
+		<filename>sy-IQ.mod_stats.ini</filename>
+		<filename>sy-IQ.mod_stats.sys.ini</filename>
+		<filename>sy-IQ.mod_syndicate.ini</filename>
+		<filename>sy-IQ.mod_syndicate.sys.ini</filename>
+		<filename>sy-IQ.mod_tags_popular.ini</filename>
+		<filename>sy-IQ.mod_tags_popular.sys.ini</filename>
+		<filename>sy-IQ.mod_tags_similar.ini</filename>
+		<filename>sy-IQ.mod_tags_similar.sys.ini</filename>
+		<filename>sy-IQ.mod_users_latest.ini</filename>
+		<filename>sy-IQ.mod_users_latest.sys.ini</filename>
+		<filename>sy-IQ.mod_weblinks.ini</filename>
+		<filename>sy-IQ.mod_weblinks.sys.ini</filename>
+		<filename>sy-IQ.mod_whosonline.ini</filename>
+		<filename>sy-IQ.mod_whosonline.sys.ini</filename>
+		<filename>sy-IQ.mod_wrapper.ini</filename>
+		<filename>sy-IQ.mod_wrapper.sys.ini</filename>
+		<filename>sy-IQ.tpl_beez3.ini</filename>
+		<filename>sy-IQ.tpl_beez3.sys.ini</filename>
+		<filename>sy-IQ.tpl_protostar.ini</filename>
+		<filename>sy-IQ.tpl_protostar.sys.ini</filename>
+		<filename>index.html</filename>
+		<filename file="meta">install.xml</filename>
+		<filename file="meta">sy-IQ.xml</filename>
+	</files>
+	<params />
+</extension>

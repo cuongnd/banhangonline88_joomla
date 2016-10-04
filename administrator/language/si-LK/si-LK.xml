@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metafile version="3.1" client="administrator">
+	<tag>si-LK</tag>
+	<name>Sinhala (Sri Lanka)</name>
+	<description>si-LK administrator language</description>
+	<version>3.1.0.1</version>
+	<creationDate>2014-7-14</creationDate>
+	<author>Denuwan Wijewardena - Sri Lanka</author>
+	<authorEmail>denuwan@denuwan.org</authorEmail>
+	<authorUrl>http://www.denuwan.org</authorUrl>
+	<copyright>Copyright (C) 2005 - 2014 Open Source Matters. All rights reserved.</copyright>
+	<copyright>Translation Copyright (C) 2005 - 2013 by Denuwan Wijewardena </copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<files>
+	</files>
+	<metadata>
+		<name>Sinhala (Sri Lanka)</name>
+		<tag>si-LK</tag>
+		<rtl>0</rtl>
+		<locale>si_LK.utf8, si_LK.UTF-8, si_LK, si_LK, si, sinhala, sinhala-lk, lk, srilanka, lanka</locale>
+		<firstDay>1</firstDay>
+	</metadata>
+	<params />
+</metafile>

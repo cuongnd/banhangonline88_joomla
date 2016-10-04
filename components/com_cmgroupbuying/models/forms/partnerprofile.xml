@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<form>
+
+	<fieldset>
+
+		<field name="name"
+			type="text"
+			label="COM_CMGROUPBUYING_PARTNER_FIELD_NAME_LABEL"
+			description="COM_CMGROUPBUYING_PARTNER_FIELD_NAME_DESC"
+			class="inputbox"
+			size="30"
+			required="true"
+		/>
+
+		<field name="alias"
+			type="text"
+			label="JFIELD_ALIAS_LABEL"
+			description="JFIELD_ALIAS_DESC"
+			class="inputbox"
+			size="30"
+		/>
+
+		<field name="website"
+			type="text"
+			label="COM_CMGROUPBUYING_PARTNER_FIELD_WEBSITE_LABEL"
+			description="COM_CMGROUPBUYING_PARTNER_FIELD_WEBSITE_DESC"
+			class="inputbox"
+			size="30"
+		 />
+
+		<field name="map_zoom_level"
+			type="text"
+			label="COM_CMGROUPBUYING_PARTNER_FIELD_MAP_ZOOM_LEVEL_LABEL"
+			description="COM_CMGROUPBUYING_PARTNER_FIELD_MAP_ZOOM_LEVEL_DESC"
+			class="inputbox"
+			size="30"
+			default="15"
+		 />
+
+		<field
+			name="about"
+			type="editor"
+			label="COM_CMGROUPBUYING_PARTNER_FIELD_ABOUT_LABEL"
+			description="COM_CMGROUPBUYING_PARTNER_FIELD_ABOUT_DESC"
+			class="inputbox"
+			filter="safehtml"
+			buttons="true"
+			hide="readmore,pagebreak,raffle,article"
+		/>
+
+		<field name="location1"
+			type="partnerlocation"
+			label="COM_CMGROUPBUYING_PARTNER_FIELD_LOCATION_1_LABEL"
+			description="COM_CMGROUPBUYING_PARTNER_FIELD_LOCATION_DESC"
+			class="inputbox"
+			size="30"
+		/>
+
+		<field name="location2"
+			type="partnerlocation"
+			label="COM_CMGROUPBUYING_PARTNER_FIELD_LOCATION_2_LABEL"
+			description="COM_CMGROUPBUYING_PARTNER_FIELD_LOCATION_DESC"
+			class="inputbox"
+			size="30"
+		/>
+
+		<field name="location3"
+			type="partnerlocation"
+			label="COM_CMGROUPBUYING_PARTNER_FIELD_LOCATION_3_LABEL"
+			description="COM_CMGROUPBUYING_PARTNER_FIELD_LOCATION_DESC"
+			class="inputbox"
+			size="30"
+		/>
+
+		<field name="location4"
+			type="partnerlocation"
+			label="COM_CMGROUPBUYING_PARTNER_FIELD_LOCATION_4_LABEL"
+			description="COM_CMGROUPBUYING_PARTNER_FIELD_LOCATION_DESC"
+			class="inputbox"
+			size="30"
+		/>
+
+		<field name="location5"
+			type="partnerlocation"
+			label="COM_CMGROUPBUYING_PARTNER_FIELD_LOCATION_5_LABEL"
+			description="COM_CMGROUPBUYING_PARTNER_FIELD_LOCATION_DESC"
+			class="inputbox"
+			size="30"
+		/>
+
+		<field name="logo" type="cmmedia" hide_none="1" size="40"
+			label="COM_CMGROUPBUYING_PARTNER_FIELD_LOGO_LABEL"
+			description="COM_CMGROUPBUYING_PARTNER_FIELD_LOGO_DESC" />
+
+	</fieldset>
+
+</form>

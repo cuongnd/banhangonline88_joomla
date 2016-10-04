@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<form>
+	<fieldset>
+		<field name="id" type="text" size="10" default="0" readonly="true" class="readonly"
+			label="JGLOBAL_FIELD_ID_LABEL" description="JGLOBAL_FIELD_ID_DESC"
+		/>
+		<field
+			name="partner_welcome" type="editor"
+			label="COM_CMGROUPBUYING_MANAGEMENT_WELCOME_MESSAGE_LABEL"
+			description="COM_CMGROUPBUYING_MANAGEMENT_PARTNER_WELCOME_DESC"
+			class="inputbox" filter="safehtml" buttons="true"
+			hide="readmore,pagebreak,raffle,article"
+		/>
+		<field
+			name="partner_footer" type="editor"
+			label="COM_CMGROUPBUYING_MANAGEMENT_FOOTER_LABEL"
+			description="COM_CMGROUPBUYING_MANAGEMENT_PARTNER_FOOTER_DESC"
+			class="inputbox" filter="safehtml" buttons="true" hide="readmore,pagebreak,raffle,article"
+		/>
+		<field name="partner_view_deal_list" type="radio" class="inputbox" default="0"
+			label="COM_CMGROUPBUYING_MANAGEMENT_PARTNER_VIEW_DEAL_LIST_LABEL"
+			description="COM_CMGROUPBUYING_MANAGEMENT_PARTNER_VIEW_DEAL_LIST_DESC">
+			<option value="1">COM_CMGROUPBUYING_ALLOWED</option>
+			<option value="0">COM_CMGROUPBUYING_FORBIDDEN</option>
+		</field>
+		<field name="partner_submit_new_deal" type="radio" class="inputbox" default="0"
+			label="COM_CMGROUPBUYING_MANAGEMENT_PARTNER_SUBMIT_NEW_DEAL_LABEL"
+			description="COM_CMGROUPBUYING_MANAGEMENT_PARTNER_SUBMIT_NEW_DEAL_DESC">
+			<option value="1">COM_CMGROUPBUYING_ALLOWED</option>
+			<option value="0">COM_CMGROUPBUYING_FORBIDDEN</option>
+		</field>
+		<field name="partner_check_coupon_status" type="radio" class="inputbox" default="0"
+			label="COM_CMGROUPBUYING_MANAGEMENT_PARTNER_CHECK_COUPON_STATUS_LABEL"
+			description="COM_CMGROUPBUYING_MANAGEMENT_PARTNER_CHECK_COUPON_STATUS_DESC">
+			<option value="1">COM_CMGROUPBUYING_ALLOWED</option>
+			<option value="0">COM_CMGROUPBUYING_FORBIDDEN</option>
+		</field>
+		<field name="partner_change_coupon_status" type="radio" class="inputbox" default="0"
+			label="COM_CMGROUPBUYING_MANAGEMENT_PARTNER_CHANGE_COUPON_STATUS_LABEL"
+			description="COM_CMGROUPBUYING_MANAGEMENT_PARTNER_CHANGE_COUPON_STATUS_DESC">
+			<option value="1">COM_CMGROUPBUYING_ALLOWED</option>
+			<option value="0">COM_CMGROUPBUYING_FORBIDDEN</option>
+		</field>
+		<field name="partner_view_coupon_list" type="radio" class="inputbox" default="0"
+			label="COM_CMGROUPBUYING_MANAGEMENT_PARTNER_VIEW_COUPON_LIST_LABEL"
+			description="COM_CMGROUPBUYING_MANAGEMENT_PARTNER_VIEW_COUPON_LIST_DESC">
+			<option value="1">COM_CMGROUPBUYING_ALLOWED</option>
+			<option value="0">COM_CMGROUPBUYING_FORBIDDEN</option>
+		</field>
+		<field name="partner_view_buyer_info" type="radio" class="inputbox" default="0"
+			label="COM_CMGROUPBUYING_MANAGEMENT_PARTNER_VIEW_BUYER_INFO_LABEL"
+			description="COM_CMGROUPBUYING_MANAGEMENT_PARTNER_VIEW_BUYER_INFO_DESC">
+			<option value="1">COM_CMGROUPBUYING_ALLOWED</option>
+			<option value="0">COM_CMGROUPBUYING_FORBIDDEN</option>
+		</field>
+		<field name="partner_view_commission_report" type="radio" class="inputbox" default="0"
+			label="COM_CMGROUPBUYING_MANAGEMENT_PARTNER_VIEW_COMMISSION_REPORT_LABEL"
+			description="COM_CMGROUPBUYING_MANAGEMENT_PARTNER_VIEW_COMMISSION_REPORT_DESC">
+			<option value="1">COM_CMGROUPBUYING_ALLOWED</option>
+			<option value="0">COM_CMGROUPBUYING_FORBIDDEN</option>
+		</field>
+		<field name="partner_edit_profile" type="radio" class="inputbox" default="0"
+			label="COM_CMGROUPBUYING_MANAGEMENT_PARTNER_EDIT_PROFILE_LABEL"
+			description="COM_CMGROUPBUYING_MANAGEMENT_PARTNER_EDIT_PROFILE_DESC">
+			<option value="1">COM_CMGROUPBUYING_ALLOWED</option>
+			<option value="0">COM_CMGROUPBUYING_FORBIDDEN</option>
+		</field>
+		<field name="staff_access_level" type="accesslevel"
+			label="COM_CMGROUPBUYING_MANAGEMENT_STAFF_ACCESS_LEVEL_LABEL"
+			description="COM_CMGROUPBUYING_MANAGEMENT_STAFF_ACCESS_LEVEL_DESC" />
+		<field
+			name="staff_welcome" type="editor"
+			label="COM_CMGROUPBUYING_MANAGEMENT_WELCOME_MESSAGE_LABEL"
+			description="COM_CMGROUPBUYING_MANAGEMENT_STAFF_WELCOME_DESC"
+			class="inputbox" filter="safehtml" buttons="true"
+			hide="readmore,pagebreak,raffle,article"
+		/>
+		<field
+			name="staff_footer" type="editor"
+			label="COM_CMGROUPBUYING_MANAGEMENT_FOOTER_LABEL"
+			description="COM_CMGROUPBUYING_MANAGEMENT_STAFF_FOOTER_DESC"
+			class="inputbox" filter="safehtml" buttons="true" hide="readmore,pagebreak,raffle,article"
+		/>
+		<field name="staff_change_order_paid" type="radio" class="inputbox" default="0"
+			label="COM_CMGROUPBUYING_MANAGEMENT_STAFF_CHANGE_ORDER_PAID_LABEL"
+			description="COM_CMGROUPBUYING_MANAGEMENT_STAFF_CHANGE_ORDER_PAID_DESC">
+			<option value="1">COM_CMGROUPBUYING_ALLOWED</option>
+			<option value="0">COM_CMGROUPBUYING_FORBIDDEN</option>
+		</field>
+		<field name="staff_change_order_unpaid" type="radio" class="inputbox" default="0"
+			label="COM_CMGROUPBUYING_MANAGEMENT_STAFF_CHANGE_ORDER_UNPAID_LABEL"
+			description="COM_CMGROUPBUYING_MANAGEMENT_STAFF_CHANGE_ORDER_UNPAID_DESC">
+			<option value="1">COM_CMGROUPBUYING_ALLOWED</option>
+			<option value="0">COM_CMGROUPBUYING_FORBIDDEN</option>
+		</field>
+		<field name="staff_change_user_info" type="radio" class="inputbox" default="0"
+			label="COM_CMGROUPBUYING_MANAGEMENT_STAFF_CHANGE_USER_INFO_LABEL"
+			description="COM_CMGROUPBUYING_MANAGEMENT_STAFF_CHANGE_USER_INFO_DESC">
+			<option value="1">COM_CMGROUPBUYING_ALLOWED</option>
+			<option value="0">COM_CMGROUPBUYING_FORBIDDEN</option>
+		</field>
+		<field name="staff_view_coupon" type="radio" class="inputbox" default="0"
+			label="COM_CMGROUPBUYING_MANAGEMENT_STAFF_VIEW_COUPON_LABEL"
+			description="COM_CMGROUPBUYING_MANAGEMENT_STAFF_VIEW_COUPON_DESC">
+			<option value="1">COM_CMGROUPBUYING_ALLOWED</option>
+			<option value="0">COM_CMGROUPBUYING_FORBIDDEN</option>
+		</field>
+		<field name="staff_send_coupon" type="radio" class="inputbox" default="0"
+			label="COM_CMGROUPBUYING_MANAGEMENT_STAFF_SEND_COUPON_LABEL"
+			description="COM_CMGROUPBUYING_MANAGEMENT_STAFF_SEND_COUPON_DESC">
+			<option value="1">COM_CMGROUPBUYING_ALLOWED</option>
+			<option value="0">COM_CMGROUPBUYING_FORBIDDEN</option>
+		</field>
+		<field name="partner_view_free_coupon_list" type="radio" class="inputbox" default="0"
+			label="COM_CMGROUPBUYING_MANAGEMENT_PARTNER_VIEW_FREE_COUPON_LIST_LABEL"
+			description="COM_CMGROUPBUYING_MANAGEMENT_PARTNER_VIEW_FREE_COUPON_LIST_DESC">
+			<option value="1">COM_CMGROUPBUYING_ALLOWED</option>
+			<option value="0">COM_CMGROUPBUYING_FORBIDDEN</option>
+		</field>
+		<field name="partner_submit_new_free_coupon" type="radio" class="inputbox" default="0"
+			label="COM_CMGROUPBUYING_MANAGEMENT_PARTNER_SUBMIT_NEW_FREE_COUPON_LABEL"
+			description="COM_CMGROUPBUYING_MANAGEMENT_PARTNER_SUBMIT_NEW_FREE_COUPON_DESC">
+			<option value="1">COM_CMGROUPBUYING_ALLOWED</option>
+			<option value="0">COM_CMGROUPBUYING_FORBIDDEN</option>
+		</field>
+	</fieldset>
+</form>

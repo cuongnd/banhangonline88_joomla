@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<extension version="3.6" client="site" type="language" method="upgrade">
+    <name>Finnish (fi-FI)</name>
+    <tag>fi-FI</tag>
+    <version>3.6.2.1</version>
+    <creationDate>2016-08-26</creationDate>
+    <author>Finnish translation team : Joomla.fi</author>
+    <authorEmail>mortti@joomla.fi</authorEmail>
+    <authorUrl>http://www.joomla.fi</authorUrl>
+    <copyright>Copyright (C) 2005 - 2016 Open Source Matters. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <description>Sivuston puolen kielitiedostopaketti Joomla! 3.6.2</description>
+    <files>
+        <filename>fi-FI.com_ajax.ini</filename>
+		<filename>fi-FI.com_config.ini</filename>
+		<filename>fi-FI.com_contact.ini</filename>
+        <filename>fi-FI.com_content.ini</filename>
+		<filename>fi-FI.com_finder.ini</filename>
+        <filename>fi-FI.com_mailto.ini</filename>
+        <filename>fi-FI.com_media.ini</filename>
+        <filename>fi-FI.com_messages.ini</filename>
+        <filename>fi-FI.com_newsfeeds.ini</filename>
+        <filename>fi-FI.com_search.ini</filename>
+		<filename>fi-FI.com_tags.ini</filename>
+        <filename>fi-FI.com_users.ini</filename>
+        <filename>fi-FI.com_weblinks.ini</filename>
+        <filename>fi-FI.com_wrapper.ini</filename>
+		<filename>fi-FI.files_joomla.sys.ini</filename>
+		<filename>fi-FI.finder_cli.ini</filename>
+		<filename>fi-FI.ini</filename>
+		<filename>fi-FI.lib_fof.ini</filename>
+		<filename>fi-FI.lib_fof.sys.ini</filename>
+		<filename>fi-FI.lib_idna_convert.sys.ini</filename>
+		<filename>fi-FI.lib_joomla.ini</filename>
+		<filename>fi-FI.lib_joomla.sys.ini</filename>
+		<filename>fi-FI.lib_phpass.sys.ini</filename>
+		<filename>fi-FI.lib_phputf8.sys.ini</filename>
+		<filename>fi-FI.lib_simplepie.sys.ini</filename>
+        <filename>fi-FI.localise.php</filename>
+        <filename>fi-FI.mod_articles_archive.ini</filename>
+        <filename>fi-FI.mod_articles_archive.sys.ini</filename>
+        <filename>fi-FI.mod_articles_categories.ini</filename>
+        <filename>fi-FI.mod_articles_categories.sys.ini</filename>
+        <filename>fi-FI.mod_articles_category.ini</filename>
+        <filename>fi-FI.mod_articles_category.sys.ini</filename>
+        <filename>fi-FI.mod_articles_latest.ini</filename>
+        <filename>fi-FI.mod_articles_latest.sys.ini</filename>
+        <filename>fi-FI.mod_articles_news.ini</filename>
+        <filename>fi-FI.mod_articles_news.sys.ini</filename>
+        <filename>fi-FI.mod_articles_popular.ini</filename>
+        <filename>fi-FI.mod_articles_popular.sys.ini</filename>
+        <filename>fi-FI.mod_banners.ini</filename>
+        <filename>fi-FI.mod_banners.sys.ini</filename>
+        <filename>fi-FI.mod_breadcrumbs.ini</filename>
+        <filename>fi-FI.mod_breadcrumbs.sys.ini</filename>
+        <filename>fi-FI.mod_custom.ini</filename>
+        <filename>fi-FI.mod_custom.sys.ini</filename>
+        <filename>fi-FI.mod_feed.ini</filename>
+        <filename>fi-FI.mod_feed.sys.ini</filename>
+		<filename>fi-FI.mod_finder.ini</filename>
+		<filename>fi-FI.mod_finder.sys.ini</filename>
+        <filename>fi-FI.mod_footer.ini</filename>
+        <filename>fi-FI.mod_footer.sys.ini</filename>
+        <filename>fi-FI.mod_languages.ini</filename>
+        <filename>fi-FI.mod_languages.sys.ini</filename>
+        <filename>fi-FI.mod_login.ini</filename>
+        <filename>fi-FI.mod_login.sys.ini</filename>
+        <filename>fi-FI.mod_menu.ini</filename>
+        <filename>fi-FI.mod_menu.sys.ini</filename>
+        <filename>fi-FI.mod_random_image.ini</filename>
+        <filename>fi-FI.mod_random_image.sys.ini</filename>
+        <filename>fi-FI.mod_related_items.ini</filename>
+        <filename>fi-FI.mod_related_items.sys.ini</filename>
+        <filename>fi-FI.mod_search.ini</filename>
+        <filename>fi-FI.mod_search.sys.ini</filename>
+        <filename>fi-FI.mod_stats.ini</filename>
+        <filename>fi-FI.mod_stats.sys.ini</filename>
+        <filename>fi-FI.mod_syndicate.ini</filename>
+        <filename>fi-FI.mod_syndicate.sys.ini</filename>
+		<filename>fi-FI.mod_tags_popular.ini</filename>
+		<filename>fi-FI.mod_tags_popular.sys.ini</filename>
+		<filename>fi-FI.mod_tags_similar.ini</filename>
+		<filename>fi-FI.mod_tags_similar.sys.ini</filename>
+        <filename>fi-FI.mod_users_latest.ini</filename>
+        <filename>fi-FI.mod_users_latest.sys.ini</filename>
+        <filename>fi-FI.mod_weblinks.ini</filename>
+        <filename>fi-FI.mod_weblinks.sys.ini</filename>
+        <filename>fi-FI.mod_whosonline.ini</filename>
+        <filename>fi-FI.mod_whosonline.sys.ini</filename>
+        <filename>fi-FI.mod_wrapper.ini</filename>
+        <filename>fi-FI.mod_wrapper.sys.ini</filename>
+        <filename>fi-FI.tpl_beez3.ini</filename>
+        <filename>fi-FI.tpl_beez3.sys.ini</filename>
+        <filename>fi-FI.tpl_protostar.ini</filename>
+        <filename>fi-FI.tpl_protostar.sys.ini</filename>
+        <filename file="meta">fi-FI.xml</filename>
+        <filename file="meta">install.xml</filename>
+      </files>
+	  <params />
+</extension>

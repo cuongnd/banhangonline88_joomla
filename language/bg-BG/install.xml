@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<extension type="language" version="3.0" client="site" method="upgrade">
+    <name>Български</name>
+    <tag>bg-BG</tag>
+    <version>3.4.4.2</version>
+    <creationDate>18.01.2014</creationDate>
+    <author>Joomla! Bulgaria</author>
+    <authorEmail>translation@joomla.bg</authorEmail>
+    <authorUrl>http://joomla.bg</authorUrl>
+    <copyright>Copyright (C) 2002 - 2012 Joomla! Bulgaria. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <description><![CDATA[
+    <p>Превод на Joomla! 3. на български език. Повече информация можете да намерите на сайта на <a title="Joomla! Bulgaria" href="http://www.joomla-bg.com" target="_blank">Joomla! Bulgaria</a>.</p>]]>
+    </description>
+    <files>
+        <filename>bg-BG.ini</filename>
+		<filename>bg-BG.com_ajax.ini</filename>
+		<filename>bg-BG.com_config.ini</filename>
+		<filename>bg-BG.com_contact.ini</filename>
+		<filename>bg-BG.com_content.ini</filename>
+		<filename>bg-BG.com_finder.ini</filename>
+		<filename>bg-BG.com_mailto.ini</filename>
+		<filename>bg-BG.com_media.ini</filename>
+		<filename>bg-BG.com_messages.ini</filename>
+		<filename>bg-BG.com_newsfeeds.ini</filename>
+		<filename>bg-BG.com_search.ini</filename>
+		<filename>bg-BG.com_tags.ini</filename>
+		<filename>bg-BG.com_users.ini</filename>
+		<filename>bg-BG.com_weblinks.ini</filename>
+		<filename>bg-BG.com_wrapper.ini</filename>
+		<filename>bg-BG.files_joomla.sys.ini</filename>
+		<filename>bg-BG.finder_cli.ini</filename>
+		<filename>bg-BG.lib_fof.ini</filename>
+		<filename>bg-BG.lib_fof.sys.ini</filename>
+		<filename>bg-BG.lib_idna_convert.sys.ini</filename>
+		<filename>bg-BG.lib_joomla.ini</filename>
+		<filename>bg-BG.lib_joomla.sys.ini</filename>
+		<filename>bg-BG.lib_phpass.sys.ini</filename>
+		<filename>bg-BG.lib_phputf8.sys.ini</filename>
+		<filename>bg-BG.lib_simplepie.sys.ini</filename>
+		<filename>bg-BG.mod_articles_archive.ini</filename>
+		<filename>bg-BG.mod_articles_archive.sys.ini</filename>
+		<filename>bg-BG.mod_articles_categories.ini</filename>
+		<filename>bg-BG.mod_articles_categories.sys.ini</filename>
+		<filename>bg-BG.mod_articles_category.ini</filename>
+		<filename>bg-BG.mod_articles_category.sys.ini</filename>
+		<filename>bg-BG.mod_articles_latest.ini</filename>
+		<filename>bg-BG.mod_articles_latest.sys.ini</filename>
+		<filename>bg-BG.mod_articles_news.ini</filename>
+		<filename>bg-BG.mod_articles_news.sys.ini</filename>
+		<filename>bg-BG.mod_articles_popular.ini</filename>
+		<filename>bg-BG.mod_articles_popular.sys.ini</filename>
+		<filename>bg-BG.mod_banners.ini</filename>
+		<filename>bg-BG.mod_banners.sys.ini</filename>
+		<filename>bg-BG.mod_breadcrumbs.ini</filename>
+		<filename>bg-BG.mod_breadcrumbs.sys.ini</filename>
+		<filename>bg-BG.mod_custom.ini</filename>
+		<filename>bg-BG.mod_custom.sys.ini</filename>
+		<filename>bg-BG.mod_feed.ini</filename>
+		<filename>bg-BG.mod_feed.sys.ini</filename>
+		<filename>bg-BG.mod_finder.ini</filename>
+		<filename>bg-BG.mod_finder.sys.ini</filename>
+		<filename>bg-BG.mod_footer.ini</filename>
+		<filename>bg-BG.mod_footer.sys.ini</filename>
+		<filename>bg-BG.mod_languages.ini</filename>
+		<filename>bg-BG.mod_languages.sys.ini</filename>
+		<filename>bg-BG.mod_login.ini</filename>
+		<filename>bg-BG.mod_login.sys.ini</filename>
+		<filename>bg-BG.mod_menu.ini</filename>
+		<filename>bg-BG.mod_menu.sys.ini</filename>
+		<filename>bg-BG.mod_random_image.ini</filename>
+		<filename>bg-BG.mod_random_image.sys.ini</filename>
+		<filename>bg-BG.mod_related_items.ini</filename>
+		<filename>bg-BG.mod_related_items.sys.ini</filename>
+		<filename>bg-BG.mod_search.ini</filename>
+		<filename>bg-BG.mod_search.sys.ini</filename>
+		<filename>bg-BG.mod_stats.ini</filename>
+		<filename>bg-BG.mod_stats.sys.ini</filename>
+		<filename>bg-BG.mod_syndicate.ini</filename>
+		<filename>bg-BG.mod_syndicate.sys.ini</filename>
+		<filename>bg-BG.mod_tags_popular.ini</filename>
+		<filename>bg-BG.mod_tags_popular.sys.ini</filename>
+		<filename>bg-BG.mod_tags_similar.ini</filename>
+		<filename>bg-BG.mod_tags_similar.sys.ini</filename>
+		<filename>bg-BG.mod_users_latest.ini</filename>
+		<filename>bg-BG.mod_users_latest.sys.ini</filename>
+		<filename>bg-BG.mod_weblinks.ini</filename>
+		<filename>bg-BG.mod_weblinks.sys.ini</filename>
+		<filename>bg-BG.mod_whosonline.ini</filename>
+		<filename>bg-BG.mod_whosonline.sys.ini</filename>
+		<filename>bg-BG.mod_wrapper.ini</filename>
+		<filename>bg-BG.mod_wrapper.sys.ini</filename>
+		<filename>bg-BG.tpl_beez3.ini</filename>
+		<filename>bg-BG.tpl_beez3.sys.ini</filename>
+		<filename>bg-BG.tpl_protostar.ini</filename>
+		<filename>bg-BG.tpl_protostar.sys.ini</filename>
+		<filename>bg-BG.localise.php</filename>
+		<filename file="meta">install.xml</filename>
+		<filename file="meta">bg-BG.xml</filename>
+		<filename>index.html</filename>
+    </files>
+</extension>

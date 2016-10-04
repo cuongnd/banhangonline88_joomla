@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.3" client="site" type="language" method="upgrade">
+    <name>Montenegrin</name>
+    <tag>srp-ME</tag>
+    <version>3.3.1.1</version>
+    <creationDate>2014</creationDate>
+    <author>Tolja</author>
+	<authoremail>toljadj@gmail.com</authoremail>
+	<authorurl>http://www.timhosting.me</authorurl>
+    <copyright>Copyright (C) 2005 - 2014 Open Source Matters. All rights reserved</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<description>Montenegrin (srp-ME) site language pack for Joomla! 3.3.1</description>
+	<files>
+		<filename>srp-ME.com_ajax.ini</filename>
+		<filename>srp-ME.com_config.ini</filename>
+		<filename>srp-ME.com_contact.ini</filename>
+		<filename>srp-ME.com_content.ini</filename>
+		<filename>srp-ME.com_finder.ini</filename>
+		<filename>srp-ME.com_mailto.ini</filename>
+		<filename>srp-ME.com_media.ini</filename>
+		<filename>srp-ME.com_messages.ini</filename>
+		<filename>srp-ME.com_newsfeeds.ini</filename>
+		<filename>srp-ME.com_search.ini</filename>
+		<filename>srp-ME.com_tags.ini</filename>
+		<filename>srp-ME.com_users.ini</filename>
+		<filename>srp-ME.com_weblinks.ini</filename>
+		<filename>srp-ME.com_wrapper.ini</filename>
+		<filename>srp-ME.files_joomla.sys.ini</filename>
+		<filename>srp-ME.finder_cli.ini</filename>
+		<filename>srp-ME.ini</filename>
+		<filename>srp-ME.lib_fof.sys.ini</filename>		
+		<filename>srp-ME.lib_idna_convert.sys.ini</filename>
+		<filename>srp-ME.lib_joomla.ini</filename>
+		<filename>srp-ME.lib_joomla.sys.ini</filename>
+		<filename>srp-ME.lib_phpass.sys.ini</filename>
+		<filename>srp-ME.lib_phpmailer.sys.ini</filename>
+		<filename>srp-ME.lib_phputf8.sys.ini</filename>
+		<filename>srp-ME.lib_simplepie.sys.ini</filename>
+		<filename>srp-ME.localise.php</filename>		
+		<filename>srp-ME.mod_articles_archive.ini</filename>
+		<filename>srp-ME.mod_articles_archive.sys.ini</filename>
+		<filename>srp-ME.mod_articles_categories.ini</filename>
+		<filename>srp-ME.mod_articles_categories.sys.ini</filename>
+		<filename>srp-ME.mod_articles_category.ini</filename>
+		<filename>srp-ME.mod_articles_category.sys.ini</filename>
+		<filename>srp-ME.mod_articles_latest.ini</filename>
+		<filename>srp-ME.mod_articles_latest.sys.ini</filename>
+		<filename>srp-ME.mod_articles_news.ini</filename>
+		<filename>srp-ME.mod_articles_news.sys.ini</filename>
+		<filename>srp-ME.mod_articles_popular.ini</filename>
+		<filename>srp-ME.mod_articles_popular.sys.ini</filename>
+		<filename>srp-ME.mod_banners.ini</filename>
+		<filename>srp-ME.mod_banners.sys.ini</filename>
+		<filename>srp-ME.mod_breadcrumbs.ini</filename>
+		<filename>srp-ME.mod_breadcrumbs.sys.ini</filename>
+		<filename>srp-ME.mod_custom.ini</filename>
+		<filename>srp-ME.mod_custom.sys.ini</filename>
+		<filename>srp-ME.mod_feed.ini</filename>
+		<filename>srp-ME.mod_feed.sys.ini</filename>
+		<filename>srp-ME.mod_finder.ini</filename>
+		<filename>srp-ME.mod_finder.sys.ini</filename>
+		<filename>srp-ME.mod_footer.ini</filename>
+		<filename>srp-ME.mod_footer.sys.ini</filename>
+		<filename>srp-ME.mod_languages.ini</filename>
+		<filename>srp-ME.mod_languages.sys.ini</filename>
+		<filename>srp-ME.mod_login.ini</filename>
+		<filename>srp-ME.mod_login.sys.ini</filename>
+		<filename>srp-ME.mod_menu.ini</filename>
+		<filename>srp-ME.mod_menu.sys.ini</filename>
+		<filename>srp-ME.mod_random_image.ini</filename>
+		<filename>srp-ME.mod_random_image.sys.ini</filename>
+		<filename>srp-ME.mod_related_items.ini</filename>
+		<filename>srp-ME.mod_related_items.sys.ini</filename>
+		<filename>srp-ME.mod_search.ini</filename>
+		<filename>srp-ME.mod_search.sys.ini</filename>
+		<filename>srp-ME.mod_stats.ini</filename>
+		<filename>srp-ME.mod_stats.sys.ini</filename>
+		<filename>srp-ME.mod_syndicate.ini</filename>
+		<filename>srp-ME.mod_syndicate.sys.ini</filename>
+		<filename>srp-ME.mod_tags_popular.ini</filename>
+		<filename>srp-ME.mod_tags_popular.sys.ini</filename>
+		<filename>srp-ME.mod_tags_similar.ini</filename>
+		<filename>srp-ME.mod_tags_similar.sys.ini</filename>
+		<filename>srp-ME.mod_users_latest.ini</filename>
+		<filename>srp-ME.mod_users_latest.sys.ini</filename>
+		<filename>srp-ME.mod_weblinks.ini</filename>
+		<filename>srp-ME.mod_weblinks.sys.ini</filename>
+		<filename>srp-ME.mod_whosonline.ini</filename>
+		<filename>srp-ME.mod_whosonline.sys.ini</filename>
+		<filename>srp-ME.mod_wrapper.ini</filename>
+		<filename>srp-ME.mod_wrapper.sys.ini</filename>
+		<filename>srp-ME.tpl_beez3.ini</filename>
+		<filename>srp-ME.tpl_beez3.sys.ini</filename>
+		<filename>srp-ME.tpl_protostar.ini</filename>
+		<filename>srp-ME.tpl_protostar.sys.ini</filename>
+		<filename>index.html</filename>
+		<filename file="meta">install.xml</filename>
+		<filename file="meta">srp-ME.xml</filename>
+    </files>
+	<params />
+</extension>

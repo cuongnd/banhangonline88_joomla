@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="package" version="3.4" method="upgrade">
+<name>Dzongkha (Bhutan)</name>
+<packagename>dz-BT</packagename> <!-- the packagename has to be the same as the name of pkg_whatever.xml -->
+<version>3.4.5.1</version> <!-- change the version # when updating, will display in manager -->
+<creationDate>2015-11-25</creationDate> <!-- will display in manager -->
+<author>Dzongkha Translation Team</author> <!-- will display in manager -->
+<authorEmail>translators.cst@gmail.com</authorEmail> <!-- will display in manager -->
+<authorUrl>www.cst.edu.bt</authorUrl> <!-- will display in manager -->
+<copyright>Copyright (C) 2005 - 2015 Dzongkha Translation Team, ITD, CST. &amp; Open Source Matters, Inc. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<url></url>
+	<packager></packager>
+	<packagerurl></packagerurl>
+<description><![CDATA[<div style="text-align:left;">
+3.4.1 Joomla Dzongkha Language Package ]]></description>
+<files>
+	<file type="language" client="site" id="dz-BT">site_dz-BT.zip</file>
+	<file type="language" client="administrator" id="dz-BT">admin_dz-BT.zip</file>
+</files>
+	 <updateservers>
+		<server type="collection" priority="1" name="Accredited Joomla! Translations">http://update.joomla.org/language/translationlist.xml</server>
+	</updateservers>
+</extension>

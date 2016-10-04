@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="module" version="3.0" client="administrator" method="upgrade">
+    <name>MOD_BACKENDLANGUAGESWITCHER</name>
+    <version>3.1.1</version>
+    <creationDate>2016-01-26</creationDate>
+    <license>http://www.gnu.org/licenses/gpl</license>
+    <copyright>Copyright 2016 Viktor Vogel. All rights reserved.</copyright>
+    <author>Viktor Vogel</author>
+    <authorEmail>admin@kubik-rubik.de</authorEmail>
+    <authorUrl>https://joomla-extensions.kubik-rubik.de/</authorUrl>
+    <description>MOD_BACKENDLANGUAGESWITCHER_XML_DESCRIPTION</description>
+    <files>
+        <filename module="mod_backendlanguageswitcher">mod_backendlanguageswitcher.php</filename>
+        <filename module="mod_backendlanguageswitcher">helper.php</filename>
+        <filename module="mod_backendlanguageswitcher">index.html</filename>
+        <filename module="mod_backendlanguageswitcher">tmpl/default.php</filename>
+        <filename module="mod_backendlanguageswitcher">tmpl/index.html</filename>
+        <folder module="mod_backendlanguageswitcher">fields</folder>
+    </files>
+    <languages>
+        <language tag="en-GB">language/en-GB/en-GB.mod_backendlanguageswitcher.sys.ini</language>
+        <language tag="en-GB">language/en-GB/en-GB.mod_backendlanguageswitcher.ini</language>
+        <language tag="de-DE">language/de-DE/de-DE.mod_backendlanguageswitcher.sys.ini</language>
+        <language tag="de-DE">language/de-DE/de-DE.mod_backendlanguageswitcher.ini</language>
+    </languages>
+    <updateservers>
+        <server type="extension" priority="1" name="MOD_BACKENDLANGUAGESWITCHER">https://check.kubik-rubik.de/updates/backendlanguageswitcher.xml</server>
+    </updateservers>
+    <config>
+        <fields name="params" addfieldpath="/administrator/modules/mod_backendlanguageswitcher/fields">
+            <fieldset name="settings">
+                <field type="krdonationcodecheck" />
+                <field type="krtitle" name="spacer_nosettings" class="text" label="MOD_BACKENDLANGUAGESWITCHER_SPACER_NOSETTINGS" />
+            </fieldset>
+            <fieldset name="advanced">
+                <field type="krdonationcodecheck" />
+                <field name="layout" type="modulelayout" label="JFIELD_ALT_LAYOUT_LABEL" description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+            </fieldset>
+            <fieldset name="donation">
+                <field type="krdonationcodecheck" name="donation" />
+                <field name="donation_code" type="text" default="" size="40" label="KR_DONATION_CODE" description="KR_DONATION_CODEDESC" />
+            </fieldset>
+        </fields>
+    </config>
+</extension>

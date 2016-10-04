@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="package" version="3.6" method="upgrade">
+	<name>Tamil (ta-IN) Language Pack</name>
+	<packagename>ta-IN</packagename>
+	<version>3.6.2.1</version>
+	<creationDate>2016-08-05</creationDate>
+	<author>Ilagnayeru 'MIG' Manickam; Elango Samy Manim</author>
+	<authorEmail>mig.joomla@gmail.com</authorEmail>
+	<authorUrl></authorUrl>
+    <copyright>Copyright (C) 2005 - 2016 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<url></url>
+	<packager></packager>
+	<packagerurl></packagerurl>
+	<description>Tamil (India) Language Package for Joomla! 3.6.2</description>
+	<files>
+		<file type="language" client="administrator" id="ta-IN">admin_ta-IN.zip</file>
+		<file type="language" client="site" id="ta-IN">site_ta-IN.zip</file>
+	</files>
+	<updateservers>
+		<server type="collection" priority="1" name="Accredited Joomla! Translations">https://update.joomla.org/language/translationlist_3.xml</server>
+	</updateservers>
+</extension>

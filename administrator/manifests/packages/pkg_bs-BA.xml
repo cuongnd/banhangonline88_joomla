@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="package" version="3.4" method="upgrade">
+<name>Bosnian Language Pack</name>
+<packagename>bs-BA</packagename>
+<version>3.4.8.1</version>
+<creationDate>Dec 2015</creationDate> 
+<author>Joomla! BA Translation Team</author> 
+<authorEmail>dantes.delic@joomla.ba</authorEmail> 
+<authorUrl>www.joomla.ba</authorUrl>
+<url>www.joomla.ba</url>
+<packager>Joomla! BA Translation Team</packager>
+<packagerurl>www.joomla.ba</packagerurl>
+<description>
+	<![CDATA[<a target="_blank" href="http://www.joomla.ba"><img src="../administrator/language/bs-BA/package348.png" /></a>]]>
+</description>
+<files>
+	<file type="language" client="administrator" id="bs-BA">admin_bs-BA.zip</file>
+    <file type="language" client="site" id="bs-BA">site_bs-BA.zip</file>
+</files>
+<updateservers>
+	<server type="collection" priority="1" name="Accredited Joomla! Translations">http://update.joomla.org/language/translationlist.xml</server>
+</updateservers>
+</extension>

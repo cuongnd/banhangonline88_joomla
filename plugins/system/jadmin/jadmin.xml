@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="1.6" type="plugin" group="system" method="upgrade">
+    <name>plg_system_jadmin</name>
+    <author>CMS Fruit</author>
+    <creationDate>April 2013</creationDate>
+    <copyright>(C) Copyright 2008-2013 CMS Fruit, CMSFruit.com. All rights reserved.</copyright>
+    <license>GNU/LGPL http://www.gnu.org/licenses/lgpl-3.0.txt</license>
+    <authorEmail>info@cmsfruit.com</authorEmail>
+    <authorUrl>http://www.cmsfruit.com</authorUrl>
+    <version>1.5.4.3</version>
+    <description><![CDATA[<p>The JAdmin! Plugin has been installed successfully, please enable the plugin for proper functionality!</p>]]></description>
+    <files>
+        <filename plugin="jadmin">jadmin.php</filename>
+    </files>
+</extension>

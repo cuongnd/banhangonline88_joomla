@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.6" client="site" type="language" method="upgrade">
+	<name>Español (Colombia)</name>
+	<tag>es-CO</tag>
+	<version>3.6.1.1</version>
+	<creationDate>2016-08-03</creationDate>
+	<author>JUG Bogotá</author>
+	<authorEmail>info@jugbogota.org</authorEmail>
+	<authorUrl>www.jugbogota.org</authorUrl>
+	<copyright>Copyright (C) 2005 - 2016 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<description>idioma del sitio es-CO</description>
+	<files>
+		<filename>es-CO.com_ajax.ini</filename>
+		<filename>es-CO.com_config.ini</filename>
+		<filename>es-CO.com_contact.ini</filename>
+		<filename>es-CO.com_content.ini</filename>
+		<filename>es-CO.com_finder.ini</filename>
+		<filename>es-CO.com_mailto.ini</filename>
+		<filename>es-CO.com_media.ini</filename>
+		<filename>es-CO.com_messages.ini</filename>
+		<filename>es-CO.com_newsfeeds.ini</filename>
+		<filename>es-CO.com_search.ini</filename>
+		<filename>es-CO.com_tags.ini</filename>
+		<filename>es-CO.com_users.ini</filename>
+		<filename>es-CO.com_weblinks.ini</filename>
+		<filename>es-CO.com_wrapper.ini</filename>
+		<filename>es-CO.files_joomla.sys.ini</filename>
+		<filename>es-CO.finder_cli.ini</filename>
+		<filename>es-CO.ini</filename>
+		<filename>es-CO.lib_fof.ini</filename>
+		<filename>es-CO.lib_fof.sys.ini</filename>
+		<filename>es-CO.lib_idna_convert.sys.ini</filename>
+		<filename>es-CO.lib_joomla.ini</filename>
+		<filename>es-CO.lib_joomla.sys.ini</filename>
+		<filename>es-CO.lib_phpass.sys.ini</filename>
+		<filename>es-CO.lib_phputf8.sys.ini</filename>
+		<filename>es-CO.lib_simplepie.sys.ini</filename>
+		<filename>es-CO.localise.php</filename>
+		<filename>es-CO.mod_articles_archive.ini</filename>
+		<filename>es-CO.mod_articles_archive.sys.ini</filename>
+		<filename>es-CO.mod_articles_categories.ini</filename>
+		<filename>es-CO.mod_articles_categories.sys.ini</filename>
+		<filename>es-CO.mod_articles_category.ini</filename>
+		<filename>es-CO.mod_articles_category.sys.ini</filename>
+		<filename>es-CO.mod_articles_latest.ini</filename>
+		<filename>es-CO.mod_articles_latest.sys.ini</filename>
+		<filename>es-CO.mod_articles_news.ini</filename>
+		<filename>es-CO.mod_articles_news.sys.ini</filename>
+		<filename>es-CO.mod_articles_popular.ini</filename>
+		<filename>es-CO.mod_articles_popular.sys.ini</filename>
+		<filename>es-CO.mod_banners.ini</filename>
+		<filename>es-CO.mod_banners.sys.ini</filename>
+		<filename>es-CO.mod_breadcrumbs.ini</filename>
+		<filename>es-CO.mod_breadcrumbs.sys.ini</filename>
+		<filename>es-CO.mod_custom.ini</filename>
+		<filename>es-CO.mod_custom.sys.ini</filename>
+		<filename>es-CO.mod_feed.ini</filename>
+		<filename>es-CO.mod_feed.sys.ini</filename>
+		<filename>es-CO.mod_finder.ini</filename>
+		<filename>es-CO.mod_finder.sys.ini</filename>
+		<filename>es-CO.mod_footer.ini</filename>
+		<filename>es-CO.mod_footer.sys.ini</filename>
+		<filename>es-CO.mod_languages.ini</filename>
+		<filename>es-CO.mod_languages.sys.ini</filename>
+		<filename>es-CO.mod_login.ini</filename>
+		<filename>es-CO.mod_login.sys.ini</filename>
+		<filename>es-CO.mod_menu.ini</filename>
+		<filename>es-CO.mod_menu.sys.ini</filename>
+		<filename>es-CO.mod_random_image.ini</filename>
+		<filename>es-CO.mod_random_image.sys.ini</filename>
+		<filename>es-CO.mod_related_items.ini</filename>
+		<filename>es-CO.mod_related_items.sys.ini</filename>
+		<filename>es-CO.mod_search.ini</filename>
+		<filename>es-CO.mod_search.sys.ini</filename>
+		<filename>es-CO.mod_stats.ini</filename>
+		<filename>es-CO.mod_stats.sys.ini</filename>
+		<filename>es-CO.mod_syndicate.ini</filename>
+		<filename>es-CO.mod_syndicate.sys.ini</filename>
+		<filename>es-CO.mod_tags_popular.ini</filename>
+		<filename>es-CO.mod_tags_popular.sys.ini</filename>
+		<filename>es-CO.mod_tags_similar.ini</filename>
+		<filename>es-CO.mod_tags_similar.sys.ini</filename>
+		<filename>es-CO.mod_users_latest.ini</filename>
+		<filename>es-CO.mod_users_latest.sys.ini</filename>
+		<filename>es-CO.mod_weblinks.ini</filename>
+		<filename>es-CO.mod_weblinks.sys.ini</filename>
+		<filename>es-CO.mod_whosonline.ini</filename>
+		<filename>es-CO.mod_whosonline.sys.ini</filename>
+		<filename>es-CO.mod_wrapper.ini</filename>
+		<filename>es-CO.mod_wrapper.sys.ini</filename>
+		<filename>es-CO.tpl_beez3.ini</filename>
+		<filename>es-CO.tpl_beez3.sys.ini</filename>
+		<filename>es-CO.tpl_protostar.ini</filename>
+		<filename>es-CO.tpl_protostar.sys.ini</filename>
+		<filename file="meta">install.xml</filename>
+		<filename file="meta">es-CO.xml</filename>
+	</files>
+	<params />
+</extension>

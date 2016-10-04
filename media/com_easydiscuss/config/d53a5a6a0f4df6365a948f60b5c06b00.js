@@ -1,0 +1,1 @@
+FD31.component("EasyDiscuss", {"environment":"static","source":"local","mode":"compressed","baseUrl":"http:\/\/www.banhangonline88.com\/index.php?option=com_easydiscuss&lang=none&Itemid=1118","version":"3.2.9304","scriptVersioning":false,"responsive":false});

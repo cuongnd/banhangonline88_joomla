@@ -1,0 +1,10 @@
+/**Customized CSS for backend template by info@km-KH.org**/
+@import url(http://fonts.googleapis.com/css?family=Odor+Mean+Chey);
+body,
+input,
+button,
+select,
+textarea
+{
+	font-family: 'Odor Mean Chey', 'Content', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}

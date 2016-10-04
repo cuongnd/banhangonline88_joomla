@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metafile version="3.6" client="site">
+	<name>Nederlands (nl-BE)</name>
+	<version>3.6.2</version>
+	<creationDate>Augustus 2016</creationDate>
+	<author>Dutch (BE) translation team</author>
+	<authorEmail>admin@joomla.org</authorEmail>
+	<authorUrl>http://community.joomla.org/translations/joomla-3-translations.html#nl-be</authorUrl>
+	<copyright>Copyright (C) 2005 - 2016 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<description>nl-BE site language</description>
+	<metadata>
+		<name>Nederlands (België)</name>
+		<tag>nl-BE</tag>
+		<rtl>0</rtl>
+		<locale>nl_BE.utf8, nl_BE.UTF-8, nl_BE.UTF-8@euro, nl_BE, be</locale>
+		<firstDay>0</firstDay>
+		<weekEnd>0,6</weekEnd>
+	</metadata>
+	<params />
+</metafile>

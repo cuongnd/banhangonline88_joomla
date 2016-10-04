@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="file" version="2.5" method="upgrade">
+	<name>Themes Maximenu CK - Package v8</name>
+	<author>Cédric KEIFLIN</author>
+	<creationDate>August 2014</creationDate>
+	<copyright>(C) 2014 Cédric KEIFLIN</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail></authorEmail>
+	<authorUrl>http://www.joomlack.fr</authorUrl>
+	<version>8.0.4</version>
+	<description>This is a themes package for Maximenu CK version 8</description>
+ 
+	<fileset>
+		<files folder="" target="modules/mod_maximenuck/themes">
+			<folder>darkol</folder>
+			<folder>gregos</folder>
+			<folder>simple_blue</folder>
+			<folder>simple_brown</folder>
+			<folder>simple_green</folder>
+			<folder>simple_grey</folder>
+			<folder>simple_orange</folder>
+			<folder>theme1</folder>
+			<folder>theme2</folder>
+			<folder>theme3</folder>
+			<folder>theme4</folder>
+			<folder>theme5</folder>
+			<folder>theme6</folder>
+			<folder>theme7</folder>
+			<folder>varius_green</folder>
+			<folder>whiteol</folder>
+		</files>
+	</fileset>
+</extension>

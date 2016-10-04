@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" version="2.5" group="system" method="upgrade">
+    <name>System - Maximenu CK Patch</name>
+    <author>Cédric KEIFLIN</author>
+    <creationDate>2012</creationDate>
+    <copyright>Cédric KEIFLIN</copyright>
+    <license>GNU/GPL 3 http://www.gnu.org/licenses/gpl.html</license>
+    <authorEmail>ced1870@gmail.com</authorEmail>
+    <authorUrl>http://www.joomlack.fr</authorUrl>
+    <version>1.0</version>
+    <description>Delete {maximenu} tags in the pages. Supprimes les tags {maximenu} dans les pages.</description>
+    <files>
+        <filename plugin="maximenupatchck">maximenupatchck.php</filename>
+    </files>
+</extension>

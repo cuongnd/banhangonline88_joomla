@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metafile version="3.4" client="administrator">
+	<name>ភាសាខ្មែរ (km-KH)</name>
+	<version>3.4.5.1</version>
+	<creationDate>2015-10-23</creationDate>
+	<author>Khmer Translation Team</author>
+	<authorEmail>info@km-kh.org</authorEmail>
+	<authorUrl>www.km-kh.org</authorUrl>
+	<copyright>Copyright (C) 2005 - 2015 Open Source Matters &amp; km-KH.com. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<description>km-KH administrator language for Joomla 3.4.5</description>
+	<metadata>
+		<name>ភាសាខ្មែរ (km-KH)</name>
+		<tag>km-KH</tag>
+		<rtl>0</rtl>
+		<locale>km-KH.utf8, km-KH.UTF-8, km-KH.UTF-8@riel, km_KH.utf8, km_KH.UTF-8, km_KH, khm_KH, km, Khmer, Khmer-kh, kh, khm, cambodia, kingdom of cambodia, kingdom-of-cambodia</locale>
+		<firstDay>0</firstDay>
+		<weekEnd>0,6</weekEnd>
+	</metadata>
+	<params />
+</metafile>

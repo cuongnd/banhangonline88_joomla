@@ -1,0 +1,613 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+
+	<fieldset addfieldpath="/administrator/components/com_cmgroupbuying/models/fields">
+
+		<field name="id" type="text" size="10" default="0" readonly="true" class="readonly"
+			label="JGLOBAL_FIELD_ID_LABEL" description="JGLOBAL_FIELD_ID_DESC" />
+
+		<field name="name" type="text" class="inputbox" size="40" required="true"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_NAME_LABEL" description="COM_CMGROUPBUYING_DEAL_FIELD_NAME_DESC" />
+
+		<field name="alias" type="text" class="inputbox" size="40"
+			label="JFIELD_ALIAS_LABEL" description="JFIELD_ALIAS_DESC" hint="JFIELD_ALIAS_PLACEHOLDER" />
+
+		<field name="short_description" type="textarea" class="inputbox" rows="3" cols="50"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_SHORT_DESCRIPTION_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_SHORT_DESCRIPTION_DESC" />
+
+		<field name="description" type="editor" class="inputbox" filter="JComponentHelper::filterText"
+			buttons="true" hide="readmore,pagebreak,raffle,article"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_DESCRIPTION_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_DESCRIPTION_DESC" />
+
+		<field name="mobile_description" type="editor" class="inputbox" filter="JComponentHelper::filterText"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_MOBILE_DESCRIPTION_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_MOBILE_DESCRIPTION_DESC"
+			buttons="true" hide="readmore,pagebreak,raffle,article"
+		/>
+
+		<field
+			name="start_date"
+			type="calendar"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_START_DATE_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_START_DATE_DESC"
+			class="inputbox"
+			size="22"
+			format="%Y-%m-%d %H:%M:%S"
+			required="true"
+		/>
+
+		<field
+			name="end_date"
+			type="calendar"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_END_DATE_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_END_DATE_DESC"
+			class="inputbox"
+			size="22"
+			format="%Y-%m-%d %H:%M:%S"
+			required="true"
+		/>
+
+		<field
+			name="highlights"
+			type="editor"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_HIGHLIGHTS_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_HIGHLIGHTS_DESC"
+			class="inputbox"
+			filter="JComponentHelper::filterText"
+			buttons="true"
+			hide="readmore,pagebreak,raffle,article"
+		/>
+
+		<field
+			name="terms"
+			type="editor"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_TERMS_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_TERMS_DESC"
+			class="inputbox"
+			filter="JComponentHelper::filterText"
+			buttons="true"
+			hide="readmore,pagebreak,raffle,article"
+		/>
+
+		<field name="map_latitude"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_MAP_LATITUDE_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_MAP_LATITUDE_DESC"
+			class="inputbox"
+			size="15"
+			default="0"
+		 />
+
+		<field name="map_longitude"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_MAP_LONGITUDE_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_MAP_LONGITUDE_DESC"
+			class="inputbox"
+			size="15"
+			default="0"
+		 />
+
+		<fieldset name="image_path">
+			<field name="image_path_1" type="media"
+				hide_none="1" label="COM_CMGROUPBUYING_DEAL_FIELD_IMAGE_PATH_1_LABEL"
+				size="30"
+				description="COM_CMGROUPBUYING_DEAL_FIELD_IMAGE_PATH_DESC" />
+
+			<field name="image_path_2" type="media"
+				hide_none="1" label="COM_CMGROUPBUYING_DEAL_FIELD_IMAGE_PATH_2_LABEL"
+				size="30"
+				description="COM_CMGROUPBUYING_DEAL_FIELD_IMAGE_PATH_DESC" />
+
+			<field name="image_path_3" type="media"
+				hide_none="1" label="COM_CMGROUPBUYING_DEAL_FIELD_IMAGE_PATH_3_LABEL"
+				size="30"
+				description="COM_CMGROUPBUYING_DEAL_FIELD_IMAGE_PATH_DESC" />
+
+			<field name="image_path_4" type="media"
+				hide_none="1" label="COM_CMGROUPBUYING_DEAL_FIELD_IMAGE_PATH_4_LABEL"
+				size="30"
+				description="COM_CMGROUPBUYING_DEAL_FIELD_IMAGE_PATH_DESC" />
+
+			<field name="image_path_5" type="media"
+				hide_none="1" label="COM_CMGROUPBUYING_DEAL_FIELD_IMAGE_PATH_5_LABEL"
+				size="30"
+				description="COM_CMGROUPBUYING_DEAL_FIELD_IMAGE_PATH_DESC" />
+
+			<field name="mobile_image_path" type="media"
+				hide_none="1" label="COM_CMGROUPBUYING_DEAL_FIELD_MOBILE_IMAGE_PATH_LABEL"
+				size="30"
+				description="COM_CMGROUPBUYING_DEAL_FIELD_MOBILE_IMAGE_PATH_DESC" />
+		</fieldset>
+
+		<field name="background_image" type="media"
+			hide_none="1" label="COM_CMGROUPBUYING_DEAL_FIELD_BACKGROUND_IMAGE_LABEL"
+			size="30"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_BACKGROUND_IMAGE_DESC" />
+
+		<field name="min_bought"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_MIN_BOUGHT_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_MIN_BOUGHT_DESC"
+			class="inputbox"
+			size="10"
+			required="true"
+		/>
+
+		<field name="max_bought"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_MAX_BOUGHT_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_MAX_BOUGHT_DESC"
+			class="inputbox"
+			size="10"
+			required="true"
+			default="-1"
+		/>
+
+		<field name="max_coupon"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_MAX_COUPON_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_MAX_COUPON_DESC"
+			class="inputbox"
+			size="10"
+			required="true"
+			default="-1"
+		/>
+
+		<field name="shipping_cost"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_SHIPPING_COST_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_SHIPPING_COST_DESC"
+			class="inputbox"
+			size="10"
+			default="0"
+		/>
+
+		<field name="partner_id"
+			type="cmgbpartner"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_PARTNER_ID_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_PARTNER_ID_DESC"
+			class="inputbox"
+			required="true"
+		/>
+
+		<field name="category_id"
+			type="cmgbcategory"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_CATEGORY_ID_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_CATEGORY_ID_DESC"
+			class="inputbox"
+			required="true"
+		/>
+
+		<field name="product_id"
+			type="cmgbproduct"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_PRODUCT_ID_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_PRODUCT_ID_DESC"
+			class="inputbox"
+		/>
+
+		<field name="location_id"
+			type="cmgbdeallocation"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_LOCATION_ID_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_LOCATION_ID_DESC"
+			class="inputbox"
+			multiple="true"
+			required="true"
+		/>
+
+		<field name="coupon_path" type="media"
+			hide_none="1" label="COM_CMGROUPBUYING_DEAL_FIELD_COUPON_PATH_LABEL"
+			size="30"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_COUPON_PATH_DESC"
+			required="true"
+		/>
+
+		<field name="coupon_elements"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_COUPON_ELEMENT_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_COUPON_ELEMENT_DESC"
+			class="inputbox"
+			size="30"
+			required="true"
+		/>
+
+		<field name="featured"
+			type="list"
+			label="JFEATURED"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_FEATURED_DESC"
+			default="0"
+		>
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+
+		<field id="published"
+			name="published"
+			type="list"
+			label="JSTATUS"
+			description="JFIELD_PUBLISHED_DESC"
+			class="inputbox"
+			size="1"
+			default="1"
+		>
+			<option value="1">JPUBLISHED</option>
+			<option value="0">JUNPUBLISHED</option>
+		</field>
+
+		<field id="approved"
+			name="approved"
+			type="list"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_APPROVED_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_APPROVED_DESC"
+			class="inputbox"
+			size="1"
+			default="1"
+		>
+			<option value="1">COM_CMGROUPBUYING_APPROVED</option>
+			<option value="0">COM_CMGROUPBUYING_PENDING</option>
+		</field>
+
+		<field name="ordering"
+			type="cmordering"
+			class="inputbox"
+			label="JFIELD_ORDERING_LABEL"
+			description="JFIELD_ORDERING_DESC"
+		/>
+
+		<field name="option_name_1"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_NAME_1_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_NAME_1_DESC"
+			class="inputbox"
+			size="40"
+			required="true"
+		/>
+
+		<field name="option_original_price_1"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_ORIGINAL_PRICE_1_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_ORIGINAL_PRICE_1_DESC"
+			class="inputbox"
+			size="40"
+			required="true"
+		/>
+
+		<field name="option_price_1"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_PRICE_1_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_PRICE_1_DESC"
+			class="inputbox"
+			size="40"
+			required="true"
+		/>
+
+		<field name="option_advance_price_1"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_ADVANCE_PRICE_1_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_ADVANCE_PRICE_1_DESC"
+			class="inputbox"
+			size="40"
+		/>
+
+		<field name="option_name_2"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_NAME_2_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_NAME_2_DESC"
+			class="inputbox"
+			size="40"
+		/>
+
+		<field name="option_original_price_2"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_ORIGINAL_PRICE_2_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_ORIGINAL_PRICE_2_DESC"
+			class="inputbox"
+			size="40"
+		/>
+
+		<field name="option_price_2"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_PRICE_2_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_PRICE_2_DESC"
+			class="inputbox"
+			size="40"
+		/>
+
+		<field name="option_advance_price_2"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_ADVANCE_PRICE_2_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_ADVANCE_PRICE_2_DESC"
+			class="inputbox"
+			size="40"
+		/>
+
+		<field name="option_name_3"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_NAME_3_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_NAME_3_DESC"
+			class="inputbox"
+			size="40"
+		/>
+
+		<field name="option_original_price_3"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_ORIGINAL_PRICE_3_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_ORIGINAL_PRICE_3_DESC"
+			class="inputbox"
+			size="40"
+		/>
+
+		<field name="option_price_3"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_PRICE_3_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_PRICE_3_DESC"
+			class="inputbox"
+			size="40"
+		/>
+
+		<field name="option_advance_price_3"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_ADVANCE_PRICE_3_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_ADVANCE_PRICE_3_DESC"
+			class="inputbox"
+			size="40"
+		/>
+
+		<field name="option_name_4"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_NAME_4_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_NAME_4_DESC"
+			class="inputbox"
+			size="40"
+		/>
+
+		<field name="option_original_price_4"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_ORIGINAL_PRICE_4_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_ORIGINAL_PRICE_4_DESC"
+			class="inputbox"
+			size="40"
+		/>
+
+		<field name="option_price_4"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_PRICE_4_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_PRICE_4_DESC"
+			class="inputbox"
+			size="40"
+		/>
+
+		<field name="option_advance_price_4"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_ADVANCE_PRICE_4_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_ADVANCE_PRICE_4_DESC"
+			class="inputbox"
+			size="40"
+		/>
+
+		<field name="option_name_5"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_NAME_5_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_NAME_5_DESC"
+			class="inputbox"
+			size="40"
+		/>
+
+		<field name="option_original_price_5"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_ORIGINAL_PRICE_5_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_ORIGINAL_PRICE_5_DESC"
+			class="inputbox"
+			size="40"
+		/>
+
+		<field name="option_price_5"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_PRICE_5_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_PRICE_5_DESC"
+			class="inputbox"
+			size="40"
+		/>
+
+		<field name="option_advance_price_5"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_ADVANCE_PRICE_5_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_ADVANCE_PRICE_5_DESC"
+			class="inputbox"
+			size="40"
+		/>
+
+		<field name="option_name_6"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_NAME_6_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_NAME_6_DESC"
+			class="inputbox"
+			size="40"
+		/>
+
+		<field name="option_original_price_6"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_ORIGINAL_PRICE_6_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_ORIGINAL_PRICE_6_DESC"
+			class="inputbox"
+			size="40"
+		/>
+
+		<field name="option_price_6"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_PRICE_6_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_PRICE_6_DESC"
+			class="inputbox"
+			size="40"
+		/>
+
+		<field name="option_advance_price_6"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_ADVANCE_PRICE_6_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_ADVANCE_PRICE_6_DESC"
+			class="inputbox"
+			size="40"
+		/>
+
+		<field name="option_name_7"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_NAME_7_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_NAME_7_DESC"
+			class="inputbox"
+			size="40"
+		/>
+
+		<field name="option_original_price_7"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_ORIGINAL_PRICE_7_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_ORIGINAL_PRICE_7_DESC"
+			class="inputbox"
+			size="40"
+		/>
+
+		<field name="option_price_7"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_PRICE_7_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_PRICE_7_DESC"
+			class="inputbox"
+			size="40"
+		/>
+
+		<field name="option_advance_price_7"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_ADVANCE_PRICE_7_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_ADVANCE_PRICE_7_DESC"
+			class="inputbox"
+			size="40"
+		/>
+
+		<field name="option_name_8"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_NAME_8_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_NAME_8_DESC"
+			class="inputbox"
+			size="40"
+		/>
+
+		<field name="option_original_price_8"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_ORIGINAL_PRICE_8_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_ORIGINAL_PRICE_8_DESC"
+			class="inputbox"
+			size="40"
+		/>
+
+		<field name="option_price_8"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_PRICE_8_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_PRICE_8_DESC"
+			class="inputbox"
+			size="40"
+		/>
+
+		<field name="option_advance_price_8"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_ADVANCE_PRICE_8_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_ADVANCE_PRICE_8_DESC"
+			class="inputbox"
+			size="40"
+		/>
+
+		<field name="option_name_9"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_NAME_9_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_NAME_9_DESC"
+			class="inputbox"
+			size="40"
+		/>
+
+		<field name="option_original_price_9"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_ORIGINAL_PRICE_9_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_ORIGINAL_PRICE_9_DESC"
+			class="inputbox"
+			size="40"
+		/>
+
+		<field name="option_price_9"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_PRICE_9_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_PRICE_9_DESC"
+			class="inputbox"
+			size="40"
+		/>
+
+		<field name="option_advance_price_9"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_ADVANCE_PRICE_9_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_ADVANCE_PRICE_9_DESC"
+			class="inputbox"
+			size="40"
+		/>
+
+		<field name="option_name_10"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_NAME_10_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_NAME_10_DESC"
+			class="inputbox"
+			size="40"
+		/>
+
+		<field name="option_original_price_10"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_ORIGINAL_PRICE_10_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_ORIGINAL_PRICE_10_DESC"
+			class="inputbox"
+			size="40"
+		/>
+
+		<field name="option_price_10"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_PRICE_10_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_PRICE_10_DESC"
+			class="inputbox"
+			size="40"
+		/>
+
+		<field name="option_advance_price_10"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_ADVANCE_PRICE_10_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_OPTION_ADVANCE_PRICE_10_DESC"
+			class="inputbox"
+			size="40"
+		/>
+
+		<field name="advance_payment"
+			type="list"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_ADVANCE_PAYMENT_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_ADVANCE_PAYMENT_DESC"
+			default="0"
+		>
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+
+		<field name="coupon_expiration" type="text" class="inputbox" size="45"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_COUPON_EXPIRATION_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_COUPON_EXPIRATION_DESC"
+		 />
+
+		<field name="commission_rate"
+			type="text"
+			label="COM_CMGROUPBUYING_DEAL_FIELD_COMMISSION_RATE_LABEL"
+			description="COM_CMGROUPBUYING_DEAL_FIELD_COMMISSION_RATE_DESC"
+			class="inputbox"
+			size="10"
+			default="0"
+		/>
+
+		<field name="metakey" type="textarea" class="inputbox" rows="3" cols="30"
+			label="JFIELD_META_KEYWORDS_LABEL" description="JFIELD_META_KEYWORDS_DESC" />
+
+		<field name="metadesc" type="textarea" class="inputbox" rows="3" cols="30"
+			label="JFIELD_META_DESCRIPTION_LABEL" description="JFIELD_META_DESCRIPTION_DESC" />
+
+	</fieldset>
+
+</form>

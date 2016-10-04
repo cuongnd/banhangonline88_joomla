@@ -1,0 +1,8 @@
+.aslideshow-slide {
+    display: none;
+    position: absolute;
+}
+
+.aslideshow-content {
+    position: absolute;
+}

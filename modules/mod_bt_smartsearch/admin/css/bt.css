@@ -1,0 +1,383 @@
+.btt-short-message{
+	border: 1px solid #dedede;
+	background-color: #ffffcc;
+	font-weight: bold;
+	padding: 5px;
+}
+
+/* style tab display*/
+#ok_li{
+	clear: both;
+}
+.tab_title{
+	font-weight: bold;
+	margin: 6px 0;
+	overflow: hidden;
+}
+.content_tab{
+/*	height: 70px;
+	padding: 5px;	*/
+}
+.tab-title-label{
+	line-height:20px;
+	font-weight:normal;
+}
+.tab_value{
+	display: block;
+	overflow: hidden;
+	width: 90%;
+	height: 45px;
+	
+}
+.div-tab{
+
+}
+.tab_type{
+	margin-bottom: 6px;
+
+}
+
+.tab-display{
+	background: url("../images/bg-li-infor-bttab.png") repeat-x left bottom #fff;
+	height: 90px!important;
+	border: 1px solid #e4e4e4 !important;
+	margin: 10px 0 !important;
+	position:relative;
+}
+.tab-title-label span.label{
+	color:#c36305;
+	font-weight:bold;
+	font-size:12px;
+}
+.edit-remove-link{
+	position:absolute;
+	right:10px;
+	top:25px;
+}
+.edit-remove-link a{
+	width:26px;
+	height:25px;
+	display:block;
+	text-indent:-9999px;
+}
+.edit-remove-link a.edit{
+	background: url("../images/bg-li-tab-a-edit.png") no-repeat left -32px transparent;
+	margin-bottom:10px;
+}
+.edit-remove-link a.edit:hover{
+	
+	background: url("../images/bg-li-tab-a-edit.png") no-repeat left top transparent;
+	
+}
+.edit-remove-link a.remove{
+	background: url("../images/bg-li-tab-a-delete.png") no-repeat left -32px transparent;
+}
+.edit-remove-link a.remove:hover{
+	background: url("../images/bg-li-tab-a-delete.png") no-repeat left top transparent;
+	
+}
+.clear{
+	clear:both;
+}
+.clearfix:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+    
+}
+#btfilters-container {
+    clear: both;
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+    position: relative;	
+}
+#btfilters-container li{
+	cursor: move;
+}
+/* style button*/
+
+.pane-sliders > .panel { 
+	border: none !important; 
+	font-family:arial;	
+}
+.pane-sliders >.panel > h3 {
+	background:url(../images/header-bg.gif) repeat-x!important;
+	height:37px;
+	line-height:37px;
+	padding:0;
+}
+.pane-sliders >.panel h3 span{
+	text-transform:uppercase;
+	color:#c16306;
+}
+
+.pane-toggler-down {
+	border-bottom:none!important;
+}
+.pane-toggler-down span {
+    background: url("../images/arrow-down.gif") no-repeat scroll 8px 50% transparent!important;
+    padding-left: 26px!important;
+}
+.pane-toggler span {
+    background: url("../images/arrow-up.gif") no-repeat scroll 10px 50% transparent!important;
+    padding-left: 26px!important;
+}
+.pane-sliders > .panel{
+	border:1px solid #cacaca!important;
+	border-top:1px solid #da710a!important;
+	border-radius:5px 5px 5px 5px;
+	padding:0 1px;
+}
+fieldset.panelform{
+	padding:10px!important;
+}
+fieldset.panelform li > label, fieldset.panelform div.paramrow label, fieldset.panelform span.faux-label {
+    max-width: 30% !important;
+    min-width: 30% !important;
+}
+#module-sliders .spacer h3{
+	padding-top:3px;
+	margin:0px;
+	background:#fff!important;
+}
+#module-sliders .adminform{
+	padding:0;
+}
+#module-sliders fieldset > ul > li > label {
+    color: #505050;
+    font-size: 11px;
+	line-height:18px;
+    font-weight: bold;
+    max-width: 30% !important;
+    min-width: 30% !important;
+    text-align: left;
+}
+#module-sliders fieldset > ul.adminformlist > li {
+    border-bottom: 1px dotted  #c4c4c4;
+	min-height:35px;
+	padding:0px;
+	margin:5px;
+}
+
+/* Fix chosen*/
+#module-sliders .chzn-container  ul.chzn-results{
+	min-width:95%;
+}
+#module-sliders .chzn-container-single .chzn-single div{
+	height:100%!important;
+}
+fieldset.adminform fieldset.radio, fieldset.panelform fieldset.radio, fieldset.adminform-legacy fieldset.radio {
+    border: 0 none;
+    float: left;
+    margin: 0 0 5px;
+	max-width: 68% !important;
+    min-width: 68% !important;
+    padding: 0;
+}
+#module-sliders input[type=text],#module-sliders textarea {
+    background:-moz-linear-gradient(center bottom , white 85%, #EEEEEE 99%) repeat scroll 0 0 transparent;
+    border: 1px solid #AAAAAA;
+    font-family: sans-serif;
+	font-size:11px;
+    margin: 1px 0;
+    outline: 0 none;
+    padding: 6px 20px 6px 5px;
+	border-radius: 4px 4px 4px 4px;
+}
+.bt-desc{
+	line-height:200%;
+	
+
+}
+.bt-desc img{
+
+	
+}
+.bt-license{
+	border-top: 1px dotted  #c4c4c4;
+	padding:10px 0px;
+}
+.bt-desc p a{
+	display: inline-block;
+    height: 28px;
+    margin-left: 7px;
+    text-indent: -999px;
+    width: 28px;
+	text-decoration:none;
+	margin-top:10px;
+}
+
+.switcher-yes,.switcher-no  {
+    background: url("../images/switcher-yesno.png") no-repeat scroll 0 0 transparent;
+    cursor: pointer;
+    float: left;
+    height: 20px;
+    margin-top: 4px;
+    width: 64px;
+}
+.switcher-no {
+    background-position: 0 -20px;
+}
+.switcher-on,.switcher-off  {
+    background: url("../images/switcher-onoff.png") no-repeat scroll 0 0 transparent;
+    cursor: pointer;
+    float: left;
+    height: 20px;
+    margin-top: 4px;
+    width: 64px;
+}
+.switcher-off {
+    background-position: 0 -20px;
+}
+#layout-demo{
+    width: 88px; height: 18px;
+    background: url(../images/demo.png) no-repeat;
+    float: right;
+    margin: 5px 35px;
+    text-align: center;
+}
+#layout-demo a{
+    color: #ffffff;
+    font-family: arial; font-size: 11px;
+    line-height: 17px;
+}
+
+
+
+
+
+
+/* KIEN CSS */
+
+/* TRONGHM CSS */
+#btt-dialog{
+    height: 100%;	
+}
+
+ul.btfilter-dialog-container{
+	padding:0 15px;
+    list-style: none;
+	background:#CCCCCC;
+}
+ul.btfilter-dialog-container > li{
+    min-height: 38px;
+	
+}
+ul.btfilter-dialog-container li label{
+    color: #505050;
+    font-size: 11px;
+    font-weight: bold;
+    width: 120px; line-height: 30px;
+    display: block;
+    text-align: left;
+    float: left;
+}
+ul.btfilter-dialog-container li input{
+    width: 180px;
+    background:-moz-linear-gradient(center bottom , white 85%, #EEEEEE 99%) repeat scroll 0 0 transparent;
+    border: 1px solid #AAAAAA;
+    font-family: sans-serif;
+    font-size:11px;
+    margin: 1px 0;
+    outline: 0 none;
+    padding: 6px 20px 6px 5px;
+    border-radius: 4px 4px 4px 4px;
+}
+ul.btfilter-dialog-container li select{
+    width: 180px;
+}
+#result{
+    padding: 0 15px;
+}
+
+#result{
+    line-height: 20px;
+    font-size: 11px;
+    padding: 2px 12px;
+    margin-top: 2px;
+    
+}
+ul.btfilter-dialog-container input.error{
+    border-color: #f20000;
+
+}
+
+.adminformlist .tab-display{
+	margin:0;
+	padding:0;
+}
+
+.btfilter-head.J25{   
+    font-size: 12px;
+    color: #969696;
+    text-align: center;
+    height: 50px;
+    line-height: 28px;
+    font-weight: bold;
+}
+.btpreview_edit, .btpreview_remove{
+    width: 25px; height: 25px;
+    float: right;
+    margin-left: 3px;
+}
+.btpreview_edit{
+    background: url(../images/btpreview_edit.png) no-repeat;
+}
+.btpreview_edit:hover{
+    background: url(../images/btpreview_edit_hovered.png) no-repeat;
+}
+.btpreview_remove{
+    background: url(../images/btpreview_remove.png) no-repeat;
+}
+.btpreview_remove:hover{
+    background: url(../images/btpreview_remove_hovered.png) no-repeat;
+}
+#btfilter-warning {
+    color: #fc0000;
+    line-height: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+#btt-form li{
+list-style-type: none;
+width:400px;
+}
+
+.btn-success-enable{
+    background-color: #5BB75B;
+	border-radius: 3px;
+	width: 140px;
+	padding: 4px 0px;
+    background-image: linear-gradient(to bottom, #62C462, #51A351);
+    background-repeat: repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    color: #FFFFFF;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	float:left;
+	margin-left:80px;	
+}
+.btn-success-enable:hover {
+	background-image: linear-gradient(to top, #62C462, #51A351);
+}
+.btn-primary{
+	width: 140px;
+	padding: 4px 0px;
+	border-radius: 3px;
+    background-color: #FF8C00 !important;
+    background-image: linear-gradient(to bottom, #FF8C00, #E9692C)!important;
+    background-repeat: repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    color: #FFFFFF;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	margin-left:5px;
+}
+.btn-primary:hover {
+    background-image: linear-gradient(to top, #FF8C00, #E9692C)!important;
+}
+
+
+

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="package" version="3.6" method="upgrade">
+	<name>Persian Language Pack</name>
+	<packagename>fa-IR</packagename>
+	<version>3.6.2.1</version>
+	<creationDate>August 2016</creationDate>
+	<author>Farsi translation team : joomlafarsi.com</author>
+	<authorEmail>info@joomlafarsi.com</authorEmail>
+	<authorUrl>www.joomlafarsi.com</authorUrl>
+	<copyright>Copyright (C) 2005 - 2016 Joomlafarsi.com and Open Source Matters, Inc. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<url></url>
+	<packager>Joomla! Farsi Team</packager>
+	<packagerurl>www.joomlafarsi.com</packagerurl>
+	<description>
+		<![CDATA[<h3>فارسی ساز جوملا 3.6 کاری از تیم برگزیده جوملا در ایران. جوملا فارسی دات کام</h3>
+		<h3>Joomla! 3.6 Full Farsi (fa-IR) Language Package version 3.6.2v1, JoomlaFarsi.com</h3>
+		<br>]]></description>
+<files>
+	<file type="language" client="site" id="fa-IR">site_fa-IR.zip</file>
+	<file type="language" client="administrator" id="fa-IR">admin_fa-IR.zip</file>
+</files>
+<updateservers>
+       <server type="collection" priority="1" name="Accredited Joomla! Translations">http://update.joomla.org/language/translationlist_3.xml</server>
+</updateservers>
+</extension>

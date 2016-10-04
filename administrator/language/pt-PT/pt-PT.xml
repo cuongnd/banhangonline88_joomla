@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metafile version="3.5" client="administrator">
+	<name>Português (pt-PT)</name>
+	<version>3.5.1.4</version>
+	<creationDate>2016-06-09</creationDate>
+	<author>Comunidade JoomlaPT! Portugal</author>
+	<authorEmail>geral@joomlapt.com</authorEmail>
+	<authorUrl>www.joomlapt.com</authorUrl>
+	<copyright>Direitos de Autor (C) 2005 - 2016 Open Source Matters. Todos os direitos reservados.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<description>Português pt-PT. Idioma de interface de administração para Joomla 3</description>
+	<metadata>
+		<name>Português (pt-PT)</name>
+		<tag>pt-PT</tag>
+		<rtl>0</rtl>
+		<locale>pt_PT.utf8, pt_PT.UTF-8, pt_PT, pt, portuguese</locale>
+		<firstDay>1</firstDay>
+		<weekEnd>0,6</weekEnd>
+	</metadata>
+	<params />
+</metafile>

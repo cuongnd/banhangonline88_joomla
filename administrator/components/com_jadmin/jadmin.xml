@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="1.6.0" method="upgrade">
+	<name>com_jadmin</name>
+	<creationDate>April 2013</creationDate>
+	<author>CMS Fruit</author>
+	<authorEmail>info@cmsfruit.com</authorEmail>
+	<authorUrl>http://www.CMSFruit.com</authorUrl>
+	<copyright>(C) Copyright 2008-2013, All rights reserved.</copyright>
+	<license>GNU/LGPL http://www.gnu.org/licenses/lgpl-3.0.txt</license>
+	<!--  The version string is recorded in the components table -->
+	<version>1.5.4.3</version>
+	<description><![CDATA[<p>The JAdmin! component has been installed successfully!<br /><br /><br />Now you can <a href="index.php?option=com_jadmin&view=users">create an administrator record</a> if you have not done so already.</p>]]>
+	</description>
+	
+	<installfile>install.jadmin.php</installfile>
+	<scriptfile>jadmin.script.php</scriptfile>
+	
+	<!-- Site Main File Copy Section-->
+	<files folder="site">
+		<filename>models/server.php</filename>
+		<filename>models/sync.php</filename>
+		<filename>models/misc.php</filename>
+		<filename>models/menus.php</filename>
+		<filename>models/jadmdate.php</filename>
+		<filename>models/components.php</filename>
+		<filename>models/ipblocker.php</filename>
+		<filename>models/visitor.php</filename>
+		<filename>models/user.php</filename>
+		<filename>models/setting.php</filename>
+		<filename>controllers/api.php</filename>
+		<filename>jadmin.php</filename>
+		<filename>jadmin.cron.php</filename>
+		<filename>language/id-ID.com_jadmin.ini</filename>
+		<filename>language/af-ZA.com_jadmin.ini</filename>
+		<filename>language/mk-MK.com_jadmin.ini</filename>
+		<filename>language/fa-IR.com_jadmin.ini</filename>
+		<filename>language/zh-CN.com_jadmin.ini</filename>
+		<filename>language/ro-RO.com_jadmin.ini</filename>
+		<filename>language/bm-MY.com_jadmin.ini</filename>
+		<filename>language/nb-NO.com_jadmin.ini</filename>
+		<filename>language/pt-PT.com_jadmin.ini</filename>
+		<filename>language/hu-HU.com_jadmin.ini</filename>
+		<filename>language/tr-TR.com_jadmin.ini</filename>
+		<filename>language/da-DK.com_jadmin.ini</filename>
+		<filename>language/ms-MY.com_jadmin.ini</filename>
+		<filename>language/ur-PK.com_jadmin.ini</filename>
+		<filename>language/es-ES.com_jadmin.ini</filename>
+		<filename>language/de-DE.com_jadmin.ini</filename>
+		<filename>language/fr-FR.com_jadmin.ini</filename>
+		<filename>language/nl-NL.com_jadmin.ini</filename>
+		<filename>language/ja-JP.com_jadmin.ini</filename>
+		<filename>language/el-GR.com_jadmin.ini</filename>
+		<filename>language/ar-DZ.com_jadmin.ini</filename>
+		<filename>language/hi-IN.com_jadmin.ini</filename>
+		<filename>language/zh-TW.com_jadmin.ini</filename>
+		<filename>language/sk-SK.com_jadmin.ini</filename>
+		<filename>language/pt-BR.com_jadmin.ini</filename>
+		<filename>language/ar-MA.com_jadmin.ini</filename>
+		<filename>language/ru-RU.com_jadmin.ini</filename>
+		<filename>language/th-TH.com_jadmin.ini</filename>
+		<filename>language/fi-FI.com_jadmin.ini</filename>
+		<filename>language/uk-UA.com_jadmin.ini</filename>
+		<filename>language/en-GB.com_jadmin.ini</filename>
+		<filename>language/it-IT.com_jadmin.ini</filename>
+		<filename>language/nn-NO.com_jadmin.ini</filename>
+		<filename>language/is-IS.com_jadmin.ini</filename>
+		<filename>language/in-ID.com_jadmin.ini</filename>
+		<filename>language/vi-VN.com_jadmin.ini</filename>
+		<filename>language/sl-SI.com_jadmin.ini</filename>
+		<filename>language/sv-SE.com_jadmin.ini</filename>
+		<filename>language/cs-CZ.com_jadmin.ini</filename>
+		<filename>language/mn-MN.com_jadmin.ini</filename>
+		<filename>language/en-US.com_jadmin.ini</filename>
+		<filename>language/pl-PL.com_jadmin.ini</filename>
+	</files>
+
+	<languages folder="site">
+		<language tag="th-TH">language/th-TH.com_jadmin.ini</language>
+		<language tag="pt-PT">language/pt-PT.com_jadmin.ini</language>
+		<language tag="fr-FR">language/fr-FR.com_jadmin.ini</language>
+		<language tag="sk-SK">language/sk-SK.com_jadmin.ini</language>
+		<language tag="zh-CN">language/zh-CN.com_jadmin.ini</language>
+		<language tag="en-GB">language/en-GB.com_jadmin.ini</language>
+		<language tag="ar-DZ">language/ar-DZ.com_jadmin.ini</language>
+		<language tag="es-ES">language/es-ES.com_jadmin.ini</language>
+		<language tag="ar-MA">language/ar-MA.com_jadmin.ini</language>
+		<language tag="is-IS">language/is-IS.com_jadmin.ini</language>
+		<language tag="tr-TR">language/tr-TR.com_jadmin.ini</language>
+		<language tag="fa-IR">language/fa-IR.com_jadmin.ini</language>
+		<language tag="vi-VN">language/vi-VN.com_jadmin.ini</language>
+		<language tag="pt-BR">language/pt-BR.com_jadmin.ini</language>
+		<language tag="bm-MY">language/bm-MY.com_jadmin.ini</language>
+		<language tag="sv-SE">language/sv-SE.com_jadmin.ini</language>
+		<language tag="it-IT">language/it-IT.com_jadmin.ini</language>
+		<language tag="zh-TW">language/zh-TW.com_jadmin.ini</language>
+		<language tag="hu-HU">language/hu-HU.com_jadmin.ini</language>
+		<language tag="fi-FI">language/fi-FI.com_jadmin.ini</language>
+		<language tag="cs-CZ">language/cs-CZ.com_jadmin.ini</language>
+		<language tag="af-ZA">language/af-ZA.com_jadmin.ini</language>
+		<language tag="ms-MY">language/ms-MY.com_jadmin.ini</language>
+		<language tag="nl-NL">language/nl-NL.com_jadmin.ini</language>
+		<language tag="ja-JP">language/ja-JP.com_jadmin.ini</language>
+		<language tag="id-ID">language/id-ID.com_jadmin.ini</language>
+		<language tag="uk-UA">language/uk-UA.com_jadmin.ini</language>
+		<language tag="nn-NO">language/nn-NO.com_jadmin.ini</language>
+		<language tag="ru-RU">language/ru-RU.com_jadmin.ini</language>
+		<language tag="hi-IN">language/hi-IN.com_jadmin.ini</language>
+		<language tag="da-DK">language/da-DK.com_jadmin.ini</language>
+		<language tag="mn-MN">language/mn-MN.com_jadmin.ini</language>
+		<language tag="mk-MK">language/mk-MK.com_jadmin.ini</language>
+		<language tag="nb-NO">language/nb-NO.com_jadmin.ini</language>
+		<language tag="ro-RO">language/ro-RO.com_jadmin.ini</language>
+		<language tag="pl-PL">language/pl-PL.com_jadmin.ini</language>
+		<language tag="en-US">language/en-US.com_jadmin.ini</language>
+		<language tag="in-ID">language/in-ID.com_jadmin.ini</language>
+		<language tag="de-DE">language/de-DE.com_jadmin.ini</language>
+		<language tag="el-GR">language/el-GR.com_jadmin.ini</language>
+		<language tag="sl-SI">language/sl-SI.com_jadmin.ini</language>
+		<language tag="ur-PK">language/ur-PK.com_jadmin.ini</language>
+	</languages>
+
+	<administration>
+		<!-- Administration Menu Section -->
+		<menu img="components/com_jadmin/assets/images/icons/jadmin-16.png">com_jadmin</menu>
+		<submenu>
+			<menu link="option=com_jadmin&amp;view=users" img="components/com_jadmin/assets/images/icons/jadmin_managers_16.png">Users</menu>
+			<menu link="option=com_jadmin&amp;view=settings" img="components/com_jadmin/assets/images/icons/jadmin_settings_16.png">Settings</menu>
+			<menu link="option=com_jadmin&amp;view=information" img="components/com_jadmin/assets/images/icons/jadmin_troubleshoot_16.png">Information</menu>
+		</submenu>
+		
+		<!-- Administration Main File Copy Section -->
+		<!-- Note the folder attribute: This attribute describes the folder
+  to copy FROM in the package to install therefore files copied
+  in this section are copied from /admin/ in the package -->
+		<files folder="admin">
+			<filename>assets/images/yui/menubaritem_submenuindicator.png</filename>
+			<filename>assets/images/yui/menuitem_submenuindicator.png</filename>
+			<filename>assets/images/yui/split-button-arrow-disabled.png</filename>
+			<filename>assets/images/yui/dt-arrow-dn.png</filename>
+			<filename>assets/images/yui/checkbox.png</filename>
+			<filename>assets/images/yui/split-button-arrow-focus.png</filename>
+			<filename>assets/images/yui/split-button-arrow-active.png</filename>
+			<filename>assets/images/yui/menu-button-arrow-disabled.png</filename>
+			<filename>assets/images/yui/split-button-arrow-hover.png</filename>
+			<filename>assets/images/yui/menuitem_checkbox_disabled.png</filename>
+			<filename>assets/images/yui/menuitem_submenuindicator_disabled.png</filename>
+			<filename>assets/images/yui/split-button-arrow.png</filename>
+			<filename>assets/images/yui/dt-arrow-up.png</filename>
+			<filename>assets/images/yui/menu-button-arrow.png</filename>
+			<filename>assets/images/yui/menubaritem_submenuindicator_disabled.png</filename>
+			<filename>assets/images/yui/menuitem_checkbox.png</filename>
+			<filename>assets/images/yui/sprite.png</filename>
+			<filename>assets/images/arrows/down.gif</filename>
+			<filename>assets/images/arrows/up.gif</filename>
+			<filename>assets/images/arrows/left_arrow.gif</filename>
+			<filename>assets/images/arrows/right_arrow.gif</filename>
+			<filename>assets/images/icons/jadmin_managers_16.png</filename>
+			<filename>assets/images/icons/save.gif</filename>
+			<filename>assets/images/icons/jadmin_troubleshoot_16.png</filename>
+			<filename>assets/images/icons/jadmin-16.png</filename>
+			<filename>assets/images/icons/jadmin_managers_32.png</filename>
+			<filename>assets/images/icons/jadmin_managers_48.png</filename>
+			<filename>assets/images/icons/jadmin_troubleshoot_32.png</filename>
+			<filename>assets/images/icons/jadmin-32.png</filename>
+			<filename>assets/images/icons/jadmin_settings_32.png</filename>
+			<filename>assets/images/icons/jadmin-48.png</filename>
+			<filename>assets/images/icons/jadmin_troubleshoot_48.png</filename>
+			<filename>assets/images/icons/jadmin_settings_16.png</filename>
+			<filename>assets/images/icons/jadmin_settings_48.png</filename>
+			<filename>assets/css/paginator.css</filename>
+			<filename>assets/css/menu.css</filename>
+			<filename>assets/css/settings.css</filename>
+			<filename>assets/css/troubleshoot.css</filename>
+			<filename>assets/css/fonts-min.css</filename>
+			<filename>assets/css/datatable.css</filename>
+			<filename>assets/css/button.css</filename>
+			<filename>assets/css/styles.css</filename>
+			<filename>assets/css/tabview.css</filename>
+			<filename>assets/css/users.css</filename>
+			<filename>assets/css/autocomplete.css</filename>
+			<filename>models/jadmdateadmin.php</filename>
+			<filename>models/settingadmin.php</filename>
+			<filename>models/useradmin.php</filename>
+			<filename>toolbar.jadmin.php</filename>
+			<filename>js/settings.js</filename>
+			<filename>js/autocomplete-min.js</filename>
+			<filename>js/yahoo-dom-event.js</filename>
+			<filename>js/troubleshoot.js</filename>
+			<filename>js/button-min.js</filename>
+			<filename>js/datasource-min.js</filename>
+			<filename>js/element-min.js</filename>
+			<filename>js/new_user.js</filename>
+			<filename>js/json-min.js</filename>
+			<filename>js/users.js</filename>
+			<filename>js/tabview-min.js</filename>
+			<filename>js/datatable-min.js</filename>
+			<filename>js/paginator-min.js</filename>
+			<filename>js/container_core-min.js</filename>
+			<filename>js/connection-min.js</filename>
+			<filename>js/menu-min.js</filename>
+			<filename>js/animation-min.js</filename>
+			<filename>js/jadmin.js</filename>
+			<filename>toolbar.jadmin.html.php</filename>
+			<filename>admin.jadmin.php</filename>
+			<filename>jadmin.php</filename>
+			<filename>controllers/information.php</filename>
+			<filename>controllers/users.php</filename>
+			<filename>controllers/settings.php</filename>
+			<filename>language/mk-MK.com_jadmin.sys.ini</filename>
+			<filename>language/el-GR.com_jadmin.sys.ini</filename>
+			<filename>language/id-ID.com_jadmin.ini</filename>
+			<filename>language/nl-NL.com_jadmin.sys.ini</filename>
+			<filename>language/it-IT.com_jadmin.sys.ini</filename>
+			<filename>language/af-ZA.com_jadmin.ini</filename>
+			<filename>language/mk-MK.com_jadmin.ini</filename>
+			<filename>language/fa-IR.com_jadmin.ini</filename>
+			<filename>language/zh-CN.com_jadmin.ini</filename>
+			<filename>language/ms-MY.com_jadmin.sys.ini</filename>
+			<filename>language/ro-RO.com_jadmin.ini</filename>
+			<filename>language/bm-MY.com_jadmin.ini</filename>
+			<filename>language/nb-NO.com_jadmin.sys.ini</filename>
+			<filename>language/in-ID.com_jadmin.sys.ini</filename>
+			<filename>language/sl-SI.com_jadmin.sys.ini</filename>
+			<filename>language/nb-NO.com_jadmin.ini</filename>
+			<filename>language/pt-PT.com_jadmin.ini</filename>
+			<filename>language/hu-HU.com_jadmin.ini</filename>
+			<filename>language/tr-TR.com_jadmin.ini</filename>
+			<filename>language/zh-TW.com_jadmin.sys.ini</filename>
+			<filename>language/de-DE.com_jadmin.sys.ini</filename>
+			<filename>language/da-DK.com_jadmin.ini</filename>
+			<filename>language/en-GB.com_jadmin.sys.ini</filename>
+			<filename>language/pl-PL.com_jadmin.sys.ini</filename>
+			<filename>language/ms-MY.com_jadmin.ini</filename>
+			<filename>language/ur-PK.com_jadmin.ini</filename>
+			<filename>language/es-ES.com_jadmin.ini</filename>
+			<filename>language/cs-CZ.com_jadmin.sys.ini</filename>
+			<filename>language/tr-TR.com_jadmin.sys.ini</filename>
+			<filename>language/ur-PK.com_jadmin.sys.ini</filename>
+			<filename>language/de-DE.com_jadmin.ini</filename>
+			<filename>language/fr-FR.com_jadmin.ini</filename>
+			<filename>language/nl-NL.com_jadmin.ini</filename>
+			<filename>language/ja-JP.com_jadmin.ini</filename>
+			<filename>language/nn-NO.com_jadmin.sys.ini</filename>
+			<filename>language/en-US.com_jadmin.sys.ini</filename>
+			<filename>language/ro-RO.com_jadmin.sys.ini</filename>
+			<filename>language/el-GR.com_jadmin.ini</filename>
+			<filename>language/pt-PT.com_jadmin.sys.ini</filename>
+			<filename>language/vi-VN.com_jadmin.sys.ini</filename>
+			<filename>language/ar-DZ.com_jadmin.ini</filename>
+			<filename>language/hi-IN.com_jadmin.ini</filename>
+			<filename>language/zh-TW.com_jadmin.ini</filename>
+			<filename>language/es-ES.com_jadmin.sys.ini</filename>
+			<filename>language/sk-SK.com_jadmin.ini</filename>
+			<filename>language/ar-DZ.com_jadmin.sys.ini</filename>
+			<filename>language/pt-BR.com_jadmin.ini</filename>
+			<filename>language/ar-MA.com_jadmin.ini</filename>
+			<filename>language/hu-HU.com_jadmin.sys.ini</filename>
+			<filename>language/fr-FR.com_jadmin.sys.ini</filename>
+			<filename>language/da-DK.com_jadmin.sys.ini</filename>
+			<filename>language/hi-IN.com_jadmin.sys.ini</filename>
+			<filename>language/ru-RU.com_jadmin.ini</filename>
+			<filename>language/th-TH.com_jadmin.ini</filename>
+			<filename>language/fi-FI.com_jadmin.sys.ini</filename>
+			<filename>language/sv-SE.com_jadmin.sys.ini</filename>
+			<filename>language/bm-MY.com_jadmin.sys.ini</filename>
+			<filename>language/ja-JP.com_jadmin.sys.ini</filename>
+			<filename>language/ar-MA.com_jadmin.sys.ini</filename>
+			<filename>language/mn-MN.com_jadmin.sys.ini</filename>
+			<filename>language/fi-FI.com_jadmin.ini</filename>
+			<filename>language/uk-UA.com_jadmin.ini</filename>
+			<filename>language/en-GB.com_jadmin.ini</filename>
+			<filename>language/id-ID.com_jadmin.sys.ini</filename>
+			<filename>language/it-IT.com_jadmin.ini</filename>
+			<filename>language/af-ZA.com_jadmin.sys.ini</filename>
+			<filename>language/nn-NO.com_jadmin.ini</filename>
+			<filename>language/pt-BR.com_jadmin.sys.ini</filename>
+			<filename>language/th-TH.com_jadmin.sys.ini</filename>
+			<filename>language/zh-CN.com_jadmin.sys.ini</filename>
+			<filename>language/is-IS.com_jadmin.sys.ini</filename>
+			<filename>language/sk-SK.com_jadmin.sys.ini</filename>
+			<filename>language/is-IS.com_jadmin.ini</filename>
+			<filename>language/in-ID.com_jadmin.ini</filename>
+			<filename>language/vi-VN.com_jadmin.ini</filename>
+			<filename>language/sl-SI.com_jadmin.ini</filename>
+			<filename>language/sv-SE.com_jadmin.ini</filename>
+			<filename>language/fa-IR.com_jadmin.sys.ini</filename>
+			<filename>language/cs-CZ.com_jadmin.ini</filename>
+			<filename>language/uk-UA.com_jadmin.sys.ini</filename>
+			<filename>language/mn-MN.com_jadmin.ini</filename>
+			<filename>language/en-US.com_jadmin.ini</filename>
+			<filename>language/pl-PL.com_jadmin.ini</filename>
+			<filename>language/ru-RU.com_jadmin.sys.ini</filename>
+			<filename>views/users/view.html.php</filename>
+			<filename>views/users/tmpl/default_edit.php</filename>
+			<filename>views/users/tmpl/default.php</filename>
+			<filename>views/users/tmpl/default_new.php</filename>
+			<filename>views/settings/view.html.php</filename>
+			<filename>views/settings/tmpl/default.php</filename>
+			<filename>views/information/view.html.php</filename>
+			<filename>views/information/tmpl/default.php</filename>
+		</files>
+	
+		<languages folder="admin">
+			<language tag="th-TH">language/th-TH.com_jadmin.ini</language>
+			<language tag="pt-PT">language/pt-PT.com_jadmin.ini</language>
+			<language tag="fr-FR">language/fr-FR.com_jadmin.ini</language>
+			<language tag="ru-RU">language/ru-RU.com_jadmin.sys.ini</language>
+			<language tag="sk-SK">language/sk-SK.com_jadmin.ini</language>
+			<language tag="zh-CN">language/zh-CN.com_jadmin.ini</language>
+			<language tag="en-GB">language/en-GB.com_jadmin.ini</language>
+			<language tag="ar-DZ">language/ar-DZ.com_jadmin.ini</language>
+			<language tag="es-ES">language/es-ES.com_jadmin.ini</language>
+			<language tag="zh-TW">language/zh-TW.com_jadmin.sys.ini</language>
+			<language tag="bm-MY">language/bm-MY.com_jadmin.sys.ini</language>
+			<language tag="ro-RO">language/ro-RO.com_jadmin.sys.ini</language>
+			<language tag="ar-MA">language/ar-MA.com_jadmin.ini</language>
+			<language tag="ar-MA">language/ar-MA.com_jadmin.sys.ini</language>
+			<language tag="vi-VN">language/vi-VN.com_jadmin.sys.ini</language>
+			<language tag="is-IS">language/is-IS.com_jadmin.ini</language>
+			<language tag="tr-TR">language/tr-TR.com_jadmin.ini</language>
+			<language tag="fa-IR">language/fa-IR.com_jadmin.ini</language>
+			<language tag="vi-VN">language/vi-VN.com_jadmin.ini</language>
+			<language tag="it-IT">language/it-IT.com_jadmin.sys.ini</language>
+			<language tag="pt-BR">language/pt-BR.com_jadmin.ini</language>
+			<language tag="ja-JP">language/ja-JP.com_jadmin.sys.ini</language>
+			<language tag="bm-MY">language/bm-MY.com_jadmin.ini</language>
+			<language tag="en-GB">language/en-GB.com_jadmin.sys.ini</language>
+			<language tag="nb-NO">language/nb-NO.com_jadmin.sys.ini</language>
+			<language tag="ms-MY">language/ms-MY.com_jadmin.sys.ini</language>
+			<language tag="sv-SE">language/sv-SE.com_jadmin.ini</language>
+			<language tag="pt-BR">language/pt-BR.com_jadmin.sys.ini</language>
+			<language tag="uk-UA">language/uk-UA.com_jadmin.sys.ini</language>
+			<language tag="mk-MK">language/mk-MK.com_jadmin.sys.ini</language>
+			<language tag="mn-MN">language/mn-MN.com_jadmin.sys.ini</language>
+			<language tag="it-IT">language/it-IT.com_jadmin.ini</language>
+			<language tag="tr-TR">language/tr-TR.com_jadmin.sys.ini</language>
+			<language tag="th-TH">language/th-TH.com_jadmin.sys.ini</language>
+			<language tag="zh-TW">language/zh-TW.com_jadmin.ini</language>
+			<language tag="hu-HU">language/hu-HU.com_jadmin.ini</language>
+			<language tag="fi-FI">language/fi-FI.com_jadmin.ini</language>
+			<language tag="id-ID">language/id-ID.com_jadmin.sys.ini</language>
+			<language tag="cs-CZ">language/cs-CZ.com_jadmin.ini</language>
+			<language tag="zh-CN">language/zh-CN.com_jadmin.sys.ini</language>
+			<language tag="af-ZA">language/af-ZA.com_jadmin.ini</language>
+			<language tag="pt-PT">language/pt-PT.com_jadmin.sys.ini</language>
+			<language tag="fa-IR">language/fa-IR.com_jadmin.sys.ini</language>
+			<language tag="ms-MY">language/ms-MY.com_jadmin.ini</language>
+			<language tag="nn-NO">language/nn-NO.com_jadmin.sys.ini</language>
+			<language tag="nl-NL">language/nl-NL.com_jadmin.ini</language>
+			<language tag="ja-JP">language/ja-JP.com_jadmin.ini</language>
+			<language tag="id-ID">language/id-ID.com_jadmin.ini</language>
+			<language tag="ar-DZ">language/ar-DZ.com_jadmin.sys.ini</language>
+			<language tag="es-ES">language/es-ES.com_jadmin.sys.ini</language>
+			<language tag="cs-CZ">language/cs-CZ.com_jadmin.sys.ini</language>
+			<language tag="uk-UA">language/uk-UA.com_jadmin.ini</language>
+			<language tag="da-DK">language/da-DK.com_jadmin.sys.ini</language>
+			<language tag="nn-NO">language/nn-NO.com_jadmin.ini</language>
+			<language tag="ru-RU">language/ru-RU.com_jadmin.ini</language>
+			<language tag="hi-IN">language/hi-IN.com_jadmin.ini</language>
+			<language tag="da-DK">language/da-DK.com_jadmin.ini</language>
+			<language tag="mn-MN">language/mn-MN.com_jadmin.ini</language>
+			<language tag="is-IS">language/is-IS.com_jadmin.sys.ini</language>
+			<language tag="mk-MK">language/mk-MK.com_jadmin.ini</language>
+			<language tag="nb-NO">language/nb-NO.com_jadmin.ini</language>
+			<language tag="in-ID">language/in-ID.com_jadmin.sys.ini</language>
+			<language tag="ro-RO">language/ro-RO.com_jadmin.ini</language>
+			<language tag="pl-PL">language/pl-PL.com_jadmin.sys.ini</language>
+			<language tag="pl-PL">language/pl-PL.com_jadmin.ini</language>
+			<language tag="af-ZA">language/af-ZA.com_jadmin.sys.ini</language>
+			<language tag="hi-IN">language/hi-IN.com_jadmin.sys.ini</language>
+			<language tag="en-US">language/en-US.com_jadmin.sys.ini</language>
+			<language tag="nl-NL">language/nl-NL.com_jadmin.sys.ini</language>
+			<language tag="en-US">language/en-US.com_jadmin.ini</language>
+			<language tag="fi-FI">language/fi-FI.com_jadmin.sys.ini</language>
+			<language tag="fr-FR">language/fr-FR.com_jadmin.sys.ini</language>
+			<language tag="hu-HU">language/hu-HU.com_jadmin.sys.ini</language>
+			<language tag="sv-SE">language/sv-SE.com_jadmin.sys.ini</language>
+			<language tag="sk-SK">language/sk-SK.com_jadmin.sys.ini</language>
+			<language tag="in-ID">language/in-ID.com_jadmin.ini</language>
+			<language tag="de-DE">language/de-DE.com_jadmin.sys.ini</language>
+			<language tag="de-DE">language/de-DE.com_jadmin.ini</language>
+			<language tag="el-GR">language/el-GR.com_jadmin.sys.ini</language>
+			<language tag="el-GR">language/el-GR.com_jadmin.ini</language>
+			<language tag="sl-SI">language/sl-SI.com_jadmin.sys.ini</language>
+			<language tag="sl-SI">language/sl-SI.com_jadmin.ini</language>
+			<language tag="ur-PK">language/ur-PK.com_jadmin.ini</language>
+			<language tag="ur-PK">language/ur-PK.com_jadmin.sys.ini</language>
+		</languages>
+	</administration>
+</extension>

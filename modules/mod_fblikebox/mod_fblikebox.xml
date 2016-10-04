@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="2.5" client="site" method="upgrade">
+	<name>Facebook Like Box Widget</name>
+	<author>Priam Talukder</author>
+	<creationDate>May, 2013</creationDate>
+	<copyright>Copyright (C) ACLS Testing Center</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>admin@twitterslider.com</authorEmail>
+	<authorUrl>http://twitterslider.com</authorUrl>
+	<version>1.0</version>
+	<description>MOD_FBLIKEBOX_DESC</description>
+ 	<languages folder="language">
+        <language tag="en-GB">en-GB/en-GB.mod_fblikebox.ini</language>
+        <language tag="en-GB">en-GB/en-GB.mod_fblikebox.sys.ini</language>
+    </languages>    
+  <files>
+		<filename module="mod_fblikebox">mod_fblikebox.php</filename>
+		<filename>index.html</filename>
+		<folder>tmpl</folder>
+	</files>
+		<config>
+			<fields name="params">
+	            <fieldset name="basic">
+					<field name="fbPageLink" type="text" default="https://www.facebook.com/FacebookDevelopers" size="80" label="MOD_FBLIKEBOX_PAGE_LINK" description="MOD_FBLIKEBOX_PAGE_LINK_DESC" />        
+					<field name="fbRendering" type="list" default="2" label="MOD_FBLIKEBOX_RENDERING" description="MOD_FBLIKEBOX_RENDERING_DESC" >
+					   <option value="0">iframe</option>
+					   <option value="1">XFBML</option>
+					   <option value="2">HTML5</option>
+					</field>
+					<field name="fbWidth" type="text" default="250" label="MOD_FBLIKEBOX_WIDTH" description="MOD_FBLIKEBOX_WIDTH_DESC" />
+					<field name="fbHeight" type="text" default="827" label="MOD_FBLIKEBOX_HEIGHT" description="MOD_FBLIKEBOX_HEIGHT_DESC" />
+					<field name="fbColour" type="radio" class="btn-group" default="light" label="MOD_FBLIKEBOX_COLOUR" description="MOD_FBLIKEBOX_COLOUR_DESC">
+						<option value="light">MOD_FBLIKEBOX_LIGHT</option>
+						<option value="dark">MOD_FBLIKEBOX_DARK</option>
+					</field>
+					
+					<field name="fbFaces" type="radio" class="btn-group" default="1" label="MOD_FBLIKEBOX_FACES" description="MOD_FBLIKEBOX_FACES_DESC">
+						<option value="0">JHIDE</option>
+						<option value="1">JSHOW</option>
+					</field>
+					<field name="fbStream" type="radio" class="btn-group" default="1" label="MOD_FBLIKEBOX_STREAM" description="MOD_FBLIKEBOX_STREAM_DESC">
+						<option value="0">JHIDE</option>
+						<option value="1">JSHOW</option>
+					</field>
+					<field name="fbHeader" type="radio" class="btn-group" default="1" label="MOD_FBLIKEBOX_HEADER" description="MOD_FBLIKEBOX_HEADER_DESC">
+						<option value="0">JHIDE</option>
+						<option value="1">JSHOW</option>
+					</field>
+					<field name="fbDynamicLocale" type="radio" class="btn-group" default="1" label="MOD_FBLIKEBOX_DYN_LOCALE" description="MOD_FBLIKEBOX_DYN_LOCALE_DESC">
+                        <option value="0">JNO</option>
+                        <option value="1">JYES</option>
+                    </field>
+					<field name="fbLocale" type="list" default="en_US" label="MOD_FBLIKEBOX_LANGUAGE" description="MOD_FBLIKEBOX_LANGUAGE_DESC">
+                        <option value="af_ZA">MOD_FBLIKEBOX_AF_ZA</option>
+						<option value="ar_AR">MOD_FBLIKEBOX_AR_AR</option>
+						<option value="ay_BO">MOD_FBLIKEBOX_AY_BO</option>
+						<option value="az_AZ">MOD_FBLIKEBOX_AZ_AZ</option>
+						<option value="be_BY">MOD_FBLIKEBOX_BE_BY</option>
+						<option value="bg_BG">MOD_FBLIKEBOX_BG_BG</option>
+						<option value="bn_IN">MOD_FBLIKEBOX_BN_IN</option>
+						<option value="bs_BA">MOD_FBLIKEBOX_BS_BA</option>
+						<option value="ca_ES">MOD_FBLIKEBOX_CA_ES</option>
+						<option value="ck_US">MOD_FBLIKEBOX_CK_US</option>
+						<option value="cs_CZ">MOD_FBLIKEBOX_CS_CZ</option>
+						<option value="cy_GB">MOD_FBLIKEBOX_CY_GB</option>
+						<option value="da_DK">MOD_FBLIKEBOX_DA_DK</option>
+						<option value="de_DE">MOD_FBLIKEBOX_DE_DE</option>
+						<option value="el_GR">MOD_FBLIKEBOX_EL_GR</option>
+						<option value="en_GB">MOD_FBLIKEBOX_EN_GB</option>
+						<option value="en_PI">MOD_FBLIKEBOX_EN_PI</option>
+						<option value="en_UD">MOD_FBLIKEBOX_EN_UD</option>
+						<option value="en_US">MOD_FBLIKEBOX_EN_US</option>
+						<option value="eo_EO">MOD_FBLIKEBOX_EO_EO</option>
+						<option value="es_CL">MOD_FBLIKEBOX_ES_CL</option>
+						<option value="es_CO">MOD_FBLIKEBOX_ES_CO</option>
+						<option value="es_ES">MOD_FBLIKEBOX_ES_ES</option>
+						<option value="es_LA">MOD_FBLIKEBOX_ES_LA</option>
+						<option value="es_MX">MOD_FBLIKEBOX_ES_MX</option>
+						<option value="es_VE">MOD_FBLIKEBOX_ES_MX</option>
+						<option value="et_EE">MOD_FBLIKEBOX_ET_EE</option>
+						<option value="eu_ES">MOD_FBLIKEBOX_EU_ES</option>
+						<option value="fa_IR">MOD_FBLIKEBOX_FA_IR</option>
+						<option value="fb_LT">MOD_FBLIKEBOX_FB_LT</option>
+						<option value="fi_FI">MOD_FBLIKEBOX_FI_FI</option>
+						<option value="fo_FO">MOD_FBLIKEBOX_FO_FO</option>
+						<option value="fr_CA">MOD_FBLIKEBOX_FR_CA</option>
+						<option value="fr_FR">MOD_FBLIKEBOX_FR_FR</option>
+						<option value="ga_IE">MOD_FBLIKEBOX_GA_IE</option>
+						<option value="gl_ES">MOD_FBLIKEBOX_GL_ES</option>
+						<option value="gn_PY">MOD_FBLIKEBOX_GN_PY</option>
+						<option value="gu_IN">MOD_FBLIKEBOX_GU_IN</option>
+						<option value="he_IL">MOD_FBLIKEBOX_HE_IL</option>
+						<option value="hi_IN">MOD_FBLIKEBOX_HI_IN</option>
+						<option value="hr_HR">MOD_FBLIKEBOX_HR_HR</option>
+						<option value="hu_HU">MOD_FBLIKEBOX_HU_HU</option>
+						<option value="hy_AM">MOD_FBLIKEBOX_HY_AM</option>
+						<option value="id_ID">MOD_FBLIKEBOX_ID_ID</option>
+						<option value="is_IS">MOD_FBLIKEBOX_IS_IS</option>
+						<option value="it_IT">MOD_FBLIKEBOX_IT_IT</option>
+						<option value="ja_JP">MOD_FBLIKEBOX_JA_JP</option>
+						<option value="jv_ID">MOD_FBLIKEBOX_JV_ID</option>
+						<option value="ka_GE">MOD_FBLIKEBOX_KA_GE</option>
+						<option value="kk_KZ">MOD_FBLIKEBOX_KK_KZ</option>
+						<option value="km_KH">MOD_FBLIKEBOX_KM_KH</option>
+						<option value="kn_IN">MOD_FBLIKEBOX_KN_IN</option>
+						<option value="ko_KR">MOD_FBLIKEBOX_KO_KR</option>
+						<option value="ku_TR">MOD_FBLIKEBOX_KU_TR</option>
+						<option value="la_VA">MOD_FBLIKEBOX_LA_VA</option>
+						<option value="li_NL">MOD_FBLIKEBOX_LI_NL</option>
+						<option value="lt_LT">MOD_FBLIKEBOX_LT_LT</option>
+						<option value="lv_LV">MOD_FBLIKEBOX_LV_LV</option>
+						<option value="mg_MG">MOD_FBLIKEBOX_MG_MG</option>
+						<option value="mk_MK">MOD_FBLIKEBOX_MK_MK</option>
+						<option value="ml_IN">MOD_FBLIKEBOX_ML_IN</option>
+						<option value="mn_MN">MOD_FBLIKEBOX_MN_MN</option>
+						<option value="mr_IN">MOD_FBLIKEBOX_MR_IN</option>
+						<option value="ms_MY">MOD_FBLIKEBOX_MS_MY</option>
+						<option value="mt_MT">MOD_FBLIKEBOX_MT_MT</option>
+						<option value="nb_NO">MOD_FBLIKEBOX_NB_NO</option>
+						<option value="ne_NP">MOD_FBLIKEBOX_NE_NP</option>
+						<option value="nl_BE">MOD_FBLIKEBOX_NL_BE</option>
+						<option value="nl_NL">MOD_FBLIKEBOX_NL_NL</option>
+						<option value="nn_NO">MOD_FBLIKEBOX_NN_NO</option>
+						<option value="pa_IN">MOD_FBLIKEBOX_PA_IN</option>
+						<option value="pl_PL">MOD_FBLIKEBOX_PL_PL</option>
+						<option value="ps_AF">MOD_FBLIKEBOX_PS_AF</option>
+						<option value="pt_BR">MOD_FBLIKEBOX_PT_BR</option>
+						<option value="pt_PT">MOD_FBLIKEBOX_PT_PT</option>
+						<option value="qu_PE">MOD_FBLIKEBOX_QU_PE</option>
+						<option value="rm_CH">MOD_FBLIKEBOX_RM_CH</option>
+						<option value="ro_RO">MOD_FBLIKEBOX_RO_RO</option>
+						<option value="ru_RU">MOD_FBLIKEBOX_RU_RU</option>
+						<option value="sa_IN">MOD_FBLIKEBOX_SA_IN</option>
+						<option value="se_NO">MOD_FBLIKEBOX_SE_NO</option>
+						<option value="sk_SK">MOD_FBLIKEBOX_SK_SK</option>
+						<option value="sl_SI">MOD_FBLIKEBOX_SL_SI</option>
+						<option value="so_SO">MOD_FBLIKEBOX_SO_SO</option>
+						<option value="sq_AL">MOD_FBLIKEBOX_SQ_AL</option>
+						<option value="sr_RS">MOD_FBLIKEBOX_SR_RS</option>
+						<option value="sv_SE">MOD_FBLIKEBOX_SV_SE</option>
+						<option value="sw_KE">MOD_FBLIKEBOX_SW_KE</option>
+						<option value="sy_SY">MOD_FBLIKEBOX_SY_SY</option>
+						<option value="ta_IN">MOD_FBLIKEBOX_TA_IN</option>
+						<option value="te_IN">MOD_FBLIKEBOX_TE_IN</option>
+						<option value="tg_TJ">MOD_FBLIKEBOX_TG_TJ</option>
+						<option value="th_TH">MOD_FBLIKEBOX_TH_TH</option>
+						<option value="tl_PH">MOD_FBLIKEBOX_TL_PH</option>
+						<option value="tl_ST">MOD_FBLIKEBOX_TL_ST</option>
+						<option value="tr_TR">MOD_FBLIKEBOX_TR_TR</option>
+						<option value="tt_RU">MOD_FBLIKEBOX_TT_RU</option>
+						<option value="uk_UA">MOD_FBLIKEBOX_UK_UA</option>
+						<option value="ur_PK">MOD_FBLIKEBOX_UR_PK</option>
+						<option value="uz_UZ">MOD_FBLIKEBOX_UZ_UZ</option>
+						<option value="vi_VN">MOD_FBLIKEBOX_VI_VN</option>
+						<option value="xh_ZA">MOD_FBLIKEBOX_XH_ZA</option>
+						<option value="yi_DE">MOD_FBLIKEBOX_YI_DE</option>
+						<option value="zh_CN">MOD_FBLIKEBOX_ZH_CN</option>
+						<option value="zh_HK">MOD_FBLIKEBOX_ZH_HK</option>
+						<option value="zh_TW">MOD_FBLIKEBOX_ZH_TW</option>
+						<option value="zu_ZA">MOD_FBLIKEBOX_ZU_ZA</option>
+                    </field>
+				</fieldset>
+				<fieldset name="facebook_advanced_options" label="MOD_FBLIKEBOX_FACEBOOK_SETTINGS">
+				    <field name="facebookLikeAppId" type="text" default="" label="MOD_FBLIKEBOX_APP_ID" description="MOD_FBLIKEBOX_APP_ID_DESC" />
+                    <field name="fbLoadJsLib" type="radio" class="btn-group" default="1" label="MOD_FBLIKEBOX_LOAD_JS_LIB" description="MOD_FBLIKEBOX_LOAD_JS_LIB_DESC">
+                        <option value="0">JNO</option>
+                        <option value="1">JYES</option>
+                    </field>
+                    <field name="facebookRootDiv" type="radio" class="btn-group" default="1" label="MOD_FBLIKEBOX_ROOT" description="MOD_FBLIKEBOX_ROOT_DESC" >
+                        <option value="0">JNO</option>
+                        <option value="1">JYES</option>
+                     </field>
+                     <field name="facebookForceWall" type="radio" class="btn-group" default="0" label="MOD_FBLIKEBOX_FORCE_WALL" description="MOD_FBLIKEBOX_FORCE_WALL_DESC" >
+                        <option value="0">JNO</option>
+                        <option value="1">JYES</option>
+                     </field>
+                     <field name="facebookResponsive" type="radio" class="btn-group" default="0" label="MOD_FBLIKEBOX_RESPONSIVE" description="MOD_FBLIKEBOX_RESPONSIVE_DESC" >
+                        <option value="0">JNO</option>
+                        <option value="1">JYES</option>
+                     </field>
+				</fieldset>				
+				<fieldset name="advanced">
+					<field name="moduleclass_sfx" type="text"
+						label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+						description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+	
+					<field
+                        name="cache"
+                        type="list"
+                        default="1"
+                        label="COM_MODULES_FIELD_CACHING_LABEL"
+                        description="COM_MODULES_FIELD_CACHING_DESC">
+                        <option
+                            value="1">JGLOBAL_USE_GLOBAL</option>
+                        <option
+                            value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+                    </field>
+                    <field
+                        name="cache_time"
+                        type="text"
+                        default="900"
+                        label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+                        description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
+                    <field
+                        name="cachemode"
+                        type="hidden"
+                        default="static">
+                        <option
+                            value="static"></option>
+                    </field>
+					
+				</fieldset>
+	        </fields>
+		</config>
+	
+</extension>

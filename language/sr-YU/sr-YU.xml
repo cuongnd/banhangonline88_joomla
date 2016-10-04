@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metafile version="3.6" client="site" >
+	<tag>sr-YU</tag>
+	<name>Serbian Latin</name>
+	<description>sr-YU Serbian Latin Language Pack for Joomla!</description>
+	<version>3.6.2.1</version>
+	<creationDate>2016</creationDate>
+	<author>Serbian translation team: Joomla! Serbia</author>
+	<authorEmail>translation@joomla-serbia.com</authorEmail>
+	<authorUrl>http://www.joomla-serbia.com</authorUrl>
+	<copyright>Copyright (C) 2005 - 2016 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<metadata>
+		<name>Serbian Latin</name>
+		<tag>sr-YU</tag>
+		<rtl>0</rtl>
+		<locale>sr-YU.utf8, sr-YU.UTF-8, sr-YU, sr-YU, sr, serbian, srpski, srb, latinica, srpski latinica, Serbian Latin, serbia, srbija</locale>
+		<firstDay>1</firstDay>
+		<weekEnd>0,6</weekEnd>
+	</metadata>
+	<params />
+</metafile>

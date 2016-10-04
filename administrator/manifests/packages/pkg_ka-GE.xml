@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension version="3.6" type="package" method="upgrade">
+    <name>Georgian (ka-GE) Language Pack</name>
+    <tag>ka-GE</tag>
+    <packagename>ka-GE</packagename>
+    <version>3.6.2.1</version>
+    <creationDate>2016-08-05</creationDate>
+    <author>Georgian Translation Team</author>
+    <authorEmail>z.cherkezishvili@gmail.com</authorEmail>
+    <authorUrl>https://github.com/Zurabch</authorUrl>
+    <url></url>
+    <packager>Georgian Translation Team</packager>
+    <packagerurl>https://github.com/Zurabch/Joomla3.6-Georgian-Translation</packagerurl>
+    <description>Joomla 3.6.2.1 Georgian Language Package</description>
+    <copyright>Copyright (C) 2005 - 2016 Open Source Matters. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <files>
+        <file type="language" client="administrator" id="ka-GE">admin_ka-GE.zip</file>
+        <file type="language" client="site" id="ka-GE">site_ka-GE.zip</file>
+    </files>
+    <updateservers>
+        <server type="collection" priority="1" name="Accredited Joomla! Translations">http://update.joomla.org/language/translationlist_3.xml</server>
+    </updateservers>
+</extension>

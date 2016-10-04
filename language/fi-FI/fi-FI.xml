@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metafile version="3.6" client="site">
+	<tag>fi-FI</tag>
+	<name>Finnish (fi-FI)</name>
+	<version>3.6.2.1</version>
+	<creationDate>2016-08-26</creationDate>
+	<author>Finnish translation team : Joomla.fi</author>
+	<authorEmail>mortti@joomla.fi</authorEmail>
+	<authorUrl>http://www.joomla.fi</authorUrl>
+	<copyright>Copyright (C) 2005 - 2016 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<description>Finnish site language for Joomla 3.6.2</description>
+	<metadata>
+		<name>Finnish (fi-FI)</name>
+		<tag>fi-FI</tag>
+		<rtl>0</rtl>
+		<locale>fi_FI.utf8, fi_FI.UTF-8, fi_FI, fin_FI, fi, finnish, finnish-fi, fin, finland</locale>
+		<firstDay>1</firstDay>
+		<weekEnd>0,6</weekEnd>
+	</metadata>
+	<params />
+</metafile>

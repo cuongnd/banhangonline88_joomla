@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="package" version="3.3">
+	<name>Hindi Language Pack</name>
+	<packagename>hi-IN</packagename>
+	<version>3.3.6.1</version>
+	<creationDate>2014-12-11</creationDate>
+	<author>Hindi translation team</author>
+	<authorEmail>info@bhavyasoft.com</authorEmail>
+	<authorUrl>htpp://www.bhavyasoft.com</authorUrl>
+	<copyright>Copyright (C) 2005 - 2014 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>  
+	<url>htpp://www.bhavyasoft.com</url>
+	<packager>Team BhavyaSoft.com</packager>
+	<packagerurl>htpp://www.bhavyasoft.com</packagerurl>
+	<description>Hindi language pack for Joomla 3.3.6</description>
+	<files>
+		<file type="language" client="administrator" id="hi-IN">admin_hi-IN.zip</file>
+		<file type="language" client="site" id="hi-IN">site_hi-IN.zip</file>
+	</files>
+	<updateservers>
+		<server type="collection" priority="1" name="Accredited Joomla! Translations">http://update.joomla.org/language/translationlist_3.xml</server>
+	</updateservers>
+</extension>

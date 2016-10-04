@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+    <layout title="Popup Window">
+	<message>
+	    Displays a livechat popup window.
+	</message>
+    </layout>
+    <state>
+	<name>Popup Window</name>
+	<description>Displays a livechat popup window.</description>
+	<params>
+	    <param name="popup_mode" type="list" default="" label="Popup Mode:" description="POPUP_MODE_LBL_DESCRIPTION">
+		<option value="">USE_DEFAULT_OPTION</option>
+		<option value="popup">Popup Mode</option>
+		<option value="iframe">IFrame Mode</option>
+	    </param>
+	    <param name="@spacer" type="spacer" default="" label="" description="" />
+	    <param name="specific_operators" type="text" default="" label="SEND_TO_SPECIFIC_OPERATORS_LBL" description="SEND_TO_SPECIFIC_OPERATORS_LBL_DESC" />
+	    <param name="specific_department" type="text" default="" label="SEND_TO_SPECIFIC_DEPARTMENT_LBL" description="SEND_TO_SPECIFIC_DEPARTMENT_LBL_DESC" />
+	    <param name="specific_route_id" type="text" default="" label="SEND_TO_SPECIFIC_ROUTEID_LBL" description="SEND_TO_SPECIFIC_ROUTEID_LBL_DESC" />
+	</params>
+    </state>
+</metadata>

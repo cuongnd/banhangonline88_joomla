@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="package" version="3.5" method="upgrade">
+  <name>Norwegian Bokmål (nb-NO) Language Pack</name>
+  <packagename>nb-NO</packagename>
+  <version>3.5.1.1</version>
+  <creationDate>2016-04-06</creationDate>
+  <author>Norsk Joomla!</author>
+  <authorEmail>oversettelser@norskjoomla.no</authorEmail>
+  <authorUrl>http://www.norskjoomla.no</authorUrl>
+  <description>Norsk bokmål (nb-NO) språkpakke</description>
+  <files>
+    <folder type="language" client="site" id="nb-NO">site_nb-NO</folder>
+    <folder type="language" client="administrator" id="nb-NO">admin_nb-NO</folder>
+  </files>
+  <updateservers>
+    <server type="collection" priority="1" name="Accredited Joomla! Translations">http://update.joomla.org/language/translationlist_3.xml</server>
+  </updateservers>
+</extension>

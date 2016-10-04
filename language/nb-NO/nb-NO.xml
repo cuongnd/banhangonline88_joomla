@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metafile version="3.5" client="site">
+	<name>Norsk bokmål (nb-NO)</name>
+	<version>3.5.1.1</version>
+	<creationDate>2016-04-06</creationDate>
+	<author>Norsk Joomla!</author>
+	<authorEmail>oversettelser@norskjoomla.no</authorEmail>
+	<authorUrl>http://www.norskjoomla.no</authorUrl>
+	<copyright>Copyright (C) 2005 - 2016 Open Source Matters &amp; Norsk Joomla!. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<description>Norwegian bokmål (nb-NO) site language</description>
+	<metadata>
+		<name>Norsk bokmål (nb-NO)</name>
+		<tag>nb-NO</tag>
+		<rtl>0</rtl>
+		<locale>no_NO.utf-8, nb_NO.utf-8, no_NO.UTF-8, nb_NO.UTF-8, nb_NO.utf8, no_NO.utf8, no, nb, nob-NO, no_NO, nb_NO, Norwegian_Bokmal, nor, norwegian, bokmal, bokmål</locale>
+		<firstDay>0</firstDay>
+		<weekEnd>0,6</weekEnd>
+	</metadata>
+	<params />
+</metafile>

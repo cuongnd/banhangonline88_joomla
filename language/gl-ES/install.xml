@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<extension version="3.3" client="site" type="language" method="upgrade">
+    <name>Galician (Galego)</name>
+    <tag>gl-ES</tag>
+    <version>3.3.1.2</version>
+    <creationDate>2014-07-21</creationDate>
+    <author>Proxecto Trasno</author>
+    <authorEmail>proxecto@trasno.net</authorEmail>
+    <authorUrl>http://www.trasno.net</authorUrl>
+    <copyright>Copyright (C) 2005 - 2014 Open Source Matters. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <description>gl-ES site language</description>
+    <files>
+		<filename>index.html</filename>
+        <filename>gl-ES.com_ajax.ini</filename>
+        <filename>gl-ES.com_config.ini</filename>
+        <filename>gl-ES.com_contact.ini</filename>
+        <filename>gl-ES.com_content.ini</filename>
+        <filename>gl-ES.com_finder.ini</filename>
+        <filename>gl-ES.com_mailto.ini</filename>
+        <filename>gl-ES.com_media.ini</filename>
+        <filename>gl-ES.com_messages.ini</filename>
+        <filename>gl-ES.com_newsfeeds.ini</filename>
+        <filename>gl-ES.com_search.ini</filename>
+        <filename>gl-ES.com_tags.ini</filename>
+        <filename>gl-ES.com_users.ini</filename>
+        <filename>gl-ES.com_weblinks.ini</filename>
+        <filename>gl-ES.com_wrapper.ini</filename>
+        <filename>gl-ES.files_joomla.sys.ini</filename>
+        <filename>gl-ES.finder_cli.ini</filename>
+        <filename>gl-ES.ini</filename>
+        <filename>gl-ES.lib_fof.sys.ini</filename>
+        <filename>gl-ES.lib_idna_convert.sys.ini</filename>
+        <filename>gl-ES.lib_joomla.ini</filename>
+        <filename>gl-ES.lib_joomla.sys.ini</filename>
+        <filename>gl-ES.lib_phpass.sys.ini</filename>
+        <filename>gl-ES.lib_phpmailer.sys.ini</filename>
+        <filename>gl-ES.lib_phputf8.sys.ini</filename>
+        <filename>gl-ES.lib_simplepie.sys.ini</filename>
+        <filename>gl-ES.localise.php</filename>
+        <filename>gl-ES.mod_articles_archive.ini</filename>
+        <filename>gl-ES.mod_articles_archive.sys.ini</filename>
+        <filename>gl-ES.mod_articles_categories.ini</filename>
+        <filename>gl-ES.mod_articles_categories.sys.ini</filename>
+        <filename>gl-ES.mod_articles_category.ini</filename>
+        <filename>gl-ES.mod_articles_category.sys.ini</filename>
+        <filename>gl-ES.mod_articles_latest.ini</filename>
+        <filename>gl-ES.mod_articles_latest.sys.ini</filename>
+        <filename>gl-ES.mod_articles_news.ini</filename>
+        <filename>gl-ES.mod_articles_news.sys.ini</filename>
+        <filename>gl-ES.mod_articles_popular.ini</filename>
+        <filename>gl-ES.mod_articles_popular.sys.ini</filename>
+        <filename>gl-ES.mod_banners.ini</filename>
+        <filename>gl-ES.mod_banners.sys.ini</filename>
+        <filename>gl-ES.mod_breadcrumbs.ini</filename>
+        <filename>gl-ES.mod_breadcrumbs.sys.ini</filename>
+        <filename>gl-ES.mod_custom.ini</filename>
+        <filename>gl-ES.mod_custom.sys.ini</filename>
+        <filename>gl-ES.mod_feed.ini</filename>
+        <filename>gl-ES.mod_feed.sys.ini</filename>
+        <filename>gl-ES.mod_finder.ini</filename>
+        <filename>gl-ES.mod_finder.sys.ini</filename>
+        <filename>gl-ES.mod_footer.ini</filename>
+        <filename>gl-ES.mod_footer.sys.ini</filename>
+        <filename>gl-ES.mod_languages.ini</filename>
+        <filename>gl-ES.mod_languages.sys.ini</filename>
+        <filename>gl-ES.mod_login.ini</filename>
+        <filename>gl-ES.mod_login.sys.ini</filename>
+        <filename>gl-ES.mod_menu.ini</filename>
+        <filename>gl-ES.mod_menu.sys.ini</filename>
+        <filename>gl-ES.mod_random_image.ini</filename>
+        <filename>gl-ES.mod_random_image.sys.ini</filename>
+        <filename>gl-ES.mod_related_items.ini</filename>
+        <filename>gl-ES.mod_related_items.sys.ini</filename>
+        <filename>gl-ES.mod_search.ini</filename>
+        <filename>gl-ES.mod_search.sys.ini</filename>
+        <filename>gl-ES.mod_stats.ini</filename>
+        <filename>gl-ES.mod_stats.sys.ini</filename>
+        <filename>gl-ES.mod_syndicate.ini</filename>
+        <filename>gl-ES.mod_syndicate.sys.ini</filename>
+        <filename>gl-ES.mod_tags_popular.ini</filename>
+        <filename>gl-ES.mod_tags_popular.sys.ini</filename>
+        <filename>gl-ES.mod_tags_similar.ini</filename>
+        <filename>gl-ES.mod_tags_similar.sys.ini</filename>
+        <filename>gl-ES.mod_users_latest.ini</filename>
+        <filename>gl-ES.mod_users_latest.sys.ini</filename>
+        <filename>gl-ES.mod_weblinks.ini</filename>
+        <filename>gl-ES.mod_weblinks.sys.ini</filename>
+        <filename>gl-ES.mod_whosonline.ini</filename>
+        <filename>gl-ES.mod_whosonline.sys.ini</filename>
+        <filename>gl-ES.mod_wrapper.ini</filename>
+        <filename>gl-ES.mod_wrapper.sys.ini</filename>
+        <filename>gl-ES.tpl_beez3.ini</filename>
+        <filename>gl-ES.tpl_beez3.sys.ini</filename>
+        <filename>gl-ES.tpl_protostar.ini</filename>
+        <filename>gl-ES.tpl_protostar.sys.ini</filename>
+        <filename file="meta">gl-ES.xml</filename>
+        <filename file="meta">install.xml</filename>
+    </files>
+    <params />
+</extension>

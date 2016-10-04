@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension version="3.4.4.1" client="site" type="language" method="upgrade">
+	<name>Dari Language pack</name>
+	<tag>prs-AF</tag>
+	<version>3.4.4.1</version>
+	<creationDate>2015-09-22</creationDate>
+	<author>Dari Translation Team - Joomla.af</author>
+	<authorEmail>dari@joomla.af</authorEmail>
+	<authorUrl>http://www.joomla.af</authorUrl>
+	<copyright>Copyright (C) 2013-2015 joomla.af . All rights reserved. حقوق مادی و معنوی اثر محفوظ است</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<description>prs-AF site language</description>
+	<files>
+		<filename>prs-AF.ini</filename>
+		<filename>prs-AF.com_ajax.ini</filename>
+		<filename>prs-AF.com_config.ini</filename>
+		<filename>prs-AF.com_contact.ini</filename>
+		<filename>prs-AF.com_content.ini</filename>
+		<filename>prs-AF.com_finder.ini</filename>
+		<filename>prs-AF.com_mailto.ini</filename>
+		<filename>prs-AF.com_media.ini</filename>
+		<filename>prs-AF.com_messages.ini</filename>
+		<filename>prs-AF.com_newsfeeds.ini</filename>
+		<filename>prs-AF.com_search.ini</filename>
+		<filename>prs-AF.com_tags.ini</filename>
+		<filename>prs-AF.com_users.ini</filename>
+		<filename>prs-AF.com_weblinks.ini</filename>
+		<filename>prs-AF.com_wrapper.ini</filename>
+		<filename>prs-AF.files_joomla.sys.ini</filename>
+		<filename>prs-AF.finder_cli.ini</filename>
+		<filename>prs-AF.lib_fof.ini</filename>
+		<filename>prs-AF.lib_fof.sys.ini</filename>
+		<filename>prs-AF.lib_idna_convert.sys.ini</filename>
+		<filename>prs-AF.lib_joomla.ini</filename>
+		<filename>prs-AF.lib_joomla.sys.ini</filename>
+		<filename>prs-AF.lib_phpass.sys.ini</filename>
+		<filename>prs-AF.lib_phputf8.sys.ini</filename>
+		<filename>prs-AF.lib_simplepie.sys.ini</filename>
+		<filename>prs-AF.localise.php</filename>
+		<filename>prs-AF.mod_articles_archive.ini</filename>
+		<filename>prs-AF.mod_articles_archive.sys.ini</filename>
+		<filename>prs-AF.mod_articles_categories.ini</filename>
+		<filename>prs-AF.mod_articles_categories.sys.ini</filename>
+		<filename>prs-AF.mod_articles_category.ini</filename>
+		<filename>prs-AF.mod_articles_category.sys.ini</filename>
+		<filename>prs-AF.mod_articles_latest.ini</filename>
+		<filename>prs-AF.mod_articles_latest.sys.ini</filename>
+		<filename>prs-AF.mod_articles_news.ini</filename>
+		<filename>prs-AF.mod_articles_news.sys.ini</filename>
+		<filename>prs-AF.mod_articles_popular.ini</filename>
+		<filename>prs-AF.mod_articles_popular.sys.ini</filename>
+		<filename>prs-AF.mod_banners.ini</filename>
+		<filename>prs-AF.mod_banners.sys.ini</filename>
+		<filename>prs-AF.mod_breadcrumbs.ini</filename>
+		<filename>prs-AF.mod_breadcrumbs.sys.ini</filename>
+		<filename>prs-AF.mod_custom.ini</filename>
+		<filename>prs-AF.mod_custom.sys.ini</filename>
+		<filename>prs-AF.mod_feed.ini</filename>
+		<filename>prs-AF.mod_feed.sys.ini</filename>
+		<filename>prs-AF.mod_finder.ini</filename>
+		<filename>prs-AF.mod_finder.sys.ini</filename>
+		<filename>prs-AF.mod_footer.ini</filename>
+		<filename>prs-AF.mod_footer.sys.ini</filename>
+		<filename>prs-AF.mod_languages.ini</filename>
+		<filename>prs-AF.mod_languages.sys.ini</filename>
+		<filename>prs-AF.mod_login.ini</filename>
+		<filename>prs-AF.mod_login.sys.ini</filename>
+		<filename>prs-AF.mod_menu.ini</filename>
+		<filename>prs-AF.mod_menu.sys.ini</filename>
+		<filename>prs-AF.mod_random_image.ini</filename>
+		<filename>prs-AF.mod_random_image.sys.ini</filename>
+		<filename>prs-AF.mod_related_items.ini</filename>
+		<filename>prs-AF.mod_related_items.sys.ini</filename>
+		<filename>prs-AF.mod_search.ini</filename>
+		<filename>prs-AF.mod_search.sys.ini</filename>
+		<filename>prs-AF.mod_stats.ini</filename>
+		<filename>prs-AF.mod_stats.sys.ini</filename>
+		<filename>prs-AF.mod_syndicate.ini</filename>
+		<filename>prs-AF.mod_syndicate.sys.ini</filename>
+		<filename>prs-AF.mod_tags_popular.ini</filename>
+		<filename>prs-AF.mod_tags_popular.sys.ini</filename>
+		<filename>prs-AF.mod_tags_similar.ini</filename>
+		<filename>prs-AF.mod_tags_similar.sys.ini</filename>
+		<filename>prs-AF.mod_users_latest.ini</filename>
+		<filename>prs-AF.mod_users_latest.sys.ini</filename>
+		<filename>prs-AF.mod_weblinks.ini</filename>
+		<filename>prs-AF.mod_weblinks.sys.ini</filename>
+		<filename>prs-AF.mod_whosonline.ini</filename>
+		<filename>prs-AF.mod_whosonline.sys.ini</filename>
+		<filename>prs-AF.mod_wrapper.ini</filename>
+		<filename>prs-AF.mod_wrapper.sys.ini</filename>
+		<filename>prs-AF.tpl_beez3.ini</filename>
+		<filename>prs-AF.tpl_beez3.sys.ini</filename>
+		<filename>prs-AF.tpl_protostar.ini</filename>
+		<filename>prs-AF.tpl_protostar.sys.ini</filename>
+		<filename>index.html</filename>
+		<filename file="meta">install.xml</filename>
+		<filename file="meta">prs-AF.xml</filename>
+	</files>
+	<media destination="prs-AF">
+	    <filename>index.html</filename>
+		<filename>js/index.html</filename>
+		<filename>js/calendar-setup.js</filename>
+		<filename>js/calendar.js</filename>
+	</media>
+	<params />
+</extension>

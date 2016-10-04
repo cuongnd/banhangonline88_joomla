@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="package" version="3.6" method="upgrade">
+	<name>Serbian Latin Language Pack</name>
+	<packagename>sr-YU</packagename>
+	<version>3.6.2.1</version>
+	<creationDate>30/06/2016</creationDate>
+	<author>Joomla! Serbia - Translation Team</author>
+	<authorEmail>translation@joomla-serbia.com</authorEmail>
+	<authorUrl>http://www.joomla-serbia.com/</authorUrl>
+	<copyright>Copyright (C) 2005 - 2016 Open Source Matters. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<url></url>
+	<packager>Joomla! Serbian Latin</packager>
+	<packagerurl>http://www.joomla-serbia.com</packagerurl>
+	<description><![CDATA[3.6 Joomla Serbian Latin Language Package]]></description>
+	<files>
+		<file type="language" client="site" id="sr-YU">site_sr-YU.zip</file>
+		<file type="language" client="administrator" id="sr-YU">admin_sr-YU.zip</file>
+	</files>
+</extension>

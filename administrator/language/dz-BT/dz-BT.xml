@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metafile version="3.4" client="administrator">
+	<tag>dz-BT</tag>
+	<name>Dzongkha (Bhutan)</name>
+	<version>3.4.5.1</version>
+	<creationDate>2015-11-25</creationDate>
+	<author>Dzongkha Translation Team</author>
+	<authorEmail>translators.cst@gmail.com</authorEmail>
+	<authorUrl>www.cst.edu.bt</authorUrl>
+	<copyright>Copyright (C) 2015 Open Source Matters. All rights reserved.</copyright>
+	<copyright>Dzongkha Language Translators, ITD, CST </copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<description>Dzongkha Language Pack for Joomla Admin</description>
+	<metadata>
+		<name>Dzongkha (Bhutan)</name>
+		<tag>dz-BT</tag>
+		<rtl>0</rtl>
+		<locale>dz_BT.UTF-8</locale>
+		<firstDay>0</firstDay>
+		<weekEnd></weekEnd>
+	</metadata>
+	<params />
+</metafile>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.6" client="site" type="language" method="upgrade">
+    <name>Georgian (ka-GE)</name>
+    <tag>ka-GE</tag>
+    <version>3.6.2.1</version>
+    <creationDate>2016-08-05</creationDate>
+    <author>Georgian Translation Team</author>
+    <authorEmail>z.cherkezishvili@gmail.com</authorEmail>
+    <authorUrl>https://github.com/Zurabch</authorUrl>
+    <copyright>Copyright (C) 2005 - 2016 Open Source Matters. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <description>ka-GE site language</description>
+    <files>
+        <filename>index.html</filename>
+        <filename>ka-GE.com_ajax.ini</filename>
+        <filename>ka-GE.com_config.ini</filename>
+        <filename>ka-GE.com_contact.ini</filename>
+        <filename>ka-GE.com_content.ini</filename>
+        <filename>ka-GE.com_finder.ini</filename>
+        <filename>ka-GE.com_mailto.ini</filename>
+        <filename>ka-GE.com_media.ini</filename>
+        <filename>ka-GE.com_messages.ini</filename>
+        <filename>ka-GE.com_newsfeeds.ini</filename>
+        <filename>ka-GE.com_search.ini</filename>
+        <filename>ka-GE.com_tags.ini</filename>
+        <filename>ka-GE.com_users.ini</filename>
+        <filename>ka-GE.com_weblinks.ini</filename>
+        <filename>ka-GE.com_wrapper.ini</filename>
+        <filename>ka-GE.files_joomla.sys.ini</filename>
+        <filename>ka-GE.finder_cli.ini</filename>
+        <filename>ka-GE.ini</filename>
+        <filename>ka-GE.lib_fof.ini</filename>
+        <filename>ka-GE.lib_fof.sys.ini</filename>
+        <filename>ka-GE.lib_idna_convert.sys.ini</filename>
+        <filename>ka-GE.lib_joomla.ini</filename>
+        <filename>ka-GE.lib_joomla.sys.ini</filename>
+        <filename>ka-GE.lib_phpass.sys.ini</filename>
+        <filename>ka-GE.lib_phputf8.sys.ini</filename>
+        <filename>ka-GE.lib_simplepie.sys.ini</filename>
+        <filename>ka-GE.localise.php</filename>
+        <filename>ka-GE.mod_articles_archive.ini</filename>
+        <filename>ka-GE.mod_articles_archive.sys.ini</filename>
+        <filename>ka-GE.mod_articles_categories.ini</filename>
+        <filename>ka-GE.mod_articles_categories.sys.ini</filename>
+        <filename>ka-GE.mod_articles_category.ini</filename>
+        <filename>ka-GE.mod_articles_category.sys.ini</filename>
+        <filename>ka-GE.mod_articles_latest.ini</filename>
+        <filename>ka-GE.mod_articles_latest.sys.ini</filename>
+        <filename>ka-GE.mod_articles_news.ini</filename>
+        <filename>ka-GE.mod_articles_news.sys.ini</filename>
+        <filename>ka-GE.mod_articles_popular.ini</filename>
+        <filename>ka-GE.mod_articles_popular.sys.ini</filename>
+        <filename>ka-GE.mod_banners.ini</filename>
+        <filename>ka-GE.mod_banners.sys.ini</filename>
+        <filename>ka-GE.mod_breadcrumbs.ini</filename>
+        <filename>ka-GE.mod_breadcrumbs.sys.ini</filename>
+        <filename>ka-GE.mod_custom.ini</filename>
+        <filename>ka-GE.mod_custom.sys.ini</filename>
+        <filename>ka-GE.mod_feed.ini</filename>
+        <filename>ka-GE.mod_feed.sys.ini</filename>
+        <filename>ka-GE.mod_finder.ini</filename>
+        <filename>ka-GE.mod_finder.sys.ini</filename>
+        <filename>ka-GE.mod_footer.ini</filename>
+        <filename>ka-GE.mod_footer.sys.ini</filename>
+        <filename>ka-GE.mod_languages.ini</filename>
+        <filename>ka-GE.mod_languages.sys.ini</filename>
+        <filename>ka-GE.mod_login.ini</filename>
+        <filename>ka-GE.mod_login.sys.ini</filename>
+        <filename>ka-GE.mod_menu.ini</filename>
+        <filename>ka-GE.mod_menu.sys.ini</filename>
+        <filename>ka-GE.mod_random_image.ini</filename>
+        <filename>ka-GE.mod_random_image.sys.ini</filename>
+        <filename>ka-GE.mod_related_items.ini</filename>
+        <filename>ka-GE.mod_related_items.sys.ini</filename>
+        <filename>ka-GE.mod_search.ini</filename>
+        <filename>ka-GE.mod_search.sys.ini</filename>
+        <filename>ka-GE.mod_stats.ini</filename>
+        <filename>ka-GE.mod_stats.sys.ini</filename>
+        <filename>ka-GE.mod_syndicate.ini</filename>
+        <filename>ka-GE.mod_syndicate.sys.ini</filename>
+        <filename>ka-GE.mod_tags_popular.ini</filename>
+        <filename>ka-GE.mod_tags_popular.sys.ini</filename>
+        <filename>ka-GE.mod_tags_similar.ini</filename>
+        <filename>ka-GE.mod_tags_similar.sys.ini</filename>
+        <filename>ka-GE.mod_users_latest.ini</filename>
+        <filename>ka-GE.mod_users_latest.sys.ini</filename>
+        <filename>ka-GE.mod_weblinks.ini</filename>
+        <filename>ka-GE.mod_weblinks.sys.ini</filename>
+        <filename>ka-GE.mod_whosonline.ini</filename>
+        <filename>ka-GE.mod_whosonline.sys.ini</filename>
+        <filename>ka-GE.mod_wrapper.ini</filename>
+        <filename>ka-GE.mod_wrapper.sys.ini</filename>
+        <filename>ka-GE.tpl_beez3.ini</filename>
+        <filename>ka-GE.tpl_beez3.sys.ini</filename>
+        <filename>ka-GE.tpl_protostar.ini</filename>
+        <filename>ka-GE.tpl_protostar.sys.ini</filename>
+        <filename file="meta">ka-GE.xml</filename>
+        <filename file="meta">install.xml</filename>
+    </files>
+    <params />
+</extension>

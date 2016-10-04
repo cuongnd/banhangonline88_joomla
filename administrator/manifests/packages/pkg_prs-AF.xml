@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="package" version="3.4.4.1" method="upgrade">
+	<name>Dari Language Pack</name>
+	<packagename>prs-AF</packagename>
+	<version>3.4.4.1</version>
+	<creationDate>2015-09-22</creationDate>
+	<author>Dari Translation Team - Joomla.af</author>
+	<authorEmail>dari@joomla.af</authorEmail>
+	<authorUrl>http://www.joomla.af</authorUrl>
+	<copyright>Copyright (C) 2013-2015 joomla.af . All rights reserved. حقوق مادی و معنوی اثر محفوظ است</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<url></url>
+	<packager>Joomla! Dari</packager>
+	<packagerurl>http://www.joomla.af</packagerurl>
+	<description><![CDATA[<div style="text-align:right;">
+		<h3>Dari Language Package for Joomla 3.4.4 - v1</h3>
+		<span style="direction:rtl; font-family:tahoma; text-align:right">
+ترجمه دری برای جوملا 3.4 - کاری از تیم جوملا دری، مترجم مورد تأیید جوملا برای زبان فارسی دری در افغانستان و سایر کشورهای فارسی زبان</span>
+		</div>]]></description>
+	<files>
+		<file type="language" client="site" id="prs-AF">site_prs-AF.zip</file>
+		<file type="language" client="administrator" id="prs-AF">admin_prs-AF.zip</file>
+	</files>
+	<updateservers>
+		<server type="collection" priority="1" name="Accredited Joomla! Translations">http://update.joomla.org/language/translationlist_3.xml</server>
+	</updateservers>
+</extension>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metafile version="3.2" client="site" >
+	<tag>srp-ME</tag>
+	<name>Montenegrin</name>
+	<description>srp-ME Montenegrin Language Pack for Joomla!</description>
+	<version>3.3.1.1</version>
+	<creationDate>2014</creationDate>
+	<author>Tolja</author>
+	<authorEmail>toljadj@gmail.com</authorEmail>
+	<authorUrl>http://www.timhosting.me</authorUrl>
+	<copyright>Copyright (C) 2005 - 2014 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<metadata>
+		<name>Montenegrin</name>
+		<tag>srp-ME</tag>
+		<rtl>0</rtl>
+		<locale>srp-ME.utf8, srp-ME.UTF-8, srp-ME, srp-ME, Montenegro, Montenegrin, crnogorski, Crna Gora</locale>
+		<firstDay>1</firstDay>
+		<weekEnd>0,6</weekEnd>
+	</metadata>
+	<params />
+</metafile>

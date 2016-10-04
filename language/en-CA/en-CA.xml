@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metafile version="3.6" client="site">
+	<name>English (en-CA)</name>
+	<version>3.6.2.2</version>
+	<creationDate>August 2016</creationDate>
+	<author>stevec4</author>
+	<authorEmail>stevec4@comcast.net</authorEmail>
+	<authorUrl>www.joomla.org</authorUrl>
+	<copyright>Copyright (C) 2005 - 2016 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<description>en-CA site language</description>
+	<metadata>
+		<name>English (en-CA)</name>
+		<tag>en-CA</tag>
+		<rtl>0</rtl>
+		<locale>en_CA.utf8, en_CA.UTF-8, en_CA, eng_CA, en, english, english-ca, ca, can, canadian, canada, canadian, ca, canada, canada</locale>
+		<firstDay>1</firstDay>
+		<weekEnd>0,6</weekEnd>
+	</metadata>
+	<params />
+</metafile>
