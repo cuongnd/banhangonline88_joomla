@@ -10,7 +10,6 @@ defined('_JEXEC') or die('Restricted access');
 ?><?php
 class hikamarketProductClass extends hikamarketClass {
 
-	public static $list_md5;
 	protected $tables = array('shop.product');
 	protected $pkeys = array('product_id');
 
@@ -2097,12 +2096,9 @@ class hikamarketProductClass extends hikamarketClass {
 			}
 			if(!empty($vendorsId)) {
 				$query = 'SELECT * FROM '.hikamarket::table('vendor').' WHERE vendor_id IN (' . implode(',', $vendorsId).')';
-				$md5_query=md5($query);
-				if(!isset(static::$list_md5[$md5_query])){
-					$this->db->setQuery($query);
-					static::$list_md5[$md5_query]=$this->db->loadObjectList('vendor_id');
-				}
-				$vendors = static::$list_md5;
+				$this->db->setQuery($query);
+				$vendors = $this->db->loadObjectList('vendor_id');
+
 				$stringSafe = (method_exists($app, 'stringURLSafe'));
 				foreach($vendors as &$vendor) {
 					$vendor->alias = (empty($vendor->vendor_alias)) ? $vendor->vendor_name : $vendor->vendor_alias;

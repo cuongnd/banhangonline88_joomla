@@ -418,6 +418,8 @@ var initVote = function(){
 
 if(!window.hikaVotes)
 	window.hikaVotes = [];
-jQuery(document).ready(function($){
+
+/* Vote initialization */
+window.hikashop.ready(function(){
 	initVote();
 });

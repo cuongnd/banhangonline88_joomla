@@ -139,6 +139,10 @@ class moZTTabsHelper{
 
     }
 
+    function renderLayout(){
+        //include necessary view
+        require(JModuleHelper::getLayoutPath('mod_zt_tabs','zt_default'));
+    }
 
     //Get title module by id input
     function getCategoryTileById($catId){

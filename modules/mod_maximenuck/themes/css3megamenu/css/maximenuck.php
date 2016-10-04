@@ -1,41 +1,6 @@
 <?php
 header('content-type: text/css');
 $id = htmlspecialchars($_GET['monid'], ENT_QUOTES);
-$list_bg='
-background: #BE93C5; /* fallback for old browsers */
-background: -webkit-linear-gradient(to left, #BE93C5 , #7BC6CC); /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to left, #BE93C5 , #7BC6CC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-||
-background: #BE93C5; /* fallback for old browsers */
-background: -webkit-linear-gradient(to left, #BE93C5 , #7BC6CC); /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to left, #BE93C5 , #7BC6CC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-||
-background: #fceabb; /* fallback for old browsers */
-background: -webkit-linear-gradient(to left, #fceabb , #f8b500); /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to left, #fceabb , #f8b500); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-||
-background: #f85032; /* fallback for old browsers */
-background: -webkit-linear-gradient(to left, #f85032 , #e73827); /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to left, #f85032 , #e73827); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-||
-background: #f79d00; /* fallback for old browsers */
-background: -webkit-linear-gradient(to left, #f79d00 , #64f38c); /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to left, #f79d00 , #64f38c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-||
-background: #56ab2f; /* fallback for old browsers */
-background: -webkit-linear-gradient(to left, #56ab2f , #a8e063); /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to left, #56ab2f , #a8e063); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-||
-background: #000428; /* fallback for old browsers */
-background: -webkit-linear-gradient(to left, #000428 , #004e92); /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to left, #000428 , #004e92); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-||
-background: #ff4b1f; /* fallback for old browsers */
-background: -webkit-linear-gradient(to left, #ff4b1f , #ff9068); /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to left, #ff4b1f , #ff9068); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-';
-$list_bg=explode(',',$list_bg);
-
 ?>
 
 /*-----------------------------------------------------------------------------------------------------------
@@ -69,19 +34,33 @@ div#<?php echo $id; ?> ul.maximenuck {
 	display: block !important;
 	float: none !important;
 	visibility: visible !important;
+	opacity: 1 !important;
 	list-style:none;
 	margin:0 auto;
 	height: auto;
 	padding:0px 20px 0px 20px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
 	filter: none;
-	background: #666b7e;
+	background: #014464;
+	background: -moz-linear-gradient(top,  #0272a7 0%, #013953 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#0272a7), color-stop(100%,#013953));
+	background: -webkit-linear-gradient(top,  #0272a7 0%,#013953 100%);
+	background: -o-linear-gradient(top,  #0272a7 0%,#013953 100%);
+	background: -ms-linear-gradient(top,  #0272a7 0%,#013953 100%);
+	background: linear-gradient(top,  #0272a7 0%,#013953 100%);
+	border: 1px solid #002232;
+	-moz-box-shadow:inset 0px 0px 1px #edf9ff;
+	-webkit-box-shadow:inset 0px 0px 1px #edf9ff;
+	box-shadow:inset 0px 0px 1px #edf9ff;
 	text-align: left;
 	zoom: 1;
 }
 
 /* vertical menu */
 div#<?php echo $id; ?>.maximenuckv ul.maximenuck {
-	padding: 0px;
+	padding: 5px;
 }
 
 div#<?php echo $id; ?> ul.maximenuck:after {
@@ -128,39 +107,42 @@ div#<?php echo $id; ?>.maximenuckv ul.maximenuck li.maximenuck.level1 {
 
 div#<?php echo $id; ?> ul.maximenuck li.maximenuck.level1:hover,
 div#<?php echo $id; ?> ul.maximenuck li.maximenuck.level1.active {
-	background: #f85032; /* fallback for old browsers */
-
-	background: -webkit-linear-gradient(to left, #f85032 , #e73827); /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(to left, #f85032 , #e73827); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	border: 1px solid #777777;
+	background: #F4F4F4;
+	background: -moz-linear-gradient(top, #F4F4F4, #EEEEEE);
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#F4F4F4), to(#EEEEEE));
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
 }
-div#<?php echo $id; ?> ul.maximenuck li.maximenuck.level1 > a{
-	border-bottom: 1px solid #ccc;
-	}
 
 div#<?php echo $id; ?> ul.maximenuck li.maximenuck.level1 > a,
 div#<?php echo $id; ?> ul.maximenuck li.maximenuck.level1 > span.separator {
 	font-size:14px;
-	color: #fff;
+	color: #EEEEEE;
 	display:block;
 	float : none !important;
 	float : left;
 	position:relative;
 	text-decoration:none;
+	text-shadow: 1px 1px 1px #000;
 	box-shadow: none;
 	min-height : 34px;
 	outline : none;
 	background : none;
 	filter: none;
+	border : none;
 	padding : 0;
 	white-space: normal;
-
 	filter: none;
 }
 
 /* parent item on mouseover (if subemnus exists) horizonal menu only */
 div#<?php echo $id; ?>.maximenuckh ul.maximenuck li.maximenuck.level1.parent:hover,
 div#<?php echo $id; ?>.maximenuckh ul.maximenuck li.maximenuck.level1.parent:hover {
-
+	-moz-border-radius: 5px 5px 0px 0px;
+	-webkit-border-radius: 5px 5px 0px 0px;
+	border-radius: 5px 5px 0px 0px;
 }
 
 /* item color on mouseover */
@@ -168,7 +150,8 @@ div#<?php echo $id; ?> ul.maximenuck li.maximenuck.level1:hover > a span.titreck
 div#<?php echo $id; ?> ul.maximenuck li.maximenuck.level1.active > a span.titreck,
 div#<?php echo $id; ?> ul.maximenuck li.maximenuck.level1:hover > span.separator,
 div#<?php echo $id; ?> ul.maximenuck li.maximenuck.level1.active > span.separator {
-	color:#fff;
+	color : #161616;
+	text-shadow: 1px 1px 1px #ffffff;
 }
 
 div#<?php echo $id; ?>.maximenuckh ul.maximenuck li.level1.parent > a,
@@ -202,10 +185,13 @@ div#<?php echo $id; ?>.maximenuckh ul.maximenuck li.level1.parent.active > span.
 div#<?php echo $id; ?>.maximenuckv ul.maximenuck li.level1.parent > a:after,
 div#<?php echo $id; ?>.maximenuckv ul.maximenuck li.level1.parent > span.separator:after {
 	display: inline-block;
+	content: "";
 	width: 0;
 	height: 0;
+	border-style: solid;
+	border-width: 6px 0 6px 7px;
+	border-color: transparent transparent transparent #EEEEEE;
 	margin: 5px 10px 3px 0;
-
 	position: absolute;
 	right: 3px;
 	top: 3px;
@@ -307,31 +293,7 @@ div#<?php echo $id; ?> ul.maximenuck2 {
 	float: none !important;
 	visibility: visible !important;
 }
-@keyframes random_background {
-	{background: #eb6b22; }
-	{background: #fff; }
-	{background: #ccc; }
-}
 
-div#<?php echo $id; ?> ul.maximenuck li ul.maximenuck2 li.maximenuck a
-{
-	height: 26px;
-	line-height: 23px;
-	padding: 0 9px 0 8px;
-	font-size: 12px;
-	color: #555;
-	text-decoration: none;
-	text-shadow: 0 1px white;
-	background: #fafafa;
-	border-width: 1px 0 1px 1px;
-	border-style: solid;
-	border-color: #dadada #d2d2d2 #c5c5c5;
-	border-radius: 3px 0 0 3px;
-	background: random_background;
-	margin-right: 5px;
-	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7), 0 1px 2px rgba(0, 0, 0, 0.05);
-
-}
 div#<?php echo $id; ?> ul.maximenuck li ul.maximenuck2 li.maximenuck,
 div#<?php echo $id; ?> ul.maximenuck2 li.maximenuck {
 	text-align : left;
@@ -347,7 +309,6 @@ div#<?php echo $id; ?> ul.maximenuck2 li.maximenuck {
 	background : none;
 	list-style : none;
 	display: block;
-
 }
 
 div#<?php echo $id; ?> ul.maximenuck li ul.maximenuck2 li.maximenuck:hover,
@@ -410,7 +371,6 @@ div#<?php echo $id; ?> ul.maximenuck2 li.active > a{
 div#<?php echo $id; ?> li.maximenuck > a img {
 	margin : 3px;
 	border : none;
-	float:left;
 }
 
 /* img style without link (in separator) */
@@ -454,9 +414,17 @@ div#<?php echo $id; ?> div.floatck {
 	padding : 0;
 	background : url(../images/transparent.gif); /* important for hover to work good under IE7 */
 	/*width : 180px;*/ /* default width */
+	margin: 2px 0 0 -10px;
 	text-align:left;
+	padding:5px 5px 0 5px;
+	border:1px solid #777777;
 	border-top:none;
-	background:#ccc;
+	background:#F4F4F4;
+	background: -moz-linear-gradient(top, #EEEEEE, #BBBBBB);
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#EEEEEE), to(#BBBBBB));
+	-moz-border-radius: 0px 5px 5px 5px;
+	-webkit-border-radius: 0px 5px 5px 5px;
+	border-radius: 0px 5px 5px 5px;
 	filter: none;
 	width: inherit;
 	z-index:9999;
@@ -470,7 +438,11 @@ div#<?php echo $id; ?> div.maxidrop-main {
 /* vertical menu */
 div#<?php echo $id; ?>.maximenuckv div.floatck {
 	margin : -39px 0 0 90%;
+	border:1px solid #777777;
 	border-left:none;
+	-moz-border-radius: 0px 5px 5px 5px;
+	-webkit-border-radius: 0px 5px 5px 5px;
+	border-radius: 0px 5px 5px 5px;
 }
 
 div#<?php echo $id; ?> .maxipushdownck div.floatck {
@@ -789,7 +761,7 @@ div#<?php echo $id; ?>.maximenuckh li.fullwidth > div.floatck {
 }
 
 div#<?php echo $id; ?>.maximenuckv li.fullwidth > div.floatck {
-	margin: 0 0 0 13px;
+	margin: 0 0 0 -5px;
 	padding: 0;
 	top: 0;
 	bottom: 0;

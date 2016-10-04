@@ -102,6 +102,7 @@ class JRoute
 			{
 				$url = htmlspecialchars($url, ENT_COMPAT, 'UTF-8');
 			}
+
 			static::$list_md5_url[$md5_url]=$url;
 		}
 		return static::$list_md5_url[$md5_url];

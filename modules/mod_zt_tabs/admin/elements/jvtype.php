@@ -13,7 +13,6 @@ class JFormFieldJvType extends JFormField {
 	var	$type = 'JvType';
 
 	function getInput(){
-
         $JElementJvType = new JElementJvType();
 		return $JElementJvType->fetchElement($this->name, $this->value, $this->element, $this->options['control']);
 
@@ -51,16 +50,11 @@ class JElementJvType
 		if($cId == ''){
 			$cId = JRequest::getVar('id');
 		}
-		$cId=$cId?$cId:0;
-		$query=$db->getQuery(true);
-
 		$sql = "SELECT params FROM #__modules WHERE id=$cId";
 		$db->setQuery($sql);
 		$paramsConfigObj = $db->loadObjectList();
-
 		$db->setQuery($sql);
 		$data = $db->loadResult();
-
         $params = json_decode($data);
 
         if(!is_null($params)){
@@ -69,6 +63,9 @@ class JElementJvType
             $viewContent = isset($params['jv_tabs_style']) ? $params['jv_tabs_style'] : 'zt_default';
         }
 
+        ?>
+		
+	<?php 	
 		return $str;
 
 	}

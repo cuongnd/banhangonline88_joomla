@@ -33,7 +33,6 @@ class PluginsViewPlugin extends JViewLegacy
 	{
 		$this->state = $this->get('State');
 		$this->item  = $this->get('Item');
-		$this->item->exclude_menu=json_decode($this->item->exclude_menu);
 		$this->form  = $this->get('Form');
 
 		// Check for errors.

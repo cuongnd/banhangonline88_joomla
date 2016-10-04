@@ -110,7 +110,6 @@ class PlgSystemSef extends JPlugin
 					'href="' . trim($prefix, '/') . JRoute::_('index.php?' . $urlQueryString) . '"',
 					$buffer
 				);
-
 			}
 
 			$this->checkBuffer($buffer);

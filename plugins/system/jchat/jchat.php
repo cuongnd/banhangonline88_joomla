@@ -349,7 +349,7 @@ class plgSystemJChat extends JPlugin {
 		$doc->addScriptDeclaration("var jchat_notifications_public_time='" . $cParams->get('notifications_public_time', 5) . "';");
 		$doc->addScriptDeclaration("var jchat_wall_sendbutton=" . $cParams->get('show_send_button', 2) . ";");
 		$doc->addScriptDeclaration("var jchat_sidebar_default_width_override='" . $cParams->get('sidebar_default_width_override', '') . "';");
-		$doc->addScriptDeclaration("var jchat_privatemess_uri='" . @JRoute::_('index2.php?option=com_jchat&view=messaging') . "';");
+		$doc->addScriptDeclaration("var jchat_privatemess_uri='" . @JRoute::_('index.php?option=com_jchat&view=messaging') . "';");
 
 		// Manage by plugin append the chat target element based on rendering mode and related overridden styles
 		$renderingMode = $cParams->get('rendering_mode', 'auto');

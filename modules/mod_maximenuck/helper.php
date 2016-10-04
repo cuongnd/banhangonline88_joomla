@@ -326,7 +326,6 @@ class modMaximenuckHelper {
 
 //			$cache->store($items, $key);
 //		}
-
 		return $items;
 	}
 

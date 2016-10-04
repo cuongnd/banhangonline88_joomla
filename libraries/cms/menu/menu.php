@@ -81,8 +81,11 @@ class JMenu
 			}
 
 			// Decode the item params
-			$result = new Registry;
-			//$result->loadString($item->params);
+			$result = Registry::getInstance('menu_item_id_'.$item->id);
+			if(empty($result->toArray()))
+			{
+				$result->loadString($item->params);
+			}
 			$item->params = $result;
 		}
 

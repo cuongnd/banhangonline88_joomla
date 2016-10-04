@@ -688,9 +688,11 @@ class PlgSystemDebug extends JPlugin
 	protected function displayQueries()
 	{
 
+
 		$db = JFactory::getDbo();
 		$db->setDebug(true);
 		$log = $db->getLog();
+
 		if (!$log)
 		{
 			return null;
@@ -868,6 +870,7 @@ class PlgSystemDebug extends JPlugin
 
 		$memoryUsageNow = memory_get_usage();
 		$list = array();
+
 		foreach ($log as $id => $query)
 		{
 			// Start query type ticker additions.
@@ -996,7 +999,7 @@ class PlgSystemDebug extends JPlugin
 
 				// Bar.
 				$htmlBar = $this->renderBars($bars, 'query', $id);
-				$htmlBar='';
+
 				// Profile query.
 				$title = JText::_('PLG_DEBUG_PROFILE');
 
@@ -1164,6 +1167,7 @@ class PlgSystemDebug extends JPlugin
 
 			$html[] = '<ol><li>' . implode('</li><li>', $list) . '</li></ol>';
 		}
+
 		return implode('', $html);
 	}
 

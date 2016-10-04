@@ -354,7 +354,6 @@ class Registry implements \JsonSerializable, \ArrayAccess, \IteratorAggregate, \
 	{
 		// Load a string into the given namespace [or default namespace if not given]
 		$handler = AbstractRegistryFormat::getInstance($format, $options);
-
 		$obj = $handler->stringToObject($data, $options);
 		$this->loadObject($obj);
 

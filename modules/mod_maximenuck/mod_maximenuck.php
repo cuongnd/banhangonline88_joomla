@@ -1,5 +1,5 @@
 <?php
-return;
+
 /**
  * @copyright	Copyright (C) 2011 Cedric KEIFLIN alias ced1870
  * http://www.joomlack.fr
@@ -8,7 +8,6 @@ return;
  * */
 // no direct access
 defined('_JEXEC') or die;
-JHtml::_('behavior.framework', true);
 jimport('joomla.filesystem.file');
 require_once dirname(__FILE__) . '/helper.php';
 

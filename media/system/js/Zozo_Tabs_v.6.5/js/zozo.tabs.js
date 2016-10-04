@@ -746,7 +746,7 @@
             rounded: false,
             shadows: true,
             theme: "silver",            
-            scrollToContent: false,
+            scrollToContent: false,            
             select: function () { },
             spaced: false,
             deactivate: function () { },

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- generator="FeedCreator 1.7.2" -->
+<rss version="2.0">
+	<channel>
+		<title>Kiến Thức Cơ Sở</title>
+		<description>Kiến Thức Cơ Sở</description>
+		<link>http://banhangonline88.com/</link>
+		<lastBuildDate>Thu, 01 Sep 2016 00:07:14 +0100</lastBuildDate>
+		<generator>FeedCreator 1.7.2</generator>
+		<image>
+			<url>http://banhangonline88.com/media/com_maqmahelpdesk/images/themes/default/48px/kb.png</url>
+			<title>Powered by MaQma Helpdesk</title>
+			<link>http://banhangonline88.com/</link>
+			<description>Kiến Thức Cơ Sở</description>
+		</image>
+		<item>
+			<title>làm thế nào để thế</title>
+			<link>index.php?option=com_maqmahelpdesk&amp;Itemid=2928&amp;id_workgroup=&amp;task=kb_view&amp;id=1</link>
+			<description>
+	dfđ
+</description>
+			<pubDate>Wed, 31 Aug 2016 00:00:00 +0100</pubDate>
+		</item>
+	</channel>
+</rss>

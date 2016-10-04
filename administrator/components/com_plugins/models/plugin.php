@@ -163,8 +163,6 @@ class PluginsModelPlugin extends JModelAdmin
 
 			// Convert to the JObject before adding other data.
 			$properties = $table->getProperties(1);
-
-
 			$this->_cache[$pk] = JArrayHelper::toObject($properties, 'JObject');
 
 			// Convert the params field to an array.
@@ -338,7 +336,6 @@ class PluginsModelPlugin extends JModelAdmin
 	{
 		// Setup type.
 		$data['type'] = 'plugin';
-		$data['menu_show'] = json_encode($data['menu_show']);
 
 		return parent::save($data);
 	}
