@@ -27,6 +27,7 @@
 				<field name="modulestyle" type="list" default="vertical" label="MOD_EASYSOCIAL_LOGIN_MODULE_STYLE" description="" >
 					<option value="horizontal">MOD_EASYSOCIAL_LOGIN_HORIZONTAL</option>
 					<option value="vertical">MOD_EASYSOCIAL_LOGIN_VERTICAL</option>
+					<option value="position">position</option>
 				</field>
 				<field name="show_register_link" type="radio" class="btn-group" default="1" label="MOD_EASYSOCIAL_LOGIN_SHOW_REGISTRATION" description="MOD_EASYSOCIAL_LOGIN_SHOW_REGISTRATION_DESC">
 					<option value="0">JNO</option>

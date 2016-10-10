@@ -14,12 +14,15 @@ $doc->addLessStyleSheet(JUri::root().'modules/mod_wishlist/assets/less/mod_wishl
             </a>
         </div>
         <div class="wrapper-wishlist">
-            <ul class="dropdown-menu">
-                <li><a href="#">HTML</a></li>
-                <li><a href="#">CSS</a></li>
-                <li><a href="#">JavaScript</a></li>
-            </ul>
-        </div>
+            <?php
+            if(!empty($html)){
+                ?>
+                <div class="hikashop_wishlist_module" id="hikashop_wishlist_module">
+                    <?php echo $html; ?>
+                </div>
+            <?php } ?>
+
+            </div>
 
     </div>
 </div>

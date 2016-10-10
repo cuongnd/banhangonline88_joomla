@@ -1058,7 +1058,7 @@ function hikashopCheckField(elementToCheck, type, i, elementName, form) {
 }
 
 window.hikashop.ready(function(){
-	if(window.hikaVotes && typeOf(initVote) == 'function')
+	if(window.hikaVotes && typeof(initVote) == 'function')
 		initVote();
 	window.hikashop.checkConsistency();
 });

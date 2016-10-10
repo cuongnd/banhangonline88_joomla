@@ -1,24 +1,24 @@
 //huong dan su dung
 /*
- $('.mod_wishlist').mod_wishlist();
+ $('.default_position').default_position();
 
- mod_wishlist=$('.mod_wishlist').data('mod_wishlist');
- console.log(mod_wishlist);
+ default_position=$('.default_position').data('default_position');
+ console.log(default_position);
  */
 
-// jQuery Plugin for SprFlat admin mod_wishlist
-// Control options and basic function of mod_wishlist
+// jQuery Plugin for SprFlat admin default_position
+// Control options and basic function of default_position
 // version 1.0, 28.02.2013
 // by SuggeElson www.suggeelson.com
 
 (function($) {
 
     // here we go!
-    $.mod_wishlist = function(element, options) {
+    $.default_position = function(element, options) {
 
         // plugin's default options
         var defaults = {
-            //main color scheme for mod_wishlist
+            //main color scheme for default_position
             //be sure to be same as colors on main.css or custom-variables.less
             module_id:0,
             style:"table",
@@ -39,15 +39,14 @@
         // the "constructor" method that gets called when the object is created
         plugin.init = function() {
             plugin.settings = $.extend({}, defaults, options);
-
-            var timeout;
             var second=plugin.settings.second;
-            $element.find('>.group_like_cart').hover(
+            var timeout;
+            $element.find('>a.login').hover(
 
                 function () {
                     clearTimeout(timeout);
                     $(this).addClass('hover');
-                    $element.find('.wrapper-wishlist').show();
+                    $element.find('>.es.mod-es-login').show();
 
 
 
@@ -58,7 +57,7 @@
 
                     $(this).removeClass('hover');
                     timeout = setTimeout(function() {
-                        $element.find('.wrapper-wishlist').hide();
+                        $element.find('>.es.mod-es-login').hide();
                     }, second);
 
 
@@ -69,17 +68,16 @@
                 }
 
             );
-            $element.find('.wrapper-wishlist').hover(function() {
+            $element.find('>.es.mod-es-login').hover(function() {
                 clearTimeout(timeout);
-                $element.find('>.group_like_cart').addClass('hover');
+                $element.find('>a.login').addClass('hover');
             }, function() {
                 timeout = setTimeout(function() {
-                    $element.find('.wrapper-wishlist').hide();
-                    $element.find('>.group_like_cart').removeClass('hover');
+                    $element.find('>.es.mod-es-login').hide();
+                    $element.find('>a.login').removeClass('hover');
                 }, second);
 
             });
-
 
 
         }
@@ -92,16 +90,16 @@
     }
 
     // add the plugin to the jQuery.fn object
-    $.fn.mod_wishlist = function(options) {
+    $.fn.default_position = function(options) {
 
         // iterate through the DOM elements we are attaching the plugin to
         return this.each(function() {
 
             // if plugin has not already been attached to the element
-            if (undefined == $(this).data('mod_wishlist')) {
-                var plugin = new $.mod_wishlist(this, options);
+            if (undefined == $(this).data('default_position')) {
+                var plugin = new $.default_position(this, options);
 
-                $(this).data('mod_wishlist', plugin);
+                $(this).data('default_position', plugin);
 
             }
 
