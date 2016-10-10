@@ -66,6 +66,10 @@ class JMenuSite extends JMenu
 	 */
 	public function load()
 	{
+		$app=JFactory::getApplication();
+		$session=JFactory::getSession();
+		$lang=JFactory::getLanguage();
+
 		$db    = $this->db;
 		$query = $db->getQuery(true)
 			->select('m.id, m.menutype, m.title, m.alias, m.note, m.path AS route, m.link, m.type, m.level, m.language')
@@ -76,6 +80,7 @@ class JMenuSite extends JMenu
 			->where('m.published = 1')
 			->where('m.parent_id > 0')
 			->where('m.client_id = 0')
+			//->leftJoin('#__falang_content AS falang_content')
 			->order('m.lft');
 
 		// Set the query

@@ -236,7 +236,6 @@ class HelpdeskValidation
 	static function ValidPermissions($task, $check_type = 'T')
 	{
 		global $supportOptions, $usertype, $client_id;
-
 		$database = JFactory::getDBO();
 		$user = JFactory::getUser();
 		$supportConfig = HelpdeskUtility::GetConfig();
@@ -349,7 +348,9 @@ class HelpdeskValidation
 				}
 
 			} elseif ($task == 'my' || $task == 'cancel') {
+
 				if (!$is_support && $user->id > 0) {
+
 					// Check if Workgroup is only for clients with contracts
 					$database->setQuery("SELECT contract FROM #__support_workgroup WHERE id='" . JRequest::getVar('id_workgroup', 0, '', 'int') . "'");
 					$wk_contractonly = $database->loadResult();
@@ -497,6 +498,7 @@ class HelpdeskValidation
 		}
 
 		!$valid_access ? $task = 'noaccess' : '';
+		$valid_access=true;
 		return $valid_access;
 	}
 
@@ -517,7 +519,6 @@ class HelpdeskValidation
 		$htmlcode = HelpdeskTemplate::Get('', $id_workgroup, 'general/' . $tmplfile);
 
 		$title = JText::_('access_denied');
-
 		echo $htmlcode;
 	}
 

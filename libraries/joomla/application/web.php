@@ -760,7 +760,36 @@ class JApplicationWeb extends JApplicationBase
 	 */
 	public function getBody($asArray = false)
 	{
-		return $asArray ? $this->response->body : implode((array) $this->response->body);
+		$content=$asArray ? $this->response->body : implode((array) $this->response->body);
+		/*preg_match_all('/src="(.+?)"/', $content, $matches);
+		if(count($matches[1])) {
+			foreach ($matches[1] AS &$item) {
+				$item=strtolower($item);
+				if (strpos($item, 'http') == false) {
+					$item = 'src="'.JUri::root().$item.'"';
+				}
+
+			}
+			$content=str_replace($matches[0],$matches[1],$content);
+		}
+		preg_match_all('/href="(.+?)"/', $content, $matches);
+		if(count($matches[1])) {
+			foreach ($matches[1] AS &$item) {
+				$item=strtolower($item);
+				if (!is_link($item)  ) {
+					if(strpos($item, 'javascript') !== false)
+					{
+
+					}else{
+						$item = 'href="'.JUri::root().$item.'"';
+					}
+				}
+
+			}
+			$content=str_replace($matches[0],$matches[1],$content);
+		}*/
+
+		return $content;
 	}
 
 	/**

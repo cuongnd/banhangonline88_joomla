@@ -49,6 +49,9 @@
   #sp-top-wrapper {
     background: #F9F9F9;
   }
+  #sp-bottom-wrapper {
+    background: #666b7e !important;
+  }
 }
 .img-responsive {
   max-width: 100%;
@@ -57,4 +60,64 @@
   display: block;
   max-width: 100%; // Set a maximum relative to the parent
   height: auto; // Scale the height according to the width, otherwise you get stretching
+}
+
+#sp-top-wrapper,
+#sp-header-wrapper,
+#sp-main-menu-wrapper,
+#sp-link-follow-wrapper,
+#sp-footer-wrapper {
+  &.style-layout2 {
+    background-color: transparent;
+  }
+}
+#sp-banner-top-wrapper {
+  &.style-layout2 {
+    .container {
+      background-color: #fff;
+    }
+  }
+}
+#sp-link-follow-wrapper {
+  &.style-layout2 {
+    .container {
+      background-color: #f1f1f1;
+    }
+  }
+}
+#sp-footer-wrapper {
+  &.style-layout2 {
+    .container {
+      background-color: #f0f2f3;
+    }
+  }
+}
+
+#sp-top_menu_left
+{
+  .hompagetopleftmenu
+  {
+    .level-0
+    {
+      margin: 0;
+    }
+  }
+}
+#sp-left_menu_category
+{
+
+}
+.mod_menu.homeverticalmenu
+{
+  .level-0
+  {
+    margin: 0px;
+  }
+}
+.mod_menu.hompagetopleftmenu
+{
+  .level-0
+  {
+    margin: 0px;
+  }
 }
