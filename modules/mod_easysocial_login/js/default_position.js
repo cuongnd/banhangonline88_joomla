@@ -78,6 +78,43 @@
                 }, second);
 
             });
+            $element.find('>a.profile-name').hover(
+
+                function () {
+                    clearTimeout(timeout);
+                    $(this).addClass('hover');
+                    $element.find('>.es.mod-es-login').show();
+
+
+
+
+                },
+
+                function () {
+
+                    $(this).removeClass('hover');
+                    timeout = setTimeout(function() {
+                        $element.find('>.es.mod-es-login').hide();
+                    }, second);
+
+
+
+
+
+
+                }
+
+            );
+            $element.find('>.es.mod-es-login').hover(function() {
+                clearTimeout(timeout);
+                $element.find('>a.profile-name').addClass('hover');
+            }, function() {
+                timeout = setTimeout(function() {
+                    $element.find('>.es.mod-es-login').hide();
+                    $element.find('>a.profile-name').removeClass('hover');
+                }, second);
+
+            });
 
 
         }

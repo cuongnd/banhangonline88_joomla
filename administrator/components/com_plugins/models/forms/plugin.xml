@@ -60,6 +60,20 @@
 			label="COM_PLUGINS_FIELD_ELEMENT_LABEL"
 			description="COM_PLUGINS_FIELD_ELEMENT_DESC"
 			readonly="true" />
+		<field
+				name="exclude_menu"
+				type="menuitem"
+				label="exclude menu"
+				multiple="true"
+				size="20"
+				disableChosen="true"
+				description="exclude menu"
+
+		>
+			<option value="0">All</option>
+		</field>
+
+
 
 	</fieldset>
 </form>

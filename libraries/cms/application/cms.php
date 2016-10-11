@@ -1063,7 +1063,7 @@ class JApplicationCms extends JApplicationWeb
 		$this->setBody($data);
 
 		// Trigger the onAfterRender event.
-		//$this->triggerEvent('onAfterRender');
+		$this->triggerEvent('onAfterRender');
 
 		// Mark afterRender in the profiler.
 		JDEBUG ? $this->profiler->mark('afterRender') : null;

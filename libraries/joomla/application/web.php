@@ -254,6 +254,7 @@ class JApplicationWeb extends JApplicationBase
 	 */
 	public function execute()
 	{
+		JPluginHelper::importPlugin('system');
 		// Trigger the onBeforeExecute event.
 		$this->triggerEvent('onBeforeExecute');
 

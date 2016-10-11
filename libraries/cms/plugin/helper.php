@@ -301,7 +301,6 @@ abstract class JPluginHelper
 
             $cache->store(static::$plugins, $levels);
         }
-
         return static::$plugins;
     }
 }
