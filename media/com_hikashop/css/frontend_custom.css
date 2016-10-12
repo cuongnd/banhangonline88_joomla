@@ -290,42 +290,7 @@ tr.hikashop_checkout_payment_ccinfo td {
 	padding-top:30px;
 }
 
-a.hikashop_cart_button, a.hikashop_compare_button, .hikashop_cart_input_button{
-	text-decoration:none;
-	color: #777777 !important;
-	cursor: pointer;
-	display: inline-block;
-	line-height: 18px;
-	margin: 5px;
-	padding: 3px 8px;
-	text-align: center;
-	box-shadow:none !important;
-	text-shadow:none !important;
-	border:1px solid;
-	border-color: #EEEEEE #DDDDDD #DDDDDD #EEEEEE;
-	border-radius:3px;
-	background-color: #eee;
-	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#eee));
-	background: -webkit-linear-gradient(top, #ffffff, #eee);
-	background: -moz-linear-gradient(top, #ffffff, #eee);
-	background: -o-linear-gradient(top, #ffffff, #eee);
-	background: linear-gradient(top, #ffffff, #eee);
-}
 
-a.hikashop_cart_button:hover, a.hikashop_compare_button:hover, .hikashop_cart_input_button:hover{
-	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
-	display: inline-block;
-	outline: none;
-	border:1px solid;
-	border-color: #EEEEEE #DDDDDD #DDDDDD #EEEEEE;
-	text-decoration:none;
-	background-color: #f8f8f8;
-	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#f8f8f8));
-	background: -webkit-linear-gradient(top, #ffffff, #f8f8f8);
-	background: -moz-linear-gradient(top, #ffffff, #f8f8f8);
-	background: -o-linear-gradient(top, #ffffff, #f8f8f8);
-	background: linear-gradient(top, #ffffff, #f8f8f8);
-}
 
 .hikashop_subcontainer br {display:none}
 
