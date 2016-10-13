@@ -64,6 +64,11 @@ class ComponentKunenaControllerTopicModerateDisplay extends KunenaControllerDisp
 			$this->topic = $this->message->getTopic();
 		}
 
+		if ($this->config->read_only)
+		{
+			throw new KunenaExceptionAuthorise(JText::_('COM_KUNENA_NO_ACCESS'), '401');
+		}
+
 		$this->category = $this->topic->getCategory();
 
 		$this->uri = "index.php?option=com_kunena&view=topic&layout=moderate"
@@ -73,13 +78,9 @@ class ComponentKunenaControllerTopicModerateDisplay extends KunenaControllerDisp
 			JText::_('COM_KUNENA_TITLE_MODERATE_TOPIC') :
 			JText::_('COM_KUNENA_TITLE_MODERATE_MESSAGE');
 
-		// Load topic icons if available.
-		if ($this->config->topicicons)
-		{
-			$this->template = KunenaTemplate::getInstance();
-			$this->template->setCategoryIconset();
-			$this->topicIcons = $this->template->getTopicIcons(false);
-		}
+		$this->template = KunenaTemplate::getInstance();
+		$this->template->setCategoryIconset();
+		$this->topicIcons = $this->template->getTopicIcons(false);
 
 		// Have a link to moderate user as well.
 		if (isset($this->message))
@@ -109,10 +110,15 @@ class ComponentKunenaControllerTopicModerateDisplay extends KunenaControllerDisp
 				LEFT JOIN #__kunena_messages AS mm ON mm.thread=m.thread AND mm.time > m.time
 				WHERE m.id={$db->Quote($this->message->id)}";
 			$db->setQuery($query, 0, 1);
-			$this->replies = $db->loadResult();
-
-			if (KunenaError::checkDatabaseError())
+			
+			try 
 			{
+				$this->replies = $db->loadResult();
+			}
+			catch (JDatabaseExceptionExecuting $e)
+			{
+				KunenaError::displayDatabaseError($e);
+				
 				return;
 			}
 		}
@@ -128,11 +134,11 @@ class ComponentKunenaControllerTopicModerateDisplay extends KunenaControllerDisp
 	protected function prepareDocument()
 	{
 		$app = JFactory::getApplication();
-		$menu_item   = $app->getMenu()->getActive(); // get the active item
+		$menu_item   = $app->getMenu()->getActive();
 
 		if ($menu_item)
 		{
-			$params             = $menu_item->params; // get the params
+			$params             = $menu_item->params;
 			$params_title       = $params->get('page_title');
 			$params_keywords    = $params->get('menu-meta_keywords');
 			$params_description = $params->get('menu-meta_description');

@@ -2,25 +2,30 @@
 /**
  * Kunena Component
  *
- * @package       Kunena.Site
- * @subpackage    Views
+ * @package     Kunena.Site
+ * @subpackage  Views
  *
- * @copyright (C) 2008 - 2016 Kunena Team. All rights reserved.
- * @license       http://www.gnu.org/copyleft/gpl.html GNU/GPL
- * @link          https://www.kunena.org
+ * @copyright   (C) 2008 - 2016 Kunena Team. All rights reserved.
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU/GPL
+ * @link        https://www.kunena.org
  **/
-defined('_JEXEC') or die ();
+defined('_JEXEC') or die();
 
 /**
  * Category View
  */
 class KunenaViewCategory extends KunenaView
 {
+	/**
+	 * @param   null $tpl
+	 *
+	 * @throws Exception
+	 */
 	function displayDefault($tpl = null)
 	{
 		if (!$this->config->enablerss)
 		{
-			JError::raiseError(404, JText::_('COM_KUNENA_RSS_DISABLED'));
+			throw new Exception(JText::_('COM_KUNENA_RSS_DISABLED'), 500);
 		}
 
 		KunenaHtmlParser::$relative = false;
@@ -29,7 +34,7 @@ class KunenaViewCategory extends KunenaView
 
 		if (!$this->category->authorise('read'))
 		{
-			JError::raiseError(404, $this->category->getError());
+			throw new Exception($this->category->getError(), 404);
 		}
 
 		$this->topics = $this->get('Topics');
@@ -41,7 +46,7 @@ class KunenaViewCategory extends KunenaView
 		$this->document->setDescription($metaDesc);
 
 		// Create image for feed
-		$image                 = new JFeedImage();
+		$image                 = new JFeedImage;
 		$image->title          = $this->document->getTitle();
 		$image->url            = $this->ktemplate->getImagePath('icons/rss.png');
 		$image->description    = $this->document->getDescription();
@@ -62,6 +67,15 @@ class KunenaViewCategory extends KunenaView
 		}
 	}
 
+	/**
+	 * @param $title
+	 * @param $url
+	 * @param $description
+	 * @param $category
+	 * @param $date
+	 * @param $userid
+	 * @param $username
+	 */
 	function createItem($title, $url, $description, $category, $date, $userid, $username)
 	{
 		if ($this->config->rss_author_in_title)
@@ -85,7 +99,7 @@ class KunenaViewCategory extends KunenaView
 		}
 
 		// Assign values to feed item
-		$item              = new JFeedItem();
+		$item              = new JFeedItem;
 		$item->title       = $title;
 		$item->link        = $url;
 		$item->description = $description;

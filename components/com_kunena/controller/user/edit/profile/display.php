@@ -42,7 +42,8 @@ class ComponentKunenaControllerUserEditProfileDisplay extends ComponentKunenaCon
 		$this->genders[] = JHtml::_('select.option', '2', JText::_('COM_KUNENA_MYPROFILE_GENDER_FEMALE'));
 
 		$this->social = array('twitter', 'facebook', 'myspace', 'skype', 'linkedin', 'delicious',
-			'friendfeed', 'digg', 'yim', 'aim', 'gtalk', 'icq', 'msn', 'blogspot', 'flickr', 'bebo');
+			'friendfeed', 'digg', 'yim', 'aim', 'google', 'icq', 'microsoft', 'blogspot', 'flickr',
+				'bebo', 'instagram', 'qq', 'qzone', 'weibo', 'wechat', 'apple', 'vk', 'telegram');
 
 		$this->headerText = JText::_('COM_KUNENA_PROFILE_EDIT_PROFILE_TITLE');
 	}
@@ -55,11 +56,11 @@ class ComponentKunenaControllerUserEditProfileDisplay extends ComponentKunenaCon
 	protected function prepareDocument()
 	{
 		$app       = JFactory::getApplication();
-		$menu_item = $app->getMenu()->getActive(); // get the active item
+		$menu_item = $app->getMenu()->getActive();
 
 		if ($menu_item)
 		{
-			$params             = $menu_item->params; // get the params
+			$params             = $menu_item->params;
 			$params_title       = $params->get('page_title');
 			$params_keywords    = $params->get('menu-meta_keywords');
 			$params_description = $params->get('menu-meta_description');

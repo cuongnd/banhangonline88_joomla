@@ -2,22 +2,25 @@
 /**
  * Kunena Component
  *
- * @package         Kunena.Template.Crypsis
- * @subpackage      Layout.Category
+ * @package     Kunena.Template.Crypsis
+ * @subpackage  Layout.Category
  *
  * @copyright   (C) 2008 - 2016 Kunena Team. All rights reserved.
- * @license         http://www.gnu.org/copyleft/gpl.html GNU/GPL
- * @link            https://www.kunena.org
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU/GPL
+ * @link        https://www.kunena.org
  **/
 defined('_JEXEC') or die;
 
 $categoryActions = $this->getCategoryActions();
 $cols            = empty($this->checkbox) ? 7 : 6;
+$this->addStyleSheet('assets/css/rating.css');
 ?>
 
 <?php if ($this->category->headerdesc) : ?>
 	<div class="alert alert-info kfrontend">
-		<a class="close" data-dismiss="alert" href="#"></a>
+		<h1>
+			<a class="close" data-dismiss="alert" href="#"></a>
+		</h1>
 		<?php echo $this->category->displayField('headerdesc'); ?>
 	</div>
 <?php endif; ?>
@@ -27,26 +30,21 @@ $cols            = empty($this->checkbox) ? 7 : 6;
 <?php if (!empty($this->topics)) : ?>
 <div class="row-fluid">
 	<div class="span12">
-		<h2>
-			<?php echo $this->escape($this->headerText); ?>
-		</h2>
-
-		<div class="pull-right">
+		<h2 class="pull-right">
 			<?php echo $this->subLayout('Widget/Search')
-				->set('catid', $this->category->id)
-				->setLayout('topic'); ?>
-		</div>
-
+	->set('catid', $this->category->id)
+	->setLayout('topic'); ?>
+		</h2>
 		<div class="pull-left">
 			<?php echo $this->subLayout('Widget/Pagination/List')
-				->set('pagination', $this->pagination)
-				->set('display', true); ?>
+	->set('pagination', $this->pagination)
+	->set('display', true); ?>
 		</div>
 	</div>
 </div>
 <?php endif; ?>
 
-<form action="<?php echo KunenaRoute::_('index.php?option=com_kunena'); ?>" method="post">
+<form action="<?php echo KunenaRoute::_('index.php?option=com_kunena'); ?>" method="post" id="ktopicsform">
 	<input type="hidden" name="view" value="topics" />
 	<?php echo JHtml::_('form.token'); ?>
 	<div>
@@ -59,7 +57,7 @@ $cols            = empty($this->checkbox) ? 7 : 6;
 		</ul>
 	</div>
 	<?php if ($this->topics) : ?>
-	<table class="table table-bordered">
+	<table class="table<?php echo KunenaTemplate::getInstance()->borderless();?>">
 		<thead>
 		<tr>
 			<td class="span1 center hidden-phone">
@@ -118,13 +116,15 @@ $cols            = empty($this->checkbox) ? 7 : 6;
 
 					<?php if (!empty($this->moreUri))
 					{
-						echo JHtml::_('kunenaforum.link', $this->moreUri,
-							JText::_('COM_KUNENA_MORE'), null, null, 'follow');
+						echo JHtml::_(
+       'kunenaforum.link', $this->moreUri,
+	  JText::_('COM_KUNENA_MORE'), null, null, 'follow');
 					} ?>
 
 					<?php if (!empty($this->topicActions)) : ?>
-						<?php echo JHtml::_('select.genericlist', $this->topicActions, 'task',
-							'class="inputbox kchecktask"', 'value', 'text', 0, 'kchecktask'); ?>
+						<?php echo JHtml::_(
+	'select.genericlist', $this->topicActions, 'task',
+'class="inputbox kchecktask"', 'value', 'text', 0, 'kchecktask'); ?>
 
 						<?php if ($this->actionMove) : ?>
 							<?php
@@ -150,10 +150,11 @@ $cols            = empty($this->checkbox) ? 7 : 6;
 <?php if ($this->topics) : ?>
 	<div class="pull-left">
 		<?php echo $this->subLayout('Widget/Pagination/List')
-			->set('pagination', $this->pagination)
-			->set('display', true); ?>
+	->set('pagination', $this->pagination)
+	->set('display', true); ?>
 	</div>
 <?php endif; ?>
+<div class="clearfix"></div>
 
 <?php if (!empty($this->moderators))
 {
@@ -162,4 +163,6 @@ $cols            = empty($this->checkbox) ? 7 : 6;
 }
 ?>
 
-<div class="clearfix"></div>
+<?php if ($this->ktemplate->params->get('writeaccess')) : ?>
+<div><?php echo $this->subLayout('Widget/Writeaccess')->set('id', $this->category->id); ?></div>
+<?php endif; ?>

@@ -10,9 +10,11 @@
  **/
 defined('_JEXEC') or die;
 
-/** @var KunenaLayout $this */
+// @var KunenaLayout $this
 
-/** @var KunenaForumMessage  $message  Message to reply to. */
+
+// @var KunenaForumMessage  $message  Message to reply to.
+
 $message = $this->message;
 
 if (!$message->isAuthorised('reply'))
@@ -20,30 +22,69 @@ if (!$message->isAuthorised('reply'))
 	return;
 }
 
-/** @var KunenaUser  $author  Author of the message. */
+// @var KunenaUser  $author  Author of the message.
+
 $author = isset($this->author) ? $this->author : $message->getAuthor();
-/** @var KunenaForumTopic  $topic Topic of the message. */
+// @var KunenaForumTopic  $topic Topic of the message.
+
 $topic = isset($this->topic) ? $this->topic : $message->getTopic();
-/** @var KunenaForumCategory  $category  Category of the message. */
+// @var KunenaForumCategory  $category  Category of the message.
+
 $category = isset($this->category) ? $this->category : $message->getCategory();
-/** @var KunenaConfig  $config  Kunena configuration. */
+// @var KunenaConfig  $config  Kunena configuration.
+
 $config = isset($this->config) ? $this->config : KunenaFactory::getConfig();
-/** @var KunenaUser  $me  Current user. */
+// @var KunenaUser  $me  Current user.
+
 $me = isset($this->me) ? $this->me : KunenaUserHelper::getMyself();
 
 // Load caret.js always before atwho.js script and use it for autocomplete, emojiis...
-$this->addStyleSheet('css/atwho.css');
-$this->addScript('js/caret.js');
-$this->addScript('js/atwho.js');
-$this->addScript('js/edit.js');
+$this->addStyleSheet('assets/css/jquery.atwho.css');
+$this->addScript('assets/js/jquery.caret.js');
+$this->addScript('assets/js/jquery.atwho.js');
+
+$this->addScriptDeclaration("kunena_topicicontype = '';");
+
+$this->addScript('assets/js/edit.js');
 
 if (KunenaFactory::getTemplate()->params->get('formRecover'))
 {
-	$this->addScript('js/sisyphus.js');
+	$this->addScript('assets/js/sisyphus.js');
 }
+
+// Fixme: can't get the controller working on this
+if ($me->canDoCaptcha() )
+{
+	if (JPluginHelper::isEnabled('captcha'))
+	{
+		$plugin = JPluginHelper::getPlugin('captcha');
+		$params = new JRegistry($plugin[0]->params);
+
+		$captcha_pubkey = $params->get('public_key');
+		$catcha_privkey = $params->get('private_key');
+
+		if (!empty($captcha_pubkey) && !empty($catcha_privkey))
+		{
+			JPluginHelper::importPlugin('captcha');
+			$dispatcher = JDispatcher::getInstance();
+			$result = $dispatcher->trigger('onInit', 'dynamic_recaptcha_' . $this->message->id);
+			$output = $dispatcher->trigger('onDisplay', array(null, 'dynamic_recaptcha_' . $this->message->id,
+				'class="controls g-recaptcha" data-sitekey="' . $captcha_pubkey . '" data-theme="light"'));
+			$this->quickcaptchaDisplay = $output[0];
+			$this->quickcaptchaEnabled = $result[0];
+		}
+	}
+}
+$template = KunenaTemplate::getInstance();
+$quick = $template->params->get('quick');
+
 ?>
 
-<div class="kreply-form" id="kreply<?php echo $message->displayField('id'); ?>_form" data-backdrop="false" style="position: relative; top: 10px; left: -20px; right: -10px; width:auto; z-index: 1;">
+<?php if ($quick == 1) : ?>
+<div class="modal fade" id="kreply<?php echo $message->displayField('id'); ?>_form" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display:none;">
+<?php elseif ($quick == 0) : ?>
+<div class="kreply-form col-md-12" id="kreply<?php echo $message->displayField('id'); ?>_form" data-backdrop="false" style="position: relative; top: 10px; left: -20px; right: -10px; width:auto; z-index: 1;">
+<?php endif;?>
 	<div class="modal-header">
 		<button type="reset" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 		<h3>
@@ -56,7 +97,7 @@ if (KunenaFactory::getTemplate()->params->get('formRecover'))
 		<input type="hidden" name="task" value="post" />
 		<input type="hidden" name="parentid" value="<?php echo $message->displayField('id'); ?>" />
 		<input type="hidden" name="catid" value="<?php echo $category->displayField('id'); ?>" />
-		<?php if (!$config->allow_change_subject): ?>
+		<?php if (!$config->allow_change_subject) : ?>
 			 <input type="hidden" name="subject" value="<?php echo $this->escape($this->message->subject); ?>" />
 		<?php endif; ?>
 		<?php echo JHtml::_('form.token'); ?>
@@ -68,14 +109,14 @@ if (KunenaFactory::getTemplate()->params->get('formRecover'))
 					<label>
 						<?php echo JText::_('COM_KUNENA_GEN_NAME'); ?>:
 					</label>
-					<input type="text" name="authorname" class="span12" maxlength="35" placeholder="<?php echo JText::_('COM_KUNENA_GEN_NAME'); ?>" value="" />
+					<input type="text" name="authorname" class="span12" maxlength="35" placeholder="<?php echo JText::_('COM_KUNENA_GEN_NAME'); ?>" value="" required />
 				</div>
 			<?php endif; ?>
 
 			<?php if ($config->askemail && !$me->exists()): ?>
 				<div class="controls">
 					<?php echo $config->showemail == '0' ? JText::_('COM_KUNENA_POST_EMAIL_NEVER') : JText::_('COM_KUNENA_POST_EMAIL_REGISTERED'); ?>
-					<input type="text" id="email" name="email" placeholder="<?php echo JText::_('COM_KUNENA_TOPIC_EDIT_PLACEHOLDER_EMAIL') ?>" class="inputbox span12" maxlength="35" value="" required />
+					<input type="text" id="email" name="email" placeholder="<?php echo JText::_('COM_KUNENA_TOPIC_EDIT_PLACEHOLDER_EMAIL') ?>" class="inputbox span12" maxlength="45" value="" required />
 				</div>
 			<?php endif; ?>
 
@@ -84,7 +125,7 @@ if (KunenaFactory::getTemplate()->params->get('formRecover'))
 					<?php echo JText::_('COM_KUNENA_GEN_SUBJECT'); ?>:
 				</label>
 				<input type="text" id="subject" name="subject" class="inputbox span12"
-				       maxlength="<?php echo (int) $config->maxsubject; ?>"
+				       maxlength="<?php echo $template->params->get('SubjectLengthMessage'); ?>"
 				       <?php if (!$config->allow_change_subject): ?>disabled<?php endif; ?>
 				       value="<?php echo $message->displayField('subject'); ?>" />
 			</div>
@@ -117,39 +158,10 @@ if (KunenaFactory::getTemplate()->params->get('formRecover'))
 			<?php endif; ?>
 			<a href="index.php?option=com_kunena&view=topic&layout=reply&catid=<?php echo $message->catid;?>&id=<?php echo $message->thread;?>&mesid=<?php echo $message->id;?>&Itemid=<?php echo KunenaRoute::getItemID();?>" role="button" class="btn btn-small btn-link pull-right" rel="nofollow"><?php echo JText::_('COM_KUNENA_GO_TO_EDITOR'); ?></a>
 		</div>
-		<?php if (!empty($this->captchaEnabled) && version_compare(JVERSION, '3.5', '<')) : ?>
+		<?php if (!empty($this->quickcaptchaEnabled)) : ?>
 			<div class="control-group">
-				<div id="dynamic_recaptcha_<?php echo $this->message->id; ?>"> </div>
+				<?php echo $this->quickcaptchaDisplay;?>
 			</div>
-		<?php else : ?>
-			<?php // Fixme: can't get the controller working on this
-				if ($me->canDoCaptcha() )
-				{
-					if (JPluginHelper::isEnabled('captcha'))
-					{
-						$plugin = JPluginHelper::getPlugin('captcha');
-						$params = new JRegistry($plugin[0]->params);
-
-						$captcha_pubkey = $params->get('public_key');
-						$catcha_privkey = $params->get('private_key');
-
-						if (!empty($captcha_pubkey) && !empty($catcha_privkey))
-						{
-							JPluginHelper::importPlugin('captcha');
-							$dispatcher = JDispatcher::getInstance();
-							$result = $dispatcher->trigger('onInit', 'dynamic_recaptcha_' . $this->message->id);
-							$output = $dispatcher->trigger('onDisplay', array(null, 'dynamic_recaptcha_' . $this->message->id, 'class="controls g-recaptcha" data-sitekey="' . $captcha_pubkey . '" data-theme="light"'));
-							$this->quickcaptchaDisplay = $output[0];
-							$this->quickcaptchaEnabled = $result[0];
-						}
-					}
-				}
-
-				if (!empty($this->quickcaptchaEnabled)) : ?>
-				<div class="control-group">
-					<?php echo $this->quickcaptchaDisplay;?>
-				</div>
-			<?php endif; ?>
 		<?php endif; ?>
 		<div class="modal-footer">
 			<small><?php echo JText::_('COM_KUNENA_QMESSAGE_NOTE'); ?></small>
@@ -162,6 +174,6 @@ if (KunenaFactory::getTemplate()->params->get('formRecover'))
 				title="<?php echo (JText::_('COM_KUNENA_EDITOR_HELPLINE_CANCEL'));?>" data-dismiss="modal" aria-hidden="true" />
 		</div>
 		<input type="hidden" id="kurl_emojis" name="kurl_emojis" value="<?php echo KunenaRoute::_('index.php?option=com_kunena&view=topic&layout=listemoji&format=raw') ?>" />
-		<input type="hidden" id="kemojis_allowed" name="kemojis_allowed" value="<?php echo $config->disemoticons ?>" />
+		<input type="hidden" id="kemojis_allowed" name="kemojis_allowed" value="<?php echo $config->disemoticons ? 0 : 1 ?>" />
 	</form>
 </div>

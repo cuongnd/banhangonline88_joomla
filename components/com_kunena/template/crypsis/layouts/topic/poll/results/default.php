@@ -11,7 +11,7 @@
 defined('_JEXEC') or die;
 
 // TODO: Hide KunenaHtmlParser::parseText()
-$this->addScript('poll.js');
+$this->addScript('assets/js/poll.js');
 ?>
 
 <?php if ($this->show_title) : ?>
@@ -21,7 +21,7 @@ $this->addScript('poll.js');
 </h2>
 <?php endif; ?>
 
-<div class="collapse in" id="poll-results" <?php echo $this->show_title ? '': 'style="display:none;"'; ?>>
+<div class="collapse in" id="poll-results" <?php echo $this->show_title ? '' : 'style="display:none;"'; ?>>
 <table class="table table-striped table-bordered table-condensed">
 
 	<?php
@@ -57,14 +57,15 @@ $this->addScript('poll.js');
 		<tr>
 			<td colspan="4">
 				<?php
-				echo JText::_('COM_KUNENA_POLL_VOTERS_TOTAL')." <b>".$this->usercount."</b> ";
-				if (!empty($this->users_voted_list)) echo " ( ".implode(', ', $this->users_voted_list)." ) "; ?>
+				echo JText::_('COM_KUNENA_POLL_VOTERS_TOTAL') . " <b>" . $this->usercount . "</b> ";
+				if (!empty($this->users_voted_list)): echo " ( " . implode(', ', $this->users_voted_list) . " ) "; ?>
 				<?php if ($this->usercount > '5') : ?>
 					<a href="#" id="kpoll-moreusers"><?php echo JText::_('COM_KUNENA_POLLUSERS_MORE')?></a>
 					<div style="display: none;" id="kpoll-moreusers-div">
 						<?php echo implode(', ', $this->users_voted_morelist); ?>
 					</div>
-				<?php endif; ?>
+				<?php endif;
+				endif; ?>
 			</td>
 		</tr>
 
@@ -84,6 +85,8 @@ $this->addScript('poll.js');
 				<a href="#resetVotes" role="button" class="btn" data-toggle="modal">
 					<?php echo JText::_('COM_KUNENA_TOPIC_VOTE_RESET'); ?>
 				</a>
+				<div class="clearfix"></div>
+				<br />
 				<div id="resetVotes" class="modal hide fade">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>

@@ -39,6 +39,7 @@ class ComponentKunenaControllerUserListDisplay extends KunenaControllerDisplay
 		parent::before();
 
 		$config = KunenaConfig::getInstance();
+
 		if ($config->userlist_allowed && JFactory::getUser()->guest)
 		{
 			throw new KunenaExceptionAuthorise(JText::_('COM_KUNENA_NO_ACCESS'), '401');
@@ -55,8 +56,15 @@ class ComponentKunenaControllerUserListDisplay extends KunenaControllerDisplay
 		$start = $this->state->get('list.start');
 		$limit = $this->state->get('list.limit');
 
-		// Get list of super admins to exclude or not in filter by configuration.
-		$filter = JAccess::getUsersByGroup(8);
+		// Exclude super admins.
+		if ($this->config->superadmin_userlist)
+		{
+			$filter = JAccess::getUsersByGroup(8);	
+		}
+		else
+		{
+			$filter = array();
+		}
 
 		$finder = new KunenaUserFinder;
 		$finder
@@ -68,12 +76,14 @@ class ComponentKunenaControllerUserListDisplay extends KunenaControllerDisplay
 
 		$alias = 'ku';
 		$aliasList = array('id', 'name', 'username', 'email', 'block', 'registerDate', 'lastvisitDate');
-		if (in_array($this->state->get('list.ordering'), $aliasList)) {
+
+		if (in_array($this->state->get('list.ordering'), $aliasList))
+		{
 			$alias = 'a';
 		}
 
 		$this->users = $finder
-			->order($this->state->get('list.ordering'), $this->state->get('list.direction') == 'asc' ? 1 : -1, $alias)
+			->order($this->state->get('list.ordering'), $this->state->get('list.direction') == 'asc' ? 1 : - 1, $alias)
 			->start($this->pagination->limitstart)
 			->limit($this->pagination->limit)
 			->find();
@@ -91,11 +101,11 @@ class ComponentKunenaControllerUserListDisplay extends KunenaControllerDisplay
 		$pagesText = $page > 1 ? " ({$page}/{$pages})" : '';
 
 		$app       = JFactory::getApplication();
-		$menu_item = $app->getMenu()->getActive(); // get the active item
+		$menu_item = $app->getMenu()->getActive();
 
 		if ($menu_item)
 		{
-			$params             = $menu_item->params; // get the params
+			$params             = $menu_item->params;
 			$params_title       = $params->get('page_title');
 			$params_keywords    = $params->get('menu-meta_keywords');
 			$params_description = $params->get('menu-meta_description');

@@ -18,13 +18,13 @@ $markAllReadUrl = KunenaForumCategoryHelper::get()->getMarkReadUrl();
 	<li class="dropdown mobile-user">
 		<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 			<?php if ($this->me->status == 0) : ?>
-				<i class="icon-large icon-user green"></i>
+				<?php echo $this->me->getAvatarImage(KunenaFactory::getTemplate()->params->get('avatarType') . ' green', 20, 20); ?>
 			<?php elseif ($this->me->status == 1) : ?>
-				<i class="icon-large icon-user yellow"></i>
+				<?php echo $this->me->getAvatarImage(KunenaFactory::getTemplate()->params->get('avatarType') . ' yellow', 20, 20); ?>
 			<?php elseif ($this->me->status == 2) : ?>
-				<i class="icon-large icon-user red "></i>
+				<?php echo $this->me->getAvatarImage(KunenaFactory::getTemplate()->params->get('avatarType') . ' red', 20, 20); ?>
 			<?php elseif ($this->me->status == 3) : ?>
-				<i class="icon-large icon-user grey"></i>
+				<?php echo $this->me->getAvatarImage(KunenaFactory::getTemplate()->params->get('avatarType') . ' grey', 20, 20); ?>
 			<?php endif; ?>
 			<b class="caret"></b>
 		</a>
@@ -34,8 +34,9 @@ $markAllReadUrl = KunenaForumCategoryHelper::get()->getMarkReadUrl();
 			<div class="center">
 				<p><strong><?php echo $this->me->getLink(null, null, 'nofollow', '', null); ?></strong></p>
 				<a href="<?php echo $this->me->getURL(); ?>">
-					<?php echo $this->me->getAvatarImage('img-polaroid', 128, 128); ?>
+					<?php echo $this->me->getAvatarImage(KunenaFactory::getTemplate()->params->get('avatarType'), 128, 128); ?>
 				</a>
+				<p><?php echo $this->subLayout('User/Item/Status')->set('user', $this->me); ?></p>
 				<p>
 					<i class="icon-clock"></i>
 					<?php echo $this->me->getLastVisitDate()->toKunena('config_post_dateformat'); ?>
@@ -65,7 +66,8 @@ $markAllReadUrl = KunenaForumCategoryHelper::get()->getMarkReadUrl();
 				<div>
 					<input id="status-busy" class="hide" type="radio" value="2" name="status" />
 					<label for="status-busy" class="btn btn-link">
-						<a href="<?php echo KunenaRoute::_('index.php?option=com_kunena&view=user&task=status&status=2&' . JSession::getFormToken() . '=1');; ?>" class="btn btn-link">
+						<a href="<?php echo KunenaRoute::_('index.php?option=com_kunena&view=user&task=status&status=2&' . JSession::getFormToken() . '=1');
+; ?>" class="btn btn-link">
 							<i class="icon-minus red"></i>
 							<?php echo JText::_('COM_KUNENA_BUSY') ?>
 						</a>
@@ -113,7 +115,7 @@ $markAllReadUrl = KunenaForumCategoryHelper::get()->getMarkReadUrl();
 			<?php endif; ?>
 
 			<div>
-				<a href="<?php echo $this->me->getUrl(false, 'edit'); ?>" class="btn btn-link">
+				<a href="<?php echo $this->profile_edit_url; ?>" class="btn btn-link">
 					<i class="icon-cog"></i>
 					<?php echo JText::_('COM_KUNENA_LOGOUTMENU_LABEL_PREFERENCES'); ?>
 				</a>
@@ -147,17 +149,18 @@ $markAllReadUrl = KunenaForumCategoryHelper::get()->getMarkReadUrl();
 	</li>
 </ul>
 <?php
-/* Note these have to be outsize the dropdown as z-index stack context is different
+/*
+  Note these have to be outsize the dropdown as z-index stack context is different
 from the parent forcing the dropsown to take over z-index calculation */
 ?>
 <form action="<?php echo KunenaRoute::_('index.php?option=com_kunena'); ?>" method="post" id="statusText-form" class="form-inline">
 	<?php echo $this->subLayout('Widget/Modal')
-		->set('id', 'statusTextModal')
-		->set('name', 'status_text')
-		->set('label', JText::_('COM_KUNENA_STATUS_MESSAGE'))
-		->set('description', JText::_('COM_KUNENA_STATUS_TYP'))
-		->set('data', $this->me->status_text)
-		->set('form', 'statusText-form'); ?>
+	->set('id', 'statusTextModal')
+	->set('name', 'status_text')
+	->set('label', JText::_('COM_KUNENA_STATUS_MESSAGE'))
+	->set('description', JText::_('COM_KUNENA_STATUS_TYP'))
+	->set('data', $this->me->status_text)
+	->set('form', 'statusText-form'); ?>
 	<input type="hidden" name="view" value="user" />
 	<input type="hidden" name="task" value="statustext" />
 	<?php echo JHtml::_('form.token'); ?>

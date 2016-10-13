@@ -13,17 +13,18 @@ defined('_JEXEC') or die;
 $tabs = $this->getTabs();
 ?>
 
-<h2>
+<h1 class="pull-left">
 	<?php echo JText::_('COM_KUNENA_USER_PROFILE'); ?>
 	<?php echo $this->escape($this->profile->getName()); ?>
+</h1>
 
-	<?php if ($this->profile->isAuthorised('edit')) : ?>
-	<?php echo $this->profile->getLink(
-		'<i class="icon-edit"></i> ' . JText::_('COM_KUNENA_EDIT'),
-		JText::_('COM_KUNENA_EDIT'), 'nofollow', 'edit', 'btn pull-right'
-	); ?>
+<h2 class="pull-right">
+	<?php if ($this->profile->isAuthorised('edit') || $this->me->isAdmin()) : ?>
+		<?php echo $this->profile->getLink(
+			KunenaIcons::edit() . ' ' . JText::_('COM_KUNENA_EDIT'),
+			JText::_('COM_KUNENA_EDIT'), 'nofollow', 'edit', 'btn'
+		); ?>
 	<?php endif; ?>
-
 </h2>
 
 <?php
@@ -40,7 +41,7 @@ echo $this->subLayout('User/Item/Summary')
 
 		<?php foreach ($tabs as $name => $tab) : ?>
 		<li<?php echo $tab->active ? ' class="active"' : ''; ?>>
-			<a href="#<?php echo $name; ?>" data-toggle="tab"><?php echo $tab->title; ?></a>
+			<a href="#<?php echo $name; ?>" data-toggle="tab" rel="nofollow"><?php echo $tab->title; ?></a>
 		</li>
 		<?php endforeach; ?>
 

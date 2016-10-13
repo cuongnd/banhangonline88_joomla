@@ -34,8 +34,7 @@ class ComponentKunenaControllerTopicFormHistoryDisplay extends KunenaControllerD
 
 		$this->topic = KunenaForumTopicHelper::get($id);
 		$this->history = KunenaForumMessageHelper::getMessagesByTopic(
-			$this->topic, 0, (int) $this->config->historylimit, 'DESC'
-		);
+			$this->topic, 0, (int) $this->config->historylimit, 'DESC');
 
 		$this->replycount = $this->topic->getReplies();
 		$this->historycount = count($this->history);
@@ -55,7 +54,7 @@ class ComponentKunenaControllerTopicFormHistoryDisplay extends KunenaControllerD
 		$params->set('kunena_view', 'topic');
 		$params->set('kunena_layout', 'history');
 
-		$dispatcher = JDispatcher::getInstance();
+		$dispatcher = JEventDispatcher::getInstance();
 		JPluginHelper::importPlugin('kunena');
 
 		$dispatcher->trigger('onKunenaPrepare', array ('kunena.messages', &$this->history, &$params, 0));
@@ -74,45 +73,6 @@ class ComponentKunenaControllerTopicFormHistoryDisplay extends KunenaControllerD
 	 */
 	protected function prepareDocument()
 	{
-		$app = JFactory::getApplication();
-		$menu_item   = $app->getMenu()->getActive(); // get the active item
 
-		if ($menu_item)
-		{
-			$params             = $menu_item->params; // get the params
-			$params_title       = $params->get('page_title');
-			$params_keywords    = $params->get('menu-meta_keywords');
-			$params_description = $params->get('menu-meta_description');
-
-			if (!empty($params_title))
-			{
-				$title = $params->get('page_title');
-				$this->setTitle($title);
-			}
-			else
-			{
-				$this->setTitle($this->headerText);
-			}
-
-			if (!empty($params_keywords))
-			{
-				$keywords = $params->get('menu-meta_keywords');
-				$this->setKeywords($keywords);
-			}
-			else
-			{
-				$this->setKeywords($this->headerText);
-			}
-
-			if (!empty($params_description))
-			{
-				$description = $params->get('menu-meta_description');
-				$this->setDescription($description);
-			}
-			else
-			{
-				$this->setDescription($this->headerText);
-			}
-		}
 	}
 }

@@ -8,7 +8,7 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL
  * @link https://www.kunena.org
  **/
-defined ( '_JEXEC' ) or die ();
+defined('_JEXEC') or die();
 
 /**
  * Kunena Upload Backend Helper Class
@@ -17,12 +17,23 @@ class KunenaUploadHelper
 {
 	protected static $_instances = array ();
 
-	private function __construct() {}
+	/**
+	 *
+	 */
+	private function __construct()
+{}
 
+	/**
+	 * @param $file
+	 * @param $uploadfolder
+	 * @param $format
+	 *
+	 * @return boolean
+	 */
 	public static function upload($file, $uploadfolder, $format)
 	{
-		jimport( 'joomla.filesystem.folder' );
-		require_once( JPATH_ADMINISTRATOR.'/components/com_media/helpers/media.php' );
+		jimport('joomla.filesystem.folder');
+		require_once(JPATH_ADMINISTRATOR . '/components/com_media/helpers/media.php');
 
 		$err = null;
 
@@ -46,9 +57,10 @@ class KunenaUploadHelper
 
 		if (isset($file['name']))
 		{
-			$filepath = JPath::clean($uploadfolder.'/'.strtolower($file['name']));
+			$filepath = JPath::clean($uploadfolder . '/' . strtolower($file['name']));
 
-			if (!MediaHelper::canUpload( $file, $err ))
+			/* This part doesn't work
+			if (!JHelperMedia::canUpload($file, $err))
 			{
 				if ($format == 'json')
 				{
@@ -62,7 +74,7 @@ class KunenaUploadHelper
 				{
 					return false;
 				}
-			}
+			}*/
 
 			if (JFile::exists($filepath))
 			{

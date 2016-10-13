@@ -9,14 +9,16 @@
  * @link        https://www.kunena.org
  **/
 defined('_JEXEC') or die;
+$this->profile = KunenaFactory::getUser($this->user->id);
+$this->me = KunenaUserHelper::getMyself();
 ?>
 <h2>
 	<?php echo JText::_('COM_KUNENA_USER_PROFILE'); ?> <?php echo $this->escape($this->profile->getName()); ?>
 
 	<?php echo $this->profile->getLink(
-		'<i class="icon-arrow-left"></i> ' . JText::_('COM_KUNENA_BACK'),
-		JText::_('COM_KUNENA_BACK'), 'nofollow', '', 'btn pull-right'
-	); ?>
+	KunenaIcons::back() . ' ' . JText::_('COM_KUNENA_BACK'),
+	JText::_('COM_KUNENA_BACK'), 'nofollow', '', 'btn pull-right'
+); ?>
 </h2>
 
 <form action="<?php echo KunenaRoute::_('index.php?option=com_kunena&view=user'); ?>" method="post" enctype="multipart/form-data" name="kuserform" class="form-validate" id="kuserform">
@@ -26,21 +28,25 @@ defined('_JEXEC') or die;
 
 	<div class="tabs">
 		<ul id="KunenaUserEdit" class="nav nav-tabs">
+			<?php if ($this->profile->userid == $this->me->userid): ?>
 			<li class="active">
 				<a href="#home" data-toggle="tab">
 					<?php echo JText::_('COM_KUNENA_PROFILE_EDIT_USER'); ?>
 				</a>
 			</li>
-			<li>
+			<?php endif; ?>
+			<li <?php if ($this->profile->userid != $this->me->userid) { echo 'class="active"'; }?>>
 				<a href="#editprofile" data-toggle="tab">
 					<?php echo JText::_('COM_KUNENA_PROFILE_EDIT_PROFILE'); ?>
 				</a>
 			</li>
+			<?php if ($this->profile->userid == $this->me->userid): ?>
 			<li>
 				<a href="#editavatar" data-toggle="tab">
 					<?php echo JText::_('COM_KUNENA_PROFILE_EDIT_AVATAR'); ?>
 				</a>
 			</li>
+			<?php endif; ?>
 			<li>
 				<a href="#editsettings" data-toggle="tab">
 					<?php echo JText::_('COM_KUNENA_PROFILE_EDIT_SETTINGS'); ?>
@@ -49,15 +55,19 @@ defined('_JEXEC') or die;
 		</ul>
 
 		<div id="KunenaUserEdit" class="tab-content">
+			<?php if ($this->profile->userid == $this->me->userid): ?>
 			<div class="tab-pane fade in active" id="home">
 				<?php echo $this->subRequest('User/Edit/User'); ?>
 			</div>
-			<div class="tab-pane fade" id="editprofile">
+			<?php endif; ?>
+			<div class="tab-pane fade <?php if ($this->profile->userid != $this->me->userid) { echo 'in active'; }?>" id="editprofile">
 				<?php echo $this->subRequest('User/Edit/Profile'); ?>
 			</div>
+			<?php if ($this->profile->userid == $this->me->userid): ?>
 			<div class="tab-pane fade" id="editavatar">
 				<?php echo $this->subRequest('User/Edit/Avatar'); ?>
 			</div>
+			<?php endif; ?>
 			<div class="tab-pane fade" id="editsettings">
 				<?php echo $this->subRequest('User/Edit/Settings'); ?>
 			</div>
@@ -66,12 +76,11 @@ defined('_JEXEC') or die;
 
 			<div class="center">
 				<button class="btn btn-primary validate" type="submit">
-					<?php echo JText::_('COM_KUNENA_SAVE'); ?>
+					<?php echo KunenaIcons::save();?> <?php echo JText::_('COM_KUNENA_SAVE'); ?>
 				</button>
-				<input type="button" name="cancel" class="btn"
-				       value="<?php echo (' ' . JText::_('COM_KUNENA_CANCEL') . ' '); ?>"
-				       onclick="window.history.back();"
-				       title="<?php echo (JText::_('COM_KUNENA_EDITOR_HELPLINE_CANCEL')); ?>" />
+				<button class="btn btn-default" type="button" name="cancel" onclick="window.history.back();" title="<?php echo (JText::_('COM_KUNENA_EDITOR_HELPLINE_CANCEL')); ?>">
+					<?php echo KunenaIcons::cancel();?> <?php echo JText::_('COM_KUNENA_CANCEL'); ?>
+				</button>
 			</div>
 		</div>
 	</div>

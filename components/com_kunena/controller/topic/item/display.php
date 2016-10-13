@@ -68,6 +68,20 @@ class ComponentKunenaControllerTopicItemDisplay extends KunenaControllerDisplay
 
 		$this->me = KunenaUserHelper::getMyself();
 
+		$allowed = md5(serialize(KunenaAccess::getInstance()->getAllowedCategories()));
+		$cache   = JFactory::getCache('com_kunena', 'output');
+
+		/*if ($cache->start("{$this->ktemplate->name}.common.jump.{$allowed}", 'com_kunena.template'))
+		 {
+		 return;
+		 }*/
+
+		$options            = array();
+		$options []         = JHtml::_('select.option', '0', JText::_('COM_KUNENA_FORUM_TOP'));
+		$cat_params         = array('sections' => 1, 'catid' => 0);
+		$this->categorylist = JHtml::_('kunenaforum.categorylist', 'catid', 0, $options, $cat_params, 'class="inputbox fbs" size="1" onchange = "this.form.submit()"', 'value', 'text');
+
+
 		// Load topic and message.
 		if ($mesid)
 		{
@@ -102,11 +116,8 @@ class ComponentKunenaControllerTopicItemDisplay extends KunenaControllerDisplay
 			$channels = $this->category->getChannels();
 
 			if ($this->message->thread != $this->topic->id
-				|| ($this->topic->category_id != $this->category->id && !isset($channels[$this->topic->category_id]))
-				)
+				|| ($this->topic->category_id != $this->category->id && !isset($channels[$this->topic->category_id])))
 			{
-				while (@ob_end_clean());
-
 				$this->app->redirect($this->message->getUrl(null, false));
 			}
 		}
@@ -122,12 +133,18 @@ class ComponentKunenaControllerTopicItemDisplay extends KunenaControllerDisplay
 		$this->pagination = new KunenaPagination($finder->count(), $start, $limit);
 
 		$this->messages = $finder
-			->order('time', $this->me->getMessageOrdering() == 'asc' ? 1 : -1)
+			->order('time', $this->me->getMessageOrdering() == 'asc' ? 1 : - 1)
 			->start($this->pagination->limitstart)
 			->limit($this->pagination->limit)
 			->find();
 
 		$this->prepareMessages($mesid);
+
+		if ($this->topic->unread)
+		{
+			$doc = JFactory::getDocument();
+			$doc->setMetaData('robots', 'noindex, nofollow');
+		}
 
 		// Run events.
 		$params = new JRegistry;
@@ -135,7 +152,7 @@ class ComponentKunenaControllerTopicItemDisplay extends KunenaControllerDisplay
 		$params->set('kunena_view', 'topic');
 		$params->set('kunena_layout', 'default');
 
-		$dispatcher = JDispatcher::getInstance();
+		$dispatcher = JEventDispatcher::getInstance();
 		JPluginHelper::importPlugin('kunena');
 
 		$dispatcher->trigger('onKunenaPrepare', array ('kunena.topic', &$this->topic, &$params, 0));
@@ -143,10 +160,9 @@ class ComponentKunenaControllerTopicItemDisplay extends KunenaControllerDisplay
 
 		// Get user data, captcha & quick reply.
 		$this->userTopic = $this->topic->getUserTopic();
-		$this->captcha = KunenaSpamRecaptcha::getInstance();
-		$this->quickReply = ($this->topic->isAuthorised('reply') && $this->me->exists() && !$this->captcha->enabled());
+		$this->quickReply = ($this->topic->isAuthorised('reply') && $this->me->exists());
 
-		$this->headerText = JText::_('COM_KUNENA_TOPIC') . ' ' . html_entity_decode($this->topic->displayField('subject'));
+		$this->headerText = html_entity_decode($this->topic->displayField('subject'));
 	}
 
 	/**
@@ -340,48 +356,69 @@ class ComponentKunenaControllerTopicItemDisplay extends KunenaControllerDisplay
 	 */
 	protected function prepareDocument()
 	{
+		$doc = JFactory::getDocument();
+		$doc->setMetaData('og:type', 'article', 'property');
+		$doc->setMetaData('og:title', $this->topic->displayField('subject'), 'property');
+		$doc->setMetaData('og:author', $this->topic->getAuthor()->username, 'property');
+		$doc->setMetaData('article:published_time', $this->topic->getFirstPostTime(), 'property');
+		$doc->setMetaData('article:section', $this->topic->getCategory()->name, 'property');
+
+		$app = JFactory::getApplication('site');
+		$componentParams = $app->getParams('com_config');
+		$robots = $componentParams->get('robots');
+
+		if ($robots == '')
+		{
+			$doc->setMetaData('robots', 'index, follow');
+		}
+		elseif ($robots == 'noindex, follow')
+		{
+			$doc->setMetaData('robots', 'noindex, follow');
+		}
+		elseif ($robots == 'index, nofollow')
+		{
+			$doc->setMetaData('robots', 'index, nofollow');
+		}
+		else
+		{
+			$doc->setMetaData('robots', 'nofollow, noindex');
+		}
+
 		$page = $this->pagination->pagesCurrent;
 		$total = $this->pagination->pagesTotal;
-		$headerText = $this->headerText . ($total > 1 ? " ({$page}/{$total})" : '');
+		$headerText = $this->headerText . ($total > 1 && $page > 1 ? " - " . JText::_('COM_KUNENA_PAGES') . " {$page}" : '');
 
 		$app = JFactory::getApplication();
-		$menu_item   = $app->getMenu()->getActive(); // get the active item
+		$menu_item   = $app->getMenu()->getActive();
 
 		if ($menu_item)
 		{
-			$params             = $menu_item->params; // get the params
-			$params_title       = $params->get('page_title');
+			$params             = $menu_item->params;
 			$params_keywords    = $params->get('menu-meta_keywords');
-			$params_description = $params->get('menu-meta_description');
 
-			if (!empty($params_title))
-			{
-				$title = $params->get('page_title');
-				$this->setTitle($title);
-			}
-			else
-			{
-				$this->setTitle($headerText);
-			}
+			$this->setTitle($headerText);
 
 			if (!empty($params_keywords))
 			{
 				$keywords = $params->get('menu-meta_keywords');
 				$this->setKeywords($keywords);
+				$doc->setMetaData('article:tag', $keywords, 'property');
 			}
 			else
 			{
 				$this->setKeywords($headerText);
 			}
 
-			if (!empty($params_description))
+
+			if ($total > 1 && $page > 1)
 			{
-				$description = $params->get('menu-meta_description');
-				$this->setDescription($description);
+				$small = substr(KunenaHtmlParser::stripBBCode($this->topic->first_post_message), 0, 140);
+				$this->setDescription($small . " - " . JText::_('COM_KUNENA_PAGES') . " {$page}");
 			}
 			else
 			{
-				$this->setDescription($headerText);
+				$small = substr(KunenaHtmlParser::stripBBCode($this->topic->first_post_message), 0, 160);
+				$this->setDescription($small);
 			}
 		}
 	}

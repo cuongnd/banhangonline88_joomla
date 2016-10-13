@@ -2,30 +2,36 @@
 /**
  * Kunena Component
  *
- * @package       Kunena.Site
- * @subpackage    Controllers
+ * @package     Kunena.Site
+ * @subpackage  Controllers
  *
- * @copyright (C) 2008 - 2016 Kunena Team. All rights reserved.
- * @license       http://www.gnu.org/copyleft/gpl.html GNU/GPL
- * @link          https://www.kunena.org
+ * @copyright   (C) 2008 - 2016 Kunena Team. All rights reserved.
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU/GPL
+ * @link        https://www.kunena.org
  **/
-defined('_JEXEC') or die ();
+defined('_JEXEC') or die();
 
 /**
  * Kunena Topics Controller
  *
- * @since        2.0
+ * @since  2.0
  */
 class KunenaControllerTopics extends KunenaController
 {
 
-	function none()
+	/**
+	 *
+	 */
+	public function none()
 	{
 		$this->app->enqueueMessage(JText::_('COM_KUNENA_CONTROLLER_NO_TASK'));
 		$this->setRedirectBack();
 	}
 
-	function permdel()
+	/**
+	 * @throws Exception
+	 */
+	public function permdel()
 	{
 		if (!JSession::checkToken('post'))
 		{
@@ -36,14 +42,15 @@ class KunenaControllerTopics extends KunenaController
 		}
 
 		$message = '';
-		$ids     = array_keys(JRequest::getVar('topics', array(), 'post', 'array')); // Array of integer keys
-		JArrayHelper::toInteger($ids);
+		$ids     = array_keys(JFactory::getApplication()->input->get('topics', array(), 'post', 'array'));
+		Joomla\Utilities\ArrayHelper::toInteger($ids);
 
 		$topics = KunenaForumTopicHelper::getTopics($ids);
 
 		if (!$topics)
 		{
-			$message = JText::_('COM_KUNENA_NO_TOPICS_SELECTED');
+			$this->app->enqueueMessage(JText::_('COM_KUNENA_NO_TOPICS_SELECTED'), 'notice');
+			$this->setRedirectBack();
 		}
 		else
 		{
@@ -55,6 +62,7 @@ class KunenaControllerTopics extends KunenaController
 					$activity = KunenaFactory::getActivityIntegration();
 					$activity->onAfterDeleteTopic($topic);
 					$message = JText::_('COM_KUNENA_BULKMSG_DELETED');
+					KunenaForumCategoryHelper::recount($topic->getCategory()->id);
 				}
 				else
 				{
@@ -65,13 +73,31 @@ class KunenaControllerTopics extends KunenaController
 
 		if ($message)
 		{
+			if ($this->config->log_moderation)
+			{
+				foreach ($topics as $topic)
+				{
+					KunenaLog::log(
+						KunenaLog::TYPE_MODERATION,
+						KunenaLog::LOG_TOPIC_DESTROY,
+						array('topic_ids' => $ids),
+						$topic->getCategory(),
+						$topic,
+						null
+					);
+				}
+			}
+
 			$this->app->enqueueMessage($message);
 		}
 
 		$this->setRedirectBack();
 	}
 
-	function delete()
+	/**
+	 * @throws Exception
+	 */
+	public function delete()
 	{
 		if (!JSession::checkToken('post'))
 		{
@@ -81,15 +107,16 @@ class KunenaControllerTopics extends KunenaController
 			return;
 		}
 
-		$ids = array_keys(JRequest::getVar('topics', array(), 'post', 'array')); // Array of integer keys
-		JArrayHelper::toInteger($ids);
+		$ids = array_keys(JFactory::getApplication()->input->get('topics', array(), 'post', 'array'));
+		Joomla\Utilities\ArrayHelper::toInteger($ids);
 
 		$message = '';
 		$topics  = KunenaForumTopicHelper::getTopics($ids);
 
 		if (!$topics)
 		{
-			$message = JText::_('COM_KUNENA_NO_TOPICS_SELECTED');
+			$this->app->enqueueMessage(JText::_('COM_KUNENA_NO_TOPICS_SELECTED'), 'notice');
+			$this->setRedirectBack();
 		}
 		else
 		{
@@ -108,13 +135,31 @@ class KunenaControllerTopics extends KunenaController
 
 		if ($message)
 		{
+			if ($this->config->log_moderation)
+			{
+				foreach ($topics as $topic)
+				{
+					KunenaLog::log(
+						KunenaLog::TYPE_MODERATION,
+						KunenaLog::LOG_TOPIC_DELETE,
+						array('topic_ids' => $ids),
+						$topic->getCategory(),
+						$topic,
+						null
+					);
+				}
+			}
+
 			$this->app->enqueueMessage($message);
 		}
 
 		$this->setRedirectBack();
 	}
 
-	function restore()
+	/**
+	 * @throws Exception
+	 */
+	public function restore()
 	{
 		if (!JSession::checkToken('post'))
 		{
@@ -124,15 +169,16 @@ class KunenaControllerTopics extends KunenaController
 			return;
 		}
 
-		$ids = array_keys(JRequest::getVar('topics', array(), 'post', 'array')); // Array of integer keys
-		JArrayHelper::toInteger($ids);
+		$ids = array_keys(JFactory::getApplication()->input->get('topics', array(), 'post', 'array'));
+		Joomla\Utilities\ArrayHelper::toInteger($ids);
 
 		$message = '';
 		$topics  = KunenaForumTopicHelper::getTopics($ids);
 
 		if (!$topics)
 		{
-			$message = JText::_('COM_KUNENA_NO_TOPICS_SELECTED');
+			$this->app->enqueueMessage(JText::_('COM_KUNENA_NO_TOPICS_SELECTED'), 'notice');
+			$this->setRedirectBack();
 		}
 		else
 		{
@@ -151,12 +197,30 @@ class KunenaControllerTopics extends KunenaController
 
 		if ($message)
 		{
+			if ($this->config->log_moderation)
+			{
+				foreach ($topics as $topic)
+				{
+					KunenaLog::log(
+						KunenaLog::TYPE_MODERATION,
+						KunenaLog::LOG_TOPIC_UNDELETE,
+						array('topic_ids' => $ids),
+						$topic->getCategory(),
+						$topic,
+						null
+					);
+				}
+			}
+
 			$this->app->enqueueMessage($message);
 		}
 
 		$this->setRedirectBack();
 	}
 
+	/**
+	 * @throws Exception
+	 */
 	public function approve()
 	{
 		if (!JSession::checkToken('post'))
@@ -167,15 +231,16 @@ class KunenaControllerTopics extends KunenaController
 			return;
 		}
 
-		$ids = array_keys(JRequest::getVar('topics', array(), 'post', 'array')); // Array of integer keys
-		JArrayHelper::toInteger($ids);
+		$ids = array_keys(JFactory::getApplication()->input->get('topics', array(), 'post', 'array'));
+		Joomla\Utilities\ArrayHelper::toInteger($ids);
 
 		$message = '';
 		$topics  = KunenaForumTopicHelper::getTopics($ids);
 
 		if (!$topics)
 		{
-			$message = JText::_('COM_KUNENA_NO_TOPICS_SELECTED');
+			$this->app->enqueueMessage(JText::_('COM_KUNENA_NO_TOPICS_SELECTED'), 'notice');
+			$this->setRedirectBack();
 		}
 		else
 		{
@@ -195,13 +260,31 @@ class KunenaControllerTopics extends KunenaController
 
 		if ($message)
 		{
+			if ($this->config->log_moderation)
+			{
+				foreach ($topics as $topic)
+				{
+					KunenaLog::log(
+						KunenaLog::TYPE_MODERATION,
+						KunenaLog::LOG_TOPIC_APPROVE,
+						array('topic_ids' => $ids),
+						$topic->getCategory(),
+						$topic,
+						null
+					);
+				}
+			}
+
 			$this->app->enqueueMessage($message);
 		}
 
 		$this->setRedirectBack();
 	}
 
-	function move()
+	/**
+	 * @throws Exception
+	 */
+	public function move()
 	{
 		if (!JSession::checkToken('post'))
 		{
@@ -211,18 +294,24 @@ class KunenaControllerTopics extends KunenaController
 			return;
 		}
 
-		$ids = array_keys(JRequest::getVar('topics', array(), 'post', 'array')); // Array of integer keys
-		JArrayHelper::toInteger($ids);
+		$topics_ids = array_keys($this->app->input->get('topics', array(), 'post', 'array'));
+		Joomla\Utilities\ArrayHelper::toInteger($topics_ids);
 
-		$topics = KunenaForumTopicHelper::getTopics($ids);
+		$topics = KunenaForumTopicHelper::getTopics($topics_ids);
 
-		if (!$topics)
+		$messages_ids = array_keys($this->app->input->get('posts', array(), 'post', 'array'));
+		Joomla\Utilities\ArrayHelper::toInteger($messages_ids);
+
+		$messages = KunenaForumMessageHelper::getMessages($messages_ids);
+
+		if (!$topics && !$messages)
 		{
-			$message = JText::_('COM_KUNENA_NO_TOPICS_SELECTED');
+			$this->app->enqueueMessage(JText::_('COM_KUNENA_NO_MESSAGES_OR_TOPICS_SELECTED'), 'notice');
+			$this->setRedirectBack();
 		}
 		else
 		{
-			$target = KunenaForumCategoryHelper::get(JRequest::getInt('target', 0));
+			$target = KunenaForumCategoryHelper::get($this->app->input->getInt('target', 0));
 
 			if (!$target->authorise('read'))
 			{
@@ -230,29 +319,69 @@ class KunenaControllerTopics extends KunenaController
 			}
 			else
 			{
-				foreach ($topics as $topic)
+				if ($topics)
 				{
-					if ($topic->authorise('move') && $topic->move($target))
+					foreach ($topics as $topic)
 					{
-						$message = JText::_('COM_KUNENA_POST_SUCCESS_MOVE');
+						if ($topic->authorise('move') && $topic->move($target))
+						{
+							$message = JText::_('COM_KUNENA_ACTION_TOPIC_SUCCESS_MOVE');
+						}
+						else
+						{
+							$this->app->enqueueMessage($topic->getError(), 'notice');
+						}
 					}
-					else
+				}
+				else
+				{
+					foreach ($messages as $message)
 					{
-						$this->app->enqueueMessage($topic->getError(), 'notice');
-					}
+						$topic = $message->getTopic();
+
+						if ($message->authorise('move') && $topic->move($target, $message->id))
+  						{
+  							$message = JText::_('COM_KUNENA_ACTION_POST_SUCCESS_MOVE');
+  						}
+  						else
+  						{
+  							$this->app->enqueueMessage($message->getError(), 'notice');
+  						}
+  					}
 				}
 			}
 		}
 
 		if (!empty($message))
 		{
+			if ($this->config->log_moderation)
+			{
+				foreach ($topics as $topic)
+				{
+					KunenaLog::log(
+						KunenaLog::TYPE_MODERATION,
+						KunenaLog::LOG_TOPIC_MODERATE,
+						array(
+							'move' => array('id' => $topic->id, 'mode' => 'topic'),
+							'target' => array('category_id' => $target->id)
+						),
+						$topic->getCategory(),
+						$topic,
+						null
+					);
+				}
+			}
+
 			$this->app->enqueueMessage($message);
 		}
 
 		$this->setRedirectBack();
 	}
 
-	function unfavorite()
+	/**
+	 * @throws Exception
+	 */
+	public function unfavorite()
 	{
 		if (!JSession::checkToken('post'))
 		{
@@ -262,13 +391,28 @@ class KunenaControllerTopics extends KunenaController
 			return;
 		}
 
-		$ids = array_keys(JRequest::getVar('topics', array(), 'post', 'array')); // Array of integer keys
-		JArrayHelper::toInteger($ids);
+		$ids = array_keys(JFactory::getApplication()->input->get('topics', array(), 'post', 'array'));
+		Joomla\Utilities\ArrayHelper::toInteger($ids);
 
 		$topics = KunenaForumTopicHelper::getTopics($ids);
 
 		if (KunenaForumTopicHelper::favorite(array_keys($topics), 0))
 		{
+			if ($this->config->log_moderation)
+			{
+				foreach($topics as $topic)
+				{
+					KunenaLog::log(
+						$this->me->userid == $topic->getAuthor()->userid ? KunenaLog::TYPE_ACTION : KunenaLog::TYPE_MODERATION,
+						KunenaLog::LOG_TOPIC_UNFAVORITE,
+						array('topic_ids' => $ids),
+						$topic->getCategory(),
+						$topic,
+						null
+					);
+				}
+			}
+
 			$this->app->enqueueMessage(JText::_('COM_KUNENA_USER_UNFAVORITE_YES'));
 		}
 		else
@@ -279,7 +423,10 @@ class KunenaControllerTopics extends KunenaController
 		$this->setRedirectBack();
 	}
 
-	function unsubscribe()
+	/**
+	 * @throws Exception
+	 */
+	public function unsubscribe()
 	{
 		if (!JSession::checkToken('post'))
 		{
@@ -289,8 +436,8 @@ class KunenaControllerTopics extends KunenaController
 			return;
 		}
 
-		$ids = array_keys(JRequest::getVar('topics', array(), 'post', 'array')); // Array of integer keys
-		JArrayHelper::toInteger($ids);
+		$ids = array_keys(JFactory::getApplication()->input->get('topics', array(), 'post', 'array'));
+		Joomla\Utilities\ArrayHelper::toInteger($ids);
 
 		$topics = KunenaForumTopicHelper::getTopics($ids);
 
@@ -306,6 +453,9 @@ class KunenaControllerTopics extends KunenaController
 		$this->setRedirectBack();
 	}
 
+	/**
+	 * @throws Exception
+	 */
 	public function approve_posts()
 	{
 		if (!JSession::checkToken('post'))
@@ -316,15 +466,15 @@ class KunenaControllerTopics extends KunenaController
 			return;
 		}
 
-		$ids = array_keys(JRequest::getVar('posts', array(), 'post', 'array')); // Array of integer keys
-		JArrayHelper::toInteger($ids);
+		$ids = array_keys(JFactory::getApplication()->input->get('posts', array(), 'post', 'array'));
+		Joomla\Utilities\ArrayHelper::toInteger($ids);
 
 		$success  = 0;
 		$messages = KunenaForumMessageHelper::getMessages($ids);
 
 		if (!$messages)
 		{
-			$this->app->enqueueMessage(JText::_('COM_KUNENA_NO_MESSAGES_SELECTED'));
+			$this->app->enqueueMessage(JText::_('COM_KUNENA_NO_MESSAGES_SELECTED'), 'notice');
 		}
 		else
 		{
@@ -350,6 +500,9 @@ class KunenaControllerTopics extends KunenaController
 		$this->setRedirectBack();
 	}
 
+	/**
+	 * @throws Exception
+	 */
 	public function delete_posts()
 	{
 		if (!JSession::checkToken('post'))
@@ -360,15 +513,15 @@ class KunenaControllerTopics extends KunenaController
 			return;
 		}
 
-		$ids = array_keys(JRequest::getVar('posts', array(), 'post', 'array')); // Array of integer keys
-		JArrayHelper::toInteger($ids);
+		$ids = array_keys(JFactory::getApplication()->input->get('posts', array(), 'post', 'array'));
+		Joomla\Utilities\ArrayHelper::toInteger($ids);
 
 		$success  = 0;
 		$messages = KunenaForumMessageHelper::getMessages($ids);
 
 		if (!$messages)
 		{
-			$this->app->enqueueMessage(JText::_('COM_KUNENA_NO_MESSAGES_SELECTED'));
+			$this->app->enqueueMessage(JText::_('COM_KUNENA_NO_MESSAGES_SELECTED'), 'notice');
 		}
 		else
 		{
@@ -393,7 +546,10 @@ class KunenaControllerTopics extends KunenaController
 		$this->setRedirectBack();
 	}
 
-	function restore_posts()
+	/**
+	 * @throws Exception
+	 */
+	public function restore_posts()
 	{
 		if (!JSession::checkToken('post'))
 		{
@@ -403,15 +559,15 @@ class KunenaControllerTopics extends KunenaController
 			return;
 		}
 
-		$ids = array_keys(JRequest::getVar('posts', array(), 'post', 'array')); // Array of integer keys
-		JArrayHelper::toInteger($ids);
+		$ids = array_keys(JFactory::getApplication()->input->get('posts', array(), 'post', 'array'));
+		Joomla\Utilities\ArrayHelper::toInteger($ids);
 
 		$success  = 0;
 		$messages = KunenaForumMessageHelper::getMessages($ids);
 
 		if (!$messages)
 		{
-			$this->app->enqueueMessage(JText::_('COM_KUNENA_NO_MESSAGES_SELECTED'));
+			$this->app->enqueueMessage(JText::_('COM_KUNENA_NO_MESSAGES_SELECTED'), 'notice');
 		}
 		else
 		{
@@ -432,10 +588,14 @@ class KunenaControllerTopics extends KunenaController
 		{
 			$this->app->enqueueMessage(JText::_('COM_KUNENA_POST_SUCCESS_UNDELETE'));
 		}
+
 		$this->setRedirectBack();
 	}
 
-	function permdel_posts()
+	/**
+	 * @throws Exception
+	 */
+	public function permdel_posts()
 	{
 		if (!JSession::checkToken('post'))
 		{
@@ -445,15 +605,15 @@ class KunenaControllerTopics extends KunenaController
 			return;
 		}
 
-		$ids = array_keys(JRequest::getVar('posts', array(), 'post', 'array')); // Array of integer keys
-		JArrayHelper::toInteger($ids);
+		$ids = array_keys(JFactory::getApplication()->input->get('posts', array(), 'post', 'array'));
+		Joomla\Utilities\ArrayHelper::toInteger($ids);
 
 		$success  = 0;
 		$messages = KunenaForumMessageHelper::getMessages($ids);
 
 		if (!$messages)
 		{
-			$this->app->enqueueMessage(JText::_('COM_KUNENA_NO_MESSAGES_SELECTED'));
+			$this->app->enqueueMessage(JText::_('COM_KUNENA_NO_MESSAGES_SELECTED'), 'notice');
 		}
 		else
 		{

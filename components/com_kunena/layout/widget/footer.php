@@ -2,12 +2,12 @@
 /**
  * Kunena Component
  *
- * @package         Kunena.Site
- * @subpackage      Controllers.Misc
+ * @package     Kunena.Site
+ * @subpackage  Controllers.Misc
  *
  * @copyright   (C) 2008 - 2016 Kunena Team. All rights reserved.
- * @license         http://www.gnu.org/copyleft/gpl.html GNU/GPL
- * @link            https://www.kunena.org
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU/GPL
+ * @link        https://www.kunena.org
  **/
 defined('_JEXEC') or die;
 
@@ -65,7 +65,11 @@ class KunenaLayoutWidgetFooter extends KunenaLayout
 					break;
 			}
 
-			return '<a href="' . KunenaRoute::_("index.php?option=com_kunena&view=topics&format=feed&layout=default&{$rss_type}", true) . '"><span class="icon-feed" title="' . JText::_('COM_KUNENA_CATEGORIES_LABEL_GETRSS') . '"></span></a>';
+			$url = KunenaRoute::_("index.php?option=com_kunena&view=topics&format=feed&layout=default&{$rss_type}", true);
+			$doc = JFactory::getDocument();
+			$doc->addHeadLink($url, 'alternate', 'rel', array('type' => 'application/rss+xml'));
+
+			return '<a rel="alternate" type="application/rss+xml" href="' . $url . '">' . KunenaIcons::rss($text = true) . '</a>';
 		}
 		else
 		{

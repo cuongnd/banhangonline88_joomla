@@ -1,14 +1,14 @@
 <?php
 /**
  * Kunena Component
- * @package Kunena.Administrator.Template
- * @subpackage Categories
+ * @package     Kunena.Administrator.Template
+ * @subpackage  Categories
  *
- * @copyright (C) 2008 - 2016 Kunena Team. All rights reserved.
- * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL
- * @link https://www.kunena.org
+ * @copyright   (C) 2008 - 2016 Kunena Team. All rights reserved.
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU/GPL
+ * @link        https://www.kunena.org
  **/
-defined ( '_JEXEC' ) or die ();
+defined('_JEXEC') or die();
 
 /**
  * Implements Kunena layouts for the views.
@@ -62,12 +62,13 @@ class KunenaLayoutBase extends KunenaCompatLayoutBase
 	 * @var array
 	 */
 	protected $closures = array();
+
 	protected $debug;
 
 	/**
 	 * Method to instantiate the layout.
 	 *
-	 * @param	string			$name
+	 * @param   string			$name
 	 * @param   array  $paths  The paths queue.
 	 */
 	public function __construct($name, array $paths = null)
@@ -102,7 +103,7 @@ class KunenaLayoutBase extends KunenaCompatLayoutBase
 	 */
 	public function debugInfo()
 	{
-		$rawPath  = strtolower(str_replace('.', '/', $this->_name)) .'/'. $this->layout . '.php';
+		$rawPath  = strtolower(str_replace('.', '/', $this->_name)) . '/' . $this->layout . '.php';
 
 		$html = "<pre>";
 		$html .= '<strong>Layout:</strong> ' . $this->_name . '<br />';
@@ -114,7 +115,7 @@ class KunenaLayoutBase extends KunenaCompatLayoutBase
 
 		foreach ($this->includePaths as $path)
 		{
-			$file = $path .'/'. $this->layout . '.php';;
+			$file = $path . '/' . $this->layout . '.php';
 
 			if (!is_file($file))
 			{
@@ -183,7 +184,6 @@ class KunenaLayoutBase extends KunenaCompatLayoutBase
 
 			// And get the contents.
 			$output = ob_get_clean();
-
 		}
 		catch (Exception $e)
 		{
@@ -207,9 +207,9 @@ class KunenaLayoutBase extends KunenaCompatLayoutBase
 	 * @param array $data
 	 *
 	 * @return KunenaLayoutBase Instance of $this to allow chaining.
-	 * @throws Exception
 	 * @internal param bool $value
 	 *
+	 * @internal param bool $value
 	 */
 	public function debug($data = array())
 	{
@@ -218,6 +218,11 @@ class KunenaLayoutBase extends KunenaCompatLayoutBase
 		return $this;
 	}
 
+	/**
+	 * @param   Exception $e
+	 *
+	 * @return string
+	 */
 	public function renderError(Exception $e)
 	{
 		// Exceptions aren't allowed in string conversion, log the error and output it as a string.
@@ -274,22 +279,7 @@ class KunenaLayoutBase extends KunenaCompatLayoutBase
 			$error .= '. Please enable debug mode for more information.';
 		}
 
-		return '<br />'.$error.'<br />';
-	}
-
-	/**
-	 * Load a template file.
-	 *
-	 * @param   string  $tpl  The name of the template source file.
-	 *
-	 * @return  string  The output of the the template file.
-	 *
-	 * @throws  Exception
-	 * @deprecated
-	 */
-	public function loadTemplate($tpl = null)
-	{
-		return $this->render("{$this->_name}_{$tpl}");
+		return '<br />' . $error . '<br />';
 	}
 
 	/**
@@ -318,10 +308,9 @@ class KunenaLayoutBase extends KunenaCompatLayoutBase
 	 * Add script declaration to the document.
 	 *
 	 * @param        $content
-	 * @param string $type
+	 * @param   string $type
 	 *
 	 * @return mixed
-	 * @internal param $filename
 	 */
 	public function addScriptDeclaration($content, $type = 'text/javascript')
 	{
@@ -390,7 +379,8 @@ class KunenaLayoutBase extends KunenaCompatLayoutBase
 	 */
 	public function setLayout($layout)
 	{
-		if (!$layout) $layout = 'default';
+		if (!$layout) { $layout = 'default'; }
+
 		$this->layout = $layout;
 
 		return $this;
@@ -498,7 +488,7 @@ class KunenaLayoutBase extends KunenaCompatLayoutBase
 	 * Property overloading.
 	 *
 	 * @param $property
-	 * @return bool
+	 * @return boolean
 	 */
 	public function __isset($property)
 	{
@@ -544,7 +534,7 @@ class KunenaLayoutBase extends KunenaCompatLayoutBase
 		$properties = (array) $this;
 		$list = array();
 
-		foreach ($properties as $property=>$value)
+		foreach ($properties as $property => $value)
 		{
 			if ($property[0] != "\0")
 			{
@@ -595,7 +585,7 @@ class KunenaLayoutBase extends KunenaCompatLayoutBase
 	 */
 	public function subRequest($path, Jinput $input = null, $options = null)
 	{
-		return KunenaRequest::factory($path.'/Display', $input, $options)
+		return KunenaRequest::factory($path . '/Display', $input, $options)
 			->setLayout($this->getLayout());
 	}
 

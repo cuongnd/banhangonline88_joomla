@@ -8,7 +8,7 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL
  * @link https://www.kunena.org
  **/
-defined ( '_JEXEC' ) or die ();
+defined('_JEXEC') or die();
 
 // TODO: add possibility to hide contents from these tags:
 // [hide], [confidential], [spoiler], [attachment], [code]
@@ -23,15 +23,17 @@ class KunenaBbcodeEditor
 	var $editor_elements = array();
 
 	/**
-	 * @param array $config
+	 * @param   array $config
+	 *
 	 */
 	function __construct($config = array())
 	{
 		$this->config = $config;
+		$this->template = KunenaFactory::getTemplate();
 	}
 
 	/**
-	 * @param array $config
+	 * @param   array $config
 	 * @return KunenaBbcodeEditor
 	 */
 	public static function getInstance($config = array())
@@ -40,7 +42,7 @@ class KunenaBbcodeEditor
 
 		if (! $instance)
 		{
-			$instance = new KunenaBbcodeEditor ($config);
+			$instance = new KunenaBbcodeEditor($config);
 		}
 
 		return $instance;
@@ -50,11 +52,11 @@ class KunenaBbcodeEditor
 	 * Inserts a button or another element at the specified location. See insertElements for details.
 	 *
 	 * @param $element
-	 * @param null $pos
+	 * @param   null $pos
 	 * @param $where
-	 * @return bool
+	 * @return boolean
 	 */
-	public function insertElement ($element, $pos = NULL, $where = NULL)
+	public function insertElement($element, $pos = null, $where = null)
 	{
 		if (is_subclass_of($element, 'KunenaBbcodeEditorElement'))
 		{
@@ -69,11 +71,11 @@ class KunenaBbcodeEditor
 	 * all other elements.
 	 *
 	 * @param $elements
-	 * @param null $pos
+	 * @param   null $pos
 	 * @param $where
-	 * @return bool
+	 * @return boolean
 	 */
-	public function insertElements ($elements, $pos = NULL, $where = NULL)
+	public function insertElements($elements, $pos = null, $where = null)
 	{
 		$new_elements_keys = array();
 
@@ -109,7 +111,6 @@ class KunenaBbcodeEditor
 				{
 					return false;
 				}
-
 				break;
 			default:
 				$pos = count($editor_keys);
@@ -129,7 +130,7 @@ class KunenaBbcodeEditor
 	 *
 	 * @return array
 	 */
-	public static function parseXML (SimpleXMLElement $xml, $parseMethod)
+	public static function parseXML(SimpleXMLElement $xml, $parseMethod)
 	{
 		$elements = array();
 
@@ -162,26 +163,16 @@ class KunenaBbcodeEditor
 	}
 
 	/**
-	 * Initialize editor by calling HMVC version or legacy one
+	 * Initialize editor by calling HMVC version
 	 *
-	 * @param   string  $identifier  The class to pass for legacy editor
 	 *
 	 * @return void
 	 */
-	public function initialize($identifier='class')
+	public function initialize()
 	{
 		$template = KunenaFactory::getTemplate();
 
 		$this->isHMVC = $template->isHmvc();
-
-		if ( $this->isHMVC )
-		{
-			$this->initializeHMVC();
-		}
-		else
-		{
-			$this->initializeLegacy($identifier);
-		}
 	}
 
 	/**
@@ -196,7 +187,7 @@ class KunenaBbcodeEditor
 		$this->editor_elements = self::parseXML($xml_file, 'parseHMVCXML');
 
 		// Hook to manipulate the Editor XML like adding buttons
-		$dispatcher = JDispatcher::getInstance();
+		$dispatcher = JEventDispatcher::getInstance();
 		JPluginHelper::importPlugin('kunena');
 		$dispatcher->trigger('onKunenaBbcodeEditorInit', array($this));
 
@@ -218,42 +209,7 @@ class KunenaBbcodeEditor
 		$js .=	']};';
 
 		// Write the js elements into editor.markitup.js file
-		file_put_contents(KPATH_SITE . '/template/crypsis/media/js/markitup.editor.js', $js);
-	}
-
-	/**
-	 * Initialize legacy editor
-	 *
-	 * @param string $identifier
-	 *
-	 * @return void
-	 */
-	public function initializeLegacy($identifier='class')
-	{
-		$js = "window.addEvent('domready', function() {
-	kbbcode = new kbbcode('kbbcode-message', 'kbbcode-toolbar', {
-		dispatchChangeEvent: true,
-		changeEventDelay: 1000,
-		interceptTab: true
-});\n";
-		$xml_file = simplexml_load_file(dirname(__FILE__).'/editor.xml');
-
-		$this->editor_elements = self::parseXML($xml_file, 'parseXML');
-
-		// Hook to manipulate the Editor XML like adding buttons
-		$dispatcher = JDispatcher::getInstance();
-		JPluginHelper::importPlugin('kunena');
-		$dispatcher->trigger( 'onKunenaBbcodeEditorInit', array ( $this ) );
-
-		foreach ($this->editor_elements as $item)
-		{
-			$js .= $item->generateJs($identifier);
-		}
-
-		$js .= "});\n";
-		$template = KunenaTemplate::getInstance();
-		$template->addScript('editor.js');
-		JFactory::getDocument()->addScriptDeclaration( "// <![CDATA[\n{$js}\n// ]]>");
+		file_put_contents(KPATH_SITE . '/template/' . $this->template->name . '/assets/js/markitup.editor.js', $js);
 	}
 }
 
@@ -275,33 +231,13 @@ abstract class KunenaBbcodeEditorElement
 	}
 
 	/**
-	 * Generate and creates the JavaScript code required to show the buttons.
-	 *
-	 * @abstract
-	 * @param $identifier
-	 */
-	abstract function generateJs ($identifier);
-
-	/**
 	 * Internal function that is used to parse an XML representation of an element.
 	 *
 	 * @static
 	 * @abstract
 	 * @param $xml
 	 */
-	public static function parseXML (SimpleXMLElement $xml)
-	{
-
-	}
-
-	/**
-	 * Internal function that is used to parse an XML representation of an element.
-	 *
-	 * @static
-	 * @abstract
-	 * @param $xml
-	 */
-	public static function parseHMVCXML (SimpleXMLElement $xml)
+	public static function parseHMVCXML(SimpleXMLElement $xml)
 	{
 
 	}
@@ -338,78 +274,20 @@ class KunenaBbcodeEditorButton extends KunenaBbcodeEditorElement
 		$this->class = $class;
 	}
 
-	public static function parseXML(SimpleXMLElement $xml)
-	{
-		$obj = new KunenaBbcodeEditorButton((string)$xml['name'], (string)$xml['class'], (string)$xml['tag'], (string)$xml['title'], (string)$xml['alt']);
-
-		foreach ($xml as $xml_item)
-		{
-			$item = array();
-			$item['type'] = $xml_item->getName();
-			$item['tag'] = (string)$xml_item['tag'];
-
-			if ($xml_item['disabled'] == 'disabled')
-			{
-				continue;
-			}
-
-			if ($xml_item['config'])
-			{
-				$cfgVariable = (string) $xml_item['config'];
-				$cfgValue = intval($cfgVariable[0] != '!');
-
-				if (!$cfgValue)
-				{
-					$cfgVariable = substr($cfgVariable, 1);
-				}
-
-				if (KunenaFactory::getConfig()->$cfgVariable != $cfgValue)
-				{
-					continue;
-				}
-			}
-
-			switch ($item['type'])
-			{
-				case 'wrap-selection':
-					$item['empty_before'] = (string)$xml_item['empty_before'];
-					$item['empty_after'] = (string)$xml_item['empty_after'];
-					$item['repeat'] = (string)$xml_item['repeat'];
-					$item['start'] = (string)$xml_item['start'];
-					$item['end'] = (string)$xml_item['end'];
-					$item['before'] = (string)$xml_item['before'];
-					$item['after'] = (string)$xml_item['after'];
-
-					break;
-				case 'display':
-					$item['selection'] = (string)$xml_item['selection'];
-					$item['class'] = (string)$xml_item['class'];
-					break;
-				case 'link':
-					$item['url'] = (string)$xml_item['url'];
-					break;
-			}
-
-			$obj->actions[] = $item;
-		}
-
-		return $obj;
-	}
-
 	/**
 	 *
-	 * @param SimpleXMLElement $xml
+	 * @param   SimpleXMLElement $xml
 	 * @return KunenaBbcodeEditorButton
 	 */
 	public static function parseHMVCXML(SimpleXMLElement $xml)
 	{
-		$obj = new KunenaBbcodeEditorButton((string)$xml['name'], (string)$xml['class'], (string)$xml['tag'], (string)$xml['title'], (string)$xml['alt']);
+		$obj = new KunenaBbcodeEditorButton((string) $xml['name'], (string) $xml['class'], (string) $xml['tag'], (string) $xml['title'], (string) $xml['alt']);
 
 		foreach ($xml as $xml_item)
 		{
 			$item = array();
 			$item['type'] = $xml_item->getName();
-			$item['tag'] = (string)$xml_item['tag'];
+			$item['tag'] = (string) $xml_item['tag'];
 
 			if ($xml_item['disabled'] == 'disabled')
 			{
@@ -435,35 +313,35 @@ class KunenaBbcodeEditorButton extends KunenaBbcodeEditorElement
 			switch ($item['type'])
 			{
 				case 'wrap-selection':
-					$item['empty_before'] = (string)$xml_item['empty_before'];
-					$item['empty_after'] = (string)$xml_item['empty_after'];
-					$item['repeat'] = (string)$xml_item['repeat'];
-					$item['start'] = (string)$xml_item['start'];
-					$item['end'] = (string)$xml_item['end'];
-					$item['before'] = (string)$xml_item['before'];
-					$item['after'] = (string)$xml_item['after'];
-					$item['class'] = (string)$xml_item['class'];
-					$item['key'] = (string)$xml_item['key'];
-					$item['name'] = (string)$xml_item['name'];
+					$item['empty_before'] = (string) $xml_item['empty_before'];
+					$item['empty_after'] = (string) $xml_item['empty_after'];
+					$item['repeat'] = (string) $xml_item['repeat'];
+					$item['start'] = (string) $xml_item['start'];
+					$item['end'] = (string) $xml_item['end'];
+					$item['before'] = (string) $xml_item['before'];
+					$item['after'] = (string) $xml_item['after'];
+					$item['class'] = (string) $xml_item['class'];
+					$item['key'] = (string) $xml_item['key'];
+					$item['name'] = (string) $xml_item['name'];
 
 					break;
 				case 'dropdown':
-					$item['start'] = (string)$xml_item['start'];
-					$item['end'] = (string)$xml_item['end'];
-					$item['selection'] = (string)$xml_item['selection'];
-					$item['class'] = (string)$xml_item['class'];
-					$item['key'] = (string)$xml_item['key'];
-					$item['name'] = (string)$xml_item['name'];
+					$item['start'] = (string) $xml_item['start'];
+					$item['end'] = (string) $xml_item['end'];
+					$item['selection'] = (string) $xml_item['selection'];
+					$item['class'] = (string) $xml_item['class'];
+					$item['key'] = (string) $xml_item['key'];
+					$item['name'] = (string) $xml_item['name'];
 					break;
 				case 'modal':
-					$item['key'] = (string)$xml_item['key'];
-					$item['start'] = (string)$xml_item['start'];
-					$item['end'] = (string)$xml_item['end'];
-					$item['class'] = (string)$xml_item['class'];
-					$item['name'] = (string)$xml_item['name'];
+					$item['key'] = (string) $xml_item['key'];
+					$item['start'] = (string) $xml_item['start'];
+					$item['end'] = (string) $xml_item['end'];
+					$item['class'] = (string) $xml_item['class'];
+					$item['name'] = (string) $xml_item['name'];
 					break;
 				case 'link':
-					$item['url'] = (string)$xml_item['url'];
+					$item['url'] = (string) $xml_item['url'];
 					break;
 			}
 
@@ -471,72 +349,6 @@ class KunenaBbcodeEditorButton extends KunenaBbcodeEditorElement
 		}
 
 		return $obj;
-	}
-
-	/**
-	 * Generate the JavaScript for each of the actions that the button has.
-	 *
-	 * @param $name
-	 * @return string
-	 */
-	protected function editorActionJs($name)
-	{
-		$js = '';
-
-		foreach ($this->actions as $action)
-		{
-			$tag = $action['tag'] ? $action['tag'] : $this->tag;
-
-			switch ($action['type'])
-			{
-				case 'display':
-					// <display name="kbbcode-color-options" />
-					if (!$tag)
-					{
-						continue;
-					}
-
-					if ($action['selection'])
-					{
-						$js .= "\n	sel = this.focus().getSelection(); if (sel) { document.id('{$action['selection']}').set('value', sel); }";
-					}
-
-					$js .= "\n	kToggleOrSwap('kbbcode-{$name}-options');";
-
-					break;
-				case 'wrap-selection':
-					// <wrap-selection />
-					if (!$tag)
-					{
-						continue;
-					}
-
-					if (!$action['repeat'])
-					{
-						$js .= "\n	this.focus().wrapSelection('[{$tag}]', '[/{$tag}]', true);";
-					}
-					else
-					{
-						$start = $action['start'] ? $action['start'] : "[{$action['tag']}]";
-						$end =  $action['end'] ? $action['end'] : "[/{$action['tag']}]";
-						$js .= "\nselection = this.focus().getSelection();
-	if (selection) {
-		this.processEachLine(function(line) {
-			return '  {$start}' + line + '{$end}';
-		}, false);
-		this.wrapSelection('{$action['before']}', '{$action['after']}', false);
-	} else {
-		this.wrapSelection('{$action['empty_before']}', '{$action['empty_after']}', false);
-	}";
-					}
-					break;
-				case 'link':
-					// <link url="http://docs.kunena.org/index.php/bbcode" />
-					$js .= "\n	window.open('{$action['url']}');";
-					break;
-			}
-		}
-		return $js;
 	}
 
 	/**
@@ -556,58 +368,58 @@ class KunenaBbcodeEditorButton extends KunenaBbcodeEditorElement
 
 					$classname = '';
 
-					if ( !empty($action['class']) )
+					if (!empty($action['class']))
 					{
-						$selection[]="className: '" . $action['class'] . "'";
+						$selection[] = "className: '" . $action['class'] . "'";
 					}
 
 					$name = '';
 
-					if ( !empty($action['name']) )
+					if (!empty($action['name']))
 					{
-						$selection[]="name: '" . $action['name'] . "'";
+						$selection[] = "name: '" . $action['name'] . "'";
 					}
 
 					$key = '';
 
-					if ( !empty($action['key']) )
+					if (!empty($action['key']))
 					{
-						$selection[]="key: '" . $action['key'] . "'";
+						$selection[] = "key: '" . $action['key'] . "'";
 					}
 
 					$start = '';
 
-					if ( !empty($action['start']) )
+					if (!empty($action['start']))
 					{
-						$selection[]="openWith: '" . $action['start'] . "'";
+						$selection[] = "openWith: '" . $action['start'] . "'";
 					}
 
 					$end = '';
 
-					if ( !empty($action['end']) )
+					if (!empty($action['end']))
 					{
-						$selection[]="closeWith: '" . $action['end'] . "'";
+						$selection[] = "closeWith: '" . $action['end'] . "'";
 					}
 
-					$selection = implode(',',$selection);
+					$selection = implode(',', $selection);
 
-					$js = "{".$selection."}";
+					$js = "{" . $selection . "}";
 					break;
 				case 'dropdown':
 					if ($action['name'] == "Size")
 					{
-						$js = "{className: '" . $action['class'] . "', name:'" . $action['name'] . "', key:'" .$action['key']. "', openWith:'" . $action['start'] . "', closeWith:'" . $action['end'] . "',	dropMenu :[
-						{name:'Very very small', openWith:'[size=1]', 	closeWith:'[/size]' },
-						{name:'Very Small', openWith:'[size=2]', 	closeWith:'[/size]' },
-						{name:'Small', openWith:'[size=3]', closeWith:'[/size]' },
-						{name:'Normal', openWith:'[size=4]', closeWith:'[/size]' },
-						{name:'Big', openWith:'[size=5]', closeWith:'[/size]' },
-						{name:'Super Bigger', openWith:'[size=6]', closeWith:'[/size]' }
+						$js = "{className: '" . $action['class'] . "', name:'" . $action['name'] . "', key:'" . $action['key'] . "', openWith:'" . $action['start'] . "', closeWith:'" . $action['end'] . "',	dropMenu :[
+						{name: '" . JText::_('COM_KUNENA_EDITOR_SIZE_VERY_VERY_SMALL') . "', openWith:'[size=1]', 	closeWith:'[/size]' },
+						{name: '" . JText::_('COM_KUNENA_EDITOR_SIZE_VERY_SMALL') . "', openWith:'[size=2]', 	closeWith:'[/size]' },
+						{name: '" . JText::_('COM_KUNENA_EDITOR_SIZE_SMALL') . "', openWith:'[size=3]', closeWith:'[/size]' },
+						{name: '" . JText::_('COM_KUNENA_EDITOR_SIZE_NORMAL') . "', openWith:'[size=4]', closeWith:'[/size]' },
+						{name: '" . JText::_('COM_KUNENA_EDITOR_SIZE_BIG') . "', openWith:'[size=5]', closeWith:'[/size]' },
+						{name: '" . JText::_('COM_KUNENA_EDITOR_SIZE_SUPER_BIGGER') . "', openWith:'[size=6]', closeWith:'[/size]' }
 						]}";
 					}
 					elseif ($action['name'] == "videodropdownbutton")
 					{
-						$js = "{name:'Video', className: 'videodropdownbutton', dropMenu: [{name: '" . $action['class'] . "', className: '" . $action['class'] . "', beforeInsert:function() {
+						$js = "{name: '" . JText::_('COM_KUNENA_EDITOR_VIDEO') . "', className: 'videodropdownbutton', dropMenu: [{name:  '" . JText::_('COM_KUNENA_EDITOR_VIDEO_PROVIDER') . "', className: '" . $action['class'] . "', beforeInsert:function() {
 							jQuery('#videosettings-modal-submit').click(function(event) {
 								event.preventDefault();
 
@@ -623,7 +435,7 @@ class KunenaBbcodeEditorButton extends KunenaBbcodeEditorElement
 									});
 								}});
 							} },
-						{name: 'Video Provider URL', className: 'videoURLbutton', beforeInsert:function() {
+						{name: '" . JText::_('COM_KUNENA_EDITOR_VIDEO') . "', className: 'videoURLbutton', beforeInsert:function() {
 							jQuery('#videourlprovider-modal-submit').click(function(event) {
 								event.preventDefault();
 
@@ -644,16 +456,16 @@ class KunenaBbcodeEditorButton extends KunenaBbcodeEditorElement
 					elseif ($action['name'] == "Colors")
 					{
 						$js = "{className: '" . $action['class'] . "', name:'" . $action['name'] . "', key:'" . $action['key'] . "', openWith:'" . $action['start'] . "', closeWith:'" . $action['end'] . "',dropMenu: [
-						{name:'Black',	openWith:'[color=black]', 	closeWith:'[/color]', className:'col1-1' },
-						{name:'Orange',	openWith:'[color=orange]', 	closeWith:'[/color]', className:'col1-2' },
-						{name:'Red', 	openWith:'[color=red]', 	closeWith:'[/color]', className:'col1-3' },
+						{name: '" . JText::_('COM_KUNENA_EDITOR_COLOR_BLACK') . "',	openWith:'[color=black]', 	closeWith:'[/color]', className:'col1-1' },
+						{name: '" . JText::_('COM_KUNENA_EDITOR_COLOR_ORANGE') . "',	openWith:'[color=orange]', 	closeWith:'[/color]', className:'col1-2' },
+						{name: '" . JText::_('COM_KUNENA_EDITOR_COLOR_RED') . "', 	openWith:'[color=red]', 	closeWith:'[/color]', className:'col1-3' },
 
-						{name:'Blue', 	openWith:'[color=blue]', 	closeWith:'[/color]', className:'col2-1' },
-						{name:'Purple', openWith:'[color=purple]', 	closeWith:'[/color]', className:'col2-2' },
-						{name:'Green', 	openWith:'[color=green]', 	closeWith:'[/color]', className:'col2-3' },
+						{name: '" . JText::_('COM_KUNENA_EDITOR_COLOR_BLUE') . "', 	openWith:'[color=blue]', 	closeWith:'[/color]', className:'col2-1' },
+						{name: '" . JText::_('COM_KUNENA_EDITOR_COLOR_PURPLE') . "', openWith:'[color=purple]', 	closeWith:'[/color]', className:'col2-2' },
+						{name: '" . JText::_('COM_KUNENA_EDITOR_COLOR_GREEN') . "', 	openWith:'[color=green]', 	closeWith:'[/color]', className:'col2-3' },
 
-						{name:'White', 	openWith:'[color=white]', 	closeWith:'[/color]', className:'col3-1' },
-						{name:'Gray', 	openWith:'[color=gray]', 	closeWith:'[/color]', className:'col3-2' }
+						{name: '" . JText::_('COM_KUNENA_EDITOR_COLOR_WHITE') . "', 	openWith:'[color=white]', 	closeWith:'[/color]', className:'col3-1' },
+						{name: '" . JText::_('COM_KUNENA_EDITOR_COLOR_GRAY') . "', 	openWith:'[color=gray]', 	closeWith:'[/color]', className:'col3-2' }
 						]}";
 					}
 					break;
@@ -693,38 +505,14 @@ class KunenaBbcodeEditorButton extends KunenaBbcodeEditorElement
 		return $js;
 	}
 
-	function generateJs ($identifier)
-	{
-		// <button tag="i" name="italic" title="COM_KUNENA_EDITOR_ITALIC" alt="COM_KUNENA_EDITOR_HELPLINE_ITALIC">
-		$name = $this->name ? $this->name : ($this->tag ? $this->tag : '#');
-		$class = $this->class ? $this->class : "kbbcode-{$name}-button";
-		$js = "\nkbbcode.addFunction('{$name}', function() {";
-		$js .= $this->editorActionJs($name);
-		$js .= "\n}, {";
-
-		foreach (array('title', 'alt') as $type)
-		{
-			if ($this->$type)
-			{
-				$value = JText::_($this->$type, true);
-				$js .= "'{$type}': '{$value}', ";
-			}
-		}
-
-		$js .= "'{$identifier}': '{$class}'";
-		$js .= "\n});\n";
-
-		return $js;
-	}
-
 	/**
 	 * Add a new display action. This can be used to show a button specific action area.
 	 *
 	 * @param $selection
 	 * @param $class
-	 * @param null $tag
+	 * @param   null $tag
 	 */
-	function addDisplayAction ($selection, $class, $tag = NULL)
+	function addDisplayAction($selection, $class, $tag = null)
 	{
 		$item['type'] = 'display';
 		$item['selection'] = $selection;
@@ -737,16 +525,16 @@ class KunenaBbcodeEditorButton extends KunenaBbcodeEditorElement
 	/**
 	 * Specify what code should be inserted when the user presses the button.
 	 *
-	 * @param null $repeat
-	 * @param null $empty_before
-	 * @param null $empty_after
-	 * @param null $start
-	 * @param null $end
-	 * @param null $before
-	 * @param null $after
-	 * @param null $tag
+	 * @param   null $repeat
+	 * @param   null $empty_before
+	 * @param   null $empty_after
+	 * @param   null $start
+	 * @param   null $end
+	 * @param   null $before
+	 * @param   null $after
+	 * @param   null $tag
 	 */
-	function addWrapSelectionAction ($repeat = NULL, $empty_before = NULL, $empty_after = NULL, $start = NULL, $end = NULL, $before = NULL, $after = NULL, $tag = NULL)
+	function addWrapSelectionAction($repeat = null, $empty_before = null, $empty_after = null, $start = null, $end = null, $before = null, $after = null, $tag = null)
 	{
 		$item['type'] = 'wrap-selection';
 		$item['repeat'] = $repeat;
@@ -775,7 +563,7 @@ class KunenaBbcodeEditorButton extends KunenaBbcodeEditorElement
 	 *
 	 * @param $url
 	 */
-	function addUrlAction ($url)
+	function addUrlAction($url)
 	{
 		$item['type'] = 'url';
 		$item['url'] = $url;
@@ -800,28 +588,13 @@ class KunenaBbcodeEditorSeparator extends KunenaBbcodeEditorElement
 		return $js;
 	}
 
-	public function generateJs ($identifier)
-	{
-		$js = "\nkbbcode.addFunction('#', function() {";
-		$js .= "\n}, {";
-		$js .= "\n	'class': 'kbbcode-separator'";
-		$js .= "});\n";
-
-		return $js;
-	}
-
-	public static function parseXML (SimpleXMLElement $xml)
-	{
-		return new KunenaBbcodeEditorSeparator((string)$xml['name']);
-	}
-
 	/**
 	 * Parse XML for separator editor part
 	 *
-	 * @param SimpleXMLElement $xml
+	 * @param   SimpleXMLElement $xml
 	 * @return KunenaBbcodeEditorSeparator
 	 */
-	public static function parseHMVCXML (SimpleXMLElement $xml)
+	public static function parseHMVCXML(SimpleXMLElement $xml)
 	{
 		return new KunenaBbcodeEditorSeparator((string) $xml['name']);
 	}

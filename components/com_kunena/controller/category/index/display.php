@@ -46,6 +46,20 @@ class ComponentKunenaControllerCategoryIndexDisplay extends KunenaControllerDisp
 		// Get sections to display.
 		$catid = $this->input->getInt('catid', 0);
 
+
+		$allowed = md5(serialize(KunenaAccess::getInstance()->getAllowedCategories()));
+		/*$cache   = JFactory::getCache('com_kunena', 'output');
+
+		if ($cache->start("{$this->ktemplate->name}.common.jump.{$allowed}", 'com_kunena.template'))
+		{
+		return;
+		}*/
+
+		$options            = array();
+		$options []         = JHtml::_('select.option', '0', JText::_('COM_KUNENA_FORUM_TOP'));
+		$cat_params         = array('sections' => 1, 'catid' => 0);
+		$this->categorylist = JHtml::_('kunenaforum.categorylist', 'catid', 0, $options, $cat_params, 'class="inputbox fbs" size="1" onchange = "this.form.submit()"', 'value', 'text');
+
 		if ($catid)
 		{
 			$sections = KunenaForumCategoryHelper::getCategories($catid);
@@ -58,10 +72,11 @@ class ComponentKunenaControllerCategoryIndexDisplay extends KunenaControllerDisp
 		$sectionIds = array();
 
 		$this->more[$catid] = 0;
+
 		foreach ($sections as $key => $category)
 		{
 			$this->categories[$category->id] = array();
-			$this->more[$category->id] = 0;
+			$this->more[$category->id]       = 0;
 
 			// Display only categories which are supposed to show up.
 			if ($catid || $category->params->get('display.index.parent', 3) > 0)
@@ -90,7 +105,7 @@ class ComponentKunenaControllerCategoryIndexDisplay extends KunenaControllerDisp
 		}
 
 		$this->sections = $sections;
-		$categories = KunenaForumCategoryHelper::getChildren($sectionIds);
+		$categories     = KunenaForumCategoryHelper::getChildren($sectionIds);
 
 		if (empty($categories))
 		{
@@ -98,9 +113,9 @@ class ComponentKunenaControllerCategoryIndexDisplay extends KunenaControllerDisp
 		}
 
 		$categoryIds = array();
-		$topicIds = array();
-		$userIds = array();
-		$postIds = array();
+		$topicIds    = array();
+		$userIds     = array();
+		$postIds     = array();
 
 		foreach ($categories as $key => $category)
 		{
@@ -110,8 +125,8 @@ class ComponentKunenaControllerCategoryIndexDisplay extends KunenaControllerDisp
 			if ($catid || $category->params->get('display.index.parent', 3) > 1)
 			{
 				if ($catid
-					|| ($category->getParent()->params->get('display.index.children', 3) > 2
-						&& $category->params->get('display.index.children', 3) > 2))
+					|| ($category->getParent()->params->get('display.index.children', 3) > 2 && $category->params->get('display.index.children', 3) > 2)
+				)
 				{
 					$categoryIds[] = $category->id;
 				}
@@ -138,7 +153,8 @@ class ComponentKunenaControllerCategoryIndexDisplay extends KunenaControllerDisp
 			$this->categories[$category->parent_id][] = $category;
 
 			$rssURL = $category->getRSSUrl();
-			if ( !empty($rssURL) )
+
+			if (!empty($rssURL))
 			{
 				$category->rssURL = $category->getRSSUrl();
 			}
@@ -166,7 +182,7 @@ class ComponentKunenaControllerCategoryIndexDisplay extends KunenaControllerDisp
 		foreach ($topics as $topic)
 		{
 			$userIds[$topic->last_post_userid] = $topic->last_post_userid;
-			$postIds[$topic->id] = $topic->last_post_id;
+			$postIds[$topic->id]               = $topic->last_post_id;
 		}
 
 		KunenaUserHelper::loadUsers($userIds);
@@ -181,7 +197,7 @@ class ComponentKunenaControllerCategoryIndexDisplay extends KunenaControllerDisp
 			KunenaForumCategoryHelper::getNewTopics(array_keys($categories + $subcategories));
 
 			// Get categories which are moderated by current user.
-			$access = KunenaAccess::getInstance();
+			$access   = KunenaAccess::getInstance();
 			$moderate = $access->getAdminStatus($this->me) + $access->getModeratorStatus($this->me);
 
 			if (!empty($moderate[0]))
@@ -199,15 +215,22 @@ class ComponentKunenaControllerCategoryIndexDisplay extends KunenaControllerDisp
 			{
 				// Get pending messages.
 				$catlist = implode(',', array_keys($moderate));
-				$db = JFactory::getDbo();
+				$db      = JFactory::getDbo();
 				$db->setQuery(
 					"SELECT catid, COUNT(*) AS count
 					FROM #__kunena_messages
 					WHERE catid IN ({$catlist}) AND hold=1
 					GROUP BY catid"
 				);
-				$pending = $db->loadAssocList();
-				KunenaError::checkDatabaseError();
+				
+				try
+				{
+					$pending = $db->loadAssocList();
+				}
+				catch (JDatabaseExceptionExecuting $e)
+				{
+					KunenaError::displayDatabaseError($e);
+				}
 
 				foreach ($pending as $item)
 				{
@@ -243,14 +266,37 @@ class ComponentKunenaControllerCategoryIndexDisplay extends KunenaControllerDisp
 	protected function prepareDocument()
 	{
 		$app       = JFactory::getApplication();
-		$menu_item = $app->getMenu()->getActive(); // get the active item
+		$menu_item = $app->getMenu()->getActive();
+		$doc = JFactory::getDocument();
+
+		$config = JFactory::getApplication('site');
+		$componentParams = $config->getParams('com_config');
+		$robots = $componentParams->get('robots');
+
+		if ($robots == '')
+		{
+			$doc->setMetaData('robots', 'index, follow');
+		}
+		elseif ($robots == 'noindex, follow')
+		{
+			$doc->setMetaData('robots', 'noindex, follow');
+		}
+		elseif ($robots == 'index, nofollow')
+		{
+			$doc->setMetaData('robots', 'index, nofollow');
+		}
+		else
+		{
+			$doc->setMetaData('robots', 'nofollow, noindex');
+		}
 
 		if ($menu_item)
 		{
-			$params             = $menu_item->params; // get the params
+			$params             = $menu_item->params;
 			$params_title       = $params->get('page_title');
 			$params_keywords    = $params->get('menu-meta_keywords');
 			$params_description = $params->get('menu-meta_description');
+			$params_robots      = $params->get('robots');
 
 			if (!empty($params_title))
 			{
@@ -270,7 +316,7 @@ class ComponentKunenaControllerCategoryIndexDisplay extends KunenaControllerDisp
 			}
 			else
 			{
-				$keywords = JText::_('COM_KUNENA_CATEGORIES');
+				$keywords = JText::_('COM_KUNENA_VIEW_CATEGORIES_DEFAULT');
 				$this->setKeywords($keywords);
 			}
 
@@ -281,8 +327,14 @@ class ComponentKunenaControllerCategoryIndexDisplay extends KunenaControllerDisp
 			}
 			else
 			{
-				$description = JText::_('COM_KUNENA_CATEGORIES') . ' - ' . $this->config->board_title;
+				$description = JText::_('COM_KUNENA_VIEW_CATEGORIES_DEFAULT') . ' - ' . $this->config->board_title;
 				$this->setDescription($description);
+			}
+
+			if (!empty($params_robots))
+			{
+				$robots = $params->get('robots');
+				$doc->setMetaData('robots', $robots);
 			}
 		}
 	}

@@ -11,6 +11,8 @@
  **/
 defined('_JEXEC') or die ();
 
+use Joomla\String\StringHelper;
+
 /**
  * Topic View
  */
@@ -140,8 +142,8 @@ class KunenaViewTopic extends KunenaView
 		}
 
 		// Get keywords, captcha & quick reply
-		$this->captcha    = KunenaSpamRecaptcha::getInstance();
-		$this->quickreply = ($this->topic->authorise('reply', null, false) && $this->me->exists() && !$this->captcha->enabled());
+		/*$this->captcha    = KunenaSpamRecaptcha::getInstance();
+		$this->quickreply = ($this->topic->authorise('reply', null, false) && $this->me->exists() && !$this->captcha->enabled());     */
 		$this->keywords   = $this->topic->getKeywords(false, ', ');
 
 		$this->_prepareDocument('default');
@@ -341,7 +343,7 @@ class KunenaViewTopic extends KunenaView
 
 		$dispatcher->trigger('onKunenaPrepare', array('kunena.topic', &$this->topic, &$params, 0));
 
-		$quote          = (bool) JRequest::getBool('quote', false);
+		$quote          = (bool) $this->app->input->getBool('quote', false);
 		$this->category = $this->topic->getCategory();
 
 		if ($this->config->topicicons && $this->topic->authorise('edit', null, false))
@@ -423,267 +425,6 @@ class KunenaViewTopic extends KunenaView
 		$this->app->setUserState('com_kunena.postfields', null);
 
 		$this->render('Topic/Edit', $tpl);
-	}
-
-	function displayVote($tpl = null)
-	{
-		// TODO: need to check if poll is allowed in this category
-		// TODO: need to check if poll is still active
-		$this->category = $this->get('Category');
-		$this->topic    = $this->get('Topic');
-
-		if (!$this->topic->authorise('poll.vote') && !$this->topic->authorise('reply') )
-		{
-			$this->setError($this->topic->getError());
-		}
-
-		$errors = $this->getErrors();
-
-		if ($errors)
-		{
-			$this->displayNoAccess($errors);
-
-			return;
-		}
-
-		$this->poll       = $this->get('Poll');
-		$this->usercount  = $this->get('PollUserCount');
-		$this->usersvoted = $this->get('PollUsers');
-		$this->voted      = $this->get('MyVotes');
-
-		$this->render('Topic/Vote', $tpl);
-	}
-
-	protected function displayReport($tpl = null)
-	{
-		$this->catid = $this->state->get('item.catid');
-		$this->id    = $this->state->get('item.id');
-		$this->mesid = $this->state->get('item.mesid');
-
-		if (!$this->me->exists() || $this->config->reportmsg == 0)
-		{
-			// Deny access if report feature has been disabled or user is guest
-			$this->app->enqueueMessage(JText::_('COM_KUNENA_NO_ACCESS'), 'notice');
-
-			return;
-		}
-
-		if (!$this->mesid)
-		{
-			$this->topic = KunenaForumTopicHelper::get($this->id);
-
-			if (!$this->topic->authorise('read'))
-			{
-				$this->app->enqueueMessage($this->topic->getError(), 'notice');
-
-				return;
-			}
-		}
-		else
-		{
-			$this->message = KunenaForumMessageHelper::get($this->mesid);
-
-			if (!$this->message->authorise('read'))
-			{
-				$this->app->enqueueMessage($this->message->getError(), 'notice');
-
-				return;
-			}
-			$this->topic = $this->message->getTopic();
-		}
-
-		$this->render('Topic/Report', $tpl);
-	}
-
-	protected function displayModerate($tpl = null)
-	{
-		$this->mesid = JRequest::getInt('mesid', 0);
-		$this->id    = $this->state->get('item.id');
-		$this->catid = $this->state->get('item.catid');
-
-		if ($this->config->topicicons)
-		{
-			$this->topicIcons = $this->ktemplate->getTopicIcons(false);
-		}
-
-		if (!$this->mesid)
-		{
-			$this->topic = KunenaForumTopicHelper::get($this->id);
-
-			if (!$this->topic->authorise('move'))
-			{
-				$this->app->enqueueMessage($this->topic->getError(), 'notice');
-
-				return;
-			}
-		}
-		else
-		{
-			$this->message = KunenaForumMessageHelper::get($this->mesid);
-
-			if (!$this->message->authorise('move'))
-			{
-				$this->app->enqueueMessage($this->message->getError(), 'notice');
-
-				return;
-			}
-
-			$this->topic = $this->message->getTopic();
-		}
-
-		$this->category = $this->topic->getCategory();
-
-		$options = array();
-
-		if (!$this->mesid)
-		{
-			$options [] = JHtml::_('select.option', 0, JText::_('COM_KUNENA_MODERATION_MOVE_TOPIC'));
-		}
-		else
-		{
-			$options [] = JHtml::_('select.option', 0, JText::_('COM_KUNENA_MODERATION_CREATE_TOPIC'));
-		}
-
-		$options [] = JHtml::_('select.option', -1, JText::_('COM_KUNENA_MODERATION_ENTER_TOPIC'));
-
-		$db     = JFactory::getDBO();
-		$params = array(
-			'orderby' => 'tt.last_post_time DESC',
-			'where'   => " AND tt.id != {$db->Quote($this->topic->id)} ");
-		list ($total, $topics) = KunenaForumTopicHelper::getLatestTopics($this->catid, 0, 30, $params);
-
-		foreach ($topics as $cur)
-		{
-			$options [] = JHtml::_('select.option', $cur->id, $this->escape($cur->subject));
-		}
-
-		$this->topiclist = JHtml::_('select.genericlist', $options, 'targettopic', 'class="inputbox"', 'value', 'text', 0, 'kmod_topics');
-
-		$options            = array();
-		$cat_params         = array('sections' => 0, 'catid' => 0);
-		$this->categorylist = JHtml::_('kunenaforum.categorylist', 'targetcategory', 0, $options, $cat_params, 'class="inputbox kmove_selectbox"', 'value', 'text', $this->catid, 'kmod_categories');
-
-		if (isset($this->message))
-		{
-			$this->user     = KunenaFactory::getUser($this->message->userid);
-			$username       = $this->message->getAuthor()->getName();
-			$this->userLink = $this->message->userid ? JHtml::_('kunenaforum.link', 'index.php?option=com_kunena&view=user&layout=moderate&userid=' . $this->message->userid, $username . ' (' . $this->message->userid . ')', $username . ' (' . $this->message->userid . ')') : null;
-		}
-
-		if ($this->mesid)
-		{
-			// Get thread and reply count from current message:
-			$query = "SELECT COUNT(mm.id) AS replies FROM #__kunena_messages AS m
-				INNER JOIN #__kunena_messages AS t ON m.thread=t.id
-				LEFT JOIN #__kunena_messages AS mm ON mm.thread=m.thread AND mm.time > m.time
-				WHERE m.id={$db->Quote($this->mesid)}";
-			$db->setQuery($query, 0, 1);
-			$this->replies = $db->loadResult();
-
-			if (KunenaError::checkDatabaseError())
-			{
-				return;
-			}
-		}
-
-		$this->render('Topic/Moderate', $tpl);
-	}
-
-	function displayPoll()
-	{
-		// need to check if poll is allowed in this category
-		if (!$this->config->pollenabled || !$this->topic->poll_id || !$this->category->allow_polls)
-		{
-			return false;
-		}
-
-		if ($this->getLayout() == 'poll')
-		{
-			$this->category = $this->get('Category');
-			$this->topic    = $this->get('Topic');
-		}
-
-		$this->poll       = $this->get('Poll');
-		$this->usersvoted = $this->get('PollUsers');
-		$this->usercount  = count($this->usersvoted);
-		$this->voted      = $this->get('MyVotes');
-
-		$this->users_voted_list     = array();
-		$this->users_voted_morelist = array();
-
-		if ($this->config->pollresultsuserslist && !empty($this->usersvoted))
-		{
-			$userids_votes = array();
-
-			foreach ($this->usersvoted as $userid => $vote)
-			{
-				$userids_votes[] = $userid;
-			}
-
-			$loaded_users = KunenaUserHelper::loadUsers($userids_votes);
-
-			$i = 0;
-
-			foreach ($loaded_users as $userid => $user)
-			{
-				if ($i <= '4')
-				{
-					$this->users_voted_list[] = $loaded_users[$userid]->getLink();
-				}
-				else
-				{
-					$this->users_voted_morelist[] = $loaded_users[$userid]->getLink();
-				}
-
-				$i++;
-			}
-		}
-
-		if (!$this->voted && $this->topic->isAuthorised('poll.vote') && $this->topic->isAuthorised('reply'))
-		{
-			echo $this->loadTemplateFile("poll");
-		}
-		else
-		{
-			echo $this->loadTemplateFile("pollresults");
-		}
-	}
-
-	function getCodeTypes()
-	{
-		if (!$this->config->highlightcode)
-		{
-			return null;
-		}
-
-		$paths = array(
-			JPATH_ROOT . '/plugins/content/geshiall/geshi/geshi',
-			JPATH_ROOT . '/plugins/content/geshi/geshi/geshi'
-		);
-
-		foreach ($paths as $path)
-		{
-			if (!is_dir($path))
-			{
-				continue;
-			}
-
-			$files     = KunenaFolder::files($path, ".php");
-			$options   = array();
-			$options[] = JHTML::_('select.option', '', JText::_('COM_KUNENA_EDITOR_CODE_TYPE'));
-
-			foreach ($files as $file)
-			{
-				$options[] = JHTML::_('select.option', substr($file, 0, -4), substr($file, 0, -4));
-			}
-
-			$javascript = "document.id('helpbox').set('value', '" . JText::_('COM_KUNENA_EDITOR_HELPLINE_CODETYPE', true) . "')";
-			$list       = JHTML::_('select.genericlist', $options, 'kcodetype', 'class="kbutton form-control" onmouseover="' . $javascript . '"', 'value', 'text', '-1');
-
-			return $list;
-		}
-
-		return null;
 	}
 
 	function displayMessageProfile()
@@ -1069,7 +810,7 @@ class KunenaViewTopic extends KunenaView
 				{
 					if (!empty ($this->message->ip))
 					{
-						$this->ipLink = '<a href="http://whois.domaintools.com/' . $this->message->ip . '" target="_blank"> IP: ' . $this->message->ip . '</a>';
+						$this->ipLink = '<a href="http://whois.domaintools.com/' . $this->message->ip . '" target="_blank" rel="nofollow"> IP: ' . $this->message->ip . '</a>';
 					}
 					else
 					{
@@ -1290,23 +1031,6 @@ class KunenaViewTopic extends KunenaView
 		return $this->numLink;
 	}
 
-	function displayAttachments($message = null)
-	{
-		if ($message instanceof KunenaForumMessage)
-		{
-			$this->attachments = $message->getAttachments();
-
-			if (!empty($this->attachments))
-			{
-				echo $this->loadTemplateFile('attachments');
-			}
-		}
-		else
-		{
-			echo JText::_('COM_KUNENA_ATTACHMENTS_ERROR_NO_MESSAGE');
-		}
-	}
-
 	function displayMessageField($name)
 	{
 		return $this->message->displayField($name);
@@ -1320,14 +1044,6 @@ class KunenaViewTopic extends KunenaView
 	function displayCategoryField($name)
 	{
 		return $this->category->displayField($name);
-	}
-
-	function displayQuickReply()
-	{
-		if ($this->quickreply)
-		{
-			echo $this->loadTemplateFile('quickreply');
-		}
 	}
 
 	function canSubscribe()
@@ -1506,20 +1222,68 @@ class KunenaViewTopic extends KunenaView
 		}
 	}
 
-	public function getPollURL($do, $id = null, $catid)
-	{
-		$idstring = '';
-		if ($id)
-		{
-			$idstring .= "&id=$id";
-		}
-		$catidstr = "&catid=$catid";
-
-		return KunenaRoute::_("index.php?option=com_kunena&view=poll&do={$do}{$catidstr}{$idstring}");
-	}
-
 	public function getSamePageAnkerLink($anker, $name, $rel = 'nofollow', $class = '')
 	{
 		return '<a ' . ($class ? 'class="' . $class . '" ' : '') . 'href="#' . $anker . '"' . ($rel ? ' rel="' . $rel . '"' : '') . '>' . $name . '</a>';
+	}
+
+	public function setTitle($title)
+	{
+		if ($this->inLayout)
+		{
+			throw new LogicException(sprintf('HMVC template should not call %s::%s()', __CLASS__, __FUNCTION__));
+		}
+		if (!$this->state->get('embedded'))
+		{
+			// Check for empty title and add site name if param is set
+			$title = strip_tags($title);
+			if ($this->app->getCfg('sitename_pagetitles', 0) == 1)
+			{
+				$title = JText::sprintf('JPAGETITLE', $this->app->getCfg('sitename'), $this->config->board_title .' - '. $title);
+			}
+			elseif ($this->app->getCfg('sitename_pagetitles', 0) == 2)
+			{
+				$title = JText::sprintf('JPAGETITLE', $title .' - '. $this->config->board_title, $this->app->getCfg('sitename'));
+			}
+			else
+			{
+				// TODO: allow translations/overrides (also above)
+				$title = KunenaFactory::getConfig()->board_title .': '. $title;
+			}
+			$this->document->setTitle($title);
+		}
+	}
+	public function setKeywords($keywords)
+	{
+		if ($this->inLayout)
+		{
+			throw new LogicException(sprintf('HMVC template should not call %s::%s()', __CLASS__, __FUNCTION__));
+		}
+		if (!$this->state->get('embedded'))
+		{
+			if (!empty($keywords))
+			{
+				$this->document->setMetadata ( 'keywords', $keywords );
+			}
+		}
+	}
+	public function setDescription($description)
+	{
+		if ($this->inLayout)
+		{
+			throw new LogicException(sprintf('HMVC template should not call %s::%s()', __CLASS__, __FUNCTION__));
+		}
+		if (!$this->state->get('embedded'))
+		{
+			// TODO: allow translations/overrides
+			$lang = JFactory::getLanguage();
+			$length = StringHelper::strlen($lang->getName());
+			$length = 137 - $length;
+			if (StringHelper::strlen($description) > $length)
+			{
+				$description = StringHelper::substr($description, 0, $length) . '...';
+			}
+			$this->document->setMetadata('description', $description);
+		}
 	}
 }

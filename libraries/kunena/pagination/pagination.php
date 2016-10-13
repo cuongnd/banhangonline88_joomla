@@ -1,16 +1,15 @@
 <?php
 /**
  * Kunena Component
- * @package Kunena.Framework
- * @subpackage Pagination
+ * @package     Kunena.Framework
+ * @subpackage  Pagination
  *
- * @copyright (C) 2008 - 2016 Kunena Team. All rights reserved.
- * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL
+ * @copyright   (C) 2008 - 2016 Kunena Team. All rights reserved.
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU/GPL
  * @copyright   Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
- * @license     GNU General Public License version 2 or later; see LICENSE
- * @link https://www.kunena.org
+ * @link        https://www.kunena.org
  **/
-defined ( '_JEXEC' ) or die ();
+defined('_JEXEC') or die();
 
 /**
  * Pagination Class. Provides a common interface for content pagination for the Joomla! CMS.
@@ -91,8 +90,11 @@ class KunenaPagination
 	public $uri = null;
 
 	protected $itemActiveChrome = null;
+
 	protected $itemInactiveChrome = null;
+
 	protected $listChrome = null;
+
 	protected $footerChrome = null;
 
 	/**
@@ -165,7 +167,7 @@ class KunenaPagination
 	/**
 	 * Set URI for pagination.
 	 *
-	 * @param  Juri  $uri  JUri object.
+	 * @param   Juri  $uri  JUri object.
 	 *
 	 * @return  KunenaPagination  Method supports chaining.
 	 */
@@ -179,9 +181,9 @@ class KunenaPagination
 	/**
 	 * Set number of displayed pages.
 	 *
-	 * @param  int  $displayed  Number of displayed pages.
-	 * @param  int  $start  How many items to display from the beginning (1 2 ...)
-	 * @param  int  $end  How many items to display from the end (... 49 50)
+	 * @param   int  $displayed  Number of displayed pages.
+	 * @param   int  $start  How many items to display from the beginning (1 2 ...)
+	 * @param   int  $end  How many items to display from the end (... 49 50)
 	 *
 	 * @return  KunenaPagination  Method supports chaining.
 	 */
@@ -293,9 +295,13 @@ class KunenaPagination
 	{
 		// Do not have static cache here (if needed, keep it in object context).
 		$data = $this->_buildDataObject();
+
 		return $data;
 	}
 
+	/**
+	 *
+	 */
 	protected function setChrome()
 	{
 		$template = KunenaFactory::getTemplate();
@@ -656,6 +662,7 @@ class KunenaPagination
 	protected function _item_active(JPaginationObject $item)
 	{
 		$app = JFactory::getApplication();
+
 		if ($app->isAdmin())
 		{
 			if ($item->base > 0)
@@ -719,6 +726,7 @@ class KunenaPagination
 		{
 			$this->uri->setVar($key, $value);
 		}
+
 		$limitstartKey = $this->prefix . 'limitstart';
 
 		$data->all = new JPaginationObject(JText::_('JLIB_HTML_VIEW_ALL'), $this->prefix);
@@ -790,60 +798,5 @@ class KunenaPagination
 		}
 
 		return $data;
-	}
-
-	/**
-	 * Modifies a property of the object, creating it if it does not already exist.
-	 *
-	 * @param   string  $property  The name of the property.
-	 * @param   mixed   $value     The value of the property to set.
-	 *
-	 * @return  void
-	 *
-	 * @since   3.0
-	 * @deprecated  4.0  Access the properties directly.
-	 */
-	public function set($property, $value = null)
-	{
-		JLog::add('JPagination::set() is deprecated. Access the properties directly.', JLog::WARNING, 'deprecated');
-
-		if (strpos($property, '.'))
-		{
-			$prop = explode('.', $property);
-			$prop[1] = ucfirst($prop[1]);
-			$property = implode($prop);
-		}
-
-		$this->$property = $value;
-	}
-
-	/**
-	 * Returns a property of the object or the default value if the property is not set.
-	 *
-	 * @param   string  $property  The name of the property.
-	 * @param   mixed   $default   The default value.
-	 *
-	 * @return  mixed    The value of the property.
-	 *
-	 * @since   3.0
-	 * @deprecated  4.0  Access the properties directly.
-	 */
-	public function get($property, $default = null)
-	{
-		JLog::add('JPagination::get() is deprecated. Access the properties directly.', JLog::WARNING, 'deprecated');
-
-		if (strpos($property, '.'))
-		{
-			$prop = explode('.', $property);
-			$prop[1] = ucfirst($prop[1]);
-			$property = implode($prop);
-		}
-
-		if (isset($this->$property))
-		{
-			return $this->$property;
-		}
-
-		return $default;
 	}
 }

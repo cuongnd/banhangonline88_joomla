@@ -9,15 +9,11 @@
  * @license     http://www.gnu.org/copyleft/gpl.html GNU/GPL
  * @link        https://www.kunena.org
  **/
-defined('_JEXEC') or die ();
-
-$title    = $this->title;
-$url      = $this->url;
-$filename = $this->filename;
-$size     = $this->size;
+defined('_JEXEC') or die();
 ?>
+
 <div class="kmsgattach">
 	<h4>
-		<?php echo $title; ?>
+		<?php echo $this->title; ?>
 	</h4>
 </div>

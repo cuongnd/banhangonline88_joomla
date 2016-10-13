@@ -10,11 +10,11 @@
  **/
 defined('_JEXEC') or die;
 
-/**
+/*
  * @var KunenaForumTopic $topic
  */
 $topic = $this->category->getLastTopic();
-$avatar = $this->config->avataroncat ? $topic->getAuthor()->getAvatarImage('img-thumbnail', 'thumb') : null;
+$avatar = $this->config->avataroncat ? $topic->getAuthor()->getAvatarImage(KunenaFactory::getTemplate()->params->get('avatarType'), 'thumb') : null;
 ?>
 
 <tr>
@@ -22,7 +22,7 @@ $avatar = $this->config->avataroncat ? $topic->getAuthor()->getAvatarImage('img-
 		<h3>
 			<?php echo $this->getCategoryLink($this->category); ?>
 			<small class="hidden-phone">
-				(<?php echo JText::plural('COM_KUNENA_X_TOPICS', $this->formatLargeNumber($this->category->getTopics())); ?>)
+				(<?php echo JText::sprintf('COM_KUNENA_X_TOPICS_MORE', $this->formatLargeNumber($this->category->getTopics())); ?>)
 			</small>
 		</h3>
 	</td>
@@ -42,12 +42,12 @@ $avatar = $this->config->avataroncat ? $topic->getAuthor()->getAvatarImage('img-
 	</td>
 	<?php endif; ?>
 
-	<td<?php if (!$avatar) echo ' colspan="2"'; ?>>
+	<td<?php if (!$avatar) { echo ' colspan="2"'; } ?>>
 		<div>
-			<?php echo $this->getTopicLink($topic, 'last'); ?>
+			<?php echo $this->getTopicLink($topic, 'last', JText::_('COM_KUNENA_GEN_LAST_POST'), null, 'hasTooltip', $this->category, true, true); ?>
 		</div>
 		<div>
-			<?php echo $topic->getLastPostAuthor()->getLink(); ?>
+			<?php echo $topic->getLastPostAuthor()->getLink(null, null, '', '', null, $this->category->id); ?>
 		</div>
 		<div>
 			<?php echo $topic->getLastPostTime()->toSpan('config_post_dateformat', 'config_post_dateformat_hover'); ?>
@@ -58,7 +58,7 @@ $avatar = $this->config->avataroncat ? $topic->getAuthor()->getAvatarImage('img-
 	<?php if ($this->checkbox) : ?>
 	<td class="center">
 		<label>
-			<input type="checkbox" class="kcatcheckall" name="categories[<?php echo (int) $this->category->id?>]" value="1" />
+			<input class="kcheckallcategory" type="checkbox" name="categories[<?php echo (int) $this->category->id?>]" value="1" />
 		</label>
 	</td>
 	<?php endif; ?>

@@ -1,12 +1,12 @@
 <?php
 /**
  * Kunena Component
- * @package Kunena.Framework
- * @subpackage Integration
+ * @package     Kunena.Framework
+ * @subpackage  Integration
  *
- * @copyright (C) 2008 - 2016 Kunena Team. All rights reserved.
- * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL
- * @link https://www.kunena.org
+ * @copyright   (C) 2008 - 2016 Kunena Team. All rights reserved.
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU/GPL
+ * @link        https://www.kunena.org
  **/
 defined('_JEXEC') or die;
 
@@ -19,18 +19,7 @@ if (!class_exists('JLoader'))
 define('KPATH_FRAMEWORK', __DIR__);
 
 // Register the Joomla compatibility layer.
-if (version_compare(JVERSION, '3.2', '>'))
-{
-	JLoader::registerPrefix('KunenaCompat', KPATH_FRAMEWORK . '/compat/joomla32');
-}
-elseif (version_compare(JVERSION, '3', '>'))
-{
-	JLoader::registerPrefix('KunenaCompat', KPATH_FRAMEWORK . '/compat/joomla3');
-}
-else
-{
-	JLoader::registerPrefix('KunenaCompat', KPATH_FRAMEWORK . '/compat/joomla2');
-}
+JLoader::registerPrefix('KunenaCompat', KPATH_FRAMEWORK . '/compat/joomla');
 
 // Register the library base path for Kunena Framework.
 JLoader::registerPrefix('Kunena', KPATH_FRAMEWORK);
@@ -45,7 +34,6 @@ JHtml::addIncludePath(KPATH_FRAMEWORK . '/html/html');
 JForm::addFieldPath(KPATH_FRAMEWORK . '/form/fields');
 
 // Register classes where the names have been changed to fit the autoloader rules.
-// @deprecated
 JLoader::register('KunenaAccess', KPATH_FRAMEWORK . '/access.php');
 JLoader::register('KunenaConfig', KPATH_FRAMEWORK . '/config.php');
 JLoader::register('KunenaController', KPATH_FRAMEWORK . '/controller.php');
@@ -72,9 +60,5 @@ JLoader::register('KunenaForumTopic', KPATH_FRAMEWORK . '/forum/topic/topic.php'
 JLoader::register('KunenaForumTopicPoll', KPATH_FRAMEWORK . '/forum/topic/poll/poll.php');
 JLoader::register('KunenaForumTopicUser', KPATH_FRAMEWORK . '/forum/topic/user/user.php');
 JLoader::register('KunenaForumTopicUserRead', KPATH_FRAMEWORK . '/forum/topic/user/read/read.php');
-
-// Register CKunenaLink class in order to allow old templates to work
-if (defined('KPATH_SITE'))
-{
-	JLoader::register('CKunenaLink', KPATH_SITE . '/lib/kunena.link.class.php');
-}
+JLoader::register('KunenaForumTopicRate', KPATH_FRAMEWORK . '/forum/topic/rate/rate.php');
+JLoader::register('KunenaIcons', KPATH_FRAMEWORK . '/icons/icons.php');

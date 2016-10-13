@@ -2,29 +2,35 @@
 /**
  * Kunena Component
  *
- * @package       Kunena.Site
- * @subpackage    Controllers
+ * @package     Kunena.Site
+ * @subpackage  Controllers
  *
- * @copyright (C) 2008 - 2016 Kunena Team. All rights reserved.
- * @license       http://www.gnu.org/copyleft/gpl.html GNU/GPL
- * @link          https://www.kunena.org
+ * @copyright   (C) 2008 - 2016 Kunena Team. All rights reserved.
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU/GPL
+ * @link        https://www.kunena.org
  **/
-defined('_JEXEC') or die ();
+defined('_JEXEC') or die();
 
 /**
  * Kunena Announcements Controller
  *
- * @since        2.0
+ * @since  2.0
  */
 class KunenaControllerAnnouncement extends KunenaController
 {
 
+	/**
+	 *
+	 */
 	public function none()
 	{
 		// FIXME: This is workaround for task=none on edit.
 		$this->edit();
 	}
 
+	/**
+	 * @throws Exception
+	 */
 	public function publish()
 	{
 		if (!JSession::checkToken('post'))
@@ -35,16 +41,18 @@ class KunenaControllerAnnouncement extends KunenaController
 			return;
 		}
 
-		$cid = JRequest::getVar('cid', array(), 'post', 'array'); // Array of integers
-		JArrayHelper::toInteger($cid);
+		$cid = JFactory::getApplication()->input->post->get('cid', array(), 'array');
+		Joomla\Utilities\ArrayHelper::toInteger($cid);
 
 		foreach ($cid as $id)
 		{
 			$announcement = KunenaForumAnnouncementHelper::get($id);
-			if ($announcement->published == 1)
+			$date_today = JFactory::getDate();
+			if ($announcement->published == 1 && $announcement->publish_up > $date_today && $announcement->publish_down > $date_today)
 			{
 				continue;
 			}
+
 			$announcement->published = 1;
 			if (!$announcement->authorise('edit') || !$announcement->save())
 			{
@@ -52,6 +60,11 @@ class KunenaControllerAnnouncement extends KunenaController
 			}
 			else
 			{
+				if ($this->config->log_moderation)
+				{
+					KunenaLog::log(KunenaLog::TYPE_MODERATION, KunenaLog::LOG_ANNOUNCEMENT_PUBLISH, array('id' => $announcement->id));
+				}
+
 				$this->app->enqueueMessage(JText::sprintf('COM_KUNENA_ANN_SUCCESS_PUBLISH', $this->escape($announcement->title)));
 			}
 		}
@@ -59,6 +72,9 @@ class KunenaControllerAnnouncement extends KunenaController
 		$this->setRedirectBack();
 	}
 
+	/**
+	 * @throws Exception
+	 */
 	public function unpublish()
 	{
 		if (!JSession::checkToken('post'))
@@ -69,14 +85,14 @@ class KunenaControllerAnnouncement extends KunenaController
 			return;
 		}
 
-		$cid = JRequest::getVar('cid', array(), 'post', 'array'); // Array of integers
-		JArrayHelper::toInteger($cid);
+		$cid = JFactory::getApplication()->input->get('cid', array(), 'post', 'array');
+		Joomla\Utilities\ArrayHelper::toInteger($cid);
 
 		foreach ($cid as $id)
 		{
 			$announcement = KunenaForumAnnouncementHelper::get($id);
-
-			if ($announcement->published == 0)
+			$date_today = JFactory::getDate();
+			if ($announcement->published == 0 && $announcement->publish_down > $date_today && $announcement->publish_down > $date_today)
 			{
 				continue;
 			}
@@ -89,6 +105,11 @@ class KunenaControllerAnnouncement extends KunenaController
 			}
 			else
 			{
+				if ($this->config->log_moderation)
+				{
+					KunenaLog::log(KunenaLog::TYPE_MODERATION, KunenaLog::LOG_ANNOUNCEMENT_UNPUBLISH, array('id' => $announcement->id));
+				}
+
 				$this->app->enqueueMessage(JText::sprintf('COM_KUNENA_ANN_SUCCESS_UNPUBLISH', $this->escape($announcement->title)));
 			}
 		}
@@ -96,16 +117,22 @@ class KunenaControllerAnnouncement extends KunenaController
 		$this->setRedirectBack();
 	}
 
+	/**
+	 * @throws Exception
+	 */
 	public function edit()
 	{
-		$cid = JRequest::getVar('cid', array(), 'post', 'array'); // Array of integers
-		JArrayHelper::toInteger($cid);
+		$cid = JFactory::getApplication()->input->post->get('cid', array(), 'array');
+		Joomla\Utilities\ArrayHelper::toInteger($cid);
 
 		$announcement = KunenaForumAnnouncementHelper::get(array_pop($cid));
 
 		$this->setRedirect($announcement->getUrl('edit', false));
 	}
 
+	/**
+	 * @throws Exception
+	 */
 	public function delete()
 	{
 		if (!JSession::checkToken('request'))
@@ -116,8 +143,8 @@ class KunenaControllerAnnouncement extends KunenaController
 			return;
 		}
 
-		$cid = JRequest::getVar('cid', (array) JRequest::getInt('id'), 'post', 'array'); // Array of integers
-		JArrayHelper::toInteger($cid);
+		$cid = JFactory::getApplication()->input->get('cid', (array) JFactory::getApplication()->input->getInt('id'), 'post', 'array');
+		Joomla\Utilities\ArrayHelper::toInteger($cid);
 
 		foreach ($cid as $id)
 		{
@@ -129,6 +156,11 @@ class KunenaControllerAnnouncement extends KunenaController
 			}
 			else
 			{
+				if ($this->config->log_moderation)
+				{
+					KunenaLog::log(KunenaLog::TYPE_MODERATION, KunenaLog::LOG_ANNOUNCEMENT_DELETE, array('id' => $announcement->id));
+				}
+
 				$this->app->enqueueMessage(JText::_('COM_KUNENA_ANN_DELETED'));
 			}
 		}
@@ -136,6 +168,9 @@ class KunenaControllerAnnouncement extends KunenaController
 		$this->setRedirect(KunenaForumAnnouncementHelper::getUrl('list', false));
 	}
 
+	/**
+	 * @throws Exception
+	 */
 	public function save()
 	{
 		if (!JSession::checkToken('post'))
@@ -146,16 +181,18 @@ class KunenaControllerAnnouncement extends KunenaController
 			return;
 		}
 
-		$now                    = new JDate();
+		$now                    = new JDate;
 		$fields                 = array();
-		$fields['title']        = JRequest::getString('title', '', 'post', JREQUEST_ALLOWRAW);
-		$fields['description']  = JRequest::getString('description', '', 'post', JREQUEST_ALLOWRAW);
-		$fields['sdescription'] = JRequest::getString('sdescription', '', 'post', JREQUEST_ALLOWRAW);
-		$fields['created']      = JRequest::getString('created', $now->toSql());
-		$fields['published']    = JRequest::getInt('published', 1);
-		$fields['showdate']     = JRequest::getInt('showdate', 1);
+		$fields['title']        = JFactory::getApplication()->input->getString('title', '', 'post', 'raw');
+		$fields['description']  = JFactory::getApplication()->input->getString('description', '', 'post', 'raw');
+		$fields['sdescription'] = JFactory::getApplication()->input->getString('sdescription', '', 'post', 'raw');
+		$fields['created']      = JFactory::getApplication()->input->getString('created', $now->toSql());
+		$fields['publish_up']   = JFactory::getApplication()->input->getString('publish_up', $now->toSql());
+		$fields['publish_down'] = JFactory::getApplication()->input->getString('publish_down', $now->toSql());
+		$fields['published']    = JFactory::getApplication()->input->getInt('published', 1);
+		$fields['showdate']     = JFactory::getApplication()->input->getInt('showdate', 1);
 
-		$id           = JRequest::getInt('id');
+		$id           = JFactory::getApplication()->input->getInt('id');
 		$announcement = KunenaForumAnnouncementHelper::get($id);
 		$announcement->bind($fields);
 
@@ -165,6 +202,11 @@ class KunenaControllerAnnouncement extends KunenaController
 			$this->setRedirectBack();
 
 			return;
+		}
+
+		if ($this->config->log_moderation)
+		{
+			KunenaLog::log(KunenaLog::TYPE_MODERATION, $id ? KunenaLog::LOG_ANNOUNCEMENT_EDIT : KunenaLog::LOG_ANNOUNCEMENT_CREATE, array('id' => $announcement->id));
 		}
 
 		$this->app->enqueueMessage(JText::_($id ? 'COM_KUNENA_ANN_SUCCESS_EDIT' : 'COM_KUNENA_ANN_SUCCESS_ADD'));

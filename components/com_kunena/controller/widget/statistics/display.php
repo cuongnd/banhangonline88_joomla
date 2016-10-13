@@ -28,7 +28,7 @@ class ComponentKunenaControllerWidgetStatisticsDisplay extends KunenaControllerD
 	/**
 	 * Prepare statistics box display.
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	protected function before()
 	{
@@ -45,8 +45,9 @@ class ComponentKunenaControllerWidgetStatisticsDisplay extends KunenaControllerD
 		$statistics->loadGeneral();
 		$this->setProperties($statistics);
 
-		$this->latestMemberLink = KunenaFactory::getUser(intval($this->lastUserId))->getLink();
+		$this->latestMemberLink = KunenaFactory::getUser(intval($this->lastUserId))->getLink(null, null, '');
 		$this->statisticsUrl = KunenaFactory::getProfile()->getStatisticsURL();
+
 		return true;
 	}
 }

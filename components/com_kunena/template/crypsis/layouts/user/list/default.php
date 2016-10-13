@@ -13,23 +13,25 @@ defined('_JEXEC') or die;
 $config = $this->config;
 
 $cols = 1;
-
-$this->addScript('js/search.js');
+$this->addScript('assets/js/jquery.caret.js');
+$this->addScript('assets/js/jquery.atwho.js');
+$this->addStyleSheet('assets/css/jquery.atwho.css');
+$this->addScript('assets/js/search.js');
 ?>
-<h2>
+<h1>
 	<?php echo JText::_('COM_KUNENA_MEMBERS'); ?>
-</h2>
+</h1>
 
-<div class="pull-right">
+<h2 class="pull-right">
 	<?php echo $this->subLayout('Widget/Search')
-		->set('state', $this->state->get('list.search'))
-		->setLayout('user'); ?>
-</div>
+	->set('state', $this->state->get('list.search'))
+	->setLayout('user'); ?>
+</h2>
 
 <div class="pull-left">
 	<?php echo $this->subLayout('Widget/Pagination/List')
-		->set('pagination', $this->pagination)
-		->set('display', true); ?>
+	->set('pagination', $this->pagination)
+	->set('display', true); ?>
 </div>
 
 <form action="<?php echo KunenaRoute::_('index.php?option=com_kunena&view=user&layout=list'); ?>"
@@ -44,7 +46,7 @@ $this->addScript('js/search.js');
 				<th class="span1 center hidden-phone">
 					<a id="forumtop"> </a>
 					<a href="#forumbottom">
-						<i class="icon-arrow-down"></i>
+						<?php echo KunenaIcons::arrowdown();?>
 					</a>
 				</th>
 
@@ -62,55 +64,71 @@ $this->addScript('js/search.js');
 
 				<?php if ($config->username) : $cols++; ?>
 				<th class="span2">
-					<?php echo JHtml::_( 'kunenagrid.sort', 'COM_KUNENA_USERNAME', 'username',
-						$this->state->get('list.direction'), $this->state->get('list.ordering'), '', '',
-						'kuserlist-form'); ?>
+					<?php echo JHtml::_(
+	'kunenagrid.sort', 'COM_KUNENA_USERNAME', 'username',
+	$this->state->get('list.direction'), $this->state->get('list.ordering'), '', '',
+'kuserlist-form'); ?>
 				</th>
 				<?php else : $cols++; ?>
 				<th class="span3">
-					<?php echo JHtml::_( 'kunenagrid.sort', 'COM_KUNENA_REALNAME', 'name',
-						$this->state->get('list.direction'), $this->state->get('list.ordering'), '', '',
-						'kuserlist-form'); ?>
+					<?php echo JHtml::_(
+	'kunenagrid.sort', 'COM_KUNENA_REALNAME', 'name',
+	$this->state->get('list.direction'), $this->state->get('list.ordering'), '', '',
+'kuserlist-form'); ?>
 				</th>
 				<?php endif; ?>
 
 				<?php if ($config->userlist_posts) : $cols++; ?>
 				<th class="span1 center hidden-phone">
-					<?php echo JHtml::_( 'kunenagrid.sort', 'COM_KUNENA_USRL_POSTS', 'posts',
-						$this->state->get('list.direction'), $this->state->get('list.ordering'), '', '',
-						'kuserlist-form'); ?>
+					<?php echo JHtml::_(
+	'kunenagrid.sort', 'COM_KUNENA_USRL_POSTS', 'posts',
+	$this->state->get('list.direction'), $this->state->get('list.ordering'), '', '',
+'kuserlist-form'); ?>
+				</th>
+				<?php endif; ?>
+
+				<?php if ($config->userlist_karma) : $cols++; ?>
+				<th class="span1 center hidden-phone">
+					<?php echo JHtml::_(
+	'kunenagrid.sort', 'COM_KUNENA_USRL_KARMA', 'karma',
+	$this->state->get('list.direction'), $this->state->get('list.ordering'), '', '',
+'kuserlist-form'); ?>
 				</th>
 				<?php endif; ?>
 
 				<?php if ($config->userlist_email) : $cols++; ?>
 				<th class="span1 hidden-phone">
-					<?php echo JHtml::_( 'kunenagrid.sort', 'COM_KUNENA_USRL_EMAIL', 'email',
-						$this->state->get('list.direction'), $this->state->get('list.ordering'), '', '',
-						'kuserlist-form'); ?>
+					<?php echo JHtml::_(
+	'kunenagrid.sort', 'COM_KUNENA_USRL_EMAIL', 'email',
+	$this->state->get('list.direction'), $this->state->get('list.ordering'), '', '',
+'kuserlist-form'); ?>
 				</th>
 				<?php endif; ?>
 
 				<?php if ($config->userlist_joindate) : $cols++; ?>
 				<th class="span2 hidden-phone">
-					<?php echo JHtml::_( 'kunenagrid.sort', 'COM_KUNENA_USRL_JOIN_DATE', 'registerDate',
-						$this->state->get('list.direction'), $this->state->get('list.ordering'), '', '',
-						'kuserlist-form'); ?>
+					<?php echo JHtml::_(
+	'kunenagrid.sort', 'COM_KUNENA_USRL_JOIN_DATE', 'registerDate',
+	$this->state->get('list.direction'), $this->state->get('list.ordering'), '', '',
+'kuserlist-form'); ?>
 				</th>
 				<?php endif; ?>
 
 				<?php if ($config->userlist_lastvisitdate) : $cols++; ?>
 				<th class="span2 hidden-phone">
-					<?php echo JHtml::_( 'kunenagrid.sort', 'COM_KUNENA_USRL_LAST_LOGIN', 'lastvisitDate',
-						$this->state->get('list.direction'), $this->state->get('list.ordering'), '', '',
-						'kuserlist-form'); ?>
+					<?php echo JHtml::_(
+	'kunenagrid.sort', 'COM_KUNENA_USRL_LAST_LOGIN', 'lastvisitDate',
+	$this->state->get('list.direction'), $this->state->get('list.ordering'), '', '',
+'kuserlist-form'); ?>
 				</th>
 				<?php endif; ?>
 
 				<?php if ($config->userlist_userhits) : $cols++; ?>
 				<th class="span1 center hidden-phone">
-					<?php echo JHtml::_( 'kunenagrid.sort', 'COM_KUNENA_USRL_HITS', 'uhits',
-						$this->state->get('list.direction'), $this->state->get('list.ordering'), '', '',
-						'kuserlist-form'); ?>
+					<?php echo JHtml::_(
+	'kunenagrid.sort', 'COM_KUNENA_USRL_HITS', 'uhits',
+	$this->state->get('list.direction'), $this->state->get('list.ordering'), '', '',
+'kuserlist-form'); ?>
 				</th>
 				<?php endif; ?>
 			</tr>
@@ -119,9 +137,10 @@ $this->addScript('js/search.js');
 		<?php
 		$i = $this->pagination->limitstart;
 
-		/** @var KunenaUser $user */
+		// @var KunenaUser $user
+
 		foreach ($this->users as $user) :
-			$avatar = $config->userlist_avatar ? $user->getAvatarImage('img-polaroid', 'thumb') : null;
+			$avatar = $config->userlist_avatar ? $user->getAvatarImage(KunenaFactory::getTemplate()->params->get('avatarType'), 'thumb') : null;
 		?>
 			<tr>
 				<td class="span1 center">
@@ -143,12 +162,18 @@ $this->addScript('js/search.js');
 				<?php endif; ?>
 
 				<td class="span2">
-					<?php echo $user->getLink(); ?>
+					<?php echo $user->getLink(null, null, ''); ?>
 				</td>
 
 				<?php if ($config->userlist_posts) : ?>
 				<td class="span1 center hidden-phone">
 					<?php echo (int) $user->posts; ?>
+				</td>
+				<?php endif; ?>
+
+				<?php if ($config->userlist_karma) : ?>
+				<td class="span1 center hidden-phone">
+					<?php echo (int) $user->karma; ?>
 				</td>
 				<?php endif; ?>
 
@@ -182,10 +207,10 @@ $this->addScript('js/search.js');
 		<td class="span1 center hidden-phone">
 			<a id="forumbottom"> </a>
 			<a href="#forumtop">
-				<i class="icon-arrow-up hasTooltip"></i>
+				<?php echo KunenaIcons::arrowup();?>
 			</a>
 		</td>
-		<td colspan="7" class="hidden-phone">
+		<td colspan="8" class="hidden-phone">
 		</td>
 		</tfoot>
 
@@ -193,8 +218,8 @@ $this->addScript('js/search.js');
 
 	<div class="pull-left">
 		<?php echo $this->subLayout('Widget/Pagination/List')
-			->set('pagination', $this->pagination)
-			->set('display', true); ?>
+	->set('pagination', $this->pagination)
+	->set('display', true); ?>
 	</div>
 </form>
 <div class="clearfix"></div>

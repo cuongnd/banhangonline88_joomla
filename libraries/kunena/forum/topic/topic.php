@@ -1,14 +1,14 @@
 <?php
 /**
  * Kunena Component
- * @package Kunena.Framework
- * @subpackage Forum.Topic
+ * @package     Kunena.Framework
+ * @subpackage  Forum.Topic
  *
- * @copyright (C) 2008 - 2016 Kunena Team. All rights reserved.
- * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL
- * @link https://www.kunena.org
+ * @copyright   (C) 2008 - 2016 Kunena Team. All rights reserved.
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU/GPL
+ * @link        https://www.kunena.org
  **/
-defined ( '_JEXEC' ) or die ();
+defined('_JEXEC') or die();
 
 /**
  * Class KunenaForumTopic
@@ -42,57 +42,67 @@ class KunenaForumTopic extends KunenaDatabaseObject
 	 * @var int
 	 */
 	public $id = null;
+
 	public $unread = 0;
+
 	public $lastread = 0;
 
 	protected $_table = 'KunenaTopics';
+
 	protected $_db = null;
+
 	protected $_authcache = array();
+
 	protected $_authccache = array();
+
 	protected $_authfcache = array();
+
 	protected $_hold = 1;
+
 	protected $_posts = 0;
+
 	protected $_pagination = null;
-	protected $_keywords = null;
+
 	protected static $actions  = array(
-			'none'=>array(),
-			'read'=>array('Read'),
-			'create'=>array('NotExists'),
-			'reply'=>array('Read','NotHold','NotMoved','Unlocked'),
-			'edit'=>array('Read','NotMoved','Unlocked','Own'),
-			'move'=>array('Read'),
-			'approve'=>array('Read','NotMoved'),
-			'delete'=>array('Read'),
-			'undelete'=>array('Read'),
-			'permdelete'=>array('Read'),
-			'favorite'=>array('Read'),
-			'subscribe'=>array('Read'),
-			'sticky'=>array('Read'),
-			'lock'=>array('Read'),
-			'poll.read'=>array('Read', 'Poll'),
-			'poll.create'=>array('Own'),
-			'poll.edit'=>array('Read','Own','NoVotes'),
-			'poll.delete'=>array('Read','Own', 'Poll'),
-			'poll.vote'=>array('Read', 'Poll', 'Vote'),
-			'post.read'=>array('Read'),
-			'post.thankyou'=>array('Read','NotMoved','Unlocked'),
-			'post.unthankyou'=>array('Read','Unlocked'),
-			'post.reply'=>array('Read','NotHold','NotMoved','Unlocked'),
-			'post.edit'=>array('Read','Unlocked'),
-			'post.move'=>array('Read'),
-			'post.approve'=>array('Read'),
-			'post.delete'=>array('Read','Unlocked'),
-			'post.undelete'=>array('Read'),
-			'post.permdelete'=>array('Read'),
-			'post.attachment.read'=>array('Read'),
-			'post.attachment.createimage'=>array('Unlocked'),
-			'post.attachment.createfile'=>array('Unlocked'),
-			'post.attachment.delete'=>array(),
+			'none' => array(),
+			'read' => array('Read'),
+			'create' => array('NotExists'),
+			'reply' => array('Read','NotHold','NotMoved','Unlocked'),
+			'edit' => array('Read','NotMoved','Unlocked','Own'),
+			'move' => array('Read'),
+			'approve' => array('Read','NotMoved'),
+			'delete' => array('Read'),
+			'undelete' => array('Read'),
+			'permdelete' => array('Read'),
+			'favorite' => array('Read'),
+			'subscribe' => array('Read'),
+			'sticky' => array('Read'),
+			'lock' => array('Read'),
+			'rate' => array('Read', 'Unlocked'),
+			'poll.read' => array('Read', 'Poll'),
+			'poll.create' => array('Own'),
+			'poll.edit' => array('Read','Own','NoVotes'),
+			'poll.delete' => array('Read','Own', 'Poll'),
+			'poll.vote' => array('Read', 'Poll', 'Vote'),
+			'post.read' => array('Read'),
+			'post.thankyou' => array('Read','NotMoved','Unlocked'),
+			'post.unthankyou' => array('Read','Unlocked'),
+			'post.reply' => array('Read','NotHold','NotMoved','Unlocked'),
+			'post.edit' => array('Read','Unlocked'),
+			'post.move' => array('Read'),
+			'post.approve' => array('Read'),
+			'post.delete' => array('Read','Unlocked'),
+			'post.undelete' => array('Read'),
+			'post.permdelete' => array('Read'),
+			'post.attachment.read' => array('Read'),
+			'post.attachment.createimage' => array('Unlocked'),
+			'post.attachment.createfile' => array('Unlocked'),
+			'post.attachment.delete' => array(),
 			 // TODO: In the future we might want to restrict this: array('Read','Unlocked'),
 		);
 
 	/**
-	 * @param mixed $properties
+	 * @param   mixed $properties
 	 *
 	 * @internal
 	 */
@@ -109,14 +119,14 @@ class KunenaForumTopic extends KunenaDatabaseObject
 			parent::__construct($properties);
 		}
 
-		$this->_db = JFactory::getDBO ();
+		$this->_db = JFactory::getDBO();
 	}
 
 	/**
 	 * Returns KunenaForumTopic object.
 	 *
-	 * @param int $identifier	The topic to load - Can be only an integer.
-	 * @param bool $reset
+	 * @param   int $identifier	The topic to load - Can be only an integer.
+	 * @param   bool $reset
 	 *
 	 * @return KunenaForumTopic
 	 */
@@ -126,13 +136,14 @@ class KunenaForumTopic extends KunenaDatabaseObject
 	}
 
 	/**
-	 * @param null|bool $exists
+	 * @param   null|bool $exists
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	function exists($exists = null)
 	{
-		if ($exists !== null) {
+		if ($exists !== null)
+		{
 			$this->_hold = $this->hold;
 			$this->_posts = $this->posts;
 		}
@@ -143,19 +154,20 @@ class KunenaForumTopic extends KunenaDatabaseObject
 	/**
 	 * Subscribe / Unsubscribe user to this topic.
 	 *
-	 * @param bool  $value	True for subscribe, false for unsubscribe.
-	 * @param mixed $user
+	 * @param   bool  $value	True for subscribe, false for unsubscribe.
+	 * @param   mixed $user
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	public function subscribe($value = true, $user = null)
 	{
 		$usertopic = $this->getUserTopic($user);
-		$usertopic->subscribed = (int)$value;
+		$usertopic->subscribed = (int) $value;
 
 		if (!$usertopic->save())
 		{
 			$this->setError($usertopic->getError());
+
 			return false;
 		}
 
@@ -165,15 +177,15 @@ class KunenaForumTopic extends KunenaDatabaseObject
 	/**
 	 * Favorite / unfavorite user to this topic.
 	 *
-	 * @param bool  $value	True for favorite, false for unfavorite.
-	 * @param mixed $user
+	 * @param   bool  $value	True for favorite, false for unfavorite.
+	 * @param   mixed $user
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	public function favorite($value = true, $user = null)
 	{
 		$usertopic = $this->getUserTopic($user);
-		$usertopic->favorite = (int)$value;
+		$usertopic->favorite = (int) $value;
 
 		if (!$usertopic->save())
 		{
@@ -186,126 +198,45 @@ class KunenaForumTopic extends KunenaDatabaseObject
 	}
 
 	/**
-	 * @param int $value
+	 * @param   int $value
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	public function sticky($value = 1)
 	{
-		$this->ordering = (int)$value;
+		$this->ordering = (int) $value;
 
 		return $this->save();
 	}
 
 	/**
-	 * @param int $value
+	 * @param   int $value
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	public function lock($value = 1)
 	{
-		$this->locked = (int)$value;
+		$this->locked = (int) $value;
 
 		return $this->save();
 	}
 
 	/**
-	 * @param mixed $user
-	 * @param bool|string $glue
+	 * @param   mixed $user
+	 * @param   bool|string $glue
 	 *
 	 * @return array|string
 	 */
 	public function getKeywords($user = null, $glue = false)
 	{
-		$config = KunenaFactory::getConfig();
 
-		if ($user !== false)
-		{
-			$user = KunenaUserHelper::get($user);
-
-			// Guests or non-existing cannot have personal keywords
-			if (!$config->userkeywords || !$user->exists())
-			{
-				return $glue ? '' : array();
-			}
-
-			$user = $user->userid;
-		}
-		elseif (!$config->keywords)
-		{
-			return $glue ? '' : array();
-		}
-
-		$user = (int) $user;
-
-		if (!isset($this->_keywords[$user]))
-		{
-			$this->_keywords[$user] = KunenaKeywordHelper::getByTopics($this->id, $user);
-			ksort($this->_keywords[$user]);
-		}
-
-		if ($glue)
-		{
-			$keywords = array_keys($this->_keywords[$user]);
-			foreach ($keywords as &$keyword)
-			{
-				if (strpos($keyword, ' ') !== false)
-				{
-					$keyword = '"'.$keyword.'"';
-				}
-			}
-
-			return implode($glue, $keywords);
-		}
-
-		return $this->_keywords[$user];
+		return ;
 	}
 
 	/**
-	 * @param mixed $keywords
-	 * @param mixed $user
-	 * @param null|string $glue
+	 * @param   int $value
 	 *
-	 * @return bool
-	 */
-	public function setKeywords($keywords, $user = null, $glue = null)
-	{
-		$config = KunenaFactory::getConfig();
-
-		if ($user !== false)
-		{
-			$user = KunenaUserHelper::get($user);
-
-			// Guests or non-existing cannot have personal keywords
-			if (!$config->userkeywords || !$user->exists())
-			{
-				return false;
-			}
-
-			$user = $user->userid;
-		}
-		elseif (!$config->keywords)
-		{
-			return false;
-		}
-
-		$user = (int) $user;
-		$keywords = KunenaKeywordHelper::setTopicKeywords($keywords, $this->id, $user);
-
-		if ($keywords === false)
-		{
-			return false;
-		}
-
-		$this->_keywords[$user] = $keywords;
-
-		return true;
-	}
-
-	/**
-	 * @param int $value
-	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	public function publish($value=KunenaForum::PUBLISHED)
 	{
@@ -315,15 +246,20 @@ class KunenaForumTopic extends KunenaDatabaseObject
 		}
 
 		$this->hold = (int) $value;
-		$query = new KunenaDatabaseQuery();
+		$query = new KunenaDatabaseQuery;
 		$query->update('#__kunena_messages')->set("hold={$this->hold}")
 			->where("thread={$this->id}")->where("hold={$this->_hold}");
 
 		$this->_db->setQuery($query);
-		$this->_db->execute();
 
-		if (KunenaError::checkDatabaseError())
+		try
 		{
+			$this->_db->execute();
+		}
+		catch (JDatabaseExceptionExecuting $e)
+		{
+			KunenaError::displayDatabaseError($e);
+
 			return false;
 		}
 
@@ -333,7 +269,7 @@ class KunenaForumTopic extends KunenaDatabaseObject
 	/**
 	 * Send email notifications from the first post in the topic.
 	 *
-	 * @param null|string $url
+	 * @param   null|string $url
 	 */
 	public function sendNotification($url = null)
 	{
@@ -342,7 +278,7 @@ class KunenaForumTopic extends KunenaDatabaseObject
 	}
 
 	/**
-	 * @param mixed $user
+	 * @param   mixed $user
 	 *
 	 * @return KunenaForumTopicUser
 	 */
@@ -381,7 +317,7 @@ class KunenaForumTopic extends KunenaDatabaseObject
 	}
 
 	/**
-	 * @return int
+	 * @return integer
 	 */
 	public function getHits()
 	{
@@ -405,7 +341,7 @@ class KunenaForumTopic extends KunenaDatabaseObject
 		$table = $this->getTable();
 		$table->id = $this->id;
 
-		if ( $table->hit() )
+		if ($table->hit())
 		{
 			$this->hits++;
 			$app->setUserState('com_kunena.topic.lasthit', $this->id);
@@ -413,10 +349,10 @@ class KunenaForumTopic extends KunenaDatabaseObject
 	}
 
 	/**
-	 * @param int|null $limitstart Null if all pages need to be active.
-	 * @param int    $limit
-	 * @param int    $display
-	 * @param string $prefix
+	 * @param   int|null $limitstart Null if all pages need to be active.
+	 * @param   int    $limit
+	 * @param   int    $display
+	 * @param   string $prefix
 	 *
 	 * @return JPagination
 	 */
@@ -439,7 +375,7 @@ class KunenaForumTopic extends KunenaDatabaseObject
 	}
 
 	/**
-	 * @param mixed $user
+	 * @param   mixed $user
 	 *
 	 * @return KunenaForumTopicUser
 	 */
@@ -510,9 +446,9 @@ class KunenaForumTopic extends KunenaDatabaseObject
 	}
 
 	/**
-	 * @param string $field
+	 * @param   string $field
 	 *
-	 * @return int|string
+	 * @return integer|string
 	 */
 	public function displayField($field)
 	{
@@ -528,6 +464,8 @@ class KunenaForumTopic extends KunenaDatabaseObject
 	}
 
 	/**
+	 * @param string $category_icon
+	 *
 	 * @return string
 	 */
 	public function getIcon($category_icon = '')
@@ -536,9 +474,9 @@ class KunenaForumTopic extends KunenaDatabaseObject
 	}
 
 	/**
-	 * @param mixed $hold
+	 * @param   mixed $hold
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	public function getTotal($hold = null)
 	{
@@ -551,9 +489,9 @@ class KunenaForumTopic extends KunenaDatabaseObject
 	}
 
 	/**
-	 * @param mixed $hold
+	 * @param   mixed $hold
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	public function getReplies($hold = null)
 	{
@@ -561,16 +499,17 @@ class KunenaForumTopic extends KunenaDatabaseObject
 	}
 
 	/**
-	 * @param mixed $category
-	 * @param bool $xhtml
-	 * @param null|string $action
+	 * @param   mixed $category
+	 * @param   bool $xhtml
+	 * @param   null|string $action
 	 *
 	 * @return string
 	 */
 	public function getUrl($category = null, $xhtml = true, $action = null)
 	{
-		return KunenaRoute::getTopicUrl($this, $xhtml, $action,
-			$category ? KunenaForumCategoryHelper::get($category) : $this->getCategory());
+		return KunenaRoute::getTopicUrl(
+   $this, $xhtml, $action,
+	$category ? KunenaForumCategoryHelper::get($category) : $this->getCategory());
 	}
 
 	/**
@@ -579,9 +518,9 @@ class KunenaForumTopic extends KunenaDatabaseObject
 	 * If you want to add domain (for email etc), you can prepend the output with this:
 	 * JUri::getInstance()->toString(array('scheme', 'host', 'port'))
 	 *
-	 * @param KunenaForumCategory $category
-	 * @param bool $xhtml
-	 * @param string $action
+	 * @param   KunenaForumCategory $category
+	 * @param   bool $xhtml
+	 * @param   string $action
 	 *
 	 * @return string
 	 */
@@ -597,7 +536,8 @@ class KunenaForumTopic extends KunenaDatabaseObject
 	 *
 	 * @since  K4.0
 	 */
-	public function getState() {
+	public function getState()
+	{
 		switch ($this->hold)
 		{
 			case 0:
@@ -613,8 +553,8 @@ class KunenaForumTopic extends KunenaDatabaseObject
 	}
 
 	/**
-	 * @param mixed $category
-	 * @param string $action
+	 * @param   mixed $category
+	 * @param   string $action
 	 *
 	 * @return JUri|null
 	 */
@@ -631,7 +571,7 @@ class KunenaForumTopic extends KunenaDatabaseObject
 		if ($action instanceof KunenaForumMessage)
 		{
 			$message = $action;
-			$action = 'post'.$message->id;
+			$action = 'post' . $message->id;
 		}
 
 		$uri = JUri::getInstance("index.php?option=com_kunena&view=topic&catid={$category->id}&id={$this->id}&action={$action}&Itemid={$Itemid}");
@@ -646,9 +586,12 @@ class KunenaForumTopic extends KunenaDatabaseObject
 			{
 				$mesid = $message->id;
 			}
-			elseif ((string)$action === (string)(int)$action)
+			elseif ((string) $action === (string) (int) $action)
 			{
-				if ($action > 0) $uri->setVar('limitstart', $action * $limit);
+				if ($action > 0)
+				{
+					$uri->setVar('limitstart', $action * $limit);
+				}
 			}
 			else
 			{
@@ -685,15 +628,16 @@ class KunenaForumTopic extends KunenaDatabaseObject
 				}
 			}
 		}
+
 		return $uri;
 	}
 
 	/**
-	 * @param int $mesid
-	 * @param string|null $direction
-	 * @param mixed $hold
+	 * @param   int $mesid
+	 * @param   string|null $direction
+	 * @param   mixed $hold
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	public function getPostLocation($mesid, $direction = null, $hold = null)
 	{
@@ -717,12 +661,12 @@ class KunenaForumTopic extends KunenaDatabaseObject
 		{
 			if ($mesid == 'first' || $mesid == $this->first_post_id)
 			{
-				return $direction == 'asc' ? 0 : $this->posts-1;
+				return $direction == 'asc' ? 0 : $this->posts - 1;
 			}
 
 			if ($mesid == 'last' || $mesid == $this->last_post_id)
 			{
-				return $direction == 'asc' ? $this->posts-1 : 0;
+				return $direction == 'asc' ? $this->posts - 1 : 0;
 			}
 
 			if ($mesid == $this->unread)
@@ -745,9 +689,9 @@ class KunenaForumTopic extends KunenaDatabaseObject
 	}
 
 	/**
-	 * @param array|bool $fields
-	 * @param mixed  $user
-	 * @param array|null  $safefields
+	 * @param   array|bool $fields
+	 * @param   mixed  $user
+	 * @param   array|null  $safefields
 	 *
 	 * @return KunenaForumMessage
 	 */
@@ -756,7 +700,7 @@ class KunenaForumTopic extends KunenaDatabaseObject
 		$user = KunenaUserHelper::get($user);
 		$category = $this->getCategory();
 
-		$message = new KunenaForumMessage();
+		$message = new KunenaForumMessage;
 		$message->setTopic($this);
 		$message->parent = $this->first_post_id;
 		$message->thread = $this->id;
@@ -774,13 +718,14 @@ class KunenaForumTopic extends KunenaDatabaseObject
 		else
 		{
 			// Otherwise message is either unapproved or published depending if the category is moderated or not
-			$message->hold = $category->review ? (int)!$category->authorise ('moderate', $user, true) : 0;
+			$message->hold = $category->review ? (int) !$category->authorise('moderate', $user, true) : 0;
 		}
+
 		if ($fields === true)
 		{
 			$user = KunenaUserHelper::get($this->first_post_userid);
-			$text = preg_replace('/\[confidential\](.*?)\[\/confidential\]/su', '', $this->first_post_message );
-			$message->message = "[quote=\"{$user->getName($this->first_post_guest_name)}\" post={$this->first_post_id}]" .  $text . "[/quote]";
+			$text = preg_replace('/\[confidential\](.*?)\[\/confidential\]/su', '', $this->first_post_message);
+			$message->message = "[quote=\"{$user->getName($this->first_post_guest_name)}\" post={$this->first_post_id}]" . $text . "[/quote]";
 		}
 		else
 		{
@@ -788,6 +733,7 @@ class KunenaForumTopic extends KunenaDatabaseObject
 			{
 				$message->bind($safefields);
 			}
+
 			if ($fields)
 			{
 				$message->bind($fields, array ('name', 'email', 'subject', 'message' ), true);
@@ -798,9 +744,9 @@ class KunenaForumTopic extends KunenaDatabaseObject
 	}
 
 	/**
-	 * @param mixed $user
+	 * @param   mixed $user
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	public function hasNew($user = null)
 	{
@@ -811,7 +757,7 @@ class KunenaForumTopic extends KunenaDatabaseObject
 			return false;
 		}
 
-		$session = KunenaFactory::getSession ();
+		$session = KunenaFactory::getSession();
 
 		if ($this->last_post_time <= $session->getAllReadTime())
 		{
@@ -836,9 +782,9 @@ class KunenaForumTopic extends KunenaDatabaseObject
 	}
 
 	/**
-	 * @param mixed $user
+	 * @param   mixed $user
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	public function markRead($user = null)
 	{
@@ -859,33 +805,46 @@ class KunenaForumTopic extends KunenaDatabaseObject
 
 	/**
 	 * @deprecated
+	 *
+	 * @param null $user
+	 *
+	 * @return bool
 	 */
 	public function markNew($user = null)
 	{
-		return $this->markRead ($user);
+		return $this->markRead($user);
 	}
 
 	/**
 	 * Returns true if user is authorised to do the action.
 	 *
-	 * @param string     $action
-	 * @param KunenaUser $user
+	 * @param   string     $action
+	 * @param   KunenaUser $user
 	 *
-	 * @return bool
+	 * @return boolean
 	 *
 	 * @since  K4.0
 	 */
 	public function isAuthorised($action='read', KunenaUser $user = null)
 	{
+		if (KunenaFactory::getConfig()->read_only)
+		{
+			// Special case to ignore authorisation.
+			if ($action != 'read')
+			{
+				return null;
+			}
+		}
+
 		return !$this->tryAuthorise($action, $user, false);
 	}
 
 	/**
 	 * Throws an exception if user isn't authorised to do the action.
 	 *
-	 * @param string      $action
-	 * @param KunenaUser  $user
-	 * @param bool        $throw
+	 * @param   string      $action
+	 * @param   KunenaUser  $user
+	 * @param   bool        $throw
 	 *
 	 * @return KunenaExceptionAuthorise|null
 	 * @throws KunenaExceptionAuthorise
@@ -918,7 +877,7 @@ class KunenaForumTopic extends KunenaDatabaseObject
 			// Load category authorisation.
 			if (!isset($this->_authccache[$user->userid][$action]))
 			{
-				$this->_authccache[$user->userid][$action] = $this->getCategory()->tryAuthorise('topic.'.$action, $user, false);
+				$this->_authccache[$user->userid][$action] = $this->getCategory()->tryAuthorise('topic.' . $action, $user, false);
 			}
 
 			$this->_authcache[$user->userid][$action] = $this->_authccache[$user->userid][$action];
@@ -929,7 +888,7 @@ class KunenaForumTopic extends KunenaDatabaseObject
 				{
 					if (!isset($this->_authfcache[$user->userid][$function]))
 					{
-						$authFunction = 'authorise'.$function;
+						$authFunction = 'authorise' . $function;
 						$this->_authfcache[$user->userid][$function] = $this->$authFunction($user);
 					}
 
@@ -956,16 +915,16 @@ class KunenaForumTopic extends KunenaDatabaseObject
 	}
 
 	/**
-	 * @param string $action
-	 * @param mixed  $user
-	 * @param bool   $silent
+	 * @param   string $action
+	 * @param   mixed  $user
+	 * @param   bool   $silent
 	 *
-	 * @return bool
+	 * @return boolean
 	 * @deprecated K4.0
 	 */
 	public function authorise($action = 'read', $user = null, $silent = false)
 	{
-		KUNENA_PROFILER ? KunenaProfiler::instance()->start('function '.__CLASS__.'::'.__FUNCTION__.'()') : null;
+		KUNENA_PROFILER ? KunenaProfiler::instance()->start('function ' . __CLASS__ . '::' . __FUNCTION__ . '()') : null;
 
 		if ($user === null)
 		{
@@ -983,7 +942,7 @@ class KunenaForumTopic extends KunenaDatabaseObject
 			$this->setError($exception->getMessage());
 		}
 
-		KUNENA_PROFILER ? KunenaProfiler::instance()->stop('function '.__CLASS__.'::'.__FUNCTION__.'()') : null;
+		KUNENA_PROFILER ? KunenaProfiler::instance()->stop('function ' . __CLASS__ . '::' . __FUNCTION__ . '()') : null;
 
 		if ($silent !== null)
 		{
@@ -996,7 +955,7 @@ class KunenaForumTopic extends KunenaDatabaseObject
 	/**
 	 * Method to load a KunenaForumTopic object by id.
 	 *
-	 * @param null $id	The topic id to be loaded.
+	 * @param   null $id	The topic id to be loaded.
 	 *
 	 * @return bool	True on success.
 	 */
@@ -1019,7 +978,7 @@ class KunenaForumTopic extends KunenaDatabaseObject
 	 * @param   bool    $subjectall    Change subject from every message
 	 * @param   int     $topic_iconid  Define a new topic icon
 	 *
-	 * @return 	bool|KunenaForumCategory|KunenaForumTopic	Target KunenaForumCategory or KunenaForumTopic or false on failure
+	 * @return 	boolean|KunenaForumCategory|KunenaForumTopic	Target KunenaForumCategory or KunenaForumTopic or false on failure
 	 */
 	public function move($target, $ids = false, $shadow = false, $subject = '', $subjectall = false, $topic_iconid = null)
 	{
@@ -1033,7 +992,7 @@ class KunenaForumTopic extends KunenaDatabaseObject
 		{
 			if (!is_array($ids))
 			{
-				$ids = explode(',', (string)$ids);
+				$ids = explode(',', (string) $ids);
 			}
 
 			$mesids = array();
@@ -1043,7 +1002,7 @@ class KunenaForumTopic extends KunenaDatabaseObject
 				$mesids[(int) $id] = (int) $id;
 			}
 
-			unset ($mesids[0]);
+			unset($mesids[0]);
 			$ids = implode(',', $mesids);
 		}
 
@@ -1066,10 +1025,10 @@ class KunenaForumTopic extends KunenaDatabaseObject
 				$query->where("id NOT IN ({$ids})");
 			}
 
-			$this->_db->setQuery ( $query );
-			$oldcount = (int)$this->_db->loadResult();
+			$this->_db->setQuery($query);
+			$oldcount = (int) $this->_db->loadResult();
 
-			if ($this->_db->getErrorNum () )
+			if ($this->_db->getErrorNum())
 			{
 				$this->setError($this->_db->getError());
 				return false;
@@ -1107,21 +1066,20 @@ class KunenaForumTopic extends KunenaDatabaseObject
 				return false;
 			}
 
-			if ( $this->poll_id && $target->poll_id )
+			if ($this->poll_id && $target->poll_id)
 			{
 				// We cannot currently have 2 polls in one topic -- fail
 				$this->setError(JText::_('COM_KUNENA_MODERATION_CANNOT_MOVE_TOPIC_WITH_POLL_INTO_ANOTHER_WITH_POLL'));
 				return false;
 			}
 
-			if ($subjectall) $subject = $target->subject;
-
+			if ($subjectall) { $subject = $target->subject; }
 		}
 		elseif ($target instanceof KunenaForumCategory)
 		{
 			// Move messages into category
 
-			if ( $target->isSection() )
+			if ($target->isSection())
 			{
 				// Section cannot have any topics
 				$this->setError(JText::_('COM_KUNENA_MODERATION_ERROR_NOT_MOVE_SECTION'));
@@ -1135,7 +1093,8 @@ class KunenaForumTopic extends KunenaDatabaseObject
 			{
 				// Move shadow topic and we are done
 				$this->category_id = $categoryTarget->id;
-				if ($subject) $this->subject = $subject;
+				if ($subject) { $this->subject = $subject; }
+
 				$this->save(false);
 
 				return $target;
@@ -1170,7 +1129,6 @@ class KunenaForumTopic extends KunenaDatabaseObject
 
 			// Did user want to change category?
 			$target->category_id = $categoryTarget->id;
-
 		}
 		else {
 			$this->setError(JText::_('COM_KUNENA_MODERATION_ERROR_WRONG_TARGET'));
@@ -1213,7 +1171,7 @@ class KunenaForumTopic extends KunenaDatabaseObject
 		}
 
 		$this->_db->setQuery($query);
-		$this->_db->query();
+		$this->_db->execute();
 
 		if ($this->_db->getErrorNum())
 		{
@@ -1224,7 +1182,7 @@ class KunenaForumTopic extends KunenaDatabaseObject
 		// Make sure that all messages in topic have unique time (deterministic without ORDER BY time, id)
 		$query = "SET @ktime:=0";
 		$this->_db->setQuery($query);
-		$this->_db->query ();
+		$this->_db->execute();
 
 		if ($this->_db->getErrorNum())
 		{
@@ -1234,7 +1192,7 @@ class KunenaForumTopic extends KunenaDatabaseObject
 
 		$query = "UPDATE #__kunena_messages SET time=IF(time<=@ktime,@ktime:=@ktime+1,@ktime:=time) WHERE thread={$target->id} ORDER BY time ASC, id ASC";
 		$this->_db->setQuery($query);
-		$this->_db->query ();
+		$this->_db->execute();
 
 		if ($this->_db->getErrorNum())
 		{
@@ -1250,10 +1208,10 @@ class KunenaForumTopic extends KunenaDatabaseObject
 			// Note: Do not remove poll from shadow: information could still be used to show icon etc
 
 			$query = "UPDATE #__kunena_polls SET `threadid`={$this->_db->Quote($target->id)} WHERE `threadid`={$this->_db->Quote($this->id)}";
-			$this->_db->setQuery ( $query );
-			$this->_db->query ();
+			$this->_db->setQuery($query);
+			$this->_db->execute();
 
-			if ($this->_db->getErrorNum () )
+			if ($this->_db->getErrorNum())
 			{
 				$this->setError($this->_db->getError());
 				return false;
@@ -1277,7 +1235,7 @@ class KunenaForumTopic extends KunenaDatabaseObject
 			if (!$shadow)
 			{
 				// Mark shadow topic as deleted
-				$this->hold=2;
+				$this->hold = 2;
 			}
 		}
 
@@ -1299,7 +1257,6 @@ class KunenaForumTopic extends KunenaDatabaseObject
 			$categoryFrom->update($this, -1, -$this->posts);
 			// Add topic and posts into the new category
 			$categoryTarget->update($target, 1, $this->posts);
-
 		}
 		elseif (!$ids)
 		{
@@ -1310,10 +1267,12 @@ class KunenaForumTopic extends KunenaDatabaseObject
 			$target->hits += $this->hits;
 			$target->attachments += $this->attachments;
 			// Update first and last post information into the target topic
-			$target->updatePostInfo($this->first_post_id, $this->first_post_time, $this->first_post_userid,
-				$this->first_post_message, $this->first_post_guest_name);
-			$target->updatePostInfo($this->last_post_id, $this->last_post_time, $this->last_post_userid,
-				$this->last_post_message, $this->last_post_guest_name);
+			$target->updatePostInfo(
+	$this->first_post_id, $this->first_post_time, $this->first_post_userid,
+	$this->first_post_message, $this->first_post_guest_name);
+			$target->updatePostInfo(
+	$this->last_post_id, $this->last_post_time, $this->last_post_userid,
+	$this->last_post_message, $this->last_post_guest_name);
 
 			// Save target topic
 			if (!$target->save(false))
@@ -1330,7 +1289,6 @@ class KunenaForumTopic extends KunenaDatabaseObject
 			$this->getCategory()->update($this, -1, -$this->posts);
 			// Add posts into the new category
 			$target->getCategory()->update($target, 0, $this->posts);
-
 		}
 		else
 		{
@@ -1346,7 +1304,7 @@ class KunenaForumTopic extends KunenaDatabaseObject
 	/**
 	 * Method to save the KunenaForumTopic object to the database.
 	 *
-	 * @param bool $cascade
+	 * @param   bool $cascade
 	 *
 	 * @return bool	True on success.
 	 *
@@ -1354,7 +1312,7 @@ class KunenaForumTopic extends KunenaDatabaseObject
 	public function save($cascade = true)
 	{
 		$topicDelta = $this->delta();
-		$postDelta = $this->posts-$this->_posts;
+		$postDelta = $this->posts - $this->_posts;
 
 		$isNew = !$this->exists();
 
@@ -1374,7 +1332,7 @@ class KunenaForumTopic extends KunenaDatabaseObject
 
 			if (! $category->update($this, $topicDelta, $postDelta))
 			{
-				$this->setError ( $category->getError () );
+				$this->setError($category->getError());
 			}
 		}
 
@@ -1396,15 +1354,22 @@ class KunenaForumTopic extends KunenaDatabaseObject
 		// Clear authentication cache
 		$this->_authfcache = $this->_authccache = $this->_authcache = array();
 
-		$db = JFactory::getDBO ();
+		$db = JFactory::getDBO();
 		$queries[] = "UPDATE #__kunena_messages SET hold='2' WHERE thread={$db->quote($this->id)}";
 		$queries[] = "UPDATE #__kunena_topics SET hold='2' WHERE id={$db->quote($this->id)}";
 
 		foreach ($queries as $query)
 		{
 			$db->setQuery($query);
-			$db->query();
-			KunenaError::checkDatabaseError ();
+
+			try
+			{
+				$db->execute();
+			}
+			catch (JDatabaseExceptionExecuting $e)
+			{
+				KunenaError::displayDatabaseError($e);
+			}
 		}
 
 		return true;
@@ -1413,7 +1378,7 @@ class KunenaForumTopic extends KunenaDatabaseObject
 	/**
 	 * Method to delete the KunenaForumTopic object from the database.
 	 *
-	 * @param bool $recount
+	 * @param   bool $recount
 	 *
 	 * @return bool	True on success.
 	 */
@@ -1435,7 +1400,7 @@ class KunenaForumTopic extends KunenaDatabaseObject
 		// NOTE: shadow topic doesn't exist, DO NOT DELETE OR CHANGE ANY EXTERNAL INFORMATION
 		if ($this->moved_id == 0)
 		{
-			$db = JFactory::getDBO ();
+			$db = JFactory::getDBO();
 			// Delete user topics
 			$queries[] = "DELETE FROM #__kunena_user_topics WHERE topic_id={$db->quote($this->id)}";
 			// Delete user read
@@ -1454,16 +1419,20 @@ class KunenaForumTopic extends KunenaDatabaseObject
 			foreach ($queries as $query)
 			{
 				$db->setQuery($query);
-				$db->query();
-				KunenaError::checkDatabaseError ();
+
+				try
+				{
+					$db->execute();
+				}
+				catch (JDatabaseExceptionExecuting $e)
+				{
+					KunenaError::displayDatabaseError($e);
+				}
 			}
 
-			// FIXME: add recount statistics
 			if ($recount)
 			{
 				KunenaUserHelper::recount();
-				KunenaForumCategoryHelper::recount();
-				KunenaAttachmentHelper::cleanup();
 				KunenaForumMessageThankyouHelper::recount();
 			}
 		}
@@ -1472,11 +1441,11 @@ class KunenaForumTopic extends KunenaDatabaseObject
 	}
 
 	/**
-	 * @param int    $id
-	 * @param int    $time
-	 * @param int    $userid
-	 * @param string $message
-	 * @param string $name
+	 * @param   int    $id
+	 * @param   int    $time
+	 * @param   int    $userid
+	 * @param   string $message
+	 * @param   string $name
 	 */
 	public function updatePostInfo($id, $time=0, $userid=0, $message='', $name='')
 	{
@@ -1501,8 +1470,8 @@ class KunenaForumTopic extends KunenaDatabaseObject
 			$this->first_post_userid = $userid;
 			$this->first_post_message = $message;
 			$this->first_post_guest_name = $name;
-
 		}
+
 		if ($this->last_post_time < $time || ($this->last_post_time == $time && $this->last_post_id <= $id)) {
 			$this->last_post_id = $id;
 			$this->last_post_time = $time;
@@ -1513,10 +1482,10 @@ class KunenaForumTopic extends KunenaDatabaseObject
 	}
 
 	/**
-	 * @param KunenaForumMessage $message
-	 * @param int  $postdelta
+	 * @param   KunenaForumMessage $message
+	 * @param   int  $postdelta
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	public function update($message = null, $postdelta = 0)
 	{
@@ -1531,6 +1500,7 @@ class KunenaForumTopic extends KunenaDatabaseObject
 				$this->setError(JText::_('COM_KUNENA_LIB_TOPIC_NOT_EXISTS'));
 				return false;
 			}
+
 			$this->id = $message->id;
 		}
 
@@ -1543,19 +1513,26 @@ class KunenaForumTopic extends KunenaDatabaseObject
 		{
 			if(!isset($this->hold))
 			{
-				$this->hold=KunenaForum::TOPIC_DELETED;
+				$this->hold = KunenaForum::TOPIC_DELETED;
 			}
 
 			// If message isn't visible anymore, check if we need to update cache
 			if (!$exists || $this->first_post_id == $message->id)
 			{
 				// If message got deleted and was cached, we need to find new first post
-				$db = JFactory::getDBO ();
+				$db = JFactory::getDBO();
 				$query = "SELECT * FROM #__kunena_messages AS m INNER JOIN #__kunena_messages_text AS t ON t.mesid=m.id
 					WHERE m.thread={$db->quote($this->id)} AND m.hold={$this->hold} ORDER BY m.time ASC, m.id ASC";
-				$db->setQuery ( $query, 0, 1 );
-				$first = $db->loadObject ();
-				KunenaError::checkDatabaseError ();
+				$db->setQuery($query, 0, 1);
+
+				try
+				{
+					$first = $db->loadObject();
+				}
+				catch (JDatabaseExceptionExecuting $e)
+				{
+					KunenaError::displayDatabaseError($e);
+				}
 
 				if ($first)
 				{
@@ -1567,15 +1544,23 @@ class KunenaForumTopic extends KunenaDatabaseObject
 					$this->updatePostInfo(false);
 				}
 			}
+
 			if (!$exists || $this->last_post_id == $message->id)
 			{
 				// If topic got deleted and was cached, we need to find new last post
-				$db = JFactory::getDBO ();
+				$db = JFactory::getDBO();
 				$query = "SELECT * FROM #__kunena_messages AS m INNER JOIN #__kunena_messages_text AS t ON t.mesid=m.id
 					WHERE m.thread={$db->quote($this->id)} AND m.hold={$this->hold} ORDER BY m.time DESC, m.id DESC";
-				$db->setQuery ( $query, 0, 1 );
-				$last = $db->loadObject ();
-				KunenaError::checkDatabaseError ();
+				$db->setQuery($query, 0, 1);
+
+				try
+				{
+					$last = $db->loadObject();
+				}
+				catch (JDatabaseExceptionExecuting $e)
+				{
+					KunenaError::displayDatabaseError($e);
+				}
 
 				if ($last)
 				{
@@ -1613,7 +1598,7 @@ class KunenaForumTopic extends KunenaDatabaseObject
 
 			if (!$usertopic->update($message, $postdelta))
 			{
-				$this->setError ( $usertopic->getError () );
+				$this->setError($usertopic->getError());
 			}
 
 			// Update post count from user
@@ -1622,7 +1607,7 @@ class KunenaForumTopic extends KunenaDatabaseObject
 
 			if (!$user->save())
 			{
-				$this->setError ( $user->getError () );
+				$this->setError($user->getError());
 			}
 		}
 		else
@@ -1636,23 +1621,28 @@ class KunenaForumTopic extends KunenaDatabaseObject
 	}
 
 	/**
-	 * @return bool
+	 * @return boolean
 	 */
 	public function recount()
 	{
 		if (!$this->moved_id)
 		{
 			// Recount total posts and attachments
-			$query ="SELECT COUNT(DISTINCT m.id) AS posts, COUNT(a.id) AS attachments
+			$query = "SELECT COUNT(DISTINCT m.id) AS posts, COUNT(a.id) AS attachments
 					FROM #__kunena_messages AS m
 					LEFT JOIN #__kunena_attachments AS a ON m.id=a.mesid
 					WHERE m.hold={$this->_db->quote($this->hold)} AND m.thread={$this->_db->quote($this->id)}
 					GROUP BY m.thread";
 			$this->_db->setQuery($query);
-			$result = $this->_db->loadAssoc ();
 
-			if (KunenaError::checkDatabaseError ())
+			try
 			{
+				$result = $this->_db->loadAssoc();
+			}
+			catch (JDatabaseExceptionExecuting $e)
+			{
+				KunenaError::displayDatabaseError($e);
+
 				return false;
 			}
 
@@ -1660,15 +1650,20 @@ class KunenaForumTopic extends KunenaDatabaseObject
 			{
 				$this->posts = 0;
 				// Double check if all posts have been removed from the database
-				$query ="SELECT COUNT(m.id) AS posts, MIN(m.hold) AS hold
+				$query = "SELECT COUNT(m.id) AS posts, MIN(m.hold) AS hold
 						FROM #__kunena_messages AS m
 						WHERE m.thread={$this->_db->quote($this->id)}
 						GROUP BY m.thread";
 				$this->_db->setQuery($query);
-				$result = $this->_db->loadAssoc ();
 
-				if (KunenaError::checkDatabaseError ())
+				try
 				{
+					$result = $this->_db->loadAssoc();
+				}
+				catch (JDatabaseExceptionExecuting $e)
+				{
+					KunenaError::displayDatabaseError($e);
+
 					return false;
 				}
 
@@ -1688,7 +1683,7 @@ class KunenaForumTopic extends KunenaDatabaseObject
 	}
 
 	/**
-	 * @return bool
+	 * @return boolean
 	 */
 	public function resetvotes()
 	{
@@ -1697,21 +1692,31 @@ class KunenaForumTopic extends KunenaDatabaseObject
 			return false;
 		}
 
-		$query ="UPDATE #__kunena_polls_options SET votes=0 WHERE pollid={$this->_db->quote($this->poll_id)}";
-			$this->_db->setQuery($query);
-			$this->_db->Query();
+		$query = "UPDATE #__kunena_polls_options SET votes=0 WHERE pollid={$this->_db->quote($this->poll_id)}";
+		$this->_db->setQuery($query);
 
-		if (KunenaError::checkDatabaseError ())
+		try
 		{
+			$this->_db->execute();
+		}
+		catch (JDatabaseExceptionExecuting $e)
+		{
+			KunenaError::displayDatabaseError($e);
+
 			return false;
 		}
 
-		$query ="DELETE FROM #__kunena_polls_users WHERE pollid={$this->_db->quote($this->poll_id)}";
-			$this->_db->setQuery($query);
-			$this->_db->Query();
+		$query = "DELETE FROM #__kunena_polls_users WHERE pollid={$this->_db->quote($this->poll_id)}";
+		$this->_db->setQuery($query);
 
-		if (KunenaError::checkDatabaseError ())
+		try
 		{
+			$this->_db->execute();
+		}
+		catch (JDatabaseExceptionExecuting $e)
+		{
+			KunenaError::displayDatabaseError($e);
+
 			return false;
 		}
 
@@ -1722,7 +1727,7 @@ class KunenaForumTopic extends KunenaDatabaseObject
 	// Internal functions
 
 	/**
-	 * @param KunenaUser $user
+	 * @param   KunenaUser $user
 	 *
 	 * @return KunenaExceptionAuthorise|null
 	 */
@@ -1738,7 +1743,7 @@ class KunenaForumTopic extends KunenaDatabaseObject
 	}
 
 	/**
-	 * @param KunenaUser $user
+	 * @param   KunenaUser $user
 	 *
 	 * @return KunenaExceptionAuthorise|null
 	 */
@@ -1771,7 +1776,7 @@ class KunenaForumTopic extends KunenaDatabaseObject
 	}
 
 	/**
-	 * @param KunenaUser $user
+	 * @param   KunenaUser $user
 	 *
 	 * @return KunenaExceptionAuthorise|null
 	 */
@@ -1787,7 +1792,7 @@ class KunenaForumTopic extends KunenaDatabaseObject
 	}
 
 	/**
-	 * @param KunenaUser $user
+	 * @param   KunenaUser $user
 	 *
 	 * @return KunenaExceptionAuthorise|null
 	 */
@@ -1803,7 +1808,7 @@ class KunenaForumTopic extends KunenaDatabaseObject
 	}
 
 	/**
-	 * @param KunenaUser $user
+	 * @param   KunenaUser $user
 	 *
 	 * @return null|string
 	 */
@@ -1819,7 +1824,7 @@ class KunenaForumTopic extends KunenaDatabaseObject
 	}
 
 	/**
-	 * @param KunenaUser $user
+	 * @param   KunenaUser $user
 	 *
 	 * @return null|string
 	 */
@@ -1843,10 +1848,10 @@ class KunenaForumTopic extends KunenaDatabaseObject
 	}
 
 		/**
-	 * @param KunenaUser $user
-	 *
-	 * @return null|string
-	 */
+	* @param   KunenaUser $user
+	*
+	* @return null|string
+	*/
 	protected function authorisePoll(KunenaUser $user)
 	{
 		// Check that user can vote
@@ -1861,7 +1866,7 @@ class KunenaForumTopic extends KunenaDatabaseObject
 	}
 
 	/**
-	 * @param KunenaUser $user
+	 * @param   KunenaUser $user
 	 *
 	 * @return null|string
 	 */
@@ -1892,7 +1897,7 @@ class KunenaForumTopic extends KunenaDatabaseObject
 			return new KunenaExceptionAuthorise(JText::_('COM_KUNENA_LIB_TOPIC_AUTHORISE_FAILED_VOTE_POLL_TOPIC_LOCKED'), 403);
 		}
 
-		if ($poll->polltimetolive!='0000-00-00 00:00:00' && $poll->getTimeToLive() < JFactory::getDate()->toUnix())
+		if ($poll->polltimetolive != '0000-00-00 00:00:00' && $poll->getTimeToLive() < JFactory::getDate()->toUnix())
 		{
 			return new KunenaExceptionAuthorise(JText::_('COM_KUNENA_LIB_TOPIC_AUTHORISE_FAILED_VOTE_POLL_EXPIRED'), 403);
 		}
@@ -1901,7 +1906,7 @@ class KunenaForumTopic extends KunenaDatabaseObject
 	}
 
 	/**
-	 * @param KunenaUser $user
+	 * @param   KunenaUser $user
 	 *
 	 * @return null|string
 	 */
@@ -1918,7 +1923,7 @@ class KunenaForumTopic extends KunenaDatabaseObject
 	}
 
 	/**
-	 * @return int
+	 * @return integer
 	 */
 	protected function delta()
 	{

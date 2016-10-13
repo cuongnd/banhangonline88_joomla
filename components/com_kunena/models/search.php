@@ -2,34 +2,39 @@
 /**
  * Kunena Component
  *
- * @package       Kunena.Site
- * @subpackage    Models
+ * @package     Kunena.Site
+ * @subpackage  Models
  *
- * @copyright (C) 2008 - 2016 Kunena Team. All rights reserved.
- * @license       http://www.gnu.org/copyleft/gpl.html GNU/GPL
- * @link          https://www.kunena.org
+ * @copyright   (C) 2008 - 2016 Kunena Team. All rights reserved.
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU/GPL
+ * @link        https://www.kunena.org
  **/
-defined('_JEXEC') or die ();
+defined('_JEXEC') or die();
 
 /**
  * Search Model for Kunena
  *
- * @since        2.0
+ * @since  2.0
  */
 class KunenaModelSearch extends KunenaModel
 {
 	protected $error = null;
+
 	protected $total = false;
+
 	protected $messages = false;
 
+	/**
+	 * @throws Exception
+	 */
 	protected function populateState()
 	{
 		// Get search word list
-		$value = JString::trim($this->app->input->get('query', '', 'string'));
+		$value = Joomla\String\StringHelper::trim($this->app->input->get('query', '', 'string'));
 
 		if (empty($value))
 		{
-			$value = JString::trim($this->app->input->get('q', '', 'string'));
+			$value = Joomla\String\StringHelper::trim($this->app->input->get('q', '', 'string'));
 		}
 
 		if ($value == JText::_('COM_KUNENA_GEN_SEARCH_BOX'))
@@ -39,75 +44,85 @@ class KunenaModelSearch extends KunenaModel
 
 		$this->setState('searchwords', $value);
 
-		$value = JRequest::getInt('titleonly', 0);
+		$value = JFactory::getApplication()->input->getInt('titleonly', 0);
 		$this->setState('query.titleonly', $value);
 
-		$value = JRequest::getString('searchuser', '');
+		$value = JFactory::getApplication()->input->getString('searchuser', '');
 		$this->setState('query.searchuser', $value);
 
-		$value = JRequest::getInt('starteronly', 0);
+		$value = JFactory::getApplication()->input->getInt('starteronly', 0);
 		$this->setState('query.starteronly', $value);
 
 		if (!$this->config->pubprofile && !JFactory::getUser()->guest || $this->config->pubprofile)
 		{
-			$value = JRequest::getInt('exactname', 0);
+			$value = JFactory::getApplication()->input->getInt('exactname', 0);
 			$this->setState('query.exactname', $value);
 		}
 
-		$value = JRequest::getInt('replyless', 0);
+		$value = JFactory::getApplication()->input->getInt('replyless', 0);
 		$this->setState('query.replyless', $value);
 
-		$value = JRequest::getInt('replylimit', 0);
+		$value = JFactory::getApplication()->input->getInt('replylimit', 0);
 		$this->setState('query.replylimit', $value);
 
-		$value = JRequest::getString('searchdate', $this->config->searchtime);
+		$value = JFactory::getApplication()->input->getString('searchdate', $this->config->searchtime);
 		$this->setState('query.searchdate', $value);
 
-		$value = JRequest::getWord('beforeafter', 'after');
+		$value = JFactory::getApplication()->input->getString('searchatdate', null);
+		$this->setState('query.searchatdate', $value);
+
+		$value = JFactory::getApplication()->input->getWord('beforeafter', 'after');
 		$this->setState('query.beforeafter', $value);
 
-		$value = JRequest::getWord('sortby', 'lastpost');
+		$value = JFactory::getApplication()->input->getWord('sortby', 'lastpost');
 		$this->setState('query.sortby', $value);
 
-		$value = JRequest::getWord('order', 'dec');
+		$value = JFactory::getApplication()->input->getWord('order', 'dec');
 		$this->setState('query.order', $value);
 
-		$value = JRequest::getInt('childforums', 1);
+		$value = JFactory::getApplication()->input->getInt('childforums', 1);
 		$this->setState('query.childforums', $value);
 
-		$value = JRequest::getInt('topic_id', 0);
+		$value = JFactory::getApplication()->input->getInt('topic_id', 0);
 		$this->setState('query.topic_id', $value);
 
-		if (isset ($_POST ['query']) || isset ($_POST ['searchword']))
+		if (isset($_POST ['query']) || isset($_POST ['searchword']))
 		{
-			$value = JRequest::getVar('catids', array(0), 'post', 'array'); // Array of integers
-			JArrayHelper::toInteger($value);
+			$value = JFactory::getApplication()->input->get('catids', array(0), 'post', 'array');
+			Joomla\Utilities\ArrayHelper::toInteger($value);
 		}
 		else
 		{
-			$value = JRequest::getString('catids', '0', 'get'); // String of integers
+			$value = JFactory::getApplication()->input->getString('catids', '0', 'get');
 			$value = explode(' ', $value);
-			JArrayHelper::toInteger($value);
+			Joomla\Utilities\ArrayHelper::toInteger($value);
 		}
 
 		$this->setState('query.catids', $value);
 
-		// FIXME: support search topic
-		if (isset ($_POST ['q']) || isset ($_POST ['searchword']))
+		if (isset($_POST ['q']) || isset($_POST ['searchword']))
 		{
-			$value = JRequest::getVar('ids', array(0), 'post', 'array');
-			JArrayHelper::toInteger($value);
+			$value = JFactory::getApplication()->input->get('ids', array(0), 'post', 'array');
+			Joomla\Utilities\ArrayHelper::toInteger($value);
+
+			if ($value[0] > 0)
+			{
+				$this->setState('query.ids', $value);
+			}
 		}
 		else
 		{
-			$value = JRequest::getString('ids', '0', 'get');
-			$value = explode(' ', $value);
-			JArrayHelper::toInteger($value);
+			$value = JFactory::getApplication()->input->getString('ids', '0', 'get');
+			Joomla\Utilities\ArrayHelper::toInteger($value);
+
+			if ($value[0] > 0)
+			{
+				$this->setState('query.ids', $value);
+			}
 		}
 
-		$this->setState('query.ids', $value);
 
-		$value = JRequest::getInt('show', 0);
+		$value = JFactory::getApplication()->input->getInt('show', 0);
 		$this->setState('query.show', $value);
 
 		$value = $this->getInt('limitstart', 0);
@@ -129,6 +144,9 @@ class KunenaModelSearch extends KunenaModel
 		$this->setState('list.limit', $value);
 	}
 
+	/**
+	 * @return string
+	 */
 	protected function buildWhere()
 	{
 		$db           = JFactory::getDBO();
@@ -136,9 +154,9 @@ class KunenaModelSearch extends KunenaModel
 
 		foreach ($this->getSearchWords() as $searchword)
 		{
-			$searchword = $db->escape(JString::trim($searchword));
+			$searchword = $db->escape(Joomla\String\StringHelper::trim($searchword));
 
-			if (empty ($searchword))
+			if (empty($searchword))
 			{
 				continue;
 			}
@@ -150,7 +168,7 @@ class KunenaModelSearch extends KunenaModel
 			{
 				$not        = 'NOT';
 				$operator   = 'AND';
-				$searchword = JString::substr($searchword, 1);
+				$searchword = Joomla\String\StringHelper::substr($searchword, 1);
 			}
 
 			if (!$this->getState('query.titleonly'))
@@ -165,8 +183,9 @@ class KunenaModelSearch extends KunenaModel
 
 		if (!$this->config->pubprofile && !JFactory::getUser()->guest || $this->config->pubprofile)
 		{
-			//User searching
+			// User searching
 			$username = $this->getState('query.searchuser');
+
 			if ($username)
 			{
 				if ($this->getState('query.exactname') == '1')
@@ -181,37 +200,47 @@ class KunenaModelSearch extends KunenaModel
 		}
 
 		$time = 0;
+		$searchatdate = $this->getState('query.searchatdate');
 
-		switch ($this->getState('query.searchdate'))
+		if ($searchatdate==JFactory::getDate()->format('m/d/Y'))
 		{
-			case 'lastvisit' :
-				$time = KunenaFactory::GetSession()->lasttime;
-				break;
-			case 'all' :
-				break;
-			case '1' :
-			case '7' :
-			case '14' :
-			case '30' :
-			case '90' :
-			case '180' :
-			case '365' :
-				$time = time() - 86400 * intval($this->getState('query.searchdate')); //24*3600
-				break;
-			default :
-				$time = time() - 86400 * 365;
+			switch ($this->getState('query.searchdate'))
+			{
+				case 'lastvisit' :
+					$time = KunenaFactory::GetSession()->lasttime;
+					break;
+				case 'all' :
+					break;
+				case '1' :
+				case '7' :
+				case '14' :
+				case '30' :
+				case '90' :
+				case '180' :
+				case '365' :
+					$time = time() - 86400 * intval($this->getState('query.searchdate'));
+					break;
+				default :
+					$time = time() - 86400 * 365;
+			}
+
+			if ($time)
+			{
+				if ($this->getState('query.beforeafter') == 'after')
+				{
+					$querystrings [] = "m.time > '{$time}'";
+				}
+				else
+				{
+					$querystrings [] = "m.time <= '{$time}'";
+				}
+			}
 		}
-
-		if ($time)
+		else
 		{
-			if ($this->getState('query.beforeafter') == 'after')
-			{
-				$querystrings [] = "m.time > '{$time}'";
-			}
-			else
-			{
-				$querystrings [] = "m.time <= '{$time}'";
-			}
+			$time = JFactory::getDate($this->getState('query.searchatdate'))->toUnix();
+
+			$querystrings[] = "m.time = '{$time}'";
 		}
 
 		$topic_id = $this->getState('query.topic_id');
@@ -224,6 +253,9 @@ class KunenaModelSearch extends KunenaModel
 		return implode(' AND ', $querystrings);
 	}
 
+	/**
+	 * @return string
+	 */
 	protected function buildOrderBy()
 	{
 		if ($this->getState('query.order') == 'dec')
@@ -234,6 +266,7 @@ class KunenaModelSearch extends KunenaModel
 		{
 			$order1 = 'ASC';
 		}
+
 		switch ($this->getState('query.sortby'))
 		{
 			case 'title' :
@@ -253,6 +286,9 @@ class KunenaModelSearch extends KunenaModel
 		return $orderby;
 	}
 
+	/**
+	 * @return boolean|integer
+	 */
 	public function getTotal()
 	{
 		$q = $this->getState('searchwords');
@@ -269,7 +305,8 @@ class KunenaModelSearch extends KunenaModel
 			$this->getResults();
 		}
 
-		/* if there are no forums to search in, set error and return */
+		// If there are no forums to search in, set error and return
+
 		if ($this->total == 0)
 		{
 			$this->setError(JText::_('COM_KUNENA_SEARCH_ERR_NOPOSTS'));
@@ -280,6 +317,9 @@ class KunenaModelSearch extends KunenaModel
 		return $this->total;
 	}
 
+	/**
+	 * @return array
+	 */
 	public function getSearchWords()
 	{
 		// Accept individual words and quoted strings
@@ -287,10 +327,11 @@ class KunenaModelSearch extends KunenaModel
 		$searchwords  = preg_split($splitPattern, $this->getState('searchwords'), 0, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE);
 
 		$result = array();
+
 		foreach ($searchwords as $word)
 		{
 			// Do not accept one letter strings
-			if (JString::strlen($word) > 1)
+			if (Joomla\String\StringHelper::strlen($word) > 1)
 			{
 				$result [] = $word;
 			}
@@ -299,6 +340,9 @@ class KunenaModelSearch extends KunenaModel
 		return $result;
 	}
 
+	/**
+	 * @return boolean
+	 */
 	public function getResults()
 	{
 		if ($this->messages !== false)
@@ -315,7 +359,8 @@ class KunenaModelSearch extends KunenaModel
 			return array();
 		}
 
-		/* get results */
+		// Get results
+
 		$hold = $this->getState('query.show');
 
 		if ($hold == 1)
@@ -359,6 +404,7 @@ class KunenaModelSearch extends KunenaModel
 		if ($topicids)
 		{
 			$topics = KunenaForumTopicHelper::getTopics($topicids);
+
 			foreach ($topics as $topic)
 			{
 				$userids[$topic->first_post_userid] = $topic->first_post_userid;
@@ -376,12 +422,15 @@ class KunenaModelSearch extends KunenaModel
 		return $this->messages;
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getUrlParams()
 	{
 		// Turn internal state into URL, but ignore default values
 		$defaults = array('titleonly' => 0, 'searchuser' => '', 'exactname' => 0, 'childforums' => 0, 'starteronly' => 0,
-		                  'replyless' => 0, 'replylimit' => 0, 'searchdate' => '365', 'beforeafter' => 'after', 'sortby' => 'lastpost',
-		                  'order'     => 'dec', 'catids' => '0', 'show' => '0', 'topic_id' => 0, 'ids' => 0);
+							'replyless' => 0, 'replylimit' => 0, 'searchdate' => '365', 'beforeafter' => 'after', 'sortby' => 'lastpost',
+							'order'     => 'dec', 'catids' => '0', 'show' => '0', 'topic_id' => 0, 'ids' => 0);
 
 		$url_params = '';
 		$state      = $this->getState();
@@ -411,6 +460,16 @@ class KunenaModelSearch extends KunenaModel
 		return $url_params;
 	}
 
+	/**
+	 * @param        $view
+	 * @param   string $searchword
+	 * @param   int    $limitstart
+	 * @param   int    $limit
+	 * @param   string $params
+	 * @param   bool   $xhtml
+	 *
+	 * @return boolean
+	 */
 	public function getSearchURL($view, $searchword = '', $limitstart = 0, $limit = 0, $params = '', $xhtml = true)
 	{
 		$config   = KunenaFactory::getConfig();

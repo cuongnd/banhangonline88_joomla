@@ -1,20 +1,20 @@
 <?php
 /**
  * Kunena Component
- * @package Kunena.Framework
+ * @package    Kunena.Framework
  *
- * @copyright (C) 2008 - 2016 Kunena Team. All rights reserved.
- * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL
- * @link https://www.kunena.org
+ * @copyright  (C) 2008 - 2016 Kunena Team. All rights reserved.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU/GPL
+ * @link       https://www.kunena.org
  *
  * Based on FireBoard Component
- * @copyright (C) 2006 - 2007 Best Of Joomla All rights reserved.
- * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL
- * @link http://www.bestofjoomla.com
+ * @copyright  (C) 2006 - 2007 Best Of Joomla All rights reserved.
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU/GPL
+ * @link       http://www.bestofjoomla.com
  **/
 
 // Do not allow direct linking
-defined ( '_JEXEC' ) or die ();
+defined('_JEXEC') or die();
 
 /**
  * Class KunenaConfig
@@ -104,7 +104,7 @@ class KunenaConfig extends JObject
 	 * @var    string  Template; input, hidden
 	 * @since  1.0.0
 	 */
-	public $template = 'blue_eagle';
+	public $template = 'crypsis';
 
 	/**
 	 * @var    integer  Show announcement; select, boolean
@@ -120,7 +120,7 @@ class KunenaConfig extends JObject
 
 	/**
 	 * @var    string  Category image path; input, text
-	 * @deprecated 4.0.0
+	 * @deprecated 4.0
 	 * @since  1.0.0
 	 */
 	public $catimagepath = 'category_images';
@@ -230,6 +230,7 @@ class KunenaConfig extends JObject
 	/**
 	 * @var    integer  Max subject; input, number
 	 * @since  1.0.0
+	 * @depricated K5.0
 	 */
 	public $maxsubject = 50;
 
@@ -621,7 +622,7 @@ class KunenaConfig extends JObject
 	 * @var    integer  Major version number
 	 * @since  1.6.0
 	 */
-	public $pollnboptions = 4; //For poll integration, set the number maximum of options, input, number
+	public $pollnboptions = 4;
 
 	/**
 	 * @var    integer  Pool allow one ore more time; select, boolean
@@ -812,7 +813,6 @@ class KunenaConfig extends JObject
 	/**
 	 * @var    integer  List category show moderators; select, boolean
 	 * @since  1.6.0
-	 * @deprecated K4.0 (not used in HMVC)
 	 */
 	public $listcat_show_moderators = 1;
 
@@ -907,36 +907,6 @@ class KunenaConfig extends JObject
 	public $captcha_post_limit = 0;
 
 	/**
-	 * @var    string  reCAPTCHA public key; input, text
-	 * @since  1.6.6
-	 */
-	public $recaptcha_publickey = '';
-
-	/**
-	 * @var    string  reCAPTCHA private key; input, text
-	 * @since  1.6.6
-	 */
-	public $recaptcha_privatekey = '';
-
-	/**
-	 * @var    string  reCAPTCHA; select, selection
-	 * @since  1.6.6
-	 */
-	public $recaptcha_theme = 'white'; // select, selection
-
-	/**
-	 * @var    integer  Keyword; select, boolean
-	 * @since  2.0.0
-	 */
-	public $keywords = 1;
-
-	/**
-	 * @var    integer  User keywords; select, boolean
-	 * @since  2.0.0
-	 */
-	public $userkeywords = 0;
-
-	/**
 	 * @var    string  Image upload; select, selection
 	 * @since  2.0.0
 	 */
@@ -1001,12 +971,6 @@ class KunenaConfig extends JObject
 	 * @since  2.0.0
 	 */
 	public $send_emails = 1; // select, boolean
-
-	/**
-	 * @var    string  StopForumSpam key; input, text
-	 * @since  2.0.0
-	 */
-	public $stopforumspam_key = '';
 
 	/**
 	 * @var    integer  Fallback english; select, boolean
@@ -1153,90 +1117,174 @@ class KunenaConfig extends JObject
 	 */
 	public $max_links = 6;
 
+	/**
+	 * @var    integer  Read Only State; select, boolean
+	 * @since  K5.0.0
+	 */
+	public $read_only = 0;
+
+	/**
+	 * @var    integer  Rating integration; select, boolean
+	 * @since  K5.0.0
+	 */
+	public $ratingenabled = 0;
+
+	/**
+	 * @var    integer  Allow to prevent posting if the subject of topic contains URL; select, boolean
+	 * @since  K5.0.0
+	 */
+	public $url_subject_topic = 0;
+
+	/**
+	 * @var integer Allow to enable log to save moderation actions
+	 * @since  K5.0.0
+	 */
+	public $log_moderation = 0;
+
+	/**
+	 * @var integer Define the number of caracters from start when shorthen attachments filemane
+	 * @since  K5.0.0
+	 */
+	public $attach_start = 0;
+
+	/**
+	 * @var integer Define the number of caracters from end when shorthen attachments filemane
+	 * @since  K5.0.0
+	 */
+	public $attach_end = 14;
+
+	/**
+	 * @var string Define the google maps API key
+	 * @since  K5.0.0
+	 */
+	public $google_map_api_key = '';
+
+	/**
+	 * @var integer Allow to remove utf8 characters from filename of attachments
+	 * @since  K5.0.0
+	 */
+	public $attachment_utf8 = 1;
+
+	/**
+	 * @var integer Allow to auto-embded soundcloud item when you put just the URL in a message
+	 * @since  K5.0.0
+	 */
+	public $autoembedsoundcloud = 1;
+
+	/**
+	 * @var string to define the image location
+	 * @since  K5.0.2
+	 */
+	public $emailheader = '/media/kunena/email/hero-wide.png';
+
+	/**
+	 *
+	 */
 	public function __construct()
 	{
-		parent::__construct ();
+		parent::__construct();
 	}
 
+	/**
+	 * @return KunenaConfig|mixed
+	 */
 	public static function getInstance()
 	{
 		static $instance = null;
 
 		if (!$instance)
 		{
-			/** @var JCache|JCacheController $cache */
+			// @var JCache|JCacheController $cache
+
 			$cache = JFactory::getCache('com_kunena', 'output');
 			$instance = $cache->get('configuration', 'com_kunena');
 
 			if (!$instance)
 			{
-				$instance = new KunenaConfig();
+				$instance = new KunenaConfig;
 				$instance->load();
 			}
 
 			$cache->store($instance, 'configuration', 'com_kunena');
 		}
+
 		return $instance;
 	}
 
 	/**
-	 * @param mixed $properties
+	 * @param   mixed $properties
 	 */
 	public function bind($properties)
 	{
 		$this->setProperties($properties);
-
-		// Disable some experimental features
-		$this->keywords = 0;
-		$this->userkeywords = 0;
 	}
 
+	/**
+	 *
+	 */
 	public function save()
 	{
-		$db = JFactory::getDBO ();
+		$db = JFactory::getDBO();
 
 		// Perform custom validation of config data before we write it.
-		$this->check ();
+		$this->check();
 
 		// Get current configuration
 		$params = $this->getProperties();
 		unset($params['id']);
 
-		$db->setQuery ( "REPLACE INTO #__kunena_configuration SET id=1, params={$db->quote(json_encode($params))}");
-		$db->query ();
-		KunenaError::checkDatabaseError ();
+		$db->setQuery("REPLACE INTO #__kunena_configuration SET id=1, params={$db->quote(json_encode($params))}");
+		
+		try
+		{
+			$db->execute();
+		}
+		catch (JDatabaseExceptionExecuting $e)
+		{
+			KunenaError::displayDatabaseError($e);
+		}
 
 		// Clear cache.
 		KunenaCacheHelper::clear();
 	}
 
+	/**
+	 *
+	 */
 	public function reset()
 	{
-		$instance = new KunenaConfig ();
+		$instance = new KunenaConfig;
 		$this->bind($instance->getProperties());
 	}
 
 	/**
 	 * Load config settings from database table.
-	 * @param null $userinfo Not used.
+	 * @param   null $userinfo Not used.
 	 */
 	public function load($userinfo = null)
 	{
-		$db = JFactory::getDBO ();
-		$db->setQuery ( "SELECT * FROM #__kunena_configuration WHERE id=1" );
-		$config = $db->loadAssoc ();
-		KunenaError::checkDatabaseError ();
+		$db = JFactory::getDBO();
+		$db->setQuery("SELECT * FROM #__kunena_configuration WHERE id=1");
+		
+		try
+		{
+			$config = $db->loadAssoc();
+		}
+		catch (JDatabaseExceptionExecuting $e)
+		{
+			KunenaError::displayDatabaseError($e);
+		}
 
 		if ($config)
 		{
 			$params = json_decode($config['params']);
-			$this->bind ($params);
+			$this->bind($params);
 		}
 
 		// Perform custom validation of config data before we let anybody access it.
-		$this->check ();
+		$this->check();
 
-		$dispatcher = JDispatcher::getInstance();
+		$dispatcher = JEventDispatcher::getInstance();
 		JPluginHelper::importPlugin('kunena');
 		$plugins = array();
 		$dispatcher->trigger('onKunenaGetConfiguration', array('kunena.configuration', &$plugins));
@@ -1256,7 +1304,7 @@ class KunenaConfig extends JObject
 	}
 
 	/**
-	 * @param string $name
+	 * @param   string $name
 	 *
 	 * @return JRegistry
 	 *
@@ -1275,9 +1323,9 @@ class KunenaConfig extends JObject
 		// Add anything that requires validation
 
 		// Need to have at least two per page of these
-		$this->messages_per_page = max ( $this->messages_per_page, 2 );
-		$this->messages_per_page_search = max ( $this->messages_per_page_search, 2 );
-		$this->threads_per_page = max ( $this->threads_per_page, 2 );
+		$this->messages_per_page = max($this->messages_per_page, 2);
+		$this->messages_per_page_search = max($this->messages_per_page_search, 2);
+		$this->threads_per_page = max($this->threads_per_page, 2);
 	}
 
 	/**
@@ -1289,6 +1337,6 @@ class KunenaConfig extends JObject
 	{
 		$email = $this->get('email');
 
-		return !empty($email) ? $email : JFactory::getApplication()->getCfg('mailfrom', '');
+		return !empty($email) ? $email : JFactory::getApplication()->get('mailfrom', '');
 	}
 }

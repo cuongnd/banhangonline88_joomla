@@ -245,6 +245,12 @@ class KunenaForumMessage extends KunenaDatabaseObject
 		$message->subject = $this->subject;
 		$message->ip = $_SERVER ["REMOTE_ADDR"];
 
+		// Add IP to user.
+		if (empty($user->ip))
+		{
+			$user->ip = $_SERVER ["REMOTE_ADDR"];
+		}
+
 		if ($topic->hold)
 		{
 			// If topic was unapproved or deleted, use the same state for the new message
@@ -262,7 +268,7 @@ class KunenaForumMessage extends KunenaDatabaseObject
 			$find = array('/\[hide\](.*?)\[\/hide\]/su', '/\[confidential\](.*?)\[\/confidential\]/su');
 			$replace = '';
 			$text = preg_replace($find, $replace, $this->message);
-			$message->message = "[quote=\"{$user->getName($this->name)}\" post={$this->id}]" . $text . "[/quote]";
+			$message->message = "[quote=\"{$user->getName($this->name)}\" post={$this->id}]" .  $text . "[/quote]";
 		}
 		else
 		{
@@ -423,8 +429,15 @@ class KunenaForumMessage extends KunenaDatabaseObject
 					->where('subscribed=1');
 
 				$db->setQuery($query);
-				$db->execute();
-				KunenaError::checkDatabaseError();
+				
+				try 
+				{
+					$db->execute();
+				}
+				catch (JDatabaseExceptionExecuting $e)
+				{
+					KunenaError::displayDatabaseError($e);
+				}
 			}
 		}
 
@@ -559,7 +572,6 @@ class KunenaForumMessage extends KunenaDatabaseObject
 			case 'subject':
 				return KunenaHtmlParser::parseText($this->subject);
 			case 'message':
-				// FIXME: add context to BBCode parser (and fix logic in the parser)
 				return $html ? KunenaHtmlParser::parseBBCode($this->message, $this, 0, $context) : KunenaHtmlParser::stripBBCode
 					($this->message, $this->parent, $html);
 		}
@@ -579,6 +591,15 @@ class KunenaForumMessage extends KunenaDatabaseObject
 	 */
 	public function isAuthorised($action='read', KunenaUser $user = null)
 	{
+		if (KunenaFactory::getConfig()->read_only)
+		{
+			// Special case to ignore authorisation.
+			if ($action != 'read')
+			{
+				return null;
+			}
+		}
+
 		return !$this->tryAuthorise($action, $user, false);
 	}
 
@@ -1081,8 +1102,15 @@ class KunenaForumMessage extends KunenaDatabaseObject
 		foreach ($queries as $query)
 		{
 			$db->setQuery($query);
-			$db->query();
-			KunenaError::checkDatabaseError ();
+			
+			try
+			{
+				$db->execute();
+			}
+			catch (JDatabaseExceptionExecuting $e)
+ 			{
+ 				KunenaError::displayDatabaseError($e);
+ 			}
 		}
 
 		KunenaForumMessageThankyouHelper::recount();
@@ -1228,6 +1256,9 @@ class KunenaForumMessage extends KunenaDatabaseObject
 
 	// Internal functions
 
+	/**
+	 * @param bool $newTopic
+	 */
 	protected function update($newTopic = false)
 	{
 		// If post was published and then moved, we need to update old topic
@@ -1258,7 +1289,7 @@ class KunenaForumMessage extends KunenaDatabaseObject
 		}
 
 		// Activity integration
-		$dispatcher = JDispatcher::getInstance();
+		$dispatcher = JEventDispatcher::getInstance();
 		JPluginHelper::importPlugin('finder');
 		$activity = KunenaFactory::getActivityIntegration();
 
@@ -1555,59 +1586,43 @@ class KunenaForumMessage extends KunenaDatabaseObject
 		try
 		{
 			$msg = trim($layout->render($subscription ? 'default' : 'moderator'));
-
 		}
 		catch (Exception $e)
 		{
-			// TODO: Deprecated in K4.0, remove in K5.0
-			// Clean up the message for review.
-			$message = KunenaHtmlParser::stripBBCode($this->message, 0, false);
-
-			$config = KunenaFactory::getConfig();
-
-			if ($subscription)
-			{
-				$msg1 = $this->get ( 'parent' ) ? JText::_ ( 'COM_KUNENA_POST_EMAIL_NOTIFICATION1' ) : JText::_ ( 'COM_KUNENA_POST_EMAIL_NOTIFICATION1_CAT' );
-				$msg2 = $this->get ( 'parent' ) ? JText::_ ( 'COM_KUNENA_POST_EMAIL_NOTIFICATION2' ) : JText::_ ( 'COM_KUNENA_POST_EMAIL_NOTIFICATION2_CAT' );
-			}
-			else
-			{
-				$msg1 = JText::_ ( 'COM_KUNENA_POST_EMAIL_MOD1' );
-				$msg2 = JText::_ ( 'COM_KUNENA_POST_EMAIL_MOD2' );
-			}
-
-			$msg = $msg1 . " " . $config->board_title . "\n\n";
-			// DO NOT REMOVE EXTRA SPACE, JMailHelper::cleanBody() removes "Subject:" from the message body
-			$msg .= JText::_ ( 'COM_KUNENA_MESSAGE_SUBJECT' ) . " : " . $subject . "\n";
-			$msg .= JText::_ ( 'COM_KUNENA_CATEGORY' ) . " : " . $this->getCategory()->name . "\n";
-			$msg .= JText::_ ( 'COM_KUNENA_VIEW_POSTED' ) . " : " . $this->getAuthor()->getName('???', false) . "\n\n";
-			$msg .= "URL : $url\n\n";
-
-			if ($config->mailfull == 1)
-			{
-				$msg .= JText::_ ( 'COM_KUNENA_MESSAGE' ) . " :\n-----\n";
-				$msg .= $message;
-				$msg .= "\n-----\n\n";
-			}
-
-			$msg .= $msg2 . "\n";
-
-			if ($subscription && $once)
-			{
-				if ($this->parent)
-				{
-					$msg .= JText::_ ( 'COM_KUNENA_POST_EMAIL_NOTIFICATION_MORE_READ' ) . "\n";
-				}
-				else
-				{
-					$msg .= JText::_ ( 'COM_KUNENA_POST_EMAIL_NOTIFICATION_MORE_SUBSCRIBE' ) . "\n";
-				}
-			}
-
-			$msg .= "\n";
-			$msg .= JText::_ ( 'COM_KUNENA_POST_EMAIL_NOTIFICATION3' ) . "\n";
 		}
 
 		$mail->setBody($msg);
+	}
+
+	/**
+	 * Get the substring
+	 *
+	 * @param $string
+	 * @param $start
+	 * @param $length
+	 *
+	 * @return string
+	 * @since K5.0.2
+	 */
+	public function getsubstr($string, $start, $length)
+	{
+		$mbString = extension_loaded('mbstring');
+
+		if ($mbString)
+		{
+			$title = mb_substr($string, $start, $length);
+		}
+		else
+		{
+			$title2 = substr($string, $start, $length);
+			$title  = preg_replace('/[\x00-\x08\x10\x0B\x0C\x0E-\x19\x7F]'.
+				'|[\x00-\x7F][\x80-\xBF]+'.
+				'|([\xC0\xC1]|[\xF0-\xFF])[\x80-\xBF]*'.
+				'|[\xC2-\xDF]((?![\x80-\xBF])|[\x80-\xBF]{2,})'.
+				'|[\xE0-\xEF](([\x80-\xBF](?![\x80-\xBF]))|(?![\x80-\xBF]{2})|[\x80-\xBF]{3,})/S',
+				'', $title2);
+		}
+
+		return $title;
 	}
 }

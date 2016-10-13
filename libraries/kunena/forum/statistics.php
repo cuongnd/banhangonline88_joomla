@@ -221,9 +221,15 @@ class KunenaForumStatistics
 				SUM(time>={$yesterdaystart} AND time<{$todaystart} AND parent=0) AS yesterdayTopicCount,
 				SUM(time>={$yesterdaystart} AND time<{$todaystart} AND parent>0) AS yesterdayReplyCount
 				FROM #__kunena_messages WHERE time>={$yesterdaystart} AND hold=0" );
-
-			$counts = $this->_db->loadObject ();
-			KunenaError::checkDatabaseError();
+			
+			try
+			{
+				$counts = $this->_db->loadObject ();
+			}
+			catch (JDatabaseExceptionExecuting $e)
+			{
+				KunenaError::displayDatabaseError($e);
+			}
 
 			if ($counts)
 			{
@@ -268,7 +274,7 @@ class KunenaForumStatistics
 			{
 				$item = clone $item;
 				$item->count = $item->posts;
-				$item->link = JHtml::_('kunenaforum.link', $item->getUri(), KunenaHtmlParser::parseText ($item->subject));
+				$item->link = JHtml::_('kunenaforum.link', $item->getUri(), KunenaHtmlParser::parseText ($item->subject), null, null, '');
 				$item->percent = round(100 * $item->count / $top->posts);
 			}
 		}
@@ -303,7 +309,7 @@ class KunenaForumStatistics
 			foreach ($this->topPosters as &$item)
 			{
 				$item = clone $item;
-				$item->link = KunenaUserHelper::get($item->id)->getLink();
+				$item->link = KunenaUserHelper::get($item->id)->getLink(null, null, '');
 				$item->percent = round(100 * $item->count / $top->count);
 			}
 		}
@@ -338,7 +344,7 @@ class KunenaForumStatistics
 			foreach ($this->topProfiles as &$item)
 			{
 				$item = clone $item;
-				$item->link = KunenaUserHelper::get($item->id)->getLink();
+				$item->link = KunenaUserHelper::get($item->id)->getLink(null, null, '');
 				$item->percent = round(100 * $item->count / $top->count);
 			}
 		}
@@ -364,8 +370,16 @@ class KunenaForumStatistics
 					HAVING count > 0
 					ORDER BY count DESC";
 			$this->_db->setQuery($query, 0, $limit);
-			$polls = (array) $this->_db->loadObjectList('id');
-			KunenaError::checkDatabaseError();
+			
+			try
+			{
+				$polls = (array) $this->_db->loadObjectList('id');
+			}
+			catch (JDatabaseExceptionExecuting $e)
+			{
+				KunenaError::displayDatabaseError($e);
+			}
+			
 			$this->topPolls = KunenaForumTopicHelper::getTopics(array_keys($polls));
 
 			$top = reset($this->topPolls);
@@ -384,7 +398,7 @@ class KunenaForumStatistics
 			{
 				$item = clone $item;
 				$item->count = $polls[$item->id]->count;
-				$item->link = JHtml::_('kunenaforum.link', $item->getUri(), KunenaHtmlParser::parseText ($item->subject));
+				$item->link = JHtml::_('kunenaforum.link', $item->getUri(), KunenaHtmlParser::parseText ($item->subject), null, null, '');
 				$item->percent = round(100 * $item->count / $top->count);
 			}
 		}
@@ -409,8 +423,15 @@ class KunenaForumStatistics
 				GROUP BY t.targetuserid
 				ORDER BY count DESC";
 			$this->_db->setQuery ( $query, 0, $limit );
-			$this->topThanks = (array) $this->_db->loadObjectList ();
-			KunenaError::checkDatabaseError();
+			
+			try
+			{
+				$this->topThanks = (array) $this->_db->loadObjectList ();
+			}
+			catch (JDatabaseExceptionExecuting $e)
+			{
+				KunenaError::displayDatabaseError($e);
+			}
 
 			$top = reset($this->topThanks);
 
@@ -426,7 +447,7 @@ class KunenaForumStatistics
 			foreach ($this->topThanks as &$item)
 			{
 				$item = clone $item;
-				$item->link = KunenaUserHelper::get($item->id)->getLink();
+				$item->link = KunenaUserHelper::get($item->id)->getLink(null, null, '');
 				$item->percent = round(100 * $item->count / $top->count);
 			}
 		}

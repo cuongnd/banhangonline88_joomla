@@ -11,9 +11,6 @@
 defined('_JEXEC') or die;
 ?>
 
-<!-- Module position: kunena_bottom -->
-<?php echo $this->subLayout('Widget/Module')->set('position', 'kunena_bottom'); ?>
-
 <?php if (($rss = $this->getRSS()) !== null) : ?>
 <div class="pull-right large-kicon"><?php echo $this->getRSS(); ?></div>
 <div class="clearfix"></div>
@@ -23,4 +20,4 @@ defined('_JEXEC') or die;
 <div class="center">
 	<?php echo JText::sprintf('COM_KUNENA_VIEW_COMMON_FOOTER_TIME', $time); ?>
 </div>
-<?php endif; ?>
+<?php endif;

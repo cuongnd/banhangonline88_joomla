@@ -24,7 +24,7 @@ class ComponentKunenaControllerTopicFormCreateDisplay extends KunenaControllerDi
 	/**
 	 * Prepare topic creation form.
 	 *
-	 * @return bool
+	 * @return boolean
 	 *
 	 * @throws RuntimeException
 	 */
@@ -49,10 +49,19 @@ class ComponentKunenaControllerTopicFormCreateDisplay extends KunenaControllerDi
 				$arrayanynomousbox[] = '"' . $category->id . '":' . $category->post_anonymous;
 			}
 
-			if (!$category->isSection() && $category->allow_polls)
+			if ($this->config->pollenabled)
 			{
-				$arraypollcatid[] = '"' . $category->id . '":1';
+				if (!$category->isSection() && $category->allow_polls)
+				{
+					$arraypollcatid[] = '"' . $category->id . '":1';
+				}
 			}
+		}
+
+
+		if ($this->config->read_only)
+		{
+			throw new KunenaExceptionAuthorise(JText::_('COM_KUNENA_NO_ACCESS'), '401');
 		}
 
 		$arrayanynomousbox = implode(',', $arrayanynomousbox);
@@ -74,7 +83,7 @@ class ComponentKunenaControllerTopicFormCreateDisplay extends KunenaControllerDi
 			$this->topicIcons = $this->template->getTopicIcons(false, $saved ? $saved['icon_id'] : 0, $this->topic->getCategory()->iconset);
 		}
 
-		if ( $this->topic->isAuthorised('create') && $this->me->canDoCaptcha())
+		if ($this->topic->isAuthorised('create') && $this->me->canDoCaptcha())
 		{
 			if (JPluginHelper::isEnabled('captcha'))
 			{
@@ -86,9 +95,10 @@ class ComponentKunenaControllerTopicFormCreateDisplay extends KunenaControllerDi
 				if (!empty($captcha_pubkey) && !empty($catcha_privkey))
 				{
 					JPluginHelper::importPlugin('captcha');
-					$dispatcher = JDispatcher::getInstance();
+					$dispatcher = JEventDispatcher::getInstance();
 					$result = $dispatcher->trigger('onInit', 'dynamic_recaptcha_1');
-					$output = $dispatcher->trigger('onDisplay', array(null, 'dynamic_recaptcha_1', 'class="controls g-recaptcha" data-sitekey="' . $captcha_pubkey . '" data-theme="light"'));
+					$output = $dispatcher->trigger('onDisplay', array(null, 'dynamic_recaptcha_1', 'class="controls g-recaptcha" data-sitekey="'
+						. $captcha_pubkey . '" data-theme="light"'));
 					$this->captchaDisplay = $output[0];
 					$this->captchaEnabled = $result[0];
 				}
@@ -101,7 +111,8 @@ class ComponentKunenaControllerTopicFormCreateDisplay extends KunenaControllerDi
 
 		if (!$this->topic->category_id)
 		{
-			throw new KunenaExceptionAuthorise(JText::sprintf('COM_KUNENA_POST_NEW_TOPIC_NO_PERMISSIONS', $this->topic->getError()), $this->me->exists() ? 403 : 401);
+			throw new KunenaExceptionAuthorise(JText::sprintf('COM_KUNENA_POST_NEW_TOPIC_NO_PERMISSIONS',
+				$this->topic->getError()), $this->me->exists() ? 403 : 401);
 		}
 
 		$options = array();
@@ -127,7 +138,8 @@ class ComponentKunenaControllerTopicFormCreateDisplay extends KunenaControllerDi
 			'action' => 'topic.create'
 		);
 
-		$this->selectcatlist = JHtml::_('kunenaforum.categorylist', 'catid', $catid, $options, $cat_params,
+		$this->selectcatlist = JHtml::_(
+			'kunenaforum.categorylist', 'catid', $catid, $options, $cat_params,
 			'class="form-control inputbox required"', 'value', 'text', $selected, 'postcatid');
 
 		$this->action = 'post';
@@ -139,7 +151,7 @@ class ComponentKunenaControllerTopicFormCreateDisplay extends KunenaControllerDi
 			$this->poll = $this->topic->getPoll();
 		}
 
-		$this->post_anonymous = $saved ? $saved['anonymous'] : ! empty ( $this->category->post_anonymous );
+		$this->post_anonymous = $saved ? $saved['anonymous'] : ! empty($this->category->post_anonymous);
 		$this->subscriptionschecked = $saved ? $saved['subscribe'] : $this->config->subscriptionschecked == 1;
 		$this->app->setUserState('com_kunena.postfields', null);
 
@@ -158,14 +170,18 @@ class ComponentKunenaControllerTopicFormCreateDisplay extends KunenaControllerDi
 	protected function prepareDocument()
 	{
 		$app = JFactory::getApplication();
-		$menu_item   = $app->getMenu()->getActive(); // get the active item
+		$menu_item   = $app->getMenu()->getActive();
+
+		$doc = JFactory::getDocument();
+		$doc->setMetaData('robots', 'nofollow, noindex');
 
 		if ($menu_item)
 		{
-			$params             = $menu_item->params; // get the params
+			$params             = $menu_item->params;
 			$params_title       = $params->get('page_title');
 			$params_keywords    = $params->get('menu-meta_keywords');
 			$params_description = $params->get('menu-meta_description');
+			$params_robots      = $params->get('robots');
 
 			if (!empty($params_title))
 			{
@@ -196,13 +212,19 @@ class ComponentKunenaControllerTopicFormCreateDisplay extends KunenaControllerDi
 			{
 				$this->setDescription($this->headerText);
 			}
+
+			if (!empty($params_robots))
+			{
+				$robots = $params->get('robots');
+				$doc->setMetaData('robots', $robots);
+			}
 		}
 	}
 
 	/**
 	 * Can user subscribe to the topic?
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	protected function canSubscribe()
 	{

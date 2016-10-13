@@ -20,7 +20,7 @@ class KunenaUpload
 	protected $validExtensions = array();
 
 	protected $filename;
-
+	
 	/**
 	 * Get new instance of upload class.
 	 *
@@ -85,13 +85,13 @@ class KunenaUpload
 		// Check if file extension matches any allowed extensions (case insensitive)
 		foreach ($this->validExtensions as $ext)
 		{
-			$extension = JString::substr($filename, -JString::strlen($ext));
+			$extension = Joomla\String\StringHelper::substr($filename, -Joomla\String\StringHelper::strlen($ext));
 
-			if (JString::strtolower($extension) == JString::strtolower($ext))
+			if (Joomla\String\StringHelper::strtolower($extension) == Joomla\String\StringHelper::strtolower($ext))
 			{
 				// File must contain one letter before extension
-				$name = JString::substr($filename, 0, -JString::strlen($ext));
-				$extension = JString::substr($extension, 1);
+				$name = Joomla\String\StringHelper::substr($filename, 0, -Joomla\String\StringHelper::strlen($ext));
+				$extension = Joomla\String\StringHelper::substr($extension, 1);
 
 				if (!$name)
 				{
@@ -329,7 +329,7 @@ class KunenaUpload
 
 				$size += $bytes;
 
-				if (stripos($type, 'image/') !== true)
+				if (stripos($type, 'image/') === false && stripos($type, 'image/') <= 0)
 				{
 					if (!$this->checkFileSizeFileAttachment($size))
 					{
@@ -337,13 +337,18 @@ class KunenaUpload
 					}
 				}
 
-				if (stripos($type, 'image/') !== false)
+				if (stripos($type, 'image/') !== false && stripos($type, 'image/') >= 0)
 				{
 					if (!$this->checkFileSizeImageAttachment($size))
 					{
 						throw new RuntimeException(JText::_('COM_KUNENA_UPLOAD_ERROR_IMAGE_EXCEED_LIMIT_IN_CONFIGURATION'), 500);
 					}
 				}
+
+				// Get filename from stream
+				$meta_data = stream_get_meta_data($out);
+				$filename  = $meta_data['uri'];
+				KunenaImage::correctImageOrientation($filename);
 			}
 		}
 		catch (Exception $exception)
@@ -557,7 +562,18 @@ class KunenaUpload
 		$file = new stdClass;
 		$file->ext = JFile::getExt($fileInput['name']);
 		$file->size = $fileInput['size'];
-		$file->tmp_name = $fileInput['tmp_name'];
+		$config = KunenaFactory::getConfig();
+
+		if ($type != 'attachment' && $config->attachment_utf8)
+		{
+			$file->tmp_name = $fileInput['tmp_name'];
+		}
+		else
+		{
+			$pathInfo = pathinfo($fileInput['tmp_name']);
+			$file->tmp_name = $pathInfo['dirname'] . '/' . JFile::makeSafe($pathInfo['basename']);
+		}
+
 		$file->error = $fileInput['error'];
 		$file->destination = $destination . '.' . $file->ext;
 		$file->success = false;
@@ -585,13 +601,13 @@ class KunenaUpload
 		// Check if file extension matches any allowed extensions (case insensitive)
 		foreach ($this->validExtensions as $ext)
 		{
-			$extension = JString::substr($file->tmp_name, -JString::strlen($ext));
+			$extension = Joomla\String\StringHelper::substr($file->tmp_name, -Joomla\String\StringHelper::strlen($ext));
 
-			if (JString::strtolower($extension) == JString::strtolower($ext))
+			if (Joomla\String\StringHelper::strtolower($extension) == Joomla\String\StringHelper::strtolower($ext))
 			{
 				// File must contain one letter before extension
-				$name = JString::substr($file->tmp_name, 0, -JString::strlen($ext));
-				$extension = JString::substr($extension, 1);
+				$name = Joomla\String\StringHelper::substr($file->tmp_name, 0, -Joomla\String\StringHelper::strlen($ext));
+				$extension = Joomla\String\StringHelper::substr($extension, 1);
 
 				if (!$name)
 				{
@@ -637,7 +653,8 @@ class KunenaUpload
 				}
 			}
 		}
-
+		
+		KunenaImage::correctImageOrientation($file->tmp_name);
 
 		if (!KunenaFile::copy($file->tmp_name, $file->destination))
 		{

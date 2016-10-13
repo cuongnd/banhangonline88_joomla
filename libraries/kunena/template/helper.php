@@ -1,36 +1,52 @@
 <?php
 /**
  * Kunena Component
- * @package Kunena.Framework
- * @subpackage Template
+ * @package     Kunena.Framework
+ * @subpackage  Template
  *
- * @copyright (C) 2008 - 2016 Kunena Team. All rights reserved.
- * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL
- * @link https://www.kunena.org
+ * @copyright   (C) 2008 - 2016 Kunena Team. All rights reserved.
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU/GPL
+ * @link        https://www.kunena.org
  **/
-defined ( '_JEXEC' ) or die ();
+defined('_JEXEC') or die();
 
 /**
  * Kunena Template Helper Class
+ *
+ * @since  K2.0
  */
 abstract class KunenaTemplateHelper
 {
 	protected static $_instances = array ();
 
+	/**
+	 * isDefault
+	 *
+	 * @param $template
+	 *
+	 * @return integer
+	 */
 	public static function isDefault($template)
 	{
-		$config = KunenaFactory::getConfig ();
+		$config = KunenaFactory::getConfig();
 		$defaultemplate = $config->template;
 
 		return $defaultemplate == $template ? 1 : 0;
 	}
 
+	/**
+	 *  parseXmlFiles
+	 *
+	 * @param   null $templateBaseDir
+	 *
+	 * @return array
+	 */
 	public static function parseXmlFiles($templateBaseDir = null)
 	{
 		// Read the template folder to find templates
 		if (!$templateBaseDir)
 		{
-			$templateBaseDir = KPATH_SITE.'/template';
+			$templateBaseDir = KPATH_SITE . '/template';
 		}
 
 		$data = self::parseXmlFile('', $templateBaseDir);
@@ -48,37 +64,46 @@ abstract class KunenaTemplateHelper
 			// Template found from the root (folder cannot contain more than one template)
 			return array('' => $data);
 		}
+
 		$templateDirs = KunenaFolder::folders($templateBaseDir);
 		$rows = array();
+
 		// Check that the directory contains an xml file
 		foreach ($templateDirs as $templateDir)
 		{
 			$data = self::parseXmlFile($templateDir, $templateBaseDir);
 
-			if($data)
+			if ($data)
 			{
 				$rows[$templateDir] = $data;
 			}
 		}
+
 		ksort($rows);
 
 		return $rows;
 	}
 
+	/**
+	 * @param      $templateDir
+	 * @param   null $templateBaseDir
+	 *
+	 * @return boolean|stdClass
+	 */
 	public static function parseXmlFile($templateDir, $templateBaseDir = null)
 	{
 		// Check if the xml file exists
 		if (!$templateBaseDir)
 		{
-			$templateBaseDir = KPATH_SITE.'/template';
+			$templateBaseDir = KPATH_SITE . '/template';
 		}
 
-		if(!is_file($templateBaseDir.'/'.$templateDir.'/template.xml'))
+		if (!is_file($templateBaseDir . '/' . $templateDir . '/config/template.xml'))
 		{
 			return false;
 		}
 
-		$data = self::parseKunenaInstallFile($templateBaseDir.'/'.$templateDir.'/template.xml');
+		$data = self::parseKunenaInstallFile($templateBaseDir . '/' . $templateDir . '/config/template.xml');
 
 		if (!$data || $data->type != 'kunena-template')
 		{
@@ -91,6 +116,13 @@ abstract class KunenaTemplateHelper
 		return $data;
 	}
 
+	/**
+	 * parseKunenaInstallFile
+	 *
+	 * @param   $path
+	 *
+	 * @return bool|stdClass
+	 */
 	public static function parseKunenaInstallFile($path)
 	{
 		$xml = simplexml_load_file($path);
@@ -100,7 +132,7 @@ abstract class KunenaTemplateHelper
 			return false;
 		}
 
-		$data = new stdClass();
+		$data = new stdClass;
 		$data->name = (string) $xml->name;
 		$data->type = (string) $xml->attributes()->type;
 		$data->creationdate = (string) $xml->creationDate;
@@ -150,7 +182,7 @@ abstract class KunenaTemplateHelper
 	 */
 	public static function templateCanBeUsed($templatename)
 	{
-		if ( $templatename == 'Crypsis' && version_compare(JVERSION, '3.0', '<') )
+		if ($templatename == 'Crypsis' || $templatename == 'Crypsisb3' )
 		{
 			return false;
 		}

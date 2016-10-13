@@ -8,7 +8,7 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL
  * @link https://www.kunena.org
  **/
-defined ( '_JEXEC' ) or die ();
+defined('_JEXEC') or die();
 
 /**
  * Class KunenaPrivate
@@ -17,12 +17,17 @@ class KunenaPrivate
 {
 	protected static $instance = false;
 
+	/**
+	 * @param   null $integration
+	 *
+	 * @return boolean|KunenaPrivate
+	 */
 	static public function getInstance($integration = null)
 	{
 		if (self::$instance === false)
 		{
 			JPluginHelper::importPlugin('kunena');
-			$dispatcher = JDispatcher::getInstance();
+			$dispatcher = JEventDispatcher::getInstance();
 			$classes = $dispatcher->trigger('onKunenaGetPrivate');
 
 			foreach ($classes as $class)
@@ -45,16 +50,31 @@ class KunenaPrivate
 		return self::$instance;
 	}
 
+	/**
+	 * @param $userid
+	 *
+	 * @return string
+	 */
 	protected function getOnClick($userid)
 	{
 		return '';
 	}
 
+	/**
+	 * @param $userid
+	 *
+	 * @return string
+	 */
 	protected function getURL($userid)
 	{
 		return '';
 	}
 
+	/**
+	 * @param $userid
+	 *
+	 * @return string
+	 */
 	public function showIcon($userid)
 	{
 		$my = JFactory::getUser();
@@ -76,9 +96,17 @@ class KunenaPrivate
 		}
 
 		// We should offer the user a PM link
-		return '<a href="' . $url . '"' .$onclick. ' title="'.JText::_('COM_KUNENA_VIEW_PMS').'"><span class="kicon-profile kicon-profile-pm" alt="' .JText::_('COM_KUNENA_VIEW_PMS'). '"></span></a>';
+		return '<a class="btn btn-small" href="' . $url . '"' . $onclick . ' title="' . JText::_('COM_KUNENA_VIEW_PMS') . '"><span class="icon icon-comments-2"></span></a>';
 	}
 
+	/**
+	 * @param        $userid
+	 * @param string $class
+	 * @param string $icon
+	 *
+	 * @return string
+	 * @internal param $text
+	 */
 	public function shownewIcon($userid, $class='btn btn-small', $icon='icon icon-comments-2')
 	{
 		$my = JFactory::getUser();
@@ -109,11 +137,19 @@ class KunenaPrivate
 		return '';
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getInboxURL()
 	{
 		return '';
 	}
 
+	/**
+	 * @param $userid
+	 *
+	 * @return integer
+	 */
 	public function getUnreadCount($userid)
 	{
 		return 0;

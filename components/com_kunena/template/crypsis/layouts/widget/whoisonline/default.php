@@ -2,12 +2,12 @@
 /**
  * Kunena Component
  *
- * @package         Kunena.Template.Crypsis
- * @subpackage      Layout.Statistics
+ * @package     Kunena.Template.Crypsis
+ * @subpackage  Layout.Statistics
  *
  * @copyright   (C) 2008 - 2016 Kunena Team. All rights reserved.
- * @license         http://www.gnu.org/copyleft/gpl.html GNU/GPL
- * @link            https://www.kunena.org
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU/GPL
+ * @link        https://www.kunena.org
  **/
 defined('_JEXEC') or die;
 ?>
@@ -30,36 +30,27 @@ defined('_JEXEC') or die;
 
 	<div class="row-fluid collapse in" id="kwho">
 		<div class="well-small">
-			<ul class="unstyled span1 btn-link"><i class="icon-users icon-super"></i></ul>
+			<ul class="unstyled span1 btn-link">
+				<?php echo KunenaIcons::members(); ?>
+			</ul>
 			<ul class="unstyled span11">
 			<span>
 				<?php echo JText::sprintf('COM_KUNENA_VIEW_COMMON_WHO_TOTAL', $this->membersOnline); ?>
 			</span>
-				<?php if (!empty($this->onlineList)) : ?>
-				<div>
-					<?php
-					foreach ($this->onlineList as $user)
-					{
-						$onlinelist[] = $user->getLink();
-					}
-					?>
-					<?php echo implode(', ', $onlinelist); ?>
-				</div>
-				<?php endif; ?>
+				<?php
+				$template = KunenaTemplate::getInstance();
+				$direction = $template->params->get('whoisonlineName');
 
-				<?php if (!empty($this->hiddenList)) : ?>
-				<div>
-					<span><?php echo JText::_('COM_KUNENA_HIDDEN_USERS'); ?>:</span>
-
-					<?php
-					foreach ($this->hiddenList as $user)
-					{
-						$hiddenlist[] = $user->getLink();
-					}
-					?>
-					<?php echo implode(', ', $hiddenlist); ?>
-				</div>
-				<?php endif; ?>
+				if ($direction == 'both') : ?>
+					<div><?php echo $this->setLayout('both'); ?></div>
+				<?php
+				elseif ($direction == 'avatar') : ?>
+					<div><?php echo $this->setLayout('avatar'); ?></div>
+				<?php else : ?>
+					<div><?php echo $this->setLayout('name'); ?></div>
+				<?php
+					endif;
+				?>
 
 				<?php if (!empty($this->onlineList)) : ?>
 				<div>

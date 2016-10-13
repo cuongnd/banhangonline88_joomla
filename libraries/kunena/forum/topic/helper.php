@@ -169,22 +169,6 @@ abstract class KunenaForumTopicHelper
 	}
 
 	/**
-	 * @param mixed $ids
-	 * @param mixed $user
-	 *
-	 * @return array
-	 */
-	static public function getKeywords($ids = false, $user = false)
-	{
-		if ($ids === false)
-		{
-			$ids = array_keys(self::$_instances);
-		}
-
-		return KunenaKeywordHelper::getByTopics($ids, $user);
-	}
-
-	/**
 	 * @param mixed $categories
 	 * @param int   $limitstart
 	 * @param int   $limit
@@ -204,6 +188,7 @@ abstract class KunenaForumTopicHelper
 		}
 
 		$reverse = isset($params['reverse']) ? (int) $params['reverse'] : 0;
+		$exclude = isset($params['exclude']) ? (int) $params['exclude'] : 0;
 		$orderby = isset($params['orderby']) ? (string) $params['orderby'] : 'tt.last_post_time DESC';
 		$starttime = isset($params['starttime']) ? (int) $params['starttime'] : 0;
 		$user = isset($params['user']) ? KunenaUserHelper::get($params['user']) : KunenaUserHelper::getMyself();
@@ -223,8 +208,16 @@ abstract class KunenaForumTopicHelper
 		{
 			$post_time_field = 'tt.last_post_time';
 		}
-
-		$categories = KunenaForumCategoryHelper::getCategories($categories, $reverse);
+	
+		if (!$exclude)
+	 	{
+			$categories = KunenaForumCategoryHelper::getCategories($categories, $reverse);
+		}
+	    else
+		{
+			$categories = KunenaForumCategoryHelper::getCategories($categories, 0);
+		}
+		
 		$catlist = array();
 
 		foreach ($categories as $category)
@@ -247,30 +240,17 @@ abstract class KunenaForumTopicHelper
 		if (!empty($params['favorited'])) $whereuser[] = 'ut.favorite=1';
 		if (!empty($params['subscribed'])) $whereuser[] = 'ut.subscribed=1';
 
-		if ($config->keywords || $config->userkeywords)
-		{
-			$kwids = array();
-
-			if (!empty($params['keywords']))
-			{
-				$keywords = KunenaKeywordHelper::getByKeywords($params['keywords']);
-				foreach ($keywords as $keyword) {
-					$kwids[] = $keyword->id;
-				}
-				$kwids = implode(',', $kwids);
-			}
-
-			//TODO: add support for keywords (example:)
-			/* SELECT tt.*, COUNT(*) AS score FROM #__kunena_keywords_map AS km
-			INNER JOIN #__kunena_topics` AS tt ON km.topic_id=tt.id
-			WHERE km.keyword_id IN (1,2) AND km.user_id IN (0,62)
-			GROUP BY topic_id
-			ORDER BY score DESC, tt.last_post_time DESC */
-		}
-
 		$wheretime = ($starttime ? " AND {$post_time_field}>{$db->Quote($starttime)}" : '');
 		$whereuser = ($whereuser ? " AND ut.user_id={$db->Quote($user->userid)} AND (".implode(' OR ',$whereuser).')' : '');
-		$where = "tt.hold IN ({$hold}) AND tt.category_id IN ({$catlist}) {$whereuser} {$wheretime} {$where}";
+	
+		if ($exclude)
+		{
+	    	$where = "tt.hold IN ({$hold}) AND tt.category_id NOT IN ({$catlist}) {$whereuser} {$wheretime} {$where}";
+		}
+	    else
+		{
+	    	$where = "tt.hold IN ({$hold}) AND tt.category_id IN ({$catlist}) {$whereuser} {$wheretime} {$where}";
+		}
 
 		if (!$moved)
 		{
@@ -288,9 +268,20 @@ abstract class KunenaForumTopicHelper
 		}
 
 		$db->setQuery ( $query );
-		$total = ( int ) $db->loadResult ();
+		
+		try
+		{
+			$total = ( int ) $db->loadResult ();
+		}
+		catch (JDatabaseExceptionExecuting $e)
+		{
+			KunenaError::displayDatabaseError($e);
+			
+			KUNENA_PROFILER ? KunenaProfiler::instance()->stop('function '.__CLASS__.'::'.__FUNCTION__.'()') : null;
+			return array(0, array());
+		}
 
-		if (KunenaError::checkDatabaseError() || !$total)
+		if (!$total)
 		{
 			KUNENA_PROFILER ? KunenaProfiler::instance()->stop('function '.__CLASS__.'::'.__FUNCTION__.'()') : null;
 			return array(0, array());
@@ -319,12 +310,16 @@ abstract class KunenaForumTopicHelper
 		}
 
 		$db->setQuery ( $query, $limitstart, $limit );
-		$results = (array) $db->loadAssocList ('id');
 
-		if (KunenaError::checkDatabaseError())
+		try
 		{
+			$results = (array) $db->loadAssocList ('id');
+		}
+		catch (JDatabaseExceptionExecuting $e)
+		{
+			KunenaError::displayDatabaseError($e);
+			
 			KUNENA_PROFILER ? KunenaProfiler::instance()->stop('function '.__CLASS__.'::'.__FUNCTION__.'()') : null;
-
 			return array(0, array());
 		}
 
@@ -390,8 +385,15 @@ abstract class KunenaForumTopicHelper
 		foreach ($queries as $query)
 		{
 			$db->setQuery($query);
-			$db->query();
-			KunenaError::checkDatabaseError ();
+			
+			try
+			{
+				$db->execute();
+			}
+			catch (JDatabaseExceptionExecuting $e)
+ 			{
+ 				KunenaError::displayDatabaseError($e);
+ 			}
 		}
 
 		return $db->getAffectedRows();
@@ -427,8 +429,15 @@ abstract class KunenaForumTopicHelper
 		foreach ($queries as $query)
 		{
 			$db->setQuery($query);
-			$db->query();
-			KunenaError::checkDatabaseError ();
+			
+			try
+			{
+				$db->execute();
+			}
+			catch (JDatabaseExceptionExecuting $e)
+ 			{
+ 				KunenaError::displayDatabaseError($e);
+ 			}
 		}
 
 		return $db->getAffectedRows();
@@ -491,12 +500,17 @@ abstract class KunenaForumTopicHelper
 				tt.last_post_guest_name = ''
 			WHERE tt.moved_id=0 AND tt.hold!=4 AND m.id IS NULL {$topics} {$threads}";
 		$db->setQuery($query);
-		$db->query ();
-
-		if (KunenaError::checkDatabaseError ())
+		
+		try
 		{
-			return false;
+			$db->execute();
 		}
+		catch (JDatabaseExceptionExecuting $e)
+ 		{
+ 			KunenaError::displayDatabaseError($e);
+ 			
+ 			return false;
+ 		}
 
 		$rows = $db->getAffectedRows ();
 
@@ -508,12 +522,17 @@ abstract class KunenaForumTopicHelper
 			SET tt.hold = c.hold
 			WHERE tt.moved_id=0 {$topics}";
 		$db->setQuery($query);
-		$db->query ();
-
-		if (KunenaError::checkDatabaseError ())
+		
+		try
 		{
-			return false;
+			$db->execute();
 		}
+		catch (JDatabaseExceptionExecuting $e)
+ 		{
+ 			KunenaError::displayDatabaseError($e);
+ 			
+ 			return false;
+ 		}
 
 		$rows += $db->getAffectedRows ();
 
@@ -544,12 +563,17 @@ abstract class KunenaForumTopicHelper
 				tt.last_post_guest_name = mmax.name
 			WHERE moved_id=0 {$topics}";
 		$db->setQuery($query);
-		$db->query ();
-
-		if (KunenaError::checkDatabaseError ())
+		
+		try
 		{
-			return false;
+			$db->execute();
 		}
+		catch (JDatabaseExceptionExecuting $e)
+ 		{
+ 			KunenaError::displayDatabaseError($e);
+ 			
+ 			return false;
+ 		}
 
 		$rows += $db->getAffectedRows ();
 
@@ -602,8 +626,15 @@ abstract class KunenaForumTopicHelper
 				LEFT JOIN #__kunena_user_read AS ur ON ur.topic_id=m.thread AND user_id={$db->Quote($user->userid)}
 				WHERE m.hold=0 AND m.moved=0 AND m.thread IN ({$idstr}) AND m.time>{$db->Quote($session->getAllReadTime())} AND (ur.time IS NULL OR m.time>ur.time)
 				GROUP BY thread" );
-			$topiclist = (array) $db->loadObjectList ('id');
-			KunenaError::checkDatabaseError ();
+			
+			try
+			{
+				$topiclist = (array) $db->loadObjectList ('id');
+			}
+			catch (JDatabaseExceptionExecuting $e)
+ 			{
+ 				KunenaError::displayDatabaseError($e);
+ 			}
 		}
 
 		$list = array();
@@ -652,8 +683,15 @@ abstract class KunenaForumTopicHelper
 		$db = JFactory::getDBO ();
 		$query = "SELECT * FROM #__kunena_topics WHERE id IN ({$idlist})";
 		$db->setQuery ( $query );
-		$results = (array) $db->loadAssocList ('id');
-		KunenaError::checkDatabaseError ();
+		
+		try
+		{
+			$results = (array) $db->loadAssocList ('id');
+		}
+		catch (JDatabaseExceptionExecuting $e)
+ 		{
+ 			KunenaError::displayDatabaseError($e);
+ 		}
 
 		foreach ( $ids as $id )
 		{

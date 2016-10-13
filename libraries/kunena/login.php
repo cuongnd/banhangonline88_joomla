@@ -1,14 +1,14 @@
 <?php
 /**
  * Kunena Component
- * @package Kunena.Framework
- * @subpackage Integration
+ * @package     Kunena.Framework
+ * @subpackage  Integration
  *
- * @copyright (C) 2008 - 2016 Kunena Team. All rights reserved.
- * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL
- * @link https://www.kunena.org
+ * @copyright   (C) 2008 - 2016 Kunena Team. All rights reserved.
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU/GPL
+ * @link        https://www.kunena.org
  **/
-defined ( '_JEXEC' ) or die ();
+defined('_JEXEC') or die();
 
 /**
  * Class KunenaLogin
@@ -16,15 +16,19 @@ defined ( '_JEXEC' ) or die ();
 class KunenaLogin
 {
 	protected static $instance = false;
+
 	/**
 	 * @var array|KunenaLogin[]
 	 */
 	protected $instances = array();
 
+	/**
+	 *
+	 */
 	public function __construct()
 	{
 		JPluginHelper::importPlugin('kunena');
-		$dispatcher = JDispatcher::getInstance();
+		$dispatcher = JEventDispatcher::getInstance();
 		$classes = $dispatcher->trigger('onKunenaGetLogin');
 
 		foreach ($classes as $class)
@@ -38,12 +42,20 @@ class KunenaLogin
 		}
 	}
 
+	/**
+	 * @return boolean
+	 */
 	public function enabled()
 	{
 		// TODO: do better
 		return !empty($this->instances);
 	}
 
+	/**
+	 * @param   null $integration
+	 *
+	 * @return boolean|KunenaLogin
+	 */
 	public static function getInstance($integration = null)
 	{
 		if (self::$instance === false)
@@ -77,6 +89,11 @@ class KunenaLogin
 		return false;
 	}
 
+	/**
+	 * @param   null $return
+	 *
+	 * @return boolean
+	 */
 	public function logoutUser($return=null)
 	{
 		foreach ($this->instances as $login)
@@ -90,6 +107,9 @@ class KunenaLogin
 		return false;
 	}
 
+	/**
+	 * @return boolean
+	 */
 	public function getRememberMe()
 	{
 		foreach ($this->instances as $login)
@@ -103,6 +123,9 @@ class KunenaLogin
 		return false;
 	}
 
+	/**
+	 * @return null
+	 */
 	public function getLoginURL()
 	{
 		foreach ($this->instances as $login)
@@ -116,6 +139,9 @@ class KunenaLogin
 		return null;
 	}
 
+	/**
+	 * @return null
+	 */
 	public function getLogoutURL()
 	{
 		foreach ($this->instances as $login)
@@ -129,6 +155,9 @@ class KunenaLogin
 		return null;
 	}
 
+	/**
+	 * @return null
+	 */
 	public function getRegistrationURL()
 	{
 		foreach ($this->instances as $login)
@@ -142,6 +171,9 @@ class KunenaLogin
 		return null;
 	}
 
+	/**
+	 * @return null
+	 */
 	public function getResetURL()
 	{
 		foreach ($this->instances as $login)
@@ -155,6 +187,9 @@ class KunenaLogin
 		return null;
 	}
 
+	/**
+	 * @return null
+	 */
 	public function getRemindURL()
 	{
 		foreach ($this->instances as $login)
@@ -179,11 +214,6 @@ class KunenaLogin
 	 */
 	public function isTFAEnabled($userId = null)
 	{
-		if (!version_compare(JVERSION, '3.2', '>='))
-		{
-			return false;
-		}
-
 		// Include the necessary user model and helper
 		require_once JPATH_ADMINISTRATOR . '/components/com_users/helpers/users.php';
 		require_once JPATH_ADMINISTRATOR . '/components/com_users/models/user.php';
@@ -212,15 +242,10 @@ class KunenaLogin
 	/**
 	 * Method to check if TFA is enabled when user ins't logged
 	 *
-	 * @return int
+	 * @return integer
 	 */
 	public static function getTwoFactorMethods()
 	{
-		if (!version_compare(JVERSION, '3.2', '>='))
-		{
-			return null;
-		}
-
 		require_once JPATH_ADMINISTRATOR . '/components/com_users/helpers/users.php';
 
 		return count(UsersHelper::getTwoFactorMethods());

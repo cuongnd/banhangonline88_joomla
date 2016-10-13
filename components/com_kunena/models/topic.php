@@ -2,27 +2,33 @@
 /**
  * Kunena Component
  *
- * @package       Kunena.Site
- * @subpackage    Models
+ * @package     Kunena.Site
+ * @subpackage  Models
  *
- * @copyright (C) 2008 - 2014 Kunena Team. All rights reserved.
- * @license       http://www.gnu.org/copyleft/gpl.html GNU/GPL
- * @link          https://www.kunena.org
+ * @copyright   (C) 2008 - 2016 Kunena Team. All rights reserved.
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU/GPL
+ * @link        https://www.kunena.org
  **/
-defined('_JEXEC') or die ();
+defined('_JEXEC') or die();
 
 /**
  * Topic Model for Kunena
  *
- * @since        2.0
+ * @since  2.0
  */
 class KunenaModelTopic extends KunenaModel
 {
 	protected $topics = false;
+
 	protected $messages = false;
+
 	protected $items = false;
+
 	protected $topic = false;
 
+	/**
+	 *
+	 */
 	protected function populateState()
 	{
 		$active = $this->app->getMenu()->getActive();
@@ -59,8 +65,8 @@ class KunenaModelTopic extends KunenaModel
 
 		$this->setState('list.limit', $value);
 
-		//$value = $this->getUserStateFromRequest ( "com_kunena.topic_{$active}_{$layout}_list_ordering", 'filter_order', 'time', 'cmd' );
-		//$this->setState ( 'list.ordering', $value );
+		// $value = $this->getUserStateFromRequest ( "com_kunena.topic_{$active}_{$layout}_list_ordering", 'filter_order', 'time', 'cmd' );
+		// $this->setState ( 'list.ordering', $value );
 
 		$value = $this->getInt('limitstart', 0);
 
@@ -93,11 +99,17 @@ class KunenaModelTopic extends KunenaModel
 		$this->setState('list.direction', $value);
 	}
 
+	/**
+	 * @return KunenaForumCategory
+	 */
 	public function getCategory()
 	{
 		return KunenaForumCategoryHelper::get($this->getState('item.catid'));
 	}
 
+	/**
+	 * @return boolean|KunenaForumTopic
+	 */
 	public function getTopic()
 	{
 		if ($this->topic === false)
@@ -124,11 +136,15 @@ class KunenaModelTopic extends KunenaModel
 						// Break on loops
 						return false;
 					}
+
 					$ids[$topic->moved_id] = 1;
 					$topic                 = KunenaForumTopicHelper::get($topic->moved_id);
 				}
+
 				// If topic doesn't exist, check if there's a message with the same id
-				/*if (! $topic->exists()) {
+
+				/*
+				if (! $topic->exists()) {
 					$message = KunenaForumMessageHelper::get($this->getState ( 'item.id'));
 					if ($message->exists()) {
 						$topic = KunenaForumTopicHelper::get($message->thread);
@@ -142,6 +158,9 @@ class KunenaModelTopic extends KunenaModel
 		return $this->topic;
 	}
 
+	/**
+	 * @return array|boolean|KunenaForumMessage[]
+	 */
 	public function getMessages()
 	{
 		if ($this->messages === false)
@@ -215,6 +234,12 @@ class KunenaModelTopic extends KunenaModel
 		return $this->messages;
 	}
 
+	/**
+	 * @param   int   $parent
+	 * @param   array $indent
+	 *
+	 * @return array
+	 */
 	protected function getThreadedOrdering($parent = 0, $indent = array())
 	{
 		$list = array();
@@ -277,6 +302,7 @@ class KunenaModelTopic extends KunenaModel
 				{
 					$indent[$key] = 'empty';
 				}
+
 				if ($skip)
 				{
 					$indent[$key + 1] = 'empty';
@@ -296,16 +322,25 @@ class KunenaModelTopic extends KunenaModel
 		return $list;
 	}
 
+	/**
+	 * @return integer
+	 */
 	public function getTotal()
 	{
 		return $this->getTopic()->getTotal();
 	}
 
+	/**
+	 * @return integer
+	 */
 	public function getMyVotes()
 	{
 		return $this->getPoll()->getMyVotes();
 	}
 
+	/**
+	 * @return array
+	 */
 	public function getModerators()
 	{
 		$moderators = $this->getCategory()->getModerators(false);
@@ -313,16 +348,25 @@ class KunenaModelTopic extends KunenaModel
 		return $moderators;
 	}
 
+	/**
+	 * @return KunenaForumTopicPoll
+	 */
 	public function getPoll()
 	{
 		return $this->getTopic()->getPoll();
 	}
 
+	/**
+	 * @return integer
+	 */
 	public function getPollUserCount()
 	{
 		return $this->getPoll()->getUserCount();
 	}
 
+	/**
+	 * @return array
+	 */
 	public function getPollUsers()
 	{
 		return $this->getPoll()->getUsers();

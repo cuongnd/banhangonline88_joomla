@@ -19,10 +19,10 @@ defined('_JEXEC') or die;
 
 	foreach ($this->moderators as $moderator)
 	{
-		$mods_lin[] = "{$moderator->getLink()}";
+		$mods_lin[] = "{$moderator->getLink(null, null, '', '', null)}";
 	}
 
 	echo implode(',&nbsp;', $mods_lin);
 	?>
 </div>
-<?php endif; ?>
+<?php endif;

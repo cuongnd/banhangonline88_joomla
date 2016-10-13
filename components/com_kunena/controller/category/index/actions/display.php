@@ -48,28 +48,34 @@ class ComponentKunenaControllerCategoryIndexActionsDisplay extends KunenaControl
 		$this->categoryButtons = new JObject;
 
 		// Is user allowed to post new topic?
-		if ($this->category->isAuthorised('topic.create')) {
+		if ($this->category->isAuthorised('topic.create'))
+		{
 			$this->categoryButtons->set('create',
 				$this->getButton(sprintf($layout, 'create'), 'create', 'topic', 'communication', true)
 			);
 		}
 
 		// Is user allowed to mark forums as read?
-		if ($me->exists()) {
+		if ($me->exists())
+		{
 			$this->categoryButtons->set('markread',
 				$this->getButton(sprintf($task, 'markread'), 'markread', 'category', 'user', true)
 			);
 		}
 
 		// Is user allowed to subscribe category?
-		if ($this->category->isAuthorised( 'subscribe' )) {
+		if ($this->category->isAuthorised('subscribe'))
+		{
 			$subscribed = $this->category->getSubscribed($me->userid);
 
-			if (!$subscribed) {
+			if (!$subscribed)
+			{
 				$this->categoryButtons->set('subscribe',
 					$this->getButton(sprintf($task, 'subscribe'), 'subscribe', 'category', 'user', true)
 				);
-			} else {
+			}
+			else
+			{
 				$this->categoryButtons->set('unsubscribe',
 					$this->getButton(sprintf($task, 'unsubscribe'), 'unsubscribe', 'category', 'user', true)
 				);
@@ -77,7 +83,7 @@ class ComponentKunenaControllerCategoryIndexActionsDisplay extends KunenaControl
 		}
 
 		JPluginHelper::importPlugin('kunena');
-		$dispatcher = JDispatcher::getInstance();
+		$dispatcher = JEventDispatcher::getInstance();
 		$dispatcher->trigger('onKunenaGetButtons', array('category.action', $this->categoryButtons, $this));
 	}
 

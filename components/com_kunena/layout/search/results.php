@@ -2,12 +2,12 @@
 /**
  * Kunena Component
  *
- * @package         Kunena.Site
- * @subpackage      Layout.Search
+ * @package     Kunena.Site
+ * @subpackage  Layout.Search
  *
  * @copyright   (C) 2008 - 2016 Kunena Team. All rights reserved.
- * @license         http://www.gnu.org/copyleft/gpl.html GNU/GPL
- * @link            https://www.kunena.org
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU/GPL
+ * @link        https://www.kunena.org
  **/
 defined('_JEXEC') or die;
 
@@ -32,7 +32,7 @@ class KunenaLayoutSearchResults extends KunenaLayout
 		$params->set('kunena_view', 'search');
 		$params->set('kunena_layout', 'default');
 
-		$dispatcher = JDispatcher::getInstance();
+		$dispatcher = JEventDispatcher::getInstance();
 		JPluginHelper::importPlugin('kunena');
 
 		$dispatcher->trigger('onKunenaPrepare', array('kunena.messages', &$this->results, &$params, 0));
@@ -50,7 +50,7 @@ class KunenaLayoutSearchResults extends KunenaLayout
 
 			foreach ($this->searchwords as $searchword)
 			{
-				if (empty ($searchword))
+				if (empty($searchword))
 				{
 					continue;
 				}

@@ -55,6 +55,26 @@ class ComponentKunenaControllerSearchResultsDisplay extends KunenaControllerDisp
 		$this->total = $this->model->getTotal();
 		$this->results = $this->model->getResults();
 
+		$doc = JFactory::getDocument();
+		$doc->setMetaData('robots', 'nofollow, noindex');
+
+		foreach ($doc->_links as $key => $value)
+		{
+			if (is_array($value))
+			{
+				if (array_key_exists('relation', $value))
+				{
+					if ($value['relation'] == 'canonical')
+					{
+						$canonicalUrl = 'index.php?option=com_kunena&view=search';
+						$doc->_links[$canonicalUrl] = $value;
+						unset($doc->_links[$key]);
+						break;
+					}
+				}
+			}
+		}
+
 		$this->pagination = new KunenaPagination(
 			$this->total,
 			$this->state->get('list.start'),
@@ -72,11 +92,11 @@ class ComponentKunenaControllerSearchResultsDisplay extends KunenaControllerDisp
 	protected function prepareDocument()
 	{
 		$app       = JFactory::getApplication();
-		$menu_item = $app->getMenu()->getActive(); // get the active item
+		$menu_item = $app->getMenu()->getActive();
 
 		if ($menu_item)
 		{
-			$params             = $menu_item->params; // get the params
+			$params             = $menu_item->params;
 			$params_title       = $params->get('page_title');
 			$params_keywords    = $params->get('menu-meta_keywords');
 			$params_description = $params->get('menu-meta_description');

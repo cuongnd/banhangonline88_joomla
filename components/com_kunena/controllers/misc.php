@@ -2,39 +2,46 @@
 /**
  * Kunena Component
  *
- * @package       Kunena.Site
- * @subpackage    Controllers
+ * @package     Kunena.Site
+ * @subpackage  Controllers
  *
- * @copyright (C) 2008 - 2016 Kunena Team. All rights reserved.
- * @license       http://www.gnu.org/copyleft/gpl.html GNU/GPL
- * @link          https://www.kunena.org
+ * @copyright   (C) 2008 - 2016 Kunena Team. All rights reserved.
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU/GPL
+ * @link        https://www.kunena.org
  **/
-defined('_JEXEC') or die ();
+defined('_JEXEC') or die();
 
 /**
  * Kunena Misc Controller
  *
- * @since        2.0
+ * @since  2.0
  */
 class KunenaControllerMisc extends KunenaController
 {
+	/**
+	 * @param   array $config
+	 */
 	public function __construct($config = array())
 	{
 		parent::__construct($config);
 	}
 
+	/**
+	 * @throws Exception
+	 */
 	public function template()
 	{
-		$name = JRequest::getString('name', JRequest::getString('kunena_template', '', 'COOKIE'));
+		$name = JFactory::getApplication()->input->getString('name', JFactory::getApplication()->input->getString('kunena_template', '', 'COOKIE'));
 
 		if ($name)
 		{
 			$name = KunenaPath::clean($name);
 
-			if (!is_readable(KPATH_SITE . "/template/{$name}/template.xml"))
+			if (!is_readable(KPATH_SITE . "/template/{$name}/config/template.xml"))
 			{
-				$name = 'blue_eagle';
+				$name = 'crypsis';
 			}
+
 			setcookie('kunena_template', $name, 0, JUri::root(true) . '/');
 		}
 		else

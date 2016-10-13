@@ -2,24 +2,31 @@
 /**
  * Kunena Component
  *
- * @package       Kunena.Site
- * @subpackage    Controllers
+ * @package     Kunena.Site
+ * @subpackage  Controllers
  *
- * @copyright (C) 2008 - 2016 Kunena Team. All rights reserved.
- * @license       http://www.gnu.org/copyleft/gpl.html GNU/GPL
- * @link          https://www.kunena.org
+ * @copyright   (C) 2008 - 2016 Kunena Team. All rights reserved.
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU/GPL
+ * @link        https://www.kunena.org
  **/
-defined('_JEXEC') or die ();
+defined('_JEXEC') or die();
 
 /**
  * Kunena Home Controller
  *
- * @since        2.0
+ * @since  2.0
  */
 class KunenaControllerHome extends KunenaController
 {
 	public $home = 1;
 
+	/**
+	 * @param   bool $cachable
+	 * @param   bool $urlparams
+	 *
+	 * @return JControllerLegacy|void
+	 * @throws Exception
+	 */
 	public function display($cachable = false, $urlparams = false)
 	{
 		$menu = $this->app->getMenu();
@@ -27,10 +34,8 @@ class KunenaControllerHome extends KunenaController
 
 		if (!$home)
 		{
-			JRequest::setVar('view', 'category');
-			JRequest::setVar('layout', 'list');
-			//JError::raiseError ( 500, JText::_ ( 'COM_KUNENA_NO_ACCESS' ) );
-
+			JFactory::getApplication()->input->get('view', 'category');
+			JFactory::getApplication()->input->get('layout', 'list');
 		}
 		else
 		{
@@ -59,17 +64,17 @@ class KunenaControllerHome extends KunenaController
 
 			if (!$default)
 			{
-				JError::raiseError(500, JText::_('COM_KUNENA_NO_ACCESS'));
+				throw new Exception(JText::_('COM_KUNENA_NO_ACCESS'), 500);
 			}
 
 			// Add query variables from shown menu item
 			foreach ($default->query as $var => $value)
 			{
-				JRequest::setVar($var, $value);
+				JFactory::getApplication()->input->get($var, $value);
 			}
 
 			// Remove query variables coming from the home menu item
-			JRequest::setVar('defaultmenu', null);
+			JFactory::getApplication()->input->get('defaultmenu', null);
 
 			// Set active menu item to point the real page
 			$menu->setActive($default->id);
@@ -86,10 +91,16 @@ class KunenaControllerHome extends KunenaController
 		$this->setRedirect($controller->getRedirect(), $controller->getMessage(), $controller->getMessageType());
 	}
 
+	/**
+	 * @param       $menu
+	 * @param       $active
+	 * @param   array $visited
+	 *
+	 * @return null
+	 */
 	protected function _getDefaultMenuItem($menu, $active, $visited = array())
 	{
-
-		if (empty ($active->query ['defaultmenu']) || $active->id == $active->query ['defaultmenu'])
+		if (empty($active->query ['defaultmenu']) || $active->id == $active->query ['defaultmenu'])
 		{
 			// There is no highlighted menu item
 			return null;
@@ -103,7 +114,6 @@ class KunenaControllerHome extends KunenaController
 			KunenaError::warning(JText::sprintf('COM_KUNENA_WARNING_MENU_NOT_EXISTS'), 'menu');
 
 			return null;
-
 		}
 		elseif (isset($visited[$item->id]))
 		{
@@ -111,22 +121,19 @@ class KunenaControllerHome extends KunenaController
 			KunenaError::warning(JText::sprintf('COM_KUNENA_WARNING_MENU_LOOP'), 'menu');
 
 			return null;
-
 		}
-		elseif (empty ($item->component) || $item->component != 'com_kunena' || !isset($item->query ['view']))
+		elseif (empty($item->component) || $item->component != 'com_kunena' || !isset($item->query ['view']))
 		{
 			// Menu item doesn't point to Kunena, abort
 			KunenaError::warning(JText::sprintf('COM_KUNENA_WARNING_MENU_NOT_KUNENA'), 'menu');
 
 			return null;
-
 		}
 		elseif ($item->query ['view'] == 'home')
 		{
 			// Menu item is pointing to another Home Page, try to find default menu item from there
 			$visited[$item->id] = 1;
 			$item               = $this->_getDefaultMenuItem($menu, $item->query ['defaultmenu'], $visited);
-
 		}
 
 		return $item;

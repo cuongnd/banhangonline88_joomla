@@ -2,24 +2,27 @@
 /**
  * Kunena Component
  *
- * @package       Kunena.Site
- * @subpackage    Controllers
+ * @package     Kunena.Site
+ * @subpackage  Controllers
  *
- * @copyright (C) 2008 - 2016 Kunena Team. All rights reserved.
- * @license       http://www.gnu.org/copyleft/gpl.html GNU/GPL
- * @link          https://www.kunena.org
+ * @copyright   (C) 2008 - 2016 Kunena Team. All rights reserved.
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU/GPL
+ * @link        https://www.kunena.org
  **/
-defined('_JEXEC') or die ();
+defined('_JEXEC') or die();
 
 require_once KPATH_ADMIN . '/controllers/categories.php';
 
 /**
  * Kunena Category Controller
  *
- * @since        2.0
+ * @since  2.0
  */
 class KunenaControllerCategory extends KunenaAdminControllerCategories
 {
+	/**
+	 * @param   array $config
+	 */
 	public function __construct($config = array())
 	{
 		parent::__construct($config);
@@ -27,9 +30,12 @@ class KunenaControllerCategory extends KunenaAdminControllerCategories
 		$this->baseurl2 = 'index.php?option=com_kunena&view=category';
 	}
 
+	/**
+	 * @throws Exception
+	 */
 	function jump()
 	{
-		$catid = JRequest::getInt('catid', 0);
+		$catid = JFactory::getApplication()->input->getInt('catid', 0);
 
 		if (!$catid)
 		{
@@ -41,6 +47,9 @@ class KunenaControllerCategory extends KunenaAdminControllerCategories
 		}
 	}
 
+	/**
+	 * @throws Exception
+	 */
 	function markread()
 	{
 		if (!JSession::checkToken('request'))
@@ -51,8 +60,8 @@ class KunenaControllerCategory extends KunenaAdminControllerCategories
 			return;
 		}
 
-		$catid    = JRequest::getInt('catid', 0);
-		$children = JRequest::getBool('children', 0);
+		$catid    = JFactory::getApplication()->input->getInt('catid', 0);
+		$children = JFactory::getApplication()->input->getBool('children', 0);
 
 		if (!$catid)
 		{
@@ -111,6 +120,9 @@ class KunenaControllerCategory extends KunenaAdminControllerCategories
 		$this->setRedirectBack();
 	}
 
+	/**
+	 * @throws Exception
+	 */
 	function subscribe()
 	{
 		if (!JSession::checkToken('get'))
@@ -121,7 +133,7 @@ class KunenaControllerCategory extends KunenaAdminControllerCategories
 			return;
 		}
 
-		$category = KunenaForumCategoryHelper::get(JRequest::getInt('catid', 0));
+		$category = KunenaForumCategoryHelper::get(JFactory::getApplication()->input->getInt('catid', 0));
 
 		if (!$category->authorise('read'))
 		{
@@ -144,6 +156,9 @@ class KunenaControllerCategory extends KunenaAdminControllerCategories
 		$this->setRedirectBack();
 	}
 
+	/**
+	 * @throws Exception
+	 */
 	function unsubscribe()
 	{
 		if (!JSession::checkToken('request'))
@@ -154,13 +169,14 @@ class KunenaControllerCategory extends KunenaAdminControllerCategories
 			return;
 		}
 
-		$catid  = JRequest::getInt('catid', 0);
+		$catid  = JFactory::getApplication()->input->getInt('catid', 0);
 		$catids = $catid
 			? array($catid)
-			: array_keys(JRequest::getVar('categories', array(), 'post', 'array')); // Array or integer keys
-		JArrayHelper::toInteger($catids);
+			: array_keys(JFactory::getApplication()->input->get('categories', array(), 'post', 'array'));
+		Joomla\Utilities\ArrayHelper::toInteger($catids);
 
 		$categories = KunenaForumCategoryHelper::getCategories($catids);
+
 		foreach ($categories as $category)
 		{
 			if (!$category->authorise('read'))

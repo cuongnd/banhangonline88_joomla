@@ -2,28 +2,35 @@
 /**
  * Kunena Component
  *
- * @package       Kunena.Site
- * @subpackage    Models
+ * @package     Kunena.Site
+ * @subpackage  Models
  *
- * @copyright (C) 2008 - 2016 Kunena Team. All rights reserved.
- * @license       http://www.gnu.org/copyleft/gpl.html GNU/GPL
- * @link          https://www.kunena.org
+ * @copyright   (C) 2008 - 2016 Kunena Team. All rights reserved.
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU/GPL
+ * @link        https://www.kunena.org
  **/
-defined('_JEXEC') or die ();
+defined('_JEXEC') or die();
 
 /**
  * Topics Model for Kunena
  *
- * @since        2.0
+ * @since  2.0
  */
 class KunenaModelTopics extends KunenaModel
 {
 	protected $topics = false;
+
 	protected $messages = false;
+
 	protected $total = 0;
+
 	protected $topicActions = false;
+
 	protected $actionMove = false;
 
+	/**
+	 *
+	 */
 	protected function populateState()
 	{
 		$params = $this->getParameters();
@@ -64,11 +71,26 @@ class KunenaModelTopics extends KunenaModel
 		$this->setState('list.modetype', $modetype);
 
 		$catid = $this->getInt('catid');
-
+		
+		$this->setState('list.categories.exclude', 0);
+		
 		if ($catid)
 		{
 			$latestcategory    = array($catid);
 			$latestcategory_in = true;
+			
+			// Check if the category is in exclued list
+			if (!empty($this->config->rss_excluded_categories))
+			{
+				$cat_exclued = explode(',',$this->config->rss_excluded_categories);
+				 
+				if (in_array($catid, $cat_exclued))
+				{
+					$latestcategory    = $this->config->rss_excluded_categories;
+					$latestcategory_in = 0;
+					$this->setState('list.categories.exclude', 1);
+				}
+			}
 		}
 		else
 		{
@@ -94,7 +116,6 @@ class KunenaModelTopics extends KunenaModel
 				{
 					$latestcategory_in = $this->config->latestcategory_in;
 				}
-
 			}
 			else
 			{
@@ -109,7 +130,6 @@ class KunenaModelTopics extends KunenaModel
 					$latestcategory    = $this->config->rss_included_categories;
 					$latestcategory_in = 1;
 				}
-
 			}
 
 			if (!is_array($latestcategory))
@@ -131,12 +151,13 @@ class KunenaModelTopics extends KunenaModel
 		{
 			// Selection time from user state / menu item / url parameter / configuration.
 			if (!$this->me->exists() || $this->me->exists() && $this->me->userListtime == -2) {
-				$value = $this->getUserStateFromRequest ( "com_kunena.topics_{$active}_{$layout}_{$mode}_{$userid}_{$catid}_list_time", 'sel', $params->get('topics_time', $this->config->show_list_time), 'int' );
-				$this->setState ( 'list.time', (int) $value );
+				$value = $this->getUserStateFromRequest("com_kunena.topics_{$active}_{$layout}_{$mode}_{$userid}_{$catid}_list_time", 'sel', $params->get('topics_time', $this->config->show_list_time), 'int');
+				$this->setState('list.time', (int) $value);
 			}
+
 			if ($this->me->exists() && $this->me->userListtime != -2) {
-				$value = $this->getUserStateFromRequest ( "com_kunena.topics_{$active}_{$layout}_{$mode}_{$userid}_{$catid}_list_time", 'sel', $this->me->userListtime, 'int' );
-				$this->setState ('list.time', (int) $value);
+				$value = $this->getUserStateFromRequest("com_kunena.topics_{$active}_{$layout}_{$mode}_{$userid}_{$catid}_list_time", 'sel', $this->me->userListtime, 'int');
+				$this->setState('list.time', (int) $value);
 			}
 		}
 		else
@@ -156,11 +177,11 @@ class KunenaModelTopics extends KunenaModel
 
 		$this->setState('list.limit', $value);
 
-		//$value = $this->getUserStateFromRequest ( "com_kunena.topics_{$active}_{$layout}_{$mode}_list_ordering", 'filter_order', 'time', 'cmd' );
-		//$this->setState ( 'list.ordering', $value );
+		// $value = $this->getUserStateFromRequest ( "com_kunena.topics_{$active}_{$layout}_{$mode}_list_ordering", 'filter_order', 'time', 'cmd' );
+		// $this->setState ( 'list.ordering', $value );
 
 		$value = $this->getUserStateFromRequest("com_kunena.topics_{$active}_{$layout}_{$mode}_{$userid}_{$catid}_list_start", 'limitstart', 0, 'int');
-		//$value = $this->getInt ( 'limitstart', 0 );
+		// $value = $this->getInt ( 'limitstart', 0 );
 		$this->setState('list.start', $value);
 
 		$value = $this->getUserStateFromRequest("com_kunena.topics_{$active}_{$layout}_{$mode}_{$userid}_{$catid}_list_direction", 'filter_order_Dir', 'desc', 'word');
@@ -173,6 +194,9 @@ class KunenaModelTopics extends KunenaModel
 		$this->setState('list.direction', $value);
 	}
 
+	/**
+	 * @return boolean
+	 */
 	public function getTopics()
 	{
 		if ($this->topics === false)
@@ -190,7 +214,7 @@ class KunenaModelTopics extends KunenaModel
 					$topics = false;
 
 					JPluginHelper::importPlugin('kunena');
-					$dispatcher = JDispatcher::getInstance();
+					$dispatcher = JEventDispatcher::getInstance();
 					$dispatcher->trigger('onKunenaGetTopics', array($layout, $pluginmode, &$topics, &$total, $this));
 
 					if (!empty($topics))
@@ -218,6 +242,9 @@ class KunenaModelTopics extends KunenaModel
 		return $this->topics;
 	}
 
+	/**
+	 *
+	 */
 	protected function getRecentTopics()
 	{
 		$catid      = $this->getState('item.id');
@@ -294,6 +321,7 @@ class KunenaModelTopics extends KunenaModel
 
 		$params = array(
 			'reverse'   => !$latestcategory_in,
+			'exclude'   => $this->setState('list.categories.exclude', 0),
 			'orderby'   => $lastpost ? 'tt.last_post_time DESC' : 'tt.first_post_time DESC',
 			'starttime' => $time,
 			'hold'      => $hold,
@@ -304,6 +332,9 @@ class KunenaModelTopics extends KunenaModel
 		$this->_common();
 	}
 
+	/**
+	 *
+	 */
 	protected function getUserTopics()
 	{
 		$catid      = $this->getState('item.id');
@@ -317,6 +348,7 @@ class KunenaModelTopics extends KunenaModel
 		$posts         = false;
 		$favorites     = false;
 		$subscriptions = false;
+
 		// Set order by
 		$orderby = "tt.last_post_time DESC";
 
@@ -358,12 +390,16 @@ class KunenaModelTopics extends KunenaModel
 		$this->_common();
 	}
 
+	/**
+	 *
+	 */
 	protected function getPosts()
 	{
 		$this->topics = array();
 
 		$start = $this->getState('list.start');
 		$limit = $this->getState('list.limit');
+
 		// Time will be calculated inside KunenaForumMessageHelper::getLatestMessages()
 		$time = $this->getState('list.time');
 
@@ -392,6 +428,7 @@ class KunenaModelTopics extends KunenaModel
 				$authorise = 'undelete';
 				break;
 		}
+
 		$this->topics = KunenaForumTopicHelper::getTopics($topicids, $authorise);
 
 		$userlist = $postlist = array();
@@ -405,11 +442,15 @@ class KunenaModelTopics extends KunenaModel
 		$this->_common($userlist, $postlist);
 	}
 
+	/**
+	 * @param   array $userlist
+	 * @param   array $postlist
+	 */
 	protected function _common(array $userlist = array(), array $postlist = array())
 	{
 		if ($this->total > 0)
 		{
-			// collect user ids for avatar prefetch when integrated
+			// Collect user ids for avatar prefetch when integrated
 			$lastpostlist = array();
 
 			foreach ($this->topics as $topic)
@@ -426,7 +467,6 @@ class KunenaModelTopics extends KunenaModel
 			}
 
 			KunenaForumTopicHelper::getUserTopics(array_keys($this->topics));
-			KunenaForumTopicHelper::getKeywords(array_keys($this->topics));
 			$lastreadlist = KunenaForumTopicHelper::fetchNewStatus($this->topics);
 
 			// Fetch last / new post positions when user can see unapproved or deleted posts
@@ -437,6 +477,9 @@ class KunenaModelTopics extends KunenaModel
 		}
 	}
 
+	/**
+	 * @return boolean
+	 */
 	public function getMessages()
 	{
 		if ($this->topics === false)
@@ -447,6 +490,9 @@ class KunenaModelTopics extends KunenaModel
 		return $this->messages;
 	}
 
+	/**
+	 * @return integer
+	 */
 	public function getTotal()
 	{
 		if ($this->topics === false)
@@ -457,6 +503,9 @@ class KunenaModelTopics extends KunenaModel
 		return $this->total;
 	}
 
+	/**
+	 * @return array|null
+	 */
 	public function getTopicActions()
 	{
 		if ($this->topics === false)
@@ -539,6 +588,9 @@ class KunenaModelTopics extends KunenaModel
 		return $actionDropdown;
 	}
 
+	/**
+	 * @return array|null
+	 */
 	public function getPostActions()
 	{
 		if ($this->messages === false)
@@ -601,6 +653,9 @@ class KunenaModelTopics extends KunenaModel
 		return $actionDropdown;
 	}
 
+	/**
+	 * @return boolean
+	 */
 	public function getActionMove()
 	{
 		return $this->actionMove;
