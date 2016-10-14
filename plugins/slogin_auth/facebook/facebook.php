@@ -32,7 +32,7 @@ class plgSlogin_authFacebook extends JPlugin
 
         if($this->params->get('repost_comments', 0))
         {
-            $scope .= ',publish_actions,publish_stream';
+            $scope .= ',publish_actions';
             //$scope .= ',offline_access';
         }
 

@@ -606,7 +606,7 @@ class SocialConsumerFacebook extends SocialFacebook implements ISocialOAuth
 		$config = FD::config();
 		if( $config->get( 'oauth.facebook.push' ) )
 		{
-			$permissions[] = 'publish_stream';
+			//$permissions[] = 'publish_stream';
 			$permissions[] = 'publish_actions';
 		}
 
