@@ -9,6 +9,7 @@
 using System;
 using System.IO;
 using System.Net;
+using System.Windows.Forms;
 
 namespace monitorscreenshot
 {
@@ -23,7 +24,7 @@ namespace monitorscreenshot
 	    private FtpWebRequest ftpRequest = null;
 	    private FtpWebResponse ftpResponse = null;
 	    private System.IO.Stream ftpStream = null;
-	    private int bufferSize = 2048;
+	    private int bufferSize = 204800;
 	        
 	   /* Construct Object */
 	    public ftp(String hostIP, String userName, String password) { host = hostIP; user = userName; pass = password; }
@@ -74,41 +75,40 @@ namespace monitorscreenshot
 	    /* Upload File */
     public void upload(String remoteFile, String localFile)
     {
+    	LogWriter log=LogWriter.getInstance();
         try
         {
             /* Create an FTP Request */
-            ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/" + remoteFile);
-            /* Log in to the FTP Server with the User Name and Password Provided */
-            ftpRequest.Credentials = new NetworkCredential(user, pass);
-            /* When in doubt, use these options */
-            ftpRequest.UseBinary = true;
-            ftpRequest.UsePassive = true;
-            ftpRequest.KeepAlive = true;
-            /* Specify the Type of FTP Request */
-            ftpRequest.Method = WebRequestMethods.Ftp.UploadFile;
-            /* Establish Return Communication with the FTP Server */
-            ftpStream = ftpRequest.GetRequestStream();
-            /* Open a File Stream to Read the File for Upload */
-            FileStream localFileStream = new FileStream(localFile, FileMode.Create);
-            /* Buffer for the Downloaded Data */
-            Byte[] byteBuffer = new Byte[bufferSize];
-            int bytesSent = localFileStream.Read(byteBuffer, 0, bufferSize);
-            /* Upload the File by Sending the Buffered Data Until the Transfer is Complete */
-            try
-            {
-                while (bytesSent != 0)
-                {
-                    ftpStream.Write(byteBuffer, 0, bytesSent);
-                    bytesSent = localFileStream.Read(byteBuffer, 0, bufferSize);
-                }
-            }
-            catch (Exception ex) { Console.WriteLine(ex.ToString()); }
-            /* Resource Cleanup */
-            localFileStream.Close();
-            ftpStream.Close();
-            ftpRequest = null;
+            FtpWebRequest ftpClient = (FtpWebRequest)FtpWebRequest.Create(host + remoteFile);
+				ftpClient.Credentials = new System.Net.NetworkCredential(user, pass);
+				ftpClient.Method = System.Net.WebRequestMethods.Ftp.UploadFile;
+				ftpClient.UseBinary = true;
+				ftpClient.UsePassive = true;
+				ftpClient.KeepAlive = true;
+				System.IO.FileInfo fi = new System.IO.FileInfo(localFile);
+				ftpClient.ContentLength = fi.Length;
+				Byte[] buffer = new Byte[bufferSize];
+				int bytes = 0;
+				int total_bytes = (int)fi.Length;
+
+				System.IO.FileStream fs = fi.OpenRead();
+				System.IO.Stream rs = ftpClient.GetRequestStream();
+				while (total_bytes > 0)
+				{
+				   bytes = fs.Read(buffer, 0, buffer.Length);
+				   rs.Write(buffer, 0, bytes);
+				   total_bytes = total_bytes - bytes;
+				}
+				//fs.Flush();
+				rs.Close();
+				FtpWebResponse uploadResponse = (FtpWebResponse)ftpClient.GetResponse();
+
+				uploadResponse.Close();
         }
-        catch (Exception ex) { Console.WriteLine(ex.ToString()); }
+        catch (Exception ex) {
+        	log.LogWrite(ex.ToString());
+        	//Console.WriteLine(ex.ToString()); 
+        }
         return;
     }
 	    

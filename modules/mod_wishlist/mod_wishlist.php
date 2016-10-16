@@ -69,6 +69,8 @@ if($moduleClass->restrictedModule($params) === false)
 $params->set('cart_type','wishlist');
 $params->set('from','module');
 $html = trim(hikashop_getLayout('product','cart',$params,$js));
-
+$waitlistClass = hikashop_get('class.waitlist');
+$waitlist_id = hikashop_getCID('waitlist_id');
+$element = $waitlistClass->get($waitlist_id);
 $doc = JFactory::getDocument();
 require JModuleHelper::getLayoutPath('mod_wishlist', $params->get('layout', 'default'));

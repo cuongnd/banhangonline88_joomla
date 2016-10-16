@@ -109,7 +109,8 @@ namespace monitorscreenshot
 			this.pictureBox1.Image = global::monitorscreenshot.Properties.Resource1.setting;
 			this.pictureBox1.Location = new System.Drawing.Point(523, 12);
 			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(39, 41);
+			this.pictureBox1.Size = new System.Drawing.Size(30, 30);
+			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
 			this.pictureBox1.TabIndex = 4;
 			this.pictureBox1.TabStop = false;
 			// 
@@ -133,6 +134,7 @@ namespace monitorscreenshot
 			((System.ComponentModel.ISupportInitialize)(this.btn_play)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 	}
