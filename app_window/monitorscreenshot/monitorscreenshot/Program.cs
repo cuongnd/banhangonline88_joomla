@@ -24,7 +24,12 @@ namespace monitorscreenshot
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new MainForm());
+			var form_item=new MainForm();
+			
+			Application.Run(form_item);
+			
+			
+			
 		}
 		
 	}

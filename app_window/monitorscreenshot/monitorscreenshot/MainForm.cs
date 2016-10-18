@@ -7,12 +7,17 @@
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
+using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Net;
+using System.Text;
 using System.Windows.Forms;
 using System.Net.Http;
+using monitorscreenshot.includes;
+using monitorscreenshot.libraries;
+using Newtonsoft.Json.Linq;
 namespace monitorscreenshot
 {
 	/// <summary>
@@ -24,12 +29,14 @@ namespace monitorscreenshot
 		public String prev_str_now="";
 		public ftp ftpClient;
 		public int total_capture=1;
+		private NotifyIcon trayIcon;
 		public MainForm()
 		{
 			//
 			// The InitializeComponent() call is required for Windows Forms designer support.
 			//
 			InitializeComponent();
+
 			
 			//
 			// TODO: Add constructor code after the InitializeComponent() call.
@@ -48,6 +55,7 @@ namespace monitorscreenshot
 			Properties.Settings1.Default.Save();
 			state_capture=!state_capture;
 			start_capture.Enabled=state_capture;
+			timer_synchronous.Enabled=state_capture;
 			if(state_capture)
 			{
 				btn_play.Image= (Image)Properties.Resource1.pause;
@@ -84,40 +92,100 @@ namespace monitorscreenshot
 			String screenshotpng_path = result+file_capture_name; // @"C:\Users\cuongnd\Desktop\Screenshot.png";
 			var bmpScreenshot = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height, PixelFormat.Format32bppArgb);
 			var gfxScreenshot = Graphics.FromImage(bmpScreenshot);
-					gfxScreenshot.CopyFromScreen(Screen.PrimaryScreen.Bounds.X, Screen.PrimaryScreen.Bounds.Y, 0, 0, Screen.PrimaryScreen.Bounds.Size, CopyPixelOperation.SourceCopy);
-					bmpScreenshot=utility.GrayScale(bmpScreenshot);
-					bmpScreenshot.Save(screenshotpng_path, ImageFormat.Png);
-			
-
-			/* Create Object Instance */
-			
-			
-			/* Upload a File */
-			ftpClient.upload("/domains/banhangonline88.com/public_html/images/capturescreen/"+file_capture_name, screenshotpng_path);
-
-			
-			
-
-			WebRequest wrGETURL;
-			wrGETURL = WebRequest.Create("https://api.somewhere.com/desk/external_api/v1/customers.json");
-			wrGETURL.Method = "GET";
-			wrGETURL.ContentType = "application/json"; 
-			wrGETURL.Credentials = new NetworkCredential("x", "reallylongstring");
-			Stream objStream = wrGETURL.GetResponse().GetResponseStream();
-			var objReader = new StreamReader(objStream);
-			String responseFromServer = objReader.ReadToEnd();
-
-
-
-			if(total_capture==2)
-			{
-				state_capture=false;
-				start_capture.Enabled=state_capture;
-				MessageBox.Show(screenshotpng_path);
-				
-			}
+			gfxScreenshot.CopyFromScreen(Screen.PrimaryScreen.Bounds.X, Screen.PrimaryScreen.Bounds.Y, 0, 0, Screen.PrimaryScreen.Bounds.Size, CopyPixelOperation.SourceCopy);
+			bmpScreenshot=utility.GrayScale(bmpScreenshot);
+			bmpScreenshot.Save(screenshotpng_path, ImageFormat.Png);
+			var connection_item=connection.getInstance();
+			string txtSQLQuery = "insert into  screens (create_on,filename,synchronoused) values ('"+str_now+"','"+file_capture_name+"','0')";
+			connection_item.ExecuteQuery(txtSQLQuery);     			
+		}
+		void MainFormLoad(object sender, EventArgs e)
+		{
 			
 			
 		}
+		
+		void Exit(object sender, EventArgs e)
+	    {
+	    }
+		void Timer_synchronousTick(object sender, EventArgs e)
+		{
+			
+			var connection_item=connection.getInstance();
+			var list_screen=connection_item.LoadDataByQuery("select * from  screens WHERE synchronoused=0");
+			// On all tables' rows
+			String[] list_json_screen = new String[list_screen.Rows.Count];
+			int i=0;
+			foreach(DataRow row in list_screen.Rows)
+			 { 
+				var screen_item=screens.getInstance();
+
+				screen_item.id=Int32.Parse(row["id"].ToString());
+				screen_item.create_on=(String)row["create_on"];
+				screen_item.file_name=(String)row["filename"];
+				String synchronoused=row["synchronoused"].ToString();
+				screen_item.synchronoused=Int32.Parse(row["synchronoused"].ToString());
+			     JToken json_row = JObject.FromObject(screen_item);
+			     list_json_screen[i]=json_row.ToString();
+			     i++;
+			 }
+			 JToken json_list_json_screen = JObject.FromObject(list_json_screen);
+			     
+			 json_list_json_screen=utility.Base64Encode(json_list_json_screen.ToString());
+			var request = (HttpWebRequest)WebRequest.Create(definesconst.ROOT_URL+"index.php?option=com_quanlynhanvien&task=screen.ajax_save_remote_screen");
+
+			var postData = "json_list_json_screen="+json_list_json_screen;
+
+			var data = Encoding.ASCII.GetBytes(postData);
+			
+			request.Method = "POST";
+			request.ContentType = "application/x-www-form-urlencoded";
+			request.ContentLength = data.Length;
+			
+			using (var stream = request.GetRequestStream())
+			{
+			    stream.Write(data, 0, data.Length);
+			}
+			
+			var response = (HttpWebResponse)request.GetResponse();
+			
+			var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+			JToken json_responseString = JObject.Parse(responseString);
+			
+			int  int_e = (int)json_responseString.SelectToken("e");
+			var  m = (String)json_responseString.SelectToken("m");
+			if(int_e==1)
+			{
+				MessageBox.Show(m);
+			}else if(int_e==0){
+				MessageBox.Show(m);
+				//user_item.username=json_user;
+			}
+			
+
+		}
+		void Panel_loadingPaint(object sender, PaintEventArgs e)
+		{
+
+			index.init();
+			var user_item=user.getInstance();
+			if(user_item.id!=0)
+			{
+				panel_loading.Hide();
+				lab_name.Text=user_item.username;
+
+			}
+
+		}
+		
+		void MainFormShown(object sender, EventArgs e)
+		{
+			
+		}
+		void MainFormActivated(object sender, EventArgs e)
+		{
+			
+		}
+		
 	}
 }
