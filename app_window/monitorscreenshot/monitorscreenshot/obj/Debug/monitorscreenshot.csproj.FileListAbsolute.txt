@@ -8,4 +8,3 @@ H:\project\banhangonline88_joomla\app_window\monitorscreenshot\monitorscreenshot
 H:\project\banhangonline88_joomla\app_window\monitorscreenshot\monitorscreenshot\obj\Debug\monitorscreenshot.csproj.GenerateResource.Cache
 H:\project\banhangonline88_joomla\app_window\monitorscreenshot\monitorscreenshot\obj\Debug\monitorscreenshot.Properties.Resource1.resources
 H:\project\banhangonline88_joomla\app_window\monitorscreenshot\monitorscreenshot\obj\Debug\monitorscreenshot.login.resources
-H:\project\banhangonline88_joomla\app_window\monitorscreenshot\monitorscreenshot\bin\Debug\SQLite.NET.dll

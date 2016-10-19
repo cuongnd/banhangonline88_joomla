@@ -17,6 +17,7 @@ using System.Windows.Forms;
 using System.Net.Http;
 using monitorscreenshot.includes;
 using monitorscreenshot.libraries;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 namespace monitorscreenshot
 {
@@ -55,7 +56,7 @@ namespace monitorscreenshot
 			Properties.Settings1.Default.Save();
 			state_capture=!state_capture;
 			start_capture.Enabled=state_capture;
-			timer_synchronous.Enabled=state_capture;
+			//timer_synchronous.Enabled=state_capture;
 			if(state_capture)
 			{
 				btn_play.Image= (Image)Properties.Resource1.pause;
@@ -96,7 +97,11 @@ namespace monitorscreenshot
 			bmpScreenshot=utility.GrayScale(bmpScreenshot);
 			bmpScreenshot.Save(screenshotpng_path, ImageFormat.Png);
 			var connection_item=connection.getInstance();
-			string txtSQLQuery = "insert into  screens (create_on,filename,synchronoused) values ('"+str_now+"','"+file_capture_name+"','0')";
+			
+			var user_item=user.getInstance();
+			int user_id=user_item.id;
+			string txtSQLQuery = "insert into  capturescreen (create_on,user_id,filename,synchronoused) values ('"+str_now+"','"+user_id.ToString()+"','"+file_capture_name+"','0')";
+			MessageBox.Show(txtSQLQuery);
 			connection_item.ExecuteQuery(txtSQLQuery);     			
 		}
 		void MainFormLoad(object sender, EventArgs e)
@@ -112,56 +117,61 @@ namespace monitorscreenshot
 		{
 			
 			var connection_item=connection.getInstance();
-			var list_screen=connection_item.LoadDataByQuery("select * from  screens WHERE synchronoused=0");
+			var list_screen=connection_item.LoadDataByQuery("select * from  capturescreen WHERE synchronoused=0");
 			// On all tables' rows
-			String[] list_json_screen = new String[list_screen.Rows.Count];
-			int i=0;
-			foreach(DataRow row in list_screen.Rows)
-			 { 
-				var screen_item=screens.getInstance();
-
-				screen_item.id=Int32.Parse(row["id"].ToString());
-				screen_item.create_on=(String)row["create_on"];
-				screen_item.file_name=(String)row["filename"];
-				String synchronoused=row["synchronoused"].ToString();
-				screen_item.synchronoused=Int32.Parse(row["synchronoused"].ToString());
-			     JToken json_row = JObject.FromObject(screen_item);
-			     list_json_screen[i]=json_row.ToString();
-			     i++;
-			 }
-			 JToken json_list_json_screen = JObject.FromObject(list_json_screen);
-			     
-			 json_list_json_screen=utility.Base64Encode(json_list_json_screen.ToString());
-			var request = (HttpWebRequest)WebRequest.Create(definesconst.ROOT_URL+"index.php?option=com_quanlynhanvien&task=screen.ajax_save_remote_screen");
-
-			var postData = "json_list_json_screen="+json_list_json_screen;
-
-			var data = Encoding.ASCII.GetBytes(postData);
-			
-			request.Method = "POST";
-			request.ContentType = "application/x-www-form-urlencoded";
-			request.ContentLength = data.Length;
-			
-			using (var stream = request.GetRequestStream())
+			if(list_screen.Rows.Count>0)
 			{
-			    stream.Write(data, 0, data.Length);
+				String[] list_json_screen = new String[list_screen.Rows.Count];
+				int i=0;
+				
+				foreach(DataRow row in list_screen.Rows)
+				 { 
+					var screen_item=screens.getInstance();
+	
+					screen_item.id=Int32.Parse(row["id"].ToString());
+					screen_item.create_on=(String)row["create_on"];
+					screen_item.file_name=(String)row["filename"];
+					String synchronoused=row["synchronoused"].ToString();
+					screen_item.synchronoused=Int32.Parse(row["synchronoused"].ToString());
+					screen_item.user_id=Int32.Parse(row["user_id"].ToString());
+				     JToken json_row = JObject.FromObject(screen_item);
+				     list_json_screen[i]=json_row.ToString();
+				     i++;
+				 }
+				 JToken json_list_json_screen = JsonConvert.SerializeObject(list_json_screen);
+				     
+				 json_list_json_screen=utility.Base64Encode(json_list_json_screen.ToString());
+				var request = (HttpWebRequest)WebRequest.Create(definesconst.ROOT_URL+"index.php?option=com_quanlynhanvien&task=screen.ajax_save_remote_screen");
+	
+				var postData = "json_list_json_screen="+json_list_json_screen;
+	
+				var data = Encoding.ASCII.GetBytes(postData);
+				
+				request.Method = "POST";
+				request.ContentType = "application/x-www-form-urlencoded";
+				request.ContentLength = data.Length;
+				
+				using (var stream = request.GetRequestStream())
+				{
+				    stream.Write(data, 0, data.Length);
+				}
+				
+				var response = (HttpWebResponse)request.GetResponse();
+				
+				var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+				MessageBox.Show(responseString.ToString());
+				JToken json_responseString = JObject.Parse(responseString);
+				
+				int  int_e = (int)json_responseString.SelectToken("e");
+				var  m = (String)json_responseString.SelectToken("m");
+				if(int_e==1)
+				{
+					MessageBox.Show(m);
+				}else if(int_e==0){
+					MessageBox.Show(m);
+					//user_item.username=json_user;
+				}
 			}
-			
-			var response = (HttpWebResponse)request.GetResponse();
-			
-			var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
-			JToken json_responseString = JObject.Parse(responseString);
-			
-			int  int_e = (int)json_responseString.SelectToken("e");
-			var  m = (String)json_responseString.SelectToken("m");
-			if(int_e==1)
-			{
-				MessageBox.Show(m);
-			}else if(int_e==0){
-				MessageBox.Show(m);
-				//user_item.username=json_user;
-			}
-			
 
 		}
 		void Panel_loadingPaint(object sender, PaintEventArgs e)
