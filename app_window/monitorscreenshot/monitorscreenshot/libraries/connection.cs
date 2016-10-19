@@ -28,12 +28,14 @@ namespace monitorscreenshot.libraries
 			sql_con = new SQLiteConnection("Data Source=H:\\project\\banhangonline88_joomla\\app_window\\monitorscreenshot\\monitorscreenshot\\monitorcsreen.db;Version=3;New=False;Compress=True;");
 			sql_con.Open();			
 		}
-		public void ExecuteQuery(String txtQuery) 
+		public int ExecuteQuery(String txtQuery) 
 		{ 
 			
 			sql_cmd = sql_con.CreateCommand(); 
 			sql_cmd.CommandText=txtQuery; 
-			sql_cmd.ExecuteNonQuery(); 
+			int rowsAffected=sql_cmd.ExecuteNonQuery(); 
+			
+			return rowsAffected;
 
 		}
 		public DataTable LoadData(String table_name) 
