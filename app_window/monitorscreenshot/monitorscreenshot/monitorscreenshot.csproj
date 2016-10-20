@@ -69,6 +69,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="config.cs" />
     <Compile Include="ftp.cs" />
     <Compile Include="includes\definesconst.cs" />
     <Compile Include="index.cs" />

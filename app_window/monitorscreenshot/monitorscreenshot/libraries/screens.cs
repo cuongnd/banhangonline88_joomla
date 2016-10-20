@@ -20,7 +20,7 @@ namespace monitorscreenshot.libraries
 		public String file_name="";
 		public int user_id=0;
 		public int synchronoused=0;
-		
+		public int uploaded=0;
 		private volatile static screens uniqueInstance;
 		public static screens getInstance()
 		{

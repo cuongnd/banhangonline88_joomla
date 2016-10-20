@@ -75,7 +75,7 @@ namespace monitorscreenshot
 	    /* Upload File */
     public void upload(String remoteFile, String localFile)
     {
-    	LogWriter log=LogWriter.getInstance();
+    
         try
         {
             /* Create an FTP Request */
@@ -106,7 +106,7 @@ namespace monitorscreenshot
 				uploadResponse.Close();
         }
         catch (Exception ex) {
-        	log.LogWrite(ex.ToString());
+        	LogWriter.LogWrite(ex.ToString());
         	//Console.WriteLine(ex.ToString()); 
         }
         return;

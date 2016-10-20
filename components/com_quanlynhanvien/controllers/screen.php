@@ -19,11 +19,13 @@ use Joomla\Utilities\ArrayHelper;
 class QuanlynhanvienControllerscreen extends JControllerLegacy
 {
 	public function ajax_save_remote_screen(){
+		$response=new stdClass();
 		$app=JFactory::getApplication();
 		$input=$app->input;
 		$json_list_json_screen=$input->getString('json_list_json_screen','');
 		$json_list_json_screen=base64_decode($json_list_json_screen);
 		$json_list_json_screen=json_decode($json_list_json_screen);
+
 		$db=JFactory::getDbo();
 		$query=$db->getQuery(true);
 		$query->insert('#__screen')
@@ -32,23 +34,21 @@ class QuanlynhanvienControllerscreen extends JControllerLegacy
 		foreach($json_list_json_screen as $item)
 		{
 			$item=json_decode($item);
-			$create_on=$item->create_on;
-			$file_name=$item->file_name;
+			$create_on=$query->q($item->create_on);
+			$file_name=$query->q($item->file_name);
 			$user_id=$item->user_id;
-			$create_on=explode("_",$create_on);
-			$create_on="$create_on[0]-$create_on[1]-$create_on[2] $create_on[3]-$create_on[4]-$create_on[5]";
-			$create_on=JFactory::getDate($create_on);
-			$create_on=$create_on->toSql();
-			$query->values("$query->q($create_on),$query->q($file_name),$user_id");
+			$query->values("$create_on,$file_name,$user_id");
 		}
 
-		JTable::addIncludePath('administrator/components/com_quanlynhanvien/tables');
-		$table_screen=JTable::getInstance('screen');
-
-		$response=new stdClass();
-		$response->e=0;
-		$response->m=JText::_('JGLOBAL_UPDATE_SUCCESSFUL');
-		$response->m=print_r($json_list_json_screen,true);
+		$db->setQuery($query);
+		if(!$db->execute())
+		{
+			$response->e=1;
+			$response->m=$db->getErrorMsg();
+		}else {
+			$response->e = 0;
+			$response->m = JText::_('JGLOBAL_UPDATE_SUCCESSFUL');
+		}
 		echo json_encode($response);
 		die;
 	}

@@ -17,35 +17,27 @@ namespace monitorscreenshot
 	/// </summary>
 	public class LogWriter
 	{
-		private volatile static LogWriter uniqueInstance;
 		
 		
-		
-		private String m_exePath = String.Empty;
-		
-		
-		public static LogWriter getInstance()
-		{
-			if (uniqueInstance == null)
-	        {
-				uniqueInstance = new LogWriter("log");
-	        }
-	        return uniqueInstance;
-        
-		}
-		
-	    public  LogWriter(String logMessage)
+		public  LogWriter()
 	    {
-	        LogWrite(logMessage);
+
 	    }
-	    public void LogWrite(String logMessage)
+
+	    public static void LogWrite(String logMessage)
 	    {
-	        m_exePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+	        String m_exePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 	        try
 	        {
-	            using (StreamWriter w = File.AppendText(m_exePath + "\\" + "log.txt"))
+	        	String file_log_path=m_exePath + "\\" + "log.txt";
+	        	if(!File.Exists(file_log_path))
+	        	{
+	        		File.Create(file_log_path);
+	        	}
+	        	using (StreamWriter w = File.AppendText(file_log_path))
 	            {
 	                Log(logMessage, w);
+	                
 	            }
 	        }
 	        catch (Exception ex)
@@ -53,7 +45,7 @@ namespace monitorscreenshot
 	        }
 	    }
 	
-	    public void Log(String logMessage, TextWriter txtWriter)
+	    public static void Log(String logMessage, TextWriter txtWriter)
 	    {
 	        try
 	        {

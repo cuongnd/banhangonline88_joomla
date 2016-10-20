@@ -32,6 +32,7 @@ namespace monitorscreenshot
 		private System.Windows.Forms.Timer timer_synchronous;
 		private System.Windows.Forms.Panel panel4;
 		private System.Windows.Forms.Panel panel_loading;
+		private System.Windows.Forms.PictureBox pictureBox_loading;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -73,12 +74,15 @@ namespace monitorscreenshot
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.panel4 = new System.Windows.Forms.Panel();
 			this.panel_loading = new System.Windows.Forms.Panel();
+			this.pictureBox_loading = new System.Windows.Forms.PictureBox();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.btn_play)).BeginInit();
 			this.panel2.SuspendLayout();
 			this.panel3.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.panel4.SuspendLayout();
+			this.panel_loading.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox_loading)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// panel1
@@ -237,21 +241,32 @@ namespace monitorscreenshot
 			// 
 			// panel_loading
 			// 
+			this.panel_loading.Controls.Add(this.pictureBox_loading);
 			this.panel_loading.Location = new System.Drawing.Point(0, 7);
 			this.panel_loading.Name = "panel_loading";
 			this.panel_loading.Size = new System.Drawing.Size(595, 320);
 			this.panel_loading.TabIndex = 1;
 			this.panel_loading.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_loadingPaint);
 			// 
+			// pictureBox_loading
+			// 
+			this.pictureBox_loading.Image = global::monitorscreenshot.Properties.Resource1.loading;
+			this.pictureBox_loading.Location = new System.Drawing.Point(223, 106);
+			this.pictureBox_loading.Name = "pictureBox_loading";
+			this.pictureBox_loading.Size = new System.Drawing.Size(100, 100);
+			this.pictureBox_loading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+			this.pictureBox_loading.TabIndex = 0;
+			this.pictureBox_loading.TabStop = false;
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(595, 332);
+			this.Controls.Add(this.panel_loading);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.panel4);
 			this.Controls.Add(this.panel2);
-			this.Controls.Add(this.panel_loading);
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "MainForm";
@@ -267,6 +282,9 @@ namespace monitorscreenshot
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.panel4.ResumeLayout(false);
 			this.panel4.PerformLayout();
+			this.panel_loading.ResumeLayout(false);
+			this.panel_loading.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox_loading)).EndInit();
 			this.ResumeLayout(false);
 
 		}
