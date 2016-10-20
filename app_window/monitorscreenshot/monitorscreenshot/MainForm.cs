@@ -102,7 +102,13 @@ namespace monitorscreenshot
 			var gfxScreenshot = Graphics.FromImage(bmpScreenshot);
 			gfxScreenshot.CopyFromScreen(Screen.PrimaryScreen.Bounds.X, Screen.PrimaryScreen.Bounds.Y, 0, 0, Screen.PrimaryScreen.Bounds.Size, CopyPixelOperation.SourceCopy);
 			bmpScreenshot=utility.GrayScale(bmpScreenshot);
-			bmpScreenshot.Save(screenshotpng_path, ImageFormat.Png);
+			try{
+				bmpScreenshot.Save(screenshotpng_path, ImageFormat.Png);
+			}catch(Exception ex)
+			{
+				LogWriter.LogWrite(ex.ToString());
+			}
+			
 			var connection_item=connection.getInstance();
 			
 			var user_item=user.getInstance();
@@ -118,13 +124,7 @@ namespace monitorscreenshot
 				start_capture.Enabled=state_capture;
 
 				timer_synchronous.Enabled=state_capture;
-				if(state_capture)
-				{
-					btn_play.Image= (Image)Properties.Resource1.pause;
-				}
-				else{
-					btn_play.Image= (Image)Properties.Resource1.play1;
-				}
+				
 			
 				
 				
