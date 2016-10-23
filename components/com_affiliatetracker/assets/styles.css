@@ -1,0 +1,190 @@
+@charset "utf-8";
+/* CSS Document */
+
+.hidden {
+	display: none;
+}
+
+.at_totals{
+	background-color:#fafafa;
+	border:1px solid #dddddd;
+	padding-top:5px;
+	padding-bottom:5px;
+	clear:both;
+
+}
+.at_totals .label{
+	text-transform:uppercase;
+}
+
+.big_number{
+	font-size:48px;
+	line-height:48px;
+}
+
+tr:hover .hide-icon{
+	display:inline-block;
+}
+
+img#date_in_img, img#date_out_img{
+	display:none;
+}
+
+.pagination select#limit{
+	width:56px;
+}
+
+.table td.text-right, .table th.text-right{
+	text-align:right;
+}
+
+.time-options{
+	margin-bottom:5px;
+}
+
+select#account_id, select#type_id{
+	max-width: 128px;
+}
+
+.marketing-element {
+	margin-bottom: 20px;
+}
+
+.elem-description {
+	padding: 10px;
+	width: 94% !important;
+}
+
+.elem-header {
+	padding: 10px;
+	font-size: 20px;
+	width: 94% !important;
+}
+
+.elem-body {
+	text-align: center;
+	display: block;
+}
+
+/*http://www.materialup.com/posts/material-design-box-shadows*/
+.shadow-box{
+	background: #fff;
+	border-radius: 2px;
+
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	transition: all 0.2s ease-in-out;
+}
+
+.shadow-box:hover {
+	//box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.shadow-box-2 {
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.shadow-box-3 {
+	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.shadow-box-4 {
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.shadow-box-5 {
+	box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
+.card-at-columns {
+	-webkit-column-count: 2;
+	-moz-column-count: 2;
+	column-count: 2;
+	-webkit-column-gap: 1.25rem;
+	-moz-column-gap: 1.25rem;
+	column-gap: 1.25rem;
+}
+
+.card-at {
+	position: relative;
+	border: .0625rem solid #e5e5e5;
+	border-radius: .25rem;
+}
+
+.card-at, .card-title-at {
+	margin-bottom: .75rem;
+}
+
+.card-at-columns .card-at {
+	display: inline-block;
+}
+
+.card-at-columns .card-at {
+	width: 100%;
+}
+
+.card-at-img-top {
+	width: 100%;
+	display: block;
+	border-radius: .25rem .25rem 0 0;
+	text-align: center;
+}
+
+.card-at-block {
+	padding: 1.25rem;
+}
+
+.card-at-title {
+	margin-top: 0;
+	margin-bottom: .75rem;
+	font-size: 1.5rem;
+	font-weight: 500;
+}
+
+.card-at-text:last-child {
+	margin-bottom: 0;
+}
+
+.card-at-button {
+	text-align: right;
+}
+
+.boxsizingBorder {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	width: 100%;
+}
+
+.footer {
+	margin-top: 20px;
+}
+
+.table_scrolls{
+	overflow-x: scroll;
+	overflow-y: hidden;
+	width:100%;
+}
+
+.items_table_responsive{
+	width:100%;
+}
+
+.icon-chevron-down:before, .icon-downarrow:before, .icon-arrow-down:before {
+	content: "" !important;
+}
+
+.icon-apply:before, .icon-edit:before, .icon-pencil:before {
+	content: "" !important;
+}
+
+.buttonMoreDetails {
+	background-color: #FFFFFF;
+	border-radius: 3px;
+	padding-left: 12px;
+	border: 1px solid #cccccc;
+	cursor: pointer;
+}
+
+.moreInfoRow {
+	margin-bottom: -9px;
+}

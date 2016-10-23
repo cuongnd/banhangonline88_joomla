@@ -2472,7 +2472,11 @@ img.hikashop_menu_block_img_unselected {
 	margin-right: 5px;
 	margin-bottom: 2px;
 }
-
+.hikashop_edit_display_type
+{
+	width: 100%;
+	display: inline-block;
+}
 .hikashop_edit_display_type .selected img.hikashop_menu_block_img_unselected {
 	display: none;
 }
@@ -2573,6 +2577,7 @@ img.hikashop_menu_block_img_selected {
 	border: solid 1px #ccc;
 	border-bottom-style: none;
 	border-radius: 8px 8px 0px 0px;
+	float: left;
 }
 
 .hikashop_edit_display_type .selected {

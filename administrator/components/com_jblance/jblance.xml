@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="3.4" method="upgrade">
+	<name>com_jblance</name>
+	<author>JoomBri Team</author>
+	<creationDate>04 April, 2015</creationDate>
+	<copyright>Copyright (C) 2012 - 2015 BriTech Solutions. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later</license>
+	<authorEmail>support@joombri.in</authorEmail>
+	<authorUrl>www.joombri.in</authorUrl>
+	<version>1.6.0.1</version>
+		<description>
+	    <![CDATA[
+	    <div class="text-left well well-small" style="font-weight: normal;">
+			<h2>Thank you for installing JoomBri Freelance</h2>
+			<h4>What's new in v1.6 ?</h4>
+		  	<ul>
+		  		<li>Projects and users can save location information.</li>
+		  		<li>Google Maps on Project detail page.</li>
+		  		<li>Enhanced Project Search page.</li>
+		  		<li>Embed YouTube link in Portfolios.</li>
+		  		<li>Track the Project progress after awarding to Freelancer.</li>
+		  		<li>Private Message included in Service progress update page.</li>
+		  	</ul>
+		  	<div class="alert alert-info alert-block">
+				<h4>Create Menus!</h4>
+				<p>If you are upgrading from earlier versions (prior to v1.5), you need to manually create two new menus <strong>My Services</strong> and <strong>Services Bought</strong> under JoomBri Menu. The above two menus are automatically created for new installation.</p>
+			</div>
+		  	<div class="alert alert-info alert-block">
+				<h4>Disable Fields!</h4>
+				<p>If you are upgrading from earlier versions (prior to v1.6), please disable <strong>(DO NOT DELETE)</strong> the custom fields related under Contact Information. The above fields are automatically created for new installation.</p>
+			</div>
+			<p><a href="http://www.joombri.in/features" target="_blank">Click here</a> for more features.</p>
+			<p>Please visit <a href="http://docs.joombri.in/installation/change-log" target="_blank">Release Notes</a> to read the complete details.</p>
+		</div>
+	    ]]>
+	</description>
+	
+	<scriptfile>script.php</scriptfile>
+	
+	<install> <!-- Runs on install -->
+    	<sql>
+        	<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+  		</sql>
+    </install>
+    
+    <uninstall> <!-- Runs on uninstall -->
+    	<sql>
+        	<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+  		</sql>
+	</uninstall>
+	
+	<update> <!-- Runs on update; New in 2.5 -->
+		<schemas>
+			<schemapath type="mysql">sql/updates</schemapath>
+		</schemas>
+	</update>
+
+	<files folder="site">
+		<filename>index.html</filename>
+		<filename>controller.php</filename>
+		<filename>defines.jblance.php</filename>
+		<filename>jblance.php</filename>
+		<filename>router.php</filename>
+		<folder>controllers</folder>
+		<folder>css</folder>
+		<folder>gateways</folder>
+		<folder>images</folder>
+		<folder>js</folder>
+		<folder>models</folder>
+		<folder>views</folder>
+	</files>
+	<languages folder="site">
+		<language tag="en-GB">language/en-GB/en-GB.com_jblance.ini
+		</language>
+	</languages>
+	<administration>
+		<menu img="class:jb-joombri">COM_JBLANCE</menu>
+		<submenu>
+			<menu link="option=com_jblance&amp;view=admproject&amp;layout=dashboard" view="admproject" img="class:jb-dashboard" alt="JoomBri/Dashboard">COM_JBLANCE_DASHBOARD</menu>
+			<menu link="option=com_jblance&amp;view=admproject&amp;layout=showproject" view="admproject" img="class:jb-project" alt="JoomBri/Projects">COM_JBLANCE_PROJECTS</menu>
+			<menu link="option=com_jblance&amp;view=admproject&amp;layout=showservice" view="admproject" img="class:jb-service" alt="JoomBri/Services">COM_JBLANCE_SERVICES</menu>
+			<menu link="option=com_jblance&amp;view=admproject&amp;layout=showuser" view="admproject" img="class:jb-users" alt="JoomBri/Users">COM_JBLANCE_USERS</menu>
+			<menu link="option=com_jblance&amp;view=admproject&amp;layout=showsubscr" view="admproject" img="class:jb-subscr" alt="JoomBri/Subscriptions">COM_JBLANCE_SUBSCRIPTIONS</menu>
+			<menu link="option=com_jblance&amp;view=admproject&amp;layout=showdeposit" view="admproject" img="class:jb-deposits" alt="JoomBri/Deposits">COM_JBLANCE_DEPOSITS</menu>
+			<menu link="option=com_jblance&amp;view=admproject&amp;layout=showwithdraw" view="admproject" img="class:jb-withdrawals" alt="JoomBri/Withdrawals">COM_JBLANCE_WITHDRAWALS</menu>
+			<menu link="option=com_jblance&amp;view=admproject&amp;layout=showescrow" view="admproject" img="class:jb-escrows" alt="JoomBri/Escrows">COM_JBLANCE_ESCROWS</menu>
+			<menu link="option=com_jblance&amp;view=admproject&amp;layout=showreporting" view="admproject" img="class:jb-reportings" alt="JoomBri/Reportings">COM_JBLANCE_REPORTINGS</menu>
+			<menu link="option=com_jblance&amp;view=admconfig&amp;layout=configpanel" view="admconfig" img="class:jb-configuration" alt="JoomBri/Configuration">COM_JBLANCE_CONFIGURATION</menu>
+			<menu link="option=com_jblance&amp;view=admproject&amp;layout=showsummary" view="admproject" img="class:jb-summary" alt="JoomBri/Summary">COM_JBLANCE_SUMMARY</menu>
+			<menu link="option=com_jblance&amp;view=admproject&amp;layout=about" view="admproject" img="class:jb-about" alt="JoomBri/About">COM_JBLANCE_ABOUT</menu>
+        </submenu>
+		<files folder="administrator">
+			<filename>access.xml</filename>
+			<filename>config.xml</filename>
+			<filename>controller.php</filename>
+			<filename>index.html</filename>
+			<filename>install.jbdefault.php</filename>
+			<filename>jblance.php</filename>
+			<filename>toolbar.xml</filename>
+			<folder>assets</folder>
+			<folder>controllers</folder>
+			<folder>helpers</folder>
+			<folder>models</folder>
+			<folder>images</folder>
+			<folder>sql</folder>
+			<folder>tables</folder>
+			<folder>views</folder>
+		</files>
+		<languages folder="administrator">
+			<language tag="en-GB">language/en-GB/en-GB.com_jblance.ini
+			</language>
+			<language tag="en-GB">language/en-GB/en-GB.com_jblance.sys.ini
+			</language>
+		</languages>
+	</administration>
+	
+	<modules>
+		<module folder="modules" module="mod_jblancebalance" name="mod_jblancebalance" />
+		<module folder="modules" module="mod_jblancecategory" name="mod_jblancecategory" />
+		<module folder="modules" module="mod_jblancefeeds" name="mod_jblancefeeds" />
+		<module folder="modules" module="mod_jblancelatest" name="mod_jblancelatest" />
+		<module folder="modules" module="mod_jblancescript" name="mod_jblancescript" />
+		<module folder="modules" module="mod_jblancesearch" name="mod_jblancesearch" />
+		<module folder="modules" module="mod_jblanceservice" name="mod_jblanceservice" />
+		<module folder="modules" module="mod_jblancestats" name="mod_jblancestats" />
+		<module folder="modules" module="mod_jblancetags" name="mod_jblancetags" />
+		<module folder="modules" module="mod_jblanceusers" name="mod_jblanceusers" />
+	</modules>
+	
+	<plugins>
+		<plugin folder="plugins/joombri" plugin="jblancefeeds" name="plg_joombri_jblancefeeds" group="joombri" />
+		<plugin folder="plugins/search" plugin="jblancesearch" name="plg_jblance_search" group="search" />
+		<plugin folder="plugins/system" plugin="jblanceredirect" name="plg_jblance_regredirect" group="system" />
+		<plugin folder="plugins/system" plugin="jblanceexpiry" name="plg_system_jblanceexpiry" group="system" />
+	</plugins>
+	
+	<!-- updateserver definition -->
+	<updateservers>
+		<!-- Note: No spaces or linebreaks allowed between the server tags -->
+		<server type="extension" priority="1" name="JoomBri Freelance Update Info">http://www.joombri.in/updates/jblance-update.xml</server>
+	</updateservers>
+</extension>

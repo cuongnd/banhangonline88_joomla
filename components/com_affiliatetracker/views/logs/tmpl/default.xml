@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Affiliate Traffic logs" hidden="false">
+		<message>
+			Affiliate Traffic logs
+		</message>
+	</layout>
+	<state>
+		<name>Affiliate Traffic logs</name>
+		<description>Affiliate Traffic logs</description>
+		
+		<params>
+		</params>
+	</state>
+</metadata>

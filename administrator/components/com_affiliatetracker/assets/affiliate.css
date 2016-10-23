@@ -1,0 +1,64 @@
+@charset "utf-8";
+
+div.icon-48-invoices {	background: url(images/invoice_icon.png) no-repeat left; }
+div.icon-48-templates {	background: url(images/template.png) no-repeat left; }
+div.icon-48-taxes {	background: url(images/tax.png) no-repeat left; }
+div.icon-48-contacts {	background: url(images/contacts.png) no-repeat left; }
+div.icon-48-payments {	background: url(images/payments.png) no-repeat left; }
+
+
+.clearfix{
+	clear:both;
+}
+
+.radio_toggle {
+display: none !important;
+}
+
+.filter-bar .navbar-inner {
+padding: 5px !important;
+}
+.filter-bar .btn, .navbar .btn-group {
+margin-top: 0px !important;
+}
+
+#ref_word_error {
+	display: none;
+}
+
+#updates {
+	display: none;
+}
+
+.version-box {
+	margin-top: 20px;
+	text-align: center;
+}
+
+.sys-info-title {
+	font-weight: bold;
+	padding-bottom: 15px;
+}
+
+#update-info {
+	padding-top: 15px;
+}
+
+.btn-get-updates {
+	margin-top: 15px;
+}
+
+.plugin-version-row {
+	padding-top: 15px;
+}
+
+#html_code_wrapper {
+	border: 1px solid #ccc;
+	transition: border linear .2s, box-shadow linear .2s;
+	border-radius: 3px;
+	padding: 4px 6px;
+}
+
+.add-level-div-button {
+	margin-top: 10px;
+}

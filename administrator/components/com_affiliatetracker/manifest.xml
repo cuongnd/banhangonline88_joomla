@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="component" version="3.0" method="upgrade">
+	<name>AffiliateTracker</name>
+	<license>GPLv2. Private software</license>
+	<author>JoomlaThat!</author>
+	<authorEmail>support@joomlathat.com</authorEmail>
+	<authorUrl>http://www.joomlathat.com</authorUrl>
+	<creationDate>April 2016</creationDate>
+	<copyright>2013 - 2016, joomlathat.com</copyright>
+	<version>2.0.3</version>
+	<description>
+		Affiliate Tracker for Joomla!
+	</description>
+	<!--installfile>install/install.php</installfile-->
+	<install>
+		<sql>
+			<file driver="mysql" charset="utf8">install/install.mysql.utf8.sql</file>
+			<file driver="mysql">install/install.mysql.sql</file>
+		</sql>
+	</install>
+
+	<uninstall>
+	</uninstall>
+
+	<update>
+		<schemas>
+			<schemapath type="mysql">sql/updates</schemapath>
+		</schemas>
+	</update>
+
+    <files folder="site">
+		<folder>helpers</folder>
+		<folder>assets</folder>
+		<folder>models</folder>
+		<folder>views</folder>
+		<folder>elements</folder>
+		<filename>affiliatetracker.php</filename>
+		<filename>controller.php</filename>
+		<filename>router.php</filename>
+		<filename>index.html</filename>
+    </files>
+
+	<languages folder="site">
+		<language tag="en-GB">en-GB.com_affiliatetracker.ini</language>
+   	</languages>
+
+	<administration>
+
+		<!-- Administration Menu Section -->
+		<menu img="components/com_affiliatetracker/assets/images/contacts_icon.png" link="option=com_affiliatetracker">AFFILIATE_TRACKER</menu>
+		<submenu>
+		  <menu img="components/com_affiliatetracker/assets/images/percent.png"  link="option=com_affiliatetracker">CONVERSIONS</menu>
+		  <menu img="components/com_affiliatetracker/assets/images/contacts_icon.png"  link="option=com_affiliatetracker&amp;controller=accounts">ACCOUNTS</menu>
+		  <menu img="components/com_affiliatetracker/assets/images/chart_bar.png"  link="option=com_affiliatetracker&amp;controller=logs">LOGS</menu>
+		  <menu img="components/com_affiliatetracker/assets/images/money.png"  link="option=com_affiliatetracker&amp;controller=payments">PAYMENTS</menu>
+		  <menu img="components/com_affiliatetracker/assets/images/template_icon.png"  link="option=com_affiliatetracker&amp;controller=marketings">MARKETING_MATERIAL</menu>
+
+		</submenu>
+
+	    <files folder="admin">
+		    <folder>assets</folder>
+
+		    <folder>controllers</folder>
+		    <folder>install</folder>
+		    <folder>models</folder>
+		    <folder>tables</folder>
+		    <folder>views</folder>
+			<folder>sql</folder>
+			<filename>config.xml</filename>
+			<filename>controller.php</filename>
+			<filename>index.html</filename>
+			<filename>affiliatetracker.php</filename>
+			<filename>access.xml</filename>
+	    </files>
+
+	    <languages folder="admin">
+			<language tag="en-GB">en-GB.com_affiliatetracker.sys.ini</language>
+	   	</languages>
+
+ 	</administration>
+
+	<updateservers>
+		<server type="extension" priority="1" name="Affiliate Tracker Updates">http://www.joomlathat.com/updates/ATupdate.xml</server>
+	</updateservers>
+
+</extension>

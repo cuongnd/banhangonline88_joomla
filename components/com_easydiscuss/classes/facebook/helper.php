@@ -65,9 +65,9 @@ class DiscussFacebook extends Facebook
 	public function getAuthorizationURL()
 	{
 		$scope	= array(
-							'publish_stream',
+							//'publish_stream',
 							'user_likes',
-							'offline_access',
+							//'offline_access',
 							'manage_pages',
 							'user_status'
 						);

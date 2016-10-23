@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="3.0" method="upgrade">
+    <name>com_quanlynhanvien</name>
+    <creationDate>2016-10-16</creationDate>
+    <copyright>2016 cuong</copyright>
+    <license>bản quyền mã nguồn mở GNU phiên bản 2</license>
+    <author>cuong</author>
+    <authorEmail>nguyendinhcuong@gmail.com</authorEmail>
+    <authorUrl>http://</authorUrl>
+    <version>CVS: 1.0.0</version>
+    <description></description>
+    
+    
+    
+    <install> <!-- Runs on install -->
+        <sql>
+            <file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+        </sql>
+    </install>
+    <update> <!-- Runs on update -->
+        <sql>
+            <file driver="mysql" charset="utf8">sql/update.mysql.utf8.sql</file>
+        </sql>
+    </update>
+    <uninstall> <!-- Runs on uninstall -->
+        <sql>
+            <file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+        </sql>
+    </uninstall>
+
+    <files folder="site">
+        <filename>index.html</filename>
+        <filename>quanlynhanvien.php</filename>
+        <filename>controller.php</filename>
+        <filename>router.php</filename>
+        <folder>views</folder>
+        <folder>models</folder>
+        <folder>controllers</folder>
+        <folder>helpers</folder>
+    </files>
+    <media destination="com_quanlynhanvien" folder="media">
+        <folder>js</folder>
+        <folder>css</folder>
+    </media>
+    <languages folder="languages/site">
+        
+			<language tag="en-GB">en-GB/en-GB.com_quanlynhanvien.ini</language>
+    </languages>
+    <administration>
+        <menu img="media/com_quanlynhanvien/images/s_com_quanlynhanvien.png" >COM_QUANLYNHANVIEN</menu>
+        <submenu>
+            
+			<menu link="option=com_quanlynhanvien&amp;view=danhsachnhanviens" view="danhsachnhanviens" img="media/com_quanlynhanvien/images/s_.png" alt="Quanlynhanvien/Danhsachnhanviens">COM_QUANLYNHANVIEN_TITLE_DANHSACHNHANVIENS</menu>
+
+			<menu link="option=com_quanlynhanvien&amp;view=capturescreens" view="capturescreens" img="media/com_quanlynhanvien/images/s_.png" alt="Quanlynhanvien/Capturescreens">COM_QUANLYNHANVIEN_TITLE_CAPTURESCREENS</menu>
+
+        </submenu>
+        <files folder="administrator">
+            <filename>access.xml</filename>
+            <filename>config.xml</filename>
+            <filename>controller.php</filename>
+            <filename>index.html</filename>
+            <filename>quanlynhanvien.php</filename>
+            <folder>controllers</folder>
+            <folder>assets</folder>
+            <folder>helpers</folder>
+            <folder>models</folder>
+            <folder>sql</folder>
+            <folder>tables</folder>
+            <folder>views</folder>
+        </files>
+        <languages folder="languages/administrator">
+            
+			<language tag="en-GB">en-GB/en-GB.com_quanlynhanvien.ini</language>
+			<language tag="en-GB">en-GB/en-GB.com_quanlynhanvien.sys.ini</language>
+        </languages>
+    </administration>
+    <config>
+        <fields name="params">
+            <fieldset name="component">
+                <field name="save_history" default="0" />
+            </fieldset>
+        </fields>
+    </config>
+    <plugins>
+        <plugin group="search" plugin="quanlynhanvien"/>
+    </plugins>
+    
+</extension>
+<!-- Component built by the Joomla Component Creator -->
+<!-- http://www.component-creator.com/ -->

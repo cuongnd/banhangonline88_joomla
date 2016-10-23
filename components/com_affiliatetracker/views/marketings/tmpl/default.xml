@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+    <layout title="Affiliate Marketing" hidden="false">
+        <message>
+            Affiliate Marketing
+        </message>
+    </layout>
+    <state>
+        <name>Affiliate Marketing</name>
+        <description>Affiliate Marketing</description>
+        <params>
+        </params>
+    </state>
+</metadata>

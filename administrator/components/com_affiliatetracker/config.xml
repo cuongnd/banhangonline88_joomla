@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+ <fieldset name="global" label="General" description="Affiliate Tracker global settings" >
+
+ 	<field class="btn-group" name="newaccounts" type="radio" default="1" label="Frontend users can request new accounts" description="Frontend users can request new accounts">
+      <option value="0">JNO</option>
+      <option value="1">JYES</option>
+    </field>
+
+     <field class="btn-group" name="autoacceptaccounts" type="radio" default="0" label="Automatically approve new accounts" description="Automatically approve new accounts">
+         <option value="0">JNO</option>
+         <option value="1">JYES</option>
+     </field>
+
+     <field name="numaccountsuser" type="text" class="input-mini" default="" size="50" label="Max number of accounts per user" description="Max number of accounts per user. Leave blank for no limit" />
+	
+	<field name="itemid" type="text" default="" class="input-mini" label="Default ItemId" description="ItemId to link to the ALL the links inside Affiliate Tracker component" />
+	
+	<field name="@spacer1" type="spacer" default="" label="" description="" />
+	
+	<field name="currency_before" type="text" class="input-mini" default="" size="50" label="Currency symbol (before)" description="Default Currency symbol (before)" />
+	<field name="currency_after" type="text" class="input-mini" default="" size="50" label="Currency symbol (after)" description="Default Currency symbol (after)" />
+	
+	<field name="@spacer2" type="spacer" default="" label="" description="" />
+	
+	<field name="days" type="list"  default="30"  label="Last X days (default)" description="Number of days to count" >
+
+	  <option value="TODAY">Today</option>
+      <option value="7">Last 7 days</option>
+      <option value="15">Last 15 days</option>
+      <option value="30">Last 30 days</option>
+      <option value="60">Last 60 days</option>
+      <option value="ALLTIME">All time</option>
+    </field>
+
+	<field name="@spacer3" type="spacer" default="" label="" description="" />
+	
+	<field name="default_amount" type="text" class="input-mini" default="10" size="50" label="Default commission for new accounts (amount)" description="Default commission for new accounts (amount)" />
+
+	<field name="default_type" type="list" default="percent" label="Default commission for new accounts (type)" description="Default commission for new accounts (type)">
+      <option value="percent">Percentage(%)</option>
+      <option value="flat">Flat rate</option>
+    </field>
+
+     <field
+         name="new_usertype"
+         type="usergrouplist"
+         default="2"
+         label="Group for new users creating an affiliate account"
+         description="When a new user requests a new affiliate account creating a new Joomla user, it will be assigned to the selected group">
+     </field>
+
+     <field name="@spacer4" type="spacer" default="" label="" description="" />
+
+     <field name="load_jquery" type="radio" class="btn-group" default="1" label="Load jQuery" description="Load jQuery with the component">
+         <option value="1">JYES</option>
+         <option value="0">JNO</option>
+     </field>
+
+     <field class="btn-group" name="load_bootstrap" type="radio" default="1" label="Load Bootstrap" description="Load Bootstrap with the component">
+         <option value="0">JNO</option>
+         <option value="1">JYES</option>
+     </field>
+
+     <field name="systeminfo" type="radio" default="1" class="btn-group" label="Show system information box" description="Show system information box">
+         <option value="1">JYES</option>
+         <option value="0">JNO</option>
+     </field>
+
+	</fieldset>
+  
+  	<fieldset name="emails" label="E-mails" description="Affiliate Tracker e-mail settings" >
+
+	<field name="email_name" type="text" default="" size="50" label="From (name) on emails" description="From (name) on emails" />
+	<field name="email_email" type="text" default="" size="50" label="From (email) on emails" description="From (email) on emails" />
+
+
+	<field name="@spacer5" type="spacer" default="" label="" description="" />
+
+	<field class="btn-group" name="email_account_admin" type="radio" default="1" label="New account - e-mail admin" description="Send e-mail to admin when new account request is made">
+      <option value="0">JNO</option>
+      <option value="1">JYES</option>
+    </field>
+
+    <field class="btn-group" name="email_account_user" type="radio" default="1" label="New account approved - e-mail user" description="Send e-mail to user when new account request is made">
+      <option value="0">JNO</option>
+      <option value="1">JYES</option>
+    </field>
+
+    <field class="btn-group" name="email_conversion_admin" type="radio" default="1" label="New conversion - e-mail admin" description="Send e-mail to admin when new conversion is made">
+      <option value="0">JNO</option>
+      <option value="1">JYES</option>
+    </field>
+
+    <field class="btn-group" name="email_conversion_user" type="radio" default="1" label="New conversion - e-mail user" description="Send e-mail to admin when new conversion is made">
+      <option value="0">JNO</option>
+      <option value="1">JYES</option>
+    </field>
+	
+  	</fieldset>
+
+  	<fieldset name="texts" label="Texts" description="Affiliate Tracker basic texts" >
+
+  		<field name="textnewaccount" type="textarea" rows="10" cols="70" default="" label="Text for new account page" description="Explanatory text for new account creation" filter="raw" />
+
+  		<field name="textaccounts" type="textarea" rows="10" cols="70" default="" label="Text for accounts list page" description="Text for accounts list page" filter="raw" />
+
+      <field name="textaccounts_new" type="textarea" rows="10" cols="70" default="" label="Text for accounts page for unlogged users" description="Text for accounts page for unlogged users" filter="raw" />
+
+  		<field name="textconversions" type="textarea" rows="10" cols="70" default="" label="Text for conversions list page" description="Text for conversions list page" filter="raw" />
+
+  		<field name="textlogs" type="textarea" rows="10" cols="70" default="" label="Text for logs list page" description="Text for logs list page" filter="raw" />
+
+  		<field name="textpayments" type="textarea" rows="10" cols="70" default="" label="Text for payments list page" description="Text for payments list page" filter="raw" />
+
+        <field name="textmarketings" type="textarea" rows="10" cols="70" default="" label="Text for marketing material list page" description="Text for marketing material list page" filter="raw" />
+
+  		</fieldset>
+
+    <fieldset
+            name="permissions"
+            label="JCONFIG_PERMISSIONS_LABEL"
+            description="JCONFIG_PERMISSIONS_DESC"
+            >
+
+        <field
+                name="rules"
+                type="rules"
+                label="JCONFIG_PERMISSIONS_LABEL"
+                validate="rules"
+                filter="rules"
+                component="com_affiliatetracker"
+                section="component" />
+    </fieldset>
+
+</config>

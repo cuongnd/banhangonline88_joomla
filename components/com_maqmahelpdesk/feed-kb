@@ -4,15 +4,21 @@
 	<channel>
 		<title>Kiến Thức Cơ Sở</title>
 		<description>Kiến Thức Cơ Sở</description>
-		<link>http://banhangonline88.com/</link>
-		<lastBuildDate>Thu, 06 Oct 2016 07:07:04 +0100</lastBuildDate>
+		<link>http://www.admin.banhangonline88.com/</link>
+		<lastBuildDate>Sat, 22 Oct 2016 19:12:38 +0100</lastBuildDate>
 		<generator>FeedCreator 1.7.2</generator>
 		<image>
-			<url>http://banhangonline88.com/media/com_maqmahelpdesk/images/themes/default/48px/kb.png</url>
+			<url>http://www.admin.banhangonline88.com/media/com_maqmahelpdesk/images/themes/default/48px/kb.png</url>
 			<title>Powered by MaQma Helpdesk</title>
-			<link>http://banhangonline88.com/</link>
+			<link>http://www.admin.banhangonline88.com/</link>
 			<description>Kiến Thức Cơ Sở</description>
 		</image>
+		<item>
+			<title>Kỹ năng thanh toán tiền</title>
+			<link>index.php?option=com_maqmahelpdesk&amp;Itemid=2928&amp;id_workgroup=&amp;task=kb_view&amp;id=2</link>
+			<description>Kỹ năng thanh toán tiền</description>
+			<pubDate>Sat, 22 Oct 2016 00:00:00 +0100</pubDate>
+		</item>
 		<item>
 			<title>làm thế nào để thế</title>
 			<link>index.php?option=com_maqmahelpdesk&amp;Itemid=2928&amp;id_workgroup=&amp;task=kb_view&amp;id=1</link>

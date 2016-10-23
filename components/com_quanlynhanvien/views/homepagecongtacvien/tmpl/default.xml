@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="homepagecongtacvien" option="homepagecongtacvien">
+		<help
+			key = "homepagecongtacvien"
+		/>
+		<message>
+			<![CDATA[homepagecongtacvien]]>
+		</message>
+	</layout>
+
+	<!-- Add fields to the request variables for the layout. -->
+
+	<!-- Add fields to the parameters object for the layout. -->
+</metadata>

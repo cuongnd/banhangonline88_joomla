@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.1" client="site" method="upgrade">
+	<name>mod_jblanceservice</name>
+	<creationDate>28 January 2015</creationDate>
+	<author>JoomBri Team</author>
+	<copyright>Copyright (C) 2012 - 2015 BriTech Solutions. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>support@joombri.in</authorEmail>
+	<authorUrl>www.joombri.in</authorUrl>
+	<version>1.0.0</version>
+	<description>MOD_JBLANCE_DESC_SERVICE_MODULE</description>
+	
+	<files>
+		<filename module="mod_jblanceservice">mod_jblanceservice.php</filename>
+		<filename>css/style.css</filename>
+		<filename>css/index.html</filename>
+		<filename>index.html</filename>
+	    <filename>helper.php</filename>	
+	    <filename>tmpl/default.php</filename>
+	    <filename>tmpl/index.html</filename>
+	</files>
+	
+	<languages>
+		<language tag="en-GB">language/en-GB/en-GB.mod_jblanceservice.ini</language>
+		<language tag="en-GB">language/en-GB/en-GB.mod_jblanceservice.sys.ini</language>
+	</languages>
+	
+	<config>
+        <fields name="params">
+			<fieldset name="basic">
+				<field name="limit_service" type="text" default="20" class="input-mini" label="MOD_JBLANCE_LABEL_LIMIT_SERVICE" description="MOD_JBLANCE_DESC_LIMIT_SERVICE" />
+				<field name="scroll_interval" type="text" default="5000" class="input-mini" label="MOD_JBLANCE_LABEL_SCROLL_INTERVAL" description="MOD_JBLANCE_DESC_SCROLL_INTERVAL" />
+				<field name="ordering" type="list" default="s.id" label="MOD_JBLANCE_LABEL_ORDERING" description="MOD_JBLANCE_DESC_ORDERING">
+					<option value="s.id">MOD_JBLANCE_SERVICE_ID</option>
+					<option value="rand()">MOD_JBLANCE_RANDOM</option>
+				</field>
+				<field name="direction" type="list" default="1" label="JGLOBAL_ORDER_DIRECTION_LABEL" description="JGLOBAL_ORDER_DIRECTION_DESC">
+					<option value="0">JGLOBAL_ORDER_ASCENDING</option>
+					<option value="1">JGLOBAL_ORDER_DESCENDING</option>
+				</field>
+				<field name="set_itemid" type="menuitem" default="101" label="MOD_JBLANCE_LABEL_SET_ITEMID" description="MOD_JBLANCE_DESC_SET_ITEMID" />
+			</fieldset>
+			<fieldset name="advanced">
+				<field name="layout" type="modulelayout" label="JFIELD_ALT_LAYOUT_LABEL" description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+				<field name="moduleclass_sfx" type="textarea" rows="3" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+				<field name="cache" type="list" default="1" label="COM_MODULES_FIELD_CACHING_LABEL" description="COM_MODULES_FIELD_CACHING_DESC">
+					<option value="1">JGLOBAL_USE_GLOBAL</option>
+					<option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+				<field name="cache_time" type="text" default="900" label="COM_MODULES_FIELD_CACHE_TIME_LABEL" description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
+			</fieldset>
+		</fields>
+    </config>
+</extension>
