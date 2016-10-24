@@ -66,7 +66,6 @@ window.hikashop.ready(function(){window.hikamarket.dlTitle('hikamarket_products_
 						<?php echo $this->quantityType->display('data[product][product_quantity]', @$this->product->product_quantity);?>
 					</dd>
 <?php }
-
 	if(@$this->product->product_type != 'variant' && hikamarket::acl('product/edit/category')) { ?>
 					<dt class="hikamarket_product_category"><label><?php echo JText::_('PRODUCT_CATEGORIES'); ?></label></dt>
 					<dd class="hikamarket_product_category"><?php
@@ -87,7 +86,6 @@ window.hikashop.ready(function(){window.hikamarket.dlTitle('hikamarket_products_
 		);
 					?></dd>
 <?php }
-
 	if(@$this->product->product_type != 'variant' && hikamarket::acl('product/edit/manufacturer')) {?>
 					<dt class="hikamarket_product_manufacturer"><label><?php echo JText::_('MANUFACTURER'); ?></label></dt>
 					<dd class="hikamarket_product_manufacturer"><?php

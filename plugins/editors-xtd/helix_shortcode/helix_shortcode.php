@@ -134,7 +134,7 @@ class plgButtonHelix_Shortcode extends JPlugin
 
 
 		<?php	
-
+		JHtml::_('formbehavior.chosen');
 		$doc->addStylesheet( JURI::root( true ) . '/plugins/editors-xtd/helix_shortcode/assets/css/helix-shortcode.css');
 		$doc->addScript( JURI::root( true ) . '/plugins/editors-xtd/helix_shortcode/assets/js/shortcode-generator.js');
 
