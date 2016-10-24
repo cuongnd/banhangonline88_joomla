@@ -14,11 +14,18 @@
   ul.level-0
   {
     margin: 0px;
+    background: rgba(0, 0, 0, 0) linear-gradient(to top, #f0f0f0, #ffffff) repeat scroll 0 0;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
     li.menu-iem.level-1
     {
+      border-bottom: 1px solid #cccccc;
       a{
-        width: 100%;
-        padding: 5px 0px;
+        color: #444444;
+        display: block;
+        padding: 5px 10px;
+        text-decoration: none;
+
         img
         {
           margin-left: 5px;
@@ -28,6 +35,22 @@
         {
           margin-left: 2px;
         }
+      }
+      a:hover{
+        color: #9e3c02;
+      }
+    }
+    li.menu-iem.level-1.active{
+      background: rgba(0, 0, 0, 0) linear-gradient(to top, #c43735, #d56462) repeat scroll 0 0;
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+      padding: 3px;
+      a::after{
+
+      }
+      a{
+        border: 1px dashed #de8886;
+        color: #ffffff;
+        text-shadow: 0 1px 1px #8c2726;
       }
     }
     li.menu-iem.level-1:hover{
