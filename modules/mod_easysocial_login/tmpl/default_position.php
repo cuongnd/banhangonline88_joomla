@@ -17,8 +17,20 @@ $useSSL = $params->get('use_secure_url', false) ? 1 : 0;
 ?>
 <div id="mod_easysocial_login_<?php echo $module->id ?>" class="default_position">
 	<?php if( $my->id ){ ?>
-		<a href="javascript:void(0)" class="profile-name"><?php echo $my->name ?></a>
+		<a href="javascript:void(0)" class="profile-name"><i class="icon_sprite icon_sprite_login"></i><?php echo $my->name ?></a>
 		<div id="fd" class="es mod-es-login style-vertical module-social<?php echo $suffix;?>">
+			<h3><?php echo JText::_('MOD_EASYSOCIAL_LOGIN_ACOUNT_BUYER') ?></h3>
+			<div class="row-fuild">
+				<div class="span12">
+					<div></div>
+				</div>
+			</div>
+			<h3><?php echo JText::_('MOD_EASYSOCIAL_LOGIN_ACOUNT_VENDOR') ?></h3>
+			<div class="row-fuild">
+				<div class="span12">
+
+				</div>
+			</div>
 			<form action="<?php echo JRoute::_( 'index.php' );?>" id="es-mod-login-signout-form" method="post">
 				<div class="text-center">
 					<a href="javascript:void(0);" onclick="document.getElementById( 'es-mod-login-signout-form' ).submit();" class="btn btn-primary">
@@ -34,7 +46,7 @@ $useSSL = $params->get('use_secure_url', false) ? 1 : 0;
 			</form>
 		</div>
 	<?php }else{ ?>
-		<a class="login" href="javascript:void(0)"><?php echo JText::_('JLOGIN')  ?></a>
+		<a class="login" href="javascript:void(0)"><i class="icon_sprite icon_sprite_login"></i><?php echo JText::_('JLOGIN')  ?></a>
 		<div id="fd" class="es mod-es-login style-vertical module-social<?php echo $suffix;?>">
 			<div class="mod-bd mt-10">
 				<div class="es-form-wrap">
