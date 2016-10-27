@@ -666,6 +666,15 @@ class productmarketViewproductmarket extends hikamarketView {
 			$editor->options = false;
 		$this->assignRef('editor', $editor);
 
+		$editor_short_description = hikamarket::get('shop.helper.editor');
+		$editor_short_description->setEditor($config->get('editor', ''));
+		$editor_short_description->name = 'product_short_description';
+		$editor_short_description->content = $product->product_short_description;
+		$editor_short_description->height = 200;
+		if($config->get('editor_disable_buttons', 0))
+			$editor_short_description->options = false;
+		$this->assignRef('editor_short_description', $editor_short_description);
+
 		if(!isset($product->product_quantity) || $product->product_quantity < 0)
 			$product->product_quantity = JText::_('UNLIMITED');
 		if(!isset($product->product_max_per_order) || $product->product_max_per_order <= 0)

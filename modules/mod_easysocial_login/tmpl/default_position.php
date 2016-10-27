@@ -52,9 +52,9 @@ $useSSL = $params->get('use_secure_url', false) ? 1 : 0;
 				<div class="es-form-wrap">
 					<form class="es-form-login" method="post" action="<?php echo JRoute::_('index.php', true, $useSSL);?>">
 						<fieldset>
-							<input type="text" placeholder="<?php echo $config->get( 'registrations.emailasusername' ) ? JText::_( 'MOD_EASYSOCIAL_LOGIN_EMAIL_PLACEHOLDER' ) : JText::_( 'MOD_EASYSOCIAL_LOGIN_USERNAME_PLACEHOLDER' );?>" name="username" class="form-control input-xs mb-10" />
+							<input type="text" autocomplete="off" placeholder="<?php echo $config->get( 'registrations.emailasusername' ) ? JText::_( 'MOD_EASYSOCIAL_LOGIN_EMAIL_PLACEHOLDER' ) : JText::_( 'MOD_EASYSOCIAL_LOGIN_USERNAME_PLACEHOLDER' );?>" name="username" class="form-control input-xs mb-10" />
 
-							<input type="password" placeholder="<?php echo JText::_( 'MOD_EASYSOCIAL_LOGIN_PASSWORD_PLACEHOLDER' );?>" name="password" class="form-control input-xs" />
+							<input type="password" autocomplete="off" placeholder="<?php echo JText::_( 'MOD_EASYSOCIAL_LOGIN_PASSWORD_PLACEHOLDER' );?>" name="password" class="form-control input-xs" />
 
 							<?php if( $params->get( 'show_remember_me' , true ) ){ ?>
 								<div class="checkbox">

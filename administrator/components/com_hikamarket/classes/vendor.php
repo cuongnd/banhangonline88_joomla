@@ -732,12 +732,27 @@ class hikamarketVendorClass extends hikamarketClass {
 
 
 		$status = $this->save($vendor);
-
 		if(!$status) {
 			JRequest::setVar('fail[vendor]', $vendor);
 			return false;
 		}
+		$table_domain=JTable::getInstance('domain');
+		$table_domain->id=0;
+		$table_domain->domain_name =$vendor->vendor_domain;
+		$ok=$table_domain->store();
+		if(!$ok)
+		{
+			jimport('joomla.log.log');
+			JLog::add('create domain vendor', JLog::WARNING);
+		}else{
+			$vendor->vendor_domain_id=$table_domain->id;
 
+		}
+		$status = $this->save($vendor);
+		if(!$status) {
+			JRequest::setVar('fail[vendor]', $vendor);
+			return false;
+		}
 		hikamarket::loadVendor(false, true);
 
 
