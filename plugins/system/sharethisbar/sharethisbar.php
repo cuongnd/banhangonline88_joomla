@@ -175,7 +175,6 @@ class plgSystemSharethisbar extends JPlugin
      */
     function onAfterDispatch()
     {
-        return;
         $app = JFactory::getApplication();
         if ($app->isAdmin()) {
             // Load mooTools. I MooTools Core i MooTools More (drugi argument je true).

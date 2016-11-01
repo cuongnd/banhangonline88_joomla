@@ -82,6 +82,7 @@
           <!-- Da bi se prikazale slicice na lokalu sam morao da ubacim .. ispred prve crte / -->
           <field name="btnsort" type="checkboxesimgsort" plugin="sharethisbar" label="PLG_SHARETHISBAR_FIELD_CHKBOXESIMGSORT_LABEL" description="PLG_SHARETHISBAR_FIELD_CHKBOXESIMGSORT_DESC" default="fb">
              <option value="fb" showlabel="0" simg="../plugins/system/sharethisbar/images/facebook32.gif" simgalt="Facebook" simgtitle="Facebook">Facebook</option>
+             <option value="fb" showlabel="0" simg="../plugins/system/sharethisbar/images/facebook32.gif" simgalt="FacebookShared" simgtitle="FacebookShared">Facebook shared</option>
              <option value="go" showlabel="0" simg="../plugins/system/sharethisbar/images/googleplus32.gif" simgalt="GooglePlus" simgtitle="GooglePlus">Google +</option>
              <option value="tw" showlabel="0" simg="../plugins/system/sharethisbar/images/twitter32.gif" simgalt="Twitter" simgtitle="Twitter">Twitter</option>
              <option value="li" showlabel="0" simg="../plugins/system/sharethisbar/images/linkedin32.gif" simgalt="LinkedIn" simgtitle="LinkedIn">LinkedIn</option>
