@@ -50,6 +50,7 @@
 			},
 
 			start:function (e, ui) {
+
 				root.sortableGroupId = ui.item.attr(ops.orderingGroup);
 				if (root.sortableGroupId) {
 					root.sortableRange = $('tr[' + ops.orderingGroup + '=' + root.sortableGroupId + ']');
@@ -91,7 +92,39 @@
 					if (ft.length) ft.detach();
 
 					//serialize form then post to callback url
-					$.post(saveOrderingUrl, f.serialize());
+
+
+					$.ajax({
+						type: "POST",
+						url: saveOrderingUrl,
+						dataType: "json",
+						data: (function () {
+
+							dataPost = f.serialize();
+							return dataPost;
+						})(),
+						beforeSend: function () {
+
+							$('.div-loading').css({
+								display: "block"
+							});
+						},
+						success: function (response) {
+
+							$('.div-loading').css({
+								display: "none"
+
+
+							});
+
+						}
+
+					});
+
+
+
+
+					//$.post(saveOrderingUrl, f.serialize());
 
 					// Re-Append original task field
 					if (ft.length) ft.appendTo(f);

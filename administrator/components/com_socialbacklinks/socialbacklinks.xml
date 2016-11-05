@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="1.7" method="upgrade">
+	<name>Social Backlinks</name>
+	<creationDate>March 2012</creationDate>
+	<author>JoomUnited</author>
+	<authorEmail>contact@joomunited.com</authorEmail>
+	<authorUrl>http://www.joomunited.com</authorUrl>
+	<copyright>(c) 2012 JoomUnited (http://www.joomunited.com). All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; http://www.gnu.org/licenses/gpl-2.0.html</license>
+	<version>1.8.0</version>
+	<description>SB_DESCRIPTION</description>
+	
+	<!-- Installation -->
+	<install>
+		<sql>
+			<file charset="utf8" driver="mysql">install/install.sql</file>
+		</sql>
+	</install>
+	
+	<uninstall>
+		<sql>
+			<file charset="utf8" driver="mysql">install/uninstall.sql</file>
+		</sql>
+	</uninstall>
+	
+	<scriptfile>install/script.php</scriptfile>
+	
+	<!-- Application/site -->
+	<files folder="site">
+		<filename>index.html</filename>
+		<filename>controller.php</filename>
+		<filename>socialbacklinks.php</filename>
+	</files>
+		
+	<!-- Application/administrator -->	
+	<administration>
+		<menu img="components/com_socialbacklinks/assets/sb-icon.png">COM_SOCIALBACKLINKS</menu>
+		
+		<languages folder="admin/language">
+			<language tag="en-GB">en-GB.com_socialbacklinks.ini</language>
+			<language tag="en-GB">en-GB.com_socialbacklinks.sys.ini</language>
+			
+			<language tag="fr-FR">fr-FR.com_socialbacklinks.ini</language>
+			<language tag="fr-FR">fr-FR.com_socialbacklinks.sys.ini</language>
+		</languages>
+		
+		<files folder="admin">
+			<filename>dispatcher.php</filename>
+			<filename>exception.php</filename>
+			<filename>index.html</filename>
+			<filename>loader.php</filename>
+			<filename>socialbacklinks.php</filename>
+			
+			<folder>assets</folder>
+			<folder>controllers</folder>
+			<folder>helpers</folder>
+			<folder>install</folder>
+			<folder>models</folder>
+			<folder>plugins</folder>
+			<folder>tables</folder>
+			<folder>views</folder>
+		</files>
+	</administration>
+    
+	<!--  Media -->
+	<media destination="com_socialbacklinks" folder="media">
+		<folder>css</folder>
+		<folder>images</folder>
+		<folder>js</folder>
+		<file>index.html</file>
+	</media>
+	
+	<!-- Plugins -->
+	<plugins>
+		<plugin plugin="plg_system_sbsynchronizer" folder="system" element="sbsynchronizer" publish="1" version="1.8.0" />
+		<plugin plugin="plg_content_sbtrigger" folder="content" element="sbtrigger" publish="1" version="1.8.0" />
+		
+		<plugin plugin="plg_sb_joomla" folder="socialbacklinks" element="joomla" publish="1" version="1.8.0" />
+		<plugin plugin="plg_sb_k2" folder="socialbacklinks" element="k2" publish="1" version="1.8.0" />
+		<plugin plugin="plg_sb_zoo" folder="socialbacklinks" element="zoo" publish="1" version="1.8.0" />
+		<plugin plugin="plg_sb_hikashop" folder="socialbacklinks" element="hikashop" publish="1" version="1.8.0" />
+		<plugin plugin="plg_sb_redshop" folder="socialbacklinks" element="redshop" publish="1" version="1.8.0" />
+		<plugin plugin="plg_sb_virtuemart" folder="socialbacklinks" element="virtuemart" publish="1" version="1.8.0" />
+		
+		<plugin plugin="plg_sb_facebook" folder="socialbacklinks" element="facebook" publish="1" version="1.8.0" />
+		<plugin plugin="plg_sb_linkedin" folder="socialbacklinks" element="linkedin" publish="1" version="1.8.0" />
+		<plugin plugin="plg_sb_twitter" folder="socialbacklinks" element="twitter" publish="1" version="1.8.0" />
+	</plugins>
+</extension>
