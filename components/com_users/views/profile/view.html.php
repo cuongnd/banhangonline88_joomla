@@ -62,7 +62,7 @@ class UsersViewProfile extends JViewLegacy
 			// What should happen here? Should we force a logout which destroys the cookies?
 			$app = JFactory::getApplication();
 			$app->enqueueMessage(JText::_('JGLOBAL_REMEMBER_MUST_LOGIN'), 'message');
-			$app->redirect(JRoute::_('index.php?option=com_users&view=login', false));
+			$app->redirect(JRoute::_('index.php?option=com_easysocial&view=login', false));
 
 			return false;
 		}

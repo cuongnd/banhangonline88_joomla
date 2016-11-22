@@ -24,7 +24,7 @@ class CMGroupBuyingViewOrder extends JViewLegacy
 			$message = JText::_('COM_CMGROUPBUYING_LOGIN_FIRST');
 			$redirectUrl = CMGroupBuyingHelperCommon::prepareRedirect('index.php?option=com_cmgroupbuying&view=orders');
 			$redirectUrl = base64_encode($redirectUrl);
-			$redirectUrl = JRoute::_("index.php?option=com_users&view=login&return=".$redirectUrl, false);
+			$redirectUrl = JRoute::_("index.php?option=com_easysocial&view=login&return=".$redirectUrl, false);
 			$app->enqueueMessage($message, 'error');
 			$app->redirect($redirectUrl);
 		}

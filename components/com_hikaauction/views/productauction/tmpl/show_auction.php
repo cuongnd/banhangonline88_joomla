@@ -209,7 +209,7 @@ if(!$this->auction_finished) {
 			if(!HIKASHOP_J16){
 				$login_url = HIKASHOP_LIVE . 'index.php?option=com_user&view=login'.$this->login_itemid;
 			}else{
-				$login_url = HIKASHOP_LIVE . 'index.php?option=com_users&view=login'.$this->login_itemid;
+				$login_url = HIKASHOP_LIVE . 'index.php?option=com_easysocial&view=login'.$this->login_itemid;
 			}
 			$login_url = JRoute::_($login_url.'&return='.urlencode(base64_encode(hikashop_currentUrl('',false))),false);
 	?>

@@ -37,7 +37,7 @@ JHtml::_('behavior.formvalidator');
 	</div>
 	<?php endif; ?>
 
-	<form action="<?php echo JRoute::_('index.php?option=com_users&task=user.login'); ?>" method="post" class="form-validate form-horizontal well">
+	<form action="<?php echo JRoute::_('index.php?com_easysocial&task=user.login'); ?>" method="post" class="form-validate form-horizontal well">
 
 		<fieldset>
 			<?php foreach ($this->form->getFieldset('credentials') as $field) : ?>
@@ -91,18 +91,18 @@ JHtml::_('behavior.formvalidator');
 <div>
 	<ul class="nav nav-tabs nav-stacked">
 		<li>
-			<a href="<?php echo JRoute::_('index.php?option=com_users&view=reset'); ?>">
+			<a href="<?php echo JRoute::_('index.php?com_easysocial&view=reset'); ?>">
 			<?php echo JText::_('COM_USERS_LOGIN_RESET'); ?></a>
 		</li>
 		<li>
-			<a href="<?php echo JRoute::_('index.php?option=com_users&view=remind'); ?>">
+			<a href="<?php echo JRoute::_('index.php?com_easysocial&view=remind'); ?>">
 			<?php echo JText::_('COM_USERS_LOGIN_REMIND'); ?></a>
 		</li>
 		<?php
 		$usersConfig = JComponentHelper::getParams('com_users');
 		if ($usersConfig->get('allowUserRegistration')) : ?>
 		<li>
-			<a href="<?php echo JRoute::_('index.php?option=com_users&view=registration'); ?>">
+			<a href="<?php echo JRoute::_('index.php?com_easysocial&view=registration'); ?>">
 				<?php echo JText::_('COM_USERS_LOGIN_REGISTER'); ?></a>
 		</li>
 		<?php endif; ?>

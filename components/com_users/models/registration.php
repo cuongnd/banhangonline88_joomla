@@ -102,7 +102,7 @@ class UsersModelRegistration extends JModelForm
 			$user->set('activation', $data['activation']);
 			$data['siteurl'] = JUri::base();
 			$base = $uri->toString(array('scheme', 'user', 'pass', 'host', 'port'));
-			$data['activate'] = $base . JRoute::_('index.php?option=com_users&task=registration.activate&token=' . $data['activation'], false);
+			$data['activate'] = $base . JRoute::_('index.php?com_easysocial&task=registration.activate&token=' . $data['activation'], false);
 
 			// Remove administrator/ from activate url in case this method is called from admin
 			if (JFactory::getApplication()->isAdmin())
@@ -441,7 +441,7 @@ class UsersModelRegistration extends JModelForm
 			// Set the link to confirm the user email.
 			$uri = JUri::getInstance();
 			$base = $uri->toString(array('scheme', 'user', 'pass', 'host', 'port'));
-			$data['activate'] = $base . JRoute::_('index.php?option=com_users&task=registration.activate&token=' . $data['activation'], false);
+			$data['activate'] = $base . JRoute::_('index.php?com_easysocial&task=registration.activate&token=' . $data['activation'], false);
 
 			// Remove administrator/ from activate url in case this method is called from admin
 			if (JFactory::getApplication()->isAdmin())
@@ -485,7 +485,7 @@ class UsersModelRegistration extends JModelForm
 			// Set the link to activate the user account.
 			$uri = JUri::getInstance();
 			$base = $uri->toString(array('scheme', 'user', 'pass', 'host', 'port'));
-			$data['activate'] = $base . JRoute::_('index.php?option=com_users&task=registration.activate&token=' . $data['activation'], false);
+			$data['activate'] = $base . JRoute::_('index.php?com_easysocial&task=registration.activate&token=' . $data['activation'], false);
 
 			// Remove administrator/ from activate url in case this method is called from admin
 			if (JFactory::getApplication()->isAdmin())

@@ -127,7 +127,6 @@ class JApplicationDaemon extends JApplicationCli
 
 		// Call the parent constructor.
 		parent::__construct($input, $config, $dispatcher);
-
 		// Set some system limits.
 		@set_time_limit($this->config->get('max_execution_time', 0));
 

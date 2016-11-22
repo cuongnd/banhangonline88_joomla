@@ -12,7 +12,7 @@ defined('_JEXEC') or die('Restricted access');
 $cParams = JComponentHelper::getParams('com_jmap');
 if($cParams->get('resources_limit_management', 1)) {
 	ini_set('memory_limit', '-1');
-	ini_set('max_execution_time', 0);
+	ini_set7('max_execution_time', 0);
 	ini_set('pcre.backtrack_limit', -1);
 }
 

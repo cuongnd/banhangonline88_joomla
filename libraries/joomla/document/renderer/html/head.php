@@ -18,6 +18,8 @@ use Joomla\Utilities\ArrayHelper;
  */
 class JDocumentRendererHtmlHead extends JDocumentRenderer
 {
+
+
 	/**
 	 * Renders the document head and returns the results as a string
 	 *
@@ -62,7 +64,6 @@ class JDocumentRendererHtmlHead extends JDocumentRenderer
 		$tab    = $document->_getTab();
 		$tagEnd = ' />';
 		$buffer = '';
-
 		// Generate charset when using HTML5 (should happen first)
 		if ($document->isHtml5())
 		{
@@ -126,6 +127,29 @@ class JDocumentRendererHtmlHead extends JDocumentRenderer
 
 			$buffer .= ' />' . $lnEnd;
 		}
+		$client=$app->getClientId();
+		if($this->merge_css && $client==0)
+		{
+			$table_compress=JTable::getInstance('compress');
+			$json_file=json_encode($document->_styleSheets);
+			$table_compress->load(array(json_file=>$json_file));
+			if(!$table_compress->id)
+			{
+				$table_compress->json_file=$json_file;
+				$table_compress->store();
+			}
+			$path_file_all_css='media/system/css/all_'.$table_compress->id.'.css';
+			if($this->renew_compress_css){
+				$this->make_style_sheets($document->_styleSheets,$path_file_all_css);
+			}else{
+				if(!JFile::exists(JPATH_ROOT.DS.$path_file_all_css))
+				{
+					$this->make_style_sheets($document->_styleSheets,$path_file_all_css);
+				}
+				$this->make_style_sheets($document->_styleSheets,$path_file_all_css,false);
+			}
+		}
+
 
 		$defaultCssMimes = array('text/css');
 
@@ -189,26 +213,46 @@ class JDocumentRendererHtmlHead extends JDocumentRenderer
 
 			$buffer .= $tab . '</style>' . $lnEnd;
 		}
+		if($this->merge_js && $client==0)
+		{
+			$table_compress=JTable::getInstance('compress');
+			$json_file=json_encode($document->_scripts);
+			$table_compress->load(array(json_file=>$json_file));
+			if(!$table_compress->id)
+			{
+				$table_compress->json_file=$json_file;
+				$table_compress->store();
+			}
+			$path_file_all_js='media/system/js/all_'.$table_compress->id.'.js';
 
+			if($this->renew_compress_js){
+				$this->make_js($document->_scripts,$path_file_all_js);
+			}else{
+				if(!JFile::exists(JPATH_ROOT.DS.$path_file_all_js))
+				{
+					$this->make_js($document->_scripts,$path_file_all_js);
+				}
+				$this->make_js($document->_scripts,$path_file_all_js,false);
+			}
+
+
+
+		}
 		$defaultJsMimes = array('text/javascript', 'application/javascript', 'text/x-javascript', 'application/x-javascript');
 
 		// Generate script file links
-		foreach ($document->_scripts as $strSrc => $strAttr)
-		{
+		foreach ($document->_scripts as $strSrc => $strAttr) {
 			$buffer .= $tab . '<script src="' . $strSrc . '"';
 
-			if (!is_null($strAttr['mime']) && (!$document->isHtml5() || !in_array($strAttr['mime'], $defaultJsMimes)))
-			{
+			if (!is_null($strAttr['mime']) && (!$document->isHtml5() || !in_array($strAttr['mime'], $defaultJsMimes))) {
 				$buffer .= ' type="' . $strAttr['mime'] . '"';
 			}
 
-			if ($strAttr['defer'])
-			{
+			if ($strAttr['defer']) {
 				$buffer .= ' defer="defer"';
 			}
 
-			if ($strAttr['async'])
-			{
+			if ($strAttr['async']) {
 				$buffer .= ' async="async"';
 			}
 
@@ -218,17 +262,15 @@ class JDocumentRendererHtmlHead extends JDocumentRenderer
 		// Generate scripts options
 		$scriptOptions = $document->getScriptOptions();
 
-		if (!empty($scriptOptions))
-		{
+		if (!empty($scriptOptions)) {
 			$buffer .= $tab . '<script type="text/javascript">' . $lnEnd;
 
 			// This is for full XHTML support.
-			if ($document->_mime != 'text/html')
-			{
+			if ($document->_mime != 'text/html') {
 				$buffer .= $tab . $tab . '//<![CDATA[' . $lnEnd;
 			}
 
-			$pretyPrint  = (JDEBUG && defined('JSON_PRETTY_PRINT') ? JSON_PRETTY_PRINT : false);
+			$pretyPrint = (JDEBUG && defined('JSON_PRETTY_PRINT') ? JSON_PRETTY_PRINT : false);
 			$jsonOptions = json_encode($scriptOptions, $pretyPrint);
 			$jsonOptions = $jsonOptions ? $jsonOptions : '{}';
 
@@ -237,8 +279,7 @@ class JDocumentRendererHtmlHead extends JDocumentRenderer
 			$buffer .= $tab . 'Joomla.optionsStorage = ' . $jsonOptions . ';' . $lnEnd;
 
 			// See above note
-			if ($document->_mime != 'text/html')
-			{
+			if ($document->_mime != 'text/html') {
 				$buffer .= $tab . $tab . '//]]>' . $lnEnd;
 			}
 
@@ -246,28 +287,24 @@ class JDocumentRendererHtmlHead extends JDocumentRenderer
 		}
 
 		// Generate script declarations
-		foreach ($document->_script as $type => $content)
-		{
+		foreach ($document->_script as $type => $content) {
 			$buffer .= $tab . '<script';
 
-			if (!is_null($type) && (!$document->isHtml5() || !in_array($type, $defaultJsMimes)))
-			{
+			if (!is_null($type) && (!$document->isHtml5() || !in_array($type, $defaultJsMimes))) {
 				$buffer .= ' type="' . $type . '"';
 			}
 
 			$buffer .= '>' . $lnEnd;
 
 			// This is for full XHTML support.
-			if ($document->_mime != 'text/html')
-			{
+			if ($document->_mime != 'text/html') {
 				$buffer .= $tab . $tab . '//<![CDATA[' . $lnEnd;
 			}
 
 			$buffer .= $content . $lnEnd;
 
 			// See above note
-			if ($document->_mime != 'text/html')
-			{
+			if ($document->_mime != 'text/html') {
 				$buffer .= $tab . $tab . '//]]>' . $lnEnd;
 			}
 
@@ -275,19 +312,16 @@ class JDocumentRendererHtmlHead extends JDocumentRenderer
 		}
 
 		// Generate script language declarations.
-		if (count(JText::script()))
-		{
+		if (count(JText::script())) {
 			$buffer .= $tab . '<script';
 
-			if (!$document->isHtml5())
-			{
+			if (!$document->isHtml5()) {
 				$buffer .= ' type="text/javascript"';
 			}
 
 			$buffer .= '>' . $lnEnd;
 
-			if ($document->_mime != 'text/html')
-			{
+			if ($document->_mime != 'text/html') {
 				$buffer .= $tab . $tab . '//<![CDATA[' . $lnEnd;
 			}
 
@@ -295,8 +329,7 @@ class JDocumentRendererHtmlHead extends JDocumentRenderer
 			$buffer .= $tab . $tab . $tab . 'Joomla.JText.load(' . json_encode(JText::script()) . ');' . $lnEnd;
 			$buffer .= $tab . $tab . '})();' . $lnEnd;
 
-			if ($document->_mime != 'text/html')
-			{
+			if ($document->_mime != 'text/html') {
 				$buffer .= $tab . $tab . '//]]>' . $lnEnd;
 			}
 
@@ -310,5 +343,96 @@ class JDocumentRendererHtmlHead extends JDocumentRenderer
 		}
 
 		return $buffer;
+	}
+	private function make_js($scripts,$path_file_all_js,$write_file=true)
+	{
+		$js_content="";
+		foreach ($scripts as $strSrc => $strAttr)
+		{
+
+			if (filter_var($strSrc, FILTER_VALIDATE_URL))
+			{
+				if (strpos($strSrc, JUri::root()) !== false) {
+					$strSrc=str_replace(JUri::root(),JPATH_ROOT.DS,$strSrc);
+				}
+			}else{
+				$strSrc=JPATH_ROOT.DS.$strSrc;
+			}
+			if(!is_link($strSrc))
+			{
+				$has_character=strpos($strSrc, "?");
+
+				//check has charactor "?"
+				if ( $has_character!== false) {
+
+					$strSrc=substr($strSrc,0,$has_character);
+				}
+			}
+			if($write_file)
+			{
+				$js_content.=JFile::read($strSrc)."\n\r";
+			}
+
+
+
+		}
+		if($write_file)
+		{
+			JFile::write(JPATH_ROOT.DS.$path_file_all_js,$js_content);
+		}
+		$document=JFactory::getDocument();
+		$document->_scripts=array();
+		$document->addScript(JUri::root().$path_file_all_js);
+
+	}
+	private function make_style_sheets($styleSheets,$path_file_all_css,$write_file=true)
+	{
+		$css_content='';
+		$list_less_file=array();
+		foreach ($styleSheets as $strSrc => $strAttr)
+		{
+			if (strpos($strSrc, '.less') !== false) {
+
+				$list_less_file[$strSrc]=$strAttr;
+			}else{
+				if (filter_var($strSrc, FILTER_VALIDATE_URL)) {
+
+					if (strpos($strSrc, JUri::root()) !== false) {
+
+						$strSrc=str_replace(JUri::root(),JPATH_ROOT.DS,$strSrc);
+					}
+				}else{
+					$strSrc=JPATH_ROOT.DS.$strSrc;
+				}
+				if (!filter_var($strSrc, FILTER_VALIDATE_URL))
+				{
+					$has_character=strpos($strSrc, "?");
+
+					//check has charactor "?"
+					if ( $has_character!== false) {
+
+						$strSrc=substr($strSrc,0,$has_character);
+					}
+				}
+				if($write_file) {
+					$file_content = JFile::read($strSrc);
+					if (strpos($file_content, "../") !== false) {
+						$strSrc1 = str_replace(JPATH_ROOT . DS, "", $strSrc);
+						$strSrc1 = explode('/', $strSrc1);
+						$strSrc1 = array_slice($strSrc1, 0, count($strSrc1) - 1);
+						$strSrc1 = implode('/', $strSrc1);
+						$file_content = str_replace("../", "/".$strSrc1 . '/../', $file_content);
+					}
+					$css_content .= $file_content . "\n\r";
+				}
+			}
+		}
+		if($write_file)
+		{
+			JFile::write(JPATH_ROOT.DS.$path_file_all_css,$css_content);
+		}
+		$document=JFactory::getDocument();
+		$document->_styleSheets=$list_less_file;
+		$document->addStyleSheet(JUri::root().$path_file_all_css);
 	}
 }

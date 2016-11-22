@@ -227,7 +227,7 @@ class auctionAuctionController extends hikaauctionController {
 			if(!HIKASHOP_J16){
 				$url = 'index.php?option=com_user&view=login'.$url;
 			}else{
-				$url = 'index.php?option=com_users&view=login'.$url;
+				$url = 'index.php?option=com_easysocial&view=login'.$url;
 			}
 			$app->redirect(JRoute::_($url.'&return='.urlencode(base64_encode(hikashop_currentUrl('',false))),false));
 			return false;

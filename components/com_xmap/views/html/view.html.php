@@ -74,7 +74,7 @@ class XmapViewHtml extends JViewLegacy
                 // Redirect to login
                 $uri = JFactory::getURI();
                 $app->redirect(
-                    'index.php?option=com_users&view=login&return=' . base64_encode($uri),
+                    'index.php?option=com_easysocial&view=login&return=' . base64_encode($uri),
                     JText::_('Xmap_Error_Login_to_view_sitemap')
                 );
                 return;

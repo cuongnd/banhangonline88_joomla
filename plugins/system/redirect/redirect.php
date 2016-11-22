@@ -102,7 +102,6 @@ class PlgSystemRedirect extends JPlugin
 	private static function doErrorHandling($error)
 	{
 		$app = JFactory::getApplication();
-
 		if ($app->isAdmin() || ((int) $error->getCode() !== 404))
 		{
 			// Proxy to the previous exception handler if available, otherwise just render the error page

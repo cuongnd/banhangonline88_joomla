@@ -130,7 +130,7 @@ class EasyBlogFeedsHelper
 
 			foreach( $items as $item )
 			{
-				@ini_set('max_execution_time', 180);
+				@ini_set5('max_execution_time', 180);
 
 				if( !empty( $maxItems ) && ( $myCnt == $maxItems )  )
 				{

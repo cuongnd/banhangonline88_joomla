@@ -48,7 +48,7 @@ class UsersController extends JControllerLegacy
 					if ($user->get('guest') != 1)
 					{
 						// Redirect to profile page.
-						$this->setRedirect(JRoute::_('index.php?option=com_users&view=profile', false));
+						$this->setRedirect(JRoute::_('index.php?com_easysocial&view=profile', false));
 
 						return;
 					}
@@ -57,7 +57,7 @@ class UsersController extends JControllerLegacy
 					if (JComponentHelper::getParams('com_users')->get('allowUserRegistration') == 0)
 					{
 						// Registration is disabled - Redirect to login page.
-						$this->setRedirect(JRoute::_('index.php?option=com_users&view=login', false));
+						$this->setRedirect(JRoute::_('index.php?option=com_easysocial&view=login', false));
 
 						return;
 					}
@@ -75,7 +75,7 @@ class UsersController extends JControllerLegacy
 					if ($user->get('guest') == 1)
 					{
 						// Redirect to login page.
-						$this->setRedirect(JRoute::_('index.php?option=com_users&view=login', false));
+						$this->setRedirect(JRoute::_('index.php?option=com_easysocial&view=login', false));
 
 						return;
 					}
@@ -95,7 +95,7 @@ class UsersController extends JControllerLegacy
 					if ($user->get('guest') != 1)
 					{
 						// Redirect to profile page.
-						$this->setRedirect(JRoute::_('index.php?option=com_users&view=profile', false));
+						$this->setRedirect(JRoute::_('index.php?com_easysocial&view=profile', false));
 
 						return;
 					}
@@ -110,7 +110,7 @@ class UsersController extends JControllerLegacy
 					if ($user->get('guest') != 1)
 					{
 						// Redirect to profile page.
-						$this->setRedirect(JRoute::_('index.php?option=com_users&view=profile', false));
+						$this->setRedirect(JRoute::_('index.php?com_easysocial&view=profile', false));
 
 						return;
 					}

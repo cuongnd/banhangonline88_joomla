@@ -21,7 +21,7 @@ class TTools {
 		} else {
 		if(version_compare(JVERSION,'1.6.0','>=')){
 			//joomla 1.6 format
-                $app->redirect( JRoute::_("index.php?option=com_users&view=login&return=$returnurl",false));
+                $app->redirect( JRoute::_("index.php?option=com_easysocial&view=login&return=$returnurl",false));
 		} else {
 			//joomla 1.5 format
                 $app->redirect( JRoute::_("index.php?option=com_user&view=login&return=$returnurl",false));

@@ -41,7 +41,7 @@ class CMGroupBuyingControllerDealSubmission extends JControllerForm
 			$message = JText::_('COM_CMGROUPBUYING_LOGIN_FIRST');
 			$redirectUrl = CMGroupBuyingHelperCommon::prepareRedirect('index.php?option=com_cmgroupbuying&view=dealsubmission');
 			$redirectUrl = base64_encode($redirectUrl);
-			$redirectUrl = JRoute::_("index.php?option=com_users&view=login&return=".$redirectUrl, false);
+			$redirectUrl = JRoute::_("index.php?option=com_easysocial&view=login&return=".$redirectUrl, false);
 			$this->setRedirect($redirectUrl, $message, 'error');
 			$this->redirect();
 		}

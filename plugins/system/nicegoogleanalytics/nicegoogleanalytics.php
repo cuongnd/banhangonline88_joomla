@@ -42,6 +42,7 @@ class plgSystemNiceGoogleAnalytics extends JPlugin
     }
     function onAfterRender()
     {
+        return;
         $app = JFactory::getApplication();
 
         if ($app->isAdmin() || JRequest::getCmd('task') == 'edit' || JRequest::getCmd('layout') == 'edit') {

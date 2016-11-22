@@ -10,6 +10,7 @@ defined('_JEXEC') or die('Restricted access');
 ?><div>
 <?php if(!empty($this->params->delete) && !empty($this->params->uploader_id)) { ?>
 	<a href="#delete" class="deleteImg" onclick="return window.hkUploaderList['<?php echo $this->params->uploader_id; ?>'].delImage(this);"><img src="<?php echo HIKAMARKET_IMAGES; ?>icon-16/delete.png" border="0"></a>
+	<a href="#delete" class="editmg" onclick="return window.hkUploaderList['<?php echo $this->params->uploader_id; ?>'].editImage(this);"><img src="<?php echo HIKAMARKET_IMAGES; ?>icon-16/edit.png" border="0"></a>
 <?php } ?>
 	<div class="hikamarket_image"><?php
 	$img = $this->imageHelper->getThumbnail(@$this->params->file_path, array(100, 100), null);

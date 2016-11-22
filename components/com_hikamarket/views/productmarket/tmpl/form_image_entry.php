@@ -8,8 +8,14 @@
  */
 defined('_JEXEC') or die('Restricted access');
 ?><?php
+$image_path=$this->params->file_path;
+$image_path=JUri::root().$this->imageHelper->getPath($image_path);
+$tag_image_id='image-item-'.$this->params->file_id;
 $type = (!empty($this->params->product_type) && $this->params->product_type == 'variant') ? 'variant' : 'product';
-?><a href="#delete" class="deleteImg" onclick="return window.productMgr.delImage(this, '<?php echo $type; ?>');"><img src="<?php echo HIKAMARKET_IMAGES; ?>icon-16/delete.png" border="0"></a>
+?>
+
+<a href="#delete" class="deleteImg" onclick="return window.productMgr.delImage(this, '<?php echo $type; ?>');"><img src="<?php echo HIKAMARKET_IMAGES; ?>icon-16/delete.png" border="0"></a>
+<a href="javascript:void(0)" class="editImg" onclick="window.productMgr.editImageOnline('<?php echo $tag_image_id ?>','<?php echo $image_path ?>');"><img src="<?php echo HIKAMARKET_IMAGES; ?>icon-16/edit.png" border="0"></a>
 <div class="hikamarket_image">
 <?php
 	$size_x = (int)$this->config->get('product_edition_image_x', 100);
@@ -20,9 +26,9 @@ $type = (!empty($this->params->product_type) && $this->params->product_type == '
 		$this->params->file_id = 0;
 	$image = $this->imageHelper->getThumbnail(@$this->params->file_path, array($size_x, $size_y), array('default' => true));
 	if(!empty($image) && $image->success) {
-		$content = '<img src="'.$image->url.'" alt="'.$image->filename.'" />';
+		$content = '<input type="hidden" size_x="'.$size_x.'" size_y="'.$size_y.'"  name="'.$tag_image_id.'" value="'.$this->params->file_id.'" class="image-item" src="'.$image_path.'" id="'.$tag_image_id.'"><img id="thumbnail_image-'.$this->params->file_id.'" src="'.$image->url.'" alt="'.$image->filename.'" />';
 	} else {
-		$content = '<img src="" alt="'.@$this->params->file_name.'" />';
+		$content = '<input type="hidden" size_x="'.$size_x.'" size_y="'.$size_y.'"  name="'.$tag_image_id.'" value="'.$this->params->file_id.'" class="image-item" src="'.$image_path.'" id="'.$tag_image_id.'"><img id="thumbnail-'.$this->params->file_id.'" src="" alt="'.@$this->params->file_name.'" />';
 	}
 	echo $this->popup->display(
 		$content,

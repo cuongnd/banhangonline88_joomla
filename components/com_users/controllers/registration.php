@@ -77,22 +77,22 @@ class UsersControllerRegistration extends UsersController
 		if ($useractivation == 0)
 		{
 			$this->setMessage(JText::_('COM_USERS_REGISTRATION_SAVE_SUCCESS'));
-			$this->setRedirect(JRoute::_('index.php?option=com_users&view=login', false));
+			$this->setRedirect(JRoute::_('index.php?option=com_easysocial&view=login', false));
 		}
 		elseif ($useractivation == 1)
 		{
 			$this->setMessage(JText::_('COM_USERS_REGISTRATION_ACTIVATE_SUCCESS'));
-			$this->setRedirect(JRoute::_('index.php?option=com_users&view=login', false));
+			$this->setRedirect(JRoute::_('index.php?option=com_easysocial&view=login', false));
 		}
 		elseif ($return->getParam('activate'))
 		{
 			$this->setMessage(JText::_('COM_USERS_REGISTRATION_VERIFY_SUCCESS'));
-			$this->setRedirect(JRoute::_('index.php?option=com_users&view=registration&layout=complete', false));
+			$this->setRedirect(JRoute::_('index.php?com_easysocial&view=registration&layout=complete', false));
 		}
 		else
 		{
 			$this->setMessage(JText::_('COM_USERS_REGISTRATION_ADMINACTIVATE_SUCCESS'));
-			$this->setRedirect(JRoute::_('index.php?option=com_users&view=registration&layout=complete', false));
+			$this->setRedirect(JRoute::_('index.php?com_easysocial&view=registration&layout=complete', false));
 		}
 
 		return true;
@@ -113,7 +113,7 @@ class UsersControllerRegistration extends UsersController
 		// If registration is disabled - Redirect to login page.
 		if (JComponentHelper::getParams('com_users')->get('allowUserRegistration') == 0)
 		{
-			$this->setRedirect(JRoute::_('index.php?option=com_users&view=login', false));
+			$this->setRedirect(JRoute::_('index.php?option=com_easysocial&view=login', false));
 
 			return false;
 		}
@@ -159,7 +159,7 @@ class UsersControllerRegistration extends UsersController
 			$app->setUserState('com_users.registration.data', $requestData);
 
 			// Redirect back to the registration screen.
-			$this->setRedirect(JRoute::_('index.php?option=com_users&view=registration', false));
+			$this->setRedirect(JRoute::_('index.php?com_easysocial&view=registration', false));
 
 			return false;
 		}
@@ -175,7 +175,7 @@ class UsersControllerRegistration extends UsersController
 
 			// Redirect back to the edit screen.
 			$this->setMessage($model->getError(), 'warning');
-			$this->setRedirect(JRoute::_('index.php?option=com_users&view=registration', false));
+			$this->setRedirect(JRoute::_('index.php?com_easysocial&view=registration', false));
 
 			return false;
 		}
@@ -187,17 +187,17 @@ class UsersControllerRegistration extends UsersController
 		if ($return === 'adminactivate')
 		{
 			$this->setMessage(JText::_('COM_USERS_REGISTRATION_COMPLETE_VERIFY'));
-			$this->setRedirect(JRoute::_('index.php?option=com_users&view=registration&layout=complete', false));
+			$this->setRedirect(JRoute::_('index.php?com_easysocial&view=registration&layout=complete', false));
 		}
 		elseif ($return === 'useractivate')
 		{
 			$this->setMessage(JText::_('COM_USERS_REGISTRATION_COMPLETE_ACTIVATE'));
-			$this->setRedirect(JRoute::_('index.php?option=com_users&view=registration&layout=complete', false));
+			$this->setRedirect(JRoute::_('index.php?com_easysocial&view=registration&layout=complete', false));
 		}
 		else
 		{
 			$this->setMessage(JText::_('COM_USERS_REGISTRATION_SAVE_SUCCESS'));
-			$this->setRedirect(JRoute::_('index.php?option=com_users&view=login', false));
+			$this->setRedirect(JRoute::_('index.php?option=com_easysocial&view=login', false));
 		}
 
 		return true;

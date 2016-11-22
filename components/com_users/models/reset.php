@@ -449,7 +449,7 @@ class UsersModelReset extends JModelForm
 		$mode = $config->get('force_ssl', 0) == 2 ? 1 : (-1);
 		$itemid = UsersHelperRoute::getLoginRoute();
 		$itemid = $itemid !== null ? '&Itemid=' . $itemid : '';
-		$link = 'index.php?option=com_users&view=reset&layout=confirm&token=' . $token . $itemid;
+		$link = 'index.php?com_easysocial&view=reset&layout=confirm&token=' . $token . $itemid;
 
 		// Put together the email template data.
 		$data = $user->getProperties();

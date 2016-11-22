@@ -143,6 +143,7 @@ class JDocument
 	 */
 	public $_script = array();
 
+
 	/**
 	 * Array of scripts options
 	 *
@@ -461,6 +462,7 @@ class JDocument
 		$this->_scripts[$url]['mime'] = $type;
 		$this->_scripts[$url]['defer'] = $defer;
 		$this->_scripts[$url]['async'] = $async;
+
 
 		return $this;
 	}
@@ -1120,7 +1122,7 @@ class JDocument
 	public function addLessStyleSheet($url, $media = null, $attribs = array())
 	{
 		JHtml::_('jquery.framework');
-		$this->addScript(JUri::root() . '/media/system/js/less-1.5.0.js');
+		JHtml::_('jquery.less');
 		$attribs = array('rel' => 'stylesheet/less');
 		$this->addStyleSheet($url, 'text/css', $media, $attribs);
 		return $this;

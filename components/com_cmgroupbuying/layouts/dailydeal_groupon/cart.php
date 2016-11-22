@@ -657,9 +657,9 @@ foreach($profile as $key=>$value)
 	else:  //If current user is a guest
 		$redirectUrl = CMGroupBuyingHelperCommon::prepareRedirect('index.php?option=com_cmgroupbuying&view=cart');
 		$redirectUrl = base64_encode($redirectUrl);
-		$loginUrl = JRoute::_("index.php?option=com_users&view=login&return=".$redirectUrl, false);
+		$loginUrl = JRoute::_("index.php?option=com_easysocial&view=login&return=".$redirectUrl, false);
 		$loginTag = '<a href="' . $loginUrl . '">' . JText::_('COM_CMGROUPBUYING_LOGIN') . '</a>';
-		$registerTag = '<a href="' . JRoute::_('index.php?option=com_users&view=registration', false) . '">' . JText::_('COM_CMGROUPBUYING_REGISTER') . '</a>';
+		$registerTag = '<a href="' . JRoute::_('index.php?com_easysocial&view=registration', false) . '">' . JText::_('COM_CMGROUPBUYING_REGISTER') . '</a>';
 		echo '<div class="guest_check_out_message">'
 			. JText::sprintf('COM_CMGROUPBUYING_GUEST_CHECK_OUT_MESSAGE', $loginTag, $registerTag)
 			. '</div>';

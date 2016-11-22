@@ -72,7 +72,7 @@ class UsersModelLogin extends JModelForm
 		// Set the return URL if empty.
 		if (!isset($data['return']) || empty($data['return']))
 		{
-			$data['return'] = 'index.php?option=com_users&view=profile';
+			$data['return'] = 'index.php?com_easysocial&view=profile';
 		}
 
 		$app->setUserState('users.login.form.data', $data);

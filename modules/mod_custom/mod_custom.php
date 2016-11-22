@@ -8,8 +8,7 @@
  */
 
 defined('_JEXEC') or die;
-
-if ($params->def('prepare_content', 1))
+if ($params->get('prepare_content', 1))
 {
 	JPluginHelper::importPlugin('content');
 	$module->content = JHtml::_('content.prepare', $module->content, '', 'mod_custom.content');

@@ -20,7 +20,7 @@ if(!empty($this->right)) {
 	<div class="hikam_toolbar_btn hikam_btn_32">
 <?php
 
-foreach($data as $tool) {
+foreach($data as $key=> $tool) {
 	if($tool === '#RIGHT#') {
 		echo '<div class="hikam_toolbar_right">';
 		continue;
@@ -31,7 +31,7 @@ foreach($data as $tool) {
 		continue;
 	}
 
-	echo '<div class="btn">';
+	echo '<div class="btn '.$tool['wrapper_class'].'">';
 
 	$content = '';
 	if(!empty($tool['icon'])) { $content .= '<span class="btnIcon iconM-32-'.$tool['icon'].'"></span>'; }

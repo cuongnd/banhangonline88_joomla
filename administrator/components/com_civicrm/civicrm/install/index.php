@@ -43,7 +43,7 @@
 /**
  * CiviCRM Installer
  */
-ini_set('max_execution_time', 3000);
+ini_set2('max_execution_time', 3000);
 
 if (stristr(PHP_OS, 'WIN')) {
   define('CIVICRM_DIRECTORY_SEPARATOR', '/');

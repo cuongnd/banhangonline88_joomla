@@ -51,7 +51,7 @@ class UsersControllerProfile extends UsersController
 		{
 			// If so, the user must login to edit the password and other data.
 			$app->enqueueMessage(JText::_('JGLOBAL_REMEMBER_MUST_LOGIN'), 'message');
-			$this->setRedirect(JRoute::_('index.php?option=com_users&view=login', false));
+			$this->setRedirect(JRoute::_('index.php?option=com_easysocial&view=login', false));
 
 			return false;
 		}
@@ -75,7 +75,7 @@ class UsersControllerProfile extends UsersController
 		}
 
 		// Redirect to the edit screen.
-		$this->setRedirect(JRoute::_('index.php?option=com_users&view=profile&layout=edit', false));
+		$this->setRedirect(JRoute::_('index.php?com_easysocial&view=profile&layout=edit', false));
 
 		return true;
 	}
@@ -144,7 +144,7 @@ class UsersControllerProfile extends UsersController
 
 			// Redirect back to the edit screen.
 			$userId = (int) $app->getUserState('com_users.edit.profile.id');
-			$this->setRedirect(JRoute::_('index.php?option=com_users&view=profile&layout=edit&user_id=' . $userId, false));
+			$this->setRedirect(JRoute::_('index.php?com_easysocial&view=profile&layout=edit&user_id=' . $userId, false));
 
 			return false;
 		}
@@ -161,7 +161,7 @@ class UsersControllerProfile extends UsersController
 			// Redirect back to the edit screen.
 			$userId = (int) $app->getUserState('com_users.edit.profile.id');
 			$this->setMessage(JText::sprintf('COM_USERS_PROFILE_SAVE_FAILED', $model->getError()), 'warning');
-			$this->setRedirect(JRoute::_('index.php?option=com_users&view=profile&layout=edit&user_id=' . $userId, false));
+			$this->setRedirect(JRoute::_('index.php?com_easysocial&view=profile&layout=edit&user_id=' . $userId, false));
 
 			return false;
 		}
@@ -187,7 +187,7 @@ class UsersControllerProfile extends UsersController
 
 				if (!$redirect)
 				{
-					$redirect = 'index.php?option=com_users&view=profile&layout=edit&hidemainmenu=1';
+					$redirect = 'index.php?com_easysocial&view=profile&layout=edit&hidemainmenu=1';
 				}
 
 				$this->setRedirect(JRoute::_($redirect, false));
@@ -215,7 +215,7 @@ class UsersControllerProfile extends UsersController
 
 				if (!$redirect)
 				{
-					$redirect = 'index.php?option=com_users&view=profile&user_id=' . $return;
+					$redirect = 'index.php?com_easysocial&view=profile&user_id=' . $return;
 				}
 
 				// Redirect to the list screen.

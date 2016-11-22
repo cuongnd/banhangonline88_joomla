@@ -242,7 +242,7 @@ else
                                 <?php if(COMMUNITY_BUILDER): ?>
                                 window.location.replace(<?php echo  json_encode(JRoute::_('index.php?option=com_comprofiler&task=login')); ?>);
                                 <?php else: ?>
-                                window.location.replace(<?php echo  json_encode(JRoute::_('index.php?option=com_users&view=login')); ?>);
+                                window.location.replace(<?php echo  json_encode(JRoute::_('index.php?option=com_easysocial&view=login')); ?>);
                                 <?php endif; ?>
                             } else if(result == 3) {
                                 alert('<?php echo addslashes(JText::_('ADSMANAGER_CONTENT_FAVORITE_NO_AD_SELECTED')); ?>');
@@ -262,7 +262,7 @@ else
                                 <?php if(COMMUNITY_BUILDER): ?>
                                 window.location.replace(<?php echo  json_encode(JRoute::_('index.php?option=com_comprofiler&task=login')); ?>);
                                 <?php else: ?>
-                                window.location.replace(<?php echo  json_encode(JRoute::_('index.php?option=com_users&view=login')); ?>);
+                                window.location.replace(<?php echo  json_encode(JRoute::_('index.php?option=com_easysocial&view=login')); ?>);
                                 <?php endif; ?>
                             } else if(result == 3) {
                                 alert('<?php echo addslashes(JText::_('ADSMANAGER_CONTENT_FAVORITE_NO_AD_SELECTED')); ?>');

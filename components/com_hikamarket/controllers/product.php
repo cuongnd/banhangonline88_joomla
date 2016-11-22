@@ -17,6 +17,7 @@ class productMarketController extends hikamarketController {
 			'edit_translation', 'cartlink', 'waitingapproval',
 		),
 		'add' => array('add'),
+		'update' => array('ajax_update_image_product'),
 		'edit' => array('edit', 'variant', 'variants', 'characteristic', 'addimage', 'addfile', 'galleryselect', 'approve'),
 		'modify' => array('apply', 'save', 'save_translation', 'copy', 'toggle'),
 		'delete' => array('delete')
@@ -30,8 +31,39 @@ class productMarketController extends hikamarketController {
 			$this->registerDefaultTask('listing');
 		$this->config = hikamarket::config();
 	}
+	public function	ajax_update_image_product(){
+
+		$input=JFactory::getApplication()->input;
+
+		$post=json_decode(file_get_contents('php://input'));
+
+		$new_file_url=$post->new_file_url;
+		$file_id=$post->file_id;
+		$size_x=$post->size_x;
+		$size_y=$post->size_y;
+		JTable::addIncludePath('administrator/components/com_hikashop/tables');
+
+		$file_table= JTable::getInstance('file','hikashopTable');
+		$file_table->load($file_id);
+		$file_path=$file_table->file_path;
+		$helperImage = hikamarket::get('shop.helper.image');
+		$file_path=$helperImage->getPath($file_path);
+		file_put_contents(JPATH_ROOT.DS.$file_path, fopen($new_file_url, 'r'));
+		$thumbnail_image=$helperImage->getThumbnail($file_table->file_path,array($size_x,$size_y),array('default' => true));
+		jimport('joomla.filesystem.file');
+		JFile::delete(JPATH_ROOT.DS.$thumbnail_image->url);
+		$thumbnail_image=$helperImage->getThumbnail($file_table->file_path,array($size_x,$size_y),array('default' => true));
+		$response=new stdClass();
+		$response->e=0;
+		$response->thumbnail_image=$thumbnail_image;
+		echo json_encode($response);
+
+		die;
+
+	}
 
 	public function authorize($task) {
+
 		if($task == 'toggle' || $task == 'delete') {
 			$completeTask = JRequest::getCmd('task');
 			$product_id = (int)substr($completeTask, strrpos($completeTask, '-') + 1);

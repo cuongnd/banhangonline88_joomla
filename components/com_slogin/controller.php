@@ -694,7 +694,7 @@ class SLoginController extends SLoginControllerParent
     public function recallpass(){
         $app	= JFactory::getApplication();
         $app->logout();
-        $app->redirect(JRoute::_('index.php?option=com_users&view=reset'));
+        $app->redirect(JRoute::_('index.php?com_easysocial&view=reset'));
     }
 
     private function storeSloginUser($user_id, $slogin_id, $provider){

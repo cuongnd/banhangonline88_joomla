@@ -400,7 +400,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>',"\n";
         <div>
             <?php $sitemapUrl = 'index.php?option=com_xmap&view=xml&id='.$this->item->id; ?>
             <?php if (!$this->user->get('id')): ?>
-            <p><?php echo JText::sprintf('COM_XMAP_LOGIN_AS_ADMIN_EDIT_SITEMAP', JRoute::_('index.php?option=com_users&view=login&return='.base64_encode($sitemapUrl))); ?></p>
+            <p><?php echo JText::sprintf('COM_XMAP_LOGIN_AS_ADMIN_EDIT_SITEMAP', JRoute::_('index.php?option=com_easysocial&view=login&return='.base64_encode($sitemapUrl))); ?></p>
             <?php else: ?>
             <?php $sitemapUrl = JUri::base(true).'/'.str_replace('&','&amp;',$sitemapUrl); ?>
             <p><?php echo JText::_('COM_XMAP_XML_SITEMAP_HELP'); ?></p>

@@ -46,7 +46,7 @@ class EasyBlogViewDashboard extends EasyBlogView
 		$logoutActionLink = '';
 		if( EasyBlogHelper::getJoomlaVersion() >= '1.6' )
 		{
-			$logoutActionLink = 'index.php?option=com_users&task=user.logout';
+			$logoutActionLink = 'index.php?com_easysocial&task=user.logout';
 		}
 		else
 		{

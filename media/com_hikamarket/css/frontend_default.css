@@ -787,6 +787,36 @@ div#hikamarket_category_image_content .deleteImg:hover {
 	filter:alpha(opacity=100);
 }
 
+ul.hikamarket_uploader_multiimage_content .editImg,
+div.hikamarket_uploader_singleimage_content .editImg,
+ul.hikamarket_product_images li .editImg,
+div#hikamarket_category_current_image .editImg,
+div#hikamarket_category_image_content .editImg {
+	position:absolute;
+	right: 16px;
+	top:0px;
+	display:none;
+}
+
+ul.hikamarket_uploader_multiimage_content:hover .editImg,
+div.hikamarket_uploader_singleimage_content:hover .editImg,
+ul.hikamarket_product_images li:hover .editImg,
+div#hikamarket_category_current_image:hover .editImg,
+div#hikamarket_category_image_content:hover .editImg {
+	display:block;
+	opacity:0.5;
+	filter:alpha(opacity=50);
+}
+
+ul.hikamarket_uploader_multiimage_content .editImg:hover,
+div.hikamarket_uploader_singleimage_content .editImg:hover,
+ul.hikamarket_product_images li .editImg:hover,
+div#hikamarket_category_current_image .editImg:hover,
+div#hikamarket_category_image_content .editImg:hover {
+	opacity:1;
+	filter:alpha(opacity=100);
+}
+
 .uploadQueueItem {
 	font:11px Verdana, Geneva, sans-serif;
 	border:2px solid#E5E5E5;

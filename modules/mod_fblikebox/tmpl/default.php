@@ -10,10 +10,11 @@
 -------------------------------------------------------------------------*/
 // no direct access
 defined( '_JEXEC' ) or die( 'Restricted access' );
+JHtml::_('jQuery.lazyload');
 ?>
 
-<?php switch ($params->get("fbRendering",0)){ 
-    
+<?php switch ($params->get("fbRendering",0)){
+
     case 1: // XFBML ?>
 
 <?php if($params->get("facebookRootDiv", 1)) {?>
@@ -29,15 +30,15 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 <?php }?>
-    
-    <fb:like-box 
-    href="<?php echo $params->get("fbPageLink");?>" 
+
+    <fb:like-box
+    href="<?php echo $params->get("fbPageLink");?>"
     width="<?php echo $params->get("fbWidth");?>"
     height="<?php echo $params->get("fbHeight");?>"
-    colorscheme="<?php echo $params->get("fbColour");?>" 
-    show_faces="<?php echo (!$params->get("fbFaces")) ? "false" : "true";?>" 
-    border_color="<?php echo $params->get("fbBColour", "");?>" 
-    stream="<?php echo (!$params->get("fbStream")) ? "false" : "true";?>" 
+    colorscheme="<?php echo $params->get("fbColour");?>"
+    show_faces="<?php echo (!$params->get("fbFaces")) ? "false" : "true";?>"
+    border_color="<?php echo $params->get("fbBColour", "");?>"
+    stream="<?php echo (!$params->get("fbStream")) ? "false" : "true";?>"
     header="<?php echo (!$params->get("fbHeader")) ? "false" : "true";?>"
     force_wall="<?php echo (!$params->get("facebookForceWall")) ? "false" : "true";?>"></fb:like-box>
 
@@ -60,14 +61,14 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 }(document, 'script', 'facebook-jssdk'));</script>
 <?php }?>
 
-	<div class="fb-like-box" 
-	data-href="<?php echo $params->get("fbPageLink");?>" 
-	data-width="<?php echo $params->get("fbWidth");?>" 
-	data-height="<?php echo $params->get("fbHeight");?>" 
-	data-colorscheme="<?php echo $params->get("fbColour");?>" 
-	data-show-faces="<?php echo $params->get("fbFaces", 1); ?>" 
-	data-border-color="<?php echo $params->get("fbBColour", "");?>" 
-	data-stream="<?php echo $params->get("fbStream", 1); ?>" 
+	<div class="fb-like-box"
+	data-href="<?php echo $params->get("fbPageLink");?>"
+	data-width="<?php echo $params->get("fbWidth");?>"
+	data-height="<?php echo $params->get("fbHeight");?>"
+	data-colorscheme="<?php echo $params->get("fbColour");?>"
+	data-show-faces="<?php echo $params->get("fbFaces", 1); ?>"
+	data-border-color="<?php echo $params->get("fbBColour", "");?>"
+	data-stream="<?php echo $params->get("fbStream", 1); ?>"
 	data-header="<?php echo $params->get("fbHeader", 1); ?>"
 	data-force-wall="<?php echo (!$params->get("facebookForceWall")) ? "false" : "true";?>"></div>
 <?php break; ?>
@@ -75,18 +76,18 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 
 <?php default: // iframe ?>
 
-<?php 
+<?php
 	$forceWall ="";
 	if($params->get("facebookForceWall"))  {
 		$forceWall = '&amp;force_wall=true';
 	}
  ?>
 
-<iframe 
-src="http://www.facebook.com/plugins/likebox.php?href=<?php echo $params->get("fbPageLink");?>&amp;locale=<?php echo $locale;?>&amp;width=<?php echo $params->get("fbWidth");?>&amp;colorscheme=<?php echo $params->get("fbColour");?>&amp;show_faces=<?php echo $params->get("fbFaces", 1);?>&amp;border_color=<?php echo rawurlencode($params->get("fbBColour", ""));?>&amp;stream=<?php echo $params->get("fbStream", 1);?>&amp;header=<?php echo $params->get("fbHeader", 1);?>&amp;height=<?php echo $params->get("fbHeight");?><?php echo $facebookLikeAppId;?><?php echo $forceWall;?>"
-scrolling="no" 
-frameborder="0" 
-style="border:none; overflow:hidden; width:<?php echo $params->get("fbWidth");?>px; height:<?php echo $params->get("fbHeight");?>px;" 
+<iframe
+	data-src="http://www.facebook.com/plugins/likebox.php?href=<?php echo $params->get("fbPageLink");?>&amp;locale=<?php echo $locale;?>&amp;width=<?php echo $params->get("fbWidth");?>&amp;colorscheme=<?php echo $params->get("fbColour");?>&amp;show_faces=<?php echo $params->get("fbFaces", 1);?>&amp;border_color=<?php echo rawurlencode($params->get("fbBColour", ""));?>&amp;stream=<?php echo $params->get("fbStream", 1);?>&amp;header=<?php echo $params->get("fbHeader", 1);?>&amp;height=<?php echo $params->get("fbHeight");?><?php echo $facebookLikeAppId;?><?php echo $forceWall;?>"
+scrolling="no"
+frameborder="0"
+style="border:none; overflow:hidden; width:<?php echo $params->get("fbWidth");?>; height:<?php echo $params->get("fbHeight");?>px;"
 allowTransparency="true"></iframe>
 
 <?php break; ?>

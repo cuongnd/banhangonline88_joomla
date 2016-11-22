@@ -59,6 +59,87 @@ class JTableModule extends JTable
 	{
 		return $this->title;
 	}
+	public function enable_lazyload($pks = null, $state_lazyload = 1, $userId = 0)
+	{
+		// Sanitize input
+		$userId = (int) $userId;
+		$state_lazyload  = (int) $state_lazyload;
+
+		if (!is_null($pks))
+		{
+			if (!is_array($pks))
+			{
+				$pks = array($pks);
+			}
+
+			foreach ($pks as $key => $pk)
+			{
+				if (!is_array($pk))
+				{
+					$pks[$key] = array($this->_tbl_key => $pk);
+				}
+			}
+		}
+
+		// If there are no primary keys set check to see if the instance key is set.
+		if (empty($pks))
+		{
+			$pk = array();
+
+			foreach ($this->_tbl_keys AS $key)
+			{
+				if ($this->$key)
+				{
+					$pk[$key] = $this->$key;
+				}
+				// We don't have a full primary key - return false
+				else
+				{
+					$this->setError(JText::_('JLIB_DATABASE_ERROR_NO_ROWS_SELECTED'));
+
+					return false;
+				}
+			}
+
+			$pks = array($pk);
+		}
+
+		$paramsField = $this->getColumnAlias('params');
+		foreach ($pks as $pk)
+		{
+			$query = $this->_db->getQuery(true);
+			$query->select('params')
+				->from('#__modules')
+				->where('id='.(int)$pk);
+			$params=$this->_db->setQuery($query)->loadResult();
+			$temp = new Registry;
+			$temp->loadString($params);
+			$temp->set('lazyload',$state_lazyload);
+			$params=$temp->toString();
+			// Update the publishing state for rows with the given primary keys.
+			$query = $this->_db->getQuery(true)
+				->update($this->_tbl)
+				->set($this->_db->quoteName($paramsField) . ' = ' .$query->q($params));
+			// Build the WHERE clause for the primary keys.
+			$this->appendPrimaryKeys($query, $pk);
+			$this->_db->setQuery($query);
+			try
+			{
+				$this->_db->execute();
+			}
+			catch (RuntimeException $e)
+			{
+				$this->setError($e->getMessage());
+
+				return false;
+			}
+
+		}
+
+		$this->setError('');
+
+		return true;
+	}
 
 	/**
 	 * Method to get the parent asset id for the record

@@ -11,7 +11,7 @@
 
     li.menu-iem.level-1
     {
-      a{
+      >a{
         height: 25px;
         display: block;
         width: 100%;
@@ -34,7 +34,9 @@
 
     }
     li.menu-iem.level-1:hover{
-
+      .container-home-page{
+        display: block;
+      }
     }
   }
   @total_column:4;
@@ -229,6 +231,7 @@
     position: absolute;
     width: 950px;
     min-height: 100%;
+    max-height: 100%;
     display: none;
     top: 0px;
     left: 100%;
@@ -243,7 +246,20 @@
     {
       margin-left: 13px;
 
+      height: 612px;
       padding: 5px 5px 5px 0px;
+      .mCSB_container_wrapper
+      {
+        margin-right: 5px;
+        margin-bottom: 5px;
+        >.mCSB_container
+        {
+          padding-right: 5px;
+          padding-bottom: 20px;
+        }
+
+      }
+
       .title
       {
         background: #189f2b;
@@ -293,4 +309,12 @@
       }
     }
   }
+}
+body.header_bar_hover
+{
+  overflow: hidden;
+}
+body
+{
+  overflow-y: scroll;
 }

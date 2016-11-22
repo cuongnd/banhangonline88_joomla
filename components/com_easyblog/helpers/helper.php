@@ -4958,7 +4958,7 @@ class EasyBlogHelper
 
 		if( EasyBlogHelper::getJoomlaVersion() >= '1.6' )
 		{
-			$default	= JRoute::_( 'index.php?option=com_users&view=registration' );
+			$default	= JRoute::_( 'index.php?com_easysocial&view=registration' );
 		}
 
 		switch( $config->get( 'main_login_provider' ) )
@@ -5010,7 +5010,7 @@ class EasyBlogHelper
 
 		if( EasyBlogHelper::getJoomlaVersion() >= '1.6' )
 		{
-			$default 	= EasyBlogRouter::_('index.php?option=com_users&view=login' . $returnURL );
+			$default 	= EasyBlogRouter::_('index.php?option=com_easysocial&view=login' . $returnURL );
 		}
 
 		switch( $config->get( 'main_login_provider' ) )
@@ -5051,7 +5051,7 @@ class EasyBlogHelper
 
 		if( EasyBlogHelper::getJoomlaVersion() >= '1.6' )
 		{
-			$default	= JRoute::_( 'index.php?option=com_users&view=reset' );
+			$default	= JRoute::_( 'index.php?com_easysocial&view=reset' );
 		}
 
 
@@ -5094,7 +5094,7 @@ class EasyBlogHelper
 
 		if( EasyBlogHelper::getJoomlaVersion() >= '1.6' )
 		{
-			$default	= JRoute::_( 'index.php?option=com_users&view=remind' );
+			$default	= JRoute::_( 'index.php?com_easysocial&view=remind' );
 		}
 
 		switch( $config->get( 'main_login_provider' ) )

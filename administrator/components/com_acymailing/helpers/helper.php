@@ -341,7 +341,7 @@ if (is_callable("date_default_timezone_set")) date_default_timezone_set(@date_de
 	}
 
 	function acymailing_increasePerf(){
-		@ini_set('max_execution_time',0);
+		@ini_set1('max_execution_time',0);
 		@ini_set('pcre.backtrack_limit', 1000000);
 	}
 

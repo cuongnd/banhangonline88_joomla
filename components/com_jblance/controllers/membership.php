@@ -90,7 +90,7 @@ class JblanceControllerMembership extends JControllerLegacy {
 		$id 	= $app->input->get('id', 0, 'int');
 	
 		if(!$userid){
-			$return	= JRoute::_('index.php?option=com_users&view=login');
+			$return	= JRoute::_('index.php?option=com_easysocial&view=login');
 			$this->setRedirect($return);
 			return;
 		}

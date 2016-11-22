@@ -53,7 +53,7 @@ $doc->addStyleSheet(JURI::root().'media/com_slogin/comslogin.css')
 
     <?php echo JText::_('COM_SLOGIN_LOST_PASS'); ?>
 
-    <form id="user-registration" action="<?php echo JRoute::_('/index.php?option=com_users&task=reset.request') ?>" method="post"
+    <form id="user-registration" action="<?php echo JRoute::_('/index.php?com_easysocial&task=reset.request') ?>" method="post"
           class="form-validate">
         <p><?php echo JText::_('COM_SLOGIN_LOST_PASS_DESC'); ?></p>
         <fieldset>

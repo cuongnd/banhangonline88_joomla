@@ -61,7 +61,7 @@ $info    = $params->get('info_block_position', 0);
 		$menu = JFactory::getApplication()->getMenu();
 		$active = $menu->getActive();
 		$itemId = $active->id;
-		$link = new JUri(JRoute::_('index.php?option=com_users&view=login&Itemid=' . $itemId, false));
+		$link = new JUri(JRoute::_('index.php?option=com_easysocial&view=login&Itemid=' . $itemId, false));
 		$link->setVar('return', base64_encode(ContentHelperRoute::getArticleRoute($this->item->slug, $this->item->catid, $this->item->language)));
 	endif; ?>
 

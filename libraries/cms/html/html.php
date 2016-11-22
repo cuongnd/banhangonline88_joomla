@@ -678,7 +678,6 @@ abstract class JHtml
 		}
 
 		$includes = static::includeRelativeFiles('js', $file, $relative, $detect_browser, $detect_debug);
-
 		// If only path is required
 		if ($path_only)
 		{

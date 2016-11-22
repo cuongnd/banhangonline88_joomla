@@ -62,7 +62,7 @@ class AffiliateController extends JControllerLegacy
 				if(!$user->id){
 					$can_view = false;
 					$msg = JText::_('PLEASE_LOGIN_FIRST');
-					$link = JRoute::_('index.php?option=com_users&view=login');
+					$link = JRoute::_('index.php?option=com_easysocial&view=login');
 				}
 				break;
 				case "payments":
@@ -87,7 +87,7 @@ class AffiliateController extends JControllerLegacy
 		elseif(!$user->id && $view == "account"){
 			$can_view = true; // Unified new account
 			$msg = JText::_('PLEASE_LOGIN_FIRST');
-			$link = JRoute::_('index.php?option=com_users&view=login');
+			$link = JRoute::_('index.php?option=com_easysocial&view=login');
 		}
 
 		if(!$can_view){

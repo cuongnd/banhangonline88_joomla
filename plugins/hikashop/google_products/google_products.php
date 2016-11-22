@@ -112,7 +112,7 @@ class plgHikashopGoogle_products extends JPlugin{
 				$max_execution = '0';
 			}
 			ini_set('memory_limit',$memory);
-			ini_set('max_execution_timeout',$max_execution);
+
 		}
 
 		$query = 'SELECT * FROM '.hikashop_table('product').' WHERE product_access=\'all\' AND product_published=1 AND product_type=\'main\'';

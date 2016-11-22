@@ -3774,7 +3774,7 @@ class DiscussHelper
 		$default	= JRoute::_( 'index.php?option=com_user&view=register' );
 		if( DiscussHelper::getJoomlaVersion() >= '1.6' )
 		{
-			$default	= JRoute::_( 'index.php?option=com_users&view=registration' );
+			$default	= JRoute::_( 'index.php?com_easysocial&view=registration' );
 		}
 
 		switch( $config->get( 'main_login_provider' ) )
@@ -3821,7 +3821,7 @@ class DiscussHelper
 
 		if( DiscussHelper::getJoomlaVersion() >= '1.6' )
 		{
-			$default	= JRoute::_( 'index.php?option=com_users&view=reset' );
+			$default	= JRoute::_( 'index.php?com_easysocial&view=reset' );
 		}
 
 
@@ -4344,7 +4344,7 @@ class DiscussHelper
 
 		if( DiscussHelper::getJoomlaVersion() >= '1.6' )
 		{
-			$link 	= DiscussRouter::_('index.php?option=com_users&view=login' . $returnURL );
+			$link 	= DiscussRouter::_('index.php?option=com_easysocial&view=login' . $returnURL );
 		}
 		else
 		{

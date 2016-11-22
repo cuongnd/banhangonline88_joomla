@@ -78,15 +78,21 @@ final class JApplicationSite extends JApplicationCms
 	{
 		$menus = $this->getMenu();
 		$user = JFactory::getUser();
-
 		if (!$menus->authorise($itemid))
 		{
+
 			if ($user->get('id') == 0)
 			{
+
 				// Set the data
 				$this->setUserState('users.login.form.data', array('return' => JUri::getInstance()->toString()));
-
-				$url = JRoute::_('index.php?option=com_users&view=login', false);
+				$client=$this->getClientId();
+				if($client==0)
+				{
+					$url = JRoute::_('index.php?option=com_easysocial&view=login', false);
+				}else{
+					$url = JRoute::_('index.php?option=com_users&view=login', false);
+				}
 
 				$this->enqueueMessage(JText::_('JGLOBAL_YOU_MUST_LOGIN_FIRST'));
 				$this->redirect($url);

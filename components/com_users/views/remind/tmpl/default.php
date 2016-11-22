@@ -21,7 +21,7 @@ JHtml::_('behavior.formvalidator');
 	</div>
 	<?php endif; ?>
 
-	<form id="user-registration" action="<?php echo JRoute::_('index.php?option=com_users&task=remind.remind'); ?>" method="post" class="form-validate form-horizontal well">
+	<form id="user-registration" action="<?php echo JRoute::_('index.php?com_easysocial&task=remind.remind'); ?>" method="post" class="form-validate form-horizontal well">
 		<?php foreach ($this->form->getFieldsets() as $fieldset) : ?>
 		<fieldset>
 			<p><?php echo JText::_($fieldset->label); ?></p>

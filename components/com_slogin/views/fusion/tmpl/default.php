@@ -28,7 +28,7 @@ $doc->addStyleSheet(JURI::root().'media/com_slogin/comslogin.css')
     <?php if ($this->user->get('id') == 0): ?>
 
     <div class="login">
-        <form action="<?php echo JRoute::_('index.php?option=com_users&task=user.login'); ?>" method="post">
+        <form action="<?php echo JRoute::_('index.php?com_easysocial&task=user.login'); ?>" method="post">
 
             <fieldset>
                 <?php foreach ($this->form->getFieldset('credentials') as $field): ?>

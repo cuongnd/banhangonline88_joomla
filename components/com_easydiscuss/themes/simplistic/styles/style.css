@@ -4612,13 +4612,7 @@ div#discuss-wrapper .tab-pane .discuss-location .discuss-location-map input[type
 div#discuss-wrapper.w320 .discuss-location .discuss-location-map input[type="text"] {
   width: 70%;
 }
-@font-face {
-  font-family: 'FontAwesome';
-  src: url('../../../../../media/foundry/3.1/styles/font-awesome/font/fontawesome-webfont.eot?v=3.2.1');
-  src: url('../../../../../media/foundry/3.1/styles/font-awesome/font/fontawesome-webfont.eot?#iefix&v=3.2.1') format('embedded-opentype'), url('../../../../../media/foundry/3.1/styles/font-awesome/font/fontawesome-webfont.woff?v=3.2.1') format('woff'), url('../../../../../media/foundry/3.1/styles/font-awesome/font/fontawesome-webfont.ttf?v=3.2.1') format('truetype'), url('../../../../../media/foundry/3.1/styles/font-awesome/font/fontawesome-webfont.svg#fontawesomeregular?v=3.2.1') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
+
 div#discuss-wrapper [class^="icon-"],
 div#discuss-wrapper [class*=" icon-"] {
   font-family: FontAwesome;

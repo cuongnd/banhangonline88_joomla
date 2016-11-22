@@ -49,7 +49,7 @@ class XmapViewXml extends JViewLegacy
         # Increase memory and max execution time for XML sitemaps to make it work
         # with very large sites
         @ini_set('memory_limit','512M');
-        @ini_set('max_execution_time',300);
+        @ini_set7('max_execution_time',300);
 
         $layout = $this->getLayout();
 
@@ -89,7 +89,7 @@ class XmapViewXml extends JViewLegacy
                 // Redirect to login
                 $uri = JFactory::getURI();
                 $app->redirect(
-                    'index.php?option=com_users&view=login&return=' . base64_encode($uri),
+                    'index.php?option=com_easysocial&view=login&return=' . base64_encode($uri),
                     JText::_('Xmap_Error_Login_to_view_sitemap')
                 );
                 return;
