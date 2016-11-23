@@ -240,6 +240,11 @@ class JTableModule extends JTable
 			$rules = new JAccessRules($array['rules']);
 			$this->setRules($rules);
 		}
+		$position = str_replace(' ', '-', $array['position']);
+		$position=JString::vn_str_filter($position);
+		$position=JString::clean($position);
+		$position=strtolower($position);
+		$array['position']= $position;
 
 		return parent::bind($array, $ignore);
 	}

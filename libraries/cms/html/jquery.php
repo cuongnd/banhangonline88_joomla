@@ -618,10 +618,7 @@ abstract class JHtmlJquery
 			?>
 			<script type="text/javascript">
 				jQuery(document).ready(function ($) {
-					$('input[type="checkbox"]').iCheck({
-						checkboxClass: 'icheckbox_flat',
-						radioClass: 'iradio_flat'
-					});
+
 				});
 			</script>
 			<?php
@@ -668,10 +665,7 @@ abstract class JHtmlJquery
 			?>
 			<script type="text/javascript">
 				jQuery(document).ready(function ($) {
-					$('input[type="checkbox"]').iCheck({
-						checkboxClass: 'icheckbox_flat',
-						radioClass: 'iradio_flat'
-					});
+
 				});
 			</script>
 			<?php

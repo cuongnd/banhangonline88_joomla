@@ -35,9 +35,10 @@ class ModulesControllerModule extends JControllerLegacy
 		if(JFile::exists($helper_file))
 		{
 			require_once $helper_file;
-			if(class_exists($module_name))
+			$helper_class_name='Mod'.substr($module_name,4).'Helper';
+			if(class_exists($helper_class_name))
 			{
-				$instance = new $module_name;
+				$instance = new $helper_class_name;
 				$module=(object)$table_module->getProperties();
 				$temp = new Registry;
 				$temp->loadString($module->params);

@@ -49,6 +49,10 @@
                 }
 
             });
+            $element.find('input[type="checkbox"]').iCheck({
+                checkboxClass: 'icheckbox_flat',
+                radioClass: 'iradio_flat'
+            });
 
         }
 
