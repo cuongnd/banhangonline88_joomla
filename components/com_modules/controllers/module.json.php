@@ -26,6 +26,7 @@ class ModulesControllerModule extends JControllerLegacy
 		$post=json_decode(file_get_contents('php://input'));
 
 		$module_id=$post->module_id;
+		//$module_id=334;
 		$table_module=JTable::getInstance('module');
 		$table_module->load($module_id);
 		$module_name=$table_module->module;
