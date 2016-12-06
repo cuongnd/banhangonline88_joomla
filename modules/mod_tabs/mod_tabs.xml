@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+/**
+ * @copyright	Copyright © 2016 - All rights reserved.
+ * @license		GNU General Public License v2.0
+ * @generator	http://xdsoft/joomla-module-generator/
+ */
+-->
+<extension type="module" method="upgrade" client="site">
+	<name>MOD_TABS</name>
+	<creationDate>Dec 2016</creationDate>
+	<author>cuongnd</author>
+	<authorEmail>nguyendinhcuong@gmail.com</authorEmail>
+	<authorUrl>http://xdsoft.net</authorUrl>
+	<copyright>Copyright © 2016 - All rights reserved.</copyright>
+	<license>GNU General Public License v2.0</license>
+	<version>0.0.1</version>
+	<description>MOD_TABS_DESCRIPTION</description>
+	<files>
+		<filename module="mod_tabs">mod_tabs.php</filename>
+		<filename>mod_tabs.xml</filename>
+		<filename>index.html</filename>
+		<folder>language</folder>
+		<folder>tmpl</folder>
+		<folder>assets</folder>
+	</files>
+	<config addfieldpath="modules/mod_tabs/admin/elements/">
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="moduleclass_sfx" type="text" default="" label="Module Class Suffix"
+					   description="PARAMMODULECLASSSUFFIX"/>
+
+				<field name="type" type="jvtype" default="moduleID" label="Type tabs:"
+					   description="Do you want to use the content code to display with tab">
+					<option value="">- Select type -</option>
+					<option value="moduleID">Modules</option>
+					<option value="categoryID">Contents</option>
+				</field>
+				<field name="moduleID-position" type="jvposition" default="left" label="Select a position"
+					   description="Select module position which will display in tabs"/>
+				<field name="jv_selection" type="jvselection" default="" label="Select" description="Select">
+				</field>
+				<field name="@spacer" type="spacer" default="" label="" description=""/>
+				<field name="@spacer" type="spacer" default=" Only For Content" label="" description=""/>
+				<field name="tab_maxItem" type="text" default="5" label="Max number tabs"
+					   description="The number of tabs to display(default 5)"/>
+			</fieldset>
+			<fieldset name="tab_option">
+				<field name="tab_maxItem" type="text" default="5" label="Max number tabs"
+					   description="The number of tabs to display(default 5)"/>
+				<field name="theme" type="list" default="silver" label="theme" description="theme">
+					<option value="silver">silver</option>
+					<option value="white">white</option>
+					<option value="crystal">crystal</option>
+					<option value="gray">gray</option>
+					<option value="black">black</option>
+					<option value="orange">orange</option>
+					<option value="red">red</option>
+					<option value="green">green</option>
+					<option value="blue">blue</option>
+					<option value="deepblue">deepblue</option>
+				</field>
+				<field name="style" type="list" default="normal" label="style" description="style">
+					<option value="normal">normal</option>
+					<option value="underlined">underlined</option>
+					<option value="clean">clean</option>
+				</field>
+				<field name="classes" type="list" default="z-tabs" label="classes" description="classes">
+					<option value="z-tabs">z-tabs</option>
+					<option value="z-tabs-nav">z-tabs-nav</option>
+					<option value="z-tab">z-tab</option>
+					<option value="z-first">z-first</option>
+					<option value="z-last">z-last</option>
+					<option value="z-left">z-left</option>
+					<option value="z-right">z-right</option>
+					<option value="z-first-col">z-first-col</option>
+					<option value="z-last-col">z-last-col</option>
+					<option value="z-first-row">z-first-row</option>
+				</field>
+				<field name="orientation" type="list" default="horizontal" label="orientation"
+					   description="orientation">
+					<option value="horizontal">horizontal</option>
+					<option value="vertical">vertical</option>
+				</field>
+				<field name="zozo_rounded" type="list" default="true" label="rounded"
+					   description="rounded">
+					<option value="true">Yes</option>
+					<option value="false">no</option>
+				</field>
+				<field name="mobileNav" type="list" default="true" label="mobileNav"
+					   description="mobileNav">
+					<option value="true">Yes</option>
+					<option value="false">no</option>
+				</field>
+				<field name="multiline" type="list" default="true" label="multiline"
+					   description="multiline">
+					<option value="true">Yes</option>
+					<option value="false">no</option>
+				</field>
+				<field name="rememberState" type="list" default="true" label="rememberState"
+					   description="rememberState">
+					<option value="true">Yes</option>
+					<option value="false">no</option>
+				</field>
+				<field name="shadows" type="list" default="true" label="shadows"
+					   description="shadows">
+					<option value="true">Yes</option>
+					<option value="false">no</option>
+				</field>
+				<field name="maxRows" type="integer" default="5" label="maxRows" first="0" last="10" step="1"
+					   description="maxRows"/>
+				<field name="effects" type="list" default="fade" label="effects" description="effects">
+					<option value="fade">fade</option>
+					<option value="slideV">slideV</option>
+					<option value="slideH">slideH</option>
+					<option value="slideLeft">slideLeft</option>
+					<option value="slideRight">slideRight</option>
+					<option value="slideUp">slideUp</option>
+					<option value="slideUpDown">slideUpDown</option>
+					<option value="slideDown">slideDown</option>
+				</field>
+				<field name="size" type="list" default="xxlarge" label="size" description="size">
+					<option value="mini">mini</option>
+					<option value="small">small</option>
+					<option value="medium">medium</option>
+					<option value="large">large</option>
+					<option value="xlarge">xlarge</option>
+					<option value="xxlarge">xxlarge</option>
+				</field>
+				<field name="event" type="list" default="click" label="event" description="event">
+					<option value="click">Click</option>
+					<option value="hover">Hover</option>
+				</field>
+				<field name="position" type="list" default="top-right" label="position" description="position">
+					<option value="top-right">top-right</option>
+					<option value="bottom-center">bottom-center</option>
+					<option value="bottom-compact">bottom-compact</option>
+					<option value="bottom-left">bottom-left</option>
+					<option value="bottom-right">bottom-right</option>
+					<option value="top-center">top-center</option>
+					<option value="top-compact">top-compact</option>
+					<option value="top-left">top-left</option>
+				</field>
+				<field name="defaultTab" type="list" default="tab1" label="defaultTab" description="defaultTab">
+					<option value="tab1">tab1</option>
+					<option value="tab2">tab2</option>
+					<option value="tab3">tab3</option>
+					<option value="tab4">tab4</option>
+					<option value="tab5">tab5</option>
+					<option value="tab6">tab6</option>
+					<option value="tab7">tab7</option>
+					<option value="tab8">tab8</option>
+					<option value="tab9">tab9</option>
+					<option value="tab10">ta10</option>
+					<option value="tab11">tab11</option>
+					<option value="tab12">tab12</option>
+					<option value="tab13">tab13</option>
+					<option value="tab14">tab14</option>
+					<option value="tab15">tab15</option>
+				</field>
+			</fieldset>
+			<fieldset
+				name="advanced">
+				<field
+					name="layout"
+					type="modulelayout"
+					label="JFIELD_ALT_LAYOUT_LABEL"
+					description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+
+				<field
+					name="moduleclass_sfx"
+					type="textarea" rows="3"
+					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+					description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+
+				<field
+					name="cache"
+					type="list"
+					default="1"
+					label="COM_MODULES_FIELD_CACHING_LABEL"
+					description="COM_MODULES_FIELD_CACHING_DESC">
+					<option
+						value="1">JGLOBAL_USE_GLOBAL</option>
+					<option
+						value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+
+				<field
+					name="cache_time"
+					type="text"
+					default="900"
+					label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+					description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
+				<field
+					name="cachemode"
+					type="hidden"
+					default="static">
+					<option
+						value="static"></option>
+				</field>
+			</fieldset>
+</fields>
+
+<!--
+########################################################################################
+The following are a list of all the different types of fields you can add to this file
+They are here for copy pasting - neat eh?
+Full list https://docs.joomla.org/Standard_form_field_types
+########################################################################################
+
+https://docs.joomla.org/Calendar_form_field_type
+<field name="mycalendar" type="calendar" default="5-10-2008" label="Select a date" description="" format="%d-%m-%Y" />
+
+https://docs.joomla.org/Category_form_field_type
+<field name="mycategory" type="category" label="Select a category" description="" section="3" />
+
+https://docs.joomla.org/Editor_form_field_type
+<field name="myeditor" type="editors" default="none" label="Select an editor" />
+
+https://docs.joomla.org/Filelist_form_field_type
+<field name="myfile" type="filelist" default="" label="Select a file" description="" directory="administrator" filter="" exclude="" stripext="" />
+
+https://docs.joomla.org/Folderlist_form_field_type
+<field name="myfolder" type="folderlist" default="" label="Select a folder" directory="administrator" filter="" exclude="" stripext="" />
+
+https://docs.joomla.org/Helpsite_form_field_type
+<field name="myhelpsite" type="helpsites" default="" label="Select a help site" description="" />
+
+https://docs.joomla.org/Hidden_form_field_type
+<field name="mysecretvariable" type="hidden" default="" />
+
+https://docs.joomla.org/Imagelist_form_field_type
+<field name="myimage" type="imagelist" default="" label="Select an image" description="" directory="" exclude="" stripext="" />
+
+https://docs.joomla.org/Language_form_field_type
+<field name="mylanguage" type="languages" client="site" default="en-GB" label="Select a language" description="" />
+
+https://docs.joomla.org/List_form_field_type
+<field name="mylistvalue" type="list" default="" label="Select an option" description="">
+  <option value="0">Option 1</option>
+  <option value="1">Option 2</option>
+</field>
+
+https://docs.joomla.org/Menu_form_field_type
+<field name="mymenu" type="menu" default="mainmenu" label="Select a menu" description="Select a menu" />
+
+https://docs.joomla.org/Menuitem_form_field_type
+<field name="mymenuitem" type="menuitem" default="45" label="Select a menu item" description="Select a menu item" />
+
+https://docs.joomla.org/Password_form_field_type
+<field name="mypassword" type="password" default="secret" label="Enter a password" description="" size="5" />
+
+https://docs.joomla.org/Radio_form_field_type
+<field name="myradiovalue" type="radio" default="0" label="Select an option" description="" class="btn-group btn-group-yesno">
+  <option value="0">JYES</option>
+  <option value="1">JNO</option>
+</field>
+
+https://docs.joomla.org/Spacer_form_field_type
+<field type="spacer" default="&lt;b&gt;Advanced parameters&lt;/b&gt;" />
+<field type="spacer" name="myspacer" hr="true" />
+
+https://docs.joomla.org/SQL_form_field_type
+<field name="myfield" type="sql" default="10" label="Select an article" query="SELECT id, title FROM #__content" key_field="id" value_field="title" />
+
+https://docs.joomla.org/Text_form_field_type
+<field name="mytextvalue" type="text" default="Some text" label="Enter some text" description="" size="10" />
+
+https://docs.joomla.org/Textarea_form_field_type
+<field name="mytextarea" type="textarea" default="default" label="Enter some text" description="" rows="10" cols="5" />
+
+https://docs.joomla.org/Timezone_form_field_type
+<field name="mytimezone" type="timezones" default="-10" label="Select a timezone" description="" />
+
+https://docs.joomla.org/Usergroup_form_field_type
+<field name="myusergroups" type="usergroup" default="" label="Select a user group" description="" />
+-->
+	</config> 
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.mod_tabs.sys.ini</language>
+		<language tag="en-GB">en-GB/en-GB.mod_tabs.ini</language>
+	</languages>
+</extension>
