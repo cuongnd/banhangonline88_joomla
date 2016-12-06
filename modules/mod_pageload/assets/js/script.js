@@ -35,6 +35,31 @@
         // the "constructor" method that gets called when the object is created
         plugin.init = function() {
             plugin.settings = $.extend({}, defaults, options);
+            //Declare begin
+
+            $element.find('.show_mod_pageload_content').avgrund({
+                width: 600, // max is 640px
+                height: 300, // max is 350px
+                showClose: true, // switch to 'true' for enabling close button
+                showCloseText: 'Đóng', // type your text for close button
+                closeByEscape: true, // enables closing popup by 'Esc'..
+                closeByDocument: true, // ..and by clicking document itself
+                holderClass: '', // lets you name custom class for popin holder..
+                overlayClass: '', // ..and overlay block
+                enableStackAnimation: false, // enables different type of popin's animation
+                onBlurContainer: '', // enables blur filter for specified block
+                openOnEvent: true, // set to 'false' to init on load
+                setEvent: 'click', // use your event like 'mouseover', 'touchmove', etc.
+                onLoad: function (elem) {
+
+                }, // set custom call before popin is inited..
+                onUnload: function (elem) {
+
+                }, // ..and after it was closed
+                template: $element.find('.mod_pageload_content')
+            });
+            $element.find('.show_mod_pageload_content').trigger('click');
+
             $element.find('a.tim-hieu-website').click(function(){
                 var load_page=$('body').data('load_page');
                 load_page.settings.show_help=true;

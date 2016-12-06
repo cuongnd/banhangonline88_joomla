@@ -48,7 +48,10 @@
     column-count: @total_column; /*3 in those rules is just placeholder -- can be anything*/
     .tags
     {
-      padding:5px 0 5px 10px;
+      display: table;
+      min-width: 235px;
+      padding: 5px 0 5px 10px;
+
 
     }
     .tags.sub
@@ -229,7 +232,7 @@
   .container-home-page
   {
     position: absolute;
-    width: 950px;
+    width: 1000px;
     min-height: 100%;
     max-height: 100%;
     display: none;
@@ -312,9 +315,7 @@
 }
 body.header_bar_hover
 {
-  overflow: hidden;
 }
 body
 {
-  overflow-y: scroll;
 }

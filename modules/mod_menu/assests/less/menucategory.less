@@ -10,28 +10,45 @@
     background: #f44f00;
 
   }
-  background: #666b7e;
   position: relative;
   ul.level-0
   {
     margin: 0px;
     li.menu-iem.level-1
     {
-      a{
-        height: 30px;
+      >a{
         display: block;
         width: 100%;
-        color: #fff;
+        color: #333;
         padding: 5px 0px;
         font-weight: bold;
-        img
-        {
-          margin-left: 5px;
-          width: 30px;
-        }
+        border-bottom: 1px dotted #e5e5e5;
+        margin-bottom: 4px;
+        padding-bottom: 6px;
+        width: 160px;
         span
         {
           margin-left: 2px;
+        }
+      }
+      ul.level-1 {
+        margin: 0px;
+        li.menu-iem.level-2 {
+          >a {
+            width: 100%;
+            color: #333;
+            padding: 5px 0px;
+            font-size: 11px;
+            line-height: 180%;
+            span {
+              margin-left: 2px;
+            }
+            &:hover{
+              color:#365db5;
+            }
+          }
+
+
         }
       }
     }

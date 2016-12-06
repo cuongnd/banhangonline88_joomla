@@ -437,6 +437,74 @@ abstract class JHtmlJquery
 
 		return;
 	}
+	public static function modal( $debug = null)
+	{
+		$jquery_modal_compress=true;
+		$jquery_modal_css_compress=true;
+		// Include jQuery
+		static::framework();
+
+		// If no debugging value is set, use the configuration setting
+		if ($debug === null)
+		{
+			$config = JFactory::getConfig();
+			$debug  = (boolean) $config->get('debug');
+		}
+		// Only attempt to load the component if it's supported in core and hasn't already been loaded
+		if ( empty(static::$loaded[__METHOD__]))
+		{
+			$doc=JFactory::getDocument();
+			if($jquery_modal_compress)
+			{
+				$doc->addScript(JUri::root().'media/system/js/jquery.avgrund.js-master/jquery.avgrund.js');
+			}else{
+				$doc->addScript(JUri::root().'media/system/js/jquery.avgrund.js-master/jquery.avgrund.min.js');
+			}
+
+			if($jquery_modal_css_compress)
+			{
+				$doc->addStyleSheet(JUri::root().'media/system/js/jquery.avgrund.js-master/style/avgrund.css');
+			}else{
+				$doc->addStyleSheet(JUri::root().'media/system/js/jquery.avgrund.js-master/style/avgrund.css');
+			}
+			static::$loaded[__METHOD__]= true;
+		}
+
+		return;
+	}
+	public static function flip( $debug = null)
+	{
+		$jquery_flip_compress=true;
+		$jquery_flip_css_compress=true;
+		// Include jQuery
+		static::framework();
+
+		// If no debugging value is set, use the configuration setting
+		if ($debug === null)
+		{
+			$config = JFactory::getConfig();
+			$debug  = (boolean) $config->get('debug');
+		}
+		// Only attempt to load the component if it's supported in core and hasn't already been loaded
+		if ( empty(static::$loaded[__METHOD__]))
+		{
+			$doc=JFactory::getDocument();
+			if($jquery_flip_compress)
+			{
+				$doc->addScript(JUri::root().'media/system/js/jquery.flip/dist/jquery.flip.js');
+			}else{
+				$doc->addScript(JUri::root().'media/system/js/jquery.flip/dist/jquery.flip.js');
+			}
+
+			if($jquery_flip_css_compress)
+			{
+			}else{
+			}
+			static::$loaded[__METHOD__]= true;
+		}
+
+		return;
+	}
 	public static function texttospeak( $debug = null)
 	{
 		$jquery_texttospeak_compress=true;

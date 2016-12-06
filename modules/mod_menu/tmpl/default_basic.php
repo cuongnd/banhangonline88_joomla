@@ -65,4 +65,6 @@ $tree_ul_li = '';
 $tree_ul_li .= '<ul class="level-0">';
 $get_tree_ul_li($get_tree_ul_li, $base, $tree_ul_li, $list1, $children_menu_item, $menu_show, $active_menu, 0);
 $tree_ul_li .= '</ul>';
-echo $tree_ul_li;
+?>
+<h3 class="title"><?php echo $module->title ?></h3>
+<?php echo $tree_ul_li; ?>
