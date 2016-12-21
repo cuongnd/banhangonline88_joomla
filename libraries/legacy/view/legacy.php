@@ -262,7 +262,7 @@ class JViewLegacy extends JObject
 	 */
 	public function assign()
 	{
-		JLog::add(__METHOD__ . ' is deprecated. Use native PHP syntax.', JLog::WARNING, 'deprecated');
+		//JLog::add(__METHOD__ . ' is deprecated. Use native PHP syntax.', JLog::WARNING, 'deprecated');
 
 		// Get the arguments; there may be 1 or 2.
 		$arg0 = @func_get_arg(0);

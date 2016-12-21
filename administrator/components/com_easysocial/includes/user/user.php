@@ -285,7 +285,6 @@ class SocialUser extends JUser
 
 		// Create the user parameters object
 		$this->_params = new JRegistry;
-
 		// Initialize user's property locally.
 		$this->initParams($params);
 

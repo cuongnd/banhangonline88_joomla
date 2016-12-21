@@ -136,7 +136,10 @@ class JLog
 	 */
 	public static function add($entry, $priority = self::INFO, $category = '', $date = null)
 	{
-		return;
+		if($priority==JLog::WARNING)
+		{
+			return;
+		}
 		// Automatically instantiate the singleton object if not already done.
 		if (empty(self::$instance))
 		{

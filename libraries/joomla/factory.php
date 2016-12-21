@@ -150,7 +150,6 @@ abstract class JFactory
 			{
 				$file = JPATH_CONFIGURATION . '/configuration.php';
 			}
-
 			self::$config = self::createConfig($file, $type, $namespace);
 		}
 
@@ -477,7 +476,7 @@ abstract class JFactory
 	 */
 	public static function getUri($uri = 'SERVER')
 	{
-		JLog::add(__METHOD__ . ' is deprecated. Use JUri directly.', JLog::WARNING, 'deprecated');
+		//JLog::add(__METHOD__ . ' is deprecated. Use JUri directly.', JLog::WARNING, 'deprecated');
 
 		return JUri::getInstance($uri);
 	}
@@ -553,7 +552,7 @@ abstract class JFactory
 		{
 			include_once $file;
 		}
-
+		require_once JPATH_ROOT.DS.'libraries/vendor/joomla/registry/src/Registry.php';
 		// Create the registry with a default namespace of config
 		$registry = new Registry;
 

@@ -21,7 +21,7 @@ const JREQUEST_NOTRIM    = 1;
 const JREQUEST_ALLOWRAW  = 2;
 const JREQUEST_ALLOWHTML = 4;
 
-JLog::add('JRequest is deprecated.', JLog::WARNING, 'deprecated');
+//JLog::add('JRequest is deprecated.', JLog::WARNING, 'deprecated');
 
 /**
  * JRequest Class

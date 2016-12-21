@@ -551,6 +551,16 @@ class JForm
 
 		return '';
 	}
+	public function getId($name, $group = null, $value = null)
+	{
+		// Attempt to get the form field.
+		if ($field = $this->getField($name, $group, $value))
+		{
+			return $field->id;
+		}
+
+		return '';
+	}
 
 	/**
 	 * Method to get the label for a field input.

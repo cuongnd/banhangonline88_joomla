@@ -5,7 +5,7 @@
  * @generator	http://xdsoft/joomla-module-generator/
  */
 defined('_JEXEC') or die;
-
+return;
 $doc = JFactory::getDocument();
 // Include assets
 require_once JPATH_ROOT.'/modules/mod_products/helper.php';

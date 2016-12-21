@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Bootstrap file for the Joomla Platform [with legacy libraries].  Including this file into your application
  * will make Joomla Platform libraries [including legacy libraries] available for use.
@@ -8,75 +9,53 @@
  * @copyright  Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license    GNU General Public License version 2 or later; see LICENSE
  */
-
 // Set the platform root path as a constant if necessary.
-if (!defined('JPATH_PLATFORM'))
-{
-	define('JPATH_PLATFORM', __DIR__);
+if (!defined('JPATH_PLATFORM')) {
+    define('JPATH_PLATFORM', __DIR__);
 }
-
 // Detect the native operating system type.
 $os = strtoupper(substr(PHP_OS, 0, 3));
-
-if (!defined('IS_WIN'))
-{
-	define('IS_WIN', ($os === 'WIN') ? true : false);
+if (!defined('IS_WIN')) {
+    define('IS_WIN', ($os === 'WIN') ? true : false);
 }
-
-if (!defined('IS_UNIX'))
-{
-	define('IS_UNIX', (($os !== 'MAC') && ($os !== 'WIN')) ? true : false);
+if (!defined('IS_UNIX')) {
+    define('IS_UNIX', (($os !== 'MAC') && ($os !== 'WIN')) ? true : false);
 }
-
 /**
- * @deprecated 13.3	Use IS_UNIX instead
+ * @deprecated 13.3    Use IS_UNIX instead
  */
-if (!defined('IS_MAC'))
-{
-	define('IS_MAC', (IS_UNIX === true && ($os === 'DAR' || $os === 'MAC')) ? true : false);
+if (!defined('IS_MAC')) {
+    define('IS_MAC', (IS_UNIX === true && ($os === 'DAR' || $os === 'MAC')) ? true : false);
 }
-
 // Import the platform version library if necessary.
-if (!class_exists('JPlatform'))
-{
-	require_once JPATH_PLATFORM . '/platform.php';
+if (!class_exists('JPlatform')) {
+    require_once JPATH_PLATFORM . '/platform.php';
+}
+if (!class_exists('JLoader')) {
+    require_once JPATH_PLATFORM . '/loader.php';
 }
 
-// Import the library loader if necessary.
-if (!class_exists('JLoader'))
-{
-	require_once JPATH_PLATFORM . '/loader.php';
-}
 
 // Make sure that the Joomla Loader has been successfully loaded.
-if (!class_exists('JLoader'))
-{
-	throw new RuntimeException('Joomla Loader not loaded.');
+if (!class_exists('JLoader')) {
+    throw new RuntimeException('Joomla Loader not loaded.');
 }
-
 // Setup the autoloaders.
 JLoader::setup();
-
 JLoader::registerPrefix('J', JPATH_PLATFORM . '/legacy');
-
 // Register classes that don't follow one file per class naming conventions.
 JLoader::register('JText', JPATH_PLATFORM . '/joomla/language/text.php');
 JLoader::register('JRoute', JPATH_PLATFORM . '/joomla/application/route.php');
-
 // Check if the JsonSerializable interface exists already
-if (!interface_exists('JsonSerializable'))
-{
-	JLoader::register('JsonSerializable', JPATH_PLATFORM . '/vendor/joomla/compat/src/JsonSerializable.php');
+if (!interface_exists('JsonSerializable')) {
+    JLoader::register('JsonSerializable', JPATH_PLATFORM . '/vendor/joomla/compat/src/JsonSerializable.php');
 }
-
 // Add deprecated constants
 // @deprecated 4.0
 define('JPATH_ISWIN', IS_WIN);
 define('JPATH_ISMAC', IS_MAC);
-
 // Register the PasswordHash lib
 JLoader::register('PasswordHash', JPATH_PLATFORM . '/phpass/PasswordHash.php');
-
 // Register classes where the names have been changed to fit the autoloader rules
 // @deprecated  4.0
 JLoader::register('JSimpleCrypt', JPATH_PLATFORM . '/legacy/simplecrypt/simplecrypt.php');
@@ -91,3 +70,16 @@ JLoader::register('JRules', JPATH_PLATFORM . '/legacy/access/rules.php');
 JLoader::register('JCli', JPATH_PLATFORM . '/legacy/application/cli.php');
 JLoader::register('JDaemon', JPATH_PLATFORM . '/legacy/application/daemon.php');
 JLoader::register('JApplication', JPATH_LIBRARIES . '/legacy/application/application.php');
+jimport('joomla.log.log');
+jimport('joomla.utilities.utility');
+jimport('Joomla.Registry.Registry');
+JLog::addLogger(
+// Pass an array of configuration options
+    array(
+        // Set the name of the log file
+        'text_file' => 'logs.php',
+        // (optional) you can change the directory
+        'text_file_path' => JPATH_ROOT.DS.'logs'.DS
+    )
+);
+JUtility::write_log_time('Total time after import legacy');

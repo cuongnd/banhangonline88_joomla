@@ -86,4 +86,11 @@ class JUtility
 
 	}
 
+	public static function write_log_time($title)
+	{
+		$end_end = microtime(true);
+		$total_time = number_format($end_end-TIME_START,3);
+		JLog::add("$title:$total_time second");
+	}
+
 }

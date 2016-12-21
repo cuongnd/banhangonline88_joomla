@@ -63,9 +63,10 @@ class JDocumentRendererHtmlModule extends JDocumentRenderer
 			$module->content = $content;
 		}
 
-		// Get module parameters
-		$params = new Registry($module->params);
-
+		$params = Registry::getInstance('module_id_' . $module->id);
+		if (empty($params->toArray())) {
+			//$params->loadString($module->params);
+		}
 		// Use parameters from template
 		if (isset($attribs['params']))
 		{

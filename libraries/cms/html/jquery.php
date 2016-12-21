@@ -472,6 +472,39 @@ abstract class JHtmlJquery
 
 		return;
 	}
+	public static function scrollto( $debug = null)
+	{
+		$jquery_scrollto_compress=true;
+		$jquery_scrollto_css_compress=true;
+		// Include jQuery
+		static::framework();
+
+		// If no debugging value is set, use the configuration setting
+		if ($debug === null)
+		{
+			$config = JFactory::getConfig();
+			$debug  = (boolean) $config->get('debug');
+		}
+		// Only attempt to load the component if it's supported in core and hasn't already been loaded
+		if ( empty(static::$loaded[__METHOD__]))
+		{
+			$doc=JFactory::getDocument();
+			if($jquery_scrollto_compress)
+			{
+				$doc->addScript(JUri::root().'media/system/js/jquery.scrollTo-master/jquery.scrollTo.js');
+			}else{
+				$doc->addScript(JUri::root().'media/system/js/jquery.scrollTo-master/jquery.scrollTo.min.js');
+			}
+
+			if($jquery_scrollto_css_compress)
+			{
+			}else{
+			}
+			static::$loaded[__METHOD__]= true;
+		}
+
+		return;
+	}
 	public static function flip( $debug = null)
 	{
 		$jquery_flip_compress=true;
@@ -530,6 +563,39 @@ abstract class JHtmlJquery
 			}
 
 			if($jquery_texttospeak_css_compress)
+			{
+			}else{
+			}
+			static::$loaded[__METHOD__]= true;
+		}
+
+		return;
+	}
+	public static function notify( $debug = null)
+	{
+		$jquery_notify_compress=true;
+		$jquery_notify_css_compress=true;
+		// Include jQuery
+		static::framework();
+
+		// If no debugging value is set, use the configuration setting
+		if ($debug === null)
+		{
+			$config = JFactory::getConfig();
+			$debug  = (boolean) $config->get('debug');
+		}
+		// Only attempt to load the component if it's supported in core and hasn't already been loaded
+		if ( empty(static::$loaded[__METHOD__]))
+		{
+			$doc=JFactory::getDocument();
+			if($jquery_notify_compress)
+			{
+				$doc->addScript(JUri::root().'media/system/js/bootstrap-notify-master/bootstrap-notify.js');
+			}else{
+				$doc->addScript(JUri::root().'media/system/js/bootstrap-notify-master/bootstrap-notify.min.js');
+			}
+
+			if($jquery_notify_css_compress)
 			{
 			}else{
 			}
