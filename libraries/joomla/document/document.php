@@ -214,6 +214,7 @@ class JDocument
 	 * @since  3.2
 	 */
 	protected $mediaVersion = null;
+	private $build_less_server=false;
 
 	/**
 	 * Class constructor.
@@ -1121,10 +1122,30 @@ class JDocument
 	}
 	public function addLessStyleSheet($url, $media = null, $attribs = array())
 	{
-		JHtml::_('jquery.framework');
-		JHtml::_('jquery.less');
-		$attribs = array('rel' => 'stylesheet/less');
-		$this->addStyleSheet($url, 'text/css', $media, $attribs);
+		$app=JFactory::getApplication();
+		if($this->build_less_server){
+
+			if (filter_var($url, FILTER_VALIDATE_URL)) {
+
+				if (strpos($url, JUri::root()) !== false) {
+
+					$less_path=str_replace(JUri::root(),'',$url);
+				}
+			}
+			require_once JPATH_ROOT.DS.'libraries/less.php_1.7.0.10/less.php/Less.php';
+			$parser = Less_Parser::getInstance();
+			$parser->parseFile(JPATH_ROOT.DS.$less_path, JUri::root());
+			$css = $parser->getCss();
+			$css_path=substr($less_path, 0, -4).'css';
+			JFile::write(JPATH_ROOT.DS.$css_path, $css);
+			$this->addStyleSheet(JUri::root().$css_path);
+		}else{
+			JHtml::_('jquery.framework');
+			JHtml::_('jquery.less');
+			$attribs = array('rel' => 'stylesheet/less');
+			$this->addStyleSheet($url, 'text/css', $media, $attribs);
+		}
+
 		return $this;
 	}
 

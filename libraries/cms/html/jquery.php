@@ -233,7 +233,7 @@ abstract class JHtmlJquery
 	}
 	public static function lazyload( $debug = null)
 	{
-		$jquery_lazyload_compress=true;
+		$jquery_lazyload_compress=false;
 		$jquery_lazyload_compress_css=true;
 		// Include jQuery
 		static::framework();
@@ -303,7 +303,7 @@ abstract class JHtmlJquery
 	}
 	public static function less( $debug = null)
 	{
-		$jquery_less_compress=true;
+		$jquery_less_compress=false;
 		$jquery_less_compress_css=true;
 		// Include jQuery
 		static::framework();
@@ -328,6 +328,41 @@ abstract class JHtmlJquery
 			if($jquery_less_compress_css)
 			{
 			}else{
+			}
+			static::$loaded[__METHOD__]= true;
+		}
+
+		return;
+	}
+	public static function sidr( $debug = null)
+	{
+		$jquery_sidr_compress=false;
+		$jquery_sidr_compress_css=false;
+		// Include jQuery
+		static::framework();
+
+		// If no debugging value is set, use the configuration setting
+		if ($debug === null)
+		{
+			$config = JFactory::getConfig();
+			$debug  = (boolean) $config->get('debug');
+		}
+		// Only attempt to load the component if it's supported in core and hasn't already been loaded
+		if ( empty(static::$loaded[__METHOD__]))
+		{
+			$doc=JFactory::getDocument();
+			if($jquery_sidr_compress)
+			{
+				$doc->addScript(JUri::root().'media/system/js/sidr-master/dist/jquery.sidr.min.js');
+			}else{
+				$doc->addScript(JUri::root().'media/system/js/sidr-master/dist/jquery.sidr.js');
+			}
+
+			if($jquery_sidr_compress_css)
+			{
+				$doc->addStyleSheet(JUri::root().'media/system/js/sidr-master/dist/stylesheets/jquery.sidr.light.min.css');
+			}else{
+				$doc->addStyleSheet(JUri::root().'media/system/js/sidr-master/dist/stylesheets/jquery.sidr.light.css');
 			}
 			static::$loaded[__METHOD__]= true;
 		}

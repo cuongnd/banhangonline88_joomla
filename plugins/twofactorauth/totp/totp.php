@@ -269,6 +269,7 @@ class PlgTwofactorauthTotp extends JPlugin
 	 */
 	public function onUserTwofactorAuthenticate($credentials, $options)
 	{
+
 		// Get the OTP configuration object
 		$otpConfig = $options['otp_config'];
 

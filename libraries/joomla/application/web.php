@@ -225,6 +225,7 @@ class JApplicationWeb extends JApplicationBase
      */
     public function execute()
     {
+        $this->onBeforeExecute();
         JPluginHelper::importPlugin('system');
         // Trigger the onBeforeExecute event.
         $this->triggerEvent('onBeforeExecute');
@@ -246,13 +247,20 @@ class JApplicationWeb extends JApplicationBase
             $this->compress();
         }
         // Trigger the onBeforeRespond event.
+        $this->onBeforeRespond();
         $this->triggerEvent('onBeforeRespond');
         // Send the application response.
+
+
         $this->respond();
+        $this->onAfterRespond();
         // Trigger the onAfterRespond event.
         $this->triggerEvent('onAfterRespond');
     }
-
+    public function onBeforeRespond(){
+    }
+    public function onBeforeExecute(){
+    }
     /**
      * Method to run the Web application routines.  Most likely you will want to instantiate a controller
      * and execute it, or perform some sort of action that populates a JDocument object so that output

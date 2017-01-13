@@ -22,8 +22,8 @@ class JDocumentRenderer
 	 * @var    JDocument
 	 * @since  11.1
 	 */
-	public $merge_js=true;
-	public $merge_css=true;
+	public $merge_js=false;
+	public $merge_css=false;
 	public $renew_compress_js=false;
 	public $renew_compress_css=false;
 
@@ -48,8 +48,8 @@ class JDocumentRenderer
 	{
 		$this->_doc = $doc;
 		$config=JFactory::getConfig();
-		$this->merge_js=$config->get('merge_js',true);
-		$this->merge_css=$config->get('merge_css',true);
+		$this->merge_js=$config->get('merge_js',false);
+		$this->merge_css=$config->get('merge_css',false);
 		$this->renew_compress_js=$config->get('renew_compress_js',false);
 		$this->renew_compress_css=$config->get('renew_compress_css',false);
 

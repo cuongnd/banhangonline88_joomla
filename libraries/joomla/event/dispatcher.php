@@ -131,6 +131,7 @@ class JEventDispatcher extends JObject
             // No Plugins Associated To Event!
             return $result;
         }
+
         // Loop through all plugins having a method matching our event
 
         foreach ($this->_methods[$event] as $key) {
@@ -140,7 +141,7 @@ class JEventDispatcher extends JObject
             }
             // Fire the event for an object based observer.
             if (is_object($this->_observers[$key])) {
-               /* JLog::add('-------------------------------------------');
+                JLog::add('-------------------------------------------');
                 $reflector = new ReflectionClass(get_class($this->_observers[$key]));
                 JLog::add('file:'.debug_backtrace()[1]['file']);
                 JLog::add('line:'.debug_backtrace()[1]['line']);
@@ -148,11 +149,21 @@ class JEventDispatcher extends JObject
                 $class_name=get_class($this->_observers[$key]);
                 JLog::add('class:'.$class_name);
                 JLog::add('event:'.$event);
-                JLog::add('-------------------------------------------');*/
+                JLog::add('-------------------------------------------');
                 $args['event'] = $event;
                 $value = $this->_observers[$key]->update($args);
             } // Fire the event for a function based observer.
             elseif (is_array($this->_observers[$key])) {
+                JLog::add('-------------------------------------------');
+                $reflector = new ReflectionClass(get_class($this->_observers[$key]['handler'][0]));
+                JLog::add('file:'.debug_backtrace()[1]['file']);
+                JLog::add('line:'.debug_backtrace()[1]['line']);
+                JLog::add('plugin:'.dirname($reflector->getFileName()));
+                $class_name=get_class($this->_observers[$key]);
+                JLog::add('class:'.$class_name);
+                JLog::add('event:'.$this->_observers[$key]['handler'][1]);
+                JLog::add('-------------------------------------------');
+
                 $value = call_user_func_array($this->_observers[$key]['handler'], $args);
 
             }

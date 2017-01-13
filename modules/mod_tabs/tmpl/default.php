@@ -16,9 +16,10 @@ $jv_selection = $params->get('jv_selection');
 if (trim($jv_selection)!='') {
     $jv_selection = explode(',', $jv_selection);
 }
+$current_module_image=$params->get('module_image','');
 ?>
 <div class="mod_tabs" id="mod_tabs_<?php echo $module->id ?>">
-    <?php if($module->showtitle): ?><h3 class="module-title"><?php echo $module->title ?></h3> <?php endif; ?>
+    <?php if($module->showtitle): ?><h3 class="module-title"> <?php if($current_module_image!=''): ?><img class="icon" src="<?php echo JUri::root().$current_module_image ?>"><?php endif; ?> <?php echo $module->title ?></h3> <?php endif; ?>
     <div class="tabs" id="tabbed-nav-<?php echo $module->id ?>">
         <!-- Tab Navigation Menu -->
         <ul>
@@ -39,7 +40,7 @@ if (trim($jv_selection)!='') {
                                 }
                                 $module_image=$item_params->get('module_image','');
                                 ?>
-                                <li><a><?php if($module_image!=''): ?><img class="icon" src="<?php echo JUri::root().$module_image ?>"><?php endif; ?><?php echo $item_module->title ?></a></li>
+                                <li><a><?php if($module_image!=''): ?><img class="icon" src="<?php echo JUri::root().$module_image ?>"><?php endif; ?> <?php echo $item_module->title ?></a></li>
                                 <?php
                             }
                             break;

@@ -7,7 +7,6 @@
  */
 // Protect from unauthorized access
 defined('FOF_INCLUDED') or die;
-
 /**
  * Part of the FOF Platform Abstraction Layer.
  *

@@ -289,7 +289,7 @@ class JDatabaseDriverMysql extends JDatabaseDriverMysqli
 
 			$this->log[] = $query;
 
-			JLog::add($query, JLog::DEBUG, 'databasequery');
+			//JLog::add($query, JLog::DEBUG, 'databasequery');
 
 			$this->timings[] = microtime(true);
 		}

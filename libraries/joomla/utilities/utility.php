@@ -73,6 +73,31 @@ class JUtility
 
 		return $retarray;
 	}
+	public static function gen_random_string($length=8)
+	{
+		$salt = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+		$base = strlen($salt);
+		$makepass = '';
+
+		/*
+         * Start with a cryptographic strength random string, then convert it to
+         * a string with the numeric base of the salt.
+         * Shift the base conversion on each character so the character
+         * distribution is even, and randomize the start shift so it's not
+         * predictable.
+         */
+		$random = JCrypt::genRandomBytes($length + 1);
+		$shift = ord($random[0]);
+
+		for ($i = 1; $i <= $length; ++$i)
+		{
+			$makepass .= $salt[($shift + ord($random[$i])) % $base];
+			$shift += ord($random[$i]);
+		}
+
+		return $makepass;
+	}
+
 	public static function remove_string_javascript($str)
 	{
 		preg_match_all('/<script type=\"text\/javascript">(.*?)<\/script>/s', $str, $estimates);

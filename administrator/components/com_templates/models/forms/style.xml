@@ -19,7 +19,15 @@
 			class="readonly"
 			size="30"
 			readonly="true" />
-
+		<field
+				name="parent_template_style_id"
+				type="templatestyle"
+				label="COM_MENUS_ITEM_FIELD_TEMPLATE_LABEL"
+				description="COM_MENUS_ITEM_FIELD_TEMPLATE_DESC"
+				filter="int"
+		>
+			<option value="0">JOPTION_USE_DEFAULT</option>
+		</field>
 		<field
 			name="client_id"
 			type="hidden"

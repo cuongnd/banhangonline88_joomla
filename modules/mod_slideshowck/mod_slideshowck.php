@@ -1,5 +1,4 @@
 <?php
-return;
 /**
  * @copyright	Copyright (C) 2012 Cedric KEIFLIN alias ced1870
  * http://www.joomlack.fr

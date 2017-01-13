@@ -175,11 +175,11 @@ final class JApplicationSite extends JApplicationCms
         // Initialise the application
         $this->initialiseApp();
         // Mark afterInitialise in the profiler.
-        //JDEBUG ? $this->profiler->mark('afterInitialise') : null;
+        JDEBUG ? $this->profiler->mark('afterInitialise') : null;
         // Route the application
         $this->route();
         // Mark afterRoute in the profiler.
-        //JDEBUG ? $this->profiler->mark('afterRoute') : null;
+        JDEBUG ? $this->profiler->mark('afterRoute') : null;
         /*
          * Check if the user is required to reset their password
          *
@@ -672,5 +672,17 @@ final class JApplicationSite extends JApplicationCms
             $this->set('theme', $this->template->template);
             $this->set('themeParams', $this->template->params);
         }
+    }
+    public function onBeforeRespond(){
+
+    }
+    public function onAfterRespond(){
+    }
+    public function onBeforeExecute(){
+
+
+    }
+    public function onAfterInitialise(){
+
     }
 }

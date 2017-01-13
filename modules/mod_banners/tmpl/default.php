@@ -41,7 +41,7 @@ JHtml::_('jQuery.lazyload');
 						<a
 							href="<?php echo $link; ?>" target="_blank"
 							title="<?php echo htmlspecialchars($item->name, ENT_QUOTES, 'UTF-8');?>">
-							<img
+							<img class="img-responsive"
 								data-src="<?php echo $baseurl . $imageurl;?>"
 								alt="<?php echo $alt;?>"
 								<?php if (!empty($width)) echo 'width ="' . $width . '"';?>

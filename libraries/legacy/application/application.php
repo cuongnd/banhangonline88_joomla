@@ -8,7 +8,6 @@
  */
 
 defined('JPATH_PLATFORM') or die;
-
 use Joomla\Registry\Registry;
 
 JLog::add('JApplication is deprecated.', JLog::WARNING, 'deprecated');
@@ -665,7 +664,6 @@ class JApplication extends JApplicationBase
 
 			// Import the user plugin group.
 			JPluginHelper::importPlugin('user');
-
 			// OK, the credentials are authenticated and user is authorised.  Let's fire the onLogin event.
 			$results = $this->triggerEvent('onUserLogin', array((array) $response, $options));
 

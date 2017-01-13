@@ -24,7 +24,8 @@
 
 		<field
 			name="alias"
-			type="text"
+			type="alias"
+			input_name="jform[name]"
 			label="JFIELD_ALIAS_LABEL"
 			description="COM_BANNERS_FIELD_ALIAS_DESC"
 			size="40"

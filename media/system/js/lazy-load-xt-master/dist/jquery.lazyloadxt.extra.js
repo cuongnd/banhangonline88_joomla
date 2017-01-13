@@ -111,6 +111,7 @@
                 }
 
                 if (blankImage && el.tagName === 'IMG' && !el.src) {
+                    console.log('hello2222222222222');
                     el.src = blankImage;
                 }
 

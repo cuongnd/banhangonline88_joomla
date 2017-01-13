@@ -19,6 +19,46 @@ defined( '_JEXEC' ) or die( 'Unauthorized Access' );
  */
 class plgUserEasySocial extends JPlugin
 {
+	protected $app;
+	protected $db;
+	public function onUserLogout($user, $options = array())
+	{
+		$my = JFactory::getUser();
+		$session = JFactory::getSession();
+		// Make sure we're a valid user first
+		if ($user['id'] == 0 && !$my->get('tmp_user')) {
+			return true;
+		}
+		// Check to see if we're deleting the current session
+		if ($my->id == $user['id'] && $options['clientid'] == $this->app->getClientId()) {
+			// Hit the user last visit field
+			$my->setLastVisit();
+			// Destroy the php session for this user
+			$session->destroy();
+		}
+		// Enable / Disable Forcing logout all users with same userid
+		$forceLogout = $this->params->get('forceLogout', 1);
+		if ($forceLogout) {
+			$query = $this->db->getQuery(true)
+				->delete($this->db->quoteName('#__session'))
+				->where($this->db->quoteName('userid') . ' = ' . (int)$user['id'])
+				->where($this->db->quoteName('client_id') . ' = ' . (int)$options['clientid']);
+			try {
+				$this->db->setQuery($query)->execute();
+			} catch (RuntimeException $e) {
+				return false;
+			}
+		}
+		// Delete "user state" cookie used for reverse caching proxies like Varnish, Nginx etc.
+		$conf = JFactory::getConfig();
+		$cookie_domain = $conf->get('cookie_domain', '');
+		$cookie_path = $conf->get('cookie_path', '/');
+		if ($this->app->isSite()) {
+			$this->app->input->cookie->set("joomla_user_state", "", time() - 86400, $cookie_path, $cookie_domain, 0);
+		}
+		return true;
+	}
+
 	/**
 	 * Triggered when user logs into the site
 	 *
@@ -26,100 +66,88 @@ class plgUserEasySocial extends JPlugin
 	 * @access	public
 	 * @return
 	 */
-	public function onUserLogin( $user, $options = array() )
+	public function onUserLogin($user, $options = array())
 	{
-		// Include main file.
-		jimport( 'joomla.filesystem.file' );
-
-		$path	= JPATH_ADMINISTRATOR . '/components/com_easysocial/includes/foundry.php';
-
-		if( !JFile::exists( $path ) )
-		{
-			return;
+		$instance = $this->_getUser($user, $options);
+		// If _getUser returned an error, then pass it back.
+		if ($instance instanceof Exception) {
+			return false;
 		}
-
-		// Include the foundry engine
-		require_once( $path );
-
-		// Load the language string.
-		Foundry::language()->load( 'plg_user_easysocial' , JPATH_ADMINISTRATOR );
-
-		// Check if Foundry exists
-		if( !Foundry::exists() )
-		{
-			Foundry::language()->loadSite();
-			echo JText::_( 'COM_EASYSOCIAL_FOUNDRY_DEPENDENCY_MISSING' );
-			return;
+		// If the user is blocked, redirect with an error
+		if ($instance->block == 1) {
+			$this->app->enqueueMessage(JText::_('JERROR_NOLOGIN_BLOCKED'), 'warning');
+			return false;
 		}
-
-		if( isset( $user[ 'status' ] ) && $user['status'] && $user['type'] == 'Joomla' )
-		{
-			//successful logged in.
-			$my = JUser::getInstance();
-
-			if ($id = intval(JUserHelper::getUserId( $user['username'] )))
-			{
-				$my->load($id);
-			}
-
-			$config		= Foundry::config();
-			$app 		= Foundry::table('App');
-			$app->load(array('element' => 'users', 'group' => SOCIAL_TYPE_USER));
-
-			$appParams 	= $app->getParams();
-			$addStream 	= false;
-
-			if ($appParams->get('stream_login', true)) {
-				$addStream	= true;
-			}
-
-			// do not add stream when user login from backend.
-			$mainframe 	= JFactory::getApplication();
-
-			// If this is the admin area, skip this.
-			if( $mainframe->isAdmin() )
-			{
-				return;
-			}
-
-			// Only proceed if we need to add the stream
-			if( $addStream )
-			{
-				$model 		= Foundry::model( 'Users' );
-
-				// Get the last login time the user previously logged in.
-				$lastLogin	= $model->getLastLogin( $my->id );
-
-				if( $lastLogin )
-				{
-					$lastLogin->count = ( Foundry::isJoomla25() ) ? $lastLogin->count + 1 : $lastLogin->count;
-
-					if( $lastLogin->count >= 2 && $lastLogin->limit < $lastLogin->time )
-					{
-						$addStream = false;
-					}
-				}
-			}
-
-			if( $addStream )
-			{
-				$myUser 		= Foundry::user( $my->id );
-				$stream			= Foundry::stream();
-
-				$template 		= $stream->getTemplate();
-
-				$template->setActor( $my->id, SOCIAL_TYPE_USER );
-				$template->setContext( $my->id, SOCIAL_TYPE_USERS );
-				$template->setVerb( 'login' );
-
-				// Set the stream to be public
-				$template->setAccess( 'core.view' );
-
-				// Add the new template.
-				$stream->add( $template );
-			}
-
+		// Authorise the user based on the group information
+		if (!isset($options['group'])) {
+			$options['group'] = 'USERS';
 		}
+		// Check the user can login.
+		$result = $instance->authorise($options['action']);
+		if (!$result) {
+			$this->app->enqueueMessage(JText::_('JERROR_LOGIN_DENIED'), 'warning');
+			return false;
+		}
+		// Mark the user as logged in
+		$instance->guest = 0;
+		$session = JFactory::getSession();
+		// Grab the current session ID
+		$oldSessionId = $session->getId();
+		// Fork the session
+		$session->fork();
+		$session->set('user', $instance);
+		// Ensure the new session's metadata is written to the database
+		$this->app->checkSession();
+		// Purge the old session
+		$query = $this->db->getQuery(true)
+			->delete('#__session')
+			->where($this->db->quoteName('session_id') . ' = ' . $this->db->quote($oldSessionId));
+		try {
+			$this->db->setQuery($query)->execute();
+		} catch (RuntimeException $e) {
+			// The old session is already invalidated, don't let this block logging in
+		}
+		// Hit the user last visit field
+		$instance->setLastVisit();
+		// Add "user state" cookie used for reverse caching proxies like Varnish, Nginx etc.
+		$conf = JFactory::getConfig();
+		$cookie_domain = $conf->get('cookie_domain', '');
+		$cookie_path = $conf->get('cookie_path', '/');
+		if ($this->app->isSite()) {
+			$this->app->input->cookie->set("joomla_user_state", "logged_in", 0, $cookie_path, $cookie_domain, 0);
+		}
+		return true;
+	}
+	protected function _getUser($user, $options = array())
+	{
+		$instance = JUser::getInstance();
+		$id = (int)JUserHelper::getUserId($user['username']);
+		if ($id) {
+			$instance->load($id);
+			return $instance;
+		}
+		// TODO : move this out of the plugin
+		$config = JComponentHelper::getParams('com_users');
+		// Hard coded default to match the default value from com_users.
+		$defaultUserGroup = $config->get('new_usertype', 2);
+		$instance->id = 0;
+		$instance->name = $user['fullname'];
+		$instance->username = $user['username'];
+		$instance->password_clear = $user['password_clear'];
+		// Result should contain an email (check).
+		$instance->email = $user['email'];
+		$instance->groups = array($defaultUserGroup);
+		// If autoregister is set let's register the user
+		$autoregister = isset($options['autoregister']) ? $options['autoregister'] : $this->params->get('autoregister', 1);
+		if ($autoregister) {
+			if (!$instance->save()) {
+				JLog::add('Error in autoregistration for user ' . $user['username'] . '.', JLog::WARNING, 'error');
+			}
+		} else {
+			// No existing user and autoregister off, this is a temporary user.
+			$instance->set('tmp_user', true);
+		}
+		return $instance;
 	}
 
 	/**

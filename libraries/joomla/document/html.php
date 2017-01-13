@@ -366,9 +366,6 @@ class JDocumentHtml extends JDocument
 	{
 		$app=JFactory::getApplication();
 		$client_id=$app->getClientId();
-		if($client_id==0 && ($type=="modules"||$type=="module")){
-			//return "";
-		}
 
 		// If no type is specified, return the whole buffer
 		if ($type === null)
@@ -686,7 +683,6 @@ class JDocumentHtml extends JDocument
 
 			$this->_template_tags = $template_tags_first + $template_tags_last;
 		}
-
 		return $this;
 	}
 
@@ -701,7 +697,6 @@ class JDocumentHtml extends JDocument
 	{
 		$replace = array();
 		$with = array();
-
 		foreach ($this->_template_tags as $jdoc => $args)
 		{
 			$replace[] = $jdoc;

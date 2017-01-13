@@ -584,7 +584,7 @@ class JDatabaseDriverMysqli extends JDatabaseDriver
 			// Add the query to the object queue.
 			$this->log[] = $query;
 
-			JLog::add($query, JLog::DEBUG, 'databasequery');
+			//JLog::add($query, JLog::DEBUG, 'databasequery');
 
 			$this->timings[] = microtime(true);
 
