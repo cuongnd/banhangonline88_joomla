@@ -210,6 +210,8 @@ abstract class JHtmlBootstrap
 	 */
 	public static function framework($debug = null)
 	{
+		$app=JFactory::getApplication();
+		$client=$app->getClientId();
 		// Only load once
 		if (!empty(static::$loaded[__METHOD__]))
 		{
@@ -225,8 +227,12 @@ abstract class JHtmlBootstrap
 			$config = JFactory::getConfig();
 			$debug = (boolean) $config->get('debug');
 		}
+		if($client==0){
+			JHtml::_('script', JUri::root().'templates/vina_bonnie/bootstrap-3.3.7/dist/js/bootstrap.js', false, true, false, false, $debug);
+		}else{
+			JHtml::_('script', 'jui/bootstrap.min.js', false, true, false, false, $debug);
+		}
 
-		JHtml::_('script', 'jui/bootstrap.min.js', false, true, false, false, $debug);
 		static::$loaded[__METHOD__] = true;
 
 		return;
