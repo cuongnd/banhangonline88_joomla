@@ -65,7 +65,8 @@ JFactory::getDocument()->addScriptDeclaration("
                 $this->fields = array(
                     'home',
                     'client_id',
-                    'template'
+                    'template',
+                    'parent_template_style_id'
                 );
                 ?>
                 <?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>

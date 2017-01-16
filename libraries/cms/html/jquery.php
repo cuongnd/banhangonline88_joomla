@@ -268,6 +268,41 @@ abstract class JHtmlJquery
 
 		return;
 	}
+	public static function webui_popover( $debug = null)
+	{
+		$jquery_webui_popover_compress=false;
+		$jquery_webui_popover_compress_css=true;
+		// Include jQuery
+		static::framework();
+
+		// If no debugging value is set, use the configuration setting
+		if ($debug === null)
+		{
+			$config = JFactory::getConfig();
+			$debug  = (boolean) $config->get('debug');
+		}
+		// Only attempt to load the component if it's supported in core and hasn't already been loaded
+		if ( empty(static::$loaded[__METHOD__]))
+		{
+			$doc=JFactory::getDocument();
+			if($jquery_webui_popover_compress)
+			{
+				$doc->addScript(JUri::root().'media/system/js/webui-popover-1.2.17/src/jquery.webui-popover.min.js');
+			}else{
+				$doc->addScript(JUri::root().'media/system/js/webui-popover-1.2.17/src/jquery.webui-popover.js');
+			}
+
+			if($jquery_webui_popover_compress_css)
+			{
+				$doc->addLessStyleSheet(JUri::root().'media/system/js/webui-popover-1.2.17/src/jquery.webui-popover.less');
+			}else{
+				$doc->addLessStyleSheet(JUri::root().'media/system/js/webui-popover-1.2.17/src/jquery.webui-popover.less');
+			}
+			static::$loaded[__METHOD__]= true;
+		}
+
+		return;
+	}
 	public static function hikamarket( $debug = null)
 	{
 		$jquery_hikamarket_compress=true;
@@ -889,7 +924,7 @@ abstract class JHtmlJquery
 	}
 	public static function zozo_tab( $debug = null)
 	{
-		$jquery_zozo_tab_compress=true;
+		$jquery_zozo_tab_compress=false;
 		$jquery_zozo_tab_compress_css=true;
 		// Include jQuery
 		static::framework();
@@ -906,9 +941,9 @@ abstract class JHtmlJquery
 			$doc=JFactory::getDocument();
 			if($jquery_zozo_tab_compress)
 			{
-				$doc->addScript(JUri::root() . 'media/system/js/Zozo_Tabs_v.6.5/js/zozo.tabs.js');
+				$doc->addScript(JUri::root() . 'media/system/js/Zozo_Tabs_v.6.5/js/zozo.tabs.min.js');
 			}else{
-				$doc->addScript(JUri::root() . 'media/system/js/Zozo_Tabs_v.6.5/js/zozo.tabs.min.js');			}
+				$doc->addScript(JUri::root() . 'media/system/js/Zozo_Tabs_v.6.5/js/zozo.tabs.js');			}
 
 			if($jquery_zozo_tab_compress_css)
 			{

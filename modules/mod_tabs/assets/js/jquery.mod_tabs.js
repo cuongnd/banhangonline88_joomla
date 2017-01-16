@@ -40,7 +40,6 @@
                 theme: params.theme ,
                 orientation: params.orientation ,
                 position: params.position ,
-                size: "medium",
                 animation: {
                     easing: "easeInOutExpo",
                     duration: 400,
@@ -64,7 +63,6 @@
                 size:  params.size|"xxlarge",
                 maxRows: params.maxRows||200,
                 select: function(event, item) {
-                    console.log($(item.tab));
                     $(item.tab.context).find('.flip-image').flip({
                         reverse: false,
                         trigger: "hover",

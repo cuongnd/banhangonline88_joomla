@@ -1065,7 +1065,6 @@
         },
         updateClasses: function (_base, _options) {
             _base.$elem.find('*').stop(true, true);
-
             _base.tabID = _base.$elem.attr("id");
             _base.$tabGroup = _base.$elem.find("> ul").addClass(zozo.classes.tabGroup).not(".z-tabs-mobile").addClass("z-tabs-desktop");
             _base.$tabs = _base.$tabGroup.find("> li");

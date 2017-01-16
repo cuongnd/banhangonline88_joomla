@@ -203,7 +203,6 @@ class JFormFieldGroupedList extends JFormField
 				)
 			);
 		}
-
 		return implode($html);
 	}
 }

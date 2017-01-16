@@ -10,5 +10,6 @@
 			<option value="0">JNO</option>
 			<option value="1">JALL</option>
 		</field>
+
 	</fieldset>
 </form>

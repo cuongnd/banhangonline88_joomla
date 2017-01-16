@@ -22,11 +22,12 @@
 		<field
 				name="parent_template_style_id"
 				type="templatestyle"
-				label="COM_MENUS_ITEM_FIELD_TEMPLATE_LABEL"
-				description="COM_MENUS_ITEM_FIELD_TEMPLATE_DESC"
-				filter="int"
+				onchange="Joomla.submitbutton('style.apply')"
+				label="parent_template_style_id"
+				description="parent_template_style_id"
+
 		>
-			<option value="0">JOPTION_USE_DEFAULT</option>
+			<option value="0">JNONE</option>
 		</field>
 		<field
 			name="client_id"

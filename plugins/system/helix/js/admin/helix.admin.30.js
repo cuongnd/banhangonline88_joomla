@@ -137,6 +137,7 @@ jQuery(function($){
         //Template Information
         $('#jform_template').closest('.control-group').appendTo( $( '.form-inline.form-inline-header' ) );
         $('#jform_home').closest('.control-group').appendTo( $( '.form-inline.form-inline-header' ) );
+        $('#jform_parent_template_style_id').closest('.control-group').appendTo( $( '.form-inline.form-inline-header' ) );
 
         $('.info-labels').next().appendTo( $('#sp-theme-info') );
         $('.info-labels').prev().addBack().remove();
