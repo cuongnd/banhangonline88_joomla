@@ -273,6 +273,7 @@ class TemplatesModelStyle extends JModelAdmin
             $table = $this->getTable();
             // Attempt to load the row.
             $return = $table->load($pk);
+
             // Check for a table object error.
             if ($return === false && $table->getError()) {
                 $this->setError($table->getError());
@@ -281,11 +282,13 @@ class TemplatesModelStyle extends JModelAdmin
             // Convert to the JObject before adding other data.
             $properties = $table->getProperties(1);
             $this->_cache[$pk] = JArrayHelper::toObject($properties, 'JObject');
+
             // Convert the params field to an array.
             $registry = new Registry;
             $registry->loadString($table->params);
             $layout_params=$registry->get('layout',new stdClass());
             $parent_template_style_id = $table->parent_template_style_id;
+
             if ($parent_template_style_id) {
                 $table_parent_template = $this->getTable();
                 $table_parent_template->load($parent_template_style_id);
@@ -297,10 +300,9 @@ class TemplatesModelStyle extends JModelAdmin
                 $function_tree_node = function ($function_call_back, &$layout,$layout_params) {
                     if($layout->type == "component")
                     {
-                        $layout->type="sub_content";
                         $layout->is_sub_content=1;
                         $layout->is_main_frame=1;
-                        $layout->children=$layout_params;
+                        $layout->children=$layout_params[0]->children;
                         return;
 
                     }else{
@@ -406,13 +408,12 @@ class TemplatesModelStyle extends JModelAdmin
      */
     public function save($data)
     {
+
         $app=JFactory::getApplication();
+        $task=$app->input->get('task','');
         $parent_template_style_id=$data['parent_template_style_id'];
-
-
-
         $array_layout=$data['params']['layout'];
-        if ($parent_template_style_id) {
+        if ($parent_template_style_id && $task!='change_parent_template') {
 
             $function_get_sub_layout_and_parent_layout = function ($function_call_back, &$node, &$sub_layout) {
                 if($node['is_sub_content'] == 1)
@@ -433,7 +434,7 @@ class TemplatesModelStyle extends JModelAdmin
             foreach($array_layout as &$node) {
                 $function_get_sub_layout_and_parent_layout($function_get_sub_layout_and_parent_layout, $node, $sub_layout);
             }
-            $data['params']['layout']=$array_layout;
+            $data['params']['layout']=$sub_layout;
             $table_parent_template=$this->getTable();
             $table_parent_template->load($parent_template_style_id);
             $parent_template_params=$table_parent_template->params;
@@ -441,7 +442,7 @@ class TemplatesModelStyle extends JModelAdmin
             $registry_parent_params->loadString($parent_template_params);
             $registry_parent_params->set('layout',$array_layout);
             $table_parent_template->params=$registry_parent_params->toString();
-            $table_parent_template->store();
+            //$table_parent_template->store();
 
 
         }
@@ -487,6 +488,7 @@ class TemplatesModelStyle extends JModelAdmin
             $this->setError($table->getError());
             return false;
         }
+
         $user = JFactory::getUser();
         if ($user->authorise('core.edit', 'com_menus') && $table->client_id == 0) {
             $n = 0;

@@ -388,7 +388,7 @@ final class JApplicationSite extends JApplicationCms
             // Load styles
             $db = JFactory::getDbo();
             $query = $db->getQuery(true)
-                ->select('id, home, template, s.params')
+                ->select('id, home, template,parent_template_style_id, s.params')
                 ->from('#__template_styles as s')
                 ->where('s.client_id = 0')
                 ->where('e.enabled = 1')

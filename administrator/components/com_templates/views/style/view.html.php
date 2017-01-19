@@ -48,11 +48,6 @@ class TemplatesViewStyle extends JViewLegacy
     public function display($tpl = null)
     {
         $this->item = $this->get('Item');
-        $parent_template_style_id=$this->item->parent_template_style_id;
-        if($parent_template_style_id)
-        {
-
-        }
         $this->state = $this->get('State');
         $this->form = $this->get('Form');
         $this->canDo = JHelperContent::getActions('com_templates');

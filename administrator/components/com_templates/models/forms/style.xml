@@ -22,11 +22,11 @@
 		<field
 				name="parent_template_style_id"
 				type="templatestyle"
-				onchange="Joomla.submitbutton('style.apply')"
+				onchange="Joomla.submitbutton('style.change_parent_template')"
 				label="parent_template_style_id"
 				description="parent_template_style_id"
 
-		> 
+		>
 			<option value="0">JNONE</option>
 		</field>
 		<field
