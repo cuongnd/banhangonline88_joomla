@@ -19,20 +19,12 @@
 // Source: http://timkadlec.com/2012/10/ie10-snap-mode-and-responsive-design/
 
 @-ms-viewport {
-  width: device-width;
+  //width: device-width;
 }
 
 
 // Visibility utilities
 // Note: Deprecated .visible-xs, .visible-sm, .visible-md, and .visible-lg as of v3.2.0
-.visible-xxxs,
-.visible-xxs,
-.visible-xs,
-.visible-sm,
-.visible-md,
-.visible-lg {
-  .responsive-invisibility();
-}
 
 .visible-xxxs-block,
 .visible-xxxs-inline,
@@ -55,21 +47,9 @@
   display: none !important;
 }
 
-.visible-xxxs {
-  @media (max-width: @screen-xxxs-max) {
-    .responsive-visibility();
-  }
-}
-.visible-xxs {
-  @media (max-width: @screen-xxs-max) {
-    .responsive-visibility();
-  }
-}
-.visible-xs {
-  @media (max-width: @screen-xs-max) {
-    .responsive-visibility();
-  }
-}
+
+
+
 .visible-xs-block {
   @media (max-width: @screen-xs-max) {
     display: block !important;
@@ -86,6 +66,11 @@
   }
 }
 
+.visible-xxxs {
+  @media (min-width: @screen-xxxs-min) and (max-width: @screen-xxxs-max) {
+    .responsive-visibility();
+  }
+}
 .visible-xxs {
   @media (min-width: @screen-xxs-min) and (max-width: @screen-xxs-max) {
     .responsive-visibility();
@@ -101,6 +86,19 @@
     .responsive-visibility();
   }
 }
+.visible-md {
+  @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+    .responsive-visibility();
+  }
+}
+.visible-lg {
+  @media (min-width: @screen-lg-min) {
+    .responsive-visibility();
+  }
+}
+
+
+
 .visible-sm-block {
   @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
     display: block !important;
@@ -138,11 +136,6 @@
   }
 }
 
-.visible-lg {
-  @media (min-width: @screen-lg-min) {
-    .responsive-visibility();
-  }
-}
 .visible-lg-block {
   @media (min-width: @screen-lg-min) {
     display: block !important;

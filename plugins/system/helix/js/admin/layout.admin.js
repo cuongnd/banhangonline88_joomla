@@ -31,7 +31,19 @@ jQuery(function ($) {
     toolTip();
     var columnInputs = function (element, name) {
         $(element).find('>.widthinput').attr('name', name + '[span]');
+        $(element).find('>.widthxxxsinput').attr('name', name + '[xxxsspan]');
+        $(element).find('>.widthxxsinput').attr('name', name + '[xxsspan]');
+        $(element).find('>.widthxsinput').attr('name', name + '[xsspan]');
+        $(element).find('>.widthsminput').attr('name', name + '[smspan]');
+        $(element).find('>.widthmdinput').attr('name', name + '[mdspan]');
+
         $(element).find('>.offsetinput').attr('name', name + '[offset]');
+        $(element).find('>.offsetxxxsinput').attr('name', name + '[xxxsoffset]');
+        $(element).find('>.offsetxxsinput').attr('name', name + '[xxsoffset]');
+        $(element).find('>.offsetxsinput').attr('name', name + '[xsoffset]');
+        $(element).find('>.offsetsminput').attr('name', name + '[smoffset]');
+        $(element).find('>.offsetmdinput').attr('name', name + '[mdoffset]');
+
         $(element).find('>.typeinput').attr('name', name + '[type]');
         $(element).find('>.positioninput').attr('name', name + '[position]');
         $(element).find('>.styleinput').attr('name', name + '[style]');
@@ -185,24 +197,107 @@ jQuery(function ($) {
             content: function () {
                 var id = $(this).attr('href');
                 var currentSpan = $(this).closest('.column').getClass(/\bspan([0-9]{1,2})\b/);
+                var currentxxxsSpan = $(this).closest('.column').attr('xxxsspan');
+                var currentxxsSpan = $(this).closest('.column').attr('xxsspan');
+                var currentxsSpan = $(this).closest('.column').attr('xsspan');
+                var currentsmSpan = $(this).closest('.column').attr('smspan');
+                var currentmdSpan = $(this).closest('.column').attr('mdspan');
                 //$(id).find('#spanwidth option').removeAttr('selected');
                 //$(id).find('#spanwidth option[value="'+currentSpan+'"]').attr('selected', true);
                 //$(id).find('#spanwidth select').val(currentSpan);
                 setTimeout(function (value, $this) {
                     $this.next().find('#spanwidth select').val(value);
                 }, 300, currentSpan, $(this));
+                setTimeout(function (value, $this) {
+                    $this.next().find('#spanxxxswidth select').val(value);
+                }, 300, currentxxxsSpan, $(this));
+                setTimeout(function (value, $this) {
+                    $this.next().find('#spanxxswidth select').val(value);
+                }, 300, currentxxsSpan, $(this));
+                setTimeout(function (value, $this) {
+                    $this.next().find('#spanxswidth select').val(value);
+                }, 300, currentxsSpan, $(this));
+                setTimeout(function (value, $this) {
+                    $this.next().find('#spansmwidth select').val(value);
+                }, 300, currentsmSpan, $(this));
+                setTimeout(function (value, $this) {
+                    $this.next().find('#spanmdwidth select').val(value);
+                }, 300, currentmdSpan, $(this));
+
+
                 $("#content,#element-box").delegate(".popover select.possiblewidths", 'change', function (event) {
                     event.stopImmediatePropagation();
                     var newSpan = $(this).val();
                     $(this).parents('.popover').parent().parent().find('>.widthinput').val(newSpan);
                     $(this).parents('.popover').parent().parent().removeClass().addClass('column span' + newSpan);
                 });
+
+                $("#content,#element-box").delegate(".popover select.possiblexxxswidths", 'change', function (event) {
+                    var newSpan = $(this).val();
+                    $(this).parents('.popover').parent().parent().find('>.widthxxxsinput').val(newSpan);
+                    $(this).parents('.popover').parent().parent().attr('xxxsspan',newSpan);
+                });
+
+                $("#content,#element-box").delegate(".popover select.possiblexxswidths", 'change', function (event) {
+                    var newSpan = $(this).val();
+                    $(this).parents('.popover').parent().parent().find('>.widthxxsinput').val(newSpan);
+                    $(this).parents('.popover').parent().parent().attr('xxsspan',newSpan);
+                });
+
+                $("#content,#element-box").delegate(".popover select.possiblexswidths", 'change', function (event) {
+                    var newSpan = $(this).val();
+                    $(this).parents('.popover').parent().parent().find('>.widthxsinput').val(newSpan);
+                    $(this).parents('.popover').parent().parent().attr('xsspan',newSpan);
+                });
+
+                $("#content,#element-box").delegate(".popover select.possiblesmwidths", 'change', function (event) {
+                    var newSpan = $(this).val();
+                    $(this).parents('.popover').parent().parent().find('>.widthsminput').val(newSpan);
+                    $(this).parents('.popover').parent().parent().attr('smspan',newSpan);
+                });
+                $("#content,#element-box").delegate(".popover select.possiblemdwidths", 'change', function (event) {
+                    var newSpan = $(this).val();
+                    $(this).parents('.popover').parent().parent().find('>.widthmdinput').val(newSpan);
+                    $(this).parents('.popover').parent().parent().attr('mdspan',newSpan);
+                });
+
+
+
                 var currentOffset = $(this).closest('.column').getClass(/\boffset([0-9]{1,2})\b/);
+                var currentxxxsOffset = $(this).closest('.column').attr('xxxsoffset');
+                var currentxxsOffset = $(this).closest('.column').attr('xxsoffset');
+                var currentxsOffset = $(this).closest('.column').attr('xsoffset');
+                var currentsmOffset = $(this).closest('.column').attr('smoffset');
+                var currentmdOffset = $(this).closest('.column').attr('mdoffset');
                 //$(id).find('#spanoffset option').removeAttr('selected');
                 //$(id).find('#spanoffset option[value="'+currentOffset+'"]').attr('selected', true);
                 setTimeout(function (value, $this) {
                     $this.next().find('#spanoffset select').val(value);
                 }, 300, currentOffset, $(this));
+
+                setTimeout(function (value, $this) {
+                    $this.next().find('#spanxxxsoffset select').val(value);
+                }, 300, currentxxxsOffset, $(this));
+
+                setTimeout(function (value, $this) {
+                    $this.next().find('#spanxxsoffset select').val(value);
+                }, 300, currentxxsOffset, $(this));
+
+                setTimeout(function (value, $this) {
+                    $this.next().find('#spanxsoffset select').val(value);
+                }, 300, currentxsOffset, $(this));
+
+                setTimeout(function (value, $this) {
+                    $this.next().find('#spansmoffset select').val(value);
+                }, 300, currentsmOffset, $(this));
+
+                setTimeout(function (value, $this) {
+                    $this.next().find('#spanmdoffset select').val(value);
+                }, 300, currentmdOffset, $(this));
+
+
+
+
                 $("#content,#element-box").delegate(".popover select.possibleoffsets", 'change', function (event) {
                     event.stopImmediatePropagation();
                     var newOffset = $(this).val();
@@ -215,6 +310,39 @@ jQuery(function ($) {
                         $(this).parents('.popover').parent().parent().find('>.offsetinput').val('');
                     }
                 });
+
+                $("#content,#element-box").delegate(".popover select.possiblexxxsoffsets", 'change', function (event) {
+                    var newOffset = $(this).val();
+                    $(this).parents('.popover').parent().parent().attr('xxxsoffset', newOffset);
+                    $(this).parents('.popover').parent().parent().find('>.offsetxxxsinput').val(newOffset);
+                });
+
+                $("#content,#element-box").delegate(".popover select.possiblexxsoffsets", 'change', function (event) {
+                    var newOffset = $(this).val();
+                    $(this).parents('.popover').parent().parent().attr('xxsoffset', newOffset);
+                    $(this).parents('.popover').parent().parent().find('>.offsetxxsinput').val(newOffset);
+                });
+
+                $("#content,#element-box").delegate(".popover select.possiblexsoffsets", 'change', function (event) {
+                    var newOffset = $(this).val();
+                    $(this).parents('.popover').parent().parent().attr('xsoffset', newOffset);
+                    $(this).parents('.popover').parent().parent().find('>.offsetxsinput').val(newOffset);
+                });
+
+                $("#content,#element-box").delegate(".popover select.possiblesmoffsets", 'change', function (event) {
+                    var newOffset = $(this).val();
+                    $(this).parents('.popover').parent().parent().attr('smoffset', newOffset);
+                    $(this).parents('.popover').parent().parent().find('>.offsetsminput').val(newOffset);
+                });
+
+                $("#content,#element-box").delegate(".popover select.possiblemdoffsets", 'change', function (event) {
+                    var newOffset = $(this).val();
+                    $(this).parents('.popover').parent().parent().attr('mdoffset', newOffset);
+                    $(this).parents('.popover').parent().parent().find('>.offsetmdinput').val(newOffset);
+                });
+
+
+
                 var currentIncludetype = $(this).closest('.column').find('.typeinput').val();
                 //$(id).find('#includetypes option').removeAttr('selected');
                 //$(id).find('#includetypes option[value="'+currentIncludetype+'"]').attr('selected', true);
@@ -527,7 +655,7 @@ jQuery(function ($) {
             containment: "parent",
             stop: function(event, $ui )
             {
-                $(this).sortable('cancel');
+                //$(this).sortable('cancel');
             },
             'update': function (event, ui) {
                 setTimeout(function () {

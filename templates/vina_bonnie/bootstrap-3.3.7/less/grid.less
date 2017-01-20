@@ -56,19 +56,22 @@
 
 .make-grid-columns();
 
+@media (min-width: @screen-xxs-min) and (max-width: @screen-lg-max)   {
+  .make-grid(lg);
+}
 
-@media (min-width: @screen-xxxs-min) {
+@media (min-width: @screen-xxxs-min) and (max-width: @screen-xxxs-max)   {
   .make-grid(xxxs);
 }
 
-@media (min-width: @screen-xxs-min) {
+@media (min-width: @screen-xxs-min)  and (max-width: @screen-xxs-max)   {
   .make-grid(xxs);
 }
-@media (min-width: @screen-xs-min) {
+@media (min-width: @screen-xs-min)  and (max-width: @screen-xs-max)   {
   .make-grid(xs);
 }
 
-@media (min-width: @screen-sm-min) {
+@media (min-width: @screen-sm-min)  and (max-width: @screen-sm-max)   {
   .make-grid(sm);
 }
 
@@ -77,7 +80,7 @@
 //
 // Columns, offsets, pushes, and pulls for the desktop device range.
 
-@media (min-width: @screen-md-min) {
+@media (min-width: @screen-md-min) and (max-width: @screen-md-max)   {
   .make-grid(md);
 }
 
@@ -86,6 +89,6 @@
 //
 // Columns, offsets, pushes, and pulls for the large desktop device range.
 
-@media (min-width: @screen-lg-min) {
+@media (min-width: @screen-lg-min)  {
   .make-grid(lg);
 }
