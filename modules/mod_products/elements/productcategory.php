@@ -19,9 +19,9 @@ class JFormFieldProductCategory extends JFormFieldList
     protected function getInput()
     {
         $doc=JFactory::getDocument();
-        $doc->addScript(JUri::root().'modules/mod_products/elements/jquery.productcategory.js');
-        $doc->addScript(JUri::root().'media/jui/jquery-ui-1.12.0.custom/jquery-ui.js');
-        $doc->addLessStyleSheet(JUri::root().'modules/mod_products/elements/productcategory.less');
+        $doc->addScript('/modules/mod_products/elements/jquery.productcategory.js');
+        $doc->addScript('/media/jui/jquery-ui-1.12.0.custom/jquery-ui.js');
+        $doc->addLessStyleSheet('/modules/mod_products/elements/productcategory.less');
         $db = JFactory::getDbo();
         JHtml::_('jquery.ui');
         $query = $db->getQuery(true);

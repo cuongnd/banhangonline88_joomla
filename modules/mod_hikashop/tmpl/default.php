@@ -8,7 +8,7 @@
  */
 defined('_JEXEC') or die('Restricted access');
 $doc=JFactory::getDocument();
-$doc->addLessStyleSheet(JUri::root().'modules/mod_hikashop/assets/less/style.less');
+$doc->addLessStyleSheet('/modules/mod_hikashop/assets/less/style.less');
 $current_module_image=$params->get('module_image','');
 ?><?php if (!empty($html)) { ?>
     <div id="hikashop_module_<?php echo $module->id; ?>"

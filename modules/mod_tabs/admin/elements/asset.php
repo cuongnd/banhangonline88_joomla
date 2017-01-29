@@ -9,8 +9,8 @@ class JFormFieldAsset extends JFormField {
     protected function getInput() {
 
         $doc = JFactory::getDocument();
-        $doc->addScript(JURI::root().'modules/mod_zt_tabs/admin/js/mootools-more.js');
-        $doc->addScript(JURI::root().'modules/mod_zt_tabs/admin/js/script.js');
+        $doc->addScript('/modules/mod_zt_tabs/admin/js/mootools-more.js');
+        $doc->addScript('/modules/mod_zt_tabs/admin/js/script.js');
         return null;
     }
 }

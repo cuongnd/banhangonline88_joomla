@@ -2,7 +2,7 @@
 header('content-type: text/css');
 $id = htmlspecialchars($_GET['monid'], ENT_QUOTES);
 $doc=JFactory::getDocument();
-$doc->addLessStyleSheet(JUri::root().'modules/mod_maximenuck/themes/vertical_mega_menu/css/style.less');
+$doc->addLessStyleSheet('/modules/mod_maximenuck/themes/vertical_mega_menu/css/style.less');
 ?>
 
 .clr {clear:both;visibility : hidden;}

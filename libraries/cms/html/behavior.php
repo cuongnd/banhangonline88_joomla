@@ -40,7 +40,7 @@ abstract class JHtmlBehavior
 	{
 		//$type = $extras ? 'more' : 'core';
 		$type = $extras ? 'more' : 'core';
-
+		$mootools_compress=true;
 		// Only load once
 		if (!empty(static::$loaded[__METHOD__][$type]))
 		{
@@ -58,9 +58,16 @@ abstract class JHtmlBehavior
 		{
 			static::framework(false, $debug);
 		}
-
-		JHtml::_('script', 'system/mootools-' . $type . '.js', false, true, false, false, $debug);
-
+		$doc=JFactory::getDocument();
+		$file_js='media/system/js/mootools-core.js';
+		$compress_file='media/system/js/mootools-core.min.js';
+		if($mootools_compress)
+		{
+			JUtility::write_compress_js($file_js,$compress_file);
+			$doc->addScript("/$compress_file");
+		}else{
+			$doc->addScript("/$file_js");
+		}
 		// Keep loading core.js for BC reasons
 		static::core();
 
@@ -347,6 +354,7 @@ abstract class JHtmlBehavior
 	 */
 	public static function modal($selector = 'a.modal', $params = array())
 	{
+		return;
 		$document = JFactory::getDocument();
 
 		// Load the necessary files if they haven't yet been loaded

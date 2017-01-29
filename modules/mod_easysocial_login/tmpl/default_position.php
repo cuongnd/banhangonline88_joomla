@@ -11,8 +11,8 @@
 */
 defined( '_JEXEC' ) or die( 'Unauthorized Access' );
 $doc=JFactory::getDocument();
-$doc->addLessStyleSheet(JUri::root().'modules/mod_easysocial_login/less/default_position.less');
-$doc->addScript(JUri::root().'modules/mod_easysocial_login/js/default_position.js');
+$doc->addLessStyleSheet('/modules/mod_easysocial_login/less/default_position.less');
+$doc->addScript('/modules/mod_easysocial_login/js/default_position.js');
 $useSSL = $params->get('use_secure_url', false) ? 1 : 0;
 ?>
 <div id="mod_easysocial_login_<?php echo $module->id ?>" class="default_position">

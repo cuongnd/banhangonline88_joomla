@@ -6,7 +6,7 @@
  *  Made by Sandy Duan
  *  Under MIT License
  */
-(function(window, document, undefined) {
+;(function(window, document, undefined) {
     'use strict';
     (function(factory) {
         if (typeof define === 'function' && define.amd) {

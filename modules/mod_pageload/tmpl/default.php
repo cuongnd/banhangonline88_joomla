@@ -1,8 +1,8 @@
 <?php
 defined('_JEXEC') or die;
 $doc = JFactory::getDocument();
-$doc->addLessStyleSheet(JUri::root() . 'modules/mod_pageload/assets/less/style.less');
-$doc->addScript(JUri::root() . 'modules/mod_pageload/assets/js/script.js');
+$doc->addLessStyleSheet('/modules/mod_pageload/assets/less/style.less');
+$doc->addScript( '/modules/mod_pageload/assets/js/script.js');
 jimport('joomla.html.htmlrender');
 JHtml::_('jQuery.checkbox');
 JHtml::_('jQuery.modal');

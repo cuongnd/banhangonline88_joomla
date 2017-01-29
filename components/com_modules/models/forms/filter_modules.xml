@@ -11,6 +11,17 @@
 			hint="JSEARCH_FILTER"
 		/>
 		<field
+				name="exists_template"
+				type="list"
+				label="exists template"
+				description="exists template"
+				default="0"
+		>
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+
+		<field
 			name="position"
 			type="modulesposition"
 			label="COM_MODULES_FIELD_POSITION_LABEL"

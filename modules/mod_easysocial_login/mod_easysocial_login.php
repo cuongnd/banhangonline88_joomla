@@ -1,4 +1,5 @@
 <?php
+return;
 /**
  * @package        EasySocial
  * @copyright    Copyright (C) 2010 - 2014 Stack Ideas Sdn Bhd. All rights reserved.

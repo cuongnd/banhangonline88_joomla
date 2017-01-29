@@ -1,7 +1,7 @@
 <?php
 $doc = JFactory::getDocument();
-$doc->addLessStyleSheet(JUri::root() . 'modules/mod_menu/assests/less/default.less');
-$doc->addScript(JUri::root().'modules/mod_menu/assests/js/mod_menu_default.js');
+$doc->addLessStyleSheet('/modules/mod_menu/assests/less/default.less');
+$doc->addScript('/modules/mod_menu/assests/js/mod_menu_default.js');
 $doc = JFactory::getDocument();
 JHtml::_('jQuery.lazyload');
 $menu = JFactory::getApplication()->getMenu();

@@ -70,9 +70,9 @@ if ($params->get('loadjqueryeasing', '1')) {
 //
 $debug = true;
 if ($debug) {
-	$document->addScript(JURI::root() . '/modules/mod_slideshowck/assets/camera.js');
+	$document->addScript( '//modules/mod_slideshowck/assets/camera.js');
 } else {
-	$document->addScript(JURI::root() . '/modules/mod_slideshowck/assets/camera.min.js');
+	$document->addScript( '//modules/mod_slideshowck/assets/camera.min.js');
 }
 $theme = $params->get('theme', 'default');
 $langdirection = $document->getDirection();

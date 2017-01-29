@@ -10,7 +10,7 @@ defined('_JEXEC') or die('Restricted access');
 JHtml::_('jQuery.help_step');
 JHtml::_('jQuery.auo_typing_text');
 $doc = JFactory::getDocument();
-$doc->addScript(JUri::root() . 'components/com_hikamarket/assets/js/view_productmarket_form.js');
+$doc->addScript( '/components/com_hikamarket/assets/js/view_productmarket_form.js');
 ?>
 <script type="text/javascript">
     window.productMgr = {cpt: {}};

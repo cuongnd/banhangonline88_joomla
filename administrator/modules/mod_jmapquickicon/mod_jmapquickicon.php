@@ -42,7 +42,7 @@ JHtml::_('jquery.framework');
 		</ul>
 	</div>
 <?php else : 
-$doc->addScript(JURI::root() . '/components/com_jmap/js/jquery.js');
+$doc->addScript( '//components/com_jmap/js/jquery.js');
 ?>
 	<div id="cpanel">
 		<div class="icon-wrapper" style="float:left;">

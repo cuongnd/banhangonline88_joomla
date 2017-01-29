@@ -131,7 +131,7 @@ class AdsManagerController extends TController
 			$conf = TConf::getConfig();
 			if(@$conf->display_map_list == 1){
 				$document = JFactory::getDocument();
-				$document->addScript(JURI::root().'components/com_adsmanager/js/jquery.cookie.js');
+				$document->addScript('/components/com_adsmanager/js/jquery.cookie.js');
 			}
 			
 			echo $cache->call( $method, null,$url,$tsearch,$limit,$order,$mode) . "\n";		

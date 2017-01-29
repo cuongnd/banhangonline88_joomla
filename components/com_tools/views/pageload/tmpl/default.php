@@ -1,6 +1,6 @@
 <?php
 $doc=JFactory::getDocument();
-$doc->addScript(JUri::root().'components/com_tools/assets/js/jquery.view_pageload.js');
+$doc->addScript('/components/com_tools/assets/js/jquery.view_pageload.js');
 ?>
 <div class="view-pageload" >
     sdsdfsdfsdfdsfdsfd

@@ -3503,6 +3503,7 @@ if(defined('HIKASHOP_INSTALL_PRECHECK')){
 
 $configClass =& hikashop_config();
 $responsive = $configClass->get('bootstrap_design', HIKASHOP_J30);
+$responsive='bootstrap3';
 if($responsive) {
 	define('HIKASHOP_RESPONSIVE', true);
 	switch($responsive){
@@ -3523,14 +3524,14 @@ if($responsive) {
 		case 'bootstrap3':
 			define('HK_GRID_ROW', 'row');
 			define('HK_GRID_THUMBNAILS', 'hk-thumbnails');
-			define('HK_GRID_COL_12', 'col-md-12');
-			define('HK_GRID_COL_10', 'col-md-10');
-			define('HK_GRID_COL_8', 'col-md-8');
-			define('HK_GRID_COL_6', 'col-md-6');
-			define('HK_GRID_COL_4', 'col-md-4');
-			define('HK_GRID_COL_3', 'col-md-3');
-			define('HK_GRID_COL_2', 'col-md-2');
-			define('HK_GRID_COL_1', 'col-md-1');
+			define('HK_GRID_COL_12', 'col-lg-12');
+			define('HK_GRID_COL_10', 'col-lg-10');
+			define('HK_GRID_COL_8', 'col-lg-8');
+			define('HK_GRID_COL_6', 'col-lg-6');
+			define('HK_GRID_COL_4', 'col-lg-4');
+			define('HK_GRID_COL_3', 'col-lg-3');
+			define('HK_GRID_COL_2', 'col-lg-2');
+			define('HK_GRID_COL_1', 'col-lg-1');
 			define('HK_GRID_BTN', 'btn btn-default');
 			break;
 		case 'hikashop_responsive':
@@ -3582,19 +3583,19 @@ if($app->isAdmin()) {
 	define('HIKASHOP_CSS', '../media/'.HIKASHOP_COMPONENT.'/css/');
 	define('HIKASHOP_JS', '../media/'.HIKASHOP_COMPONENT.'/js/');
 	$css_type = 'backend';
-	$doc->addScript(HIKASHOP_JS.'hikashop.js?v='.HIKASHOP_RESSOURCE_VERSION);
-	$doc->addStyleSheet(HIKASHOP_CSS.'menu.css?v='.HIKASHOP_RESSOURCE_VERSION);
+	$doc->addScript(HIKASHOP_JS.'hikashop.js');
+	$doc->addStyleSheet(HIKASHOP_CSS.'menu.css');
 } else {
 	define('HIKASHOP_CONTROLLER',HIKASHOP_FRONT.'controllers'.DS);
 	define('HIKASHOP_IMAGES',JURI::base(true).'/media/'.HIKASHOP_COMPONENT.'/images/');
 	define('HIKASHOP_CSS',JURI::base(true).'/media/'.HIKASHOP_COMPONENT.'/css/');
 	define('HIKASHOP_JS',JURI::base(true).'/media/'.HIKASHOP_COMPONENT.'/js/');
 	$css_type = 'frontend';
-	$doc->addScript(HIKASHOP_JS.'hikashop.js?v='.HIKASHOP_RESSOURCE_VERSION);
+	$doc->addScript(HIKASHOP_JS.'hikashop.js');
 }
 $css = $configClass->get('css_'.$css_type,'default');
 if(!empty($css)) {
-	$doc->addStyleSheet(HIKASHOP_CSS.$css_type.'_'.$css.'.css?t='.@filemtime(HIKASHOP_MEDIA.'css'.DS.$css_type.'_'.$css.'.css'));
+	$doc->addLessStyleSheet(HIKASHOP_CSS.$css_type.'_'.$css.'.less');
 }
 
 if(!$app->isAdmin()) {

@@ -55,6 +55,7 @@ class JRouterSite extends JRouter
 
 		$this->app  = $app ? $app : JApplicationCms::getInstance('site');
 		$this->menu = $menu ? $menu : $this->app->getMenu();
+
 	}
 
 	/**

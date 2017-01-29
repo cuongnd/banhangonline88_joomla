@@ -11,7 +11,7 @@
 defined('_JEXEC') or die; ?>
 <?php
 $doc=JFactory::getDocument();
-$doc->addScript(JUri::root().'/media/system/js/jquery-migrate-1.1.1.js');
+$doc->addScript('//media/system/js/jquery-migrate-1.1.1.js');
 
 	$scriptId = "script_" . $block->id;
 	ob_start();

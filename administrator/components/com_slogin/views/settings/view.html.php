@@ -120,8 +120,8 @@ class SLoginViewSettings extends SLoginViewSettingsParent
 
 	protected function loadScripts($pieChartData){
 		$document = JFactory::getDocument();
-		$document->addScript(JUri::root().'libraries/amcharts/amcharts/amcharts.js');
-		$document->addScript(JUri::root().'libraries/amcharts/amcharts/pie.js');
+		$document->addScript('/libraries/amcharts/amcharts/amcharts.js');
+		$document->addScript('/libraries/amcharts/amcharts/pie.js');
 
 		$script = <<<SCRIPT
             var chart;

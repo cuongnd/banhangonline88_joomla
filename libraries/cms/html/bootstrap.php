@@ -211,6 +211,7 @@ abstract class JHtmlBootstrap
 	public static function framework($debug = null)
 	{
 		$app=JFactory::getApplication();
+		$jquery_bootstrap_compress=true;
 		$client=$app->getClientId();
 		// Only load once
 		if (!empty(static::$loaded[__METHOD__]))
@@ -227,8 +228,18 @@ abstract class JHtmlBootstrap
 			$config = JFactory::getConfig();
 			$debug = (boolean) $config->get('debug');
 		}
+
 		if($client==0){
-			JHtml::_('script', JUri::root().'templates/vina_bonnie/bootstrap-3.3.7/dist/js/bootstrap.js', false, true, false, false, $debug);
+			$doc=JFactory::getDocument();
+			$file_js='templates/vina_bonnie/bootstrap-3.3.7/dist/js/bootstrap.js';
+			$compress_file='templates/vina_bonnie/bootstrap-3.3.7/dist/js/bootstrap.min.js';
+			if($jquery_bootstrap_compress)
+			{
+				JUtility::write_compress_js($file_js,$compress_file);
+				$doc->addScript('/'.$compress_file);
+			}else{
+				$doc->addScript(JUri::root().$file_js);
+			}
 		}else{
 			JHtml::_('script', 'jui/bootstrap.min.js', false, true, false, false, $debug);
 		}

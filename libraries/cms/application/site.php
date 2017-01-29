@@ -72,6 +72,7 @@ final class JApplicationSite extends JApplicationCms
      */
     protected function authorise($itemid)
     {
+
         $menus = $this->getMenu();
         $user = JFactory::getUser();
         if (!$menus->authorise($itemid)) {
@@ -156,8 +157,13 @@ final class JApplicationSite extends JApplicationCms
         } else {
             $document->setGenerator('Joomla! - Open Source Content Management');
         }
-        $contents = JComponentHelper::renderComponent($component);
-        $document->setBuffer($contents, 'component');
+        $params_template=$this->template->params;
+        $params_template=$params_template?$params_template:new Registry();
+        $hide_component_area=$params_template->get('hide_component_area',0);
+        if($hide_component_area==0) {
+            $contents = JComponentHelper::renderComponent($component);
+            $document->setBuffer($contents, 'component');
+        }
         // Trigger the onAfterDispatch event.
        JPluginHelper::importPlugin('system');
         $this->triggerEvent('onAfterDispatch');
@@ -174,6 +180,7 @@ final class JApplicationSite extends JApplicationCms
     {
         // Initialise the application
         $this->initialiseApp();
+
         // Mark afterInitialise in the profiler.
         JDEBUG ? $this->profiler->mark('afterInitialise') : null;
         // Route the application
@@ -190,6 +197,7 @@ final class JApplicationSite extends JApplicationCms
         $this->checkUserRequireReset('com_users', 'profile', 'edit', 'com_users/profile.save,com_users/profile.apply,com_users/user.logout');
         // Dispatch the application
         $this->dispatch();
+
         // Mark afterDispatch in the profiler.
         JDEBUG ? $this->profiler->mark('afterDispatch') : null;
     }
@@ -411,6 +419,7 @@ final class JApplicationSite extends JApplicationCms
         } else {
             $template = $templates[0];
         }
+        $this->document->template_id=$template->id;
         // Allows for overriding the active template from the request
         $template_override = $this->input->getCmd('template', '');
         // Only set template override if it is a valid template (= it exists and is enabled)
@@ -442,6 +451,7 @@ final class JApplicationSite extends JApplicationCms
                 throw new InvalidArgumentException(JText::sprintf('JERROR_COULD_NOT_FIND_TEMPLATE', $original_tmpl));
             }
         }
+
         // Cache the result
         $this->template = $template;
         if ($params) {
@@ -675,10 +685,22 @@ final class JApplicationSite extends JApplicationCms
     }
     public function onBeforeRespond(){
 
+
     }
     public function onAfterRespond(){
+
     }
     public function onBeforeExecute(){
+
+    }
+    public function onBeforeRender(){
+
+    }
+    public function onAfterRender(){
+
+    }
+    public function onBeforeCompileHead(){
+
 
 
     }

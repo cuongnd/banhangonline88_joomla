@@ -170,6 +170,7 @@ class JRouter
 	{
 		if (empty(self::$instances[$client]))
 		{
+
 			// Create a JRouter object
 			$classname = 'JRouter' . ucfirst($client);
 
@@ -177,6 +178,7 @@ class JRouter
 			{
 				// @deprecated 4.0 Everything in this block is deprecated but the warning is only logged after the file_exists
 				// Load the router object
+
 				$info = JApplicationHelper::getClientInfo($client, true);
 
 				if (is_object($info))
@@ -193,6 +195,8 @@ class JRouter
 
 			if (class_exists($classname))
 			{
+
+
 				self::$instances[$client] = new $classname($options);
 			}
 			else
@@ -215,6 +219,9 @@ class JRouter
 	 */
 	public function parse(&$uri)
 	{
+		$app=JFactory::getApplication();
+
+		JDEBUG ? JProfiler::getInstance('Application')->mark('parse uri:'.$uri->toString()) : null;
 		// Do the preprocess stage of the URL build process
 		$vars = $this->processParseRules($uri, self::PROCESS_BEFORE);
 
@@ -251,6 +258,7 @@ class JRouter
 	 */
 	public function build($url)
 	{
+		JDEBUG ? JProfiler::getInstance('Application')->mark('build url:'.$url) : null;
 		$key = md5(serialize($url));
 
 		if (isset($this->cache[$key]))

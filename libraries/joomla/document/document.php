@@ -214,7 +214,7 @@ class JDocument
 	 * @since  3.2
 	 */
 	protected $mediaVersion = null;
-	private $build_less_server=false;
+	private $build_less_server=true;
 
 	/**
 	 * Class constructor.
@@ -460,6 +460,17 @@ class JDocument
 	 */
 	public function addScript($url, $type = "text/javascript", $defer = false, $async = false)
 	{
+		$uri=JUri::getInstance();
+
+		if (strpos($url, $uri->toString(array('host'))) !== false) {
+			echo "you can not add url <br/>";
+			echo "<pre>";
+			print_r(JUtility::printDebugBacktrace(), false);
+			echo "</pre>";
+			die;
+		}
+
+		//$url=str_replace(JUri::root(),'/',$url);
 		$this->_scripts[$url]['mime'] = $type;
 		$this->_scripts[$url]['defer'] = $defer;
 		$this->_scripts[$url]['async'] = $async;
@@ -587,6 +598,7 @@ class JDocument
 	 */
 	public function addStyleSheet($url, $type = 'text/css', $media = null, $attribs = array())
 	{
+		$url=str_replace(JUri::root(),'/',$url);
 		$this->_styleSheets[$url]['mime'] = $type;
 		$this->_styleSheets[$url]['media'] = $media;
 		$this->_styleSheets[$url]['attribs'] = $attribs;
@@ -1122,27 +1134,24 @@ class JDocument
 	}
 	public function addLessStyleSheet($url, $media = null, $attribs = array())
 	{
+		$uri=JFactory::getUri();
+		if (strpos($url, $uri->toString(array('host'))) !== false) {
+			echo "you can not add url <br/>";
+			echo "<pre>";
+			print_r(JUtility::printDebugBacktrace(), false);
+			echo "</pre>";
+			die;
+		}
+
+
 		$app=JFactory::getApplication();
 		if($this->build_less_server){
-
-			if (filter_var($url, FILTER_VALIDATE_URL)) {
-
-				if (strpos($url, JUri::root()) !== false) {
-
-					$less_path=str_replace(JUri::root(),'',$url);
-				}
-			}
-			require_once JPATH_ROOT.DS.'libraries/less.php_1.7.0.10/less.php/Less.php';
-			$parser = Less_Parser::getInstance();
-			$parser->parseFile(JPATH_ROOT.DS.$less_path, JUri::root());
-			$css = $parser->getCss();
-			$css_path=substr($less_path, 0, -4).'css';
-			JFile::write(JPATH_ROOT.DS.$css_path, $css);
-			$this->addStyleSheet(JUri::root().$css_path);
+			$this->addStyleSheet($url);
 		}else{
 			JHtml::_('jquery.framework');
 			JHtml::_('jquery.less');
 			$attribs = array('rel' => 'stylesheet/less');
+			$url=str_replace(JUri::root(),'/',$url);
 			$this->addStyleSheet($url, 'text/css', $media, $attribs);
 		}
 

@@ -33,10 +33,10 @@ class ModBtSmartsearchHelper
             }
         }
 		if (!$checkJqueryLoaded) {
-		$document->addScript(JURI::root() . 'modules/mod_bt_smartsearch/tmpl/js/jquery.min.js');		
+		$document->addScript( '/modules/mod_bt_smartsearch/tmpl/js/jquery.min.js');
 		}
 		if(!$checkChosen){
-			$document->addScript(JURI::root() . 'modules/mod_bt_smartsearch/tmpl/js/chosen.jquery.min.js');	
+			$document->addScript( '/modules/mod_bt_smartsearch/tmpl/js/chosen.jquery.min.js');
 		}		
 		
 		$document->addStyleSheet(JURI::root() . 'modules/mod_bt_smartsearch/tmpl/css/form.css');

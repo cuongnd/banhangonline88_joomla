@@ -196,7 +196,7 @@ class AdsmanagerViewDetails extends TView
 		switch($image_display)
 		{
 			case 'jssor':
-				$document->addScript(JURI::root().'components/com_adsmanager/js/flexslider/jquery.flexslider-min.js');
+				$document->addScript('/components/com_adsmanager/js/flexslider/jquery.flexslider-min.js');
 				$document->addStyleSheet(JURI::root().'components/com_adsmanager/js/flexslider/flexslider.css');
 				break; 
 			case 'popup':

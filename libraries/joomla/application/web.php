@@ -10,6 +10,8 @@ defined('JPATH_PLATFORM') or die;
 use Joomla\Registry\Registry;
 use Joomla\String\StringHelper;
 
+
+
 /**
  * Base class for a Joomla! Web application.
  *
@@ -303,6 +305,13 @@ class JApplicationWeb extends JApplicationBase
         $this->document->parse($options);
         // Render the document.
         $data = $this->document->render($this->get('cache_enabled'), $options);
+
+
+        require_once JPATH_ROOT.DS.'libraries/html-minifier-master/src/zz/Html/HTMLMinify.php';
+        require_once JPATH_ROOT.DS.'libraries/html-minifier-master/src/zz/Html/SegmentedString.php';
+        $HTMLMinify = new HTMLMinify($data);
+        $data = $HTMLMinify->process();
+
         // Set the application output data.
         $this->setBody($data);
     }

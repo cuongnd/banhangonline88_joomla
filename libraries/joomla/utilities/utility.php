@@ -6,7 +6,9 @@
  * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
-
+use MatthiasMullie\Minify;
+use zz\Html\HTMLMinify;
+use Joomla\Image\Image;
 defined('JPATH_PLATFORM') or die;
 
 /**
@@ -43,6 +45,31 @@ class JUtility
 		}
 		$output .= "</table></div><hr /></p>";
 		return $output;
+	}
+	public static function write_compress_js($file_js, $compress_file)
+	{
+		require_once JPATH_ROOT.DS.'libraries/minifyjscss/minify-master/src/Minify.php';
+		require_once JPATH_ROOT.DS.'libraries/minifyjscss/minify-master/src/JS.php';
+		require_once JPATH_ROOT.DS.'libraries/minifyjscss/minify-master/src/Exception.php';
+		require_once JPATH_ROOT.DS.'libraries/minifyjscss/path-converter-master/src/ConverterInterface.php';
+		require_once JPATH_ROOT.DS.'libraries/minifyjscss/path-converter-master/src/Converter.php';
+		$minifier = new Minify\JS(JPATH_ROOT.DS.$file_js);
+		JFile::write(JPATH_ROOT.DS.$compress_file,$minifier->minify());
+	}
+
+	public static function write_compress_css($file_css, $compress_css_file)
+	{
+		require_once JPATH_ROOT.DS.'libraries/minifyjscss/minify-master/src/Minify.php';
+		require_once JPATH_ROOT.DS.'libraries/minifyjscss/minify-master/src/Exceptions/FileImportException.php';
+		require_once JPATH_ROOT.DS.'libraries/minifyjscss/minify-master/src/CSS.php';
+		require_once JPATH_ROOT.DS.'libraries/minifyjscss/minify-master/src/Exception.php';
+		require_once JPATH_ROOT.DS.'libraries/minifyjscss/path-converter-master/src/ConverterInterface.php';
+		require_once JPATH_ROOT.DS.'libraries/minifyjscss/path-converter-master/src/Converter.php';
+
+
+		require_once JPATH_ROOT.DS.'libraries/minifyjscss/path-converter-master/src/NoConverter.php';
+		$minifier = new Minify\CSS($file_css);
+		JFile::write(JPATH_ROOT.DS.$compress_css_file,$minifier->minify());
 	}
 	/**
 	 * Method to extract key/value pairs out of a string with XML style attributes
@@ -117,5 +144,66 @@ class JUtility
 		$total_time = number_format($end_end-TIME_START,3);
 		JLog::add("$title:$total_time second");
 	}
+	public static function html_minify($data)
+	{
+		require_once JPATH_ROOT.DS.'libraries/html-minifier-master/src/zz/Html/HTMLMinify.php';
+		require_once JPATH_ROOT.DS.'libraries/html-minifier-master/src/zz/Html/SegmentedString.php';
+		require_once JPATH_ROOT.DS.'libraries/html-minifier-master/src/zz/Html/HTMLTokenizer.php';
+		require_once JPATH_ROOT.DS.'libraries/html-minifier-master/src/zz/Html/HTMLToken.php';
+		require_once JPATH_ROOT.DS.'libraries/html-minifier-master/src/zz/Html/HTMLNames.php';
+		$data = zz\Html\HTMLMinify::minify($data);
+		return $data;
 
+	}
+	function compress($source, $destination, $quality) {
+
+		$info = getimagesize($source);
+
+		if ($info['mime'] == 'image/jpeg')
+			$image = imagecreatefromjpeg($source);
+
+		elseif ($info['mime'] == 'image/gif')
+			$image = imagecreatefromgif($source);
+
+		elseif ($info['mime'] == 'image/png')
+			$image = imagecreatefrompng($source);
+
+		imagejpeg($image, $destination, $quality);
+
+		return $destination;
+	}
+	public static function create_thumb($source, $width=600,$height=250) {
+		require_once JPATH_ROOT.DS.'libraries/joomla/image-master/src/Image.php';
+		$source_info = pathinfo($source);
+		$image = new Image();
+
+		$temp_image_path= "/tmp/".$source_info['basename'];
+		$image->loadFile( $source);
+		$image->crop($width, $height);
+		$image->toFile(JPATH_ROOT .$temp_image_path);
+		return $temp_image_path;
+	}
+	public static function resize_image($source, $width=600,$height=250) {
+		require_once JPATH_ROOT.DS.'libraries/joomla/image-master/src/Image.php';
+		$source_info = pathinfo($source);
+		$image = new Image();
+
+		$temp_image_path= "/tmp/".$source_info['basename'];
+		$image->loadFile( $source);
+		$image->resize($width, $height,true, Image::SCALE_FILL);
+		$image->toFile(JPATH_ROOT .$temp_image_path);
+		return $temp_image_path;
+	}
+	public static function createThumbs_image($source, $sizes=array('300x300', '64x64', '250x125')) {
+		$source=JPATH_ROOT.DS.'images/com_hikashop/upload/thumbnail_25x25/thoitrang_phukien-1336232718.png';
+		require_once JPATH_ROOT.DS.'libraries/joomla/image-master/src/Image.php';
+		$source_info = pathinfo($source);
+		$image = new Image();
+
+		$temp_image_path= "/tmp/".$source_info['basename'];
+		$image->loadFile( $source);
+		$image->createThumbs($sizes, Image::SCALE_FILL);
+		$image->toFile(JPATH_ROOT .$temp_image_path,IMAGETYPE_PNG,array('options' => 0));
+		return $temp_image_path;
+	}
 }

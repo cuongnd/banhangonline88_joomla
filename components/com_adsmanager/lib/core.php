@@ -158,9 +158,6 @@ if (CLI == 0) {
 	if (strpos($_SERVER['REQUEST_URI'],'.feed') !== false) {
 		JRequest::setVar('format', 'feed');
 	}
-	if (method_exists('JuloaLib','loadJquery')) {
-		JuloaLib::loadJquery();
-	}
 }
 
 require_once(JPATH_ROOT.'/components/com_adsmanager/helpers/category.php');

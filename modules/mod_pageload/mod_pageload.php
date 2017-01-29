@@ -8,8 +8,8 @@ defined('_JEXEC') or die;
 
 $doc = JFactory::getDocument();
 // Include assets
-$doc->addStyleSheet(JURI::root()."modules/mod_pageload/assets/css/style.css");
-$doc->addScript(JURI::root()."modules/mod_pageload/assets/js/script.js");
+$doc->addStyleSheet("/modules/mod_pageload/assets/css/style.css");
+$doc->addScript("/modules/mod_pageload/assets/js/script.js");
 // $width 			= $params->get("width");
 
 /**

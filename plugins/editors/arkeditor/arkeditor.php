@@ -51,7 +51,7 @@ class plgEditorArkEditor extends JPlugin {
         $document = JFactory::getDocument();
         $document->addCustomTag('<script src="'. JURI::root().'plugins/editors/arkeditor/ckeditor/ckeditor.js"></script>');
                                 
-		//$document->addScript(JURI::root().'plugins/editors/arkeditor/ckeditor/ckeditor.js');
+		//$document->addScript('/plugins/editors/arkeditor/ckeditor/ckeditor.js');
 		
 		$document->addCustomTag("<script>
         (function()

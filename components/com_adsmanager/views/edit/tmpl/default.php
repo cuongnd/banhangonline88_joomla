@@ -21,7 +21,7 @@ echo "<h1 class='componentheading'>".JText::_('ADSMANAGER_EDIT_FORM')."</h1>";
 $app = JFactory::getApplication();
 
 $document = JFactory::getDocument();
-$document->addScript(JURI::root().'components/com_adsmanager/js/jquery.steps.js');
+$document->addScript('/components/com_adsmanager/js/jquery.steps.js');
 
 
 $nbimages = $this->conf->nb_images;
@@ -56,7 +56,7 @@ if ($nbimages > 0) {
 	JText::script('ADSMANAGER_VALIDATE_TELEPHONE');
 	JText::script('ADSMANAGER_VALIDATE_CHECK_FIELD');
 	JText::script('ADSMANAGER_VALIDATE_PASSWORD_EQUAL');
-	$document->addScript(JURI::root().'components/com_adsmanager/js/jquery.validate.js');
+	$document->addScript('/components/com_adsmanager/js/jquery.validate.js');
 	$document->addScriptDeclaration("
 		jQ.extend(jQ.validator.messages, {
 		    required			: ".json_encode(JText::_('ADSMANAGER_VALIDATE_FIELD_REQUIRED')).",

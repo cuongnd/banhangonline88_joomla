@@ -108,8 +108,8 @@ class AdsmanagerViewPreview extends TView
 		switch($image_display)
 		{
             case 'jssor':
-				$document->addScript(JURI::root().'components/com_adsmanager/js/jssor/jssor.slider.mini.js');
-				$document->addScript(JURI::root().'components/com_adsmanager/js/jssor/config.js');
+				$document->addScript('/components/com_adsmanager/js/jssor/jssor.slider.mini.js');
+				$document->addScript('/components/com_adsmanager/js/jssor/config.js');
 				$document->addStyleSheet(JURI::root().'components/com_adsmanager/js/jssor/jssor.css');
 				break; 
 			case 'popup':

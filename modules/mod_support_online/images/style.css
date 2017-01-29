@@ -12,7 +12,7 @@
     font-size: 10px !important;
 }
 .sp_yahoo {
-	background: url('hotline-img.png') no-repeat top;
+	background: url('/modules/mod_support_online/images/hotline-img.png') no-repeat top;
 	padding-top: 120px;
 }
 .sp_yahoo_customlogo {}

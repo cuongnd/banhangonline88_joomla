@@ -53,7 +53,7 @@ class PlgInstallerWebinstaller extends JPlugin
 		$ver = new JVersion;
 		$min = JFactory::getConfig()->get('debug') ? '' : '.min';
 
-		$document->addScript(JURI::root() . 'plugins/installer/webinstaller/js/client' . $min . '.js?jversion=' . JVERSION);
+		$document->addScript( '/plugins/installer/webinstaller/js/client' . $min . '.js?jversion=' . JVERSION);
 		$document->addStyleSheet(JURI::root() . 'plugins/installer/webinstaller/css/client' . $min . '.css?jversion=' . JVERSION);
 
 		$installer = new JInstaller();
