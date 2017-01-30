@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.0" client="site" method="upgrade">
+	<name>Social Share Buttons</name>
+    <author>E-max</author>
+    <creationDate>Aug 2013</creationDate>
+    <copyright>Copyright (C) 2008 - 2013 e-max.it. All rights reserved.</copyright>
+    <license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+    <authorEmail>webmaster@e-max.it</authorEmail>
+    <authorUrl>http://www.e-max.it</authorUrl>
+    <version>1.2.2</version>
+	<description>MOD_SOCIALSHAREBUTTONS_DESCRIPTION</description>
+	
+	<languages>
+        <language tag="en-GB">language/en-GB/en-GB.mod_socialsharebuttons.ini</language>
+		<language tag="en-GB">language/en-GB/en-GB.mod_socialsharebuttons.sys.ini</language>
+		<language tag="it-IT">language/it-IT/it-IT.mod_socialsharebuttons.ini</language>
+		<language tag="it-IT">language/it-IT/it-IT.mod_socialsharebuttons.sys.ini</language>
+    </languages> 
+    
+	<files>
+		<filename module="mod_socialsharebuttons">mod_socialsharebuttons.php</filename>
+		<filename>index.html</filename>
+		<filename>helper.php</filename>
+		<folder>assets</folder>
+		<folder>style</folder>
+		<folder>tmpl</folder>
+	</files>
+
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+						
+				<field name="spacer1" type="spacer" class="text" label="MOD_SOCIALSHAREBUTTONS_FB_LIKE_TITLE" />
+				<field name="facebookLikeButton" type="radio" default="1" label="MOD_SOCIALSHAREBUTTONS_FB_LIKE_BUTTON" description="MOD_SOCIALSHAREBUTTONS_FB_LIKE_BUTTON_DESC" >
+				   <option value="0">MOD_SOCIALSHAREBUTTONS_HIDE</option>
+				   <option value="1">MOD_SOCIALSHAREBUTTONS_SHOW</option>
+				</field>
+				<field name="facebookLikeRenderer" type="list" default="1" label="MOD_SOCIALSHAREBUTTONS_FB_LIKE_RENDERER" description="MOD_SOCIALSHAREBUTTONS_FB_LIKE_RENDERER_DESC" >
+				   <option value="0">iframe</option>
+				   <option value="1">XFBML</option>
+				</field>
+				<field name="facebookLikeAction" type="list" default="like" label="MOD_SOCIALSHAREBUTTONS_FB_LIKE_BUTTON_TEXT" description="MOD_SOCIALSHAREBUTTONS_FB_LIKE_BUTTON_TEXT_DESC" >
+				   <option value="like">MOD_SOCIALSHAREBUTTONS_FB_LIKE_LIKE</option>
+				   <option value="recommend">MOD_SOCIALSHAREBUTTONS_FB_LIKE_RECOMMEND</option>
+				</field>
+				<field name="facebookLikeType" type="list" default="button_count" label="MOD_SOCIALSHAREBUTTONS_FB_LIKE_TYPE" description="MOD_SOCIALSHAREBUTTONS_FB_LIKE_TYPE_DESC" >
+					<option value="standard">MOD_SOCIALSHAREBUTTONS_FB_LIKE_STANDARD</option>
+				   <option value="box_count">MOD_SOCIALSHAREBUTTONS_FB_LIKE_BOX_COUNT</option>
+				   <option value="button_count">MOD_SOCIALSHAREBUTTONS_FB_LIKE_BUTTON_COUNT</option>
+				</field>
+				<field name="facebookLikeFaces" type="radio" default="0" label="MOD_SOCIALSHAREBUTTONS_FB_LIKE_FACES" description="MOD_SOCIALSHAREBUTTONS_FB_LIKE_FACES_DESC" >
+				   <option value="0">MOD_SOCIALSHAREBUTTONS_HIDE</option>
+				   <option value="1">MOD_SOCIALSHAREBUTTONS_SHOW</option>
+				</field>
+				<field name="facebookLikeColor" type="list" default="light" label="MOD_SOCIALSHAREBUTTONS_FB_LIKE_COLOR" description="MOD_SOCIALSHAREBUTTONS_FB_LIKE_COLOR_DESC" >
+				   <option value="light">MOD_SOCIALSHAREBUTTONS_FB_LIKE_LIGHT</option>
+				   <option value="dark">MOD_SOCIALSHAREBUTTONS_FB_LIKE_DARK</option>
+				</field>
+				<field name="facebookLikeFont" type="list" default="" label="MOD_SOCIALSHAREBUTTONS_FB_LIKE_FONT" description="MOD_SOCIALSHAREBUTTONS_FB_LIKE_FONT_DESC" >
+				   <option value=""></option>
+					<option value="arial">Arial</option>
+					<option value="lucida grande">Lucida Grande</option>
+					<option value="segoe ui">Segoe UI</option>
+					<option value="tahoma">Tahoma</option>
+					<option value="trebuchet ms">Trebuchet ms</option>
+					<option value="verdana">Verdana</option>
+				</field>
+				<field name="facebookLikeWidth" type="text" default="100" label="MOD_SOCIALSHAREBUTTONS_FB_LIKE_WIDTH" description="MOD_SOCIALSHAREBUTTONS_FB_LIKE_WIDTH_DESC" />
+				
+				<field name="fbDynamicLocale" type="radio" default="0" label="MOD_SOCIALSHAREBUTTONS_FB_LIKE_AUTO_LANGUAGE" description="MOD_SOCIALSHAREBUTTONS_FB_LIKE_AUTO_LANGUAGE_DESC">
+					<option value="0">MOD_SOCIALSHAREBUTTONS_NO</option>
+					<option value="1">MOD_SOCIALSHAREBUTTONS_YES</option>
+				</field>
+				<field name="fbLocale" type="list" default="en_US" label="MOD_SOCIALSHAREBUTTONS_FB_LIKE_LANGUAGE" description="MOD_SOCIALSHAREBUTTONS_FB_LIKE_LANGUAGE_DESC">
+					<option value="af_ZA">Afrikaans</option>
+					<option value="ar_AR">Arabic</option>
+					<option value="ay_BO">Aymara</option>
+					<option value="az_AZ">Azeri</option>
+					<option value="be_BY">Belarusian</option>
+					<option value="bg_BG">Bulgarian</option>
+					<option value="bn_IN">Bengali</option>
+					<option value="bs_BA">Bosnian</option>
+					<option value="ca_ES">Catalan</option>
+					<option value="ck_US">Cherokee</option>
+					<option value="cs_CZ">Czech</option>
+					<option value="cy_GB">Welsh</option>
+					<option value="da_DK">Danish</option>
+					<option value="de_DE">German</option>
+					<option value="el_GR">Greek</option>
+					<option value="en_GB">English (UK)</option>
+					<option value="en_PI">English (Pirate)</option>
+					<option value="en_UD">English (Upside Down)</option>
+					<option value="en_US">English [US]</option>
+					<option value="eo_EO">Esperanto</option>
+					<option value="es_CL">Spanish (Chile)</option>
+					<option value="es_CO">Spanish (Colombia)</option>
+					<option value="es_ES">Spanish (Spain)</option>
+					<option value="es_LA">Spanish</option>
+					<option value="es_MX">Spanish (Mexico)</option>
+					<option value="es_VE">Spanish (Mexico)</option>
+					<option value="et_EE">Estonian</option>
+					<option value="eu_ES">Basque</option>
+					<option value="fa_IR">Persian</option>
+					<option value="fb_LT">Leet Speak</option>
+					<option value="fi_FI">Finnish</option>
+					<option value="fo_FO">Faroese</option>
+					<option value="fr_CA">French (Canada)</option>
+					<option value="fr_FR">French (France)</option>
+					<option value="ga_IE">Irish</option>
+					<option value="gl_ES">Galician</option>
+					<option value="gn_PY">Guarani</option>
+					<option value="gu_IN">Gujarati</option>
+					<option value="he_IL">Hebrew</option>
+					<option value="hi_IN">Hindi</option>
+					<option value="hr_HR">Croatian</option>
+					<option value="hu_HU">Hungarian</option>
+					<option value="hy_AM">Armenian</option>
+					<option value="id_ID">Indonesian</option>
+					<option value="is_IS">Icelandic</option>
+					<option value="it_IT">Italian</option>
+					<option value="ja_JP">Japanese</option>
+					<option value="jv_ID">Javanese</option>
+					<option value="ka_GE">Georgian</option>
+					<option value="kk_KZ">Kazakh</option>
+					<option value="km_KH">Khmer</option>
+					<option value="kn_IN">Kannada</option>
+					<option value="ko_KR">Korean</option>
+					<option value="ku_TR">Kurdish</option>
+					<option value="la_VA">Latin</option>
+					<option value="li_NL">Limburgish</option>
+					<option value="lt_LT">Lithuanian</option>
+					<option value="lv_LV">Latvian</option>
+					<option value="mg_MG">Malagasy</option>
+					<option value="mk_MK">Macedonian</option>
+					<option value="ml_IN">Malayalam</option>
+					<option value="mn_MN">Mongolian</option>
+					<option value="mr_IN">Marathi</option>
+					<option value="ms_MY">Malay</option>
+					<option value="mt_MT">Maltese</option>
+					<option value="nb_NO">Norwegian (bokmal)</option>
+					<option value="ne_NP">Nepali</option>
+					<option value="nl_BE">Dutch (Belgie)</option>
+					<option value="nl_NL">Dutch</option>
+					<option value="nn_NO">Norwegian (nynorsk)</option>
+					<option value="pa_IN">Punjabi</option>
+					<option value="pl_PL">Polish</option>
+					<option value="ps_AF">Pashto</option>
+					<option value="pt_BR">Portuguese (Brazil)</option>
+					<option value="pt_PT">Portuguese (Portugal)</option>
+					<option value="qu_PE">Quechua</option>
+					<option value="rm_CH">Romansh</option>
+					<option value="ro_RO">Romanian</option>
+					<option value="ru_RU">Russian</option>
+					<option value="sa_IN">Sanskrit</option>
+					<option value="se_NO">Northern Sami</option>
+					<option value="sk_SK">Slovak</option>
+					<option value="sl_SI">Slovenian</option>
+					<option value="so_SO">Somali</option>
+					<option value="sq_AL">Albanian</option>
+					<option value="sr_RS">Serbian</option>
+					<option value="sv_SE">Swedish</option>
+					<option value="sw_KE">Swahili</option>
+					<option value="sy_SY">Syriac</option>
+					<option value="ta_IN">Tamil</option>
+					<option value="te_IN">Telugu</option>
+					<option value="tg_TJ">Tajik</option>
+					<option value="th_TH">Thai</option>
+					<option value="tl_PH">Filipino</option>
+					<option value="tl_ST">Klingon</option>
+					<option value="tr_TR">Turkish</option>
+					<option value="tt_RU">Tatar</option>
+					<option value="uk_UA">Ukrainian</option>
+					<option value="ur_PK">Urdu</option>
+					<option value="uz_UZ">Uzbek</option>
+					<option value="vi_VN">Vietnamese</option>
+					<option value="xh_ZA">Xhosa</option>
+					<option value="yi_DE">Yiddish</option>
+					<option value="zh_CN">Simplified Chinese (China)</option>
+					<option value="zh_HK">Traditional Chinese (Hong Kong)</option>
+					<option value="zh_TW">Traditional Chinese (Taiwan)</option>
+					<option value="zu_ZA">Zulu</option>
+				</field>
+		
+				<field name="spacer2" type="spacer" class="text" label="MOD_SOCIALSHAREBUTTONS_TWITTER_TITLE" />
+				<field name="twitterButton" type="radio" default="1" label="MOD_SOCIALSHAREBUTTONS_TWITTER_BUTTON" description="MOD_SOCIALSHAREBUTTONS_TWITTER_BUTTON_DESC" >
+				   <option value="0">MOD_SOCIALSHAREBUTTONS_HIDE</option>
+				   <option value="1">MOD_SOCIALSHAREBUTTONS_SHOW</option>
+				</field>
+				<field name="twitterName" type="text" default="" size="40" label="MOD_SOCIALSHAREBUTTONS_TWITTER_NAME" description="MOD_SOCIALSHAREBUTTONS_TWITTER_NAME_DESC" />
+				<field name="twitterCounter" type="list" default="horizontal" label="MOD_SOCIALSHAREBUTTONS_TWITTER_COUNTER" description="MOD_SOCIALSHAREBUTTONS_TWITTER_COUNTER_DESC" >
+				   <option value="none">MOD_SOCIALSHAREBUTTONS_HIDE</option>
+				   <option value="vertical">MOD_SOCIALSHAREBUTTONS_TWITTER_VERTICAL</option>
+				   <option value="horizontal">MOD_SOCIALSHAREBUTTONS_TWITTER_HORIZONTAL</option>
+				</field>
+				<field name="twitterLanguage" type="list" default="0" label="MOD_SOCIALSHAREBUTTONS_TWITTER_LANG" description="MOD_SOCIALSHAREBUTTONS_TWITTER_LANG_DESC" >
+				   <option value="en">English</option>
+				   <option value="fr">French</option>
+				   <option value="gr">German</option>
+				   <option value="it">Italian</option>
+				   <option value="es">Spanish</option>
+				   <option value="ko">Korean</option>
+				   <option value="jp">Japanese</option>
+				</field>
+				
+				<field name="spacer3" type="spacer" class="text" label="MOD_SOCIALSHAREBUTTONS_RETWEETME_TITLE" />
+				<field name="retweetmeButton" type="radio" default="1" label="MOD_SOCIALSHAREBUTTONS_RETWEETME_BUTTON" description="MOD_SOCIALSHAREBUTTONS_RETWEETME_BUTTON_DESC" >
+				   <option value="0">MOD_SOCIALSHAREBUTTONS_HIDE</option>
+				   <option value="1">MOD_SOCIALSHAREBUTTONS_SHOW</option>
+				</field>
+				<field name="retweetmeType" type="list" default="compact" label="MOD_SOCIALSHAREBUTTONS_RETWEETME_STYLE" description="MOD_SOCIALSHAREBUTTONS_RETWEETME_STYLE_DESC" >
+				   <option value="compact">MOD_SOCIALSHAREBUTTONS_RETWEETME_COMPACT</option>
+				   <option value="normal">MOD_SOCIALSHAREBUTTONS_RETWEETME_NORMAL</option>
+				</field>
+		
+				<field name="spacer4" type="spacer" class="text" label="MOD_SOCIALSHAREBUTTONS_GOOGLE_PLUSONE_TITLE" />
+				<field name="plusButton" type="radio" default="1" label="MOD_SOCIALSHAREBUTTONS_GOOGLE_PLUSONE_BUTTON" description="MOD_SOCIALSHAREBUTTONS_GOOGLE_PLUSONE_BUTTON_DESC" >
+				   <option value="0">MOD_SOCIALSHAREBUTTONS_HIDE</option>
+				   <option value="1">MOD_SOCIALSHAREBUTTONS_SHOW</option>
+				</field>
+				<field name="plusType" type="list" default="medium" label="MOD_SOCIALSHAREBUTTONS_GOOGLE_PLUSONE_STYLE" description="MOD_SOCIALSHAREBUTTONS_GOOGLE_PLUSONE_STYLE_DESC" >
+				   <option value="small">MOD_SOCIALSHAREBUTTONS_GOOGLE_PLUSONE_SMALL</option>
+				   <option value="medium">MOD_SOCIALSHAREBUTTONS_GOOGLE_PLUSONE_MEDIUM</option>
+				   <option value="">MOD_SOCIALSHAREBUTTONS_GOOGLE_PLUSONE_STANDARD</option>
+				   <option value="tall">MOD_SOCIALSHAREBUTTONS_GOOGLE_PLUSONE_TALL</option>
+				</field>
+				<field name="plusLocale" type="list" default="en" label="MOD_SOCIALSHAREBUTTONS_GOOGLE_PLUSONE_LANGUAGE" description="MOD_SOCIALSHAREBUTTONS_GOOGLE_PLUSONE_LANGUAGE_DESC" >
+					<option value="ar">Arabic</option>
+					<option value="bn">Bengali</option>
+					<option value="bg">Bulgarian</option>
+					<option value="ca">Catalan</option>
+					<option value="zh">Chinese</option>
+					<option value="zh_CN">Chinese (China)</option>
+					<option value="zh_HK">Chinese (Hong Kong)</option>
+					<option value="zh_TW">Chinese (Taiwan)</option>
+					<option value="hr">Croatian</option>
+					<option value="cs">Czech</option>
+					<option value="da">Danish</option>
+					<option value="nl">Dutch</option>
+					<option value="en">English</option>
+					<option value="en_IN">English (India)</option>
+					<option value="en_IE">English (Ireland)</option>
+					<option value="en_SG">English (Singapore)</option>
+					<option value="en_ZA">English (South Africa)</option>
+					<option value="en_GB">English (United Kingdom)</option>
+					<option value="fil">Filipino</option>
+					<option value="fi">Finnish</option>
+					<option value="fr">French</option>
+					<option value="de">German</option>
+					<option value="de_CH">German (Switzerland)</option>
+					<option value="el">Greek</option>
+					<option value="gu">Gujarati</option>
+					<option value="iw">Hebrew</option>
+					<option value="hi">Hindi</option>
+					<option value="hu">Hungarian</option>
+					<option value="in">Indonesian</option>
+					<option value="it">Italian</option>
+					<option value="ja">Japanese</option>
+					<option value="kn">Kannada</option>
+					<option value="ko">Korean</option>
+					<option value="lv">Latvian</option>
+					<option value="ln">Lingala</option>
+					<option value="lt">Lithuanian</option>
+					<option value="ms">Malay</option>
+					<option value="ml">Malayalam</option>
+					<option value="mr">Marathi</option>
+					<option value="no">Norwegian</option>
+					<option value="or">Oriya</option>
+					<option value="fa">Persian</option>
+					<option value="pl">Polish</option>
+					<option value="pt_BR">Portuguese (Brazil)</option>
+					<option value="pt_PT">Portuguese (Portugal)</option>
+					<option value="ro">Romanian</option>
+					<option value="ru">Russian</option>
+					<option value="sr">Serbian</option>
+					<option value="sk">Slovak</option>
+					<option value="sl">Slovenian</option>
+					<option value="es">Spanish</option>
+					<option value="sv">Swedish</option>
+					<option value="gsw">Swiss German</option>
+					<option value="ta">Tamil</option>
+					<option value="te">Telugu</option>
+					<option value="th">Thai</option>
+					<option value="tr">Turkish</option>
+					<option value="uk">Ukrainian</option>
+					<option value="vi">Vietnamese</option>
+				</field>
+		
+				<field name="spacer5" type="spacer" class="text" label="MOD_SOCIALSHAREBUTTONS_LINKEDIN_TITLE" />
+				<field name="linkedInButton" type="radio" default="1" label="MOD_SOCIALSHAREBUTTONS_LINKEDIN_BUTTON" description="MOD_SOCIALSHAREBUTTONS_LINKEDIN_BUTTON_DESC" >
+				   <option value="0">MOD_SOCIALSHAREBUTTONS_HIDE</option>
+				   <option value="1">MOD_SOCIALSHAREBUTTONS_SHOW</option>
+				</field>
+				<field name="linkedInType" type="list" default="right" label="MOD_SOCIALSHAREBUTTONS_LINKEDIN_TYPE" description="MOD_SOCIALSHAREBUTTONS_LINKEDIN_TYPE_DESC" >
+				   <option value="none">MOD_SOCIALSHAREBUTTONS_LINKEDIN_COUNTER_NONE</option>
+				   <option value="top">MOD_SOCIALSHAREBUTTONS_LINKEDIN_COUNTER_TOP</option>
+				   <option value="right">MOD_SOCIALSHAREBUTTONS_LINKEDIN_COUNTER_RIGHT</option>
+				</field>  
+		
+				<field name="@spacer6" type="spacer" class="text" label="MOD_SOCIALSHAREBUTTONS_BUZZ_TITLE" />
+				<field name="buzzButton" type="radio" default="1" label="MOD_SOCIALSHAREBUTTONS_BUZZ_BUTTON" description="MOD_SOCIALSHAREBUTTONS_BUZZ_BUTTON_DESC" >
+				   <option value="0">MOD_SOCIALSHAREBUTTONS_HIDE</option>
+				   <option value="1">MOD_SOCIALSHAREBUTTONS_SHOW</option>
+				</field>
+				<field name="buzzType" type="list" default="small-count" label="MOD_SOCIALSHAREBUTTONS_BUZZ_STYLE" description="MOD_SOCIALSHAREBUTTONS_BUZZ_STYLE_DESC" >
+				   <option value="small-count">MOD_SOCIALSHAREBUTTONS_BUZZ_SMALL_COUNT</option>
+				   <option value="normal-count">MOD_SOCIALSHAREBUTTONS_BUZZ_NORMAL_COUNT</option>
+				   <option value="small-button">MOD_SOCIALSHAREBUTTONS_BUZZ_SMALL_BUTTON</option>
+				   <option value="normal-button">MOD_SOCIALSHAREBUTTONS_BUZZ_NORMAL_BUTTON</option>
+				   <option value="link">MOD_SOCIALSHAREBUTTONS_BUZZ_LINK</option>
+				</field>
+				<field name="buzzLocale" type="list" default="en" label="MOD_SOCIALSHAREBUTTONS_BUZZ_LANGUAGE" description="MOD_SOCIALSHAREBUTTONS_BUZZ_LANGUAGE_DESC" >
+					<option value="ar">Arabic</option>
+					<option value="bn">Bengali</option>
+					<option value="bg">Bulgarian</option>
+					<option value="ca">Catalan</option>
+					<option value="zh">Chinese</option>
+					<option value="zh_CN">Chinese (China)</option>
+					<option value="zh_HK">Chinese (Hong Kong)</option>
+					<option value="zh_TW">Chinese (Taiwan)</option>
+					<option value="hr">Croatian</option>
+					<option value="cs">Czech</option>
+					<option value="da">Danish</option>
+					<option value="nl">Dutch</option>
+					<option value="en">English</option>
+					<option value="en_IN">English (India)</option>
+					<option value="en_IE">English (Ireland)</option>
+					<option value="en_SG">English (Singapore)</option>
+					<option value="en_ZA">English (South Africa)</option>
+					<option value="en_GB">English (United Kingdom)</option>
+					<option value="fil">Filipino</option>
+					<option value="fi">Finnish</option>
+					<option value="fr">French</option>
+					<option value="de">German</option>
+					<option value="de_CH">German (Switzerland)</option>
+					<option value="el">Greek</option>
+					<option value="gu">Gujarati</option>
+					<option value="iw">Hebrew</option>
+					<option value="hi">Hindi</option>
+					<option value="hu">Hungarian</option>
+					<option value="in">Indonesian</option>
+					<option value="it">Italian</option>
+					<option value="ja">Japanese</option>
+					<option value="kn">Kannada</option>
+					<option value="ko">Korean</option>
+					<option value="lv">Latvian</option>
+					<option value="ln">Lingala</option>
+					<option value="lt">Lithuanian</option>
+					<option value="ms">Malay</option>
+					<option value="ml">Malayalam</option>
+					<option value="mr">Marathi</option>
+					<option value="no">Norwegian</option>
+					<option value="or">Oriya</option>
+					<option value="fa">Persian</option>
+					<option value="pl">Polish</option>
+					<option value="pt_BR">Portuguese (Brazil)</option>
+					<option value="pt_PT">Portuguese (Portugal)</option>
+					<option value="ro">Romanian</option>
+					<option value="ru">Russian</option>
+					<option value="sr">Serbian</option>
+					<option value="sk">Slovak</option>
+					<option value="sl">Slovenian</option>
+					<option value="es">Spanish</option>
+					<option value="sv">Swedish</option>
+					<option value="gsw">Swiss German</option>
+					<option value="ta">Tamil</option>
+					<option value="te">Telugu</option>
+					<option value="th">Thai</option>
+					<option value="tr">Turkish</option>
+					<option value="uk">Ukrainian</option>
+					<option value="vi">Vietnamese</option>
+				</field>
+		
+				<field name="spacer7" type="spacer" class="text" label="MOD_SOCIALSHAREBUTTONS_DIGG_TITLE" />
+				<field name="diggButton" type="radio" default="1" label="MOD_SOCIALSHAREBUTTONS_DIGG_BUTTON" description="MOD_SOCIALSHAREBUTTONS_DIGG_BUTTON_DESC" >
+				   <option value="0">MOD_SOCIALSHAREBUTTONS_HIDE</option>
+				   <option value="1">MOD_SOCIALSHAREBUTTONS_SHOW</option>
+				</field>
+				<field name="diggType" type="list" default="DiggCompact" label="MOD_SOCIALSHAREBUTTONS_DIGG_TYPE" description="MOD_SOCIALSHAREBUTTONS_DIGG_TYPE_DESC" >
+				   <option value="DiggWide">MOD_SOCIALSHAREBUTTONS_DIGG_WIDE</option>
+				   <option value="DiggMedium">MOD_SOCIALSHAREBUTTONS_DIGG_MEDIUM</option>
+				   <option value="DiggCompact">MOD_SOCIALSHAREBUTTONS_DIGG_COMPACT</option>
+				   <option value="DiggIcon">MOD_SOCIALSHAREBUTTONS_DIGG_ICON</option>
+				</field>
+		
+				<field name="spacer8" type="spacer" class="text" label="MOD_SOCIALSHAREBUTTONS_STUMBLE_TITLE" />
+				<field name="stumbleButton" type="radio" default="1" label="MOD_SOCIALSHAREBUTTONS_STUMBLE_BUTTON" description="MOD_SOCIALSHAREBUTTONS_STUMBLE_BUTTON_DESC" >
+				   <option value="0">MOD_SOCIALSHAREBUTTONS_HIDE</option>
+				   <option value="1">MOD_SOCIALSHAREBUTTONS_SHOW</option>
+				</field>  
+				<field name="stumbleType" type="list" default="1" label="MOD_SOCIALSHAREBUTTONS_STUMBLE_TYPE" description="MOD_SOCIALSHAREBUTTONS_STUMBLE_TYPE_DESC" >
+				   <option value="1">MOD_SOCIALSHAREBUTTONS_STUMBLE_STYLE1</option>
+				   <option value="2">MOD_SOCIALSHAREBUTTONS_STUMBLE_STYLE2</option>
+				   <option value="3">MOD_SOCIALSHAREBUTTONS_STUMBLE_STYLE3</option>
+				   <option value="4">MOD_SOCIALSHAREBUTTONS_STUMBLE_STYLE4</option>
+				   <option value="5">MOD_SOCIALSHAREBUTTONS_STUMBLE_STYLE5</option>
+				   <option value="6">MOD_SOCIALSHAREBUTTONS_STUMBLE_STYLE6</option>
+				</field>  
+		
+				<field name="spacer9" type="spacer" class="text" label="MOD_SOCIALSHAREBUTTONS_TUMBLR_TITLE" />
+        		<field name="tumblrButton" type="radio" default="1" label="MOD_SOCIALSHAREBUTTONS_TUMBLR_BUTTON" description="MOD_SOCIALSHAREBUTTONS_TUMBLR_BUTTON_DESC" >
+				   <option value="0">MOD_SOCIALSHAREBUTTONS_HIDE</option>
+				   <option value="1">MOD_SOCIALSHAREBUTTONS_SHOW</option>
+				</field>  
+				<field name="tumblrType" type="list" default="1" label="MOD_SOCIALSHAREBUTTONS_TUMBLR_TYPE" description="MOD_SOCIALSHAREBUTTONS_TUMBLR_TYPE_DESC" >
+				   <option value="1">MOD_SOCIALSHAREBUTTONS_TUMBLR_STYLE1</option>
+				   <option value="2">MOD_SOCIALSHAREBUTTONS_TUMBLR_STYLE2</option>
+				   <option value="3">MOD_SOCIALSHAREBUTTONS_TUMBLR_STYLE3</option>
+				   <option value="4">MOD_SOCIALSHAREBUTTONS_TUMBLR_STYLE4</option>
+				   <option value="5">MOD_SOCIALSHAREBUTTONS_TUMBLR_STYLE5</option>
+				   <option value="6">MOD_SOCIALSHAREBUTTONS_TUMBLR_STYLE6</option>
+				   <option value="7">MOD_SOCIALSHAREBUTTONS_TUMBLR_STYLE7</option>
+				   <option value="8">MOD_SOCIALSHAREBUTTONS_TUMBLR_STYLE8</option>
+				</field>
+
+				<field name="spacer10" type="spacer" class="text" label="MOD_SOCIALSHAREBUTTONS_REDDIT_TITLE" />
+				<field name="redditButton" type="radio" default="1" label="MOD_SOCIALSHAREBUTTONS_REDDIT_BUTTON" description="MOD_SOCIALSHAREBUTTONS_REDDIT_BUTTON_DESC" >
+				   <option value="0">MOD_SOCIALSHAREBUTTONS_HIDE</option>
+				   <option value="1">MOD_SOCIALSHAREBUTTONS_SHOW</option>
+				</field>  
+				<field name="redditType" type="list" default="1" label="MOD_SOCIALSHAREBUTTONS_REDDIT_TYPE" description="MOD_SOCIALSHAREBUTTONS_REDDIT_TYPE_DESC" >
+				   <option value="1">MOD_SOCIALSHAREBUTTONS_REDDIT_STYLE1</option>
+				   <option value="2">MOD_SOCIALSHAREBUTTONS_REDDIT_STYLE2</option>
+				   <option value="3">MOD_SOCIALSHAREBUTTONS_REDDIT_STYLE3</option>
+				   <option value="4">MOD_SOCIALSHAREBUTTONS_REDDIT_STYLE4</option>
+				</field>
+				
+				<field name="spacer11" type="spacer" class="text" label="MOD_SOCIALSHAREBUTTONS_PINTEREST_TITLE" />
+				<field name="pinterestButton" type="radio" default="1" label="MOD_SOCIALSHAREBUTTONS_PINTEREST_BUTTON" description="MOD_SOCIALSHAREBUTTONS_PINTEREST_BUTTON_DESC" >
+				   <option value="0">MOD_SOCIALSHAREBUTTONS_HIDE</option>
+				   <option value="1">MOD_SOCIALSHAREBUTTONS_SHOW</option>
+				</field>
+				<field name="pinterestStaticImage" type="radio" default="0" label="MOD_SOCIALSHAREBUTTONS_PINTEREST_USESTATICIMAGE" description="MOD_SOCIALSHAREBUTTONS_PINTEREST_USESTATICIMAGE_DESC">
+					<option value="1">MOD_SOCIALSHAREBUTTONS_YES</option>
+					<option value="0">MOD_SOCIALSHAREBUTTONS_NO</option>
+				</field>
+				<field name="pinterestImage" type="text" default="" size="40" label="MOD_SOCIALSHAREBUTTONS_PINTEREST_IMAGE" description="MOD_SOCIALSHAREBUTTONS_PINTEREST_IMAGE_DESC" />
+				<field name="pinterestStaticDesc" type="radio" default="0" label="MOD_SOCIALSHAREBUTTONS_PINTEREST_USESTATICDESC" description="MOD_SOCIALSHAREBUTTONS_PINTEREST_USESTATICDESC_DESC">
+					<option value="1">MOD_SOCIALSHAREBUTTONS_YES</option>
+					<option value="0">MOD_SOCIALSHAREBUTTONS_NO</option>
+				</field>
+				<field name="pinterestDesc" default="" type="text" label="MOD_SOCIALSHAREBUTTONS_PINTEREST_DESC" description="MOD_SOCIALSHAREBUTTONS_PINTEREST_DESC_DESC" />
+				<field name="pinterestType" type="list" default="1" label="MOD_SOCIALSHAREBUTTONS_PINTEREST_TYPE" description="MOD_SOCIALSHAREBUTTONS_PINTEREST_TYPE_DESC" >
+				   <option value="horizontal">MOD_SOCIALSHAREBUTTONS_PINTEREST_HORIZONTAL</option>
+				   <option value="vertical">MOD_SOCIALSHAREBUTTONS_PINTEREST_VERTICAL</option>
+				   <option value="none">MOD_SOCIALSHAREBUTTONS_PINTEREST_NONE</option>
+				</field>
+				
+				<field name="spacer12" type="spacer" class="text" label="MOD_SOCIALSHAREBUTTONS_BUFFERAPP_TITLE" />
+				<field name="bufferappButton" type="radio" default="1" label="MOD_SOCIALSHAREBUTTONS_BUFFERAPP_BUTTON" description="MOD_SOCIALSHAREBUTTONS_BUFFERAPP_BUTTON_DESC" >
+				   <option value="0">MOD_SOCIALSHAREBUTTONS_HIDE</option>
+				   <option value="1">MOD_SOCIALSHAREBUTTONS_SHOW</option>
+				</field>  
+				<field name="bufferappType" type="list" default="1" label="MOD_SOCIALSHAREBUTTONS_BUFFERAPP_TYPE" description="MOD_SOCIALSHAREBUTTONS_BUFFERAPP_TYPE_DESC" >
+				   <option value="vertical">MOD_SOCIALSHAREBUTTONS_BUFFERAPP_VERTICAL</option>
+				   <option value="horizontal">MOD_SOCIALSHAREBUTTONS_BUFFERAPP_HORIZONTAL</option>
+				   <option value="none">MOD_SOCIALSHAREBUTTONS_BUFFERAPP_NONE</option>
+				</field>
+
+				<field name="spacer13" type="spacer" class="text" label="MOD_SOCIALSHAREBUTTONS_FB_SHAREME_TITLE" />
+				<field name="facebookShareMeButton" type="radio" default="0" label="MOD_SOCIALSHAREBUTTONS_FB_SHAREME_BUTTON" description="MOD_SOCIALSHAREBUTTONS_FB_SHAREME_BUTTON_DESC" >
+				   <option value="0">MOD_SOCIALSHAREBUTTONS_HIDE</option>
+				   <option value="1">MOD_SOCIALSHAREBUTTONS_SHOW</option>
+				</field>
+				<field name="facebookShareMeType" type="list" default="small" label="MOD_SOCIALSHAREBUTTONS_FB_SHAREME_TYPE" description="MOD_SOCIALSHAREBUTTONS_FB_SHAREME_TYPE_DESC" >
+				   <option value="large">MOD_SOCIALSHAREBUTTONS_FB_SHAREME_LARGE</option>
+				   <option value="small">MOD_SOCIALSHAREBUTTONS_FB_SHAREME_SMALL</option>
+				</field>
+				<field name="facebookShareMeBadgeText" type="text" default="FFFFFF" label="MOD_SOCIALSHAREBUTTONS_FB_SHAREME_TEXT_COLOR" description="MOD_SOCIALSHAREBUTTONS_FB_SHAREME_TEXT_COLOR_DESC" />
+				<field name="facebookShareMeBadge" type="text" default="3B5998" label="MOD_SOCIALSHAREBUTTONS_FB_SHAREME_COLOR" description="MOD_SOCIALSHAREBUTTONS_FB_SHAREME_COLOR_DESC" />
+			</fieldset>
+				
+			<fieldset name="advanced">
+				<field name="moduleclass_sfx" type="text" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+
+				<field name="owncache" type="list" default="1" label="COM_MODULES_FIELD_CACHING_LABEL" description="COM_MODULES_FIELD_CACHING_DESC" >
+					<option value="1">JGLOBAL_USE_GLOBAL</option>
+					<option value="0">COM_MODULES_FIELD_VALUE_NOCACHING
+					</option>
+				</field>
+
+				<field name="cache_time" type="text" default="900" label="COM_MODULES_FIELD_CACHE_TIME_LABEL" description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
+
+				<field name="spacer15" type="spacer" class="text" label="MOD_SOCIALSHAREBUTTONS_FB_LIKE_ADV_TITLE" />
+				<field name="facebookLikeAppId" type="text" default="" label="MOD_SOCIALSHAREBUTTONS_FB_APP_ID" description="MOD_SOCIALSHAREBUTTONS_FB_APP_ID_DESC" />
+				<field name="facebookLikeSend" type="list" default="1" label="MOD_SOCIALSHAREBUTTONS_FB_SEND" description="MOD_SOCIALSHAREBUTTONS_FB_SEND_DESC" >
+				   <option value="0">MOD_SOCIALSHAREBUTTONS_NO</option>
+				   <option value="1">MOD_SOCIALSHAREBUTTONS_YES</option>
+				</field>
+				<field name="facebookRootDiv" type="radio" default="1" label="MOD_SOCIALSHAREBUTTONS_FB_ROOT" description="MOD_SOCIALSHAREBUTTONS_FB_ROOT_DESC" >
+					<option value="0">MOD_SOCIALSHAREBUTTONS_NO</option>
+					<option value="1">MOD_SOCIALSHAREBUTTONS_YES</option>
+				 </field>
+				<field name="facebookLoadJsLib" type="radio" default="1" label="MOD_SOCIALSHAREBUTTONS_FB_JS" description="MOD_SOCIALSHAREBUTTONS_FB_JS_DESC">
+					<option value="0">MOD_SOCIALSHAREBUTTONS_NO</option>
+					<option value="1">MOD_SOCIALSHAREBUTTONS_YES</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+	<updateservers>
+	   <server type="collection">http://updates.e-max.it/joomla/updates.xml</server>
+	</updateservers>
+</extension>

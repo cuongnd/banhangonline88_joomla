@@ -1,0 +1,21 @@
+.hikashop_product.hikashop_product_column_1 {
+  margin-bottom: 0px;
+}
+.hikashop_product.hikashop_product_column_1 .hikashop_subcontainer {
+  padding: 0;
+}
+.hikashop_product.hikashop_product_column_1 .hikashop_container {
+  margin: 0px;
+}
+.hikashop_product.hikashop_product_column_1 .hikashop_listing_vouche_banchay .hikashop_product_image {
+  width: 40%;
+}
+.hikashop_product.hikashop_product_column_1 .hikashop_listing_vouche_banchay .product_name_and_price {
+  width: 57%;
+  padding-left: 5px;
+  font-size: 10px;
+  text-align: justify;
+}
+.hikashop_product.hikashop_product_column_1 .hikashop_listing_vouche_banchay .product_name_and_price .hikashop_product_price {
+  font-size: 10px;
+}
