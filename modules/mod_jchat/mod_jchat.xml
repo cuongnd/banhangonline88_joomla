@@ -1,18 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
-<extension type="module" version="1.6" client="site" method="upgrade">
-    <name>JChatSocial Module</name>
-	<author>Joomla! Extensions Store</author>
-	<creationDate>September 2016</creationDate>
-	<copyright>Copyright (C) 2015 - Joomla! Extensions Store. All Rights Reserved.</copyright>
-	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
-	<authorEmail>info@storejextensions.org</authorEmail>
-	<authorUrl>http://storejextensions.org</authorUrl>
-	<version>2.11</version>
-	<description>JChatSocial Module</description>
-	
-    <files>
-		<folder>tmpl</folder>
-        <filename>index.html</filename>
-        <filename module="mod_jchat">mod_jchat.php</filename>
-    </files>
-</extension>
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="1.6" client="site" method="upgrade">
+    <name>JChatSocial Module</name>
+	<author>Joomla! Extensions Store</author>
+	<creationDate>September 2016</creationDate>
+	<copyright>Copyright (C) 2015 - Joomla! Extensions Store. All Rights Reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>info@storejextensions.org</authorEmail>
+	<authorUrl>http://storejextensions.org</authorUrl>
+	<version>2.11</version>
+	<description>JChatSocial Module</description>
+	
+    <files>
+		<folder>tmpl</folder>
+        <filename>index.html</filename>
+        <filename module="mod_jchat">mod_jchat.php</filename>
+    </files>
+</extension>

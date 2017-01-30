@@ -1,880 +1,880 @@
-<?xml version="1.0" encoding="utf-8"?>
-<config>
-	<fieldset id="general" name="general" label="COM_JCHAT_PREFERENCES">
-		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_SERVER_TIMING"/>
-		<field name="chatrefresh" type="list" default="2" label="COM_JCHAT_SERVERLOAD_CHATREFRESH" description="COM_JCHAT_SERVERLOAD_CHATREFRESH_DESC">
-			<option value="1">100%</option>
-			<option value="2">80%</option>
-			<option value="4">60%</option>
-			<option value="6">40%</option>
-			<option value="8">20%</option>
-		</field>
-   		<field name="maxinactivitytime" type="list" default="30" label="COM_JCHAT_MAXINACTIVITYTIME" description="COM_JCHAT_MAXINACTIVITYTIME_DESC" >
-   			<option value="10">COM_JCHAT_10SEC</option>
-   			<option value="20">COM_JCHAT_20SEC</option>
-			<option value="30">COM_JCHAT_30SEC</option>
-			<option value="60">COM_JCHAT_1MIN</option>
-   			<option value="120">COM_JCHAT_2MIN</option>
-			<option value="300">COM_JCHAT_5MIN</option>
-			<option value="600">COM_JCHAT_10MIN</option>
-   			<option value="99999">COM_JCHAT_USE_JOOMLA_SESSION</option>
-   		</field>
-   		<field name="lastmessagetime" type="text" size="10" default="60" label="COM_JCHAT_LASTMESSAGETIMESTATUS" description="COM_JCHAT_LASTMESSAGETIMESTATUS_DESC" />
-
-		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_COMMON_BEHAVIOR"/>
-		<field name="registration_email" type="text" default="" size="50" label="COM_JCHAT_REGISTRATION_EMAIL_FORUPDATES" description="COM_JCHAT_REGISTRATION_EMAIL_FORUPDATES_DESC" />
-		<field name="start_open_mode" class="btn-group" type="radio" default="1" label="COM_JCHAT_START_OPEN_MODE" description="COM_JCHAT_START_OPEN_MODE_DESC">
-			<option value="0">COM_JCHAT_JCHATCLOSE</option>              
-			<option value="1">COM_JCHAT_JCHATOPEN</option>
-		</field> 
-		<field name="usefullname" class="btn-group" type="radio" default="username" label="COM_JCHAT_USEFULLNAME" description="COM_JCHAT_USEFULLNAME_DESC">
-   			<option value="username">COM_JCHAT_USER_NAME</option>              
-   			<option value="name">COM_JCHAT_LONGNAME</option>
-   		</field>
-   		<field name="chat_title" type="text" default="" label="COM_JCHAT_CHAT_TITLE" description="COM_JCHAT_CHAT_TITLE_DESC" />
-		<field name="private_chat_title" type="text" default="" label="COM_JCHAT_PRIVATECHAT_TITLE" description="COM_JCHAT_PRIVATECHAT_TITLE_DESC" />
-   		<field name="public_chat_title" type="text" default="" label="COM_JCHAT_PUBLICCHAT_TITLE" description="COM_JCHAT_PUBLICCHAT_TITLE_DESC" />
-		<field name="forceavailable" class="btn-group" type="radio" default="0" label="COM_JCHAT_FORCEAVAILABLE" description="COM_JCHAT_FORCEAVAILABLE_DESC">
-   			<option value="0">JNO</option>              
-   			<option value="1">JYES</option>
-   		</field>
-		<field name="chatboxes_open_mode" class="btn-group" type="radio" default="0" label="COM_JCHAT_CHATBOXES_OPEN_MODE" description="COM_JCHAT_CHATBOXES_OPEN_MODE_DESC">
-			<option value="0">COM_JCHAT_JCHATAUTO</option>              
-			<option value="1">COM_JCHAT_JCHATALWAYSOPEN</option>
-		</field>
-		<field name="show_send_button" class="btn-group" type="radio" default="2" label="COM_JCHAT_SHOW_SEND_BUTTON" description="COM_JCHAT_SHOW_SEND_BUTTON_DESC">
-   			<option value="0">JNO</option>              
-   			<option value="1">JYES</option>
-   			<option value="2">COM_JCHAT_YES_MOBILE_ONLY</option>
-   		</field>
-		<field name="resizable_chatboxes" class="btn-group" type="radio" default="1" label="COM_JCHAT_RESIZABLE_CHATBOXES" description="COM_JCHAT_RESIZABLE_CHATBOXES_DESC">
-   			<option value="0">JNO</option>              
-   			<option value="1">JYES</option>
-   		</field>
-   		<field name="resizable_sidebar" class="btn-group" type="radio" default="1" label="COM_JCHAT_RESIZABLE_SIDEBAR" description="COM_JCHAT_RESIZABLE_SIDEBAR_DESC">
-   			<option value="0">JNO</option>              
-   			<option value="1">JYES</option>
-   		</field>
-   		<field name="chatrooms_users_details" class="btn-group" type="radio" default="1" label="COM_JCHAT_CHATROOM_USERS_DETAIL" description="COM_JCHAT_CHATROOM_USERS_DETAIL_DESC">
-   			<option value="0">JNO</option>              
-   			<option value="1">JYES</option>
-   		</field>
-   		<field name="auto_close_popups" class="btn-group" type="radio" default="1" label="COM_JCHAT_AUTO_CLOSE_POPUPS" description="COM_JCHAT_AUTO_CLOSE_POPUPS_DESC">
-   			<option value="0">JNO</option>              
-   			<option value="1">JYES</option>
-   		</field>
-   		<field name="exclude_onmobile" class="btn-group" type="radio" default="0" label="COM_JCHAT_EXCLUDE_ONMOBILE" description="COM_JCHAT_EXCLUDE_ONMOBILE_DESC">
-			<option value="0">JNO</option>       
-			<option value="480">COM_JCHAT_YES_NOMOBILE</option>
-			<option value="1024">COM_JCHAT_YES_NOMOBILE_AND_TABLETS</option>
-		</field>
-		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_EMOTICONS"/>
-		<field name="emoticons_enabled" class="btn-group" type="radio" default="1" label="COM_JCHAT_EMOTICONS_ENABLED" description="COM_JCHAT_EMOTICONS_ENABLED_DESC">
-   			<option value="0">JNO</option>              
-   			<option value="1">JYES</option>
-   		</field>
-		<field name="emoticons_original_size" class="btn-group" type="radio" default="0" label="COM_JCHAT_EMOTICONS_ORIGINAL_SIZE" description="COM_JCHAT_EMOTICONS_ORIGINAL_SIZE_DESC">
-   			<option value="0">JNO</option>              
-   			<option value="1">JYES</option>
-   		</field>
-	</fieldset>
-	
-	<fieldset id="features" name="features" label="COM_JCHAT_FEATURES"> 
-		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_INTEGRATIONS"/>
-		<field name="3pdintegration" type="list" default="" label="COM_JCHAT_TPDINTEGRATION" description="COM_JCHAT_TPDINTEGRATION_DESC">
-			<option value="">COM_JCHAT_NO_INTEGRATION</option>
-			<option value="jomsocial">COM_JCHAT_JOMSOCIAL_INTEGRATION</option>
-			<option value="easysocial">COM_JCHAT_EASYSOCIAL_INTEGRATION</option>              
-			<option value="cbuilder">COM_JCHAT_CBUILDER_INTEGRATION</option>
-			<option value="kunena">COM_JCHAT_KUNENA_INTEGRATION</option>
-			<option value="easyprofile">COM_JCHAT_EASYPROFILE_INTEGRATION</option>
-		</field>
-		<field name="filter_friendship" class="btn-group" type="radio" default="0" label="COM_JCHAT_FILTER_FRIENDSHIP" description="COM_JCHAT_FILTER_FRIENDSHIP_DESC">
-   			<option value="0">JNO</option>              
-   			<option value="1">JYES</option>
-   			<option value="2">COM_JCHAT_YES_EXCLUDE_PUBLIC_CHAT</option>
-   		</field>
-   		<field name="pm_integration" class="btn-group" type="radio" default="0" label="COM_JCHAT_MESSAGE_PMINTEGRATION" description="COM_JCHAT_MESSAGE_PMINTEGRATION_DESC">
-   			<option value="0">JNO</option>              
-   			<option value="1">JYES</option>
-   		</field>
-   		<field name="social_menu_item" type="menumultiselect" default="0" label="COM_JCHAT_SOCIAL_MENU_ITEM" description="COM_JCHAT_SOCIAL_MENU_ITEM_DESC" />
-   		
-   		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_MISC_FEATURES"/>
-		<field name="skypebridge" class="btn-group" type="radio" default="1" label="COM_JCHAT_SKYPEBRIDGE" description="COM_JCHAT_SKYPEBRIDGE_DESC">
-			<option value="0">JDISABLED</option>              
-			<option value="1">JENABLED</option>
-		</field>
-		<field name="groupchat" class="btn-group" type="radio" default="1" label="COM_JCHAT_GROUPCHAT" description="COM_JCHAT_GROUPCHAT_DESC">
-			<option value="0">JNO</option>              
-			<option value="1">JYES</option>
-			<option value="480">COM_JCHAT_YES_NOMOBILE</option>
-			<option value="1024">COM_JCHAT_YES_NOMOBILE_AND_TABLETS</option>
-		</field>
-		<field name="groupchat_start_open_mode" class="btn-group" type="radio" default="1" label="COM_JCHAT_GROUPCHAT_START_OPEN_MODE" description="COM_JCHAT_GROUPCHAT_START_OPEN_MODE_DESC">
-			<option value="0">COM_JCHAT_JCHATCLOSE</option>              
-			<option value="1">COM_JCHAT_JCHATOPEN</option>
-		</field> 
-		<field name="groupchatmode" class="btn-group" type="radio" default="chatroom" label="COM_JCHAT_GROUPCHAT_FORALL" description="COM_JCHAT_GROUPCHAT_FORALL_DESC">
-			<option value="chatroom">COM_JCHAT_CHATROOM</option>
-			<option value="global">COM_JCHAT_GLOBAL</option>
-			<option value="invite">COM_JCHAT_INVITE</option>              
-		</field>
-		<field name="autoclear_conversation" class="btn-group" type="radio" default="1" label="COM_JCHAT_AUTOCLEAR_CONVERSATION" description="COM_JCHAT_AUTOCLEAR_CONVERSATION_DESC">
-			<option value="0">JNO</option>              
-			<option value="1">JYES</option>
-		</field>
-		<field name="default_chatroom" type="chatrooms" default="" size="5" label="COM_JCHAT_DEFAULT_CHATROOM" description="COM_JCHAT_DEFAULT_CHATROOM_DESC" />
-		
-		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_GUEST_USERS_SETTINGS"/>
-		<field name="guestenabled" class="btn-group" type="radio" default="1" label="COM_JCHAT_GUEST_ENABLED" description="COM_JCHAT_GUEST_ENABLED_DESC">
-   			<option value="0">COM_JCHAT_DISABLED</option>              
-   			<option value="1">COM_JCHAT_PUBLIC</option>
-   			<option value="2">COM_JCHAT_FORM_REQUIRED</option>
-   		</field>
-   		<field name="guests_name_algo" class="btn-group" type="radio" default="name_based" label="COM_JCHAT_GUEST_NAME_ALGO" description="COM_JCHAT_GUEST_NAME_ALGO_DESC">
-			<option value="name_based">COM_JCHAT_GUEST_NAMEBASED</option>
-			<option value="numeric_based">COM_JCHAT_GUEST_NUMERICBASED</option>              
-		</field>
-		<field name="guests_name_length" class="btn-group" type="radio" default="3" label="COM_JCHAT_GUEST_NAME_LENGTH" description="COM_JCHAT_GUEST_NAME_LENGTH_DESC">
-			<option value="2">COM_JCHAT_4CHARS</option>      
-			<option value="3">COM_JCHAT_6CHARS</option>              
-			<option value="4">COM_JCHAT_8CHARS</option>
-			<option value="5">COM_JCHAT_10CHARS</option>
-		</field>
-   		<field name="guestprefix" type="text" default="Guest" label="COM_JCHAT_GUEST_PREFIX" description="COM_JCHAT_GUEST_PREFIX_DESC" />
-   		
-   		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_CHAT_FEATURES"/>
-   		<field name="searchfield" class="btn-group" type="radio" default="1" label="COM_JCHAT_SHOW_SEARCH_FIELD" description="COM_JCHAT_SHOW_SEARCH_FIELD_DESC">
-			<option value="0">JNO</option>              
-			<option value="1">JYES</option>
-		</field>
-		<field name="history" class="btn-group" type="radio" default="1" label="COM_JCHAT_HISTORY_MSGS" description="COM_JCHAT_HISTORY_MSGS_DESC">
-			<option value="0">JNO</option>              
-			<option value="1">JYES</option>
-		</field>
-		<field name="buddylist_visible" class="btn-group" type="radio" default="1" label="COM_JCHAT_BUDDYLIST_VISIBLE" description="COM_JCHAT_BUDDYLIST_VISIBLE_DESC">
-			<option value="0">JNO</option>              
-			<option value="1">JYES</option>
-		</field>
-		<field name="privatechat_enabled" class="btn-group" type="radio" default="1" label="COM_JCHAT_PRIVATECHAT" description="COM_JCHAT_PRIVATECHAT_DESC">
-			<option value="0">JNO</option>              
-			<option value="1">JYES</option>
-		</field>
-		<field name="typing_enabled" class="btn-group" type="radio" default="1" label="COM_JCHAT_TYPING" description="COM_JCHAT_TYPING_DESC">
-			<option value="0">JNO</option>              
-			<option value="1">JYES</option>
-		</field>
-		<field name="lastreadmessage" class="btn-group" type="radio" default="1" label="COM_JCHAT_LASTREADMESSAGE" description="COM_JCHAT_LASTREADMESSAGE_DESC">
-			<option value="0">JNO</option>              
-			<option value="1">JYES</option>
-		</field>
-		<field name="maximize_box" class="btn-group" type="radio" default="1024" label="COM_JCHAT_MAXIMIZE_BOX" description="COM_JCHAT_MAXIMIZE_BOX_DESC">
-			<option value="0">JNO</option>              
-			<option value="1">JYES</option>
-			<option value="480">COM_JCHAT_YES_MOBILE_ONLY</option>
-			<option value="1024">COM_JCHAT_YES_MOBILE_AND_TABLETS_ONLY</option>
-		</field>
-		<field name="show_suggestion_tooltip" class="btn-group" type="radio" default="0" label="COM_JCHAT_SHOW_SUGGESTION_TOOLTIP" description="COM_JCHAT_SHOW_SUGGESTION_TOOLTIP_DESC">
-			<option value="0">JNO</option>              
-			<option value="1">JYES</option>
-		</field>
-		<field name="suggestion_tooltip_text" type="editor" hide="pagebreak,readmore" width="300px" height="200px" default="" label="COM_JCHAT_SUGGESTION_TOOLTIP_TEXT" description="COM_JCHAT_SUGGESTION_TOOLTIP_TEXT_DESC"/>
-
-		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_GEOLOCATION"/>
-		<field name="geolocation_enabled" class="btn-group" type="radio" default="0" label="COM_JCHAT_GEOLOCATION_ENABLED" description="COM_JCHAT_GEOLOCATION_ENABLED_DESC">
-			<option value="0">JNO</option>              
-			<option value="1">JYES</option>
-		</field>
-		<field name="geolocation_service" class="btn-group" type="list" default="geoip" label="COM_JCHAT_GEOLOCATION_SERVICE" description="COM_JCHAT_GEOLOCATION_SERVICE_DESC">
-			<option value="geoip">GeoIP SSL</option>              
-			<option value="ipinfo">IPInfo</option>   
-			<option value="freegeoip">FreeGeoIP SSL</option>   
-		</field>
-		<field name="geolocation_gids" type="aclgroupsmultiselect" translation="COM_JCHAT_ALLGROUPS" default="0" size="15" multiple="multiple" label="COM_JCHAT_GEOLOCATION_ENABLED_GROUPS" description="COM_JCHAT_GEOLOCATION_ENABLED_GROUPS_DESC" />
-		
-		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_BANNING"/>
-		<field name="usersbanning" class="btn-group" type="radio" default="0" label="COM_JCHAT_USERS_BANNING" description="COM_JCHAT_USERS_BANNING_DESC">
-			<option value="0">JNO</option>              
-			<option value="1">JYES</option>
-		</field>
-		<field name="usersbanning_mode" class="btn-group" type="radio" default="private" label="COM_JCHAT_USERS_BANNING_MODE" description="COM_JCHAT_USERS_BANNING_MODE_DESC">
-			<option value="private">COM_JCHAT_PRIVATE_ONLY</option>              
-			<option value="private_public">COM_JCHAT_PRIVATE_AND_PUBLIC</option>
-		</field>
-		<field name="wordsbanning" class="btn-group" type="radio" default="0" label="COM_JCHAT_WORDS_BANNING" description="COM_JCHAT_WORDS_BANNING_DESC">
-			<option value="0">JNO</option>              
-			<option value="1">JYES</option>
-		</field>
-		<field name="wordsbanned" type="text" default="shit,fuck,cock,asshole" label="COM_JCHAT_WORDS_BANNED" description="COM_JCHAT_WORDS_BANNED_DESC" />
-		<field name="wordsbanned_replacement" type="text" default="banned" label="COM_JCHAT_WORDS_BANNED_REPLACEMENT" description="COM_JCHAT_WORDS_BANNED_REPLACEMENT_DESC" />
-		<field name="ipbanning" class="btn-group" type="radio" default="0" label="COM_JCHAT_IP_BANNING" description="COM_JCHAT_IP_BANNING_DESC">
-			<option value="0">JNO</option>              
-			<option value="1">JYES</option>
-		</field>
-		<field name="iprange_multiple" type="textarea" hint="xxx.xxx.xxx.xxx-xxx.xxx.xxx.xxx" default="" rows="5" label="COM_JCHAT_IPRANGE_MULTIPLE" description="COM_JCHAT_IPRANGE_MULTIPLE_DESC" /> 
-	</fieldset>
-	
-	<fieldset addfieldpath="/administrator/components/com_jchat/models/fields" id="rendering" name="rendering" label="COM_JCHAT_RENDERING">
-		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_RENDERING_MGMT"/>
-		<field name="chat_template" type="loadtemplates" default="default.css" label="COM_JCHAT_TEMPLATE" description="COM_JCHAT_TEMPLATE_DESC" >
-			<option value="custom.css">COM_JCHAT_CUSTOM_TEMPLATE</option>
-		</field>
-		<field name="chat_color_override" type="color" default="" label="COM_JCHAT_COLOR_OVERRIDE" description="COM_JCHAT_COLOR_OVERRIDE_DESC" />
-		<field name="chat_template_tooltip" class="btn-group" type="radio" default="std" label="COM_JCHAT_TEMPLATE_TOOLTIP" description="COM_JCHAT_TEMPLATE_TOOLTIP_DESC">
-			<option value="std">COM_JCHAT_TEMPLATE_TOOLTIP_STD</option>              
-			<option value="arm">COM_JCHAT_TEMPLATE_TOOLTIP_ARM</option>
-		</field>
-		<field name="chat_template_tooltip_variant" class="btn-group" type="radio" default="horiz" label="COM_JCHAT_TEMPLATE_TOOLTIP_VARIANT" description="COM_JCHAT_TEMPLATE_TOOLTIP_VARIANT_DESC">
-			<option value="horiz">COM_JCHAT_TEMPLATE_TOOLTIP_HORIZ</option>              
-			<option value="skrilled">COM_JCHAT_TEMPLATE_TOOLTIP_SKRILLED</option>
-		</field>
-		<field name="tooltip_bordercolor_override" type="color" default="" label="COM_JCHAT_TOOLTIP_BORDER_COLOR_OVERRIDE" description="COM_JCHAT_TOOLTIP_BORDER_COLOR_OVERRIDE_DESC" />
-		<field name="tooltip_bckcolor_override" type="color" default="" label="COM_JCHAT_TOOLTIP_BCK_COLOR_OVERRIDE" description="COM_JCHAT_TOOLTIP_BCK_COLOR_OVERRIDE_DESC" />
-		<field name="fontsize_override" class="btn-group" type="list" default="" label="COM_JCHAT_FONTSIZE_OVERRIDE" description="COM_JCHAT_FONTSIZE_OVERRIDE_DESC">
-			<option value="">COM_JCHAT_FONT_DEFAULT</option>     
-			<option value="12px">COM_JCHAT_FONT_12</option>
-			<option value="13px">COM_JCHAT_FONT_13</option>
-			<option value="14px">COM_JCHAT_FONT_14</option>
-			<option value="15px">COM_JCHAT_FONT_15</option>
-			<option value="16px">COM_JCHAT_FONT_16</option>
-			<option value="17px">COM_JCHAT_FONT_17</option>
-			<option value="18px">COM_JCHAT_FONT_18</option>
-		</field>
-		
-		<field name="fontsize_titles_override" class="btn-group" type="list" default="" label="COM_JCHAT_FONTSIZE_TITLES_OVERRIDE" description="COM_JCHAT_FONTSIZE_TITLES_OVERRIDE_DESC">
-			<option value="">COM_JCHAT_FONT_DEFAULT</option>     
-			<option value="12px">COM_JCHAT_FONT_12</option>
-			<option value="13px">COM_JCHAT_FONT_13</option>
-			<option value="14px">COM_JCHAT_FONT_14</option>
-			<option value="15px">COM_JCHAT_FONT_15</option>
-			<option value="16px">COM_JCHAT_FONT_16</option>
-			<option value="17px">COM_JCHAT_FONT_17</option>
-			<option value="18px">COM_JCHAT_FONT_18</option>
-		</field>
-		
-		<field name="submitlamform_color_override" type="color" default="" label="COM_JCHAT_SUBMITLAMFORM_COLOR_OVERRIDE" description="COM_JCHAT_SUBMITLAMFORM_COLOR_OVERRIDE_DESC" />
-		
-		<field name="positionment_chatboxes" class="btn-group" type="radio" default="1" label="COM_JCHAT_POSITIONMENT_CHATBOXES" description="COM_JCHAT_POSITIONMENT_CHATBOXES_DESC">
-   			<option value="bottom">COM_JCHAT_POSITION_BOTTOM</option>              
-   			<option value="middle">COM_JCHAT_POSITION_MIDDLE</option>
-   		</field>
-		<field name="public_chat_height_override" type="text" default="" label="COM_JCHAT_PUBLIC_CHAT_HEIGHT_OVERRIDE" description="COM_JCHAT_PUBLIC_CHAT_HEIGHT_OVERRIDE_DESC" />
-		<field name="private_chat_height_override" type="text" default="" label="COM_JCHAT_PRIVATE_CHAT_HEIGHT_OVERRIDE" description="COM_JCHAT_PRIVATE_CHAT_HEIGHT_OVERRIDE_DESC" />
-		<field name="sidebar_default_width_override" type="text" default="" label="COM_JCHAT_SIDEBAR_DEFAULT_WIDTH_OVERRIDE" description="COM_JCHAT_SIDEBAR_DEFAULT_WIDTH_OVERRIDE_DESC" />
-		<field name="public_chat_top_override" type="text" default="" label="COM_JCHAT_PUBLIC_CHAT_TOP_OVERRIDE" description="COM_JCHAT_PUBLIC_CHAT_TOP_OVERRIDE_DESC" />
-		
-		<field name="show_users_count" class="btn-group" type="radio" default="1" label="COM_JCHAT_SHOW_USERS_COUNT" description="COM_JCHAT_SHOW_USERS_COUNT_DESC">
-			<option value="0">JNO</option>              
-			<option value="1">JYES</option>
-		</field>
-		<field name="show_myusername" class="btn-group" type="radio" default="1" label="COM_JCHAT_SHOW_MYUSERNAME" description="COM_JCHAT_SHOW_MYUSERNAME_DESC">
-			<option value="0">JNO</option>              
-			<option value="1">JYES</option>
-		</field>
-
-   		<field name="micro_splacement_konstant" class="btn-group" type="list" default="1" label="COM_JCHAT_MICROSPLACEMENT_KONSTANT" description="COM_JCHAT_MICROSPLACEMENT_KONSTANT_DESC">
-			<option value="1">COM_JCHAT_NORMALDENSITY</option>     
-			<option value="2">COM_JCHAT_MEDIUMDENSITY</option>              
-			<option value="5">COM_JCHAT_HIGHDENSITY</option>
-		</field>
-		<field name="rendering_mode" class="btn-group" type="radio" default="auto" label="COM_JCHAT_RENDERING_MODE" description="COM_JCHAT_RENDERING_MODE_DESC">
-			<option value="auto">COM_JCHAT_RENDERING_AUTO</option>              
-			<option value="module">COM_JCHAT_RENDERING_MODULE</option>
-		</field>
-		<field name="sidebar_width" class="module_rendering_ctrl" type="text" size="5" default="260" label="COM_JCHAT_SIDEBAR_WIDTH" description="COM_JCHAT_SIDEBAR_WIDTH_DESC" />
-		<field name="sidebar_height" class="module_rendering_ctrl" type="text" size="5" default="600" label="COM_JCHAT_SIDEBAR_HEIGHT" description="COM_JCHAT_SIDEBAR_HEIGHT_DESC" />
-		<field name="search_width" class="module_rendering_ctrl" type="text" size="5" default="100" label="COM_JCHAT_SEARCH_WIDTH" description="COM_JCHAT_SEARCH_WIDTH_DESC" />
-		<field name="chatroom_width" class="module_rendering_ctrl" type="text" size="5" default="400" label="COM_JCHAT_CHATROOM_WIDTH" description="COM_JCHAT_CHATROOM_WIDTH_DESC" />
-		<field name="baloon_position" class="btn-group module_rendering_ctrl" type="radio" default="top" label="COM_JCHAT_BALOON_POSITION" description="COM_JCHAT_BALOON_POSITION_DESC">
-			<option value="top">COM_JCHAT_BALOON_TOP</option>              
-			<option value="bottom">COM_JCHAT_BALOON_BOTTOM</option>
-		</field>
-		<field name="separate_widgets" class="btn-group module_rendering_ctrl" type="radio" default="0" label="COM_JCHAT_SEPARATE_WIDGET" description="COM_JCHAT_SEPARATE_WIDGET_DESC">
-			<option value="0">JNO</option>              
-			<option value="1">JYES</option>
-		</field>
-		
-		<field class="module_rendering_ctrl" type="modulestatus" label="COM_JCHAT_MODULE_STATUS_ENABLED" description="COM_JCHAT_MODULE_STATUS_ENABLED_DESC" />
-	</fieldset>
-	
-	<fieldset addfieldpath="/administrator/components/com_jchat/models/fields" id="webrtc" name="webrtc" label="COM_JCHAT_WEBRTC">
-		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_PREFERENCES"/>
-		<field name="webrtc_enabled" class="btn-group" type="radio" default="0" label="COM_JCHAT_WEBRTC_ENABLED" description="COM_JCHAT_WEBRTC_ENABLED_DESC">
-			<option value="0">JNO</option>              
-			<option value="1">JYES</option>
-		</field>
-		<field name="webrtc_call_sound" type="loadtones" default="skype.mp3" label="COM_JCHAT_WEBRTC_CALL_SOUND" description="COM_JCHAT_WEBRTC_CALL_SOUND_DESC"/>
-		<field name="timeout_start_call" type="text" size="5" default="40" label="COM_JCHAT_TIMEOUT_START_CALL" description="COM_JCHAT_TIMEOUT_START_CALL_DESC" />
-		<field name="timeout_end_call" type="text" size="5" default="40" label="COM_JCHAT_TIMEOUT_END_CALL" description="COM_JCHAT_TIMEOUT_END_CALL_DESC" />
-		<field name="micvolume_default" type="list" default="0.8" label="COM_JCHAT_MICVOLUME_DEFAULT" description="COM_JCHAT_MICVOLUME_DEFAULT_DESC">
-			<option value="1">100%</option>
-			<option value="0.8">80%</option>
-			<option value="0.6">60%</option>
-			<option value="0.4">40%</option>
-			<option value="0.2">20%</option>
-		</field>
-		<field name="audiovolume_default" type="list" default="0.8" label="COM_JCHAT_AUDIOVOLUME_DEFAULT" description="COM_JCHAT_AUDIOVOLUME_DEFAULT_DESC">
-			<option value="1">100%</option>
-			<option value="0.8">80%</option>
-			<option value="0.6">60%</option>
-			<option value="0.4">40%</option>
-			<option value="0.2">20%</option>
-		</field>
-		<field name="videochat_auto_maximize_box" class="btn-group" type="radio" default="1024" label="COM_JCHAT_VIDEOCHAT_AUTO_MAXIMIZE_BOX" description="COM_JCHAT_VIDEOCHAT_AUTO_MAXIMIZE_BOX_DESC">
-			<option value="0">JNO</option>              
-			<option value="1">JYES</option>
-			<option value="480">COM_JCHAT_YES_MOBILE_ONLY</option>
-			<option value="1024">COM_JCHAT_YES_MOBILE_AND_TABLETS_ONLY</option>
-		</field>
-		<field name="hide_webcam_when_disabled" class="btn-group" type="radio" default="1" label="COM_JCHAT_HIDE_WEBCAM_WHEN_DISABLED" description="COM_JCHAT_HIDE_WEBCAM_WHEN_DISABLED_DESC">
-			<option value="0">JNO</option>              
-			<option value="1">JYES</option>
-			<option value="2">COM_JCHAT_YES_HIDEALL</option>
-		</field>
-		<field name="show_webrtc_stats" class="btn-group" type="radio" default="1" label="COM_JCHAT_SHOW_WEBRTC_STATS" description="COM_JCHAT_SHOW_WEBRTC_STATS_DESC">
-			<option value="0">JNO</option>              
-			<option value="1">JYES</option>
-		</field>
-		<field name="show_webrtc_vumeter" class="btn-group" type="radio" default="1" label="COM_JCHAT_SHOW_VUMETER" description="COM_JCHAT_SHOW_VUMETER_DESC">
-			<option value="0">JNO</option>              
-			<option value="1">JYES</option>
-		</field>
-		<field name="enable_recording" class="btn-group" type="radio" default="0" label="COM_JCHAT_ENABLE_RECORDING" description="COM_JCHAT_ENABLE_RECORDING_DESC">
-			<option value="0">JNO</option>              
-			<option value="1">JYES</option>
-		</field>
-		
-		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_ADVANCED"/>
-		<field name="auto_quality_bandwidth_management" class="btn-group" type="radio" default="0" label="COM_JCHAT_AUTO_QUALITY_BANDWIDTH_MANAGEMENT" description="COM_JCHAT_AUTO_QUALITY_BANDWIDTH_MANAGEMENT_DESC">
-			<option value="0">JNO</option>              
-			<option value="1">JYES</option>
-		</field>
-		<field name="serverload_reduction" class="btn-group" type="radio" default="0" label="COM_JCHAT_SERVERLOAD_REDUCTION" description="COM_JCHAT_SERVERLOAD_REDUCTION_DESC">
-			<option value="0">JNO</option>              
-			<option value="1">JYES</option>
-		</field>
-		<field name="no_webrtc_fallback" class="btn-group" type="radio" default="1" label="COM_JCHAT_NOWEBRTC_FALLBACK" description="COM_JCHAT_NOWEBRTC_FALLBACK_DESC">
-			<option value="0">COM_JCHAT_HIDE_TRIGGER</option>              
-			<option value="1">COM_JCHAT_SHOW_UPGRADE</option>
-		</field>
-		<field name="stun_servers" type="textarea" class="servers" cols="80" rows="8" default="stun:stun.l.google.com:19302" label="COM_JCHAT_STUN_SERVERS" description="COM_JCHAT_STUN_SERVERS_DESC"/>
-		
-		<field name="turn_servers_enabled" class="btn-group" type="radio" default="0" label="COM_JCHAT_TURN_SERVERS_ENABLED" description="COM_JCHAT_TURN_SERVERS_ENABLED_DESC">
-			<option value="0">JNO</option>              
-			<option value="1">JYES</option>
-		</field>
-		<field name="turn_servers" type="textarea" class="servers" cols="80" rows="8" default="turn:numb.viagenie.ca:3478,jchatsocial@storejoomla.org,jchatsocialwebrtc" label="COM_JCHAT_TURN_SERVERS" description="COM_JCHAT_TURN_SERVERS_DESC"/>
-		
-		<field name="turn_anyfirewall_enabled" class="btn-group" type="radio" default="0" label="COM_JCHAT_TURN_ANYFIREWALL_ENABLED" description="COM_JCHAT_TURN_ANYFIREWALL_ENABLED_DESC">
-			<option value="0">JNO</option>              
-			<option value="1">JYES</option>
-		</field>
-		<field name="turn_anyfirewall_appname" type="text" default="jchatsocial" label="COM_JCHAT_TURN_ANYFIREWALL_APPNAME" description="COM_JCHAT_TURN_ANYFIREWALL_APPNAME_DESC"/>
-		<field name="turn_anyfirewall_password" type="text" default="jchatsocial" label="COM_JCHAT_TURN_ANYFIREWALL_PASSWORD" description="COM_JCHAT_TURN_ANYFIREWALL_PASSWORD_DESC"/>
-		<field name="turn_anyfirewall_request_timeout" type="text"  default="5" label="COM_JCHAT_TURN_ANYFIREWALL_REQUEST_TIMEOUT" description="COM_JCHAT_TURN_ANYFIREWALL_REQUEST_TIMEOUT_DESC"/>
-	</fieldset>
-	
-	<fieldset id="filesystem" name="filesystem" label="COM_JCHAT_FILESYSTEM">
-		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_AVATARS"/>
-   		<field name="avatarenable" class="btn-group" type="radio" default="1" label="COM_JCHAT_AVATAR_ENABLED" description="COM_JCHAT_AVATAR_ENABLED_DESC">
-   			<option value="0">JNO</option>   
-   			<option value="1">JYES</option>            
-   		</field>
-		<field name="avatar_allowed_extensions" type="text" default="jpg,jpeg,png,gif" label="COM_JCHAT_AVATAR_ALLOWED_EXTENSIONS" description="COM_JCHAT_AVATAR_ALLOWED_EXTENSIONS_DESC"/>
-   		<field name="cropmode" class="btn-group" type="radio" default="1" label="COM_JCHAT_AVATAR_CROP_MODE" description="COM_JCHAT_AVATAR_CROP_MODE_DESC">
-   			<option value="0">COM_JCHAT_RESIZE</option>   
-   			<option value="1">COM_JCHAT_TRIM</option>            
-   		</field>
-   		<field name="avatarupload" class="btn-group" type="radio" default="1" label="COM_JCHAT_AVATARUPLOAD_ENABLED" description="COM_JCHAT_AVATARUPLOAD_ENABLED_DESC">
-   			<option value="0">JNO</option>   
-   			<option value="1">JYES</option>            
-   		</field>
-   		<field name="easysocial_avatar_path" class="btn-group" type="radio" default="media/com_easysocial" label="COM_JCHAT_EASYSOCIAL_AVATAR_PATH" description="COM_JCHAT_EASYSOCIAL_AVATAR_PATH_DESC">
-   			<option value="media/com_easysocial">COM_JCHAT_MEDIA_FOLDER</option>   
-   			<option value="images/social">COM_JCHAT_IMAGES_FOLDER</option>
-   		</field>
-   		<field name="easysocial_custom_avatar" class="btn-group" type="radio" default="0" label="COM_JCHAT_CUSTOM_AVATAR" description="COM_JCHAT_CUSTOM_AVATAR_DESC">
-   			<option value="0">JNO</option>   
-   			<option value="1">JYES</option>            
-   		</field>
-   		<field name="easysocial_custom_avatar_path" type="text" size="10" default="" label="COM_JCHAT_CUSTOM_AVATAR_PATH" description="COM_JCHAT_CUSTOM_AVATAR_PATH_DESC"/>
-   		<field name="kunena_avatars_resize_format" type="list" default="size36" label="COM_JCHAT_KUNENA_RESIZE_FORMAT" description="COM_JCHAT_KUNENA_RESIZE_FORMAT_DESC">
-			<option value="size24">24px</option>
-			<option value="size36">36px</option>
-			<option value="size40">40px</option>
-			<option value="size48">48px</option>
-			<option value="size72">72px</option>
-			<option value="size90">90px</option>
-			<option value="size128">128px</option>
-			<option value="size144">144px</option>
-		</field>
-
-		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_ATTACHMENTS"/>
-   		<field name="attachmentsenable" class="btn-group" type="radio" default="1" label="COM_JCHAT_ATTACHMENTS_ENABLED" description="COM_JCHAT_ATTACHMENTS_ENABLED_DESC">
-   			<option value="0">JNO</option>   
-   			<option value="1">JYES</option>            
-   		</field>
-   		<field name="maxfilesize" type="text" size="10" default="2" label="COM_JCHAT_MAXFILESIZE" description="COM_JCHAT_MAXFILESIZE_DESC"/>
-   		<field name="disallowed_extensions" type="text" size="10" default="exe,bat,pif" label="COM_JCHAT_DISALLOWEDEXT" description="COM_JCHAT_DISALLOWEDEXT_DESC"/>
-	</fieldset>
-	
-	<fieldset id="notifications" name="notifications" label="COM_JCHAT_NOTIFICATIONS">
-		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_LIVESUPPORT_GROUPS"/>
-		<field name="chatadmins_gids" type="aclgroupsmultiselect" translation="COM_JCHAT_NO_LIVE_ACTIVE" default="0" size="10" multiple="multiple" label="COM_JCHAT_CHATADMINS_GIDS" description="COM_JCHAT_CHATADMINS_GIDS_DESC" />
-		<field name="auto_open_agentbox" class="btn-group" type="radio" default="0" label="COM_JCHAT_AUTO_OPEN_AGENTBOX" description="COM_JCHAT_AUTO_OPEN_AGENTBOX_DESC">
-   			<option value="0">JNO</option>   
-   			<option value="1">JYES</option>            
-   		</field>
-   		<field name="auto_open_agentbox_defaultmessage" type="editor" hide="pagebreak,readmore" width="300px" height="200px" default="" label="COM_JCHAT_AUTO_OPEN_AGENTBOX_DEFAULTMESSAGE" description="COM_JCHAT_AUTO_OPEN_AGENTBOX_DEFAULTMESSAGE_DESC"/>
-   		<field name="affect_public_chat" class="btn-group" type="radio" default="1" label="COM_JCHAT_AFFECT_PUBLIC_CHAT" description="COM_JCHAT_AFFECT_PUBLIC_CHAT_DESC">
-   			<option value="0">JNO</option>   
-   			<option value="1">JYES</option>            
-   		</field>
-		
-		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_OFFLINE_MESSAGE"/>
-		<field name="offline_message_switcher" class="btn-group" type="radio" default="0" label="COM_JCHAT_NOTIFICATIONS_OFFLINE_MESSAGE_SWITCHER" description="COM_JCHAT_NOTIFICATIONS_OFFLINE_MESSAGE_SWITCHER_DESC">
-   			<option value="0">JNO</option>   
-   			<option value="1">JYES</option>            
-   		</field>
-		<field name="offline_message" type="editor" hide="pagebreak,readmore" width="300px" height="200px" default="" label="COM_JCHAT_NOTIFICATIONS_OFFLINE_MESSAGE" description="COM_JCHAT_NOTIFICATIONS_OFFLINE_MESSAGE_DESC"/>
-		
-		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_TICKET_FORM"/>
-		<field name="tickets_form" class="btn-group" type="radio" default="0" label="COM_JCHAT_ENABLE_TICKET_FORM" description="COM_JCHAT_ENABLE_TICKET_FORM_DESC">
-   			<option value="0">JNO</option>   
-   			<option value="1">JYES</option>            
-   		</field>
-   		<field name="tickets_form_always_visible" class="btn-group" type="radio" default="0" label="COM_JCHAT_ENABLE_TICKET_FORM_ALWAYS_VISIBLE" description="COM_JCHAT_ENABLE_TICKET_FORM_ALWAYS_VISIBLE_DESC">
-   			<option value="0">JNO</option>   
-   			<option value="1">JYES</option>            
-   		</field>
-		<field name="tickets_mailfrom" type="text" size="80" default="" label="COM_JCHAT_TICKETS_MAILFROM" description="COM_JCHAT_TICKETS_MAILFROM_DESC"/>
-		<field name="tickets_fromname" type="text" size="80" default="" label="COM_JCHAT_TICKETS_FROMNAME" description="COM_JCHAT_TICKETS_FROMNAME_DESC"/>
-		<field name="ticket_sent_notify" class="btn-group" type="radio" default="0" label="COM_JCHAT_TICKET_SENT_NOTIFY" description="COM_JCHAT_TICKET_SENT_NOTIFY_DESC">
-   			<option value="0">JNO</option>   
-   			<option value="1">JYES</option>            
-   		</field>
-   		<field name="ticket_notify_emails" type="text" class="wide" default="" label="COM_JCHAT_TICKET_NOTIFY_EMAILS" description="COM_JCHAT_TICKET_NOTIFY_EMAILS_DESC"/>
-		
-		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_NOTIFICATION"/>
-		<field name="private_messaging_notification_email" class="btn-group" type="radio" default="1" label="COM_JCHAT_NOTIFICATIONS_EMAIL_PM" description="COM_JCHAT_NOTIFICATIONS_EMAIL_PM_DESC">
-   			<option value="0">JNO</option>   
-   			<option value="1">JYES</option>            
-   		</field>
-   		
-		<field name="notification_email_switcher" class="btn-group" type="radio" default="0" label="COM_JCHAT_NOTIFICATIONS_EMAIL_SWITCHER" description="COM_JCHAT_NOTIFICATIONS_EMAIL_SWITCHER_DESC">
-   			<option value="0">JNO</option>   
-   			<option value="1">JYES</option>            
-   		</field>
-		<field name="notification_email" type="text" size="80" default="" label="COM_JCHAT_NOTIFICATIONS_EMAIL" description="COM_JCHAT_NOTIFICATIONS_EMAIL_DESC"/>
-		<field name="email_subject" type="text" size="80" default="JChatSocial - New conversation started" label="COM_JCHAT_NOTIFICATIONS_EMAIL_SUBJECT" description="COM_JCHAT_NOTIFICATIONS_EMAIL_SUBJECT_DESC"/>
-		<field name="email_start_text" type="textarea" cols="50" rows="10" default="" label="COM_JCHAT_NOTIFICATIONS_EMAIL_START_MESSAGE" description="COM_JCHAT_NOTIFICATIONS_EMAIL_START_MESSAGE_DESC"/>
-	</fieldset>
-	
-	<fieldset addfieldpath="/administrator/components/com_jchat/models/fields" id="social_login" name="social_login" label="COM_JCHAT_SOCIAL_LOGIN">
-		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_FACEBOOK_CONNECT_SETUP"/>
-		<field name="fblogin_active" type="radio" class="btn-group" default="0" label="COM_JCHAT_FBLOGIN_ACTIVE" description="COM_JCHAT_FBLOGIN_ACTIVE_DESC">
-   			<option value="0">JNO</option>              
-   			<option value="1">JYES</option>
-   		</field>
-		<field name="appId" type="text" label="COM_JCHAT_FIELD_APPID_LABEL" description="COM_JCHAT_FIELD_APPID_DESC" />
-		<field name="secret" type="text" label="COM_JCHAT_FIELD_SECRET_LABEL" description="COM_JCHAT_FIELD_SECRET_DESC" />
-		
-		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_GPLUS_CONNECT_SETUP"/>
-		<field name="gpluslogin_active" type="radio" class="btn-group" default="0" label="COM_JCHAT_GPLUSLOGIN_ACTIVE" description="COM_JCHAT_GPLUSLOGIN_ACTIVE_DESC">
-   			<option value="0">JNO</option>              
-   			<option value="1">JYES</option>
-   		</field>
-		<field name="gplusClientID" type="text" label="COM_JCHAT_FIELD_GPLUSCLIENTID_LABEL" description="COM_JCHAT_FIELD_GPLUSCLIENTID_LABEL_DESC" />
-		<field name="gplusKey" type="text" label="COM_JCHAT_FIELD_GPLUSKEY_LABEL" description="COM_JCHAT_FIELD_GPLUSKEY_LABEL_DESC" />
-		
-		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_TWITTER_CONNECT_SETUP"/>
-		<field name="twitterlogin_active" type="radio" class="btn-group" default="0" label="COM_JCHAT_TWITTERLOGIN_ACTIVE" description="COM_JCHAT_TWITTERLOGIN_ACTIVE_DESC">
-   			<option value="0">JNO</option>              
-   			<option value="1">JYES</option>
-   		</field>
-		<field name="twitterKey" type="text" label="COM_JCHAT_FIELD_TWITTERKEY_LABEL" description="COM_JCHAT_FIELD_TWITTERKEY_LABEL_DESC" />
-		<field name="twitterSecret" type="text" label="COM_JCHAT_FIELD_TWITTERSECRET_LABEL" description="COM_JCHAT_FIELD_TWITTERSECRET_LABEL_DESC" />
-		
-		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_CONNECT_SETUP_PARAMS"/>
-		<field name="sdkloadmode" type="radio" class="btn-group" default="2" label="COM_JCHAT_SDK_LOADMODE" description="COM_JCHAT_SDK_LOADMODE_DESC">
-			<option value="0">JNO</option>
-		 	<option value="1">JYES</option>
-		 	<option value="2">COM_JCHAT_YES_OVERWRITE</option>
-		</field>
-		<field name="auth_type" type="radio" class="btn-group" default="id" label="COM_JCHAT_AUTH_TYPE" description="COM_JCHAT_AUTH_TYPE_DESC">
-			<option value="id">COM_JCHAT_AUTH_TYPE_FBID</option>
-		 	<option value="email">COM_JCHAT_AUTH_TYPE_EMAIL</option>
-		</field>
-		<field name="curl_ssl_verifypeer" type="radio" class="btn-group" default="1" label="COM_JCHAT_SSL_VERIFY" description="COM_JCHAT_SSL_VERIFY_DESC">
-			<option value="0">JNO</option>
-		 	<option value="1">JYES</option>
-		</field>
-		<field name="sdkversion" type="text" default="2.6" size="40" label="COM_JCHAT_SDK_VERSION" description="COM_JCHAT_SDK_VERSION_DESC" />
-		
-		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_CONNECT_VIDEOS"/>
-		<field name="video" type="video" class="video" src="http://www.youtube.com/embed/yc4pWVgvbIA?list=UURFzZHb--kxwI62L4v6GQxw" label="COM_JCHAT_VIDEO_TUTORIAL" />
-		<field name="video2" type="video" class="video" src="https://www.youtube.com/embed/h9RF01ZpKs8" label="COM_JCHAT_VIDEO2_TUTORIAL" />
-		<field name="videotwitter" type="video" class="video" src="https://www.youtube.com/embed/U64IRmN3V8U" label="COM_JCHAT_VIDEOTWITTER_TUTORIAL" />
-	</fieldset>
-		
-	<fieldset addfieldpath="/administrator/components/com_jchat/models/fields" id="languagetranslation" name="languagetranslation" label="COM_JCHAT_LANGUAGE_TRANSLATION">
-		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_LANGUAGE_TRANSLATION_SETTINGS"/>
-		<field name="language_translation_enabled" class="btn-group" type="radio" default="0" label="COM_JCHAT_LANGUAGE_TRANSLATION_ENABLED" description="COM_JCHAT_LANGUAGE_TRANSLATION_ENABLED_DESC">
-   			<option value="0">COM_JCHAT_DISABLE</option>   
-			<option value="1">COM_JCHAT_ENABLE</option>
-   		</field>
-   		<field name="language_translation_groups" type="aclgroupsmultiselect" translation="COM_JCHAT_ALLGROUPS" default="8" size="15" multiple="multiple" label="COM_JCHAT_LANGUAGE_TRANSLATION_GROUPS" description="COM_JCHAT_LANGUAGE_TRANSLATION_GROUPS_DESC" />
-		<field name="language_translation_incomingmessages" type="radio" class="btn-group" default="1" label="COM_JCHAT_LANGUAGE_TRANSLATION_INCOMINGMESSAGES" description="COM_JCHAT_LANGUAGE_TRANSLATION_INCOMINGMESSAGES_DESC">
-			<option value="0">JNO</option>
-		 	<option value="1">JYES</option>
-		</field>
-		<field name="language_translation_selfmessages" type="radio" class="btn-group" default="0" label="COM_JCHAT_LANGUAGE_TRANSLATION_SELFMESSAGES" description="COM_JCHAT_LANGUAGE_TRANSLATION_SELFMESSAGES_DESC">
-			<option value="0">JNO</option>
-		 	<option value="1">JYES</option>
-		</field>
-		
-		<field name="default_language" type="list" default="" label="COM_JCHAT_DEFAULT_LANGUAGE" description="COM_JCHAT_DEFAULT_LANGUAGE_DESC">
-			<option value="">COM_JCHAT_DEFAULT_SITE_LANGUAGE</option>
-   			<option value="af">Afrikaans</option>
-			<option value="ar">Arabic</option>
-			<option value="az">Azerbaijani</option>
-			<option value="be">Belarusian</option>
-			<option value="bg">Bulgarian</option>
-			<option value="bn">Bengali</option>
-			<option value="ca">Catalan</option>
-			<option value="zh_cn">Chinese Simplified</option>
-			<option value="zh_tw">Chinese Traditional</option>
-			<option value="hr">Croatian</option>
-			<option value="cs">Czech</option>
-			<option value="da">Danish</option>
-			<option value="nl">Dutch</option>
-			<option value="en">English</option>
-			<option value="eo">Esperanto</option>
-			<option value="et">Estonian</option>
-			<option value="fi">Finnish</option>
-			<option value="fr">French</option>
-			<option value="gl">Galician</option>
-			<option value="ka">Georgian</option>
-			<option value="de">German</option>
-			<option value="el">Greek</option>
-			<option value="ha">Hausa</option>
-			<option value="hi">Hindi</option>
-			<option value="hu">Hungarian</option>
-			<option value="is">Icelandic</option>
-			<option value="id">Indonesian</option>
-			<option value="ig">Igbo</option>
-			<option value="it">Italian</option>
-			<option value="ja">Japanese</option>
-			<option value="ko">Korean</option>
-			<option value="lv">Latvian</option>
-			<option value="lt">Lithuanian</option>
-			<option value="mk">Macedonian</option>
-			<option value="no">Norwegian</option>
-			<option value="fa">Persian</option>
-			<option value="pl">Polish</option>
-			<option value="pt">Portuguese</option>
-			<option value="ro">Romanian</option>
-			<option value="ru">Russian</option>
-			<option value="sr">Serbian</option>
-			<option value="sk">Slovak</option>
-			<option value="sl">Slovenian</option>
-			<option value="es">Spanish</option>
-			<option value="sw">Swahili</option>
-			<option value="sv">Swedish</option>
-			<option value="ta">Tamil</option>
-			<option value="th">Thai</option>
-			<option value="tr">Turkish</option>
-			<option value="uk">Ukrainian</option>
-			<option value="ur">Urdu</option>
-			<option value="vi">Vietnamese</option>
-			<option value="yo">Yoruba</option>
-			<option value="cy">Welsh</option>
-   		</field>
-   		
-		<field name="default_to_language" type="list" default="en" label="COM_JCHAT_DEFAULT_TO_LANGUAGE" description="COM_JCHAT_DEFAULT_TO_LANGUAGE_DESC">
-   			<option value="af">Afrikaans</option>
-			<option value="ar">Arabic</option>
-			<option value="az">Azerbaijani</option>
-			<option value="be">Belarusian</option>
-			<option value="bg">Bulgarian</option>
-			<option value="bn">Bengali</option>
-			<option value="ca">Catalan</option>
-			<option value="zh_cn">Chinese Simplified</option>
-			<option value="zh_tw">Chinese Traditional</option>
-			<option value="hr">Croatian</option>
-			<option value="cs">Czech</option>
-			<option value="da">Danish</option>
-			<option value="nl">Dutch</option>
-			<option value="en">English</option>
-			<option value="eo">Esperanto</option>
-			<option value="et">Estonian</option>
-			<option value="fi">Finnish</option>
-			<option value="fr">French</option>
-			<option value="gl">Galician</option>
-			<option value="ka">Georgian</option>
-			<option value="de">German</option>
-			<option value="el">Greek</option>
-			<option value="ha">Hausa</option>
-			<option value="hi">Hindi</option>
-			<option value="hu">Hungarian</option>
-			<option value="is">Icelandic</option>
-			<option value="id">Indonesian</option>
-			<option value="ig">Igbo</option>
-			<option value="it">Italian</option>
-			<option value="ja">Japanese</option>
-			<option value="ko">Korean</option>
-			<option value="lv">Latvian</option>
-			<option value="lt">Lithuanian</option>
-			<option value="mk">Macedonian</option>
-			<option value="no">Norwegian</option>
-			<option value="fa">Persian</option>
-			<option value="pl">Polish</option>
-			<option value="pt">Portuguese</option>
-			<option value="ro">Romanian</option>
-			<option value="ru">Russian</option>
-			<option value="sr">Serbian</option>
-			<option value="sk">Slovak</option>
-			<option value="sl">Slovenian</option>
-			<option value="es">Spanish</option>
-			<option value="sw">Swahili</option>
-			<option value="sv">Swedish</option>
-			<option value="ta">Tamil</option>
-			<option value="th">Thai</option>
-			<option value="tr">Turkish</option>
-			<option value="uk">Ukrainian</option>
-			<option value="ur">Urdu</option>
-			<option value="vi">Vietnamese</option>
-			<option value="yo">Yoruba</option>
-			<option value="cy">Welsh</option>
-   		</field>
-   		
-   		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_LANGUAGE_TRANSLATION_CHECKS_PHP"/>
-   		<field type="languagetranslationcheck" label="COM_JCHAT_LANGUAGE_TRANSLATION_CHECK" description="COM_JCHAT_LANGUAGE_TRANSLATION_CHECK_DESC" />
-	</fieldset>
-	
-	<fieldset addfieldpath="/administrator/components/com_jchat/models/fields" id="chatpermissions" name="chatpermissions" label="COM_JCHAT_PERMISSIONS">
-		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_USAGE_PERMISSIONS"/>
-		
-		<field name="chat_accesslevels" type="chataccesslevel" default="0" size="20" multiple="multiple" label="COM_JCHAT_CHAT_ACCESSLEVELS" description="COM_JCHAT_CHAT_ACCESSLEVELS_DESC" />
-		
-		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_VIDEOCHAT_PERMISSIONS"/>
-		<field name="allow_videochat" type="aclgroupsmultiselect" translation="COM_JCHAT_ALLGROUPS" default="0" size="15" multiple="multiple" label="COM_JCHAT_ALLOW_VIDEOCHAT" description="COM_JCHAT_ALLOW_VIDEOCHAT_DESC" />
-		<field name="allow_media_recorder" type="aclgroupsmultiselect" translation="COM_JCHAT_ALLGROUPS" default="0" size="15" multiple="multiple" label="COM_JCHAT_ALLOW_MEDIA_RECORDER" description="COM_JCHAT_ALLOW_MEDIA_RECORDER_DESC" />
-		<field name="allow_media_recorder_save" type="aclgroupsmultiselect" translation="COM_JCHAT_ALLGROUPS" default="0" size="15" multiple="multiple" label="COM_JCHAT_ALLOW_MEDIA_RECORDER_SAVE" description="COM_JCHAT_ALLOW_MEDIA_RECORDER_SAVE_DESC" />
-		
-		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_ACTIONS_PERMITTED"/>
-		<field name="allow_guest_fileupload" class="btn-group" type="radio" default="1" label="COM_JCHAT_ALLOW_GUEST_FILEUPLOAD" description="COM_JCHAT_ALLOW_GUEST_FILEUPLOAD_DESC">
-   			<option value="0">COM_JCHAT_DISABLE</option>   
-			<option value="1">COM_JCHAT_ENABLE</option>
-   		</field>
-   		<field name="allow_guest_avatarupload" class="btn-group" type="radio" default="1" label="COM_JCHAT_ALLOW_GUEST_AVATARUPLOAD" description="COM_JCHAT_ALLOW_GUEST_AVATARUPLOAD_DESC">
-   			<option value="0">COM_JCHAT_DISABLE</option>   
-   			<option value="1">COM_JCHAT_ENABLE</option>            
-   		</field>
-   		<field name="allow_guest_skypebridge" class="btn-group" type="radio" default="1" label="COM_JCHAT_ALLOW_GUEST_SKYPEBRIDGE" description="COM_JCHAT_ALLOW_GUEST_SKYPEBRIDGE_DESC">
-   			<option value="0">COM_JCHAT_DISABLE</option>   
-   			<option value="1">COM_JCHAT_ENABLE</option>            
-   		</field>
-   		<field name="allow_guest_overridename" class="btn-group" type="radio" default="1" label="COM_JCHAT_ALLOW_GUEST_OVERRIDENAME" description="COM_JCHAT_ALLOW_GUEST_OVERRIDENAME_DESC">
-   			<option value="0">COM_JCHAT_DISABLE</option>   
-   			<option value="1">COM_JCHAT_ENABLE</option>            
-   		</field>
-   		<field name="allow_guest_banning" class="btn-group" type="radio" default="1" label="COM_JCHAT_ALLOW_GUEST_BANNING" description="COM_JCHAT_ALLOW_GUEST_BANNING_DESC">
-   			<option value="0">COM_JCHAT_DISABLE</option>   
-   			<option value="1">COM_JCHAT_ENABLE</option>            
-   		</field>
-   		<field name="allow_guest_buddylist" class="btn-group" type="radio" default="1" label="COM_JCHAT_ALLOW_GUEST_BUDDYLIST" description="COM_JCHAT_ALLOW_GUEST_BUDDYLIST_DESC">
-   			<option value="0">COM_JCHAT_DISABLE</option>   
-   			<option value="1">COM_JCHAT_ENABLE</option>            
-   		</field>
-   		<field name="allow_media_objects" class="btn-group" type="radio" default="1" label="COM_JCHAT_ALLOW_MEDIA_OBJECTS" description="COM_JCHAT_ALLOW_MEDIA_OBJECTS_DESC">
-   			<option value="0">COM_JCHAT_DISABLE</option>   
-   			<option value="1">COM_JCHAT_ENABLE</option>            
-   		</field>
-		<field name="limit_my_users_groups" class="btn-group" type="radio" default="0" label="COM_JCHAT_LIMIT_MY_USERS_GROUPS" description="COM_JCHAT_LIMIT_MY_USERS_GROUPS_DESC">
-   			<option value="0">COM_JCHAT_DISABLE</option>   
-   			<option value="1">COM_JCHAT_ENABLE</option>            
-   		</field>
-   		
-   		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_CHATROOM_PERMISSIONS"/>
-   		<field name="addchatroom" class="btn-group" type="radio" default="0" label="COM_JCHAT_ADD_CHATROOM" description="COM_JCHAT_ADD_CHATROOM_DESC">
-   			<option value="0">COM_JCHAT_DISABLE</option>   
-   			<option value="1">COM_JCHAT_ENABLE</option>            
-   		</field>
-   		<field name="addchatroom_groups" type="aclgroupsmultiselect" default="8" size="20" multiple="multiple" label="COM_JCHAT_ADD_CHATROOM_GROUPS" description="COM_JCHAT_ADD_CHATROOM_GROUPS_DESC" />
-   		
-   		<field name="deletechatroom" class="btn-group" type="radio" default="0" label="COM_JCHAT_DELETE_CHATROOM" description="COM_JCHAT_DELETE_CHATROOM_DESC">
-   			<option value="0">COM_JCHAT_DISABLE</option>   
-   			<option value="1">COM_JCHAT_ENABLE</option>            
-   		</field>
-   		<field name="deletechatroom_groups" type="aclgroupsmultiselect" default="8" size="20" multiple="multiple" label="COM_JCHAT_DELETE_CHATROOM_GROUPS" description="COM_JCHAT_DELETE_CHATROOM_GROUPS_DESC" />
-   		
-   		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_MODERATION_PERMISSIONS"/>
-		<field name="enablemoderation" class="btn-group" type="radio" default="0" label="COM_JCHAT_ENABLE_MODERATION" description="COM_JCHAT_ENABLE_MODERATION_DESC">
-   			<option value="0">COM_JCHAT_DISABLE</option>   
-   			<option value="1">COM_JCHAT_ENABLE</option>            
-   		</field>
-   		<field name="moderation_groups" type="aclgroupsmultiselect" default="8" size="20" multiple="multiple" label="COM_JCHAT_MODERATION_GROUPS" description="COM_JCHAT_MODERATION_GROUPS_DESC" />
-   		
-		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_TIMED_PERMISSIONS"/>
-		<field name="start_at_hour" type="list" default="" label="COM_JCHAT_TIMED_PERMISSIONS_FROMHOUR" description="COM_JCHAT_TIMED_PERMISSIONS_FROMHOUR_DESC">
-   			<option value="">Not set</option>
-   			<option value="0">00:00</option>
-   			<option value="1">01:00</option>
-   			<option value="2">02:00</option>
-   			<option value="3">03:00</option>
-   			<option value="4">04:00</option>
-   			<option value="5">05:00</option>
-   			<option value="6">06:00</option>
-   			<option value="7">07:00</option>
-   			<option value="8">08:00</option>
-   			<option value="9">09:00</option>
-   			<option value="10">10:00</option>
-   			<option value="11">11:00</option>
-   			<option value="12">12:00</option>
-   			<option value="13">13:00</option>
-   			<option value="14">14:00</option>
-   			<option value="15">15:00</option>
-   			<option value="16">16:00</option>
-   			<option value="17">17:00</option>
-   			<option value="18">18:00</option>
-   			<option value="19">19:00</option>
-   			<option value="20">20:00</option>
-   			<option value="21">21:00</option>
-   			<option value="22">22:00</option>
-   			<option value="23">23:00</option>
-   			<option value="24">24:00</option>
-   		</field>
-   		<field name="stop_at_hour" type="list" default="" label="COM_JCHAT_TIMED_PERMISSIONS_TOHOUR" description="COM_JCHAT_TIMED_PERMISSIONS_TOHOUR_DESC">
-   			<option value="">Not set</option>
-   			<option value="0">00:00</option>
-   			<option value="1">01:00</option>
-   			<option value="2">02:00</option>
-   			<option value="3">03:00</option>
-   			<option value="4">04:00</option>
-   			<option value="5">05:00</option>
-   			<option value="6">06:00</option>
-   			<option value="7">07:00</option>
-   			<option value="8">08:00</option>
-   			<option value="9">09:00</option>
-   			<option value="10">10:00</option>
-   			<option value="11">11:00</option>
-   			<option value="12">12:00</option>
-   			<option value="13">13:00</option>
-   			<option value="14">14:00</option>
-   			<option value="15">15:00</option>
-   			<option value="16">16:00</option>
-   			<option value="17">17:00</option>
-   			<option value="18">18:00</option>
-   			<option value="19">19:00</option>
-   			<option value="20">20:00</option>
-   			<option value="21">21:00</option>
-   			<option value="22">22:00</option>
-   			<option value="23">23:00</option>
-   			<option value="24">24:00</option>
-   		</field>
-	</fieldset>
-	
-	<fieldset addfieldpath="/administrator/components/com_jchat/models/fields" id="advancedchat" name="advancedchat" label="COM_JCHAT_ADVANCED">
-		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_GROUPS_EXCLUSIONS"/>
-  		<field name="chat_exclusions" type="menumultiselect" default="0" size="20" multiple="multiple" label="COM_JCHAT_CHAT_EXCLUSIONS" description="COM_JCHAT_CHAT_EXCLUSIONS_DESC" />
-		
-		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_ADVANCED_PUBLIC_CHAT"/>
-		<field name="chatrooms_latest" class="btn-group" type="radio" default="1" label="COM_JCHAT_CHATROOMS_LATEST" description="COM_JCHAT_CHATROOMS_LATEST_DESC">
-			<option value="0">JNO</option>              
-   			<option value="1">JYES</option>
-		</field>
-		<field name="chatrooms_latest_interval" type="text"  size="10" default="120" label="COM_JCHAT_CHATROOMS_LATEST_INTERVAL" description="COM_JCHAT_CHATROOMS_LATEST_INTERVAL_DESC" />
-		<field name="wall_history_delay" type="text"  size="10" default="1" label="COM_JCHAT_WALL_HISTORY_DELAY" description="COM_JCHAT_WALL_HISTORY_DELAY_DESC" />
-		<field name="wall_history_delay_autoload" class="btn-group" type="radio" default="0" label="COM_JCHAT_WALL_HISTORY_DELAY_AUTOLOAD" description="COM_JCHAT_WALL_HISTORY_DELAY_AUTOLOAD_DESC">
-   			<option value="0">JNO</option>              
-   			<option value="1">JYES</option>
-   		</field>
-		
-   		<field name="chatrooms_messages_stillinroom" class="btn-group" type="radio" default="0" label="COM_JCHAT_CHATROOMS_MESSAGES_STILLINROOM" description="COM_JCHAT_CHATROOMS_MESSAGES_STILLINROOM_DESC">
-   			<option value="0">JNO</option>              
-   			<option value="1">JYES</option>
-   		</field>
-		<field name="maxtimeinterval_groupmessages" type="text"  size="10" default="12" label="COM_JCHAT_MAXTIMEINTERVAL_GROUPMESSAGES" description="COM_JCHAT_MAXTIMEINTERVAL_GROUPMESSAGES_DESC" />
-   		
-   		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_ADVANCED_SETTINGS"/>
-   		<field name="async_send_message" class="btn-group" type="radio" default="before" label="COM_JCHAT_ASYNC_SEND_MESSAGE" description="COM_JCHAT_ASYNC_SEND_MESSAGE_DESC">
-   			<option value="before">COM_JCHAT_BEFORE</option>              
-   			<option value="after">COM_JCHAT_AFTER</option>
-   		</field>
-   		<field name="unique_usernames" class="btn-group" type="radio" default="0" label="COM_JCHAT_FORCE_UNIQUE_USERNAME_VALIDATION" description="COM_JCHAT_FORCE_UNIQUE_USERNAME_VALIDATION_DESC">
-   			<option value="0">JNO</option>              
-   			<option value="1">JYES</option>
-   		</field>
-   		<field name="download_msgs_multitabs_mode" class="btn-group" type="radio" default="0" label="COM_JCHAT_DOWNLOADMSGS_MULTITABS" description="COM_JCHAT_DOWNLOADMSGS_MULTITABS_DESC">
-   			<option value="0">JNO</option>              
-   			<option value="1">JYES</option>
-   		</field>
-   		<field name="advanced_avatars_mgmt" class="btn-group" type="radio" default="0" label="COM_JCHAT_ADVANCED_AVATARS_MGMT" description="COM_JCHAT_ADVANCED_AVATARS_MGMT_DESC">
-   			<option value="0">JNO</option>              
-   			<option value="1">JYES</option>
-   		</field>
-   		<field name="pm_num_loading_msgs" type="text" size="10" default="100" label="COM_JCHAT_PM_NUMLOADING_MSGS" description="COM_JCHAT_PM_NUMLOADING_MSGS_DESC" />
-
-   		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_CACHE_OPTIMIZATIONS"/>
-   		<field name="caching" class="btn-group" type="radio" default="0" label="COM_JCHAT_ENABLE_CACHING" description="COM_JCHAT_ENABLE_CACHING_DESC">
-   			<option value="0">JNO</option>              
-   			<option value="1">JYES</option>
-   		</field>
-		<field name="cache_lifetime" type="text" size="10" default="15" label="COM_JCHAT_CACHE_LIFETIME" description="COM_JCHAT_CACHE_LIFETIME_DESC" />
-		<field name="scripts_loading" type="list" default="dom" label="COM_JCHAT_SCRIPTS_LOADING" description="COM_JCHAT_SCRIPTS_LOADING_DESC">
-   			<option value="dom">COM_JCHAT_DOM_ORDER</option>              
-   			<option value="defer">COM_JCHAT_DEFER</option>
-   			<option value="async">COM_JCHAT_ASYNC</option>
-   		</field>
-		<field name="keep_latest_msgs" type="text" size="10" default="7" label="COM_JCHAT_DELETE_OLDEST_MSGS" description="COM_JCHAT_DELETE_OLDEST_MSGS_DESC" />
-		<field name="notifications_auto_enable" class="btn-group" type="radio" default="0" label="COM_JCHAT_NOTIFICATION_AUTO_ENABLED" description="COM_JCHAT_NOTIFICATION_AUTO_ENABLED_DESC">
-   			<option value="0">JNO</option>              
-   			<option value="1">JYES</option>
-   		</field>
-   		<field name="notifications_time" type="list" default="10" label="COM_JCHAT_NOTIFICATION_TIME" description="COM_JCHAT_NOTIFICATION_TIME_DESC" >
-   			<option value="5">COM_JCHAT_5SEC</option>
-   			<option value="10">COM_JCHAT_10SEC</option>
-   			<option value="20">COM_JCHAT_20SEC</option>
-			<option value="30">COM_JCHAT_30SEC</option>
-			<option value="60">COM_JCHAT_1MIN</option>
-   			<option value="120">COM_JCHAT_2MIN</option>
-			<option value="300">COM_JCHAT_5MIN</option>
-			<option value="600">COM_JCHAT_10MIN</option>
-			<option value="1800">COM_JCHAT_30MIN</option>
-			<option value="3600">COM_JCHAT_1HOUR</option>
-   			<option value="0">COM_JCHAT_ALWAYS</option>
-   		</field>
-   		<field name="notifications_public_time" type="list" default="5" label="COM_JCHAT_NOTIFICATION_PUBLICTIME" description="COM_JCHAT_NOTIFICATION_PUBLICTIME_DESC" >
-   			<option value="5">COM_JCHAT_5SEC</option>
-   			<option value="10">COM_JCHAT_10SEC</option>
-   			<option value="20">COM_JCHAT_20SEC</option>
-			<option value="30">COM_JCHAT_30SEC</option>
-			<option value="60">COM_JCHAT_1MIN</option>
-   			<option value="120">COM_JCHAT_2MIN</option>
-			<option value="300">COM_JCHAT_5MIN</option>
-			<option value="600">COM_JCHAT_10MIN</option>
-			<option value="1800">COM_JCHAT_30MIN</option>
-			<option value="3600">COM_JCHAT_1HOUR</option>
-   			<option value="0">COM_JCHAT_ALWAYS</option>
-   		</field>
-   		
-   		<field name="enable_debug" class="btn-group" type="radio" default="0" label="COM_JCHAT_ENABLE_DEBUG" description="COM_JCHAT_ENABLE_DEBUG_DESC">
-   			<option value="0">JNO</option>              
-   			<option value="1">JYES</option>
-   		</field>
-   		<field name="includejquery" class="btn-group" type="radio" default="1" label="COM_JCHAT_INCLUDE_JQUERY" description="COM_JCHAT_INCLUDE_JQUERY_DESC">
-			<option value="0">JNO</option>              
-			<option value="1">JYES</option>
-		</field> 
-   		<field name="noconflict" class="btn-group" type="radio" default="1" label="COM_JCHAT_JQUERY_NOCONFLICT" description="COM_JCHAT_JQUERY_NOCONFLICT_DESC">
-   			<option value="0">JNO</option>              
-   			<option value="1">JYES</option>
-   		</field>
-   		<field name="includeevent" class="btn-group" type="radio" default="afterdispatch" label="COM_JCHAT_INCLUDE_POSITION" description="COM_JCHAT_INCLUDE_POSITION_DESC">
-			<option value="afterinitialize">COM_JCHAT_BEFORE_COMPONENT</option>              
-			<option value="afterdispatch">COM_JCHAT_AFTER_COMPONENT</option>
-		</field>
-	</fieldset>
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<fieldset id="general" name="general" label="COM_JCHAT_PREFERENCES">
+		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_SERVER_TIMING"/>
+		<field name="chatrefresh" type="list" default="2" label="COM_JCHAT_SERVERLOAD_CHATREFRESH" description="COM_JCHAT_SERVERLOAD_CHATREFRESH_DESC">
+			<option value="1">100%</option>
+			<option value="2">80%</option>
+			<option value="4">60%</option>
+			<option value="6">40%</option>
+			<option value="8">20%</option>
+		</field>
+   		<field name="maxinactivitytime" type="list" default="30" label="COM_JCHAT_MAXINACTIVITYTIME" description="COM_JCHAT_MAXINACTIVITYTIME_DESC" >
+   			<option value="10">COM_JCHAT_10SEC</option>
+   			<option value="20">COM_JCHAT_20SEC</option>
+			<option value="30">COM_JCHAT_30SEC</option>
+			<option value="60">COM_JCHAT_1MIN</option>
+   			<option value="120">COM_JCHAT_2MIN</option>
+			<option value="300">COM_JCHAT_5MIN</option>
+			<option value="600">COM_JCHAT_10MIN</option>
+   			<option value="99999">COM_JCHAT_USE_JOOMLA_SESSION</option>
+   		</field>
+   		<field name="lastmessagetime" type="text" size="10" default="60" label="COM_JCHAT_LASTMESSAGETIMESTATUS" description="COM_JCHAT_LASTMESSAGETIMESTATUS_DESC" />
+
+		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_COMMON_BEHAVIOR"/>
+		<field name="registration_email" type="text" default="" size="50" label="COM_JCHAT_REGISTRATION_EMAIL_FORUPDATES" description="COM_JCHAT_REGISTRATION_EMAIL_FORUPDATES_DESC" />
+		<field name="start_open_mode" class="btn-group" type="radio" default="1" label="COM_JCHAT_START_OPEN_MODE" description="COM_JCHAT_START_OPEN_MODE_DESC">
+			<option value="0">COM_JCHAT_JCHATCLOSE</option>              
+			<option value="1">COM_JCHAT_JCHATOPEN</option>
+		</field> 
+		<field name="usefullname" class="btn-group" type="radio" default="username" label="COM_JCHAT_USEFULLNAME" description="COM_JCHAT_USEFULLNAME_DESC">
+   			<option value="username">COM_JCHAT_USER_NAME</option>              
+   			<option value="name">COM_JCHAT_LONGNAME</option>
+   		</field>
+   		<field name="chat_title" type="text" default="" label="COM_JCHAT_CHAT_TITLE" description="COM_JCHAT_CHAT_TITLE_DESC" />
+		<field name="private_chat_title" type="text" default="" label="COM_JCHAT_PRIVATECHAT_TITLE" description="COM_JCHAT_PRIVATECHAT_TITLE_DESC" />
+   		<field name="public_chat_title" type="text" default="" label="COM_JCHAT_PUBLICCHAT_TITLE" description="COM_JCHAT_PUBLICCHAT_TITLE_DESC" />
+		<field name="forceavailable" class="btn-group" type="radio" default="0" label="COM_JCHAT_FORCEAVAILABLE" description="COM_JCHAT_FORCEAVAILABLE_DESC">
+   			<option value="0">JNO</option>              
+   			<option value="1">JYES</option>
+   		</field>
+		<field name="chatboxes_open_mode" class="btn-group" type="radio" default="0" label="COM_JCHAT_CHATBOXES_OPEN_MODE" description="COM_JCHAT_CHATBOXES_OPEN_MODE_DESC">
+			<option value="0">COM_JCHAT_JCHATAUTO</option>              
+			<option value="1">COM_JCHAT_JCHATALWAYSOPEN</option>
+		</field>
+		<field name="show_send_button" class="btn-group" type="radio" default="2" label="COM_JCHAT_SHOW_SEND_BUTTON" description="COM_JCHAT_SHOW_SEND_BUTTON_DESC">
+   			<option value="0">JNO</option>              
+   			<option value="1">JYES</option>
+   			<option value="2">COM_JCHAT_YES_MOBILE_ONLY</option>
+   		</field>
+		<field name="resizable_chatboxes" class="btn-group" type="radio" default="1" label="COM_JCHAT_RESIZABLE_CHATBOXES" description="COM_JCHAT_RESIZABLE_CHATBOXES_DESC">
+   			<option value="0">JNO</option>              
+   			<option value="1">JYES</option>
+   		</field>
+   		<field name="resizable_sidebar" class="btn-group" type="radio" default="1" label="COM_JCHAT_RESIZABLE_SIDEBAR" description="COM_JCHAT_RESIZABLE_SIDEBAR_DESC">
+   			<option value="0">JNO</option>              
+   			<option value="1">JYES</option>
+   		</field>
+   		<field name="chatrooms_users_details" class="btn-group" type="radio" default="1" label="COM_JCHAT_CHATROOM_USERS_DETAIL" description="COM_JCHAT_CHATROOM_USERS_DETAIL_DESC">
+   			<option value="0">JNO</option>              
+   			<option value="1">JYES</option>
+   		</field>
+   		<field name="auto_close_popups" class="btn-group" type="radio" default="1" label="COM_JCHAT_AUTO_CLOSE_POPUPS" description="COM_JCHAT_AUTO_CLOSE_POPUPS_DESC">
+   			<option value="0">JNO</option>              
+   			<option value="1">JYES</option>
+   		</field>
+   		<field name="exclude_onmobile" class="btn-group" type="radio" default="0" label="COM_JCHAT_EXCLUDE_ONMOBILE" description="COM_JCHAT_EXCLUDE_ONMOBILE_DESC">
+			<option value="0">JNO</option>       
+			<option value="480">COM_JCHAT_YES_NOMOBILE</option>
+			<option value="1024">COM_JCHAT_YES_NOMOBILE_AND_TABLETS</option>
+		</field>
+		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_EMOTICONS"/>
+		<field name="emoticons_enabled" class="btn-group" type="radio" default="1" label="COM_JCHAT_EMOTICONS_ENABLED" description="COM_JCHAT_EMOTICONS_ENABLED_DESC">
+   			<option value="0">JNO</option>              
+   			<option value="1">JYES</option>
+   		</field>
+		<field name="emoticons_original_size" class="btn-group" type="radio" default="0" label="COM_JCHAT_EMOTICONS_ORIGINAL_SIZE" description="COM_JCHAT_EMOTICONS_ORIGINAL_SIZE_DESC">
+   			<option value="0">JNO</option>              
+   			<option value="1">JYES</option>
+   		</field>
+	</fieldset>
+	
+	<fieldset id="features" name="features" label="COM_JCHAT_FEATURES"> 
+		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_INTEGRATIONS"/>
+		<field name="3pdintegration" type="list" default="" label="COM_JCHAT_TPDINTEGRATION" description="COM_JCHAT_TPDINTEGRATION_DESC">
+			<option value="">COM_JCHAT_NO_INTEGRATION</option>
+			<option value="jomsocial">COM_JCHAT_JOMSOCIAL_INTEGRATION</option>
+			<option value="easysocial">COM_JCHAT_EASYSOCIAL_INTEGRATION</option>              
+			<option value="cbuilder">COM_JCHAT_CBUILDER_INTEGRATION</option>
+			<option value="kunena">COM_JCHAT_KUNENA_INTEGRATION</option>
+			<option value="easyprofile">COM_JCHAT_EASYPROFILE_INTEGRATION</option>
+		</field>
+		<field name="filter_friendship" class="btn-group" type="radio" default="0" label="COM_JCHAT_FILTER_FRIENDSHIP" description="COM_JCHAT_FILTER_FRIENDSHIP_DESC">
+   			<option value="0">JNO</option>              
+   			<option value="1">JYES</option>
+   			<option value="2">COM_JCHAT_YES_EXCLUDE_PUBLIC_CHAT</option>
+   		</field>
+   		<field name="pm_integration" class="btn-group" type="radio" default="0" label="COM_JCHAT_MESSAGE_PMINTEGRATION" description="COM_JCHAT_MESSAGE_PMINTEGRATION_DESC">
+   			<option value="0">JNO</option>              
+   			<option value="1">JYES</option>
+   		</field>
+   		<field name="social_menu_item" type="menumultiselect" default="0" label="COM_JCHAT_SOCIAL_MENU_ITEM" description="COM_JCHAT_SOCIAL_MENU_ITEM_DESC" />
+   		
+   		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_MISC_FEATURES"/>
+		<field name="skypebridge" class="btn-group" type="radio" default="1" label="COM_JCHAT_SKYPEBRIDGE" description="COM_JCHAT_SKYPEBRIDGE_DESC">
+			<option value="0">JDISABLED</option>              
+			<option value="1">JENABLED</option>
+		</field>
+		<field name="groupchat" class="btn-group" type="radio" default="1" label="COM_JCHAT_GROUPCHAT" description="COM_JCHAT_GROUPCHAT_DESC">
+			<option value="0">JNO</option>              
+			<option value="1">JYES</option>
+			<option value="480">COM_JCHAT_YES_NOMOBILE</option>
+			<option value="1024">COM_JCHAT_YES_NOMOBILE_AND_TABLETS</option>
+		</field>
+		<field name="groupchat_start_open_mode" class="btn-group" type="radio" default="1" label="COM_JCHAT_GROUPCHAT_START_OPEN_MODE" description="COM_JCHAT_GROUPCHAT_START_OPEN_MODE_DESC">
+			<option value="0">COM_JCHAT_JCHATCLOSE</option>              
+			<option value="1">COM_JCHAT_JCHATOPEN</option>
+		</field> 
+		<field name="groupchatmode" class="btn-group" type="radio" default="chatroom" label="COM_JCHAT_GROUPCHAT_FORALL" description="COM_JCHAT_GROUPCHAT_FORALL_DESC">
+			<option value="chatroom">COM_JCHAT_CHATROOM</option>
+			<option value="global">COM_JCHAT_GLOBAL</option>
+			<option value="invite">COM_JCHAT_INVITE</option>              
+		</field>
+		<field name="autoclear_conversation" class="btn-group" type="radio" default="1" label="COM_JCHAT_AUTOCLEAR_CONVERSATION" description="COM_JCHAT_AUTOCLEAR_CONVERSATION_DESC">
+			<option value="0">JNO</option>              
+			<option value="1">JYES</option>
+		</field>
+		<field name="default_chatroom" type="chatrooms" default="" size="5" label="COM_JCHAT_DEFAULT_CHATROOM" description="COM_JCHAT_DEFAULT_CHATROOM_DESC" />
+		
+		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_GUEST_USERS_SETTINGS"/>
+		<field name="guestenabled" class="btn-group" type="radio" default="1" label="COM_JCHAT_GUEST_ENABLED" description="COM_JCHAT_GUEST_ENABLED_DESC">
+   			<option value="0">COM_JCHAT_DISABLED</option>              
+   			<option value="1">COM_JCHAT_PUBLIC</option>
+   			<option value="2">COM_JCHAT_FORM_REQUIRED</option>
+   		</field>
+   		<field name="guests_name_algo" class="btn-group" type="radio" default="name_based" label="COM_JCHAT_GUEST_NAME_ALGO" description="COM_JCHAT_GUEST_NAME_ALGO_DESC">
+			<option value="name_based">COM_JCHAT_GUEST_NAMEBASED</option>
+			<option value="numeric_based">COM_JCHAT_GUEST_NUMERICBASED</option>              
+		</field>
+		<field name="guests_name_length" class="btn-group" type="radio" default="3" label="COM_JCHAT_GUEST_NAME_LENGTH" description="COM_JCHAT_GUEST_NAME_LENGTH_DESC">
+			<option value="2">COM_JCHAT_4CHARS</option>      
+			<option value="3">COM_JCHAT_6CHARS</option>              
+			<option value="4">COM_JCHAT_8CHARS</option>
+			<option value="5">COM_JCHAT_10CHARS</option>
+		</field>
+   		<field name="guestprefix" type="text" default="Guest" label="COM_JCHAT_GUEST_PREFIX" description="COM_JCHAT_GUEST_PREFIX_DESC" />
+   		
+   		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_CHAT_FEATURES"/>
+   		<field name="searchfield" class="btn-group" type="radio" default="1" label="COM_JCHAT_SHOW_SEARCH_FIELD" description="COM_JCHAT_SHOW_SEARCH_FIELD_DESC">
+			<option value="0">JNO</option>              
+			<option value="1">JYES</option>
+		</field>
+		<field name="history" class="btn-group" type="radio" default="1" label="COM_JCHAT_HISTORY_MSGS" description="COM_JCHAT_HISTORY_MSGS_DESC">
+			<option value="0">JNO</option>              
+			<option value="1">JYES</option>
+		</field>
+		<field name="buddylist_visible" class="btn-group" type="radio" default="1" label="COM_JCHAT_BUDDYLIST_VISIBLE" description="COM_JCHAT_BUDDYLIST_VISIBLE_DESC">
+			<option value="0">JNO</option>              
+			<option value="1">JYES</option>
+		</field>
+		<field name="privatechat_enabled" class="btn-group" type="radio" default="1" label="COM_JCHAT_PRIVATECHAT" description="COM_JCHAT_PRIVATECHAT_DESC">
+			<option value="0">JNO</option>              
+			<option value="1">JYES</option>
+		</field>
+		<field name="typing_enabled" class="btn-group" type="radio" default="1" label="COM_JCHAT_TYPING" description="COM_JCHAT_TYPING_DESC">
+			<option value="0">JNO</option>              
+			<option value="1">JYES</option>
+		</field>
+		<field name="lastreadmessage" class="btn-group" type="radio" default="1" label="COM_JCHAT_LASTREADMESSAGE" description="COM_JCHAT_LASTREADMESSAGE_DESC">
+			<option value="0">JNO</option>              
+			<option value="1">JYES</option>
+		</field>
+		<field name="maximize_box" class="btn-group" type="radio" default="1024" label="COM_JCHAT_MAXIMIZE_BOX" description="COM_JCHAT_MAXIMIZE_BOX_DESC">
+			<option value="0">JNO</option>              
+			<option value="1">JYES</option>
+			<option value="480">COM_JCHAT_YES_MOBILE_ONLY</option>
+			<option value="1024">COM_JCHAT_YES_MOBILE_AND_TABLETS_ONLY</option>
+		</field>
+		<field name="show_suggestion_tooltip" class="btn-group" type="radio" default="0" label="COM_JCHAT_SHOW_SUGGESTION_TOOLTIP" description="COM_JCHAT_SHOW_SUGGESTION_TOOLTIP_DESC">
+			<option value="0">JNO</option>              
+			<option value="1">JYES</option>
+		</field>
+		<field name="suggestion_tooltip_text" type="editor" hide="pagebreak,readmore" width="300px" height="200px" default="" label="COM_JCHAT_SUGGESTION_TOOLTIP_TEXT" description="COM_JCHAT_SUGGESTION_TOOLTIP_TEXT_DESC"/>
+
+		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_GEOLOCATION"/>
+		<field name="geolocation_enabled" class="btn-group" type="radio" default="0" label="COM_JCHAT_GEOLOCATION_ENABLED" description="COM_JCHAT_GEOLOCATION_ENABLED_DESC">
+			<option value="0">JNO</option>              
+			<option value="1">JYES</option>
+		</field>
+		<field name="geolocation_service" class="btn-group" type="list" default="geoip" label="COM_JCHAT_GEOLOCATION_SERVICE" description="COM_JCHAT_GEOLOCATION_SERVICE_DESC">
+			<option value="geoip">GeoIP SSL</option>              
+			<option value="ipinfo">IPInfo</option>   
+			<option value="freegeoip">FreeGeoIP SSL</option>   
+		</field>
+		<field name="geolocation_gids" type="aclgroupsmultiselect" translation="COM_JCHAT_ALLGROUPS" default="0" size="15" multiple="multiple" label="COM_JCHAT_GEOLOCATION_ENABLED_GROUPS" description="COM_JCHAT_GEOLOCATION_ENABLED_GROUPS_DESC" />
+		
+		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_BANNING"/>
+		<field name="usersbanning" class="btn-group" type="radio" default="0" label="COM_JCHAT_USERS_BANNING" description="COM_JCHAT_USERS_BANNING_DESC">
+			<option value="0">JNO</option>              
+			<option value="1">JYES</option>
+		</field>
+		<field name="usersbanning_mode" class="btn-group" type="radio" default="private" label="COM_JCHAT_USERS_BANNING_MODE" description="COM_JCHAT_USERS_BANNING_MODE_DESC">
+			<option value="private">COM_JCHAT_PRIVATE_ONLY</option>              
+			<option value="private_public">COM_JCHAT_PRIVATE_AND_PUBLIC</option>
+		</field>
+		<field name="wordsbanning" class="btn-group" type="radio" default="0" label="COM_JCHAT_WORDS_BANNING" description="COM_JCHAT_WORDS_BANNING_DESC">
+			<option value="0">JNO</option>              
+			<option value="1">JYES</option>
+		</field>
+		<field name="wordsbanned" type="text" default="shit,fuck,cock,asshole" label="COM_JCHAT_WORDS_BANNED" description="COM_JCHAT_WORDS_BANNED_DESC" />
+		<field name="wordsbanned_replacement" type="text" default="banned" label="COM_JCHAT_WORDS_BANNED_REPLACEMENT" description="COM_JCHAT_WORDS_BANNED_REPLACEMENT_DESC" />
+		<field name="ipbanning" class="btn-group" type="radio" default="0" label="COM_JCHAT_IP_BANNING" description="COM_JCHAT_IP_BANNING_DESC">
+			<option value="0">JNO</option>              
+			<option value="1">JYES</option>
+		</field>
+		<field name="iprange_multiple" type="textarea" hint="xxx.xxx.xxx.xxx-xxx.xxx.xxx.xxx" default="" rows="5" label="COM_JCHAT_IPRANGE_MULTIPLE" description="COM_JCHAT_IPRANGE_MULTIPLE_DESC" /> 
+	</fieldset>
+	
+	<fieldset addfieldpath="/administrator/components/com_jchat/models/fields" id="rendering" name="rendering" label="COM_JCHAT_RENDERING">
+		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_RENDERING_MGMT"/>
+		<field name="chat_template" type="loadtemplates" default="default.css" label="COM_JCHAT_TEMPLATE" description="COM_JCHAT_TEMPLATE_DESC" >
+			<option value="custom.css">COM_JCHAT_CUSTOM_TEMPLATE</option>
+		</field>
+		<field name="chat_color_override" type="color" default="" label="COM_JCHAT_COLOR_OVERRIDE" description="COM_JCHAT_COLOR_OVERRIDE_DESC" />
+		<field name="chat_template_tooltip" class="btn-group" type="radio" default="std" label="COM_JCHAT_TEMPLATE_TOOLTIP" description="COM_JCHAT_TEMPLATE_TOOLTIP_DESC">
+			<option value="std">COM_JCHAT_TEMPLATE_TOOLTIP_STD</option>              
+			<option value="arm">COM_JCHAT_TEMPLATE_TOOLTIP_ARM</option>
+		</field>
+		<field name="chat_template_tooltip_variant" class="btn-group" type="radio" default="horiz" label="COM_JCHAT_TEMPLATE_TOOLTIP_VARIANT" description="COM_JCHAT_TEMPLATE_TOOLTIP_VARIANT_DESC">
+			<option value="horiz">COM_JCHAT_TEMPLATE_TOOLTIP_HORIZ</option>              
+			<option value="skrilled">COM_JCHAT_TEMPLATE_TOOLTIP_SKRILLED</option>
+		</field>
+		<field name="tooltip_bordercolor_override" type="color" default="" label="COM_JCHAT_TOOLTIP_BORDER_COLOR_OVERRIDE" description="COM_JCHAT_TOOLTIP_BORDER_COLOR_OVERRIDE_DESC" />
+		<field name="tooltip_bckcolor_override" type="color" default="" label="COM_JCHAT_TOOLTIP_BCK_COLOR_OVERRIDE" description="COM_JCHAT_TOOLTIP_BCK_COLOR_OVERRIDE_DESC" />
+		<field name="fontsize_override" class="btn-group" type="list" default="" label="COM_JCHAT_FONTSIZE_OVERRIDE" description="COM_JCHAT_FONTSIZE_OVERRIDE_DESC">
+			<option value="">COM_JCHAT_FONT_DEFAULT</option>     
+			<option value="12px">COM_JCHAT_FONT_12</option>
+			<option value="13px">COM_JCHAT_FONT_13</option>
+			<option value="14px">COM_JCHAT_FONT_14</option>
+			<option value="15px">COM_JCHAT_FONT_15</option>
+			<option value="16px">COM_JCHAT_FONT_16</option>
+			<option value="17px">COM_JCHAT_FONT_17</option>
+			<option value="18px">COM_JCHAT_FONT_18</option>
+		</field>
+		
+		<field name="fontsize_titles_override" class="btn-group" type="list" default="" label="COM_JCHAT_FONTSIZE_TITLES_OVERRIDE" description="COM_JCHAT_FONTSIZE_TITLES_OVERRIDE_DESC">
+			<option value="">COM_JCHAT_FONT_DEFAULT</option>     
+			<option value="12px">COM_JCHAT_FONT_12</option>
+			<option value="13px">COM_JCHAT_FONT_13</option>
+			<option value="14px">COM_JCHAT_FONT_14</option>
+			<option value="15px">COM_JCHAT_FONT_15</option>
+			<option value="16px">COM_JCHAT_FONT_16</option>
+			<option value="17px">COM_JCHAT_FONT_17</option>
+			<option value="18px">COM_JCHAT_FONT_18</option>
+		</field>
+		
+		<field name="submitlamform_color_override" type="color" default="" label="COM_JCHAT_SUBMITLAMFORM_COLOR_OVERRIDE" description="COM_JCHAT_SUBMITLAMFORM_COLOR_OVERRIDE_DESC" />
+		
+		<field name="positionment_chatboxes" class="btn-group" type="radio" default="1" label="COM_JCHAT_POSITIONMENT_CHATBOXES" description="COM_JCHAT_POSITIONMENT_CHATBOXES_DESC">
+   			<option value="bottom">COM_JCHAT_POSITION_BOTTOM</option>              
+   			<option value="middle">COM_JCHAT_POSITION_MIDDLE</option>
+   		</field>
+		<field name="public_chat_height_override" type="text" default="" label="COM_JCHAT_PUBLIC_CHAT_HEIGHT_OVERRIDE" description="COM_JCHAT_PUBLIC_CHAT_HEIGHT_OVERRIDE_DESC" />
+		<field name="private_chat_height_override" type="text" default="" label="COM_JCHAT_PRIVATE_CHAT_HEIGHT_OVERRIDE" description="COM_JCHAT_PRIVATE_CHAT_HEIGHT_OVERRIDE_DESC" />
+		<field name="sidebar_default_width_override" type="text" default="" label="COM_JCHAT_SIDEBAR_DEFAULT_WIDTH_OVERRIDE" description="COM_JCHAT_SIDEBAR_DEFAULT_WIDTH_OVERRIDE_DESC" />
+		<field name="public_chat_top_override" type="text" default="" label="COM_JCHAT_PUBLIC_CHAT_TOP_OVERRIDE" description="COM_JCHAT_PUBLIC_CHAT_TOP_OVERRIDE_DESC" />
+		
+		<field name="show_users_count" class="btn-group" type="radio" default="1" label="COM_JCHAT_SHOW_USERS_COUNT" description="COM_JCHAT_SHOW_USERS_COUNT_DESC">
+			<option value="0">JNO</option>              
+			<option value="1">JYES</option>
+		</field>
+		<field name="show_myusername" class="btn-group" type="radio" default="1" label="COM_JCHAT_SHOW_MYUSERNAME" description="COM_JCHAT_SHOW_MYUSERNAME_DESC">
+			<option value="0">JNO</option>              
+			<option value="1">JYES</option>
+		</field>
+
+   		<field name="micro_splacement_konstant" class="btn-group" type="list" default="1" label="COM_JCHAT_MICROSPLACEMENT_KONSTANT" description="COM_JCHAT_MICROSPLACEMENT_KONSTANT_DESC">
+			<option value="1">COM_JCHAT_NORMALDENSITY</option>     
+			<option value="2">COM_JCHAT_MEDIUMDENSITY</option>              
+			<option value="5">COM_JCHAT_HIGHDENSITY</option>
+		</field>
+		<field name="rendering_mode" class="btn-group" type="radio" default="auto" label="COM_JCHAT_RENDERING_MODE" description="COM_JCHAT_RENDERING_MODE_DESC">
+			<option value="auto">COM_JCHAT_RENDERING_AUTO</option>              
+			<option value="module">COM_JCHAT_RENDERING_MODULE</option>
+		</field>
+		<field name="sidebar_width" class="module_rendering_ctrl" type="text" size="5" default="260" label="COM_JCHAT_SIDEBAR_WIDTH" description="COM_JCHAT_SIDEBAR_WIDTH_DESC" />
+		<field name="sidebar_height" class="module_rendering_ctrl" type="text" size="5" default="600" label="COM_JCHAT_SIDEBAR_HEIGHT" description="COM_JCHAT_SIDEBAR_HEIGHT_DESC" />
+		<field name="search_width" class="module_rendering_ctrl" type="text" size="5" default="100" label="COM_JCHAT_SEARCH_WIDTH" description="COM_JCHAT_SEARCH_WIDTH_DESC" />
+		<field name="chatroom_width" class="module_rendering_ctrl" type="text" size="5" default="400" label="COM_JCHAT_CHATROOM_WIDTH" description="COM_JCHAT_CHATROOM_WIDTH_DESC" />
+		<field name="baloon_position" class="btn-group module_rendering_ctrl" type="radio" default="top" label="COM_JCHAT_BALOON_POSITION" description="COM_JCHAT_BALOON_POSITION_DESC">
+			<option value="top">COM_JCHAT_BALOON_TOP</option>              
+			<option value="bottom">COM_JCHAT_BALOON_BOTTOM</option>
+		</field>
+		<field name="separate_widgets" class="btn-group module_rendering_ctrl" type="radio" default="0" label="COM_JCHAT_SEPARATE_WIDGET" description="COM_JCHAT_SEPARATE_WIDGET_DESC">
+			<option value="0">JNO</option>              
+			<option value="1">JYES</option>
+		</field>
+		
+		<field class="module_rendering_ctrl" type="modulestatus" label="COM_JCHAT_MODULE_STATUS_ENABLED" description="COM_JCHAT_MODULE_STATUS_ENABLED_DESC" />
+	</fieldset>
+	
+	<fieldset addfieldpath="/administrator/components/com_jchat/models/fields" id="webrtc" name="webrtc" label="COM_JCHAT_WEBRTC">
+		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_PREFERENCES"/>
+		<field name="webrtc_enabled" class="btn-group" type="radio" default="0" label="COM_JCHAT_WEBRTC_ENABLED" description="COM_JCHAT_WEBRTC_ENABLED_DESC">
+			<option value="0">JNO</option>              
+			<option value="1">JYES</option>
+		</field>
+		<field name="webrtc_call_sound" type="loadtones" default="skype.mp3" label="COM_JCHAT_WEBRTC_CALL_SOUND" description="COM_JCHAT_WEBRTC_CALL_SOUND_DESC"/>
+		<field name="timeout_start_call" type="text" size="5" default="40" label="COM_JCHAT_TIMEOUT_START_CALL" description="COM_JCHAT_TIMEOUT_START_CALL_DESC" />
+		<field name="timeout_end_call" type="text" size="5" default="40" label="COM_JCHAT_TIMEOUT_END_CALL" description="COM_JCHAT_TIMEOUT_END_CALL_DESC" />
+		<field name="micvolume_default" type="list" default="0.8" label="COM_JCHAT_MICVOLUME_DEFAULT" description="COM_JCHAT_MICVOLUME_DEFAULT_DESC">
+			<option value="1">100%</option>
+			<option value="0.8">80%</option>
+			<option value="0.6">60%</option>
+			<option value="0.4">40%</option>
+			<option value="0.2">20%</option>
+		</field>
+		<field name="audiovolume_default" type="list" default="0.8" label="COM_JCHAT_AUDIOVOLUME_DEFAULT" description="COM_JCHAT_AUDIOVOLUME_DEFAULT_DESC">
+			<option value="1">100%</option>
+			<option value="0.8">80%</option>
+			<option value="0.6">60%</option>
+			<option value="0.4">40%</option>
+			<option value="0.2">20%</option>
+		</field>
+		<field name="videochat_auto_maximize_box" class="btn-group" type="radio" default="1024" label="COM_JCHAT_VIDEOCHAT_AUTO_MAXIMIZE_BOX" description="COM_JCHAT_VIDEOCHAT_AUTO_MAXIMIZE_BOX_DESC">
+			<option value="0">JNO</option>              
+			<option value="1">JYES</option>
+			<option value="480">COM_JCHAT_YES_MOBILE_ONLY</option>
+			<option value="1024">COM_JCHAT_YES_MOBILE_AND_TABLETS_ONLY</option>
+		</field>
+		<field name="hide_webcam_when_disabled" class="btn-group" type="radio" default="1" label="COM_JCHAT_HIDE_WEBCAM_WHEN_DISABLED" description="COM_JCHAT_HIDE_WEBCAM_WHEN_DISABLED_DESC">
+			<option value="0">JNO</option>              
+			<option value="1">JYES</option>
+			<option value="2">COM_JCHAT_YES_HIDEALL</option>
+		</field>
+		<field name="show_webrtc_stats" class="btn-group" type="radio" default="1" label="COM_JCHAT_SHOW_WEBRTC_STATS" description="COM_JCHAT_SHOW_WEBRTC_STATS_DESC">
+			<option value="0">JNO</option>              
+			<option value="1">JYES</option>
+		</field>
+		<field name="show_webrtc_vumeter" class="btn-group" type="radio" default="1" label="COM_JCHAT_SHOW_VUMETER" description="COM_JCHAT_SHOW_VUMETER_DESC">
+			<option value="0">JNO</option>              
+			<option value="1">JYES</option>
+		</field>
+		<field name="enable_recording" class="btn-group" type="radio" default="0" label="COM_JCHAT_ENABLE_RECORDING" description="COM_JCHAT_ENABLE_RECORDING_DESC">
+			<option value="0">JNO</option>              
+			<option value="1">JYES</option>
+		</field>
+		
+		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_ADVANCED"/>
+		<field name="auto_quality_bandwidth_management" class="btn-group" type="radio" default="0" label="COM_JCHAT_AUTO_QUALITY_BANDWIDTH_MANAGEMENT" description="COM_JCHAT_AUTO_QUALITY_BANDWIDTH_MANAGEMENT_DESC">
+			<option value="0">JNO</option>              
+			<option value="1">JYES</option>
+		</field>
+		<field name="serverload_reduction" class="btn-group" type="radio" default="0" label="COM_JCHAT_SERVERLOAD_REDUCTION" description="COM_JCHAT_SERVERLOAD_REDUCTION_DESC">
+			<option value="0">JNO</option>              
+			<option value="1">JYES</option>
+		</field>
+		<field name="no_webrtc_fallback" class="btn-group" type="radio" default="1" label="COM_JCHAT_NOWEBRTC_FALLBACK" description="COM_JCHAT_NOWEBRTC_FALLBACK_DESC">
+			<option value="0">COM_JCHAT_HIDE_TRIGGER</option>              
+			<option value="1">COM_JCHAT_SHOW_UPGRADE</option>
+		</field>
+		<field name="stun_servers" type="textarea" class="servers" cols="80" rows="8" default="stun:stun.l.google.com:19302" label="COM_JCHAT_STUN_SERVERS" description="COM_JCHAT_STUN_SERVERS_DESC"/>
+		
+		<field name="turn_servers_enabled" class="btn-group" type="radio" default="0" label="COM_JCHAT_TURN_SERVERS_ENABLED" description="COM_JCHAT_TURN_SERVERS_ENABLED_DESC">
+			<option value="0">JNO</option>              
+			<option value="1">JYES</option>
+		</field>
+		<field name="turn_servers" type="textarea" class="servers" cols="80" rows="8" default="turn:numb.viagenie.ca:3478,jchatsocial@storejoomla.org,jchatsocialwebrtc" label="COM_JCHAT_TURN_SERVERS" description="COM_JCHAT_TURN_SERVERS_DESC"/>
+		
+		<field name="turn_anyfirewall_enabled" class="btn-group" type="radio" default="0" label="COM_JCHAT_TURN_ANYFIREWALL_ENABLED" description="COM_JCHAT_TURN_ANYFIREWALL_ENABLED_DESC">
+			<option value="0">JNO</option>              
+			<option value="1">JYES</option>
+		</field>
+		<field name="turn_anyfirewall_appname" type="text" default="jchatsocial" label="COM_JCHAT_TURN_ANYFIREWALL_APPNAME" description="COM_JCHAT_TURN_ANYFIREWALL_APPNAME_DESC"/>
+		<field name="turn_anyfirewall_password" type="text" default="jchatsocial" label="COM_JCHAT_TURN_ANYFIREWALL_PASSWORD" description="COM_JCHAT_TURN_ANYFIREWALL_PASSWORD_DESC"/>
+		<field name="turn_anyfirewall_request_timeout" type="text"  default="5" label="COM_JCHAT_TURN_ANYFIREWALL_REQUEST_TIMEOUT" description="COM_JCHAT_TURN_ANYFIREWALL_REQUEST_TIMEOUT_DESC"/>
+	</fieldset>
+	
+	<fieldset id="filesystem" name="filesystem" label="COM_JCHAT_FILESYSTEM">
+		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_AVATARS"/>
+   		<field name="avatarenable" class="btn-group" type="radio" default="1" label="COM_JCHAT_AVATAR_ENABLED" description="COM_JCHAT_AVATAR_ENABLED_DESC">
+   			<option value="0">JNO</option>   
+   			<option value="1">JYES</option>            
+   		</field>
+		<field name="avatar_allowed_extensions" type="text" default="jpg,jpeg,png,gif" label="COM_JCHAT_AVATAR_ALLOWED_EXTENSIONS" description="COM_JCHAT_AVATAR_ALLOWED_EXTENSIONS_DESC"/>
+   		<field name="cropmode" class="btn-group" type="radio" default="1" label="COM_JCHAT_AVATAR_CROP_MODE" description="COM_JCHAT_AVATAR_CROP_MODE_DESC">
+   			<option value="0">COM_JCHAT_RESIZE</option>   
+   			<option value="1">COM_JCHAT_TRIM</option>            
+   		</field>
+   		<field name="avatarupload" class="btn-group" type="radio" default="1" label="COM_JCHAT_AVATARUPLOAD_ENABLED" description="COM_JCHAT_AVATARUPLOAD_ENABLED_DESC">
+   			<option value="0">JNO</option>   
+   			<option value="1">JYES</option>            
+   		</field>
+   		<field name="easysocial_avatar_path" class="btn-group" type="radio" default="media/com_easysocial" label="COM_JCHAT_EASYSOCIAL_AVATAR_PATH" description="COM_JCHAT_EASYSOCIAL_AVATAR_PATH_DESC">
+   			<option value="media/com_easysocial">COM_JCHAT_MEDIA_FOLDER</option>   
+   			<option value="images/social">COM_JCHAT_IMAGES_FOLDER</option>
+   		</field>
+   		<field name="easysocial_custom_avatar" class="btn-group" type="radio" default="0" label="COM_JCHAT_CUSTOM_AVATAR" description="COM_JCHAT_CUSTOM_AVATAR_DESC">
+   			<option value="0">JNO</option>   
+   			<option value="1">JYES</option>            
+   		</field>
+   		<field name="easysocial_custom_avatar_path" type="text" size="10" default="" label="COM_JCHAT_CUSTOM_AVATAR_PATH" description="COM_JCHAT_CUSTOM_AVATAR_PATH_DESC"/>
+   		<field name="kunena_avatars_resize_format" type="list" default="size36" label="COM_JCHAT_KUNENA_RESIZE_FORMAT" description="COM_JCHAT_KUNENA_RESIZE_FORMAT_DESC">
+			<option value="size24">24px</option>
+			<option value="size36">36px</option>
+			<option value="size40">40px</option>
+			<option value="size48">48px</option>
+			<option value="size72">72px</option>
+			<option value="size90">90px</option>
+			<option value="size128">128px</option>
+			<option value="size144">144px</option>
+		</field>
+
+		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_ATTACHMENTS"/>
+   		<field name="attachmentsenable" class="btn-group" type="radio" default="1" label="COM_JCHAT_ATTACHMENTS_ENABLED" description="COM_JCHAT_ATTACHMENTS_ENABLED_DESC">
+   			<option value="0">JNO</option>   
+   			<option value="1">JYES</option>            
+   		</field>
+   		<field name="maxfilesize" type="text" size="10" default="2" label="COM_JCHAT_MAXFILESIZE" description="COM_JCHAT_MAXFILESIZE_DESC"/>
+   		<field name="disallowed_extensions" type="text" size="10" default="exe,bat,pif" label="COM_JCHAT_DISALLOWEDEXT" description="COM_JCHAT_DISALLOWEDEXT_DESC"/>
+	</fieldset>
+	
+	<fieldset id="notifications" name="notifications" label="COM_JCHAT_NOTIFICATIONS">
+		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_LIVESUPPORT_GROUPS"/>
+		<field name="chatadmins_gids" type="aclgroupsmultiselect" translation="COM_JCHAT_NO_LIVE_ACTIVE" default="0" size="10" multiple="multiple" label="COM_JCHAT_CHATADMINS_GIDS" description="COM_JCHAT_CHATADMINS_GIDS_DESC" />
+		<field name="auto_open_agentbox" class="btn-group" type="radio" default="0" label="COM_JCHAT_AUTO_OPEN_AGENTBOX" description="COM_JCHAT_AUTO_OPEN_AGENTBOX_DESC">
+   			<option value="0">JNO</option>   
+   			<option value="1">JYES</option>            
+   		</field>
+   		<field name="auto_open_agentbox_defaultmessage" type="editor" hide="pagebreak,readmore" width="300px" height="200px" default="" label="COM_JCHAT_AUTO_OPEN_AGENTBOX_DEFAULTMESSAGE" description="COM_JCHAT_AUTO_OPEN_AGENTBOX_DEFAULTMESSAGE_DESC"/>
+   		<field name="affect_public_chat" class="btn-group" type="radio" default="1" label="COM_JCHAT_AFFECT_PUBLIC_CHAT" description="COM_JCHAT_AFFECT_PUBLIC_CHAT_DESC">
+   			<option value="0">JNO</option>   
+   			<option value="1">JYES</option>            
+   		</field>
+		
+		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_OFFLINE_MESSAGE"/>
+		<field name="offline_message_switcher" class="btn-group" type="radio" default="0" label="COM_JCHAT_NOTIFICATIONS_OFFLINE_MESSAGE_SWITCHER" description="COM_JCHAT_NOTIFICATIONS_OFFLINE_MESSAGE_SWITCHER_DESC">
+   			<option value="0">JNO</option>   
+   			<option value="1">JYES</option>            
+   		</field>
+		<field name="offline_message" type="editor" hide="pagebreak,readmore" width="300px" height="200px" default="" label="COM_JCHAT_NOTIFICATIONS_OFFLINE_MESSAGE" description="COM_JCHAT_NOTIFICATIONS_OFFLINE_MESSAGE_DESC"/>
+		
+		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_TICKET_FORM"/>
+		<field name="tickets_form" class="btn-group" type="radio" default="0" label="COM_JCHAT_ENABLE_TICKET_FORM" description="COM_JCHAT_ENABLE_TICKET_FORM_DESC">
+   			<option value="0">JNO</option>   
+   			<option value="1">JYES</option>            
+   		</field>
+   		<field name="tickets_form_always_visible" class="btn-group" type="radio" default="0" label="COM_JCHAT_ENABLE_TICKET_FORM_ALWAYS_VISIBLE" description="COM_JCHAT_ENABLE_TICKET_FORM_ALWAYS_VISIBLE_DESC">
+   			<option value="0">JNO</option>   
+   			<option value="1">JYES</option>            
+   		</field>
+		<field name="tickets_mailfrom" type="text" size="80" default="" label="COM_JCHAT_TICKETS_MAILFROM" description="COM_JCHAT_TICKETS_MAILFROM_DESC"/>
+		<field name="tickets_fromname" type="text" size="80" default="" label="COM_JCHAT_TICKETS_FROMNAME" description="COM_JCHAT_TICKETS_FROMNAME_DESC"/>
+		<field name="ticket_sent_notify" class="btn-group" type="radio" default="0" label="COM_JCHAT_TICKET_SENT_NOTIFY" description="COM_JCHAT_TICKET_SENT_NOTIFY_DESC">
+   			<option value="0">JNO</option>   
+   			<option value="1">JYES</option>            
+   		</field>
+   		<field name="ticket_notify_emails" type="text" class="wide" default="" label="COM_JCHAT_TICKET_NOTIFY_EMAILS" description="COM_JCHAT_TICKET_NOTIFY_EMAILS_DESC"/>
+		
+		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_NOTIFICATION"/>
+		<field name="private_messaging_notification_email" class="btn-group" type="radio" default="1" label="COM_JCHAT_NOTIFICATIONS_EMAIL_PM" description="COM_JCHAT_NOTIFICATIONS_EMAIL_PM_DESC">
+   			<option value="0">JNO</option>   
+   			<option value="1">JYES</option>            
+   		</field>
+   		
+		<field name="notification_email_switcher" class="btn-group" type="radio" default="0" label="COM_JCHAT_NOTIFICATIONS_EMAIL_SWITCHER" description="COM_JCHAT_NOTIFICATIONS_EMAIL_SWITCHER_DESC">
+   			<option value="0">JNO</option>   
+   			<option value="1">JYES</option>            
+   		</field>
+		<field name="notification_email" type="text" size="80" default="" label="COM_JCHAT_NOTIFICATIONS_EMAIL" description="COM_JCHAT_NOTIFICATIONS_EMAIL_DESC"/>
+		<field name="email_subject" type="text" size="80" default="JChatSocial - New conversation started" label="COM_JCHAT_NOTIFICATIONS_EMAIL_SUBJECT" description="COM_JCHAT_NOTIFICATIONS_EMAIL_SUBJECT_DESC"/>
+		<field name="email_start_text" type="textarea" cols="50" rows="10" default="" label="COM_JCHAT_NOTIFICATIONS_EMAIL_START_MESSAGE" description="COM_JCHAT_NOTIFICATIONS_EMAIL_START_MESSAGE_DESC"/>
+	</fieldset>
+	
+	<fieldset addfieldpath="/administrator/components/com_jchat/models/fields" id="social_login" name="social_login" label="COM_JCHAT_SOCIAL_LOGIN">
+		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_FACEBOOK_CONNECT_SETUP"/>
+		<field name="fblogin_active" type="radio" class="btn-group" default="0" label="COM_JCHAT_FBLOGIN_ACTIVE" description="COM_JCHAT_FBLOGIN_ACTIVE_DESC">
+   			<option value="0">JNO</option>              
+   			<option value="1">JYES</option>
+   		</field>
+		<field name="appId" type="text" label="COM_JCHAT_FIELD_APPID_LABEL" description="COM_JCHAT_FIELD_APPID_DESC" />
+		<field name="secret" type="text" label="COM_JCHAT_FIELD_SECRET_LABEL" description="COM_JCHAT_FIELD_SECRET_DESC" />
+		
+		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_GPLUS_CONNECT_SETUP"/>
+		<field name="gpluslogin_active" type="radio" class="btn-group" default="0" label="COM_JCHAT_GPLUSLOGIN_ACTIVE" description="COM_JCHAT_GPLUSLOGIN_ACTIVE_DESC">
+   			<option value="0">JNO</option>              
+   			<option value="1">JYES</option>
+   		</field>
+		<field name="gplusClientID" type="text" label="COM_JCHAT_FIELD_GPLUSCLIENTID_LABEL" description="COM_JCHAT_FIELD_GPLUSCLIENTID_LABEL_DESC" />
+		<field name="gplusKey" type="text" label="COM_JCHAT_FIELD_GPLUSKEY_LABEL" description="COM_JCHAT_FIELD_GPLUSKEY_LABEL_DESC" />
+		
+		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_TWITTER_CONNECT_SETUP"/>
+		<field name="twitterlogin_active" type="radio" class="btn-group" default="0" label="COM_JCHAT_TWITTERLOGIN_ACTIVE" description="COM_JCHAT_TWITTERLOGIN_ACTIVE_DESC">
+   			<option value="0">JNO</option>              
+   			<option value="1">JYES</option>
+   		</field>
+		<field name="twitterKey" type="text" label="COM_JCHAT_FIELD_TWITTERKEY_LABEL" description="COM_JCHAT_FIELD_TWITTERKEY_LABEL_DESC" />
+		<field name="twitterSecret" type="text" label="COM_JCHAT_FIELD_TWITTERSECRET_LABEL" description="COM_JCHAT_FIELD_TWITTERSECRET_LABEL_DESC" />
+		
+		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_CONNECT_SETUP_PARAMS"/>
+		<field name="sdkloadmode" type="radio" class="btn-group" default="2" label="COM_JCHAT_SDK_LOADMODE" description="COM_JCHAT_SDK_LOADMODE_DESC">
+			<option value="0">JNO</option>
+		 	<option value="1">JYES</option>
+		 	<option value="2">COM_JCHAT_YES_OVERWRITE</option>
+		</field>
+		<field name="auth_type" type="radio" class="btn-group" default="id" label="COM_JCHAT_AUTH_TYPE" description="COM_JCHAT_AUTH_TYPE_DESC">
+			<option value="id">COM_JCHAT_AUTH_TYPE_FBID</option>
+		 	<option value="email">COM_JCHAT_AUTH_TYPE_EMAIL</option>
+		</field>
+		<field name="curl_ssl_verifypeer" type="radio" class="btn-group" default="1" label="COM_JCHAT_SSL_VERIFY" description="COM_JCHAT_SSL_VERIFY_DESC">
+			<option value="0">JNO</option>
+		 	<option value="1">JYES</option>
+		</field>
+		<field name="sdkversion" type="text" default="2.6" size="40" label="COM_JCHAT_SDK_VERSION" description="COM_JCHAT_SDK_VERSION_DESC" />
+		
+		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_CONNECT_VIDEOS"/>
+		<field name="video" type="video" class="video" src="http://www.youtube.com/embed/yc4pWVgvbIA?list=UURFzZHb--kxwI62L4v6GQxw" label="COM_JCHAT_VIDEO_TUTORIAL" />
+		<field name="video2" type="video" class="video" src="https://www.youtube.com/embed/h9RF01ZpKs8" label="COM_JCHAT_VIDEO2_TUTORIAL" />
+		<field name="videotwitter" type="video" class="video" src="https://www.youtube.com/embed/U64IRmN3V8U" label="COM_JCHAT_VIDEOTWITTER_TUTORIAL" />
+	</fieldset>
+		
+	<fieldset addfieldpath="/administrator/components/com_jchat/models/fields" id="languagetranslation" name="languagetranslation" label="COM_JCHAT_LANGUAGE_TRANSLATION">
+		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_LANGUAGE_TRANSLATION_SETTINGS"/>
+		<field name="language_translation_enabled" class="btn-group" type="radio" default="0" label="COM_JCHAT_LANGUAGE_TRANSLATION_ENABLED" description="COM_JCHAT_LANGUAGE_TRANSLATION_ENABLED_DESC">
+   			<option value="0">COM_JCHAT_DISABLE</option>   
+			<option value="1">COM_JCHAT_ENABLE</option>
+   		</field>
+   		<field name="language_translation_groups" type="aclgroupsmultiselect" translation="COM_JCHAT_ALLGROUPS" default="8" size="15" multiple="multiple" label="COM_JCHAT_LANGUAGE_TRANSLATION_GROUPS" description="COM_JCHAT_LANGUAGE_TRANSLATION_GROUPS_DESC" />
+		<field name="language_translation_incomingmessages" type="radio" class="btn-group" default="1" label="COM_JCHAT_LANGUAGE_TRANSLATION_INCOMINGMESSAGES" description="COM_JCHAT_LANGUAGE_TRANSLATION_INCOMINGMESSAGES_DESC">
+			<option value="0">JNO</option>
+		 	<option value="1">JYES</option>
+		</field>
+		<field name="language_translation_selfmessages" type="radio" class="btn-group" default="0" label="COM_JCHAT_LANGUAGE_TRANSLATION_SELFMESSAGES" description="COM_JCHAT_LANGUAGE_TRANSLATION_SELFMESSAGES_DESC">
+			<option value="0">JNO</option>
+		 	<option value="1">JYES</option>
+		</field>
+		
+		<field name="default_language" type="list" default="" label="COM_JCHAT_DEFAULT_LANGUAGE" description="COM_JCHAT_DEFAULT_LANGUAGE_DESC">
+			<option value="">COM_JCHAT_DEFAULT_SITE_LANGUAGE</option>
+   			<option value="af">Afrikaans</option>
+			<option value="ar">Arabic</option>
+			<option value="az">Azerbaijani</option>
+			<option value="be">Belarusian</option>
+			<option value="bg">Bulgarian</option>
+			<option value="bn">Bengali</option>
+			<option value="ca">Catalan</option>
+			<option value="zh_cn">Chinese Simplified</option>
+			<option value="zh_tw">Chinese Traditional</option>
+			<option value="hr">Croatian</option>
+			<option value="cs">Czech</option>
+			<option value="da">Danish</option>
+			<option value="nl">Dutch</option>
+			<option value="en">English</option>
+			<option value="eo">Esperanto</option>
+			<option value="et">Estonian</option>
+			<option value="fi">Finnish</option>
+			<option value="fr">French</option>
+			<option value="gl">Galician</option>
+			<option value="ka">Georgian</option>
+			<option value="de">German</option>
+			<option value="el">Greek</option>
+			<option value="ha">Hausa</option>
+			<option value="hi">Hindi</option>
+			<option value="hu">Hungarian</option>
+			<option value="is">Icelandic</option>
+			<option value="id">Indonesian</option>
+			<option value="ig">Igbo</option>
+			<option value="it">Italian</option>
+			<option value="ja">Japanese</option>
+			<option value="ko">Korean</option>
+			<option value="lv">Latvian</option>
+			<option value="lt">Lithuanian</option>
+			<option value="mk">Macedonian</option>
+			<option value="no">Norwegian</option>
+			<option value="fa">Persian</option>
+			<option value="pl">Polish</option>
+			<option value="pt">Portuguese</option>
+			<option value="ro">Romanian</option>
+			<option value="ru">Russian</option>
+			<option value="sr">Serbian</option>
+			<option value="sk">Slovak</option>
+			<option value="sl">Slovenian</option>
+			<option value="es">Spanish</option>
+			<option value="sw">Swahili</option>
+			<option value="sv">Swedish</option>
+			<option value="ta">Tamil</option>
+			<option value="th">Thai</option>
+			<option value="tr">Turkish</option>
+			<option value="uk">Ukrainian</option>
+			<option value="ur">Urdu</option>
+			<option value="vi">Vietnamese</option>
+			<option value="yo">Yoruba</option>
+			<option value="cy">Welsh</option>
+   		</field>
+   		
+		<field name="default_to_language" type="list" default="en" label="COM_JCHAT_DEFAULT_TO_LANGUAGE" description="COM_JCHAT_DEFAULT_TO_LANGUAGE_DESC">
+   			<option value="af">Afrikaans</option>
+			<option value="ar">Arabic</option>
+			<option value="az">Azerbaijani</option>
+			<option value="be">Belarusian</option>
+			<option value="bg">Bulgarian</option>
+			<option value="bn">Bengali</option>
+			<option value="ca">Catalan</option>
+			<option value="zh_cn">Chinese Simplified</option>
+			<option value="zh_tw">Chinese Traditional</option>
+			<option value="hr">Croatian</option>
+			<option value="cs">Czech</option>
+			<option value="da">Danish</option>
+			<option value="nl">Dutch</option>
+			<option value="en">English</option>
+			<option value="eo">Esperanto</option>
+			<option value="et">Estonian</option>
+			<option value="fi">Finnish</option>
+			<option value="fr">French</option>
+			<option value="gl">Galician</option>
+			<option value="ka">Georgian</option>
+			<option value="de">German</option>
+			<option value="el">Greek</option>
+			<option value="ha">Hausa</option>
+			<option value="hi">Hindi</option>
+			<option value="hu">Hungarian</option>
+			<option value="is">Icelandic</option>
+			<option value="id">Indonesian</option>
+			<option value="ig">Igbo</option>
+			<option value="it">Italian</option>
+			<option value="ja">Japanese</option>
+			<option value="ko">Korean</option>
+			<option value="lv">Latvian</option>
+			<option value="lt">Lithuanian</option>
+			<option value="mk">Macedonian</option>
+			<option value="no">Norwegian</option>
+			<option value="fa">Persian</option>
+			<option value="pl">Polish</option>
+			<option value="pt">Portuguese</option>
+			<option value="ro">Romanian</option>
+			<option value="ru">Russian</option>
+			<option value="sr">Serbian</option>
+			<option value="sk">Slovak</option>
+			<option value="sl">Slovenian</option>
+			<option value="es">Spanish</option>
+			<option value="sw">Swahili</option>
+			<option value="sv">Swedish</option>
+			<option value="ta">Tamil</option>
+			<option value="th">Thai</option>
+			<option value="tr">Turkish</option>
+			<option value="uk">Ukrainian</option>
+			<option value="ur">Urdu</option>
+			<option value="vi">Vietnamese</option>
+			<option value="yo">Yoruba</option>
+			<option value="cy">Welsh</option>
+   		</field>
+   		
+   		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_LANGUAGE_TRANSLATION_CHECKS_PHP"/>
+   		<field type="languagetranslationcheck" label="COM_JCHAT_LANGUAGE_TRANSLATION_CHECK" description="COM_JCHAT_LANGUAGE_TRANSLATION_CHECK_DESC" />
+	</fieldset>
+	
+	<fieldset addfieldpath="/administrator/components/com_jchat/models/fields" id="chatpermissions" name="chatpermissions" label="COM_JCHAT_PERMISSIONS">
+		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_USAGE_PERMISSIONS"/>
+		
+		<field name="chat_accesslevels" type="chataccesslevel" default="0" size="20" multiple="multiple" label="COM_JCHAT_CHAT_ACCESSLEVELS" description="COM_JCHAT_CHAT_ACCESSLEVELS_DESC" />
+		
+		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_VIDEOCHAT_PERMISSIONS"/>
+		<field name="allow_videochat" type="aclgroupsmultiselect" translation="COM_JCHAT_ALLGROUPS" default="0" size="15" multiple="multiple" label="COM_JCHAT_ALLOW_VIDEOCHAT" description="COM_JCHAT_ALLOW_VIDEOCHAT_DESC" />
+		<field name="allow_media_recorder" type="aclgroupsmultiselect" translation="COM_JCHAT_ALLGROUPS" default="0" size="15" multiple="multiple" label="COM_JCHAT_ALLOW_MEDIA_RECORDER" description="COM_JCHAT_ALLOW_MEDIA_RECORDER_DESC" />
+		<field name="allow_media_recorder_save" type="aclgroupsmultiselect" translation="COM_JCHAT_ALLGROUPS" default="0" size="15" multiple="multiple" label="COM_JCHAT_ALLOW_MEDIA_RECORDER_SAVE" description="COM_JCHAT_ALLOW_MEDIA_RECORDER_SAVE_DESC" />
+		
+		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_ACTIONS_PERMITTED"/>
+		<field name="allow_guest_fileupload" class="btn-group" type="radio" default="1" label="COM_JCHAT_ALLOW_GUEST_FILEUPLOAD" description="COM_JCHAT_ALLOW_GUEST_FILEUPLOAD_DESC">
+   			<option value="0">COM_JCHAT_DISABLE</option>   
+			<option value="1">COM_JCHAT_ENABLE</option>
+   		</field>
+   		<field name="allow_guest_avatarupload" class="btn-group" type="radio" default="1" label="COM_JCHAT_ALLOW_GUEST_AVATARUPLOAD" description="COM_JCHAT_ALLOW_GUEST_AVATARUPLOAD_DESC">
+   			<option value="0">COM_JCHAT_DISABLE</option>   
+   			<option value="1">COM_JCHAT_ENABLE</option>            
+   		</field>
+   		<field name="allow_guest_skypebridge" class="btn-group" type="radio" default="1" label="COM_JCHAT_ALLOW_GUEST_SKYPEBRIDGE" description="COM_JCHAT_ALLOW_GUEST_SKYPEBRIDGE_DESC">
+   			<option value="0">COM_JCHAT_DISABLE</option>   
+   			<option value="1">COM_JCHAT_ENABLE</option>            
+   		</field>
+   		<field name="allow_guest_overridename" class="btn-group" type="radio" default="1" label="COM_JCHAT_ALLOW_GUEST_OVERRIDENAME" description="COM_JCHAT_ALLOW_GUEST_OVERRIDENAME_DESC">
+   			<option value="0">COM_JCHAT_DISABLE</option>   
+   			<option value="1">COM_JCHAT_ENABLE</option>            
+   		</field>
+   		<field name="allow_guest_banning" class="btn-group" type="radio" default="1" label="COM_JCHAT_ALLOW_GUEST_BANNING" description="COM_JCHAT_ALLOW_GUEST_BANNING_DESC">
+   			<option value="0">COM_JCHAT_DISABLE</option>   
+   			<option value="1">COM_JCHAT_ENABLE</option>            
+   		</field>
+   		<field name="allow_guest_buddylist" class="btn-group" type="radio" default="1" label="COM_JCHAT_ALLOW_GUEST_BUDDYLIST" description="COM_JCHAT_ALLOW_GUEST_BUDDYLIST_DESC">
+   			<option value="0">COM_JCHAT_DISABLE</option>   
+   			<option value="1">COM_JCHAT_ENABLE</option>            
+   		</field>
+   		<field name="allow_media_objects" class="btn-group" type="radio" default="1" label="COM_JCHAT_ALLOW_MEDIA_OBJECTS" description="COM_JCHAT_ALLOW_MEDIA_OBJECTS_DESC">
+   			<option value="0">COM_JCHAT_DISABLE</option>   
+   			<option value="1">COM_JCHAT_ENABLE</option>            
+   		</field>
+		<field name="limit_my_users_groups" class="btn-group" type="radio" default="0" label="COM_JCHAT_LIMIT_MY_USERS_GROUPS" description="COM_JCHAT_LIMIT_MY_USERS_GROUPS_DESC">
+   			<option value="0">COM_JCHAT_DISABLE</option>   
+   			<option value="1">COM_JCHAT_ENABLE</option>            
+   		</field>
+   		
+   		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_CHATROOM_PERMISSIONS"/>
+   		<field name="addchatroom" class="btn-group" type="radio" default="0" label="COM_JCHAT_ADD_CHATROOM" description="COM_JCHAT_ADD_CHATROOM_DESC">
+   			<option value="0">COM_JCHAT_DISABLE</option>   
+   			<option value="1">COM_JCHAT_ENABLE</option>            
+   		</field>
+   		<field name="addchatroom_groups" type="aclgroupsmultiselect" default="8" size="20" multiple="multiple" label="COM_JCHAT_ADD_CHATROOM_GROUPS" description="COM_JCHAT_ADD_CHATROOM_GROUPS_DESC" />
+   		
+   		<field name="deletechatroom" class="btn-group" type="radio" default="0" label="COM_JCHAT_DELETE_CHATROOM" description="COM_JCHAT_DELETE_CHATROOM_DESC">
+   			<option value="0">COM_JCHAT_DISABLE</option>   
+   			<option value="1">COM_JCHAT_ENABLE</option>            
+   		</field>
+   		<field name="deletechatroom_groups" type="aclgroupsmultiselect" default="8" size="20" multiple="multiple" label="COM_JCHAT_DELETE_CHATROOM_GROUPS" description="COM_JCHAT_DELETE_CHATROOM_GROUPS_DESC" />
+   		
+   		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_MODERATION_PERMISSIONS"/>
+		<field name="enablemoderation" class="btn-group" type="radio" default="0" label="COM_JCHAT_ENABLE_MODERATION" description="COM_JCHAT_ENABLE_MODERATION_DESC">
+   			<option value="0">COM_JCHAT_DISABLE</option>   
+   			<option value="1">COM_JCHAT_ENABLE</option>            
+   		</field>
+   		<field name="moderation_groups" type="aclgroupsmultiselect" default="8" size="20" multiple="multiple" label="COM_JCHAT_MODERATION_GROUPS" description="COM_JCHAT_MODERATION_GROUPS_DESC" />
+   		
+		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_TIMED_PERMISSIONS"/>
+		<field name="start_at_hour" type="list" default="" label="COM_JCHAT_TIMED_PERMISSIONS_FROMHOUR" description="COM_JCHAT_TIMED_PERMISSIONS_FROMHOUR_DESC">
+   			<option value="">Not set</option>
+   			<option value="0">00:00</option>
+   			<option value="1">01:00</option>
+   			<option value="2">02:00</option>
+   			<option value="3">03:00</option>
+   			<option value="4">04:00</option>
+   			<option value="5">05:00</option>
+   			<option value="6">06:00</option>
+   			<option value="7">07:00</option>
+   			<option value="8">08:00</option>
+   			<option value="9">09:00</option>
+   			<option value="10">10:00</option>
+   			<option value="11">11:00</option>
+   			<option value="12">12:00</option>
+   			<option value="13">13:00</option>
+   			<option value="14">14:00</option>
+   			<option value="15">15:00</option>
+   			<option value="16">16:00</option>
+   			<option value="17">17:00</option>
+   			<option value="18">18:00</option>
+   			<option value="19">19:00</option>
+   			<option value="20">20:00</option>
+   			<option value="21">21:00</option>
+   			<option value="22">22:00</option>
+   			<option value="23">23:00</option>
+   			<option value="24">24:00</option>
+   		</field>
+   		<field name="stop_at_hour" type="list" default="" label="COM_JCHAT_TIMED_PERMISSIONS_TOHOUR" description="COM_JCHAT_TIMED_PERMISSIONS_TOHOUR_DESC">
+   			<option value="">Not set</option>
+   			<option value="0">00:00</option>
+   			<option value="1">01:00</option>
+   			<option value="2">02:00</option>
+   			<option value="3">03:00</option>
+   			<option value="4">04:00</option>
+   			<option value="5">05:00</option>
+   			<option value="6">06:00</option>
+   			<option value="7">07:00</option>
+   			<option value="8">08:00</option>
+   			<option value="9">09:00</option>
+   			<option value="10">10:00</option>
+   			<option value="11">11:00</option>
+   			<option value="12">12:00</option>
+   			<option value="13">13:00</option>
+   			<option value="14">14:00</option>
+   			<option value="15">15:00</option>
+   			<option value="16">16:00</option>
+   			<option value="17">17:00</option>
+   			<option value="18">18:00</option>
+   			<option value="19">19:00</option>
+   			<option value="20">20:00</option>
+   			<option value="21">21:00</option>
+   			<option value="22">22:00</option>
+   			<option value="23">23:00</option>
+   			<option value="24">24:00</option>
+   		</field>
+	</fieldset>
+	
+	<fieldset addfieldpath="/administrator/components/com_jchat/models/fields" id="advancedchat" name="advancedchat" label="COM_JCHAT_ADVANCED">
+		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_GROUPS_EXCLUSIONS"/>
+  		<field name="chat_exclusions" type="menumultiselect" default="0" size="20" multiple="multiple" label="COM_JCHAT_CHAT_EXCLUSIONS" description="COM_JCHAT_CHAT_EXCLUSIONS_DESC" />
+		
+		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_ADVANCED_PUBLIC_CHAT"/>
+		<field name="chatrooms_latest" class="btn-group" type="radio" default="1" label="COM_JCHAT_CHATROOMS_LATEST" description="COM_JCHAT_CHATROOMS_LATEST_DESC">
+			<option value="0">JNO</option>              
+   			<option value="1">JYES</option>
+		</field>
+		<field name="chatrooms_latest_interval" type="text"  size="10" default="120" label="COM_JCHAT_CHATROOMS_LATEST_INTERVAL" description="COM_JCHAT_CHATROOMS_LATEST_INTERVAL_DESC" />
+		<field name="wall_history_delay" type="text"  size="10" default="1" label="COM_JCHAT_WALL_HISTORY_DELAY" description="COM_JCHAT_WALL_HISTORY_DELAY_DESC" />
+		<field name="wall_history_delay_autoload" class="btn-group" type="radio" default="0" label="COM_JCHAT_WALL_HISTORY_DELAY_AUTOLOAD" description="COM_JCHAT_WALL_HISTORY_DELAY_AUTOLOAD_DESC">
+   			<option value="0">JNO</option>              
+   			<option value="1">JYES</option>
+   		</field>
+		
+   		<field name="chatrooms_messages_stillinroom" class="btn-group" type="radio" default="0" label="COM_JCHAT_CHATROOMS_MESSAGES_STILLINROOM" description="COM_JCHAT_CHATROOMS_MESSAGES_STILLINROOM_DESC">
+   			<option value="0">JNO</option>              
+   			<option value="1">JYES</option>
+   		</field>
+		<field name="maxtimeinterval_groupmessages" type="text"  size="10" default="12" label="COM_JCHAT_MAXTIMEINTERVAL_GROUPMESSAGES" description="COM_JCHAT_MAXTIMEINTERVAL_GROUPMESSAGES_DESC" />
+   		
+   		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_ADVANCED_SETTINGS"/>
+   		<field name="async_send_message" class="btn-group" type="radio" default="before" label="COM_JCHAT_ASYNC_SEND_MESSAGE" description="COM_JCHAT_ASYNC_SEND_MESSAGE_DESC">
+   			<option value="before">COM_JCHAT_BEFORE</option>              
+   			<option value="after">COM_JCHAT_AFTER</option>
+   		</field>
+   		<field name="unique_usernames" class="btn-group" type="radio" default="0" label="COM_JCHAT_FORCE_UNIQUE_USERNAME_VALIDATION" description="COM_JCHAT_FORCE_UNIQUE_USERNAME_VALIDATION_DESC">
+   			<option value="0">JNO</option>              
+   			<option value="1">JYES</option>
+   		</field>
+   		<field name="download_msgs_multitabs_mode" class="btn-group" type="radio" default="0" label="COM_JCHAT_DOWNLOADMSGS_MULTITABS" description="COM_JCHAT_DOWNLOADMSGS_MULTITABS_DESC">
+   			<option value="0">JNO</option>              
+   			<option value="1">JYES</option>
+   		</field>
+   		<field name="advanced_avatars_mgmt" class="btn-group" type="radio" default="0" label="COM_JCHAT_ADVANCED_AVATARS_MGMT" description="COM_JCHAT_ADVANCED_AVATARS_MGMT_DESC">
+   			<option value="0">JNO</option>              
+   			<option value="1">JYES</option>
+   		</field>
+   		<field name="pm_num_loading_msgs" type="text" size="10" default="100" label="COM_JCHAT_PM_NUMLOADING_MSGS" description="COM_JCHAT_PM_NUMLOADING_MSGS_DESC" />
+
+   		<field type="spacer" class="label label-info spacer" label="COM_JCHAT_CACHE_OPTIMIZATIONS"/>
+   		<field name="caching" class="btn-group" type="radio" default="0" label="COM_JCHAT_ENABLE_CACHING" description="COM_JCHAT_ENABLE_CACHING_DESC">
+   			<option value="0">JNO</option>              
+   			<option value="1">JYES</option>
+   		</field>
+		<field name="cache_lifetime" type="text" size="10" default="15" label="COM_JCHAT_CACHE_LIFETIME" description="COM_JCHAT_CACHE_LIFETIME_DESC" />
+		<field name="scripts_loading" type="list" default="dom" label="COM_JCHAT_SCRIPTS_LOADING" description="COM_JCHAT_SCRIPTS_LOADING_DESC">
+   			<option value="dom">COM_JCHAT_DOM_ORDER</option>              
+   			<option value="defer">COM_JCHAT_DEFER</option>
+   			<option value="async">COM_JCHAT_ASYNC</option>
+   		</field>
+		<field name="keep_latest_msgs" type="text" size="10" default="7" label="COM_JCHAT_DELETE_OLDEST_MSGS" description="COM_JCHAT_DELETE_OLDEST_MSGS_DESC" />
+		<field name="notifications_auto_enable" class="btn-group" type="radio" default="0" label="COM_JCHAT_NOTIFICATION_AUTO_ENABLED" description="COM_JCHAT_NOTIFICATION_AUTO_ENABLED_DESC">
+   			<option value="0">JNO</option>              
+   			<option value="1">JYES</option>
+   		</field>
+   		<field name="notifications_time" type="list" default="10" label="COM_JCHAT_NOTIFICATION_TIME" description="COM_JCHAT_NOTIFICATION_TIME_DESC" >
+   			<option value="5">COM_JCHAT_5SEC</option>
+   			<option value="10">COM_JCHAT_10SEC</option>
+   			<option value="20">COM_JCHAT_20SEC</option>
+			<option value="30">COM_JCHAT_30SEC</option>
+			<option value="60">COM_JCHAT_1MIN</option>
+   			<option value="120">COM_JCHAT_2MIN</option>
+			<option value="300">COM_JCHAT_5MIN</option>
+			<option value="600">COM_JCHAT_10MIN</option>
+			<option value="1800">COM_JCHAT_30MIN</option>
+			<option value="3600">COM_JCHAT_1HOUR</option>
+   			<option value="0">COM_JCHAT_ALWAYS</option>
+   		</field>
+   		<field name="notifications_public_time" type="list" default="5" label="COM_JCHAT_NOTIFICATION_PUBLICTIME" description="COM_JCHAT_NOTIFICATION_PUBLICTIME_DESC" >
+   			<option value="5">COM_JCHAT_5SEC</option>
+   			<option value="10">COM_JCHAT_10SEC</option>
+   			<option value="20">COM_JCHAT_20SEC</option>
+			<option value="30">COM_JCHAT_30SEC</option>
+			<option value="60">COM_JCHAT_1MIN</option>
+   			<option value="120">COM_JCHAT_2MIN</option>
+			<option value="300">COM_JCHAT_5MIN</option>
+			<option value="600">COM_JCHAT_10MIN</option>
+			<option value="1800">COM_JCHAT_30MIN</option>
+			<option value="3600">COM_JCHAT_1HOUR</option>
+   			<option value="0">COM_JCHAT_ALWAYS</option>
+   		</field>
+   		
+   		<field name="enable_debug" class="btn-group" type="radio" default="0" label="COM_JCHAT_ENABLE_DEBUG" description="COM_JCHAT_ENABLE_DEBUG_DESC">
+   			<option value="0">JNO</option>              
+   			<option value="1">JYES</option>
+   		</field>
+   		<field name="includejquery" class="btn-group" type="radio" default="1" label="COM_JCHAT_INCLUDE_JQUERY" description="COM_JCHAT_INCLUDE_JQUERY_DESC">
+			<option value="0">JNO</option>              
+			<option value="1">JYES</option>
+		</field> 
+   		<field name="noconflict" class="btn-group" type="radio" default="1" label="COM_JCHAT_JQUERY_NOCONFLICT" description="COM_JCHAT_JQUERY_NOCONFLICT_DESC">
+   			<option value="0">JNO</option>              
+   			<option value="1">JYES</option>
+   		</field>
+   		<field name="includeevent" class="btn-group" type="radio" default="afterdispatch" label="COM_JCHAT_INCLUDE_POSITION" description="COM_JCHAT_INCLUDE_POSITION_DESC">
+			<option value="afterinitialize">COM_JCHAT_BEFORE_COMPONENT</option>              
+			<option value="afterdispatch">COM_JCHAT_AFTER_COMPONENT</option>
+		</field>
+	</fieldset>
 </config>
