@@ -21,14 +21,14 @@ class FD40_FoundryFramework {
 		$NS = (empty($ns)) ? strtoupper($className) . '_' : $ns;
 
 		define($NS.'JOOMLA_PATH' , JPATH_ROOT);
-		define($NS.'JOOMLA_URI'  , rtrim(JURI::root(), '/'));
+		define($NS.'JOOMLA_URI'  , "");
 		define($NS.'MEDIA_PATH'  , constant($NS.'JOOMLA_PATH') . '/media');
 		define($NS.'MEDIA_URI'   , constant($NS.'JOOMLA_URI') . '/media');
 		define($NS.'BOOTCODE'    , 'FD40');
 		define($NS.'VERSION'     , '4.0');
 		define($NS.'LONG_VERSION', '4.0.32');
 		define($NS.'PATH'        , constant($NS.'JOOMLA_PATH') . '/media/foundry/' . constant($NS.'VERSION'));
-		define($NS.'URI'         , rtrim(JURI::root(), '/') . '/media/foundry/' . constant($NS.'VERSION'));
+		define($NS.'URI'         , '/media/foundry/' . constant($NS.'VERSION'));
 		define($NS.'HOSTED'      , 'http://foundry.stackideas.com/' .  constant($NS.'VERSION'));
 		define($NS.'CLASSES'     , constant($NS.'PATH') . '/joomla');
 		define($NS.'LIB'         , constant($NS.'PATH') . '/libraries');
@@ -40,7 +40,7 @@ class FD40_FoundryFramework {
 
 		// Joomla
 		define($NS.'JOOMLA'           , JPATH_ROOT);
-		define($NS.'JOOMLA_URI'       , rtrim(JURI::root(), '/'));
+		define($NS.'JOOMLA_URI'       , '');
 		define($NS.'JOOMLA_ADMIN'     , constant($NS.'JOOMLA') . '/administrator');
 		define($NS.'JOOMLA_ADMIN_URI' , constant($NS.'JOOMLA_URI') . '/administrator');
 		define($NS.'JOOMLA_SITE_TEMPLATES'      , constant($NS.'JOOMLA') . '/templates' );
@@ -68,7 +68,7 @@ class FD40_FoundryFramework {
 		define($NS.'ADMIN'	       , constant($NS.'JOOMLA_ADMIN') . '/components/' . constant($NS.'COMPONENT_NAME'));
 		define($NS.'ADMIN_URI'     , constant($NS.'JOOMLA_ADMIN_URI') . '/components/' . constant($NS.'COMPONENT_NAME'));
 		define($NS.'MEDIA'	       , constant($NS.'JOOMLA') . '/media/' . constant($NS.'COMPONENT_NAME'));
-		define($NS.'MEDIA_URI'     , constant($NS.'JOOMLA_URI') . '/media/' . constant($NS.'COMPONENT_NAME'));
+		define($NS.'MEDIA_URI'     , '/media/' . constant($NS.'COMPONENT_NAME'));
 		define($NS.'SCRIPTS'       , constant($NS.'MEDIA') . '/scripts' );
 		define($NS.'SCRIPTS_URI'   , constant($NS.'MEDIA_URI') . '/scripts');
 		define($NS.'RESOURCES'     , constant($NS.'MEDIA') . '/resources' );

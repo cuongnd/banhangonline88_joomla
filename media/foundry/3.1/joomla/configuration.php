@@ -110,8 +110,9 @@ class FD31_FoundryBaseConfiguration {
 		// they can load & execute without page blocking.
 		foreach ($this->scripts as $i=>$script) {
 			$scriptPath = $this->uri . '/scripts/' . $script . $this->extension;
-			$scriptTag  = $this->createScriptTag($scriptPath);
-			$document->addCustomTag($scriptTag);
+			$document->addScript($scriptPath);
+			//$scriptTag  = $this->createScriptTag($scriptPath);
+			//$document->addCustomTag($scriptTag);
 		}
 	}
 

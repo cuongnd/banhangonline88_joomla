@@ -1004,15 +1004,15 @@ class hikaauctionClass extends JObject {
 $hikaauctionConfig = hikaauction::config();
 define('HIKAAUCTION_RESSOURCE_VERSION', str_replace('.', '', $hikaauctionConfig->get('version')));
 $doc = JFactory::getDocument();
-$doc->addScript(HIKAAUCTION_JS.'hikaauction.js?v='.HIKAAUCTION_RESSOURCE_VERSION);
+$doc->addScript(HIKAAUCTION_JS.'hikaauction.js');
 $hikaauction_css = $hikaauctionConfig->get('css_'.$css_type,'default');
 if(!empty($hikaauction_css)){
-	$doc->addStyleSheet(HIKAAUCTION_CSS.$css_type.'_'.$hikaauction_css.'.css?v='.HIKAAUCTION_RESSOURCE_VERSION);
+	$doc->addStyleSheet(HIKAAUCTION_CSS.$css_type.'_'.$hikaauction_css.'.css');
 }
 if(!$app->isAdmin()){
 	$hikaauctionstyleCss = $hikaauctionConfig->get('css_style','');
 	if(!empty($styleCssMarket)){
-		$doc->addStyleSheet(HIKAAUCTION_CSS.'style_'.$hikaauctionstyleCss.'.css?v='.HIKAAUCTION_RESSOURCE_VERSION);
+		$doc->addStyleSheet(HIKAAUCTION_CSS.'style_'.$hikaauctionstyleCss.'.css');
 	}
 } else {
 	if(HIKAAUCTION_J30 && $_REQUEST['option'] == HIKAAUCTION_COMPONENT) {

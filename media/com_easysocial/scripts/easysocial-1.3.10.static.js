@@ -22366,9 +22366,9 @@ FD40.plugin("mvc", function($) {
 	$.String.
 	/**
 	 * Splits a string with a regex correctly cross browser
-	 * 
+	 *
 	 *     $.String.rsplit("a.b.c.d", /\./) //-> ['a','b','c','d']
-	 * 
+	 *
 	 * @param {String} string The string to split
 	 * @param {RegExp} regex A regular expression
 	 * @return {Array} An array of strings
@@ -22394,25 +22394,25 @@ FD40.plugin("mvc", function($) {
 		return retArr;
 	};
 })();(function(){
-	
+
 	var digitTest = /^\d+$/,
 		keyBreaker = /([^\[\]]+)|(\[\])/g,
 		plus = /\+/g,
 		paramTest = /([^?#]*)(#.*)?$/;
-	
+
 	/**
 	 * @add jQuery.String
 	 */
-	$.String = $.extend($.String || {}, { 
-		
+	$.String = $.extend($.String || {}, {
+
 		/**
 		 * @function deparam
-		 * 
+		 *
 		 * Takes a string of name value pairs and returns a Object literal that represents those params.
-		 * 
+		 *
 		 * @param {String} params a string like <code>"foo=bar&person[age]=3"</code>
 		 * @return {Object} A JavaScript Object that represents the params:
-		 * 
+		 *
 		 *     {
 		 *       foo: "bar",
 		 *       person: {
@@ -22421,29 +22421,29 @@ FD40.plugin("mvc", function($) {
 		 *     }
 		 */
 		deparam: function(params){
-		
+
 			if(! params || ! paramTest.test(params) ) {
 				return {};
-			} 
-		   
-		
+			}
+
+
 			var data = {},
 				pairs = params.split('&'),
 				current;
-				
+
 			for(var i=0; i < pairs.length; i++){
 				current = data;
 				var pair = pairs[i].split('=');
-				
+
 				// if we find foo=1+1=2
-				if(pair.length != 2) { 
+				if(pair.length != 2) {
 					pair = [pair[0], pair.slice(1).join("=")]
 				}
-				  
-        var key = decodeURIComponent(pair[0].replace(plus, " ")), 
+
+        var key = decodeURIComponent(pair[0].replace(plus, " ")),
           value = decodeURIComponent(pair[1].replace(plus, " ")),
 					parts = key.match(keyBreaker);
-		
+
 				for ( var j = 0; j < parts.length - 1; j++ ) {
 					var part = parts[j];
 					if (!current[part] ) {
@@ -22462,7 +22462,7 @@ FD40.plugin("mvc", function($) {
 			return data;
 		}
 	});
-	
+
 })();(function(){
 	/**
 	 * @attribute destroyed
@@ -23080,7 +23080,7 @@ FD40.plugin("mvc", function($) {
 			// keep a reference to us in self
 			self = this;
 
-			
+
 			return function class_cb() {
 				// add the arguments after the curried args
 				var cur = concatArgs(args, arguments),
@@ -23269,7 +23269,7 @@ FD40.plugin("mvc", function($) {
 					current = getObject(parts.join('.'), root || window, true),
 					namespace = current;
 
-				
+
 
 				// !-- FOUNDRY HACK --! //
 				// Inherit any existing properties from the namespace where Class is being assigned to.
@@ -25605,7 +25605,7 @@ FD40.plugin("mvc", function($) {
 		// makes sure there's a template, if not, has steal provide a warning
 		checkText = function( text, url ) {
 			if (!text.match(/[^\s]/) ) {
-				
+
 				throw "$.View ERROR: There is no template or an empty template at " + url;
 			}
 		},
@@ -29209,7 +29209,7 @@ $.require = (function() {
 
 					messages.push({
 						state: state,
-						content: '[' + state + '] ' + task.name 
+						content: '[' + state + '] ' + task.name
 					});
 				});
 
@@ -29310,7 +29310,7 @@ $.require = (function() {
 			// This array keeps a list of tasks to load.
 			tasks: [],
 
-			// Stores options like load path, timeout and retry count. 
+			// Stores options like load path, timeout and retry count.
 			options: $.extend({}, self.defaultOptions, options),
 
 			// Require chain automatically finalizes itself after
@@ -29366,7 +29366,7 @@ $.require = (function() {
 			clearTimeout(batch.autoFinalizeTimer);
 
 			// Start a new timer
-			batch.autoFinalizeTimer = 
+			batch.autoFinalizeTimer =
 				setTimeout(function(){
 					batch.finalize();
 				}, duration);
@@ -29952,7 +29952,7 @@ $.require.addLoader('stylesheet', (function() {
 			var loader = self.loaders[name];
 
 			if (!loader) {
-				loader = self.loaders[name] = 
+				loader = self.loaders[name] =
 					$.Deferred()
 						.done(function(options){
 							if ($.isPlainObject(options)) return;
@@ -29961,7 +29961,7 @@ $.require.addLoader('stylesheet', (function() {
 			}
 
 			return loader;
-		}		
+		}
 	});
 
 	$.extend(self.task.prototype, {
@@ -30121,7 +30121,7 @@ $.require.addLoader('template', (function() {
 			var loader = self.loaders[name];
 
 			if (!loader) {
-				loader = self.loaders[name] = 
+				loader = self.loaders[name] =
 					$.Deferred()
 						.done(function(content){
 							$.template(name, content);
@@ -30145,7 +30145,7 @@ $.require.addLoader('template', (function() {
 
 				loader = self.loader(task.name);
 
-				loader.xhr = 
+				loader.xhr =
 					$.Ajax({
 							url: task.url,
 							dataType: "text"
@@ -30233,7 +30233,7 @@ $.require.addLoader('language', (function() {
 			var task = $.extend(this, $.Deferred());
 
 			task.name = names.join(',');
-			
+
 			task.options = options;
 
 			task.url = options.path;
@@ -30263,7 +30263,7 @@ $.require.addLoader('language', (function() {
 			var loader = self.loaders[name];
 
 			if (!loader) {
-				loader = self.loaders[name] = 
+				loader = self.loaders[name] =
 					$.Deferred()
 						.done(function(string){
 							$.language.add(name, string);
@@ -30282,7 +30282,7 @@ $.require.addLoader('language', (function() {
 
 			var loaders = [];
 
-			var names = 
+			var names =
 				$.map(task.names, function(name){
 
 					// Get existing loader or predefine loaders
@@ -30317,7 +30317,7 @@ $.require.addLoader('language', (function() {
 			// then wait for existing loaders to resolve or reject itself.
 			if (names.length < 1) return task;
 
-			task.xhr = 
+			task.xhr =
 				$.Ajax({
 					url: task.url,
 					type: "POST",
@@ -31884,9 +31884,9 @@ $.module(["uniform","chosen","event/drag","mousewheel","resize","expanding","ui/
 var moduleFactory = function($) {
 // module body: start
 
-var module = this; 
-var jQuery = $; 
-var exports = function() { 
+var module = this;
+var jQuery = $;
+var exports = function() {
 
 /**
 Uniform v1.7.5
@@ -31954,50 +31954,50 @@ Enjoy!
         setTimeout(resetThis, 10);
       });
     }
-    
+
     function doInput(elem){
       $el = $(elem);
       $el.addClass($el.attr("type"));
       storeElement(elem);
     }
-    
+
     function doTextarea(elem){
       $(elem).addClass("uniform");
       storeElement(elem);
     }
-    
+
     function doButton(elem){
       var $el = $(elem);
-      
+
       var divTag = $("<div>"),
           spanTag = $("<span>");
-      
+
       divTag.addClass(options.buttonClass);
-      
+
       if(options.useID && $el.attr("id") != "") divTag.attr("id", options.idPrefix+"-"+$el.attr("id"));
-      
+
       var btnText;
-      
+
       if($el.is("a") || $el.is("button")){
         btnText = $el.text();
       }else if($el.is(":submit") || $el.is(":reset") || $el.is("input[type=button]")){
         btnText = $el.attr("value");
       }
-      
+
       btnText = btnText == "" ? $el.is(":reset") ? "Reset" : "Submit" : btnText;
-      
+
       spanTag.html(btnText);
-      
+
       $el.css("opacity", 0);
       $el.wrap(divTag);
       $el.wrap(spanTag);
-      
+
       //redefine variables
       divTag = $el.closest("div");
       spanTag = $el.closest("span");
-      
+
       if($el.is(":disabled")) divTag.addClass(options.disabledClass);
-      
+
       divTag.bind({
         "mouseenter.uniform": function(){
           divTag.addClass(options.hoverClass);
@@ -32013,7 +32013,7 @@ Enjoy!
           divTag.removeClass(options.activeClass);
         },
         "click.uniform touchend.uniform": function(e){
-          if($(e.target).is("span") || $(e.target).is("div")){    
+          if($(e.target).is("span") || $(e.target).is("div")){
             if(elem[0].dispatchEvent){
               var ev = document.createEvent('MouseEvents');
               ev.initEvent( 'click', true, true );
@@ -32024,7 +32024,7 @@ Enjoy!
           }
         }
       });
-      
+
       elem.bind({
         "focus.uniform": function(){
           divTag.addClass(options.focusClass);
@@ -32033,18 +32033,18 @@ Enjoy!
           divTag.removeClass(options.focusClass);
         }
       });
-      
+
       $.uniform.noSelect(divTag);
       storeElement(elem);
-      
+
     }
 
     function doSelect(elem){
       var $el = $(elem);
-      
+
       var divTag = $('<div />'),
           spanTag = $('<span />');
-      
+
       if(!$el.css("display") == "none" && options.autoHide){
         divTag.hide();
       }
@@ -32054,13 +32054,13 @@ Enjoy!
       if(options.useID && elem.attr("id") != ""){
         divTag.attr("id", options.idPrefix+"-"+elem.attr("id"));
       }
-      
+
       var selected = elem.find(":selected:first");
       if(selected.length == 0){
         selected = elem.find("option:first");
       }
       spanTag.html(selected.html());
-      
+
       elem.css('opacity', 0);
       elem.wrap(divTag);
       elem.before(spanTag);
@@ -32101,28 +32101,28 @@ Enjoy!
           spanTag.text(elem.find(":selected").html());
         }
       });
-      
+
       //handle disabled state
       if($(elem).prop("disabled")){
         //box is checked by default, check our box
         divTag.addClass(options.disabledClass);
       }
       $.uniform.noSelect(spanTag);
-      
+
       storeElement(elem);
 
     }
 
     function doCheckbox(elem){
       var $el = $(elem);
-      
+
       var divTag = $('<div />'),
           spanTag = $('<span />');
-      
+
       if(!$el.css("display") == "none" && options.autoHide){
         divTag.hide();
       }
-      
+
       divTag.addClass(options.checkboxClass);
 
       //assign the id of the element
@@ -32171,7 +32171,7 @@ Enjoy!
           divTag.removeClass(options.activeClass);
         }
       });
-      
+
       //handle defaults
       if($(elem).prop("checked")){
         //box is checked by default, check our box
@@ -32189,10 +32189,10 @@ Enjoy!
 
     function doRadio(elem){
       var $el = $(elem);
-      
+
       var divTag = $('<div />'),
           spanTag = $('<span />');
-          
+
       if(!$el.css("display") == "none" && options.autoHide){
         divTag.hide();
       }
@@ -32271,7 +32271,7 @@ Enjoy!
       var divTag = $('<div />'),
           filenameTag = $('<span>'+options.fileDefaultText+'</span>'),
           btnTag = $('<span>'+options.fileBtnText+'</span>');
-      
+
       if(!$el.css("display") == "none" && options.autoHide){
         divTag.hide();
       }
@@ -32363,19 +32363,19 @@ Enjoy!
         //box is checked by default, check our box
         divTag.addClass(options.disabledClass);
       }
-      
+
       $.uniform.noSelect(filenameTag);
       $.uniform.noSelect(btnTag);
-      
+
       storeElement(elem);
 
     }
-    
+
     $.uniform.restore = function(elem){
       if(elem == undefined){
         elem = $($.uniform.elements);
       }
-      
+
       $(elem).each(function(){
         if($(this).is(":checkbox")){
           //unwrap from span and div
@@ -32397,13 +32397,13 @@ Enjoy!
           //unwrap from span and div
           $(this).unwrap().unwrap();
         }
-        
+
         //unbind events
         $(this).unbind(".uniform");
-        
+
         //reset inline style
         $(this).css("opacity", "1");
-        
+
         //remove item from list of uniformed elements
         var index = $.inArray($(elem), $.uniform.elements);
         $.uniform.elements.splice(index, 1);
@@ -32421,7 +32421,7 @@ Enjoy!
         $.uniform.elements.push(elem);
       }
     }
-    
+
     //noSelect v1.0
     $.uniform.noSelect = function(elem) {
       function f() {
@@ -32514,15 +32514,15 @@ Enjoy!
         }else if($e.is(":submit") || $e.is(":reset") || $e.is("button") || $e.is("a") || elem.is("input[type=button]")){
           var divTag = $e.closest("div");
           divTag.removeClass(options.hoverClass+" "+options.focusClass+" "+options.activeClass);
-          
+
           if($e.is(":disabled")){
             divTag.addClass(options.disabledClass);
           }else{
             divTag.removeClass(options.disabledClass);
           }
-          
+
         }
-        
+
       });
     };
 
@@ -32554,19 +32554,19 @@ Enjoy!
         }else if(elem.is("a") || elem.is(":submit") || elem.is(":reset") || elem.is("button") || elem.is("input[type=button]")){
           doButton(elem);
         }
-          
+
       }
     });
   };
 })(jQuery);
-}; 
+};
 
-exports(); 
-module.resolveWith(exports); 
+exports();
+module.resolveWith(exports);
 
 // module body: end
 
-}; 
+};
 // module factory: end
 
 FD40.module("uniform", moduleFactory);
@@ -32579,15 +32579,15 @@ FD40.module("uniform", moduleFactory);
 var moduleFactory = function($) {
 // module body: start
 
-var module = this; 
-var jQuery = $; 
-var exports = function() { 
+var module = this;
+var jQuery = $;
+var exports = function() {
 
 var globalChosen = {};
 
 // Chosen, a Select Box Enhancer for jQuery and Protoype
 // by Patrick Filler for Harvest, http://getharvest.com
-// 
+//
 // Version 0.9.8
 // Full source at https://github.com/harvesthq/chosen
 // Copyright (c) 2011 Harvest http://getharvest.com
@@ -33611,14 +33611,14 @@ Copyright (c) 2011 by Harvest
   root.get_side_border_padding = get_side_border_padding;
 
 }).call(globalChosen);
-}; 
+};
 
-exports(); 
-module.resolveWith(exports); 
+exports();
+module.resolveWith(exports);
 
 // module body: end
 
-}; 
+};
 // module factory: end
 
 FD40.module("chosen", moduleFactory);
@@ -33631,16 +33631,16 @@ FD40.module("chosen", moduleFactory);
 var moduleFactory = function($) {
 // module body: start
 
-var module = this; 
-var jQuery = $; 
-var exports = function() { 
+var module = this;
+var jQuery = $;
+var exports = function() {
 
-/*! 
+/*!
  * jquery.event.drag - v 2.2
  * Copyright (c) 2010 Three Dub Media - http://threedubmedia.com
  * Open Source MIT License - http://threedubmedia.com/code/license
  */
-// Created: 2008-06-04 
+// Created: 2008-06-04
 // Updated: 2012-05-21
 // REQUIRES: jquery 1.7.x
 
@@ -33653,7 +33653,7 @@ $.fn.drag = function( str, arg, opts ){
 	// figure out the event handler...
 	fn = $.isFunction( str ) ? str : $.isFunction( arg ) ? arg : null;
 	// fix the event type
-	if ( type.indexOf("drag") !== 0 ) 
+	if ( type.indexOf("drag") !== 0 )
 		type = "drag"+ type;
 	// were options passed
 	opts = ( str == fn ? arg : opts ) || {};
@@ -33662,11 +33662,11 @@ $.fn.drag = function( str, arg, opts ){
 };
 
 // local refs (increase compression)
-var $event = $.event, 
+var $event = $.event,
 $special = $event.special,
-// configure the drag special event 
+// configure the drag special event
 drag = $special.drag = {
-	
+
 	// these are the default settings
 	defaults: {
 		which: 1, // mouse button pressed to start drag sequence
@@ -33677,38 +33677,38 @@ drag = $special.drag = {
 		drop: true, // false to suppress drop events, true or selector to allow
 		click: false // false to suppress click events after dragend (no proxy)
 	},
-	
+
 	// the key name for stored drag data
 	datakey: "dragdata",
-	
+
 	// prevent bubbling for better performance
 	noBubble: true,
-	
+
 	// count bound related events
-	add: function( obj ){ 
+	add: function( obj ){
 		// read the interaction data
 		var data = $.data( this, drag.datakey ),
-		// read any passed options 
+		// read any passed options
 		opts = obj.data || {};
 		// count another realted event
 		data.related += 1;
 		// extend data options bound with this event
-		// don't iterate "opts" in case it is a node 
+		// don't iterate "opts" in case it is a node
 		$.each( drag.defaults, function( key, def ){
 			if ( opts[ key ] !== undefined )
 				data[ key ] = opts[ key ];
 		});
 	},
-	
+
 	// forget unbound related events
 	remove: function(){
 		$.data( this, drag.datakey ).related -= 1;
 	},
-	
+
 	// configure interaction, capture settings
 	setup: function(){
 		// check for related events
-		if ( $.data( this, drag.datakey ) ) 
+		if ( $.data( this, drag.datakey ) )
 			return;
 		// initialize the drag data with copied defaults
 		var data = $.extend({ related:0 }, drag.defaults );
@@ -33717,42 +33717,42 @@ drag = $special.drag = {
 		// bind the mousedown event, which starts drag interactions
 		$event.add( this, "touchstart mousedown", drag.init, data );
 		// prevent image dragging in IE...
-		if ( this.attachEvent ) 
-			this.attachEvent("ondragstart", drag.dontstart ); 
+		if ( this.attachEvent )
+			this.attachEvent("ondragstart", drag.dontstart );
 	},
-	
+
 	// destroy configured interaction
 	teardown: function(){
 		var data = $.data( this, drag.datakey ) || {};
 		// check for related events
-		if ( data.related ) 
+		if ( data.related )
 			return;
 		// remove the stored data
 		$.removeData( this, drag.datakey );
 		// remove the mousedown event
 		$event.remove( this, "touchstart mousedown", drag.init );
 		// enable text selection
-		drag.textselect( true ); 
+		drag.textselect( true );
 		// un-prevent image dragging in IE...
-		if ( this.detachEvent ) 
-			this.detachEvent("ondragstart", drag.dontstart ); 
+		if ( this.detachEvent )
+			this.detachEvent("ondragstart", drag.dontstart );
 	},
-		
+
 	// initialize the interaction
-	init: function( event ){ 
+	init: function( event ){
 		// sorry, only one touch at a time
-		if ( drag.touched ) 
+		if ( drag.touched )
 			return;
 		// the drag/drop interaction data
 		var dd = event.data, results;
 		// check the which directive
-		if ( event.which != 0 && dd.which > 0 && event.which != dd.which ) 
-			return; 
+		if ( event.which != 0 && dd.which > 0 && event.which != dd.which )
+			return;
 		// check for suppressed selector
-		if ( $( event.target ).is( dd.not ) ) 
+		if ( $( event.target ).is( dd.not ) )
 			return;
 		// check for handle selector
-		if ( dd.handle && !$( event.target ).closest( dd.handle, event.currentTarget ).length ) 
+		if ( dd.handle && !$( event.target ).closest( dd.handle, event.currentTarget ).length )
 			return;
 
 		drag.touched = event.type == 'touchstart' ? this : null;
@@ -33763,7 +33763,7 @@ drag = $special.drag = {
 		dd.pageX = event.pageX;
 		dd.pageY = event.pageY;
 		dd.dragging = null;
-		// handle draginit event... 
+		// handle draginit event...
 		results = drag.hijack( event, "draginit", dd );
 		// early cancel
 		if ( !dd.propagates )
@@ -33780,43 +33780,43 @@ drag = $special.drag = {
 		// remember how many interactions are propagating
 		dd.propagates = dd.interactions.length;
 		// locate and init the drop targets
-		if ( dd.drop !== false && $special.drop ) 
+		if ( dd.drop !== false && $special.drop )
 			$special.drop.handler( event, dd );
 		// disable text selection
-		drag.textselect( false ); 
+		drag.textselect( false );
 		// bind additional events...
 		if ( drag.touched )
 			$event.add( drag.touched, "touchmove touchend", drag.handler, dd );
-		else 
+		else
 			$event.add( document, "mousemove mouseup", drag.handler, dd );
 		// helps prevent text selection or scrolling
 		if ( !drag.touched || dd.live )
 			return false;
-	},	
-	
+	},
+
 	// returns an interaction object
 	interaction: function( elem, dd ){
 		var offset = $( elem )[ dd.relative ? "position" : "offset" ]() || { top:0, left:0 };
 		return {
-			drag: elem, 
-			callback: new drag.callback(), 
+			drag: elem,
+			callback: new drag.callback(),
 			droppable: [],
 			offset: offset
 		};
 	},
-	
+
 	// handle drag-releatd DOM events
-	handler: function( event ){ 
+	handler: function( event ){
 		// read the data before hijacking anything
-		var dd = event.data;	
+		var dd = event.data;
 		// handle various events
 		switch ( event.type ){
 			// mousemove, check distance, start dragging
-			case !dd.dragging && 'touchmove': 
+			case !dd.dragging && 'touchmove':
 				event.preventDefault();
 			case !dd.dragging && 'mousemove':
 				//  drag tolerance, x� + y� = distance�
-				if ( Math.pow(  event.pageX-dd.pageX, 2 ) + Math.pow(  event.pageY-dd.pageY, 2 ) < Math.pow( dd.distance, 2 ) ) 
+				if ( Math.pow(  event.pageX-dd.pageX, 2 ) + Math.pow(  event.pageY-dd.pageY, 2 ) < Math.pow( dd.distance, 2 ) )
 					break; // distance tolerance not reached
 				event.target = dd.target; // force target from "mousedown" event (fix distance issue)
 				drag.hijack( event, "dragstart", dd ); // trigger "dragstart"
@@ -33827,42 +33827,42 @@ drag = $special.drag = {
 				event.preventDefault();
 			case 'mousemove':
 				if ( dd.dragging ){
-					// trigger "drag"		
+					// trigger "drag"
 					drag.hijack( event, "drag", dd );
 					if ( dd.propagates ){
 						// manage drop events
 						if ( dd.drop !== false && $special.drop )
-							$special.drop.handler( event, dd ); // "dropstart", "dropend"							
-						break; // "drag" not rejected, stop		
+							$special.drop.handler( event, dd ); // "dropstart", "dropend"
+						break; // "drag" not rejected, stop
 					}
 					event.type = "mouseup"; // helps "drop" handler behave
 				}
 			// mouseup, stop dragging
-			case 'touchend': 
-			case 'mouseup': 
+			case 'touchend':
+			case 'mouseup':
 			default:
 				if ( drag.touched )
 					$event.remove( drag.touched, "touchmove touchend", drag.handler ); // remove touch events
-				else 
-					$event.remove( document, "mousemove mouseup", drag.handler ); // remove page events	
+				else
+					$event.remove( document, "mousemove mouseup", drag.handler ); // remove page events
 				if ( dd.dragging ){
 					if ( dd.drop !== false && $special.drop )
 						$special.drop.handler( event, dd ); // "drop"
-					drag.hijack( event, "dragend", dd ); // trigger "dragend"	
+					drag.hijack( event, "dragend", dd ); // trigger "dragend"
 				}
 				drag.textselect( true ); // enable text selection
 				// if suppressing click events...
 				if ( dd.click === false && dd.dragging )
 					$.data( dd.mousedown, "suppress.click", new Date().getTime() + 5 );
-				dd.dragging = drag.touched = false; // deactivate element	
+				dd.dragging = drag.touched = false; // deactivate element
 				break;
 		}
 	},
-		
+
 	// re-use event object for custom events
 	hijack: function( event, type, dd, x, elem ){
 		// not configured
-		if ( !dd ) 
+		if ( !dd )
 			return;
 		// remember the original event and type
 		var orig = { event:event.originalEvent, type:event.type },
@@ -33892,7 +33892,7 @@ drag = $special.drag = {
 				callback.target = subject;
 				// force propagtion of the custom event
 				event.isPropagationStopped = function(){ return false; };
-				// handle the event	
+				// handle the event
 				result = subject ? $event.dispatch.call( subject, event, callback ) : null;
 				// stop the drag interaction for this element
 				if ( result === false ){
@@ -33907,25 +33907,25 @@ drag = $special.drag = {
 				// assign any dropinit elements
 				else if ( type == "dropinit" )
 					ia.droppable.push( drag.element( result ) || subject );
-				// accept a returned proxy element 
+				// accept a returned proxy element
 				if ( type == "dragstart" )
 					ia.proxy = $( drag.element( result ) || ia.drag )[0];
-				// remember this result	
+				// remember this result
 				ia.results.push( result );
 				// forget the event result, for recycling
 				delete event.result;
 				// break on cancelled handler
 				if ( type !== "dropinit" )
 					return result;
-			});	
-			// flatten the results	
-			dd.results[ i ] = drag.flatten( ia.results );	
+			});
+			// flatten the results
+			dd.results[ i ] = drag.flatten( ia.results );
 			// accept a set of valid drop targets
 			if ( type == "dropinit" )
 				ia.droppable = drag.flatten( ia.droppable );
 			// locate drop targets
 			if ( type == "dragstart" && !ia.cancelled )
-				callback.update(); 
+				callback.update();
 		}
 		while ( ++i < len )
 		// restore the original event & type
@@ -33934,9 +33934,9 @@ drag = $special.drag = {
 		// return all handler results
 		return drag.flatten( dd.results );
 	},
-		
+
 	// extend the callback object with drag/drop properties...
-	properties: function( event, dd, ia ){		
+	properties: function( event, dd, ia ){
 		var obj = ia.callback;
 		// elements
 		obj.drag = ia.drag;
@@ -33951,44 +33951,44 @@ drag = $special.drag = {
 		obj.originalX = ia.offset.left;
 		obj.originalY = ia.offset.top;
 		// adjusted element position
-		obj.offsetX = obj.originalX + obj.deltaX; 
+		obj.offsetX = obj.originalX + obj.deltaX;
 		obj.offsetY = obj.originalY + obj.deltaY;
 		// assign the drop targets information
 		obj.drop = drag.flatten( ( ia.drop || [] ).slice() );
 		obj.available = drag.flatten( ( ia.droppable || [] ).slice() );
-		return obj;	
+		return obj;
 	},
-	
+
 	// determine is the argument is an element or jquery instance
 	element: function( arg ){
 		if ( arg && ( arg.jquery || arg.nodeType == 1 ) )
 			return arg;
 	},
-	
+
 	// flatten nested jquery objects and arrays into a single dimension array
 	flatten: function( arr ){
 		return $.map( arr, function( member ){
-			return member && member.jquery ? $.makeArray( member ) : 
+			return member && member.jquery ? $.makeArray( member ) :
 				member && member.length ? drag.flatten( member ) : member;
 		});
 	},
-	
+
 	// toggles text selection attributes ON (true) or OFF (false)
-	textselect: function( bool ){ 
+	textselect: function( bool ){
 		$( document )[ bool ? "unbind" : "bind" ]("selectstart", drag.dontstart )
 			.css("MozUserSelect", bool ? "" : "none" );
 		// .attr("unselectable", bool ? "off" : "on" )
-		document.unselectable = bool ? "off" : "on"; 
+		document.unselectable = bool ? "off" : "on";
 	},
-	
+
 	// suppress "selectstart" and "ondragstart" events
-	dontstart: function(){ 
-		return false; 
+	dontstart: function(){
+		return false;
 	},
-	
+
 	// a callback instance contructor
 	callback: function(){}
-	
+
 };
 
 // callback methods
@@ -34012,9 +34012,9 @@ $event.dispatch = function( event ){
 };
 
 // event fix hooks for touch events...
-var touchHooks = 
-$event.fixHooks.touchstart = 
-$event.fixHooks.touchmove = 
+var touchHooks =
+$event.fixHooks.touchstart =
+$event.fixHooks.touchmove =
 $event.fixHooks.touchend =
 $event.fixHooks.touchcancel = {
 	props: "clientX clientY pageX pageY screenX screenY".split( " " ),
@@ -34022,9 +34022,9 @@ $event.fixHooks.touchcancel = {
 		if ( orig ){
 			var touched = ( orig.touches && orig.touches[0] )
 				|| ( orig.changedTouches && orig.changedTouches[0] )
-				|| null; 
+				|| null;
 			// iOS webkit: touchstart, touchmove, touchend
-			if ( touched ) 
+			if ( touched )
 				$.each( touchHooks.props, function( i, prop ){
 					event[ prop ] = touched[ prop ];
 				});
@@ -34037,14 +34037,14 @@ $event.fixHooks.touchcancel = {
 $special.draginit = $special.dragstart = $special.dragend = drag;
 
 })( jQuery );
-}; 
+};
 
-exports(); 
-module.resolveWith(exports); 
+exports();
+module.resolveWith(exports);
 
 // module body: end
 
-}; 
+};
 // module factory: end
 
 FD40.module("event/drag", moduleFactory);
@@ -34057,8 +34057,8 @@ FD40.module("event/drag", moduleFactory);
 var moduleFactory = function($) {
 // module body: start
 
-var module = this; 
-var exports = function() { 
+var module = this;
+var exports = function() {
 
 /*! Copyright (c) 2013 Brandon Aaron (http://brandonaaron.net)
  * Licensed under the MIT License (LICENSE.txt).
@@ -34167,14 +34167,14 @@ var exports = function() {
 
 
 
-}; 
+};
 
-exports(); 
-module.resolveWith(exports); 
+exports();
+module.resolveWith(exports);
 
 // module body: end
 
-}; 
+};
 // module factory: end
 
 FD40.module("mousewheel", moduleFactory);
@@ -34187,13 +34187,13 @@ FD40.module("mousewheel", moduleFactory);
 var moduleFactory = function($) {
 // module body: start
 
-var module = this; 
-var exports = function() { 
+var module = this;
+var exports = function() {
 
 /*!
  * jQuery resize event - v1.1 - 3/14/2010
  * http://benalman.com/projects/jquery-resize-plugin/
- * 
+ *
  * Copyright (c) 2010 "Cowboy" Ben Alman
  * Dual licensed under the MIT and GPL licenses.
  * http://benalman.com/about/license/
@@ -34202,122 +34202,122 @@ var exports = function() {
 // Script: jQuery resize event
 //
 // *Version: 1.1, Last updated: 3/14/2010*
-// 
+//
 // Project Home - http://benalman.com/projects/jquery-resize-plugin/
 // GitHub       - http://github.com/cowboy/jquery-resize/
 // Source       - http://github.com/cowboy/jquery-resize/raw/master/jquery.ba-resize.js
 // (Minified)   - http://github.com/cowboy/jquery-resize/raw/master/jquery.ba-resize.min.js (1.0kb)
-// 
+//
 // About: License
-// 
+//
 // Copyright (c) 2010 "Cowboy" Ben Alman,
 // Dual licensed under the MIT and GPL licenses.
 // http://benalman.com/about/license/
-// 
+//
 // About: Examples
-// 
+//
 // This working example, complete with fully commented code, illustrates a few
 // ways in which this plugin can be used.
-// 
+//
 // resize event - http://benalman.com/code/projects/jquery-resize/examples/resize/
-// 
+//
 // About: Support and Testing
-// 
+//
 // Information about what version or versions of jQuery this plugin has been
 // tested with, what browsers it has been tested in, and where the unit tests
 // reside (so you can test it yourself).
-// 
+//
 // jQuery Versions - 1.3.2, 1.4.1, 1.4.2
 // Browsers Tested - Internet Explorer 6-8, Firefox 2-3.6, Safari 3-4, Chrome, Opera 9.6-10.1.
 // Unit Tests      - http://benalman.com/code/projects/jquery-resize/unit/
-// 
+//
 // About: Release History
-// 
+//
 // 1.1 - (3/14/2010) Fixed a minor bug that was causing the event to trigger
 //       immediately after bind in some circumstances. Also changed $.fn.data
 //       to $.data to improve performance.
 // 1.0 - (2/10/2010) Initial release
 
-  
+
   // A jQuery object containing all non-window elements to which the resize
   // event is bound.
   var elems = $([]),
-    
+
     // Extend $.resize if it already exists, otherwise create it.
     jq_resize = $.resize = $.extend( $.resize, {} ),
-    
+
     timeout_id,
-    
+
     // Reused strings.
     str_setTimeout = 'setTimeout',
     str_resize = 'resize',
     str_data = str_resize + '-special-event',
     str_delay = 'delay',
     str_throttle = 'throttleWindow';
-  
+
   // Property: jQuery.resize.delay
-  // 
+  //
   // The numeric interval (in milliseconds) at which the resize event polling
   // loop executes. Defaults to 250.
-  
+
   jq_resize[ str_delay ] = 250;
-  
+
   // Property: jQuery.resize.throttleWindow
-  // 
+  //
   // Throttle the native window object resize event to fire no more than once
   // every <jQuery.resize.delay> milliseconds. Defaults to true.
-  // 
+  //
   // Because the window object has its own resize event, it doesn't need to be
   // provided by this plugin, and its execution can be left entirely up to the
   // browser. However, since certain browsers fire the resize event continuously
   // while others do not, enabling this will throttle the window resize event,
   // making event behavior consistent across all elements in all browsers.
-  // 
+  //
   // While setting this property to false will disable window object resize
   // event throttling, please note that this property must be changed before any
   // window object resize event callbacks are bound.
-  
+
   jq_resize[ str_throttle ] = true;
-  
+
   // Event: resize event
-  // 
+  //
   // Fired when an element's width or height changes. Because browsers only
   // provide this event for the window element, for other elements a polling
   // loop is initialized, running every <jQuery.resize.delay> milliseconds
   // to see if elements' dimensions have changed. You may bind with either
   // .resize( fn ) or .bind( "resize", fn ), and unbind with .unbind( "resize" ).
-  // 
+  //
   // Usage:
-  // 
+  //
   // > jQuery('selector').bind( 'resize', function(e) {
   // >   // element's width or height has changed!
   // >   ...
   // > });
-  // 
+  //
   // Additional Notes:
-  // 
+  //
   // * The polling loop is not created until at least one callback is actually
   //   bound to the 'resize' event, and this single polling loop is shared
   //   across all elements.
-  // 
+  //
   // Double firing issue in jQuery 1.3.2:
-  // 
+  //
   // While this plugin works in jQuery 1.3.2, if an element's event callbacks
   // are manually triggered via .trigger( 'resize' ) or .resize() those
   // callbacks may double-fire, due to limitations in the jQuery 1.3.2 special
   // events system. This is not an issue when using jQuery 1.4+.
-  // 
+  //
   // > // While this works in jQuery 1.4+
   // > $(elem).css({ width: new_w, height: new_h }).resize();
-  // > 
+  // >
   // > // In jQuery 1.3.2, you need to do this:
   // > var elem = $(elem);
   // > elem.css({ width: new_w, height: new_h });
   // > elem.data( 'resize-special-event', { width: elem.width(), height: elem.height() } );
   // > elem.resize();
-      
+
   $.event.special[ str_resize ] = {
-    
+
     // Called only when the first 'resize' event callback is bound per element.
     setup: function() {
       // Since window has its own native 'resize' event, return false so that
@@ -34325,21 +34325,21 @@ var exports = function() {
       // objects have a .setTimeout method, this should be a sufficient test.
       // Unless, of course, we're throttling the 'resize' event for window.
       if ( !jq_resize[ str_throttle ] && this[ str_setTimeout ] ) { return false; }
-      
+
       var elem = $(this);
-      
+
       // Add this element to the list of internal elements to monitor.
       elems = elems.add( elem );
-      
+
       // Initialize data store on the element.
       $.data( this, str_data, { w: elem.width(), h: elem.height() } );
-      
+
       // If this is the first element added, start the polling loop.
       if ( elems.length === 1 ) {
         loopy();
       }
     },
-    
+
     // Called only when the last 'resize' event callback is unbound per element.
     teardown: function() {
       // Since window has its own native 'resize' event, return false so that
@@ -34347,21 +34347,21 @@ var exports = function() {
       // objects have a .setTimeout method, this should be a sufficient test.
       // Unless, of course, we're throttling the 'resize' event for window.
       if ( !jq_resize[ str_throttle ] && this[ str_setTimeout ] ) { return false; }
-      
+
       var elem = $(this);
-      
+
       // Remove this element from the list of internal elements to monitor.
       elems = elems.not( elem );
-      
+
       // Remove any data stored on the element.
       elem.removeData( str_data );
-      
+
       // If this is the last element removed, stop the polling loop.
       if ( !elems.length ) {
         clearTimeout( timeout_id );
       }
     },
-    
+
     // Called every time a 'resize' event callback is bound per element (new in
     // jQuery 1.4).
     add: function( handleObj ) {
@@ -34369,15 +34369,15 @@ var exports = function() {
       // jQuery doesn't modify the event object. Unless, of course, we're
       // throttling the 'resize' event for window.
       if ( !jq_resize[ str_throttle ] && this[ str_setTimeout ] ) { return false; }
-      
+
       var old_handler;
-      
+
       // The new_handler function is executed every time the event is triggered.
       // This is used to update the internal element data store with the width
       // and height when the event is triggered manually, to avoid double-firing
       // of the event callback. See the "Double firing issue in jQuery 1.3.2"
       // comments above for more information.
-      
+
       function new_handler( e, w, h ) {
         var elem = $(this),
           data = $.data( this, str_data );
@@ -34386,16 +34386,16 @@ var exports = function() {
         if (data == null) {
           data = { w: null, h: null };
         }
-        
+
         // If called from the polling loop, w and h will be passed in as
         // arguments. If called manually, via .trigger( 'resize' ) or .resize(),
         // those values will need to be computed.
         data.w = w !== undefined ? w : elem.width();
         data.h = h !== undefined ? h : elem.height();
-        
+
         old_handler.apply( this, arguments );
       };
-      
+
       // This may seem a little complicated, but it normalizes the special event
       // .add method between jQuery 1.4/1.4.1 and 1.4.2+
       if ( $.isFunction( handleObj ) ) {
@@ -34408,46 +34408,46 @@ var exports = function() {
         handleObj.handler = new_handler;
       }
     }
-    
+
   };
-  
+
   function loopy() {
-    
+
     // Start the polling loop, asynchronously.
     timeout_id = window[ str_setTimeout ](function(){
-      
+
       // Iterate over all elements to which the 'resize' event is bound.
       elems.each(function(){
         var elem = $(this),
           width = elem.width(),
           height = elem.height(),
           data = $.data( this, str_data );
-        
+
         // If element size has changed since the last time, update the element
         // data store and trigger the 'resize' event.
         if ( width !== data.w || height !== data.h ) {
           elem.trigger( str_resize, [ data.w = width, data.h = height ] );
         }
-        
+
       });
-      
+
       // Loop.
       loopy();
-      
+
     }, jq_resize[ str_delay ] );
-    
+
   };
-  
 
 
-}; 
 
-exports(); 
-module.resolveWith(exports); 
+};
+
+exports();
+module.resolveWith(exports);
 
 // module body: end
 
-}; 
+};
 // module factory: end
 
 FD40.module("resize", moduleFactory);
@@ -34460,8 +34460,8 @@ FD40.module("resize", moduleFactory);
 var moduleFactory = function($) {
 // module body: start
 
-var module = this; 
-var exports = function() { 
+var module = this;
+var exports = function() {
 
 // Expanding Textareas
 // https://github.com/bgrins/ExpandingTextareas
@@ -34473,12 +34473,12 @@ var exports = function() {
             resize: function() { }
         }
     }, $.expandingTextarea || {});
-    
+
     var cloneCSSProperties = [
         'lineHeight', 'textDecoration', 'letterSpacing',
-        'fontSize', 'fontFamily', 'fontStyle', 
-        'fontWeight', 'textTransform', 'textAlign', 
-        'direction', 'wordSpacing', 'fontSizeAdjust', 
+        'fontSize', 'fontFamily', 'fontStyle',
+        'fontWeight', 'textTransform', 'textAlign',
+        'direction', 'wordSpacing', 'fontSizeAdjust',
         'wordWrap', 'word-break',
         'borderLeftWidth', 'borderRightWidth',
         'borderTopWidth','borderBottomWidth',
@@ -34488,38 +34488,38 @@ var exports = function() {
         'marginTop','marginBottom',
         'boxSizing', 'webkitBoxSizing', 'mozBoxSizing', 'msBoxSizing'
     ];
-    
+
     var textareaCSS = {
         position: "absolute",
         height: "100%",
         resize: "none"
     };
-    
+
     var preCSS = {
         visibility: "hidden",
         border: "0 solid",
-        whiteSpace: "pre-wrap" 
+        whiteSpace: "pre-wrap"
     };
-    
+
     var containerCSS = {
         position: "relative"
     };
-    
+
     function resize() {
 
         var clone = $(this).data("textareaClone");
         clone.find("div").text(this.value.replace(/\r\n/g, "\n") + ' ');
         $(this).trigger("resize.expanding");
     }
-    
+
     $.fn.expandingTextarea = function(o) {
-        
+
         var opts = $.extend({ }, $.expandingTextarea.opts, o);
-        
+
         if (o === "resize") {
             return this.trigger("input.expanding");
         }
-        
+
         if (o === "destroy") {
             this.filter(".expanding-init").each(function() {
                 // TODO: Restore container position value
@@ -34528,10 +34528,10 @@ var exports = function() {
                     .attr('style', textarea.data('expanding-styles') || '')
                     .removeData('expanding-styles');
             });
-            
+
             return this;
         }
-        
+
         this.filter("textarea").not(".expanding-init").addClass("expanding-init").each(function() {
 
             var textarea  = $(this),
@@ -34544,34 +34544,34 @@ var exports = function() {
 
             // Container
             container.css(containerCSS);
-            
+
             // Store the original styles in case of destroying.
             textarea.data('expanding-styles', textarea.attr('style'));
             textarea.css(textareaCSS);
 
             // Clone
             clone.css(preCSS);
-            
+
             $.each(cloneCSSProperties, function(i, p) {
                 var val = textarea.css(p);
-                
+
                 // Only set if different to prevent overriding percentage css values.
                 if (clone.css(p) !== val) {
                     clone.css(p, val);
                 }
             });
-            
+
             textarea.bind("input.expanding propertychange.expanding keyup.expanding", resize);
             resize.apply(this);
-            
+
             if (opts.resize) {
                 textarea.bind("resize.expanding", opts.resize);
             }
         });
-        
+
         return this;
     };
-    
+
     $(function () {
         if ($.expandingTextarea.autoInitialize) {
             $($.expandingTextarea.initialSelector).expandingTextarea();
@@ -34579,14 +34579,14 @@ var exports = function() {
     });
 
 
-}; 
+};
 
-exports(); 
-module.resolveWith(exports); 
+exports();
+module.resolveWith(exports);
 
 // module body: end
 
-}; 
+};
 // module factory: end
 
 FD40.module("expanding", moduleFactory);
@@ -34599,9 +34599,9 @@ FD40.module("expanding", moduleFactory);
 var moduleFactory = function($) {
 // module body: start
 
-var module = this; 
-var jQuery = $; 
-var exports = function() { 
+var module = this;
+var jQuery = $;
+var exports = function() {
 
 /*!
  * jQuery UI Core 1.10.4pre
@@ -34944,14 +34944,14 @@ $(function(){
 
 })( jQuery );
 
-}; 
+};
 
-exports(); 
-module.resolveWith(exports); 
+exports();
+module.resolveWith(exports);
 
 // module body: end
 
-}; 
+};
 // module factory: end
 
 FD40.module("ui/core", moduleFactory);
@@ -34964,12 +34964,12 @@ FD40.module("ui/core", moduleFactory);
 var moduleFactory = function($) {
 // module body: start
 
-var module = this; 
-var jQuery = $; 
-$.require() 
- .script("ui/widget") 
- .done(function() { 
-var exports = function() { 
+var module = this;
+var jQuery = $;
+$.require()
+ .script("ui/widget")
+ .done(function() {
+var exports = function() {
 
 /*!
  * jQuery UI Mouse 1.10.4pre
@@ -35141,15 +35141,15 @@ $.widget("ui.mouse", {
 
 })(jQuery);
 
-}; 
+};
 
-exports(); 
-module.resolveWith(exports); 
+exports();
+module.resolveWith(exports);
 
-}); 
+});
 // module body: end
 
-}; 
+};
 // module factory: end
 
 FD40.module("ui/mouse", moduleFactory);
@@ -35162,9 +35162,9 @@ FD40.module("ui/mouse", moduleFactory);
 var moduleFactory = function($) {
 // module body: start
 
-var module = this; 
-var jQuery = $; 
-var exports = function() { 
+var module = this;
+var jQuery = $;
+var exports = function() {
 
 /*!
  * jQuery UI Widget 1.10.4pre
@@ -35688,14 +35688,14 @@ $.each( { show: "fadeIn", hide: "fadeOut" }, function( method, defaultEffect ) {
 
 })( jQuery );
 
-}; 
+};
 
-exports(); 
-module.resolveWith(exports); 
+exports();
+module.resolveWith(exports);
 
 // module body: end
 
-}; 
+};
 // module factory: end
 
 FD40.module("ui/widget", moduleFactory);
@@ -35708,11 +35708,11 @@ FD40.module("ui/widget", moduleFactory);
 var moduleFactory = function($) {
 // module body: start
 
-var module = this; 
-$.require() 
- .script("autosize.input","scrollTo") 
- .done(function() { 
-var exports = function() { 
+var module = this;
+$.require()
+ .script("autosize.input","scrollTo")
+ .done(function() {
+var exports = function() {
 
 // Constants
 var KEYCODE = {
@@ -36830,15 +36830,15 @@ function(self, opts, base) { return {
 }}
 );
 // Autocomplete ends
-}; 
+};
 
-exports(); 
-module.resolveWith(exports); 
+exports();
+module.resolveWith(exports);
 
-}); 
+});
 // module body: end
 
-}; 
+};
 // module factory: end
 
 FD40.module("textboxlist", moduleFactory);
@@ -36851,9 +36851,9 @@ FD40.module("textboxlist", moduleFactory);
 var moduleFactory = function($) {
 // module body: start
 
-var module = this; 
-var jQuery = $; 
-var exports = function() { 
+var module = this;
+var jQuery = $;
+var exports = function() {
 
 var AutosizeInput = function(input, options) {
 
@@ -36937,14 +36937,14 @@ $(function () {
 });
 
 
-}; 
+};
 
-exports(); 
-module.resolveWith(exports); 
+exports();
+module.resolveWith(exports);
 
 // module body: end
 
-}; 
+};
 // module factory: end
 
 FD40.module("autosize.input", moduleFactory);
@@ -36957,9 +36957,9 @@ FD40.module("autosize.input", moduleFactory);
 var moduleFactory = function($) {
 // module body: start
 
-var module = this; 
-var jQuery = $; 
-var exports = function() { 
+var module = this;
+var jQuery = $;
+var exports = function() {
 
 /*!
  * jQuery.ScrollTo
@@ -36982,7 +36982,7 @@ var exports = function() {
  *		- A string selector, that will be relative to the element to scroll ( 'li:eq(2)', etc )
  *		- A hash { top:x, left:y }, x and y can be any kind of number/string like above.
  *		- A percentage of the container's dimension/s, for example: 50% to go to the middle.
- *		- The string 'max' for go-to-end. 
+ *		- The string 'max' for go-to-end.
  * @param {Number, Function} duration The OVERALL length of the animation, this argument can be the settings object instead.
  * @param {Object,Function} settings Optional set of settings or the onAfter callback.
  *	 @option {String} axis Which axis must be scrolled, use 'x', 'y', 'xy' or 'yx'.
@@ -36992,7 +36992,7 @@ var exports = function() {
  *	 @option {Object, Number} offset Add/deduct from the end position. One number for both axes or { top:x, left:y }.
  *	 @option {Object, Number} over Add/deduct the height/width multiplied by 'over', can be { top:x, left:y } when using both axes.
  *	 @option {Boolean} queue If true, and both axis are given, the 2nd axis will only be animated after the first one ends.
- *	 @option {Function} onAfter Function to be called after the scrolling ends. 
+ *	 @option {Function} onAfter Function to be called after the scrolling ends.
  *	 @option {Function} onAfterFirst If queuing is activated, this function will be called after the first scrolling ends.
  * @return {jQuery} Returns the same jQuery object, for chaining.
  *
@@ -37008,7 +37008,7 @@ var exports = function() {
  * @desc Scroll to a DOM element (same for jQuery object)
  * @example var second_child = document.getElementById('container').firstChild.nextSibling;
  *			$('#container').scrollTo( second_child, { duration:500, axis:'x', onAfter:function(){
- *				alert('scrolled!!');																   
+ *				alert('scrolled!!');
  *			}});
  *
  * @desc Scroll on both axes, to different values
@@ -37016,7 +37016,7 @@ var exports = function() {
  */
 
 ;(function( $ ){
-	
+
 	var $scrollTo = $.scrollTo = function( target, duration, settings ){
 		$(window).scrollTo( target, duration, settings );
 	};
@@ -37044,9 +37044,9 @@ var exports = function() {
 					return elem;
 
 			var doc = (elem.contentWindow || elem).document || elem.ownerDocument || elem;
-			
+
 			return /webkit/i.test(navigator.userAgent) || doc.compatMode == 'BackCompat' ?
-				doc.body : 
+				doc.body :
 				doc.documentElement;
 		});
 	};
@@ -37058,16 +37058,16 @@ var exports = function() {
 		}
 		if( typeof settings == 'function' )
 			settings = { onAfter:settings };
-			
+
 		if( target == 'max' )
 			target = 9e9;
-			
+
 		settings = $.extend( {}, $scrollTo.defaults, settings );
 		// Speed is still recognized for backwards compatibility
 		duration = duration || settings.duration;
 		// Make sure the settings are given right
 		settings.queue = settings.queue && settings.axis.length > 1;
-		
+
 		if( settings.queue )
 			// Let's keep the overall duration
 			duration /= 2;
@@ -37098,7 +37098,7 @@ var exports = function() {
 				case 'object':
 					// DOMElement / jQuery
 					if( targ.is || targ.style )
-						// Get the real position of the target 
+						// Get the real position of the target
 						toff = (targ = $(targ)).offset();
 			}
 			$.each( settings.axis.split(''), function( i, axis ){
@@ -37116,16 +37116,16 @@ var exports = function() {
 						attr[key] -= parseInt(targ.css('margin'+Pos)) || 0;
 						attr[key] -= parseInt(targ.css('border'+Pos+'Width')) || 0;
 					}
-					
+
 					attr[key] += settings.offset[pos] || 0;
-					
+
 					if( settings.over[pos] )
 						// Scroll to a fraction of its width/height
 						attr[key] += targ[axis=='x'?'width':'height']() * settings.over[pos];
-				}else{ 
+				}else{
 					var val = targ[pos];
 					// Handle percentage values
-					attr[key] = val.slice && val.slice(-1) == '%' ? 
+					attr[key] = val.slice && val.slice(-1) == '%' ?
 						parseFloat(val) / 100 * max
 						: val;
 				}
@@ -37146,7 +37146,7 @@ var exports = function() {
 				}
 			});
 
-			animate( settings.onAfter );			
+			animate( settings.onAfter );
 
 			function animate( callback ){
 				$elem.animate( attr, duration, settings.easing, callback && function(){
@@ -37182,22 +37182,22 @@ var exports = function() {
 		if (targetTop < viewportTop) {
 			return this.scrollTo(target, {offset: (viewportHeight - targetHeight) * -1});
 		}
-	};	
-	
+	};
+
 	// Max scrolling position, works on quirks mode
 	// It only fails (not too badly) on IE, quirks mode.
 	$scrollTo.max = function( elem, axis ){
 		var Dim = axis == 'x' ? 'Width' : 'Height',
 			scroll = 'scroll'+Dim;
-		
+
 		if( !$(elem).is('html,body') )
 			return elem[scroll] - $(elem)[Dim.toLowerCase()]();
-		
+
 		var size = 'client' + Dim,
 			html = elem.ownerDocument.documentElement,
 			body = elem.ownerDocument.body;
 
-		return Math.max( html[scroll], body[scroll] ) 
+		return Math.max( html[scroll], body[scroll] )
 			 - Math.min( html[size]  , body[size]   );
 	};
 
@@ -37206,14 +37206,14 @@ var exports = function() {
 	};
 
 })( jQuery );
-}; 
+};
 
-exports(); 
-module.resolveWith(exports); 
+exports();
+module.resolveWith(exports);
 
 // module body: end
 
-}; 
+};
 // module factory: end
 
 FD40.module("scrollTo", moduleFactory);
@@ -37226,8 +37226,8 @@ FD40.module("scrollTo", moduleFactory);
 var moduleFactory = function($) {
 // module body: start
 
-var module = this; 
-var exports = function() { 
+var module = this;
+var exports = function() {
 
 /*!
  * Tiny Scrollbar 1.65
@@ -37257,7 +37257,7 @@ var jQuery  = $;
  * Depends on library: jQuery
  *
  */
-( function( $ ) 
+( function( $ )
 {
     $.tiny = $.tiny || { };
 
@@ -37275,10 +37275,10 @@ var jQuery  = $;
     $.fn.tinyscrollbar = function( params )
     {
         var options = $.extend( {}, $.tiny.scrollbar.options, params );
-        
+
         this.each( function()
-        { 
-            $( this ).data('tsb', new Scrollbar( $( this ), options ) ); 
+        {
+            $( this ).data('tsb', new Scrollbar( $( this ), options ) );
         });
 
         return this;
@@ -37286,7 +37286,7 @@ var jQuery  = $;
 
     $.fn.tinyscrollbar_update = function(sScroll)
     {
-        return $( this ).data( 'tsb' ).update( sScroll ); 
+        return $( this ).data( 'tsb' ).update( sScroll );
     };
 
     function Scrollbar( root, options )
@@ -37325,12 +37325,12 @@ var jQuery  = $;
 
             oTrack[ options.axis ] = options.size === 'auto' ? oViewport[ options.axis ] : options.size;
             oThumb[ options.axis ] = Math.min( oTrack[ options.axis ], Math.max( 0, ( options.sizethumb === 'auto' ? ( oTrack[ options.axis ] * oContent.ratio ) : options.sizethumb ) ) );
-        
+
             oScrollbar.ratio = options.sizethumb === 'auto' ? ( oContent[ options.axis ] / oTrack[ options.axis ] ) : ( oContent[ options.axis ] - oViewport[ options.axis ] ) / ( oTrack[ options.axis ] - oThumb[ options.axis ] );
-            
+
             iScroll = ( sScroll === 'relative' && oContent.ratio <= 1 ) ? Math.min( ( oContent[ options.axis ] - oViewport[ options.axis ] ), Math.max( 0, iScroll )) : 0;
             iScroll = ( sScroll === 'bottom' && oContent.ratio <= 1 ) ? ( oContent[ options.axis ] - oViewport[ options.axis ] ) : isNaN( parseInt( sScroll, 10 ) ) ? iScroll : parseInt( sScroll, 10 );
-            
+
             setSize();
         };
 
@@ -37357,7 +37357,7 @@ var jQuery  = $;
             else
             {
                 oViewport.obj[0].ontouchstart = function( event )
-                {   
+                {
                     if( 1 === event.touches.length )
                     {
                         start( event.touches[ 0 ] );
@@ -37382,7 +37382,7 @@ var jQuery  = $;
             var oThumbDir   = parseInt( oThumb.obj.css( sDirection ), 10 );
             iMouse.start    = sAxis ? event.pageX : event.pageY;
             iPosition.start = oThumbDir == 'auto' ? 0 : oThumbDir;
-            
+
             if( ! touchEvents )
             {
                 $( document ).bind( 'mousemove', drag );
@@ -37396,7 +37396,7 @@ var jQuery  = $;
                     event.preventDefault();
                     drag( event.touches[ 0 ] );
                 };
-                document.ontouchend = end;        
+                document.ontouchend = end;
             }
         }
 
@@ -37440,7 +37440,7 @@ var jQuery  = $;
                 oThumb.obj.css( sDirection, iPosition.now );
             }
         }
-        
+
         function end()
         {
             $( document ).unbind( 'mousemove', drag );
@@ -37454,14 +37454,14 @@ var jQuery  = $;
 
 }(jQuery));
 
-}; 
+};
 
-exports(); 
-module.resolveWith(exports); 
+exports();
+module.resolveWith(exports);
 
 // module body: end
 
-}; 
+};
 // module factory: end
 
 FD40.module("tinyscrollbar", moduleFactory);
@@ -37474,9 +37474,9 @@ FD40.module("tinyscrollbar", moduleFactory);
 var moduleFactory = function($) {
 // module body: start
 
-var module = this; 
-var jQuery = $; 
-var exports = function() { 
+var module = this;
+var jQuery = $;
+var exports = function() {
 
 /**
  * History.js jQuery Adapter
@@ -38789,7 +38789,7 @@ var exports = function() {
 			// Fetch ID
 			var id = History.extractId(newState.url),
 				str;
-			
+
 			if ( !id ) {
 				// Find ID via State String
 				str = History.getStateString(newState);
@@ -38963,7 +38963,7 @@ var exports = function() {
 		History.getStateId = function(passedState){
 			// Prepare
 			var State, id;
-			
+
 			// Fetch
 			State = History.normalizeState(passedState);
 
@@ -38983,7 +38983,7 @@ var exports = function() {
 		History.getHashByState = function(passedState){
 			// Prepare
 			var State, hash;
-			
+
 			// Fetch
 			State = History.normalizeState(passedState);
 
@@ -40066,11 +40066,11 @@ var exports = function() {
 
 			// For Internet Explorer
 			History.intervalList.push(setInterval(History.onUnload,History.options.storeInterval));
-			
+
 			// For Other Browsers
 			History.Adapter.bind(window,'beforeunload',History.onUnload);
 			History.Adapter.bind(window,'unload',History.onUnload);
-			
+
 			// Both are enabled for consistency
 		}
 
@@ -40164,14 +40164,14 @@ History.Adapter.bind(window,'statechange',function(){
     	}
     }
 });
-}; 
+};
 
-exports(); 
-module.resolveWith(exports); 
+exports();
+module.resolveWith(exports);
 
 // module body: end
 
-}; 
+};
 // module factory: end
 
 FD40.module("history", moduleFactory);
@@ -40184,9 +40184,9 @@ FD40.module("history", moduleFactory);
 var moduleFactory = function($) {
 // module body: start
 
-var module = this; 
-var jQuery = $; 
-var exports = function() { 
+var module = this;
+var jQuery = $;
+var exports = function() {
 
 /**
  * jQuery Masonry v2.1.03
@@ -40287,10 +40287,10 @@ var exports = function() {
         .addClass('masonry-brick');
       return $bricks;
     },
-    
+
     // sets up widget
     _create : function( options ) {
-      
+
       this.options = $.extend( true, {}, $.Mason.settings, options );
       this.styleQueue = [];
 
@@ -40314,7 +40314,7 @@ var exports = function() {
         x: parseInt( this.element.css( 'padding-' + this.horizontalDirection ), 10 ),
         y: parseInt( this.element.css( 'padding-top' ), 10 )
       };
-      
+
       this.isFluid = this.options.columnWidth && typeof this.options.columnWidth === 'function';
 
       // add masonry class first time around
@@ -40322,10 +40322,10 @@ var exports = function() {
       setTimeout( function() {
         instance.element.addClass('masonry');
       }, 0 );
-      
+
       // bind resize method
       if ( this.options.isResizable ) {
-        $(window).bind( 'smartresize.masonry', function() { 
+        $(window).bind( 'smartresize.masonry', function() {
           instance.resize();
         });
       }
@@ -40335,7 +40335,7 @@ var exports = function() {
       this.reloadItems();
 
     },
-  
+
     // _init fires when instance is first created
     // and when instance is triggered again -> $el.masonry();
     _init : function( callback ) {
@@ -40348,9 +40348,9 @@ var exports = function() {
       // signature: $('#foo').bar({ cool:false });
       if ( $.isPlainObject( key ) ){
         this.options = $.extend(true, this.options, key);
-      } 
+      }
     },
-    
+
     // ====================== General Layout ======================
 
     // used on collection of atoms (should be filtered, and sorted before )
@@ -40361,7 +40361,7 @@ var exports = function() {
       for (var i=0, len = $bricks.length; i < len; i++) {
         this._placeBrick( $bricks[i] );
       }
-      
+
       // set the size of the container
       var containerSize = {};
       containerSize.height = Math.max.apply( Math, this.colYs );
@@ -40401,10 +40401,10 @@ var exports = function() {
       if ( callback ) {
         callback.call( $bricks );
       }
-      
+
       this.isLaidOut = true;
     },
-    
+
     // calculates number of columns
     // i.e. this.columnWidth = 200
     _getColumns : function() {
@@ -40459,7 +40459,7 @@ var exports = function() {
       // get the minimum Y value from the columns
       var minimumY = Math.min.apply( Math, groupY ),
           shortCol = 0;
-      
+
       // Find index of short column, the first from the left
       for (var i=0, len = groupY.length; i < len; i++) {
         if ( groupY[i] === minimumY ) {
@@ -40484,8 +40484,8 @@ var exports = function() {
       }
 
     },
-    
-    
+
+
     resize: function() {
       var prevColCount = this.cols;
       // get updated colCount
@@ -40495,8 +40495,8 @@ var exports = function() {
         this._reLayout();
       }
     },
-    
-    
+
+
     _reLayout : function( callback ) {
       // reset columns
       var i = this.cols;
@@ -40507,20 +40507,20 @@ var exports = function() {
       // apply layout logic to all bricks
       this.layout( this.$bricks, callback );
     },
-    
+
     // ====================== Convenience methods ======================
-    
+
     // goes through all children again and gets bricks in proper order
     reloadItems : function() {
       this.$bricks = this._getBricks( this.element.children() );
     },
-    
-    
+
+
     reload : function( callback ) {
       this.reloadItems();
       this._init( callback );
     },
-    
+
 
     // convienence method for working with Infinite Scroll
     appended : function( $content, isAnimatedFromBottom, callback ) {
@@ -40535,20 +40535,20 @@ var exports = function() {
         this._appended( $content, callback );
       }
     },
-    
+
     _appended : function( $content, callback ) {
       var $newBricks = this._getBricks( $content );
       // add new bricks to brick pool
       this.$bricks = this.$bricks.add( $newBricks );
       this.layout( $newBricks, callback );
     },
-    
+
     // removes elements from Masonry widget
     remove : function( $content ) {
       this.$bricks = this.$bricks.not( $content );
       $content.remove();
     },
-    
+
     // destroys widget, returns elements and container back (close) to original style
     destroy : function() {
 
@@ -40560,7 +40560,7 @@ var exports = function() {
           this.style.left = '';
           this.style.right = '';
         });
-      
+
       // re-apply saved container styles
       var elemStyle = this.element[0].style;
       for ( var prop in this.originalStyle ) {
@@ -40571,14 +40571,14 @@ var exports = function() {
         .unbind('.masonry')
         .removeClass('masonry')
         .removeData('masonry');
-      
+
       $(window).unbind('.masonry');
 
     }
-    
+
   };
-  
-  
+
+
   // ======================= imagesLoaded Plugin ===============================
   /*!
    * jQuery imagesLoaded plugin v1.1.0
@@ -40645,12 +40645,12 @@ var exports = function() {
       window.console.error( message );
     }
   };
-  
+
   // =======================  Plugin bridge  ===============================
   // leverages data method to either create or return $.Mason constructor
   // A bit from jQuery UI
   //   https://github.com/jquery/jquery-ui/blob/master/ui/jquery.ui.widget.js
-  // A bit from jcarousel 
+  // A bit from jcarousel
   //   https://github.com/jsor/jcarousel/blob/master/lib/jquery.jcarousel.js
 
   $.fn.masonry = function( options ) {
@@ -40689,14 +40689,14 @@ var exports = function() {
   };
 
 })( window, jQuery );
-}; 
+};
 
-exports(); 
-module.resolveWith(exports); 
+exports();
+module.resolveWith(exports);
 
 // module body: end
 
-}; 
+};
 // module factory: end
 
 FD40.module("masonry", moduleFactory);
@@ -40709,11 +40709,11 @@ FD40.module("masonry", moduleFactory);
 var moduleFactory = function($) {
 // module body: start
 
-var module = this; 
-$.require() 
- .script("moment") 
- .done(function() { 
-var exports = function() { 
+var module = this;
+$.require()
+ .script("moment")
+ .done(function() {
+var exports = function() {
 
 /*
 Version 3.0.0
@@ -41886,15 +41886,15 @@ THE SOFTWARE.
         });
     };
 
-}; 
+};
 
-exports(); 
-module.resolveWith(exports); 
+exports();
+module.resolveWith(exports);
 
-}); 
+});
 // module body: end
 
-}; 
+};
 // module factory: end
 
 FD40.module("datetimepicker", moduleFactory);
@@ -41908,11 +41908,11 @@ FD40.module("datetimepicker", moduleFactory);
 var moduleFactory = function($) {
 // module body: start
 
-var module = this; 
-$.require() 
- .script("ui/position") 
- .done(function() { 
-var exports = function() { 
+var module = this;
+$.require()
+ .script("ui/position")
+ .done(function() {
+var exports = function() {
 
 /*
 <div
@@ -42508,15 +42508,15 @@ $(document)
 
  		popbox.hide();
  	});
-}; 
+};
 
-exports(); 
-module.resolveWith(exports); 
+exports();
+module.resolveWith(exports);
 
-}); 
+});
 // module body: end
 
-}; 
+};
 // module factory: end
 
 FD40.module("popbox", moduleFactory);
@@ -42529,9 +42529,9 @@ FD40.module("popbox", moduleFactory);
 var moduleFactory = function($) {
 // module body: start
 
-var module = this; 
-var jQuery = $; 
-var exports = function() { 
+var module = this;
+var jQuery = $;
+var exports = function() {
 
 /*!
  * jQuery UI Position 1.10.4pre
@@ -43031,14 +43031,14 @@ $.ui.position = {
 
 }( jQuery ) );
 
-}; 
+};
 
-exports(); 
-module.resolveWith(exports); 
+exports();
+module.resolveWith(exports);
 
 // module body: end
 
-}; 
+};
 // module factory: end
 
 FD40.module("ui/position", moduleFactory);
@@ -45117,9 +45117,9 @@ FD40.module("gmaps", moduleFactory);
 var moduleFactory = function($) {
 // module body: start
 
-var module = this; 
-var jQuery = $; 
-var exports = function() { 
+var module = this;
+var jQuery = $;
+var exports = function() {
 
 /*! http://mths.be/placeholder v2.0.7 by @mathias */
 ;(function(window, document, $) {
@@ -45279,14 +45279,14 @@ var exports = function() {
 
 }(window, document, jQuery));
 
-}; 
+};
 
-exports(); 
-module.resolveWith(exports); 
+exports();
+module.resolveWith(exports);
 
 // module body: end
 
-}; 
+};
 // module factory: end
 
 FD40.module("placeholder", moduleFactory);
@@ -45299,8 +45299,8 @@ FD40.module("placeholder", moduleFactory);
 var moduleFactory = function($) {
 // module body: start
 
-var module = this; 
-var exports = function() { 
+var module = this;
+var exports = function() {
 
 /**
 * jquery.Image
@@ -45342,7 +45342,7 @@ $.Image = {
 					height: h = image.height(),
 					aspectRatio: r = w / h,
 					orientation: o = (r===1) ? "square" : (r<1) ? "tall" : "wide"
-				}	
+				}
 
 				image
 					.css({
@@ -45450,14 +45450,14 @@ $.Image = {
 	}
 };
 
-}; 
+};
 
-exports(); 
-module.resolveWith(exports); 
+exports();
+module.resolveWith(exports);
 
 // module body: end
 
-}; 
+};
 // module factory: end
 
 FD40.module("image", moduleFactory);
@@ -45470,9 +45470,9 @@ FD40.module("image", moduleFactory);
 var moduleFactory = function($) {
 // module body: start
 
-var module = this; 
-var jQuery = $; 
-var exports = function() { 
+var module = this;
+var jQuery = $;
+var exports = function() {
 
 /*
  * imgAreaSelect jQuery plugin
@@ -46673,14 +46673,14 @@ $.fn.imgAreaSelect = function (options) {
 
 })(jQuery);
 
-}; 
+};
 
-exports(); 
-module.resolveWith(exports); 
+exports();
+module.resolveWith(exports);
 
 // module body: end
 
-}; 
+};
 // module factory: end
 
 FD40.module("imgareaselect", moduleFactory);
@@ -46693,8 +46693,8 @@ FD40.module("imgareaselect", moduleFactory);
 var moduleFactory = function($) {
 // module body: start
 
-var module = this; 
-var exports = function() { 
+var module = this;
+var exports = function() {
 
 /*
  * Password Strength (0.1.2)
@@ -46825,14 +46825,14 @@ $.fn.password_strength = function(options)
 		});
 	});
 };
-}; 
+};
 
-exports(); 
-module.resolveWith(exports); 
+exports();
+module.resolveWith(exports);
 
 // module body: end
 
-}; 
+};
 // module factory: end
 
 FD40.module("passwordstrength", moduleFactory);
@@ -46845,8 +46845,8 @@ FD40.module("passwordstrength", moduleFactory);
 var moduleFactory = function($) {
 // module body: start
 
-var module = this; 
-var exports = function() { 
+var module = this;
+var exports = function() {
 
 /**
  * jquery.mentions.
@@ -46863,14 +46863,14 @@ var exports = function() {
  * Dual licensed under the MIT and GPL licenses:
  * http://www.opensource.org/licenses/mit-license.php
  * http://www.gnu.org/licenses/gpl.html
- * 
+ *
  * Trigger configuration:
- * 
+ *
  * type
  *   Name for the trigger type.
- * 
+ *
  * wrap
- *   Whether or not hitting a trigger key before existing 
+ *   Whether or not hitting a trigger key before existing
  *   characters will wrap these characters into the block
  *   marker until a stop character is found. Space will
  *   always be a stop character whether or not it is
@@ -46883,7 +46883,7 @@ var exports = function() {
  *   If true, hitting on a space in a block marker
  *   will not end the block marker until a consecutive
  *   space is pressed. (default: false)
- * 
+ *
  * query
  *   Accepts a url string, an array of objects or
  *   a function that returns a deferred object that
@@ -49007,7 +49007,7 @@ $.template("mentions/inspector", '<div class="mentions-inspector" data-mentions-
         <input type="text" data-mentions-trigger-buffer/>
         <hr/>
     </fieldset>
-    <hr/> 
+    <hr/>
     <fieldset>
         <b>Marker</b>
         <hr/>
@@ -49074,7 +49074,7 @@ $.Controller("Mentions.Inspector",
 
         "{triggerKey}" : "[data-mentions-trigger-key]",
         "{triggerType}" : "[data-mentions-trigger-type]",
-        "{triggerBuffer}" : "[data-mentions-trigger-buffer]"        
+        "{triggerBuffer}" : "[data-mentions-trigger-buffer]"
     }
 },
 function(self){ return {
@@ -49160,7 +49160,7 @@ function(self){ return {
         if (block) {
             self.blockText().val(marker.text.nodeValue);
             self.blockHtml().val($(block).clone().toHTML());
-            // TODO: Retrieve block type & value 
+            // TODO: Retrieve block type & value
         } else {
             self.blockText().val('');
             self.blockHtml().val('');
@@ -49174,14 +49174,14 @@ function(self){ return {
 
 }});
 
-}; 
+};
 
-exports(); 
-module.resolveWith(exports); 
+exports();
+module.resolveWith(exports);
 
 // module body: end
 
-}; 
+};
 // module factory: end
 
 FD40.module("mentions", moduleFactory);
@@ -49194,11 +49194,11 @@ FD40.module("mentions", moduleFactory);
 var moduleFactory = function($) {
 // module body: start
 
-var module = this; 
-$.require() 
- .script("ui/position","easing") 
- .done(function() { 
-var exports = function() { 
+var module = this;
+$.require()
+ .script("ui/position","easing")
+ .done(function() {
+var exports = function() {
 
 /**
  * jquery.dialog.
@@ -50243,15 +50243,15 @@ $.dialog = function(options) {
     return controller;
 };
 
-}; 
+};
 
-exports(); 
-module.resolveWith(exports); 
+exports();
+module.resolveWith(exports);
 
-}); 
+});
 // module body: end
 
-}; 
+};
 // module factory: end
 
 FD40.module("dialog", moduleFactory);
@@ -50264,9 +50264,9 @@ FD40.module("dialog", moduleFactory);
 var moduleFactory = function($) {
 // module body: start
 
-var module = this; 
-var jQuery = $; 
-var exports = function() { 
+var module = this;
+var jQuery = $;
+var exports = function() {
 
 /* ============================================================
  * jQuery Easing v1.3 - http://gsgd.co.uk/sandbox/jquery/easing/
@@ -50283,7 +50283,7 @@ jQuery.easing['jswing'] = jQuery.easing['swing'];
 jQuery.extend( jQuery.easing,
 {
 	// t: current time, b: begInnIng value, c: change In value, d: duration
-	
+
 	def: 'easeOutQuad',
 	swing: function (x, t, b, c, d) {
 		//alert(jQuery.easing.default);
@@ -50391,7 +50391,7 @@ jQuery.extend( jQuery.easing,
 		return c*((t=t/d-1)*t*((s+1)*t + s) + 1) + b;
 	},
 	easeInOutBack: function (x, t, b, c, d, s) {
-		if (s == undefined) s = 1.70158; 
+		if (s == undefined) s = 1.70158;
 		if ((t/=d/2) < 1) return c/2*(t*t*(((s*=(1.525))+1)*t - s)) + b;
 		return c/2*((t-=2)*t*(((s*=(1.525))+1)*t + s) + 2) + b;
 	},
@@ -50418,43 +50418,43 @@ jQuery.extend( jQuery.easing,
 /*
  *
  * TERMS OF USE - EASING EQUATIONS
- * 
- * Open source under the BSD License. 
- * 
+ *
+ * Open source under the BSD License.
+ *
  * Copyright © 2001 Robert Penner
  * All rights reserved.
- * 
- * Redistribution and use in source and binary forms, with or without modification, 
+ *
+ * Redistribution and use in source and binary forms, with or without modification,
  * are permitted provided that the following conditions are met:
- * 
- * Redistributions of source code must retain the above copyright notice, this list of 
+ *
+ * Redistributions of source code must retain the above copyright notice, this list of
  * conditions and the following disclaimer.
- * Redistributions in binary form must reproduce the above copyright notice, this list 
- * of conditions and the following disclaimer in the documentation and/or other materials 
+ * Redistributions in binary form must reproduce the above copyright notice, this list
+ * of conditions and the following disclaimer in the documentation and/or other materials
  * provided with the distribution.
- * 
- * Neither the name of the author nor the names of contributors may be used to endorse 
+ *
+ * Neither the name of the author nor the names of contributors may be used to endorse
  * or promote products derived from this software without specific prior written permission.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY 
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
  * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
  * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
  *  COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
  *  EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
- *  GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED 
+ *  GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
  * AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- *  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED 
- * OF THE POSSIBILITY OF SUCH DAMAGE. 
+ *  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+ * OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  */
-}; 
+};
 
-exports(); 
-module.resolveWith(exports); 
+exports();
+module.resolveWith(exports);
 
 // module body: end
 
-}; 
+};
 // module factory: end
 
 FD40.module("easing", moduleFactory);
@@ -50467,9 +50467,9 @@ FD40.module("easing", moduleFactory);
 var moduleFactory = function($) {
 // module body: start
 
-var module = this; 
-var jQuery = $; 
-var exports = function() { 
+var module = this;
+var jQuery = $;
+var exports = function() {
 
 /*
  * Gritter for jQuery
@@ -50483,12 +50483,12 @@ var exports = function() {
  */
 
 (function($){
- 	
+
 	/**
 	* Set it up as an object under the jQuery namespace
 	*/
 	$.gritter = {};
-	
+
 	/**
 	* Set up global options that the user can over-ride
 	*/
@@ -50499,7 +50499,7 @@ var exports = function() {
 		fade_out_speed: 1000, // how fast the notices fade out
 		time: 6000 // hang on the screen for...
 	}
-	
+
 	/**
 	* Add a gritter notification to the screen
 	* @see Gritter#add();
@@ -50509,16 +50509,16 @@ var exports = function() {
 		try {
 			return Gritter.add(params || {});
 		} catch(e) {
-		
+
 			var err = 'Gritter Error: ' + e;
-			(typeof(console) != 'undefined' && console.error) ? 
-				console.error(err, params) : 
+			(typeof(console) != 'undefined' && console.error) ?
+				console.error(err, params) :
 				alert(err);
-				
+
 		}
-		
+
 	}
-	
+
 	/**
 	* Remove a gritter notification from the screen
 	* @see Gritter#removeSpecific();
@@ -50526,7 +50526,7 @@ var exports = function() {
 	$.gritter.remove = function(id, params){
 		Gritter.removeSpecific(id, params || {});
 	}
-	
+
 	/**
 	* Remove all notifications
 	* @see Gritter#stop();
@@ -50534,19 +50534,19 @@ var exports = function() {
 	$.gritter.removeAll = function(params){
 		Gritter.stop(params || {});
 	}
-	
+
 	/**
 	* Big fat Gritter object
 	* @constructor (not really since its object literal)
 	*/
 	var Gritter = {
-		
+
 		// Public - options to over-ride with $.gritter.options in "add"
 		position: '',
 		fade_in_speed: '',
 		fade_out_speed: '',
 		time: '',
-		
+
 		// Private - no touchy the private parts
 		_custom_timer: 0,
 		_item_count: 0,
@@ -50555,7 +50555,7 @@ var exports = function() {
 		_tpl_title: '<span class="gritter-title">[[title]]</span>',
 		_tpl_item: '<div id="gritter-item-[[number]]" class="gritter-item-wrapper [[item_class]]" style="display:none" role="alert"><div class="gritter-top"></div><div class="gritter-item">[[close]][[image]]<div class="[[class_name]]">[[title]]<p>[[text]]</p></div><div style="clear:both"></div></div><div class="gritter-bottom"></div></div>',
 		_tpl_wrap: '<div id="gritter-notice-wrapper"></div>',
-		
+
 		/**
 		* Add a gritter notification to the screen
 		* @param {Object} params The object that contains all the options for drawing the notification
@@ -50569,16 +50569,16 @@ var exports = function() {
 
 			// We might have some issues if we don't have a title or text!
 			if(params.text === null){
-				throw 'You must supply "text" parameter.'; 
+				throw 'You must supply "text" parameter.';
 			}
-			
+
 			// Check the options and set them once
 			if(!this._is_setup){
 				this._runSetup();
 			}
-			
+
 			// Basics
-			var title = params.title, 
+			var title = params.title,
 				text = params.text,
 				image = params.image || '',
 				sticky = params.sticky || false,
@@ -50587,11 +50587,11 @@ var exports = function() {
 				time_alive = params.time || '';
 
 			this._verifyWrapper();
-			
+
 			this._item_count++;
-			var number = this._item_count, 
+			var number = this._item_count,
 				tmp = this._tpl_item;
-			
+
 			// Assign callbacks
 			$(['before_open', 'after_open', 'before_close', 'after_close']).each(function(i, val){
 				Gritter['_' + val + '_' + number] = ($.isFunction(params[val])) ? params[val] : function(){}
@@ -50599,22 +50599,22 @@ var exports = function() {
 
 			// Reset
 			this._custom_timer = 0;
-			
+
 			// A custom fade time set
 			if(time_alive){
 				this._custom_timer = time_alive;
 			}
-			
+
 			var image_str = (image != '') ? '<img src="' + image + '" class="gritter-image" />' : '',
 				class_name = (image != '') ? 'gritter-with-image' : 'gritter-without-image';
-			
+
 			// String replacements on the template
 			if(title){
 				title = this._str_replace('[[title]]',title,this._tpl_title);
 			}else{
 				title = '';
 			}
-			
+
 			tmp = this._str_replace(
 				['[[title]]', '[[text]]', '[[close]]', '[[image]]', '[[number]]', '[[class_name]]', '[[item_class]]'],
 				[title, text, this._tpl_close, image_str, this._item_count, class_name, item_class], tmp
@@ -50626,21 +50626,21 @@ var exports = function() {
 			}
 
 			$('#gritter-notice-wrapper').addClass(position).append(tmp);
-			
+
 			var item = $('#gritter-item-' + this._item_count);
-			
+
 			item.fadeIn(this.fade_in_speed, function(){
 				Gritter['_after_open_' + number]($(this));
 			});
-			
+
 			if(!sticky){
 				this._setFadeTimer(item, number);
 			}
-			
+
 			// Bind the hover/unhover states
 			$(item).bind('mouseenter mouseleave', function(event){
 				if(event.type == 'mouseenter'){
-					if(!sticky){ 
+					if(!sticky){
 						Gritter._restoreItemIfFading($(this), number);
 					}
 				}
@@ -50651,17 +50651,17 @@ var exports = function() {
 				}
 				Gritter._hoverState($(this), event.type);
 			});
-			
+
 			// Clicking (X) makes the perdy thing close
 			$(item).find('.gritter-close').click(function(){
 				Gritter.removeSpecific(number, {}, null, true);
 				return false;
 			});
-			
+
 			return number;
-		
+
 		},
-		
+
 		/**
 		* If we don't have any more gritter notifications, get rid of the wrapper using this check
 		* @private
@@ -50670,18 +50670,18 @@ var exports = function() {
 		* @param {Boolean} manual_close Did we close the gritter dialog with the (X) button
 		*/
 		_countRemoveWrapper: function(unique_id, e, manual_close){
-			
+
 			// Remove it then run the callback function
 			e.remove();
 			this['_after_close_' + unique_id](e, manual_close);
-			
+
 			// Check if the wrapper is empty, if it is.. remove the wrapper
 			if($('.gritter-item-wrapper').length == 0){
 				$('#gritter-notice-wrapper').remove();
 			}
-		
+
 		},
-		
+
 		/**
 		* Fade out an element after it's been on the screen for x amount of time
 		* @private
@@ -50698,15 +50698,15 @@ var exports = function() {
 				manual_close = unbind_events;
 
 			this['_before_close_' + unique_id](e, manual_close);
-			
+
 			// If this is true, then we are coming from clicking the (X)
 			if(unbind_events){
 				e.unbind('mouseenter mouseleave');
 			}
-			
+
 			// Fade it out or remove it
 			if(fade){
-			
+
 				e.animate({
 					opacity: 0
 				}, fade_out_speed, function(){
@@ -50714,45 +50714,45 @@ var exports = function() {
 						Gritter._countRemoveWrapper(unique_id, e, manual_close);
 					})
 				})
-				
+
 			}
 			else {
-				
+
 				this._countRemoveWrapper(unique_id, e);
-				
+
 			}
-						
+
 		},
-		
+
 		/**
-		* Perform actions based on the type of bind (mouseenter, mouseleave) 
+		* Perform actions based on the type of bind (mouseenter, mouseleave)
 		* @private
 		* @param {Object} e The jQuery element
 		* @param {String} type The type of action we're performing: mouseenter or mouseleave
 		*/
 		_hoverState: function(e, type){
-			
+
 			// Change the border styles and add the (X) close button when you hover
 			if(type == 'mouseenter'){
-				
+
 				e.addClass('hover');
-				
+
 				// Show close button
 				e.find('.gritter-close').show();
-						
+
 			}
 			// Remove the border styles and hide (X) close button when you mouse out
 			else {
-				
+
 				e.removeClass('hover');
-				
+
 				// Hide close button
 				e.find('.gritter-close').hide();
-				
+
 			}
-			
+
 		},
-		
+
 		/**
 		* Remove a specific notification based on an ID
 		* @param {Integer} unique_id The ID used to delete a specific notification
@@ -50761,17 +50761,17 @@ var exports = function() {
 		* @param {Boolean} unbind_events If we clicked on the (X) we set this to true to unbind mouseenter/mouseleave
 		*/
 		removeSpecific: function(unique_id, params, e, unbind_events){
-			
+
 			if(!e){
 				var e = $('#gritter-item-' + unique_id);
 			}
 
-			// We set the fourth param to let the _fade function know to 
+			// We set the fourth param to let the _fade function know to
 			// unbind the "mouseleave" event.  Once you click (X) there's no going back!
 			this._fade(e, unique_id, params || {}, unbind_events);
-			
+
 		},
-		
+
 		/**
 		* If the item is fading out and we hover over it, restore it!
 		* @private
@@ -50779,25 +50779,25 @@ var exports = function() {
 		* @param {Integer} unique_id The ID of the element
 		*/
 		_restoreItemIfFading: function(e, unique_id){
-			
+
 			clearTimeout(this['_int_id_' + unique_id]);
 			e.stop().css({ opacity: '', height: '' });
-			
+
 		},
-		
+
 		/**
 		* Setup the global options - only once
 		* @private
 		*/
 		_runSetup: function(){
-		
+
 			for(opt in $.gritter.options){
 				this[opt] = $.gritter.options[opt];
 			}
 			this._is_setup = 1;
-			
+
 		},
-		
+
 		/**
 		* Set the notification to fade out after a certain amount of time
 		* @private
@@ -50805,80 +50805,80 @@ var exports = function() {
 		* @param {Integer} unique_id The ID of the element
 		*/
 		_setFadeTimer: function(e, unique_id){
-			
+
 			var timer_str = (this._custom_timer) ? this._custom_timer : this.time;
-			this['_int_id_' + unique_id] = setTimeout(function(){ 
+			this['_int_id_' + unique_id] = setTimeout(function(){
 				Gritter._fade(e, unique_id);
 			}, timer_str);
-		
+
 		},
-		
+
 		/**
 		* Bring everything to a halt
 		* @param {Object} params A list of callback functions to pass when all notifications are removed
-		*/  
+		*/
 		stop: function(params){
-			
+
 			// callbacks (if passed)
 			var before_close = ($.isFunction(params.before_close)) ? params.before_close : function(){};
 			var after_close = ($.isFunction(params.after_close)) ? params.after_close : function(){};
-			
+
 			var wrap = $('#gritter-notice-wrapper');
 			before_close(wrap);
 			wrap.fadeOut(function(){
 				$(this).remove();
 				after_close();
 			});
-		
+
 		},
-		
+
 		/**
 		* An extremely handy PHP function ported to JS, works well for templating
 		* @private
 		* @param {String/Array} search A list of things to search for
 		* @param {String/Array} replace A list of things to replace the searches with
 		* @return {String} sa The output
-		*/  
+		*/
 		_str_replace: function(search, replace, subject, count){
-		
+
 			var i = 0, j = 0, temp = '', repl = '', sl = 0, fl = 0,
 				f = [].concat(search),
 				r = [].concat(replace),
 				s = subject,
 				ra = r instanceof Array, sa = s instanceof Array;
 			s = [].concat(s);
-			
+
 			if(count){
 				this.window[count] = 0;
 			}
-		
+
 			for(i = 0, sl = s.length; i < sl; i++){
-				
+
 				if(s[i] === ''){
 					continue;
 				}
-				
+
 				for (j = 0, fl = f.length; j < fl; j++){
-					
+
 					temp = s[i] + '';
 					repl = ra ? (r[j] !== undefined ? r[j] : '') : r[0];
 					s[i] = (temp).split(f[j]).join(repl);
-					
+
 					if(count && s[i] !== temp){
 						this.window[count] += (temp.length-s[i].length) / f[j].length;
 					}
-					
+
 				}
 			}
-			
+
 			return sa ? s : s[0];
-			
+
 		},
-		
+
 		/**
 		* A check to make sure we have something to wrap our notices with
 		* @private
-		*/  
+		*/
 		_verifyWrapper: function(){
 
 
@@ -50899,24 +50899,24 @@ var exports = function() {
 					})
 					.appendTo("body");
 			}
-		  
+
 			if($('#gritter-notice-wrapper').length == 0){
 				$("[id=fd].gritter").append(this._tpl_wrap);
 			}
 		}
-		
+
 	}
-	
+
 })(jQuery);
 
-}; 
+};
 
-exports(); 
-module.resolveWith(exports); 
+exports();
+module.resolveWith(exports);
 
 // module body: end
 
-}; 
+};
 // module factory: end
 
 FD40.module("gritter", moduleFactory);
@@ -50943,7 +50943,7 @@ EasySocial.module("admin", function($){
 			"chosen",
 			"flot"
 		)
-		.script( 
+		.script(
 			"admin/sidebar/sidebar"
 		)
 		.done(function($){
@@ -51738,14 +51738,14 @@ EasySocial.module( 'admin/grid/grid' , function($) {
 		EasySocial.Controller(
 			'Grid',
 			{
-				defaultOptions : 
+				defaultOptions :
 				{
 					"{sortColumns}"		: "[data-table-grid-sort]",
 					"{ordering}"		: "[data-table-grid-ordering]",
 					"{direction}"		: "[data-table-grid-direction]",
 
 					"{task}"			: "[data-table-grid-task]",
-					
+
 					"{searchInput}"		: "[data-table-grid-search-input]",
 					"{search}"			: "[data-table-grid-search]",
 					"{resetSearch}"		: "[data-table-grid-search-reset]",
@@ -51824,13 +51824,13 @@ EasySocial.module( 'admin/grid/grid' , function($) {
 
 						if( $( checkbox ).prop( 'checked' ) == true )
 						{
-							$( checkbox ).prop( 'checked' , false );	
+							$( checkbox ).prop( 'checked' , false );
 						}
 						else
 						{
 							$( checkbox ).prop( 'checked' , true );
 						}
-						
+
 					},
 					selectRow: function( row )
 					{
@@ -51869,7 +51869,7 @@ EasySocial.module( 'admin/grid/grid' , function($) {
 				}
 			}
 		);
-			
+
 		module.resolve();
 	});
 
@@ -51882,7 +51882,7 @@ EasySocial.module( 'admin/grid/sort' , function($) {
 	EasySocial.Controller(
 		'Grid.Sort',
 		{
-			defaultOptions : 
+			defaultOptions :
 			{
 				items 	: "[data-grid-sort-item]"
 			}
@@ -51908,14 +51908,14 @@ EasySocial.module( 'admin/grid/sort' , function($) {
 
 					// Remove any task associated to the form.
 					self.parent.setTask( '' );
-					
+
 					// Submit the form.
 					self.parent.submitForm();
 				}
 			}
 		}
 	);
-		
+
 	module.resolve();
 
 });
@@ -51926,7 +51926,7 @@ EasySocial.module( 'admin/grid/publishing' , function($) {
 	EasySocial.Controller(
 		'Grid.Publishing',
 		{
-			defaultOptions : 
+			defaultOptions :
 			{
 			}
 		},
@@ -51952,7 +51952,7 @@ EasySocial.module( 'admin/grid/publishing' , function($) {
 			}
 		}
 	);
-		
+
 	module.resolve();
 
 });
@@ -51963,7 +51963,7 @@ EasySocial.module( 'admin/grid/ordering' , function($) {
 	EasySocial.Controller(
 		'Grid.Ordering',
 		{
-			defaultOptions : 
+			defaultOptions :
 			{
 				"{moveUp}" 		: "[data-grid-order-up]",
 				"{moveDown}"	: "[data-grid-order-down]",
@@ -52002,7 +52002,7 @@ EasySocial.module( 'admin/grid/ordering' , function($) {
 			}
 		}
 	);
-		
+
 	module.resolve();
 
 });
@@ -53297,18 +53297,18 @@ EasySocial.module( 'admin/profiles/avatar' , function($){
 						EasySocial.dialog(
 						{
 							content 	: EasySocial.ajax( 'admin/views/profiles/confirmDeleteAvatar' ),
-							bindings	: 
+							bindings	:
 							{
 								"{deleteButton} click" : function( el , event )
 								{
 									$( el ).addClass( 'btn-loading' );
-									
-									EasySocial.ajax( 'admin/controllers/avatars/delete' , 
+
+									EasySocial.ajax( 'admin/controllers/avatars/delete' ,
 									{
 										"id" : self.options.id
 									})
 									.done(function( message )
-									{										
+									{
 										// Remove the element
 										self.element.remove();
 
@@ -53320,7 +53320,7 @@ EasySocial.module( 'admin/profiles/avatar' , function($){
 										self.parent.addMessage( message );
 
 										// Hide the dialog
-										EasySocial.dialog().close();										
+										EasySocial.dialog().close();
 									});
 								}
 							}
@@ -53626,7 +53626,7 @@ EasySocial.module( 'uploader/queue' , function($){
 			}
 		);
 
-		EasySocial.Controller( 
+		EasySocial.Controller(
 			'Uploader.Queue.Item',
 			{
 				defaultOptions:
@@ -53644,7 +53644,7 @@ EasySocial.module( 'uploader/queue' , function($){
 					{
 
 						if( self.uploader.options.temporaryUpload )
-						{						
+						{
 							// Store it as template and remove it
 							self.idTemplate = self.id().toHTML();
 							self.id().remove();
@@ -55957,7 +55957,7 @@ EasySocial.module( 'admin/profiles/members' , function($) {
 
 	EasySocial
 	.require()
-	.language( 
+	.language(
 		'COM_EASYSOCIAL_CANCEL_BUTTON',
 		'COM_EASYSOCIAL_ASSIGN_BUTTON',
 		'COM_EASYSOCIAL_PROFILES_ASSIGN_USER_DIALOG_TITLE'
@@ -55984,7 +55984,7 @@ EasySocial.module( 'admin/profiles/members' , function($) {
 
 					"{memberList} userSelected": function( el , event , id , name )
 					{
-						EasySocial.ajax( 'admin/controllers/profiles/insertMember', 
+						EasySocial.ajax( 'admin/controllers/profiles/insertMember',
 						{
 							"id"			: id,
 							"profile_id"	: self.options.id
@@ -56136,7 +56136,7 @@ EasySocial.module('utilities/alias', function($) {
 				"{target}"	: "",
 				"{source}"	: ""
 			}
-		},function( self ){ 
+		},function( self ){
 			return {
 
 				init: function()
@@ -56210,7 +56210,7 @@ EasySocial.module( 'admin/profiles/profiles' , function($) {
 		EasySocial.Controller(
 		'Profiles.Item',
 		{
-			defaultOptions : 
+			defaultOptions :
 			{
 				"{insertLink}"		: "[data-profile-insert]"
 			}
@@ -56417,7 +56417,7 @@ EasySocial.module( 'admin/reports/reporters' , function($) {
 	EasySocial.Controller(
 		'Reports.Reporters',
 		{
-			defaultOptions : 
+			defaultOptions :
 			{
 				"{item}"		: "[data-reporters-item]"
 			}
@@ -56441,7 +56441,7 @@ EasySocial.module( 'admin/reports/reporters' , function($) {
 		{
 			defaultOptions :
 			{
-				"{removeItem}"	: "[data-remove-item]"			
+				"{removeItem}"	: "[data-remove-item]"
 			}
 		},
 		function( self )
@@ -56467,7 +56467,7 @@ EasySocial.module( 'admin/reports/reporters' , function($) {
 
 						self.element.remove();
 					});
-					
+
 				}
 			}
 		}
@@ -56482,7 +56482,7 @@ EasySocial.module( 'admin/reports/reports' , function($) {
 
 	EasySocial
 	.require()
-	.language( 
+	.language(
 		'COM_EASYSOCIAL_CANCEL_BUTTON',
 		'COM_EASYSOCIAL_CLOSE_BUTTON',
 		'COM_EASYSOCIAL_REPORTS_VIEW_REPORTS_DIALOG_TITLE',
@@ -56494,7 +56494,7 @@ EasySocial.module( 'admin/reports/reports' , function($) {
 		EasySocial.Controller(
 			'Reports',
 			{
-				defaultOptions : 
+				defaultOptions :
 				{
 					"{item}"		: "[data-reports-item]"
 				}
@@ -56535,8 +56535,8 @@ EasySocial.module( 'admin/reports/reports' , function($) {
 						EasySocial.dialog(
 						{
 							title 		: $.language( 'COM_EASYSOCIAL_REPORTS_VIEW_REPORTS_DIALOG_TITLE' ),
-							content 	: EasySocial.ajax( 'admin/controllers/reports/getReporters' , 
-											{ 
+							content 	: EasySocial.ajax( 'admin/controllers/reports/getReporters' ,
+											{
 												id 			: self.options.id
 											}),
 							width 		: 600,
@@ -56547,13 +56547,13 @@ EasySocial.module( 'admin/reports/reports' , function($) {
 
 					"{action} click" : function()
 					{
-						EasySocial.dialog( 
+						EasySocial.dialog(
 						{
 							title 		: $.language( 'COM_EASYSOCIAL_REPORTS_ACTIONS_DIALOG_TITLE' ),
 							content		: '<div>Perform some actions on the item</div>',
 							width 		: 500,
 							height 		: 250,
-							buttons 	: 
+							buttons 	:
 							[
 								{
 									name 		: $.language( 'COM_EASYSOCIAL_CLOSE_BUTTON' ),
@@ -57516,7 +57516,7 @@ EasySocial.module( 'admin/users/users' , function($) {
 		EasySocial.Controller(
 			'Users',
 			{
-				defaultOptions : 
+				defaultOptions :
 				{
 					"{item}"	: "[data-user-item]"
 				}
@@ -57534,7 +57534,7 @@ EasySocial.module( 'admin/users/users' , function($) {
 		EasySocial.Controller(
 			'Users.Item',
 			{
-				defaultOptions : 
+				defaultOptions :
 				{
 					"{insertLink}"	: "[data-user-item-insertLink]"
 				}
@@ -57561,7 +57561,7 @@ EasySocial.module( 'admin/users/users' , function($) {
 		EasySocial.Controller(
 			'Users.Pending',
 			{
-				defaultOptions : 
+				defaultOptions :
 				{
 					"{item}"	: "[data-pending-item]"
 				}
@@ -57580,7 +57580,7 @@ EasySocial.module( 'admin/users/users' , function($) {
 		EasySocial.Controller(
 			'Users.Pending.Item',
 			{
-				defaultOptions : 
+				defaultOptions :
 				{
 					"{approve}" : "[data-pending-approve]",
 					"{reject}"	: "[data-pending-reject]"
@@ -57618,7 +57618,7 @@ EasySocial.module( 'admin/users/users' , function($) {
 
 					}
 				}
-			})		
+			})
 		module.resolve();
 
 	});
@@ -57634,9 +57634,9 @@ EasySocial.module( 'admin/widgets/news' , function($) {
 		EasySocial.Controller(
 				'News',
 				{
-					defaultOptions: 
+					defaultOptions:
 					{
-						
+
 						// Properties
 						loadOnInit 	: true,
 
@@ -57680,7 +57680,7 @@ EasySocial.module( 'admin/widgets/news' , function($) {
 					}
 				}
 		);
-	
+
 		module.resolve();
 	});
 
@@ -58618,7 +58618,7 @@ EasySocial.module("albums/editor/sortable", function($){
 		)
 		.done(function(){
 
-			var Controller = 
+			var Controller =
 
 			EasySocial.Controller("Albums.Editor.Sortable",
 			{
@@ -58652,7 +58652,7 @@ EasySocial.module("albums/editor/sortable", function($){
 					});
 
 					return ordering;
-				},				
+				},
 
 				"{parent.photoItemGroup} sortstart": function(el, event, ui) {
 
@@ -58675,9 +58675,9 @@ EasySocial.module("albums/editor/sortable", function($){
 						{
 							id: ui.item.controller().id,
 							order: ui.item.index()
-						});					
+						});
 				}
-				
+
 			}});
 
 			module.resolve(Controller);
@@ -58695,10 +58695,10 @@ EasySocial.module("albums/editor/uploader", function($){
 		)
 		.view(
 			"site/albums/upload.item"
-		)		
+		)
 		.done(function(){
 
-			var Controller = 
+			var Controller =
 
 			EasySocial.Controller("Albums.Editor.Uploader",
 			{
@@ -58745,12 +58745,12 @@ EasySocial.module("albums/editor/uploader", function($){
 
 					task.done(function(album){
 
-						var url = 
+						var url =
 							$.uri(self.uploader.settings("url"))
 								.replaceQueryParam("albumId", album.id)
 								.toString();
 
-						self.uploader.settings("url", url);							
+						self.uploader.settings("url", url);
 					});
 				},
 
@@ -58761,7 +58761,7 @@ EasySocial.module("albums/editor/uploader", function($){
 					self.uploader.stop();
 					self.uploader.clear();
 
-					var url = 
+					var url =
 						$.uri(self.uploader.settings("url"))
 							.replaceQueryParam("createStream", layoutName=="form" ? 0 : 1)
 							.replaceQueryParam("layout", layoutName)
@@ -58771,7 +58771,7 @@ EasySocial.module("albums/editor/uploader", function($){
 				},
 
 				"{self} QueueCreated": function(el, event, uploadItem) {
-					
+
 					// Give upload item a layout when we're under editor
 					if (self.album.currentLayout()=="form") {
 						uploadItem.element.addClass("layout-form");
@@ -58779,7 +58779,7 @@ EasySocial.module("albums/editor/uploader", function($){
 
 					self.setLayout();
 				},
-				
+
 				startUpload: $.Enqueue(),
 
 				"{uploader} FilesAdded": function(el, event, uploader, files) {
@@ -62384,7 +62384,7 @@ EasySocial.module('apps/fields/user/avatar/content', function($) {
                         }
 
                         // Compatibility with input-group
-                        var label = el.val().replace(/\\/g, '/').replace(/.*\//, '');
+                        var label = el.val().replace(/\\/g, '/');
                         el.parents('.input-group').find(':text').val(label);
 
                         // Set state to false
@@ -63142,7 +63142,7 @@ EasySocial.module('apps/fields/user/cover/content', function($) {
                             return;
                         }
 
-                        var label = el.val().replace(/\\/g, '/').replace(/.*\//, '');
+                        var label = el.val().replace(/\\/g, '/');
 
                         el.parents('.input-group').find(':text').val(label);
 
@@ -67940,7 +67940,7 @@ EasySocial.module("site/reports/reports", function($) {
 		$.each(props, function(i, prop){
 			data[prop] = button.data(prop);
 		});
-		
+
 		EasySocial.dialog({
 
 			content: EasySocial.ajax(
@@ -67978,8 +67978,8 @@ EasySocial.module("site/reports/reports", function($) {
 
 				"{cancelButton} click": function() {
 					EasySocial.dialog().close();
-				}		
-			}	
+				}
+			}
 		});
 	});
 
@@ -70594,7 +70594,7 @@ EasySocial.module('site/conversations/api', function($){
 			$(document)
 				.on('click.es.conversations.compose', '[data-es-conversations-compose]', function(){
 
-					
+
 
 					var element 	= $(this),
 						userId 		= element.data( 'es-conversations-id'),
@@ -70617,7 +70617,7 @@ EasySocial.module('site/conversations/api', function($){
 								{
 									uids.push( $( this ).val() );
 								});
-								
+
 								EasySocial.ajax( 'site/controllers/conversations/store' ,
 								{
 									"uid"		: uids,
@@ -70774,7 +70774,7 @@ EasySocial.module("site/stream/video", function($){
 });
 
 EasySocial.module( 'oauth/facebook', function($) {
-	
+
 	var module = this;
 
 	$(document).on("click", "[data-oauth-facebook-login]", function(){
@@ -70819,14 +70819,14 @@ EasySocial.module( 'oauth/facebook', function($) {
 				var url = self.options.url,
 					left	= (screen.width/2)-( 300 /2),
 					top		= (screen.height/2)-( 300 /2);
-					
+
 				window.open( url , "" , 'scrollbars=no,resizable=no,width=300,height=300,left=' + left + ',top=' + top );
 			},
 
 			"{pushInput} change" : function( el )
 			{
 				var enabled 	= $(el).val();
-				
+
 				if( enabled == 1 && self.options.requestPush )
 				{
 					self.openDialog( self.options.addPublishURL )
@@ -70846,7 +70846,7 @@ EasySocial.module( 'oauth/facebook', function($) {
 			"{revoke} click" : function()
 			{
 				var callback 	= self.element.data( 'callback' );
-				
+
 				EasySocial.dialog(
 				{
 					content 	: EasySocial.ajax( 'site/views/oauth/confirmRevoke' , { "client" : 'facebook' , "callbackUrl" : callback } )
@@ -71256,7 +71256,7 @@ EasySocial.require()
 					{
 						return;
 					}
-					
+
 					self.submitForm( limitstart );
 				},
 
@@ -73595,9 +73595,9 @@ Prism.languages.http={"request-line":{pattern:/^(POST|GET|PUT|DELETE|OPTIONS|PAT
 Prism.languages.ruby=Prism.languages.extend("clike",{comment:/#[^\r\n]*(\r?\n|$)/g,keyword:/\b(alias|and|BEGIN|begin|break|case|class|def|define_method|defined|do|each|else|elsif|END|end|ensure|false|for|if|in|module|new|next|nil|not|or|raise|redo|require|rescue|retry|return|self|super|then|throw|true|undef|unless|until|when|while|yield)\b/g,builtin:/\b(Array|Bignum|Binding|Class|Continuation|Dir|Exception|FalseClass|File|Stat|File|Fixnum|Fload|Hash|Integer|IO|MatchData|Method|Module|NilClass|Numeric|Object|Proc|Range|Regexp|String|Struct|TMS|Symbol|ThreadGroup|Thread|Time|TrueClass)\b/,constant:/\b[A-Z][a-zA-Z_0-9]*[?!]?\b/g});Prism.languages.insertBefore("ruby","keyword",{regex:{pattern:/(^|[^/])\/(?!\/)(\[.+?]|\\.|[^/\r\n])+\/[gim]{0,3}(?=\s*($|[\r\n,.;})]))/g,lookbehind:true},variable:/[@$&]+\b[a-zA-Z_][a-zA-Z_0-9]*[?!]?\b/g,symbol:/:\b[a-zA-Z_][a-zA-Z_0-9]*[?!]?\b/g})
 ;
 Prism.languages.csharp=Prism.languages.extend("clike",{keyword:/\b(abstract|as|base|bool|break|byte|case|catch|char|checked|class|const|continue|decimal|default|delegate|do|double|else|enum|event|explicit|extern|false|finally|fixed|float|for|foreach|goto|if|implicit|in|int|interface|internal|is|lock|long|namespace|new|null|object|operator|out|override|params|private|protected|public|readonly|ref|return|sbyte|sealed|short|sizeof|stackalloc|static|string|struct|switch|this|throw|true|try|typeof|uint|ulong|unchecked|unsafe|ushort|using|virtual|void|volatile|while|add|alias|ascending|async|await|descending|dynamic|from|get|global|group|into|join|let|orderby|partial|remove|select|set|value|var|where|yield)\b/g,string:/@?("|')(\\?.)*?\1/g,preprocessor:/^\s*#.*/gm,number:/\b-?(0x)?\d*\.?\d+\b/g});
-	
+
 	Prism.highlightAll();
-	
+
 	module.resolve();
 });
 EasySocial.module( 'privacy' , function($) {
@@ -74013,7 +74013,7 @@ EasySocial.module( 'site/activities/activities' , function($){
 					self.sidebarItem().implement( EasySocial.Controller.Activities.Sidebar.Item ,
 					{
 						"{parent}"	: self
-					});					
+					});
 				},
 
 
@@ -74023,14 +74023,14 @@ EasySocial.module( 'site/activities/activities' , function($){
 				updatingContents: function()
 				{
 					self.content().html( self.view.loadingContent() );
-				},				
+				},
 
 				updateContent: function( content, title )
 				{
 					self.content().html( content );
 					self.contentTitle().html( title );
 				}
-							
+
 			}
 		});
 
@@ -74117,7 +74117,7 @@ EasySocial.module( 'site/activities/sidebar.item' , function($){
 						})
 						.done(function( html )
 						{
-							self.parent.updateContent( html, title );	
+							self.parent.updateContent( html, title );
 						})
 						.fail(function( message ){
 							console.log( message );
@@ -74506,7 +74506,7 @@ EasySocial.module( 'site/albums/all' , function($){
 		},
 		function( self )
 		{
-			return{ 
+			return{
 
 				init: function()
 				{
@@ -74522,7 +74522,7 @@ EasySocial.module( 'site/albums/all' , function($){
 				"{sort} click" : function( el , event )
 				{
 					event.preventDefault();
-					
+
 					self.setActiveSort( el );
 
 					$( el ).route();
@@ -74542,7 +74542,7 @@ EasySocial.module( 'site/albums/all' , function($){
 		});
 
 		module.resolve();
-	
+
 	});
 
 
@@ -74637,7 +74637,7 @@ EasySocial.module( 'site/apps/apps' , function($){
 							"filter": filter,
 							"group": group
 						}, {
-							
+
 							beforeSend: function() {
 								// Set the default sorting type to alphabetically ordered.
 								self.sort('.alphabetical').addClass('active');
@@ -76451,7 +76451,7 @@ EasySocial.module( 'site/conversations/conversations' , function($){
 						{
 							// Uncheck this.
 							$( el ).prop( 'checked' , false );
-							
+
 							return false;
 						}
 
@@ -76507,7 +76507,7 @@ EasySocial.module( 'site/conversations/conversations' , function($){
 						// Whenever updateContent is called, we need to hide the actions
 						self.actions().removeClass('is-checked');
 						self.checkAll().removeAttr( 'checked' );
-						
+
 						self.list().html( content );
 					},
 
@@ -76586,7 +76586,7 @@ EasySocial.module( 'site/conversations/conversations' , function($){
 						{
 							return false;
 						}
-						
+
 						var ids = new Array();
 
 						// Loop through each checked items.
@@ -76594,12 +76594,12 @@ EasySocial.module( 'site/conversations/conversations' , function($){
 							ids.push( $( checkedItem ).val() );
 						});
 
-						EasySocial.ajax( 'site/controllers/conversations/markRead' , 
+						EasySocial.ajax( 'site/controllers/conversations/markRead' ,
 						{
 							"ids"	: ids
 						})
 						.done( function(){
-							
+
 							// Add unread class on the items.
 							self.checkbox()
 								.parents( '[data-conversations-item]' )
@@ -76623,7 +76623,7 @@ EasySocial.module( 'site/conversations/conversations' , function($){
 						{
 							return false;
 						}
-						
+
 						var ids = new Array();
 
 						// Loop through each checked items.
@@ -76631,12 +76631,12 @@ EasySocial.module( 'site/conversations/conversations' , function($){
 							ids.push( $( checkedItem ).val() );
 						});
 
-						EasySocial.ajax( 'site/controllers/conversations/markUnread' , 
+						EasySocial.ajax( 'site/controllers/conversations/markUnread' ,
 						{
 							"ids"	: ids
 						})
 						.done( function(){
-							
+
 							// Add unread class on the items.
 							self.checkbox()
 								.parents( '[data-conversations-item]' )
@@ -77735,7 +77735,7 @@ EasySocial.module('site/dashboard/feeds', function($){
 
 					// clear the new feed notification counter.
 					var key = '[data-stream-counter-';
-					
+
 					if (type == 'list') {
 						key = key + type + '-' + id;
 					} else {
@@ -77743,7 +77743,7 @@ EasySocial.module('site/dashboard/feeds', function($){
 					}
 
 					key = key + ']';
-					
+
 					$(key).html( '0' );
 
 					// clear new feed counter
@@ -77764,7 +77764,7 @@ EasySocial.module('site/dashboard/feeds', function($){
 						"view"  : 'dashboard',
 					})
 					.done(function(contents, count) {
-						
+
 						self.dashboard.updateHeading(title, desc);
 
 						if (count == 0) {
@@ -77806,7 +77806,7 @@ EasySocial.module( 'site/dashboard/sidebar' , function($){
 	.done(function($){
 
 		EasySocial.Controller('Dashboard.Sidebar', {
-			
+
 			defaultOptions: {
 				"{menuItem}"	: "[data-dashboardSidebar-menu]",
 				"{filterBtn}"	: "[data-stream-filter-button]",
@@ -77819,7 +77819,7 @@ EasySocial.module( 'site/dashboard/sidebar' , function($){
 				init: function()
 				{
 				},
-				
+
 				"{menuItem} click" : function( el , event )
 				{
 					// Remove all active class.
@@ -77834,7 +77834,7 @@ EasySocial.module( 'site/dashboard/sidebar' , function($){
 					event.preventDefault();
 
 					$(el).route();
-					
+
 					var id = el.data( 'id' );
 
 					// Notify the dashboard that it's starting to fetch the contents.
@@ -79665,7 +79665,7 @@ EasySocial.module("site/explorer", function($) {
 			disableValidation: false,
 			mockError: false,
 			controllerName: null,
-			
+
 			"{browser}"    : ".fd-explorer-browser",
 			"{viewport}"   : ".fd-explorer-viewport",
 			"{folderGroup}": ".fd-explorer-folder-group",
@@ -80779,7 +80779,7 @@ EasySocial.module( 'site/followers/followers' , function($){
 
 						// Remove active class on all filters
 						self.filter().removeClass("active");
-						
+
 						// Add active class to current filter
 						filter.addClass("active");
 
@@ -80802,7 +80802,7 @@ EasySocial.module( 'site/followers/followers' , function($){
 			EasySocial.Controller(
 				'Followers.Item',
 				{
-					defaultOptions : 
+					defaultOptions :
 					{
 						"{unfollowButton}"	: "[data-followers-item-unfollow]",
 						"{composer}"		: "[data-followers-item-compose]"
@@ -81125,7 +81125,7 @@ EasySocial.module( 'site/friends/list' , function($){
 	var module 	= this;
 
 	EasySocial.require()
-	.view( 
+	.view(
 		'site/loading/small'
 	)
 	.library( 'history' )
@@ -81197,7 +81197,7 @@ EasySocial.module( 'site/friends/list' , function($){
 
 						// Set the active list.
 						self.parent.options.activeList	= id;
-						
+
 						// Get list of friends.
 						EasySocial.ajax( 'site/controllers/friends/getListFriends',
 						{
@@ -81221,7 +81221,7 @@ EasySocial.module( 'site/friends/list' , function($){
 					},
 
 					"{loadMoreButton} click" : function() {
-						
+
 						// Get current limit start.
 						var limitstart	= self.loadMoreButton().data( 'limitstart' );
 
@@ -81250,7 +81250,7 @@ EasySocial.module( 'site/friends/list' , function($){
 		EasySocial.Controller(
 			'Friends.List.Item',
 			{
-				defaultOptions: 
+				defaultOptions:
 				{
 					id 			: null,
 
@@ -81328,13 +81328,13 @@ EasySocial.module( 'site/friends/list' , function($){
 
 										// Hide any notice messages.
 										$( '[data-assignFriends-notice]' ).hide();
-										
+
 
 										$( contents ).each(function( i , item ){
 
 											// Pass the item to the parent so it gets inserted into the friends list.
 											self.parent.insertItem( item );
-											
+
 											// Close the dialog
 											EasySocial.dialog().close();
 										});
@@ -83352,7 +83352,7 @@ EasySocial.module( 'site/points/history' , function(){
 					{
 						var current 	= $( el ).data( 'current' );
 
-						EasySocial.ajax( 'site/views/points/getHistory' , 
+						EasySocial.ajax( 'site/views/points/getHistory' ,
 						{
 							"limitstart"	: current,
 							"id"			: self.options.id
@@ -85714,7 +85714,7 @@ EasySocial.module( 'site/search/item' , function($){
 							{
 								content 	: EasySocial.ajax( 'site/views/friends/exceeded' )
 							});
-							
+
 							self.dropdown().html( message );
 						});
 
@@ -86100,10 +86100,10 @@ EasySocial.module( 'site/search/sidebar' , function($){
 						var type 	= self.element.data( 'type' ),
 							url 	= self.element.data( 'url' );
 
-							
+
 						var query = $("[data-search-query]").val();
 
-		
+
 						// If this is an embedded layout, we need to play around with the push state.
 						History.pushState( {state:1} , '' , url );
 
@@ -86120,7 +86120,7 @@ EasySocial.module( 'site/search/sidebar' , function($){
 						})
 						.done(function( html )
 						{
-							self.parent.updateContent( html );	
+							self.parent.updateContent( html );
 						})
 						.fail(function( message ){
 							console.log( message );
@@ -86129,7 +86129,7 @@ EasySocial.module( 'site/search/sidebar' , function($){
 						self.parent.updateContent();
 					}
 				}
-			});		
+			});
 
 		module.resolve();
 	});
@@ -86825,7 +86825,7 @@ EasySocial.module('site/stream/stream', function(){
 	.language('COM_EASYSOCIAL_STREAM_LOAD_PREVIOUS_STREAM_ITEMS')
 	.done(function($) {
 
-		EasySocial.Controller('Stream', 
+		EasySocial.Controller('Stream',
 		{
 			defaultOptions: {
 				// Check every 30 seconds by default.
@@ -86866,7 +86866,7 @@ EasySocial.module('site/stream/stream', function(){
 
 					// Do not run updates checking when viewing single stream page.
 					if (self.options.source != 'stream' && self.options.source != 'unity') {
-						
+
 						// Run the checking on new updates
 						if( self.options.checknew == true ) {
 							self.startMonitoring();
@@ -87411,7 +87411,7 @@ EasySocial.module('site/system/broadcast', function($){
 					{
 						self.startMonitoring();
 					},
-					
+
 					startMonitoring: function()
 					{
 						var interval = self.options.interval * 1000;
@@ -87841,8 +87841,8 @@ EasySocial.module( 'site/toolbar/notifications' , function($){
 	var module 				= this;
 
 	EasySocial.require()
-	.script( 
-		'site/toolbar/friends', 
+	.script(
+		'site/toolbar/friends',
 		'site/toolbar/story',
 		'site/toolbar/system',
 		'site/toolbar/profile',
@@ -87869,7 +87869,7 @@ EasySocial.module( 'site/toolbar/notifications' , function($){
 				}
 			},
 			function(self){
-				return { 
+				return {
 
 					init: function()
 					{
@@ -87877,13 +87877,13 @@ EasySocial.module( 'site/toolbar/notifications' , function($){
 						self.login().addController( EasySocial.Controller.Toolbar.Login );
 
 						// Initialize profile controller for toolbar.
-						self.profileItem().addController( EasySocial.Controller.Toolbar.Profile , 
+						self.profileItem().addController( EasySocial.Controller.Toolbar.Profile ,
 						{
 							interval 	: self.options.systemInterval
 						});
 
 						// Initialize system notifications controller.
-						self.systemNotifications().addController( EasySocial.Controller.Notifications.System , 
+						self.systemNotifications().addController( EasySocial.Controller.Notifications.System ,
 						{
 							interval 	: self.options.systemInterval
 						});
@@ -87899,7 +87899,7 @@ EasySocial.module( 'site/toolbar/notifications' , function($){
 						{
 							interval 	: self.options.friendsInterval
 						});
-						
+
 						// Initialize story form controller.
 						self.storyForm().addController( EasySocial.Controller.Notifications.Story );
 
@@ -87955,7 +87955,7 @@ EasySocial.module( 'site/toolbar/story' , function($){
 					"{dropdown}"		: ".dropdown-menu"
 				}
 			},
-			function(self){ return{ 
+			function(self){ return{
 
 				init: function()
 				{
@@ -89895,7 +89895,7 @@ EasySocial.module("story/files", function($){
 	                removeFileItem: function(id) {
 
 	                    var item = self.getItem(id);
-	                    
+
 	                    if (!item) {
 	                    	return;
 	                    }
@@ -90848,7 +90848,7 @@ EasySocial.module("story/links", function($){
 
 						if (!operation) operation = save;
 
-						var value = self.descriptionTextfield().val().replace(/\n/g, "<br//>");
+						var value = self.descriptionTextfield().val().replace(/\n/g, "<br/>");
 
 						switch (operation) {
 
@@ -91975,7 +91975,7 @@ EasySocial.module( 'story/tasks', function($)
 					{
 						if( $( item ).val() != '' )
 						{
-							values.push( $(item).val() );	
+							values.push( $(item).val() );
 						}
 					});
 
@@ -92081,7 +92081,7 @@ EasySocial.module( 'stream' , function(){
 			function( self ){ return {
 
 				init: function(){
-					self.commentFrame().implement('EasySocial.Controller.Comments', {						
+					self.commentFrame().implement('EasySocial.Controller.Comments', {
 						uid: self.element.data('id'),
 						pagination: new CommentPagination({
 							total: self.commentFrame().data('total')
@@ -92386,13 +92386,13 @@ EasySocial.Controller(
 				{
 					return false;
 				}
-				
+
 				// Remove active tab.
 				self.tabs( '.active' ).removeClass( 'active' );
 
 				// @task: Add active class to itself.
 				$( element ).addClass( 'active' );
-				
+
 				// @task: Hide all contents
 				self.tabsContent().hide();
 
@@ -92402,7 +92402,7 @@ EasySocial.Controller(
 				// @task: Show active content
 				self.tabsContent( activeContent ).show();
 			}
-		
+
 		}
 	}
 );
@@ -92441,7 +92441,7 @@ EasySocial.Controller(
 				$( element ).next().toggle();
 				$( element ).toggleClass('this-closed');
 			}
-		
+
 		}
 	}
 );

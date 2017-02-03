@@ -16,7 +16,6 @@ if ($content_type == 'text/javascript') {
     fclose($handle);
 }
 _compress($dataContent, $content_type);
-
 function googleCompressJs($jsContent)
 {
     $data = array(
@@ -27,7 +26,6 @@ function googleCompressJs($jsContent)
     , 'output_info' => 'compiled_code'
     , 'warning_level' => 'VERBOSE'
     );
-
     $url = 'http://closure-compiler.appspot.com/compile';
     //$jsContent=$this->compress($jsContent);
     $headers[] = 'Content-type: application/x-www-form-urlencoded';
@@ -45,7 +43,6 @@ function googleCompressJs($jsContent)
     $jsContent = $return->compiledCode;
     return $jsContent;
 }
-
 
 function get_content_type($file)
 {
@@ -74,7 +71,6 @@ function _compress($data, $content_type)
 {
     $supportsGzip = strpos($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip') !== false;
     if ($supportsGzip) {
-
         $content = gzencode(trim(preg_replace('/\s+/', ' ', $data)), 9);
     } else {
         $content = $data;
@@ -89,4 +85,5 @@ function _compress($data, $content_type)
     header('Vary: Accept-Encoding');
     echo $content;
 }
+
 ?>
