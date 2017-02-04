@@ -132,7 +132,7 @@ function editUser()
 	$document->addScriptDeclaration( 'var MQM_USER_LOCATION = "'.addslashes(JText::_('location_required')).'";' );
 	$document->addScriptDeclaration( 'var MQM_USER_CITY = "'.addslashes(JText::_('city_required')).'";' );
 	$document->addScriptDeclaration( 'var MQM_USER_COUNTRY = "'.addslashes(JText::_('country_required')).'";' );
-	HelpdeskUtility::AppendResource('helpdesk.profile.js', JURI::root() . 'media/com_maqmahelpdesk/js/', 'js', true);
+	HelpdeskUtility::AppendResource('helpdesk.profile.js', '/media/com_maqmahelpdesk/js/', 'js', true);
 
 	HelpdeskUtility::PageTitle('showUserForm');
 	$document->title = JText::_('wk_profile');

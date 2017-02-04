@@ -49,7 +49,7 @@ if ($published) {
 								<td>' . trim(JString::substr($row->date_time, 10)) . '</td>
 								<td>' . ($row->id_user ? $row->name : $row->an_name) . ($row->clientname != '' ? '<br /><span><i>' . $row->clientname . '</i></span>' : '') . '</td>
 								<td><a href="' . JRoute::_('index.php?option=com_maqmahelpdesk&id_workgroup=' . $row->id_workgroup . '&task=ticket_view&id=' . $row->id_ticket) . '">' . $row->ticketmask . '</a></td>
-								<td><img src="' . JURI::root() . 'media/com_maqmahelpdesk/images/logs/' . $row->image . '" style="padding:5px;" align="left" />' . $row->log . '</td>
+								<td><img src="' . '/media/com_maqmahelpdesk/images/logs/' . $row->image . '" style="padding:5px;" align="left" />' . $row->log . '</td>
 							 </tr>';
 		}
 

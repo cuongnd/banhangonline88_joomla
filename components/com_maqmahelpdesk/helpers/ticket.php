@@ -362,7 +362,7 @@ class HelpdeskTicket
 
 		switch ($style) {
 			case '0':
-				return ' <img src="' . JURI::root() . 'media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/' . $img . '" border="0" align="absmiddle" alt="' . $alt . '" /> ';
+				return ' <img src="' . '/media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/' . $img . '" border="0" align="absmiddle" alt="' . $alt . '" /> ';
 			case '1':
 				return $alt;
 			case '2':

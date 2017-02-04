@@ -198,7 +198,7 @@ function postBugtracker()
 	$document->addScriptDeclaration( 'var MQM_BUG_DESC = "'.addslashes(JText::_('bug_description_required')).'";' );
 	$document->addScriptDeclaration( 'var MQM_BUG_CATEGORY = "'.addslashes(JText::_('bug_category_required')).'";' );
 	$document->addScriptDeclaration( 'var MQM_BUG_CANCEL = "'.addslashes(JText::_('bug_cancel')).'";' );
-	HelpdeskUtility::AppendResource('helpdesk.bugtracker.js', JURI::root() . 'media/com_maqmahelpdesk/js/', 'js', true);
+	HelpdeskUtility::AppendResource('helpdesk.bugtracker.js', '/media/com_maqmahelpdesk/js/', 'js', true);
 
 	// Set title
 	HelpdeskUtility::PageTitle('newBugtracker');
@@ -237,8 +237,8 @@ function postBugtracker()
 
 function viewBugtracker()
 {
-	HelpdeskUtility::AppendResource('prettify.css', JURI::root() . 'media/com_maqmahelpdesk/css/', 'css');
-	HelpdeskUtility::AppendResource('prettify.js', JURI::root() . 'media/com_maqmahelpdesk/js/', 'js');
+	HelpdeskUtility::AppendResource('prettify.css', '/media/com_maqmahelpdesk/css/', 'css');
+	HelpdeskUtility::AppendResource('prettify.js', '/media/com_maqmahelpdesk/js/', 'js');
 
 	$mainframe = JFactory::getApplication();
 	$database = JFactory::getDBO();

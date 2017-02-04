@@ -96,43 +96,43 @@ if ($task != 'download' && $task != 'getfile' && $format != 'pdf' && $function !
 	HelpdeskUtility::AppendResource('index.php?option=com_maqmahelpdesk&Itemid=' . $Itemid . '&task=ajax_javascript&format=raw&tmpl=component', JURI::root() . '', 'js', true);
 	if ($tmpl == 'component' && $jquery_url == '')
 	{
-		HelpdeskUtility::AppendResource('jquery-1.8.3.min.js', JURI::root() . 'media/com_maqmahelpdesk/js/', 'js', true);
+		HelpdeskUtility::AppendResource('jquery-1.8.3.min.js', '/media/com_maqmahelpdesk/js/', 'js', true);
 	}
 	elseif ($jquery_url != '')
 	{
 		HelpdeskUtility::AppendResource('', $jquery_url, 'js', true);
 	}
-	HelpdeskUtility::AppendResource('jmaqma.js', JURI::root() . 'media/com_maqmahelpdesk/js/', 'js', true);
-	HelpdeskUtility::AppendResource('prettify.js', JURI::root() . 'media/com_maqmahelpdesk/js/', 'js', true);
-	HelpdeskUtility::AppendResource('replies.js', JURI::root() . 'media/com_maqmahelpdesk/js/redactor/', 'js', true);
-	HelpdeskUtility::AppendResource('redactor.min.js', JURI::root() . 'media/com_maqmahelpdesk/js/', 'js', true);
-	HelpdeskUtility::AppendResource('maqmahelpdesk.js', JURI::root() . 'media/com_maqmahelpdesk/js/', 'js', true);
+	HelpdeskUtility::AppendResource('jmaqma.js', '/media/com_maqmahelpdesk/js/', 'js', true);
+	HelpdeskUtility::AppendResource('prettify.js', '/media/com_maqmahelpdesk/js/', 'js', true);
+	HelpdeskUtility::AppendResource('replies.js', '/media/com_maqmahelpdesk/js/redactor/', 'js', true);
+	HelpdeskUtility::AppendResource('redactor.min.js', '/media/com_maqmahelpdesk/js/', 'js', true);
+	HelpdeskUtility::AppendResource('maqmahelpdesk.js', '/media/com_maqmahelpdesk/js/', 'js', true);
 
 	if ($supportConfig->include_bootstrap)
 	{
-		HelpdeskUtility::AppendResource('bootstrap.min.js', JURI::root() . 'media/com_maqmahelpdesk/js/', 'js', true);
+		HelpdeskUtility::AppendResource('bootstrap.min.js', '/media/com_maqmahelpdesk/js/', 'js', true);
 		if ($lang->isRTL())
 		{
-			HelpdeskUtility::AppendResource('bootstrap_rtl.css', JURI::root() . 'media/com_maqmahelpdesk/css/', 'css');
+			HelpdeskUtility::AppendResource('bootstrap_rtl.css', '/media/com_maqmahelpdesk/css/', 'css');
 		}
 		else
 		{
-			HelpdeskUtility::AppendResource('bootstrap.min.css', JURI::root() . 'media/com_maqmahelpdesk/css/', 'css');
-			HelpdeskUtility::AppendResource('bootstrap-responsive.min.css', JURI::root() . 'media/com_maqmahelpdesk/css/', 'css');
-			HelpdeskUtility::AppendResource('bootstrap-override.min.css', JURI::root() . 'media/com_maqmahelpdesk/css/', 'css');
+			HelpdeskUtility::AppendResource('bootstrap.min.css', '/media/com_maqmahelpdesk/css/', 'css');
+			HelpdeskUtility::AppendResource('bootstrap-responsive.min.css', '/media/com_maqmahelpdesk/css/', 'css');
+			HelpdeskUtility::AppendResource('bootstrap-override.min.css', '/media/com_maqmahelpdesk/css/', 'css');
 		}
 	}
 
 	if (!HelpdeskUtility::JoomlaCheck())
 	{
-		HelpdeskUtility::AppendResource('bootstrap-j25.min.css', JURI::root() . 'media/com_maqmahelpdesk/css/', 'css');
+		HelpdeskUtility::AppendResource('bootstrap-j25.min.css', '/media/com_maqmahelpdesk/css/', 'css');
 	}
 	else
 	{
-		HelpdeskUtility::AppendResource('bootstrap-j30.min.css', JURI::root() . 'media/com_maqmahelpdesk/css/', 'css');
+		HelpdeskUtility::AppendResource('bootstrap-j30.min.css', '/media/com_maqmahelpdesk/css/', 'css');
 	}
 
-	HelpdeskUtility::AppendResource('redactor.css', JURI::root() . 'media/com_maqmahelpdesk/css/', 'css');
+	HelpdeskUtility::AppendResource('redactor.css', '/media/com_maqmahelpdesk/css/', 'css');
 }
 
 $is_support = 0; // Indicates if the user is from the support staff
@@ -399,78 +399,78 @@ if (isset($workgroupSettings) && $task != 'getfile' && $function != 'ajax' && $t
 	{
 		if (file_exists(JPATH_SITE . '/media/com_maqmahelpdesk/templates/' . $workgroupSettings->theme . '/css/style_rtl.css'))
 		{
-			HelpdeskUtility::AppendResource('style_rtl.css', JURI::root() . 'media/com_maqmahelpdesk/templates/' . $workgroupSettings->theme . '/css/', 'css');
+			HelpdeskUtility::AppendResource('style_rtl.css', '/media/com_maqmahelpdesk/templates/' . $workgroupSettings->theme . '/css/', 'css');
 		}
 		else
 		{
-			HelpdeskUtility::AppendResource('style_rtl.css', JURI::root() . 'media/com_maqmahelpdesk/templates/default/css/', 'css');
+			HelpdeskUtility::AppendResource('style_rtl.css', '/media/com_maqmahelpdesk/templates/default/css/', 'css');
 		}
 		if ($mcheck->isMobile() && !$mcheck->isTablet() && $supportConfig->mobile_interface)
 		{
 			if (file_exists(JPATH_SITE . '/media/com_maqmahelpdesk/templates/' . $workgroupSettings->theme . '/css/mobile_rtl.css'))
 			{
-				HelpdeskUtility::AppendResource('mobile_rtl.css', JURI::root() . 'media/com_maqmahelpdesk/templates/' . $workgroupSettings->theme . '/css/', 'css');
+				HelpdeskUtility::AppendResource('mobile_rtl.css', '/media/com_maqmahelpdesk/templates/' . $workgroupSettings->theme . '/css/', 'css');
 			}
 			else
 			{
-				HelpdeskUtility::AppendResource('mobile_rtl.css', JURI::root() . 'media/com_maqmahelpdesk/templates/default/css/', 'css');
+				HelpdeskUtility::AppendResource('mobile_rtl.css', '/media/com_maqmahelpdesk/templates/default/css/', 'css');
 			}
 		}
 		if (file_exists(JPATH_SITE . '/media/com_maqmahelpdesk/templates/' . $workgroupSettings->theme . '/css/site_rtl.css'))
 		{
-			HelpdeskUtility::AppendResource('site_rtl.css', JURI::root() . 'media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/css/', 'css');
+			HelpdeskUtility::AppendResource('site_rtl.css', '/media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/css/', 'css');
 		}
 		else
 		{
-			HelpdeskUtility::AppendResource('site_rtl.css', JURI::root() . 'media/com_maqmahelpdesk/images/themes/default/css/', 'css');
+			HelpdeskUtility::AppendResource('site_rtl.css', '/media/com_maqmahelpdesk/images/themes/default/css/', 'css');
 		}
 	}
 	else
 	{
 		if (file_exists(JPATH_SITE . '/media/com_maqmahelpdesk/templates/' . $workgroupSettings->theme . '/css/style.css'))
 		{
-			HelpdeskUtility::AppendResource('style.css', JURI::root() . 'media/com_maqmahelpdesk/templates/' . $workgroupSettings->theme . '/css/', 'css');
+			HelpdeskUtility::AppendResource('style.css', '/media/com_maqmahelpdesk/templates/' . $workgroupSettings->theme . '/css/', 'css');
 		}
 		else
 		{
-			HelpdeskUtility::AppendResource('style.css', JURI::root() . 'media/com_maqmahelpdesk/templates/default/css/', 'css');
+			HelpdeskUtility::AppendResource('style.css', '/media/com_maqmahelpdesk/templates/default/css/', 'css');
 		}
 		if ($mcheck->isMobile() && !$mcheck->isTablet() && $supportConfig->mobile_interface)
 		{
 			if (file_exists(JPATH_SITE . '/media/com_maqmahelpdesk/templates/' . $workgroupSettings->theme . '/css/mobile.css'))
 			{
-				HelpdeskUtility::AppendResource('mobile.css', JURI::root() . 'media/com_maqmahelpdesk/templates/' . $workgroupSettings->theme . '/css/', 'css');
+				HelpdeskUtility::AppendResource('mobile.css', '/media/com_maqmahelpdesk/templates/' . $workgroupSettings->theme . '/css/', 'css');
 			}
 			else
 			{
-				HelpdeskUtility::AppendResource('mobile.css', JURI::root() . 'media/com_maqmahelpdesk/templates/default/css/', 'css');
+				HelpdeskUtility::AppendResource('mobile.css', '/media/com_maqmahelpdesk/templates/default/css/', 'css');
 			}
 		}
 		if (file_exists(JPATH_SITE . '/media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/css/site.css'))
 		{
-			HelpdeskUtility::AppendResource('site.css', JURI::root() . 'media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/css/', 'css');
+			HelpdeskUtility::AppendResource('site.css', '/media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/css/', 'css');
 		}
 		else
 		{
-			HelpdeskUtility::AppendResource('site.css', JURI::root() . 'media/com_maqmahelpdesk/images/themes/default/css/', 'css');
+			HelpdeskUtility::AppendResource('site.css', '/media/com_maqmahelpdesk/images/themes/default/css/', 'css');
 		}
 	}
 	HelpdeskUtility::OutputResources();
 
 } elseif (!isset($workgroupSettings) && $task != 'getfile' && file_exists(JPATH_SITE . '/media/com_maqmahelpdesk/templates/default/css/style.css') && $function != 'ajax' && $task != 'checkticket' && $format != 'raw' && $task != 'noaccess') {
 	if ($lang->isRTL()) {
-		HelpdeskUtility::AppendResource('style_rtl.css', JURI::root() . 'media/com_maqmahelpdesk/templates/default/css/', 'css');
-		HelpdeskUtility::AppendResource('site_rtl.css', JURI::root() . 'media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/css/', 'css');
+		HelpdeskUtility::AppendResource('style_rtl.css', '/media/com_maqmahelpdesk/templates/default/css/', 'css');
+		HelpdeskUtility::AppendResource('site_rtl.css', '/media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/css/', 'css');
 		if ($mcheck->isMobile() && !$mcheck->isTablet())
 		{
-			HelpdeskUtility::AppendResource('mobile_rtl.css', JURI::root() . 'media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/css/', 'css');
+			HelpdeskUtility::AppendResource('mobile_rtl.css', '/media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/css/', 'css');
 		}
 	} else {
-		HelpdeskUtility::AppendResource('style.css', JURI::root() . 'media/com_maqmahelpdesk/templates/default/css/', 'css');
-		HelpdeskUtility::AppendResource('site.css', JURI::root() . 'media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/css/', 'css');
+		HelpdeskUtility::AppendResource('style.css', '/media/com_maqmahelpdesk/templates/default/css/', 'css');
+		HelpdeskUtility::AppendResource('site.css', '/media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/css/', 'css');
 		if ($mcheck->isMobile() && !$mcheck->isTablet() && $supportConfig->mobile_interface)
 		{
-			HelpdeskUtility::AppendResource('mobile.css', JURI::root() . 'media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/css/', 'css');
+			HelpdeskUtility::AppendResource('mobile.css', '/media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/css/', 'css');
 		}
 	}
 	HelpdeskUtility::OutputResources();

@@ -297,7 +297,7 @@
 		                        <td class="log date" valign="top"><?php echo $date;?></td>
 		                        <td class="log daterow" width="20" valign="top"><?php echo $time;?></td>
 		                        <td class="log daterow"
-		                            valign="top"><?php echo ($rowloop->image != '' ? '<img src="media/com_maqmahelpdesk/images/logs/' . $rowloop->image . '" align="absmiddle" alt="" />' : '');?> <?php echo $rowloop->message;?></td>
+		                            valign="top"><?php echo ($rowloop->image != '' ? '<img src="/media/com_maqmahelpdesk/images/logs/' . $rowloop->image . '" align="absmiddle" alt="" />' : '');?> <?php echo $rowloop->message;?></td>
 		                    </tr><?php
 	                    } else {
 	                        ?>
@@ -305,7 +305,7 @@
 		                        <td valign="top"></td>
 		                        <td class="log empty" width="20" valign="top"><?php echo $time;?></td>
 		                        <td class="log empty"
-		                            valign="top"><?php echo ($rowloop->image != '' ? '<img src="media/com_maqmahelpdesk/images/logs/' . $rowloop->image . '" align="absmiddle" alt="" />' : '');?> <?php echo $rowloop->message;?></td>
+		                            valign="top"><?php echo ($rowloop->image != '' ? '<img src="/media/com_maqmahelpdesk/images/logs/' . $rowloop->image . '" align="absmiddle" alt="" />' : '');?> <?php echo $rowloop->message;?></td>
 		                    </tr><?php
 	                    }
 

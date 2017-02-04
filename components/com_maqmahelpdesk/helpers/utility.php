@@ -567,7 +567,7 @@ class HelpdeskUtility
 		switch ($supportConfig->jquery_source)
 		{
 			case 'local':
-				$url = JURI::root() . 'media/com_maqmahelpdesk/js/jquery-1.8.3.min.js';
+				$url = '/media/com_maqmahelpdesk/js/jquery-1.8.3.min.js';
 				break;
 			case 'jquery':
 				$url = '//code.jquery.com/jquery-1.8.3.min.js';

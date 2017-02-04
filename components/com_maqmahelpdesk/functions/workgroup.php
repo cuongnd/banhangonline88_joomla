@@ -45,7 +45,7 @@ function showWorkgroup()
 	$workgroupSettings = HelpdeskDepartment::GetSettings();
 	$is_support = HelpdeskUser::IsSupport();
 	$is_client = HelpdeskUser::IsClient();
-	HelpdeskUtility::AppendResource('equalheights.js', JURI::root() . 'media/com_maqmahelpdesk/js/', 'js', true);
+	HelpdeskUtility::AppendResource('equalheights.js', '/media/com_maqmahelpdesk/js/', 'js', true);
 
 	// Validate if it's a support only contract and it's not a support user
 	if ($workgroupSettings->support_only && !$is_support)
@@ -275,7 +275,7 @@ function showList()
 	$tickets_pending = 0;
 	$tickets_overdue = 0;
 	$tickets_today = 0;
-	HelpdeskUtility::AppendResource('equalheights.js', JURI::root() . 'media/com_maqmahelpdesk/js/', 'js', true);
+	HelpdeskUtility::AppendResource('equalheights.js', '/media/com_maqmahelpdesk/js/', 'js', true);
 
 	// Sets the title
 	HelpdeskUtility::PageTitle('showWorkgroups');
@@ -430,7 +430,7 @@ function showList()
 
 					if ($key3 == 'logo')
 					{
-						$workgroups[$i]['image'] = ($value3 != '' ? 'media/com_maqmahelpdesk/images/logos/' . $value3 : 'media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/48px/workgroup.png');
+						$workgroups[$i]['image'] = ($value3 != '' ? '/media/com_maqmahelpdesk/images/logos/' . $value3 : '/media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/48px/workgroup.png');
 					}
 
 					if ($key3 == 'wkdesc')

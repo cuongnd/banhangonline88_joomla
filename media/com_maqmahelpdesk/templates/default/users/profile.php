@@ -196,67 +196,67 @@
 	    </div>
 	    <div class="modal-body">
 	        <div>
-	            <img src="media/com_maqmahelpdesk/images/avatars/anonymous.png" align="absmiddle"
+	            <img src="/media/com_maqmahelpdesk/images/avatars/anonymous.png" align="absmiddle"
 	                 onclick="SelectAvatar('anonymous');" style="cursor:pointer;" hspace="5" vspace="5"/>
-	            <img src="media/com_maqmahelpdesk/images/avatars/businessman1.png" align="absmiddle"
+	            <img src="/media/com_maqmahelpdesk/images/avatars/businessman1.png" align="absmiddle"
 	                 onclick="SelectAvatar('businessman1');" style="cursor:pointer;" hspace="5" vspace="5"/>
-	            <img src="media/com_maqmahelpdesk/images/avatars/businessman2.png" align="absmiddle"
+	            <img src="/media/com_maqmahelpdesk/images/avatars/businessman2.png" align="absmiddle"
 	                 onclick="SelectAvatar('businessman2');" style="cursor:pointer;" hspace="5" vspace="5"/>
-	            <img src="media/com_maqmahelpdesk/images/avatars/businessman3.png" align="absmiddle"
+	            <img src="/media/com_maqmahelpdesk/images/avatars/businessman3.png" align="absmiddle"
 	                 onclick="SelectAvatar('businessman3');" style="cursor:pointer;" hspace="5" vspace="5"/>
-	            <img src="media/com_maqmahelpdesk/images/avatars/businesswoman.png" align="absmiddle"
+	            <img src="/media/com_maqmahelpdesk/images/avatars/businesswoman.png" align="absmiddle"
 	                 onclick="SelectAvatar('businesswoman');" style="cursor:pointer;" hspace="5" vspace="5"/>
-	            <img src="media/com_maqmahelpdesk/images/avatars/doctorscientist.png" align="absmiddle"
+	            <img src="/media/com_maqmahelpdesk/images/avatars/doctorscientist.png" align="absmiddle"
 	                 onclick="SelectAvatar('doctorscientist');" style="cursor:pointer;" hspace="5" vspace="5"/>
-	            <img src="media/com_maqmahelpdesk/images/avatars/man1.png" align="absmiddle" onclick="SelectAvatar('man1');"
+	            <img src="/media/com_maqmahelpdesk/images/avatars/man1.png" align="absmiddle" onclick="SelectAvatar('man1');"
 	                 style="cursor:pointer;" hspace="5" vspace="5"/>
-	            <img src="media/com_maqmahelpdesk/images/avatars/man2.png" align="absmiddle" onclick="SelectAvatar('man2');"
+	            <img src="/media/com_maqmahelpdesk/images/avatars/man2.png" align="absmiddle" onclick="SelectAvatar('man2');"
 	                 style="cursor:pointer;" hspace="5" vspace="5"/>
-	            <img src="media/com_maqmahelpdesk/images/avatars/man3.png" align="absmiddle" onclick="SelectAvatar('man3');"
+	            <img src="/media/com_maqmahelpdesk/images/avatars/man3.png" align="absmiddle" onclick="SelectAvatar('man3');"
 	                 style="cursor:pointer;" hspace="5" vspace="5"/>
-	            <img src="media/com_maqmahelpdesk/images/avatars/man4.png" align="absmiddle" onclick="SelectAvatar('man4');"
+	            <img src="/media/com_maqmahelpdesk/images/avatars/man4.png" align="absmiddle" onclick="SelectAvatar('man4');"
 	                 style="cursor:pointer;" hspace="5" vspace="5"/>
-	            <img src="media/com_maqmahelpdesk/images/avatars/man5.png" align="absmiddle" onclick="SelectAvatar('man5');"
+	            <img src="/media/com_maqmahelpdesk/images/avatars/man5.png" align="absmiddle" onclick="SelectAvatar('man5');"
 	                 style="cursor:pointer;" hspace="5" vspace="5"/>
-	            <img src="media/com_maqmahelpdesk/images/avatars/man6.png" align="absmiddle" onclick="SelectAvatar('man6');"
+	            <img src="/media/com_maqmahelpdesk/images/avatars/man6.png" align="absmiddle" onclick="SelectAvatar('man6');"
 	                 style="cursor:pointer;" hspace="5" vspace="5"/>
-	            <img src="media/com_maqmahelpdesk/images/avatars/man7.png" align="absmiddle" onclick="SelectAvatar('man7');"
+	            <img src="/media/com_maqmahelpdesk/images/avatars/man7.png" align="absmiddle" onclick="SelectAvatar('man7');"
 	                 style="cursor:pointer;" hspace="5" vspace="5"/>
-	            <img src="media/com_maqmahelpdesk/images/avatars/man8.png" align="absmiddle" onclick="SelectAvatar('man8');"
+	            <img src="/media/com_maqmahelpdesk/images/avatars/man8.png" align="absmiddle" onclick="SelectAvatar('man8');"
 	                 style="cursor:pointer;" hspace="5" vspace="5"/>
-	            <img src="media/com_maqmahelpdesk/images/avatars/man9.png" align="absmiddle" onclick="SelectAvatar('man9');"
+	            <img src="/media/com_maqmahelpdesk/images/avatars/man9.png" align="absmiddle" onclick="SelectAvatar('man9');"
 	                 style="cursor:pointer;" hspace="5" vspace="5"/>
-	            <img src="media/com_maqmahelpdesk/images/avatars/mansupport1.png" align="absmiddle"
+	            <img src="/media/com_maqmahelpdesk/images/avatars/mansupport1.png" align="absmiddle"
 	                 onclick="SelectAvatar('mansupport1');" style="cursor:pointer;" hspace="5" vspace="5"/>
-	            <img src="media/com_maqmahelpdesk/images/avatars/mansupport2.png" align="absmiddle"
+	            <img src="/media/com_maqmahelpdesk/images/avatars/mansupport2.png" align="absmiddle"
 	                 onclick="SelectAvatar('mansupport2');" style="cursor:pointer;" hspace="5" vspace="5"/>
-	            <img src="media/com_maqmahelpdesk/images/avatars/painter.png" align="absmiddle"
+	            <img src="/media/com_maqmahelpdesk/images/avatars/painter.png" align="absmiddle"
 	                 onclick="SelectAvatar('painter');" style="cursor:pointer;" hspace="5" vspace="5"/>
-	            <img src="media/com_maqmahelpdesk/images/avatars/security.png" align="absmiddle"
+	            <img src="/media/com_maqmahelpdesk/images/avatars/security.png" align="absmiddle"
 	                 onclick="SelectAvatar('security');" style="cursor:pointer;" hspace="5" vspace="5"/>
-	            <img src="media/com_maqmahelpdesk/images/avatars/woman1.png" align="absmiddle"
+	            <img src="/media/com_maqmahelpdesk/images/avatars/woman1.png" align="absmiddle"
 	                 onclick="SelectAvatar('woman1');" style="cursor:pointer;" hspace="5" vspace="5"/>
-	            <img src="media/com_maqmahelpdesk/images/avatars/woman2.png" align="absmiddle"
+	            <img src="/media/com_maqmahelpdesk/images/avatars/woman2.png" align="absmiddle"
 	                 onclick="SelectAvatar('woman2');" style="cursor:pointer;" hspace="5" vspace="5"/>
-	            <img src="media/com_maqmahelpdesk/images/avatars/woman3.png" align="absmiddle"
+	            <img src="/media/com_maqmahelpdesk/images/avatars/woman3.png" align="absmiddle"
 	                 onclick="SelectAvatar('woman3');" style="cursor:pointer;" hspace="5" vspace="5"/>
-	            <img src="media/com_maqmahelpdesk/images/avatars/woman4.png" align="absmiddle"
+	            <img src="/media/com_maqmahelpdesk/images/avatars/woman4.png" align="absmiddle"
 	                 onclick="SelectAvatar('woman4');" style="cursor:pointer;" hspace="5" vspace="5"/>
-	            <img src="media/com_maqmahelpdesk/images/avatars/woman5.png" align="absmiddle"
+	            <img src="/media/com_maqmahelpdesk/images/avatars/woman5.png" align="absmiddle"
 	                 onclick="SelectAvatar('woman5');" style="cursor:pointer;" hspace="5" vspace="5"/>
-	            <img src="media/com_maqmahelpdesk/images/avatars/woman6.png" align="absmiddle"
+	            <img src="/media/com_maqmahelpdesk/images/avatars/woman6.png" align="absmiddle"
 	                 onclick="SelectAvatar('woman6');" style="cursor:pointer;" hspace="5" vspace="5"/>
-	            <img src="media/com_maqmahelpdesk/images/avatars/woman7.png" align="absmiddle"
+	            <img src="/media/com_maqmahelpdesk/images/avatars/woman7.png" align="absmiddle"
 	                 onclick="SelectAvatar('woman7');" style="cursor:pointer;" hspace="5" vspace="5"/>
-	            <img src="media/com_maqmahelpdesk/images/avatars/woman8.png" align="absmiddle"
+	            <img src="/media/com_maqmahelpdesk/images/avatars/woman8.png" align="absmiddle"
 	                 onclick="SelectAvatar('woman8');" style="cursor:pointer;" hspace="5" vspace="5"/>
-	            <img src="media/com_maqmahelpdesk/images/avatars/womansupport1.png" align="absmiddle"
+	            <img src="/media/com_maqmahelpdesk/images/avatars/womansupport1.png" align="absmiddle"
 	                 onclick="SelectAvatar('womansupport1');" style="cursor:pointer;" hspace="5" vspace="5"/>
-	            <img src="media/com_maqmahelpdesk/images/avatars/womansupport2.png" align="absmiddle"
+	            <img src="/media/com_maqmahelpdesk/images/avatars/womansupport2.png" align="absmiddle"
 	                 onclick="SelectAvatar('womansupport2');" style="cursor:pointer;" hspace="5" vspace="5"/>
-	            <img src="media/com_maqmahelpdesk/images/avatars/workman1.png" align="absmiddle"
+	            <img src="/media/com_maqmahelpdesk/images/avatars/workman1.png" align="absmiddle"
 	                 onclick="SelectAvatar('workman1');" style="cursor:pointer;" hspace="5" vspace="5"/>
-	            <img src="media/com_maqmahelpdesk/images/avatars/workman2.png" align="absmiddle"
+	            <img src="/media/com_maqmahelpdesk/images/avatars/workman2.png" align="absmiddle"
 	                 onclick="SelectAvatar('workman2');" style="cursor:pointer;" hspace="5" vspace="5"/>
 	        </div>
 	    </div>

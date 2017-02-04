@@ -90,7 +90,7 @@ function showQALeaderBoard()
 	$searchinput = JRequest::getVar('searchinput','');
 
 	$db = JFactory::getDBO();
-	HelpdeskUtility::AppendResource('equalheights.js', JURI::root() . 'media/com_maqmahelpdesk/js/', 'js', true);
+	HelpdeskUtility::AppendResource('equalheights.js', '/media/com_maqmahelpdesk/js/', 'js', true);
 
 	// Sets the title
 	HelpdeskUtility::PageTitle('LeaderBoard');
@@ -214,7 +214,7 @@ function showQA()
 	$Itemid = JRequest::getInt('Itemid', 0);
 	$id_workgroup = JRequest::getInt('id_workgroup', 0);
 	$id_category = JRequest::getVar('id_category', 0, '', 'int');
-	HelpdeskUtility::AppendResource('equalheights.js', JURI::root() . 'media/com_maqmahelpdesk/js/', 'js', true);
+	HelpdeskUtility::AppendResource('equalheights.js', '/media/com_maqmahelpdesk/js/', 'js', true);
 
 	// Sets the title
 	HelpdeskUtility::PageTitle('showDiscussions');
@@ -335,9 +335,9 @@ function viewQA()
 	$calculation = $calculation1 + $calculation2;
 	$session->set("calculation", $calculation);
 
-	HelpdeskUtility::AppendResource('helpdesk.discussions.js', JURI::root() . 'media/com_maqmahelpdesk/js/', 'js', true);
-	HelpdeskUtility::AppendResource('prettify.css', JURI::root() . 'media/com_maqmahelpdesk/css/', 'css');
-	HelpdeskUtility::AppendResource('prettify.js', JURI::root() . 'media/com_maqmahelpdesk/js/', 'js');
+	HelpdeskUtility::AppendResource('helpdesk.discussions.js', '/media/com_maqmahelpdesk/js/', 'js', true);
+	HelpdeskUtility::AppendResource('prettify.css', '/media/com_maqmahelpdesk/css/', 'css');
+	HelpdeskUtility::AppendResource('prettify.js', '/media/com_maqmahelpdesk/js/', 'js');
 	
 	// Get question details
 	$sql = "SELECT d.`id`, d.`tags`, d.`date_created`, d.`title`, d.`content`, d.`published`, d.`status`, d.`converted`, d.`views`, d.`votes`, u.`name`, su.`avatar`, d.`id_user`
@@ -650,7 +650,7 @@ function questionQA()
 	$document->addScriptDeclaration( 'var MQM_QA_QUESTION = "'.addslashes(JText::_('required_question')).'";' );
 	$document->addScriptDeclaration( 'var MQM_QA_TAGS = "'.addslashes(JText::_('required_tags')).'";' );
 	$document->addScriptDeclaration( 'var MQM_QA_CANCEL = "'.addslashes(JText::_('cancel_question')).'";' );
-	HelpdeskUtility::AppendResource('helpdesk.discussions.js', JURI::root() . 'media/com_maqmahelpdesk/js/', 'js', true);
+	HelpdeskUtility::AppendResource('helpdesk.discussions.js', '/media/com_maqmahelpdesk/js/', 'js', true);
 
 	// Set title
 	HelpdeskUtility::PageTitle('newDiscussion');

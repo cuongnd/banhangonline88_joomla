@@ -793,7 +793,7 @@ function GetClientAjax()
 	for ($i = 0; $i < count($rows); $i++)
 	{
 		$row = $rows[$i];
-		$data .= $row->id . "|" . $row->clientname . "|" . ($row->logo != '' ? JURI::root() . 'media/com_maqmahelpdesk/images/logos/' . $row->logo : JURI::root() . 'media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/48px/clients.png') . "\n";
+		$data .= $row->id . "|" . $row->clientname . "|" . ($row->logo != '' ? '/media/com_maqmahelpdesk/images/logos/' . $row->logo : '/media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/48px/clients.png') . "\n";
 	}
 
 	echo $data;

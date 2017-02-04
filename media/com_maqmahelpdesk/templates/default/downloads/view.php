@@ -104,7 +104,7 @@
     </table>
     <?php else: ?>
 
-    <img src="media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/info.png" border="0"
+    <img src="/media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/info.png" border="0"
          align="absmiddle"/> <?php echo JText::_('dl_no_versions'); ?>
 
     <?php endif;?>

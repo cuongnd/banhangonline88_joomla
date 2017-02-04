@@ -179,7 +179,7 @@
 								$cfields_info.= '<b>' . $cfield->caption . '</b>: ' . $custom_value . '<br />';
 							}
 						}?>
-						<td><span class="showPopover" data-original-title="<?php echo JText::_('MORE_INFORMATION');?>" data-content="<?php echo $cfields_info . '<hr />' . JText::_('components') . '<br />' . $row['components'];?>"> <img src="media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/info.png" border="0"></span></td>
+						<td><span class="showPopover" data-original-title="<?php echo JText::_('MORE_INFORMATION');?>" data-content="<?php echo $cfields_info . '<hr />' . JText::_('components') . '<br />' . $row['components'];?>"> <img src="/media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/info.png" border="0"></span></td>
 					</tr><?php 
 					$i++;
 				} 

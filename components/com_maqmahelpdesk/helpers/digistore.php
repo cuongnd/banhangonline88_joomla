@@ -89,7 +89,7 @@ class HelpdeskDigistore
 			{
 				?>
 				<div id="mqmMessage">
-					<img src="media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/alert.png"
+					<img src="/media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/alert.png"
 						 align="absmiddle"/> <?php echo $message;?>
 				</div><?php
 			}

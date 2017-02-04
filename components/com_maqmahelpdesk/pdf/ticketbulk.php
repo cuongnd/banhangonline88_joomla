@@ -216,7 +216,7 @@ for ($ti = 0; $ti < count($ids); $ti++) {
 			</tr>
 			<tr>
 				<td class="header">' . JText::_('rating') . '</td>
-				<td colspan="3"><img src="media/com_maqmahelpdesk/images/rating/' . HelpdeskForm::GetRate($row->id, 'T', 2) . 'star_pdf.png" /></td>
+				<td colspan="3"><img src="/media/com_maqmahelpdesk/images/rating/' . HelpdeskForm::GetRate($row->id, 'T', 2) . 'star_pdf.png" /></td>
 			</tr>
 			</table>';
 

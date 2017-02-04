@@ -7,7 +7,7 @@
 
 .discuss-toolbar {
 	position: relative;
-	z-index: 19; // issues #1128 reduce from 600 to 19, right under easysocial z-index 20
+	z-index: 600;
 	.brand {
 		padding: 8px 18px 10px;
 		&:hover {
@@ -47,14 +47,8 @@
 	.nav-collapse .dropdown-menu li > a {
 		position: relative;
 		text-decoration: none;
-		font-size: 12px;
-		padding: 10px 5px;
-		margin: 0;
-
-		> i{
-			margin-right: 5px;
-			font-size: 14px;
-		}
+		padding: 4px 15px;
+		font-size: 11px;
 		.label {
 			// position: relative;
 			position: absolute;
@@ -227,11 +221,12 @@
 	}
 	.dropdown-menu .discuss-login-menu {
 
-		width: 250px;
+		width: 230px;
 		padding: 10px;
 
 		input{
 			font-size: 11px;
+			font-family: @baseFontFamily;
 		}
 
 		a,
@@ -283,7 +278,7 @@
 			overflow: visible;
 			> a {
 				padding: 10px 12px 6px;
-				height: 36px;
+				height: 20px;
 				line-height: 20px;
 				overflow: hidden;
 				[class^="icon-ed-"],
@@ -318,11 +313,6 @@
 			}
 			> .dropdown-toggle_ {
 				cursor: pointer;
-				> .label-notification{
-					font-size: 10px;
-					padding: 1px 2px;
-					font-weight: normal;
-				}
 				> .label {
 					position: absolute;
 					top: 1px;
@@ -332,8 +322,8 @@
 				}
 				> .caret {
 					position: absolute;
-					top: 18px;
-					right: 0;
+					top: 14px;
+					right: 2px;
 					border-top-color: @gray;
 					border-bottom-color: @gray;
 				}
@@ -476,7 +466,7 @@
 		}
 		.nav-collapse .nav > li > a {
 			margin-bottom: 2px;
-			height: 46px;
+			height: 28px;
 		}
 		.nav-collapse .nav > .divider-vertical {
 			display: none;

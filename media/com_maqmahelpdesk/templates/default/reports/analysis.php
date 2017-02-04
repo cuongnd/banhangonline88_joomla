@@ -126,7 +126,7 @@
             <div style="width:48%;float:left;text-align:left;">
                 <a href="<?php echo JRoute::_(JURI::root() . 'index.php?option=com_maqmahelpdesk&Itemid=' . $Itemid . '&task=ajax_analysis&filter_workgroup=' . $filter_workgroup . '&filter_client=' . $filter_client . '&filter_status=' . $filter_status . '&filter_assign=' . $filter_assign . '&filter_priority=' . $filter_priority . '&filter_category=' . $filter_category . '&filter_year=' . $filter_year . '&filter_month=' . $filter_month . '&col_ticketid=' . $col_ticketid . '&col_workgroup=' . $col_workgroup . '&col_subject=' . $col_subject . '&col_category=' . $col_category . '&col_client=' . $col_client . '&col_user=' . $col_user . '&col_duedate=' . $col_duedate . '&col_status=' . $col_status . '&col_assign=' . $col_assign . '&col_date_created=' . $col_date_created . '&col_message=' . $col_message . '&col_last_message=' . $col_last_message . '&sessionid=' . session_id() . '&id_user=' . $user->id);?>"
                    title="<?php echo JText::_('export');?>"><img
-                    src="media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/table.png"
+                    src="/media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/table.png"
                     alt="<?php echo JText::_('export');?>" align="absmiddle"
                     border="0"/> <?php echo JText::_('export');?></a>
             </div>

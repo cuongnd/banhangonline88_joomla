@@ -89,7 +89,7 @@ function smsShowConfig()
 					<td>
 						<span class="editlinktip hasTip"
 							  title="Set if you want to send a SMS message to customer when a ticket is created by him or by a support member by him.<br /><br /><b>Default: Yes</b>"><img
-							src="media/com_maqmahelpdesk/images/16px/info.png" align="absmiddle" border="0" hspace="5"
+							src="/media/com_maqmahelpdesk/images/16px/info.png" align="absmiddle" border="0" hspace="5"
 							style="cursor:help; cursor:hand;"/></span>
 						Send to customer when ticket is created?
 					</td>
@@ -99,7 +99,7 @@ function smsShowConfig()
 					<td>
 						<span class="editlinktip hasTip"
 							  title="Set if you want to send a SMS message to support member when a ticket is assigned to him.<br /><br /><b>Default: Yes</b>"><img
-							src="media/com_maqmahelpdesk/images/16px/info.png" align="absmiddle" border="0" hspace="5"
+							src="/media/com_maqmahelpdesk/images/16px/info.png" align="absmiddle" border="0" hspace="5"
 							style="cursor:help; cursor:hand;"/></span>
 						Send to support member when ticket is assigned?
 					</td>
@@ -109,7 +109,7 @@ function smsShowConfig()
 					<td>
 						<span class="editlinktip hasTip"
 							  title="Set if you want to send a SMS message to customer when a support member adds a new activity message.<br /><br /><b>Default: Yes</b>"><img
-							src="media/com_maqmahelpdesk/images/16px/info.png" align="absmiddle" border="0" hspace="5"
+							src="/media/com_maqmahelpdesk/images/16px/info.png" align="absmiddle" border="0" hspace="5"
 							style="cursor:help; cursor:hand;"/></span>
 						Send to customer when support member adds a new activity?
 					</td>
@@ -119,7 +119,7 @@ function smsShowConfig()
 					<td>
 						<span class="editlinktip hasTip"
 							  title="Set if you want to send a SMS message to support member when customer adds a new activity message.<br /><br /><b>Default: Yes</b>"><img
-							src="media/com_maqmahelpdesk/images/16px/info.png" align="absmiddle" border="0" hspace="5"
+							src="/media/com_maqmahelpdesk/images/16px/info.png" align="absmiddle" border="0" hspace="5"
 							style="cursor:help; cursor:hand;"/></span>
 						Send to support member when support member adds a new activity?
 					</td>

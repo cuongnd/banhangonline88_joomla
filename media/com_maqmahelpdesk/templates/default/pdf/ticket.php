@@ -14,7 +14,7 @@
     </tr>
     <tr>
         <td class="header"><?php echo JText::_('rating');?></td>
-        <td><img src="media/com_maqmahelpdesk/images/rating/{rating}star_pdf.png"/></td>
+        <td><img src="/media/com_maqmahelpdesk/images/rating/{rating}star_pdf.png"/></td>
         <td class="header"><?php echo JText::_('votes');?></td>
         <td>{votes}</td>
     </tr>

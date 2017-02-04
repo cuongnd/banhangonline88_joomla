@@ -23,7 +23,7 @@
 	<?php endif;?>
 
     <div class="alert">
-        <p><img src="media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/alert.png"
+        <p><img src="/media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/alert.png"
                 align="left" style="padding-right:5px;"/> <?php echo JText::_('wk_anonymous_warning');?></p>
     </div>
 
@@ -54,7 +54,7 @@
 		endif;?>
 		<div class="span6" style="margin-bottom:10px;">
 			<a href="<?php echo $row['link'];?>" class="btn equalheight" style="display:block;padding:15px;text-align:left;min-height:60px;">
-				<img src="media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/48px/<?php echo $row['icon'];?>" alt="<?php echo $row['title'];?>" style="float:left;padding-right:10px;padding-bottom:10px;" />
+				<img src="/media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/48px/<?php echo $row['icon'];?>" alt="<?php echo $row['title'];?>" style="float:left;padding-right:10px;padding-bottom:10px;" />
 				<h4 style="margin:5px 0;"><?php echo $row['title'];?></h4>
 				<small><?php echo $row['description'];?></small>
 			</a>

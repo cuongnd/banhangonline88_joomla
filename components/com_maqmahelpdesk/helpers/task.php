@@ -290,7 +290,7 @@ class HelpdeskTask
 			$task_minutes = substr($task->date_time, 14, 2);
 			$task_decimal = str_replace('-', '', substr($task->date_time, 0, 10)) . $task_hours . '.' . $task_minutes;
 			$cur_decimal = date("YmdH.i");
-			$calendar_html .= ($task->status == 'O' ? '<img src=\'' . JURI::root() . 'media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/flag-' . ($task_decimal > $cur_decimal ? 'yellow' : 'red') . '.png\' align=\'absmiddle\' border=\'0\' />&nbsp;' : '<img src=\'' . JURI::root() . 'media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/flag-green.png\' align=\'absmiddle\' border=\'0\' />&nbsp;') . "<b>" . $task_hours . ':' . $task_minutes . "</b> > " . substr($task->task, 0, 100) . ($task->id_ticket > 0 ? '&nbsp;<img src=\'' . JURI::root() . 'media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/status.png\' align=\'absmiddle\' border=\'0\' />' : '');
+			$calendar_html .= ($task->status == 'O' ? '<img src=\'' . '/media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/flag-' . ($task_decimal > $cur_decimal ? 'yellow' : 'red') . '.png\' align=\'absmiddle\' border=\'0\' />&nbsp;' : '<img src=\'' . '/media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/flag-green.png\' align=\'absmiddle\' border=\'0\' />&nbsp;') . "<b>" . $task_hours . ':' . $task_minutes . "</b> > " . substr($task->task, 0, 100) . ($task->id_ticket > 0 ? '&nbsp;<img src=\'' . '/media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/status.png\' align=\'absmiddle\' border=\'0\' />' : '');
 			$calendar_html .= "<br />\n";
 		}
 
@@ -329,11 +329,11 @@ class HelpdeskTask
 				if ($module) {
 					$tasks_for_day .= '<tr>';
 					$tasks_for_day .= '<td class="alglft">';
-					$tasks_for_day .= '<span class="lbl lbl-inverse">' . substr($today_task->date_time, 11, 5) . '</span>' . ($today_task->id_ticket > 0 ? ' <img src="' . JURI::root() . 'media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/status.png" align="absmiddle" border="0" />' : '') . '<br /><a href="' . JRoute::_($link) . '" class="sublevel' . $modclass_sfx . '"><em>' . substr($today_task->task, 0, 100) . '</em></a>';
+					$tasks_for_day .= '<span class="lbl lbl-inverse">' . substr($today_task->date_time, 11, 5) . '</span>' . ($today_task->id_ticket > 0 ? ' <img src="' . '/media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/status.png" align="absmiddle" border="0" />' : '') . '<br /><a href="' . JRoute::_($link) . '" class="sublevel' . $modclass_sfx . '"><em>' . substr($today_task->task, 0, 100) . '</em></a>';
 					$tasks_for_day .= '</td>';
 					$tasks_for_day .= '</tr>';
 				} else {
-					$tasks_for_day .= '<span class="lbl lbl-inverse">' . substr($today_task->date_time, 11, 5) . '</span>' . ($today_task->id_ticket > 0 ? ' <img src="' . JURI::root() . 'media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/status.png" align="absmiddle" border="0" />' : '') . ($today_task->status == 'O' ? '&nbsp;<img src="' . JURI::root() . 'media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/flag-' . ($i < date("d") ? 'yellow' : 'red') . '.png" align="absmiddle" border="0" />' : '&nbsp;<img src="' . JURI::root() . 'media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/flag-green.png" align="absmiddle" border="0" />') . '<br /><a href="' . JRoute::_($link) . '"><em>' . substr($today_task->task, 0, 100) . "</em></a><br />\n";
+					$tasks_for_day .= '<span class="lbl lbl-inverse">' . substr($today_task->date_time, 11, 5) . '</span>' . ($today_task->id_ticket > 0 ? ' <img src="' . '/media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/status.png" align="absmiddle" border="0" />' : '') . ($today_task->status == 'O' ? '&nbsp;<img src="' . '/media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/flag-' . ($i < date("d") ? 'yellow' : 'red') . '.png" align="absmiddle" border="0" />' : '&nbsp;<img src="' . '/media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/flag-green.png" align="absmiddle" border="0" />') . '<br /><a href="' . JRoute::_($link) . '"><em>' . substr($today_task->task, 0, 100) . "</em></a><br />\n";
 				}
 			}
 		}
@@ -437,7 +437,7 @@ class HelpdeskTask
 		$today = date('d');
 		$days = array(1 => array(NULL, 'day', NULL), 2 => array(NULL, 'day', NULL), 3 => array(NULL, 'day', NULL), 4 => array(NULL, 'day', NULL), 5 => array(NULL, 'day', NULL), 6 => array(NULL, 'day', NULL), 7 => array(NULL, 'day', NULL), 8 => array(NULL, 'day', NULL), 9 => array(NULL, 'day', NULL), 10 => array(NULL, 'day', NULL), 11 => array(NULL, 'day', NULL), 12 => array(NULL, 'day', NULL), 13 => array(NULL, 'day', NULL), 14 => array(NULL, 'day', NULL), 15 => array(NULL, 'day', NULL), 16 => array(NULL, 'day', NULL), 17 => array(NULL, 'day', NULL), 18 => array(NULL, 'day', NULL), 19 => array(NULL, 'day', NULL), 20 => array(NULL, 'day', NULL), 21 => array(NULL, 'day', NULL), 22 => array(NULL, 'day', NULL), 23 => array(NULL, 'day', NULL), 24 => array(NULL, 'day', NULL), 25 => array(NULL, 'day', NULL), 26 => array(NULL, 'day', NULL), 27 => array(NULL, 'day', NULL), 28 => array(NULL, 'day', NULL), 29 => array(NULL, 'day', NULL), 30 => array(NULL, 'day', NULL), 31 => array(NULL, 'day', NULL), $today => array(NULL, 'today', NULL));
 		$first_of_month = gmmktime(0, 0, 0, $month, 1, $year);
-		$img_path = JURI::root() . 'media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/calendar.png';
+		$img_path = '/media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/calendar.png';
 		$link = 'index.php?option=com_maqmahelpdesk&Itemid=' . $Itemid . '&id_workgroup=' . $id_workgroup . '&task=calendar_week&date=';
 
 		$day_names = array();

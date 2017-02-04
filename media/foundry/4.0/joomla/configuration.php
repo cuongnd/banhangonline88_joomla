@@ -143,9 +143,8 @@ class FD40_FoundryBaseConfiguration {
 		// they can load & execute without page blocking.
 		foreach ($this->scripts as $i => $script) {
 			$scriptPath = $uri . '/scripts/' . $script . $this->extension;
-			$document->addScript($scriptPath);
-			//$scriptTag  = $this->createScriptTag($scriptPath);
-			//$document->addCustomTag($scriptTag);
+			$scriptTag  = $this->createScriptTag($scriptPath);
+			$document->addCustomTag($scriptTag);
 		}
 	}
 
@@ -162,6 +161,7 @@ class FD40_FoundryBaseConfiguration {
 		// Else add to the very top of document head.
 		} else {
 			$document = JFactory::getDocument();
+			$script->url=str_replace(JURI::root(),'',$script->url);
 			$document->addScript($script->url);
 		}
 

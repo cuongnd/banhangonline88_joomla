@@ -106,7 +106,6 @@ class DiscussLessHelper extends DiscussLessc
 
 		// Compile stylesheet
 		try {
-
 			$result->cache = $this->cachedCompileFile($in, $out, $this->force);
 
 		} catch (Exception $ex) {
@@ -115,7 +114,6 @@ class DiscussLessHelper extends DiscussLessc
 			$result->message = 'LESS Error: ' . $ex->getMessage() . 'error';
 			DiscussHelper::setMessageQueue( $result->message );
 		}
-
 		return $result;
 	}
 

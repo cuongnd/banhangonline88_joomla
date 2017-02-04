@@ -233,6 +233,7 @@ class FD40_Stylesheet_Builder {
 			$cacheFolder = $this->stylesheet->folder('cache');
 			$cacheFile   = $this->stylesheet->file('cache');
 			$cacheContent = json_encode($cache);
+
 			// Create cache folder if it doesn't exist.
 			if (!JFolder::exists($cacheFolder)) {
 				JFolder::create($cacheFolder);

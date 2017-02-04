@@ -80,7 +80,7 @@ function escalationShowConfig($message = '')
 {
 	$database = JFactory::getDBO();
 	$supportConfig = HelpdeskUtility::GetConfig();
-	HelpdeskUtility::AppendResource('equalheights.js', JURI::root() . 'media/com_maqmahelpdesk/js/', 'js', true);
+	HelpdeskUtility::AppendResource('equalheights.js', '/media/com_maqmahelpdesk/js/', 'js', true);
 
 	$database->setQuery("SELECT * FROM #__support_escalation_config ORDER BY ordering");
 	$rows = $database->loadObjectList();
@@ -185,10 +185,10 @@ function escalationShowConfig($message = '')
 	<div class="tabbable tabs-left contentarea">
 		<ul class="nav nav-tabs equalheight">
 			<li class="active"><a href="#tab1" data-toggle="tab"><img
-				src="../media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/config.png"
+				src="/media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/config.png"
 				border="0" align="absmiddle"/>&nbsp; <?php echo JText::_('existing_rules');?></a></li>
 			<li><a href="#tab2" data-toggle="tab"><img
-				src="../media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/add.png"
+				src="/media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/add.png"
 				border="0" align="absmiddle"/>&nbsp; <?php echo JText::_('add_rule');?></a></li>
 		</ul>
 		<div class="tab-content contentbar withleft">
@@ -236,7 +236,7 @@ function escalationShowConfig($message = '')
 							print '<td>' . HelpdeskStatus::GetName($row->id_status) . '</td>';
 							print '<td>' . HelpdeskCategory::GetName($row->id_category) . '</td>';
 							print '<td width="20">' . $row->ordering . '</td>';
-							print '<td width="20"><a href="' . JRoute::_('index.php?option=com_maqmahelpdesk&task=addon-escalation_delete&addonfile=config&id=' . $row->id) . '"><img src="../media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/delete.png" border="0" alt="Delete" /></a></td>';
+							print '<td width="20"><a href="' . JRoute::_('index.php?option=com_maqmahelpdesk&task=addon-escalation_delete&addonfile=config&id=' . $row->id) . '"><img src="/media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/delete.png" border="0" alt="Delete" /></a></td>';
 							print '</tr>';
 
 							$k = 1 - $k;

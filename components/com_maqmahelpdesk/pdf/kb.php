@@ -55,7 +55,7 @@ $page1 = '<h1 style="font-family:DejaVuSans;">' . $article->kbtitle . '</h1>
 </tr>
 <tr>
 	<td class="header">' . JText::_('rating') . '</td>
-	<td><img src="media/com_maqmahelpdesk/images/rating/' . HelpdeskForm::GetRate($article->id, 'K', 2) . 'star_pdf.png" /></td>
+	<td><img src="/media/com_maqmahelpdesk/images/rating/' . HelpdeskForm::GetRate($article->id, 'K', 2) . 'star_pdf.png" /></td>
 	<td class="header">' . JText::_('votes') . '</td>
 	<td>' . HelpdeskKB::GetVotes($article->id, 'K') . '</td>
 </tr>

@@ -322,7 +322,6 @@
 	}
 	.discuss-user {
 		padding: 15px 10px 5px;
-		width: 170px;
 		margin-bottom: -9999px;
 		.discuss-avatar {
 			width: 120px;
@@ -330,6 +329,7 @@
 		.discuss-role-title {
 			text-overflow: ellipsis;
 			overflow: hidden;
+			height:14px;
 		}
 		.discuss-flyout-content {
 			right: 0;
@@ -349,46 +349,8 @@
 		margin: 5px 0;
 		padding-right: 55px;
 	}
-	.tab-content {
-		h3 {
-			font-size: 16px; //eb title
-		}
-	}
 }
-&.w320 {
-	&.discuss-view-profile {
-		.discuss-profile-left {
-			width: 100%;
-			border: none;
-			.discuss-user {
-				margin-bottom: 0;
-				width: 100%;
-				padding: 0;
-			}
-		}
-		.discuss-profile-right {
-			margin: 0;
-			border: none;
-			padding: 0;
-		}
-	}//view-profile
 
-	//components in profile
-	.discuss-profile-nav {
-		> li {
-			> a {
-				width: 100%;
-				.box-sizing(border-box);
-			}
-			&.active {
-				&:before,
-				&:after {
-					display: none;
-				}
-			}
-		}//li
-	}
-}
 // =discuss-view-badges
 // ----------------
 &.discuss-view-badges {
@@ -454,8 +416,8 @@
 			border-bottom: none;
 			padding: 0 5px;
 			.btn {
-				padding: 0 2px;
-				height: 16px;
+				padding: 4px 2px;
+				height: 10px;
 				line-height: 10px;
 			}
 		}
@@ -527,6 +489,7 @@
 			.discuss-user {
 				.discuss-avatar {
 					width: 40px;
+					height: 40px;
 					margin-bottom: 0;
 					padding-bottom: 5px;
 					a {
@@ -557,6 +520,7 @@
 	.discuss-role-title {
 		text-overflow: ellipsis;
 		overflow: hidden;
+		height:14px;
 	}
 }
 //w320

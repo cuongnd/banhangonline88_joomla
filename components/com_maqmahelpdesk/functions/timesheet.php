@@ -104,9 +104,9 @@ function editTimesheet()
 	$id_workgroup = JRequest::getInt('id_workgroup', 0);
 	$id = JRequest::getInt('id', 0);
 
-	HelpdeskUtility::AppendResource('autocomplete.js', JURI::root() . 'media/com_maqmahelpdesk/js/', 'js', true);
-	HelpdeskUtility::AppendResource('timepicker.js', JURI::root() . 'media/com_maqmahelpdesk/js/', 'js', true);
-	HelpdeskUtility::AppendResource('times.form.js', JURI::root() . 'media/com_maqmahelpdesk/js/', 'js', true);
+	HelpdeskUtility::AppendResource('autocomplete.js', '/media/com_maqmahelpdesk/js/', 'js', true);
+	HelpdeskUtility::AppendResource('timepicker.js', '/media/com_maqmahelpdesk/js/', 'js', true);
+	HelpdeskUtility::AppendResource('times.form.js', '/media/com_maqmahelpdesk/js/', 'js', true);
 
 	$document->addScriptDeclaration('var MQM_LOADING = "' . addslashes(JText::_('loading')) . '";');
 	$document->addScriptDeclaration('var MQM_CLIENT = "' . addslashes(JText::_('CLIENT_IS_REQUIRED')) . '";');

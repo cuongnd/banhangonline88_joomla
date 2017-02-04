@@ -618,7 +618,7 @@ function anonymousNewTicket()
     $document->addScriptDeclaration( 'var MQM_INV_MINUTES = "'.addslashes(JText::_('invalid_minutes')).'";' );
     $document->addScriptDeclaration( 'var MQM_INV_HOURS = "'.addslashes(JText::_('invalid_hours')).'";' );
     $document->addScriptDeclaration( 'var MQM_VALCALC = "'.addslashes(JText::_('message_calc_validation')).'";' );
-    HelpdeskUtility::AppendResource('helpdesk.tickets.new.customer.js', JURI::root() . 'media/com_maqmahelpdesk/js/', 'js', true);
+    HelpdeskUtility::AppendResource('helpdesk.tickets.new.customer.js', '/media/com_maqmahelpdesk/js/', 'js', true);
 
     // Sets the page title
     HelpdeskUtility::PageTitle('newTicket');
@@ -1509,8 +1509,8 @@ function showMyTickets()
 
     if ($format != 'raw')
     {
-        HelpdeskUtility::AppendResource('autocomplete.js', JURI::root() . 'media/com_maqmahelpdesk/js/', 'js');
-        HelpdeskUtility::AppendResource('highlight.js', JURI::root() . 'media/com_maqmahelpdesk/js/', 'js');
+        HelpdeskUtility::AppendResource('autocomplete.js', '/media/com_maqmahelpdesk/js/', 'js');
+        HelpdeskUtility::AppendResource('highlight.js', '/media/com_maqmahelpdesk/js/', 'js');
     }
 
     // Set title
@@ -2062,22 +2062,22 @@ function viewTicket($id, $print)
 	        {
 		        $document->addScriptDeclaration('function CheckHTMLEditor() { ' . $editor->save('reply') . ' }');
 	        }
-            HelpdeskUtility::AppendResource('helpdesk.tickets.edit.support.js', JURI::root() . 'media/com_maqmahelpdesk/js/', 'js', true);
+            HelpdeskUtility::AppendResource('helpdesk.tickets.edit.support.js', '/media/com_maqmahelpdesk/js/', 'js', true);
         }else{
             if ($supportConfig->screenr_account!='' && $supportConfig->screenr_api_id!='') {
                 $document->addScript($uri->getScheme() . "://imaqma.viewscreencasts.com/api/recorder");
             }
-            HelpdeskUtility::AppendResource('helpdesk.tickets.edit.customer.js', JURI::root() . 'media/com_maqmahelpdesk/js/', 'js', true);
+            HelpdeskUtility::AppendResource('helpdesk.tickets.edit.customer.js', '/media/com_maqmahelpdesk/js/', 'js', true);
         }
-        HelpdeskUtility::AppendResource('autocomplete.js', JURI::root() . 'media/com_maqmahelpdesk/js/', 'js');
-        HelpdeskUtility::AppendResource('rating.js', JURI::root() . 'media/com_maqmahelpdesk/js/', 'js');
-        HelpdeskUtility::AppendResource('timepicker.js', JURI::root() . 'media/com_maqmahelpdesk/js/', 'js');
-		HelpdeskUtility::AppendResource('highlight.js', JURI::root() . 'media/com_maqmahelpdesk/js/', 'js');
+        HelpdeskUtility::AppendResource('autocomplete.js', '/media/com_maqmahelpdesk/js/', 'js');
+        HelpdeskUtility::AppendResource('rating.js', '/media/com_maqmahelpdesk/js/', 'js');
+        HelpdeskUtility::AppendResource('timepicker.js', '/media/com_maqmahelpdesk/js/', 'js');
+		HelpdeskUtility::AppendResource('highlight.js', '/media/com_maqmahelpdesk/js/', 'js');
     }
 
     // If it's the print version shows icon to print and to close
     if ($print) {
-        $img_src = JURI::root() . 'media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/';
+        $img_src = '/media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/';
         echo '<style type="text/css" media="print">';
         echo '.exclude {';
         echo '	visibility: hidden;';
@@ -2103,10 +2103,10 @@ function viewTicket($id, $print)
     $wkchange_html = '';
     for ($i = 0; $i < count($workgroups_change); $i++) {
         $wkrow = $workgroups_change[$i];
-        $wkchange_html .= '<p><img src="' . JURI::root() . 'media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/link.png" border="0" align="absmiddle" /> <a href="javascript:ChangeWorkgroup(' . $wkrow->id . ');" title="">' . $wkrow->wkdesc . '</a></p>';
+        $wkchange_html .= '<p><img src="' . '/media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/link.png" border="0" align="absmiddle" /> <a href="javascript:ChangeWorkgroup(' . $wkrow->id . ');" title="">' . $wkrow->wkdesc . '</a></p>';
     }
 
-    $imgpath = JURI::root() . 'media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/';
+    $imgpath = '/media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/';
 
     // Sets the page title
     HelpdeskUtility::PageTitle('viewTicket', $row->subject);
@@ -2768,7 +2768,7 @@ function viewTicket($id, $print)
                 }
 
                 if ($key3 == 'show')
-                    $ticket_notes[$i]['available'] = '<img src="media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/' . ($value3 ? 'ok' : 'no') . '.png" />';
+                    $ticket_notes[$i]['available'] = '<img src="/media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/' . ($value3 ? 'ok' : 'no') . '.png" />';
             }
         }
 
@@ -2801,14 +2801,14 @@ function viewTicket($id, $print)
             $ticket_attachs[$i]['info'] = '<span class="editlinktip hasTip" title="' . htmlspecialchars(JText::_("attachment") . '::<b>' . JText::_('date') . '</b>:' . $ticket_attachs[$i]['date'] . '<br /><b>' . JText::_('description') . '</b>:' . $ticket_attachs[$i]['description']) . '"><img src="' . $imgpath . 'info.png" align="absmiddle" border="0" hspace="5" style="cursor:pointer; cursor:hand;" /></span>';
 
             $link = JRoute::_('index.php?option=com_maqmahelpdesk&Itemid=' . $Itemid . '&id_workgroup=' . $id_workgroup . '&task=ticket_download&id=' . $id_file . '&extid=' . $id, false);
-            $tools = '<a href="' . $link . '"><img src="media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/down.png" title="' . JText::_('download') . '" border="0" /></a>';
+            $tools = '<a href="' . $link . '"><img src="/media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/down.png" title="' . JText::_('download') . '" border="0" /></a>';
 
             if ($is_support || $id_user == $user->id) {
                 $link2 = JRoute::_('index.php?option=com_maqmahelpdesk&Itemid=' . $Itemid . '&id_workgroup=' . $id_workgroup . '&task=ticket_delattach&id=' . $id_file . '&extid=' . $id, false);
-                $tools .= '&nbsp;<a href="' . $link2 . '"><img src="media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/delete.png" title="' . JText::_('delete') . '" border="0" /></a>';
+                $tools .= '&nbsp;<a href="' . $link2 . '"><img src="/media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/delete.png" title="' . JText::_('delete') . '" border="0" /></a>';
             }
 
-            $available = '<img src="media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/' . ($public == 1 ? 'ok' : 'no') . '.png" />';
+            $available = '<img src="/media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/' . ($public == 1 ? 'ok' : 'no') . '.png" />';
             $ticket_attachs[$i]['available'] = $available;
 
             $ticket_attachs[$i]['tools'] = $tools;
@@ -3063,8 +3063,8 @@ function newTicket($duplicate=0)
 	$id_category = JRequest::getInt('id_category', 0);
     $id_directory = JRequest::getInt('id_directory', 0);
 
-    HelpdeskUtility::AppendResource('autocomplete.js', JURI::root() . 'media/com_maqmahelpdesk/js/', 'js');
-    HelpdeskUtility::AppendResource('timepicker.js', JURI::root() . 'media/com_maqmahelpdesk/js/', 'js');
+    HelpdeskUtility::AppendResource('autocomplete.js', '/media/com_maqmahelpdesk/js/', 'js');
+    HelpdeskUtility::AppendResource('timepicker.js', '/media/com_maqmahelpdesk/js/', 'js');
 
     $document->addScriptDeclaration( 'var MQM_IS_ANONYMOUS = false;' );
     $document->addScriptDeclaration( 'var MQM_LOADING = "'.addslashes(JText::_('loading')).'";' );
@@ -3100,12 +3100,12 @@ function newTicket($duplicate=0)
 	    {
 		    $document->addScriptDeclaration('function CheckHTMLEditor() { '.$editor->save('problem') . ' ' . $editor->save('reply') . ' }');
 	    }
-        HelpdeskUtility::AppendResource('helpdesk.tickets.new.support.js', JURI::root() . 'media/com_maqmahelpdesk/js/', 'js', true);
+        HelpdeskUtility::AppendResource('helpdesk.tickets.new.support.js', '/media/com_maqmahelpdesk/js/', 'js', true);
     }else{
 	    if ($supportConfig->screenr_account!='' && $supportConfig->screenr_api_id!='') {
 		    $document->addScript($uri->getScheme() . "://imaqma.viewscreencasts.com/api/recorder");
 	    }
-        HelpdeskUtility::AppendResource('helpdesk.tickets.new.customer.js', JURI::root() . 'media/com_maqmahelpdesk/js/', 'js', true);
+        HelpdeskUtility::AppendResource('helpdesk.tickets.new.customer.js', '/media/com_maqmahelpdesk/js/', 'js', true);
     }
 
     $id_client = JRequest::getVar('id_client', 0, '', 'int');
@@ -3338,9 +3338,9 @@ function newTicket($duplicate=0)
 
     $document->addScriptDeclaration("function CustomFieldsValidation() { $html1 return true; }");
 
-    $acttyperate_hover_tip = '<span class="editlinktip hasTip" title="' . htmlspecialchars(JText::_('acttyperate_hover_subj') . '::' . JText::_('acttyperate_hover_tip')) . '"> <img src="media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/config.png" align="absmiddle" border="0" hspace="5" style="cursor:pointer; cursor:hand;" /><b>' . JText::_('acttyperate_hover_subj') . '</b></span>';
-    $start_times_hover_tip = '<span class="editlinktip hasTip" title="' . htmlspecialchars(JText::_('start_times_hover_subj') . '::' . JText::_('start_times_hover_tip')) . '"> <img src="media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/time.png" align="absmiddle" border="0" hspace="5" style="cursor:pointer; cursor:hand;" /><b>' . JText::_('start_times_hover_subj') . '</b></span>';
-    $tmpl_msg21 = '<span class="editlinktip hasTip" title="' . htmlspecialchars(JText::_('tmpl_msg22') . '::' . JText::_('tmpl_msg21')) . '"> <img src="media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/car.png" align="absmiddle" border="0" hspace="5" style="cursor:pointer; cursor:hand;" /><b>' . JText::_('tmpl_msg22') . '</b></span>';
+    $acttyperate_hover_tip = '<span class="editlinktip hasTip" title="' . htmlspecialchars(JText::_('acttyperate_hover_subj') . '::' . JText::_('acttyperate_hover_tip')) . '"> <img src="/media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/config.png" align="absmiddle" border="0" hspace="5" style="cursor:pointer; cursor:hand;" /><b>' . JText::_('acttyperate_hover_subj') . '</b></span>';
+    $start_times_hover_tip = '<span class="editlinktip hasTip" title="' . htmlspecialchars(JText::_('start_times_hover_subj') . '::' . JText::_('start_times_hover_tip')) . '"> <img src="/media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/time.png" align="absmiddle" border="0" hspace="5" style="cursor:pointer; cursor:hand;" /><b>' . JText::_('start_times_hover_subj') . '</b></span>';
+    $tmpl_msg21 = '<span class="editlinktip hasTip" title="' . htmlspecialchars(JText::_('tmpl_msg22') . '::' . JText::_('tmpl_msg21')) . '"> <img src="/media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/car.png" align="absmiddle" border="0" hspace="5" style="cursor:pointer; cursor:hand;" /><b>' . JText::_('tmpl_msg22') . '</b></span>';
 
     $imgpath = JURI::root() . 'components/com_maqmahelpdesk/images/';
     $duedate_default = HelpdeskTicket::ReturnDueDate(date("Y"), date("m"), date("d"), date("H"), date("i"), HelpdeskPriority::GetDefault());
@@ -4715,8 +4715,8 @@ function anonymousViewTicket($id, $print)
     $document->addScriptDeclaration( 'var MQM_INV_DAY = "'.addslashes(JText::_('invalid_day')).'";' );
     $document->addScriptDeclaration( 'var MQM_INV_MINUTES = "'.addslashes(JText::_('invalid_minutes')).'";' );
     $document->addScriptDeclaration( 'var MQM_INV_HOURS = "'.addslashes(JText::_('invalid_hours')).'";' );
-    HelpdeskUtility::AppendResource('helpdesk.tickets.edit.anonymous.js', JURI::root() . 'media/com_maqmahelpdesk/js/', 'js', true);
-    HelpdeskUtility::AppendResource('rating.js', JURI::root() . 'media/com_maqmahelpdesk/js/', 'js');
+    HelpdeskUtility::AppendResource('helpdesk.tickets.edit.anonymous.js', '/media/com_maqmahelpdesk/js/', 'js', true);
+    HelpdeskUtility::AppendResource('rating.js', '/media/com_maqmahelpdesk/js/', 'js');
 
     // If it's the print version shows icon to print and to close
     if ($print) {
@@ -5060,8 +5060,8 @@ function anonymousViewTicket($id, $print)
 
             if (($char_count > $char_limit) || ($line_count > $line_limit))
             {
-                $more_link = '<p><img class="alglft" src="' . JURI::root() . 'media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/view+.png" border="0" alt="more" style="cursor:pointer;" onclick="$jMaQma(\'#' . $id_msg . '_short\').toggle(); $jMaQma(\'#' . $id_msg . '_all\').toggle(); return false;" /></p>';
-                $less_link = '<p><img class="alglft" src="' . JURI::root() . 'media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/view-.png" border="0" alt="less" style="cursor:pointer;" onclick="$jMaQma(\'#' . $id_msg . '_short\').toggle(); $jMaQma(\'#' . $id_msg . '_all\').toggle(); return false;" /></p>';
+                $more_link = '<p><img class="alglft" src="' . '/media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/view+.png" border="0" alt="more" style="cursor:pointer;" onclick="$jMaQma(\'#' . $id_msg . '_short\').toggle(); $jMaQma(\'#' . $id_msg . '_all\').toggle(); return false;" /></p>';
+                $less_link = '<p><img class="alglft" src="' . '/media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/view-.png" border="0" alt="less" style="cursor:pointer;" onclick="$jMaQma(\'#' . $id_msg . '_short\').toggle(); $jMaQma(\'#' . $id_msg . '_all\').toggle(); return false;" /></p>';
                 $msg_short_header = '<div id="' . $id_msg . '_short" style="display:all;"><div style="width:100%;">';
                 $msg_short_footer = '</div></div>';
                 $msg_all_header = '<div id="' . $id_msg . '_all" style="display:none;"><div style="width:100%;">';
@@ -5223,14 +5223,14 @@ function anonymousViewTicket($id, $print)
             $ticket_attachs[$i]['info'] = '<span class="editlinktip hasTip" title="' . htmlspecialchars(JText::_("attachment") . '::<b>' . JText::_('date') . '</b>:' . $ticket_attachs[$i]['date'] . '<br /><b>' . JText::_('description') . '</b>:' . $ticket_attachs[$i]['description']) . '"><img src="' . $imgpath . 'info.png" align="absmiddle" border="0" hspace="5" style="cursor:pointer; cursor:hand;" /></span>';
 
             $link = JRoute::_('index.php?option=com_maqmahelpdesk&Itemid=' . $Itemid . '&id_workgroup=' . $id_workgroup . '&task=ticket_download&id=' . $id_file . '&extid=' . $id, false);
-            $tools = '<a href="' . $link . '"><img src="media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/down.png" title="' . JText::_('download') . '" border="0" /></a>';
+            $tools = '<a href="' . $link . '"><img src="/media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/down.png" title="' . JText::_('download') . '" border="0" /></a>';
 
             if ($is_support || $id_user == $user->id) {
                 $link2 = JRoute::_('index.php?option=com_maqmahelpdesk&Itemid=' . $Itemid . '&id_workgroup=' . $id_workgroup . '&task=ticket_delattach&id=' . $id_file . '&extid=' . $id, false);
-                $tools .= '&nbsp;<a href="' . $link2 . '"><img src="media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/delete.png" title="' . JText::_('delete') . '" border="0" /></a>';
+                $tools .= '&nbsp;<a href="' . $link2 . '"><img src="/media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/delete.png" title="' . JText::_('delete') . '" border="0" /></a>';
             }
 
-            $available = '<img src="media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/' . ($public == 1 ? 'ok' : 'no') . '.png" />';
+            $available = '<img src="/media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/' . ($public == 1 ? 'ok' : 'no') . '.png" />';
             $ticket_attachs[$i]['available'] = $available;
             $ticket_attachs[$i]['tools'] = $tools;
             $ticket_attachs[$i]['link'] = $link;

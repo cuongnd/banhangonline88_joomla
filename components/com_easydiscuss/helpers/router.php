@@ -14,32 +14,12 @@
 defined('_JEXEC') or die('Restricted access');
 
 jimport( 'joomla.filter.filteroutput');
-
-$jVerArr	= explode('.', JVERSION);
-$jVersion	= $jVerArr[0] . '.' . $jVerArr[1];
-
-if( $jVersion <= '3.1' )
-{
-	jimport( 'joomla.application.router' );
-}
-else
-{
-	jimport( 'joomla.libraries.cms.router' );
-}
-
-
-class DiscussJoomlaRouter extends JRouter
-{
-	public function encode( $segments )
-	{
-		return parent::_encodeSegments( $segments );
-	}
-}
+jimport( 'joomla.application.router');
 
 require_once JPATH_ROOT . '/components/com_easydiscuss/constants.php';
 require_once JPATH_ROOT . '/components/com_easydiscuss/helpers/helper.php';
 
-class DiscussRouter
+class DiscussRouter extends JRouter
 {
 	public static function getMessageRoute( $id = 0 , $xhtml = true , $ssl = null )
 	{
@@ -201,18 +181,6 @@ class DiscussRouter
 					{
 						$tmpId	= self::getItemId( 'categories', '', true );
 					}
-
-					if( ! empty( $tmpId ) )
-					{
-						$dropSegment    = true;
-					}
-
-					break;
-
-				case 'users':
-					
-					$tmpId	= self::getItemId( 'users', '', true );
-					
 
 					if( ! empty( $tmpId ) )
 					{
@@ -419,7 +387,7 @@ class DiscussRouter
 
 			$data	= DiscussHelper::getTable( 'Posts' );
 			$data->load( $id );
-
+			
 			// Empty alias needs to be regenerated.
 			if( empty($data->alias) )
 			{
@@ -547,7 +515,7 @@ class DiscussRouter
 		else
 		{
 
-			$url	= rtrim($uri->toString( array('scheme', 'host', 'port' )), '/' ) . '/' . ltrim( $url , '/' );
+			$url	= rtrim($uri->toString( array('scheme', 'host', 'port', 'path')), '/' ) . '/' . ltrim( $url , '/' );
 			$url	= str_replace('/administrator/', '/', $url);
 
 			if( DiscussRouter::isSefEnabled() )
@@ -607,31 +575,6 @@ class DiscussRouter
 		{
 			return ($count > 0) ? true : false;
 		}
-	}
-
-
-	public static function getItemIdByUsers()
-	{
-		static $discussionItems	= null;
-
-		if( !isset( $discussionItems[ $postId ] ) )
-		{
-			$db	= DiscussHelper::getDBO();
-
-			$query	= 'SELECT ' . $db->nameQuote('id') . ' FROM ' . $db->nameQuote( '#__menu' ) . ' '
-					. 'WHERE ' . $db->nameQuote( 'link' ) . '=' . $db->Quote( 'index.php?option=com_easydiscuss&view=users') . ' '
-					. 'AND ' . $db->nameQuote( 'published' ) . '=' . $db->Quote( '1' ) . ' '
-					. self::getLanguageQuery()
-					. ' LIMIT 1';
-
-			$db->setQuery( $query );
-			$itemid = $db->loadResult();
-
-			$discussionItems[ $postId ] = $itemid;
-		}
-
-		return $discussionItems[ $postId ];
-
 	}
 
 	public static function getItemIdByDiscussion( $postId )
@@ -760,9 +703,6 @@ class DiscussRouter
 			case 'list':
 				$view = 'list';
 				break;
-			case 'users':
-				$view = 'users';
-				break;
 			case 'search':
 			case 'index':
 			default:
@@ -868,12 +808,11 @@ class DiscussRouter
 		}
 
 		return $langQuery;
-	}
+	}	
 
-	public static function encodeSegments($segments)
+	public  function encodeSegments($segments)
 	{
-		$router 	= new DiscussJoomlaRouter();
-		return $router->encode( $segments );
+		return JFactory::getApplication()->getRouter()->_encodeSegments($segments);
 	}
 
 }

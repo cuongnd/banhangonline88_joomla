@@ -15,11 +15,13 @@ defined('_JEXEC') or die('Restricted access');
 
 jimport('joomla.filesystem.file');
 jimport('joomla.filesystem.folder');
+jimport('joomla.application.component.view');
 jimport('joomla.html.parameter');
 jimport('joomla.access.access');
 jimport('joomla.application.component.model');
 
 require_once JPATH_ROOT . '/components/com_easydiscuss/constants.php';
+require_once DISCUSS_ROOT . '/views.php';
 require_once DISCUSS_HELPERS . '/router.php';
 require_once DISCUSS_HELPERS . '/filter.php';
 require_once DISCUSS_HELPERS . '/parser.php';
@@ -35,25 +37,6 @@ class DiscussHelper
 	public static function _()
 	{
 		return self::getHelper( func_get_args() );
-	}
-
-	public static function compileJS()
-	{
-		$compile 	= JRequest::getVar( 'compile' );
-		$minify 	= JRequest::getVar( 'minify' );
-
-		if( $compile )
-		{
-			require_once( DISCUSS_CLASSES . '/compiler.php' );
-
-			$minify 	= $minify ? true : false;
-			$compiler 	= new DiscussCompiler();
-			$result = $compiler->compile( $minify );
-
-			var_dump($result);
-			exit;
-		}
-
 	}
 
 	public static function getToken( $contents = '' )
@@ -576,7 +559,7 @@ class DiscussHelper
 			return false;
 		}
 
-		$version 	= (string) $parser->getVersion();
+		$version 	= $parser->getVersion();
 
 		return $version;
 	}
@@ -592,14 +575,14 @@ class DiscussHelper
 
 		if( DiscussHelper::getJoomlaVersion() >= '3.0' )
 		{
-			$version	= (string) $parser->discuss->version;
+			$version 	= $parser->xpath( 'discuss/version' );
 
 			if( !$version )
 			{
 				return false;
 			}
 
-			return $version;
+			return $version[0];
 		}
 
 		$element	= $parser->document->getElementByPath( 'discuss/version' );
@@ -620,10 +603,10 @@ class DiscussHelper
 
 		if( DiscussHelper::getJoomlaVersion() >= '3.0')
 		{
-			$items 	= (Array) $parser->discuss->news;
-			$items 	= $items[ 'item' ];
+			$items 	= $parser->xpath( 'discuss/news' );
+			$items 	= $items[0];
 
-			foreach( $items as $item )
+			foreach( $items->children() as $item )
 			{
 				$obj 			= new stdClass();
 				$obj->title		= (string) $item->title;
@@ -812,10 +795,7 @@ class DiscussHelper
 
 	public static function getAjaxURL()
 	{
-		$app 		= JFactory::getApplication();
-		$base 		= $app->isAdmin() ? DISCUSS_JURIROOT . '/administrator' : DISCUSS_JURIROOT;
-
-		$url 		= $base . '/index.php?option=com_easydiscuss';
+		$url		= DISCUSS_JURIROOT . '/index.php?option=com_easydiscuss';
 
 		if( self::getJoomlaVersion() >= '1.6' )
 		{
@@ -828,7 +808,7 @@ class DiscussHelper
 			$app		= JFactory::getApplication();
 			$config		= DiscussHelper::getJConfig();
 			$router		= $app->getRouter();
-			$url		= $base . '/index.php?option=com_easydiscuss&lang=' . $language;
+			$url		= DISCUSS_JURIROOT . '/index.php?option=com_easydiscuss&lang=' . $language;
 
 			if( $router->getMode() == JROUTER_MODE_SEF && JPluginHelper::isEnabled("system","languagefilter") )
 			{
@@ -851,99 +831,13 @@ class DiscussHelper
 
 				if( $rewrite )
 				{
-					$url		= $base . '/' . $language . '/?option=com_easydiscuss';
+					$url		= DISCUSS_JURIROOT . '/' . $language . '/?option=com_easydiscuss';
 					$language	= 'none';
 				}
 				else
 				{
-					$url		= $base . '/index.php/' . $language . '/?option=com_easydiscuss';
+					$url		= DISCUSS_JURIROOT . '/index.php/' . $language . '/?option=com_easydiscuss';
 				}
-			}
-		}
-
-		return $url;
-	}
-
-	public static function getBaseUrl()
-	{
-		static $url;
-
-		if (isset($url)) return $url;
-
-		if( DiscussHelper::getJoomlaVersion() >= '1.6' )
-		{
-			$uri		= JFactory::getURI();
-			$language	= $uri->getVar( 'lang' , 'none' );
-			$app		= JFactory::getApplication();
-			$config		= DiscussHelper::getJConfig();
-			$router		= $app->getRouter();
-			$url		= rtrim( JURI::base() , '/' );
-
-			$url 		= $url . '/index.php?option=com_easydiscuss&lang=' . $language;
-
-			if( $router->getMode() == JROUTER_MODE_SEF && JPluginHelper::isEnabled("system","languagefilter") )
-			{
-				$rewrite	= $config->get('sef_rewrite');
-
-				$base		= str_ireplace( JURI::root( true ) , '' , $uri->getPath() );
-				$path		=  $rewrite ? $base : JString::substr( $base , 10 );
-				$path		= JString::trim( $path , '/' );
-				$parts		= explode( '/' , $path );
-
-				if( $parts )
-				{
-					// First segment will always be the language filter.
-					$language	= reset( $parts );
-				}
-				else
-				{
-					$language	= 'none';
-				}
-
-				if( $rewrite )
-				{
-					$url		= rtrim( JURI::root() , '/' ) . '/' . $language . '/?option=com_easydiscuss';
-					$language	= 'none';
-				}
-				else
-				{
-					$url		= rtrim( JURI::root() , '/' ) . '/index.php/' . $language . '/?option=com_easydiscuss';
-				}
-			}
-		}
-		else
-		{
-
-			$url		= rtrim( JURI::root() , '/' ) . '/index.php?option=com_easydiscuss';
-		}
-
-		$menu = JFactory::getApplication()->getmenu();
-
-		if( !empty($menu) )
-		{
-			$item = $menu->getActive();
-			if( isset( $item->id) )
-			{
-				$url    .= '&Itemid=' . $item->id;
-			}
-		}
-
-		// Some SEF components tries to do a 301 redirect from non-www prefix to www prefix.
-		// Need to sort them out here.
-		$currentURL		= isset( $_SERVER[ 'HTTP_HOST' ] ) ? $_SERVER[ 'HTTP_HOST' ] : '';
-
-		if( !empty( $currentURL ) )
-		{
-			// When the url contains www and the current accessed url does not contain www, fix it.
-			if( stristr($currentURL , 'www' ) === false && stristr( $url , 'www') !== false )
-			{
-				$url	= str_ireplace( 'www.' , '' , $url );
-			}
-
-			// When the url does not contain www and the current accessed url contains www.
-			if( stristr( $currentURL , 'www' ) !== false && stristr( $url , 'www') === false )
-			{
-				$url	= str_ireplace( '://' , '://www.' , $url );
 			}
 		}
 
@@ -957,6 +851,7 @@ class DiscussHelper
 		if( !$headersLoaded )
 		{
 			$url 		= self::getAjaxURL();
+
 			$config		= DiscussHelper::getConfig();
 			$document	= JFactory::getDocument();
 			$ajaxData	=
@@ -981,19 +876,27 @@ class DiscussHelper
 				$document->addStyleSheet( DISCUSS_MEDIA_URI . '/styles/editor-mce.css' );
 			}
 
+			// @task: Load foundry bootstrap.
+			require_once( DISCUSS_FOUNDRY_BOOTSTRAP );
 
-			// Load EasyBlogConfiguration class
-			require_once( DISCUSS_CLASSES . '/configuration.php' );
+			// @task: Set EasyBlog's environment
+			$environment	= JRequest::getVar( 'easydiscuss_environment' , $config->get( 'easydiscuss_environment' ) );
 
-			// Get configuration instance
-			$configuration = EasyDiscussConfiguration::getInstance();
+			// @task: Create abstract component.
+			$folder	= ( $environment == 'development' ) ? 'scripts_' : 'scripts';
+			$script=str_replace(JURI::root(),'/',DISCUSS_MEDIA_URI  . '/' . $folder . '/' . 'abstract.js');
+			$document->addScript(  $script);
 
-			// Attach configuration to headers
-			$configuration->attach();
+			// @task: Load component bootstrap.
+			ob_start();
+				include( DISCUSS_MEDIA . '/bootstrap.js' );
+				$bootstrap = ob_get_contents();
+			ob_end_clean();
 
-			$headersLoaded = true;
+			$document->addScriptDeclaration( $bootstrap );
+
+			$headersLoaded		= true;
 		}
-
 		return $headersLoaded;
 	}
 
@@ -1027,12 +930,13 @@ class DiscussHelper
 			DiscussHelper::setMessageQueue('Could not load stylesheet for ' . $name . '.', 'error');
 		};
 
+
 		if (JFile::exists($result->out)) {
 
 			if ($result->failed) {
 				DiscussHelper::setMessageQueue( 'Could not compile stylesheet for ' . $name . '. Using last compiled stylesheet.', 'error' );
 			}
-
+			$result->out_uri=str_replace(JUri::root(),'/',$result->out_uri);
 			$doc->addStyleSheet($result->out_uri);
 
 		} elseif (JFile::exists($result->failsafe)) {
@@ -1042,7 +946,7 @@ class DiscussHelper
 			} else {
 				DiscussHelper::setMessageQueue( 'Could not locate compiled stylesheet for ' . $name . '. Using failsafe stylesheet.', 'error' );
 			}
-
+			$result->failsafe_uri=str_replace(JUri::root(),'/',$result->failsafe_uri);
 			$doc->addStyleSheet($result->failsafe_uri);
 
 		} else {
@@ -1229,7 +1133,7 @@ class DiscussHelper
 		// Makesafe on the file
 		$date			= DiscussHelper::getDate();
 		$file_ext		= DiscussImageHelper::getFileExtention($file['name']);
-		$file['name']	= $my->id . '_' . JFile::makeSafe(md5($file['name'].$date->toMySQL())) . '.' . strtolower($file_ext);
+		$file['name']	= $my->id . '_' . JFile::makeSafe(md5($file['name'].$date->toMySQL())) . '.' . $file_ext;
 
 
 		if (isset($file['name']))
@@ -1249,7 +1153,7 @@ class DiscussHelper
 				if(! $isFromBackend)
 				{
 					DiscussHelper::setMessageQueue( JText::_( $err ) , 'error');
-					$mainframe->redirect(DiscussRouter::_('index.php?option=com_easydiscuss&view=profile&layout=edit', false));
+					$mainframe->redirect(DiscussRouter::_('index.php?option=com_easydiscuss&view=profile', false));
 				}
 				else
 				{
@@ -1264,7 +1168,7 @@ class DiscussHelper
 				if(! $isFromBackend)
 				{
 					DiscussHelper::setMessageQueue( $file['error'] , 'error');
-					$mainframe->redirect(DiscussRouter::_('index.php?option=com_easydiscuss&view=profile&layout=edit', false));
+					$mainframe->redirect(DiscussRouter::_('index.php?option=com_easydiscuss&view=profile', false));
 				}
 				else
 				{
@@ -1350,14 +1254,7 @@ class DiscussHelper
 			// Copy the original image files over
 			$image = new SimpleImage();
 			$image->load($file['tmp_name']);
-
-
-			//$image->resizeToFill( $originalImageWidth , $originalImageHeight );
-
-			// By Kevin Lankhorst
-			$image->resizeOriginal($originalImageWidth, $originalImageHeight, $configImageWidth, $configImageHeight);
-
-
+			$image->resizeToFill( $originalImageWidth , $originalImageHeight );
 			$image->save($original, $image->image_type);
 			unset( $image );
 
@@ -1647,7 +1544,7 @@ class DiscussHelper
 	 * @access	public
 	 * @param	Array 	An array of result.
 	 */
-	public static function formatConversationReplies( &$replies )
+	public function formatConversationReplies( &$replies )
 	{
 		if( !$replies )
 		{
@@ -1712,174 +1609,145 @@ class DiscussHelper
 	{
 		$config = DiscussHelper::getConfig();
 
-		if( !$posts )
+		if(! empty($posts) > 0)
 		{
-			return $posts;
-		}
+			$postModel 	= DiscussHelper::getModel( 'Posts' );
 
-		$model	= DiscussHelper::getModel( 'Posts' );
-		$result = array();
-
-		for($i = 0; $i < count($posts); $i++)
-		{
-			$row 	= $posts[ $i ];
-			$obj 	= DiscussHelper::getTable( 'Post' );
-			$obj->bind( $row );
-
-			// Set post owner
-			$owner	= DiscussHelper::getTable( 'Profile' );
-			$owner->load($row->user_id);
-
-			if ( $row->user_id == 0 || $row->user_type == DISCUSS_POSTER_GUEST )
+			for($i = 0; $i < count($posts); $i++)
 			{
-				$owner->id		= 0;
-				$owner->name	= 'Guest';
-			}
-			else
-			{
-				$owner->id		= $row->user_id;
-				$owner->name	= $owner->getName();
-			}
+				$row	=& $posts[$i];
 
-			$obj->user			= $owner;
-			$obj->title			= self::wordFilter( $row->title );
-			$obj->content		= self::wordFilter( $row->content );
-			$obj->isFeatured	= $row->featured;
-			$obj->category 		= JText::_( $row->category );
+				// Set post owner
+				$owner	= DiscussHelper::getTable( 'Profile' );
+				$owner->load($row->user_id);
 
-			// get total replies
-			$totalReplies		= ( isset( $row->num_replies ) ) ? $row->num_replies : '0';
-			$obj->totalreplies	= $totalReplies;
-
-			if ( $totalReplies > 0 )
-			{
-				// get last reply
-				$lastReply	= $model->getLastReply( $row->id );
-
-				if ( !empty( $lastReply ) )
+				if ( $row->user_id == 0 || $row->user_type == DISCUSS_POSTER_GUEST )
 				{
-					$replier	= DiscussHelper::getTable( 'Profile' );
-					$replier->load( $lastReply->user_id );
-
-					$replier->poster_name	= ($lastReply->user_id) ? $replier->getName() : $lastReply->poster_name;
-					$replier->poster_email	= ($lastReply->user_id) ? $replier->user->email : $lastReply->poster_email;
-
-					$obj->reply = $replier;
-				}
-			}
-
-			//check whether the post is still withing the 'new' duration.
-			$obj->isnew		= DiscussHelper::isNew( $row->noofdays );
-
-			//get post duration so far.
-			$durationObj	= new stdClass();
-			$durationObj->daydiff	= $row->daydiff;
-			$durationObj->timediff	= $row->timediff;
-
-			$obj->duration  	= DiscussHelper::getDurationString($durationObj);
-
-			// Some result set may already been optimized using the `totalFavourites` column.
-			if( !isset( $row->totalFavourites ) )
-			{
-				$favouritesModel	= DiscussHelper::getModel( 'Favourites' );
-
-				// Get total favourites based on post id
-				$obj->totalFavourites = $favouritesModel->getFavouritesCount( $row->id );
-			}
-			else
-			{
-				$obj->totalFavourites 	= $row->totalFavourites;
-			}
-
-			if( !$isSearch )
-			{
-				$postsTagsModel	= DiscussHelper::getModel( 'PostsTags' );
-
-				$tags			= $postsTagsModel->getPostTags( $row->id );
-				$obj->tags		= $tags;
-
-				// Some result set may already been optimized using the `polls_cnt` column
-				if( isset( $row->polls_cnt ) )
-				{
-					$obj->polls 		= $row->polls_cnt;
+					$owner->id		= 0;
+					$owner->name	= 'Guest';
 				}
 				else
 				{
-					$obj->polls			= $model->hasPolls( $row->id );
+					$owner->id		= $row->user_id;
+					$owner->name	= $owner->getName();
 				}
 
-				if( isset( $row->attachments_cnt ) )
+				$row->user			= $owner;
+				$row->title			= self::wordFilter( $row->title );
+				$row->content		= self::wordFilter( $row->content );
+				$row->isFeatured	= $row->featured;
+				$row->category 		= JText::_( $row->category );
+
+				// get total replies
+				$totalReplies		= ( isset( $row->num_replies ) ) ? $row->num_replies : '0';
+				$row->totalreplies	= $totalReplies;
+
+				if ( $totalReplies > 0 )
 				{
-					$obj->attachments 	= $row->attachments_cnt;
+					// get last reply
+					$lastReply	= $postModel->getLastReply( $row->id );
+					if ( !empty( $lastReply ) )
+					{
+						$replier	= DiscussHelper::getTable( 'Profile' );
+						$replier->load( $lastReply->user_id );
+
+						$replier->poster_name	= ($lastReply->user_id) ? $replier->getName() : $lastReply->poster_name;
+						$replier->poster_email	= ($lastReply->user_id) ? $replier->user->email : $lastReply->poster_email;
+
+						$row->reply = $replier;
+					}
+				}
+
+				//check whether the post is still withing the 'new' duration.
+				$row->isnew		= DiscussHelper::isNew($row->noofdays);
+
+				//get post duration so far.
+				$durationObj = new stdClass();
+				$durationObj->daydiff	= $row->daydiff;
+				$durationObj->timediff	= $row->timediff;
+
+				$row->duration  	= DiscussHelper::getDurationString($durationObj);
+
+				// Some result set may already been optimized using the `totalFavourites` column.
+				if( !isset( $row->totalFavourites ) )
+				{
+					$favouritesModel	= DiscussHelper::getModel( 'Favourites' );
+
+					// Get total favourites based on post id
+					$row->totalFavourites = $favouritesModel->getFavouritesCount( $row->id );
+				}
+
+				if( !$isSearch )
+				{
+					$postsTagsModel	= DiscussHelper::getModel( 'PostsTags' );
+
+					$tags			= $postsTagsModel->getPostTags( $row->id );
+					$row->tags		= $tags;
+
+					// Some result set may already been optimized using the `polls_cnt` column
+					if( isset( $row->polls_cnt ) )
+					{
+						$row->polls 		= $row->polls_cnt;
+					}
+					else
+					{
+						$row->polls			= $postModel->hasPolls( $row->id );
+					}
+
+					if( isset( $row->attachments_cnt ) )
+					{
+						$row->attachments 	= $row->attachments_cnt;
+					}
+					else
+					{
+						$row->attachments	= $postModel->hasAttachments( $row->id , DISCUSS_QUESTION_TYPE );
+					}
+
 				}
 				else
 				{
-					$obj->attachments	= $model->hasAttachments( $row->id , DISCUSS_QUESTION_TYPE );
+					$row->tags			= '';
+					$row->polls			= '';
+					$row->attachments	= '';
 				}
 
-			}
-			else
-			{
-				$obj->tags			= '';
-				$obj->polls			= '';
-				$obj->attachments	= '';
-			}
-
-			if( $config->get('main_password_protection') && !empty( $row->password ) && !DiscussHelper::hasPassword( $row ) )
-			{
-				$tpl	= new DiscussThemes();
-				$tpl->set( 'post' , $obj );
-				$obj->content = $tpl->fetch( 'entry.password.php' );
-
-				$obj->introtext = $obj->content;
-			}
-
-			// @since 3.0
-			// Format introtext here.
-
-			if( !empty( $row->password ) && !DiscussHelper::hasPassword( $row ) )
-			{
-				if(! $obj->isProtected() )
+				if( $config->get('main_password_protection') && !empty( $row->password ) && !DiscussHelper::hasPassword( $row ) )
 				{
-					$obj->introtext	= $row->content; //display password input form.
-					$obj->introtext = strip_tags( $obj->introtext );
+					$tpl	= new DiscussThemes();
+					$tpl->set( 'post' , $row );
+					$row->content = $tpl->fetch( 'entry.password.php' );
+				}
+
+				// @since 3.0
+				// Format introtext here.
+				if( !empty( $row->password ) && !DiscussHelper::hasPassword( $row ) )
+				{
+					$row->introtext	= $row->content; //display password input form.
+				}
+				else
+				{
+					$row->content 	= strip_tags( $row->content );
+
+					// clean it to 1 liner
+					$row->introtext	= preg_replace( '/\s+/', ' ', self::parseContent( $row->content ) );
+
+					// Truncate it now.
+					$row->introtext = JString::substr($row->introtext , 0 , $config->get( 'layout_introtextlength' ) ) . JText::_( 'COM_EASYDISCUSS_ELLIPSES' );
+				}
+
+				// Assigned user
+				if( !$isFrontpage )
+				{
+					$assignment			= DiscussHelper::getTable( 'PostAssignment' );
+					$assignment->load( $row->id );
+					$row->assignment	= $assignment;
 				}
 			}
-			else
-			{
-				$obj->content_raw 	= $row->content;
 
-				// Remove codes block
-				$obj->content 		= EasyDiscussParser::removeCodes( $row->content );
-
-				$obj->introtext 	= strip_tags( $obj->content );
-
-				// Truncate it now.
-				$obj->introtext		= JString::substr( $obj->introtext , 0 , $config->get( 'layout_introtextlength' ) ) . JText::_( 'COM_EASYDISCUSS_ELLIPSES' );
-			}
-
-			// Set the post type suffix and title
-			$obj->post_type_suffix 	= $row->post_type_suffix;
-			$obj->post_type_title 	= $row->post_type_title;
-
-			// used in search.
-			if( isset( $row->itemtype ) )
-			{
-				$obj->itemtype = $row->itemtype;
-			}
-
-			// Assigned user
-			if( !$isFrontpage )
-			{
-				$assignment			= DiscussHelper::getTable( 'PostAssignment' );
-				$assignment->load( $row->id );
-				$obj->assignment	= $assignment;
-			}
-
-			$result[]	= $obj;
 		}
 
-		return $result;
+		return $posts;
+
 	}
 
 	public static function formatComments( $comments )
@@ -2022,17 +1890,8 @@ class DiscussHelper
 			// @rule: Check for url references
 			$reply->references  = $reply->getReferences();
 
-			$reply->content 	= DiscussHelper::formatContent( $reply );
-
 			if ( $config->get( 'main_content_trigger_replies' ) )
 			{
-
-				// Move aside the original content_raw
-				$content_raw_temp = $reply->content_raw;
-
-				// Add the br tags in the content, we do it here so that the content triggers's javascript will not get added with br tags
-				// $reply->content_raw = DiscussHelper::bbcodeHtmlSwitcher( $reply, 'reply', false );
-
 				// process content plugins
 				DiscussEventsHelper::importPlugin( 'content' );
 				DiscussEventsHelper::onContentPrepare('reply', $reply);
@@ -2044,13 +1903,6 @@ class DiscussHelper
 
 				$results	= DiscussEventsHelper::onContentAfterDisplay('reply', $reply);
 				$reply->event->afterDisplayContent	= trim(implode("\n", $results));
-
-				// Assign the processed content back
-				// $reply->content = $reply->content_raw;
-
-				// Move back the original content_raw
-				$reply->content_raw = $content_raw_temp;
-
 			}
 
 			$reply->access 	= $reply->getAccess( $category );
@@ -2351,8 +2203,6 @@ class DiscussHelper
 	public static function buildNestedCategories($parentId, $parent, $ignorePrivate = false, $isPublishedOnly = false, $showPrivate = true, $selectACLOnly = false )
 	{
 		$catsModel	= self::getModel( 'Categories' );
-
-		// [model:category]
 		$catModel	= self::getModel( 'Category' );
 
 		$childs		= $catsModel->getChildCategories($parentId, $isPublishedOnly, $showPrivate);
@@ -2458,7 +2308,7 @@ class DiscussHelper
 						$html   	.= '<option value="'.$child->id.'" ' . $selected . $disabled . $style . '>' . $space . $sup . $child->title . '</option>';
 						break;
 					case 'list':
-						$expand 	= !empty($child->childs)? '<span onclick="EasyDiscuss.$(this).parents(\'li:first\').toggleClass(\'expand\');">[+] </span>' : '';
+						$expand 	= !empty($child->childs)? '<span onclick="discussQuery(this).parents(\'li:first\').toggleClass(\'expand\');">[+] </span>' : '';
 						$html 		.= '<li><div>' . $space . $sup . $expand . '<a href="' . DiscussRouter::getCategoryRoute( $child->id ) . '">' . $child->title . '</a> <b>(' . $child->count . ')</b></div>';
 						break;
 					default:
@@ -2567,7 +2417,6 @@ class DiscussHelper
 	public static function showSocialButtons( $post, $position = 'vertical' )
 	{
 		require_once DISCUSS_CLASSES . '/google.php';
-		require_once DISCUSS_CLASSES . '/googleshare.php';
 		require_once DISCUSS_CLASSES . '/twitter.php';
 		require_once DISCUSS_CLASSES . '/facebook.php';
 		require_once DISCUSS_CLASSES . '/digg.php';
@@ -2582,21 +2431,19 @@ class DiscussHelper
 
 		$twitterbutton	= DiscussTwitter::getButtonHTML( $post, $position );
 		$googleone		= DiscussGoogleOne::getButtonHTML( $post, $position );
-		$googleShare	= DiscussGoogleShare::getButtonHTML( $post, $position );
-
 		$facebookLikes	= DiscussFacebook::getLikeHTML( $post, $position );
 		$digg			= DiscussDigg::getButtonHTML( $post , $position );
 		$linkedIn		= DiscussLinkedIn::getButtonHTML( $post , $position );
 
-		$float = ($position == 'vertical') ? 'class="discuss-post-share float-r"' : 'class="discuss-post-share"';
+		$float = ($position == 'vertical') ? 'class="float-r"' : 'class="clearfull"';
 
 		$socialButtons = '';
 
-		$socialButtonsHere = $digg . $linkedIn . $googlebuzz . $googleone . $googleShare . $twitterbutton . $facebookLikes;
+		$socialButtonsHere = $digg . $linkedIn . $googlebuzz . $googleone . $twitterbutton . $facebookLikes;
 
 		if( !empty($socialButtonsHere) )
 		{
-			$socialButtons  = '<div id="dc_share" '.$float.'>' . $digg . $linkedIn . $googlebuzz . $googleone . $googleShare . $twitterbutton . $facebookLikes . '</div>';
+			$socialButtons  = '<div id="dc_share" '.$float.'>' . $digg . $linkedIn . $googlebuzz . $googleone . $twitterbutton . $facebookLikes . '</div>';
 		}
 		echo $socialButtons;
 	}
@@ -2623,8 +2470,6 @@ class DiscussHelper
 		$newPostOwnerEmails = array();
 		$postSubscriberEmails = array();
 		$participantEmails = array();
-
-		$catSubscriberEmails = array();
 
 		if( empty( $parent ) )
 		{
@@ -2706,9 +2551,6 @@ class DiscussHelper
 			$subscribers        = $modelSubscribe->getSiteSubscribers('instant','',$post->category_id);
 			$postSubscribers	= $modelSubscribe->getPostSubscribers( $post->parent_id );
 
-			// This was added because the user allow site wide notification (as in all subscribers should get notified) but category subscribers did not get it.
-			$catSubscribers		= $modelSubscribe->getCategorySubscribers( $post->id );
-
 			if(! empty($subscribers))
 			{
 				foreach($subscribers as $subscriber)
@@ -2721,13 +2563,6 @@ class DiscussHelper
 				foreach($postSubscribers as $postSubscriber)
 				{
 					$postSubscriberEmails[]   = $postSubscriber->email;
-				}
-			}
-			if(! empty($catSubscribers))
-			{
-				foreach($catSubscribers as $catSubscriber)
-				{
-					$catSubscriberEmails[]   = $catSubscriber->email;
 				}
 			}
 		}
@@ -2748,9 +2583,10 @@ class DiscussHelper
 		}
 
 
-		if( !empty( $adminEmails ) || !empty( $subscriberEmails ) || !empty( $newPostOwnerEmails ) || !empty( $postSubscriberEmails ) || $config->get( 'notify_all' ) )
+
+		if( !empty( $adminEmails ) || !empty( $subscriberEmails ) || !empty( $newPostOwnerEmails ) || !empty( $postSubscriberEmails ) )
 		{
-			$emails = array_unique(array_merge($adminEmails, $subscriberEmails, $newPostOwnerEmails, $postSubscriberEmails, $catSubscriberEmails));
+			$emails = array_unique(array_merge($adminEmails, $subscriberEmails, $newPostOwnerEmails, $postSubscriberEmails));
 
 			// prepare email content and information.
 			$emailData						= array();
@@ -2763,90 +2599,79 @@ class DiscussHelper
 			$emailData['postContent' ]		= $post->trimEmail( $post->content );
 			$emailData['replyContent']		= $post->trimEmail( $post->content );
 
-			$attachments	= $post->getAttachments();
-			$emailData['attachments']	= $attachments;
-
 			// get the correct post id in url, the parent post id should take precedence
 			$postId	= empty( $parent ) ? $post->id : $parentTable->id;
 
 			$emailData['postLink']		= DiscussRouter::getRoutedURL('index.php?option=com_easydiscuss&view=post&id=' . $postId, false, true);
 
-			if( $config->get( 'notify_all' ) && $post->published == DISCUSS_ID_PUBLISHED )
+
+			//insert into mailqueue
+			foreach ($emails as $email)
 			{
-				$emailData['emailTemplate']	= 'email.subscription.site.new.php';
-				$emailData['emailSubject']	= JText::sprintf('COM_EASYDISCUSS_NEW_QUESTION_ASKED', $post->id , $post->title);
-				DiscussHelper::getHelper( 'Mailer' )->notifyAllMembers( $emailData, $newPostOwnerEmails );
-			}
-			else
-			{
-				//insert into mailqueue
-				foreach ($emails as $email)
+
+				if ( in_array($email, $subscriberEmails) || in_array($email, $postSubscriberEmails) || in_array($email, $newPostOwnerEmails) )
 				{
+					$doContinue = false;
 
-					if ( in_array($email, $subscriberEmails) || in_array($email, $postSubscriberEmails) || in_array($email, $newPostOwnerEmails) )
+					// these are subscribers
+					if (!empty($subscribers))
 					{
-						$doContinue = false;
-
-						// these are subscribers
-						if (!empty($subscribers))
+						foreach ($subscribers as $key => $value)
 						{
-							foreach ($subscribers as $key => $value)
+							if ($value->email == $email)
 							{
-								if ($value->email == $email)
-								{
-									$emailData['unsubscribeLink']	= DiscussHelper::getUnsubscribeLink( $subscribers[$key], true, true);
-									$notify->addQueue($email, $emailSubject, '', $emailTemplate, $emailData);
-									$doContinue = true;
-									break;
-								}
-							}
-						}
-
-						if( $doContinue )
-							continue;
-
-						if (!empty($postSubscribers))
-						{
-
-							foreach ($postSubscribers as $key => $value)
-							{
-								if ($value->email == $email)
-								{
-
-									$emailData['unsubscribeLink']	= DiscussHelper::getUnsubscribeLink( $postSubscribers[$key], true, true);
-									$notify->addQueue($email, $emailSubject, '', $emailTemplate, $emailData);
-									$doContinue = true;
-									break;
-								}
-							}
-						}
-
-						if( $doContinue )
-							continue;
-
-
-						if (!empty($newPostOwnerEmails))
-						{
-
-							$emailSubject = JText::sprintf( 'COM_EASYDISCUSS_NEW_POST_ADDED', $emailPostTitle, $post->id );
-
-							foreach ($newPostOwnerEmails as $ownerEmail)
-							{
-
-								//$emailData['unsubscribeLink']	= DiscussHelper::getUnsubscribeLink( $ownerEmail, true, true);
+								$emailData['unsubscribeLink']	= DiscussHelper::getUnsubscribeLink( $subscribers[$key], true, true);
 								$notify->addQueue($email, $emailSubject, '', $emailTemplate, $emailData);
 								$doContinue = true;
 								break;
 							}
 						}
-
 					}
-					else
+
+					if( $doContinue )
+						continue;
+
+					if (!empty($postSubscribers))
 					{
 
-						// non-subscribers will not get the unsubscribe link
-						$notify->addQueue($email, $emailSubject, '', $emailTemplate, $emailData);
+						foreach ($postSubscribers as $key => $value)
+						{
+							if ($value->email == $email)
+							{
+
+								$emailData['unsubscribeLink']	= DiscussHelper::getUnsubscribeLink( $postSubscribers[$key], true, true);
+								$notify->addQueue($email, $emailSubject, '', $emailTemplate, $emailData);
+								$doContinue = true;
+								break;
+							}
+						}
 					}
+
+					if( $doContinue )
+						continue;
+
+
+					if (!empty($newPostOwnerEmails))
+					{
+
+						$emailSubject = JText::sprintf( 'COM_EASYDISCUSS_NEW_POST_ADDED', $emailPostTitle, $post->id );
+
+						foreach ($newPostOwnerEmails as $ownerEmail)
+						{
+
+							//$emailData['unsubscribeLink']	= DiscussHelper::getUnsubscribeLink( $ownerEmail, true, true);
+							$notify->addQueue($email, $emailSubject, '', $emailTemplate, $emailData);
+							$doContinue = true;
+							break;
+						}
+					}
+
+				}
+				else
+				{
+
+					// non-subscribers will not get the unsubscribe link
+					$notify->addQueue($email, $emailSubject, '', $emailTemplate, $emailData);
 				}
 			}
 		}
@@ -2950,19 +2775,11 @@ class DiscussHelper
 		return ( DiscussHelper::getJoomlaVersion() >= '1.6' ) ? 'user.login' : 'login';
 	}
 
-	public static function getAccessibleCategories( $parentId = 0, $type = DISCUSS_CATEGORY_ACL_ACTION_VIEW, $customUserId = '' )
+	public static function getAccessibleCategories( $parentId = 0, $type = DISCUSS_CATEGORY_ACL_ACTION_VIEW )
 	{
 		static $accessibleCategories = array();
 
-		if( !empty($customUserId) )
-		{
-			$my = JFactory::getUser( $customUserId );
-		}
-		else
-		{
-			$my	= JFactory::getUser();
-		}
-
+		$my		= JFactory::getUser();
 		// $sig 	= serialize( array($type, $my->id, $parentId) );
 
 		$sig    = (int) $my->id . '-' . (int) $parentId . '-' . (int) $type;
@@ -3196,21 +3013,10 @@ class DiscussHelper
 
 	public static function getTable( $tableName , $prefix = 'Discuss' , $config = array() )
 	{
-		// Sanitize and prepare the table class name.
-		$type       = preg_replace('/[^A-Z0-9_\.-]/i', '', $tableName);
-		$tableClass = $prefix . ucfirst($type);
+		JTable::addIncludePath( DISCUSS_TABLES );
+		$table	= JTable::getInstance( $tableName , $prefix , $config );
 
-		// Only try to load the class if it doesn't already exist.
-		if (!class_exists($tableClass))
-		{
-			// Search for the class file in the JTable include paths.
-			$path 	= DISCUSS_TABLES . '/' . strtolower( $type ) . '.php';
-
-			// Import the class file.
-			include_once $path;
-		}
-
-		return JTable::getInstance( $type , $prefix , $config );
+		return $table;
 	}
 
 	/**
@@ -3225,9 +3031,7 @@ class DiscussHelper
 	{
 		static $model = array();
 
-		$key = $backend ? 'backend' : 'frontend';
-
-		if( !isset( $model[ $name . $key ] ) )
+		if( !isset( $model[ $name . $backend ] ) )
 		{
 			$file	= JString::strtolower( $name );
 
@@ -3253,10 +3057,10 @@ class DiscussHelper
 				require_once( $path );
 			}
 
-			$model[ $name . $key ] = new $modelClass();
+			$model[ $name . $backend ] = new $modelClass();
 		}
 
-		return $model[ $name . $key ];
+		return $model[ $name . $backend ];
 	}
 
 	public static function getPagination($total, $limitstart, $limit, $prefix = '')
@@ -3418,7 +3222,7 @@ class DiscussHelper
 			return '';
 		}
 
-		$model 			= DiscussHelper::getModel( 'Subscribe', false );
+		$model 			= DiscussHelper::getModel( 'Subscribe' );
 		$type			= ($type == 'index') ? 'site' : $type;
 
 		$isSubscribed	= $model->isSubscribed( $userid, $cid, $type );
@@ -3519,8 +3323,7 @@ class DiscussHelper
 		$db = DiscussHelper::getDBO();
 
 		// remove punctuation from the string.
-		$text = preg_replace("/(?![.=$'â?])\p{P}/u", "", $text);
-		//$text = preg_replace("/(?![.=$'â?)\p{P}/u", "", $text);
+		$text = preg_replace("/(?![.=$'â‚-])\p{P}/u", "", $text);
 
 		$queryExclude   = '';
 		if( ! $config->get( 'main_similartopic_privatepost', 0 ) )
@@ -3534,9 +3337,9 @@ class DiscussHelper
 
 
 		// lets check if db has more than 2 records or not.
-		$query = 'SELECT COUNT(1) FROM `#__discuss_posts` as a';
-		$query .= ' WHERE a.`published` = ' . $db->Quote('1');
-		$query .= ' AND a.`parent_id` = ' . $db->Quote('0');
+		$query = 'SELECT COUNT(1) FROM `#__discuss_posts`';
+		$query .= ' WHERE `published` = ' . $db->Quote('1');
+		$query .= ' AND `parent_id` = ' . $db->Quote('0');
 		$query .= $queryExclude;
 
 		$db->setQuery( $query );
@@ -3566,8 +3369,6 @@ class DiscussHelper
 			$query .= ' WHERE a.`published` = ' . $db->Quote('1');
 			$query .= ' AND a.`parent_id` = ' . $db->Quote('0');
 			$query .= ' AND ' . $whereString;
-			$query .= $queryExclude;
-			$query .= ' LIMIT ' . $itemLimit;
 
 			$db->setQuery( $query );
 			$result = $db->loadObjectList();
@@ -3771,42 +3572,22 @@ class DiscussHelper
 	{
 		$config	= DiscussHelper::getConfig();
 
-		$default	= JRoute::_( 'index.php?option=com_user&view=register' );
-		if( DiscussHelper::getJoomlaVersion() >= '1.6' )
-		{
-			$default	= JRoute::_( 'index.php?com_easysocial&view=registration' );
-		}
-
 		switch( $config->get( 'main_login_provider' ) )
 		{
 			case 'joomla':
 			case 'cb':
-				$link	= $default;
-				break;
-
-			case 'easysocial':
-				$easysocial 	= DiscussHelper::getHelper( 'EasySocial' );
-
-				if( $easysocial->exists() )
+				if( DiscussHelper::getJoomlaVersion() >= '1.6' )
 				{
-					$link 	= FRoute::registration();
+					$link	= JRoute::_( 'index.php?option=com_users&view=registration' );
 				}
 				else
 				{
-					$link 	= $default;
+					$link	= JRoute::_( 'index.php?option=com_user&view=register' );
 				}
-
-				break;
+			break;
 
 			case 'jomsocial':
- 				$link	= JRoute::_( 'index.php?option=com_community&view=register' );
-				$file 	= JPATH_ROOT . '/components/com_community/libraries/core.php';
-
-				if( JFile::exists( $file ) )
-				{
-					require_once( $file );
-					$link 	= CRoute::_( 'index.php?option=com_community&view=register' );
-				}
+				$link	= JRoute::_( 'index.php?option=com_community&view=register' );
 			break;
 		}
 
@@ -3817,36 +3598,19 @@ class DiscussHelper
 	{
 		$config 	= DiscussHelper::getConfig();
 
-		$default	= JRoute::_( 'index.php?option=com_user&view=reset' );
-
-		if( DiscussHelper::getJoomlaVersion() >= '1.6' )
-		{
-			$default	= JRoute::_( 'index.php?com_easysocial&view=reset' );
-		}
-
-
 		switch( $config->get( 'main_login_provider' ) )
 		{
 			case 'joomla':
 			case 'cb':
 			case 'jomsocial':
-				$link	= $default;
-				break;
-
-			case 'easysocial':
-
-				$easysocial 	= DiscussHelper::getHelper( 'EasySocial' );
-
-				if( $easysocial->exists() )
+				if( DiscussHelper::getJoomlaVersion() >= '1.6' )
 				{
-					$link 	= FRoute::profile( array( 'layout' => 'forgetPassword' ) );
+					$link	= JRoute::_( 'index.php?option=com_users&view=reset' );
 				}
 				else
 				{
-					$link 	= $default;
+					$link	= JRoute::_( 'index.php?option=com_user&view=reset' );
 				}
-
-
 			break;
 		}
 
@@ -4050,13 +3814,11 @@ class DiscussHelper
 
 	public static function getUserGroupId( JUser $user )
 	{
-		$config = DiscussHelper::getConfig();
-
 		if( self::getJoomlaVersion() >= 1.6 )
 		{
 			if( count($user->groups) <= 0 )
 			{
-				return array(1 => $config->get('guest_usergroup'));
+				return array(1 => '1');
 			}
 			else
 			{
@@ -4148,7 +3910,7 @@ class DiscussHelper
 		return $buffer;
 	}
 
-	public static function getEditorType( $type = '' )
+	public function getEditorType( $type = '' )
 	{
 		// Cater for #__discuss_posts column content_type
 		$config = self::getConfig();
@@ -4180,71 +3942,6 @@ class DiscussHelper
 
 		}
 		return;
-	}
-
-	/**
-	 * Formats the content of a post
-	 *
-	 * @since	1.0
-	 * @access	public
-	 * @param	string
-	 * @return
-	 */
-	public static function formatContent( $post )
-	{
-		$config		= DiscussHelper::getConfig();
-
-		// Determine the current editor
-		$editor 	= !$post->parent_id == 'questions' ? $config->get( 'layout_editor' ) : $config->get( 'layout_reply_editor' );
-
-		// If the post is bbcode source and the current editor is bbcode
-		if( $post->content_type == 'bbcode' && $editor == 'bbcode' )
-		{
-			$content	= $post->content_raw;
-
-			$content 	= EasyDiscussParser::bbcode( $content , true );
-
-			// Since this is a bbcode content and source, we want to replace \n with <br /> tags.
-			$content 	= nl2br( $content );
-			// var_dump( $content );exit;
-			// $content 	= EasyDiscussParser::removeBrTag( $content );
-		}
-
-		// If the admin decides to switch from bbcode to wysiwyg editor, we need to format it back
-		if( $post->content_type == 'bbcode' && $editor != 'bbcode' )
-		{
-			$content 	= $post->content_raw;
-
-			// Since the original content is bbcode, we don't really need to do any replacements.
-			// Just feed it in through bbcode formatter.
-			$content	= EasyDiscussParser::bbcode( $content );
-		}
-
-		// If the admin decides to switch from wysiwyg to bbcode, we need to fix the content here.
-		if( $post->content_type != 'bbcode' && $editor == 'bbcode' )
-		{
-			$content	= $post->content_raw;
-
-			// Switch html back to bbcode
-			$content 	= EasyDiscussParser::html2bbcode( $content );
-
-			// Update the quote messages
-			$content 	= EasyDiscussParser::quoteBbcode( $content );
-		}
-
-		// If the content is from wysiwyg and editor is also wysiwyg, we only do specific formatting.
-		if( $post->content_type != 'bbcode' && $editor != 'bbcode' )
-		{
-			$content 	= $post->content_raw;
-
-			// Allow syntax highlighter even on html codes.
-			$content 	= EasyDiscussParser::replaceCodes( $content );
-		}
-
-		// Apply word censorship on the content
-		$content	= DiscussHelper::wordFilter( $content );
-
-		return $content;
 	}
 
 	// For displaying on frontend
@@ -4344,7 +4041,7 @@ class DiscussHelper
 
 		if( DiscussHelper::getJoomlaVersion() >= '1.6' )
 		{
-			$link 	= DiscussRouter::_('index.php?option=com_easysocial&view=login' . $returnURL );
+			$link 	= DiscussRouter::_('index.php?option=com_users&view=login' . $returnURL );
 		}
 		else
 		{
@@ -4354,7 +4051,7 @@ class DiscussHelper
 		return $link;
 	}
 
-	public static function getPostStatusAndTypes( $posts = null)
+	public function getPostStatusAndTypes( $posts = null)
 	{
 		if( empty($posts) )
 		{
@@ -4410,34 +4107,6 @@ class DiscussHelper
 		}
 
 		return $posts;
-	}
-
-	public function isModerateThreshold( $userId = null )
-	{
-		$config 	= DiscussHelper::getConfig();
-		$limit = $config->get( 'moderation_threshold' );
-		$db = DiscussHelper::getDBO();
-
-		$query  = 'SELECT COUNT(1) as `CNT` FROM `#__discuss_posts` AS a';
-
-		$query  .= ' WHERE a.`user_id` = ' . $db->Quote($userId);
-		$query  .= ' AND a.`published` = ' . $db->Quote('1');
-
-		$db->setQuery($query);
-
-		$result = $db->loadResult();
-
-		if( $limit !=0)
-		{
-			if( $result <= $limit)
-			{
-				return false;
-			}
-			else
-			{
-				return true;
-			}
-		}
 	}
 }
 

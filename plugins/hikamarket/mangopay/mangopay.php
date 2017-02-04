@@ -46,7 +46,7 @@ class plgHikamarketMangopay extends JPlugin {
 		if(JFile::exists(HIKASHOP_MEDIA . 'css' . DS . 'mangopay.css'))
 			$doc->addStyleSheet(HIKASHOP_CSS . 'mangopay.css?v='.HIKAMARKET_RESSOURCE_VERSION);
 		else
-			$doc->addStyleSheet(JURI::base(true).'/plugins/hikamarket/mangopay/media/mangopay.css?v='.HIKAMARKET_RESSOURCE_VERSION);
+			$doc->addStyleSheet('/plugins/hikamarket/mangopay/media/mangopay.css');
 
 		$buttons['mangopay'] = array(
 			'url' => hikamarket::completeLink('mangopay'.$url_itemid),

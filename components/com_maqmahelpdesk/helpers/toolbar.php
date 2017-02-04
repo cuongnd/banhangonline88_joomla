@@ -137,13 +137,13 @@ class HelpdeskToolbar
 	<div class="nav-collapse collapse">
 	<ul class="nav">
 		<li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="index.php?option=com_maqmahelpdesk&Itemid=<?php echo $Itemid;?>"><img
-					src="media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/help.png" width="16"
+					src="/media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/help.png" width="16"
 					alt="<?php echo JText::_('workgroups');?>"/> <span class="visible-phone"><?php echo JText::_("WORKGROUPS");?></span> <b class="caret"></b></a>
 			<ul class="dropdown-menu">
 				<?php for ($i = 0; $i < count($workgroups); $i++): ?>
 					<li><a
 							href="index.php?option=com_maqmahelpdesk&Itemid=<?php echo $Itemid;?>&id_workgroup=<?php echo $workgroups[$i]->id;?>&task=workgroup_view"><img
-								src="<?php echo ($workgroups[$i]->logo != '' ? 'media/com_maqmahelpdesk/images/logos/' . $workgroups[$i]->logo : 'media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/workgroups.png')?>"
+								src="<?php echo ($workgroups[$i]->logo != '' ? '/media/com_maqmahelpdesk/images/logos/' . $workgroups[$i]->logo : '/media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/workgroups.png')?>"
 								width="16" alt="<?php echo $workgroups[$i]->wkdesc;?>"/> <?php echo $workgroups[$i]->wkdesc;?></a>
 					</li>
 				<?php endfor;?>
@@ -155,7 +155,7 @@ class HelpdeskToolbar
 				<a data-toggle="dropdown"
 				   class="dropdown-toggle"
 				   href="<?php echo $tickets_link;?>"><img
-						src="media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/tickets.png"
+						src="/media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/tickets.png"
 						width="16"
 						alt="<?php echo JText::_('tickets');?>"/> <?php echo JText::_('tickets');?>
 					<?php if ((int) $tickets): ?>
@@ -187,7 +187,7 @@ class HelpdeskToolbar
 				<a data-toggle="dropdown"
 				   class="dropdown-toggle"
 				   href="<?php echo $discussions_link;?>"><img
-						src="media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/discussions.png"
+						src="/media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/discussions.png"
 						width="16"
 						alt="<?php echo JText::_('discussions');?>"/> <?php echo JText::_('discussions');?>
 					<?php if ((int)$discussions): ?>
@@ -219,7 +219,7 @@ class HelpdeskToolbar
 				<a data-toggle="dropdown"
 				   class="dropdown-toggle"
 				   href="<?php echo $bugtracker_link;?>"><img
-						src="media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/bug.png"
+						src="/media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/bug.png"
 						width="16"
 						alt="<?php echo JText::_('bugtracker');?>"/> <?php echo JText::_('bugtracker');?>
 					<?php if ((int)$bugs): ?>
@@ -268,14 +268,14 @@ class HelpdeskToolbar
 						<?php if ($user->id > 0 && $workgroupSettings->use_bookmarks) : ?>
 					<li><a
 							href="index.php?option=com_maqmahelpdesk&Itemid=<?php echo $Itemid;?>&id_workgroup=<?php echo $id_workgroup;?>&task=my_bookmark"><img
-								src="media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/bookmarks.png"
+								src="/media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/bookmarks.png"
 								width="16" alt="<?php echo JText::_('wk_bookmarks');?>"/> <?php echo JText::_('wk_bookmarks');?></a>
 					</li>
 				<?php endif;?>
 					<?php if ($is_client > 0 && $clientOptions->manager): ?>
 						<li><a
 								href="index.php?option=com_maqmahelpdesk&Itemid=<?php echo $Itemid;?>&id_workgroup=<?php echo $id_workgroup;?>&task=client_view&id=<?php echo $is_client;?>"><img
-									src="media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/clients.png"
+									src="/media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/clients.png"
 									width="16"
 									alt="<?php echo JText::_('wk_client_profile');?>"/> <?php echo JText::_('wk_client_profile');?></a>
 						</li>
@@ -283,21 +283,21 @@ class HelpdeskToolbar
 					<?php if ($workgroupSettings->wkkb && $is_support): ?>
 						<li><a
 								href="index.php?option=com_maqmahelpdesk&Itemid=<?php echo $Itemid;?>&id_workgroup=<?php echo $id_workgroup;?>&task=my_kb"><img
-									src="media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/kb.png"
+									src="/media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/kb.png"
 									width="16" alt="<?php echo JText::_('wk_myarticles');?>"/> <?php echo JText::_('wk_myarticles');?>
 							</a></li>
 					<?php endif;?>
 					<?php if ($workgroupSettings->wkdownloads && $downloads): ?>
 						<li><a
 								href="index.php?option=com_maqmahelpdesk&Itemid=<?php echo $Itemid;?>&id_workgroup=<?php echo $id_workgroup;?>&task=my_downloads"><img
-									src="media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/files.png"
+									src="/media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/files.png"
 									width="16" alt="<?php echo JText::_('my_downloads');?>"/> <?php echo JText::_('my_downloads');?></a>
 						</li>
 					<?php endif;?>
 					<?php if ($is_support): ?>
 						<li><a
 								href="index.php?option=com_maqmahelpdesk&Itemid=<?php echo $Itemid;?>&id_workgroup=<?php echo $id_workgroup;?>&task=calendar_view"><img
-									src="media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/calendar.png"
+									src="/media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/calendar.png"
 									width="16"
 									alt="<?php echo JText::_('wk_tasks');?>"/> <?php echo JText::_('wk_tasks');?>
 								<?php if ((int)$tasks): ?>
@@ -306,7 +306,7 @@ class HelpdeskToolbar
 						<?php if($supportConfig->manual_times):?>
 							<li><a
 									href="index.php?option=com_maqmahelpdesk&Itemid=<?php echo $Itemid;?>&id_workgroup=<?php echo $id_workgroup;?>&task=timesheet_manage"><img
-										src="media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/calendar.png"
+										src="/media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/calendar.png"
 										width="16"
 										alt="<?php echo JText::_('TIMES');?>"/> <?php echo JText::_('TIMES');?></a></li>
 						<?php endif;?>
@@ -314,18 +314,18 @@ class HelpdeskToolbar
 					<?php if ($supportConfig->bbb_url != '' && $supportConfig->bbb_apikey): ?>
 						<li><a
 								href="index.php?option=com_maqmahelpdesk&Itemid=<?php echo $Itemid;?>&id_workgroup=<?php echo $id_workgroup;?>&task=meetings"><img
-									src="media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/meetings.png"
+									src="/media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/meetings.png"
 									width="16" alt="<?php echo JText::_('meetings');?>"/> <?php echo JText::_('meetings');?></a></li>
 					<?php endif;?>
 					<?php if ($is_support && $workgroupSettings->use_activity): ?>
 						<li><a
 								href="index.php?option=com_maqmahelpdesk&Itemid=<?php echo $Itemid;?>&id_workgroup=<?php echo $id_workgroup;?>&task=timesheet"><img
-									src="media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/timesheet.png"
+									src="/media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/timesheet.png"
 									width="16" alt="<?php echo JText::_('timesheet');?>"/> <?php echo JText::_('timesheet');?></a></li>
 					<?php endif;?>
 					<li><a
 							href="index.php?option=com_maqmahelpdesk&Itemid=<?php echo $Itemid;?>&id_workgroup=<?php echo $id_workgroup;?>&task=ticket_analysis"><img
-								src="media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/table.png"
+								src="/media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/table.png"
 								width="16"
 								alt="<?php echo JText::_('tickets_analysis');?>"/> <?php echo JText::_('tickets_analysis');?></a>
 					</li>
@@ -333,7 +333,7 @@ class HelpdeskToolbar
 						<?php if (($is_support && $usertype > 5) || ($is_client && $is_manager)): ?>
 							<li><a
 									href="index.php?option=com_maqmahelpdesk&Itemid=<?php echo $Itemid;?>&id_workgroup=<?php echo $id_workgroup;?>&task=ticket_report"><img
-										src="media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/table.png"
+										src="/media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/table.png"
 										width="16"
 										alt="<?php echo JText::_('report_tickets');?>"/> <?php echo JText::_('report_tickets');?></a>
 							</li>
@@ -346,32 +346,32 @@ class HelpdeskToolbar
 			<?php if (!$is_support && $workgroupSettings->wkticket && (($supportConfig->unregister && !$user->id && $supportConfig->anonymous_tickets && !$workgroupSettings->contract) || $user->id)) : ?>
 				<li><a
 						href="<?php echo JRoute::_('index.php?option=com_maqmahelpdesk&Itemid=' . $Itemid . '&id_workgroup=' . $id_workgroup . '&task=ticket_new')?>"><img
-							src="media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/add.png"
+							src="/media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/add.png"
 							width="16" alt="<?php echo JText::_('qk_create_ticket');?>"/> <?php echo JText::_('qk_create_ticket');?>
 					</a>
 				</li>
 			<?php elseif ($is_support): ?>
 				<li class="dropdown"><a data-toggle="dropdown"
 				                        class="dropdown-toggle" href="javascript:;"><img
-							src="media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/circle_add.png"
+							src="/media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/circle_add.png"
 							width="16" alt="<?php echo JText::_('create');?>"/> <b class="caret"></b></a>
 					<ul class="dropdown-menu">
 						<?php if ($workgroupSettings->wkticket) : ?>
 							<li><a
 									href="index.php?option=com_maqmahelpdesk&Itemid=<?php echo $Itemid;?>&id_workgroup=<?php echo $id_workgroup;?>&task=ticket_new"><img
-										src="media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/tickets.png"
+										src="/media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/tickets.png"
 										width="16" alt="<?php echo JText::_('ticket');?>"/> <?php echo JText::_('ticket');?></a></li>
 						<?php endif;?>
 						<?php if ($workgroupSettings->wkkb) : ?>
 							<li><a
 									href="index.php?option=com_maqmahelpdesk&Itemid=<?php echo $Itemid;?>&id_workgroup=<?php echo $id_workgroup;?>&task=kb_new"><img
-										src="media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/kb.png"
+										src="/media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/kb.png"
 										width="16" alt="<?php echo JText::_('kb');?>"/> <?php echo JText::_('kb');?></a></li>
 						<?php endif;?>
 						<?php if ($workgroupSettings->wkglossary) : ?>
 							<li><a
 									href="index.php?option=com_maqmahelpdesk&Itemid=<?php echo $Itemid;?>&id_workgroup=<?php echo $id_workgroup;?>&task=glossary_add"><img
-										src="media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/glossary.png"
+										src="/media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/glossary.png"
 										width="16" alt="<?php echo JText::_('glossary');?>"/> <?php echo JText::_('glossary');?></a></li>
 						<?php endif;?>
 					</ul>

@@ -68,7 +68,7 @@
 									<?php echo $row['title'];?>
 								</a><br />
 								<small>
-									<img src="media/com_maqmahelpdesk/images/rating/<?php echo $row['rating'];?>star.png"
+									<img src="/media/com_maqmahelpdesk/images/rating/<?php echo $row['rating'];?>star.png"
 									     alt="<?php echo JText::_('rating');?>" align="absmiddle"/>
 								</small>
 							</p>

@@ -89,13 +89,13 @@ function showCalendar($report, $month, $year, $date)
 	$is_support = HelpdeskUser::IsSupport();
 	$is_client = HelpdeskUser::IsClient();
 
-	HelpdeskUtility::AppendResource('tasks.view.js', JURI::root() . 'media/com_maqmahelpdesk/js/', 'js', true);
-	HelpdeskUtility::AppendResource('equalheights.js', JURI::root() . 'media/com_maqmahelpdesk/js/', 'js', true);
+	HelpdeskUtility::AppendResource('tasks.view.js', '/media/com_maqmahelpdesk/js/', 'js', true);
+	HelpdeskUtility::AppendResource('equalheights.js', '/media/com_maqmahelpdesk/js/', 'js', true);
 
 	// Sets the title
 	HelpdeskUtility::PageTitle('showCalendar');
 
-	$imgpath = JURI::root() . 'media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/';
+	$imgpath = '/media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/';
 
 	// Year and Month filters
 	if ($month == '') {
@@ -165,8 +165,8 @@ function showEdit($id)
 	$document->addScriptDeclaration( 'var MQM_NEGATIVE_LABOUR = "'.JText::_('labour_negative').'";' );
 	$document->addScriptDeclaration( 'var MQM_URL_DELETE = "'.JRoute::_('index.php?option=com_maqmahelpdesk&Itemid=' . $Itemid . '&id_workgroup=' . $id_workgroup . '&task=calendar_delete&id=' . $id).'";' );
 	$document->addScriptDeclaration( 'var MQM_URL_CANCEL = "'.JRoute::_('index.php?option=com_maqmahelpdesk&Itemid=' . $Itemid . '&id_workgroup=' . $id_workgroup . '&task=calendar_view').'";' );
-	HelpdeskUtility::AppendResource('timepicker.js', JURI::root() . 'media/com_maqmahelpdesk/js/', 'js', true);
-	HelpdeskUtility::AppendResource('tasks.form.js', JURI::root() . 'media/com_maqmahelpdesk/js/', 'js', true);
+	HelpdeskUtility::AppendResource('timepicker.js', '/media/com_maqmahelpdesk/js/', 'js', true);
+	HelpdeskUtility::AppendResource('tasks.form.js', '/media/com_maqmahelpdesk/js/', 'js', true);
 	
 	// Sets the title
 	HelpdeskUtility::PageTitle('editCalendar', ($id ? JText::_('pathway_edit') : JText::_('pathway_new')));

@@ -363,7 +363,7 @@ class HelpdeskForm
 
 		// Image
 		if ($image == 1) {
-			$rate = '<img src="' . JURI::root() . 'media/com_maqmahelpdesk/images/rating/' . number_format($database->loadResult(), 0) . 'star.png" border="0" align="absmiddle" />';
+			$rate = '<img src="' . '/media/com_maqmahelpdesk/images/rating/' . number_format($database->loadResult(), 0) . 'star.png" border="0" align="absmiddle" />';
 
 			// PDF Image
 		} elseif ($image == 2) {

@@ -31,7 +31,7 @@
                     <td width="120"><?php echo $row['date_created'];?></td>
                     <td><?php echo $row['status'];?></td>
                     <td><a href="<?php echo $row['delete_bookmark'];?>"><img
-                        src="media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/delete.png"
+                        src="/media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/delete.png"
                         border="0" align="absmiddle"/></a></td>
                 </tr><?php
             } ?>
@@ -67,7 +67,7 @@
                     <td><?php echo $row['date_created'];?></td>
                     <td><?php echo $row['date_updated'];?></td>
                     <td><a href="<?php echo $row['delete_bookmark'];?>"><img
-                        src="media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/delete.png"
+                        src="/media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/delete.png"
                         border="0" align="absmiddle"/></a></td>
                 </tr><?php
             } ?>

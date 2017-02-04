@@ -342,7 +342,7 @@ function Category($id)
 					}
 
 					if ($key3 == 'image') {
-						$products[$i]['image'] = 'media/com_maqmahelpdesk/images/' . $value3;
+						$products[$i]['image'] = '/media/com_maqmahelpdesk/images/' . $value3;
 					}
 				}
 			}
@@ -374,7 +374,7 @@ function Product($id)
 	$uri = JURI::getInstance();
 	$curl = $uri->toString(array('scheme', 'host', 'port', 'path', 'query', 'fragment'));
 
-	HelpdeskUtility::AppendResource('downloads.view.js', JURI::root() . 'media/com_maqmahelpdesk/js/', 'js', true);
+	HelpdeskUtility::AppendResource('downloads.view.js', '/media/com_maqmahelpdesk/js/', 'js', true);
 
 	//Security measure against SQL Injection
 	$id = mysql_escape_string($id);

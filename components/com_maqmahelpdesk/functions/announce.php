@@ -90,7 +90,7 @@ function showAnnounce($id, $print)
 	// If it's the print version shows icon to print and to close
 	if ($print)
 	{
-		$img_src = JURI::root() . 'media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/';
+		$img_src = '/media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/';
 		echo '<style type="text/css" media="' . JText::_('print') . '">';
 		echo '.exclude {';
 		echo '	visibility: hidden;';
@@ -117,8 +117,8 @@ function showAnnounce($id, $print)
 	$document->title = $announce->introtext . ' - ' . JText::_('ANNOUNCEMENTS');
 	$document->description = JString::substr(strip_tags($announce->bodytext), 0, 75);
 
-	$ok_img = '<img src="media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/ok.png" border="0" align="absmiddle" />';
-	$no_img = '<img src="media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/no.png" border="0" align="absmiddle" />';
+	$ok_img = '<img src="/media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/ok.png" border="0" align="absmiddle" />';
+	$no_img = '<img src="/media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/no.png" border="0" align="absmiddle" />';
 	$link = JRoute::_(JURI::root() . 'index.php?option=com_maqmahelpdesk&Itemid=' . $Itemid . '&id_workgroup=' . $id_workgroup . '&task=announce_print&id=' . $announce->id . '&tmpl=component');
 
 	// Display toolbar

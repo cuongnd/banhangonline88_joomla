@@ -26,7 +26,7 @@
             <td><?php echo $row['date_subscription'];?></td>
             <td><?php echo $row['date_updated'];?></td>
             <td width="20"><a href="<?php echo $row['delete_link'];?>"><img
-                src="media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/delete.png"
+                src="/media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/delete.png"
                 border="0" alt="<?php echo JText::_('delete');?>"/></a></td>
         </tr>
         <?php endforeach;?>
@@ -36,7 +36,7 @@
     </table>
     <?php else: ?>
 
-    <img src="media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/info.png" border="0"
+    <img src="/media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/info.png" border="0"
          align="absmiddle"/> <?php echo JText::_('dl_no_subs'); ?>
 
     <?php endif;?>

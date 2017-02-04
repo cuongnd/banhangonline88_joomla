@@ -47,7 +47,7 @@ switch ($task)
 
 function showGlossary()
 {
-	HelpdeskUtility::AppendResource('helpdesk.glossary.js', JURI::root() . 'media/com_maqmahelpdesk/js/', 'js');
+	HelpdeskUtility::AppendResource('helpdesk.glossary.js', '/media/com_maqmahelpdesk/js/', 'js');
 
 	$mainframe = JFactory::getApplication();
 	$database = JFactory::getDBO();
@@ -92,7 +92,7 @@ function showGlossary()
 
 function showGlossaryCategory()
 {
-	HelpdeskUtility::AppendResource('helpdesk.glossary.js', JURI::root() . 'media/com_maqmahelpdesk/js/', 'js');
+	HelpdeskUtility::AppendResource('helpdesk.glossary.js', '/media/com_maqmahelpdesk/js/', 'js');
 
 	$mainframe = JFactory::getApplication();
 	$database = JFactory::getDBO();
@@ -187,7 +187,7 @@ function editGlossary($id)
 	$document->addScriptDeclaration('var MQM_GLOSSARY_TERM = "'.addslashes(JText::_('required_term')).'";');
 	$document->addScriptDeclaration('var MQM_GLOSSARY_CANCEL = "'.addslashes(JText::_('tmpl_ticket_cancelquestion')).'";');
 	$document->addScriptDeclaration('function CheckHTMLEditor() { '.$editor->save('description').' }');
-	HelpdeskUtility::AppendResource('helpdesk.glossary.js', JURI::root() . 'media/com_maqmahelpdesk/js/', 'js');
+	HelpdeskUtility::AppendResource('helpdesk.glossary.js', '/media/com_maqmahelpdesk/js/', 'js');
 
 	// Sets the page title
 	if ($id > 0) {

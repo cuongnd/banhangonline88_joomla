@@ -322,7 +322,7 @@ function viewClient($id, $limit, $limitstart, $print)
 						$tickets[$i]['link'] = JRoute::_('index.php?option=com_maqmahelpdesk&Itemid=' . $Itemid . '&id_workgroup=' . $id_workgroup . '&task=ticket_view&id=' . $value3);
 						$database->setQuery("SELECT COUNT(*) FROM #__support_file WHERE id='" . $value3 . "' AND source='T'");
 						$tickets[$i]['attachs'] = $database->loadResult();
-						$tickets[$i]['attachs_image'] = ($database->loadResult() > 0 ? '<img src="media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/attach.png" />' : '');
+						$tickets[$i]['attachs_image'] = ($database->loadResult() > 0 ? '<img src="/media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/attach.png" />' : '');
 					}
 
 					if ($key3 == 'id_user')

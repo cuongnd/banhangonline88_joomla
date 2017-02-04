@@ -34,7 +34,7 @@ if (!$loaded) {
 		}
 	}
 
-	$foundryPath =  '/media/foundry/' . $version . '/';
+	$foundryPath = rtrim(JURI::root(), '/') . '/media/foundry/' . $version . '/';
 
 	switch ($environment) {
 
@@ -74,8 +74,8 @@ if (!$loaded) {
 	}
 
 	foreach ($scripts as $i=>$script) {
-
-		$doc->addScript($scriptPath . $script . '.js');
+		$script=str_replace(JURI::root(),'/',$scriptPath . $script . '.js');
+		$doc->addScript($script);
 	}
 
 	ob_start();

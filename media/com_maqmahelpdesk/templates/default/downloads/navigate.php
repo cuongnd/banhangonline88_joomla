@@ -10,7 +10,7 @@
             <div class="flag"><img src="components/com_maqmahelpdesk/images/<?php echo $row['image_folder'];?>" alt=""/></div>
             <?php endif;?>
             <a href="<?php echo $row['link'];?>" style="text-decoration:none;">
-                <img src="media/com_maqmahelpdesk/images/logos/<?php echo $row['image'];?>" align="left" class="logo"
+                <img src="/media/com_maqmahelpdesk/images/logos/<?php echo $row['image'];?>" align="left" class="logo"
                      alt="<?php echo $row['title'];?>"/>
                 <span style="font-size:16px;font-weight:bold;"><?php echo $row['title'];?></span><br/>
                 <small><?php echo $row['description_short'];?></small>
@@ -52,7 +52,7 @@
     <!-- SUBSCRIPTIONS -->
     <?php if ($user->id && $supportConfig->download_notification): ?>
     <div class="alert">
-        <img src="media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/alert.png"
+        <img src="/media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/alert.png"
              align="absmiddle"/> <?php echo JText::_('dl_seesubs');?> <a
         href="<?php echo JRoute::_('index.php?option=com_maqmahelpdesk&Itemid=' . $Itemid . '&id_workgroup=' . $id_workgroup . '&task=downloads_subscriptions');?>"><b><?php echo JText::_('tmpl_msg10');?></b></a>.
     </div>

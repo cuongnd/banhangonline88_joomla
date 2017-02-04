@@ -1610,7 +1610,7 @@ ORDER BY
 				print '<tr class="row' . $k . '">';
 				// 2009.02.25 - Detail Client Month Report
 				if ($detail == 1) {
-					print '<td nowrap><img src="../media/com_maqmahelpdesk/images/dtree/nolines_plus.gif" id="toogle' . $row->ticketmask . '" onclick="$jMaQma(\'#detail' . $row->ticketmask . '\').toggle();" style="cursor:hand;" />   ' . $row->ticketmask . '</td>';
+					print '<td nowrap><img src="/media/com_maqmahelpdesk/images/dtree/nolines_plus.gif" id="toogle' . $row->ticketmask . '" onclick="$jMaQma(\'#detail' . $row->ticketmask . '\').toggle();" style="cursor:hand;" />   ' . $row->ticketmask . '</td>';
 				} else {
 					print '<td nowrap>' . $row->ticketmask . '</td>';
 				}

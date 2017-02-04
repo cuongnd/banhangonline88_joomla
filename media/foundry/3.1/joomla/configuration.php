@@ -110,9 +110,8 @@ class FD31_FoundryBaseConfiguration {
 		// they can load & execute without page blocking.
 		foreach ($this->scripts as $i=>$script) {
 			$scriptPath = $this->uri . '/scripts/' . $script . $this->extension;
-			$document->addScript($scriptPath);
-			//$scriptTag  = $this->createScriptTag($scriptPath);
-			//$document->addCustomTag($scriptTag);
+			$scriptTag  = $this->createScriptTag($scriptPath);
+			$document->addCustomTag($scriptTag);
 		}
 	}
 
@@ -130,6 +129,7 @@ class FD31_FoundryBaseConfiguration {
 			$document->addCustomTag('<script>' . $contents . '</script>');
 		} else {
 			// Add to the very top of document head.
+			$script->url=str_replace(JURI::root(),'',$script->url);
 			$document->addScript($script->url);
 		}
 

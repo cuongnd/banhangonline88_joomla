@@ -145,7 +145,7 @@ function showFAQ($parent)
 	$is_client = HelpdeskUser::IsClient();
 	$Itemid = JRequest::getInt('Itemid', 0);
 	$id_workgroup = JRequest::getInt('id_workgroup', 0);
-	HelpdeskUtility::AppendResource('helpdesk.faq.js', JURI::root() . 'media/com_maqmahelpdesk/js/', 'js');
+	HelpdeskUtility::AppendResource('helpdesk.faq.js', '/media/com_maqmahelpdesk/js/', 'js');
 
 	// Set title
 	HelpdeskUtility::PageTitle('showFAQ');
@@ -294,7 +294,7 @@ function showKB($parent, $limit, $limitstart)
 	$page = JRequest::getVar('page', 0, '', 'int');
 	$limit = JRequest::getVar('limit', 32, '', 'int');
 	$limitstart = ($page * $limit);
-	HelpdeskUtility::AppendResource('equalheights.js', JURI::root() . 'media/com_maqmahelpdesk/js/', 'js', true);
+	HelpdeskUtility::AppendResource('equalheights.js', '/media/com_maqmahelpdesk/js/', 'js', true);
 
 	// Get knowledge base categories
 	$sql = "SELECT c.id, c.`name`, COUNT(k.id) AS articles
@@ -454,7 +454,7 @@ function showKB($parent, $limit, $limitstart)
 			$articles_rows[$i]['case'] = 0;
 		}
 
-		$articles_rows[$i]['link_edit'] = ($is_support ? '<a href="' . $link_edit . '"><img src="media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/edit.png" border="0" align="absmiddle" /></a>' : '');
+		$articles_rows[$i]['link_edit'] = ($is_support ? '<a href="' . $link_edit . '"><img src="/media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/edit.png" border="0" align="absmiddle" /></a>' : '');
 
 		$i++;
 	}
@@ -607,7 +607,7 @@ function searchKB()
 			$articles_rows[$i]['case'] = 0;
 		}
 
-		$articles_rows[$i]['link_edit'] = ($is_support ? '<a href="' . $link_edit . '"><img src="media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/edit.png" border="0" align="absmiddle" /></a>' : '');
+		$articles_rows[$i]['link_edit'] = ($is_support ? '<a href="' . $link_edit . '"><img src="/media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/16px/edit.png" border="0" align="absmiddle" /></a>' : '');
 
 		$i++;
 	}
@@ -691,11 +691,11 @@ function viewKB($id, $print = 0, $faq = 0)
 	$is_client = HelpdeskUser::IsClient();
 	$Itemid = JRequest::getInt('Itemid', 0);
 	$id_workgroup = JRequest::getInt('id_workgroup', 0);
-	HelpdeskUtility::AppendResource('rating.js', JURI::root() . 'media/com_maqmahelpdesk/js/', 'js');
+	HelpdeskUtility::AppendResource('rating.js', '/media/com_maqmahelpdesk/js/', 'js');
 
 	// If it's the print version shows icon to print and to close
 	if ($print) {
-		$img_src = JURI::root() . 'media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/';
+		$img_src = '/media/com_maqmahelpdesk/images/themes/' . $supportConfig->theme_icon . '/';
 		echo '<style type="text/css" media="print">';
 		echo '.exclude {';
 		echo '	visibility: hidden;';
@@ -1026,7 +1026,7 @@ function editKB($id, $ticket = 0)
 	$document->addScriptDeclaration('var MQM_KB_TITLE = "'.addslashes(JText::_('msg_validate_title')).'";');
 	$document->addScriptDeclaration('var MQM_KB_CATEGORY = "'.addslashes(JText::_('msg_validate_category')).'";');
 	$document->addScriptDeclaration('function CheckHTMLEditor() { '.$editor->save('kbcontent').' }');
-	HelpdeskUtility::AppendResource('helpdesk.kb.js', JURI::root() . 'media/com_maqmahelpdesk/js/', 'js', true);
+	HelpdeskUtility::AppendResource('helpdesk.kb.js', '/media/com_maqmahelpdesk/js/', 'js', true);
 	
 	// Get article
 	if ($id > 0) {

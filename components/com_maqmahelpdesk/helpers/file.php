@@ -615,7 +615,7 @@ class HelpdeskFile
 			}
 			elseif ($source == 'U')
 			{
-				$database->setQuery("UPDATE #__support_users SET avatar=" . $database->quote(JURI::root() . 'media/com_maqmahelpdesk/images/avatars/' . $file_name) . " WHERE id_user='" . $user->id . "'");
+				$database->setQuery("UPDATE #__support_users SET avatar=" . $database->quote('/media/com_maqmahelpdesk/images/avatars/' . $file_name) . " WHERE id_user='" . $user->id . "'");
 				!$database->query() ? HelpdeskUtility::AddGlobalMessage($database->getErrorMsg(), 'e', $database->stderr(1)) : '';
 			}
 		}

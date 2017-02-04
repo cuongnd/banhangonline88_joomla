@@ -73,7 +73,7 @@
                 </td>
                 <td>
                     <a href="javascript:;" onclick="RemoveParameter(this);"><img
-                        src="media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/circle_remove.png"
+                        src="/media/com_maqmahelpdesk/images/themes/<?php echo $supportConfig->theme_icon;?>/16px/circle_remove.png"
                         border="0" alt=""/></a>
                 </td>
             </tr>
