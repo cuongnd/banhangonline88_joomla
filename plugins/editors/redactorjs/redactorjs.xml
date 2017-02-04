@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5" type="plugin" group="editors" method="upgrade">
+	<name>Editor - RedactorJS</name>
+	<version>1.1</version>
+	<creationDate>15th September 2012</creationDate>
+	<author>StackIdeas</author>
+	<authorEmail>mark@stackideas.com</authorEmail>
+	<authorUrl>http://stackideas.com/</authorUrl>
+	<copyright>StackIdeas Sdn Bhd</copyright>
+	<license>GPLv2</license>
+	<description>
+		<![CDATA[
+		Create word-processed text on the web using a reliable, fast and unbelievably beautiful editor.
+		]]>
+	</description>
+	<scriptfile>script.php</scriptfile>
+	<files>
+		<filename plugin="redactorjs">redactorjs.php</filename>
+		<filename>index.html</filename>
+	</files>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="text_direction" type="list" label="Text Direction" description="Set the text direction for the editor.">
+					<option value="ltr">Left to Right</option>
+					<option value="rtl">Right to Left</option>
+				</field>
+				<field name="visual_structure" type="radio" label="Visual Structure" description="Enable or disable the visual structure of the editor." default="0">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

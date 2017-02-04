@@ -34,7 +34,7 @@ if (!$loaded) {
 		}
 	}
 
-	$foundryPath = rtrim(JURI::root(), '/') . '/media/foundry/' . $version . '/';
+	$foundryPath =  '/media/foundry/' . $version . '/';
 
 	switch ($environment) {
 

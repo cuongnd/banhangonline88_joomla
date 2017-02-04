@@ -188,14 +188,61 @@ class DiscussLessHelper extends DiscussLessc
 
 		// Not using this because it only returns the current theme
 		// $assets->path('site', 'styles');
-		$site          = '/components/com_easydiscuss/themes/' . strtolower($theme_name) . '/styles';
+		$site          = DISCUSS_SITE_THEMES . '/' . strtolower($theme_name) . '/styles';
 		$site_base     = $assets->path('site_base', 'styles');
 		$site_override = $assets->path('site_override', 'styles');
 
 		$in  = $site . '/style.less';
-		$doc=JFactory::getDocument();
-		$doc->addLessStyleSheet($in);
-		return true;
+		$out = $site . '/style.css';
+
+		$importDir = array(
+			$site,
+			$site_base
+		);
+
+		// Additional overrides
+		$hasTemplateOverride = false;
+
+		if ($this->allowTemplateOverride)
+		{
+			// Partial override
+			if (JFile::exists($site_override . '/override.less')) {
+				$out = $site_override . '/style.css';
+				$hasTemplateOverride = true;
+			}
+
+			// Full override
+			if (JFile::exists($site_override . '/style.less')) {
+				$in  = $site_override . '/style.less';
+				$out = $site_override . '/style.css';
+				$hasTemplateOverride = true;
+			}
+
+			// Add override folder to the stylesheet seek list
+			if ($hasTemplateOverride) {
+				$importDir = array_merge(
+					array($site_override),
+					$importDir
+				);
+			}
+		}
+
+		// Build settings
+		$settings = array(
+			"importDir" => $importDir
+		);
+
+		// Compile
+		$result = $this->compileStylesheet($in, $out, $settings);
+
+		// Indicate if this was compiled to the override location
+		$result->override = $hasTemplateOverride;
+
+		// Offer failsafe alternative
+		$result->failsafe     = $site . '/style.failsafe.css';
+		$result->failsafe_uri = $assets->toUri($result->failsafe);
+
+		return $result;
 	}
 
 	public function compileModuleStylesheet($module_name)

@@ -1,9 +1,6 @@
-@import "/templates/vina_bonnie/bootstrap-3.3.7/less/variables";
-@import "/templates/vina_bonnie/bootstrap-3.3.7/less/mixins";
-@import "/media/jui/less/variables";
-@import "/media/jui/less/mixins";
+@import "bootstrap/variables";
 @import "variables";
-
+@import "component";
 
 /*------------------------------------*\
 	$Table of Contents
@@ -12,7 +9,7 @@
 	elements > layout > module > state > theme
 */
 
-div#discuss-wrapper {
+(~"@{EasyDiscuss}") {
 
 	// @baseFontFamily: 'Lucida Grande', 'Gisha', 'Lucida Sans Unicode', 'Lucida Sans', Lucida, Arial, Verdana, sans-serif;
 	// font-family: @baseFontFamily;
@@ -73,4 +70,4 @@ div#discuss-wrapper {
 
 
 // $Override
-
+@import "override";
