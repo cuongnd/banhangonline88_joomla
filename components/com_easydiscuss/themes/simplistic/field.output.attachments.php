@@ -20,7 +20,7 @@ $attachments	= $post->getAttachments();
 
 	<ul class="thumbnails">
 	<?php foreach( $attachments as $attachment ) { ?>
-		<li class="attachment-item thumbnail thumbnail-small attachment-type-<?php echo $attachment->attachmentType; ?>" id="attachment-<?php echo $attachment->id;?>" data-attachment-item>
+		<li class="attachmentsItem thumbnail thumbnail-small attachment-<?php echo $attachment->attachmentType; ?>" id="attachment-<?php echo $attachment->id;?>">
 			<?php echo $attachment->toHTML();?>
 		</li>
 	<?php } ?>

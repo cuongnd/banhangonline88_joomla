@@ -23,7 +23,7 @@ class JFormFieldModal_Categories extends JFormField
 	protected $type = 'Modal_Categories';
 
 	protected function getInput()
-	{
+	{		
 		$model 		= DiscussHelper::getModel( 'Categories' , true );
 		$categories	= $model->getAllCategories();
 
@@ -36,7 +36,7 @@ class JFormFieldModal_Categories extends JFormField
 
 		ob_start();
 		?>
-		<select name="<?php echo $this->name;?>" id="<?php echo $this->id;?>"<?php echo $multiple == 'true' ? ' multiple="multiple"' :'';?>>
+		<select name="<?php echo $this->name;?>" id="<?php echo $this->name;?>"<?php echo $multiple == 'true' ? ' multiple="multiple"' :'';?>>
 			<?php if( $categories ){ ?>	
 				<?php foreach( $categories as $category ){ ?>
 				<option value="<?php echo $category->id;?>"<?php echo in_array( $category->id , $this->value ) ? ' selected="selected"' : '';?>><?php echo JText::_( $category->title ); ?></option>

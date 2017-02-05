@@ -17,9 +17,6 @@ class DiscussFacebookHelper
 {
 	public function addOpenGraph( DiscussPost $post )
 	{
-		// Use facebook developer tools to check the result
-		// https://developers.facebook.com/tools/debug/og
-
 		$doc 		= JFactory::getDocument();
 		$config 	= DiscussHelper::getConfig();
 
@@ -58,7 +55,7 @@ class DiscussFacebookHelper
 		$content 		= EasyDiscussParser::removeCodes( $post->content );
 		$content 		= strip_tags( $post->content );
 
-		if( JString::strlen( $content ) > $maxContent )
+		if( JString::strlen( $content ) > $maxContentLen )
 		{
 			$content 	= JString::substr( $content , 0 , $maxContent ) . '...';
 		}
@@ -72,9 +69,6 @@ class DiscussFacebookHelper
 		// Add the URL for this page.
 		$url 	= DiscussRouter::getRoutedURL( DiscussRouter::getPostRoute( $post->id , false , true ) );
 		$doc->addCustomTag( '<meta property="og:url" content="' . $url . '" />' );
-
-		$doc->setTitle( $post->title );
-		$doc->setDescription( $content );
 
 		return true;
 	}

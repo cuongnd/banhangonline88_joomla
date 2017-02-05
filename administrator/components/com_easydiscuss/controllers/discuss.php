@@ -35,12 +35,6 @@ class EasyDiscussControllerDiscuss extends EasyDiscussController
 			}
 		}
 
-		// Also purge the /resources and /config files
-		require_once( DISCUSS_CLASSES . '/compiler.php' );
-
-		$compiler 	= new DiscussCompiler();
-		$compiler->purgeResources();
-		
 		$message	= JText::sprintf('COM_EASYDISCUSS_CACHE_DELETED', $count );
 		DiscussHelper::setMessageQueue( $message , DISCUSS_QUEUE_SUCCESS );
 		$this->setRedirect( 'index.php?option=com_easydiscuss' );

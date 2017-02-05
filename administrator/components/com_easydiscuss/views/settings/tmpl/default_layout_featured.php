@@ -64,7 +64,6 @@ defined('_JEXEC') or die('Restricted access');
 							<input type="text" class="input-mini center" name="layout_featuredpost_limit" value="<?php echo $this->config->get('layout_featuredpost_limit', '5' );?>" />
 						</div>
 					</div>
-
 					<div class="si-form-row">
 						<div class="span4 form-row-label">
 							<label>

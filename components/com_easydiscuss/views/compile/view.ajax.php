@@ -11,7 +11,9 @@
 */
 defined('_JEXEC') or die('Restricted access');
 
-require_once( DISCUSS_ROOT . '/views.php' );
+jimport( 'joomla.application.component.view');
+
+require_once JPATH_ROOT . '/components/com_easydiscuss/helpers/helper.php';
 
 class EasyDiscussViewCompile extends EasyDiscussView
 {
@@ -39,7 +41,7 @@ class EasyDiscussViewCompile extends EasyDiscussView
 			jimport( 'joomla.application.module.helper' );
 
 			$discussModules = array(
-				//'mod_ask',
+				'mod_ask',
 				'mod_easydiscuss_categories',
 				'mod_easydiscuss_latest_replies',
 				'mod_easydiscuss_leaderboard',

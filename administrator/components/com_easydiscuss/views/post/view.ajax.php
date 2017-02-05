@@ -31,12 +31,12 @@ class EasyDiscussViewPost extends EasyDiscussAdminView
 		{
 			$msg		= JText::_('COM_EASYDISCUSS_ATTACHMENT_DELETE_SUCCESS');
 			$msgClass	= 'dc_success';
-			$disjax->script( 'EasyDiscuss.$( "#dc-attachments-'.$id.'" ).remove();' );
+			$disjax->script( 'discussQuery( "#dc-attachments-'.$id.'" ).remove();' );
 		}
 
 		$disjax->assign( 'dc_post_notification .msg_in' , $msg );
-		$disjax->script( 'EasyDiscuss.$( "#dc_post_notification .msg_in" ).addClass( "'.$msgClass.'" );' );
-		$disjax->script( 'EasyDiscuss.$( "#button-delete-att-'.$id.'" ).prop("disabled", false);' );
+		$disjax->script( 'discussQuery( "#dc_post_notification .msg_in" ).addClass( "'.$msgClass.'" );' );
+		$disjax->script( 'discussQuery( "#button-delete-att-'.$id.'" ).attr("disabled", "");' );
 
 		$disjax->send();
 	}

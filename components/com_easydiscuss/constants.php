@@ -40,10 +40,10 @@ define( 'DISCUSS_ASSETS_URI'				, DISCUSS_ROOT_URI . '/assets' );
 define( 'DISCUSS_ADMIN_ASSETS'				, DISCUSS_ADMIN_ROOT . '/assets' );
 define( 'DISCUSS_ADMIN_ASSETS_URI'			, DISCUSS_ADMIN_ROOT_URI . '/assets' );
 
-define( 'DISCUSS_FOUNDRY_VERSION'			, '3.1' );
+define( 'DISCUSS_FOUNDRY_VERSION'			, '2.1' );
 define( 'DISCUSS_FOUNDRY'					, JPATH_ROOT . '/media/foundry/' . DISCUSS_FOUNDRY_VERSION );
 define( 'DISCUSS_FOUNDRY_URI'				, DISCUSS_JURIROOT . '/media/foundry/' . DISCUSS_FOUNDRY_VERSION );
-define( 'DISCUSS_FOUNDRY_CONFIGURATION'		, DISCUSS_FOUNDRY . '/joomla/configuration.php' );
+define( 'DISCUSS_FOUNDRY_BOOTSTRAP'			, DISCUSS_FOUNDRY . '/joomla/bootstrap.php' );
 
 define( 'DISCUSS_MEDIA'						, JPATH_ROOT . '/media/com_easydiscuss' );
 define( 'DISCUSS_MEDIA_URI'					, DISCUSS_JURIROOT . '/media/com_easydiscuss' );
@@ -56,7 +56,7 @@ define( 'DISCUSS_ADMIN_THEMES_URI'			, DISCUSS_ADMIN_ROOT_URI . '/themes' );
 define( 'DISCUSS_SPINNER'					, DISCUSS_MEDIA_URI . '/images/loading.gif' );
 
 define( 'DISCUSS_UPDATES_SERVER'	, 'stackideas.com' );
-define( 'DISCUSS_POWERED_BY'		, '');
+define( 'DISCUSS_POWERED_BY'		, '<div style="text-align: center; padding: 20px 0;"><a href="http://stackideas.com">Powered by EasyDiscuss for Joomla!</a></div>');
 
 // Privacy
 define( 'DISCUSS_PRIVACY_PUBLIC'	, '0' );
@@ -127,10 +127,6 @@ define( 'DISCUSS_NOTIFICATIONS_ON_HOLD'			, 'onHold' );
 define( 'DISCUSS_NOTIFICATIONS_WORKING_ON'		, 'workingOn' );
 define( 'DISCUSS_NOTIFICATIONS_REJECTED'		, 'reject' );
 define( 'DISCUSS_NOTIFICATIONS_NO_STATUS'		, 'unhold' );
-define( 'DISCUSS_NOTIFICATIONS_VOTE_UP_REPLY'				, 'vote-up-reply' );
-define( 'DISCUSS_NOTIFICATIONS_VOTE_DOWN_REPLY'				, 'vote-down-reply' );
-define( 'DISCUSS_NOTIFICATIONS_VOTE_UP_DISCUSSION'			, 'vote-up-discussion' );
-define( 'DISCUSS_NOTIFICATIONS_VOTE_DOWN_DISCUSSION'		, 'vote-down-discussion' );
 
 // Point systems
 define( 'DISCUSS_POINTS_NEW_DISCUSSION'			, 'discussion.new' );
@@ -192,9 +188,3 @@ define( 'DISCUSS_POST_STATUS_ON_HOLD'		, 1 );
 define( 'DISCUSS_POST_STATUS_ACCEPTED'		, 2 );
 define( 'DISCUSS_POST_STATUS_WORKING_ON'	, 3 );
 define( 'DISCUSS_POST_STATUS_REJECT'		, 4 );
-
-// @since Foundry 3.1
-// Foundry
-require_once(JPATH_ROOT . '/media/foundry/3.1/joomla/framework.php');
-FD31_FoundryFramework::defineComponentConstants( "EasyDiscuss" );
-

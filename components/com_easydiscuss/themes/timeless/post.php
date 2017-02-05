@@ -20,11 +20,32 @@ window.print();
 
 EasyDiscuss.view_votes = <?php echo !$system->config->get( 'main_allowguestview_whovoted' ) && !$system->my->id ? 'false' : 'true'; ?>;
 
+<?php if( $system->config->get( 'main_syntax_highlighter') ){ ?>
+// Find any response that contains a code syntax.
+EasyDiscuss.main_syntax_highlighter = true;
+EasyDiscuss
+	.require()
+	.script('syntaxhighlighter' , 'likes' )
+	.done(function($) {
+		$('.discuss-content-item pre').each(function(i, e) {
+		hljs.highlightBlock(e);
+	});
+});
+
+<?php } ?>
+
 EasyDiscuss
 .require()
-.script( 'legacy', 'likes' , 'favourites', 'attachments' , 'replies' , 'posts' )
+.script( 'likes' , 'favourites', 'attachments' , 'replies' , 'posts' )
 .library( 'scrollTo' )
 .done(function($){
+
+	// Implement likes controller
+	$( '.attachmentsItem' ).implement(
+		EasyDiscuss.Controller.Attachments.Item,
+		{
+		}
+	);
 
 	// Implement reply item controller.
 	$( '.discussionReplies' ).implement(
@@ -77,7 +98,6 @@ EasyDiscuss
 	$(document).on('click.quote', '.quotePost', function(){
 
 		var rawContent 	= $( this ).find( 'input' ).val(),
-			rawAuthor	= $( this ).find( '.raw_author' ).val(),
 			editor 		= $( 'textarea[name=dc_reply_content]' );
 
 		editor.val( editor.val() + '[quote]' + '[b]' + rawAuthor + '<?php echo JText::_( 'COM_EASYDISCUSS_QUOTE_WROTE' )  ?>'  + ':[/b]' + '\n\r' + rawContent + '[/quote]' );
@@ -111,8 +131,10 @@ EasyDiscuss
 	</div>
 
 
-	<div class="postStatus label label-info label-post_status<?php echo $post->getStatusClass();?>"><?php echo $post->getStatusMessage();?></div>
+
+	<div class="postStatus label label-info label-post_status<?php echo $postStatusClass ?>"><?php echo $postStatus; ?></div>
 	<div class="postType label label-important label-post_type<?php echo $suffix; ?>" ><?php echo $post->post_type ?></div>
+
 
 
 	<?php if( $access->canLabel() && false ) { ?>

@@ -96,19 +96,17 @@ class DiscussRanksHelper
 			$userNewRank->bind( $data);
 			$userNewRank->store();
 
-			$rank			= new stdClass();
-			$rank->rank_id	= $newRank->id;
-			$rank->user_id	= $user->id;
-			$rank->title	= $newRank->title;
-			$rank->uniqueId	= $userNewRank->id;
-			
 			//insert into JS stream.
 			if( $config->get( 'integration_jomsocial_activity_ranks', 0 ) )
 			{
+				$rank			= new stdClass();
+				$rank->rank_id	= $newRank->id;
+				$rank->user_id	= $user->id;
+				$rank->title	= $newRank->title;
+				$rank->uniqueId	= $userNewRank->id;
+
 				DiscussHelper::getHelper( 'jomsocial' )->addActivityRanks( $rank );
 			}
-
-			DiscussHelper::getHelper( 'easysocial' )->rankStream( $rank );
 		}
 
 		return true;

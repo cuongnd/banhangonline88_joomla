@@ -50,7 +50,7 @@ EasyDiscuss
 
 						<?php if( $system->config->get( 'layout_category_toggle' ) ){ ?>
 							<!-- If got child then add dropdown icon-->
-							<?php if( $category->getChildCount() != 0 && $system->config->get( 'layout_show_all_subcategories' ) ){ ?>
+							<?php if( $category->getChildCount() != 0 ){ ?>
 								<a class="icon-sort-down showChild btn btn-mini" data-id="<?php echo $category->id; ?>"></a>
 							<?php } ?>
 						<?php } ?>

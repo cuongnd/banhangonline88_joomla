@@ -11,7 +11,7 @@
 */
 defined('_JEXEC') or die('Restricted access');
 
-require_once( DISCUSS_ROOT . '/views.php' );
+jimport( 'joomla.application.component.view');
 
 require_once DISCUSS_HELPERS . '/date.php';
 

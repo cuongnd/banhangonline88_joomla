@@ -152,7 +152,6 @@ class EasyDiscussControllerRules extends EasyDiscussController
 
 		// @task: Bind appropriate values from the xml file into the database table.
 		$rule		= DiscussHelper::getTable( 'Rules' );
-
 		$rule->command 		= (string) $parser->command;
 		$rule->title 		= (string) $parser->title;
 		$rule->description	= (string) $parser->description;

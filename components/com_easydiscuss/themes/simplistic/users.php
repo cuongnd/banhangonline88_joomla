@@ -14,18 +14,17 @@ defined('_JEXEC') or die('Restricted access');
 ?>
 <div class="row-fluid">
 	<h2 class="discuss-component-title pull-left"><?php echo JText::_('COM_EASYDISCUSS_MEMBERS'); ?></h2>
-	<div class="discuss-users-search-wrap pull-right">
-		<div class="input-append">
-			<form name="discuss-users-search" method="GET" action="<?php echo DiscussRouter::_('index.php?option=com_easydiscuss&view=users'); ?>" style="margin:0;">
-				<input type="text" class="input-large" placeholder="<?php echo JText::_( 'COM_EASYDISCUSS_USERS_SEARCH_PLACEHOLDER' );?>" name="userQuery" value="<?php echo DiscussHelper::getHelper( 'String' )->escape($userQuery) ? DiscussHelper::getHelper( 'String' )->escape($userQuery) : '';?>" />
-				<input type="hidden" name="option" value="com_easydiscuss" />
-				<input type="hidden" name="view" value="users" />
-				<button class="btn btn-searchbar"><?php echo JText::_( 'COM_EASYDISCUSS_SEARCH_BUTTON' );?></button>
-			</form>
-		</div>
+</div>
+<div class="discuss-users-search-wrap mt-10">
+	<div class="form-inline">
+		<form name="discuss-users-search" method="GET" action="<?php echo DiscussRouter::_('index.php?option=com_easydiscuss&view=users'); ?>">
+			<input type="text" class="input-users-searchbar" placeholder="<?php echo JText::_( 'COM_EASYDISCUSS_USERS_SEARCH_PLACEHOLDER' );?>" name="userQuery" value="<?php echo DiscussHelper::getHelper( 'String' )->escape($userQuery) ? DiscussHelper::getHelper( 'String' )->escape($userQuery) : '';?>" />
+			<input type="hidden" name="option" value="com_easydiscuss" />
+			<input type="hidden" name="view" value="users" />
+			<button class="btn btn-searchbar"><?php echo JText::_( 'COM_EASYDISCUSS_SEARCH_BUTTON' );?></button>
+		</form>
 	</div>
 </div>
-
 <hr />
 <div class="row-fluid">
 	<!-- default: <ul class="unstyled discuss-list discuss-list-grid discuss-users-list"> -->

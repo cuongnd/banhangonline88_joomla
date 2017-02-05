@@ -12,16 +12,16 @@
  */
 defined('_JEXEC') or die('Restricted access');
 
-require_once( DISCUSS_ROOT . '/views.php' );
+require_once DISCUSS_ROOT . '/views.php';
 require_once DISCUSS_CLASSES . '/composer.php';
 
 class EasyDiscussViewPost extends EasyDiscussView
 {
-	public function display( $tpl = null )
+	function display( $tpl = null )
 	{
-		$app 		= JFactory::getApplication();
-		$doc 		= JFactory::getDocument();
-		$config		= DiscussHelper::getConfig();
+		$app 	= JFactory::getApplication();
+		$doc 	= JFactory::getDocument();
+		$config	= DiscussHelper::getConfig();
 
 		// Sorting and filters.
 		$sort			= JRequest::getString('sort', DiscussHelper::getDefaultRepliesSorting() );
@@ -64,17 +64,10 @@ class EasyDiscussViewPost extends EasyDiscussView
 			$app->close();
 		}
 
-		// check the discussion is under moderation 
-		if( $post->published == 4 && !DiscussHelper::isModerator( $post->category_id, $my->id) && !$isAdmin)
-		{
- 			DiscussHelper::setMessageQueue( JText::_('COM_EASYDISCUSS_NOTICE_POST_SUBMITTED_UNDER_MODERATION')  , 'error' );
-			$app->redirect( DiscussRouter::_('index.php?option=com_easydiscuss&view=index', false)) ;
-			$app->close();
-		}
-
 		// Load the category.
 		$category	= DiscussHelper::getTable( 'Category' );
 		$category->load( (int) $post->category_id );
+
 
 		if( $post->category_id )
 		{
@@ -97,8 +90,20 @@ class EasyDiscussViewPost extends EasyDiscussView
 		// Update hit count for this discussion.
 		$post->hit();
 
-		// Set page headers
-		$this->setPageHeaders( $post );
+		// Set page title.
+		DiscussHelper::setPageTitle( $post->getTitle() );
+
+		$doc->setMetadata('keywords', $post->title );
+		$doc->setMetadata( 'description', preg_replace( '/\s+/', ' ', (substr( strip_tags( EasyDiscussParser::bbcode($post->content) ), 0, 160 ) ) ) );
+
+		// Set canonical link to avoid URL duplication.
+		$doc->addHeadLink( DISCUSS_JURIROOT . DiscussRouter::getPostRoute( $post->id ) , 'canonical' , 'rel' );
+
+		// Add syntax highlighted css codes.
+		if( $config->get( 'main_syntax_highlighter') )
+		{
+			$doc->addStylesheet( DISCUSS_MEDIA_URI . '/styles/syntaxhighlighter/' . $config->get( 'sh_theme' ) . '.css');
+		}
 
 		// Before sending the title and content to be parsed, we need to store this temporarily in case it needs to be accessed.
 		$post->title_clear 	= $post->title;
@@ -115,10 +120,89 @@ class EasyDiscussViewPost extends EasyDiscussView
 		// Get adsense codes here.
 		$adsense 		= DiscussHelper::getAdsense();
 
+
 		$postsModel 	= DiscussHelper::getModel( 'Posts' );
 
 		// Get the answer for this discussion.
-		$answer			= $postsModel->getAcceptedReply( $post->id );
+		$answer		= $postsModel->getAcceptedReply( $post->id );
+
+
+		// Get a list of replies for this discussion
+		$replies 		= array();
+		$hasMoreReplies	= false;
+		$totalReplies 	= 0;
+		$readMoreURI	= '';
+
+		if( $category->canViewReplies() )
+		{
+			$repliesLimit	= $config->get('layout_replies_list_limit');
+			$totalReplies	= $postsModel->getTotalReplies( $post->id );
+
+			$hasMoreReplies	= false;
+
+			$limitstart		= null;
+			$limit			= null;
+
+			if( $repliesLimit && !JRequest::getBool('viewallreplies') )
+			{
+				$limit		= $repliesLimit;
+
+				$hasMoreReplies = ( $totalReplies - $repliesLimit ) > 0;
+			}
+
+			$replies 		= $postsModel->getReplies( $post->id, $sort, $limitstart, $limit );
+
+			if( count( $replies ) > 0 )
+			{
+				$repliesIds = array();
+				$authorIds  = array();
+
+				foreach( $replies as $reply )
+				{
+					$repliesIds[]	= $reply->id;
+					$authorIds[]    = $reply->user_id;
+				}
+
+				if( $answer )
+				{
+					$repliesIds[]   = $answer[0]->id;
+					$authorIds[]    = $answer[0]->user_id;
+				}
+
+				$post->loadBatch( $repliesIds );
+				$post->setAttachmentsData( 'replies', $repliesIds);
+
+				// here we include the discussion id into the array as well.
+				$repliesIds[]   = $post->id;
+				$authorIds[]    = $post->user_id;
+
+				$post->setLikeAuthorsBatch( $repliesIds );
+				DiscussHelper::getHelper( 'Post' )->setIsLikedBatch( $repliesIds );
+
+				$post->setPollQuestionsBatch( $repliesIds );
+				$post->setPollsBatch( $repliesIds );
+
+				$post->setLikedByBatch( $repliesIds, $my->id );
+				$post->setVoterBatch( $repliesIds );
+				$post->setHasVotedBatch( $repliesIds );
+
+				$post->setTotalCommentsBatch( $repliesIds );
+				$commentLimit	= $config->get( 'main_comment_pagination' ) ? $config->get( 'main_comment_pagination_count' ) : null;
+				$post->setCommentsBatch( $repliesIds, $commentLimit );
+
+				// Reduce SQL queries by pre-loading all author object.
+				$authorIds  = array_unique($authorIds);
+				$profile	= DiscussHelper::getTable( 'Profile' );
+				$profile->init( $authorIds );
+			}
+
+			$readMoreURI	= JURI::getInstance()->toString();
+			$delimiteter	= JString::strpos($readMoreURI, '&') ? '&' : '?';
+			$readMoreURI	= $hasMoreReplies ? $readMoreURI . $delimiteter . 'viewallreplies=1' : $readMoreURI;
+
+			// Format the reply items.
+			$replies		= DiscussHelper::formatReplies( $replies , $category );
+		}
 
 		// Format the answer object.
 		if( $answer )
@@ -126,13 +210,6 @@ class EasyDiscussViewPost extends EasyDiscussView
 			$answer 	= DiscussHelper::formatReplies( $answer , $category );
 			$answer 	= $answer[0];
 		}
-
-		// Get a list of replies for this post.
-		$data 			= $this->getReplies( $category , $post , $sort , $answer );
-		$replies 		= $data->replies;
-		$totalReplies	= $data->total;
-		$hasMoreReplies	= $data->more;
-		$readMoreURI	= $data->readmore;
 
 		// Get comments for the post
 		$commentLimit			= $config->get( 'main_comment_pagination' ) ? $config->get( 'main_comment_pagination_count' ) : null;
@@ -149,13 +226,12 @@ class EasyDiscussViewPost extends EasyDiscussView
 		$post->commentsCount	= $post->getTotalComments();
 
 		// Get the post access object here.
-		$access			= $post->getAccess( $category );
-		$post->access	= $access;
+		$access	= $post->getAccess( $category );
+		$post->access = $access;
 
 		// Add custom values.
-		$postOwner		= $post->getOwner();
-		$profileTable	= DiscussHelper::getTable( 'Profile' );
-
+		$postOwner = $post->getOwner();
+		$profileTable = DiscussHelper::getTable( 'Profile' );
 		$profileTable->load( $postOwner->id );
 		$post->user 	= $profileTable;
 
@@ -167,28 +243,19 @@ class EasyDiscussViewPost extends EasyDiscussView
 			$profile->read( $post->id );
 		}
 
-		$badgesTable		= DiscussHelper::getTable( 'Profile' );
+		$badgesTable	= DiscussHelper::getTable( 'Profile' );
 		$badgesTable->load( $post->user->id );
-		$postBadges			= $badgesTable->getBadges();
+		$postBadges = $badgesTable->getBadges();
 
 		// Get Likes model here.
 		$post->likesAuthor	= DiscussHelper::getHelper( 'Likes' )->getLikesHTML( $post->id , $my->id , 'post' );
 
 		$post->isVoted		= DiscussHelper::getHelper( 'Post' )->isVoted( $post->id );
 
-		// Format the content.
-		$post->content 		= DiscussHelper::formatContent( $post );
-
 		// Test if trigger is necessary here.
 		if ( $config->get( 'main_content_trigger_posts' ) )
 		{
-			// Move aside the original content_raw
-			$content_raw_temp = $post->content_raw;
-
-			// Add the br tags in the content, we do it here so that the content triggers's javascript will not get added with br tags
-			$post->content_raw = DiscussHelper::formatContent( $post );
-
-			$post->event		= new stdClass();
+			$post->event = new stdClass();
 
 			// Triger onContentPrepare here. Since it doesn't have any return value, just ignore this.
 			DiscussHelper::triggerPlugins( 'content' , 'onContentPrepare' , $post );
@@ -196,25 +263,65 @@ class EasyDiscussViewPost extends EasyDiscussView
 			$post->event->afterDisplayTtle		= DiscussHelper::triggerPlugins( 'content' , 'onContentAfterTitle' , $post , true );
 			$post->event->beforeDisplayContent	= DiscussHelper::triggerPlugins( 'content' , 'onContentBeforeDisplay' , $post , true );
 			$post->event->afterDisplayContent 	= DiscussHelper::triggerPlugins( 'content' , 'onContentAfterDisplay' , $post , true );
-
-			// Assign the processed content back
-			$post->content = $post->content_raw;
-
-			// Move back the original content_raw
-			$post->content_raw = $content_raw_temp;
 		}
 
-		$theme 			= new DiscussThemes();
 
-		// Get list of moderators from the site.
+		$postStatus = $post->post_status;
+
+		switch( $postStatus )
+		{
+			case '0':
+				$postStatusClass = '';
+				$postStatus = '';
+				break;
+			case '1':
+				$postStatusClass = '-on-hold';
+				$postStatus = JText::_( 'COM_EASYDISCUSS_POST_STATUS_ON_HOLD' );
+				break;
+			case '2':
+				$postStatusClass = '-accepted';
+				$postStatus = JText::_( 'COM_EASYDISCUSS_POST_STATUS_ACCEPTED' );
+				break;
+			case '3':
+				$postStatusClass = '-working-on';
+				$postStatus = JText::_( 'COM_EASYDISCUSS_POST_STATUS_WORKING_ON' );
+				break;
+			case '4':
+				$postStatusClass = '-reject';
+				$postStatus = JText::_( 'COM_EASYDISCUSS_POST_STATUS_REJECT' );
+				break;
+			default:
+				$postStatusClass = '';
+				$postStatus = '0';
+				break;
+		}
+
+		$alias = $post->post_type;
+		$model = DiscussHelper::getModel( 'Post_types' );
+
+		// Get each post's post status title
+		$title = $model->getTitle( $alias );
+		$post->post_type = $title;
+
+		// Get post type css suffix
+		$suffix = $model->getSuffix( $alias );
+
+		$theme 	= new DiscussThemes();
+
+		$isQuestion = $post->isQuestion();
+		$isReply	= $post->isReply();
+
 		$moderators = array();
-
-		$composer 		= new DiscussComposer( "replying" , $post );
+		$composer = new DiscussComposer("replying", $post);
 
 		// Set the discussion object.
 		$theme->set( 'post'					, $post );
 		$theme->set( 'composer'             , $composer );
+
+		// Set the replies for this discussion.
 		$theme->set( 'replies'				, $replies );
+
+		// This is the DiscussPost object for the accepted answer in this discussion.
 		$theme->set( 'answer'				, $answer );
 		$theme->set( 'sort'					, $sort );
 		$theme->set( 'adsense'				, $adsense );
@@ -223,11 +330,17 @@ class EasyDiscussViewPost extends EasyDiscussView
 		$theme->set( 'hasMoreReplies'		, $hasMoreReplies );
 		$theme->set( 'access'				, $access );
 		$theme->set( 'category'				, $category );
+		$theme->set( 'isQuestion'			, $isQuestion );
+		$theme->set( 'isReply'				, $isReply );
 		$theme->set( 'moderators'			, $moderators );
 		$theme->set( 'readMoreURI'			, $readMoreURI );
+		$theme->set( 'postStatus'			, $postStatus );
+		$theme->set( 'suffix'				, $suffix );
+		$theme->set( 'postStatusClass'		, $postStatusClass );
 		$theme->set( 'postBadges'			, $postBadges );
 
 		echo $theme->fetch( 'post.php' );
+
 	}
 
 	public function edit($tpl = null)
@@ -336,9 +449,7 @@ class EasyDiscussViewPost extends EasyDiscussView
 		// @rule: If there is a category id passed through the query, respect it first.
 		$showPrivateCat		= ( empty($post->id) && $my->id == 0 ) ? false : true;
 
-		// [model:category]
 		$categoryModel		= $this->getModel( 'Category' );
-
 		$defaultCategory	= $categoryModel->getDefaultCategory();
 
 		if( $categoryId == 0 && $defaultCategory !== false )
@@ -393,6 +504,8 @@ class EasyDiscussViewPost extends EasyDiscussView
 		$theme->set( 'redirect'			, $redirect );
 		$theme->set( 'reference'		, $reference );
 		$theme->set( 'referenceId'		, $referenceId );
+
+
 		$theme->set( 'isEditMode'		, $editing );
 		$theme->set( 'post'				, $post );
 		$theme->set( 'composer'			, $composer );
@@ -410,114 +523,6 @@ class EasyDiscussViewPost extends EasyDiscussView
 		echo $theme->fetch( 'form.reply.wysiwyg.php' );
 	}
 
-	private function setPageHeaders( $post )
-	{
-		// Set page title.
-		DiscussHelper::setPageTitle( $post->getTitle() );
 
-		$doc 	= JFactory::getDocument();
-		$doc->setMetadata( 'keywords'		, $post->title );
-		$doc->setMetadata( 'description'	, preg_replace( '/\s+/', ' ', (substr( strip_tags( EasyDiscussParser::bbcode($post->content) ), 0, 160 ) ) ) );
 
-		// Set canonical link to avoid URL duplication.
-		$doc->addHeadLink( DISCUSS_JURIROOT . DiscussRouter::getPostRoute( $post->id ) , 'canonical' , 'rel' );
-	}
-
-	private function getReplies( $category , $post , $sort , $answer )
-	{
-		$config 		= DiscussHelper::getConfig();
-		$postsModel 	= DiscussHelper::getModel( 'Posts' );
-
-		$my 			= JFactory::getUser();
-
-		// Get a list of replies for this discussion
-		$replies 		= array();
-		$hasMoreReplies	= false;
-		$totalReplies 	= 0;
-		$readMoreURI	= '';
-
-		if( $category->canViewReplies() )
-		{
-			$repliesLimit	= $config->get('layout_replies_list_limit');
-			$totalReplies	= $postsModel->getTotalReplies( $post->id );
-
-			$hasMoreReplies	= false;
-
-			$limitstart		= null;
-			$limit			= null;
-
-			if( $repliesLimit && !JRequest::getBool('viewallreplies') )
-			{
-				$limit		= $repliesLimit;
-
-				$hasMoreReplies = ( $totalReplies - $repliesLimit ) > 0;
-			}
-
-			$replies 		= $postsModel->getReplies( $post->id, $sort, $limitstart, $limit );
-
-			if( count( $replies ) > 0 )
-			{
-				$repliesIds = array();
-				$authorIds  = array();
-
-				foreach( $replies as $reply )
-				{
-					$repliesIds[]	= $reply->id;
-					$authorIds[]    = $reply->user_id;
-				}
-
-				if( $answer )
-				{
-					if( is_array( $answer ) )
-					{
-						$answer = $answer[0];
-					}
-
-					$repliesIds[]   = $answer->id;
-					$authorIds[]    = $answer->user_id;
-				}
-
-				$post->loadBatch( $repliesIds );
-				$post->setAttachmentsData( 'replies', $repliesIds);
-
-				// here we include the discussion id into the array as well.
-				$repliesIds[]   = $post->id;
-				$authorIds[]    = $post->user_id;
-
-				$post->setLikeAuthorsBatch( $repliesIds );
-				DiscussHelper::getHelper( 'Post' )->setIsLikedBatch( $repliesIds );
-
-				$post->setPollQuestionsBatch( $repliesIds );
-				$post->setPollsBatch( $repliesIds );
-
-				$post->setLikedByBatch( $repliesIds, $my->id );
-				$post->setVoterBatch( $repliesIds );
-				$post->setHasVotedBatch( $repliesIds );
-
-				$post->setTotalCommentsBatch( $repliesIds );
-				$commentLimit	= $config->get( 'main_comment_pagination' ) ? $config->get( 'main_comment_pagination_count' ) : null;
-				$post->setCommentsBatch( $repliesIds, $commentLimit );
-
-				// Reduce SQL queries by pre-loading all author object.
-				$authorIds  = array_unique($authorIds);
-				$profile	= DiscussHelper::getTable( 'Profile' );
-				$profile->init( $authorIds );
-			}
-
-			$readMoreURI	= JURI::getInstance()->toString();
-			$delimiteter	= JString::strpos($readMoreURI, '&') ? '&' : '?';
-			$readMoreURI	= $hasMoreReplies ? $readMoreURI . $delimiteter . 'viewallreplies=1' : $readMoreURI;
-
-			// Format the reply items.
-			$replies		= DiscussHelper::formatReplies( $replies , $category );
-		}
-
-		$data 			= new stdClass();
-		$data->replies 	= $replies;
-		$data->total 	= $totalReplies;
-		$data->more 	= $hasMoreReplies;
-		$data->readmore	= $readMoreURI;
-
-		return $data;
-	}
 }

@@ -76,14 +76,13 @@ class DiscussMailer extends JObject
 	 * Open an IMAP stream to a mailbox.
 	 * Return true on success, return false on error.
 	 */
-	public function connect( $username = '', $password = '' )
+	public function connect()
 	{
-		$config = DiscussHelper::getConfig();
-
 		if (!$this->initiated)
 		{
 			$this->init();
 		}
+
 
 		if (!$this->enabled || !function_exists('imap_open') || !function_exists('imap_fetchheader') || !function_exists('imap_body'))
 		{
@@ -91,26 +90,16 @@ class DiscussMailer extends JObject
 			return false;
 		}
 
-
 		/*
 		 * Connect to mailbox
 		 */
-		// if( !empty($username) && !empty($password) )
-		// {
-			echo JText::sprintf( 'COM_EASYDISCUSS_CONNECTING_TO', $username );
-			$this->stream	= imap_open( $this->mailbox_params, $username, $password );
-		// }
-		// else
-		// {
-		// 	$this->stream	= imap_open( $this->mailbox_params, $this->username, $this->password );
-		// }
+		$this->stream	= imap_open( $this->mailbox_params, $this->username, $this->password );
 
 		if( $this->stream === false )
 		{
 			$this->setError( imap_errors() );
 			return false;
 		}
-
 
 		return true;
 	}
@@ -158,7 +147,7 @@ class DiscussMailer extends JObject
 		return $this->stream;
 	}
 
-	public function getError( $i = null, $toString = true )
+	public function getError()
 	{
 		return parent::getError() ? parent::getError() : imap_last_error();
 	}

@@ -11,7 +11,6 @@
 */
 defined('_JEXEC') or die('Restricted access');
 
-require_once( DISCUSS_ROOT . '/views.php' );
 
 class EasyDiscussViewLocation extends EasyDiscussView
 {

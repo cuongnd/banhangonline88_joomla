@@ -52,11 +52,11 @@ else if($post->itemtype == 'category' )
 		<div class="discuss-item-left discuss-user discuss-user-role-<?php echo $post->user->getRoleId(); ?>">
 			<a href="<?php echo $post->user->getLink();?>" class="" title="<?php echo $this->escape( $post->user->getName() );?>">
 				<?php if ( $system->config->get( 'layout_avatar' ) && $system->config->get( 'layout_avatar_in_post' )) { ?>
-				<div class="discuss-avatar avatar-medium">
+				<div class="discuss-avatar avatar-medium <?php echo $post->user->getRoleLabelClassname(); ?>">
 					<img src="<?php echo $post->user->getAvatar();?>" alt="<?php echo $this->escape( $post->user->getName() );?>" />
 
 					<?php if($system->config->get( 'layout_profile_roles' ) && $post->user->getRole() ) { ?>
-					<div class="discuss-role-title <?php echo $post->user->getRoleLabelClassname(); ?>"><?php echo $this->escape($post->user->getRole()); ?></div>
+					<div class="discuss-role-title"><?php echo $this->escape($post->user->getRole()); ?></div>
 					<?php } ?>
 
 				</div>

@@ -90,88 +90,8 @@ defined('_JEXEC') or die('Restricted access');
 				</div>
 			</div>
 		</div>
-
-		<div class="widget accordion-group">
-			<div class="whead accordion-heading">
-				<a href="javascript:void(0);" data-foundry-toggle="collapse" data-target="#option03	">
-				<h6><?php echo JText::_( 'COM_EASYDISCUSS_GUEST' ); ?></h6>
-				<i class="icon-chevron-down"></i>
-				</a>
-			</div>
-			<div id="option03" class="accordion-body collapse in">
-				<div class="wbody">
-					<div class="si-form-row">
-						<div class="span5 form-row-label">
-							<label>
-								<?php echo JText::_( 'COM_EASYDISCUSS_GUEST_USERGROUP' ); ?>
-							</label>
-						</div>
-						<div class="span7"
-							rel="ed-popover"
-							data-placement="left"
-							data-original-title="<?php echo JText::_( 'COM_EASYDISCUSS_GUEST_USERGROUP' ); ?>"
-							data-content="<?php echo JText::_('COM_EASYDISCUSS_GUEST_USERGROUP_DESC'); ?>"
-						>
-							<input type="text" name="guest_usergroup" class="input-mini" style="text-align: center;" value="<?php echo $this->config->get('guest_usergroup', 1 );?>" />
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 	</div>
 	<div class="span6">
-
-		<div class="widget accordion-group">
-			<div class="whead accordion-heading">
-				<a href="javascript:void(0);" data-foundry-toggle="collapse" data-target="#option03	">
-				<h6><?php echo JText::_( 'COM_EASYDISCUSS_JAVASCRIPT_COMPRESSION' ); ?></h6>
-				<i class="icon-chevron-down"></i>
-				</a>
-			</div>
-			<div id="option03" class="accordion-body collapse in">
-				<div class="wbody">
-					<div class="si-form-row">
-						<div class="span5 form-row-label">
-							<label>
-								<?php echo JText::_( 'COM_EASYDISCUSS_SYSTEM_ENVIRONMENT' ); ?>
-							</label>
-						</div>
-						<div class="span7"
-							rel="ed-popover"
-							data-placement="left"
-							data-original-title="<?php echo JText::_( 'COM_EASYDISCUSS_SYSTEM_ENVIRONMENT' ); ?>"
-							data-content="<?php echo JText::_('COM_EASYDISCUSS_SYSTEM_ENVIRONMENT_DESC'); ?>"
-						>
-							<select name="easydiscuss_environment">
-								<option value="static"<?php echo $this->config->get( 'easydiscuss_environment' ) == 'static' ? ' selected="selected"' : '';?>><?php echo JText::_( 'COM_EASYDISCUSS_SYSTEM_ENVIRONMENT_STATIC' ); ?></option>
-								<option value="optimized"<?php echo $this->config->get( 'easydiscuss_environment' ) == 'optimized' ? ' selected="selected"' : '';?>><?php echo JText::_( 'COM_EASYDISCUSS_SYSTEM_ENVIRONMENT_OPTIMIZED' ); ?></option>
-								<option value="development"<?php echo $this->config->get( 'easydiscuss_environment' ) == 'development' ? ' selected="selected"' : '';?>><?php echo JText::_( 'COM_EASYDISCUSS_SYSTEM_ENVIRONMENT_DEVEL' ); ?></option>
-							</select>
-						</div>
-					</div>
-
-					<div class="si-form-row">
-						<div class="span5 form-row-label">
-							<label>
-								<?php echo JText::_( 'COM_EASYDISCUSS_SYSTEM_JS_COMPRESSION' ); ?>
-							</label>
-						</div>
-						<div class="span7"
-							rel="ed-popover"
-							data-placement="left"
-							data-original-title="<?php echo JText::_( 'COM_EASYDISCUSS_SYSTEM_JS_COMPRESSION' ); ?>"
-							data-content="<?php echo JText::_('COM_EASYDISCUSS_SYSTEM_JS_COMPRESSION_DESC'); ?>"
-						>
-							<select name="easydiscuss_mode">
-								<option value="compressed"<?php echo $this->config->get( 'easydiscuss_mode' ) == 'compressed' ? ' selected="selected"' : '';?>><?php echo JText::_( 'COM_EASYDISCUSS_COMPRESSED' ); ?></option>
-								<option value="uncompressed"<?php echo $this->config->get( 'easydiscuss_mode' ) == 'uncompressed' ? ' selected="selected"' : '';?>><?php echo JText::_( 'COM_EASYDISCUSS_UNCOMPRESSED' ); ?></option>
-							</select>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
 		<div class="widget accordion-group">
 			<div class="whead accordion-heading">
 				<a href="javascript:void(0);" data-foundry-toggle="collapse" data-target="#option02">
@@ -247,4 +167,3 @@ defined('_JEXEC') or die('Restricted access');
 		</div>
 	</div>
 </div>
-

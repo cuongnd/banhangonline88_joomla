@@ -367,11 +367,7 @@ class EasyDiscussInstaller
 				. ' ("18", "mark_working_on", "0", "COM_EASYDISCUSS_ACL_OPTION_MARK_WORKING_ON_DESC", "1", "0", "0"),'
 				. ' ("19", "mark_rejected", "0", "COM_EASYDISCUSS_ACL_OPTION_MARK_REJECTED_DESC", "1", "0", "0"),'
 				. ' ("20", "mark_no_status", "0", "COM_EASYDISCUSS_ACL_OPTION_MARK_NO_STATUS_DESC", "1", "0", "0"),'
-				. ' ("21", "edit_branch", "0", "COM_EASYDISCUSS_ACL_OPTION_EDIT_BRANCH_DESC", "1", "0", "0"),'
-				. ' ("22", "show_signature", "0", "COM_EASYDISCUSS_ACL_OPTION_SHOW_SIGNATURE_DESC", "1", "0", "1"),'
-				. ' ("23", "delete_own_question", "0", "COM_EASYDISCUSS_ACL_OPTION_DELETE_OWN_QUESTION_DESC", "1", "0", "0"),'
-				. ' ("24", "delete_own_replies", "0", "COM_EASYDISCUSS_ACL_OPTION_DELETE_OWN_REPLIES_DESC", "1", "0", "0")';
-
+				. ' ("21", "edit_branch", "0", "COM_EASYDISCUSS_ACL_OPTION_EDIT_BRANCH_DESC", "1", "0", "0")';
 
 		$this->db->setQuery( $query );
 		if( !$this->db->query() )
@@ -745,17 +741,27 @@ class EasyDiscussInstaller
 			}
 		}
 
-		// Double check if the styles folder is missing or not. Compile stylesheet error issue by customers.
-		if( !JFolder::exists( $mediaDestina . $folder . '/styles' ) )
-		{
-			if( !JFolder::copy($mediaSource . $folder . '/styles', $mediaDestina . $folder . '/styles', '', true) )
-			{
-				return false;
-			}
-		}
-
 		return true;
 	}
+
+	// private function copyMediaFiles()
+	// {
+	// 	if( $this->joomlaVersion >= '1.6' )
+	// 	{
+	// 		return true;
+	// 	}
+
+	// 	jimport('joomla.filesystem.file');
+	// 	jimport('joomla.filesystem.folder');
+
+	// 	$mediaSource	= $this->installPath . '/media';
+	// 	$mediaDestina	= JPATH_ROOT . '/media/com_easydiscuss';
+
+	// 	if (! JFolder::copy($mediaSource, $mediaDestina, '', true) )
+	// 	{
+	// 		$this->setMessage( 'Warning: The system could not copy files to Media folder. Please kindly check the media folder permission.', 'warning' );
+	// 	}
+	// }
 
 	private function copyMediaFiles()
 	{
@@ -775,20 +781,32 @@ class EasyDiscussInstaller
 		}
 		else
 		{
+			// Check if the attachments folder exist
+			// if(! JFolder::exists( $mediaDestina.'attachments' ) )
+			// {
+				// Copy the attachments folder
+				// if (! JFolder::copy($mediaSource.'attachments', $mediaDestina.'attachments', '', true) )
+				// {
+				// 	return false;
+				// }
+			// }
 
 			// Overwrite all the old files with new ones execpt attachments folder
-			$files		= array( 'config.php', 'index.html' );
-			$folders	= array(
-									'badges',
-									'images',
-									'resources',
-									'scripts',
-									'styles'
-								);
+			$files = array(
+					'bootstrap.js',
+					'index.html'
+				);
+			$folders = array(
+				'badges',
+				'images',
+				'scripts',
+				'scripts_',
+				'styles'
+				);
 
 			foreach( $folders as $folder )
 			{
-				if (! JFolder::copy($mediaSource.$folder, $mediaDestina.$folder , '' , true ) )
+				if (! JFolder::copy($mediaSource.$folder, $mediaDestina.$folder, '', true) )
 				{
 					return false;
 				}
@@ -796,7 +814,7 @@ class EasyDiscussInstaller
 
 			foreach( $files as $file )
 			{
-				if(! JFile::copy( $mediaSource . $file , $mediaDestina . $file, '' , true ) )
+				if(! JFile::copy( $mediaSource.$file, $mediaDestina.$file, '', true ) )
 				{
 					return false;
 				}
@@ -1972,25 +1990,10 @@ class EasyDiscussDatabaseUpdate
 
 		if( !$this->isColumnExists( '#__discuss_posts' , 'post_type' ) )
 		{
-			$query = 'ALTER TABLE `#__discuss_posts` ADD `post_type` VARCHAR( 255 ) NOT NULL, add index `idx_post_type` ( `post_type` )';
+			$query = 'ALTER TABLE `#__discuss_posts` ADD `post_type` VARCHAR( 100 ) NOT NULL DEFAULT 0';
 			$this->db->setQuery( $query );
 			$this->db->query();
 		}
-
-
-		// since 3.2
-		// below is the fix the wrong post_type implementation in 3.1
-		if( !$this->isIndexKeyExists( '#__discuss_post_types' , 'idx_alias' ) )
-		{
-			$query = 'ALTER TABLE `#__discuss_posts` modify `post_type` VARCHAR( 255 ) NOT NULL, add index `idx_post_type` ( `post_type` )';
-			$this->db->setQuery( $query );
-			$this->db->query();
-
-			$query = 'ALTER TABLE `#__discuss_post_types` modify `title` VARCHAR( 255 ) NOT NULL, add index `idx_alias` ( `alias` )';
-			$this->db->setQuery( $query );
-			$this->db->query();
-		}
-
 
 		if( !$this->isColumnExists( '#__discuss_posts' , 'ip' ) )
 		{
@@ -2002,13 +2005,6 @@ class EasyDiscussDatabaseUpdate
 		if( !$this->isColumnExists( '#__discuss_users_history' , 'content_id' ) )
 		{
 			$query = 'ALTER TABLE `#__discuss_users_history` ADD `content_id` BIGINT( 20 ) UNSIGNED NOT NULL';
-			$this->db->setQuery( $query );
-			$this->db->query();
-		}
-
-		if( !$this->isIndexKeyExists('#__discuss_migrators', 'idx_external_id') )
-		{
-			$query 	= 'ALTER TABLE ' . $this->db->nameQuote( '#__discuss_migrators' ) . ' ADD INDEX `idx_external_id` (`external_id`)';
 			$this->db->setQuery( $query );
 			$this->db->query();
 		}

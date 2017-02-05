@@ -13,9 +13,9 @@ defined('_JEXEC') or die('Restricted access');
 
 jimport( 'joomla.application.component.view');
 
-require_once( dirname( dirname( dirname( __FILE__ ) ) ) . '/views.php' );
+require_once JPATH_ROOT . '/components/com_easydiscuss/helpers/helper.php';
 
-class EasyDiscussViewCustomFields extends EasyDiscussAdminView
+class EasyDiscussViewCustomFields extends EasyDiscussView
 {
 	public function getAdvanceOption()
 	{

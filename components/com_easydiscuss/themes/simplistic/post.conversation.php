@@ -13,16 +13,7 @@
 defined('_JEXEC') or die('Restricted access');
 ?>
 <?php if( $system->my->id && $system->my->id != $userId && $userId != 0 ){ ?>
-	<?php if( $system->config->get( 'integration_easysocial_messaging' ) && JFile::exists( JPATH_ADMINISTRATOR . '/components/com_easysocial/includes/foundry.php') ){ ?>
-		<?php
-		require_once( JPATH_ADMINISTRATOR . '/components/com_easysocial/includes/foundry.php' );
-		Foundry::document()->init();
-		Foundry::page()->processScripts();
-		?>
-		<a href="javascript:void(0);" data-es-conversations-compose data-es-conversations-id="<?php echo $userId;?>" class="btn btn-mini btn-conversation mt-10">
-			<i class="icon-ed-pm"></i> <?php echo JText::_( 'COM_EASYDISCUSS_CONVERSATIONS_WRITE' );?>
-		</a>
-	<?php } else if( $system->config->get( 'integration_jomsocial_messaging' ) && JFile::exists( JPATH_ROOT . '/components/com_community/libraries/core.php') ){ ?>
+	<?php if( $system->config->get( 'integration_jomsocial_messaging' ) && JFile::exists( JPATH_ROOT . '/components/com_community/libraries/core.php') ){ ?>
 		<?php
 		require_once( JPATH_ROOT . '/components/com_community/libraries/core.php' );
 		require_once( JPATH_ROOT . '/components/com_community/libraries/messaging.php' );

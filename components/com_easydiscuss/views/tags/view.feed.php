@@ -11,14 +11,13 @@
 */
 defined('_JEXEC') or die('Restricted access');
 
-require_once( DISCUSS_ROOT . '/views.php' );
+jimport( 'joomla.application.component.view');
 
 class EasyDiscussViewTags extends EasyDiscussView
 {
 	function display( $tmpl = null )
 	{
 		$config = DiscussHelper::getConfig();
-		$jConfig = DiscussHelper::getJConfig();
 
 		if( !$config->get( 'main_rss') )
 		{

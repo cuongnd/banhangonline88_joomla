@@ -25,7 +25,7 @@ $isBackend  = ( $mainframe->isAdmin() ) ? true : false;
 
 <?php }else{ ?>
 
-	<a title="<?php echo $this->escape( $attachment->title );?>" href="<?php echo DiscussRouter::getRoutedURL('index.php?option=com_easydiscuss&controller=attachment&task=getFile&tmpl=component&id=' . $attachment->id, false, true); ?>" style="font-size:24px;height:50px;line-height:50px;text-align:center">
+	<a title="<?php echo $this->escape( $attachment->title );?>" href="<?php echo DiscussRouter::getRoutedURL('index.php?option=com_easydiscuss&controller=attachment&task=getFile&tmpl=component&id=' . $attachment->id, false, true); ?>" style="font-size:50px;height:50px;line-height:50px;text-align:center">
 		<i class="icon-download-alt"></i>
 	</a>
 	<div class="caption" style="text-align:center;">

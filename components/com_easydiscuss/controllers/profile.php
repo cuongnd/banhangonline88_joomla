@@ -53,9 +53,7 @@ class EasyDiscussControllerProfile extends EasyDiscussController
 		$my			= JFactory::getUser();
 		$my->name	= $post['fullname'];
 
-
-		// We check for password2 instead off password because apparently it is still autofill the form although is autocomplete="off"
-		if(!empty($post['password2']))
+		if(!empty($post['password']))
 		{
 			$my->password = $post['password'];
 			$my->bind($post);
@@ -116,7 +114,7 @@ class EasyDiscussControllerProfile extends EasyDiscussController
 		{
 			$userparams->set( 'show_facebook', $post['show_facebook']);
 		}
-
+		
 
 		if ( isset($post['twitter']) )
 		{
@@ -214,7 +212,7 @@ class EasyDiscussControllerProfile extends EasyDiscussController
 			return;
 		}
 
-		$this->setRedirect( DiscussRouter::_( 'index.php?option=com_easydiscuss&view=profile&layout=edit' , false ) );
+		$this->setRedirect( DiscussRouter::_( 'index.php?option=com_easydiscuss&view=profile' , false ) );
 	}
 
 	function _trim(&$text)
@@ -242,25 +240,16 @@ class EasyDiscussControllerProfile extends EasyDiscussController
 			return false;
 		}
 
-		if( !empty( $post[ 'password' ] ) )
+
+		if(!empty($post['password']))
 		{
-			if( JString::strlen( $post[ 'password' ] ) < 4 )
-			{
-				$message	= JText::_( 'COM_EASYDISCUSS_PROFILE_PASSWORD_TOO_SHORT' );
-				DiscussHelper::setMessageQueue( $message , DISCUSS_QUEUE_ERROR );
-				return false;			
-			}
-		}
-		
-		if(!empty($post['password2']))
-		{			
 			if ( $post['password'] != $post['password2'] )
 			{
 				$message	= JText::_( 'COM_EASYDISCUSS_PROFILE_PASSWORD_NOT_MATCH' );
 				DiscussHelper::setMessageQueue( $message , DISCUSS_QUEUE_ERROR );
 				return false;
 			}
-		}
+		}		
 
 		return $valid;
 	}
@@ -274,55 +263,5 @@ class EasyDiscussControllerProfile extends EasyDiscussController
 		$newAvatar  = DiscussHelper::uploadAvatar($profile);
 
 		return $newAvatar;
-	}
-
-	public function removePicture()
-	{
-		$my 		= JFactory::getUser();
-
-		if( !$my->id )
-		{
-			return $this->setRedirect( DiscussRouter::_( 'index.php?option=com_easydiscuss' , false ) );
-		}
-
-		$profile	= DiscussHelper::getTable( 'Profile' );
-		$profile->load( $my->id );
-		
-		// Delete the user's avatar.
-		$profile->deleteAvatar();
-
-		DiscussHelper::setMessageQueue( JText::_( 'COM_EASYDISCUSS_PROFILE_AVATAR_REMOVED_SUCCESSFULLY' ) , DISCUSS_QUEUE_SUCCESS );
-
-		$url 	= DiscussRouter::_( 'index.php?option=com_easydiscuss&view=profile&layout=edit' , false );
-
-		$this->setRedirect( $url );
-	}
-
-	public function disableUser()
-	{
-		// Only allow site admin to disable this.
-		if( !DiscussHelper::isSiteAdmin() )
-		{
-			return $this->setRedirect( DiscussRouter::_( 'index.php?option=com_easydiscuss' , false ) );
-		}
-
-		$userId = JRequest::getInt('id');
-
-		$db = DiscussHelper::getDBO();
-		$query = 'UPDATE ' . $db->nameQuote( '#__users' )
-				. ' SET ' . $db->nameQuote( 'block' ) . '=' . $db->quote( 1 )
-				. ' WHERE ' . $db->nameQuote( 'id' ) . '=' . $db->quote( $userId );
-
-		$db->setQuery( $query );
-		$result = $db->query();
-
-		if( !$result )
-		{
-			return $this->setRedirect( DiscussRouter::_( 'index.php?option=com_easydiscuss&view=profile&id=' . $userId , false ) );
-		}
-
-		$message	= JText::_( 'COM_EASYDISCUSS_USER_DISABLED' );
-		DiscussHelper::setMessageQueue( $message , DISCUSS_QUEUE_SUCCESS );
-		$this->setRedirect( DiscussRouter::_( 'index.php?option=com_easydiscuss' , false ) );
 	}
 }

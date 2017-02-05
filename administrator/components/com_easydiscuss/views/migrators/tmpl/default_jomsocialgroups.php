@@ -16,13 +16,13 @@ defined('_JEXEC') or die('Restricted access');
 <script type="text/javascript">
 function appendLog( type , message )
 {
-	EasyDiscuss.$( '#migrator-' + type + '-log' ).append( '<li>' + message + '</li>');
+	discussQuery( '#migrator-' + type + '-log' ).append( '<li>' + message + '</li>');
 }
 
 function runMigration( type )
 {
 	// Hide migration button.
-	EasyDiscuss.$( '.migrator-button' ).hide();
+	discussQuery( '.migrator-button' ).hide();
 
 	disjax.load( 'migrators' , type );
 }

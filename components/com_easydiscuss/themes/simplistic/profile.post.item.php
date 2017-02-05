@@ -39,8 +39,8 @@ $isRecent = ( $post->isnew ) ? ' is-recent' : '';
 						</h2>
 					</a>
 
-					<div class="postStatus label label-info label-post_status-<?php echo $post->getStatusClass(); ?>"><?php echo $post->getStatusMessage(); ?></div>
-					<div class="postType label label-important label-post_type<?php echo $post->post_type_suffix; ?>" ><?php echo $post->post_type_title; ?></div>
+					<div class="postStatus label label-info label-post_status<?php echo $post->post_status_class ?>"><?php echo $post->post_status; ?></div>
+					<div class="postType label label-important label-post_type<?php echo $post->suffix; ?>" ><?php echo $post->post_type ?></div>
 
 					<div class="small">
 						<?php echo JText::_('COM_EASYDISCUSS_POSTED_IN'); ?><a href="<?php echo DiscussRouter::getCategoryRoute( $post->category_id ); ?>"> <?php echo $post->category; ?></a>

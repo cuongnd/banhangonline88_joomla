@@ -12,7 +12,7 @@
  */
 defined('_JEXEC') or die('Restricted access');
 
-require_once( DISCUSS_ROOT . '/views.php' );
+require_once JPATH_ROOT . '/components/com_easydiscuss/views.php';
 
 class EasyDiscussViewTags extends EasyDiscussView
 {

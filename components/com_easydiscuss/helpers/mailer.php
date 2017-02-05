@@ -30,7 +30,7 @@ defined('_JEXEC') or die('Restricted access');
  *
  * notifyAllMembers
  *  - To all the users
- *  - Cannot unsubscribe
+ *  - Cannot unsubscribe 
  *
  * Todo: List of actions
  * new_asked || new_replied ||  new_resolved || new_labeled || new_assigned || new_tagged || new_featured || new_published || new_commented || new_liked || new_favorited
@@ -73,7 +73,7 @@ class DiscussMailerHelper
 		if( !$notifyAdmins && !$notifyModerators ) {
 			return;
 		}
-
+		
 		$catId = isset($data['cat_id']) ? $data['cat_id'] : null;
 
 		$emails = self::_getAdministratorsEmails( $catId, $notifyAdmins, $notifyModerators );
@@ -88,87 +88,26 @@ class DiscussMailerHelper
 				self::_storeQueue( $email, $data );
 			}
 		}
-
-		return $emails;
+		
+		return;
 	}
 
 	public static function notifySubscribers( $data, $excludes = array() )
 	{
-
-		// Do not notify admin again because if admin also subscribe to the site, he will get double email.
-		// $adminEmails 	= array();
-		// $adminEmails 	= self::_getAdministratorsEmails( $data['cat_id'], true, true );
-		// $excludes 		= array_unique( array_merge( $excludes, $adminEmails ) );
-
-		// Store all the sent emails
-		$emailSent = array();
-		//$tobeSent  = array();
-
 		// Notify site subscribers
-		$siteSubscribers = self::getSubscribers( 'site', 0, 0 , array() , $excludes );
-		//self::_saveQueue($siteSubscribers, $data);
-
-		foreach( $siteSubscribers as $subscriber )
-		{
-			$emailSent[] = $subscriber->email;
-			//$tobeSent[]  = $subscriber;
-		}
+		$subscribers = self::_getSubscribers( 'site', 0, 0 , array() , $excludes );
+		self::_saveQueue($subscribers, $data);
 
 		// Notify category subscribers
-		$catSubscribers = self::getSubscribers( 'category', $data['cat_id'], $data['cat_id'], '', $excludes );
-		//self::_saveQueue($catSubscribers, $data);
+		$subscribers = self::_getSubscribers( 'category', $data['cat_id'], $data['cat_id'] );
+		self::_saveQueue($subscribers, $data);
 
-		foreach( $catSubscribers as $subscriber )
-		{
-			$emailSent[] = $subscriber->email;
-			//$tobeSent[]  = $subscriber;
-		}
-
-		if( is_array($siteSubscribers) && is_array($catSubscribers) )
-		{
-			$results = array_unique( array_merge( $siteSubscribers, $catSubscribers ), SORT_REGULAR );
-			$tobeSent = array();
-
-			// Remove dupes records
-			foreach ($results as $item)
-			{
-				if( empty($tobeSent) )
-				{
-					// Add first item
-					$tobeSent[] = $item;
-				}
-
-				$isAdded = false;
-
-				foreach( $tobeSent as $item2 )
-				{
-					if( $item->email == $item2->email )
-					{
-						$isAdded = true;
-					}
-				}
-
-				if( !$isAdded )
-				{
-					$tobeSent[] = $item;
-				}
-			}
-		}
-
-		// _saveQueue will not help you to unique out the emails
-		self::_saveQueue($tobeSent, $data);
-
-		$emailSent = array_unique( $emailSent );
-
-
-		// We doing this is because super user might be subscribers too, hence we need to get the emails
-		// and exclude it during the next step notify admin.
-		return $emailSent;
+		return;
 	}
 
 	public static function notifyThreadSubscribers( $data, $excludes = array() )
 	{
-		$subscribers = self::getSubscribers( 'post', $data['post_id'], $data['cat_id'] , array() , $excludes );
+		$subscribers = self::_getSubscribers( 'post', $data['post_id'], $data['cat_id'] , array() , $excludes );
 
 		self::_saveQueue($subscribers, $data);
 
@@ -212,7 +151,7 @@ class DiscussMailerHelper
 				self::_storeQueue( $part, $data );
 			}
 		}
-		return $participants;
+		return;
 	}
 
 	public static function _getParticipants( $postId )
@@ -360,7 +299,7 @@ class DiscussMailerHelper
 
 			$customAdmins = explode( ',' , $config->get( 'notify_custom') );
 		}
-
+		
 		if( $notifyModerators )
 		{
 			$mods = DiscussHelper::getHelper( 'Moderator' )->getModeratorsEmails( $catId );
@@ -382,7 +321,7 @@ class DiscussMailerHelper
 	/**
 	 * Get subscribers according to type
 	 */
-	public static function getSubscribers( $type, $cid, $categoryId, $params = array() , $excludes = array() )
+	private static function _getSubscribers( $type, $cid, $categoryId, $params = array() , $excludes = array() )
 	{
 		$db		= DiscussHelper::getDbo();
 
@@ -457,7 +396,7 @@ class DiscussMailerHelper
 
 				for( $i = 0; $i < count( $excludes); $i++ )
 				{
-					$query 	.= $db->Quote( $excludes[ $i ] );
+					$query 	.= $db->Quote( $excludes[ $i ] );	
 
 					if( next( $excludes ) !== false )
 					{

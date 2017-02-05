@@ -13,12 +13,9 @@
 
 defined('_JEXEC') or die('Restricted access');
 ?>
-<form id="frmConvert" action="<?php echo JRoute::_( 'index.php' );?>" method="post">
+<form id="frmConvert" action="<?php echo DiscussRouter::_( 'index.php?option=com_easydiscuss&controller=comments&task=convert' );?>" method="post">
 <p><?php echo JText::_('COM_EASYDISCUSS_COMMENT_CONVERT_CONFIRMATION'); ?></p>
 <input type="hidden" name="id" value="<?php echo $id;?>" />
 <input type="hidden" name="postId" value="<?php echo $postId;?>" />
-<input type="hidden" name="option" value="com_easydiscuss" />
-<input type="hidden" name="controller" value="comments" />
-<input type="hidden" name="task" value="convert" />
 <?php echo JHTML::_( 'form.token' );?>
 </form>

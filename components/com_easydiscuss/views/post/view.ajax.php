@@ -24,8 +24,6 @@ require_once DISCUSS_HELPERS . '/integrate.php';
 require_once DISCUSS_HELPERS . '/user.php';
 require_once DISCUSS_HELPERS . '/router.php';
 
-require_once( DISCUSS_ROOT . '/views.php' );
-
 class EasyDiscussViewPost extends EasyDiscussView
 {
 	protected $err	= null;
@@ -109,11 +107,7 @@ class EasyDiscussViewPost extends EasyDiscussView
 			$theme	= new DiscussThemes();
 			$theme->set( 'moderators' , $moderators );
 			$theme->set( 'postId' , $postId );
-			$html	= $theme->fetch( 'post.assignment.item.php' );
-		}
-		else
-		{
-			$html = '<li class="pa-10">' . JText::_( 'COM_EASYDISCUSS_NO_MODERATOR_FOUND' ) . '</li>';
+			$html	= $theme->fetch( 'post.assignment.item.php');
 		}
 
 		$ajax->success( $html );
@@ -141,7 +135,7 @@ class EasyDiscussViewPost extends EasyDiscussView
 			$html	= $theme->fetch( 'ajax.similar.question.list.php' , array('dialog'=> true ) );
 		}
 
-		//$ajax->EasyDiscuss.$('#div').html( 'value' );
+		//$ajax->discussQuery('#div').html( 'value' );
 		$ajax->success( $html );
 	}
 
@@ -221,7 +215,7 @@ class EasyDiscussViewPost extends EasyDiscussView
 		}
 		else
 		{
-			$ajax->script( "EasyDiscuss.$( '#user_type' ).val( 'member' );" );
+			$ajax->script( "discussQuery( '#user_type' ).val( 'member' );" );
 			$ajax->script( "discuss.reply.post();" );
 		}
 		$ajax->script( 'discuss.spinner.hide("reply_loading");');
@@ -343,7 +337,7 @@ class EasyDiscussViewPost extends EasyDiscussView
 		$header	= '<h1>'.JText::_('COM_EASYDISCUSS_TWITTER').'</h1>';
 		$html	= trim(DiscussTwitterHelper::getAuthentication());
 
-		$disjax->script('EasyDiscuss.$(\'#usertype_twitter_pane\').html(\''.$header.$html.'\');');
+		$disjax->script('discussQuery(\'#usertype_twitter_pane\').html(\''.$header.$html.'\');');
 
 		$disjax->send();
 	}
@@ -363,7 +357,7 @@ class EasyDiscussViewPost extends EasyDiscussView
 		$header	= '<h1>'.JText::_('COM_EASYDISCUSS_TWITTER').'</h1>';
 		$html	= trim(DiscussTwitterHelper::getAuthentication());
 
-		$disjax->script('EasyDiscuss.$(\'#usertype_twitter_pane\').html(\''.$header.addslashes($html).'\');');
+		$disjax->script('discussQuery(\'#usertype_twitter_pane\').html(\''.$header.addslashes($html).'\');');
 
 		$disjax->send();
 	}
@@ -376,19 +370,19 @@ class EasyDiscussViewPost extends EasyDiscussView
 
 		if(empty($email))
 		{
-			$disjax->script("EasyDiscuss.$('#usertype_status .msg_in').html('".JText::_('COM_EASYDISCUSS_PLEASE_INSERT_YOUR_EMAIL_ADDRESS_TO_PROCEED')."');");
-			$disjax->script("EasyDiscuss.$('#usertype_status .msg_in').addClass('alert alert-error');");
-			$disjax->script("EasyDiscuss.$('#edialog-guest-reply').removeAttr('disabled');");
+			$disjax->script("discussQuery('#usertype_status .msg_in').html('".JText::_('COM_EASYDISCUSS_PLEASE_INSERT_YOUR_EMAIL_ADDRESS_TO_PROCEED')."');");
+			$disjax->script("discussQuery('#usertype_status .msg_in').addClass('alert alert-error');");
+			$disjax->script("discussQuery('#edialog-guest-reply').removeAttr('disabled');");
 			$disjax->send();
 			return false;
 		}
 
 		if(DiscussEmailHelper::isValidInetAddress($email)==false)
 		{
-			$disjax->script('EasyDiscuss.$(\'#usertype_status .msg_in\').html(\''.JText::_('COM_EASYDISCUSS_INVALID_EMAIL_ADDRESS').'\');');
-			$disjax->script('EasyDiscuss.$(\'#usertype_status .msg_in\').addClass(\'alert alert-error\');');
+			$disjax->script('discussQuery(\'#usertype_status .msg_in\').html(\''.JText::_('COM_EASYDISCUSS_INVALID_EMAIL_ADDRESS').'\');');
+			$disjax->script('discussQuery(\'#usertype_status .msg_in\').addClass(\'alert alert-error\');');
 
-			$disjax->script("EasyDiscuss.$('#edialog-guest-reply').removeAttr('disabled');");
+			$disjax->script("discussQuery('#edialog-guest-reply').removeAttr('disabled');");
 		}
 		else
 		{
@@ -404,9 +398,9 @@ class EasyDiscussViewPost extends EasyDiscussView
 			$session->set('guest_reply_authentication', "email=".$email.",name=".$name."", 'discuss');
 
 
-			$disjax->script('EasyDiscuss.$(\'#user_type\').val(\'guest\');');
-			$disjax->script('EasyDiscuss.$(\'#poster_name\').val(EasyDiscuss.$(\'#discuss_usertype_guest_name\').val());');
-			$disjax->script('EasyDiscuss.$(\'#poster_email\').val(EasyDiscuss.$(\'#discuss_usertype_guest_email\').val());');
+			$disjax->script('discussQuery(\'#user_type\').val(\'guest\');');
+			$disjax->script('discussQuery(\'#poster_name\').val(discussQuery(\'#discuss_usertype_guest_name\').val());');
+			$disjax->script('discussQuery(\'#poster_email\').val(discussQuery(\'#discuss_usertype_guest_email\').val());');
 			$disjax->script('disjax.closedlg();');
 			$disjax->script( 'discuss.reply.submit();' );
 		}
@@ -423,9 +417,9 @@ class EasyDiscussViewPost extends EasyDiscussView
 
 		if(empty($username) || empty($password))
 		{
-			$disjax->script("EasyDiscuss.$('#usertype_status .msg_in').html('".JText::_('COM_EASYDISCUSS_PLEASE_INSERT_YOUR_USERNAME_AND_PASSWORD')."');");
-			$disjax->script("EasyDiscuss.$('#usertype_status .msg_in').addClass('alert alert-error');");
-			$disjax->script("EasyDiscuss.$('#edialog-member-reply').prop('disabled', false);");
+			$disjax->script("discussQuery('#usertype_status .msg_in').html('".JText::_('COM_EASYDISCUSS_PLEASE_INSERT_YOUR_USERNAME_AND_PASSWORD')."');");
+			$disjax->script("discussQuery('#usertype_status .msg_in').addClass('alert alert-error');");
+			$disjax->script("discussQuery('#edialog-member-reply').attr('disabled', '');");
 			$disjax->send();
 			return false;
 		}
@@ -443,7 +437,7 @@ class EasyDiscussViewPost extends EasyDiscussView
 			if (!JError::isError($result))
 			{
 				$token = DiscussHelper::getToken();
-				$disjax->script( 'EasyDiscuss.$(".easydiscuss-token").val("' . $token . '");');
+				$disjax->script( 'discussQuery(".easydiscuss-token").val("' . $token . '");');
 				$disjax->script('disjax.closedlg();');
 				$disjax->script( 'discuss.reply.submit();' );
 			}
@@ -451,9 +445,9 @@ class EasyDiscussViewPost extends EasyDiscussView
 			{
 				$error = JError::getError();
 
-				$disjax->script('EasyDiscuss.$(\'#usertype_status .msg_in\').html(\''.$error->message.'\');');
-				$disjax->script('EasyDiscuss.$(\'#usertype_status .msg_in\').addClass(\'alert alert-error\');');
-				$disjax->script('EasyDiscuss.$(\'#edialog-member-reply\').prop(\'disabled\', false);');
+				$disjax->script('discussQuery(\'#usertype_status .msg_in\').html(\''.$error->message.'\');');
+				$disjax->script('discussQuery(\'#usertype_status .msg_in\').addClass(\'alert alert-error\');');
+				$disjax->script('discussQuery(\'#edialog-member-reply\').attr(\'disabled\', \'\');');
 			}
 		}
 		else
@@ -461,10 +455,10 @@ class EasyDiscussViewPost extends EasyDiscussView
 			$token = DiscussHelper::getToken();
 			$disjax->script( 'discuss.login.token = "'.$token.'";' );
 
-			$disjax->script('EasyDiscuss.$(\'#usertype_status .msg_in\').html(\''.JText::_('COM_EASYDISCUSS_MEMBER_LOGIN_INVALID_TOKEN').'\');');
-			$disjax->script('EasyDiscuss.$(\'#usertype_status .msg_in\').addClass(\'alert alert-error\');');
+			$disjax->script('discussQuery(\'#usertype_status .msg_in\').html(\''.JText::_('COM_EASYDISCUSS_MEMBER_LOGIN_INVALID_TOKEN').'\');');
+			$disjax->script('discussQuery(\'#usertype_status .msg_in\').addClass(\'alert alert-error\');');
 
-			$disjax->script( 'EasyDiscuss.$(\'#edialog-reply\').prop(\'disabled\', false);' );
+			$disjax->script( 'discussQuery(\'#edialog-reply\').attr(\'disabled\', \'\');' );
 		}
 
 		$disjax->send();
@@ -494,16 +488,16 @@ class EasyDiscussViewPost extends EasyDiscussView
 
 		if(empty($twitterUserId) || empty($twitterOauthToken) || empty($twitterOauthTokenSecret))
 		{
-			$disjax->script('EasyDiscuss.$(\'#usertype_status .msg_in\').html(\''.JText::_('COM_EASYDISCUSS_TWITTER_REQUIRES_AUTHENTICATION').'\');');
-			$disjax->script('EasyDiscuss.$(\'#usertype_status .msg_in\').addClass(\'alert alert-error\');');
-			$disjax->script('EasyDiscuss.$(\'#edialog-twitter-reply\').attr(\'disabled\', \'\');');
+			$disjax->script('discussQuery(\'#usertype_status .msg_in\').html(\''.JText::_('COM_EASYDISCUSS_TWITTER_REQUIRES_AUTHENTICATION').'\');');
+			$disjax->script('discussQuery(\'#usertype_status .msg_in\').addClass(\'alert alert-error\');');
+			$disjax->script('discussQuery(\'#edialog-twitter-reply\').attr(\'disabled\', \'\');');
 		}
 		else
 		{
 			$screen_name = $twitterScreenName? $twitterScreenName : $twitterUserId;
-			$disjax->script('EasyDiscuss.$(\'#user_type\').val(\'twitter\');');
-			$disjax->script('EasyDiscuss.$(\'#poster_name\').val(\''.$screen_name.'\');');
-			$disjax->script('EasyDiscuss.$(\'#poster_email\').val(\''.$twitterUserId.'\');');
+			$disjax->script('discussQuery(\'#user_type\').val(\'twitter\');');
+			$disjax->script('discussQuery(\'#poster_name\').val(\''.$screen_name.'\');');
+			$disjax->script('discussQuery(\'#poster_email\').val(\''.$twitterUserId.'\');');
 			$disjax->script('disjax.closedlg();');
 			$disjax->script( 'discuss.reply.submit();' );
 		}
@@ -526,7 +520,7 @@ class EasyDiscussViewPost extends EasyDiscussView
 		if( !$id )
 		{
 			$ajax->assign( 'dc_main_notifications' , JText::_('COM_EASYDISCUSS_SYSTEM_INVALID_ID') );
-			$ajax->script( 'EasyDiscuss.$( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
+			$ajax->script( 'discussQuery( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
 			$ajax->send();
 			return;
 		}
@@ -546,7 +540,7 @@ class EasyDiscussViewPost extends EasyDiscussView
 		if( !$access->canLock() )
 		{
 			$ajax->assign( 'dc_main_notifications' , JText::_('COM_EASYDISCUSS_SYSTEM_INSUFFICIENT_PERMISSIONS') );
-			$ajax->script( 'EasyDiscuss.$( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
+			$ajax->script( 'discussQuery( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
 			$ajax->send();
 			return;
 		}
@@ -557,7 +551,7 @@ class EasyDiscussViewPost extends EasyDiscussView
 		if ( !$post->store() )
 		{
 			$ajax->assign( 'dc_main_notifications' , $post->getError() );
-			$ajax->script( 'EasyDiscuss.$( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
+			$ajax->script( 'discussQuery( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
 			$ajax->send();
 			return;
 		}
@@ -579,11 +573,11 @@ class EasyDiscussViewPost extends EasyDiscussView
 		}
 
 		$ajax->assign( 'dc_main_notifications' , JText::_('COM_EASYDISCUSS_POST_LOCKED') );
-		$ajax->script( 'EasyDiscuss.$( "#dc_main_notifications" ).addClass( "alert alert-success" );' );
-		$ajax->script( 'EasyDiscuss.$( ".discuss-item" ).addClass("is-locked");' );
+		$ajax->script( 'discussQuery( "#dc_main_notifications" ).addClass( "alert alert-success" );' );
+		$ajax->script( 'discussQuery( ".discuss-item" ).addClass("is-locked");' );
 
 		// For flatt theme
-		$ajax->script( 'EasyDiscuss.$( ".discuss-action-bar" ).addClass("is-locked");' );
+		$ajax->script( 'discussQuery( ".discuss-action-bar" ).addClass("is-locked");' );
 		$ajax->send();
 		return;
 	}
@@ -603,7 +597,7 @@ class EasyDiscussViewPost extends EasyDiscussView
 		if( !$id )
 		{
 			$ajax->assign( 'dc_main_notifications' , JText::_('COM_EASYDISCUSS_SYSTEM_INVALID_ID') );
-			$ajax->script( 'EasyDiscuss.$( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
+			$ajax->script( 'discussQuery( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
 			$ajax->send();
 			return;
 		}
@@ -621,7 +615,7 @@ class EasyDiscussViewPost extends EasyDiscussView
 			if( !$isModerator )
 			{
 				$ajax->assign( 'dc_main_notifications' , JText::_('COM_EASYDISCUSS_SYSTEM_INSUFFICIENT_PERMISSIONS') );
-				$ajax->script( 'EasyDiscuss.$( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
+				$ajax->script( 'discussQuery( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
 				$ajax->send();
 				return;
 			}
@@ -633,7 +627,7 @@ class EasyDiscussViewPost extends EasyDiscussView
 		if ( !$post->store() )
 		{
 			$ajax->assign( 'dc_main_notifications' , $post->getError() );
-			$ajax->script( 'EasyDiscuss.$( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
+			$ajax->script( 'discussQuery( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
 			$ajax->send();
 			return;
 		}
@@ -654,13 +648,12 @@ class EasyDiscussViewPost extends EasyDiscussView
 			$notification->store();
 		}
 
-		$ajax->script( 'window.location.reload();');
 		$ajax->assign( 'dc_main_notifications' , JText::_('COM_EASYDISCUSS_POST_UNLOCKED') );
-		$ajax->script( 'EasyDiscuss.$( "#dc_main_notifications" ).addClass( "alert alert-success" );' );
-		$ajax->script( 'EasyDiscuss.$( ".discuss-item").removeClass("is-locked");' );
+		$ajax->script( 'discussQuery( "#dc_main_notifications" ).addClass( "alert alert-success" );' );
+		$ajax->script( 'discussQuery( ".discuss-item").removeClass("is-locked");' );
 
 		// For flatt theme
-		$ajax->script( 'EasyDiscuss.$( ".discuss-action-bar" ).removeClass("is-locked");' );
+		$ajax->script( 'discussQuery( ".discuss-action-bar" ).removeClass("is-locked");' );
 		$ajax->send();
 		return;
 	}
@@ -680,7 +673,7 @@ class EasyDiscussViewPost extends EasyDiscussView
 		if( !$id )
 		{
 			$ajax->assign( 'dc_main_notifications' , JText::_('COM_EASYDISCUSS_SYSTEM_INVALID_ID') );
-			$ajax->script( 'EasyDiscuss.$( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
+			$ajax->script( 'discussQuery( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
 			$ajax->send();
 			return;
 		}
@@ -697,7 +690,7 @@ class EasyDiscussViewPost extends EasyDiscussView
 			if( !$isModerator )
 			{
 				$ajax->assign( 'dc_main_notifications' , JText::_('COM_EASYDISCUSS_SYSTEM_INSUFFICIENT_PERMISSIONS') );
-				$ajax->script( 'EasyDiscuss.$( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
+				$ajax->script( 'discussQuery( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
 				$ajax->send();
 				return;
 			}
@@ -711,7 +704,7 @@ class EasyDiscussViewPost extends EasyDiscussView
 		if ( !$post->store() )
 		{
 			$ajax->assign( 'dc_main_notifications' , $post->getError() );
-			$ajax->script( 'EasyDiscuss.$( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
+			$ajax->script( 'discussQuery( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
 			$ajax->send();
 			return;
 		}
@@ -726,9 +719,6 @@ class EasyDiscussViewPost extends EasyDiscussView
 
 			DiscussHelper::getHelper( 'Badges' )->assign( 'easydiscuss.resolved.discussion' , $my->id );
 			DiscussHelper::getHelper( 'Points' )->assign( 'easydiscuss.resolved.discussion' , $my->id );
-
-			// Assign badge for EasySocial
-			DiscussHelper::getHelper( 'EasySocial' )->assignBadge( 'resolve.reply' , $my->id , JText::sprintf( 'COM_EASYDISCUSS_BADGES_HISTORY_RESOLVED_OWN_DISCUSSION' , $post->title ) );
 		}
 
 		// @rule: Add notifications for the thread starter
@@ -750,7 +740,7 @@ class EasyDiscussViewPost extends EasyDiscussView
 		// Add resolved button to the view.
 		ob_start();
 		?>
-		<a id="post_unresolve_link" href="javascript:void(0);" onclick="discuss.post.unresolve('<?php echo $postId; ?>');EasyDiscuss.$(this).parents('.discuss-status').hide();" class="resolved-button float-r">
+		<a id="post_unresolve_link" href="javascript:void(0);" onclick="discuss.post.unresolve('<?php echo $postId; ?>');discussQuery(this).parents('.discuss-status').hide();" class="resolved-button float-r">
 			<?php echo JText::_('COM_EASYDISCUSS_RESOLVED'); ?>
 		</a>
 		<?php
@@ -762,21 +752,21 @@ class EasyDiscussViewPost extends EasyDiscussView
 		$ajax->assign( 'dc_main_notifications' , JText::_('COM_EASYDISCUSS_ENTRY_RESOLVED') );
 
 
-		$ajax->script( 'EasyDiscuss.$( "#dc_main_notifications" ).addClass( "alert alert-success" );' );
+		$ajax->script( 'discussQuery( "#dc_main_notifications" ).addClass( "alert alert-success" );' );
 
 
 		// Add Status
-		$ajax->script( 'EasyDiscuss.$(".discussQuestion").addClass("is-resolved");' );
+		$ajax->script( 'discussQuery(".discussQuestion").addClass("is-resolved");' );
 
 		// For flatt theme
-		$ajax->script( 'EasyDiscuss.$( ".discuss-action-bar" ).addClass("is-resolved");' );
+		$ajax->script( 'discussQuery( ".discuss-action-bar" ).addClass("is-resolved");' );
 
 		// Remove other status
-		$ajax->script( 'EasyDiscuss.$( ".postStatus" ).removeClass("label-post_status-on-hold");' );
-		$ajax->script( 'EasyDiscuss.$( ".postStatus").removeClass("label-post_status-accepted");' );
-		$ajax->script( 'EasyDiscuss.$( ".postStatus").removeClass("label-post_status-working-on");' );
-		$ajax->script( 'EasyDiscuss.$( ".postStatus").removeClass("label-post_status-reject");' );
-		$ajax->script( 'EasyDiscuss.$( ".postStatus").html("");' );
+		$ajax->script( 'discussQuery( ".postStatus" ).removeClass("label-post_status-on-hold");' );
+		$ajax->script( 'discussQuery( ".postStatus").removeClass("label-post_status-accepted");' );
+		$ajax->script( 'discussQuery( ".postStatus").removeClass("label-post_status-working-on");' );
+		$ajax->script( 'discussQuery( ".postStatus").removeClass("label-post_status-reject");' );
+		$ajax->script( 'discussQuery( ".postStatus").html("");' );
 
 		$ajax->send();
 		return;
@@ -794,7 +784,7 @@ class EasyDiscussViewPost extends EasyDiscussView
 		if(empty($postId))
 		{
 			$ajax->assign( 'dc_main_notifications .msg_in' , JText::_('COM_EASYDISCUSS_SYSTEM_INVALID_ID') );
-			$ajax->script( 'EasyDiscuss.$( "#reports-msg .msg_in" ).addClass( "alert alert-error" );' );
+			$ajax->script( 'discussQuery( "#reports-msg .msg_in" ).addClass( "alert alert-error" );' );
 			$ajax->send();
 			$ajax->success();
 			return;
@@ -812,7 +802,7 @@ class EasyDiscussViewPost extends EasyDiscussView
 			if( !$isModerator )
 			{
 				$ajax->assign( 'dc_main_notifications' , JText::_('COM_EASYDISCUSS_SYSTEM_INSUFFICIENT_PERMISSIONS') );
-				$ajax->script( 'EasyDiscuss.$( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
+				$ajax->script( 'discussQuery( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
 				$ajax->send();
 				return;
 			}
@@ -825,7 +815,7 @@ class EasyDiscussViewPost extends EasyDiscussView
 		if ( !$post->store() )
 		{
 			$ajax->assign( 'dc_main_notifications .msg_in' , $post->getError() );
-			$ajax->script( 'EasyDiscuss.$( "#dc_main_notifications .msg_in" ).addClass( "alert alert-error" );' );
+			$ajax->script( 'discussQuery( "#dc_main_notifications .msg_in" ).addClass( "alert alert-error" );' );
 			$ajax->send();
 			$ajax->success();
 			return;
@@ -835,17 +825,17 @@ class EasyDiscussViewPost extends EasyDiscussView
 		$post->clearAccpetedReply();
 
 		// Clear resolved buttons.
-		$ajax->script( 'EasyDiscuss.$(".discuss-status #post_unresolve_link").remove();' );
+		$ajax->script( 'discussQuery(".discuss-status #post_unresolve_link").remove();' );
 		//$ajax->assign( 'dc_main_notifications .msg_in' , JText::_('COM_EASYDISCUSS_ENTRY_UNRESOLVED') );
 		$ajax->assign( 'dc_main_notifications' , JText::_('COM_EASYDISCUSS_ENTRY_UNRESOLVED') );
-		$ajax->script( 'EasyDiscuss.$( "#dc_main_notifications .msg_in" ).addClass( "dc_success" );' );
-		$ajax->script( 'EasyDiscuss.$( "#title_' . $postId . ' span.resolved" ).remove();' );
+		$ajax->script( 'discussQuery( "#dc_main_notifications .msg_in" ).addClass( "dc_success" );' );
+		$ajax->script( 'discussQuery( "#title_' . $postId . ' span.resolved" ).remove();' );
 
 		// Update the state of the item and remove 'is-resolved'
-		$ajax->script( 'EasyDiscuss.$(".discussQuestion").removeClass("is-resolved");' );
+		$ajax->script( 'discussQuery(".discussQuestion").removeClass("is-resolved");' );
 
 		// For flatt theme
-		$ajax->script( 'EasyDiscuss.$( ".discuss-action-bar" ).removeClass("is-resolved");' );
+		$ajax->script( 'discussQuery( ".discuss-action-bar" ).removeClass("is-resolved");' );
 
 		$ajax->send();
 		$ajax->success();
@@ -883,11 +873,11 @@ class EasyDiscussViewPost extends EasyDiscussView
 	public function ajaxSubmitReply()
 	{
 		// Process when a new reply is made from bbcode / wysiwyg editor
-		$my			= JFactory::getUser();
-		$config		= DiscussHelper::getConfig();
-		$ajax		= new Disjax();
-		$acl		= DiscussHelper::getHelper( 'ACL' );
-		$post		= JRequest::get( 'POST' );
+		$my		= JFactory::getUser();
+		$config	= DiscussHelper::getConfig();
+		$ajax	= new Disjax();
+		$acl	= DiscussHelper::getHelper( 'ACL' );
+		$post	= JRequest::get( 'POST' );
 
 		// @task: User needs to be logged in, in order to submit a new reply.
 		if( !$acl->allowed('add_reply', '0') && $my->id == 0 )
@@ -1013,12 +1003,12 @@ class EasyDiscussViewPost extends EasyDiscussView
 		// set post owner
 		$post['user_id']			= $my->id;
 
-		$content 	= JRequest::getVar( 'dc_reply_content', '', 'post', 'none' , JREQUEST_ALLOWRAW );
-		$content 	= DiscussHelper::getHelper( 'String ')->unhtmlentities($content);
+		$content = JRequest::getVar( 'dc_reply_content', '', 'post', 'none' , JREQUEST_ALLOWRAW );
+		$content = DiscussHelper::getHelper( 'String ')->unhtmlentities($content);
 
 		// Rebind the post data
-		$post[ 'dc_reply_content' ]	= $content;
-		$post[ 'content_type' ]		= DiscussHelper::getEditorType( 'reply' );
+		$post[ 'dc_reply_content' ] = $content;
+		$post[ 'content_type' ] = DiscussHelper::getEditorType( 'reply' );
 
 		// Set the ip address
 		$post[ 'ip' ]	= JRequest::getVar( 'REMOTE_ADDR' , '' , 'SERVER' );
@@ -1030,7 +1020,7 @@ class EasyDiscussViewPost extends EasyDiscussView
 		// Set the category id for the reply since we might need to use this for acl checks.
 		$table->category_id		= $question->category_id;
 
-		if($config->get('main_moderatepost', 0) && !DiscussHelper::isModerateThreshold( $my->id ) )
+		if($config->get('main_moderatepost', 0))
 		{
 			$table->published	= DISCUSS_ID_PENDING;
 		}
@@ -1295,16 +1285,10 @@ class EasyDiscussViewPost extends EasyDiscussView
 
 		if( $table->published )
 		{
-			// Create notification item in EasySocial
-			DiscussHelper::getHelper( 'EasySocial' )->notify( 'new.reply' , $table , $question );
-
 			// @rule: Badges
 			DiscussHelper::getHelper( 'History' )->log( 'easydiscuss.new.reply' , $table->user_id , JText::sprintf( 'COM_EASYDISCUSS_BADGES_HISTORY_NEW_REPLY', $question->title), $table->id );
 			DiscussHelper::getHelper( 'Badges' )->assign( 'easydiscuss.new.reply' , $table->user_id );
 			DiscussHelper::getHelper( 'Points' )->assign( 'easydiscuss.new.reply' , $table->user_id );
-
-			// Assign badge for EasySocial
-			DiscussHelper::getHelper( 'EasySocial' )->assignBadge( 'reply.question' , $table->user_id , JText::sprintf( 'COM_EASYDISCUSS_BADGES_HISTORY_NEW_REPLY' , $question->title ) );
 
 			// @rule: AUP integrations
 			DiscussHelper::getHelper( 'Aup' )->assign( DISCUSS_POINTS_NEW_REPLY , $table->user_id , $question->title );
@@ -1316,15 +1300,7 @@ class EasyDiscussViewPost extends EasyDiscussView
 		// Bind file attachments
 		if( $acl->allowed( 'add_attachment' , '0' ) )
 		{
-			if ( !$table->bindAttachments() && $table->getError())
-			{
-				$output = array();
-				$output[ 'message' ]	= $table->getError();
-				$output[ 'type' ]		= 'error';
-
-				echo $this->_outputJson( $output );
-				return false;
-			}
+			$table->bindAttachments();
 		}
 
 		$replier	 = new stdClass();
@@ -1373,7 +1349,7 @@ class EasyDiscussViewPost extends EasyDiscussView
 		// Legacy fix when switching from WYSIWYG editor to bbcode.
 		$table->content		= EasyDiscussParser::html2bbcode( $table->content );
 
-		$table->content     = DiscussHelper::formatContent( $table , true );
+		$table->content     = DiscussHelper::parseContent( $table->content, true );
 
 		//all access control goes here.
 		$canDelete		= false;
@@ -1547,7 +1523,6 @@ class EasyDiscussViewPost extends EasyDiscussView
 		if( $table->published == DISCUSS_ID_PUBLISHED )
 		{
 			DiscussHelper::getHelper( 'jomsocial' )->addActivityReply( $table );
-			DiscussHelper::getHelper( 'easysocial')->replyDiscussionStream( $table );
 		}
 
 		$autoSubscribed = false;
@@ -1604,10 +1579,10 @@ class EasyDiscussViewPost extends EasyDiscussView
 			$output[ 'type' ]	= 'success.captcha';
 		}
 
-		// if( $config->get( 'main_syntax_highlighter' ) )
-		// {
-		// 	$output['script'] = 'EasyDiscuss.require().script(\'syntaxhighlighter\').done(function() {$(\'.discuss-content-item pre\').each(function(i, e) {hljs.highlightBlock(e);});});';
-		// }
+		if( $config->get( 'main_syntax_highlighter' ) )
+		{
+			$output['script'] = 'EasyDiscuss.require().script(\'syntaxhighlighter\').done(function() {$(\'.discuss-content-item pre\').each(function(i, e) {hljs.highlightBlock(e);});});';
+		}
 
 		echo $this->_outputJson( $output );
 	}
@@ -1727,8 +1702,8 @@ class EasyDiscussViewPost extends EasyDiscussView
 
 			DiscussHelper::getHelper( 'Points' )->assign( 'easydiscuss.remove.reply' , $my->id );
 
-			$djax->script('EasyDiscuss.$("#dc_reply_' . + $postId .'").fadeOut(\'500\');');
-			$djax->script('EasyDiscuss.$("#dc_reply_' . + $postId .'").remove();');
+			$djax->script('discussQuery("#dc_reply_' . + $postId .'").fadeOut(\'500\');');
+			$djax->script('discussQuery("#dc_reply_' . + $postId .'").remove();');
 
 			$options = new stdClass();
 			$options->title = JText::_('COM_EASYDISCUSS_SUCCESS_DELETE_REPLY_TITLE');
@@ -1845,8 +1820,8 @@ class EasyDiscussViewPost extends EasyDiscussView
 			$result['output']	= $tpl->fetch('new.post.php');
 
 			$djax->assign('dc_main_post_edit', $result['output']);
-			$djax->script('EasyDiscuss.$("#dc_main_post_edit").slideDown(\'fast\');');
-			$djax->script('EasyDiscuss.$("#edit_content").markItUp(mySettings);');
+			$djax->script('discussQuery("#dc_main_post_edit").slideDown(\'fast\');');
+			$djax->script('discussQuery("#edit_content").markItUp(mySettings);');
 
 		}
 
@@ -2209,7 +2184,7 @@ class EasyDiscussViewPost extends EasyDiscussView
 		{
 			$disjax->script( 'discuss.spinner.hide( "dialog_loading" );' );
 			$disjax->assign( 'dc_subscribe_notification .msg_in' , JText::_('COM_EASYDISCUSS_INVALID_EMAIL') );
-			$disjax->script( 'EasyDiscuss.$( "#dc_subscribe_notification .msg_in" ).addClass( "alert alert-error" );' );
+			$disjax->script( 'discussQuery( "#dc_subscribe_notification .msg_in" ).addClass( "alert alert-error" );' );
 			$disjax->send();
 			return;
 		}
@@ -2228,7 +2203,7 @@ class EasyDiscussViewPost extends EasyDiscussView
 		{
 			$disjax->script( 'discuss.spinner.hide( "dialog_loading" );' );
 			$disjax->assign( 'dc_subscribe_notification .msg_in' , JText::_('COM_EASYDISCUSS_EMAIL_IS_EMPTY') );
-			$disjax->script( 'EasyDiscuss.$( "#dc_subscribe_notification .msg_in" ).addClass( "alert alert-error" );' );
+			$disjax->script( 'discussQuery( "#dc_subscribe_notification .msg_in" ).addClass( "alert alert-error" );' );
 			$disjax->send();
 			return;
 		}
@@ -2237,7 +2212,7 @@ class EasyDiscussViewPost extends EasyDiscussView
 		{
 			$disjax->script( 'discuss.spinner.hide( "dialog_loading" );' );
 			$disjax->assign( 'dc_subscribe_notification .msg_in' , JText::_('COM_EASYDISCUSS_NAME_IS_EMPTY') );
-			$disjax->script( 'EasyDiscuss.$( "#dc_subscribe_notification .msg_in" ).addClass( "alert alert-error" );' );
+			$disjax->script( 'discussQuery( "#dc_subscribe_notification .msg_in" ).addClass( "alert alert-error" );' );
 			$disjax->send();
 			return;
 		}
@@ -2255,7 +2230,7 @@ class EasyDiscussViewPost extends EasyDiscussView
 				// show message.
 				$disjax->script( 'discuss.spinner.hide( "dialog_loading" );' );
 				$disjax->assign( 'dc_subscribe_notification .msg_in' , JText::_('COM_EASYDISCUSS_ALREADY_SUBSCRIBED_TO_POST') );
-				$disjax->script( 'EasyDiscuss.$( "#dc_subscribe_notification .msg_in" ).addClass( "dc_alert" );' );
+				$disjax->script( 'discussQuery( "#dc_subscribe_notification .msg_in" ).addClass( "dc_alert" );' );
 				$disjax->send();
 				return;
 
@@ -2297,12 +2272,12 @@ class EasyDiscussViewPost extends EasyDiscussView
 		$msg = empty($msg)? JText::_('COM_EASYDISCUSS_SUBSCRIPTION_SUCCESS') : $msg;
 
 		// Change the email icons to unsubscribe now.
-		$disjax->script( 'EasyDiscuss.$(".via-email").removeClass("via-email").addClass( "cancel-email" );');
+		$disjax->script( 'discussQuery(".via-email").removeClass("via-email").addClass( "cancel-email" );');
 
 		$disjax->script( 'discuss.spinner.hide( "dialog_loading" );' );
 		$disjax->assign( 'dc_subscribe_notification .msg_in' , $msg );
-		$disjax->script( 'EasyDiscuss.$( "#dc_subscribe_notification .msg_in" ).addClass( "'.$msgClass.'" );' );
-		$disjax->script( 'EasyDiscuss.$( ".dialog-buttons .si_btn" ).hide();' );
+		$disjax->script( 'discussQuery( "#dc_subscribe_notification .msg_in" ).addClass( "'.$msgClass.'" );' );
+		$disjax->script( 'discussQuery( ".dialog-buttons .si_btn" ).hide();' );
 		$disjax->send();
 		return;
 	}
@@ -2347,12 +2322,12 @@ class EasyDiscussViewPost extends EasyDiscussView
 		{
 			$msg		= JText::_('COM_EASYDISCUSS_ATTACHMENT_DELETE_SUCCESS');
 			$msgClass	= 'dc_success';
-			$disjax->script( 'EasyDiscuss.$( "#dc-attachments-'.$id.'" ).remove();' );
+			$disjax->script( 'discussQuery( "#dc-attachments-'.$id.'" ).remove();' );
 		}
 
 		$disjax->assign( 'dc_post_notification .msg_in' , $msg );
-		$disjax->script( 'EasyDiscuss.$( "#dc_post_notification .msg_in" ).addClass( "'.$msgClass.'" );' );
-		$disjax->script( 'EasyDiscuss.$( "#button-delete-att-'.$id.'" ).prop("disabled", false);' );
+		$disjax->script( 'discussQuery( "#dc_post_notification .msg_in" ).addClass( "'.$msgClass.'" );' );
+		$disjax->script( 'discussQuery( "#button-delete-att-'.$id.'" ).attr("disabled", "");' );
 
 		$disjax->send();
 	}
@@ -2416,7 +2391,7 @@ class EasyDiscussViewPost extends EasyDiscussView
 		// Add buttons
 		$button				= new stdClass();
 		$button->title		= JText::_( 'COM_EASYDISCUSS_BUTTON_INSERT' );
-		$button->action		= 'insertVideoCode( EasyDiscuss.$("#videoURL").val() , "' . $caretPosition . '" , "' . $element . '" );';
+		$button->action		= 'insertVideoCode( discussQuery("#videoURL").val() , "' . $caretPosition . '" , "' . $element . '" );';
 		$button->className	= 'btn-primary';
 		$buttons[]			= $button;
 
@@ -2683,18 +2658,8 @@ class EasyDiscussViewPost extends EasyDiscussView
 		return $ajax->resolve( $html, $nextCycle );
 	}
 
-	/**
-	 * Triggered when edit reply button is clicked so that we can return the correct output
-	 * to the caller.
-	 *
-	 * @since	1.0
-	 * @access	public
-	 * @param	null
-	 * @return
-	 */
 	public function editReply()
 	{
-		// Load up our own ajax library.
 		$ajax	= DiscussHelper::getHelper( 'Ajax' );
 		$id		= JRequest::getInt( 'id', 0 );
 		$config = DiscussHelper::getConfig();
@@ -2706,14 +2671,14 @@ class EasyDiscussViewPost extends EasyDiscussView
 		}
 
 		// Load the post table out.
-		$post		= DiscussHelper::getTable( 'Post' );
-		$state		= $post->load($id);
+		$post	= DiscussHelper::getTable( 'Post' );
+		$state	= $post->load($id);
 
 		$post->content_raw = $post->content;
 
 		// TODO: Determine if this person can edit this post
-		$composer 				= new DiscussComposer( 'editing' , $post );
-		$composer->renderMode	= "explicit";
+		$composer = new DiscussComposer("editing", $post);
+		$composer->renderMode = "explicit";
 
 		$ajax->resolve($composer->id, $composer->getComposer());
 
@@ -2721,32 +2686,57 @@ class EasyDiscussViewPost extends EasyDiscussView
 	}
 
 
-	public function checkEmpty( $post , $ajax )
+	/**
+	 * Ajax Call
+	 * Save new raw content to db
+	 */
+	public function saveReply()
 	{
+		// Happens when editing a bbcode reply and save
+		$ajax	= DiscussHelper::getHelper( 'Ajax' );
+
+		$config		= DiscussHelper::getConfig();
+		$post		= JRequest::get( 'POST' );
+
+		$output			= array();
+		$output['id']	= $post[ 'post_id' ];
+		$acl			= DiscussHelper::getHelper( 'ACL' );
+		$my				= JFactory::getUser();
+
+
 		// do checking here!
 		if( empty( $post[ 'content' ] ) )
 		{
 			$ajax->reject('error', JText::_('COM_EASYDISCUSS_ERROR_REPLY_EMPTY'));
 			$ajax->send();
-
-			exit;
 		}
-	}
 
-	/**
-	 * Determines if the captcha is correct
-	 *
-	 * @since	1.0
-	 * @access	public
-	 * @param	string
-	 * @return
-	 */
-	public function checkCaptcha( )
-	{
-		$config 	= DiscussHelper::getConfig();
-		$my 		= JFactory::getUser();
+		// Rebind the post data
+		$post[ 'content' ] = JRequest::getVar( 'content', '', 'post', 'none' , JREQUEST_ALLOWRAW );
+		$post[ 'content_type' ] = DiscussHelper::getEditorType( 'reply' );
 
-		// Get recaptcha configuration
+		$postTable = DiscussHelper::getTable( 'Post' );
+		$postTable->load( $post[ 'post_id' ] );
+		$postTable->bind( $post );
+
+		$isModerator = DiscussHelper::getHelper( 'Moderator' )->isModerator( $postTable->category_id );
+
+		if( $postTable->id )
+		{
+			// Do not allow unauthorized access
+			if( !$acl->allowed('edit_reply', '0') && !DiscussHelper::isSiteAdmin() && $postTable->user_id != $my->id )
+			{
+				if( !$isModerator )
+				{
+					$ajax->reject('error', JText::_('COM_EASYDISCUSS_SYSTEM_INSUFFICIENT_PERMISSIONS'));
+					$ajax->send();
+				}
+			}
+		}
+
+		// set new content
+		$postTable->content	= $post['content'];
+
 		$recaptcha	= $config->get( 'antispam_recaptcha');
 		$public		= $config->get( 'antispam_recaptcha_public');
 		$private	= $config->get( 'antispam_recaptcha_private');
@@ -2758,7 +2748,7 @@ class EasyDiscussViewPost extends EasyDiscussView
 
 		if( $recaptcha && $public && $private )
 		{
-			require_once( DISCUSS_CLASSES . '/recaptcha.php' );
+			require_once DISCUSS_CLASSES . '/recaptcha.php';
 
 			$obj = DiscussRecaptcha::recaptcha_check_answer( $private , $_SERVER['REMOTE_ADDR'] , $post['recaptcha_challenge_field'] , $post['recaptcha_response_field'] );
 
@@ -2767,12 +2757,9 @@ class EasyDiscussViewPost extends EasyDiscussView
 				$ajax->reloadCaptcha();
 				$ajax->reject('error', JText::_('COM_EASYDISCUSS_POST_INVALID_RECAPTCHA_RESPONSE'));
 				$ajax->send();
-
-				return false;
 			}
 		}
-
-		if( $config->get( 'antispam_easydiscuss_captcha' ) )
+		else if( $config->get( 'antispam_easydiscuss_captcha' ) )
 		{
 			$runCaptcha = DiscussHelper::getHelper( 'Captcha' )->showCaptcha();
 
@@ -2791,26 +2778,33 @@ class EasyDiscussViewPost extends EasyDiscussView
 				{
 					$ajax->reject('error', JText::_('COM_EASYDISCUSS_INVALID_CAPTCHA'));
 					$ajax->send();
-
-					return false;
 				}
 			}
 		}
 
-		return true;
-	}
+		// @rule: Bind parameters
+		if( $config->get( 'reply_field_references' ) )
+		{
+			$postTable->bindParams( $post );
+		}
 
-	/**
-	 * Some desc
-	 *
-	 * @since	1.0
-	 * @access	public
-	 * @param	string
-	 * @return
-	 */
-	public function processPolls( $post )
-	{
-		$config 		= DiscussHelper::getConfig();
+		// Bind file attachments
+		if( $acl->allowed( 'add_attachment' , '0' ) )
+		{
+			$postTable->bindAttachments();
+		}
+
+		$isNew 	= false;
+
+		// @trigger: onBeforeSave
+		DiscussEventsHelper::importPlugin( 'content' );
+		DiscussEventsHelper::onContentBeforeSave('post', $postTable, $isNew);
+
+		if ( !$postTable->store() )
+		{
+			$ajax->reject('error', JText::_('COM_EASYDISCUSS_ERROR'));
+			$ajax->send();
+		}
 
 		// Process poll items
 		$includePolls	= JRequest::getBool( 'pollitems' , false );
@@ -2825,8 +2819,9 @@ class EasyDiscussViewPost extends EasyDiscussView
 			//if( !$isNew && !$includePolls )
 			if( count( $pollItems ) == 1 && empty( $pollItems[0] ) && !$isNew )
 			{
-				$post->removePoll();
+				$postTable->removePoll();
 			}
+
 
 			// Check if the multiple polls checkbox is it checked?
 			$multiplePolls	= JRequest::getVar( 'multiplePolls' , '0' );
@@ -2838,9 +2833,9 @@ class EasyDiscussViewPost extends EasyDiscussView
 
 				// Since poll question are entirely optional.
 				$pollQuestion 	= DiscussHelper::getTable( 'PollQuestion' );
-				$pollQuestion->loadByPost( $post->id );
+				$pollQuestion->loadByPost( $postTable->id );
 
-				$pollQuestion->post_id	= $post->id;
+				$pollQuestion->post_id	= $postTable->id;
 				$pollQuestion->title 	= $pollTitle;
 				$pollQuestion->multiple	= $config->get( 'main_polls_multiple' ) ? $multiplePolls : false;
 				$pollQuestion->store();
@@ -2881,13 +2876,13 @@ class EasyDiscussViewPost extends EasyDiscussView
 					{
 						// this is a new item.
 						$poll->set( 'value' 		, $value );
-						$poll->set( 'post_id'		, $post->get( 'id' )  );
+						$poll->set( 'post_id'		, $postTable->get( 'id' )  );
 						$poll->store();
 					}
 					else if( !empty( $valueOri ) && !empty( $value )  )
 					{
 						// update existing value.
-						$poll->loadByValue( $valueOri , $post->get( 'id' ) );
+						$poll->loadByValue( $valueOri , $postTable->get( 'id' ) );
 						$poll->set( 'value' 		, $value );
 						$poll->store();
 					}
@@ -2896,107 +2891,26 @@ class EasyDiscussViewPost extends EasyDiscussView
 
 			}
 		}
-	}
 
-	/**
-	 * Triggers when an edited reply is saved.
-	 *
-	 * @since	3.0
-	 * @param	null
-	 * @return	null
-	 */
-	public function saveReply()
-	{
-		// Load ajax library
-		$ajax		= DiscussHelper::getHelper( 'Ajax' );
-		$config		= DiscussHelper::getConfig();
 
-		// Get the posted data
-		$data 	= JRequest::get( 'post' );
-
-		// Prepare the output data
-		$output			= array();
-		$output['id']	= $data[ 'post_id' ];
-		$acl			= DiscussHelper::getHelper( 'ACL' );
-		$my				= JFactory::getUser();
-
-		// Check for empty content
-		$this->checkEmpty( $data , $ajax );
-
-		// Rebind the post data because it may contain HTML codes
-		$data[ 'content' ] 		= JRequest::getVar( 'content', '', 'post', 'none' , JREQUEST_ALLOWRAW );
-		$data[ 'content_type' ] = DiscussHelper::getEditorType( 'reply' );
-
-		// Load up the post table
-		$post 		= DiscussHelper::getTable( 'Post' );
-		$post->load( $data[ 'post_id' ] );
-
-		// Bind the post table with the data
-		$post->bind( $data );
-
-		// Check if the post data is valid
-		if( !$post->id || !$data[ 'post_id' ] )
-		{
-			$ajax->reject( 'error' , JText::_( 'COM_EASYDISCUSS_SYSTEM_INVALID_ID' ) );
-			return $ajax->send();
-		}
-
-		// Only allow users with proper access
-		$isModerator = DiscussHelper::getHelper( 'Moderator' )->isModerator( $post->category_id );
-
-		// Do not allow unauthorized access
-		if( !DiscussHelper::isSiteAdmin() && $post->user_id != $my->id && !$acl->allowed( 'edit_reply' , 0 ) && !$isModerator )
-		{
-			$ajax->reject('error', JText::_('COM_EASYDISCUSS_SYSTEM_INSUFFICIENT_PERMISSIONS'));
-			$ajax->send();
-		}
-
-		// Get the new content from the post data
-		$post->content 		= $data[ 'content' ];
-
-		// Validate captcha
-		$this->checkCaptcha();
-
-		// @rule: Bind parameters
-		if( $config->get( 'reply_field_references' ) )
-		{
-			$post->bindParams( $post );
-		}
-
-		// Bind file attachments
-		if( $acl->allowed( 'add_attachment' , '0' ) )
-		{
-			$post->bindAttachments();
-		}
-
-		// Determines if this is a new post.
-		$isNew 	= false;
-
-		// @trigger: onBeforeSave
-		DiscussEventsHelper::importPlugin( 'content' );
-		DiscussEventsHelper::onContentBeforeSave( 'post' , $post , $isNew );
-
-		// Try to store the post now
-		if( !$post->store() )
-		{
-			$ajax->reject('error', JText::_('COM_EASYDISCUSS_ERROR') );
-			$ajax->send();
-		}
-
-		// Process polls
-		$this->processPolls( $post );
-
-		// Process custom fields
-		$this->saveCustomFieldsValue( $post->id );
+		//Process custom fields
+		$this->saveCustomFieldsValue( $postTable->id );
 
 		// @trigger: onAfterSave
-		DiscussEventsHelper::onContentAfterSave( 'post', $post, $isNew);
+		DiscussEventsHelper::onContentAfterSave('post', $postTable, $isNew);
 
-		// Filter for badwords
-		$post->title	= DiscussHelper::wordFilter( $post->title );
-		$post->content	= DiscussHelper::wordFilter( $post->content );
+		// $ajax->resolve(JText::_('COM_EASYDISCUSS_SUCCESS_EDIT_REPLY'));
 
-		// Determines if the user is allowed to delete this post
+		//get parent post
+		$parentId			= $postTable->parent_id;
+		$parentTable		= DiscussHelper::getTable( 'Post' );
+		$parentTable->load($parentId);
+
+		// filtering badwords
+		$postTable->title	= DiscussHelper::wordFilter( $postTable->title);
+		$postTable->content	= DiscussHelper::wordFilter( $postTable->content);
+
+		//all access control goes here.
 		$canDelete	= false;
 
 		if( DiscussHelper::isSiteAdmin() || $acl->allowed('delete_reply', '0') || $postTable->user_id == $user->id )
@@ -3004,46 +2918,54 @@ class EasyDiscussViewPost extends EasyDiscussView
 			$canDelete  = true;
 		}
 
-		// URL References
-		$post->references 	= $post->getReferences();
+		// @rule: URL References
+		$postTable->references  = $postTable->getReferences();
 
-		// Get the voted state
-		$voteModel			= DiscussHelper::getModel( 'Votes' );
-		$post->voted 		= $voteModel->hasVoted( $post->id );
+		// set for vote status
+		$voteModel				= DiscussHelper::getModel( 'Votes' );
+		$postTable->voted		= $voteModel->hasVoted( $postTable->id );
 
-		// Get total votes for this post
-		$post->totalVote 	= $post->sum_totalvote;
+		// get total vote for this reply
+		$postTable->totalVote	= $postTable->sum_totalvote;
 
-		// Load profile info
-		$creator 	= DiscussHelper::getTable( 'Profile' );
-		$creator->load( $post->user_id );
+		//load porfile info and auto save into table if user is not already exist in discuss's user table.
+		$creator = DiscussHelper::getTable( 'Profile' );
+		$creator->load( $postTable->user_id );
 
-		// Assign creator
-		$post->user 	= $creator;
+		$postTable->user = $creator;
 
-		// Format the content.
-		$tmp				= $post->content;
-		$post->content_raw 	= $post->content;
-		$post->content 		= DiscussHelper::formatContent( $post );
+		// clean up bad code
+		$JFilter				= JFilterInput::getInstance();
+		$postTable->content		= $JFilter->clean($postTable->content);
+		$postTable->content_raw	= DiscussHelper::getHelper( 'String' )->escape( $postTable->content );
+		$postTable->content		= DiscussHelper::parseContent( $postTable->content, true );
 
-		// Once the formatting is done, we need to escape the raw content
-		$post->content_raw 	= DiscussHelper::getHelper( 'String' )->escape( $tmp );
-
-		// Store the default values
 		//default value
-		$post->isVoted			= 0;
-		$post->total_vote_cnt	= 0;
-		$post->likesAuthor		= '';
-		$post->minimize			= 0;
+		$postTable->isVoted			= 0;
+		$postTable->total_vote_cnt	= 0;
+		$postTable->likesAuthor		= '';
+		$postTable->minimize		= 0;
 
-		// Trigger reply
-		$post->triggerReply();
+		if( $config->get( 'main_content_trigger_replies' ) )
+		{
+			// process content plugins
+			DiscussEventsHelper::importPlugin( 'content' );
+			DiscussEventsHelper::onContentPrepare('reply', $postTable);
 
-		// Load up parent's post
-		$question		= DiscussHelper::getTable( 'Post' );
-		$question->load( $post->parent_id );
+			$postTable->event = new stdClass();
 
-		$recaptcha			= '';
+			$results	= DiscussEventsHelper::onContentBeforeDisplay('reply', $postTable);
+			$postTable->event->beforeDisplayContent	= trim(implode("\n", $results));
+
+			$results	= DiscussEventsHelper::onContentAfterDisplay('reply', $postTable);
+			$postTable->event->afterDisplayContent	= trim(implode("\n", $results));
+		}
+
+		$theme		= new DiscussThemes();
+		$question	= DiscussHelper::getTable( 'Post' );
+		$question->load( $postTable->parent_id );
+
+		$recaptcha	= '';
 		$enableRecaptcha	= $config->get('antispam_recaptcha');
 		$publicKey			= $config->get('antispam_recaptcha_public');
 		$skipRecaptcha		= $config->get('antispam_skip_recaptcha');
@@ -3054,31 +2976,38 @@ class EasyDiscussViewPost extends EasyDiscussView
 		if( $enableRecaptcha && !empty( $publicKey ) && $postCount < $skipRecaptcha )
 		{
 			require_once DISCUSS_CLASSES . '/recaptcha.php';
-			$recaptcha	= getRecaptchaData( $publicKey , $config->get('antispam_recaptcha_theme') , $config->get('antispam_recaptcha_lang') , null, $config->get('antispam_recaptcha_ssl'), 'edit-reply-recaptcha' .  $post->id);
+			$recaptcha	= getRecaptchaData( $publicKey , $config->get('antispam_recaptcha_theme') , $config->get('antispam_recaptcha_lang') , null, $config->get('antispam_recaptcha_ssl'), 'edit-reply-recaptcha' .  $postTable->id);
 		}
 
 		// Get the post access object here.
-		$category 		= DiscussHelper::getTable( 'Category' );
-		$category->load( $post->category_id );
+		$category 			= DiscussHelper::getTable( 'Category' );
+		$category->load( $postTable->category_id );
 
-		$access			= $post->getAccess( $category );
-		$post->access	= $access;
+		$access				= $postTable->getAccess( $category );
+		$postTable->access	= $access;
 
 		// Get comments for the post
-		$commentLimit		= $config->get( 'main_comment_pagination' ) ? $config->get( 'main_comment_pagination_count' ) : null;
-		$comments			= $post->getComments( $commentLimit );
-		$post->comments 	= DiscussHelper::formatComments( $comments );
+		$commentLimit				= $config->get( 'main_comment_pagination' ) ? $config->get( 'main_comment_pagination_count' ) : null;
+		$comments					= $postTable->getComments( $commentLimit );
+		$postTable->comments 		= DiscussHelper::formatComments( $comments );
 
+		$theme->set( 'question'		, $question );
+		$theme->set( 'post'		, $postTable );
 
-		$theme	= new DiscussThemes();
+		$html	= $theme->fetch( 'post.reply.item.php' );
 
-		$theme->set( 'question'	, $question );
-		$theme->set( 'post'		, $post );
+		$ajax->resolve($html);
 
-		// Get theme file output
-		$contents	= $theme->fetch( 'post.reply.item.php' );
+		if( $recaptcha && $public && $private )
+		{
+			$output[ 'type' ]	= 'success.captcha';
+		}
 
-		$ajax->resolve( $contents );
+		if(!$parentTable->islock)
+		{
+			$output[ 'type' ]	= 'locked';
+		}
+
 		return $ajax->send();
 	}
 
@@ -3216,7 +3145,7 @@ class EasyDiscussViewPost extends EasyDiscussView
 		if( !$id )
 		{
 			$ajax->assign( 'dc_main_notifications' , JText::_('COM_EASYDISCUSS_SYSTEM_INVALID_ID') );
-			$ajax->script( 'EasyDiscuss.$( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
+			$ajax->script( 'discussQuery( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
 			$ajax->send();
 			return;
 		}
@@ -3234,7 +3163,7 @@ class EasyDiscussViewPost extends EasyDiscussView
 			if( !$isModerator )
 			{
 				$ajax->assign( 'dc_main_notifications' , JText::_('COM_EASYDISCUSS_SYSTEM_INSUFFICIENT_PERMISSIONS') );
-				$ajax->script( 'EasyDiscuss.$( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
+				$ajax->script( 'discussQuery( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
 				$ajax->send();
 				return;
 			}
@@ -3250,7 +3179,7 @@ class EasyDiscussViewPost extends EasyDiscussView
 		if ( !$post->store() )
 		{
 			$ajax->assign( 'dc_main_notifications' , $post->getError() );
-			$ajax->script( 'EasyDiscuss.$( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
+			$ajax->script( 'discussQuery( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
 			$ajax->send();
 			return;
 		}
@@ -3272,19 +3201,19 @@ class EasyDiscussViewPost extends EasyDiscussView
 		}
 
 		$ajax->assign( 'dc_main_notifications' , JText::_('COM_EASYDISCUSS_POST_ON_HOLD') );
-		$ajax->script( 'EasyDiscuss.$( "#dc_main_notifications" ).addClass( "alert alert-success" );' );
+		$ajax->script( 'discussQuery( "#dc_main_notifications" ).addClass( "alert alert-success" );' );
 
 		// Remove other status
-		$ajax->script( 'EasyDiscuss.$( ".discuss-item" ).removeClass( "is-resolved" );' );
-		$ajax->script( 'EasyDiscuss.$( ".postStatus" ).removeClass( "label-post_status" );' );
-		$ajax->script( 'EasyDiscuss.$( ".postStatus" ).removeClass( "label-post_status-on-hold" );' );
-		$ajax->script( 'EasyDiscuss.$( ".postStatus" ).removeClass( "label-post_status-accept" );' );
-		$ajax->script( 'EasyDiscuss.$( ".postStatus" ).removeClass( "label-post_status-working-on" );' );
-		$ajax->script( 'EasyDiscuss.$( ".postStatus" ).removeClass( "label-post_status-reject" );' );
+		$ajax->script( 'discussQuery( ".discuss-item" ).removeClass( "is-resolved" );' );
+		$ajax->script( 'discussQuery( ".postStatus" ).removeClass( "label-post_status" );' );
+		$ajax->script( 'discussQuery( ".postStatus" ).removeClass( "label-post_status-on-hold" );' );
+		$ajax->script( 'discussQuery( ".postStatus" ).removeClass( "label-post_status-accept" );' );
+		$ajax->script( 'discussQuery( ".postStatus" ).removeClass( "label-post_status-working-on" );' );
+		$ajax->script( 'discussQuery( ".postStatus" ).removeClass( "label-post_status-reject" );' );
 
 		// Add status
-		$ajax->script( 'EasyDiscuss.$( ".postStatus" ).addClass("label-post_status-on-hold");' );
-		$ajax->script( 'EasyDiscuss.$( ".postStatus" ).html("' . JText::_( "COM_EASYDISCUSS_POST_STATUS_ON_HOLD" ) . '");' );
+		$ajax->script( 'discussQuery( ".postStatus" ).addClass("label-post_status-on-hold");' );
+		$ajax->script( 'discussQuery( ".postStatus" ).html("' . JText::_( "COM_EASYDISCUSS_POST_STATUS_ON_HOLD" ) . '");' );
 		$ajax->send();
 		return;
 	}
@@ -3297,7 +3226,7 @@ class EasyDiscussViewPost extends EasyDiscussView
 		if( !$id )
 		{
 			$ajax->assign( 'dc_main_notifications' , JText::_('COM_EASYDISCUSS_SYSTEM_INVALID_ID') );
-			$ajax->script( 'EasyDiscuss.$( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
+			$ajax->script( 'discussQuery( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
 			$ajax->send();
 			return;
 		}
@@ -3305,9 +3234,9 @@ class EasyDiscussViewPost extends EasyDiscussView
 		$post 		= DiscussHelper::getTable( 'Post' );
 		$post->load( $id );
 
-		$isMine			= DiscussHelper::isMine($post->user_id);
-		$isAdmin		= DiscussHelper::isSiteAdmin();
-		$acl 			= DiscussHelper::getHelper( 'ACL' );
+		$isMine		= DiscussHelper::isMine($post->user_id);
+		$isAdmin	= DiscussHelper::isSiteAdmin();
+		$acl 		= DiscussHelper::getHelper( 'ACL' );
 		$isModerator	= DiscussHelper::getHelper( 'Moderator' )->isModerator( $post->category_id );
 
 		if ( !$isMine && !$isAdmin && !$acl->allowed('mark_accepted', '0') )
@@ -3315,7 +3244,7 @@ class EasyDiscussViewPost extends EasyDiscussView
 			if( !$isModerator )
 			{
 				$ajax->assign( 'dc_main_notifications' , JText::_('COM_EASYDISCUSS_SYSTEM_INSUFFICIENT_PERMISSIONS') );
-				$ajax->script( 'EasyDiscuss.$( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
+				$ajax->script( 'discussQuery( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
 				$ajax->send();
 				return;
 			}
@@ -3331,14 +3260,13 @@ class EasyDiscussViewPost extends EasyDiscussView
 		if ( !$post->store() )
 		{
 			$ajax->assign( 'dc_main_notifications' , $post->getError() );
-			$ajax->script( 'EasyDiscuss.$( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
+			$ajax->script( 'discussQuery( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
 			$ajax->send();
 			return;
 		}
 
 		// @rule: Add notifications for the thread starter
 		$my		= JFactory::getUser();
-
 		if( $post->get( 'user_id') != $my->id )
 		{
 			$notification	= DiscussHelper::getTable( 'Notifications' );
@@ -3354,19 +3282,19 @@ class EasyDiscussViewPost extends EasyDiscussView
 		}
 
 		// Remove other status
-		$ajax->script( 'EasyDiscuss.$( ".discuss-item" ).removeClass( "is-resolved" );' );
-		$ajax->script( 'EasyDiscuss.$( ".postStatus" ).removeClass( "label-post_status" );' );
-		$ajax->script( 'EasyDiscuss.$( ".postStatus" ).removeClass( "label-post_status-on-hold" );' );
-		$ajax->script( 'EasyDiscuss.$( ".postStatus" ).removeClass( "label-post_status-accept" );' );
-		$ajax->script( 'EasyDiscuss.$( ".postStatus" ).removeClass( "label-post_status-working-on" );' );
-		$ajax->script( 'EasyDiscuss.$( ".postStatus" ).removeClass( "label-post_status-reject" );' );
+		$ajax->script( 'discussQuery( ".discuss-item" ).removeClass( "is-resolved" );' );
+		$ajax->script( 'discussQuery( ".postStatus" ).removeClass( "label-post_status" );' );
+		$ajax->script( 'discussQuery( ".postStatus" ).removeClass( "label-post_status-on-hold" );' );
+		$ajax->script( 'discussQuery( ".postStatus" ).removeClass( "label-post_status-accept" );' );
+		$ajax->script( 'discussQuery( ".postStatus" ).removeClass( "label-post_status-working-on" );' );
+		$ajax->script( 'discussQuery( ".postStatus" ).removeClass( "label-post_status-reject" );' );
 
 		$ajax->assign( 'dc_main_notifications' , JText::_('COM_EASYDISCUSS_POST_ACCEPTED') );
-		$ajax->script( 'EasyDiscuss.$( "#dc_main_notifications" ).addClass( "alert alert-success" );' );
+		$ajax->script( 'discussQuery( "#dc_main_notifications" ).addClass( "alert alert-success" );' );
 
 		// Add status
-		$ajax->script( 'EasyDiscuss.$( ".postStatus" ).addClass("label-post_status-accept");' );
-		$ajax->script( 'EasyDiscuss.$( ".postStatus" ).html("' . JText::_( "COM_EASYDISCUSS_POST_STATUS_ACCEPTED" ) . '");' );
+		$ajax->script( 'discussQuery( ".postStatus" ).addClass("label-post_status-accept");' );
+		$ajax->script( 'discussQuery( ".postStatus" ).html("' . JText::_( "COM_EASYDISCUSS_POST_STATUS_ACCEPTED" ) . '");' );
 		$ajax->send();
 		return;
 	}
@@ -3379,7 +3307,7 @@ class EasyDiscussViewPost extends EasyDiscussView
 		if( !$id )
 		{
 			$ajax->assign( 'dc_main_notifications' , JText::_('COM_EASYDISCUSS_SYSTEM_INVALID_ID') );
-			$ajax->script( 'EasyDiscuss.$( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
+			$ajax->script( 'discussQuery( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
 			$ajax->send();
 			return;
 		}
@@ -3397,7 +3325,7 @@ class EasyDiscussViewPost extends EasyDiscussView
 			if( !$isModerator )
 			{
 				$ajax->assign( 'dc_main_notifications' , JText::_('COM_EASYDISCUSS_SYSTEM_INSUFFICIENT_PERMISSIONS') );
-				$ajax->script( 'EasyDiscuss.$( "#dc_main_notifications" ).html( "alert alert-error" );' );
+				$ajax->script( 'discussQuery( "#dc_main_notifications" ).html( "alert alert-error" );' );
 				$ajax->send();
 				return;
 			}
@@ -3413,7 +3341,7 @@ class EasyDiscussViewPost extends EasyDiscussView
 		if ( !$post->store() )
 		{
 			$ajax->assign( 'dc_main_notifications' , $post->getError() );
-			$ajax->script( 'EasyDiscuss.$( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
+			$ajax->script( 'discussQuery( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
 			$ajax->send();
 			return;
 		}
@@ -3435,20 +3363,20 @@ class EasyDiscussViewPost extends EasyDiscussView
 		}
 
 		// Remove other status
-		$ajax->script( 'EasyDiscuss.$( ".discuss-item" ).removeClass( "is-resolved" );' );
-		$ajax->script( 'EasyDiscuss.$( ".postStatus" ).removeClass( "label-post_status" );' );
-		$ajax->script( 'EasyDiscuss.$( ".postStatus" ).removeClass( "label-post_status-on-hold" );' );
-		$ajax->script( 'EasyDiscuss.$( ".postStatus" ).removeClass( "label-post_status-accept" );' );
-		$ajax->script( 'EasyDiscuss.$( ".postStatus" ).removeClass( "label-post_status-working-on" );' );
-		$ajax->script( 'EasyDiscuss.$( ".postStatus" ).removeClass( "label-post_status-reject" );' );
+		$ajax->script( 'discussQuery( ".discuss-item" ).removeClass( "is-resolved" );' );
+		$ajax->script( 'discussQuery( ".postStatus" ).removeClass( "label-post_status" );' );
+		$ajax->script( 'discussQuery( ".postStatus" ).removeClass( "label-post_status-on-hold" );' );
+		$ajax->script( 'discussQuery( ".postStatus" ).removeClass( "label-post_status-accept" );' );
+		$ajax->script( 'discussQuery( ".postStatus" ).removeClass( "label-post_status-working-on" );' );
+		$ajax->script( 'discussQuery( ".postStatus" ).removeClass( "label-post_status-reject" );' );
 
 
 		$ajax->assign( 'dc_main_notifications' , JText::_('COM_EASYDISCUSS_POST_WORKING_ON') );
-		$ajax->script( 'EasyDiscuss.$( "#dc_main_notifications" ).addClass( "alert alert-success" );' );
+		$ajax->script( 'discussQuery( "#dc_main_notifications" ).addClass( "alert alert-success" );' );
 
 		// Add status
-		$ajax->script( 'EasyDiscuss.$( ".postStatus" ).addClass("label-post_status-working-on");' );
-		$ajax->script( 'EasyDiscuss.$( ".postStatus" ).html("' . JText::_( "COM_EASYDISCUSS_POST_STATUS_WORKING_ON" ) . '");' );
+		$ajax->script( 'discussQuery( ".postStatus" ).addClass("label-post_status-working-on");' );
+		$ajax->script( 'discussQuery( ".postStatus" ).html("' . JText::_( "COM_EASYDISCUSS_POST_STATUS_WORKING_ON" ) . '");' );
 		$ajax->send();
 		return;
 	}
@@ -3461,7 +3389,7 @@ class EasyDiscussViewPost extends EasyDiscussView
 		if( !$id )
 		{
 			$ajax->assign( 'dc_main_notifications' , JText::_('COM_EASYDISCUSS_SYSTEM_INVALID_ID') );
-			$ajax->script( 'EasyDiscuss.$( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
+			$ajax->script( 'discussQuery( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
 			$ajax->send();
 			return;
 		}
@@ -3479,7 +3407,7 @@ class EasyDiscussViewPost extends EasyDiscussView
 			if( !$isModerator )
 			{
 				$ajax->assign( 'dc_main_notifications' , JText::_('COM_EASYDISCUSS_SYSTEM_INSUFFICIENT_PERMISSIONS') );
-				$ajax->script( 'EasyDiscuss.$( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
+				$ajax->script( 'discussQuery( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
 				$ajax->send();
 				return;
 			}
@@ -3495,7 +3423,7 @@ class EasyDiscussViewPost extends EasyDiscussView
 		if ( !$post->store() )
 		{
 			$ajax->assign( 'dc_main_notifications' , $post->getError() );
-			$ajax->script( 'EasyDiscuss.$( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
+			$ajax->script( 'discussQuery( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
 			$ajax->send();
 			return;
 		}
@@ -3517,19 +3445,19 @@ class EasyDiscussViewPost extends EasyDiscussView
 		}
 
 		// Remove other status
-		$ajax->script( 'EasyDiscuss.$( ".discuss-item" ).removeClass( "is-resolved" );' );
-		$ajax->script( 'EasyDiscuss.$( ".postStatus" ).removeClass( "label-post_status" );' );
-		$ajax->script( 'EasyDiscuss.$( ".postStatus" ).removeClass( "label-post_status-on-hold" );' );
-		$ajax->script( 'EasyDiscuss.$( ".postStatus" ).removeClass( "label-post_status-accept" );' );
-		$ajax->script( 'EasyDiscuss.$( ".postStatus" ).removeClass( "label-post_status-working-on" );' );
-		$ajax->script( 'EasyDiscuss.$( ".postStatus" ).removeClass( "label-post_status-reject" );' );
+		$ajax->script( 'discussQuery( ".discuss-item" ).removeClass( "is-resolved" );' );
+		$ajax->script( 'discussQuery( ".postStatus" ).removeClass( "label-post_status" );' );
+		$ajax->script( 'discussQuery( ".postStatus" ).removeClass( "label-post_status-on-hold" );' );
+		$ajax->script( 'discussQuery( ".postStatus" ).removeClass( "label-post_status-accept" );' );
+		$ajax->script( 'discussQuery( ".postStatus" ).removeClass( "label-post_status-working-on" );' );
+		$ajax->script( 'discussQuery( ".postStatus" ).removeClass( "label-post_status-reject" );' );
 
 		$ajax->assign( 'dc_main_notifications' , JText::_('COM_EASYDISCUSS_POST_REJECT') );
-		$ajax->script( 'EasyDiscuss.$( "#dc_main_notifications" ).addClass( "alert alert-success" );' );
+		$ajax->script( 'discussQuery( "#dc_main_notifications" ).addClass( "alert alert-success" );' );
 
 		// Add status
-		$ajax->script( 'EasyDiscuss.$( ".postStatus" ).addClass("label-post_status-reject");' );
-		$ajax->script( 'EasyDiscuss.$( ".postStatus" ).html("' . JText::_( "COM_EASYDISCUSS_POST_STATUS_REJECT" ) . '");' );
+		$ajax->script( 'discussQuery( ".postStatus" ).addClass("label-post_status-reject");' );
+		$ajax->script( 'discussQuery( ".postStatus" ).html("' . JText::_( "COM_EASYDISCUSS_POST_STATUS_REJECT" ) . '");' );
 		$ajax->send();
 		return;
 	}
@@ -3542,7 +3470,7 @@ class EasyDiscussViewPost extends EasyDiscussView
 		if( !$id )
 		{
 			$ajax->assign( 'dc_main_notifications' , JText::_('COM_EASYDISCUSS_SYSTEM_INVALID_ID') );
-			$ajax->script( 'EasyDiscuss.$( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
+			$ajax->script( 'discussQuery( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
 			$ajax->send();
 			return;
 		}
@@ -3560,7 +3488,7 @@ class EasyDiscussViewPost extends EasyDiscussView
 			if( !$isModerator )
 			{
 				$ajax->assign( 'dc_main_notifications' , JText::_('COM_EASYDISCUSS_SYSTEM_INSUFFICIENT_PERMISSIONS') );
-				$ajax->script( 'EasyDiscuss.$( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
+				$ajax->script( 'discussQuery( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
 				$ajax->send();
 				return;
 			}
@@ -3573,7 +3501,7 @@ class EasyDiscussViewPost extends EasyDiscussView
 		if ( !$post->store() )
 		{
 			$ajax->assign( 'dc_main_notifications' , $post->getError() );
-			$ajax->script( 'EasyDiscuss.$( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
+			$ajax->script( 'discussQuery( "#dc_main_notifications" ).addClass( "alert alert-error" );' );
 			$ajax->send();
 			return;
 		}
@@ -3595,17 +3523,17 @@ class EasyDiscussViewPost extends EasyDiscussView
 		}
 
 		// Remove other status
-		$ajax->script( 'EasyDiscuss.$( ".discuss-item" ).removeClass( "is-resolved" );' );
-		$ajax->script( 'EasyDiscuss.$( ".postStatus" ).removeClass( "label-post_status" );' );
-		$ajax->script( 'EasyDiscuss.$( ".postStatus" ).removeClass( "label-post_status-on-hold" );' );
-		$ajax->script( 'EasyDiscuss.$( ".postStatus" ).removeClass( "label-post_status-accept" );' );
-		$ajax->script( 'EasyDiscuss.$( ".postStatus" ).removeClass( "label-post_status-working-on" );' );
-		$ajax->script( 'EasyDiscuss.$( ".postStatus" ).removeClass( "label-post_status-reject" );' );
+		$ajax->script( 'discussQuery( ".discuss-item" ).removeClass( "is-resolved" );' );
+		$ajax->script( 'discussQuery( ".postStatus" ).removeClass( "label-post_status" );' );
+		$ajax->script( 'discussQuery( ".postStatus" ).removeClass( "label-post_status-on-hold" );' );
+		$ajax->script( 'discussQuery( ".postStatus" ).removeClass( "label-post_status-accept" );' );
+		$ajax->script( 'discussQuery( ".postStatus" ).removeClass( "label-post_status-working-on" );' );
+		$ajax->script( 'discussQuery( ".postStatus" ).removeClass( "label-post_status-reject" );' );
 
 		$ajax->assign( 'dc_main_notifications' , JText::_('COM_EASYDISCUSS_POST_NO_STATUS') );
-		$ajax->script( 'EasyDiscuss.$( "#dc_main_notifications" ).addClass( "alert alert-success" );' );
+		$ajax->script( 'discussQuery( "#dc_main_notifications" ).addClass( "alert alert-success" );' );
 
-		$ajax->script( 'EasyDiscuss.$( ".postStatus" ).html("");' );
+		$ajax->script( 'discussQuery( ".postStatus" ).html("");' );
 		$ajax->send();
 		return;
 	}

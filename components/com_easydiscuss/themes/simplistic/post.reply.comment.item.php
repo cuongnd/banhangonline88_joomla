@@ -17,7 +17,7 @@ defined('_JEXEC') or die('Restricted access');
 
 		<div class="discuss-item-left discuss-user">
 		<?php if( $system->config->get( 'layout_avatar' ) ) { ?>
-			<div class="discuss-avatar avatar-small avatar-circle">
+			<div class="discuss-avatar avatar-small">
 				<a href="<?php echo $comment->creator->getLink();?>">
 					<img alt="<?php echo $this->escape( $comment->creator->getName() );?>" src="<?php echo $comment->creator->getAvatar();?>" />
 				</a>
@@ -37,7 +37,7 @@ defined('_JEXEC') or die('Restricted access');
 
 					<?php if( $comment->canDelete() ) { ?>
 						<div class="pull-left">
-							<a class="btn btn-small btn-link deleteComment" href="javascript:void(0);"><i class="icon-remove"></i></a>
+							<a class="btn btn-mini btn-link deleteComment" href="javascript:void(0);"><i class="icon-remove"></i></a>
 						</div>
 					<?php } ?>
 					</div>

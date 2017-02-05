@@ -10,7 +10,6 @@
 * See COPYRIGHT.php for copyright notices and details.
 */
 defined('_JEXEC') or die('Restricted access');
-$config	= DiscussHelper::getConfig();
 ?>
 <script type="text/javascript">
 EasyDiscuss
@@ -28,7 +27,7 @@ EasyDiscuss
 			height: '250px',
 			width: '100%',
 			mapType : "ROADMAP",
-			language: '<?php echo $config->get( 'main_location_language' );?>',
+			language: 'en',
 			"{locationInput}"    : "input[name=location]",
 			"{locationLatitude}" : "input[name=latitude]",
 			"{locationLongitude}": "input[name=longitude]"

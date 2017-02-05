@@ -62,12 +62,6 @@ class DiscussVideosHelper
 				$url	= parse_url( $rawUrl );
 				$url	= explode( '.' , $url[ 'host' ] );
 
-				// Not a valid domain name.
-				if( count( $url ) == 1 )
-				{
-					return;
-				}
-
 				// Last two parts will always be the domain name.
 				$url	= $url[ count( $url ) - 2 ] . '.' . $url[ count( $url ) - 1 ];
 

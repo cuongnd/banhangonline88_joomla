@@ -58,10 +58,6 @@ defined('_JEXEC') or die('Restricted access');
 					<button class="saveCropButton btn btn-success" type="button"><?php echo JText::_( 'COM_EASYDISCUSS_UPDATE_BUTTON');?></button>
 					<button class="stopCropButton btn" type="button"><?php echo JText::_( 'COM_EASYDISCUSS_CANCEL' ); ?></button>
 				</span>
-
-				<?php if($croppable ){ ?>
-				<a href="<?php echo DiscussRouter::_( 'index.php?option=com_easydiscuss&controller=profile&task=removePicture' );?>" class="btn btn-danger"><i class="icon-remove"></i> <?php echo JText::_( 'COM_EASYDISCUSS_REMOVE_PICTURE' ); ?></a>
-				<?php } ?>
 			</p>
 			<div class="row-fluid">
 				<div class="avatarContainer">

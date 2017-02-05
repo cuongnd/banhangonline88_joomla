@@ -3,7 +3,7 @@
 // media/com_easydiscuss/styles/component.less
 @import "bootstrap/mixins";
 
-@EasyDiscuss: "div#discuss-wrapper";
+@EasyDiscuss: "#discuss-wrapper";
 
 (~"@{EasyDiscuss}") {
 
@@ -33,7 +33,6 @@
 	// Components: Buttons & Alerts
 	@import "bootstrap/buttons";
 	@import "bootstrap/button-groups";
-	@import "button-groups"; // Note: extra classes button-groups-es
 	@import "bootstrap/alerts"; // Note: alerts share common CSS with buttons and thus have styles in buttons
 
 	// Components: Nav
@@ -71,7 +70,7 @@
 
 	// 3rd party
 	@import "font-awesome/default";
-	@import "markitup/skins/default/style";
+	@import "markitup/default";
 	@import "markitup";//customize for easydiscuss
 	@import "chosen/default";
 

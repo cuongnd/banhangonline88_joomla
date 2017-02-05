@@ -12,12 +12,10 @@
  */
 defined('_JEXEC') or die('Restricted access');
 
-$signature 	= trim( $signature );
+$signature 	= trim( $signature )
 ?>
 <?php if( $system->config->get( 'main_signature_visibility' ) && !empty( $signature ) ){ ?>
-	<?php if( DiscussHelper::getHelper('ACL')->allowed('show_signature') ){ ?>
-	<div class="discuss-action-options">
-		<div class="discuss-signature fs-11"><?php echo DiscussHelper::bbcodeHtmlSwitcher( $signature, 'signature', false ); ?></div>
-	</div>
-	<?php } ?>
+<div class="discuss-action-options">
+	<div class="discuss-signature fs-11"><?php echo DiscussHelper::bbcodeHtmlSwitcher( $signature, 'signature', false ); ?></div>
+</div>
 <?php } ?>

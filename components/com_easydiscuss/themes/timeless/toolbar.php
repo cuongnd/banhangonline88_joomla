@@ -15,6 +15,7 @@ defined('_JEXEC') or die('Restricted access');
 <script type="text/javascript">
 EasyDiscuss
 .require()
+.library( 'responsive' )
 .script( 'toolbar' )
 .done(function($){
 
@@ -394,7 +395,7 @@ EasyDiscuss
 <?php echo DiscussHelper::renderModule( 'easydiscuss-after-toolbar' ); ?>
 
 <?php if( $system->config->get( 'layout_category_tree' ) ){ ?>
-	<?php if( $views->current == 'index' ){ ?>
+	<?php if( $views->current == 'index' || $views->current == 'categories' ){ ?>
 		<?php echo $this->loadTemplate( 'categories.front.php'); ?>
 	<?php } ?>
 <?php } ?>

@@ -14,7 +14,7 @@ defined('_JEXEC') or die('Restricted access');
 
 jimport( 'joomla.application.component.view');
 
-require_once( DISCUSS_ROOT . '/views.php' );
+require_once DISCUSS_ROOT . '/views.php';
 
 class EasyDiscussViewIndex extends EasyDiscussView
 {
@@ -35,6 +35,7 @@ class EasyDiscussViewIndex extends EasyDiscussView
 			$app->redirect( DiscussRouter::_( 'index.php?option=com_easydiscuss&view=categories&layout=listings&category_id=' . $categoryId , false ) );
 			$app->close();
 		}
+
 
 		// Try to detect if there's any category id being set in the menu parameter.
 		$activeMenu = $app->getMenu()->getActive();
@@ -65,6 +66,7 @@ class EasyDiscussViewIndex extends EasyDiscussView
 		// Add view to this page.
 		$this->logView();
 
+
 		// set page title.
 		DiscussHelper::setPageTitle();
 
@@ -83,107 +85,6 @@ class EasyDiscussViewIndex extends EasyDiscussView
 		// Get the model.
 		$postModel		= DiscussHelper::getModel( 'Posts' );
 
-		// Get a list of accessible categories
-		$cats	= $this->getAccessibleCategories( $categoryId );
-
-		// Get featured posts from this particular category.
-		$featured   			= array();
-		if( $config->get( 'layout_featuredpost_frontpage' ) )
-		{
-			$options 	= array(
-									'pagination' => false,
-									'category'		=> $cats,
-									'sort'		 => $sort,
-									'filter'	=> $activeFilter,
-									'limit'		=> $config->get( 'layout_featuredpost_limit' , $limit ),
-									'featured'	=> true
-							);
-			$featured	= $postModel->getDiscussions( $options );
-		}
-
-		// Get normal discussion posts.
-		$options 	= array(
-						'sort'		=> $sort,
-						'category'	=> $cats,
-						'filter'	=> $activeFilter,
-						'limit'		=> $limit,
-						'featured'	=> false
-					);
-
-		$posts		= $postModel->getDiscussions( $options );
-
-
-		$authorIds		= array();
-		$topicIds 		= array();
-		$tmpPostsArr    = array_merge($featured, $posts);
-
-		if( count($tmpPostsArr) > 0 )
-		{
-			foreach( $tmpPostsArr as $tmpArr )
-			{
-				$authorIds[]  	= $tmpArr->user_id;
-				$topicIds[]     = $tmpArr->id;
-			}
-		}
-
-
-		$pagination = $postModel->getPagination( 0 , 'latest' , '' , $cats , false );
-
-		$postLoader   = DiscussHelper::getTable('Posts');
-		$postLoader->loadBatch( $topicIds );
-
-		$postTagsModel		= DiscussHelper::getModel( 'PostsTags' );
-		$postTagsModel->setPostTagsBatch( $topicIds );
-
-		$model 				= DiscussHelper::getModel( 'Posts' );
-		$lastReplyUser      = $model->setLastReplyBatch( $topicIds );
-
-		// Reduce SQL queries by pre-loading all author object.
-		$authorIds	= array_merge( $lastReplyUser, $authorIds );
-		$authorIds  = array_unique( $authorIds );
-
-		// Initialize the list of user's so we run lesser sql queries.
-		$profile	= DiscussHelper::getTable( 'Profile' );
-		$profile->init( $authorIds );
-
-		// Format featured entries.
-		$featured 	= DiscussHelper::formatPost( $featured , false , true );
-
-		// Format normal entries
-		$posts 		= DiscussHelper::formatPost( $posts , false , true );
-
-		// Get unread count
-		$unreadCount 		= $model->getUnreadCount($cats, false);
-
-		// Get unresolved count
-		// Change the "all" to TRUE or FALSE to include/exclude featured post count
-		$unresolvedCount 	= $model->getUnresolvedCount( '', $cats, '', 'all' );
-
-		// Get resolved count
-		$resolvedCount 		= $model->getTotalResolved();
-
-		// Get unanswered count
-		$unansweredCount 	= DiscussHelper::getUnansweredCount( $cats, true);
-
-		// Let's render the layout now.
-		$theme		= new DiscussThemes();
-
-		$theme->set( 'activeFilter'		, $activeFilter );
-		$theme->set( 'activeSort'		, $sort );
-		$theme->set( 'categories'		, $categoryId );
-		$theme->set( 'unreadCount'		, $unreadCount );
-		$theme->set( 'unansweredCount'	, $unansweredCount );
-		$theme->set( 'resolvedCount'	, $resolvedCount );
-		$theme->set( 'unresolvedCount'	, $unresolvedCount );
-		$theme->set( 'posts' 		, $posts );
-		$theme->set( 'featured' 	, $featured );
-		$theme->set( 'pagination'	, $pagination );
-
-		echo $theme->fetch( 'frontpage.index.php' );
-	}
-
-	private function getAccessibleCategories( $categoryId )
-	{
 		// We only want the user to view stuffs that they can really see.
 		if( !is_array( $categoryId ) )
 		{
@@ -216,6 +117,122 @@ class EasyDiscussViewIndex extends EasyDiscussView
 
 		}
 
-		return $cats;
+
+
+		// Get featured posts from this particular category.
+		$featured   			= array();
+		if( $config->get( 'layout_featuredpost_frontpage' ) )
+		{
+			$featured	= $postModel->getDiscussions(
+								array(
+										'pagination' => false,
+										'category'		=> $cats,
+										'sort'		 => $sort,
+										'filter'	=> $activeFilter,
+										'limit'		=> $config->get( 'layout_featuredpost_limit' , $limit ),
+										'featured'	=> true
+									)
+							);
+		}
+
+		// Get normal discussion posts.
+		$posts		= $postModel->getDiscussions(
+							array(
+									'sort'		 => $sort,
+									'category'	=> $cats,
+									'filter'	=> $activeFilter,
+									'limit'		=> $limit,
+									'featured' => false
+								)
+						);
+
+
+		$authorIds		= array();
+		$topicIds 		= array();
+		$tmpPostsArr    = array_merge($featured, $posts);
+		if( count($tmpPostsArr) > 0 )
+		{
+			foreach( $tmpPostsArr as $tmpArr )
+			{
+				$authorIds[]  	= $tmpArr->user_id;
+				$topicIds[]     = $tmpArr->id;
+			}
+		}
+
+		$pagination = $postModel->getPagination( 0 , 'latest' , '' , $cats , false );
+
+		$postLoader   = DiscussHelper::getTable('Posts');
+		$postLoader->loadBatch( $topicIds );
+
+		$postTagsModel		= DiscussHelper::getModel( 'PostsTags' );
+		$postTagsModel->setPostTagsBatch( $topicIds );
+
+
+		$model 				= DiscussHelper::getModel( 'Posts' );
+		$lastReplyUser      = $model->setLastReplyBatch( $topicIds );
+
+		// Reduce SQL queries by pre-loading all author object.
+		$authorIds	= array_merge( $lastReplyUser, $authorIds );
+		$authorIds  = array_unique($authorIds);
+		$profile	= DiscussHelper::getTable( 'Profile' );
+		$profile->init( $authorIds );
+
+
+		// Format featured entries.
+		DiscussHelper::formatPost( $featured , false , true );
+
+		// Format normal entries
+		DiscussHelper::formatPost( $posts , false , true );
+
+		// $badgesTable	= DiscussHelper::getTable( 'Profile' );
+		// foreach( $featured as $item )
+		// {
+		// 	$badgesTable->load( $item->user->id );
+		// 	$item->badges = $badgesTable->getBadges();
+		// }
+
+		// foreach( $posts as $item )
+		// {
+		// 	$badgesTable->load( $item->user->id );
+		// 	$item->badges = $badgesTable->getBadges();
+		// }
+
+		$allPosts = array( $featured, $posts );
+
+		foreach( $allPosts as $allPost )
+		{
+			$posts = Discusshelper::getPostStatusAndTypes( $allPost );
+		}
+
+
+		// Get unread count
+		$unreadCount 		= $model->getUnreadCount($cats, false);
+
+		// Get unresolved count
+		// Change the "all" to TRUE or FALSE to include/exclude featured post count
+		$unresolvedCount 	= $model->getUnresolvedCount( '', $cats, '', 'all' );
+
+		// Get resolved count
+		$resolvedCount 		= $model->getTotalResolved();
+
+		// Get unanswered count
+		$unansweredCount 	= DiscussHelper::getUnansweredCount( $cats, true);
+
+
+		// Let's render the layout now.
+		$theme 	= new DiscussThemes();
+
+		$theme->set( 'activeFilter'		, $activeFilter );
+		$theme->set( 'activeSort'		, $sort );
+		$theme->set( 'categories'		, $categoryId );
+		$theme->set( 'unreadCount'		, $unreadCount );
+		$theme->set( 'unansweredCount'	, $unansweredCount );
+		$theme->set( 'resolvedCount'	, $resolvedCount );
+		$theme->set( 'unresolvedCount'	, $unresolvedCount );
+		$theme->set( 'posts' 		, $posts );
+		$theme->set( 'featured' 	, $featured );
+		$theme->set( 'pagination'	, $pagination );
+
+		echo $theme->fetch( 'frontpage.index.php' );
 	}
 }

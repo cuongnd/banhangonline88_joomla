@@ -50,8 +50,6 @@ class EasyDiscussModelBadges extends EasyDiscussAdminModel
 
 		//get the number of events from database
 		$limit		= $mainframe->getUserStateFromRequest('com_easydiscuss.badges.limit', 'limit', $mainframe->getCfg('list_limit') , 'int');
-		//$limit			= $mainframe->getUserStateFromRequest( 'com_easydiscuss.badges.limit', 'limit', DiscussHelper::getListLimit(), 'int');
-
 		$limitstart	= JRequest::getVar('limitstart', 0, '', 'int');
 
 		$this->setState('limit', $limit);
@@ -208,4 +206,5 @@ class EasyDiscussModelBadges extends EasyDiscussAdminModel
 		$db->setQuery( $query );
 		return $db->loadObjectList();
 	}
+
 }

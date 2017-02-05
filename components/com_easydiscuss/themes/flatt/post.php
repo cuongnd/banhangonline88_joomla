@@ -21,11 +21,32 @@ window.print();
 
 EasyDiscuss.view_votes = <?php echo !$system->config->get( 'main_allowguestview_whovoted' ) && !$system->my->id ? 'false' : 'true'; ?>;
 
+<?php if( $system->config->get( 'main_syntax_highlighter') ){ ?>
+// Find any response that contains a code syntax.
+EasyDiscuss.main_syntax_highlighter = true;
+EasyDiscuss
+	.require()
+	.script('syntaxhighlighter' , 'likes' )
+	.done(function($) {
+		$('.discuss-content-item pre').each(function(i, e) {
+		hljs.highlightBlock(e);
+	});
+});
+
+<?php } ?>
+
 EasyDiscuss
 .require()
-.script( 'legacy', 'likes' , 'favourites', 'attachments' , 'replies' , 'posts' )
+.script( 'likes' , 'favourites', 'attachments' , 'replies' , 'posts' )
 .library( 'scrollTo' )
 .done(function($){
+
+	// Implement likes controller
+	$( '.attachmentsItem' ).implement(
+		EasyDiscuss.Controller.Attachments.Item,
+		{
+		}
+	);
 
 	// Implement reply item controller.
 	$( '.discussionReplies' ).implement(

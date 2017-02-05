@@ -14,8 +14,6 @@ defined('_JEXEC') or die('Restricted access');
 ?>
 <?php if( $system->config->get( 'reply_field_references' ) ){ ?>
 <li>
-	<a href="#referencesTab-<?php echo $composer->id; ?>" data-foundry-toggle="tab">
-		<?php echo JText::_( 'COM_EASYDISCUSS_REFERENCES_ADD_LINK' ); ?>
-	</a>
+	<a href="#referencesTab-<?php echo $composer->id; ?>" data-foundry-toggle="tab"><i class="icon-external-link"></i> <?php echo JText::_( 'COM_EASYDISCUSS_REFERENCES_ADD_LINK' ); ?></a>
 </li>
 <?php } ?>

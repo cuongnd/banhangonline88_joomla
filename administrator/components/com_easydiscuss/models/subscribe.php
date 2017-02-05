@@ -92,7 +92,7 @@ class EasyDiscussModelSubscribe extends EasyDiscussAdminModel
 		$mainframe	= JFactory::getApplication();
 
 		$filter		= $mainframe->getUserStateFromRequest( 'com_easydiscuss.subscription.filter', 'filter', 'site', 'word' );
-
+		
 
 		// Get the WHERE and ORDER BY clauses for the query
 		$where		= $this->_buildQueryWhere();
@@ -324,17 +324,5 @@ class EasyDiscussModelSubscribe extends EasyDiscussAdminModel
 				return false;
 			}
 		}
-	}
-
-	public function isSubscribed( $userid, $cid, $type = 'post' )
-	{
-		$db		= DiscussHelper::getDBO();
-		$query	= 'SELECT `id` FROM `#__discuss_subscription`'
-				. ' WHERE `type` = ' . $db->quote( $type )
-				. ' AND `userid` = ' . $db->quote( $userid )
-				. ' AND `cid` = ' . $db->quote( $cid );
-
-		$db->setQuery( $query );
-		return $db->loadResult();
 	}
 }

@@ -14,6 +14,14 @@
 defined('_JEXEC') or die('Restricted access');
 $currentTagId = JRequest::getInt('id');
 ?>
+<script type="text/javascript">
+EasyDiscuss.ready(function($){
+
+	$( '.editProfileTabs' ).children( ':first' ).addClass( 'active' );
+
+	$( '.editProfileTabsContent' ).children( ':first' ).addClass( 'active' );
+})
+</script>
 <h2 class="discuss-component-title"><?php echo JText::_('COM_EASYDISCUSS_EDIT_PROFILE'); ?></h2>
 <hr />
 <div id="dc_profile" class="discuss-form">

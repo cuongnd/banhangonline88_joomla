@@ -24,9 +24,9 @@ $editor = JFactory::getEditor();
 EasyDiscuss.require()
 	.library('markitup')
 	.done(function($){
-		$('.dc_reply_content').markItUp(
-			$.getEasyDiscussBBCodeSettings
-		);
+		$('.dc_reply_content').markItUp({
+			set: "bbcode_easydiscuss",
+		});
 	});
 </script>
 <?php } ?>

@@ -1122,7 +1122,7 @@ class DiscussCategory extends JTable
 
 		$query	= 'select `id` from `#__discuss_category`';
 		$query	.= ' where parent_id = ' . $db->Quote( $parentId );
-		$query	.= ' order by lft, id';
+		$query	.= ' order by lft';
 
 		$db->setQuery( $query );
 		$children = $db->loadObjectList();
@@ -1223,7 +1223,7 @@ class DiscussCategory extends JTable
 				if( DiscussHelper::getJoomlaVersion() >= '1.6' )
 				{
 					$query = 'select b.`id` from `#__users` as b inner join `#__user_usergroup_map` AS a on b.`id` = a.`user_id`';
-					$query .= ' WHERE a.`group_id` IN (' . $gids . ')';
+					$query .= ' WHERE a.`group_id` IN (' . $gids . ')';	
 				}
 				else
 				{

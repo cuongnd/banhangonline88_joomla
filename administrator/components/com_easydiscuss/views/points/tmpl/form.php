@@ -16,8 +16,8 @@ defined('_JEXEC') or die('Restricted access');
 <script type="text/javascript">
 function showDescription( id )
 {
-	EasyDiscuss.$( '.rule-description' ).hide();
-	EasyDiscuss.$( '#rule-' + id ).show();
+	discussQuery( '.rule-description' ).hide();
+	discussQuery( '#rule-' + id ).show();
 }
 EasyDiscuss(function($){
 	$.Joomla( 'submitbutton' , function(action){

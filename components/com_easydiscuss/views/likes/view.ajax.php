@@ -11,8 +11,6 @@
 */
 defined('_JEXEC') or die('Restricted access');
 
-require_once( DISCUSS_ROOT . '/views.php' );
-
 class EasyDiscussViewLikes extends EasyDiscussView
 {
 	/**
@@ -73,11 +71,7 @@ class EasyDiscussViewLikes extends EasyDiscussView
 		// Add JomSocial activity item if the post for the main discussion item if it has been liked.
 		if( $post->published && $isLike )
 		{
-			// EasySocial instegrations
-			DiscussHelper::getHelper( 'EasySocial' )->notify( 'new.likes' , $post , $question );
-
 			DiscussHelper::getHelper( 'jomsocial' )->addActivityLikes( $post , $question );
-			DiscussHelper::getHelper( 'easysocial' )->likesStream( $post , $question );
 		}
 
 		// Add a badge record for the user when they like a discussion
@@ -89,9 +83,6 @@ class EasyDiscussViewLikes extends EasyDiscussView
 
 			DiscussHelper::getHelper( 'Badges' )->assign( 'easydiscuss.like.discussion' , $my->id );
 			DiscussHelper::getHelper( 'Points' )->assign( 'easydiscuss.like.discussion' , $my->id );
-
-			// Assign badge for EasySocial
-			DiscussHelper::getHelper( 'EasySocial' )->assignBadge( 'like.question' , $my->id , JText::sprintf( 'COM_EASYDISCUSS_BADGES_HISTORY_LIKE_DISCUSSION' , $question->title ) );
 		}
 
 		// Add a badge record for the user when they like a discussion
@@ -159,10 +150,7 @@ class EasyDiscussViewLikes extends EasyDiscussView
 			$emailTemplate	= 'email.like.post.php';
 
 			$emailData						= array();
-			$emailData[ 'authorName']		= $profile->getName();
-			$emailData[ 'authorAvatar' ]	= $profile->getAvatar();
-			$emailData[ 'replyContent' ]	= $post->content;
-			$emailData[ 'postLink' ]		= DiscussRouter::getRoutedURL('index.php?option=com_easydiscuss&view=post&id=' . $question->id, false, true);
+			$emailData['authorName']		= $profile->getName();
 
 			$recipient 		= JFactory::getUser( $post->user_id );
 

@@ -200,7 +200,6 @@ EasyDiscuss.ready(function($){
 							<?php
 								$nameFormat = array();
 								$avatarIntegration[] = JHTML::_('select.option', 'default', JText::_( 'Default' ) );
-								$avatarIntegration[] = JHTML::_('select.option', 'easysocial', JText::_( 'EasySocial' ) );
 								$avatarIntegration[] = JHTML::_('select.option', 'anahita', JText::_( 'Anahita' ) );
 								$avatarIntegration[] = JHTML::_('select.option', 'communitybuilder', JText::_( 'Community Builder' ) );
 								$avatarIntegration[] = JHTML::_('select.option', 'easyblog', JText::_( 'EasyBlog' ) );

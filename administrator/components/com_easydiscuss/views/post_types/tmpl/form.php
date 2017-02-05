@@ -49,9 +49,7 @@ $this->postTypes = empty($this->postTypes) ? '' : $this->postTypes;
 							</div>
 						</div>
 					</div>
-
-
-					<div id="option01" class="accordion-body collapse in" <?php echo ( !$this->postTypes->id ) ? 'style="display:none;"' : ''; ?> >
+					<div id="option01" class="accordion-body collapse in">
 						<div class="wbody">
 							<div class="si-form-row">
 								<div class="span5 form-row-label">
@@ -63,12 +61,11 @@ $this->postTypes = empty($this->postTypes) ? '' : $this->postTypes;
 									data-original-title="<?php echo JText::_( 'COM_EASYDISCUSS_POST_TYPES_ALIAS' ); ?>"
 									data-content="<?php echo JText::_('COM_EASYDISCUSS_POST_TYPES_ALIAS_DESC'); ?>"
 									>
-									<input type="text" data-customid="<?php echo $this->postTypes->id; ?>" class="input-full" name="alias" maxlength="255" value="<?php echo $this->escape($this->postTypes->alias);?>" <?php echo ( $this->postTypes->id ) ? 'readonly="readonly"' : ''; ?> />
+									<input type="text" data-customid="<?php echo $this->postTypes->id; ?>" class="input-full" name="alias" maxlength="255" value="<?php echo $this->escape($this->postTypes->alias);?>" />
 								</div>
 							</div>
 						</div>
 					</div>
-
 					<div id="option01" class="accordion-body collapse in">
 						<div class="wbody">
 							<div class="si-form-row">

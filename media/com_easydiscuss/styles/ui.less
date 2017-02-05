@@ -7,34 +7,29 @@
 // autocomplete styling
 .ui-autocomplete {
 	&.location-suggestion {
-		width: 250px !important;
-		padding: 3px !important;
-		border-top: 0 !important;
-		max-height: 120px !important;
-		overflow-y: scroll !important;
+		width: 250px;
+		padding: 3px;
+		border-top: 0;
+		max-height: 120px;
+		overflow-y: scroll;
 		z-index: 9999 !important;
-		border-radius: 0 0 2px 2px !important;
-		-moz-border-radius: 0 0 2px 2px !important;
-		-webkit-border-radius: 0 0 2px 2px !important;
-		background: white !important;
-		list-style: none;
+		border-radius: 0 0 2px 2px;
+		-moz-border-radius: 0 0 2px 2px;
+		-webkit-border-radius: 0 0 2px 2px;
 		.ui-menu-item {
 			a {
-				font-family: sans-serif !important;
-				font-size: 12px !important;
-				text-align: left !important;
-				padding: 5px 8px !important;
-				border-radius: 2px !important;
-				-moz-border-radius: 2px !important;
-				-webkit-border-radius: 2px !important;
-				display: block;
+				font-family: sans-serif;
+				font-size: 12px;
 				text-align: left;
+				padding: 5px 8px;
+				border-radius: 2px;
+				-moz-border-radius: 2px;
+				-webkit-border-radius: 2px;
 			}
 			.ui-state-focus, a:hover {
-				color: white !important;
-				background-color: #3875D7 !important;
-				text-decoration: none;
-				#gradient > .vertical(#3875D7, #2A62BC) !important;
+				color: white;
+				background-color: #3875D7;
+				#gradient > .vertical(#3875D7, #2A62BC);
 			}
 		}
 	}
@@ -112,31 +107,4 @@ div.tooltip.tooltip-ed {
 // ----------------
 #dc_similar-questions .popover {
 	display: block;
-}
-
-
-
-
-/*Responsive video size*/
-(~"@{EasyDiscuss}") {
-	&.w600 .video-container {
-		position: relative;
-		width: 100%;
-		padding-bottom: 56.25%;
-		padding-top: 30px;
-		height: 0;
-		overflow: hidden;
-		clear: both;
-		top: 10px;
-	}
-
-	&.w600 .video-container iframe,
-	&.w600 .video-container object,
-	&.w600 .video-container embed {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-	}
 }

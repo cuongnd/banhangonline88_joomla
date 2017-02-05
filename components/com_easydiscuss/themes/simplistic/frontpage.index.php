@@ -12,26 +12,36 @@
  */
 defined('_JEXEC') or die('Restricted access');
 ?>
+<script type="text/javascript">
+EasyDiscuss
+.require()
+.script('posts')
+.done(function($){
+	$('.discussPostsList').implement( EasyDiscuss.Controller.PostItems,
+	{
+		activefiltertype: '<?php echo $activeFilter; ?>'
+	});
+});
+</script>
 <div class="discuss-main-list">
+
 	<div class="tab-content">
 		<div class="tab-pane active discussPostsList" data-view="index" data-id="<?php echo is_array( $categories ) ? implode( ',' , $categories ) : $categories; ?>">
+			
+
 			<?php if( !empty( $featured ) ){ ?>
 				<h4 class="discuss-featured-title"><?php echo JText::_( 'COM_EASYDISCUSS_FEATURED_TOPICS' );?></h4>
-				<hr />
-				
+
 				<ul class="unstyled discuss-list featured clearfix" itemscope itemtype="http://schema.org/ItemList">
-					<?php foreach( $featured as $featuredPost ){ ?>
-						<?php echo $this->loadTemplate( 'frontpage.post.php' , array( 'post' => $featuredPost ) ); ?>
-					<?php } ?>
+				<?php foreach( $featured as $featuredPost ){ ?>
+					<?php echo $this->loadTemplate( 'frontpage.post.php' , array( 'post' => $featuredPost ) ); ?>
+				<?php } ?>
 				</ul>
 			<?php } ?>
 
 			<div class="categoryFilters">
-				<?php if( !JRequest::getVar('layout') == 'user' ){ ?>
-					<?php echo $this->loadTemplate( 'frontpage.index.filters.php' ); ?>
-				<?php } ?>
+				<?php echo $this->loadTemplate( 'frontpage.index.filters.php' ); ?>
 			</div>
-
 			<div class="clearfix"></div>
 
 			<?php if( $posts ){ ?>
@@ -67,5 +77,5 @@ defined('_JEXEC') or die('Restricted access');
 </div>
 
 <?php if( $system->config->get( 'layout_board_stats' ) ){ ?>
-	<?php echo DiscussHelper::getBoardStatistics(); ?>
+<?php echo DiscussHelper::getBoardStatistics(); ?>
 <?php } ?>

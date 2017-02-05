@@ -1,36 +1,30 @@
 EasyDiscuss.require()
-.library("uniform")
 .language(
 	'COM_EASYDISCUSS_YES_OPTION',
 	'COM_EASYDISCUSS_NO_OPTION'
-)
+    )
+.script('iButton' , 'uniform')
 .done(function($) {
+
+	$('.on_off :checkbox, .on_off :radio').iButton({
+		labelOn: '',
+		labelOff: '',
+		enableDrag: false,
+		allowRadioUncheck: true
+	});
+
+	$('.yes_no :checkbox, .yes_no :radio').iButton({
+		// labelOn: "<?php echo JText::_('COM_EASYDISCUSS_YES_OPTION'); ?>",
+		// labelOff: "<?php echo JText::_('COM_EASYDISCUSS_NO_OPTION'); ?>",
+		labelOn: $.language('COM_EASYDISCUSS_YES_OPTION'),
+		labelOff: $.language('COM_EASYDISCUSS_NO_OPTION'),
+		enableDrag: false,
+		allowRadioUncheck: true
+	});
 
 	// Apply uniform on checkboxes.
 	$('.check, .check :checkbox, input:radio').uniform();
-
-	// Initialize yes/no buttons.
-	$(document).on( 'click.button.data-fd-api', '[data-fd-toggle-value]', function() {
-
-		var parent = $(this).parents('[data-foundry-toggle="buttons-radio"]');
-
-		if(parent.hasClass('disabled')) {
-			return;
-		}
-
-		// This means that this toggle value belongs to a radio button
-		if (parent.length > 0) {
-
-			// Get the current button that's clicked.
-			var value = $(this).data( 'fd-toggle-value' );
-
-			// Set the value here.
-			// Have to manually trigger the change event on the input
-			parent.find( 'input[type=hidden]' ).val( value ).trigger('change');
-			return;
-		}
-	});
- });
+    });
 
 
 EasyDiscuss.ready(function($) {
@@ -39,7 +33,7 @@ EasyDiscuss.ready(function($) {
 
 		// Apply generic checkAll feature
 		$('.discussCheckAll').bind('change' , function() {
-			$('#adminForm').find('input[name=cid\\[\\]]').prop('checked' , $(this).is(':checked'));
+			$('#adminForm').find('input[name=cid\\[\\]]').attr('checked' , $(this).is(':checked'));
 
 			var total = $(this).is(':checked') ? $('#adminForm').find('input[name=cid\\[\\]]').length : 0;
 
@@ -765,7 +759,7 @@ EasyDiscuss.ready(function($) {
 
 			revertEmailForm: function(id) {
 				$('#email-container-' + id).hide();
-				$('#report-action-' + id).children(':first').prop('selected' , true);
+				$('#report-action-' + id).children(':first').attr('selected' , 'selected');
 			}
 		},
 
@@ -819,7 +813,7 @@ EasyDiscuss.ready(function($) {
 				$('#file_contents div').before('<input type="file" name="filedata[]" id="filedata" size="50" />');
 			},
 			remove: function(attachment_id) {
-				$('#button-delete-att-' + attachment_id).prop('disabled', true);
+				$('#button-delete-att-' + attachment_id).attr('disabled', 'disabled');
 				disjax.load('post', 'deleteAttachment', attachment_id);
 			}
 		},

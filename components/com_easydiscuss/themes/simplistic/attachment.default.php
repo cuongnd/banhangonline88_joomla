@@ -12,17 +12,12 @@
  */
 defined('_JEXEC') or die('Restricted access');
 ?>
-<?php echo $this->loadTemplate( $childtheme, array( 'isEmail' => $isEmail ) ); ?>
-
-<?php if( !$isEmail ){ ?>
-
-	<?php if( $attachment->deleteable() ){ ?>
-	<p style="text-align:center;">
-		<a class="btn btn-small btn-danger btn-remove" href="javascript:void(0);" data-id="<?php echo $attachment->id; ?>" data-attachment-remove-button>
-			<i></i>
-			<?php //echo JText::_( 'COM_EASYDISCUSS_DELETE_BUTTON' );?>
-		</a>
-	</p>
-	<?php } ?>
-
+<?php echo $this->loadTemplate( $childtheme ); ?>
+<?php if( $attachment->deleteable() ){ ?>
+<p style="text-align:center;">
+	<a class="btn btn-small btn-danger btn-remove removeItem" href="javascript:void(0);" data-id="<?php echo $attachment->id; ?>">
+		<i></i>
+		<?php //echo JText::_( 'COM_EASYDISCUSS_DELETE_BUTTON' );?>
+	</a>
+</p>
 <?php } ?>

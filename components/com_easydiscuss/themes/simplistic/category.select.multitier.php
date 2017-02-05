@@ -271,7 +271,7 @@ EasyDiscuss.ready(function($){
 
 						if( tierid == category.id )
 						{
-							$( option ).prop('selected', true);
+							$( option ).attr('selected', 'selected');
 						}
 
 						$( selectItem )

@@ -63,7 +63,7 @@ EasyDiscuss(function($){
 			<th style="text-align: left;"><?php echo JHTML::_('grid.sort', JText::_('COM_EASYDISCUSS_USERNAME'), 'a.username', $this->orderDirection, $this->order ); ?></th>
 
 			<?php if( !$this->browse ) { ?>
-			<th style="text-align: left;"><?php echo JText::_('COM_EASYDISCUSS_GROUP'); ?></th>
+			<th style="text-align: left;"><?php echo JHTML::_('grid.sort', JText::_('COM_EASYDISCUSS_GROUP'), 'a.usertype', $this->orderDirection, $this->order ); ?></th>
 
 			<th style="text-align: left;"><?php echo JHTML::_('grid.sort', JText::_('COM_EASYDISCUSS_EMAIL'), 'a.email', $this->orderDirection, $this->order ); ?></th>
 			<th width="50px" nowrap="nowrap"><?php echo JText::_( 'COM_EASYDISCUSS_TOTAL_DISCUSSIONS' ); ?></th>

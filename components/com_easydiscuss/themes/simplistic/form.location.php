@@ -29,7 +29,7 @@ EasyDiscuss
 			height: '250px',
 			width: '100%',
 			mapType : "ROADMAP",
-			language: '<?php echo $system->config->get( 'main_location_language' );?>',
+			language: 'en',
 			"{locationInput}"		: "input[name=address]",
 			"{locationLatitude}"	: "input[name=latitude]",
 			"{locationLongitude}"	: "input[name=longitude]"

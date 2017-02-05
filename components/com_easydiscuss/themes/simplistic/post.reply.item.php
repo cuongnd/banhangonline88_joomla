@@ -16,7 +16,6 @@ defined('_JEXEC') or die('Restricted access');
 $replyBadges = $post->user->getBadges();
 ?>
 <a name="<?php echo JText::_('COM_EASYDISCUSS_REPLY_PERMALINK') . '-' . $post->id;?>"></a>
-
 <div id="dc_reply_<?php echo $post->id;?>" class="discuss-item discussReplyItem mt-10<?php echo $post->islock ? ' is-locked' : '';?><?php echo $post->minimize ? ' is-minimized' : '';?><?php echo $post->isPollLocked() ? ' is-poll-lock' : '';?>" data-id="<?php echo $post->id;?>">
 
 	<div class="discuss-item-hd">
@@ -24,14 +23,13 @@ $replyBadges = $post->user->getBadges();
 			<?php echo JText::_('COM_EASYDISCUSS_ENTRY_ACCEPTED_ANSWER'); ?>
 		</h2>
 	</div>
-
 	<!-- Discussion left side bar -->
 	<div class="discuss-item-left discuss-user discuss-user-role-<?php echo $post->getOwner()->roleid; ?>">
 		<a href="<?php echo $post->getOwner()->link;?>">
 			<?php if ($system->config->get( 'layout_avatar' ) && $system->config->get( 'layout_avatar_in_post' )) { ?>
-				<div class="discuss-avatar avatar-medium avatar-circle">
-					<img src="<?php echo $post->getOwner()->avatar;?>" alt="<?php echo $this->escape( $post->getOwner()->name );?>"<?php echo DiscussHelper::getHelper( 'EasySocial' )->getPopbox( $post->getOwner()->id );?> />
-					<div class="discuss-role-title <?php echo $post->getOwner()->rolelabel; ?>"><?php echo $this->escape($post->getOwner()->role); ?></div>
+				<div class="discuss-avatar avatar-medium <?php echo $post->getOwner()->rolelabel; ?>">
+					<img src="<?php echo $post->getOwner()->avatar;?>" alt="<?php echo $this->escape( $post->getOwner()->name );?>" />
+					<div class="discuss-role-title"><?php echo $this->escape($post->getOwner()->role); ?></div>
 				</div>
 			<?php } ?>
 			<div class="discuss-user-name mv-5">
@@ -50,7 +48,7 @@ $replyBadges = $post->user->getBadges();
 		<?php echo $this->loadTemplate( 'online.php' , array( 'user' => $post->user ) ); ?>
 
 		<?php if( $post->getOwner()->id ){ ?>
-			<?php echo $this->loadTemplate( 'post.badges.php' , array( 'badges' => $replyBadges ) ); ?>			
+		<?php echo $this->loadTemplate( 'post.badges.php' , array( 'badges' => $replyBadges ) ); ?>			
 		<?php } ?>
 		
 		<?php echo $this->loadTemplate( 'post.conversation.php' , array( 'userId' => $post->getOwner()->id ) ); ?>
@@ -64,7 +62,7 @@ $replyBadges = $post->user->getBadges();
 				<div class="discuss-action-options-1 fs-11">
 
 					<div class="discuss-clock ml-10 pull-left">
-						<i class="icon-time"></i> <?php echo $this->formatDate( $system->config->get('layout_dateformat', '%A, %B %d %Y, %I:%M %p') , $post->created);?> -
+						<i class="icon-ed-time"></i> <?php echo $this->formatDate( $system->config->get('layout_dateformat', '%A, %B %d %Y, %I:%M %p') , $post->created);?> -
 						<a href="<?php echo DiscussRouter::getPostRoute( $post->parent_id ) . '#' . JText::_('COM_EASYDISCUSS_REPLY_PERMALINK') . '-' . $post->id;?>" title="<?php echo JText::_('COM_EASYDISCUSS_REPLY_PERMALINK_TO'); ?>">#<?php echo JText::_( 'COM_EASYDISCUSS_POST_PERMALINK' );?></a>
 					</div>
 
@@ -85,11 +83,11 @@ $replyBadges = $post->user->getBadges();
 
 					<div class="discuss-content">
 						<?php if( $system->config->get( 'main_allowvote' ) ){ ?>
-							<?php echo $this->loadTemplate( 'post.vote.php' , array( 'access' => $post->access , 'post' => $post ) ); ?>
+						<?php echo $this->loadTemplate( 'post.vote.php' , array( 'access' => $post->access , 'post' => $post ) ); ?>
 						<?php } ?>
 
 						<div class="discuss-content-item">
-							<?php echo $post->content;?>
+							<?php echo DiscussHelper::bbcodeHtmlSwitcher( $post, 'reply', false ); ?>
 						</div>
 					</div>
 
@@ -125,7 +123,7 @@ $replyBadges = $post->user->getBadges();
 		<!-- @php when .discuss-story minimize show out -->
 		<div id="reply_minimize_msg_5" class="discuss-reply-minimized">
 			<b><?php echo JText::_( 'COM_EASYDISCUSS_REPLY_CURRENTLY_MINIMIZED');?></b>
-			<a href="javascript:void(0);" class="btn btn-small" onclick="discuss.reply.maximize('<?php echo $post->id;?>');"><?php echo JText::_( 'COM_EASYDISCUSS_SHOW' );?></a>
+			<a href="javascript:void(0);" class="btn btn-small" onclick="discuss.reply.maximize('<?php echo $post->id;?>');">Show</a>
 		</div>
 
 	</div>

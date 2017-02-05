@@ -13,105 +13,70 @@
 
 defined('_JEXEC') or die('Restricted access');
 ?>
-<div class="adminform-body">
-	<form name="adminForm" id="adminForm" action="index.php" method="post" class="adminForm">
-		<div class="row-fluid">
-			<div class="span6">
-				<div class="widget accordion-group">
-					<div class="whead accordion-heading">
-						<a href="javascript:void(0);" data-foundry-toggle="collapse" data-target="#option01">
-						<h6><?php echo JText::_( 'COM_EASYDISCUSS_AUTOPOST_TWITTER' ); ?></h6>
-						<!-- <i class="icon-chevron-down"></i> -->
-						</a>
-					</div>
-
-					<div id="option01" class="accordion-body collapse in">
-						<div class="wbody">
-							<div class="si-form-row">
-								<div class="span5 form-row-label">
-									<label for="main_autopost_twitter">
-										<?php echo JText::_( 'COM_EASYDISCUSS_ENABLE_AUTOPOST' );?>
-									</label>
+<form name="adminForm" id="adminForm" action="index.php" method="post" class="adminForm">
+<table width="100%">
+	<tr>
+		<td valign="top">
+			<fieldset>
+				<legend><?php echo JText::_( 'COM_EASYDISCUSS_AUTOPOST_TWITTER' );?></legend>
+				<table width="100%" class="adminForm">
+					<tbody>
+						<tr>
+							<td class="key">
+								<label for="main_autopost_twitter"><?php echo JText::_( 'COM_EASYDISCUSS_ENABLE_AUTOPOST' );?></label>
+							</td>
+							<td valign="top">
+								<?php echo $this->renderCheckbox( 'main_autopost_twitter' , $this->config->get( 'main_autopost_twitter' ) ); ?>
+							</td>
+						</tr>
+						<tr>
+							<td class="key">
+								<label for="main_autopost_twitter_id"><?php echo JText::_( 'COM_EASYDISCUSS_AUTOPOST_TWITTER_CONSUMER_KEY' );?></label>
+							</td>
+							<td valign="top">
+								<input type="text" name="main_autopost_twitter_id" id="main_autopost_twitter_id" value="<?php echo $this->config->get( 'main_autopost_twitter_id' );?>" />
+							</td>
+						</tr>
+						<tr>
+							<td class="key">
+								<label for="main_autopost_twitter_secret"><?php echo JText::_( 'COM_EASYDISCUSS_AUTOPOST_TWITTER_CONSUMER_SECRET' );?></label>
+							</td>
+							<td>
+								<input type="text" name="main_autopost_twitter_secret" id="main_autopost_twitter_secret" value="<?php echo $this->config->get( 'main_autopost_twitter_secret' );?>" />
+							</td>
+						</tr>
+						<tr>
+							<td class="key">
+								<?php echo JText::_( 'COM_EASYDISCUSS_AUTOPOST_SIGN_IN'); ?>
+							</td>
+							<td>
+								<?php if( $this->associated ){ ?>
+								<a href="<?php echo JRoute::_( 'index.php?option=com_easydiscuss&controller=autoposting&task=revoke&type=twitter');?>"><?php echo JText::_( 'COM_EASYDISCUSS_AUTOPOST_REVOKE_ACCCESS' );?></a>
+								<?php } else { ?>
+								<div>
+									<a href="<?php echo JRoute::_( 'index.php?option=com_easydiscuss&controller=autoposting&task=request&type=twitter');?>"><img src="<?php echo JURI::root();?>media/com_easydiscuss/images/twitter_signon.png" /></a>
 								</div>
-								<div class="span7"
-									rel="ed-popover"
-									data-placement="left"
-									data-original-title="<?php echo JText::_( 'COM_EASYDISCUSS_ENABLE_AUTOPOST' ); ?>"
-									data-content="<?php echo JText::_('COM_EASYDISCUSS_ENABLE_AUTOPOST'); ?>"
-								>
-									<?php echo $this->renderCheckbox( 'main_autopost_twitter' , $this->config->get( 'main_autopost_twitter' ) ); ?>
-								</div>
-							</div>
-							<div class="si-form-row">
-								<div class="span5 form-row-label">
-									<label for="main_autopost_twitter_id">
-										<?php echo JText::_( 'COM_EASYDISCUSS_AUTOPOST_TWITTER_CONSUMER_KEY' );?>
-									</label>
-								</div>
-								<div class="span7"
-									rel="ed-popover"
-									data-placement="left"
-									data-original-title="<?php echo JText::_( 'COM_EASYDISCUSS_AUTOPOST_TWITTER_CONSUMER_KEY' ); ?>"
-									data-content="<?php echo JText::_('COM_EASYDISCUSS_AUTOPOST_TWITTER_CONSUMER_KEY'); ?>"
-								>
-									<input type="text" name="main_autopost_twitter_id" id="main_autopost_twitter_id" value="<?php echo $this->config->get( 'main_autopost_twitter_id' );?>" />
-								</div>
-							</div>
-							<div class="si-form-row">
-								<div class="span5 form-row-label">
-									<label for="main_autopost_twitter_secret">
-										<?php echo JText::_( 'COM_EASYDISCUSS_AUTOPOST_TWITTER_CONSUMER_SECRET' );?>
-									</label>
-								</div>
-								<div class="span7"
-									rel="ed-popover"
-									data-placement="left"
-									data-original-title="<?php echo JText::_( 'COM_EASYDISCUSS_AUTOPOST_TWITTER_CONSUMER_SECRET' ); ?>"
-									data-content="<?php echo JText::_('COM_EASYDISCUSS_AUTOPOST_TWITTER_CONSUMER_SECRET'); ?>"
-								>
-									<input type="text" name="main_autopost_twitter_secret" id="main_autopost_twitter_secret" value="<?php echo $this->config->get( 'main_autopost_twitter_secret' );?>" />
-								</div>
-							</div>
-							<div class="si-form-row">
-								<div class="span5 form-row-label">
-									<label for="main_autopost_twitter_secret">
-										<?php echo JText::_( 'COM_EASYDISCUSS_AUTOPOST_SIGN_IN' );?>
-									</label>
-								</div>
-								<div class="span7">
-									<?php if( $this->associated ){ ?>
-									<a href="<?php echo JRoute::_( 'index.php?option=com_easydiscuss&controller=autoposting&task=revoke&type=twitter');?>"><?php echo JText::_( 'COM_EASYDISCUSS_AUTOPOST_REVOKE_ACCCESS' );?></a>
-									<?php } else { ?>
-									<div>
-										<a href="<?php echo JRoute::_( 'index.php?option=com_easydiscuss&controller=autoposting&task=request&type=twitter');?>"><img src="<?php echo JURI::root();?>media/com_easydiscuss/images/twitter_signon.png" /></a>
-									</div>
-									<?php } ?>
-								</div>
-							</div>
-							<div class="si-form-row">
-								<div class="span5 form-row-label">
-									<label for="main_autopost_twitter_message">
-										<?php echo JText::_( 'COM_EASYDISCUSS_TWITTER_AUTOPOST_POST_MESSAGE' );?>
-									</label>
-								</div>
-								<div class="span7"
-									rel="ed-popover"
-									data-placement="left"
-									data-original-title="<?php echo JText::_( 'COM_EASYDISCUSS_TWITTER_AUTOPOST_POST_MESSAGE' ); ?>"
-									data-content="<?php echo JText::_('COM_EASYDISCUSS_TWITTER_AUTOPOST_POST_MESSAGE'); ?>"
-								>
-									<textarea name="main_autopost_twitter_message"><?php echo $this->config->get( 'main_autopost_twitter_message' );?></textarea>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	<input type="hidden" name="step" value="completed" />
-	<input type="hidden" name="task" value="save" />
-	<input type="hidden" name="layout" value="twitter" />
-	<input type="hidden" name="controller" value="autoposting" />
-	<input type="hidden" name="option" value="com_easydiscuss" />
-	</form>
-</div>
+								<?php } ?>
+							</td>
+						</tr>
+						<tr>
+							<td class="key">
+								<label for="main_autopost_twitter_message"><?php echo JText::_( 'COM_EASYDISCUSS_TWITTER_AUTOPOST_POST_MESSAGE' ); ?></label>
+							</td>
+							<td>
+								<textarea name="main_autopost_twitter_message"><?php echo $this->config->get( 'main_autopost_twitter_message' );?></textarea>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</fieldset>
+		</td>
+		<td width="50%">&nbsp;</td>
+	</tr>
+</table>
+<input type="hidden" name="step" value="completed" />
+<input type="hidden" name="task" value="save" />
+<input type="hidden" name="layout" value="twitter" />
+<input type="hidden" name="controller" value="autoposting" />
+<input type="hidden" name="option" value="com_easydiscuss" />
+</form>

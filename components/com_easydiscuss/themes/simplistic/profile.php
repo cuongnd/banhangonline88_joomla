@@ -13,28 +13,41 @@
 defined('_JEXEC') or die('Restricted access');
 ?>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
+<script type="text/javascript">
+EasyDiscuss
+.require()
+.script( 'profile' )
+.done(function($){
+
+	$('.discussProfilePage').implement(
+		'EasyDiscuss.Controller.Profile',
+		{
+			defaultTab: '<?php echo ucfirst( $viewType );?>'
+		}
+	);
+});
+</script>
 <div class="discuss-profile discussProfilePage" data-id="<?php echo $profile->id;?>">
 	<div class="row-fluid">
 		<div class="discuss-profile-left">
 			<div class="discuss-user">
 
-				<div class="discuss-avatar<?php echo ( $system->config->get( 'layout_avatar' ) ) ? ' avatar-large' : '' ; ?>">
+				<div class="discuss-avatar<?php echo ( $system->config->get( 'layout_avatar' ) ) ? ' avatar-large' : '' ; ?> <?php echo $profile->getRoleLabelClassname(); ?>">
 					<?php if( $system->config->get( 'layout_avatar' ) ) { ?>
 					<img src="<?php echo $profile->getAvatar( false );?>" width="160" alt="<?php echo $this->escape( $profile->getName() );?>" />
 					<?php } else { ?>
 					<?php echo $this->escape( $profile->getName() );?>
 					<?php } ?>
 					<?php if($system->config->get( 'layout_profile_roles' ) && $profile->getRole() ) { ?>
-					<div class="discuss-role-title <?php echo $profile->getRoleLabelClassname(); ?>"><?php echo $this->escape($profile->getRole()); ?></div>
+					<div class="discuss-role-title "><?php echo $this->escape($profile->getRole()); ?></div>
 					<?php } ?>
-
 				</div>
-				<?php echo $this->loadTemplate( 'online.php' , array( 'user' => $profile ) ); ?>
+
 				<?php echo $this->loadTemplate( 'post.conversation.php' , array( 'userId' => $profile->id ) ); ?>
 
 
 
-				<?php if ($system->config->get( 'main_ranking' )){ ?>
+				<?php if ($system->config->get( 'main_ranking' )) : ?>
 				<div class="widget user-rank">
 					<div class="widget-body">
 						<span class="discuss-user-rank fs-11"><?php echo DiscussHelper::getUserRanks( $profile->id ); ?></span>
@@ -45,20 +58,12 @@ defined('_JEXEC') or die('Restricted access');
 						</div>
 					</div>
 				</div>
-				<?php } ?>
+				<?php endif; ?>
 
-				<?php if( $system->my->id == $profile->id && ($system->config->get( 'layout_avatarIntegration' ) != 'jomsocial' && $system->config->get( 'layout_avatarIntegration' ) != 'easysocial' ) ){ ?>
+				<?php if( $system->my->id == $profile->id && $system->config->get( 'layout_avatarIntegration' ) != 'jomsocial' ){ ?>
 				<div class="mt-10 mb-15">
 					<a class="btn btn-small" href="<?php echo DiscussRouter::_( 'index.php?option=com_easydiscuss&view=profile&layout=edit' );?>">
 						<i class="icon-edit"></i> <?php echo JText::_( 'COM_EASYDISCUSS_USER_EDIT_PROFILE');?>
-					</a>
-				</div>
-				<?php } ?>
-
-				<?php if( $system->my->id != $profile->id && DiscussHelper::isSiteAdmin( $system->my->id ) ){ ?>
-				<div class="mt-10 mb-15">
-					<a class="btn-danger btn btn-small" href="<?php echo DiscussRouter::_( 'index.php?option=com_easydiscuss&controller=profile&task=disableUser&id=' . $profile->id );?>">
-						<i class="icon-ban-circle"></i> <?php echo JText::_( 'COM_EASYDISCUSS_DISABLE_USER');?>
 					</a>
 				</div>
 				<?php } ?>
@@ -72,7 +77,7 @@ defined('_JEXEC') or die('Restricted access');
 					</div>
 
 					<div class="small">
-						<a href="<?php echo DiscussRouter::_( 'index.php?option=com_easydiscuss&view=points&layout=history&id=' . $profile->id );?>"><?php echo JText::_( 'COM_EASYDISCUSS_VIEW_HISTORY' );?></a>
+						<a href="<?php echo DiscussRouter::_( 'index.php?option=com_easydiscuss&view=points&layout=history&id=' . $profile->id );?>"><?php echo JText::_( 'View History' );?></a>
 					</div>
 				</div>
 				<?php if( $system->config->get( 'layout_profile_showsocial') ) { ?>
@@ -150,7 +155,7 @@ defined('_JEXEC') or die('Restricted access');
 							<span class="label label-important label-notification"><?php echo $profile->getNumTopicAnswered(); ?></span>
 						</a>
 					</li>
-
+					
 					<?php if( $system->config->get( 'main_master_tags' ) ){ ?>
 						<li>
 							<a data-foundry-toggle="tab" href="#tags" class="tabTags profileTab" data-id="tags">
@@ -203,11 +208,9 @@ defined('_JEXEC') or die('Restricted access');
 					<?php } ?>
 					<h2><?php echo DiscussStringHelper::escape($profile->getName());?></h2>
 					<?php if( $system->config->get( 'main_signature_visibility' ) ){ ?>
-						<?php if( DiscussHelper::getHelper('ACL')->allowed('show_signature') ){ ?>
-						<div>
-							<?php echo DiscussHelper::bbcodeHtmlSwitcher( $profile->getSignature( 'true' ), 'signature', false ); ?>
-						</div>
-						<?php } ?>
+					<div>
+						<?php echo DiscussHelper::bbcodeHtmlSwitcher( $profile->getSignature( 'true' ), 'signature', false ); ?>
+					</div>
 					<?php } ?>
 					<hr />
 					<p class="profile-desp">

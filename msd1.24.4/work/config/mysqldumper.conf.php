@@ -1,7 +1,7 @@
 <?php
-#Vars - written at 2016-08-20
+#Vars - written at 2016-11-29
 $dbhost="localhost";
-$dbname="banhangonl_ho3";
+$dbname="banhangonl_bho2";
 $dbuser="banhangonl_bho";
 $dbpass="w7a8GNPjXb";
 $dbport=3306;

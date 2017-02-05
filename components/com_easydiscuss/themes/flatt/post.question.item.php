@@ -57,8 +57,8 @@ defined('_JEXEC') or die('Restricted access');
 		<div class="discuss-story">
 			<div class="discuss-story-hd">
 				<div class="ph-10">
-					<div class="postStatus label label-info label-post_status<?php echo $post->getStatusClass();?>"><?php echo $post->getStatusMessage();?></div>
-					<div class="postType label label-important label-post_type<?php echo $post->getPostTypeSuffix(); ?>" ><?php echo $post->getPostType(); ?></div>
+					<div class="postStatus label label-info label-post_status<?php echo $postStatusClass ?>"><?php echo $postStatus; ?></div>
+					<div class="postType label label-important label-post_type<?php echo $suffix; ?>" ><?php echo $post->post_type ?></div>
 					<a href="<?php echo DiscussRouter::getPostRoute( $post->id );?>" class="">
 						<h2 class="discuss-post-title">
 							<?php echo $post->title; ?>
@@ -78,8 +78,7 @@ defined('_JEXEC') or die('Restricted access');
 							<?php } ?>
 
 							<div class="discuss-content-item">
-								<?php //echo DiscussHelper::bbcodeHtmlSwitcher( $post, 'question', false ); ?>
-								<?php echo $post->content; ?>
+								<?php echo DiscussHelper::bbcodeHtmlSwitcher( $post, 'question', false ); ?>
 							</div>
 
 							<!-- polls -->
@@ -101,14 +100,11 @@ defined('_JEXEC') or die('Restricted access');
 						</div>
 
 
-						<!-- <div class="discuss-users-action row-fluid mb-10"> -->
+						<div class="discuss-users-action row-fluid mb-10">
 							<?php //echo $this->loadTemplate( 'post.likes.php' , array( 'post' => $post ) ); ?>
-						<!-- </div> -->
+						</div>
 
 						<div class="discuss-users-action row-fluid">
-							<?php echo $this->loadTemplate( 'post.likes.php' , array( 'post' => $post ) ); ?>
-							<?php echo $this->loadTemplate( 'post.favourites.php' , array( 'post' => $post ) ); ?>
-
 							<?php echo $this->loadTemplate( 'post.comments.php' , array( 'reply' => $post, 'question' => $post  ) ); ?>
 
 						</div>
@@ -118,7 +114,8 @@ defined('_JEXEC') or die('Restricted access');
 
 						<?php echo $this->loadTemplate( 'post.location.php' , array( 'post' => $post ) ); ?>
 
-
+						<?php echo $this->loadTemplate( 'post.likes.php' , array( 'post' => $post ) ); ?>
+						<?php echo $this->loadTemplate( 'post.favourites.php' , array( 'post' => $post ) ); ?>
 
 
 
@@ -154,7 +151,7 @@ defined('_JEXEC') or die('Restricted access');
 <div class="pa-10">
 	<div class="row-fluid">
 		<div class="span6">
-			<strong><?php echo JText::_( 'COM_EASYDISCUSS_SHARE_THIS_POST' ); ?>:</strong> <?php echo DiscussHelper::showSocialButtons( $post, 'horizontal' ); ?>
+			<strong>Share this post:</strong> <?php echo DiscussHelper::showSocialButtons( $post, 'horizontal' ); ?>
 		</div>
 		<div class="span6">
 			<?php echo DiscussHelper::getWhosOnline();?>

@@ -12,11 +12,6 @@
  */
 
 defined('_JEXEC') or die('Restricted access');
-
-if( !$prefix = JRequest::getCmd('prefix') ){
-	$prefix = '';
-}
-
 ?>
 <script type="text/javascript">
 EasyDiscuss.ready(function($){
@@ -183,12 +178,8 @@ EasyDiscuss.ready(function($){
 		</tfoot>
 		</table>
 
-<?php if( $this->browse ){ ?>
-<input type="hidden" name="browse" value="1" />
-<input type="hidden" name="browseFunction" value="<?php echo $this->browseFunction; ?>" />
-<input type="hidden" name="tmpl" value="component" />
-<input type="hidden" name="prefix" value="<?php echo $prefix; ?>" />
-<?php } ?>
+
+
 
 
 <input type="hidden" name="boxchecked" value="0" />

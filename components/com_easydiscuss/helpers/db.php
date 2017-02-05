@@ -14,7 +14,6 @@
 class DiscussDBHelper
 {
 	public $helper		= null;
-	static $extConn 	= null;
 
 	public function __construct()
 	{
@@ -25,7 +24,7 @@ class DiscussDBHelper
 		{
 			$className 	= 'EasyDiscussDBJoomla30';
 		}
-
+		
 		$this->helper 	= new $className();
 	}
 
@@ -43,35 +42,6 @@ class DiscussDBHelper
 
 		return call_user_func_array( array( $this->helper , $method ) , $refArray );
 	}
-
-	public function setVBConnection( $data = '' )
-	{
-		if( empty(self::$extConn) )
-		{
-			if( empty($data) )
-			{
-				$config   = DiscussHelper::getConfig();
-				$driver   = $config->get( 'migrator_vBulletin_driver' );
-				$host     = $config->get( 'migrator_vBulletin_host' );
-				$user     = $config->get( 'migrator_vBulletin_user' );
-				$password = $config->get( 'migrator_vBulletin_password' );
-				$database = $config->get( 'migrator_vBulletin_name' );
-				$prefix   = $config->get( 'migrator_vBulletin_prefix' );
-
-				$data	= array( 'driver' => $driver, 'host' => $host, 'user' => $user, 'password' => $password, 'database' => $database, 'prefix' => $prefix );
-
-			}
-		}
-
-		self::$extConn = JDatabase::getInstance( $data );
-
-		return self::$extConn;
-	}
-
-	public static function getVBConnection()
-	{
-		return self::$extConn;
-	}
 }
 
 class EasyDiscussDbJoomla15
@@ -82,7 +52,7 @@ class EasyDiscussDbJoomla15
 	{
 		$this->db	= JFactory::getDBO();
 	}
-
+	
 	public function __call( $method , $args )
 	{
 		$refArray	= array();
@@ -113,7 +83,7 @@ class EasyDiscussDbJoomla30
 	{
 		return $this->db->loadColumn();
 	}
-
+	
 	public function nameQuote( $str )
 	{
 		return $this->db->quoteName( $str );

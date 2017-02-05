@@ -15,8 +15,8 @@ defined('_JEXEC') or die('Restricted access');
 <li class="pollAnswers mb-5">
 	<div class="input-append">
 		<input type="text" name="pollitems[]" class="input-xlarge answerText" />
-	[% if( showRemove ){ %]
+	<@ if( showRemove ){ @>
 	<a href="javascript:void(0);" class="btn btn-danger removeItem"><i class="icon-remove"></i> </a>
-	[% } %]
+	<@ } @>
 	</div>
 </li>

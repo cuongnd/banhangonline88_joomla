@@ -38,24 +38,29 @@ if( $system->config->get( 'reply_field_references' ) ){
 					$references[ $i ] 	= str_ireplace( array( '"' , "'" ) , '' , $references[ $i ] );
 			?>
 			<li>
-				<input type="text" name="params_references[]" class="form-control" value="<?php echo $this->escape( $references[ $i ] ); ?>" />
+
+				<div class="input-append">
+					<input type="text" name="params_references[]" class="input-xlarge" value="<?php echo $this->escape( $references[ $i ] ); ?>" />
+
 				<?php if( $i != 0 ){ ?>
-				<a href="javascript:void(0);" onclick="discuss.reply.removeURL(this);" class="btn remove-url" style="display: inline-block;"><i class="icon-remove"></i> </a>
+					<a href="javascript:void(0);" onclick="discuss.reply.removeURL(this);" class="btn remove-url" style="display: inline-block;"><i class="icon-remove"></i> </a>
 				<?php } else { ?>
-				<a href="javascript:void(0);" onclick="discuss.reply.removeURL(this);" style="display: none;" class="btn btn-danger remove-url"><i class="icon-remove"></i> </a>
+					<a href="javascript:void(0);" onclick="discuss.reply.removeURL(this);" style="display: none;" class="btn btn-danger remove-url"><i class="icon-remove"></i> </a>
 				<?php } ?>
+				</div>
 			</li>
 			<?php } ?>
 		<?php } else { ?>
 			<li>
-				<input type="text" name="params_references[]" class="form-control" />
-				<a href="javascript:void(0);" onclick="discuss.reply.removeURL(this);" style="display: inline-block;" class="btn btn-danger remove-url"><i class="icon-remove"></i> </a>
+				<div class="input-append">
+					<input type="text" name="params_references[]" class="input-xlarge" />
+					<a href="javascript:void(0);" onclick="discuss.reply.removeURL(this);" style="display: inline-block;" class="btn btn-danger remove-url"><i class="icon-remove"></i> </a>
+				</div>
 			</li>
 		<?php } ?>
 		</ul>
-		<a href="javascript:void(0);" class="butt butt-default" onclick="discuss.reply.addURL(this);">
-			<i class="i i-plus">
-			</i> <?php echo JText::_( 'COM_EASYDISCUSS_REFERENCES_ADD_LINK_BUTTON' );?>
+		<a href="javascript:void(0);" class="btn btn-small btn-success" onclick="discuss.reply.addURL(this);">
+			<i class="icon-plus-sign"></i> <?php echo JText::_( 'COM_EASYDISCUSS_REFERENCES_ADD_LINK_BUTTON' );?>
 		</a>
 	</div>
 </div>

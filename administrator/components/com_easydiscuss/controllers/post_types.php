@@ -86,7 +86,7 @@ class EasyDiscussControllerPost_types extends EasyDiscussController
 		$message	= $state ? JText::_( 'COM_EASYDISCUSS_POST_TYPES_PUBLISHED' ) : JText::_( 'COM_EASYDISCUSS_POST_TYPES_UNPUBLISHED' );
 
 		DiscussHelper::setMessageQueue( $message , DISCUSS_QUEUE_SUCCESS );
-
+		
 		$app->redirect( 'index.php?option=com_easydiscuss&view=post_types' );
 	}
 
@@ -119,9 +119,6 @@ class EasyDiscussControllerPost_types extends EasyDiscussController
 		if ($postTypes->title != $oldTitle || $oldTitle == '')
 		{
 			$postTypes->alias	= DiscussHelper::getAlias($postTypes->title);
-
-			//since we using the alias to join with discuss_posts.post_type, we need to update the value there as well.
-			$postTypes->updateTopicPostType( $oldTitle );
 		}
 
 		$postTypes->published = 1;

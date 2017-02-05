@@ -11,7 +11,7 @@
 */
 defined('_JEXEC') or die('Restricted access');
 
-require_once( DISCUSS_ROOT . '/views.php' );
+jimport( 'joomla.application.component.view');
 
 require_once DISCUSS_HELPERS . '/date.php';
 
@@ -75,7 +75,7 @@ class EasyDiscussViewCategories extends EasyDiscussView
 		{
 			// Load menu params to the registry.
 			$registry->loadString( $activeMenu->params );
-
+			
 			// Set the active category id if exists.
 			$categoryId = $registry->get( 'category_id' ) ? $registry->get( 'category_id' ) : $categoryId;
 		}
@@ -171,19 +171,7 @@ class EasyDiscussViewCategories extends EasyDiscussView
 			// building category childs lickage.
 			$category->childs 	= null;
 			$nestedLinks 		= '';
-
-			// In category page
-			if( $config->get( 'layout_show_all_subcategories', '1' ) )
-			{
-				// By default show all the subcategories of the selected category
-				DiscussHelper::buildNestedCategories($category->id, $category, false , true );
-			}
-			else
-			{
-				// Show one level of subcategories of the selected category only
-				$category->childs = $catModel->getChildCategories( $category->id );
-			}
-
+			DiscussHelper::buildNestedCategories($category->id, $category, false , true );
 			DiscussHelper::accessNestedCategories($category, $nestedLinks, '0', '', 'link', ', ');
 
 			$category->nestedLink	= $nestedLinks;
@@ -220,7 +208,7 @@ class EasyDiscussViewCategories extends EasyDiscussView
 					$topicIds[]   = $tmpArr->id;
 				}
 			}
-
+			
 			if( $categoryId )
 			{
 				$pagination 	= $postModel->getPagination( 0 , 'latest' , '' , $categoryId, false );
@@ -266,6 +254,58 @@ class EasyDiscussViewCategories extends EasyDiscussView
 			}
 
 		}
+
+		$allPosts = array( $featured, $posts );
+
+		foreach( $allPosts as $allPost )
+		{
+			$posts = Discusshelper::getPostStatusAndTypes( $allPost );
+			// foreach( $allPost as $post )
+			// {
+			// 	// Translate post status from integer to string
+			// 	switch( $post->post_status )
+			// 	{
+			// 		case '0':
+			// 			$post->post_status_class = '';
+			// 			$post->post_status = '';
+			// 			break;
+			// 		case '1':
+			// 			$post->post_status_class = '-on-hold';
+			// 			$post->post_status = JText::_( 'COM_EASYDISCUSS_POST_STATUS_ON_HOLD' );
+			// 			break;
+			// 		case '2':
+			// 			$post->post_status_class = '-accept';
+			// 			$post->post_status = JText::_( 'COM_EASYDISCUSS_POST_STATUS_ACCEPTED' );
+			// 			break;
+			// 		case '3':
+			// 			$post->post_status_class = '-working-on';
+			// 			$post->post_status = JText::_( 'COM_EASYDISCUSS_POST_STATUS_WORKING_ON' );
+			// 			break;
+			// 		case '4':
+			// 			$post->post_status_class = '-reject';
+			// 			$post->post_status = JText::_( 'COM_EASYDISCUSS_POST_STATUS_REJECT' );
+			// 			break;
+			// 		default:
+			// 			$post->post_status_class = '';
+			// 			$post->post_status = '';
+			// 			break;
+			// 	}
+
+
+				
+			// 	$alias = $post->post_type;
+			// 	$modelPostTypes = DiscussHelper::getModel( 'Post_types' );
+
+			// 	// Get each post's post status title
+			// 	$title = $modelPostTypes->getTitle( $alias );
+			// 	$post->post_type = $title;
+
+			// 	// Get each post's post status suffix
+			// 	$suffix = $modelPostTypes->getSuffix( $alias );
+			// 	$post->suffix = $suffix;
+			// }
+		}
+
 
 		// Let's render the layout now.
 		$theme 	= new DiscussThemes();

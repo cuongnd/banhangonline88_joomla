@@ -25,11 +25,8 @@ class EasyDiscussViewDiscuss extends EasyDiscussAdminView
 		$localVersion	= explode( '.' , $local );
 		$localBuild		= $localVersion[2];
 
-
 		if( !$version )
-		{
 			return JText::_('COM_EASYDISCUSS_UNABLE_TO_UPDATE_SERVER');
-		}
 
 		$remoteVersion	= explode( '.' , $version );
 		$build			= $remoteVersion[ 2 ];

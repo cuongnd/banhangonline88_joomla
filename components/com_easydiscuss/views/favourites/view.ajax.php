@@ -11,7 +11,9 @@
 */
 defined('_JEXEC') or die('Restricted access');
 
-require_once( DISCUSS_ROOT . '/views.php' );
+jimport( 'joomla.application.component.view');
+
+require_once JPATH_ROOT . '/components/com_easydiscuss/helpers/helper.php';
 
 class EasyDiscussViewFavourites extends EasyDiscussView
 {
@@ -57,16 +59,6 @@ class EasyDiscussViewFavourites extends EasyDiscussView
 
 		// Determine what action to take
 		$type		= $status ? 'removeFav' : 'addFav';
-
-		if( $type == 'addFav' )
-		{
-			DiscussHelper::getHelper( 'easysocial' )->favouriteStream( $post );
-			DiscussHelper::getHelper( 'Points' )->assign( 'easydiscuss.favourite.discussion' , $my->id );
-		}
-		else
-		{
-			DiscussHelper::getHelper( 'Points' )->assign( 'easydiscuss.unfavourite.discussion' , $my->id );
-		}
 
 		// Is the process run successfully?
 		$result		= $favModel->$type( $post->id, $my->id );

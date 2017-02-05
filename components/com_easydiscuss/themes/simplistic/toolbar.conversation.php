@@ -13,10 +13,11 @@
 defined('_JEXEC') or die('Restricted access');
 ?>
 <li class="dropdown_<?php echo $views->conversation;?>">
+
 <?php if( $config->get( 'main_conversations_notification') ){ ?>
 
 	<a data-foundry-toggle="dropdown" class="dropdown-toggle_ messageLink" href="javascript:void(0);" rel="ed-tooltip" data-placement="top" data-original-title="<?php echo JText::_( 'COM_EASYDISCUSS_CONVERSATIONS' );?>">
-		<i class="icon-envelope-alt"></i>
+		<i class="icon-ed-tb-msg"></i>
 		<span class="visible-phone"><?php echo JText::_( 'COM_EASYDISCUSS_CONVERSATIONS' );?></span>
 		<span class="label label-notification" id="conversation-count" style="display: <?php echo $totalMessages > 0 ? 'inline-block' : 'none';?>"><?php echo $totalMessages; ?></span>
 	</a>
@@ -38,9 +39,10 @@ defined('_JEXEC') or die('Restricted access');
 <?php }else{ ?>
 
 	<a class="messageLink" href="<?php echo DiscussRouter::_( 'index.php?option=com_easydiscuss&view=conversation' ); ?>">
-		<i class="icon-envelope-alt"></i>
+		<i class="icon-ed-tb-msg"></i>
 		<span class="label label-notification" id="conversation-count" style="display: <?php echo $totalMessages > 0 ? 'inline-block' : 'none';?>"><?php echo $totalMessages; ?></span>
 	</a>
 
 <?php } ?>
+
 </li>

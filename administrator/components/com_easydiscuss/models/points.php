@@ -142,27 +142,11 @@ class EasyDiscussModelPoints extends EasyDiscussAdminModel
 		// Obtain the category that I can view
 
 		// I am able to view if my usergroup is added in the category permission "view discussion"
+		$cats = DiscussHelper::getAccessibleCategories();
 		$viewableCats = array();
-
-		// First get all the accessible parentId
-		$parentCats = array();
-		$childCats = array();
-
-		$parentCats = DiscussHelper::getAccessibleCategories();
-
-		foreach( $parentCats as $parentCat )
+		foreach( $cats as $cat )
 		{
-			$viewableCats[] = $parentCat->id;
-		}
-
-		// Second get the child cats that are accessible
-		foreach( $parentCats as $parentCat )
-		{
-			$childCats = DiscussHelper::getAccessibleCategories( $parentCat->id );
-			foreach( $childCats as $childCat )
-			{
-				$viewableCats[] = $childCat->id;
-			}
+			$viewableCats[] = $cat->id;
 		}
 
 		$query	= 'SELECT a.*, ' . $db->Quote( 'post' ) . ' as `type`'

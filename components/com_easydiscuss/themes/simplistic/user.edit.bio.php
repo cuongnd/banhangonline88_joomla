@@ -15,18 +15,17 @@ defined('_JEXEC') or die('Restricted access');
 ?>
 <script type="text/javascript">
 EasyDiscuss.require()
-.script( 'legacy', 'bbcode' )
 .library(
 	'markitup',
-	'expanding'
+	'autogrow'
 )
 .done(function($) {
 	$( '#signature' )
-		.markItUp($.getEasyDiscussBBCodeSettings)
-		.expandingTextarea();
+		.markItUp({set: 'bbcode_easydiscuss'})
+		.autogrow({lineBleed: 1});
 	$( '#description' )
-		.markItUp($.getEasyDiscussBBCodeSettings)
-		.expandingTextarea();
+		.markItUp({set: 'bbcode_easydiscuss'})
+		.autogrow({lineBleed: 1});
 });
 
 </script>
@@ -46,13 +45,11 @@ EasyDiscuss.require()
 			<textarea name="description" id="description" class="input full-width" rows="5"><?php echo $profile->description; ?></textarea>
 		</div>
 	</div>
-	<?php if( DiscussHelper::getHelper('ACL')->allowed('show_signature') ){ ?>
 	<div class="control-group">
 		<div class="input-label pb-10"><?php echo JText::_('COM_EASYDISCUSS_PROFILE_SIGNATURE'); ?> <span><?php echo JText::_('COM_EASYDISCUSS_PROFILE_SIGNATURE_INFO'); ?></span></div>
 		<div class="input-wrap">
 			<textarea name="signature" id="signature" class="full-width"><?php echo $profile->getSignature( true ); ?></textarea>
 		</div>
 	</div>
-	<?php } ?>
 
 </div>

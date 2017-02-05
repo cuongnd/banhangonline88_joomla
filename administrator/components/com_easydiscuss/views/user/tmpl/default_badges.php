@@ -81,7 +81,7 @@ EasyDiscuss.ready(function($){
 	<div class="span12">
 		<h3>
 			<?php echo JText::_( 'COM_EASYDISCUSS_USER_BADGES' ); ?>
-			<a class="modal btn btn-success btn-medium pull-right addBadge" rel="{handler: 'iframe', size: {x: 500, y: 500}}" href="<?php echo JURI::root();?>administrator/index.php?option=com_easydiscuss&view=badges&tmpl=component&browse=1&browseFunction=insertBadge&exclude=<?php echo $this->badgeIds;?>">
+			<a class="modal btn btn-success btn-medium pull-right addBadge" rel="{handler: 'iframe', size: {x: 500, y: 500}}" href="index.php?option=com_easydiscuss&view=badges&tmpl=component&browse=1&browseFunction=insertBadge&exclude=<?php echo $this->badgeIds;?>">
 				<i class="icon-plus-sign"></i> <?php echo JText::_( 'COM_EASYDISCUSS_ASSIGN_BADGE' );?>
 			</a>
 		</h3>

@@ -12,9 +12,7 @@
  */
 defined('_JEXEC') or die('Restricted access');
 ?>
-<li data-attachment-item class="attachment-item new">
+<li class="attachmentItem attachments-<@= attachment.type @>">
 	<i class="icon"></i>
-	<span data-attachment-title></span>
-	<a data-attachment-remove-button href="javascript:void(0);"> &bull; <?php echo JText::_('COM_EASYDISCUSS_REMOVE'); ?></a>
-	<input type="file" name="filedata[]" size="50" data-attachment-file />
+	<span><@= attachment.title @></span> - <a href="javascript:void(0);" class="removeItem"><?php echo JText::_( 'COM_EASYDISCUSS_REMOVE' ); ?></a>
 </li>

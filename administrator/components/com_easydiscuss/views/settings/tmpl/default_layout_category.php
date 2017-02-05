@@ -181,24 +181,6 @@ defined('_JEXEC') or die('Restricted access');
 							<?php echo $this->renderCheckbox( 'layout_show_classic' , $this->config->get( 'layout_show_classic' ) );?>
 						</div>
 					</div>
-
-					<div class="si-form-row">
-						<div class="span5 form-row-label">
-							<label>
-								<?php echo JText::_( 'COM_EASYDISCUSS_CATEGORY_SHOW_ALL_SUBCATEGORIES' ); ?>
-							</label>
-						</div>
-						<div class="span7"
-							rel="ed-popover"
-							data-placement="left"
-							data-original-title="<?php echo JText::_( 'COM_EASYDISCUSS_CATEGORY_SHOW_ALL_SUBCATEGORIES' ); ?>"
-							data-content="<?php echo JText::_('COM_EASYDISCUSS_CATEGORY_SHOW_ALL_SUBCATEGORIES_DESC'); ?>"
-						>
-							<?php echo $this->renderCheckbox( 'layout_show_all_subcategories' , $this->config->get( 'layout_show_all_subcategories' ) );?>
-						</div>
-					</div>
-
-
 				</div>
 			</div>
 		</div>

@@ -158,7 +158,7 @@ class EasyDiscussModelRules extends EasyDiscussAdminModel
 		return $this->_total;
 	}
 
-	function publishRules( $blogs = array(), $publish = 1 )
+	function publish( $blogs = array(), $publish = 1 )
 	{
 		if( count( $blogs ) > 0 )
 		{
@@ -182,7 +182,7 @@ class EasyDiscussModelRules extends EasyDiscussAdminModel
 		return false;
 	}
 
-	function deleteRules( $blogs = array())
+	function delete( $blogs = array())
 	{
 		if( count( $blogs ) > 0 )
 		{

@@ -13,7 +13,7 @@
 defined('_JEXEC') or die('Restricted access');
 ?>
 <li class="tag-item">
-	<span class="tag-title">[%= title %]</span>
+	<span class="tag-title"><@= title @></span>
 	<a href="javascript: void(0);" class="remove-tag">x</a>
-	<input type="hidden" value="[%= title %]" name="tags[]" />
+	<input type="hidden" value="<@= title @>" name="tags[]" />
 </li>

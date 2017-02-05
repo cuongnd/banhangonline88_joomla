@@ -173,7 +173,7 @@ function EasyDiscussBuildRoute(&$query)
 
 				unset( $query['view'] );
 
-				if( isset( $query['layout'] ) )
+				if( isset( $query['layout'] ) ) 
 				{
 					$segments[]	= $query[ 'layout' ];
 					unset( $query[ 'layout' ] );
@@ -285,7 +285,7 @@ function EasyDiscussParseRoute( $segments )
 			$segments	= DiscussRouter::encodeSegments( $segments );
 
 			//if( in_array( $segments[ $count - 1 ] , array( 'unanswered', 'featured', 'new' ) ) )
-			if( in_array( $segments[1] , array( 'allposts','unanswered', 'unresolved', 'unread', 'resolved' ) ) )
+			if( in_array( $segments[1] , array( 'allposts','unanswered', 'unresolved', 'unread' ) ) )
 			{
 				$vars[ 'filter' ]	= $segments[1];
 
@@ -303,25 +303,20 @@ function EasyDiscussParseRoute( $segments )
 	{
 		// Get the current view
 		$vars[ 'view' ]	= $segments[ 0 ];
-
+		
 		// Get the current layout
 		$vars[ 'layout' ]	= $segments[ 1 ];
 
 		// Get the user's id.
 		$alias 	= $segments[ 2 ];
+
 		$id 	= DiscussHelper::getUserId( $alias );
 
 		if( !$id )
 		{
 			// Username might contains "-" character
-			$alias 	= JString::str_ireplace( ':' , '-' , $alias );
-			$id 	= DiscussHelper::getUserId( $alias );
-		}
-
-		if( !$id )
-		{
-			// Username might contains "-" character
 			$alias 	= JString::str_ireplace( '-' , ' ' , $alias );
+	
 			$id 	= DiscussHelper::getUserId( $alias );
 		}
 

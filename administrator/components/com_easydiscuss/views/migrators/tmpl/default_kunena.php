@@ -16,13 +16,13 @@ defined('_JEXEC') or die('Restricted access');
 <script type="text/javascript">
 function appendLog( type , message )
 {
-	EasyDiscuss.$( '#migrator-' + type + '-log' ).append( '<li>' + message + '</li>');
+	discussQuery( '#migrator-' + type + '-log' ).append( '<li>' + message + '</li>');
 }
 
 function runMigration( type )
 {
 	// Hide migration button.
-	EasyDiscuss.$( '.migrator-button' ).hide();
+	discussQuery( '.migrator-button' ).hide();
 
 	disjax.load( 'migrators' , type );
 }
@@ -51,34 +51,17 @@ function runMigrationCategory( type , categories )
 	disjax.load( 'migrators' , type + 'CategoryItem' , current , categories );
 }
 
-function runMigrationItem( type , itemstr )
+function runMigrationItem( type , items )
 {
-
-	if( itemstr == 'done' )
-	{
-		disjax.load( 'migrators' , type + 'PostItem' , 'done' , itemstr );
-		return;
-	}
-
-	var items 	= itemstr.split( '|' );
 	var current	= items.shift();
-	var nextstr = items.join( '|' );
 
 	if( items.length == 0 )
 	{
-		nextstr	= 'done';
+		items	= 'done';
 	}
 
-	disjax.load( 'migrators' , type + 'PostItem' , current , nextstr );
+	disjax.load( 'migrators' , type + 'PostItem' , current , items );
 }
-
-
-function runMigrationReplies( type )
-{
-	disjax.load( 'migrators' , type + 'PostReplies' );
-}
-
-
 </script>
 <div class="row-fluid">
 	<div class="span12 panel-title">

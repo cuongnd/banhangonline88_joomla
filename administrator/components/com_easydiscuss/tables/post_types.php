@@ -32,13 +32,13 @@ class DiscussPost_types extends JTable
 		parent::__construct( '#__discuss_post_types' , 'id' , $db );
 	}
 
-	public function load( $key = null, $reset = true )
+	public function load( $key = null )
 	{
 		$db		= DiscussHelper::getDBO();
 
 		// $query	= 'SELECT ' . $db->nameQuote( 'id' ) . ' FROM ' . $db->nameQuote( $this->_tbl ) . ' '
 		// 		. 'WHERE ' . $db->nameQuote( 'alias' ) . '=' . $db->Quote( $key );
-
+		
 		// $db->setQuery( $query );
 		// $id		= $db->loadResult();
 
@@ -58,17 +58,6 @@ class DiscussPost_types extends JTable
 	{
 		$state	= parent::delete($pk);
 		return $state;
-	}
-
-	public function updateTopicPostType( $oldValue )
-	{
-		$db = DiscussHelper::getDBO();
-
-		$query = 'update `#__discuss_posts` set `post_type` = ' . $db->Quote( $this->alias );
-		$query .= ' where `post_type` = ' . $db->Quote( $oldValue );
-
-		$db->setQuery( $query );
-		$db->query();
 	}
 
 }

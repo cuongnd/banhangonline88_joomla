@@ -67,14 +67,10 @@ class DiscussAupHelper
 		}
 
 		JFactory::getLanguage()->load( 'com_easydiscuss' , JPATH_ROOT );
-
-		// TODO: Fixed strict standard issue.
-		$aup = new AlphaUserPointsHelper;
-		$id	= $aup->getAnyUserReferreID( $userId );
-		//$id	= AlphaUserPointsHelper::getAnyUserReferreID( $userId );
+		$id	= AlphaUserPointsHelper::getAnyUserReferreID( $userId );
 
 		$rule	= $this->rules[ $rule ];
-		$aup->newpoints( 'plgaup_easydiscuss_' . strtolower( $rule ) , $id , '' , JText::sprintf( 'COM_EASYDISCUSS_AUP_' . strtoupper( $rule ) , $title ) );
+		AlphaUserPointsHelper::newpoints( 'plgaup_easydiscuss_' . strtolower( $rule ) , $id , '' , JText::sprintf( 'COM_EASYDISCUSS_AUP_' . strtoupper( $rule ) , $title ) );
 	}
 
 	public function getUserPoints( $userId )

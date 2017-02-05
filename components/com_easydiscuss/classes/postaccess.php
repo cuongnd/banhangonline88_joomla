@@ -84,9 +84,12 @@ class DiscussPostAccess
 			return $this->canDeleteReply();
 		}
 
-		if( $this->acl->allowed( 'delete_question' ) || ( $this->acl->allowed( 'delete_own_question' ) && self::isMine() ) )
+		if( $this->config->get( 'main_allowdelete' ) == '1')
 		{
-			return true;
+			if( $this->acl->allowed( 'delete_question' ) || self::isMine() )
+			{
+				return true;
+			}
 		}
 
 		return false;

@@ -12,7 +12,7 @@
  */
 defined('_JEXEC') or die('Restricted access');
 
-require_once( DISCUSS_ROOT . '/views.php' );
+require_once JPATH_ROOT . '/components/com_easydiscuss/views.php';
 
 class EasyDiscussViewAssigned extends EasyDiscussView
 {
@@ -29,12 +29,10 @@ class EasyDiscussViewAssigned extends EasyDiscussView
 		{
 			$app 	= JFactory::getApplication();
 			DiscussHelper::setMessageQueue( JText::_( 'COM_EASYDISCUSS_YOU_ARE_NOT_ALLOWED_HERE' ) , DISCUSS_QUEUE_ERROR );
-			$app->redirect( DiscussRouter::_( 'index.php?option=com_easydiscuss&view=index' , false ) );
+			$app->redirect( DiscussRouter::_( 'index.php?option=com_easydiscuss' , false ) );
 		}
 
 		$subs		= array();
-
-		// [Model:Assigned]
 		$model 		= DiscussHelper::getModel( 'Assigned' );
 		$posts		= $model->getPosts();
 		$posts		= DiscussHelper::formatPost( $posts );
@@ -45,7 +43,6 @@ class EasyDiscussViewAssigned extends EasyDiscussView
 		$totalAssigned	= $model->getTotalAssigned( $my->id );
 
 		// Get total number of posts that is assigned to this user and resolved.
-		// [Model:Assigned]
 		$totalResolved	= $model->getTotalSolved( $my->id );
 
 		// Calculate percentage
@@ -62,7 +59,6 @@ class EasyDiscussViewAssigned extends EasyDiscussView
 		$theme->set( 'totalResolved'	, $totalResolved );
 		$theme->set( 'percentage'		, $percentage );
 		$theme->set( 'posts'			, $posts );
-
 
 		echo $theme->fetch( 'assigned.php' );
 	}

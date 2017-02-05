@@ -175,12 +175,10 @@ class EasyDiscussControllerPosts extends EasyDiscussController
 					if( $item->parent_id )
 					{
 						DiscussHelper::getHelper( 'jomsocial' )->addActivityReply( $item );
-						DiscussHelper::getHelper( 'easysocial')->replyDiscussionStream( $item );
 					}
 					else
 					{
 						DiscussHelper::getHelper( 'jomsocial' )->addActivityQuestion( $item );
-						DiscussHelper::getHelper( 'easysocial')->createDiscussionStream( $item );
 					}
 
 
@@ -192,9 +190,6 @@ class EasyDiscussControllerPosts extends EasyDiscussController
 						DiscussHelper::getHelper( 'Badges' )->assign( 'easydiscuss.new.discussion' , $user->id );
 						DiscussHelper::getHelper( 'Points' )->assign( 'easydiscuss.new.discussion' , $user->id );
 
-						// Assign badge for EasySocial
-						DiscussHelper::getHelper( 'EasySocial' )->assignBadge( 'create.question' , $user->id , JText::sprintf( 'COM_EASYDISCUSS_BADGES_HISTORY_NEW_POST' , $item->title ) );
-						
 						// assign new ranks.
 						DiscussHelper::getHelper( 'ranks' )->assignRank( $user->id, $config->get( 'main_ranking_calc_type' ) );
 
@@ -204,8 +199,7 @@ class EasyDiscussControllerPosts extends EasyDiscussController
 				}
 			}
 
-			//$model		= $this->getModel( 'Posts' );
-			$model = DiscussHelper::getModel( 'Posts', true );
+			$model		= $this->getModel( 'Posts' );
 
 			if( $model->publish( $post , 1 ) )
 			{

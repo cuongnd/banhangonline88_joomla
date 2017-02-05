@@ -21,10 +21,7 @@ $canAddTag = $acl->allowed('add_tag');
 			<?php if( $system->config->get( 'main_master_tags' ) ){ ?>
 				<?php if( $system->config->get( 'main_tags' ) && $isDiscussion && $canAddTag ){ ?>
 				<li>
-					<a data-foundry-toggle="tab" href="#tagsTab-<?php echo $composer->id; ?>">
-						<i class="icon-tags"></i>
-						<?php echo JText::_('COM_EASYDISCUSS_POST_CREATE_TAGS'); ?>
-					</a>
+					<a data-foundry-toggle="tab" href="#tagsTab-<?php echo $composer->id; ?>"><i class="icon-tags"></i> <?php echo JText::_('COM_EASYDISCUSS_POST_CREATE_TAGS'); ?></a>
 				</li>
 				<?php } ?>
 			<?php } ?>
@@ -34,9 +31,7 @@ $canAddTag = $acl->allowed('add_tag');
 			<?php if( $system->config->get( 'main_customfields_input' ) ){ ?>
 			<li>
 				<a data-foundry-toggle="tab" href="#customfieldsTab-<?php echo $composer->id; ?>">
-					<i class="icon-list-alt"></i>
-					<?php echo JText::_( 'COM_EASYDISCUSS_CUSTOMFIELDS_TITLE' ); ?>
-				</a>
+					<i class="icon-list-alt"></i> <?php echo JText::_( 'COM_EASYDISCUSS_CUSTOMFIELDS_TITLE' ); ?></a>
 			</li>
 			<?php } ?>
 		</ul>

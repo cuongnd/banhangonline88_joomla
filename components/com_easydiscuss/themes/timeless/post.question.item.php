@@ -50,7 +50,7 @@ defined('_JEXEC') or die('Restricted access');
 			</div>
 
 
-			<?php if( $access->canAssign() ) { ?>
+			<?php if( $access->canAssign() && count($moderators) > 0 ) { ?>
 				<!-- Post assignments -->
 				<div class="discuss-post-assign">
 					<?php echo $this->loadTemplate( 'post.assignment.php' , array( 'post' => $post, $moderators ) ); ?>
@@ -78,7 +78,7 @@ defined('_JEXEC') or die('Restricted access');
 					<?php echo $this->loadTemplate( 'ranks.php' , array( 'userId' => $post->getOwner()->id ) ); ?>
 
 					<?php echo $this->loadTemplate( 'online.php' , array( 'user' => $post->user ) ); ?>
-
+					
 					<div class="discuss-role-title"><?php echo $this->escape($post->getOwner()->role); ?></div>
 
 

@@ -12,32 +12,32 @@
  */
 defined('_JEXEC') or die('Restricted access');
 ?>
-<li class="[%= post.className %]">
+<li class="<@= post.className @>">
 	<div class="discuss-item discuss-item-message">
 		<div class="discuss-item-right">
 			<div class="discuss-item discuss-item-media">
 				<div>
 					<div class="media">
 						<div class="media-object">
-							<a class="discuss-user-name" href="[%= post.authorLink %]">
+							<a class="discuss-user-name" href="<@= post.authorLink @>">
 								<div class="discuss-avatar avatar-medium">
-									<img src="[%= post.authorAvatar %]" alt="[%= post.authorName %]" />
+									<img src="<@= post.authorAvatar @>" alt="<@= post.authorName @>" />
 								</div>
 							</a>
 						</div>
 						<div class="media-body">
 							<div class="discuss-message-box">
 								<div class="discuss-user-name">
-									<a href="[%= post.authorLink %]">[%= post.authorName %]</a>
+									<a href="<@= post.authorLink @>"><@= post.authorName @></a>
 								</div>
 
 								<div class="discuss-message-content">
-									[%= post.message %]
+									<@= post.message @>
 								</div>
 
 								<div class="discuss-date">
-									[%= post.lapsed %]
-									<time datetime="[%= post.created %]"></time>
+									<@= post.lapsed @>
+									<time datetime="<@= post.created @>"></time>
 								</div>
 
 							</div>

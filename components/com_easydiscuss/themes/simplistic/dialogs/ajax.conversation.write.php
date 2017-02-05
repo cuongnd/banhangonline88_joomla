@@ -16,12 +16,11 @@ defined('_JEXEC') or die('Restricted access');
 <script type="text/javascript">
 EasyDiscuss.require()
 	.library('markitup')
-	.script('bbcode')
 	.done(function($){
 
-		$( '#conversationMessage' ).markItUp(
-			$.getEasyDiscussBBCodeSettings
-		);
+		$( '#conversationMessage' ).markItUp({
+			set : "bbcode_easydiscuss_dialog"
+		});
 
 	});
 </script>

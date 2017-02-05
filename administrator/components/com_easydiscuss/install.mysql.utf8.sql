@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `#__discuss_posts` (
   `longitude` varchar(255) NOT NULL,
   `content_type` varchar(25) NULL,
   `post_status` tinyint(1) NOT NULL DEFAULT 0,
-  `post_type` varchar(255) NOT NULL DEFAULT 0,
+  `post_type` varchar(100) NOT NULL DEFAULT 0,
   PRIMARY KEY  (`id`),
   KEY `discuss_post_published` (`published`),
   KEY `discuss_post_user_id` (`user_id`) ,
@@ -70,8 +70,7 @@ CREATE TABLE IF NOT EXISTS `#__discuss_posts` (
   KEY `discuss_post_query6` (`published`, `parent_id`, `id`),
   KEY `unread_category_posts` (`published`, `parent_id`, `legacy`, `category_id`, `id` ),
   FULLTEXT `discuss_post_titlecontent` (`title`, `content`),
-  KEY `discuss_post_last_reply` ( `parent_id`, `id` ),
-  KEY `idx_post_type` ( `post_type` )
+  KEY `discuss_post_last_reply` ( `parent_id`, `id` )
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `#__discuss_comments` (
@@ -438,8 +437,7 @@ CREATE TABLE IF NOT EXISTS `#__discuss_migrators` (
   `external_id` bigint(20) NOT NULL,
   `component` text NOT NULL,
   `type` text NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `idx_external_id` ( `external_id` )
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `#__discuss_views` (
@@ -639,13 +637,12 @@ CREATE TABLE IF NOT EXISTS `#__discuss_posts_labels_map` (
 
 CREATE TABLE IF NOT EXISTS `#__discuss_post_types` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `title` varchar( 255 ) NOT NULL,
+  `title` text NOT NULL,
   `suffix` varchar(50) NOT NULL,
   `created` datetime NOT NULL,
   `published` tinyint(3) NOT NULL,
-  `alias` varchar( 255 ) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `idx_alias` (`alias`)
+  `alias` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS `#__discuss_captcha` (

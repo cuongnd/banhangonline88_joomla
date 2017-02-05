@@ -38,11 +38,11 @@ class DiscussRanksUsers extends JTable
 			if( $byUserId )
 			{
 				$db		= DiscussHelper::getDBO();
-				$query	= 'SELECT * FROM `#__discuss_ranks_users` WHERE `user_id` = ' . $db->Quote($byUserId);
+				$query	= 'SELECT * FROM `#__discuss_ranks_users` WHERE `user_id` = ' . $db->Quote($id);
 				$query	.= ' ORDER BY `created` DESC LIMIT 1';
 
 				$db->setQuery($query);
-				$result = $db->loadObject();
+				$result = $db->loadAssoc();
 
 				if( $result )
 				{

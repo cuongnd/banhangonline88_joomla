@@ -14,7 +14,7 @@ defined('_JEXEC') or die('Restricted access');
 ?>
 <li class="dropdown_">
 	<a data-foundry-toggle="dropdown" class="dropdown-toggle_ notificationLink" href="javascript:void(0);" rel="ed-tooltip" data-placement="top" data-original-title="<?php echo JText::_( 'COM_EASYDISCUSS_NOTIFICATIONS' );?>">
-		<i class="icon-bell"></i>
+		<i class="icon-ed-tb-notice"></i>
 		<span class="visible-phone"><?php echo JText::_( 'COM_EASYDISCUSS_NOTIFICATIONS' );?></span>
 		<span class="label label-notification" id="notification-count" style="display: <?php echo $totalNotifications > 0 ? 'inline-block' : 'none';?>"><?php echo $totalNotifications; ?></span>
 	</a>

@@ -368,10 +368,10 @@ class EasyDiscussModelConversation extends EasyDiscussModel
 	 * @param	int		The current user id of the viewer.
 	 *
 	 */
-	public function getMessages( $conversationId , $userId, $viewAll = false, $count = false )
+	public function getMessages( $conversationId , $userId )
 	{
 		$db		= DiscussHelper::getDBO();
-		$config = DiscussHelper::getConfig();
+
 
 		$operation  = '( UNIX_TIMESTAMP( \'' . DiscussHelper::getDate()->toMySQL() . '\' ) - UNIX_TIMESTAMP( a.`created`) )';
 
@@ -386,22 +386,6 @@ class EasyDiscussModelConversation extends EasyDiscussModel
 		// @rule: Messages ordering.
 		// @TODO: respect ordering settings.
 		$query	.= 'ORDER BY a.' . $db->nameQuote( 'created' ) . ' ASC';
-
-
-		// By default show the latest messages limit by the numbers specified in backend
-		if( !$viewAll )
-		{
-			$query 	.= ' LIMIT ' . $config->get('main_messages_limit', 5);
-		}
-
-		// If view == 'all', do nothing because we wanted to show all messages.
-
-		if( $viewAll == 'previous' )
-		{
-			$count = $config->get('main_messages_limit', 5) + $count;
-			// View another 5 more previous messages
-			$query 	.= ' LIMIT ' . $count;
-		}
 
 		$db->setQuery( $query );
 
@@ -534,6 +518,8 @@ class EasyDiscussModelConversation extends EasyDiscussModel
 		{
 			$limitstart 	= $this->getState( 'limitstart' );
 			$limit 			= $this->getState( 'limit' );
+			$query 			.= ' LIMIT ' . $limitstart . ' , ' . $limit;
+
 			$paginationQuery	= str_ireplace( 'SELECT a.*,b.' . $db->nameQuote( 'message' ) . ',c.' . $db->nameQuote( 'isread' ) , 'SELECT COUNT(1) AS count FROM ( SELECT a.* ' , $query );
 			$paginationQuery 	.= ') AS x';
 
@@ -541,9 +527,6 @@ class EasyDiscussModelConversation extends EasyDiscussModel
 			$total 				= $db->loadResult();
 
 			$this->_pagination	= DiscussHelper::getPagination( $total , $limitstart , $limit );
-
-			$query 			.= ' LIMIT ' . $limitstart . ' , ' . $limit;
-
 		}
 
 		$db->setQuery( $query );

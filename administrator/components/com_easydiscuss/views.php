@@ -168,13 +168,9 @@ class EasyDiscussAdminView extends EasyDiscussViewParent
 	{
 		ob_start();
 	?>
-		
-		<div class="btn-group-yesno"
-			data-foundry-toggle="buttons-radio"
-			>
-			<button type="button" class="btn btn-yes<?php echo $state ? ' active' : '';?>" data-fd-toggle-value="1"><?php echo JText::_( 'COM_EASYDISCUSS_YES_OPTION' );?></button>
-			<button type="button" class="btn btn-no<?php echo !$state ? ' active' : '';?>" data-fd-toggle-value="0"><?php echo JText::_( 'COM_EASYDISCUSS_NO_OPTION' );?></button>
-			<input type="hidden" id="<?php echo empty( $id ) ? $configName : $id; ?>" name="<?php echo $configName ;?>" value="<?php echo $state ? '1' : '0'; ?>" />
+		<div class="yes_no">
+			<input type="radio" name="checkbox_display_<?php echo $configName; ?>" value="<?php echo $state;?>" class="radiobox" id="<?php echo $configName; ?>"<?php echo empty($state) ? '' : ' checked="checked"'; ?>>
+			<input type="hidden" name="<?php echo $configName; ?>" value="<?php echo $state;?>">
 		</div>
 	<?php
 		$html	= ob_get_contents();

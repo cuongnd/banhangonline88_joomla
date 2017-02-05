@@ -31,7 +31,7 @@ $isRecent	= ( $post->isnew ) ? ' is-recent' : '';
 			<a href="<?php echo $post->user->getLink();?>" class="" title="<?php echo $this->escape( $post->user->getName() );?>">
 				<?php if ($system->config->get( 'layout_avatar' ) && $system->config->get( 'layout_avatar_in_post' )) { ?>
 				<div class="discuss-avatar avatar-medium <?php echo $post->user->getRoleLabelClassname(); ?>">
-					<img src="<?php echo $post->user->getAvatar();?>" alt="<?php echo $this->escape( $post->user->getName() );?>"<?php echo DiscussHelper::getHelper( 'EasySocial' )->getPopbox( $post->user->id );?> />
+					<img src="<?php echo $post->user->getAvatar();?>" alt="<?php echo $this->escape( $post->user->getName() );?>" />
 
 
 
@@ -43,7 +43,7 @@ $isRecent	= ( $post->isnew ) ? ' is-recent' : '';
 			<?php echo $this->loadTemplate( 'ranks.php' , array( 'userId' => $post->user->id ) ); ?>
 
 			<?php echo $this->loadTemplate( 'online.php' , array( 'user' => $post->user ) ); ?>
-
+			
 			<?php if($system->config->get( 'layout_profile_roles' ) && $post->user->getRole() ) { ?>
 			<div class="discuss-role-title"><?php echo $this->escape($post->user->getRole()); ?></div>
 			<?php } ?>
@@ -79,7 +79,6 @@ $isRecent	= ( $post->isnew ) ? ' is-recent' : '';
 								<?php } ?>
 							</h2>
 						</a>
-
 						<div class="postStatus label label-info label-post_status-<?php echo $post->post_status_class ?>"><?php echo $post->post_status; ?></div>
 						<div class="postType label label-important label-post_type<?php echo $post->suffix; ?>" ><?php echo $post->post_type ?></div>
 
@@ -146,7 +145,7 @@ $isRecent	= ( $post->isnew ) ? ' is-recent' : '';
 									<?php if( $post->reply->id ){ ?>
 										<?php if( $system->config->get( 'layout_avatar' ) ) { ?>
 										<a href="<?php echo $post->reply->getLink();?>" class="pull-left ml-5" title="<?php echo $post->reply->getName(); ?>">
-											<img src="<?php echo $post->reply->getAvatar();?>" alt="<?php echo $this->escape( $post->reply->getName() );?>"<?php echo DiscussHelper::getHelper( 'EasySocial' )->getPopbox( $post->user->id );?> />
+											<img src="<?php echo $post->reply->getAvatar();?>" alt="<?php echo $this->escape( $post->reply->getName() );?>" />
 										</a>
 										<?php } ?>
 									<?php } else { ?>
@@ -187,7 +186,7 @@ $isRecent	= ( $post->isnew ) ? ' is-recent' : '';
 
 							<?php $lastReply = DiscussHelper::getModel( 'Posts' )->getLastReply( $post->id ); ?>
 							<a class="ml-5" href="<?php echo DiscussRouter::getPostRoute( $post->id ) . '#' . JText::_('COM_EASYDISCUSS_REPLY_PERMALINK') . '-' . $lastReply->id;?>" title="<?php echo JText::_('COM_EASYDISCUSS_VIEW_LAST_REPLY'); ?>"><?php echo JText::_( 'COM_EASYDISCUSS_VIEW_LAST_REPLY' );?></a>
-
+							
 						<?php } ?>
 					</div>
 				</div><!-- pull-left -->

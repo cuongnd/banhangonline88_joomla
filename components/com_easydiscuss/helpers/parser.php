@@ -50,25 +50,24 @@ require_once JPATH_ROOT . '/components/com_easydiscuss/helpers/helper.php';
 
 class EasyDiscussParser
 {
-	/**
-	 * Main bbcode processing here.
-	 *
-	 * @since	1.0
-	 * @access	public
-	 * @param	string
-	 * @return
-	 */
-	public static function bbcode( $text , $debug = false )
+	public static function bbcode($text)
 	{
+		// Take out all the syntax highlighter content to exclude it
+		// preg_match('#\\[code type="(.*?)"\\](.+)\\[/code\\]#s', $text, $syntaxHighlighterContent);
+
+		// Replace the highlighter with empty content
+		// $text = preg_replace( '#\\[code type="(.*?)"\\](.+)\\[/code\\]#s', '[code type="xml"]EXCLUDE_HERE[/code]', $text );
+
+		$text	= self::html2bbcode( $text );
+
 		// $text	= htmlspecialchars($text , ENT_NOQUOTES );
-		$text	= trim( $text );
+		$text	= trim($text);
 
-		// We need to escape the content to avoid xss attacks
-		$text 			= DiscussHelper::getHelper( 'String' )->escape( $text );
+		// @rule: Replace [code]*[/code]
+		$codesPattern	= '/\[code( type=&quot;(.*?)&quot;)?\](.*?)\[\/code\]/ms';
 
-
-		// Replace [code] blocks
-		$text 			= self::replaceCodes( $text );
+		// preg_match( $codesPattern , $text , $codes );
+		$text = preg_replace_callback( $codesPattern , array( 'EasyDiscussParser' , 'escape' ) , $text );
 
 		// BBCode to find...
 		$bbcodeSearch = array( 	 '/\[b\](.*?)\[\/b\]/ims',
@@ -79,7 +78,6 @@ class EasyDiscussParser
 						 '/\[size\="?(.*?)"?\](.*?)\[\/size\]/ims',
 						 '/\[color\="?(.*?)"?\](.*?)\[\/color\]/ims',
 						 '/\[quote]([^\[\/quote\]].*?)\[\/quote\]/ims',
-						 '/\[quote](.*?)\[\/quote\]/ims',
 						 '/\[list\=(.*?)\](.(\[\*\])+.*?)\[\/list\]/ims',
 						 '/\[list\](.(\[\*\])+.*?)\[\/list\]/ims',
 						 '/\[\*\]\s?(.*?)\n/ims',
@@ -95,7 +93,6 @@ class EasyDiscussParser
 						 '<span style="font-size:\1%">\2</span>',
 						 '<span style="color:\1">\2</span>',
 						 '<blockquote>\1</blockquote>',
-						 '<blockquote>\1</blockquote>',
 						 '<ol start="\1">\2</ol>',
 						 '<ul>\1</ul>',
 						 '<li>\1</li>',
@@ -108,19 +105,37 @@ class EasyDiscussParser
 		// We need to strip out bbcode's data first.
 		$tmp	= preg_replace( $bbcodeSearch , '' , $text );
 
+
 		// Replace video codes
 		$tmp	= DiscussHelper::getHelper( 'Videos' )->strip( $tmp );
 
 		// @rule: Replace video links
 		$text	= DiscussHelper::getHelper( 'Videos' )->replace( $text );
 
+		// Smileys to find...
+		$in = array( 	 ':D',
+						 ':)',
+						 ':o',
+						 ':p',
+						 ':(',
+						 ';)'
+		);
+		// And replace them by...
+		$out = array(	 '<img alt=":D" class="bb-smiley" src="'.EMOTICONS_DIR.'emoticon-happy.png" />',
+						 '<img alt=":)" class="bb-smiley" src="'.EMOTICONS_DIR.'emoticon-smile.png" />',
+						 '<img alt=":o" class="bb-smiley" src="'.EMOTICONS_DIR.'emoticon-surprised.png" />',
+						 '<img alt=":p" class="bb-smiley" src="'.EMOTICONS_DIR.'emoticon-tongue.png" />',
+						 '<img alt=":(" class="bb-smiley" src="'.EMOTICONS_DIR.'emoticon-unhappy.png" />',
+						 '<img alt=";)" class="bb-smiley" src="'.EMOTICONS_DIR.'emoticon-wink.png" />'
+		);
 
 
 		// -start
 		// Need to decode if not the html special chars will get detect as smiley
 		// A hidden &quot;) will translate into wink smiley
-		// $text = htmlspecialchars_decode( $text );
-		// $text = str_replace($in, $out, $text);
+		$text = htmlspecialchars_decode( $text );
+		$text = str_replace($in, $out, $text);
+
 		// -end
 
 		// we treat the quote abit special here for the nested tag.
@@ -139,45 +154,16 @@ class EasyDiscussParser
 		// Replace URLs ! important, we only do this url replacement after the bbcode url processed. @sam at 07 Jan 2013
 		$text	= DiscussHelper::getHelper( 'URL' )->replace( $tmp , $text );
 
-		// Replace smileys before anything else
-		$text 			= self::replaceSmileys( $text );
-
 
 		// Auto detect email address in content and link it
-		// preg_match_all("/[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})/i", $text, $matches);
+		preg_match("/[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})/i", $text, $matches);
 
-		// if( !empty( $matches ) )
-		// {
-		// 	$text = str_replace($matches[0], '<a href="mailto:'. $matches[0] .'">' . $matches[0] . '</a>', $text);
-		// }
+		if( !empty( $matches ) )
+		{
+			$text = str_replace($matches[0], '<a href="mailto:\1">' . $matches[0] . '</a>', $text);
+		}
 
 		//$text = str_replace( 'EXCLUDE_HERE', $syntaxHighlighterContent[2], $text );
-
-
-
-		return $text;
-	}
-
-	public static function replaceSmileys( $text )
-	{
-		// Smileys to find...
-		$in = array( 	 ':D',
-						 ':)',
-						 ':o',
-						 ':p',
-						 ':(',
-						 ';)'
-		);
-		// And replace them by...
-		$out = array(	 '<img alt=":D" class="bb-smiley" src="'.EMOTICONS_DIR.'emoticon-happy.png" />',
-						 '<img alt=":)" class="bb-smiley" src="'.EMOTICONS_DIR.'emoticon-smile.png" />',
-						 '<img alt=":o" class="bb-smiley" src="'.EMOTICONS_DIR.'emoticon-surprised.png" />',
-						 '<img alt=":p" class="bb-smiley" src="'.EMOTICONS_DIR.'emoticon-tongue.png" />',
-						 '<img alt=":(" class="bb-smiley" src="'.EMOTICONS_DIR.'emoticon-unhappy.png" />',
-						 '<img alt=";)" class="bb-smiley" src="'.EMOTICONS_DIR.'emoticon-wink.png" />'
-		);
-
-		$text 	= str_replace( $in , $out , $text );
 
 		return $text;
 	}
@@ -227,62 +213,20 @@ class EasyDiscussParser
 		return str_replace("\r\n", "", $s[0]);
 	}
 
-	/**
-	 * Some desc
-	 *
-	 * @since	1.0
-	 * @access	public
-	 * @param	string
-	 * @return
-	 */
-	public static function replaceCodes( $text , $debug = false )
+	public static function escape($s)
 	{
-		// @rule: Replace [code type=&quot*&quot]*[/code]
-		$codesPattern	= '/\[code( type=&quot;(.*?)&quot;)?\](.*?)\[\/code\]/ms';
-		$text			= preg_replace_callback( $codesPattern , array( 'EasyDiscussParser' , 'processCodeBlocks' ) , $text );
-
-		// @rule: Replace [code type="*"]*[/code]
-		$codesPattern	= '/\[code( type="(.*?)")?\](.*?)\[\/code\]/ms';
-		$text			= preg_replace_callback( $codesPattern , array( 'EasyDiscussParser' , 'processCodeBlocks' ) , $text );
-
-		return $text;
-	}
-
-	/**
-	 * Replace [code] blocks with prism.js compatibility
-	 *
-	 * @since	1.0
-	 * @access	public
-	 * @param	string	The contents
-	 * @return
-	 */
-	public static function processCodeBlocks( $blocks )
-	{
-		$code 	= $blocks[ 3 ];
-
-		// Remove break tags
+		$code	= $s[3];
 		$code	= str_ireplace( "<br />" , "" , $code );
 
-		$code	= str_replace( "[" , "&#91;" , $code);
-		$code	= str_replace( "]" , "&#93;" , $code);
+		$code	= str_replace("[", "&#91;", $code);
+		$code	= str_replace("]", "&#93;", $code);
 
-		// Determine the language type
-		$language 	= isset( $blocks[ 2 ] ) && !empty( $blocks[ 2 ] ) ? $blocks[ 2 ] : 'markup';
+		$brush	= isset( $s[2] ) && !empty( $s[2] ) ? $s[2] : 'xml';
 
-		// Fix legacy code blocks
-		if( $language == 'xml' || $language == 'html' )
-		{
-			$language 	= 'markup';
-		}
+		$code	= html_entity_decode( $code );
+		$code	= DiscussHelper::getHelper( 'String' )->escape( $code );
 
-		// Because the text / contents are already escaped, we need to revert back to the original html codes only
-		// for the codes.
-		$code 	= html_entity_decode( $code );
-
-		// Fix html codes not displaying correctly
-		$code   = htmlspecialchars($code , ENT_NOQUOTES );
-
-		return '<pre class="line-numbers"><code class="language-' . $language . '">'.$code.'</code></pre>';
+		return '<pre>'.$code.'</pre>';
 	}
 
 	public static function removeCodes( $content )
@@ -298,7 +242,7 @@ class EasyDiscussParser
 		$text	= trim($text);
 
 		// @rule: Replace [code]*[/code]
-		$text = preg_replace_callback('/\[code( type="(.*?)")?\](.*?)\[\/code\]/ms', array( 'EasyDiscussParser' , 'replaceCodes' ) , $text );
+		$text = preg_replace_callback('/\[code( type="(.*?)")?\](.*?)\[\/code\]/ms', array( 'EasyDiscussParser' , 'escape' ) , $text );
 
 		// BBCode to find...
 		$bbcodeSearch = array( 	 '/\[b\](.*?)\[\/b\]/ims',
@@ -345,14 +289,6 @@ class EasyDiscussParser
 		return $text;
 	}
 
-	/**
-	 * Converts html codes to bbcode
-	 *
-	 * @since	1.0
-	 * @access	public
-	 * @param	string	The text to lookup for
-	 * @return	string 	The proper contents in bbcode format.
-	 */
 	public static function html2bbcode( $text )
 	{
 		if( (stripos($text, '<p') === false) && (stripos($text, '<div') === false) &&  (stripos($text, '<br') === false))
@@ -428,7 +364,7 @@ class EasyDiscussParser
 	}
 
 
-	public static function smiley2bbcode( $content )
+	public function smiley2bbcode( $content )
 	{
 
 		$pattern		= '/<img.*?src=["|\'](.*?)["|\'].*?\>/';
@@ -491,11 +427,22 @@ class EasyDiscussParser
 
 		//Remove BR in pre tag
 		$content = preg_replace_callback('/<pre.*?\>(.*?)<\/pre>/ims', array( 'EasyDiscussParser' , 'removeBr' ) , $content );
+		// $content = preg_replace_callback('/<ol.*?\>(.*?)<\/ol>/ims', array( 'EasyDiscussParser' , 'removeBr' ) , $content );
+		// $content = preg_replace_callback('/<li.*?\>(.*?)<\/li>/ims', array( 'EasyDiscussParser' , 'removeBr' ) , $content );
+		// $content = preg_replace_callback('/<ul.*?\>(.*?)<\/ul>/ims', array( 'EasyDiscussParser' , 'removeBr' ) , $content );
+		// $content = str_ireplace("</pre><br />", '</pre>', $content);
+		// $content = str_ireplace("</ol><br />", '</ol>', $content);
+		// $content = str_ireplace("</ol>\r\n<br />", '</ol>', $content);
+		// $content = str_ireplace("</ul><br />", '</ul>', $content);
+		// $content = str_ireplace("</ul>\r\n<br />", '</ul>', $content);
+		// $content = str_ireplace("</pre>\r\n<br />", '</pre>', $content);
+		// $content = str_ireplace("</blockquote><br />", '</blockquote>', $content);
+		// $content = str_ireplace("</blockquote>\r\n<br />", '</blockquote>', $content);
 
 		return $content;
 	}
 
-	public static function quoteBbcode( $text )
+	public function quoteBbcode( $text )
 	{
 		// BBCode to find...
 		$bbcodeSearch = array( 	 '/\[b\](.*?)\[\/b\]/ims',
@@ -548,35 +495,25 @@ class EasyDiscussParserUtilities
 
 	public function parseTagsRecursive( $inputs )
 	{
-		preg_replace('#\[quote\]#', '<blockquote>', $inputs );
-		preg_replace('#\[quote=(.+?)\]#', '<blockquote>', $inputs );
-		preg_replace('#\[quote=(.+?);(.+?)\]#', '<blockquote>', $inputs );
-		preg_replace('#\[/quote\]#', '</blockquote>', $inputs );
+		// var_dump( $inputs );
+		$bbcode = $this->bbcode;
 
-		return $inputs;
+		$bbcodeSearch = array('/quote/');
+
+		// And replace them by...
+		$bbcodeReplace = array('blockquote');
+
+		$htmlTagToUse   = preg_replace($bbcodeSearch,$bbcodeReplace, $bbcode);
+
+		$regex = '#\['.$bbcode.']((?:[^[]|\[(?!/?'.$bbcode.'])|(?R))+)\[/'.$bbcode.']#';
+
+	    if (is_array($inputs)) {
+			$inputs 	= '<' . $htmlTagToUse . '>' . $inputs[1] . '</' . $htmlTagToUse .'>';
+	    }
+
+		return preg_replace_callback( $regex , array( 'EasyDiscussParserUtilities' , 'parseTagsRecursive' ) , $inputs );
+
 	}
-
-	// public function parseTagsRecursiveOld( $inputs )
-	// {
-	// 	// var_dump( $inputs );
-	// 	$bbcode = $this->bbcode;
-
-	// 	$bbcodeSearch = array('/quote/');
-
-	// 	// And replace them by...
-	// 	$bbcodeReplace = array('blockquote');
-
-	// 	$htmlTagToUse   = preg_replace($bbcodeSearch,$bbcodeReplace, $bbcode);
-
-	// 	$regex = '#\['.$bbcode.']((?:[^[]|\[(?!/?'.$bbcode.'])|(?R))+)\[/'.$bbcode.']#';
-
-	//     if (is_array($inputs)) {
-	// 		$inputs 	= '<' . $htmlTagToUse . '>' . $inputs[1] . '</' . $htmlTagToUse .'>';
-	//     }
-
-	// 	return preg_replace_callback( $regex , array( 'EasyDiscussParserUtilities' , 'parseTagsRecursive' ) , $inputs );
-
-	// }
 
 	public static function parseListItems( $content )
 	{

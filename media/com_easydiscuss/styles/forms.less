@@ -79,7 +79,7 @@ input[type="tel"],
 input[type="color"],
 .uneditable-input {
   display: inline-block;
-  height: 26px;
+  height: @baseLineHeight;
   padding: 4px 6px;
   margin-bottom: 9px;
   font-size: @baseFontSize;
@@ -155,9 +155,9 @@ input[type="checkbox"] {
 // Set the height of select and file controls to match text inputs
 select,
 input[type="file"] {
-  height: 30px; /* In IE7, the height of the select element cannot be changed by height, only font-size */
+  height: @inputHeight; /* In IE7, the height of the select element cannot be changed by height, only font-size */
   *margin-top: 4px; /* For IE7, add top margin to align select with labels */
-  line-height: 30px;
+  line-height: @inputHeight;
 }
 
 // Make select elements obey height by applying a border
@@ -269,10 +269,6 @@ textarea {
 .input-large      { width: 210px; }
 .input-xlarge     { width: 270px; }
 .input-xxlarge    { width: 530px; }
-
-.input-xlarge {
-  min-height: 26px;
-}
 
 // Grid style input sizes
 input[class*="span"],
@@ -700,10 +696,10 @@ legend + .control-group {
   input[type="text"],
   input[type="password"],
   input[type="email"] {
-    // .box-sizing(content-box);
+    .box-sizing(content-box);
   }
   select {
-    // .box-sizing(border-box);
+    .box-sizing(border-box);
   }
   .tab-content {
     // background: whiteSmoke;
@@ -748,10 +744,9 @@ legend + .control-group {
     }
   }
   .btn-danger {
-    height: 26px;
+    height: 20px;
     i {
-      line-height: 16px;
-      vertical-align: top;
+      line-height: 20px;
     }
   }
 }//discuss-form

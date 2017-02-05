@@ -54,21 +54,6 @@ class DMailQueue
 					{
 						$mail   	= JFactory::getMailer();
 						$result 	= $mail->sendMail($mailq->mailfrom, $mailq->fromname, $mailq->recipient, $mailq->subject, $mailq->body , $mailq->ashtml );
-
-						// This code is to record all the activities from crons.
-						// Need to create a table for this
-						// $date = JFactory::getDate();
-
-						// $data 				= new stdClass();
-						// $data->id 			= null;
-						// $data->recipient 	= $mailq->recipient;
-						// $data->subject 		= $mailq->subject;
-						// $data->body 		= $mailq->body;
-						// $data->status 		= $mailq->status;
-						// $data->created 		= $date->toMySQL();
-
-						// $db->insertObject( '#__discuss_cron_logs', $data, id );
-
 	 				}
 					else
 					{
@@ -86,79 +71,30 @@ class DMailQueue
 	public function parseEmails()
 	{
 		require_once DISCUSS_CLASSES . '/mailbox.php';
-		$config = DiscussHelper::getConfig();
 
-
-		// Default email parser
 		$mailer	= new DiscussMailer();
-		$state	= $mailer->connect( $config->get( 'main_email_parser_username' ), $config->get( 'main_email_parser_password' ) );
+		$state	= $mailer->connect();
 
-		if( $state )
-		{
-			self::processEmails( $mailer );
-		}
-
-		// Category email parser
-		$model = DiscussHelper::getModel('Categories', true);
-		$cats = $model->getAllCategories();
-
-		if( is_array($cats) )
-		{
-			foreach( $cats as $cat )
-			{
-				$category = DiscussHelper::getTable( 'Category' );
-				$category->load( $cat->id );
-
-				$enable = explode( ',' , $category->getParam( 'cat_email_parser_switch') );
-
-				if( $enable[0] )
-				{
-					$catMail = explode( ',' , $category->getParam( 'cat_email_parser') );
-					$catPass = explode( ',' , $category->getParam( 'cat_email_parser_password') );
-
-					$mailer	= new DiscussMailer();
-					$state	= $mailer->connect( $catMail[0], $catPass[0] );
-
-					if( $state )
-					{
-						self::processEmails( $mailer, $category );
-					}
-				}
-
-			}
-		}
-
-		return true;
-	}
-
-
-	/*
-	 * Connect from parseEmails
-	 */
-	private function processEmails( $mailer = '', $category = '' )
-	{
 		// @task: Only search for messages that are new.
 		$unread	= $mailer->searchMessages( 'UNSEEN' );
 
-		// if( !$state )
-		// {
-		// 	echo JText::_( 'COM_EASYDISCUSS_UNABLE_TO_CONNECT_TO_MAIL_SERVER' );
-		// 	return false;
-		// }
+		if( !$state )
+		{
+			echo JText::_( 'COM_EASYDISCUSS_UNABLE_TO_CONNECT_TO_MAIL_SERVER' );
+			return false;
+		}
 
 		if( !$unread )
 		{
 			echo JText::_( 'COM_EASYDISCUSS_NO_EMAILS_TO_PARSE' );
 			return false;
 		}
-		$config		= DiscussHelper::getConfig();
-		$acl		= DiscussHelper::getHelper( 'ACL' );
+
 		$filter		= JFilterInput::getInstance();
 		$config		= DiscussHelper::getConfig();
 		$total		= 0;
 
 		$replyBreaker = $config->get('mail_reply_breaker');
-
 
 		foreach( $unread as $sequence )
 		{
@@ -172,36 +108,10 @@ class DMailQueue
 
 			$isReply	= !empty( $matches );
 			$message	= new DiscussMailerMessage( $mailer->stream , $sequence );
+
 			$post		= DiscussHelper::getTable( 'Post' );
-
-						//$post->bindAttachments();
-
-			$html = $message->getHTML();
-
-			// Remove img tags because we do not support email embeded images
-			$pattern = array();
-			$pattern[] = '/<img.*?src=["|\'](.*?)["|\'].*?\>/ims';
-			$html = preg_replace( $pattern, array( '' ), $html );
-
-			// If strip html then the bold, italic, underline from email do not work anymore
-
-			// $body 	= nl2br( strip_tags( $html ) );
-			// $safeHtmlFilter = JFilterInput::getInstance(null, null, 1, 1);
-
-			// JFilterInput doesn't strip css tags
-			// $body	= preg_replace("'<style[^>]*>.*?</style>'si", '', $body);
-			// $body	= $safeHtmlFilter->clean($body, 'html');
-			// $body	= trim($body);
-
-			// Insert default subject if emails do not contain title
-			if( empty($subject) )
-			{
-				$subject = JText::_( 'COM_EASYDISCUSS_EMAIL_NO_SUBJECT' );
-			}
-
-			$post->set( 'content' 	, $html );
 			$post->set( 'title'		, $subject );
-			//$post->set( 'content' 	, $message->getPlain() );
+			$post->set( 'content' 	, $message->getPlain() );
 			$post->set( 'published'	, DISCUSS_ID_PUBLISHED );
 			$post->set( 'created'	, DiscussHelper::getDate()->toMySQL() );
 			$post->set( 'replied'	, DiscussHelper::getDate()->toMySQL() );
@@ -233,13 +143,7 @@ class DMailQueue
 			else
 			{
 				// @TODO: Make this category configurable from the back end?
-
 				$post->set( 'category_id' , $config->get( 'main_email_parser_category' ) );
-
-				if( !empty($category) )
-				{
-					$post->set( 'category_id' , $category->id );
-				}
 			}
 
 			// @rule: Map the sender's email with the user in Joomla?
@@ -274,191 +178,8 @@ class DMailQueue
 				$post->set( 'published' , DISCUSS_ID_UNPUBLISHED );
 			}
 
-
 			// @rule: Process the post
 			$post->store();
-
-
-
-
-
-
-
-			$attachments	= array();
-			$attachments	= $message->getAttachment();
-
-			// process attached images
-			if (!empty($attachments))
-			{
-				$config				= DiscussHelper::getConfig();
-				$main_image_path	= rtrim('images/easydiscuss_images/', '/');
-
-				$file 	= JPATH_ROOT . DIRECTORY_SEPARATOR . $main_image_path;
-
-				if( !JFolder::exists($file) )
-				{
-					JFolder::create( $file );
-				}
-
-				$senderMail	= $info->fromemail;
-				$user 		= DiscussHelper::getUserByEmail( $senderMail );
-				$userid 	= $user->get( 'id' );
-
-				$rel_upload_path	= $main_image_path . '/' . $userid;
-
-				$userUploadPath		= JPATH_ROOT . DIRECTORY_SEPARATOR . $main_image_path . DIRECTORY_SEPARATOR . $userid;
-				$userUploadPath		= JPath::clean($userUploadPath);
-
-				$dir				= $userUploadPath . DIRECTORY_SEPARATOR;
-				$tmp_dir			= JPATH_ROOT . DIRECTORY_SEPARATOR . 'tmp' . DIRECTORY_SEPARATOR;
-
-				$uri				= JURI::base().$main_image_path.'/'.$userid.'/';
-
-				if(! JFolder::exists($dir))
-				{
-					JFolder::create($dir);
-				}
-
-				foreach ($attachments as $attachment)
-				{
-
-					// clean up file name
-					if(strpos($attachment['name'], '/') !== FALSE)
-					{
-						$attachment['name'] = substr($attachment['name'], strrpos($attachment['name'],'/')+1 );
-					}
-					elseif(strpos($attachment['name'], '\\' !== FALSE))
-					{
-						$attachment['name'] = substr($attachment['name'], strrpos($attachment['name'],'\\')+1 );
-					}
-
-					// @task: check if the attachment has file extension. ( assuming is images )
-					$imgExts        = array( 'jpg', 'png', 'gif', 'JPG', 'PNG', 'GIF', 'jpeg', 'JPEG' );
-					$imageSegment   = explode('.', $attachment['name']);
-
-					if( ! in_array( $imageSegment[ count( $imageSegment ) - 1 ], $imgExts ) )
-					{
-						$attachment['name'] = $attachment['name'] . '.jpg';
-					}
-
-					// @task: Store the file into a temporary location first.
-					$attachment['tmp_name']	= $tmp_dir . $attachment['name'];
-
-
-					JFile::write( $attachment['tmp_name'], $attachment['data']);
-
-					$atmTitle = $attachment['name'];
-					$atmURL	= $uri.$attachment['name'];
-
-					// Bind file attachments
-					jimport( 'joomla.filesystem.file' );
-					jimport( 'joomla.filesystem.folder' );
-					jimport( 'joomla.utilities.utility' );
-
-					// @rule: Create default media path
-					$path   = DISCUSS_MEDIA . '/' . trim( $config->get( 'attachment_path' ) , DIRECTORY_SEPARATOR );
-
-					if( !JFolder::exists( $path ) )
-					{
-						JFolder::create( $path );
-						JFile::copy( DISCUSS_ROOT . '/index.html' , $path . '/index.html' );
-					}
-
-					$maxSize	= (double) $config->get( 'attachment_maxsize' ) * 1024 * 1024;
-					$extension  = JFile::getExt( $attachment['name'] );
-
-					// Skip empty data's.
-					if( !$extension )
-					{
-						continue;
-					}
-
-					$allowed	= explode( ',' , $config->get( 'main_attachment_extension' ) );
-
-					// @rule: Check for allowed extensions
-					if( !isset( $extension ) || !in_array( strtolower($extension) , $allowed ) )
-					{
-						echo 'Invalid extension.';
-					}
-					else
-					{
-						$size   	= $attachment['size'];
-						$name		= $attachment['name'];
-						$mime		= $attachment['mime'];
-						$tmpName 	= $attachment['tmp_name'];
-
-
-						// Check the mime contains the attachment type, if not we insert our own
-						$imgExts        = array( 'jpg', 'png', 'gif', 'JPG', 'PNG', 'GIF', 'jpeg', 'JPEG' );
-						if( in_array( $mime, $imgExts ) )
-						{
-							$mime = 'image/' . $mime;
-						}
-						else
-						{
-							$mime = 'application/' . $mime;
-						}
-
-						// @rule: File size should not exceed maximum allowed size
-						if( !empty( $size ) && $size < $maxSize )
-						{
-							$hash			= DiscussHelper::getHash( $name . DiscussHelper::getDate()->toMySQL() );
-							$attachment		= JTable::getInstance( 'Attachments' , 'Discuss' );
-
-							$attachment->set( 'path'		, $hash );
-							$attachment->set( 'title'		, $name );
-							$attachment->set( 'uid' 		, $post->id );
-							$attachment->set( 'type'		, ( $isReply ? 'replies' : 'questions' ) );
-							$attachment->set( 'created'		, DiscussHelper::getDate()->toMySQL() );
-							$attachment->set( 'published'	, true );
-							$attachment->set( 'mime'		, $mime );
-							$attachment->set( 'size'		, $size );
-
-
-							if( !JFile::copy( $tmpName , $path . '/' . $hash ) )
-							{
-								echo 'Copy failed from tmp to attachment folder';
-							}
-
-							$attachment->store();
-
-							// Create a thumbnail if attachment is an image
-							if( DiscussHelper::getHelper( 'Image' )->isImage($name) )
-							{
-
-								require_once DISCUSS_CLASSES . '/simpleimage.php';
-								$image	= new SimpleImage;
-
-								$image->load($tmpName);
-								$image->resizeToFill( 160 , 120 );
-
-								$image->save($path . '/' . $hash . '_thumb', $image->image_type);
-
-							}
-
-							// @task: Once the attachment is processed, delete the temporary file.
-							JFile::delete( $tmpName );
-						}
-						else
-						{
-
-							echo 'Invalid extension ' . $name;
-						}
-					}
-
-				}
-			}
-
-
-
-
-
-
-
-
-
-
-
 
 			// Send notification email to the subscribers in the thread.
 			if( $isReply && $post->get( 'published') == DISCUSS_ID_PUBLISHED )
@@ -515,16 +236,11 @@ class DMailQueue
 				// @rule: Send confirmation message.
 				JUtility::sendMail( $app->getCfg( 'mailfrom' ) , $app->getCfg( 'fromname' ) , $replyToEmail , '[#' . $post->id . ']: ' . $subject , $output , $sendAsHTML );
 			}
-
-			if( !$isReply && $post->get( 'published' ) == DISCUSS_ID_PUBLISHED )
-			{
-				// Send email to subscribers about new post has created
-				Discusshelper::sendNotification( $post , $post->parent_id, true, $post->user_id, DISCUSS_ID_PENDING );
-			}
-
-			echo JText::sprintf( 'COM_EASYDISCUSS_EMAIL_PARSED' , $total );
 		}
 
+		echo JText::sprintf( 'COM_EASYDISCUSS_EMAIL_PARSED' , $total );
+
+		return true;
 	}
 
 	public function replyNotifyUsers( $reply , $user , $senderName )
@@ -575,8 +291,6 @@ class DMailQueue
 		$emailData['postLink']		= DiscussRouter::getRoutedURL('index.php?option=com_easydiscuss&view=post&id=' . $parent->id, false, true);
 		$emailData['replyContent']	= $reply->content;
 
-		$attachments	= $reply->getAttachments();
-		$emailData['attachments']	= $attachments;
 
 		$excludeEmails = array();
 		$subscriberEmails			= array();
@@ -588,12 +302,9 @@ class DMailQueue
 
 			$emailData['post_id'] = $parent->id;
 			$emailData['cat_id'] = $parent->category_id;
-			//$subcribersEmails = DiscussHelper::getHelper( 'Mailer' )->notifyThreadSubscribers( $emailData );
+			$subcribersEmails = DiscussHelper::getHelper( 'Mailer' )->notifyThreadSubscribers( $emailData );
 
-			//$excludeEmails		= array_merge( $excludeEmails, $subcribersEmails);
-
-			// Notify all subscriber about new replies
-			DiscussHelper::getHelper( 'Mailer' )->notifySubscribers( $emailData, $excludeEmails );
+			$excludeEmails		= array_merge( $excludeEmails, $subcribersEmails);
 		}
 
 		//notify post owner.

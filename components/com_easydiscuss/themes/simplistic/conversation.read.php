@@ -11,10 +11,6 @@
  * See COPYRIGHT.php for copyright notices and details.
  */
 defined('_JEXEC') or die('Restricted access');
-
-$config = DiscussHelper::getConfig();
-$count = JRequest::getInt( 'count' );
-$count = $count + $config->get('main_messages_limit', 5);
 ?>
 <script type="text/javascript">
 EasyDiscuss
@@ -54,21 +50,6 @@ EasyDiscuss
 			$day    = '';
 			if( $replies ){
 		?>
-
-		<div style="text-align: center;">
-			<?php if( JRequest::getVar( 'show' ) != 'all' ){ ?>
-				<a href="<?php echo DiscussRouter::_( 'index.php?option=com_easydiscuss&view=conversation&layout=read&id=' . $conversation->id . '&show=all' );?>"><?php echo JText::_( 'COM_EASYDISCUSS_VIEW_ALL_PREVIOUS_MESSAGES' ) ?></a>
-			<?php } ?>
-		</div>
-
-		<div style="text-align: center;">
-			<?php if( JRequest::getVar( 'show' ) != 'all' ){ ?>
-					<a href="<?php echo DiscussRouter::_( 'index.php?option=com_easydiscuss&view=conversation&layout=read&id=' . $conversation->id . '&show=previous&count=' . $count );?>"><?php echo JText::_( 'COM_EASYDISCUSS_VIEW_PREVIOUS_MESSAGES' ) ?></a>
-			<?php } ?>
-		</div>
-
-
-
 			<ul class="unstyled discuss-list discuss-conversation-list mt-0 replyList">
 			<?php
 				foreach( $replies as $reply )

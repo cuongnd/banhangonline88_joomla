@@ -12,7 +12,7 @@
  */
 defined('_JEXEC') or die('Restricted access');
 
-require_once( DISCUSS_ROOT . '/views.php' );
+require_once JPATH_ROOT . '/components/com_easydiscuss/views.php';
 
 class EasyDiscussViewSearch extends EasyDiscussView
 {
@@ -41,10 +41,7 @@ class EasyDiscussViewSearch extends EasyDiscussView
 			$searchModel	= DiscussHelper::getModel( 'Search' );
 			$posts 			= $searchModel->getData( true , 'latest' , null , 'allposts' , $category );
 			$pagination 	= $searchModel->getPagination( 0 , 'latest' , 'allposts' , $category );
-
-
 			$posts 			= DiscussHelper::formatPost( $posts , true );
-
 			$badgesTable	= DiscussHelper::getTable( 'Profile' );
 
 			if( count($posts) > 0 )
@@ -54,61 +51,47 @@ class EasyDiscussViewSearch extends EasyDiscussView
 				$needle = $searchwords[0];
 				$searchwords = array_unique($searchwords);
 
+				
+
 				for($i = 0; $i < count($posts); $i++ )
 				{
 					$row =& $posts[$i];
 
-					if(! $row->isProtected() )
+					$introtext	= preg_replace( '/\s+/', ' ', strip_tags(DiscussHelper::parseContent( $row->content)) ); // clean it to 1 liner
+					$pos 		= strpos( $introtext, $needle);
+
+					if( $pos !== false )
 					{
-						if( $config->get( 'layout_editor' ) != 'bbcode' )
+						$text   	= '...';
+						$startpos 	= ( $pos - 10 ) >= 0 ? $pos - 10 : 0;
+						//$endpos     = ( $pos - 10 ) >= 0 ? 10 : JString::strlen($needle) + 1;
+						$endpos     = ( $pos - 10 ) >= 0 ? 10 : ($pos - $startpos);
+
+						$front  	= JString::substr($introtext, $startpos, $endpos);
+
+						if( JString::strlen( $introtext ) > $endpos )
 						{
-							$introtext 	= strip_tags( $row->content );
-							$introtext  = preg_replace( '/\s+/' , ' ' , $introtext );
+							$endpos     = $pos + JString::strlen($needle);
+							$end    	= JString::substr($introtext, $endpos, 10);
+
+							if( JString::strlen( $front ) > 0 )
+							{
+								$text  = $text . $front;
+							}
+
+							$text  = $text . $needle;
+
+							if( JString::strlen( $end ) > 0 )
+							{
+								$text  = $text . $end . '...';
+							}
 						}
 						else
 						{
-							$introtext	= preg_replace( '/\s+/', ' ', strip_tags(DiscussHelper::parseContent( $row->content)) ); // clean it to 1 liner
+							$text  = $front;
 						}
-						$pos 		= strpos( $introtext, $needle);
 
-						if( $pos !== false )
-						{
-							$text   	= '...';
-							$startpos 	= ( $pos - 10 ) >= 0 ? $pos - 10 : 0;
-							//$endpos     = ( $pos - 10 ) >= 0 ? 10 : JString::strlen($needle) + 1;
-							$endpos     = ( $pos - 10 ) >= 0 ? 10 : ($pos - $startpos);
-
-							$front  	= JString::substr($introtext, $startpos, $endpos);
-
-							if( JString::strlen( $introtext ) > $endpos )
-							{
-								$endpos     = $pos + JString::strlen($needle);
-								$end    	= JString::substr($introtext, $endpos, 10);
-
-								if( JString::strlen( $front ) > 0 )
-								{
-									$text  = $text . $front;
-								}
-
-								$text  = $text . $needle;
-
-								if( JString::strlen( $end ) > 0 )
-								{
-									$text  = $text . $end . '...';
-								}
-							}
-							else
-							{
-								$text  = $front;
-							}
-
-							$introtext  = $text;
-						}
-					}
-					else
-					{
-						//password protected content.
-						$introtext = $row->content; // when come to here, the content is already contain the password input form ( via formatPost function.)
+						$introtext  = $text;
 					}
 
 					//$introtext	= JString::substr($introtext, 0, $config->get( 'layout_introtextlength' ));
@@ -122,16 +105,15 @@ class EasyDiscussViewSearch extends EasyDiscussView
 						$searchRegex .= preg_quote($hlword, '#');
 						$x++;
 					}
-					$searchRegex .= '(?!(?>[^<]*(?:<(?!/?a\b)[^<]*)*)</a>))#iu';
-
+					$searchRegex .= ')#iu';
 
 					$row->title		= preg_replace($searchRegex, '<span class="highlight">\0</span>', $row->title);
-					$row->introtext	= $row->isProtected() ? $introtext :  preg_replace($searchRegex, '<span class="highlight">\0</span>', $introtext);
+					$row->introtext		= preg_replace($searchRegex, '<span class="highlight">\0</span>', $introtext);
 
 					//display password input form.
-					if( $row->isProtected() )
+					if( !empty( $row->password ) && !DiscussHelper::hasPassword( $row ) )
 					{
-						$row->content = $row->content; // when come to here, the content is already contain the password input form ( via formatPost function.)
+						$row->content = $row->content;
 					}
 					else
 					{

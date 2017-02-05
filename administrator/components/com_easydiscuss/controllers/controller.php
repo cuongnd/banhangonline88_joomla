@@ -52,6 +52,48 @@ class EasyDiscussController extends EasyDiscussParentController
 		$toolbar	= JToolbar::getInstance( 'toolbar' );
 		$toolbar->addButtonPath( JPATH_ROOT . '/administrator/components/com_easydiscuss/themes/default/images/favicons');
 
+		$doc 		= JFactory::getDocument();
+
+		$ajaxData	=  "/*<![CDATA[*/
+	var discuss_site = '" . rtrim( JURI::root() , '/' ) . '/administrator/index.php?option=com_easydiscuss' ."';
+	var lang_direction	= '" . $doc->direction . "';
+	var discuss_auth	= '" . DiscussHelper::getToken() . "';
+/*]]>*/";
+		$doc->addScriptDeclaration( $ajaxData );
+
+		// @task: Load foundry bootstrap.
+		require_once DISCUSS_FOUNDRY . '/joomla/bootstrap.php';
+
+		$config		= DiscussHelper::getConfig();
+
+		// @task: Set EasyDiscuss' environment
+		$environment = JRequest::getVar( 'easydiscuss_environment' , $config->get( 'easydiscuss_environment' ) );
+
+		// @task: Create abstract component.
+		$folder 	= ( $environment == 'development' ) ? 'scripts_/' : 'scripts/';
+
+		$doc->addScript( DISCUSS_MEDIA_URI . '/' . $folder . 'abstract.js' );
+		$doc->addScript( rtrim( JURI::root() , '/' ) . '/administrator/components/com_easydiscuss/assets/js/admin.js?' . $version );
+
+		// Used in boostrap.js
+		$url 		= rtrim( JURI::base() , '/' ) . '/index.php?option=com_easydiscuss';
+
+		// @task: Load component bootstrap.
+		ob_start();
+			include( DISCUSS_MEDIA . '/bootstrap.js' );
+			$bootstrap = ob_get_contents();
+		ob_end_clean();
+
+		$doc->addScriptDeclaration( $bootstrap );
+
+		DiscussHelper::loadThemeCss();
+
+		// For the sake of loading the core.js in Joomla 1.6 (1.6.2 onwards)
+		if( DiscussHelper::getJoomlaVersion() >= '1.6' )
+		{
+			JHTML::_('behavior.framework');
+		}
+
 		parent::__construct($config);
 	}
 
@@ -120,22 +162,6 @@ class EasyDiscussController extends EasyDiscussParentController
 		}
 		else
 		{
-
-			DiscussHelper::loadHeaders();
-
-
-			// @TODO: Deprecate this
-			$doc 	= JFactory::getDocument();
-			$doc->addScript( rtrim( JURI::root() , '/' ) . '/administrator/components/com_easydiscuss/assets/js/admin.js?' . DISCUSS_FOUNDRY_VERSION);
-
-			DiscussHelper::loadThemeCss();
-
-			// For the sake of loading the core.js in Joomla 1.6 (1.6.2 onwards)
-			if( DiscussHelper::getJoomlaVersion() >= '1.6' )
-			{
-				JHTML::_('behavior.framework');
-			}
-
 			// Non ajax calls.
 			// Get/Create the model
 			if ($model = $this->getModel($viewName))

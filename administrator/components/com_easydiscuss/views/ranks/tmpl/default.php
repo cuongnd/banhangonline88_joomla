@@ -28,8 +28,8 @@ var COM_EASYDISCUSS_RANKING_ERR_ALL_VALUE_IS_CORRECT = '<?php echo JText::_('COM
 
 function showDescription( id )
 {
-	EasyDiscuss.$( '.rule-description' ).hide();
-	EasyDiscuss.$( '#rule-' + id ).show();
+	discussQuery( '.rule-description' ).hide();
+	discussQuery( '#rule-' + id ).show();
 }
 
 EasyDiscuss(function($){

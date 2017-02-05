@@ -56,19 +56,19 @@ EasyDiscuss
 
 function customFieldAclAssign(type)
 {
-	var action	= EasyDiscuss.$('#activerule').val();
-	var items = EasyDiscuss.$(":input[name='acl_panel_"+ type + "[]']:checked");
+	var action	= discussQuery('#activerule').val();
+	var items = discussQuery(":input[name='acl_panel_"+ type + "[]']:checked");
 
 	if( items != null )
 	{
 		for(i = 0; i < items.length; i++)
 		{
 			var ele			= items[i];
-			var id			= EasyDiscuss.$(ele).val();
-			var text		= EasyDiscuss.$("#acl_panel_" + type + "_" + id).val();
+			var id			= discussQuery(ele).val();
+			var text		= discussQuery("#acl_panel_" + type + "_" + id).val();
 
 			var doinsert	= true;
-			var curProcessItem = EasyDiscuss.$(":input[name='acl_" + type + "_" + action + "[]']");
+			var curProcessItem = discussQuery(":input[name='acl_" + type + "_" + action + "[]']");
 
 			if( curProcessItem.length > 0 )
 			{
@@ -91,7 +91,7 @@ function customFieldAclAssign(type)
 				input += '<input type="hidden" name="acl_'+ type + '_' + action + '[]" value="' + id + '" />';
 				input += '</li>';
 
-				EasyDiscuss.$('#customFields_acl_' + type + '_' + action)
+				discussQuery('#customFields_acl_' + type + '_' + action)
 					.append(
 						input
 					);

@@ -27,16 +27,5 @@ defined('_JEXEC') or die('Restricted access');
 <br />
 <?php echo JText::_( 'COM_EASYDISCUSS_EMAILTEMPLATE_VIEW_DISCUSSION_LINK_BELOW' );?>
 <div style="padding:20px;border-top:1px solid #ccc;padding:20px 0 10px;margin-top:20px;line-height:19px;color:#555;font-family:'Lucida Grande',Tahoma,Arial;font-size:12px;text-align:left">
-	<div>
-	<!--[if mso]>
-	  <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="<?php echo $postLink;?>" style="height:30px;padding-left:15px;padding-right:15px;v-text-anchor:middle;" arcsize="7%" strokecolor="#caa200" fillcolor="#ffcc00">
-	    <w:anchorlock/>
-	    <center style="color:#534200;font-family:sans-serif;font-size:13px;font-weight:bold;"><?php echo JText::_( 'COM_EASYDISCUSS_EMAILTEMPLATE_READ_THIS_DISCUSSION' );?> &nbsp; &raquo;</center>
-	  </v:roundrect>
-	<![endif]-->
-	<![if !mso]>
-	<a href="<?php echo $postLink;?>"
-	style="background-color:#ffcc00;border:1px solid #caa200;padding-left:15px;padding-right:15px;border-radius:2px;color:#534200;display:inline-block;font-family:sans-serif;font-size:13px;font-weight:bold;line-height:30px;text-align:center;text-decoration:none;-webkit-text-size-adjust:none;" target="_blank"><?php echo JText::_( 'COM_EASYDISCUSS_EMAILTEMPLATE_READ_THIS_DISCUSSION' );?> &nbsp; &raquo;</a>
-	<![endif]>
-	</div>
+	<a href="<?php echo $postLink;?>" target="_blank" style="display:inline-block;padding:5px 15px;background:#fc0;border:1px solid #caa200;border-bottom-color:#977900;color:#534200;text-shadow:0 1px 0 #ffe684;font-weight:bold;box-shadow:inset 0 1px 0 #ffe064;-moz-box-shadow:inset 0 1px 0 #ffe064;-webkit-box-shadow:inset 0 1px 0 #ffe064;border-radius:2px;moz-border-radius:2px;-webkit-border-radius:2px;text-decoration:none!important"><?php echo JText::_( 'COM_EASYDISCUSS_EMAILTEMPLATE_READ_THIS_DISCUSSION' );?> &nbsp; &raquo;</a>
 </div>

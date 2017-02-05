@@ -148,7 +148,7 @@ class EasyDiscussModelCategories extends EasyDiscussModel
 		return $where;
 	}
 
-	function _buildQueryOrderBy( $options = array() )
+	function _buildQueryOrderBy()
 	{
 		$mainframe			= JFactory::getApplication();
 
@@ -237,7 +237,7 @@ class EasyDiscussModelCategories extends EasyDiscussModel
 		return $result;
 	}
 
-		public function getCategoryTree( $sortParentChild = true )
+	public function getCategoryTree()
 	{
 		$db	= DiscussHelper::getDBO();
 		$my	= JFactory::getUser();
@@ -256,21 +256,12 @@ class EasyDiscussModelCategories extends EasyDiscussModel
 			$queryExclude .= ' AND a.`id` NOT IN (' . implode(',', $excludeCats) . ')';
 		}
 
-		$query	= 'SELECT a.*, COUNT(b.id) -1 as depth';
+		$query	= 'SELECT a.*, ';
+		$query	.= ' ( SELECT COUNT(id) FROM ' . $db->nameQuote( '#__discuss_category' );
+		$query	.= ' WHERE lft < a.lft AND rgt > a.rgt AND a.lft != ' . $db->Quote( 0 ) . ' ) AS depth ';
 		$query	.= ' FROM ' . $db->nameQuote( '#__discuss_category' ) . ' AS a ';
-
-		$query  .= ' INNER JOIN ' . $db->nameQuote( '#__discuss_category' ) . ' AS b';
 		$query	.= ' WHERE a.`published`=' . $db->Quote( DISCUSS_ID_PUBLISHED );
-		$query  .= ' AND (a.lft between b.lft and b.rgt)';
-		
 		$query	.= $queryExclude;
-
-		$query  .= ' GROUP BY a.id';
-
-		if( !$config->get( 'layout_show_all_subcategories' ) )
-		{
-			$query  .= ' HAVING ' . $db->nameQuote( 'depth' ) . ' = 0';
-		}
 
 		switch($sortConfig)
 		{
@@ -288,12 +279,11 @@ class EasyDiscussModelCategories extends EasyDiscussModel
 				break;
 		}
 
-		$sort = $config->get('layout_sort_category', 'asc');
+		$sort = $config->get('layout_sort_category', 'asc');	
 
 		$query  .= $orderBy.$sort;
 
 		$db->setQuery( $query );
-
 
 		$rows		= $db->loadObjectList();
 
@@ -310,7 +300,7 @@ class EasyDiscussModelCategories extends EasyDiscussModel
 
 
 
-		if( $sortParentChild && ( $sortConfig == 'alphabet' || $sortConfig == 'latest' ) )
+		if( $sortConfig == 'alphabet' || $sortConfig == 'latest' )
 		{
 			$cats = array();
 			$groups = array();
@@ -343,7 +333,7 @@ class EasyDiscussModelCategories extends EasyDiscussModel
 
 	private function getItems( $parent_id, $cats )
 	{
-
+		
 		if( isset( $cats[$parent_id] ) )
 		{
 			foreach( $cats[$parent_id] as $row )
@@ -357,9 +347,9 @@ class EasyDiscussModelCategories extends EasyDiscussModel
 			// $id+=1;
 			// if( $id < 6 )
 			// {
-			// 	$this->getItems( $id, $cats, '' );
+			// 	$this->getItems( $id, $cats, '' );	
 			// }
-
+			
 		}
 	}
 
@@ -504,7 +494,7 @@ class EasyDiscussModelCategories extends EasyDiscussModel
 				break;
 		}
 
-		$sort = $config->get('layout_sort_category', 'asc');
+		$sort = $config->get('layout_sort_category', 'asc');	
 
 		$query  .= $orderBy.$sort;
 

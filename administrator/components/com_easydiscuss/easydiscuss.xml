@@ -1,16 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE extension>
-<extension type="component" version="1.6.0" method="upgrade">
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="component" version="3.0.0" method="upgrade">
 	<name>com_easydiscuss</name>
-	<author>StackIdeas</author>
+	<creationDate>September 2013</creationDate>
+	<author>Stack Ideas</author>
 	<authorEmail>support@stackideas.com</authorEmail>
 	<authorUrl>http://www.stackideas.com</authorUrl>
 	<copyright>Copyright 2009 - 2012 Stack Ideas. All rights reserved</copyright>
 	<license>GPL License</license>
-	<version>3.2.9304</version>
-	<creationDate>January 2014</creationDate>
+	<version>3.1.8872</version>
 	<description>
-		Discussion extension for your Joomla! site. download from kingtheme.net
+		EasyDiscuss is an awesome discussion extension for your Joomla! site. It is a hybrid between a forum and a question and answer solution.
 	</description>
 	<scriptfile>script.php</scriptfile>
 	<install>
@@ -28,7 +27,6 @@
 			<schemapath type="mysql">sql/updates/mysql</schemapath>
 		</schemas>
 	</update>
-
 	<files folder="site">
 		<folder>classes</folder>
 		<folder>controllers</folder>
@@ -46,9 +44,18 @@
 		<filename>jomsocial_rule.xml</filename>
 		<filename>router.php</filename>
 		<filename>views.php</filename>
-		<filename>services.php</filename>
 	</files>
-
+<!--
+	<media folder="media" destination="com_easydiscuss">
+		<folder>badges</folder>
+		<folder>images</folder>
+		<folder>scripts</folder>
+		<folder>scripts_</folder>
+		<folder>styles</folder>
+		<filename>bootstrap.js</filename>
+		<filename>index.html</filename>
+	</media>
+-->
 	<administration>
 		<menu link="option=com_easydiscuss" img="components/com_easydiscuss/themes/default/images/favicons/easydiscuss.png">COM_EASYDISCUSS</menu>
 		<submenu>
@@ -57,6 +64,7 @@
 			<menu view="autoposting" img="components/com_easydiscuss/themes/default/images/favicons/easydiscuss-autoposting.png">COM_EASYDISCUSS_ADMIN_MENU_AUTOPOSTING</menu>
 			<menu view="categories" img="components/com_easydiscuss/themes/default/images/favicons/easydiscuss-categories.png">COM_EASYDISCUSS_ADMIN_MENU_CATEGORIES</menu>
 			<menu view="tags" img="components/com_easydiscuss/themes/default/images/favicons/easydiscuss-tags.png">COM_EASYDISCUSS_ADMIN_MENU_TAGS</menu>
+			<!-- <menu view="labels" img="components/com_easydiscuss/themes/default/images/favicons/easydiscuss-labels.png">COM_EASYDISCUSS_ADMIN_MENU_LABELS</menu> -->
 			<menu view="users" img="components/com_easydiscuss/themes/default/images/favicons/easydiscuss-users.png">COM_EASYDISCUSS_ADMIN_MENU_USERS</menu>
 			<menu view="roles" img="components/com_easydiscuss/themes/default/images/favicons/easydiscuss-roles.png">COM_EASYDISCUSS_ADMIN_MENU_ROLES</menu>
 			<menu view="acls" img="components/com_easydiscuss/themes/default/images/favicons/easydiscuss-acls.png">COM_EASYDISCUSS_ADMIN_MENU_ACL</menu>
@@ -74,7 +82,6 @@
 			<folder>controllers</folder>
 			<folder>elements</folder>
 			<folder>models</folder>
-			<folder>easysocial</folder>
 			<folder>sql</folder>
 			<folder>tables</folder>
 			<folder>themes</folder>
@@ -82,7 +89,6 @@
 			<file>access.xml</file>
 			<file>easydiscuss.php</file>
 			<file>config.xml</file>
-			<file>foundry.php</file>
 			<file>configuration.ini</file>
 			<file>index.html</file>
 			<file>install.default.php</file>
@@ -95,10 +101,12 @@
 			<language tag="en-GB">languages/admin/en-GB.com_easydiscuss.sys.ini</language>
 		</languages>
 	</administration>
-	<languages>
-		<language tag="en-GB">languages/site/en-GB.com_easydiscuss.ini</language>
-	</languages>
+
 	<plugins>
 		<plugin plugin="plg_user_easydiscussusers" group="user" />
 	</plugins>
+
+	<languages>
+		<language tag="en-GB">languages/site/en-GB.com_easydiscuss.ini</language>
+	</languages>
 </extension>

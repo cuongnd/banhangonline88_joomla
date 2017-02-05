@@ -11,9 +11,111 @@
  * See COPYRIGHT.php for copyright notices and details.
  */
 defined('_JEXEC') or die('Restricted access');
+
 ?>
+<script type="text/javascript">
+
+<?php if( JRequest::getInt( 'print' , 0 ) == 1 ){ ?>
+window.print();
+<?php } ?>
+
+EasyDiscuss.view_votes = <?php echo !$system->config->get( 'main_allowguestview_whovoted' ) && !$system->my->id ? 'false' : 'true'; ?>;
+
+<?php if( $system->config->get( 'main_syntax_highlighter') ){ ?>
+// Find any response that contains a code syntax.
+EasyDiscuss.main_syntax_highlighter = true;
+EasyDiscuss
+	.require()
+	.script('syntaxhighlighter' , 'likes' )
+	.done(function($) {
+		$('.discuss-content-item pre').each(function(i, e) {
+		hljs.highlightBlock(e);
+	});
+});
+
+<?php } ?>
+
+EasyDiscuss
+.require()
+.script( 'likes' , 'favourites', 'attachments' , 'replies' , 'posts' )
+.library( 'scrollTo' )
+.done(function($){
+
+	// Implement likes controller
+	$( '.attachmentsItem' ).implement(
+		EasyDiscuss.Controller.Attachments.Item,
+		{
+		}
+	);
+
+	// Implement reply item controller.
+	$( '.discussionReplies' ).implement(
+		EasyDiscuss.Controller.Replies,
+		{
+			termsCondition : <?php echo $system->config->get( 'main_comment_tnc' ) ? 'true' : 'false'; ?>,
+			sort: "<?php echo $sort; ?>"
+		}
+	);
+
+	$('.discussAnswer').implement(
+		EasyDiscuss.Controller.Replies,
+		{
+			termsCondition : <?php echo $system->config->get( 'main_comment_tnc' ) ? 'true' : 'false'; ?>,
+			sort: "<?php echo $sort; ?>"
+		}
+	);
+
+	// Implement loadmore reply controller if exist
+	$('.replyLoadMore').length > 0 && $('.replyLoadMore').implement(
+		EasyDiscuss.Controller.Replies.LoadMore,
+		{
+			controller: {
+				list: $('.discussionReplies').controller()
+			},
+			id: <?php echo $post->id; ?>,
+			sort: "<?php echo $sort; ?>"
+		}
+	);
+
+	$( '.discussQuestion' ).implement(
+		EasyDiscuss.Controller.Post.Question,
+		{
+			termsCondition : <?php echo $system->config->get( 'main_comment_tnc' ) ? 'true' : 'false'; ?>
+		}
+	);
+
+
+	$( '.discuss-post-assign' ).implement( EasyDiscuss.Controller.Post.Moderator );
+
+
+	$( '.discussQuestion' ).implement( EasyDiscuss.Controller.Post.CheckNewReplyComment,
+		{
+			interval: <?php echo $system->config->get( 'system_update_interval', 30 ); ?>
+		}
+	);
+
+	$( '.discussFavourites' ).implement( EasyDiscuss.Controller.Post.Favourites );
+
+	$(document).on('click.quote', '.quotePost', function(){
+
+		var rawContent 	= $( this ).find( 'input' ).val(),
+			editor 		= $( 'textarea[name=dc_reply_content]' );
+
+		editor.val( editor.val() + '[quote]' + '[b]' + rawAuthor + '<?php echo JText::_( 'COM_EASYDISCUSS_QUOTE_WROTE' )  ?>'  + ':[/b]' + '\n\r' + rawContent + '[/quote]' );
+
+		// Scroll down to the response.
+		$.scrollTo( '#respond' , 800 );
+
+		editor.focus();
+	});
+
+});
+
+</script>
+
 <?php echo $adsense->header; ?>
 <div class="discuss-entry">
+
 	<div id="dc_main_notifications"></div>
 
 	<?php if( $post->isPending() ) { ?>
@@ -22,21 +124,22 @@ defined('_JEXEC') or die('Restricted access');
 	</div>
 	<?php } ?>
 
-	<div class="row-fluid mb-5">
-		<div class="pull-right">
-			<a href="#respond" class="btn btn-small btn-success"><i class="icon-plus-sign"></i> <?php echo JText::_( 'COM_EASYDISCUSS_ADD_A_REPLY' );?></a>
-			<a href="#replies" class="btn btn-small btn-info"><?php echo JText::_( 'COM_EASYDISCUSS_VIEW_REPLIES' );?> (<?php echo count($replies);?>)</a>
+	<div class="row-fluid">
+		<div class="pull-right mb-15">
+			<a href="#respond" class="btn btn-mini btn-success"><i class="icon-plus-sign"></i> <?php echo JText::_( 'COM_EASYDISCUSS_ADD_A_REPLY' );?></a>
+			<a href="#replies" class="btn btn-mini btn-info"><?php echo JText::_( 'COM_EASYDISCUSS_VIEW_REPLIES' );?> (<?php echo count($replies);?>) &rarr;</a>
 		</div>
 	</div>
 
 	<?php if( $access->canAssign() ) { ?>
 		<!-- Post assignments -->
 		<div class="discuss-post-assign" data-id="<?php echo $post->id; ?>" data-category="<?php echo $post->category_id; ?>">
-			<?php echo $this->loadTemplate( 'post.assignment.php' , array( 'post' => $post , 'moderators' => $moderators ) ); ?>
+			<?php echo $this->loadTemplate( 'post.assignment.php' , array( 'post' => $post, $moderators ) ); ?>
 		</div>
 	<?php } ?>
 
-
+	<div class="postStatus label label-info label-post_status<?php echo $postStatusClass ?>"><?php echo $postStatus; ?></div>
+	<div class="postType label label-important label-post_type<?php echo $suffix; ?>" ><?php echo $post->post_type ?></div>
 
 	<?php if( $access->canLabel() && false ) { ?>
 		<!-- Post assignments -->
@@ -49,18 +152,15 @@ defined('_JEXEC') or die('Restricted access');
 	<?php echo $this->loadTemplate( 'post.question.item.php' , array( 'post' => $post ) ); ?>
 	<?php echo DiscussHelper::renderModule( 'easydiscuss-after-question' ); ?>
 
-	<!-- Display the who's online block -->
 	<?php echo DiscussHelper::getWhosOnline();?>
 
 	<?php echo DiscussHelper::renderModule( 'easydiscuss-before-answer' ); ?>
-
 	<?php if( $answer ){ ?>
 	<div class="discuss-answer discussAnswer">
 		<a name="answer"></a>
 		<?php echo $this->loadTemplate( 'post.reply.item.php' , array( 'question' => $post, 'post' => $answer ) ); ?>
 	</div>
 	<?php } ?>
-
 	<?php echo DiscussHelper::renderModule( 'easydiscuss-after-answer' ); ?>
 
 	<?php echo $adsense->beforereplies; ?>
@@ -71,6 +171,7 @@ defined('_JEXEC') or die('Restricted access');
 			<div class="discuss-component-title"><?php echo JText::_('COM_EASYDISCUSS_ENTRY_RESPONSES'); ?> (<span class="replyCount"><?php echo $totalReplies;?></span>)</div>
 
 			<?php if( $category->canViewReplies() ){ ?>
+				<!-- @php post filter nav -->
 				<div class="discuss-filter">
 					<a name="filter-sort"></a>
 					<ul class="nav nav-tabs">
@@ -145,6 +246,7 @@ defined('_JEXEC') or die('Restricted access');
 		<?php echo DiscussHelper::renderModule( 'easydiscuss-before-replyform' ); ?>
 		<?php echo $this->loadTemplate( 'post.reply.form.php' ); ?>
 		<?php echo DiscussHelper::renderModule( 'easydiscuss-after-replyform' ); ?>
+
 	<?php } ?>
 
 

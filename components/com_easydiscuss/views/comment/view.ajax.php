@@ -11,7 +11,9 @@
 */
 defined('_JEXEC') or die('Restricted access');
 
-require_once( DISCUSS_ROOT . '/views.php' );
+jimport( 'joomla.application.component.view');
+
+require_once JPATH_ROOT . '/components/com_easydiscuss/helpers/helper.php';
 
 class EasyDiscussViewComment extends EasyDiscussView
 {
@@ -140,9 +142,6 @@ class EasyDiscussViewComment extends EasyDiscussView
 			$liveNotificationText   = 'COM_EASYDISCUSS_COMMENT_QUESTION_NOTIFICATION_TITLE';
 		}
 
-		// Create notification item in EasySocial
-		DiscussHelper::getHelper( 'EasySocial' )->notify( 'new.comment' , $post , $question , $comment );
-
 
 		if( $comment->published )
 		{
@@ -151,8 +150,6 @@ class EasyDiscussViewComment extends EasyDiscussView
 
 			// jomsocial activity stream
 			DiscussHelper::getHelper( 'jomsocial' )->addActivityComment( $post, $question );
-
-			DiscussHelper::getHelper( 'easysocial' )->commentDiscussionStream( $comment , $post , $question );
 		}
 
 		// Add notification to the post owner.
@@ -177,9 +174,6 @@ class EasyDiscussViewComment extends EasyDiscussView
 	//	{
 			// Add logging for user.
 			DiscussHelper::getHelper( 'History' )->log( 'easydiscuss.new.comment' , $my->id , JText::_( 'COM_EASYDISCUSS_BADGES_HISTORY_NEW_COMMENT'), $post->id );
-
-			// Assign badge for EasySocial
-			DiscussHelper::getHelper( 'EasySocial' )->assignBadge( 'create.comment' , $my->id , JText::_( 'COM_EASYDISCUSS_BADGES_HISTORY_NEW_COMMENT' ) );
 
 			DiscussHelper::getHelper( 'Badges' )->assign( 'easydiscuss.new.comment' , $my->id );
 			DiscussHelper::getHelper( 'Points' )->assign( 'easydiscuss.new.comment' , $my->id );

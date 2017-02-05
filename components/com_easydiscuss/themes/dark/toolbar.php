@@ -15,6 +15,7 @@ defined('_JEXEC') or die('Restricted access');
 <script type="text/javascript">
 EasyDiscuss
 .require()
+.library( 'responsive' )
 .script( 'toolbar' )
 .done(function($){
 
@@ -102,7 +103,50 @@ EasyDiscuss
 	</div>
 	<?php } ?>
 
-	<?php echo $this->loadTemplate( 'searchbar.php'); ?>
+	<?php echo DiscussHelper::renderModule( 'easydiscuss-before-searchbar' ); ?>
+	<?php if( $system->config->get( 'layout_toolbar_searchbar' ) ){ ?>
+	<div class="discuss-searchbar <?php echo $system->config->get('layout_toolbar_cat_filter') ? 'discuss-categorysearch' : '' ?>">
+		<div class="discuss-table">
+
+			<div class="discuss-tablecell discuss-searchbar--left">
+				<?php if( $system->config->get( 'layout_avatar' ) ){ ?>
+				<div class="discuss-avatar avatar-medium pull-left">
+					<img src="<?php echo $system->profile->getAvatar();?>" alt="<?php echo $this->escape( $system->profile->getName() );?>" />
+				</div>
+				<?php } ?>
+			</div>
+
+			<div class="discuss-tablecell discuss-searchbar--center">
+				<div class=" discuss-searchbar--input">
+					<form name="discuss-search" method="GET" action="<?php echo DiscussRouter::_('index.php?option=com_easydiscuss&view=search'); ?>">
+					<input type="text" class="input-searchbar" placeholder="<?php echo JText::_( 'COM_EASYDISCUSS_SEARCH_PLACEHOLDER' );?>" name="query" value="<?php echo DiscussHelper::getHelper( 'String' )->escape($query) ? DiscussHelper::getHelper( 'String' )->escape($query) : '';?>" />
+
+
+					<div class="categorySelectionSearch discuss-tablecell select-searchbar-wrap">
+						<?php echo $nestedCategories; ?>
+					</div>
+
+					<input type="hidden" name="option" value="com_easydiscuss" />
+					<input type="hidden" name="view" value="search" />
+					<input type="hidden" name="Itemid" value="<?php echo DiscussRouter::getItemId('search'); ?>" />
+
+					<div class="discuss-tablecell">
+						<button class="btn btn-searchbar"><?php echo JText::_( 'COM_EASYDISCUSS_SEARCH_BUTTON' );?></button>
+					</div>
+
+					</form>
+				</div>
+			</div>
+
+			<?php if( $acl->allowed( 'add_question' ) && $system->config->get( 'layout_toolbarcreate' ) ){ ?>
+			<div class="discuss-tablecell discuss-searchbar--right">
+				<a class="btn btn-<?php echo $system->config->get('layout_ask_color'); ?> btn-ask pull-left" href="<?php echo DiscussRouter::getAskRoute( $categoryId );?>"><?php echo JText::_( 'COM_EASYDISCUSS_OR_ASK_A_QUESTION' );?></a>
+			</div>
+			<?php } ?>
+		</div>
+	</div>
+	<?php } ?>
+	<?php echo DiscussHelper::renderModule( 'easydiscuss-after-searchbar' ); ?>
 
 </div>
 <?php echo DiscussHelper::renderModule( 'easydiscuss-after-header' ); ?>
@@ -349,7 +393,7 @@ EasyDiscuss
 <?php echo DiscussHelper::renderModule( 'easydiscuss-after-toolbar' ); ?>
 
 <?php if( $system->config->get( 'layout_category_tree' ) ){ ?>
-	<?php if( $views->current == 'index' ){ ?>
+	<?php if( $views->current == 'index' || $views->current == 'categories' ){ ?>
 		<?php echo $this->loadTemplate( 'categories.front.php'); ?>
 	<?php } ?>
 <?php } ?>

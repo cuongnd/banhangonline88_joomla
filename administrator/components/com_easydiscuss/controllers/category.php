@@ -216,10 +216,6 @@ class EasyDiscussControllerCategory extends EasyDiscussController
 			$params->set( 'maxlength' , $post['maxlength'] );
 			$params->set( 'maxlength_size' , $post['maxlength_size'] );
 			$params->set( 'cat_notify_custom' , $post['cat_notify_custom'] );
-			$params->set( 'cat_email_parser' , $post['cat_email_parser'] );
-			$params->set( 'cat_email_parser_password' , $post['cat_email_parser_password'] );
-			$params->set( 'cat_email_parser_switch' , $post['cat_email_parser_switch'] );
-
 			$category->params 	= $params->toString();
 
 			if (!$category->store( $alterOrdering ))
@@ -230,8 +226,10 @@ class EasyDiscussControllerCategory extends EasyDiscussController
 
 			//save the category acl
 			$category->deleteACL();
-			$category->saveACL( $post );
-
+			if($category->private == '2')
+			{
+				$category->saveACL( $post );
+			}
 
 			$file = JRequest::getVar( 'Filedata', '', 'files', 'array' );
 			if(! empty($file['name']))

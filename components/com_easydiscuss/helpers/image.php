@@ -61,21 +61,16 @@ class DiscussImageHelper
 	 */
 	public static function canUpload( $file, &$err )
 	{
-		//$params = JComponentHelper::getParams( 'com_media' );
-		$config = DiscussHelper::getConfig();
-		$maxSize = $config->get( 'main_upload_maxsize' );
-
-		// Convert MB to B
-		$maxSize = $maxSize * 1024 * 1024;
+		$params = JComponentHelper::getParams( 'com_media' );
 
 		if(empty($file['name'])) {
-			$err = JText::_( 'COM_EASYDISCUSS_EMPTY_FILENAME' );
+			$err = 'WARNEMPTYFILE';
 			return false;
 		}
 
 		jimport('joomla.filesystem.file');
 		if ($file['name'] !== JFile::makesafe($file['name'])) {
-			$err = JText::_( 'COM_EASYDISCUSS_INVALID_FILENAME' );
+			$err = 'WARNFILENAME';
 			return false;
 		}
 
@@ -83,7 +78,7 @@ class DiscussImageHelper
 
 		if(! DiscussImageHelper::isImage($file['name']) )
 		{
-			$err = JText::_( 'COM_EASYDISCUSS_INVALID_IMG' );
+			$err = 'WARNINVALIDIMG';
 			return false;
 		}
 
@@ -93,11 +88,11 @@ class DiscussImageHelper
 		// maxsize should get from eblog config
 		//$maxSize	= 2000000; //2MB
 		//$maxSize	= 200000; //200KB
-		//$maxSize = (int) $params->get( 'main_upload_maxsize', 0 );
+		$maxSize = (int) $params->get( 'main_upload_maxsize', 0 );
 
 		if ($maxSize > 0 && (int) $file['size'] > $maxSize)
 		{
-			$err = JText::_( 'COM_EASYDISCUSS_FILE_TOO_LARGE' );
+			$err = 'WARNFILETOOLARGE';
 			return false;
 		}
 
@@ -105,102 +100,93 @@ class DiscussImageHelper
 		$imginfo = null;
 
 		if(($imginfo = getimagesize($file['tmp_name'])) === FALSE) {
-			$err = JText::_( 'COM_EASYDISCUSS_IMAGE_CORRUPT' );
+			$err = 'WARNINVALIDIMG';
 			return false;
 		}
 
 		return true;
 	}
 
-	/**
-	 * This function is not using in anywhere of EasyDiscuss
-	 * commented out for future use?
-	 *
-	 * @param array File information
-	 * @param string An error message to be returned
-	 * @return boolean
-	 */
+	public static function canUploadImage( $file, &$err )
+	{
+		//$params = JComponentHelper::getParams( 'com_media' );
+		$params = DiscussHelper::getConfig();
 
-	// public static function canUploadImage( $file, &$err )
-	// {
-	// 	//$params = JComponentHelper::getParams( 'com_media' );
-	// 	$params = DiscussHelper::getConfig();
+		if(empty($file['name'])) {
+			$err = 'PLEASE INPUT A FILE FOR UPLOAD';
+			return false;
+		}
 
-	// 	if(empty($file['name'])) {
-	// 		$err = 'PLEASE INPUT A FILE FOR UPLOAD';
-	// 		return false;
-	// 	}
+		jimport('joomla.filesystem.file');
+		if ($file['name'] !== JFile::makesafe($file['name'])) {
+			$err = 'WARNFILENAME';
+			return false;
+		}
 
-	// 	jimport('joomla.filesystem.file');
-	// 	if ($file['name'] !== JFile::makesafe($file['name'])) {
-	// 		$err = 'WARNFILENAME';
-	// 		return false;
-	// 	}
+		$format = strtolower(JFile::getExt($file['name']));
 
-	// 	$format = strtolower(JFile::getExt($file['name']));
+		$allowable	= explode( ',', $params->get( 'upload_extensions' ));
+		$ignored 	= explode(',', $params->get( 'ignore_extensions' ));
+		if (!in_array($format, $allowable) && !in_array($format,$ignored))
+		{
+			$err = 'WARNFILETYPE';
+			return false;
+		}
 
-	// 	$allowable	= explode( ',', $params->get( 'upload_extensions' ));
-	// 	$ignored 	= explode(',', $params->get( 'ignore_extensions' ));
-	// 	if (!in_array($format, $allowable) && !in_array($format,$ignored))
-	// 	{
-	// 		$err = 'WARNFILETYPE';
-	// 		return false;
-	// 	}
+		$maxSize = (int) $params->get( 'main_upload_maxsize', 0 );
+		if ($maxSize > 0 && (int) $file['size'] > $maxSize)
+		{
+			$err = 'WARNFILETOOLARGE';
+			return false;
+		}
 
-	// 	$maxSize = (int) $params->get( 'main_upload_maxsize', 0 );
-	// 	if ($maxSize > 0 && (int) $file['size'] > $maxSize)
-	// 	{
-	// 		$err = 'WARNFILETOOLARGE';
-	// 		return false;
-	// 	}
+		$user = JFactory::getUser();
+		$imginfo = null;
+		if($params->get('restrict_uploads',1) ) {
+			$images = explode( ',', $params->get( 'image_extensions' ));
+			if(in_array($format, $images)) { // if its an image run it through getimagesize
+				if(($imginfo = getimagesize($file['tmp_name'])) === FALSE) {
+					$err = 'WARNINVALIDIMG';
+					return false;
+				}
+			} else if(!in_array($format, $ignored)) {
+				// if its not an image...and we're not ignoring it
+				$allowed_mime = explode(',', $params->get('upload_mime'));
+				$illegal_mime = explode(',', $params->get('upload_mime_illegal'));
+				if(function_exists('finfo_open') && $params->get('check_mime',1)) {
+					// We have fileinfo
+					$finfo = finfo_open(FILEINFO_MIME);
+					$type = finfo_file($finfo, $file['tmp_name']);
+					if(strlen($type) && !in_array($type, $allowed_mime) && in_array($type, $illegal_mime)) {
+						$err = 'WARNINVALIDMIME';
+						return false;
+					}
+					finfo_close($finfo);
+				} else if(function_exists('mime_content_type') && $params->get('check_mime',1)) {
+					// we have mime magic
+					$type = mime_content_type($file['tmp_name']);
+					if(strlen($type) && !in_array($type, $allowed_mime) && in_array($type, $illegal_mime)) {
+						$err = 'WARNINVALIDMIME';
+						return false;
+					}
+				} else if(!$user->authorize( 'login', 'administrator' )) {
+					$err = 'WARNNOTADMIN';
+					return false;
+				}
+			}
+		}
 
-	// 	$user = JFactory::getUser();
-	// 	$imginfo = null;
-	// 	if($params->get('restrict_uploads',1) ) {
-	// 		$images = explode( ',', $params->get( 'image_extensions' ));
-	// 		if(in_array($format, $images)) { // if its an image run it through getimagesize
-	// 			if(($imginfo = getimagesize($file['tmp_name'])) === FALSE) {
-	// 				$err = 'WARNINVALIDIMG';
-	// 				return false;
-	// 			}
-	// 		} else if(!in_array($format, $ignored)) {
-	// 			// if its not an image...and we're not ignoring it
-	// 			$allowed_mime = explode(',', $params->get('upload_mime'));
-	// 			$illegal_mime = explode(',', $params->get('upload_mime_illegal'));
-	// 			if(function_exists('finfo_open') && $params->get('check_mime',1)) {
-	// 				// We have fileinfo
-	// 				$finfo = finfo_open(FILEINFO_MIME);
-	// 				$type = finfo_file($finfo, $file['tmp_name']);
-	// 				if(strlen($type) && !in_array($type, $allowed_mime) && in_array($type, $illegal_mime)) {
-	// 					$err = 'WARNINVALIDMIME';
-	// 					return false;
-	// 				}
-	// 				finfo_close($finfo);
-	// 			} else if(function_exists('mime_content_type') && $params->get('check_mime',1)) {
-	// 				// we have mime magic
-	// 				$type = mime_content_type($file['tmp_name']);
-	// 				if(strlen($type) && !in_array($type, $allowed_mime) && in_array($type, $illegal_mime)) {
-	// 					$err = 'WARNINVALIDMIME';
-	// 					return false;
-	// 				}
-	// 			} else if(!$user->authorize( 'login', 'administrator' )) {
-	// 				$err = 'WARNNOTADMIN';
-	// 				return false;
-	// 			}
-	// 		}
-	// 	}
-
-	// 	$xss_check =  JFile::read($file['tmp_name'],false,256);
-	// 	$html_tags = array('abbr','acronym','address','applet','area','audioscope','base','basefont','bdo','bgsound','big','blackface','blink','blockquote','body','bq','br','button','caption','center','cite','code','col','colgroup','comment','custom','dd','del','dfn','dir','div','dl','dt','em','embed','fieldset','fn','font','form','frame','frameset','h1','h2','h3','h4','h5','h6','head','hr','html','iframe','ilayer','img','input','ins','isindex','keygen','kbd','label','layer','legend','li','limittext','link','listing','map','marquee','menu','meta','multicol','nobr','noembed','noframes','noscript','nosmartquotes','object','ol','optgroup','option','param','plaintext','pre','rt','ruby','s','samp','script','select','server','shadow','sidebar','small','spacer','span','strike','strong','style','sub','sup','table','tbody','td','textarea','tfoot','th','thead','title','tr','tt','ul','var','wbr','xml','xmp','!DOCTYPE', '!--');
-	// 	foreach($html_tags as $tag) {
-	// 		// A tag is '<tagname ', so we need to add < and a space or '<tagname>'
-	// 		if(stristr($xss_check, '<'.$tag.' ') || stristr($xss_check, '<'.$tag.'>')) {
-	// 			$err = 'WARNIEXSS';
-	// 			return false;
-	// 		}
-	// 	}
-	// 	return true;
-	// }
+		$xss_check =  JFile::read($file['tmp_name'],false,256);
+		$html_tags = array('abbr','acronym','address','applet','area','audioscope','base','basefont','bdo','bgsound','big','blackface','blink','blockquote','body','bq','br','button','caption','center','cite','code','col','colgroup','comment','custom','dd','del','dfn','dir','div','dl','dt','em','embed','fieldset','fn','font','form','frame','frameset','h1','h2','h3','h4','h5','h6','head','hr','html','iframe','ilayer','img','input','ins','isindex','keygen','kbd','label','layer','legend','li','limittext','link','listing','map','marquee','menu','meta','multicol','nobr','noembed','noframes','noscript','nosmartquotes','object','ol','optgroup','option','param','plaintext','pre','rt','ruby','s','samp','script','select','server','shadow','sidebar','small','spacer','span','strike','strong','style','sub','sup','table','tbody','td','textarea','tfoot','th','thead','title','tr','tt','ul','var','wbr','xml','xmp','!DOCTYPE', '!--');
+		foreach($html_tags as $tag) {
+			// A tag is '<tagname ', so we need to add < and a space or '<tagname>'
+			if(stristr($xss_check, '<'.$tag.' ') || stristr($xss_check, '<'.$tag.'>')) {
+				$err = 'WARNIEXSS';
+				return false;
+			}
+		}
+		return true;
+	}
 
 	public static function parseSize($size)
 	{

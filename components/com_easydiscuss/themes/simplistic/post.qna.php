@@ -16,14 +16,14 @@ defined('_JEXEC') or die('Restricted access');
 	<?php if( !$question->isresolve && $reply->access->canMarkAnswered() ) { ?>
 	<div class="discuss-accept-answer">
 		<span id="accept-button-<?php echo $reply->id;?>">
-			<a href="javascript:void(0);" onclick="discuss.reply.accept('<?php echo $reply->id; ?>');" class=" discuss-accept btn btn-small">
+			<a href="javascript:void(0);" onclick="discuss.reply.accept('<?php echo $reply->id; ?>');" class=" discuss-accept btn btn-mini">
 				<?php echo JText::_('COM_EASYDISCUSS_REPLY_ACCEPT');?></a>
 		</span>
 	</div>
 	<?php } elseif( $reply->access->canUnmarkAnswered() ) { ?>
 	<div class="discuss-accept-answer">
 		<span id="reject-button-<?php echo $reply->id;?>">
-			<a href="javascript:void(0);" onclick="discuss.reply.reject('<?php echo $reply->id; ?>');" class=" discuss-reject btn btn-small">
+			<a href="javascript:void(0);" onclick="discuss.reply.reject('<?php echo $reply->id; ?>');" class=" discuss-reject btn btn-mini">
 				<?php echo JText::_('COM_EASYDISCUSS_REPLY_REJECT');?></a>
 		</span>
 	</div>

@@ -13,12 +13,9 @@
 
 defined('_JEXEC') or die('Restricted access');
 ?>
-<form id="frmUnfeature" class="si_form" action="<?php echo JRoute::_( 'index.php' );?>" method="post">
+<form id="frmUnfeature" class="si_form" action="<?php echo DiscussRouter::_( 'index.php?option=com_easydiscuss&controller=posts&task=unfeature' );?>" method="post">
 <p><?php echo JText::_('COM_EASYDISCUSS_CONFIRM_UNFEATURE_POST'); ?></p>
 
 <input type="hidden" name="id" value="<?php echo $id;?>" />
 <?php echo JHTML::_( 'form.token' ); ?>
-<input type="hidden" name="option" value="com_easydiscuss" />
-<input type="hidden" name="controller" value="posts" />
-<input type="hidden" name="task" value="unfeature" />
 </form>

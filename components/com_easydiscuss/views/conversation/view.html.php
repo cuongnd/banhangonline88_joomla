@@ -12,7 +12,7 @@
  */
 defined('_JEXEC') or die('Restricted access');
 
-require_once( DISCUSS_ROOT . '/views.php' );
+require_once JPATH_ROOT . '/components/com_easydiscuss/views.php';
 
 class EasyDiscussViewConversation extends EasyDiscussView
 {
@@ -157,33 +157,8 @@ class EasyDiscussViewConversation extends EasyDiscussView
 		// Mark this message as read for the current logged in user.
 		$conversation->markAsRead( $my->id );
 
-
-
-		// Check if it is view all messages
-		$viewAll = JRequest::getVar( 'show' );
-		$count = JRequest::getInt( 'count' );
-
-
-		if( $viewAll == 'all' )
-		{
-			// For future use
-			$count = '';
-		}
-
-		if( $viewAll == 'previous' )
-		{
-			$count = JRequest::getInt( 'count' );
-			// Check if the value is integer, we do no want any weird values
-			if( isset($count) && is_int($count) )
-			{
-				// Convert to absolute number
-				$count = abs($count);
-			}
-		}
-
 		// Get replies in the conversation
-		$replies 	= $model->getMessages( $conversation->id , $my->id, $viewAll, $count );
-
+		$replies 	= $model->getMessages( $conversation->id , $my->id );
 
 		// Format conversation replies.
 		DiscussHelper::formatConversationReplies( $replies );

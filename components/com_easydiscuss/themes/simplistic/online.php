@@ -12,22 +12,20 @@
  */
 defined('_JEXEC') or die('Restricted access');
 ?>
-<?php if( $system->config->get( 'layout_user_online') ){ ?>
-	<?php if( $user->id ){ ?>
-		<?php
+<?php if( $user->id ){ ?>
+	<?php
 
-		$user->load( $user->id );
-		?>
-		<?php if( $user->isOnline() ){ ?>
-			<div class="discuss-online-status mt-5">
-				<i class="icon-ed-status-online" rel="ed-tooltip" data-placement="top" data-original-title="<?php echo JText::_( 'COM_EASYDISCUSS_ONLINE_SINCE' );?> <?php echo $user->getLastOnline( 'true' ); ?>"></i>
-				<?php echo JText::_( 'COM_EASYDISCUSS_ONLINE' );?>
-			</div>
-		<?php }else{ ?>
-			<div class="discuss-offline-status mt-5">
-				<i class="icon-ed-status-offline" rel="ed-tooltip" data-placement="top" data-original-title="<?php echo JText::_( 'COM_EASYDISCUSS_OFFLINE' );?>"></i>
-				<?php echo JText::_( 'COM_EASYDISCUSS_OFFLINE' );?>
-			</div>
-		<?php } ?>
+	$user->load( $user->id );
+	?>
+	<?php if( $user->isOnline() ){ ?>
+		<div class="discuss-online-status mt-5">
+			<i class="icon-ed-status-online" rel="ed-tooltip" data-placement="top" data-original-title="<?php echo JText::_( 'COM_EASYDISCUSS_ONLINE_SINCE' );?> <?php echo $user->getLastOnline( 'true' ); ?>"></i>
+			<?php echo JText::_( 'COM_EASYDISCUSS_ONLINE' );?>
+		</div>
+	<?php }else{ ?>
+		<div class="discuss-offline-status mt-5">
+			<i class="icon-ed-status-offline" rel="ed-tooltip" data-placement="top" data-original-title="<?php echo JText::_( 'COM_EASYDISCUSS_OFFLINE' );?>"></i>
+			<?php echo JText::_( 'COM_EASYDISCUSS_OFFLINE' );?>
+		</div>
 	<?php } ?>
 <?php } ?>

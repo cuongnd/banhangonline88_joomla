@@ -12,7 +12,7 @@
  */
 defined('_JEXEC') or die('Restricted access');
 
-require_once( DISCUSS_ROOT . '/views.php' );
+require_once JPATH_ROOT . '/components/com_easydiscuss/views.php';
 
 class EasyDiscussViewBadges extends EasyDiscussView
 {
@@ -28,12 +28,8 @@ class EasyDiscussViewBadges extends EasyDiscussView
 
 		$this->setPathway( JText::_( 'COM_EASYDISCUSS_BADGES' ) );
 
-		// [model:badges]
 		$model		= $this->getModel( 'Badges' );
-
 		$badges		= $model->getBadges();
-
-
 
 		$theme		= new DiscussThemes();
 		$theme->set( 'badges' , $badges );

@@ -41,29 +41,28 @@ if( !$post->latitude || !$post->longitude || !$post->address )
 		<?php } else { ?>
 			<div class="postMap-<?php echo $post->id;?> mt-10">
 				<div class="locationMap location-map" style="width: <?php echo $system->config->get( 'main_location_map_width');?> !important;height: <?php echo $system->config->get( 'main_location_map_height');?>px !important;">
+					<textarea class="locationData" style="display: none;">
+						{
+							"mapType": "<?php echo $system->config->get( 'main_location_map_type');?>",
+							"width": "<?php echo $system->config->get( 'main_location_map_width' );?>",
+							"height": "<?php echo $system->config->get( 'main_location_map_height' );?>",
+							"maxZoom": "<?php echo $system->config->get( 'main_location_max_zoom' );?>",
+							"minZoom": "<?php echo $system->config->get( 'main_location_min_zoom' );?>",
+							"zoom": "<?php echo $system->config->get( 'main_location_default_zoom' );?>",
+							"useStaticMap": <?php echo $system->config->get( 'main_location_static' ) ? 'true' : 'false';?>,
+							"language": "<?php echo $system->config->get( 'main_location_language' );?>",
+							"locations": [
+								{
+
+									"latitude": "<?php echo $post->latitude; ?>",
+									"longitude": "<?php echo $post->longitude; ?>",
+									"address": "<?php echo $post->address; ?>"
+								}
+							]
+						}
+					</textarea>
 				</div>
 			</div>
 		<?php } ?>
-
-		<textarea class="locationData" style="display: none;">
-			{
-				"mapType": "<?php echo $system->config->get( 'main_location_map_type');?>",
-				"width": "<?php echo $system->config->get( 'main_location_map_width' );?>",
-				"height": "<?php echo $system->config->get( 'main_location_map_height' );?>",
-				"maxZoom": "<?php echo $system->config->get( 'main_location_max_zoom' );?>",
-				"minZoom": "<?php echo $system->config->get( 'main_location_min_zoom' );?>",
-				"zoom": "<?php echo $system->config->get( 'main_location_default_zoom' );?>",
-				"useStaticMap": <?php echo $system->config->get( 'main_location_static' ) ? 'true' : 'false';?>,
-				"language": "<?php echo $system->config->get( 'main_location_language' );?>",
-				"locations": [
-					{
-
-						"latitude": "<?php echo $post->latitude; ?>",
-						"longitude": "<?php echo $post->longitude; ?>",
-						"address": "<?php echo $post->address; ?>"
-					}
-				]
-			}
-		</textarea>
 	</div>
 </div>

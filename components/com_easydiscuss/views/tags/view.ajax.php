@@ -11,7 +11,8 @@
 */
 defined('_JEXEC') or die('Restricted access');
 
-require_once( DISCUSS_ROOT . '/views.php' );
+jimport( 'joomla.application.component.view');
+
 
 class EasyDiscussViewTags extends EasyDiscussView
 {
@@ -76,7 +77,7 @@ class EasyDiscussViewTags extends EasyDiscussView
 		{
 			$disjax->script( 'discuss.spinner.hide( "dialog_loading" );' );
 			$disjax->assign( 'dc_subscribe_notification .msg_in' , JText::_('COM_EASYDISCUSS_EMAIL_IS_EMPTY') );
-			$disjax->script( 'EasyDiscuss.$( "#dc_subscribe_notification .msg_in" ).addClass( "dc_error" );' );
+			$disjax->script( 'discussQuery( "#dc_subscribe_notification .msg_in" ).addClass( "dc_error" );' );
 			$disjax->send();
 			return;
 		}
@@ -85,7 +86,7 @@ class EasyDiscussViewTags extends EasyDiscussView
 		{
 			$disjax->script( 'discuss.spinner.hide( "dialog_loading" );' );
 			$disjax->assign( 'dc_subscribe_notification .msg_in' , JText::_('COM_EASYDISCUSS_NAME_IS_EMPTY') );
-			$disjax->script( 'EasyDiscuss.$( "#dc_subscribe_notification .msg_in" ).addClass( "dc_error" );' );
+			$disjax->script( 'discussQuery( "#dc_subscribe_notification .msg_in" ).addClass( "dc_error" );' );
 			$disjax->send();
 			return;
 		}
@@ -103,7 +104,7 @@ class EasyDiscussViewTags extends EasyDiscussView
 				// show message.
 				$disjax->script( 'discuss.spinner.hide( "dialog_loading" );' );
 				$disjax->assign( 'dc_subscribe_notification .msg_in' , JText::_('COM_EASYDISCUSS_ALREADY_SUBSCRIBED_TO_TAG') );
-				$disjax->script( 'EasyDiscuss.$( "#dc_subscribe_notification .msg_in" ).addClass( "dc_success" );' );
+				$disjax->script( 'discussQuery( "#dc_subscribe_notification .msg_in" ).addClass( "dc_success" );' );
 				$disjax->send();
 				return;
 
@@ -146,7 +147,7 @@ class EasyDiscussViewTags extends EasyDiscussView
 
 		$disjax->script( 'discuss.spinner.hide( "dialog_loading" );' );
 		$disjax->assign( 'dc_subscribe_notification .msg_in' , $msg );
-		$disjax->script( 'EasyDiscuss.$( "#dc_subscribe_notification .msg_in" ).addClass( "'.$msgClass.'" );' );
+		$disjax->script( 'discussQuery( "#dc_subscribe_notification .msg_in" ).addClass( "'.$msgClass.'" );' );
 		$disjax->send();
 		return;
 	}

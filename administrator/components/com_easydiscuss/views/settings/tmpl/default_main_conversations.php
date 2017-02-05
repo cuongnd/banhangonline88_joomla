@@ -41,18 +41,6 @@ defined('_JEXEC') or die('Restricted access');
 							<?php echo $this->renderCheckbox( 'main_conversations' , $this->config->get( 'main_conversations' ) );?>
 						</div>
 					</div>
-					<div class="si-form-row">
-						<div class="span5 form-row-label">
-							<label><?php echo JText::_( 'COM_EASYDISCUSS_MESSAGES_LIMIT' ); ?></label>
-						</div>
-						<div class="span7"
-							rel="ed-popover"
-							data-placement="left"
-							data-original-title="<?php echo JText::_( 'COM_EASYDISCUSS_MESSAGES_LIMIT' ); ?>"
-							data-content="<?php echo JText::_('COM_EASYDISCUSS_MESSAGES_LIMIT_DESC'); ?>">
-							<input type="text" class="input-mini center" name="main_messages_limit" value="<?php echo $this->config->get( 'main_messages_limit' );?>" />
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>

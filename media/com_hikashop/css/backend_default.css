@@ -1,9 +1,9 @@
-/**
- * @package    HikaShop for Joomla!
- * @version    2.6.3
- * @author     hikashop.com
- * @copyright  (C) 2010-2016 HIKARI SOFTWARE. All rights reserved.
- * @license    GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
+/**
+ * @package    HikaShop for Joomla!
+ * @version    2.6.3
+ * @author     hikashop.com
+ * @copyright  (C) 2010-2016 HIKARI SOFTWARE. All rights reserved.
+ * @license    GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
  */
 #hikashop_main_content input,
 #hikashop_main_content textarea,
@@ -205,281 +205,281 @@ td.key {
   vertical-align: middle;
 }
 .icon-14-length {
-  background-image: url("/media/com_hikashop/icons/icon-14-length.png") !important;
+  background-image: url("/media/com_hikashop/images/icons/icon-14-length.png") !important;
 }
 .icon-14-width {
-  background-image: url("/media/com_hikashop/icons/icon-14-width.png") !important;
+  background-image: url("/media/com_hikashop/images/icons/icon-14-width.png") !important;
 }
 .icon-14-height {
-  background-image: url("/media/com_hikashop/icons/icon-14-height.png") !important;
+  background-image: url("/media/com_hikashop/images/icons/icon-14-height.png") !important;
 }
 .icon-16-affiliate {
-  background-image: url("/media/com_hikashop/icons/icon-16-affiliate.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-16-affiliate.png");
 }
 .icon-16-banner {
-  background-image: url("/media/com_hikashop/icons/icon-16-banner.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-16-banner.png");
 }
 .icon-16-characteristic {
-  background-image: url("/media/com_hikashop/icons/icon-16-characteristic.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-16-characteristic.png");
 }
 .icon-16-click {
-  background-image: url("/media/com_hikashop/icons/icon-16-click.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-16-click.png");
 }
 .icon-16-currency {
-  background-image: url("/media/com_hikashop/icons/icon-16-currency.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-16-currency.png");
 }
 .icon-16-discount {
-  background-image: url("/media/com_hikashop/icons/icon-16-discount.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-16-discount.png");
 }
 .icon-16-field {
-  background-image: url("/media/com_hikashop/icons/icon-16-field.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-16-field.png");
 }
 .icon-16-filter {
-  background-image: url("/media/com_hikashop/icons/icon-16-filter.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-16-filter.png");
 }
 .icon-16-limit {
-  background-image: url("/media/com_hikashop/icons/icon-16-limit.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-16-limit.png");
 }
 .icon-16-order {
-  background-image: url("/media/com_hikashop/icons/icon-16-order.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-16-order.png");
 }
 .icon-16-product {
-  background-image: url("/media/com_hikashop/icons/icon-16-product.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-16-product.png");
 }
 .icon-16-tax {
-  background-image: url("/media/com_hikashop/icons/icon-16-tax.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-16-tax.png");
 }
 .icon-16-views {
-  background-image: url("/media/com_hikashop/icons/icon-16-views.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-16-views.png");
 }
 .icon-16-import {
-  background-image: url("/media/com_hikashop/icons/icon-16-import.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-16-import.png");
 }
 .icon-16-vote {
-  background-image: url("/media/com_hikashop/icons/icon-16-vote.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-16-vote.png");
 }
 .icon-16-email {
-  background-image: url("/media/com_hikashop/icons/icon-16-mail.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-16-mail.png");
 }
 .icon-16-report {
-  background-image: url("/media/com_hikashop/icons/icon-16-report.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-16-report.png");
 }
 .icon-16-cart {
-  background-image: url("/media/com_hikashop/icons/icon-16-cart.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-16-cart.png");
 }
 .icon-16-wishlist {
-  background-image: url("/media/com_hikashop/icons/icon-16-wishlist.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-16-wishlist.png");
 }
 .icon-16-badge {
-  background-image: url("/media/com_hikashop/icons/icon-16-badge.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-16-badge.png");
 }
 .icon-16-badge2 {
-  background-image: url("/media/com_hikashop/icons/icon-16-badge2.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-16-badge2.png");
 }
 .icon-16-addproduct {
-  background-image: url("/media/com_hikashop/icons/icon-16-addproduct.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-16-addproduct.png");
 }
 .icon-16-massaction {
-  background-image: url("/media/com_hikashop/icons/icon-16-massaction.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-16-massaction.png");
 }
 .icon-16-config {
-  background-image: url("/media/com_hikashop/icons/icon-16-config.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-16-config.png");
 }
 .icon-16-language {
-  background-image: url('/media/com_hikashop/icons/icon-16-zone.png');
+  background-image: url('/media/com_hikashop/images/icons/icon-16-zone.png');
 }
 .icon-16-plugin {
-  background-image: url("/media/com_hikashop/icons/icon-16-plugin.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-16-plugin.png");
 }
 .icon-16-category {
-  background-image: url("/media/com_hikashop/icons/icon-16-category.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-16-category.png");
 }
 .icon-16-user {
-  background-image: url("/media/com_hikashop/icons/icon-16-user.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-16-user.png");
 }
 .icon-16-article {
-  background-image: url("/media/com_hikashop/icons/icon-16-article.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-16-article.png");
 }
 .icon-16-menu {
-  background-image: url("/media/com_hikashop/icons/icon-16-menu-of-content.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-16-menu-of-content.png");
 }
 .icon-16-module {
-  background-image: url("/media/com_hikashop/icons/icon-16-module-of-content.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-16-module-of-content.png");
 }
 .icon-16-help {
-  background-image: url("/media/com_hikashop/icons/icon-16-help.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-16-help.png");
 }
 .icon-16-install {
-  background-image: url("/media/com_hikashop/icons/icon-16-update.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-16-update.png");
 }
 .icon-16-info {
-  background-image: url("/media/com_hikashop/icons/icon-16-info.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-16-info.png");
 }
 .icon-16-warehouse {
-  background-image: url("/media/com_hikashop/icons/icon-16-warehouse.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-16-warehouse.png");
 }
 .icon-32-hikashop {
-  background-image: url("/media/com_hikashop/icons/icon-32-hikashop.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-32-hikashop.png");
 }
 .icon-32-report {
-  background-image: url("/media/com_hikashop/icons/icon-32-report.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-32-report.png");
 }
 .icon-32-limit {
-  background-image: url("/media/com_hikashop/icons/icon-32-limit.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-32-limit.png");
 }
 .icon-32-invoice {
-  background-image: url("/media/com_hikashop/icons/icon-32-invoice.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-32-invoice.png");
 }
 .icon-32-shipping {
-  background-image: url("/media/com_hikashop/icons/icon-32-shipping.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-32-shipping.png");
 }
 .icon-32-shipping-invoice {
-  background-image: url("/media/com_hikashop/icons/icon-32-shipping-invoice.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-32-shipping-invoice.png");
 }
 .icon-32-parent-order {
-  background-image: url("/media/com_hikashop/icons/icon-32-parent-order.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-32-parent-order.png");
 }
 .icon-32-apply {
-  background-image: url("/media/com_hikashop/icons/icon-32-applybtn.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-32-applybtn.png");
 }
 .icon-48-affiliate {
-  background-image: url("/media/com_hikashop/icons/icon-48-affiliate.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-48-affiliate.png");
 }
 .icon-48-currency {
-  background-image: url("/media/com_hikashop/icons/icon-48-currency.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-48-currency.png");
 }
 .icon-48-order {
-  background-image: url("/media/com_hikashop/icons/icon-48-order.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-48-order.png");
 }
 .icon-48-hikashop {
-  background-image: url("/media/com_hikashop/icons/icon-48-hikashop.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-48-hikashop.png");
 }
 .icon-48-tax {
-  background-image: url("/media/com_hikashop/icons/icon-48-tax.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-48-tax.png");
 }
 .icon-48-discount {
-  background-image: url("/media/com_hikashop/icons/icon-48-discount.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-48-discount.png");
 }
 .icon-48-characteristic {
-  background-image: url("/media/com_hikashop/icons/icon-48-characteristic.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-48-characteristic.png");
 }
 .icon-48-banner {
-  background-image: url("/media/com_hikashop/icons/icon-48-banner.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-48-banner.png");
 }
 .icon-48-field {
-  background-image: url("/media/com_hikashop/icons/icon-48-field.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-48-field.png");
 }
 .icon-48-limit {
-  background-image: url("/media/com_hikashop/icons/icon-48-limit.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-48-limit.png");
 }
 .icon-48-filter {
-  background-image: url("/media/com_hikashop/icons/icon-48-filter.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-48-filter.png");
 }
 .icon-48-vote {
-  background-image: url("/media/com_hikashop/icons/icon-48-vote.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-48-vote.png");
 }
 .icon-48-click {
-  background-image: url("/media/com_hikashop/icons/icon-48-click.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-48-click.png");
 }
 .icon-48-product {
-  background-image: url("/media/com_hikashop/icons/icon-48-product.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-48-product.png");
 }
 .icon-48-report {
-  background-image: url("/media/com_hikashop/icons/icon-48-report.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-48-report.png");
 }
 .icon-48-cart {
-  background-image: url("/media/com_hikashop/icons/icon-48-cart.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-48-cart.png");
 }
 .icon-48-wishlist {
-  background-image: url("/media/com_hikashop/icons/icon-48-wishlist.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-48-wishlist.png");
 }
 .icon-48-badge {
-  background-image: url("/media/com_hikashop/icons/icon-48-badge.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-48-badge.png");
 }
 .icon-48-badge2 {
-  background-image: url("/media/com_hikashop/icons/icon-48-badge2.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-48-badge2.png");
 }
 .icon-48-massaction {
-  background-image: url("/media/com_hikashop/icons/icon-48-massaction.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-48-massaction.png");
 }
 #hikashop_main_content .icon-48-import,
 .icon-48-import {
-  background-image: url("/media/com_hikashop/icons/icon-48-import.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-48-import.png");
 }
 #hikashop_main_content .icon-48-view,
 .icon-48-view {
-  background-image: url("/media/com_hikashop/icons/icon-48-view.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-48-view.png");
 }
 #hikashop_main_content .icon-48-categories,
 .icon-48-categories {
-  background-image: url("/media/com_hikashop/icons/icon-48-category.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-48-category.png");
 }
 #hikashop_main_content .icon-48-user,
 .icon-48-user {
-  background-image: url("/media/com_hikashop/icons/icon-48-user.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-48-user.png");
 }
 #hikashop_main_content .icon-48-config,
 .icon-48-config {
-  background-image: url("/media/com_hikashop/icons/icon-48-config.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-48-config.png");
 }
 #hikashop_main_content .icon-48-plugin,
 .icon-48-plugin {
-  background-image: url("/media/com_hikashop/icons/icon-48-plugin.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-48-plugin.png");
 }
 #hikashop_main_content .icon-48-install,
 .icon-48-install {
-  background-image: url("/media/com_hikashop/icons/icon-48-update.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-48-update.png");
 }
 #hikashop_main_content .icon-48-langmanager,
 .icon-48-langmanager {
-  background-image: url("/media/com_hikashop/icons/icon-48-zone.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-48-zone.png");
 }
 #hikashop_main_content .icon-48-help,
 .icon-48-help {
-  background-image: url("/media/com_hikashop/icons/icon-48-help.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-48-help.png");
 }
 #hikashop_main_content .icon-48-help_header,
 .icon-48-help_header {
-  background-image: url("/media/com_hikashop/icons/icon-48-help.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-48-help.png");
 }
 #hikashop_main_content .icon-48-warehouse,
 .icon-48-warehouse {
-  background-image: url("/media/com_hikashop/icons/icon-48-warehouse.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-48-warehouse.png");
 }
 .btn-small .icon-hikashop {
-  background-image: url("/media/com_hikashop/icons/icon-14-hikablue.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-14-hikablue.png");
   vertical-align: middle;
 }
 .btn-small .icon-limit {
-  background-image: url("/media/com_hikashop/icons/icon-14-limit-color.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-14-limit-color.png");
   vertical-align: middle;
 }
 .btn-small .icon-cart {
-  background-image: url("/media/com_hikashop/icons/icon-14-cart.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-14-cart.png");
   vertical-align: middle;
 }
 .btn-small .icon-export {
-  background-image: url("/media/com_hikashop/icons/icon-14-export-color.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-14-export-color.png");
   vertical-align: middle;
 }
 .btn-small .icon-import {
-  background-image: url("/media/com_hikashop/icons/icon-14-import.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-14-import.png");
   vertical-align: middle;
 }
 .btn-small .icon-invoice {
-  background-image: url("/media/com_hikashop/icons/icon-14-invoice.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-14-invoice.png");
   vertical-align: middle;
 }
 .btn-small .icon-shipping {
-  background-image: url("/media/com_hikashop/icons/icon-14-shipping-invoice.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-14-shipping-invoice.png");
   vertical-align: middle;
 }
 .btn-small .icon-mail {
-  background-image: url("/media/com_hikashop/icons/icon-14-mail.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-14-mail.png");
   vertical-align: middle;
 }
 .btn-small .icon-send {
-  background-image: url("/media/com_hikashop/icons/icon-14-mail.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-14-mail.png");
   vertical-align: middle;
 }
 .btn .icon-hikashopproduct:before {
@@ -489,7 +489,7 @@ body.com_hikashop h1.page-title a {
   color: white;
 }
 body.com_hikashop h1.page-title span.icon-hikashop {
-  background-image: url("/media/com_hikashop/icons/icon-32-hikashop.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-32-hikashop.png");
   width: 32px;
   height: 32px;
   vertical-align: middle;
@@ -1496,15 +1496,15 @@ ul.hika-navbar-ul.affix {
   color: lightgrey;
 }
 .scrollTop_img {
-  background-image: url("/media/com_hikashop/icons/icon-up2.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-up2.png");
   background-repeat: no-repeat;
 }
 .menuSave_img {
-  background-image: url("/media/com_hikashop/icons/icon-apply2.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-apply2.png");
   background-repeat: no-repeat;
 }
 .responsive_menu_scrolltop {
-  background-image: url("/media/com_hikashop/icons/icon-up1.png");
+  background-image: url("/media/com_hikashop/images/icons/icon-up1.png");
   background-repeat: no-repeat;
   margin: auto;
 }

@@ -11,7 +11,7 @@
 */
 defined('_JEXEC') or die('Restricted access');
 
-require_once( DISCUSS_ROOT . '/views.php' );
+jimport( 'joomla.application.component.view');
 
 class EasyDiscussViewIndex extends EasyDiscussView
 {
@@ -109,13 +109,6 @@ class EasyDiscussViewIndex extends EasyDiscussView
 		$interval		= false;
 		$subscription	= false;
 
-		$allowed 		= array( 'site' , 'post' , 'tag' , 'category' );
-
-		if( !in_array( $type , $allowed ) )
-		{
-			return;
-		}
-		
 		$theme->set( 'cid', $cid );
 		$theme->set( 'type', $type );
 
@@ -233,7 +226,7 @@ class EasyDiscussViewIndex extends EasyDiscussView
 		}
 
 		$ajax->value( 'pagination-start' , $nextLimit );
-		$ajax->script( 'EasyDiscuss.$("#dc_list").children( ":last" ).addClass( "separator" );');
+		$ajax->script( 'discussQuery("#dc_list").children( ":last" ).addClass( "separator" );');
 		$ajax->append( 'dc_list' , $html );
 		$ajax->send();
 	}
@@ -264,7 +257,7 @@ class EasyDiscussViewIndex extends EasyDiscussView
 		}
 
 		$ajax->value( 'pagination-start' , $nextLimit );
-		$ajax->script( 'EasyDiscuss.$("#dc_list").children( ":last" ).addClass( "separator" );');
+		$ajax->script( 'discussQuery("#dc_list").children( ":last" ).addClass( "separator" );');
 		$ajax->append( 'dc_list' , $html );
 		$ajax->send();
 	}
@@ -291,7 +284,7 @@ class EasyDiscussViewIndex extends EasyDiscussView
 		}
 
 		$ajax->value( 'pagination-start' , $nextLimit );
-		$ajax->script( 'EasyDiscuss.$("#dc_list").children( ":last" ).addClass( "separator" );');
+		$ajax->script( 'discussQuery("#dc_list").children( ":last" ).addClass( "separator" );');
 		$ajax->append( 'dc_list' , $html );
 		$ajax->send();
 	}
@@ -319,7 +312,7 @@ class EasyDiscussViewIndex extends EasyDiscussView
 		}
 
 		$ajax->value( 'pagination-start' , $nextLimit );
-		$ajax->script( 'EasyDiscuss.$("#dc_list").children( ":last" ).addClass( "separator" );');
+		$ajax->script( 'discussQuery("#dc_list").children( ":last" ).addClass( "separator" );');
 		$ajax->append( 'dc_list' , $html );
 		$ajax->send();
 	}
@@ -382,7 +375,7 @@ class EasyDiscussViewIndex extends EasyDiscussView
 		}
 
 		$ajax->value( 'pagination-start' , $nextLimit );
-		$ajax->script( 'EasyDiscuss.$("#dc_response").children().children( ":last").addClass( "separator" );');
+		$ajax->script( 'discussQuery("#dc_response").children().children( ":last").addClass( "separator" );');
 		$ajax->append( 'dc_response tbody' , $html );
 
 		$ajax->send();
@@ -400,9 +393,9 @@ class EasyDiscussViewIndex extends EasyDiscussView
 		}
 		else
 		{
-			$categoryId		= explode( ',' , $categoryId );
+			$categoryId		= explode( ',' , $categoryId );	
 		}
-
+		
 
 		$view	= JRequest::getVar( 'view', 'index' );
 
@@ -412,32 +405,11 @@ class EasyDiscussViewIndex extends EasyDiscussView
 
 
 		$postModel	= DiscussHelper::getModel( 'Posts' );
-
-		$registry	= DiscussHelper::getRegistry();
-		// Get the pagination limit
-		$limit			= $registry->get( 'limit' );
-		$limit			= ( $limit == '-2' ) ? DiscussHelper::getListLimit() : $limit;
-		$limit			= ( $limit == '-1' ) ? DiscussHelper::getJConfig()->get('list_limit') : $limit;
-
-		// Get normal discussion posts.
-		$options 	= array(
-						'sort'		=> $sort,
-						'category'	=> $categoryId,
-						'filter'	=> $filterType,
-						'limit'		=> $limit,
-						'featured'	=> false
-					);
-
-		$posts		= $postModel->getDiscussions( $options );
-
-		//$posts		= $postModel->getData( false , $sort , null , $filterType , $categoryId, null, '');
-
-
+		$posts		= $postModel->getData( false , $sort , null , $filterType , $categoryId, null, '');
 		$posts		= DiscussHelper::formatPost($posts);
 
 		$pagination = '';
 		$pagination 	= $postModel->getPagination( 0 , $sort , $filterType , $categoryId, false );
-
 
 		$filtering = array( 'category_id' => $categoryId,
 							'filter' => $filterType,
@@ -447,7 +419,7 @@ class EasyDiscussViewIndex extends EasyDiscussView
 
 		$html 			= '';
 		$empty 			= '';
-
+		
 		if( count( $posts ) > 0 )
 		{
 			$template	= new DiscussThemes();
@@ -459,7 +431,7 @@ class EasyDiscussViewIndex extends EasyDiscussView
 			{
 				$badgesTable->load( $post->user->id );
 				$post->badges = $badgesTable->getBadges();
-
+				
 				// Translate post status from integer to string
 				switch( $post->post_status )
 				{
@@ -499,7 +471,7 @@ class EasyDiscussViewIndex extends EasyDiscussView
 				// Get each post's post status suffix
 				$suffix = $modelPostTypes->getSuffix( $alias );
 				$post->suffix = $suffix;
-
+				
 				$template->set( 'post'	, $post );
 				$html		.= $template->fetch( 'frontpage.post.php' );
 			}
@@ -511,7 +483,7 @@ class EasyDiscussViewIndex extends EasyDiscussView
 		}
 
 		// This post is already favourite
-		$ajax->resolve( $html, $pagination );
+		$ajax->success( $html, $pagination );
 		$ajax->send();
 	}
 
@@ -559,11 +531,11 @@ class EasyDiscussViewIndex extends EasyDiscussView
 		}
 
 		$ajax->script( 'discuss.spinner.hide( "index-loading" );' );
-		$ajax->script( 'EasyDiscuss.$("#pagination-sorting").val("'.$sort.'");');
+		$ajax->script( 'discussQuery("#pagination-sorting").val("'.$sort.'");');
 
 		$ajax->assign( 'dc_list' , $content );
-		$ajax->script( 'EasyDiscuss.$("#dc_list").show();');
-		$ajax->script( 'EasyDiscuss.$("#dc_pagination").show();');
+		$ajax->script( 'discussQuery("#dc_list").show();');
+		$ajax->script( 'discussQuery("#dc_pagination").show();');
 
 		$ajax->send();
 	}

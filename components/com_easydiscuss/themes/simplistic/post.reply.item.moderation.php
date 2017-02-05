@@ -21,9 +21,9 @@ defined('_JEXEC') or die('Restricted access');
 
 		<a href="<?php echo $post->getOwner()->link;?>">
 			<?php if ($system->config->get( 'layout_avatar' ) && $system->config->get( 'layout_avatar_in_post' )) { ?>
-				<div class="discuss-avatar avatar-medium">
+				<div class="discuss-avatar avatar-medium <?php echo $post->getOwner()->rolelabel; ?>">
 					<img src="<?php echo $post->getOwner()->avatar;?>" alt="<?php echo $this->escape( $post->getOwner()->name );?>" />
-					<div class="discuss-role-title <?php echo $post->getOwner()->rolelabel; ?>"><?php echo $this->escape($post->getOwner()->role); ?></div>
+					<div class="discuss-role-title"><?php echo $this->escape($post->getOwner()->role); ?></div>
 				</div>
 			<?php } ?>
 			<div class="discuss-user-name mv-5">

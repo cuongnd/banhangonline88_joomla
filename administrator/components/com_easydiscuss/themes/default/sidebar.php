@@ -57,7 +57,7 @@ EasyDiscuss.ready(function($){
 		<li class="accordion-group">
 
 			<?php if( $menuHasChild ) { ?>
-				<a href="<?php echo '#' . $menu->name; ?>" data-parent="#sinav" data-foundry-toggle="collapse" class="toggle-btn <?php echo $menuActiveClass; ?>"><i class="<?php echo $menu->class; ?>"></i> <?php echo JText::_( $menu->title ); ?> <b></b></a>
+				<a href="<?php echo '#' . $menu->name; ?>" data-parent="#sinav" data-foundry-toggle="collapse" class="toggle-btn <?php echo $menuActiveClass; ?>"><i class="icon-si-<?php echo $menu->name; ?>"></i> <?php echo JText::_( $menu->title ); ?> <b></b></a>
 				<ul class="unstyled accordion-body collapse <?php echo $menuActiveUl; ?>" id="<?php echo $menu->name; ?>">
 				<?php foreach ($menu->child as $child) { ?>
 					<?php
@@ -92,7 +92,7 @@ EasyDiscuss.ready(function($){
 				<?php } ?>
 				</ul>
 			<?php } else { ?>
-				<a href="<?php echo $menu->url; ?>" class="toggle-btn <?php echo $menuActiveClass; ?>"><i class="<?php echo $menu->class; ?>"></i> <?php echo JText::_( $menu->title ); ?></a>
+				<a href="<?php echo $menu->url; ?>" class="toggle-btn <?php echo $menuActiveClass; ?>"><i class="icon-si-<?php echo $menu->name; ?>"></i> <?php echo JText::_( $menu->title ); ?></a>
 			<?php } ?>
 		</li>
 	<?php } ?>

@@ -191,22 +191,6 @@ defined('_JEXEC') or die('Restricted access');
 						</div>
 					</div>
 
-					<div class="si-form-row">
-						<div class="span5 form-row-label">
-							<label>
-								<?php echo JText::_( 'COM_EASYDISCUSS_ENABLE_PRINT_BUTTON' ); ?>
-							</label>
-						</div>
-						<div class="span7"
-							rel="ed-popover"
-							data-placement="left"
-							data-original-title="<?php echo JText::_( 'COM_EASYDISCUSS_ENABLE_PRINT_BUTTON' ); ?>"
-							data-content="<?php echo JText::_('COM_EASYDISCUSS_ENABLE_PRINT_BUTTON_DESC'); ?>"
-						>
-							<?php echo $this->renderCheckbox( 'main_enable_print' , $this->config->get( 'main_enable_print' ) );?>
-						</div>
-					</div>
-
 				</div>
 			</div>
 		</div>
@@ -249,22 +233,6 @@ defined('_JEXEC') or die('Restricted access');
 							data-content="<?php echo JText::_('COM_EASYDISCUSS_MODERATE_NEW_POST_DESC'); ?>"
 						>
 							<?php echo $this->renderCheckbox( 'main_moderatepost' , $this->config->get( 'main_moderatepost' ) );?>
-						</div>
-					</div>
-
-					<div class="si-form-row">
-						<div class="span5 form-row-label">
-							<label>
-								<?php echo JText::_( 'COM_EASYDISCUSS_MODERATION_THRESHOLD' ); ?>
-							</label>
-						</div>
-						<div class="span7"
-							rel="ed-popover"
-							data-placement="left"
-							data-original-title="<?php echo JText::_( 'COM_EASYDISCUSS_MODERATION_THRESHOLD' ); ?>"
-							data-content="<?php echo JText::_('COM_EASYDISCUSS_MODERATION_THRESHOLD_DESC'); ?>"
-						>
-							<input type="text" name="moderation_threshold" class="input-mini center" value="<?php echo $this->config->get('moderation_threshold');?>" />
 						</div>
 					</div>
 
@@ -616,7 +584,6 @@ defined('_JEXEC') or die('Restricted access');
 							data-content="<?php echo JText::_('COM_EASYDISCUSS_SELECT_LOGIN_PROVIDER_DESC'); ?>"
 						>
 							<select name="main_login_provider" class="full-width" >
-								<option value="easysocial"<?php echo $this->config->get( 'main_login_provider' ) == 'easysocial' ? ' selected="selected"' : '';?>><?php echo JText::_( 'EasySocial' );?></option>
 								<option value="joomla"<?php echo $this->config->get( 'main_login_provider' ) == 'joomla' ? ' selected="selected"' : '';?>><?php echo JText::_( 'Joomla' );?></option>
 								<option value="jomsocial"<?php echo $this->config->get( 'main_login_provider' ) == 'jomsocial' ? ' selected="selected"' : '';?>><?php echo JText::_( 'JomSocial' );?></option>
 								<option value="cb"<?php echo $this->config->get( 'main_login_provider' ) == 'cb' ? ' selected="selected"' : '';?>><?php echo JText::_( 'Community Builder' );?></option>

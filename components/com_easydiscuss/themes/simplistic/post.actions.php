@@ -13,15 +13,13 @@
 defined('_JEXEC') or die('Restricted access');
 $hasPolls = $post->getPolls();
 $my = JFactory::getUser();
-$owner = $post->getOwner()->id;
 ?>
 <?php if( $access->canEdit() || $access->canFeature() || $access->canDelete() || $access->canResolve() || $access->canLock() || $system->config->get( 'main_report' ) || $access->canReply() ){ ?>
 <div class="row-fluid discuss-admin-bar">
 
 	<div class="pull-right mr-10">
-
 		<?php if( $system->config->get( 'main_report' ) ){ ?>
-			<?php if( DiscussHelper::getHelper( 'ACL' )->allowed( 'send_report' ) && ($my->id != $owner) ){ ?>
+			<?php if( DiscussHelper::getHelper( 'ACL' )->allowed( 'send_report' )){ ?>
 				<a onclick="discuss.reports.add('<?php echo $post->id;?>');" href="javascript:void(0);" class="btn btn-danger btn-mini" rel="ed-tooltip" data-original-title="<?php echo JText::_( 'COM_EASYDISCUSS_REPORT_THIS' , true );?>">
 					&nbsp;<i class="icon-warning-sign"></i>&nbsp;
 				</a>
@@ -36,7 +34,6 @@ $owner = $post->getOwner()->id;
 			<i class="icon-cog"></i> <?php echo JText::_( 'COM_EASYDISCUSS_MODERATION_TOOLS' ); ?>
 			<span class="caret"></span>
 		</a>
-
 		<ul class="dropdown-menu">
 			<?php if( $access->canMove() ){ ?>
 			<li>
@@ -140,7 +137,6 @@ $owner = $post->getOwner()->id;
 	<?php } ?>
 
 	<div class="pull-right mr-5">
-
 		<?php if( $access->canReply() ){ ?>
 		<a href="javascript:void(0);" class="btn btn-mini quotePost" rel="ed-tooltip" data-original-title="<?php echo JText::_( 'COM_EASYDISCUSS_QUOTE' , true );?>">
 			&nbsp;<i class="icon-share-alt"></i>&nbsp;
@@ -153,7 +149,7 @@ $owner = $post->getOwner()->id;
 		<a class="btn btn-mini" href="javascript:discuss.post.branch( '<?php echo $post->id;?>' );"><i class="icon-leaf"></i> <?php echo JText::_( 'COM_EASYDISCUSS_BRANCH' );?></a>
 		<?php } ?>
 
-		<?php if( $post->isQuestion() && $system->config->get( 'main_enable_print' ) ){ ?>
+		<?php if( $post->isQuestion() ){ ?>
 		<a href="<?php echo DiscussRouter::getPrintRoute( $post->id );?>; ?>"
 			onclick="window.open(this.href,'win2','status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=640,height=480,directories=no,location=no'); return false;"
 			class="btn btn-mini" rel="ed-tooltip" data-original-title="<?php echo JText::_( 'COM_EASYDISCUSS_PRINT' , true );?>">

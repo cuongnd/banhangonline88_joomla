@@ -16,6 +16,7 @@ defined('_JEXEC') or die('Restricted access');
 <script type="text/javascript">
 EasyDiscuss
 .require()
+.library( 'responsive' )
 .script( 'favourites' )
 .done(function($){
 

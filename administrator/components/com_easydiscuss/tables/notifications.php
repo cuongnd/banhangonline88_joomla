@@ -51,7 +51,7 @@ class DiscussNotifications extends JTable
 		}
 
 		// Set the state to new
-		if( is_null( $this->state ) )
+		if( is_null( $this->id ) && is_null( $this->state) )
 		{
 			$this->state	= DISCUSS_NOTIFICATION_NEW;
 		}

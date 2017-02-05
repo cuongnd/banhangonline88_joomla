@@ -32,7 +32,7 @@ defined('_JEXEC') or die('Restricted access');
 		<?php } ?>
 		<div class="discuss-item-left discuss-user">
 
-			<div class="discuss-avatar avatar-large mb-10">
+			<div class="discuss-avatar avatar-large <?php echo $user->getRoleLabelClassname(); ?> mb-10">
 				<a class="" href="<?php echo $user->getLink();?>">
 					<?php if( $system->config->get( 'layout_avatar' ) ) { ?>
 					<img alt="<?php echo $this->escape( $user->getName() );?>" src="<?php echo $user->getAvatar( false );?>" />
@@ -40,9 +40,9 @@ defined('_JEXEC') or die('Restricted access');
 					<?php echo $this->escape( $user->getName() );?>
 					<?php } ?>
 				</a>
-				<?php echo $this->loadTemplate( 'online.php' , array( 'user' => $user ) ); ?>
+
 				<?php if($system->config->get( 'layout_profile_roles' ) && $user->getRole() ) { ?>
-				<div class="discuss-role-title <?php echo $user->getRoleLabelClassname(); ?>"><?php echo $this->escape($user->getRole()); ?></div>
+				<div class="discuss-role-title "><?php echo $this->escape($user->getRole()); ?></div>
 				<?php } ?>
 
 			</div>

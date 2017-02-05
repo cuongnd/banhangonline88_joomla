@@ -16,15 +16,15 @@ defined('_JEXEC') or die('Restricted access');
 
 	<!-- Filter tabs -->
 	<ul class="nav nav-tabs">
-		<li class="filterItem<?php echo !$activeFilter || $activeFilter == 'allposts' || $activeFilter == 'all' ? ' active' : '';?>" data-filter-tab data-filter-type="allpost">
-			<a class="btn-small allPostsFilter" href="javascript:void(0);">
+		<li class="filterItem<?php echo !$activeFilter || $activeFilter == 'allposts' || $activeFilter == 'all' ? ' active' : '';?>">
+			<a class="btn-small allPostsFilter" data-foundry-toggle="tab" href="javascript:void(0);">
 				<?php echo JText::_('COM_EASYDISCUSS_FILTER_ALL_POSTS'); ?>
 			</a>
 		</li>
 
 		<?php if( $system->config->get('layout_enablefilter_new') && $system->my->id != 0 && $unreadCount > 0) { ?>
-		<li class="filterItem<?php echo $activeFilter == 'unread' ? ' active' : '';?>" data-filter-tab data-filter-type="unread">
-			<a class="newPostsFilter" href="javascript:void(0);">
+		<li class="filterItem<?php echo $activeFilter == 'unread' ? ' active' : '';?>">
+			<a class="newPostsFilter" data-foundry-toggle="tab" href="javascript:void(0);">
 				<?php echo JText::_( 'COM_EASYDISCUSS_NEW_STATUS' );?>
 				<span class="label label-important label-notification"><?php echo $unreadCount; ?></span>
 			</a>
@@ -32,8 +32,8 @@ defined('_JEXEC') or die('Restricted access');
 		<?php } ?>
 
 		<?php if( $system->config->get('main_qna') && $system->config->get( 'layout_enablefilter_unresolved' ) ) { ?>
-		<li class="filterItem<?php echo $activeFilter == 'unresolved' ? ' active' : '';?>" data-filter-tab data-filter-type="unresolved">
-			<a class="unResolvedFilter" href="javascript:void(0);">
+		<li class="filterItem<?php echo $activeFilter == 'unresolved' ? ' active' : '';?>">
+			<a class="unResolvedFilter" data-foundry-toggle="tab" href="javascript:void(0);">
 				<?php echo JText::_( 'COM_EASYDISCUSS_FILTER_UNRESOLVED' );?>
 				<?php if( $unresolvedCount > 0 ){ ?>
 				<span class="label label-important label-notification"><?php echo $unresolvedCount; ?></span>
@@ -43,8 +43,8 @@ defined('_JEXEC') or die('Restricted access');
 		<?php } ?>
 
 		<?php if( $system->config->get('main_qna') && $system->config->get( 'layout_enablefilter_resolved' ) ) { ?>
-		<li class="filterItem<?php echo $activeFilter == 'resolved' ? ' active' : '';?>" data-filter-tab data-filter-type="resolved">
-			<a class="resolvedFilter" href="javascript:void(0);">
+		<li class="filterItem<?php echo $activeFilter == 'resolved' ? ' active' : '';?>">
+			<a class="resolvedFilter" data-foundry-toggle="tab" href="javascript:void(0);" data-filters-resolved>
 				<?php echo JText::_( 'COM_EASYDISCUSS_FILTER_RESOLVED' );?>
 				<?php if( $resolvedCount > 0 ){ ?>
 				<span class="label label-important label-notification"><?php echo $resolvedCount; ?></span>
@@ -54,8 +54,8 @@ defined('_JEXEC') or die('Restricted access');
 		<?php } ?>
 
 		<?php if( $system->config->get( 'layout_enablefilter_unanswered' ) ){ ?>
-		<li class="filterItem<?php echo $activeFilter == 'unanswered' ? ' active' : '';?>" data-filter-tab data-filter-type="unanswered">
-			<a class="unAnsweredFilter" href="javascript:void(0);">
+		<li class="filterItem<?php echo $activeFilter == 'unanswered' ? ' active' : '';?>">
+			<a class="unAnsweredFilter" data-foundry-toggle="tab" href="javascript:void(0);">
 				<?php echo JText::_('COM_EASYDISCUSS_FILTER_UNANSWERED'); ?>
 				<?php if( $unansweredCount > 0 ){ ?>
 				<span class="label label-important label-notification"><?php echo $unansweredCount; ?></span>
@@ -68,11 +68,11 @@ defined('_JEXEC') or die('Restricted access');
 
 	<!-- Sort tabs -->
 	<ul class="nav nav-tabs nav-tabs-alt">
-		<li class="filterItem secondary-nav<?php echo $activeSort == 'latest' || $activeSort == '' ? ' active' : '';?>" data-sort-tab data-sort-type="latest">
-			<a class="btn-small sortLatest" href="javascript:void(0);"><?php echo JText::_( 'COM_EASYDISCUSS_SORT_LATEST' );?></a>
+		<li class="filterItem secondary-nav<?php echo $activeSort == 'latest' || $activeSort == '' ? ' active' : '';?>">
+			<a class="btn-small sortLatest" data-foundry-toggle="tab" href="#"><?php echo JText::_( 'COM_EASYDISCUSS_SORT_LATEST' );?></a>
 		</li>
-		<li class="filterItem secondary-nav<?php echo $activeSort == 'popular' ? ' active' : '';?>" data-sort-tab data-sort-type="popular">
-			<a class="sortPopular" href="javascript:void(0);" <?php echo ($activeFilter == 'unread') ? 'style="display:none;"' : ''; ?> ><?php echo JText::_( 'COM_EASYDISCUSS_SORT_POPULAR' );?></a>
+		<li class="filterItem secondary-nav<?php echo $activeSort == 'popular' ? ' active' : '';?>">
+			<a class="sortPopular" data-foundry-toggle="tab" href="#" <?php echo ($activeFilter == 'unread') ? 'style="display:none;"' : ''; ?> ><?php echo JText::_( 'COM_EASYDISCUSS_SORT_POPULAR' );?></a>
 		</li>
 	</ul>
 </div>

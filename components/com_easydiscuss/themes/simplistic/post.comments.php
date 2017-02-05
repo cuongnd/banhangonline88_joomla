@@ -13,7 +13,9 @@
 defined('_JEXEC') or die('Restricted access');
 ?>
 <?php if( $reply->access->canComment() ) { ?>
-<span id="comments-button-<?php echo $reply->id;?>"  class="discuss-post-comment" style="display:<?php echo $question->islock ? 'none' : '';?>">
-	<a href="javascript:void(0);" class="btn btn-small butt butt-default butt-s addComment"><?php echo JText::_('COM_EASYDISCUSS_COMMENT');?></a>
-</span>
+<div class="discuss-post-comment">
+	<span id="comments-button-<?php echo $reply->id;?>" style="display:<?php echo $question->islock ? 'none' : '';?>">
+		<a href="javascript:void(0);" class="addComment btn btn-mini"><?php echo JText::_('COM_EASYDISCUSS_COMMENT');?></a>
+	</span>
+</div>
 <?php } ?>

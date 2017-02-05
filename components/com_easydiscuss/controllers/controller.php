@@ -43,6 +43,9 @@ class EasyDiscussController extends EasyDiscussControllerParent
 	 */
 	public function __construct()
 	{
+		// Load necessary css and javascript files.
+		DiscussHelper::loadHeaders();
+
 		parent::__construct();
 	}
 
@@ -61,38 +64,6 @@ class EasyDiscussController extends EasyDiscussControllerParent
 		$view		= $this->getView( $viewName		, $document->getType() , '' );
 		$format		= JRequest::getCmd( 'format'	, 'html' );
 		$tmpl		= JRequest::getCmd( 'tmpl'		, 'html' );
-
-		// @rule: Skip processing for feed views
-		if( in_array( $format , array( 'feed' , 'weever' ) ) )
-		{
-			if( $viewLayout != 'default' )
-			{
-				if( $cachable )
-				{
-					$cache	= JFactory::getCache( 'com_easydiscuss' , 'view' );
-					$cache->get( $view , $viewLayout );
-				}
-				else
-				{
-					if( !method_exists( $view , $viewLayout ) )
-					{
-						$view->display();
-					}
-					else
-					{
-						$view->$viewLayout();
-					}
-				}
-			}
-			else
-			{
-				$view->display();
-			}
-
-			return;
-		}
-
-
 
 		if( !empty( $format ) && $format == 'ajax' )
 		{
@@ -147,159 +118,103 @@ class EasyDiscussController extends EasyDiscussControllerParent
 		{
 			$config	= DiscussHelper::getConfig();
 
-			// Load necessary css and javascript files.
-			DiscussHelper::loadHeaders();
-
 			// Load theme css
 			DiscussHelper::loadThemeCss();
 
-			echo $this->getContents( $view , $viewLayout , $format , $tmpl , $cachable );
-		}
-	}
+			// Non ajax calls.
+			require_once DISCUSS_CLASSES . '/themes.php';
+			require_once JPATH_ROOT . '/components/com_easydiscuss/helpers/helper.php';
 
-	public function getEasySocialToolbar( $format , $tmpl )
-	{
-		$config 	= DiscussHelper::getConfig();
-		$easysocial = DiscussHelper::getHelper( 'EasySocial' );
+			// Prepare class names for wrapper
+			$cat_id			= JRequest::getInt( 'category_id', '', 'GET' );
+			$cat_cls_name	= $cat_id ? ' category-' . $cat_id : '';
+			$wrapper_sfx	= htmlspecialchars($config->get( 'layout_wrapper_sfx', '' ));
+			$discussView	= ' discuss-view-' . $view->getName();
 
-		if( !$config->get( 'integration_easysocial_toolbar' ) || !$easysocial->exists() || $format == 'pdf' || $format == 'phocapdf' || $tmpl == 'component' )
-		{
-			return;
-		}
+			// We allow 3rd party to show jomsocial's toolbar even if integrations are disabled.
+			$showJomsocial	= JRequest::getBool( 'showJomsocialToolbar' , false );
+			$jomsocialClass	= '';
 
-		$output 	= $easysocial->getToolbar();
-
-		return $output;
-	}
-
-	public function getJomSocialToolbar( $format , $tmpl )
-	{
-		$config 	= DiscussHelper::getConfig();
-
-		if( !$config->get( 'integration_jomsocial_toolbar' ) || $format == 'pdf' || $format == 'phocapdf' || $tmpl == 'component' )
-		{
-			return;
-		}
-
-		$jsFile 	=  JPATH_ROOT . '/components/com_community/libraries/core.php';
-
-		$exists 	= JFile::exists( $jsFile );
-
-		if( !$exists )
-		{
-			return;
-		}
-
-
-		require_once( $jsFile );
-		require_once( JPATH_ROOT . '/components/com_community/libraries/toolbar.php' );
-
-		$appsLib	= CAppPlugins::getInstance();
-		$appsLib->loadApplications();
-
-		$appsLib->triggerEvent( 'onSystemStart' , array() );
-
-		ob_start();
-		if( class_exists( 'CToolbarLibrary' ) )
-		{
-			echo '<div id="community-wrap">';
-			if( method_exists( 'CToolbarLibrary' , 'getInstance' ) )
+			if( $config->get( 'integration_jomsocial_toolbar' ) && $format != 'pdf' && $format != 'phocapdf' && $tmpl != 'component' || $showJomsocial )
 			{
-				$jsToolbar  = CToolbarLibrary::getInstance();
-				echo $jsToolbar->getHTML();
+				$jomsocialClass	= ' jomsocial-discuss';
 			}
-			else
+
+			// Set the wrapper.
+			echo '<div id="discuss-wrapper" class="discuss-wrap'.$wrapper_sfx.$cat_cls_name.$jomsocialClass.$discussView.'">';
+
+			$print = JRequest::getBool('print');
+
+
+			if( $config->get( 'integration_jomsocial_toolbar' ) && $format != 'pdf' && $format != 'phocapdf' && $tmpl != 'component' || $showJomsocial )
 			{
-				echo CToolbarLibrary::getHTML();
-			}
-			echo '</div>';
-		}
-		$contents 	= ob_get_contents();
-		ob_end_clean();
-
-		return $contents;
-	}
-
-	public function getContents( $view , $viewLayout , $format , $tmpl , $cachable = false )
-	{
-		// Prepare class names for wrapper
-		$config 		= DiscussHelper::getConfig();
-		$cat_id			= JRequest::getInt( 'category_id', '', 'GET' );
-		$categoryClass	= $cat_id ? ' category-' . $cat_id : '';
-		$suffix			= htmlspecialchars( $config->get( 'layout_wrapper_sfx', '' ) );
-
-		if( !is_object( $view ) )
-		{
-			return;
-		}
-		
-		$discussView	= ' discuss-view-' . $view->getName();
-
-		// Try to get JomSocial toolbar
-		$jsToolbar 		= $this->getJomSocialToolbar( $format , $tmpl );
-
-		// Try to get EasySocial toolbar
-		$esToolbar 		= $this->getEasySocialToolbar( $format , $tmpl );
-
-		// We allow 3rd party to show jomsocial's toolbar even if integrations are disabled.
-		$showJomsocial	= JRequest::getBool( 'showJomsocialToolbar' , false );
-		$jomsocialClass	= $jsToolbar ? ' jomsocial-discuss' : '';
-
-		$print 			= JRequest::getVar( 'print' );
-
-		// Allow 3rd party to hide our headers
-		$hideToolbar	= JRequest::getBool( 'hideToolbar' , false );
-
-		$toolbar 		= '';
-
-		ob_start();
-		if(!$print && $format != 'pdf' && $format != 'feed' && !$hideToolbar )
-		{
-			$toolbar 	= $this->getToolbar( $view->getName() , $view->getLayout() );
-		}
-
-		if( $viewLayout != 'default' )
-		{
-			if( $cachable )
-			{
-				$cache		= JFactory::getCache( 'com_easydiscuss' , 'view' );
-				$cache->get( $view , $viewLayout );
-			}
-			else
-			{
-				if( !method_exists( $view , $viewLayout ) )
+				if(JFile::exists( JPATH_ROOT . '/components/com_community/libraries/core.php'))
 				{
-					$view->display();
+					require_once JPATH_ROOT . '/components/com_community/libraries/core.php';
+					require_once JPATH_ROOT . '/components/com_community/libraries/toolbar.php';
+
+					$appsLib	= CAppPlugins::getInstance();
+					$appsLib->loadApplications();
+
+					$appsLib->triggerEvent( 'onSystemStart' , array() );
+
+					if( class_exists( 'CToolbarLibrary' ) )
+					{
+						echo '<div id="community-wrap">';
+						if( method_exists( 'CToolbarLibrary' , 'getInstance' ) )
+						{
+							$jsToolbar  = CToolbarLibrary::getInstance();
+							echo $jsToolbar->getHTML();
+						}
+						else
+						{
+							echo CToolbarLibrary::getHTML();
+						}
+						echo '</div>';
+					}
+				}
+			}
+
+			// Allow 3rd party to hide our headers
+			$hideToolbar	= JRequest::getBool( 'hideToolbar' , false );
+
+			if(!$print && $format != 'pdf' && $format != 'feed' && !$hideToolbar )
+			{
+				echo $this->getToolbar( $view->getName() , $view->getLayout() );
+			}
+
+			if( $viewLayout != 'default' )
+			{
+				if( $cachable )
+				{
+					$cache	= JFactory::getCache( 'com_easydiscuss' , 'view' );
+					$cache->get( $view , $viewLayout );
 				}
 				else
 				{
-					$view->$viewLayout();
+					if( !method_exists( $view , $viewLayout ) )
+					{
+						$view->display();
+					}
+					else
+					{
+						$view->$viewLayout();
+					}
 				}
 			}
+			else
+			{
+				$view->display();
+			}
+
+			// Powered by link
+			
+
+			echo '<input type="hidden" class="easydiscuss-token" value="' . DiscussHelper::getToken() . '" />';
+
+			// End wrapper.
+			echo '</div>';
 		}
-		else
-		{
-			$view->display();
-		}
-
-		$contents 	= ob_get_contents();
-		ob_end_clean();
-
-		$theme 			= new DiscussThemes();
-
-		$theme->set( 'discussView'	, $discussView );
-		$theme->set( 'jomsocialClass', $jomsocialClass );
-		$theme->set( 'suffix'		, $suffix );
-		$theme->set( 'categoryClass', $categoryClass );
-
-		$theme->set( 'esToolbar'	, $esToolbar );
-		$theme->set( 'jsToolbar'	, $jsToolbar );
-		$theme->set( 'toolbar'		, $toolbar );
-		$theme->set( 'contents'		, $contents );
-
-		$output 		= $theme->fetch( 'structure.php' );
-
-		return $output;
 	}
 
 	public function getToolbar( $currentView )
@@ -398,11 +313,7 @@ class EasyDiscussController extends EasyDiscussControllerParent
 													DISCUSS_NOTIFICATIONS_ON_HOLD,
 													DISCUSS_NOTIFICATIONS_WORKING_ON,
 													DISCUSS_NOTIFICATIONS_REJECTED,
-													DISCUSS_NOTIFICATIONS_NO_STATUS,
-													DISCUSS_NOTIFICATIONS_VOTE_UP_REPLY,
-													DISCUSS_NOTIFICATIONS_VOTE_DOWN_REPLY,
-													DISCUSS_NOTIFICATIONS_VOTE_UP_DISCUSSION,
-													DISCUSS_NOTIFICATIONS_VOTE_DOWN_DISCUSSION
+													DISCUSS_NOTIFICATIONS_NO_STATUS
 												)
 										);
 
@@ -411,8 +322,8 @@ class EasyDiscussController extends EasyDiscussControllerParent
 
 
 		$headers		= new JObject();
-		$headers->title	= JText::_( $config->get( 'main_title' ) );
-		$headers->desc	= JText::_( $config->get( 'main_description' ) );
+		$headers->title	= $config->get( 'main_title' );
+		$headers->desc	= $config->get( 'main_description' );
 
 		$model			= DiscussHelper::getModel( 'Notification' );
 		$notifications	= $model->getTotalNotifications( $my->id );
@@ -432,17 +343,26 @@ class EasyDiscussController extends EasyDiscussControllerParent
 		$categoriesModel	= DiscussHelper::getModel( 'Categories' );
 
 		// Get all the categories ids
+		$options 		= array( 'published' => true );
+		$categoryItems 	= $categoriesModel->getData( true , $options );
+		$categories 	= array();
 
-		$config		= DiscussHelper::getConfig();
-		$sortConfig	= $config->get('layout_ordering_category','latest');
+		if( $categoryItems )
+		{
+			foreach( $categoryItems as $row )
+			{
+				$category 	= DiscussHelper::getTable( 'Category' );
+				$category->load( $row->id );
 
-		$categories = $categoriesModel->getCategoryTree( false );
+				$categories[]	= $category;
+			}
+		}
 
 		$postId		= JRequest::getInt('id', 0);
 		$post		= JTable::getInstance( 'Posts' , 'Discuss' );
 		$post->load($postId);
 
-		$customClass = 'form-control select-searchbar';
+		$customClass = 'select-searchbar';
 		$nestedCategories	= DiscussHelper::populateCategories('', '', 'select', 'category_id', $post->category_id, true, true, true, false, $customClass);
 
 		$template->set( 'categories'	, $categories );
@@ -462,6 +382,6 @@ class EasyDiscussController extends EasyDiscussControllerParent
 		$template->set( 'notifications' , $notifications );
 		$template->set( 'nestedCategories' , $nestedCategories );
 
-		return $template->fetch( 'toolbar.php' );
+		echo $template->fetch( 'toolbar.php' );
 	}
 }

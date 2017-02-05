@@ -69,23 +69,12 @@ class EasyDiscussModelPosts extends EasyDiscussModel
 	 */
 	public function getTotal( $sort = 'latest' , $filter = '', $category='', $featuredOnly = 'all')
 	{
-		$sid = serialize($sort) . serialize($filter) . serialize($category) . serialize($featuredOnly);
-
-		static $_cache = array();
-
-		if( isset( $_cache[$sid] ) )
-		{
-			$this->_total = $_cache[ $sid];
-		}
-		else
+		// Lets load the content if it doesn't already exist
+		if (empty($this->_total))
 		{
 			$query = $this->_buildQueryTotal($sort, $filter, $category, $featuredOnly);
 
-			$db 	= JFactory::getDBO();
-			$db->setQuery( $query );
-
-			$this->_total 	= $db->loadResult();
-			$_cache[ $sid ] = $this->_total;
+			$this->_total = $this->_getListCount($query);
 		}
 
 		return $this->_total;
@@ -97,14 +86,14 @@ class EasyDiscussModelPosts extends EasyDiscussModel
 	 * @access public
 	 * @return integer
 	 */
-	public function getPagination( $parent_id = 0, $sort = 'latest', $filter='', $category='', $featuredOnly = 'all', $userId = '' )
+	public function getPagination( $parent_id = 0, $sort = 'latest', $filter='', $category='', $featuredOnly = 'all' )
 	{
 		$this->_parent	= $parent_id;
 
 		// Lets load the content if it doesn't already exist
 		if (empty($this->_pagination))
 		{
-			$this->_pagination	= DiscussHelper::getPagination( $this->getTotal($sort, $filter, $category, $featuredOnly, $userId), $this->getState('limitstart'), $this->getState('limit') );
+			$this->_pagination	= DiscussHelper::getPagination( $this->getTotal($sort, $filter, $category, $featuredOnly), $this->getState('limitstart'), $this->getState('limit') );
 		}
 
 		return $this->_pagination;
@@ -139,7 +128,7 @@ class EasyDiscussModelPosts extends EasyDiscussModel
 	 * @access private
 	 * @return string
 	 */
-	private function _buildQueryTotal( $sort = 'latest', $filter = '' , $category = '', $featuredOnly = 'all', $reply = false, $userId = '' )
+	private function _buildQueryTotal( $sort = 'latest', $filter = '' , $category = '', $featuredOnly = 'all', $reply = false )
 	{
 		$my	= JFactory::getUser();
 		$config = DiscussHelper::getConfig();
@@ -152,7 +141,7 @@ class EasyDiscussModelPosts extends EasyDiscussModel
 		}
 
 		$filteractive	= (empty($filter)) ? JRequest::getString('filter', 'allposts') : $filter;
-		$where			= $this->_buildQueryWhere( $filter , $category, $featuredOnly, array(), $userId);
+		$where			= $this->_buildQueryWhere( $filter , $category, $featuredOnly);
 		$db				= DiscussHelper::getDBO();
 
 		$orderby		= '';
@@ -173,12 +162,13 @@ class EasyDiscussModelPosts extends EasyDiscussModel
 		}
 
 
-		$query  = 'SELECT COUNT(a.`id`)';
+		$query  = 'SELECT a.`id`';
 		$query	.= ' FROM `#__discuss_posts` AS a';
 
-		if( $filteractive == 'myreplies' )
+		if($filteractive == 'unanswered' || $filteractive == 'myreplies')
 		{
-			$query 	.= ' AND a.`parent_id` != 0 AND a.`published`=' . $db->Quote( 1 );
+			$query	.= '	LEFT JOIN `#__discuss_posts` AS c ON a.`id` = c.`parent_id`';
+			$query	.= '		AND c.`published` = ' . $db->Quote('1');
 		}
 
 		if( $filter == 'favourites' )
@@ -200,6 +190,11 @@ class EasyDiscussModelPosts extends EasyDiscussModel
 		}
 
 		$query	.= $queryExclude;
+
+		if($filteractive == 'unanswered')
+		{
+			$query	.= ' GROUP BY a.`id` HAVING(COUNT(c.id) = 0)';
+		}
 
 		return $query;
 	}
@@ -243,6 +238,7 @@ class EasyDiscussModelPosts extends EasyDiscussModel
 			$queryExclude .= ' AND a.`category_id` NOT IN (' . implode(',', $excludeCats) . ')';
 		}
 
+		//$query	= 'SELECT DATEDIFF('. $db->Quote($date->toMySQL()) . ', IF(a.`replied` = '.$db->Quote('0000-00-00 00:00:00') . ', a.`created`, a.`replied`) ) as `noofdays`, ';
 		$query	= 'SELECT DATEDIFF('. $db->Quote($date->toMySQL()) . ', a.`created` ) as `noofdays`, ';
 		$query	.= ' DATEDIFF(' . $db->Quote($date->toMySQL()) . ', IF(a.`replied` = '.$db->Quote('0000-00-00 00:00:00') . ', a.`created`, a.`replied`) ) as `daydiff`, ';
 		$query	.= ' TIMEDIFF(' . $db->Quote($date->toMySQL()). ', IF(a.`replied` = '.$db->Quote('0000-00-00 00:00:00') . ', a.`created`, a.`replied`) ) as `timediff`,';
@@ -253,9 +249,6 @@ class EasyDiscussModelPosts extends EasyDiscussModel
 		// Include favourites
 		$query 	.= ' (SELECT COUNT(1) FROM ' . $db->nameQuote( '#__discuss_favourites' ) . ' WHERE ' . $db->nameQuote( 'post_id' ) . ' = a.' . $db->nameQuote( 'id' ) . ') AS `totalFavourites`,';
 
-		// Calculate number replies
-		$query 	.= '(SELECT COUNT(1) FROM `#__discuss_posts` WHERE `parent_id` = a.`id` AND `published`="1") AS `num_replies`,';
-
 		// Include attachments
 		if( !$reply )
 		{
@@ -264,10 +257,16 @@ class EasyDiscussModelPosts extends EasyDiscussModel
 					. ' AND ' . $db->nameQuote( 'published' ) . '=' . $db->Quote( 1 ) . ') AS `attachments_cnt`,';
 		}
 
+
 		//sorting criteria
 		if($sort == 'likes')
 		{
 			$query	.= ' a.`num_likes` as `likeCnt`,';
+		}
+
+		if($sort == 'popular')
+		{
+			$query	.= ' count(c.id) as `PopularCnt`,';
 		}
 
 		if($sort == 'voted')
@@ -284,7 +283,13 @@ class EasyDiscussModelPosts extends EasyDiscussModel
 			$query	.= ' ' . $db->Quote('0') . ' as `isVoted`,';
 		}
 
-		$query	.= ' a.`post_status`, a.`post_type`, pt.`suffix` AS post_type_suffix, pt.`title` AS post_type_title , a.*, ';
+		$query	.= ' a.`post_status`, a.`post_type`,';
+
+		$query	.= ' a.*,';
+		if( !$reply )
+			$query	.= ' count(c.id) as `num_replies`, ';
+		else
+			$query	.= ' 0 as `num_replies`, ';
 
 
 		$query	.= ' e.`title` AS `category`, a.`legacy`, ';
@@ -294,17 +299,18 @@ class EasyDiscussModelPosts extends EasyDiscussModel
 
 		$query	.= ' FROM `#__discuss_posts` AS a';
 
-		// Join with post types table
-		$query 	.= '	LEFT JOIN ' . $db->nameQuote( '#__discuss_post_types' ) . ' AS pt ON a.`post_type`= pt.`alias`';
+		if( !$reply )
+		{
+			$query	.= '	LEFT JOIN `#__discuss_posts` AS c ON a.`id` = c.`parent_id`';
+			$query	.= '		AND c.`published` = ' . $db->Quote('1');
+		}
 
-		// Join with category table.
 		$query	.= '	LEFT JOIN ' . $db->nameQuote( '#__discuss_category' ) . ' AS e ON a.`category_id`=e.`id`';
 
 		if( $filter == 'favourites' )
 		{
 			$query	.= '	LEFT JOIN `#__discuss_favourites` AS f ON f.`post_id` = a.`id`';
 		}
-
 
 		// 3rd party integrations
 		if( !is_null( $reference ) && !is_null( $referenceId ) )
@@ -313,17 +319,6 @@ class EasyDiscussModelPosts extends EasyDiscussModel
 			$query	.= ' ON a.' . $db->nameQuote( 'id' ) . '= ref.' . $db->nameQuote( 'post_id' );
 			$query	.= ' AND ref.' . $db->nameQuote( 'extension' ) . '=' . $db->Quote( $reference );
 			$query	.= ' AND ref.' . $db->nameQuote( 'reference_id' ) . '=' . $db->Quote( $referenceId );
-		}
-
-		if( $filter == 'answer' )
-		{
-			$where 	.= ' AND a.' . $db->nameQuote( 'answered' ) . '=' . $db->Quote( 1 );
-		}
-
-
-		if($filteractive == 'unanswered')
-		{
-			$where 	.= ' AND a.`answered`=' . $db->Quote( 0 );
 		}
 
 		$query	.= $where;
@@ -340,7 +335,7 @@ class EasyDiscussModelPosts extends EasyDiscussModel
 					$orderby	= ' ORDER BY a.`ordering` ASC'; //used in getreplies only
 					break;
 				case 'order_desc':
-					$orderby	= ' ORDER BY a.`ordering` DESC'; //used in getdate and getreplies
+					$orderby	= ' ORDER BY a.`ordring` DESC'; //used in getdate and getreplies
 					break;
 				case 'date_latest':
 				default:
@@ -353,7 +348,7 @@ class EasyDiscussModelPosts extends EasyDiscussModel
 			switch($sort)
 			{
 				case 'popular':
-					$orderby	= ' ORDER BY `num_replies` DESC, a.`created` DESC'; //used in getdata only
+					$orderby	= ' ORDER BY `PopularCnt` DESC, a.`created` DESC'; //used in getdata only
 					break;
 				case 'hits':
 					$orderby	= ' ORDER BY a.`hits` DESC'; //used in getdata only
@@ -381,14 +376,25 @@ class EasyDiscussModelPosts extends EasyDiscussModel
 			}
 		}
 
-		$query	.= $orderby;
 
-		// echo $query;exit;
+		if( ! $reply )
+		{
+			if($filteractive == 'unanswered')
+			{
+				$query	.= ' GROUP BY a.`id` HAVING(COUNT(c.id) = 0)';
+			}
+			else
+			{
+				$query	.= ' GROUP BY a.`id`';
+			}
+		}
+
+		$query	.= $orderby;
 
 		return $query;
 	}
 
-	private function _buildQueryWhere($filter='' , $category = '', $featuredOnly = 'all' , $exclude = array(), $userId = '' )
+	private function _buildQueryWhere($filter='' , $category = '', $featuredOnly = 'all' , $exclude = array(), $userId = null )
 	{
 		$mainframe		= JFactory::getApplication();
 		$db				= DiscussHelper::getDBO();
@@ -417,7 +423,7 @@ class EasyDiscussModelPosts extends EasyDiscussModel
 		{
 			$where[]	= ' a.`featured` = ' . $db->Quote('1');
 		}
-		else if( $featuredOnly === false && $filter != 'resolved' )
+		else if( $featuredOnly === false )
 		{
 			$where[]	= ' a.`featured` = ' . $db->Quote('0');
 		}
@@ -426,11 +432,6 @@ class EasyDiscussModelPosts extends EasyDiscussModel
 		{
 			$my = JFactory::getUser();
 			$where[]	= ' a.`user_id`= ' .$db->Quote( $my->id );
-		}
-
-		if( $filteractive == 'userposts' && !empty($userId) )
-		{
-			$where[]	= ' a.`user_id`= ' .$db->Quote( $userId );
 		}
 
 		if( $filteractive == 'new' )
@@ -442,7 +443,7 @@ class EasyDiscussModelPosts extends EasyDiscussModel
 		if( $filteractive == 'myreplies' )
 		{
 			$my = JFactory::getUser();
-			$where[]	= ' a.`parent_id` != ' . $db->Quote( 0 ) . ' AND a.`user_id`=' . $db->Quote( $my->id );
+			$where[]	= ' c.`user_id`= ' .$db->Quote( $my->id );
 		}
 
 		if( !empty( $exclude ) )
@@ -491,7 +492,6 @@ class EasyDiscussModelPosts extends EasyDiscussModel
 		{
 			// Should not fetch posts which are resolved
 			$where[] = ' a.`isresolve`=' . $db->Quote( 0 );
-			$where[] = ' a.`created` = a.`replied`';
 		}
 
 		if( $filteractive == 'favourites' )
@@ -535,15 +535,10 @@ class EasyDiscussModelPosts extends EasyDiscussModel
 		else
 		{
 			$where[] = ' a.`parent_id` = ' . $db->Quote( $this->_parent );
-
 			if( $this->_isaccept )
-			{
 				$where[]	= ' a.`answered` = ' . $db->Quote( '1' );
-			}
 			else
-			{
 				$where[]	= ' a.`answered` = ' . $db->Quote( '0' );
-			}
 		}
 
 		if ($search)
@@ -580,6 +575,8 @@ class EasyDiscussModelPosts extends EasyDiscussModel
 						$child	= $db->Quote( $child );
 						$tmpCategoryArr[]   = $child;
 					}
+
+					//$where[]	= ' a.`category_id` IN (' . implode( ',' , $childs ) . ')';
 				}
 				else
 				{
@@ -627,12 +624,11 @@ class EasyDiscussModelPosts extends EasyDiscussModel
 		$limit 			= isset( $options[ 'limit' ] ) ? $options[ 'limit'  ] : null;
 		$featured 		= isset( $options[ 'featured' ] ) ? $options[ 'featured' ] : 'all';
 		$exclude 		= isset( $options[ 'exclude' ] ) ? $options[ 'exclude' ] : array();
+
 		$reference		= isset( $options[ 'reference' ] ) ? $options[ 'reference' ] : null;
 		$referenceId	= isset( $options[ 'reference_id' ] ) ? $options[ 'reference_id' ] : null;
-		$userId		= isset( $options[ 'userId' ] ) ? $options[ 'userId' ] : null;
 
-
-		$query			= $this->_buildQuery( $sort , $filter , $category , $featured , false, $exclude , $reference , $referenceId, $userId );
+		$query			= $this->_buildQuery( $sort , $filter , $category , $featured , false, $exclude , $reference , $referenceId );
 
 
 		$limitstart		= is_null( $limitstart ) ? $this->getState( 'limitstart') : $limitstart;
@@ -670,11 +666,12 @@ class EasyDiscussModelPosts extends EasyDiscussModel
 		{
 			$query = $this->_buildQuery( $sort, $filter , $category, $featuredOnly, false, array(), null, null, $userId );
 
+			//echo $query;exit;
+
 			if($usePagination)
 			{
 				$limitstart		= is_null( $limitstart ) ? $this->getState( 'limitstart') : $limitstart;
 				$limit			= is_null( $limit ) ? $this->getState( 'limit') : $limit;
-
 				$this->_data	= $this->_getList($query, $limitstart , $limit);
 			}
 			else
@@ -761,38 +758,6 @@ class EasyDiscussModelPosts extends EasyDiscussModel
 				$this->setError($this->_db->getErrorMsg());
 				return false;
 			}
-
-			// We need to update the parent post last replied date
-			foreach( $categories as $postId )
-			{
-				// Load the reply
-				$reply = DiscussHelper::getTable( 'Posts' );
-				$reply->load( $postId );
-
-				// We only need replies
-				if( !empty( $reply->parent_id ) )
-				{
-					$parent = DiscussHelper::getTable( 'Post' );
-					$parent->load( $reply->parent_id );
-
-					// Check if current reply date is more than the last replied date of the parent to determine if this reply is new or is an old pending moderate reply.
-					if( $reply->created > $parent->replied )
-					{
-						$query	= 'UPDATE ' . $db->nameQuote( '#__discuss_posts' ) . ' '
-								. 'SET ' . $db->nameQuote( 'replied' ) . '=' . $db->Quote( $reply->created ) . ' '
-								. 'WHERE ' . $db->nameQuote( 'id' ) . '=' . $db->Quote( $parent->id );
-
-						$db->setQuery( $query );
-
-						if( !$db->query() )
-						{
-							$this->setError($this->_db->getErrorMsg());
-							return false;
-						}
-					}
-				}
-			}
-
 			return true;
 		}
 		return false;
@@ -897,14 +862,13 @@ class EasyDiscussModelPosts extends EasyDiscussModel
 		$query	.= ' a.`featured`, a.`isresolve`, a.`isreport`, a.`user_id`, a.`parent_id`,';
 		$query	.= ' a.`user_type`, a.`poster_name`, a.`poster_email`, a.`num_likes`,';
 		$query	.= ' a.`num_negvote`, a.`sum_totalvote`,a.`answered`,';
-		$query	.= ' a.`post_status`, a.`post_type`, pt.`title` AS `post_type_title`,pt.`suffix` AS `post_type_suffix`,';
+		$query	.= ' a.`post_status`, a.`post_type`,';
 		$query	.= ' count(b.id) as `num_replies`,';
 		$query	.= ' c.`title` AS `category`, a.`password`';
 		$query	.= ' FROM ' . $db->nameQuote( '#__discuss_posts' ) . ' AS a';
 		$query	.= '	 LEFT JOIN `#__discuss_posts` AS b ON a.`id` = b.`parent_id`';
 		$query	.= '	 AND b.`published` = 1';
 		$query	.= '	 LEFT JOIN `#__discuss_category` AS c ON a.`category_id` = c.`id`';
-		$query 	.= '	LEFT JOIN `#__discuss_post_types` AS pt ON a.`post_type` = pt.`alias`';
 
 		$query	.= $queryWhere;
 
@@ -1082,6 +1046,8 @@ class EasyDiscussModelPosts extends EasyDiscussModel
 		$query	.= ' DATEDIFF(' . $db->Quote($date->toMySQL()) . ', b.`created`) as `daydiff`, TIMEDIFF(' . $db->Quote($date->toMySQL()). ', b.`created`) as `timediff`,';
 
 
+
+
 		// Include polls
 		$query 	.= ' (SELECT COUNT(1) FROM ' . $db->nameQuote( '#__discuss_polls' ) . ' WHERE ' . $db->nameQuote( 'post_id' ) . ' = b.' . $db->nameQuote( 'id' ) . ') AS `polls_cnt`,';
 
@@ -1124,7 +1090,7 @@ class EasyDiscussModelPosts extends EasyDiscussModel
 		$query	.= ' b.`content`, b.`published`, b.`ordering`, b.`vote`, b.`hits`, b.`islock`,';
 		$query	.= ' b.`featured`, b.`isresolve`, b.`isreport`, b.`user_id`, b.`parent_id`,';
 		$query	.= ' b.`user_type`, b.`poster_name`, b.`poster_email`, b.`num_likes`,';
-		$query	.= ' b.`post_status`, b.`post_type`,pt.`suffix` AS post_type_suffix, pt.`title` AS post_type_title ,';
+		$query	.= ' b.`post_status`, b.`post_type`, ';
 		$query	.= ' b.`num_negvote`, b.`sum_totalvote`, b.`category_id`, d.`title` AS category, b.`password`, ';
 		$query	.= ' count(b.id) as `num_replies`, b.`legacy`';
 
@@ -1145,9 +1111,6 @@ class EasyDiscussModelPosts extends EasyDiscussModel
 			$query	.= ' INNER JOIN ' . $db->nameQuote( '#__discuss_category' ) . ' AS d ';
 			$query	.= ' ON d.`id`=b.`category_id` ';
 		}
-
-		// Join with post types table
-		$query 	.= '	LEFT JOIN ' . $db->nameQuote( '#__discuss_post_types' ) . ' AS pt ON b.`post_type`= pt.`alias`';
 
 		$query	.= $queryWhere;
 		$query	.= ' AND b.`published` = ' . $db->Quote('1');
@@ -1328,8 +1291,8 @@ class EasyDiscussModelPosts extends EasyDiscussModel
 		$this->_parent		= $id;
 		$this->_isaccept	= true;
 
-		$query			= $this->_buildQuery( 'latest' , 'answer' , '', 'all', true);
-
+		$sort			= 'latest';
+		$query			= $this->_buildQuery($sort, '', '', 'all', true);
 		$db->setQuery($query);
 		$result = $db->loadObjectList();
 
@@ -1800,7 +1763,7 @@ class EasyDiscussModelPosts extends EasyDiscussModel
 		$query	.= ' b.`featured`, b.`isresolve`, b.`isreport`, b.`user_id`, b.`parent_id`,';
 		$query	.= ' b.`user_type`, b.`poster_name`, b.`poster_email`, b.`num_likes`,';
 		$query	.= ' b.`num_negvote`, b.`sum_totalvote`,b.`answered`,';
-		$query	.= ' b.`post_status`, b.`post_type`, pt.`title` AS `post_type_title`,pt.`suffix` AS `post_type_suffix`,';
+		$query	.= ' b.`post_status`, b.`post_type`,';
 		$query	.= ' count(d.id) as `num_replies`,';
 		$query	.= ' c.`title` as `category`, b.`password`';
 		$query	.= ' FROM ' . $db->nameQuote( '#__discuss_posts' ) . ' AS b ';
@@ -1808,8 +1771,6 @@ class EasyDiscussModelPosts extends EasyDiscussModel
 		$query	.= ' ON d.' . $db->nameQuote( 'parent_id' ) . '=b.' . $db->nameQuote( 'id' );
 		$query	.= ' LEFT JOIN ' . $db->nameQuote( '#__discuss_category' ) . ' AS c';
 		$query	.= ' ON c.' . $db->nameQuote( 'id' ) . ' = b.' . $db->nameQuote( 'category_id' );
-		$query 	.= ' LEFT JOIN ' . $db->nameQuote( '#__discuss_post_types' ) . ' AS pt';
-		$query 	.= ' ON b.`post_type` = pt.' . $db->nameQuote( 'alias' );
 		$query	.= ' WHERE b.' . $db->nameQuote( 'user_id' ) . ' = ' . $db->Quote( $userId );
 		$query	.= ' AND b.' . $db->nameQuote( 'isresolve' ) . '=' . $db->Quote( 0 );
 		$query	.= ' AND b.`parent_id` = ' . $db->Quote('0');
@@ -1843,7 +1804,7 @@ class EasyDiscussModelPosts extends EasyDiscussModel
 		$query	.= ' b.`featured`, b.`isresolve`, b.`isreport`, b.`user_id`, b.`parent_id`,';
 		$query	.= ' b.`user_type`, b.`poster_name`, b.`poster_email`, b.`num_likes`,';
 		$query	.= ' b.`num_negvote`, b.`sum_totalvote`, b.`answered`,';
-		$query	.= ' b.`post_status`, b.`post_type`, pt.`title` AS `post_type_title`,pt.`suffix` AS `post_type_suffix`,';
+		$query	.= ' b.`post_status`, b.`post_type`,';
 		$query	.= ' count(a.id) as `num_replies`,';
 		$query	.= ' c.`title` as `category`, b.`password`';
 		$query	.= ' FROM ' . $db->nameQuote( '#__discuss_posts' ) . ' AS a ';
@@ -1851,8 +1812,6 @@ class EasyDiscussModelPosts extends EasyDiscussModel
 		$query	.= ' ON a.' . $db->nameQuote( 'parent_id' ) . ' = b.' . $db->nameQuote( 'id' );
 		$query	.= ' LEFT JOIN ' . $db->nameQuote( '#__discuss_category' ) . ' AS c';
 		$query	.= ' ON c.' . $db->nameQuote( 'id' ) . ' = b.' . $db->nameQuote( 'category_id' );
-		$query 	.= ' LEFT JOIN ' . $db->nameQuote( '#__discuss_post_types' ) . ' AS pt';
-		$query 	.= ' ON b.`post_type` = pt.' . $db->nameQuote( 'alias' );
 		$query	.= ' WHERE a.' . $db->nameQuote( 'user_id' ) . ' = ' . $db->Quote( $userId );
 		$query	.= ' AND a.' . $db->nameQuote( 'published' ) . ' = ' . $db->Quote( 1 );
 

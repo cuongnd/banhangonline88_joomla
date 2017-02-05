@@ -149,7 +149,7 @@ class DiscussComment extends JTable
 	 * @since	1.0
 	 * @access	public
 	 * @param	string
-	 * @return
+	 * @return	
 	 */
 	public function canConvert()
 	{
@@ -163,7 +163,7 @@ class DiscussComment extends JTable
 		return false;
 	}
 
-	public function canDelete($pk = null, $joins = null)
+	public function canDelete()
 	{
 		$aclHelper	= DiscussHelper::getHelper( 'ACL' );
 

@@ -72,8 +72,7 @@ class DiscussAjaxHelper
 
 		$response = $json->encode( $this->commands );
 
-		switch ($transport)
-		{
+		switch ($transport) {
 
 			case "jsonp":
 				header('Content-type: text/javascript; UTF-8');

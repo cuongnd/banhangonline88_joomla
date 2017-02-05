@@ -250,14 +250,11 @@ class EasyDiscussControllerPosts extends EasyDiscussController
 	 */
 	public function accept()
 	{
-		// Check for request forgeries
 		JRequest::checkToken('request') or jexit( 'Invalid Token' );
 
-		// Get the discussion id.
 		$id		= JRequest::getInt( 'id' );
 		$app 	= JFactory::getApplication();
 
-		// If id isn't provided, we need to disallow the user.
 		if( !$id )
 		{
 			DiscussHelper::setMessageQueue( JText::_('COM_EASYDISCUSS_SYSTEM_INVALID_ID' ) , DISCUSS_QUEUE_ERROR );
@@ -274,10 +271,10 @@ class EasyDiscussControllerPosts extends EasyDiscussController
 		$question	= DiscussHelper::getTable( 'Post' );
 		$question->load( $reply->parent_id );
 
-		$isResolved		= $question->isresolve;
-		$isMine			= DiscussHelper::isMine( $question->user_id );
-		$isAdmin		= DiscussHelper::isSiteAdmin();
-		$isModerator 	= DiscussHelper::getHelper( 'Moderator' )->isModerator( $question->category_id );
+		$isResolved	= $question->isresolve;
+		$isMine		= DiscussHelper::isMine( $question->user_id );
+		$isAdmin	= DiscussHelper::isSiteAdmin();
+		$isModerator = DiscussHelper::getHelper( 'Moderator' )->isModerator( $question->category_id );
 
 		if ( !$isMine && !$isAdmin && !$acl->allowed( 'mark_answered', '0') )
 		{
@@ -347,9 +344,6 @@ class EasyDiscussControllerPosts extends EasyDiscussController
 		$notify->addQueue( $email, $emailSubject, '', $emailTemplate, $emailData);
 		// sending notification to person who made the reply end.
 
-		// Create a new EasySocial stream
-		DiscussHelper::getHelper( 'EasySocial' )->acceptedStream( $reply , $question );
-
 		// Send notification to post owner when post is marked as answered.
 		if( $config->get( 'notify_owner_answer' ) && $question->user_id != $my->id)
 		{
@@ -381,22 +375,11 @@ class EasyDiscussControllerPosts extends EasyDiscussController
 			DiscussHelper::getHelper( 'Badges' )->assign( 'easydiscuss.answer.reply' , $reply->get( 'user_id' ) );
 			DiscussHelper::getHelper( 'Points' )->assign( 'easydiscuss.answer.reply' , $reply->get( 'user_id' ) );
 
-			// Assign badge for EasySocial
-			DiscussHelper::getHelper( 'EasySocial' )->assignBadge( 'accepted.reply' , $my->id , JText::sprintf( 'COM_EASYDISCUSS_HISTORY_ACCEPTED_REPLY' , $question->title ) );
-
 			//AUP
 			DiscussHelper::getHelper( 'Aup' )->assign( DISCUSS_POINTS_ACCEPT_REPLY , $reply->get( 'user_id' ) , JText::sprintf( 'COM_EASYDISCUSS_HISTORY_ACCEPTED_REPLY' , $question->title ) );
 
-			// EasySocial instegrations
-			DiscussHelper::getHelper( 'EasySocial' )->notify( 'accepted.answer' , $reply , $question , null , $my->id );
 
-			// EasySocial instegrations
-			DiscussHelper::getHelper( 'EasySocial' )->notify( 'accepted.answer' , $reply , $question , null , $my->id );
-
-			// Notify owner of the discussion
-			DiscussHelper::getHelper( 'EasySocial' )->notify( 'accepted.answer.owner' , $reply , $question , null , $question->user_id );
-
-			// @rule: Add notifications for the reply author
+			// @rule: Add notifications for the thread starter
 			$notification	= DiscussHelper::getTable( 'Notifications' );
 			$notification->bind( array(
 					'title'		=> JText::sprintf( 'COM_EASYDISCUSS_ACCEPT_ANSWER_DISCUSSION_NOTIFICATION_TITLE' , $question->title ),
@@ -408,22 +391,6 @@ class EasyDiscussControllerPosts extends EasyDiscussController
 				) );
 			$notification->store();
 		}
-
-		// add notifications for the thread author
-		if( $config->get( 'main_notifications_accepted' ) )
-		{
-			$notification	= DiscussHelper::getTable( 'Notifications' );
-			$notification->bind( array(
-					'title'		=> JText::sprintf( 'COM_EASYDISCUSS_ADMIN_ACCEPT_ANSWER_DISCUSSION_NOTIFICATION_TITLE' , $question->title ),
-					'cid'		=> $question->get( 'id' ),
-					'type'		=> DISCUSS_NOTIFICATIONS_ACCEPTED,
-					'target'	=> $question->get( 'user_id' ),
-					'author'	=> $my->id,
-					'permalink'	=> 'index.php?option=com_easydiscuss&view=post&id=' . $question->get( 'id' ) . '#answer'
-				) );
-			$notification->store();
-		}
-
 
 		DiscussHelper::setMessageQueue( JText::_('COM_EASYDISCUSS_REPLY_ACCEPTED_AS_ANSWER' ) , DISCUSS_QUEUE_SUCCESS );
 		$app->redirect( DiscussRouter::getPostRoute( $question->id , false ) );
@@ -567,12 +534,10 @@ class EasyDiscussControllerPosts extends EasyDiscussController
 		if( !empty($post->parent_id) )
 		{
 			DiscussHelper::getHelper( 'jomsocial' )->addActivityReply( $post );
-			DiscussHelper::getHelper( 'easysocial')->replyDiscussionStream( $post );
 		}
 		else
 		{
 			DiscussHelper::getHelper( 'jomsocial' )->addActivityQuestion( $post );
-			DiscussHelper::getHelper( 'easysocial')->createDiscussionStream( $post );
 		}
 
 		// Delete the unused hashkey now.
@@ -634,7 +599,7 @@ class EasyDiscussControllerPosts extends EasyDiscussController
 	 * Delete current post given the post id.
 	 * It will also delete all childs related to this entry.
 	 */
-	public function delete()
+	function delete()
 	{
 		JRequest::checkToken('request') or jexit( 'Invalid Token' );
 
@@ -801,12 +766,6 @@ class EasyDiscussControllerPosts extends EasyDiscussController
 
 		// Get values from the posted form.
 		$data 	= JRequest::get( 'post' );
-
-		if( isset( $data['mod_post_topic_category_id'] ) )
-		{
-			$data['category_id'] = $data['mod_post_topic_category_id'];
-			unset( $data['mod_post_topic_category_id'] );
-		}
 
 		// Run validation on the posted data.
 		if(! $this->_fieldValidate($data))
@@ -1005,7 +964,7 @@ class EasyDiscussControllerPosts extends EasyDiscussController
 		$post->published	= DISCUSS_ID_PUBLISHED;
 
 		// Detect if post should be moderated.
-		if( $config->get( 'main_moderatepost' ) && !DiscussHelper::isSiteAdmin( $post->user_id ) && !DiscussHelper::isModerateThreshold( $post->user_id ) )
+		if( $config->get( 'main_moderatepost' ) && !DiscussHelper::isSiteAdmin( $post->user_id ) )
 		{
 			$post->published 	= DISCUSS_ID_PENDING;
 		}
@@ -1169,6 +1128,13 @@ class EasyDiscussControllerPosts extends EasyDiscussController
 			$post->bindAttachments();
 		}
 
+		// If admin configures to send notifications to all users, just ignore this block.
+// 		if( !$config->get( 'notify_all') && $config->get( 'notify_owner' ) && $isNew && isset( $data[ 'self_subscribe' ] ) )
+// 		{
+// 			// echo 'test';exit;
+// 			$subscribe = DiscussHelper::getHelper( 'Subscriber' );
+// 			$subscribe->add( $my, $post, 'instant' ,$data );
+// 		}
 
 		// Detect if the current post should be moderated or not.
 		$isModerate = ($post->published == DISCUSS_ID_PENDING) ? true : false;
@@ -1336,6 +1302,7 @@ class EasyDiscussControllerPosts extends EasyDiscussController
 			// Notify EVERYBODY
 			if( $config->get( 'notify_all' ) && !$isModerate )
 			{
+
 				DiscussHelper::getHelper( 'Mailer' )->notifyAllMembers( $emailData, array( $my->email ) );
 			}
 		}
@@ -1350,19 +1317,12 @@ class EasyDiscussControllerPosts extends EasyDiscussController
 		if( ( $isNew || $prevPostStatus == DISCUSS_ID_PENDING ) && $post->published == DISCUSS_ID_PUBLISHED )
 		{
 			DiscussHelper::getHelper( 'jomsocial' )->addActivityQuestion( $post );
-			DiscussHelper::getHelper( 'easysocial')->createDiscussionStream( $post );
-
-			// Add notification to subscribers
-			DiscussHelper::getHelper( 'easysocial' )->notify( 'new.discussion' , $post );
 
 			// Add logging for user.
 			DiscussHelper::getHelper( 'History' )->log( 'easydiscuss.new.discussion' , $my->id , JText::sprintf( 'COM_EASYDISCUSS_BADGES_HISTORY_NEW_POST' , $post->title ), $post->id );
 
 			DiscussHelper::getHelper( 'Badges' )->assign( 'easydiscuss.new.discussion' , $my->id );
 			DiscussHelper::getHelper( 'Points' )->assign( 'easydiscuss.new.discussion' , $my->id );
-
-			// Assign badge for EasySocial
-			DiscussHelper::getHelper( 'EasySocial' )->assignBadge( 'create.question' , $my->id , JText::sprintf( 'COM_EASYDISCUSS_BADGES_HISTORY_NEW_POST' , $post->title ) );
 
 			// assign new ranks.
 			DiscussHelper::getHelper( 'ranks' )->assignRank( $my->id, $config->get( 'main_ranking_calc_type' ) );

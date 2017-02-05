@@ -72,9 +72,6 @@ class DiscussIntegrate
 				case 'k2':
 					$socialFields = self::k2( $profile );
 					break;
-				case 'easysocial':
-					$socialFields = self::easysocial( $profile );
-					break;
 				case 'easydiscuss' :
 				default :
 					$socialFields = self::easydiscuss( $profile );
@@ -99,23 +96,6 @@ class DiscussIntegrate
 		$avatarLink		= $legacy ? '/media/com_easydiscuss/images/default.png' : DiscussImageHelper::getAvatarRelativePath() . '/' . $profile->avatar;
 		$avatarLink		= DISCUSS_JURIROOT . '/' . $avatarLink;
 		$profileLink	= DiscussRouter::_('index.php?option=com_easydiscuss&view=profile&id='.$profile->id, false);
-
-		return array( $avatarLink, $profileLink );
-	}
-
-	private static function easysocial( $profile )
-	{
-		$file 	= JPATH_ADMINISTRATOR  . '/components/com_easysocial/includes/foundry.php';
-
-		if( !JFile::exists( $file ) )
-		{
-			return false;
-		}
-
-		require_once( $file );
-
-		$avatarLink		= Foundry::user( $profile->id )->getAvatar( SOCIAL_AVATAR_MEDIUM );
-		$profileLink	= Foundry::user( $profile->id )->getPermalink();
 
 		return array( $avatarLink, $profileLink );
 	}
@@ -155,23 +135,7 @@ class DiscussIntegrate
 	{
 		$db 	= DiscussHelper::getDBO();
 
-
-		// Get columns
-		$columns = $db->getTableColumns('#__jfbconnect_user_map');
-
-		// Set the default column
-		$query 	= 'SELECT `fb_user_id` AS `id`';
-
-		// If it is new version
-		if( isset($columns[ 'provider_user_id' ]) )
-		{
-			$query 	= 'SELECT `provider_user_id` AS `id`';
-		}
-
-		$query .= ' FROM `#__jfbconnect_user_map` WHERE `j_user_id`=' . $db->Quote( $profile->id );
-
-
-
+		$query 	= 'SELECT `fb_user_id` AS `id` FROM `#__jfbconnect_user_map` WHERE `j_user_id`=' . $db->Quote( $profile->id );
 		$db->setQuery( $query );
 		$id 	= $db->loadResult();
 

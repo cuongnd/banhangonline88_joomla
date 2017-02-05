@@ -11,7 +11,8 @@
 */
 defined('_JEXEC') or die('Restricted access');
 
-require_once( DISCUSS_ROOT . '/views.php' );
+jimport( 'joomla.application.component.view');
+
 
 class EasyDiscussViewProfile extends EasyDiscussView
 {
@@ -253,7 +254,7 @@ class EasyDiscussViewProfile extends EasyDiscussView
 
 	public function komento()
 	{
-		$komentoAPI = JPATH_ROOT . '/components/com_komento/configuration.php';
+		$komentoAPI = JPATH_ROOT . '/components/com_komento/bootstrap.php';
 
 		if( !JFile::exists($komentoAPI) )
 		{
@@ -374,9 +375,9 @@ class EasyDiscussViewProfile extends EasyDiscussView
 
 
 		//$ajax->assign( 'sort-wrapper' , $sort );
-		//$ajax->script( 'EasyDiscuss.$("#pagination-filter").val("'.$viewtype.'");');
-		$ajax->script( 'EasyDiscuss.$("#' . $viewtype . '").show();');
-		$ajax->script( 'EasyDiscuss.$("#' . $viewtype. ' #dc_pagination").show();');
+		//$ajax->script( 'discussQuery("#pagination-filter").val("'.$viewtype.'");');
+		$ajax->script( 'discussQuery("#' . $viewtype . '").show();');
+		$ajax->script( 'discussQuery("#' . $viewtype. ' #dc_pagination").show();');
 
 		$ajax->send();
 	}
@@ -479,7 +480,7 @@ class EasyDiscussViewProfile extends EasyDiscussView
 
 		// fill in the value
 		$disjax->assign( 'profile-alias' , $alias );
-		$disjax->script( 'EasyDiscuss.$( "#alias-status" ).html("'.$html.'").removeClass("failed").removeClass("success").addClass( "'.$class.'" );' );
+		$disjax->script( 'discussQuery( "#alias-status" ).html("'.$html.'").removeClass("failed").removeClass("success").addClass( "'.$class.'" );' );
 		$disjax->value( 'profile-alias' , $alias );
 
 		$disjax->send();

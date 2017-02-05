@@ -18,9 +18,6 @@ class DiscussPointsHelper
 	public function assign( $command , $userId )
 	{
 
-		// Assign points via EasySocial
-		DiscussHelper::getHelper( 'EasySocial' )->assignPoints( $command , $userId );
-		
 		if( !$userId )
 		{
 			return false;

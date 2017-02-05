@@ -31,20 +31,18 @@ EasyDiscuss
 	<div class="vote-points pos-r votePoints">
 
 		<b><?php echo $post->sum_totalvote;?></b>
-		<span><?php echo JText::_( 'COM_EASYDISCUSS_POST_TOTAL_VOTES_PLURAL' ); ?></span>
+		<span>votes</span>
 	</div>
 
 	<?php if( $access->canVote() && !$post->isVoted ){ ?>
 		<a href="javascript:void(0);" class="vote-up voteUp"> <i class="icon-plus-sign"></i></a>
 	<?php }else{ ?>
-		<a href="javascript:void(0);" class="vote-up" <?php if( $system->my->id ){ ?> data-original-title="<?php echo JText::_( 'COM_EASYDISCUSS_ALREADY_VOTED_POLL' ); ?>" data-placement="top" rel="ed-tooltip"  <?php } ?>> <i class="icon-plus-sign"></i></a>
+		<a href="javascript:void(0);" class="vote-up" data-original-title="<?php echo JText::_( 'COM_EASYDISCUSS_ALREADY_VOTED_POLL' ); ?>" data-placement="top" rel="ed-tooltip" > <i class="icon-plus-sign"></i></a>
 	<?php } ?>
 
 	<?php if( $access->canVote() && !$post->isVoted ){ ?>
-		<a href="javascript:void(0);" class="vote-down voteDown"> <i class="icon-minus-sign"></i></a>
+	<a href="javascript:void(0);" class="vote-down voteDown"> <i class="icon-minus-sign"></i></a>
 	<?php }else{ ?>
-		<a href="javascript:void(0);" class="vote-down" <?php if( $system->my->id ){ ?> data-original-title="<?php echo JText::_( 'COM_EASYDISCUSS_ALREADY_VOTED_POLL' ); ?>" data-placement="top" rel="ed-tooltip"  <?php } ?>> <i class="icon-minus-sign"></i></a>
+		<a href="javascript:void(0);" class="vote-down" data-original-title="<?php echo JText::_( 'COM_EASYDISCUSS_ALREADY_VOTED_POLL' ); ?>" data-placement="top" rel="ed-tooltip" > <i class="icon-minus-sign"></i></a>
 	<?php } ?>
 </div>
-
-

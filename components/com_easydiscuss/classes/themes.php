@@ -203,20 +203,6 @@ if( !class_exists( 'DiscussThemes' ) )
 				$data	= ob_get_contents();
 				ob_end_clean();
 			}
-
-			// Test if the js equivalent file exists.
-			$jsFile 	= str_ireplace( '.php' , '.js' , $file );
-
-			if( JFile::exists( $jsFile ) )
-			{
-				ob_start();
-				include( $jsFile );
-				$jsData 	= ob_get_contents();
-				ob_end_clean();
-
-				$data 	.= '<script type="text/javascript">' . $jsData . '</script>';
-			}
-
 			return $data;
 		}
 
@@ -289,15 +275,6 @@ if( !class_exists( 'DiscussThemes' ) )
 			$result = $db->loadResult();
 
 			return $result;
-		}
-
-
-		public function resolve( $namespace )
-		{
-			$parts 	= explode( '/' , $namespace );
-			$path 	= '';
-
-			return $path;
 		}
 
 		function json_encode( $value )

@@ -15,11 +15,15 @@
 ########################################
 
 // This should not contain http:// or https://
-
-//Change to your own domain name if you are using Godaddy
 $host		= 'site.com';
 
 ########################################
+
+// In case the host name is not configured.
+if( $host == 'site.com' )
+{
+	return;
+}
 
 $fp 	= @fsockopen( $host , 80 , $errorNum , $errorStr );
 
@@ -28,6 +32,7 @@ if( !$fp )
 	echo 'There was an error connecting to the site.';
 	exit;
 }
+
 
 function connect( $fp , $host, $url )
 {

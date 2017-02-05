@@ -83,7 +83,7 @@ class EasyDiscussViewAsk extends EasyDiscussView
 
 		// Set the page title
 		DiscussHelper::setPageTitle( $title );
-
+		
 
 		if( $editing )
 		{
@@ -123,9 +123,7 @@ class EasyDiscussViewAsk extends EasyDiscussView
 		// @rule: If there is a category id passed through the query, respect it first.
 		$showPrivateCat		= ( empty($post->id) && $my->id == 0 ) ? false : true;
 
-		// [model:category]
 		$categoryModel		= $this->getModel( 'Category' );
-
 		$defaultCategory	= $categoryModel->getDefaultCategory();
 
 		if( $categoryId == 0 && $defaultCategory !== false )

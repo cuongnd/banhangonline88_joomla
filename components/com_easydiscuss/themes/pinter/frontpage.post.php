@@ -54,7 +54,7 @@ $isRecent	= ( $post->isnew ) ? ' is-recent' : '';
 				<a href="<?php echo $post->user->getLink();?>" class="" title="<?php echo $this->escape( $post->user->getName() );?>">
 					<?php if ($system->config->get( 'layout_avatar' ) && $system->config->get( 'layout_avatar_in_post' )) { ?>
 					<div class="discuss-avatar avatar-small <?php echo $post->user->getRoleLabelClassname(); ?>">
-						<img src="<?php echo $post->user->getAvatar();?>" alt="<?php echo $this->escape( $post->user->getName() );?>"<?php echo DiscussHelper::getHelper( 'EasySocial' )->getPopbox( $post->user->id );?> />
+						<img src="<?php echo $post->user->getAvatar();?>" alt="<?php echo $this->escape( $post->user->getName() );?>" />
 
 						<?php if($system->config->get( 'layout_profile_roles' ) && $post->user->getRole() ) { ?>
 						<div class="discuss-role-title"><?php //echo $this->escape($post->user->getRole()); ?></div>
@@ -74,9 +74,9 @@ $isRecent	= ( $post->isnew ) ? ' is-recent' : '';
 				<?php echo $this->loadTemplate( 'online.php' , array( 'user' => $post->user ) ); ?>
 
 				<?php if( $post->user->id ){ ?>
-				<?php echo $this->loadTemplate( 'post.badges.php' , array( 'badges' => $post->badges ) ); ?>
+				<?php echo $this->loadTemplate( 'post.badges.php' , array( 'badges' => $post->badges ) ); ?>			
 				<?php } ?>
-
+								
 				<!-- User graph -->
 				<!-- <div class="discuss-user-graph">
 					<div class="rank-bar mini" title="<?php //echo $this->escape( DiscussHelper::getUserRanks( $post->user->id ) ); ?>">
@@ -108,7 +108,7 @@ $isRecent	= ( $post->isnew ) ? ' is-recent' : '';
 
 						<?php if($system->config->get( 'layout_enableintrotext' ) ){ ?>
 						<div class="discuss-intro-text">
-							<?php echo $post->introtext; ?>
+							<?php echo strip_tags($post->introtext); ?>
 						</div>
 						<?php } ?>
 						<?php if( $system->config->get( 'main_master_tags' ) ){ ?>
@@ -160,7 +160,7 @@ $isRecent	= ( $post->isnew ) ? ' is-recent' : '';
 
 										<?php if( $system->config->get( 'layout_avatar' ) ) { ?>
 										<a href="<?php echo $post->reply->getLink();?>" class="pull-left ml-5" title="<?php echo $post->reply->getName(); ?>">
-											<img src="<?php echo $post->reply->getAvatar();?>" alt="<?php echo $this->escape( $post->reply->getName() );?>"<?php echo DiscussHelper::getHelper( 'EasySocial' )->getPopbox( $post->user->id );?> />
+											<img src="<?php echo $post->reply->getAvatar();?>" alt="<?php echo $this->escape( $post->reply->getName() );?>" />
 										</a>
 										<?php } ?>
 									<?php } else { ?>

@@ -13,7 +13,7 @@
 
 defined('_JEXEC') or die('Restricted access');
 ?>
-<form id="deletePostForm" class="si_form" action="<?php echo JRoute::_( 'index.php' );?>" method="post">
+<form id="deletePostForm" class="si_form" action="<?php echo DiscussRouter::_( 'index.php?option=com_easydiscuss&controller=posts&task=delete' );?>" method="post">
 <p>
 <?php if( $type == 'reply' ){ ?>
 	<?php echo JText::_('COM_EASYDISCUSS_REPLY_DELETE_DESC'); ?>
@@ -24,8 +24,5 @@ defined('_JEXEC') or die('Restricted access');
 <input type="hidden" name="id" value="<?php echo $id;?>" />
 <input type="hidden" name="type" value="<?php echo $type; ?>" />
 <input type="hidden" name="url" value="<?php echo $url; ?>" />
-<input type="hidden" name="option" value="com_easydiscuss" />
-<input type="hidden" name="controller" value="posts" />
-<input type="hidden" name="task" value="delete" />
 <?php echo JHTML::_( 'form.token' );?>
 </form>

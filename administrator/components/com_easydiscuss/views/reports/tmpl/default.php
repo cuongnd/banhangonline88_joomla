@@ -17,12 +17,12 @@ JHTML::_('behavior.modal' , 'a.modal' );
 <script type="text/javascript">
 function reportAction( id )
 {
-	var actionType  = EasyDiscuss.$('#report-action-' + id).val();
+	var actionType  = discussQuery('#report-action-' + id).val();
 
 	switch (actionType)
 	{
 		case "E" :
-			if(EasyDiscuss.$('#email-text-' + id).val().length <= 0)
+			if(discussQuery('#email-text-' + id).val().length <= 0)
 			{
 				alert( '<?php echo JText::_( 'COM_EASYDISCUSS_PLEASE_ENTER_CONTENTS' );?>' );
 				return false;
@@ -34,7 +34,7 @@ function reportAction( id )
 			inputs.push( 'post_id=' + escape( id ) );
 
 			//content
-			val = EasyDiscuss.$('#email-text-' + id).val().replace(/"/g, "&quot;");
+			val = discussQuery('#email-text-' + id).val().replace(/"/g, "&quot;");
 			val = encodeURIComponent(val);
 			inputs.push( 'content=' + escape( val ) );
 
@@ -45,31 +45,31 @@ function reportAction( id )
 
 			if( confirm( '<?php echo $this->escape( JText::_( 'COM_EASYDISCUSS_CONFIRM_DELETE_POST') );?>' ) )
 			{
-				EasyDiscuss.$('#post_id').val(id);
-				EasyDiscuss.$('#task').val('deletePost');
-				EasyDiscuss.$('#adminForm').submit();
+				discussQuery('#post_id').val(id);
+				discussQuery('#task').val('deletePost');
+				discussQuery('#adminForm').submit();
 			}
 
 			break;
 
 		case "C" :
-			EasyDiscuss.$('#post_id').val(id);
-			EasyDiscuss.$('#task').val('removeReports');
-			EasyDiscuss.$('#adminForm').submit();
+			discussQuery('#post_id').val(id);
+			discussQuery('#task').val('removeReports');
+			discussQuery('#adminForm').submit();
 			break;
 
 		case "P" :
-			EasyDiscuss.$('#post_id').val(id);
-			EasyDiscuss.$('#post_val').val('1');
-			EasyDiscuss.$('#task').val('togglePublish');
-			EasyDiscuss.$('#adminForm').submit();
+			discussQuery('#post_id').val(id);
+			discussQuery('#post_val').val('1');
+			discussQuery('#task').val('togglePublish');
+			discussQuery('#adminForm').submit();
 			break;
 
 		case "U" :
-			EasyDiscuss.$('#post_id').val(id);
-			EasyDiscuss.$('#post_val').val('0');
-			EasyDiscuss.$('#task').val('togglePublish');
-			EasyDiscuss.$('#adminForm').submit();
+			discussQuery('#post_id').val(id);
+			discussQuery('#post_val').val('0');
+			discussQuery('#task').val('togglePublish');
+			discussQuery('#adminForm').submit();
 			break;
 
 		default :

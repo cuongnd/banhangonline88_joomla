@@ -104,21 +104,18 @@ class DiscussProfile extends JTable
 
 		$date	= DiscussHelper::getDate();
 
-		if( $user->id )
-		{
-			$obj				= new stdClass();
-			$obj->id			= $user->id;
-			$obj->nickname		= $user->name;
-			$obj->avatar		= 'default.png';
-			$obj->description	= '';
-			$obj->url			= '';
-			$obj->params		= '';
+		$obj				= new stdClass();
+		$obj->id			= $user->id;
+		$obj->nickname		= $user->name;
+		$obj->avatar		= 'default.png';
+		$obj->description	= '';
+		$obj->url			= '';
+		$obj->params		= '';
 
-			//default to username for blogger alias
-			$obj->alias			= DiscussHelper::permalinkSlug( $user->username );
+		//default to username for blogger alias
+		$obj->alias			= DiscussHelper::permalinkSlug( $user->username );
 
-			$db->insertObject('#__discuss_users', $obj);
-		}
+		$db->insertObject('#__discuss_users', $obj);
 	}
 
 
@@ -154,6 +151,20 @@ class DiscussProfile extends JTable
 				$results    = $db->loadObjectList();
 
 
+// 				$users  = null;
+// 				$query  = 'SELECT * FROM `#__users` WHERE `id` IN ( ' . $ids . ')';
+// 				$db->setQuery($query);
+// 				$userResults    = $db->loadAssocList();
+//
+// 				//foreach( $userResults as $userItem )
+// 				for( $i = 0; $i < count($userResults); $i++ )
+// 				{
+// 					$juser	= clone JFactory::getUser();
+// 					$juser->bind( $userResults[$i] );
+//
+// 					$users[ $juser->id ] = $juser;
+// 				}
+
 				$numPostCreated	 = self::getNumTopicPostedGroup( $tmpArr );
 				$numPostAnswered = self::getNumTopicAnsweredGroup( $tmpArr );
 
@@ -188,17 +199,14 @@ class DiscussProfile extends JTable
 	{
 		if( !isset( self::$instances[ $id ] ) )
 		{
+			$state 	= parent::load( $id );
 			$createNew  = false;
 
-			if( !empty( $id ) )
+			if( !$state && $id != 0 )
 			{
-				$state = parent::load( $id );
-
-				if( !$state )
-				{
-					$this->_createDefault($id);
-					$createNew  = true;
-				}
+				$this->_createDefault($id);
+				parent::load( $id );
+				$createNew  = true;
 			}
 
 			if(! $createNew )
@@ -386,7 +394,6 @@ class DiscussProfile extends JTable
 	public function getAvatar( $isThumb = true )
 	{
 		$config 	= DiscussHelper::getConfig();
-		$db 		= DiscussHelper::getDBO();
 		static $avatar;
 
 		if(! $config->get('layout_avatar') )
@@ -904,44 +911,6 @@ class DiscussProfile extends JTable
 		}
 
 		return true;
-	}
-
-	/**
-	 * Deletes the user's avatar
-	 *
-	 * @since	1.0
-	 * @access	public
-	 * @param	string
-	 * @return
-	 */
-	public function deleteAvatar()
-	{
-		$config		= DiscussHelper::getConfig();
-
-		$path	= $config->get('main_avatarpath');
-		$path	= rtrim( $path , '/');
-		$path 	= JPATH_ROOT . '/' . $path;
-
-		$original	= $path . '/original_' . $this->avatar;
-		$path 		= $path . '/' . $this->avatar;
-
-		jimport( 'joomla.filesystem.file' );
-
-		// Test if the original file exists.
-		if( JFile::exists( $original ) )
-		{
-			JFile::delete( $original );
-		}
-
-		// Test if the avatar file exists.
-		if( JFile::exists( $path ) )
-		{
-			JFile::delete( $path );
-		}
-
-		$this->avatar 	= '';
-
-		$this->store();
 	}
 
 	public function isRead( $postId )

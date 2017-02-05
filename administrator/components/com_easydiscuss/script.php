@@ -1,6 +1,6 @@
 <?php
 /**
-* @package		EasyDiscuss - kingtheme.net
+* @package		EasyDiscuss
 * @copyright	Copyright (C) 2010 Stack Ideas Private Limited. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
 * EasyDiscuss is free software. This version may have been modified pursuant
@@ -106,7 +106,7 @@ class com_EasyDiscussInstallerScript
 
 			return false;
 		}
-
+		
 		if( $temp === 'warning' )
 		{
 			$mainframe = JFactory::getApplication();
@@ -191,7 +191,7 @@ class com_EasyDiscussInstallerScript
 		<table width="100%" border="0">
 			<tr>
 				<td>
-					<div><img src="http://stackideas.com/images/easydiscuss/success_32.png" /></div>
+					<div><img src="http://stackideas.com/images/easydiscuss/success_31.png" /></div>
 				</td>
 			</tr>
 			<?php

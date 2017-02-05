@@ -65,9 +65,9 @@ class DiscussFacebook extends Facebook
 	public function getAuthorizationURL()
 	{
 		$scope	= array(
-							//'publish_stream',
+							'publish_stream',
 							'user_likes',
-							//'offline_access',
+							'offline_access',
 							'manage_pages',
 							'user_status'
 						);
@@ -102,22 +102,11 @@ class DiscussFacebook extends Facebook
 	{
 		$config		= DiscussHelper::getConfig();
 		$content	= $post->content;
-		$content	= EasyDiscussParser::bbcode( $content );
 
 		JFactory::getLanguage()->load( 'com_easydiscuss' , JPATH_ROOT );
 
-		$editor = DiscussHelper::getEditorType( 'question' );
-
-		if( $editor == 'html' )
-		{
-			// @rule: Match images from content
-			$pattern	= '/<\s*img [^\>]*src\s*=\s*[\""\']?([^\""\'\s>]*)/i';
-		}
-		else
-		{
-			$pattern 	= '/\[img\](.*?)\[\/img\]/ims';
-		}
-
+		// @rule: Match images from blog post
+		$pattern	= '/<\s*img [^\>]*src\s*=\s*[\""\']?([^\""\'\s>]*)/i';
 		preg_match( $pattern , $content , $matches );
 
 		$image		= '';
@@ -158,8 +147,7 @@ class DiscussFacebook extends Facebook
 		}
 		else
 		{
-			$params['picture' ]		= DISCUSS_JURIROOT . '/media/com_easydiscuss/images/default_facebook.png';
-			$params['source' ]		= rtrim( JURI::root() , '/' ) . '/media/com_easydiscuss/images/default_facebook.png';
+			$params['picture' ]		= DISCUSS_JURIROOT . '/components/com_easydiscuss/assets/images/default_facebook.png';
 		}
 
 		// @rule: See if we need to post this to a Facebook page instead.

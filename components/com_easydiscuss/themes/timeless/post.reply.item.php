@@ -80,7 +80,7 @@ defined('_JEXEC') or die('Restricted access');
 								</div>
 							</div>
 						</div>
-						<div class="">
+						<div class="span7">
 							<?php echo $this->loadTemplate( 'post.actions.php' , array( 'access' => $post->access , 'post' => $post ) ); ?>
 						</div>
 					</div>

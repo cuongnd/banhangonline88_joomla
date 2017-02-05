@@ -23,11 +23,9 @@ defined('_JEXEC') or die('Restricted access');
 			<li>
 				<a href="<?php echo $user->getLink();?>" rel="ed-tooltip" data-placement="top" data-original-title="<?php echo $this->escape( $user->getName() );?>">
 					<?php if( $system->config->get( 'layout_avatar' ) ) { ?>
-					<span class="discuss-avatar avatar-circle">
-						<img src="<?php echo $user->getAvatar();?>" alt="<?php echo $this->escape( $user->getName() );?>"<?php echo DiscussHelper::getHelper( 'EasySocial' )->getPopbox( $user->id );?> />
-					</span>
+					<img src="<?php echo $user->getAvatar();?>" alt="<?php echo $this->escape( $user->getName() );?>" />
 					<?php } else { ?>
-						<?php echo $this->escape( $user->getName() );?>
+					<?php echo $this->escape( $user->getName() );?>
 					<?php } ?>
 				</a>
 			</li>

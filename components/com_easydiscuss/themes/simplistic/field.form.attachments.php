@@ -12,64 +12,57 @@
  */
 defined('_JEXEC') or die('Restricted access');
 
-if( ( !$system->config->get( 'attachment_questions' ) || !$acl->allowed('add_attachment', '0' ) ) && !DiscussHelper::isSiteAdmin() ) {
+if( ( !$system->config->get( 'attachment_questions' ) || !$acl->allowed('add_attachment', '0' ) ) && !DiscussHelper::isSiteAdmin() )
+{
 	return;
 }
 
-$app    = JFactory::getApplication();
-$config = DiscussHelper::getConfig();
+$attachments 	= false;
 
-$attachments             = ($post) ? $post->getAttachments() : null;
-$hasAttachments          = !empty($attachments);
-$hasAttachmentLimit      = $config->get('enable_attachment_limit');
-$attachmentLimit         = $config->get('attachment_limit');
-$attachmentLimitExceeded = $hasAttachmentLimit && (count($attachments) >= $attachmentLimit) && $attachmentLimit != 0;
+if ( $post )
+{
+	$attachments 	= $post->getAttachments();
+}
+
+$app 	= JFactory::getApplication();
 ?>
 
 <script type="text/javascript">
-EasyDiscuss.require()
+EasyDiscuss
+	.require()
 	.script('attachments')
 	.done(function($){
 
 		EasyDiscuss.module("<?php echo $composer->id; ?>")
 			.done(function(){
-				$('#attachmentsTab-<?php echo $composer->id; ?>').addController(
-					"EasyDiscuss.Controller.Attachments",
-					{
-						hasAttachmentLimit: <?php echo ($hasAttachmentLimit) ? 'true' : 'false'; ?>,
-						attachmentLimit: <?php echo $attachmentLimit; ?>
-					});
+				$('#attachmentsTab-<?php echo $composer->id; ?>').implement(EasyDiscuss.Controller.Attachments);
 			});
 	});
 </script>
 
-<div id="attachmentsTab-<?php echo $composer->id; ?>"
-	 class="tab-pane discuss-attachments editable <?php echo ($attachmentLimitExceeded) ? 'limit-exceeded' : ''; ?>">
+<div class="tab-pane discussAttachments" id="attachmentsTab-<?php echo $composer->id; ?>">
+	<div class="field-attachment discuss-attachments-upload">
 
-	<div class="attachment-limit-exceed-hint alert alert-warn"><?php echo JText::_('COM_EASYDISCUSS_EXCEED_ATTACHMENT_LIMIT'); ?></div>
+		<ul class="upload-queue attach-list for-file unstyled uploadQueue">
 
-	<ul class="attachment-itemgroup unstyled" data-attachment-itemgroup>
-	<?php if ($hasAttachments) { ?>
-	<?php foreach ($attachments as $attachment) { ?>
-		<li data-attachment-item
-			id="attachment-<?php echo $attachment->id; ?>"
-		    class="attachment-item attachment-type-<?php echo $attachment->getType(); ?>">
-			<i class="icon"></i>
-			<span data-attachment-title><?php echo $attachment->title; ?></span>
-			<?php if ($attachment->deleteable() && !$app->isAdmin()) { ?>
-			 <a data-attachment-remove-button href="javascript:void(0);" data-id="<?php echo $attachment->id; ?>"> &bull; <?php echo JText::_('COM_EASYDISCUSS_REMOVE'); ?></a>
+		<?php if( isset( $attachments ) && !empty( $attachments ) ){ ?>
+
+			<?php for($i = 0; $i < count( $attachments ); $i++ ){ ?>
+				<li class="attachmentItem attachments-<?php echo $attachments[ $i ]->getType(); ?>">
+					<i class="icon"></i>
+					<span><?php echo $attachments[ $i ]->title;?></span>
+					<?php if( $attachments[ $i ]->deleteable() && !$app->isAdmin() ){ ?>
+					 - <a class="removeItem" href="javascript:void(0);" data-id="<?php echo $attachments[ $i ]->id; ?>"><?php echo JText::_( 'COM_EASYDISCUSS_REMOVE' );?></a>
+					<?php } ?>
+				</li>
 			<?php } ?>
-		</li>
-	<?php } ?>
-	<?php } ?>
 
-	<?php if (!$attachmentLimitExceeded) { ?>
-		<li data-attachment-item class="attachment-item new">
-			<i class="icon"></i>
-			<span data-attachment-title></span>
-			<a data-attachment-remove-button href="javascript:void(0);"> &bull; <?php echo JText::_('COM_EASYDISCUSS_REMOVE'); ?></a>
-			<input type="file" name="filedata[]" size="50" data-attachment-file disabled />
-		</li>
-	<?php } ?>
-	</ul>
+		<?php } ?>
+
+		</ul>
+
+		<div class="attach-input">
+			<input type="file" name="filedata[]" class="fileInput" />
+		</div>
+	</div>
 </div>

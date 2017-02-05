@@ -18,9 +18,9 @@ defined('_JEXEC') or die('Restricted access');
 		<div class="discuss-flyout-content">
 			<?php echo $this->loadTemplate( 'post.conversation.php' , array( 'userId' => $user->id ) ); ?>
 		</div>
-
 		<?php if( $system->config->get( 'main_rss') ){ ?>
 		<div class="discuss-item-hd">
+
 			<div class="discuss-story">
 				<div class="discuss-story-bd clearfix">
 					<div class="pr-10 pt-10">
@@ -30,9 +30,9 @@ defined('_JEXEC') or die('Restricted access');
 			</div>
 		</div>
 		<?php } ?>
-
 		<div class="discuss-item-left discuss-user">
-			<div class="discuss-avatar avatar-medium avatar-circle mb-10">
+
+			<div class="discuss-avatar avatar-large <?php echo $user->getRoleLabelClassname(); ?> mb-10">
 				<a class="" href="<?php echo $user->getLink();?>">
 					<?php if( $system->config->get( 'layout_avatar' ) ) { ?>
 					<img alt="<?php echo $this->escape( $user->getName() );?>" src="<?php echo $user->getAvatar( false );?>" />
@@ -40,14 +40,14 @@ defined('_JEXEC') or die('Restricted access');
 					<?php echo $this->escape( $user->getName() );?>
 					<?php } ?>
 				</a>
-				<?php echo $this->loadTemplate( 'online.php' , array( 'user' => $user ) ); ?>
-			</div>
 
-			<?php if($system->config->get( 'layout_profile_roles' ) && $user->getRole() ) { ?>
-			<div class="discuss-role-title <?php echo $user->getRoleLabelClassname(); ?>"><?php echo $this->escape($user->getRole()); ?></div>
-			<?php } ?>
-			
+				<?php if($system->config->get( 'layout_profile_roles' ) && $user->getRole() ) { ?>
+				<div class="discuss-role-title "><?php echo $this->escape($user->getRole()); ?></div>
+				<?php } ?>
+
+			</div>
 			<h3><a class="discuss-user-name" href="<?php echo $user->getLink();?>"><?php echo $user->getName();?></a></h3>
+
 
 			<?php if( $system->config->get( 'main_ranking' ) ) { ?>
 			<div class="discuss-user-rank fs-11 mt-5"><?php echo DiscussHelper::getUserRanks( $user->id ); ?></div>
@@ -73,6 +73,16 @@ defined('_JEXEC') or die('Restricted access');
 						</li>
 					</ul>
 				</div>
+			</div>
+		</div>
+
+		<div class="discuss-item-ft">
+			<div class="discuss-action-options">
+				<?php if( $system->config->get( 'main_signature_visibility' ) ){ ?>
+				<div class="discuss-signature">
+					<?php echo $user->getSignature(); ?>
+				</div>
+				<?php } ?>
 			</div>
 		</div>
 

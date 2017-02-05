@@ -23,12 +23,6 @@ class EasyDiscussControllerFoundry extends EasyDiscussController
 			{
 				$resource	= (object) $resource;
 				$func		= 'get' . ucfirst( $resource->type );
-
-				if( !method_exists( $this , $func ) )
-				{
-					continue;
-				}
-				
 				$result		= self::$func( $resource->name );
 
 				if( $result !== false )

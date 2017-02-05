@@ -17,8 +17,8 @@
  
 // No direct access
 defined( '_JEXEC' ) or die( 'Restricted access' );
-
-require_once "base_facebook.php";
+if(!class_exists('BaseFacebook'))
+  require_once JPATH_ROOT.DS."plugins/socialbacklinks/facebook/facebook/base_facebook.php";
 
 /**
  * Extends the BaseFacebook class with the intent of using

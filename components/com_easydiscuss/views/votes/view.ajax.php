@@ -11,8 +11,6 @@
 */
 defined('_JEXEC') or die('Restricted access');
 
-require_once( DISCUSS_ROOT . '/views.php' );
-
 class EasyDiscussViewVotes extends EasyDiscussView
 {
 	/**
@@ -99,9 +97,6 @@ class EasyDiscussViewVotes extends EasyDiscussView
 			return $ajax->send();
 		}
 
-		// Add stream integrations with EasySocial.
-		DiscussHelper::getHelper( 'EasySocial' )->voteStream( $post );
-
 		// Update the post's vote count.
 		$vote->sumPostVote( $post->id , $typeValue );
 
@@ -128,10 +123,8 @@ class EasyDiscussViewVotes extends EasyDiscussView
 				{
 					// Add logging for user.
 					DiscussHelper::getHelper( 'History' )->log( 'easydiscuss.vote.reply' , $my->id , JText::sprintf( 'COM_EASYDISCUSS_BADGES_HISTORY_VOTE_REPLY' , $question->title ), $post->id );
-					DiscussHelper::getHelper( 'Badges' )->assign( 'easydiscuss.vote.reply' , $my->id );
 
-					// Assign badge for EasySocial
-					DiscussHelper::getHelper( 'EasySocial' )->assignBadge( 'vote.reply' , $my->id , JText::sprintf( 'COM_EASYDISCUSS_BADGES_HISTORY_VOTE_REPLY' , $question->title ) );
+					DiscussHelper::getHelper( 'Badges' )->assign( 'easydiscuss.vote.reply' , $my->id );
 
 					if( $post->answered == '1' )
 					{
@@ -145,23 +138,11 @@ class EasyDiscussViewVotes extends EasyDiscussView
 					{
 						DiscussHelper::getHelper( 'Points' )->assign( 'easydiscuss.vote.reply' , $my->id );
 					}
-
-					// @rule: Add notifications for the thread starter
-					$notification	= DiscussHelper::getTable( 'Notifications' );
-					$notification->bind( array(
-							'title'	=> JText::sprintf( 'COM_EASYDISCUSS_VOTE_UP_REPLY' , $post->title ),
-							'cid'	=> $post->parent_id,
-							'type'	=> 'vote-up-reply',
-							'target'	=> $post->get( 'user_id' ),
-							'author'	=> $my->id,
-							'permalink'	=> 'index.php?option=com_easydiscuss&view=post&id=' . $post->parent_id
-						) );
-					$notification->store();
-
 				}
 				else
 				{
 					DiscussHelper::getHelper( 'History' )->log( 'easydiscuss.unvote.reply' , $my->id , JText::sprintf( 'COM_EASYDISCUSS_BADGES_HISTORY_UNVOTE_REPLY' , $question->title ), $post->id );
+
 					DiscussHelper::getHelper( 'Badges' )->assign( 'easydiscuss.unvote.reply' , $my->id );
 
 					if( $post->answered == '1' )
@@ -176,18 +157,6 @@ class EasyDiscussViewVotes extends EasyDiscussView
 					{
 						DiscussHelper::getHelper( 'Points' )->assign( 'easydiscuss.unvote.reply' , $my->id );
 					}
-
-					// @rule: Add notifications for the thread starter
-					$notification	= DiscussHelper::getTable( 'Notifications' );
-					$notification->bind( array(
-							'title'	=> JText::sprintf( 'COM_EASYDISCUSS_VOTE_DOWN_REPLY' , $post->title ),
-							'cid'	=> $post->parent_id,
-							'type'	=> 'vote-down-reply',
-							'target'	=> $post->get( 'user_id' ),
-							'author'	=> $my->id,
-							'permalink'	=> 'index.php?option=com_easydiscuss&view=post&id=' . $post->parent_id
-						) );
-					$notification->store();
 				}
 			}
 			else
@@ -198,41 +167,22 @@ class EasyDiscussViewVotes extends EasyDiscussView
 				if( $typeValue == '1' )
 				{
 					DiscussHelper::getHelper( 'Points' )->assign( 'easydiscuss.vote.question' , $my->id );
+
 					DiscussHelper::getHelper( 'Badges' )->assign( 'easydiscuss.vote.question' , $my->id );
 
 					//AUP
 					DiscussHelper::getHelper( 'Aup' )->assign( DISCUSS_POINTS_QUESTION_VOTE_UP , $my->id , $question->title );
 
-					$notification	= DiscussHelper::getTable( 'Notifications' );
-					$notification->bind( array(
-							'title'	=> JText::sprintf( 'COM_EASYDISCUSS_VOTE_UP_DISCUSSION' , $post->title ),
-							'cid'	=> $post->id,
-							'type'	=> 'vote-up-discussion',
-							'target'	=> $post->get( 'user_id' ),
-							'author'	=> $my->id,
-							'permalink'	=> 'index.php?option=com_easydiscuss&view=post&id=' . $post->id
-						) );
-					$notification->store();
 				}
 				else
 				{
 					// Voted -1
 					DiscussHelper::getHelper( 'Points' )->assign( 'easydiscuss.unvote.question' , $my->id );
+
 					DiscussHelper::getHelper( 'Badges' )->assign( 'easydiscuss.unvote.question' , $my->id );
 
 					//AUP
 					DiscussHelper::getHelper( 'Aup' )->assign( DISCUSS_POINTS_QUESTION_VOTE_DOWN , $my->id , $question->title );
-
-					$notification	= DiscussHelper::getTable( 'Notifications' );
-					$notification->bind( array(
-							'title'	=> JText::sprintf( 'COM_EASYDISCUSS_VOTE_DOWN_DISCUSSION' , $post->title ),
-							'cid'	=> $post->id,
-							'type'	=> 'vote-down-discussion',
-							'target'	=> $post->get( 'user_id' ),
-							'author'	=> $my->id,
-							'permalink'	=> 'index.php?option=com_easydiscuss&view=post&id=' . $post->id
-						) );
-					$notification->store();
 				}
 			}
 

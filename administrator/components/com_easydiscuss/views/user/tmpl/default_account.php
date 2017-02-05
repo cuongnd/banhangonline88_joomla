@@ -15,18 +15,31 @@ defined('_JEXEC') or die('Restricted access');
 <?php if( $this->config->get( 'layout_editor') == 'bbcode' ) { ?>
 <script type="text/javascript">
 EasyDiscuss.require()
-	.script('ranks')
-	.library(
-		'markitup',
-		'expanding'
-	)
+	.library('markitup')
 	.done(function($){
 
-		$( '.resetRank' ).implement( EasyDiscuss.Controller.Administrator.Ranks,{
-			'userid': "<?php echo $this->user->id; ?>"
+		var autogrowTimer;
+
+		var autogrow = function(){
+			clearTimeout(autogrowTimer);
+			if ($.fn.autogrow) {
+				$( '#signature' ).autogrow({lineBleed: 1});
+			} else {
+				autogrowTimer = setTimeout(autogrow, 500);
+			}
+		}
+
+		$('#signature').markItUp({
+
+			set: "bbcode_easydiscuss",
+
+			onResizeUp: function(height) {
+
+				autogrow({minHeight: height, lineBleed: 1});
+			}
 		});
 
-		$('#signature').expandingTextarea();
+		autogrowTimer = setTimeout(autogrow, 500);
 	});
 </script>
 <?php } ?>
@@ -98,16 +111,6 @@ body .key{width:300px !important;}
 				</td>
 				<td>
 					<input type="text" class="" value="<?php echo $this->profile->points; ?>" name="points" style="width:50px;text-align:center;" />
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<?php echo JText::_( 'COM_EASYDISCUSS_RESET_RANK' ); ?>:
-				</td>
-				<td>
-					<span class="resetRank">
-					<a href="javascript:void(0);" class="btn btn-info resetButton" ><?php echo JText::_( 'COM_EASYDISCUSS_RESET_BUTTON' ); ?></a><span class="pull-right resetMessage"></span>
-					</span>
 				</td>
 			</tr>
 			<tr>

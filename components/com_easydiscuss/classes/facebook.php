@@ -42,10 +42,6 @@ class DiscussFacebook
 
 		$height	= ($faces == 'true') ? '70' : '30';
 		$locale	= $language[0] . '_' . JString::strtoupper( $language[1] );
-
-		$fb = DiscussHelper::getHelper( 'Facebook' );
-		$fb->addOpenGraph( $row );
-
 		$url	= DiscussRouter::getRoutedURL( 'index.php?option=com_easydiscuss&view=post&id=' . $row->id, true , true );
 		$html	= '';
 

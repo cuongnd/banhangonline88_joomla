@@ -213,7 +213,7 @@ class DiscussJomsocialHelper
 			}
 
 			$content	= EasyDiscussParser::bbcode( $content );
-			$content	= html_entity_decode(strip_tags($content));
+			$content	= strip_tags( $content );
 			$content	= JString::substr( $content , 0 , $config->get( 'integration_jomsocial_activity_content_length') ) . '...';
 
 			if( $imgTag )

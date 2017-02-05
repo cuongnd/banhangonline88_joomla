@@ -17,6 +17,7 @@ defined('_JEXEC') or die('Restricted access');
 		<p style="margin: 0 0 15px;">
 			<?php echo JText::_( 'COM_EASYDISCUSS_SETTINGS_ATTACHMENTS_DESC' );?>
 		</p>
+		<!-- <a href="javascript:void(0)" class="btn btn-success">Documentation</a> -->
 	</div>
 </div>
 
@@ -50,36 +51,6 @@ defined('_JEXEC') or die('Restricted access');
 					<div class="si-form-row">
 						<div class="span5 form-row-label">
 							<label>
-								<?php echo JText::_( 'COM_EASYDISCUSS_FILE_ENABLE_ATTACHMENTS_LIMIT' ); ?>
-							</label>
-						</div>
-						<div class="span7"
-							rel="ed-popover"
-							data-placement="left"
-							data-original-title="<?php echo JText::_( 'COM_EASYDISCUSS_FILE_ENABLE_ATTACHMENTS_LIMIT' ); ?>"
-							data-content="<?php echo JText::_('COM_EASYDISCUSS_FILE_ENABLE_ATTACHMENTS_LIMIT_DESC'); ?>"
-						>
-							<?php echo $this->renderCheckbox( 'enable_attachment_limit' , $this->config->get( 'enable_attachment_limit', 0 ) );?>
-						</div>
-					</div>
-					<div class="si-form-row">
-						<div class="span5 form-row-label">
-							<label>
-								<?php echo JText::_( 'COM_EASYDISCUSS_FILE_ATTACHMENTS_LIMIT' ); ?>
-							</label>
-						</div>
-						<div class="span7"
-							rel="ed-popover"
-							data-placement="left"
-							data-original-title="<?php echo JText::_( 'COM_EASYDISCUSS_FILE_ATTACHMENTS_LIMIT' ); ?>"
-							data-content="<?php echo JText::_('COM_EASYDISCUSS_FILE_ATTACHMENTS_LIMIT_DESC'); ?>"
-						>
-							<input type="text" name="attachment_limit" class="text-center input-small" value="<?php echo $this->config->get('attachment_limit', 0 );?>" />&nbsp;<?php echo JText::_( 'COM_EASYDISCUSS_FILE_ATTACHMENTS_FILES' );?>
-						</div>
-					</div>
-					<div class="si-form-row">
-						<div class="span5 form-row-label">
-							<label>
 								<?php echo JText::_( 'COM_EASYDISCUSS_FILE_ATTACHMENTS_MAXSIZE' ); ?>
 							</label>
 						</div>
@@ -89,7 +60,7 @@ defined('_JEXEC') or die('Restricted access');
 							data-original-title="<?php echo JText::_( 'COM_EASYDISCUSS_FILE_ATTACHMENTS_MAXSIZE' ); ?>"
 							data-content="<?php echo JText::_('COM_EASYDISCUSS_FILE_ATTACHMENTS_MAXSIZE_DESC'); ?>"
 						>
-							<input type="text" name="attachment_maxsize"  class="input-small text-center" value="<?php echo $this->config->get('attachment_maxsize' );?>" />&nbsp;<?php echo JText::_( 'COM_EASYDISCUSS_FILE_ATTACHMENTS_MAXSIZE_MEGABYTES' );?>
+							<input type="text" name="attachment_maxsize"  style="text-align: center;width: 30px;" value="<?php echo $this->config->get('attachment_maxsize' );?>" />&nbsp;<?php echo JText::_( 'COM_EASYDISCUSS_FILE_ATTACHMENTS_MAXSIZE_MEGABYTES' );?>
 						</div>
 					</div>
 					<div class="si-form-row">
@@ -127,34 +98,7 @@ defined('_JEXEC') or die('Restricted access');
 		</div>
 	</div>
 	<div class="span6">
-		<div class="widget accordion-group">
-			<div class="whead accordion-heading">
-				<a href="javascript:void(0);" data-foundry-toggle="collapse" data-target="#option01">
-				<h6><?php echo JText::_( 'COM_EASYDISCUSS_SETTINGS_IMAGE_ATTACHMENTS' ); ?></h6>
-				<i class="icon-chevron-down"></i>
-				</a>
-			</div>
 
-			<div id="option01" class="accordion-body collapse in">
-				<div class="wbody">
-					<div class="si-form-row">
-						<div class="span5 form-row-label">
-							<label>
-								<?php echo JText::_( 'COM_EASYDISCUSS_IMAGE_ATTACHMENTS_TITLE' ); ?>
-							</label>
-						</div>
-						<div class="span7"
-							rel="ed-popover"
-							data-placement="left"
-							data-original-title="<?php echo JText::_( 'COM_EASYDISCUSS_IMAGE_ATTACHMENTS_TITLE' ); ?>"
-							data-content="<?php echo JText::_('COM_EASYDISCUSS_IMAGE_ATTACHMENTS_TITLE_DESC'); ?>"
-						>
-							<?php echo $this->renderCheckbox( 'attachment_image_title' , $this->config->get( 'attachment_image_title' ) );?>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 	</div>
 </div>
 

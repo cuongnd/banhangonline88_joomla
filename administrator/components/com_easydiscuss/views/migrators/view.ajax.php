@@ -42,10 +42,9 @@ class EasyDiscussViewMigrators extends EasyDiscussAdminView
 
 		// @task: Get list of categories from Kunena first.
 		$categories	= $this->getKunenaCategories();
-		$catCnt 	= $this->getKunenaCategoriesCount();
 
 		// @task: Add some logging
-		$this->log( $ajax , JText::sprintf( 'COM_EASYDISCUSS_MIGRATORS_KUNENA_TOTAL_CATEGORIES' , $catCnt ) , 'kunena' );
+		$this->log( $ajax , JText::sprintf( 'COM_EASYDISCUSS_MIGRATORS_KUNENA_TOTAL_CATEGORIES' , count( $categories ) ) , 'kunena' );
 
 		$json	= new Services_JSON();
 		$items	= array();
@@ -101,7 +100,7 @@ class EasyDiscussViewMigrators extends EasyDiscussAdminView
 
 	public function showMigrationButton( &$ajax )
 	{
-		$ajax->script( 'EasyDiscuss.$(".migrator-button").show();' );
+		$ajax->script( 'discussQuery(".migrator-button").show();' );
 	}
 
 	public function jomsocialgroupsCategoryItem( $current , $groups )
@@ -194,61 +193,33 @@ class EasyDiscussViewMigrators extends EasyDiscussAdminView
 		// @task: If categories is no longer an array, then it most likely means that there's nothing more to process.
 		if( $current == 'done' )
 		{
-			// category migration done. let reset the ordering here.
-			$catTbl = DiscussHelper::getTable( 'Category' );
-			$catTbl->rebuildOrdering();
-
 			$this->log( $ajax , JText::_( 'COM_EASYDISCUSS_MIGRATORS_CATEGORY_MIGRATION_COMPLETED' ) , 'kunena' );
 
 			$posts		= $this->getKunenaPostsIds();
-			// $posts = array( '44034', '44070', '46167' );
-
-			//$data		= $this->json_encode( $posts );
-			$data		= implode( '|', $posts );
-			$data		= $this->json_encode( $data );
+			$data		= $this->json_encode( $posts );
 
 			$this->log( $ajax , JText::sprintf( 'COM_EASYDISCUSS_MIGRATORS_KUNENA_TOTAL_POSTS' , count( $posts ) ) , 'kunena' );
 
-			if( count( $posts ) <= 0 )
-			{
-				$ajax->script( 'runMigrationItem("kunena" , "done");' );
-			}
-			else
-			{
-				// @task: Run migration for post items.
-				$ajax->script( 'runMigrationItem("kunena" , ' . $data . ');' );
-			}
-
+			// @task: Run migration for post items.
+			$ajax->script( 'runMigrationItem("kunena" , ' . $data . ');' );
 			return $ajax->send();
 		}
 
 		// @task: Skip the category if it has already been migrated.
-		$migratedId = $this->migrated( 'com_kunena' , $current , 'category');
-		$category	= DiscussHelper::getTable( 'Category' );
-
-
-		if( ! $migratedId )
-		{
-			// @task: Create the category
-			$this->mapKunenaCategory( $kCategory , $category );
-			$this->log( $ajax , JText::sprintf( 'COM_EASYDISCUSS_MIGRATORS_KUNENA_CATEGORY_MIGRATED' , $kCategory->name ) , 'kunena' );
-		}
-		else
-		{
-			$category->load( $migratedId );
-		}
-
-		// now let migrate all the child categories for this parent
-		$this->processKunenaCategoryTree( $kCategory, $category );
-
-
-		if( $migratedId )
+		if( $this->migrated( 'com_kunena' , $current , 'category') )
 		{
 			$data	= $this->json_encode( $categories );
 			$this->log( $ajax , JText::sprintf( 'COM_EASYDISCUSS_MIGRATORS_KUNENA_CATEGORY_MIGRATED_SKIPPING' , $kCategory->name ) , 'kunena' );
 			$ajax->script( 'runMigrationCategory("kunena" , ' . $data . ');' );
 			return $ajax->send();
 		}
+
+		// @task: Create the category
+		$category	= DiscussHelper::getTable( 'Category' );
+		$this->mapKunenaCategory( $kCategory , $category );
+		$this->log( $ajax , JText::sprintf( 'COM_EASYDISCUSS_MIGRATORS_KUNENA_CATEGORY_MIGRATED' , $kCategory->name ) , 'kunena' );
+
+
 
 
 		$data	= $this->json_encode( $categories );
@@ -257,62 +228,6 @@ class EasyDiscussViewMigrators extends EasyDiscussAdminView
 
 		$ajax->send();
 	}
-
-
-
-	private function processKunenaCategoryTree( $kCategory, $category )
-	{
-		$ajax	= new Disjax();
-
-		require_once JPATH_ROOT . '/administrator/components/com_kunena/api.php';
-
-		$columnName = 'parent';
-
-		if( class_exists('KunenaForum') && KunenaForum::version() >= '2.0' )
-		{
-			$columnName = 'parent_id';
-		}
-
-
-		$db = DiscussHelper::getDBO();
-		$query	= 'SELECT * FROM ' . $db->nameQuote( '#__kunena_categories' )
-				. ' where ' . $db->nameQuote( $columnName ) . ' = ' . $db->Quote( $kCategory->id )
-				. ' ORDER BY ' . $db->nameQuote( 'ordering' ) . ' ASC';
-
-		$db->setQuery( $query );
-		$result	= $db->loadObjectList();
-
-		if( $result )
-		{
-			foreach( $result as $kItemCat )
-			{
-				$subcategory	= DiscussHelper::getTable( 'Category' );
-
-				$migratedId = $this->migrated( 'com_kunena' , $kItemCat->id , 'category');
-
-				if( ! $migratedId )
-				{
-					$this->mapKunenaCategory( $kItemCat, $subcategory, $category->id );
-					//$this->log( $ajax , JText::sprintf( 'COM_EASYDISCUSS_MIGRATORS_KUNENA_CATEGORY_MIGRATED' , $kItemCat->name ) , 'kunena' );
-				}
-				else
-				{
-					$subcategory->load( $migratedId );
-				}
-
-				$this->processKunenaCategoryTree( $kItemCat, $subcategory );
-			}
-		}
-		else
-		{
-			return false;
-		}
-
-	}
-
-
-
-
 
 	public function jomsocialgroupsPostItem( $current , $items )
 	{
@@ -381,130 +296,9 @@ class EasyDiscussViewMigrators extends EasyDiscussAdminView
 		return $ajax->resolve( $items );
 	}
 
-	public function kunenaPostReplies()
+	public function kunenaPostItem( $current , $items )
 	{
 		$ajax	= new Disjax();
-
-		$replies = $this->getKunenaReplies();
-
-		if( !$replies || count( $replies ) <= 0 )
-		{
-			// @task: If categories is no longer an array, then it most likely means that there's nothing more to process.
-			$this->log( $ajax , JText::_( 'COM_EASYDISCUSS_MIGRATORS_MIGRATION_COMPLETED' ) , 'kunena' );
-			$this->showMigrationButton( $ajax );
-			return $ajax->send();
-
-		}
-
-		$db		= DiscussHelper::getDBO();
-
-		foreach( $replies as $kItem )
-		{
-			// getting parent thread.
-			$query = 'select `first_post_id` from `#__kunena_topics` where id = ' . $db->Quote( $kItem->thread );
-			$db->setQuery( $query );
-			$fPostId = $db->loadResult();
-
-
-			$result = '';
-			if( $fPostId )
-			{
-				$query = 'select * from `#__discuss_migrators` where `type` = ' . $db->Quote( 'post' ) . ' and `component` = ' . $db->Quote( 'com_kunena' ) . ' and external_id = ' . $db->Quote( $fPostId );
-
-				$db->setQuery( $query );
-				$result = $db->loadObject();
-			}
-
-			if(! $result )
-			{
-				// this mean its might be a thread post and somehow it doesnt get migrated.
-				// lets migrate.
-				$item	= DiscussHelper::getTable( 'Post' );
-
-				$this->log( $ajax , JText::sprintf( 'COM_EASYDISCUSS_MIGRATORS_POST_MIGRATED' , $kItem->id ) , 'kunena' );
-				$this->mapKunenaItem( $kItem , $item );
-
-				// adding poll items to this thread
-				$this->mapKunenaItemPolls( $kItem, $item );
-
-			}
-			else
-			{
-				$parent	= DiscussHelper::getTable( 'Post' );
-				$parent->load( $result->internal_id );
-
-				$this->log( $ajax , JText::sprintf( 'COM_EASYDISCUSS_MIGRATORS_POST_MIGRATED' , $kItem->id ) , 'kunena' );
-				$citem	= DiscussHelper::getTable( 'Post' );
-				$this->mapKunenaItem( $kItem , $citem , $parent );
-			}
-
-		}
-
-		$ajax->script( 'runMigrationReplies("kunena");' );
-		return $ajax->send();
-	}
-
-	public function getKunenaReplies( $countOnly = false )
-	{
-		$db		= DiscussHelper::getDBO();
-
-		$query = '';
-		if( $countOnly )
-		{
-			$query	= 'SELECT count(1) FROM ' . $db->nameQuote( '#__kunena_messages' ) . ' as a';
-		}
-		else
-		{
-			$query	= 'SELECT a.* FROM ' . $db->nameQuote( '#__kunena_messages' ) . ' as a';
-		}
-
-		$query .= ' where not exists ( select b.`external_id` from `#__discuss_migrators` as b ';
-		$query .= ' 						where a.`id` = b.`external_id` and b.`component` = ' . $db->Quote( 'com_kunena' ) . ' and b.`type` = ' . $db->Quote( 'post') . ')';
-
-		if( !$countOnly )
-		{
-			$query .= ' limit 10';
-		}
-
-		$db->setQuery( $query );
-
-		$result = '';
-
-		if( $countOnly )
-		{
-			$result = $db->loadResult();
-		}
-		else
-		{
-			$result = $db->loadObjectList();
-		}
-
-
-		return $result;
-	}
-
-
-	public function kunenaPostItem( $current , $items)
-	{
-		$ajax	= new Disjax();
-
-
-		// @task: If categories is no longer an array, then it most likely means that there's nothing more to process.
-		if( $current == 'done' )
-		{
-			$this->log( $ajax , JText::_( 'COM_EASYDISCUSS_MIGRATORS_MIGRATION_COMPLETED' ) , 'kunena' );
-
-			// lets check if there is any new replies or not.
-			$posts = $this->getKunenaReplies( true );
-			$this->log( $ajax , JText::sprintf( 'COM_EASYDISCUSS_MIGRATORS_KUNENA_TOTAL_POSTS' , $posts ) , 'kunena' );
-
-			$ajax->script( 'runMigrationReplies("kunena");' );
-
-			return $ajax->send();
-		}
-
-		// lets split the data into array
-		// $items = explode( ',', $items );
 
 
 		// @task: Map kunena post item with EasyDiscuss items.
@@ -514,10 +308,8 @@ class EasyDiscussViewMigrators extends EasyDiscussAdminView
 		// @task: Skip the category if it has already been migrated.
 		if( $this->migrated( 'com_kunena' , $current , 'post') )
 		{
-
-			$data		= $this->json_encode( $items );
+			$data	= $this->json_encode( $items );
 			$this->log( $ajax , JText::sprintf( 'COM_EASYDISCUSS_MIGRATORS_POST_MIGRATED_SKIPPING' , $kItem->id ) , 'kunena' );
-
 			$ajax->script( 'runMigrationItem("kunena" , ' . $data . ');' );
 			return $ajax->send();
 		}
@@ -530,19 +322,14 @@ class EasyDiscussViewMigrators extends EasyDiscussAdminView
 		$this->log( $ajax , JText::sprintf( 'COM_EASYDISCUSS_MIGRATORS_POST_REPLIES_MIGRATED' , $kItem->id ) , 'kunena' );
 		$this->mapKunenaItemChilds( $kItem , $item );
 
-
-		// adding poll items to this thread
-		$this->mapKunenaItemPolls( $kItem, $item );
-
-
 		// @task: If categories is no longer an array, then it most likely means that there's nothing more to process.
-		//if( !is_array( $items ) )
-		if( !$items )
+		if( !is_array( $items ) )
 		{
 			$this->log( $ajax , JText::_( 'COM_EASYDISCUSS_MIGRATORS_MIGRATION_COMPLETED' ) , 'kunena' );
 			$this->showMigrationButton( $ajax );
 			return $ajax->send();
 		}
+
 
 		$data	= $this->json_encode( $items );
 
@@ -595,20 +382,13 @@ class EasyDiscussViewMigrators extends EasyDiscussAdminView
 		$this->added( 'com_communitypolls' , $category->id , $cpCategory->id , 'category' );
 	}
 
-	private function mapKunenaCategory( $kCategory , &$category, $parentId = 0 )
+	private function mapKunenaCategory( $kCategory , &$category )
 	{
-		$parentId = ( $parentId ) ? $parentId : 0;
-
 		$category->set( 'title'			, $kCategory->name );
 
 		$category->set( 'description'	, $kCategory->description );
 		$category->set( 'published'		, $kCategory->published );
-		$category->set( 'parent_id'		, $parentId );
-
-		if( $parentId == 0 )
-		{
-			$category->set( 'container'		, 1);
-		}
+		$category->set( 'parent_id'		, 0 );
 
 		// @task: Since Kunena does not store the creator of the category, we'll need to assign a default owner.
 		$category->set( 'created_by'	, DiscussHelper::getDefaultSAIds() );
@@ -740,25 +520,20 @@ class EasyDiscussViewMigrators extends EasyDiscussAdminView
 		$this->added( 'com_communitypolls' , $item->id , $cpItem->id , 'post' );
 	}
 
-	private function mapKunenaItem( $kItem , &$item , $parent = null )
+	private function mapKunenaItem( $kItem , &$item , &$parent = null )
 	{
 		$content	= $this->getKunenaMessage( $kItem );
-
-		$hits 			= ( isset( $kItem->threadhits ) ) ? $kItem->threadhits : $kItem->hits;
-		$lastreplied 	= ( isset( $kItem->threadlastreplied ) ) ? $kItem->threadlastreplied : $kItem->time;
 
 		$item->set( 'content'		, $content );
 		$item->set( 'title' 		, $kItem->subject );
 		$item->set( 'category_id' 	, $this->getNewCategory( $kItem ) );
 		$item->set( 'user_id'		, $kItem->userid );
 		$item->set( 'user_type' 	, DISCUSS_POSTER_MEMBER );
-		$item->set( 'hits'			, $hits );
+		$item->set( 'hits'			, $kItem->hits );
 		$item->set( 'created'	 	, DiscussHelper::getDate( $kItem->time )->toMySQL() );
 		$item->set( 'modified' 		, DiscussHelper::getDate( $kItem->time )->toMySQL() );
-		$item->set( 'replied' 		, DiscussHelper::getDate( $lastreplied )->toMySQL() );
+		$item->set( 'replied' 		, DiscussHelper::getDate( $kItem->time )->toMySQL() );
 		$item->set( 'poster_name'	, $kItem->name );
-		$item->set( 'ip'			, $kItem->ip );
-		$item->set( 'content_type'	, 'bbcode' );
 		$item->set( 'parent_id'		, 0 );
 
 		// @task: If this is a child post, we definitely have the item's id.
@@ -769,10 +544,7 @@ class EasyDiscussViewMigrators extends EasyDiscussAdminView
 
 		$item->set( 'islock'		, $kItem->locked );
 		$item->set( 'poster_email'	, $kItem->email );
-
-
-		$state = ( $kItem->hold == 0 ) ? DISCUSS_ID_PUBLISHED : DISCUSS_ID_UNPUBLISHED;
-		$item->set( 'published'		, $state );
+		$item->set( 'published'		, DISCUSS_ID_PUBLISHED );
 
 		if( !$kItem->userid )
 		{
@@ -804,11 +576,11 @@ class EasyDiscussViewMigrators extends EasyDiscussAdminView
 				if( $isJoomla30 )
 				{
 					// JUtility::getHash is deprecated
-					$path	= JApplication::getHash( $kAttachment->filename . DiscussHelper::getDate()->toMySQL() );
+					$path	= JApplication::getHash( $kAttachment->filename . DiscussHelper::getDate()->toMySQL() );	
 				}
 				else
 				{
-					$path	= JUtility::getHash( $kAttachment->filename . DiscussHelper::getDate()->toMySQL() );
+					$path	= JUtility::getHash( $kAttachment->filename . DiscussHelper::getDate()->toMySQL() );	
 				}
 
 
@@ -827,20 +599,16 @@ class EasyDiscussViewMigrators extends EasyDiscussAdminView
 					JFolder::create( $folderPath );
 					JFile::copy( DISCUSS_ROOT . '/index.html' , $path . '/index.html' );
 				}
+				JFile::copy( $kStorage , $storage );
 
-				if( JFile::exists( $kStorage ) )
+				if( DiscussHelper::getHelper( 'Image' )->isImage( $kAttachment->filename ) )
 				{
-					JFile::copy( $kStorage , $storage );
+					require_once DISCUSS_CLASSES . '/simpleimage.php';
+					$image	= new SimpleImage;
 
-					if( DiscussHelper::getHelper( 'Image' )->isImage( $kAttachment->filename ) )
-					{
-						require_once DISCUSS_CLASSES . '/simpleimage.php';
-						$image	= new SimpleImage;
-
-						@$image->load( $kStorage );
-						@$image->resizeToFill( 160 , 120 );
-						@$image->save( $storage . '_thumb', $image->image_type);
-					}
+					$image->load( $kStorage );
+					$image->resizeToFill( 160 , 120 );
+					$image->save( $storage . '_thumb', $image->image_type);
 				}
 
 				// @task: Since Kunena does not store this, we need to generate the own creation timestamp.
@@ -856,97 +624,6 @@ class EasyDiscussViewMigrators extends EasyDiscussAdminView
 		$this->added( 'com_kunena' , $item->id , $kItem->id , 'post' );
 	}
 
-	private function mapKunenaItemPolls( $kItem, $item )
-	{
-		$db		= DiscussHelper::getDBO();
-
-		$query = 'select * from `#__kunena_polls` where `threadid` = ' . $db->Quote( $kItem->id );
-
-		// echo $query;
-
-		$db->setQuery( $query );
-		$kPolls = $db->loadObjectList();
-
-		// var_dump( $kPolls );
-		// exit;
-
-		if( $kPolls )
-		{
-			foreach( $kPolls as $kPoll )
-			{
-				$pollQuestion	= DiscussHelper::getTable( 'PollQuestion');
-
-				$pollQuestion->post_id 	= $item->id;
-				$pollQuestion->title 	= $kPoll->title;
-				$pollQuestion->multiple = 0;
-				$pollQuestion->locked 	= 0;
-
-				$pollQuestion->store();
-
-				// get the poll options.
-				$query = 'select * from `#__kunena_polls_options` where `pollid` = ' . $db->Quote( $kPoll->id );
-				$db->setQuery( $query );
-				$kPollsOptions = $db->loadObjectList();
-
-				if( $kPollsOptions )
-				{
-					foreach( $kPollsOptions as $kPollOption )
-					{
-						$poll	= DiscussHelper::getTable( 'Poll' );
-
-						$poll->post_id 			= $item->id;
-						$poll->value 			= $kPollOption->text;
-						$poll->count 			= $kPollOption->votes;
-
-						$poll->store();
-
-						// now we need to insert the users who vote for this option.
-						$query = 'select * from `#__kunena_polls_users` where `pollid` = ' . $db->Quote( $kPoll->id );
-						$query .= ' and `lastvote` = ' . $db->Quote( $kPollOption->id );
-
-						$db->setQuery( $query );
-						$kPollsUsers = $db->loadObjectList();
-
-						if( $kPollsUsers )
-						{
-							foreach( $kPollsUsers as $kPollUser )
-							{
-								$pollUser	= DiscussHelper::getTable( 'PollUser' );
-
-								$pollUser->poll_id = $poll->id;
-								$pollUser->user_id = $kPollUser->userid;
-
-								$pollUser->store();
-							}
-
-						} // if kPollsUsers
-
-					} // foreach kPollsOptions
-
-				} // if kPollsOptions
-
-			} // foreach kPolls
-
-		} // if kPolls
-
-	}
-
-	private function mapKunenaItemChilds( $kItem , $parent )
-	{
-		$items	= $this->getKunenaPosts( $kItem );
-
-		if( !$items )
-		{
-			return false;
-		}
-
-		foreach( $items as $kChildItem )
-		{
-			$item	= DiscussHelper::getTable( 'Post' );
-			$this->mapKunenaItem( $kChildItem , $item , $parent );
-		}
-	}
-
 	private function mapJomsocialItemChilds( $discussion , &$parent )
 	{
 		$items	= $this->getJomSocialPosts( $discussion );
@@ -960,6 +637,22 @@ class EasyDiscussViewMigrators extends EasyDiscussAdminView
 		{
 			$item	= DiscussHelper::getTable( 'Post' );
 			$this->mapJomsocialItem( $discussChildItem , $item , $parent );
+		}
+	}
+
+	private function mapKunenaItemChilds( $kItem , &$parent )
+	{
+		$items	= $this->getKunenaPosts( $kItem );
+
+		if( !$items )
+		{
+			return false;
+		}
+
+		foreach( $items as $kChildItem )
+		{
+			$item	= DiscussHelper::getTable( 'Post' );
+			$this->mapKunenaItem( $kChildItem , $item , $parent );
 		}
 	}
 
@@ -1062,13 +755,9 @@ class EasyDiscussViewMigrators extends EasyDiscussAdminView
 	private function getKunenaPostsIds()
 	{
 		$db		= DiscussHelper::getDBO();
-
-		$query	= 'SELECT a.`id` FROM ' . $db->nameQuote( '#__kunena_messages' ) . ' as a'
-				. ' inner join `#__kunena_topics` as t on a.`thread` = t.`id` and a.`id` = t.`first_post_id`'
-				. ' where not exists ( select b.`external_id` from `#__discuss_migrators` as b where a.`id` = b.`external_id` and b.`component` = ' . $db->Quote( 'com_kunena' ) . ' and b.`type` = ' . $db->Quote( 'post') . ')';
-
+		$query	= 'SELECT `id` FROM ' . $db->nameQuote( '#__kunena_messages' ) . ' '
+				. 'WHERE ' . $db->nameQuote( 'parent' ) . '=' . $db->Quote( 0 );
 		$db->setQuery( $query );
-
 		return $db->loadResultArray();
 	}
 
@@ -1092,11 +781,8 @@ class EasyDiscussViewMigrators extends EasyDiscussAdminView
 	private function getKunenaPost( $id )
 	{
 		$db		= DiscussHelper::getDBO();
-		$query	= 'SELECT a.*, b.`hits` as `threadhits`, b.`last_post_time` as `threadlastreplied` FROM ' . $db->nameQuote( '#__kunena_messages' ) . ' as a'
-				. ' LEFT JOIN ' . $db->nameQuote( '#__kunena_topics' ) . ' as b'
-				. ' on a.`thread` = b.`id`'
-				. ' WHERE a.' . $db->nameQuote( 'id' ) . '=' . $db->Quote( $id );
-
+		$query	= 'SELECT * FROM ' . $db->nameQuote( '#__kunena_messages' ) . ' '
+				. 'WHERE ' . $db->nameQuote( 'id' ) . '=' . $db->Quote( $id );
 		$db->setQuery( $query );
 		$item	= $db->loadObject();
 
@@ -1175,14 +861,13 @@ class EasyDiscussViewMigrators extends EasyDiscussAdminView
 
 		if( !is_null( $kItem ) )
 		{
-			$query	.= ' WHERE ' . $db->nameQuote( 'thread' ) . ' = ' . $db->Quote( $kItem->thread );
-			$query	.= ' AND ' . $db->nameQuote( 'id') . '!=' . $db->Quote( $kItem->id );
+			$query	.= ' WHERE ' . $db->nameQuote( 'thread' ) . ' = ' . $db->Quote( $kItem->id );
+			$query	.= ' AND ' . $db->nameQuote( 'parent') . '!=' . $db->Quote( 0 );
 		}
-
-		$query	.= ' ORDER BY `time` asc';
 
 
 		$db->setQuery( $query );
+
 		$result	= $db->loadObjectList();
 
 		if( !$result )
@@ -1230,14 +915,14 @@ class EasyDiscussViewMigrators extends EasyDiscussAdminView
 	private function migrated( $component , $externalId , $type )
 	{
 		$db		= DiscussHelper::getDBO();
-		$query	= 'SELECT ' . $db->nameQuote( 'internal_id' )
+		$query	= 'SELECT COUNT(1) '
 				. 'FROM ' . $db->nameQuote( '#__discuss_migrators' ) . ' '
 				. 'WHERE ' . $db->nameQuote( 'external_id' ) . ' = ' . $db->Quote( $externalId ) . ' '
 				. 'AND ' . $db->nameQuote( 'type' ) . ' = ' . $db->Quote( $type ) . ' '
 				. 'AND ' . $db->nameQuote( 'component' ) . ' = ' . $db->Quote( $component );
 		$db->setQuery( $query );
+		$exists	= $db->loadResult() > 0;
 
-		$exists	= $db->loadResult();
 		return $exists;
 	}
 
@@ -1259,10 +944,8 @@ class EasyDiscussViewMigrators extends EasyDiscussAdminView
 		}
 
 		$db		= DiscussHelper::getDBO();
-		$query	= 'SELECT * FROM ' . $db->nameQuote( '#__kunena_categories' )
-				. ' where ' . $db->nameQuote( $columnName ) . ' = ' . $db->Quote( '0' )
-				. ' ORDER BY ' . $db->nameQuote( 'ordering' ) . ' ASC';
-
+		$query	= 'SELECT * FROM ' . $db->nameQuote( '#__kunena_categories' ) . ' '
+				. 'ORDER BY ' . $db->nameQuote( $columnName ) . ' ASC';
 		$db->setQuery( $query );
 		$result	= $db->loadObjectList();
 
@@ -1273,24 +956,6 @@ class EasyDiscussViewMigrators extends EasyDiscussAdminView
 
 		return $result;
 	}
-
-	private function getKunenaCategoriesCount()
-	{
-		$db		= DiscussHelper::getDBO();
-
-		$query = 'select count(1) from ' . $db->nameQuote( '#__kunena_categories' );
-		$db->setQuery( $query );
-		$result	= $db->loadResult();
-
-		if( !$result )
-		{
-			return 0;
-		}
-
-		return $result;
-
-	}
-
 
 	/**
 	 * Retrieves a list of categories in Community Polls
@@ -1315,444 +980,4 @@ class EasyDiscussViewMigrators extends EasyDiscussAdminView
 
 		return $result;
 	}
-
-	public function vBulletin()
-	{
-		$ajax		= new Disjax();
-
-		// @task: Get list of categories from vBulletin first.
-		$categories	= $this->getVBulletinCategories();
-
-		// @task: Add some logging
-		$this->log( $ajax , JText::sprintf( 'COM_EASYDISCUSS_MIGRATORS_VBULLETIN_TOTAL_CATEGORIES' , count( $categories ) ) , 'vBulletin' );
-
-		$json	= new Services_JSON();
-		$items	= array();
-
-
-		if( $categories )
-		{
-			foreach( $categories as $category )
-			{
-				$items[]	= $category->forumid;
-			}
-		}
-
-		$data	= $json->encode( $items );
-		// @task: Start migration process, passing back to the AJAX methods
-		// goto this function vBulletinCategoryItem()
-		$ajax->script( 'runMigrationCategory("vBulletin", ' . $data . ');' );
-		return $ajax->send();
-	}
-
-
-	/*
-	 * Get parent categories
-	 */
-	public function getVBulletinCategories()
-	{
-		// Need to change the prefix
-		$db		= DiscussHelper::getDBO();
-		$prefix = DiscussHelper::getConfig()->get( 'migrator_vBulletin_prefix' );
-
-		$query	= 'SELECT `forumid` FROM ' . $db->nameQuote( $prefix . 'forum' )
-				. ' where `parentid` <= ' . $db->Quote( '0' )
-				. ' ORDER BY ' . $db->nameQuote( 'displayorder' ) . ' ASC';
-		$db->setQuery( $query );
-		$result	= $db->loadObjectList();
-
-		if( !$result )
-		{
-			return false;
-		}
-
-		return $result;
-	}
-
-	public function vBulletinCategoryItem( $current = "" , $categories = "" )
-	{
-		$ajax		= new Disjax();
-		$vCategory	= $this->getVBulletinCategory( $current );
-
-
-		// @task: If categories is no longer an array, then it most likely means that there's nothing more to process.
-		if( $current == 'done' )
-		{
-			$this->log( $ajax , JText::_( 'COM_EASYDISCUSS_MIGRATORS_CATEGORY_MIGRATION_COMPLETED' ) , 'vBulletin' );
-
-			// Get all posts
-			$posts		= $this->getVBulletinPostsIds();
-			// $data		= $this->json_encode( $posts );
-
-			$data		= implode( '|', $posts );
-			$data		= $this->json_encode( $data );
-
-			$this->log( $ajax , JText::sprintf( 'COM_EASYDISCUSS_MIGRATORS_VBULLETIN_TOTAL_POSTS' , count( $posts ) ) , 'vBulletin' );
-
-			// @task: Run migration for post items.
-			$ajax->script( 'runMigrationItem("vBulletin" , ' . $data . ');' );
-			return $ajax->send();
-		}
-
-		// perform some clean up here.
-		$vCategory->title = strip_tags( $vCategory->title );
-
-		// @task: Skip the category if it has already been migrated.
-		if( $this->migrated( 'vBulletin' , $current , 'category') )
-		{
-			$data	= $this->json_encode( $categories );
-			$this->log( $ajax , JText::sprintf( 'COM_EASYDISCUSS_MIGRATORS_VBULLETIN_CATEGORY_MIGRATED_SKIPPING' , $vCategory->title ) , 'vBulletin' );
-			$ajax->script( 'runMigrationCategory("vBulletin" , ' . $data . ');' );
-			return $ajax->send();
-		}
-
-		// @task: Create the category
-		$category	= DiscussHelper::getTable( 'Category' );
-		$this->mapVBulletinCategory( $vCategory , $category );
-
-
-		// process childs categories here.
-		$this->processVBulletinCategoryTree( $vCategory, $category );
-
-
-		$this->log( $ajax , JText::sprintf( 'COM_EASYDISCUSS_MIGRATORS_VBULLETIN_CATEGORY_MIGRATED' , $vCategory->title ) , 'vBulletin' );
-
-		$data	= $this->json_encode( $categories );
-		$ajax->script( 'runMigrationCategory("vBulletin" , ' . $data . ');' );
-		$ajax->send();
-	}
-
-
-	private function processVBulletinCategoryTree( $vCategory, $category )
-	{
-		$ajax	= new Disjax();
-
-		$db = DiscussHelper::getDBO();
-		$prefix = DiscussHelper::getConfig()->get( 'migrator_vBulletin_prefix' );
-
-
-		$query	= 'SELECT * FROM ' . $db->nameQuote( $prefix . 'forum' ) . ' '
-				. 'WHERE ' . $db->nameQuote( 'parentid' ) . '=' . $db->Quote( $vCategory->forumid )
-				. ' ORDER BY ' . $db->nameQuote( 'displayorder' ) . ' ASC';
-
-		$db->setQuery( $query );
-
-		$db->setQuery( $query );
-		$result	= $db->loadObjectList();
-
-		if( $result )
-		{
-			foreach( $result as $vItemCat )
-			{
-				$subcategory	= DiscussHelper::getTable( 'Category' );
-
-				$migratedId = $this->migrated( 'vBulletin' , $vItemCat->forumid , 'category');
-
-				if( ! $migratedId )
-				{
-					$this->mapVBulletinCategory( $vItemCat, $subcategory, $category->id );
-					//$this->log( $ajax , JText::sprintf( 'COM_EASYDISCUSS_MIGRATORS_KUNENA_CATEGORY_MIGRATED' , $kItemCat->name ) , 'kunena' );
-				}
-				else
-				{
-					$subcategory->load( $migratedId );
-				}
-
-				$this->processVBulletinCategoryTree( $vItemCat, $subcategory );
-			}
-		}
-		else
-		{
-			return false;
-		}
-
-	}
-
-	public function getVBulletinCategory( $id )
-	{
-		$db		= DiscussHelper::getDBO();
-		$prefix = DiscussHelper::getConfig()->get( 'migrator_vBulletin_prefix' );
-
-		$query	= 'SELECT * FROM ' . $db->nameQuote( $prefix . 'forum' ) . ' '
-				. 'WHERE ' . $db->nameQuote( 'forumid' ) . '=' . $db->Quote( $id );
-		$db->setQuery( $query );
-
-		return $db->loadObject();
-	}
-
-	private function mapVBulletinCategory( $vCategory , &$category, $parentId = 0 )
-	{
-		$parentId = ( $parentId ) ? $parentId : 0;
-
-		// @task: Since vBulletin does not store the creator of the category, we'll need to assign a default owner.
-		$category->set( 'created_by'	, DiscussHelper::getDefaultSAIds() );
-		$category->set( 'title'			, strip_tags( $vCategory->title ) );
-		$category->set( 'description'	, $vCategory->description );
-		$category->set( 'published'		, 1 );
-		$category->set( 'parent_id'		, $parentId );
-
-		// @TODO: Detect if it has a parent id and migrate according to the category tree.
-		$category->store( true );
-
-		$this->added( 'vBulletin' , $category->id , $vCategory->forumid , 'category' );
-	}
-
-
-	private function getVBulletinPostsIds()
-	{
-		// Get the posts
-		$db		= DiscussHelper::getDBO();
-		$prefix = DiscussHelper::getConfig()->get( 'migrator_vBulletin_prefix' );
-
-
-		$query	= 'SELECT a.`postid` FROM ' . $db->nameQuote( $prefix . 'post' ) . ' as a'
-				. ' where not exists ( select b.`external_id` from `#__discuss_migrators` as b where a.`postid` = b.`external_id` and b.`component` = ' . $db->Quote( 'vBulletin' ) . ' and b.`type` = ' . $db->Quote( 'post') . ')'
-				. ' and a.`parentid` = ' . $db->Quote( '0' );
-
-		$db->setQuery( $query );
-
-		return $db->loadResultArray();
-	}
-
-	public function vBulletinPostItem( $current , $items )
-	{
-		$ajax	= new Disjax();
-
-		// @task: If categories is no longer an array, then it most likely means that there's nothing more to process.
-		if( $current == 'done' )
-		{
-			$this->log( $ajax , JText::_( 'COM_EASYDISCUSS_MIGRATORS_MIGRATION_COMPLETED' ) , 'vBulletin' );
-
-			$this->showMigrationButton( $ajax );
-			return $ajax->send();
-		}
-
-		// @task: Map vBulletin post item with EasyDiscuss items.
-		$vItem	= $this->getVBulletinPost( $current );
-		$item	= DiscussHelper::getTable( 'Post' );
-
-		// @task: Skip the category if it has already been migrated.
-		if( $this->migrated( 'vBulletin' , $current , 'post') )
-		{
-			$data	= $this->json_encode( $items );
-			$this->log( $ajax , JText::sprintf( 'COM_EASYDISCUSS_MIGRATORS_POST_MIGRATED_SKIPPING' , $vItem->postid ) , 'vBulletin' );
-			$ajax->script( 'runMigrationItem("vBulletin" , ' . $data . ');' );
-			return $ajax->send();
-		}
-
-		$this->log( $ajax , JText::sprintf( 'COM_EASYDISCUSS_MIGRATORS_POST_MIGRATED' , $vItem->postid ) , 'vBulletin' );
-		$this->mapVBulletinItem( $vItem , $item );
-
-
-		// @task: Once the post is migrated successfully, we'll need to migrate the child items.
-		$this->log( $ajax , JText::sprintf( 'COM_EASYDISCUSS_MIGRATORS_POST_REPLIES_MIGRATED' , $vItem->postid ) , 'vBulletin' );
-		$this->mapVBulletinItemChilds( $vItem , $item );
-
-		// @task: If categories is no longer an array, then it most likely means that there's nothing more to process.
-		if( !$items )
-		{
-			$this->log( $ajax , JText::_( 'COM_EASYDISCUSS_MIGRATORS_MIGRATION_COMPLETED' ) , 'vBulletin' );
-			$this->showMigrationButton( $ajax );
-			return $ajax->send();
-		}
-
-
-		$data	= $this->json_encode( $items );
-
-		$ajax->script( 'runMigrationItem("vBulletin" , ' . $data . ');' );
-
-		$ajax->send();
-	}
-
-	private function getVBulletinPostOri( $id )
-	{
-		$db		= DiscussHelper::getDBO();
-		$prefix = DiscussHelper::getConfig()->get( 'migrator_vBulletin_prefix' );
-
-		$query	= 'SELECT * FROM ' . $db->nameQuote( $prefix . 'post' ) . ' '
-				. 'WHERE ' . $db->nameQuote( 'postid' ) . '=' . $db->Quote( $id );
-		$db->setQuery( $query );
-		$item	= $db->loadObject();
-
-		// Get the post's category id here
-		$query = 'SELECT * FROM ' . $db->nameQuote( $prefix . 'thread' )
-				. ' WHERE ' . $db->nameQuote( 'threadid' ) . '=' . $db->quote( $item->threadid );
-
-		$db->setQuery( $query );
-		$thread = $db->loadObject();
-
-
-		$item->catid = $thread->forumid;
-		$item->hits  = $thread->views;
-		$item->created  = $thread->dateline;
-		$item->replied  = $thread->lastpost;
-
-		return $item;
-	}
-
-	private function getVBulletinPost( $id )
-	{
-		$db		= DiscussHelper::getDBO();
-		$prefix = DiscussHelper::getConfig()->get( 'migrator_vBulletin_prefix' );
-
-		$query = 'select a.*, b.`forumid`, b.`views`, b.`dateline`, b.`lastpost` ';
-		$query .= ' from ' . $db->nameQuote( $prefix . 'post' ) . ' as a';
-		$query .= ' left join ' . $db->nameQuote( $prefix . 'thread' )  . ' as b';
-		$query .= ' 	on a.`threadid` = b.`threadid`';
-		$query .= ' where a.`postid` = ' . $db->Quote( $id );
-
-		$db->setQuery( $query );
-		$item	= $db->loadObject();
-
-		if( $item )
-		{
-			$item->catid 	= $item->forumid;
-			$item->hits  	= $item->views;
-			$item->created  = $item->dateline;
-			$item->replied  = $item->lastpost;
-		}
-
-		return $item;
-	}
-
-	private function mapVBulletinItem( $vItem , &$item , &$parent = null )
-	{
-		$config = DiscussHelper::getConfig();
-
-		$userColumn 		= 'username';
-		$user 				= null;
-
-		if( $vItem->{$userColumn} )
-		{
-			$user 	= $this->getDiscussUser( $vItem->{$userColumn} );
-		}
-
-		$item->set( 'content'		, $vItem->pagetext );
-		$item->set( 'title' 		, $vItem->title );
-		$item->set( 'category_id' 	, $this->getDiscussCategory( $vItem ) );
-		$item->set( 'hits'			, $vItem->hits );
-		$item->set( 'created'	 	, DiscussHelper::getDate( $vItem->created )->toMySQL() );
-		$item->set( 'modified' 		, DiscussHelper::getDate( $vItem->created )->toMySQL() );
-		$item->set( 'replied' 		, DiscussHelper::getDate( $vItem->replied )->toMySQL() );
-		$item->set( 'parent_id'		, 0 );
-
-		// @task: If this is a child post, we definitely have the item's id.
-		if( $parent )
-		{
-			$item->set( 'parent_id'	, $parent->id );
-		}
-
-		$item->set( 'islock'		, 0 );
-		$item->set( 'published'		, DISCUSS_ID_PUBLISHED );
-		$item->set( 'ip'			, $vItem->ipaddress );
-
-		if( empty( $vItem->{$userColumn} ) || empty( $user ) )
-		{
-			$item->set( 'user_id'		, '0' );
-			$item->set( 'user_type' 	, DISCUSS_POSTER_GUEST );
-			$item->set( 'poster_name'	, 'guest' );
-			$item->set( 'poster_email'	, '' );
-		}
-		else
-		{
-			$item->set( 'user_id'		, $user->id );
-			$item->set( 'user_type' 	, DISCUSS_POSTER_MEMBER );
-			$item->set( 'poster_name'	, $user->name );
-			$item->set( 'poster_email'	, $user->email );
-		}
-
-		$item->store();
-
-		$this->added( 'vBulletin' , $item->id , $vItem->postid , 'post' );
-	}
-
-	private function getDiscussCategory( $vItem )
-	{
-		$db		= DiscussHelper::getDBO();
-		$query	= 'SELECT ' . $db->nameQuote( 'internal_id' ) . ' '
-				. 'FROM ' . $db->nameQuote( '#__discuss_migrators' ) . ' '
-				. 'WHERE ' . $db->nameQuote( 'external_id' ) . ' = ' . $db->Quote( $vItem->catid ) . ' '
-				. 'AND ' . $db->nameQuote( 'type' ) . ' = ' . $db->Quote( 'category' ) . ' '
-				. 'AND ' . $db->nameQuote( 'component' ) . ' = ' . $db->Quote( 'vBulletin' );
-
-		$db->setQuery( $query );
-		$categoryId	= $db->loadResult();
-
-		return $categoryId;
-	}
-
-	private function getDiscussUser( $vbUserKeyValue )
-	{
-		$db = DiscussHelper::getDBO();
-		$prefix = DiscussHelper::getConfig()->get( 'migrator_vBulletin_prefix' );
-
-		// currently we not sure there are how many way of bridging the user from vbulletin to joomla.
-		// for now, we assume the username is the key to communicate btw vbulletin and joomla
-		$column 		= 'username';
-
-		$query = 'SELECT b.* FROM ' . $db->nameQuote( '$__users' ) . ' AS b'
-				. ' WHERE b.' . $db->nameQuote( $column ) . '=' . $db->Quote( $vbUserKeyValue );
-
-		$db->setQuery( $query );
-		$result = $db->loadObject();
-
-		return $result;
-	}
-
-	private function mapVBulletinItemChilds( $vItem , &$parent )
-	{
-		$db = DiscussHelper::getDBO();
-		$items	= $this->getVBulletinPosts( $vItem );
-		$prefix = DiscussHelper::getConfig()->get( 'migrator_vBulletin_prefix' );
-
-		if( empty($items) || !$items )
-		{
-			return false;
-		}
-
-		foreach( $items as $vChildItem )
-		{
-			$item	= DiscussHelper::getTable( 'Post' );
-
-			// Get the post's category id here
-			$query = 'SELECT * FROM ' . $db->nameQuote( $prefix . 'thread' )
-					. ' WHERE ' . $db->nameQuote( 'threadid' ) . '=' . $db->quote( $vChildItem->threadid );
-
-			$db->setQuery( $query );
-			$thread = $db->loadObject();
-
-			$vChildItem->catid = $thread->forumid;
-			$vChildItem->hits  = $thread->views;
-			$vChildItem->created  = $thread->dateline;
-			$vChildItem->replied  = $thread->lastpost;
-
-			$this->mapVBulletinItem( $vChildItem , $item , $parent );
-		}
-	}
-
-	private function getVBulletinPosts( $vItem = null , $vCategory = null )
-	{
-		$db		= DiscussHelper::getDBO();
-		$prefix = DiscussHelper::getConfig()->get( 'migrator_vBulletin_prefix' );
-
-		$query	= 'SELECT * FROM ' . $db->nameQuote( $prefix . 'post' );
-
-		if( !empty( $vItem ) )
-		{
-			$query	.= ' WHERE ' . $db->nameQuote( 'threadid' ) . ' = ' . $db->Quote( $vItem->threadid );
-			$query	.= ' AND ' . $db->nameQuote( 'parentid') . '!=' . $db->Quote( 0 );
-		}
-
-		$db->setQuery( $query );
-		$result	= $db->loadObjectList();
-
-		if( !$result )
-		{
-			return false;
-		}
-
-		return $result;
-	}
-
-
 }

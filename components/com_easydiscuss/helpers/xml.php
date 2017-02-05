@@ -53,32 +53,6 @@ class DiscussXMLHelper
 		return $this->parser->$key;
 	}
 
-	public function getName()
-	{
-		if( $this->version >= '3.0' )
-		{
-			$name = $this->parser->getName();
-
-			return $name;
-		}
-
-		$name = $this->parser->document->name();
-		return $name;
-	}
-
-	public function xpath( $path )
-	{
-		if( $this->version >= '3.0' )
-		{
-			$data = $this->parser->xpath( $path );
-		}
-		else
-		{
-			$element = $this->parser->document->getElementByPath( $path );
-			return $element->data();
-		}
-	}
-
 	/**
 	 * Get's the version
 	 */

@@ -43,7 +43,6 @@ $language->load( 'com_easydiscuss' , JPATH_ROOT );
 // start by inserting the menu element title (just an idea, this is not required at all)
 $task 	= isset($task) ? @$task : null;
 $Itemid	= isset($Itemid) ? @$Itemid : null;
-$view	= isset( $view ) ? $view : '';
 
 if( !empty($id) && !empty( $view ) )
 {
@@ -68,6 +67,7 @@ if( !empty($id) && !empty( $view ) )
 
 if(empty($Itemid))
 {
+	$view	= isset( $view ) ? $view : '';
 	$Itemid	= DiscussRouter::getItemId( $view );
 	shAddToGETVarsList('Itemid' , $Itemid);
 }
@@ -78,22 +78,11 @@ $name	= empty( $name ) || $name == '/' ? 'discuss' : $name;
 
 $title[]	= $name;
 
-
 if( isset($view) && !empty( $view ) )
 {
 	// Translate the view
 	$title[]	= JText::_( 'COM_EASYDISCUSS_SH404_VIEW_' . JString::strtoupper( $view ) );
 	shRemoveFromGETVarsList('view');
-}
-
-if( $view == 'categories' && !empty( $category_id ) )
-{
-	$title[]	= DiscussRouter::getAlias( 'category' , $category_id );
-	shRemoveFromGETVarsList( 'category_id' );
-
-	// Remove the view since we don't want to set the view.
-	unset( $layout );
-	shRemoveFromGETVarsList( 'layout' );
 }
 
 if( !empty($id) )
@@ -105,7 +94,11 @@ if( !empty($id) )
 	}
 }
 
-
+if( !empty( $category_id ) )
+{
+	$title[]	= DiscussRouter::getAlias( 'category' , $category_id );
+	shRemoveFromGETVarsList( 'category_id' );
+}
 
 // Category id may be category_id=0 in index view.
 if( isset( $category_id ) && $category_id == 0 )

@@ -16,6 +16,6 @@ defined('_JEXEC') or die('Restricted access');
 	<script type="text/javascript"><!--
 	<?php echo html_entity_decode("$adsense\n"); ?>
 	//--></script>
-	<script type="text/javascript" src="https://pagead2.googlesyndication.com/pagead/show_ads.js">
+	<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 	</script>
 </div>

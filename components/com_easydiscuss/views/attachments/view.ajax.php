@@ -11,7 +11,7 @@
 */
 defined('_JEXEC') or die('Restricted access');
 
-require_once( DISCUSS_ROOT . '/views.php' );
+require_once JPATH_ROOT . '/components/com_easydiscuss/views.php';
 
 class EasyDiscussViewAttachments extends EasyDiscussView
 {
@@ -112,8 +112,7 @@ class EasyDiscussViewAttachments extends EasyDiscussView
 
 		$options->buttons	= $buttons;
 
-		$ajax->script( 'EasyDiscuss.$("#attachment-' . $attachment->id . '" ).trigger("itemRemoved").remove();' );
-
+		$ajax->script( 'discussQuery("#attachment-' . $attachment->id . '" ).remove();' );
 		$ajax->dialog( $options );
 
 		$ajax->send();

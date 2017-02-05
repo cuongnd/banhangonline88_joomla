@@ -279,7 +279,7 @@ class EasyDiscussModelUsers extends EasyDiscussModel
 	{
 		$mainframe		= JFactory::getApplication();
 		$db				= DiscussHelper::getDBO();
-		$config 		= DiscussHelper::getConfig();
+
 		$filter_state	= $mainframe->getUserStateFromRequest( 'com_easydiscuss.users.filter_state', 'filter_state', '', 'word' );
 		$search			= $mainframe->getUserStateFromRequest( 'com_easydiscuss.users.search', 'search', '', 'string' );
 		$search			= $db->getEscaped( trim(JString::strtolower( $search ) ) );
@@ -298,25 +298,7 @@ class EasyDiscussModelUsers extends EasyDiscussModel
 		}
 		elseif( !empty($name) )
 		{
-
-			$displayname	= $config->get('layout_nameformat');
-
-			switch($displayname)
-			{
-				case "name" :
-					$where[] = ' LOWER( name ) LIKE \'%' . $name . '%\' ';
-					break;
-				case "username" :
-					$where[] = ' LOWER( username ) LIKE \'%' . $name . '%\' ';
-					break;
-				case "nickname" :
-				default :
-					// nickname and name is the same, just different table
-					$where[] = ' LOWER( d.nickname ) LIKE \'%' . $name . '%\' ';
-					break;
-			}
-
-			// $where[] = ' LOWER( name ) LIKE \'%' . $name . '%\' ';
+			$where[] = ' LOWER( name ) LIKE \'%' . $name . '%\' ';
 		}
 
 		$where[]		= 'u.`id` != ' . $db->Quote( 0 );

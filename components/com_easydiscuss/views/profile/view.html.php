@@ -12,7 +12,7 @@
  */
 defined('_JEXEC') or die('Restricted access');
 
-require_once( DISCUSS_ROOT . '/views.php' );
+require_once( JPATH_ROOT . '/components/com_easydiscuss/views.php' );
 require_once( DISCUSS_HELPERS . '/url.php' );
 
 class EasyDiscussViewProfile extends EasyDiscussView
@@ -209,14 +209,7 @@ class EasyDiscussViewProfile extends EasyDiscussView
 		return false;
 	}
 
-	/**
-	 * Displays the user editing form
-	 *
-	 * @since	1.0
-	 * @access	public
-	 * @return	
-	 */
-	public function edit( $tmpl = null )
+	function edit( $tmpl = null )
 	{
 		require_once DISCUSS_HELPERS . '/integrate.php';
 
@@ -246,10 +239,6 @@ class EasyDiscussViewProfile extends EasyDiscussView
 		$configMaxSize  = $config->get( 'main_upload_maxsize', 0 );
 		if( $configMaxSize > 0 )
 		{
-			// Backend settings is MB
-			$configMaxSize = $configMaxSize * 1024 * 1204;
-
-			// We convert to bytes because the function is accepting bytes
 			$configMaxSize  = DiscussHelper::getHelper( 'String' )->bytesToSize($configMaxSize);
 		}
 
@@ -270,11 +259,9 @@ class EasyDiscussViewProfile extends EasyDiscussView
 				$width 		= $size[0];
 				$height 	= $size[1];
 
-				$configAvatarWidth = $config->get('layout_avatarwidth', 160);
-				$configAvatarHeight = $config->get('layout_avatarheight', 160);
-
-				if( $width >= $configAvatarWidth && $height >= $configAvatarHeight ) {
-					$croppable = true;
+				if( $width > 160 && $height > 160 )
+				{
+					$croppable 	= true;
 				}
 			}
 		}

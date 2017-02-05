@@ -196,40 +196,6 @@ class EasyDiscussModelPosts extends EasyDiscussAdminModel
 				$this->setError($this->_db->getErrorMsg());
 				return false;
 			}
-
-			// We need to update the parent post last replied date
-			foreach( $posts as $postId )
-			{
-				// Load the reply
-				$reply = DiscussHelper::getTable( 'Posts' );
-				$reply->load( $postId );
-
-				// We only need replies
-				if( !empty( $reply->parent_id ) )
-				{
-					$parent = DiscussHelper::getTable( 'Post' );
-					$parent->load( $reply->parent_id );
-
-					// Check if current reply date is more than the last replied date of the parent to determine if this reply is new or is an old pending moderate reply.
-					if( $reply->created > $parent->replied )
-					{
-						$query	= 'UPDATE ' . $db->nameQuote( '#__discuss_posts' ) . ' '
-								. 'SET ' . $db->nameQuote( 'replied' ) . '=' . $db->Quote( $reply->created ) . ' '
-								. 'WHERE ' . $db->nameQuote( 'id' ) . '=' . $db->Quote( $parent->id );
-
-						$db->setQuery( $query );
-
-						if( !$db->query() )
-						{
-							$this->setError($this->_db->getErrorMsg());
-							return false;
-						}
-					}
-				}
-			}
-
-
-
 			return true;
 		}
 		return false;

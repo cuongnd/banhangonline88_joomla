@@ -13,14 +13,12 @@
 
 defined('_JEXEC') or die('Restricted access');
 ?>
-<form id="reportForm" action="<?php echo JRoute::_( 'index.php' );?>" method="post">
+<form id="reportForm" action="<?php echo DiscussRouter::_( 'index.php?option=com_easydiscuss&controller=reports&task=submit' );?>" method="post">
 
 <p><?php echo JText::_('COM_EASYDISCUSS_REPORTING_SUBMIT_REPORT_DESC'); ?></p>
 <textarea id="reporttext" name="reporttext" class="textarea full-width" rows="6" style="width:100%;"></textarea>
 
 <input type="hidden" name="id" id="post_id" value="<?php echo $id; ?>" />
 <?php echo JHTML::_( 'form.token' );?>
-<input type="hidden" name="option" value="com_easydiscuss" />
-<input type="hidden" name="controller" value="reports" />
-<input type="hidden" name="task" value="submit" />
+
 </form>
