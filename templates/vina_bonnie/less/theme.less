@@ -4,234 +4,33 @@
  * @copyright Copyright (c) 2010 - 2013 JoomShaper
  * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 or later
 */
-@font-face {
-  font-family: 'FontAwesome';
-  src: url('../fonts/fontawesome-webfont.eot?v=4.2.0');
-  src: url('../fonts/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-opentype'), 
-  url('../fonts/fontawesome-webfont.woff?v=4.2.0') format('woff'),
-  url('../fonts/fontawesome-webfont.ttf?v=4.2.0') format('truetype'), 
-  url('../fonts/fontawesome-webfont.svg?v=4.2.0#fontawesomeregular') format('svg');
-  font-weight: normal;
-  font-style: normal;
+.border-radius(@radius) {
+	-webkit-border-radius: @radius;
+	-moz-border-radius: @radius;
+	border-radius: @radius;
 }
-@font-face {
-    font-family: 'BebasNeuewebfont';
-    src: url('../fonts//BebasNeuewebfont.eot');
-    src: local('BebasNeuewebfont'),
-		url('../fonts/BebasNeuewebfont.woff') format('woff'),
-		url('../fonts/BebasNeuewebfont.ttf') format('truetype');
-}
-/* Icon Style */
-.icon-database:before{content:"\f1c0";}
-.icon-send:before{content:"\f1d8";}
-.icon-refresh:before{content:"\f021";}
-.icon-remove:before{content:"\f00d";}
-.icon-trash:before{content:"\f1f8";}
-.icon-trash-o:before{content:"\f014";}
+@black:                 #f5f5f5;
+@grayDarker:            #eee;
+@grayDark:              #999;
+@gray:                  #555;
+@grayLight:             #333;
+@grayLighter:           #222;
+@white:                 #fff; //fff
 
-/* Zoom Image */
-.zoomContainer {
-	.zoomLens {
-		border: 1px solid #555 !important;
-	}
-	.zoomWindowContainer {
-		> div {
-			border: 2px solid #ccc !important;
-		}
-	}
-}
+// Accent colors
+// -------------------------
+@blue:                  #049cdb;
+@blueDark:              #0064cd;
+@green:                 #46a546;
+@red:                   #9d261d;
+@yellow:                #ffc40d;
+@orange:                #f89406;
+@pink:                  #c3325f;
+@purple:                #7a43b6;
 
-/* Link Share */
-.link-share {
-	padding: 10px 0;
-	overflow: hidden;
-	border-top: 1px dashed #ebebeb;
-	border-bottom: 1px dashed #ebebeb;
-	margin-top: 26px;
-}
-div[id^="vina-copyright"] {
-     font-size: 12px!important;
-     height: 0px!important;
-     overflow: hidden!important; 
-}
-.center {
+
+.center{
 	text-align:center;
-	th,tr,td{
-		text-align:center;
-	}
-}
-.container {
-	padding-right: 15px;
-	padding-left: 15px;
-	.box-sizing(border-box);
-}
-.no-padding {
-	.container {
-		padding-right: 0px;
-		padding-left: 0px;
-	}
-}
-.row-fluid {
-	&:first-child{
-		margin-bottom:0;
-	}
-}
-ul, ol {
-	padding: 0;
-	margin: 0;
-	list-style-type: none;	
-}
-ul, li, a {
-	&:focus {
-		outline: none;
-		text-decoration: none;
-	}
-}
-a {
-	text-decoration: none;
-}
-select,
-.btn,
-input[type="file"],
-input[type="radio"],
-input[type="checkbox"] {
-	&:focus {
-		outline: 0px;
-	}
-}
-input[type="text"],
-input[type="password"],
-input[type="email"],
-textarea {
-	&:focus {
-		border-color: transparent;
-		background-color: #edf7fd;
-		.box-shadow(none);
-	}
-}
-input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"] {
-	padding: 3px 10px;
-	height: 35px;
-}
-textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input, .btn-primary, button, input[type='submit'], input[type='button'], submit {	
-	text-shadow: 0 0 0 transparent;	
-	background-image: none;		
-	border: 1px solid #f2f2f2;
-	.border-radius(0);
-	.box-shadow(none);
-	.box-sizing(border-box);
-}
-input, select, textarea, button,select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
-	font: 13px/15px Arial, Helvetica, sans-serif;
-	vertical-align: middle;
-	color: #888888;
-	background: #fff;
-}
-textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .uneditable-input:focus {
-	outline: 0px !important;	
-}
-button.active,
-button:active,
-input[type='submit'].active,
-input[type='submit']:active,
-input[type='button'].active,
-input[type='button']:active,
-submit.active, submit:active {
-	.box-shadow(none) !important;
-}
-input.input-text, select, textarea {
-	border: 1px solid #ddd;
-	.border-radius(0px);
-}
-input, select, textarea, button {
-	font: 13px/15px Arial, Helvetica, sans-serif;
-	vertical-align: middle;
-	color: #888888;
-	background: #fff;
-}
-.nav>li>a:hover,
-.nav>li>a:focus {	
-	background-color: transparent;
-}
-h1, h2, h3, h4, h5, h6 {
-	margin: 0 0 5px;
-	line-height: 1.35;
-	font-weight: normal;
-}
-h3 {
-	font-size: 15px;
-	font-weight: normal;
-}
-.tab-content {
-	overflow: visible;
-}
-.no-padding {
-	.tab {
-		ul {
-			&.nav {
-				margin-left: 15px;
-				margin-right: 15px;
-			}
-		}
-	}
-}
-.banner-home {
-	margin-bottom: 0px;
-	padding-bottom: 40px;
-	p {
-		margin-bottom: 0;
-	}
-}
-.vina-banner,
-.banner-home {
-	.box-col {
-		img {
-			width: 100%;
-		}
-	}
-}
-.images_static {
-	img {
-		width: 100%;
-	}
-}
-
-.virtuemart_search {
-	.button {
-		background-color: #222;
-	}
-}
-.search {
-	.search-results {
-		dt,
-		dd {
-			display: block !important;
-		}
-		.result-title {
-			margin-top: 10px;
-			a {
-				font-size: 15px;
-				font-weight: 600;				
-			}
-		}
-	}
-}
-#searchForm {	
-	.btn-group {
-		.btn {
-			padding: 7px 25px;			
-			display: inline-block;
-			text-shadow: 0 0 0 transparent;
-			background-color: #222;
-			background-image: none;
-			border: 0;
-			.border-radius(0);
-			.box-shadow(none);
-			&:hover {
-				color: @white !important;
-			}
-		}
-	}
 }
 /* Language */
 .mod-languages {
@@ -267,8 +66,6 @@ h3 {
 	}
 }
 body {
-	font: 13px/20px Open Sans, Arial, Helvetica, sans-serif;
-	line-height: 20px;
 }
 .menu-home,
 .menu-home-2 {
@@ -288,7 +85,7 @@ body {
 	background-color: #323a45;
 	color: @white;
 	a {
-		color: @white;
+
 	}
 }
 
@@ -1049,8 +846,7 @@ ul {
 	ul {
 		margin: 0;
 		li {			
-			line-height: 35px;
-			text-transform: capitalize;			
+			text-transform: capitalize;
 		}
 	}
 }
@@ -1069,7 +865,7 @@ ul {
 		}
 	}	
 	ul {
-		.unstyled();
+
 		li {
 			display:inline-block;
 			margin-left:10px;
@@ -2707,11 +2503,6 @@ ul {
 button,
 input[type='submit'],
 input[type='button'],
-submit {	
-	&:focus {		
-		outline: none;		
-	}
-}
 .category-short-code {
 	.btn {
 		&.btn-default {
@@ -2987,6 +2778,11 @@ margin-top: 11px;
 }
 .items-leading {
 	margin-bottom: 30px;
+	.item-image
+	{
+		width: 200px !important;
+		margin-right: 10px;
+	}
 }
 .article-text,
 .article_content,
@@ -3069,7 +2865,6 @@ margin-top: 11px;
 			border: 1px solid #bbb;
 			border-bottom-color: #a2a2a2;			
 			.border-radius(4px);			
-			.box-shadow(inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05));
 			&:focus {
 				background-color: #e6e6e6;
 			}
@@ -3124,21 +2919,10 @@ button.reset-value {
 		}
 	}
 }
-.module {
-	#login-form {
-		.control-group {
-			input#modlgn-username,
-			input#modlgn-passwd {
-				width: 100%;
-				box-sizing(border-box);
-			}
-		}
-	}	
-}
+
 ul.categories-module {
 	li {
 		a {
-			font: 13px/20px Open Sans, Arial, Helvetica, sans-serif;
 		}
 	}
 }
@@ -3278,27 +3062,7 @@ a {
 	z-index: 1;
 	padding: 40px 0px;
 }
-input[type='submit'], button, .btn, .vina-button {
-	color: @white;
-}
-.vina-button,
-.vina-button-2,
-.vina-button-3 {
-	padding: 10px 20px;
-	text-transform: uppercase;
-	background-image: none !important;
-	.border-radius(2px) !important;
-	.box-shadow(none) !important;	
-	.transition(all all all 0.5s ease ease);
-}
-.vina-button-2 {
-	background: #323232;
-	color: #fff !important;
-}
-.vina-button-3 {	
-	border: 1px solid #e4e4e4;
-	display: inline-block;
-}
+
 .vina-our-work,
 .vina-clients,
 .our-project,
@@ -4431,7 +4195,7 @@ input[type='submit'], button, .btn, .vina-button {
 	height: 154px;	
 	margin: 0 auto;	
 	.border-radius(50%);
-	.percent {		
+	.percent {
 		position: absolute;
 		width: 150px;		
 		border: 2px solid rgba(0,0,0,0.4);

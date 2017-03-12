@@ -155,7 +155,8 @@ class plgContentBt_socialshare extends BtPlugin {
 						$ogImage = true;
 						
 					}else{
-						$hasNoImage = true;
+						$hasNoImage = true;
+
 					}
 				}else{
 					$hasNoImage = true;
@@ -339,6 +340,8 @@ class plgContentBt_socialshare extends BtPlugin {
 		if(JFactory::getApplication()->isAdmin()){
 			return;
 		}
+        $doc=JFactory::getDocument();
+        $doc->addStyleSheet('/plugins/content/bt_socialshare/assets/bt_socialshare.css');
 		$this->buildHTML($context, $row, $params, $page);
         return;
     }
@@ -429,7 +432,7 @@ class plgContentBt_socialshare extends BtPlugin {
 
     public function getFacebookeLikeButton($link_article) {
         $html = array();
-        $html[] = '<div class="bt-social-share-button bt-facebook-like-button">';
+        $html[] = '<div class="bt-social-share-button  bt-facebook-like-button">';
         if ($this->params->get('facebook_html5') == 1) {
             $html[] = '<div class="fb-like" data-href="' . $link_article;
             $html[] = '" data-colorscheme="' . $this->params->get('facebook_like_color');
@@ -682,7 +685,8 @@ class plgContentBt_socialshare extends BtPlugin {
 			$width = '20';
 		}else{
 			$img .= '4T.png';
-			$width = '20';
+			$width = '20';
+
 		}
 		
 		$anchor = '<div class="bt-social-share-button bt-tumblr-button"><a href="#" onclick="window.open(\'http://www.tumblr.com/share/link?url=' . urlencode($link_article) . '&name=' . urlencode($title) . '&description=' . urlencode($description) . '\', \'Tumblr\', \'toolbar=no,width=800,height=700\'); return false;" title="Share on Tumblr" style="' . sprintf($css, $width, $img) .'">Share on Tumblr</a></div>';
@@ -696,7 +700,8 @@ class plgContentBt_socialshare extends BtPlugin {
 			$img = '<img style="vertical-align: middle; border: 1px solid #e3e3e3; margin-right: 3px;" src="https://delicious.com/img/logo.png" height="14" width="14" alt="Delicious"/><span>Save this</span>';
 		}else{
 			$style='text-align: center; display: block;';
-			$img = '<img style="vertical-align: middle; border: 1px solid #e3e3e3; border-radius: 3px; display: block;" src="https://delicious.com/img/logo.png" height="42" width="42" alt="Delicious"/><span style="display: block; text-align: center; color: white; font-size: 11px; border-radius: 3px; margin-top: 2px; padding: 1px 3px 3px 3px; background: #2e0589; font-weight: bold;">Save It</span>';
+			$img = '<img style="vertical-align: middle; border: 1px solid #e3e3e3; border-radius: 3px; display: block;" src="https://delicious.com/img/logo.png" height="42" width="42" alt="Delicious"/><span style="display: block; text-align: center; color: white; font-size: 11px; border-radius: 3px; margin-top: 2px; padding: 1px 3px 3px 3px; background: #2e0589; font-weight: bold;">Save It</span>';
+
 		}
 		return array('<div class="bt-social-share-button bt-delicious-button"><a style="' . $style . '" href="#" onclick="window.open(\'https://delicious.com/save?v=5&provider=bowthemes&noui&jump=close&url=\' + encodeURIComponent(\'' .$link_article .'\') + \'&title=\' + encodeURIComponent(\''. $title .'\'), \'delicious\', \'toolbar=no,width=700,height=400\'); return false;">' . $img . '</a></div>');
 	}

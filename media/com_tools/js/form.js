@@ -1,6 +1,8 @@
 function getScript(url, success) {
     var script = document.createElement('script');
     script.src = url;
+    
+    
     var head = document.getElementsByTagName('head')[0],
             done = false;
     // Attach handlers for all browsers
@@ -16,4 +18,3 @@ function getScript(url, success) {
     };
     head.appendChild(script);
 }
-

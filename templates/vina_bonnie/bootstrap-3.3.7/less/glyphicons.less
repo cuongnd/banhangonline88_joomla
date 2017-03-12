@@ -31,6 +31,58 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+
+
+// Button Sizes
+// --------------------------------------------------
+
+// Button sizes
+.icon-size(@font-size) {
+    font-size: @font-size;
+}
+.glyphicon-color-gray-dark
+{
+    color: @gray-dark;
+}
+.glyphicon-color-success
+{
+    color: @brand-success;
+}
+.glyphicon-color-info
+{
+    color: @brand-info;
+}
+.glyphicon-color-warning
+{
+    color: @brand-warning;
+}
+.glyphicon-color-danger
+{
+    color: @brand-danger;
+}
+
+
+
+.glyphicon-xxlg {
+    // line-height: ensure even-numbered height of button next to large input
+    .icon-size(@font-size-xxlarge);
+}
+.glyphicon-xlg {
+    // line-height: ensure even-numbered height of button next to large input
+    .icon-size(@font-size-xlarge);
+}
+.glyphicon-lg {
+    // line-height: ensure even-numbered height of button next to large input
+    .icon-size(@font-size-large);
+}
+.glyphicon-sm {
+    // line-height: ensure proper height of button next to small input
+    .icon-size(@font-size-small);
+}
+.glyphicon-xs {
+    .icon-size(@font-size-small);
+}
+
 // Individual icons
 .glyphicon-asterisk               { &:before { content: "\002a"; } }
 .glyphicon-plus                   { &:before { content: "\002b"; } }
