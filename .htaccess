@@ -102,7 +102,8 @@ Header set Cache-Control "max-age=290304000, public"
 </ifModule>
 RewriteRule ^(.*.(js))$ gzip_css_js.php?type=js&file=$1
 RewriteRule ^(.*.(css))$ gzip_css_js.php?type=css&file=$1
-RewriteRule ^(.*.(jpg))$ gzip_image.php?type=jpg&file=$1
+#RewriteRule ^(.*.(jpg))$ gzip_image.php?type=jpg&file=$1
 #RewriteRule ^(.*.(png))$ gzip_image.php?type=png&file=$1
-RewriteRule ^(.*.(gif))$ gzip_image.php?type=gif&file=$1
+#RewriteRule ^(.*.(gif))$ gzip_image.php?type=gif&file=$1
 #RewriteRule ^(.*.(css))$ gz.php?file=$1
+
