@@ -26,13 +26,13 @@ echo $this->leftmenu(
 <tr>
 	<td class="key"><?php echo JText::_('HIKAM_FRONTEND_EDITION'); ?></td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', 'config[frontend_edition]','',$this->config->get('frontend_edition',1));
+		echo JHTML::_('select.booleanlist', 'config[frontend_edition]','',$this->config->get('frontend_edition',1));
 	?></td>
 </tr>
 <tr>
 	<td class="key"><?php echo JText::_('HIKAM_FRONT_SHOW_EDIT_BTN'); ?></td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', 'config[show_edit_btn]','',$this->config->get('show_edit_btn',0));
+		echo JHTML::_('select.booleanlist', 'config[show_edit_btn]','',$this->config->get('show_edit_btn',0));
 	?></td>
 </tr>
 <tr>
@@ -49,7 +49,7 @@ echo $this->leftmenu(
 <tr>
 	<td class="key"><?php echo JText::_('HIKAM_SHOW_CATEGORY_EXPLORER'); ?></td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', 'config[show_category_explorer]','',$this->config->get('show_category_explorer',0));
+		echo JHTML::_('select.booleanlist', 'config[show_category_explorer]','',$this->config->get('show_category_explorer',0));
 	?></td>
 </tr>
 <tr>
@@ -70,19 +70,19 @@ echo $this->leftmenu(
 <tr>
 	<td class="key"><?php echo JText::_('AVOID_DUPLICATE_PRODUCT_CODE'); ?></td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', "config[avoid_duplicate_product_code]",'',$this->config->get('avoid_duplicate_product_code', 0));
+		echo JHTML::_('select.booleanlist', "config[avoid_duplicate_product_code]",'',$this->config->get('avoid_duplicate_product_code', 0));
 	?></td>
 </tr>
 <tr>
 	<td class="key"><?php echo JText::_('HIKAM_FRONT_PRODUCT_APPROVAL'); ?></td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', 'config[product_approval]', '', $this->config->get('product_approval',0));
+		echo JHTML::_('select.booleanlist', 'config[product_approval]', '', $this->config->get('product_approval',0));
 	?></td>
 </tr>
 <tr>
 	<td class="key"><?php echo JText::_('HIKAM_DISPLAY_CART_LINK'); ?></td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', 'config[product_cart_link]','',$this->config->get('product_cart_link',0));
+		echo JHTML::_('select.booleanlist', 'config[product_cart_link]','',$this->config->get('product_cart_link',0));
 	?></td>
 </tr>
 </table>
@@ -112,7 +112,7 @@ echo $this->leftmenu(
 <tr>
 	<td class="key"><?php echo JText::_('HIKAM_FRONT_SMALL_EDITOR'); ?></td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', 'config[front_small_editor]','',$this->config->get('front_small_editor',0));
+		echo JHTML::_('select.booleanlist', 'config[front_small_editor]','',$this->config->get('front_small_editor',0));
 	?></td>
 </tr>
 <tr>
@@ -124,13 +124,13 @@ echo $this->leftmenu(
 <tr>
 	<td class="key"><?php echo JText::_('HIKA_EDITOR_DISABLE_BUTTONS'); ?></td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', 'config[editor_disable_buttons]','',$this->config->get('editor_disable_buttons',0));
+		echo JHTML::_('select.booleanlist', 'config[editor_disable_buttons]','',$this->config->get('editor_disable_buttons',0));
 	?></td>
 </tr>
 <tr>
 	<td class="key"><?php echo JText::_('HIKA_UPLOADED_FILE_FREE_DOWNLOAD'); ?></td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', 'config[upload_file_free_download]','',$this->config->get('upload_file_free_download',0));
+		echo JHTML::_('select.booleanlist', 'config[upload_file_free_download]','',$this->config->get('upload_file_free_download',0));
 	?></td>
 </tr>
 <?php
@@ -303,7 +303,7 @@ if(!empty($this->statistics)) {
 <tr>
 	<td class="key"><?php echo JText::_('HIKAM_DISPLAY_ORDER_STATISTICS'); ?></td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', 'config[display_order_statistics]','',$this->config->get('display_order_statistics',0));
+		echo JHTML::_('select.booleanlist', 'config[display_order_statistics]','',$this->config->get('display_order_statistics',0));
 	?></td>
 </tr>
 </table>

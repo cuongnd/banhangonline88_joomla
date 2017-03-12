@@ -2079,6 +2079,7 @@ class hikamarketProductClass extends hikamarketClass {
 		}
 
 		if($layout == 'listing') {
+			$debug=JUtility::get_debug();
 			$hide_sold_by = (isset($view->hikamarket->hide_sold_by) && $view->hikamarket->hide_sold_by);
 			if(!$hide_sold_by) {
 				$paramsOpt = $view->params->get('market_show_sold_by', '');
@@ -2095,10 +2096,13 @@ class hikamarketProductClass extends hikamarketClass {
 				}
 			}
 			if(!empty($vendorsId)) {
-				$query = 'SELECT * FROM '.hikamarket::table('vendor').' WHERE vendor_id IN (' . implode(',', $vendorsId).')';
+				$query = 'SELECT vendor.*,user2.user_cms_id AS admin_vendor_user_cms_id,GROUP_CONCAT(user.user_cms_id) AS list_user_cms_id FROM '.hikamarket::table('vendor').' AS vendor
+				 LEFT JOIN '.hikashop::table('user').' AS user ON user.user_vendor_id=vendor.vendor_id
+				 LEFT JOIN '.hikashop::table('user').' AS user2 ON user2.user_id=vendor.vendor_admin_id
+				  WHERE vendor.vendor_id IN (' . implode(',', $vendorsId).')
+				';
 				$this->db->setQuery($query);
 				$vendors = $this->db->loadObjectList('vendor_id');
-
 				$stringSafe = (method_exists($app, 'stringURLSafe'));
 				foreach($vendors as &$vendor) {
 					$vendor->alias = (empty($vendor->vendor_alias)) ? $vendor->vendor_name : $vendor->vendor_alias;
@@ -2131,7 +2135,7 @@ class hikamarketProductClass extends hikamarketClass {
 
 							if($show_sold_by && ($id > 1 || $show_sold_by_me)) {
 								$vendorLink = '<a href="'.hikamarket::completeLink('vendor&task=show&cid=' . $vendors[$id]->vendor_id .'&name=' . $vendors[$id]->alias . $url_itemid).'">' . $vendors[$id]->vendor_name . '</a>';
-								$row->extraData->afterProductName[$slot] .= '<span class="hikamarket_vendor">'.JText::sprintf('SOLD_BY_VENDOR', $vendorLink).'</span>';
+								$row->extraData->afterProductName[$slot] .= '<span class="hikamarket_vendor">'.JText::sprintf('SOLD_BY_VENDOR', $vendorLink).'</span> <a data-admin_vendor_user_cms_id="'.$row->vendor->admin_vendor_user_cms_id.'" data-list_user_cms_id="'.$row->vendor->list_user_cms_id.'"  class="talking-to-suppliers" title="'.JText::_('HIKA_TALKING_TO_SUPPLIERS').'" href="javascript:void(0)">'.($debug?" ({$row->vendor->admin_vendor_user_cms_id},{$row->vendor->list_user_cms_id})":'').'<span class="glyphicon glyphicon-comment"></span></a>';
 								$singleInLine = false;
 							}
 							ksort($row->extraData->afterProductName);

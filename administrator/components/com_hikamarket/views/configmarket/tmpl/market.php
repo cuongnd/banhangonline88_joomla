@@ -78,7 +78,7 @@ echo $this->leftmenu(
 <tr>
 	<td class="key"><?php echo JText::_('MARKET_USE_SAME_ORDER_NUMBER'); ?></td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', "config[use_same_order_number]",'',$this->config->get('use_same_order_number',0));
+		echo JHTML::_('select.booleanlist', "config[use_same_order_number]",'',$this->config->get('use_same_order_number',0));
 	?></td>
 </tr>
 <tr>
@@ -93,7 +93,7 @@ echo $this->leftmenu(
 <tr>
 	<td class="key"><?php echo JText::_('ALLOW_ZONE_VENDORS'); ?></td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', "config[allow_zone_vendor]",'',$this->config->get('allow_zone_vendor', 0));
+		echo JHTML::_('select.booleanlist', "config[allow_zone_vendor]",'',$this->config->get('allow_zone_vendor', 0));
 	?></td>
 </tr>
 <tr>
@@ -143,25 +143,25 @@ echo $this->leftmenu(
 <tr>
 	<td class="key"><?php echo JText::_('SHOW_ONLY_VENDOR_PAYMENTS'); ?></td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', "config[only_vendor_payments]",'',$this->config->get('only_vendor_payments',0));
+		echo JHTML::_('select.booleanlist', "config[only_vendor_payments]",'',$this->config->get('only_vendor_payments',0));
 	?></td>
 </tr>
 <tr>
 	<td class="key"><?php echo JText::_('SPLIT_PAYMENT_FEES_ON_VENDORS'); ?></td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', "config[split_order_payment_fees]",'',$this->config->get('split_order_payment_fees',0));
+		echo JHTML::_('select.booleanlist', "config[split_order_payment_fees]",'',$this->config->get('split_order_payment_fees',0));
 	?></td>
 </tr>
 <tr>
 	<td class="key"><?php echo JText::_('SPLIT_SHIPPING_FEES_ON_VENDORS'); ?></td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', "config[split_order_shipping_fees]",'',$this->config->get('split_order_shipping_fees',0));
+		echo JHTML::_('select.booleanlist', "config[split_order_shipping_fees]",'',$this->config->get('split_order_shipping_fees',0));
 	?></td>
 </tr>
 <tr>
 	<td class="key"><?php echo JText::_('SHIPPING_PER_VENDOR'); ?></td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', "config[shipping_per_vendor]",'',$this->config->get('shipping_per_vendor', 1));
+		echo JHTML::_('select.booleanlist', "config[shipping_per_vendor]",'',$this->config->get('shipping_per_vendor', 1));
 	?></td>
 </tr>
 <tr>
@@ -177,7 +177,7 @@ echo $this->leftmenu(
 <tr>
 	<td class="key"><?php echo JText::_('FILTER_ORDER_STATUS_WHEN_VENDOR_PAID'); ?></td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', "config[filter_orderstatus_paid_order]",'',$this->config->get('filter_orderstatus_paid_order', 1));
+		echo JHTML::_('select.booleanlist', "config[filter_orderstatus_paid_order]",'',$this->config->get('filter_orderstatus_paid_order', 1));
 	?></td>
 </tr>
 <?php
@@ -222,13 +222,13 @@ echo $this->leftmenu(
 <tr>
 	<td class="key"><?php echo JText::_('HIKAM_IMAGE_FORCESIZE');?></td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', "config[image_forcesize]",'',$this->config->get('image_forcesize',0));
+		echo JHTML::_('select.booleanlist', "config[image_forcesize]",'',$this->config->get('image_forcesize',0));
 	?></td>
 </tr>
 <tr>
 	<td class="key"><?php echo JText::_('HIKAM_IMAGE_GRAYSCALE');?></td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', "config[image_grayscale]",'',$this->config->get('image_grayscale',0));
+		echo JHTML::_('select.booleanlist', "config[image_grayscale]",'',$this->config->get('image_grayscale',0));
 	?></td>
 </tr>
 <tr>
@@ -256,31 +256,31 @@ echo $this->leftmenu(
 <tr>
 	<td class="key"><?php echo JText::_('HIKAM_DISPLAY_VENDOR_VOTE'); ?></td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', "config[display_vendor_vote]",'',$this->config->get('display_vendor_vote',0));
+		echo JHTML::_('select.booleanlist', "config[display_vendor_vote]",'',$this->config->get('display_vendor_vote',0));
 	?></td>
 </tr>
 <tr>
 	<td class="key"><?php echo JText::_('HIKAM_DISPLAY_VENDOR_CONTACT_BTN'); ?></td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', "config[display_vendor_contact]",'',$this->config->get('display_vendor_contact',0));
+		echo JHTML::_('select.booleanlist', "config[display_vendor_contact]",'',$this->config->get('display_vendor_contact',0));
 	?></td>
 </tr>
 <tr>
 	<td class="key"><?php echo JText::_('HIKAM_FRONT_SHOW_SOLD_BY'); ?></td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', "config[show_sold_by]",'',$this->config->get('show_sold_by',0));
+		echo JHTML::_('select.booleanlist', "config[show_sold_by]",'',$this->config->get('show_sold_by',0));
 	?></td>
 </tr>
 <tr>
 	<td class="key"><?php echo JText::_('HIKAM_FRONT_SHOW_SOLD_BY_ME'); ?></td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', "config[show_sold_by_me]",'',$this->config->get('show_sold_by_me',0));
+		echo JHTML::_('select.booleanlist', "config[show_sold_by_me]",'',$this->config->get('show_sold_by_me',0));
 	?></td>
 </tr>
 <tr>
 	<td class="key"><?php echo JText::_('HIKAM_FRONT_SHOW_MAIN_VENDOR_IN_LISTING'); ?></td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', "config[listing_show_main_vendor]",'',$this->config->get('listing_show_main_vendor',0));
+		echo JHTML::_('select.booleanlist', "config[listing_show_main_vendor]",'',$this->config->get('listing_show_main_vendor',0));
 	?></td>
 </tr>
 <tr>
@@ -292,7 +292,7 @@ echo $this->leftmenu(
 <tr>
 	<td class="key"><?php echo JText::_('HIKAM_FRONT_VENDOR_CATEGORY_TO_VENDOR_PAGE'); ?></td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', "config[override_vendor_category_link]",'',$this->config->get('override_vendor_category_link',0));
+		echo JHTML::_('select.booleanlist', "config[override_vendor_category_link]",'',$this->config->get('override_vendor_category_link',0));
 	?></td>
 </tr>
 <tr>
@@ -322,19 +322,19 @@ echo $this->leftmenu(
 <tr>
 	<td class="key"><?php echo JText::_('HIKAM_CONTACT_MAIL_TO_VENDORS'); ?></td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', "config[contact_mail_to_vendor]",'',$this->config->get('contact_mail_to_vendor',1));
+		echo JHTML::_('select.booleanlist', "config[contact_mail_to_vendor]",'',$this->config->get('contact_mail_to_vendor',1));
 	?></td>
 </tr>
 <tr>
 	<td class="key"><?php echo JText::_('HIKAM_ALWAYS_SEND_PRODUCT_EMAIL'); ?></td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', 'config[always_send_product_email]','',$this->config->get('always_send_product_email',0));
+		echo JHTML::_('select.booleanlist', 'config[always_send_product_email]','',$this->config->get('always_send_product_email',0));
 	?></td>
 </tr>
 <tr>
 	<td class="key"><?php echo JText::_('HIKAM_DISPLAY_VENDOR_NAME_IN_EMAILS'); ?></td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', 'config[mail_display_vendor]','',$this->config->get('mail_display_vendor',0));
+		echo JHTML::_('select.booleanlist', 'config[mail_display_vendor]','',$this->config->get('mail_display_vendor',0));
 	?></td>
 </tr>
 <tr>
@@ -364,7 +364,7 @@ echo $this->leftmenu(
 <tr>
 	<td class="key"><?php echo JText::_('HIKAM_SEND_MAIL_SUBSALE_UPDATE_MAIN'); ?></td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', 'config[send_mail_subsale_update_main]','',$this->config->get('send_mail_subsale_update_main',0));
+		echo JHTML::_('select.booleanlist', 'config[send_mail_subsale_update_main]','',$this->config->get('send_mail_subsale_update_main',0));
 	?></td>
 </tr>
 </table>
@@ -405,63 +405,63 @@ window.hikashop.ready(function(){ window.localPage.allowRegistrationChanged(docu
 <tr>
 	<td class="key"><?php echo JText::_('HIKAM_REGISTRATION_ASK_CURRENCY'); ?></td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', "config[register_ask_currency]",'',$this->config->get('register_ask_currency',0));
+		echo JHTML::_('select.booleanlist', "config[register_ask_currency]",'',$this->config->get('register_ask_currency',0));
 	?></td>
 </tr>
 <tr>
 	<td class="key"><?php echo JText::_('HIKAM_REGISTRATION_ASK_DESCRIPTION'); ?></td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', "config[register_ask_description]",'',$this->config->get('register_ask_description',0));
+		echo JHTML::_('select.booleanlist', "config[register_ask_description]",'',$this->config->get('register_ask_description',0));
 	?></td>
 </tr>
 <tr>
 	<td class="key"><?php echo JText::_('HIKAM_REGISTRATION_ASK_TERMS'); ?></td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', "config[register_ask_terms]",'',$this->config->get('register_ask_terms',0));
+		echo JHTML::_('select.booleanlist', "config[register_ask_terms]",'',$this->config->get('register_ask_terms',0));
 	?></td>
 </tr>
 <tr>
 	<td class="key"><?php echo JText::_('HIKAM_REGISTRATION_TERMS_REQUIRED'); ?></td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', "config[register_terms_required]",'',$this->config->get('register_terms_required',0));
+		echo JHTML::_('select.booleanlist', "config[register_terms_required]",'',$this->config->get('register_terms_required',0));
 	?></td>
 </tr>
 <tr>
 	<td class="key"><?php echo JText::_('HIKAM_REGISTRATION_ASK_PAYPAL'); ?></td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', "config[register_ask_paypal]",'',$this->config->get('register_ask_paypal',1));
+		echo JHTML::_('select.booleanlist', "config[register_ask_paypal]",'',$this->config->get('register_ask_paypal',1));
 	?></td>
 </tr>
 <tr>
 	<td class="key"><?php echo JText::_('HIKAM_REGISTRATION_PAYPAL_REQUIRED'); ?></td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', "config[register_paypal_required]",'',$this->config->get('register_paypal_required',0));
+		echo JHTML::_('select.booleanlist', "config[register_paypal_required]",'',$this->config->get('register_paypal_required',0));
 	?></td>
 </tr>
 <tr>
 	<td class="key"><?php echo JText::_('HIKAM_REGISTRATION_ASK_PASSWORD'); ?></td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', "config[registration_ask_password]",'',$this->config->get('registration_ask_password',1));
+		echo JHTML::_('select.booleanlist', "config[registration_ask_password]",'',$this->config->get('registration_ask_password',1));
 	?></td>
 </tr>
 <tr>
 	<td class="key"><?php echo JText::_('HIKAM_REGISTRATION_EMAIL_IS_USERNAME'); ?></td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', "config[registration_email_is_username]",'',$this->config->get('registration_email_is_username',0));
+		echo JHTML::_('select.booleanlist', "config[registration_email_is_username]",'',$this->config->get('registration_email_is_username',0));
 	?></td>
 </tr>
 <!--
 <tr>
 	<td class="key"><?php echo JText::_('HIKAM_REGISTRATION_ASK_IMAGE'); ?></td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', "config[register_ask_image]",'',$this->config->get('register_ask_image',0));
+		echo JHTML::_('select.booleanlist', "config[register_ask_image]",'',$this->config->get('register_ask_image',0));
 	?></td>
 </tr>
 -->
 <tr>
 	<td class="key"><?php echo JText::_('HIKAM_LINK_VENDOR_GROUP_WITH_ADMIN'); ?></td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', "config[link_admin_groups]",'',$this->config->get('link_admin_groups',0));
+		echo JHTML::_('select.booleanlist', "config[link_admin_groups]",'',$this->config->get('link_admin_groups',0));
 	?></td>
 </tr>
 <tr>
@@ -480,7 +480,7 @@ window.hikashop.ready(function(){ window.localPage.allowRegistrationChanged(docu
 <tr>
 	<td class="key"><?php echo JText::_('HIKAM_VENDOR_CREATE_CATEGORY'); ?></td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', "config[vendor_create_category]",'',$this->config->get('vendor_create_category',0));
+		echo JHTML::_('select.booleanlist', "config[vendor_create_category]",'',$this->config->get('vendor_create_category',0));
 	?></td>
 </tr>
 <tr>
@@ -540,19 +540,19 @@ window.hikashop.ready(function(){ window.localPage.allowRegistrationChanged(docu
 <tr>
 	<td class="key"><?php echo JText::_('HIKAM_OPTION_RELATED_ALL_VENDORS'); ?></td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', "config[related_all_vendors]",'',$this->config->get('related_all_vendors',1));
+		echo JHTML::_('select.booleanlist', "config[related_all_vendors]",'',$this->config->get('related_all_vendors',1));
 	?></td>
 </tr>
 <tr>
 	<td class="key"><?php echo JText::_('HIKAM_OPTION_OPTIONS_ALL_VENDORS'); ?></td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', "config[options_all_vendors]",'',$this->config->get('options_all_vendors',0));
+		echo JHTML::_('select.booleanlist', "config[options_all_vendors]",'',$this->config->get('options_all_vendors',0));
 	?></td>
 </tr>
 <tr>
 	<td class="key"><?php echo JText::_('HIKAM_OPTION_CHECK_VENDOR_COMPLETION'); ?></td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', "config[check_vendor_completion]",'',$this->config->get('check_vendor_completion', 0));
+		echo JHTML::_('select.booleanlist', "config[check_vendor_completion]",'',$this->config->get('check_vendor_completion', 0));
 	?></td>
 </tr>
 <tr>
@@ -581,13 +581,13 @@ window.hikashop.ready(function(){ window.localPage.allowRegistrationChanged(docu
 <tr>
 	<td class="key"><?php echo JText::_('HIKAM_VENDOR_PRICE_WITH_TAX');?></td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', "config[calculate_vendor_price_with_tax]",'',$this->config->get('calculate_vendor_price_with_tax',0));
+		echo JHTML::_('select.booleanlist', "config[calculate_vendor_price_with_tax]",'',$this->config->get('calculate_vendor_price_with_tax',0));
 	?></td>
 </tr>
 <tr>
 	<td class="key"><?php echo JText::_('HIKAM_APPLY_FEES_ON_SHIPPING');?></td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', "config[fee_on_shipping]",'',$this->config->get('fee_on_shipping',0));
+		echo JHTML::_('select.booleanlist', "config[fee_on_shipping]",'',$this->config->get('fee_on_shipping',0));
 	?></td>
 </tr>
 <tr>

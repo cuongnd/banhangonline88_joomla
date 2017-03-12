@@ -26,7 +26,7 @@ defined('_JEXEC') or die('Restricted access');
 	<td><?php
 		if(!isset($this->element->payment_params->classical))
 			$this->element->payment_params->classical = false;
-		echo JHTML::_('hikaselect.booleanlist', "data[payment][payment_params][classical]" , ' onchange="pp_adative_classical(this);"', $this->element->payment_params->classical);
+		echo JHTML::_('select.booleanlist', "data[payment][payment_params][classical]" , ' onchange="pp_adative_classical(this);"', $this->element->payment_params->classical);
 	?>
 <script type="text/javascript">
 function pp_adative_classical(el) {
@@ -90,7 +90,7 @@ window.hikashop.ready(function(){
 		?></label>
 	</td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', "data[payment][payment_params][reverse_all_on_error]" , '', @$this->element->payment_params->reverse_all_on_error);
+		echo JHTML::_('select.booleanlist', "data[payment][payment_params][reverse_all_on_error]" , '', @$this->element->payment_params->reverse_all_on_error);
 	?></td>
 </tr>
 <tr class="pp_adative_opt">
@@ -144,7 +144,7 @@ window.hikashop.ready(function(){
 		?></label>
 	</td>
 	<td>
-		<?php echo JHTML::_('hikaselect.booleanlist', "data[payment][payment_params][store_secondary]" , '', @$this->element->payment_params->store_secondary); ?>
+		<?php echo JHTML::_('select.booleanlist', "data[payment][payment_params][store_secondary]" , '', @$this->element->payment_params->store_secondary); ?>
 		<p>
 			<em><strong>Important</strong>: This option is not recommended.<br/>
 			It won't work correctly if you have several vendors in a single order.</em>
@@ -158,7 +158,7 @@ window.hikashop.ready(function(){
 		?></label>
 	</td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', "data[payment][payment_params][debug]" , '', @$this->element->payment_params->debug);
+		echo JHTML::_('select.booleanlist', "data[payment][payment_params][debug]" , '', @$this->element->payment_params->debug);
 	?></td>
 </tr>
 <tr>
@@ -170,7 +170,7 @@ window.hikashop.ready(function(){
 	<td><?php
 		if(!isset($this->element->payment_params->sandbox) && isset($this->element->payment_params->debug))
 			$this->element->payment_params->sandbox = $this->element->payment_params->debug;
-		echo JHTML::_('hikaselect.booleanlist', "data[payment][payment_params][sandbox]" , '', @$this->element->payment_params->sandbox);
+		echo JHTML::_('select.booleanlist', "data[payment][payment_params][sandbox]" , '', @$this->element->payment_params->sandbox);
 	?></td>
 </tr>
 <tr class="pp_adative_opt">
@@ -180,7 +180,7 @@ window.hikashop.ready(function(){
 		?></label>
 	</td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', "data[payment][payment_params][notify_wrong_emails]" , '', @$this->element->payment_params->notify_wrong_emails);
+		echo JHTML::_('select.booleanlist', "data[payment][payment_params][notify_wrong_emails]" , '', @$this->element->payment_params->notify_wrong_emails);
 	?></td>
 </tr>
 <tr class="pp_adative_opt">
@@ -190,7 +190,7 @@ window.hikashop.ready(function(){
 		?></label>
 	</td>
 	<td><?php
-		echo JHTML::_('hikaselect.booleanlist', "data[payment][payment_params][use_fsock]" , '', @$this->element->payment_params->use_fsock);
+		echo JHTML::_('select.booleanlist', "data[payment][payment_params][use_fsock]" , '', @$this->element->payment_params->use_fsock);
 	?></td>
 </tr>
 <tr>

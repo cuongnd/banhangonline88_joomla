@@ -36,7 +36,7 @@ defined('_JEXEC') or die('Restricted access');
 
 	<dt><?php echo JText::_('REMOVE_DATA_ON_UNASSIGNED'); ?></dt>
 	<dd><?php
-		echo JHTML::_('hikaselect.booleanlist', "config[unassigned_remove_data]", '', $this->config->get('unassigned_remove_data', false));
+		echo JHTML::_('select.booleanlist', "config[unassigned_remove_data]", '', $this->config->get('unassigned_remove_data', false));
 	?></dd>
 
 	<dt><?php echo JText::_('DISPLAY_SERIAL_STATUSES'); ?></dt>
@@ -60,17 +60,17 @@ defined('_JEXEC') or die('Restricted access');
 
 	<dt><?php echo JText::_('LINK_PRODUCT_QUANTITY'); ?></dt>
 	<dd><?php
-		echo JHTML::_('hikaselect.booleanlist', "config[link_product_quantity]", '', $this->config->get('link_product_quantity', false));
+		echo JHTML::_('select.booleanlist', "config[link_product_quantity]", '', $this->config->get('link_product_quantity', false));
 	?></dd>
 
 	<dt><?php echo JText::_('FORBIDDEN_CONSUME_GUEST'); ?></dt>
 	<dd><?php
-		echo JHTML::_('hikaselect.booleanlist', "config[forbidden_consume_guest]", '', $this->config->get('forbidden_consume_guest', true));
+		echo JHTML::_('select.booleanlist', "config[forbidden_consume_guest]", '', $this->config->get('forbidden_consume_guest', true));
 	?></dd>
 
 	<dt><?php echo JText::_('CONSUME_DISPLAY_DETAILS'); ?></dt>
 	<dd><?php
-		echo JHTML::_('hikaselect.booleanlist', "config[consume_display_details]", '', $this->config->get('consume_display_details', false));
+		echo JHTML::_('select.booleanlist', "config[consume_display_details]", '', $this->config->get('consume_display_details', false));
 	?></dd>
 
 	<dt><?php echo JText::_('SERIAL_TRUNCATED_SIZE_IN_BACKEND'); ?></dt>
@@ -78,17 +78,17 @@ defined('_JEXEC') or die('Restricted access');
 
 	<dt><?php echo JText::_('USE_FAST_RANDOM'); ?></dt>
 	<dd><?php
-		echo JHTML::_('hikaselect.booleanlist', "config[use_fast_random]", '', $this->config->get('use_fast_random', false));
+		echo JHTML::_('select.booleanlist', "config[use_fast_random]", '', $this->config->get('use_fast_random', false));
 	?></dd>
 
 	<dt><?php echo JText::_('SAVE_HISTORY'); ?></dt>
 	<dd><?php
-		echo JHTML::_('hikaselect.booleanlist', "config[save_history]", '', $this->config->get('save_history', false));
+		echo JHTML::_('select.booleanlist', "config[save_history]", '', $this->config->get('save_history', false));
 	?></dd>
 
 	<dt><?php echo JText::_('USE_DELETED_SERIAL_STATUS'); ?></dt>
 	<dd><?php
-		echo JHTML::_('hikaselect.booleanlist', "config[use_deleted_serial_status]", '', $this->config->get('use_deleted_serial_status', false));
+		echo JHTML::_('select.booleanlist', "config[use_deleted_serial_status]", '', $this->config->get('use_deleted_serial_status', false));
 	?></dd>
 
 		</dl>

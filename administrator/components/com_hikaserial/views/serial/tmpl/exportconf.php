@@ -27,7 +27,7 @@ defined('_JEXEC') or die('Restricted access');
 				<label><?php echo JText::_('SERIAL_STATUS'); ?></label>
 			</td>
 			<td><?php
-				echo JHTML::_('hikaselect.booleanlist', 'data[export][status]', 0);
+				echo JHTML::_('select.booleanlist', 'data[export][status]', 0);
 			?></td>
 		</tr>
 		<tr>
@@ -61,7 +61,7 @@ defined('_JEXEC') or die('Restricted access');
 				<label><?php echo JText::_('SERIAL_ID'); ?></label>
 			</td>
 			<td><?php
-				echo JHTML::_('hikaselect.booleanlist', 'data[export][id]', 0);
+				echo JHTML::_('select.booleanlist', 'data[export][id]', 0);
 			?></td>
 		</tr>
 		<tr>
@@ -69,7 +69,7 @@ defined('_JEXEC') or die('Restricted access');
 				<label><?php echo JText::_('SERIAL_EXTRA_DATA'); ?></label>
 			</td>
 			<td><?php
-				echo JHTML::_('hikaselect.booleanlist', 'data[export][extra]', 0);
+				echo JHTML::_('select.booleanlist', 'data[export][extra]', 0);
 			?></td>
 		</tr>
 		<tr>
@@ -77,7 +77,7 @@ defined('_JEXEC') or die('Restricted access');
 				<label><?php echo JText::_('ASSIGN_DATE'); ?></label>
 			</td>
 			<td><?php
-				echo JHTML::_('hikaselect.booleanlist', 'data[export][date]', 0);
+				echo JHTML::_('select.booleanlist', 'data[export][date]', 0);
 			?></td>
 		</tr>
 		<tr>

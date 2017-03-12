@@ -213,7 +213,7 @@ class PluginsViewPlugins extends hikaserialView {
 							$this->element->$paramsType->$key = $value[2];
 						if(!isset($this->element->$paramsType->$key))
 							$this->element->$paramsType->$key = 0;
-						$html .= JHTML::_('hikaselect.booleanlist', 'data['.$type.']['.$paramsType.']['.$key.']' , '', @$this->element->$paramsType->$key);
+						$html .= JHTML::_('select.booleanlist', 'data['.$type.']['.$paramsType.']['.$key.']' , '', @$this->element->$paramsType->$key);
 						break;
 
 					case 'checkbox':

@@ -439,7 +439,7 @@ class hikamarketMarket_aclType {
 		$attribs = '';
 
 		if($inherit !== false) {
-			$ret .= '<label>' . JText::_('ACL_INHERIT') . '</label> ' . JHTML::_('hikaselect.booleanlist', $inherit, 'onchange="var el = document.getElementById(\''.$id.'_otree\');if(this.value==\'0\'){el.style.display=\'\'}else{el.style.display=\'none\'}"', empty($value));
+			$ret .= '<label>' . JText::_('ACL_INHERIT') . '</label> ' . JHTML::_('select.booleanlist', $inherit, 'onchange="var el = document.getElementById(\''.$id.'_otree\');if(this.value==\'0\'){el.style.display=\'\'}else{el.style.display=\'none\'}"', empty($value));
 			if(empty($value)) {
 				$attribs = ' style="display:none;"';
 				$value = '*';

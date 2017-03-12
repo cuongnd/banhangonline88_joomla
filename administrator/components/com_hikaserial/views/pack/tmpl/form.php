@@ -37,7 +37,7 @@ defined('_JEXEC') or die('Restricted access');
 
 			<dt class="hikaserial_pack_published"><label for="data[pack][pack_published]"><?php echo JText::_('HIKA_PUBLISHED'); ?></label></dt>
 			<dd class="hikaserial_pack_published"><?php
-				echo JHTML::_('hikaselect.booleanlist', 'data[pack][pack_published]', '', @$this->pack->pack_published);
+				echo JHTML::_('select.booleanlist', 'data[pack][pack_published]', '', @$this->pack->pack_published);
 			?></dd>
 
 <?php if(!empty($this->hikamarket)) { ?>
@@ -82,32 +82,32 @@ defined('_JEXEC') or die('Restricted access');
 
 			<dt class="hikaserial_pack_params_unlimitedqty"><label for="data[pack_params][unlimited_quantity]"><?php echo JText::_('SERIAL_UNLIMITED_QUANTITY'); ?></label></dt>
 			<dd class="hikaserial_pack_params_unlimitedqty"><?php
-				echo JHTML::_('hikaselect.booleanlist', 'data[pack_params][unlimited_quantity]', '',  @$this->pack->pack_params->unlimited_quantity);
+				echo JHTML::_('select.booleanlist', 'data[pack_params][unlimited_quantity]', '',  @$this->pack->pack_params->unlimited_quantity);
 			?></dd>
 
 			<dt class="hikaserial_pack_params_consumer"><label for="data[pack_params][consumer]"><?php echo JText::_('HIKA_CONSUMER_PACK'); ?></label></dt>
 			<dd class="hikaserial_pack_params_consumer"><?php
-				echo JHTML::_('hikaselect.booleanlist', 'data[pack_params][consumer]', '',  @$this->pack->pack_params->consumer);
+				echo JHTML::_('select.booleanlist', 'data[pack_params][consumer]', '',  @$this->pack->pack_params->consumer);
 			?></dd>
 
 			<dt class="hikaserial_pack_params_consumerassign"><label for="data[pack_params][consume_user_assign]"><?php echo JText::_('HIKA_CONSUME_USER_ASSIGN'); ?></label></dt>
 			<dd class="hikaserial_pack_params_consumerassign"><?php
-				echo JHTML::_('hikaselect.booleanlist', 'data[pack_params][consume_user_assign]', '',  @$this->pack->pack_params->consume_user_assign);
+				echo JHTML::_('select.booleanlist', 'data[pack_params][consume_user_assign]', '',  @$this->pack->pack_params->consume_user_assign);
 			?></dd>
 
 			<dt class="hikaserial_pack_params_webservice"><label for="data[pack_params][webservice]"><?php echo JText::_('HIKA_WEBSERVICE_ACCESS'); ?></label></dt>
 			<dd class="hikaserial_pack_params_webservice"><?php
-				echo JHTML::_('hikaselect.booleanlist', 'data[pack_params][webservice]', '',  @$this->pack->pack_params->webservice);
+				echo JHTML::_('select.booleanlist', 'data[pack_params][webservice]', '',  @$this->pack->pack_params->webservice);
 			?></dd>
 
 			<dt class="hikaserial_pack_params_nouserassign"><label for="data[pack_params][no_user_assign]"><?php echo JText::_('SERIAL_NO_USER_ASSIGN'); ?></label></dt>
 			<dd class="hikaserial_pack_params_nouserassign"><?php
-				echo JHTML::_('hikaselect.booleanlist', 'data[pack_params][no_user_assign]', '',  @$this->pack->pack_params->no_user_assign);
+				echo JHTML::_('select.booleanlist', 'data[pack_params][no_user_assign]', '',  @$this->pack->pack_params->no_user_assign);
 			?></dd>
 
 			<dt class="hikaserial_pack_params_randompickup"><label for="data[pack_params][random_pickup]"><?php echo JText::_('SERIAL_RANDOM_PICKUP'); ?></label></dt>
 			<dd class="hikaserial_pack_params_randompickup"><?php
-				echo JHTML::_('hikaselect.booleanlist', 'data[pack_params][random_pickup]', '',  @$this->pack->pack_params->random_pickup);
+				echo JHTML::_('select.booleanlist', 'data[pack_params][random_pickup]', '',  @$this->pack->pack_params->random_pickup);
 			?></dd>
 		</dl>
 	</div></div>

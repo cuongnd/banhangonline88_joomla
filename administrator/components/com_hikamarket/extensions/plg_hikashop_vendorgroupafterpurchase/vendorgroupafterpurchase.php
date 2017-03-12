@@ -49,11 +49,11 @@ class plgHikashopVendorgroupafterpurchase extends JPlugin {
 		<table class="admintable table" style="width:100%">
 			<tr>
 				<td class="key"><label>'.JText::_('HIKAM_IS_VENDOR_SPECIAL_PRODUCT').'</label></td>
-				<td>'.JHTML::_('hikaselect.booleanlist', 'data[product][product_vendor_params][vendorgroupafterpurchase_isproduct]', 'onchange="window.localPage.vendorproduct_update(this);"', @$product->product_vendor_params['vendorgroupafterpurchase_isproduct']).'</td>
+				<td>'.JHTML::_('select.booleanlist', 'data[product][product_vendor_params][vendorgroupafterpurchase_isproduct]', 'onchange="window.localPage.vendorproduct_update(this);"', @$product->product_vendor_params['vendorgroupafterpurchase_isproduct']).'</td>
 			</tr>
 			<tr id="hikamarket_vendor_group_activator" style="'.$trStyle.'">
 				<td class="key"><label>'.JText::_('HIKAM_IS_VENDOR_ACTIVATION_PRODUCT').'</label></td>
-				<td>'.JHTML::_('hikaselect.booleanlist', 'data[product][product_vendor_params][vendorgroupafterpurchase_vendoractivation]', '', @$product->product_vendor_params['vendorgroupafterpurchase_vendoractivation']).'</td>
+				<td>'.JHTML::_('select.booleanlist', 'data[product][product_vendor_params][vendorgroupafterpurchase_vendoractivation]', '', @$product->product_vendor_params['vendorgroupafterpurchase_vendoractivation']).'</td>
 			</tr>
 			<tr id="hikamarket_vendor_group_selector" style="'.$trStyle.'">
 				<td class="key"><label>'.JText::_('HIKAM_VENDOR_GROUP').'</label></td>

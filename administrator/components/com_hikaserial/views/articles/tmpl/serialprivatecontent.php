@@ -40,7 +40,7 @@ defined('_JEXEC') or die('Restricted access');
 
 	<dt><?php echo JText::_('DISPLAY_CONSUME_MODULE'); ?></dt>
 	<dd><?php
-		echo JHTML::_('hikaselect.booleanlist', 'data[hikaserial][module]', '', false);
+		echo JHTML::_('select.booleanlist', 'data[hikaserial][module]', '', false);
 	?></dd>
 
 	<dt><?php echo JText::_('MESSAGE'); ?></dt>
@@ -64,7 +64,7 @@ defined('_JEXEC') or die('Restricted access');
 
 	<dt><?php echo JText::_('PRIVATE_CONTENT_DELIMITER'); ?></dt>
 	<dd><?php
-		echo JHTML::_('hikaselect.booleanlist', 'data[hikaserial][delimiter]', '', true);
+		echo JHTML::_('select.booleanlist', 'data[hikaserial][delimiter]', '', true);
 	?></dd>
 </dl>
 	<input type="hidden" name="ed_name" value="<?php echo JRequest::getString('ed_name', ''); ?>" />

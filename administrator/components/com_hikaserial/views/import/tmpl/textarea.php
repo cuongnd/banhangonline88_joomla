@@ -31,13 +31,13 @@ defined('_JEXEC') or die('Restricted access');
 	<tr>
 		<td class="key"><?php echo JText::_('IMPORT_AS_CSV'); ?></td>
 		<td><?php
-			echo JHTML::_('hikaselect.booleanlist', 'textareaimport_as_csv', '', 1);
+			echo JHTML::_('select.booleanlist', 'textareaimport_as_csv', '', 1);
 		?></td>
 	</tr>
 	<tr>
 		<td class="key"><?php echo JText::_('HIKASERIAL_CHECK_DUPLICATES'); ?></td>
 		<td><?php
-			echo JHTML::_('hikaselect.booleanlist', 'textareaimport_checkduplicates', '', 0);
+			echo JHTML::_('select.booleanlist', 'textareaimport_checkduplicates', '', 0);
 		?></td>
 	</tr>
 </table>

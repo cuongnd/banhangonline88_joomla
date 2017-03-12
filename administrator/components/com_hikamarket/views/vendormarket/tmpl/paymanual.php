@@ -81,7 +81,7 @@ if($this->payment_method == 'paypal') {
 			echo JText::_('NOTIFY_VENDOR');
 		?></dt>
 		<dd><?php
-			echo JHTML::_('hikaselect.booleanlist', 'data[notify]', '', 0);
+			echo JHTML::_('select.booleanlist', 'data[notify]', '', 0);
 		?></dd>
 	</dl>
 	<input type="hidden" name="payment_method" value="manual" />

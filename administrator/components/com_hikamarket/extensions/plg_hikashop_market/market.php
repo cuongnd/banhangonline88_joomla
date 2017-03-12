@@ -744,7 +744,7 @@ class plgHikashopMarket extends JPlugin {
 					$element->hikashop_params['market_filter_same_vendor'] = '0';
 				$ret['products']['market_filter_same_vendor'] = array(
 					'HIKAM_FRONT_FILTER_SAME_VENDOR',
-					JHTML::_('hikaselect.booleanlist', $control.'[market_filter_same_vendor]', '', @$element->hikashop_params['market_filter_same_vendor'])
+					JHTML::_('select.booleanlist', $control.'[market_filter_same_vendor]', '', @$element->hikashop_params['market_filter_same_vendor'])
 				);
 			}
 

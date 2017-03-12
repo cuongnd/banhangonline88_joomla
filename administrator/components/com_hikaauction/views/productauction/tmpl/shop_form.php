@@ -13,7 +13,7 @@ defined('_JEXEC') or die('Restricted access');
 		$product_auction = (int)@$this->data->product_auction;
 
 		if($product_auction == 0 || $product_auction == 1) {
-			echo JHTML::_('hikaselect.booleanlist', 'data[product][product_auction]', '', $product_auction);
+			echo JHTML::_('select.booleanlist', 'data[product][product_auction]', '', $product_auction);
 		} else {
 			echo JText::_('HIKA_AUCTION_FINISHED');
 			?>

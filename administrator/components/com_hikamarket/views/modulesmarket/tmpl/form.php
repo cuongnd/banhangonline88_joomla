@@ -42,7 +42,7 @@ defined('_JEXEC') or die('Restricted access');
 								echo JText::_('SHOW_TITLE');
 							?></td>
 							<td><?php
-								echo JHTML::_('hikaselect.booleanlist', 'module' . $this->control . '[showtitle]', 'class="inputbox"', @$this->element->showtitle);
+								echo JHTML::_('select.booleanlist', 'module' . $this->control . '[showtitle]', 'class="inputbox"', @$this->element->showtitle);
 							?></td>
 						</tr>
 						<tr>
@@ -50,7 +50,7 @@ defined('_JEXEC') or die('Restricted access');
 								echo JText::_('HIKA_PUBLISHED');
 							?></td>
 							<td><?php
-								echo JHTML::_('hikaselect.booleanlist', 'module' . $this->control . '[published]', 'class="inputbox"', @$this->element->published);
+								echo JHTML::_('select.booleanlist', 'module' . $this->control . '[published]', 'class="inputbox"', @$this->element->published);
 							?></td>
 						</tr>
 						<tr>

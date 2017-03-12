@@ -12,7 +12,7 @@ defined('_JEXEC') or die('Restricted access');
 		<tr>
 			<td class="key"><label for="data[plugin][plugin_params][attach_email]"><?php echo JText::_('ATTACH_IN_EMAILS');?></label></td>
 			<td><?php
-				echo JHTML::_('hikaselect.booleanlist', "data[plugin][plugin_params][attach_email]", '', @$this->element->plugin_params->attach_email);
+				echo JHTML::_('select.booleanlist', "data[plugin][plugin_params][attach_email]", '', @$this->element->plugin_params->attach_email);
 			?></td>
 		</tr>
 		<tr>
@@ -25,7 +25,7 @@ defined('_JEXEC') or die('Restricted access');
 		<tr>
 			<td class="key"><label for="data[plugin][plugin_params][attach_download]"><?php echo JText::_('ATTACH_AS_DOWNLOAD');?></label></td>
 			<td><?php
-				echo JHTML::_('hikaselect.booleanlist', "data[plugin][plugin_params][attach_download]", '', @$this->element->plugin_params->attach_download);
+				echo JHTML::_('select.booleanlist', "data[plugin][plugin_params][attach_download]", '', @$this->element->plugin_params->attach_download);
 				if(!empty($this->element) && !empty($this->element->plugin_id)) {
 					echo '<br/>#hikaserial:attachserial:'.(int)$this->element->plugin_id;
 				}

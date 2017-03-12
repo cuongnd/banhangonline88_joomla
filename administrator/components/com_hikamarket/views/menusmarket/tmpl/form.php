@@ -54,7 +54,7 @@ defined('_JEXEC') or die('Restricted access');
 						<tr>
 							<td class="key"><?php echo JText::_('HIKA_PUBLISHED'); ?></td>
 							<td><?php
-								echo JHTML::_('hikaselect.booleanlist', 'menu[published]', 'class="inputbox"', @$this->element->published);
+								echo JHTML::_('select.booleanlist', 'menu[published]', 'class="inputbox"', @$this->element->published);
 							?></td>
 						</tr>
 						<tr>

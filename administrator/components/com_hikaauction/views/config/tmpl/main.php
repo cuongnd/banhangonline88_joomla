@@ -26,31 +26,31 @@ defined('_JEXEC') or die('Restricted access');
 		-->
 		<tr>
 			<td class="key"><?php echo JText::_('HKA_DISPLAY_STARTING_AUCTION_PRICE'); ?></td>
-			<td><?php echo JHTML::_('hikaselect.booleanlist', 'config[display_starting_auction_price]', '', (int)$this->config->get('display_starting_auction_price', 0)); ?></td>
+			<td><?php echo JHTML::_('select.booleanlist', 'config[display_starting_auction_price]', '', (int)$this->config->get('display_starting_auction_price', 0)); ?></td>
 		</tr>
 		<tr>
 			<td class="key"><?php echo JText::_('HKA_DISPLAY_NB_BIDS'); ?></td>
-			<td><?php echo JHTML::_('hikaselect.booleanlist', 'config[display_nb_bid]', '', (int)$this->config->get('display_nb_bid', 0)); ?></td>
+			<td><?php echo JHTML::_('select.booleanlist', 'config[display_nb_bid]', '', (int)$this->config->get('display_nb_bid', 0)); ?></td>
 		</tr>
 		<tr>
 			<td class="key"><?php echo JText::_('HKA_DISPLAY_NB_BIDDERS'); ?></td>
-			<td><?php echo JHTML::_('hikaselect.booleanlist', 'config[display_nb_bidders]', '', (int)$this->config->get('display_nb_bidders', 0)); ?></td>
+			<td><?php echo JHTML::_('select.booleanlist', 'config[display_nb_bidders]', '', (int)$this->config->get('display_nb_bidders', 0)); ?></td>
 		</tr>
 		<tr>
 			<td class="key"><?php echo JText::_('HKA_LIMIT_GLOBAL_AUCTION_QUANTITY'); ?></td>
-			<td><?php echo JHTML::_('hikaselect.booleanlist', 'config[limit_auction_global_quantity]', '', (int)$this->config->get('limit_auction_global_quantity', 0)); ?></td>
+			<td><?php echo JHTML::_('select.booleanlist', 'config[limit_auction_global_quantity]', '', (int)$this->config->get('limit_auction_global_quantity', 0)); ?></td>
 		</tr>
 		<tr>
 			<td class="key"><?php echo JText::_('HKA_SHOW_AUCTION_PRICE_IN_LISTING'); ?></td>
-			<td><?php echo JHTML::_('hikaselect.booleanlist', 'config[show_auction_price_in_listing]', '', (int)$this->config->get('show_auction_price_in_listing', 1)); ?></td>
+			<td><?php echo JHTML::_('select.booleanlist', 'config[show_auction_price_in_listing]', '', (int)$this->config->get('show_auction_price_in_listing', 1)); ?></td>
 		</tr>
 		<tr>
 			<td class="key"><?php echo JText::_('HKA_SHOW_AUCTION_HISTORY_IN_PAGE'); ?></td>
-			<td><?php echo JHTML::_('hikaselect.booleanlist', 'config[show_auction_history_in_page]', '', (int)$this->config->get('show_auction_history_in_page', 0)); ?></td>
+			<td><?php echo JHTML::_('select.booleanlist', 'config[show_auction_history_in_page]', '', (int)$this->config->get('show_auction_history_in_page', 0)); ?></td>
 		</tr>
 		<tr>
 			<td class="key"><?php echo JText::_('HKA_ANONYMOUS_AUCTION_HISTORY'); ?></td>
-			<td><?php echo JHTML::_('hikaselect.booleanlist', 'config[anonymous_auction_history]', '', (int)$this->config->get('anonymous_auction_history', 0)); ?></td>
+			<td><?php echo JHTML::_('select.booleanlist', 'config[anonymous_auction_history]', '', (int)$this->config->get('anonymous_auction_history', 0)); ?></td>
 		</tr>
 		<tr>
 			<td class="key"><?php echo JText::_('HKA_HISTORY_BIDDING_NAME'); ?></td>

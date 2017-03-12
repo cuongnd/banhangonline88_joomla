@@ -43,7 +43,7 @@ defined('_JEXEC') or die('Restricted access');
 					<tr>
 						<td class="key"><label for="data[<?php echo $type;?>][<?php echo $type;?>_published]"><?php echo JText::_('HIKA_PUBLISHED');?></label></td>
 						<td>
-							<?php $n = $type.'_published'; echo JHTML::_('hikaselect.booleanlist', 'data['.$type.']['.$type.'_published]' , '', @$this->element->$n); ?>
+							<?php $n = $type.'_published'; echo JHTML::_('select.booleanlist', 'data['.$type.']['.$type.'_published]' , '', @$this->element->$n); ?>
 						</td>
 					</tr>
 <?php } else { ?>

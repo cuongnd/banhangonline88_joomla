@@ -40,7 +40,7 @@ defined('_JEXEC') or die('Restricted access');
 		<tr>
 			<td class="key"><label for="data[plugin][plugin_params][call_attachserial]"><?php echo JText::_('SERIAL_PLUGIN_USE_ATTACHSERIAL');?></label></td>
 			<td><?php
-				echo JHTML::_('hikaselect.booleanlist', "data[plugin][plugin_params][call_attachserial]", '', @$this->element->plugin_params->call_attachserial);
+				echo JHTML::_('select.booleanlist', "data[plugin][plugin_params][call_attachserial]", '', @$this->element->plugin_params->call_attachserial);
 			?></td>
 		</tr>
 	</tbody>

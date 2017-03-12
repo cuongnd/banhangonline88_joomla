@@ -24,7 +24,7 @@ defined('_JEXEC') or die('Restricted access');
 	<tr>
 		<td class="key"><?php echo JText::_('HIKASERIAL_CHECK_DUPLICATES'); ?></td>
 		<td><?php
-			echo JHTML::_('hikaselect.booleanlist', 'csvimport_checkduplicates', '', 0);
+			echo JHTML::_('select.booleanlist', 'csvimport_checkduplicates', '', 0);
 		?></td>
 	</tr>
 <?php

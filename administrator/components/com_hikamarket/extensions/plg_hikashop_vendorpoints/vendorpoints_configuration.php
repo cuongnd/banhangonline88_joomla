@@ -45,7 +45,7 @@ defined('_JEXEC') or die('Restricted access');
 				?></label>
 			</td>
 			<td><?php
-				echo JHTML::_('hikaselect.booleanlist', "data[plugin][plugin_params][limittype]" , '',@$this->element->plugin_params->limittype);
+				echo JHTML::_('select.booleanlist', "data[plugin][plugin_params][limittype]" , '',@$this->element->plugin_params->limittype);
 			?></td>
 		</tr>
 	</table>
@@ -109,7 +109,7 @@ defined('_JEXEC') or die('Restricted access');
 				?></label>
 			</td>
 			<td><?php
-				echo JHTML::_('hikaselect.booleanlist', "data[plugin][plugin_params][limitcategory]" , '',@$this->element->plugin_params->limitcategory);
+				echo JHTML::_('select.booleanlist', "data[plugin][plugin_params][limitcategory]" , '',@$this->element->plugin_params->limitcategory);
 			?></td>
 		</tr>
 	</table>
