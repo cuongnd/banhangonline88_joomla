@@ -1,20 +1,1 @@
-<?php
-/**
- * @package	HikaShop for Joomla!
- * @version	2.6.3
- * @author	hikashop.com
- * @copyright	(C) 2010-2016 HIKARI SOFTWARE. All rights reserved.
- * @license	GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
- */
-defined('_JEXEC') or die('Restricted access');
-?><?php
-$pluginsClass = hikashop_get('class.plugins');
-$plugin = $pluginsClass->getByName('system', 'hikashopsocial');
-if (@ $plugin->published || @ $plugin->enabled) {
-	echo '{hikashop_social}';
-}else{ //backward compatibility added on 31/07/2014
-	$plugin = $pluginsClass->getByName('content', 'hikashopsocial');
-	if (@ $plugin->published || @ $plugin->enabled) {
-		echo '{hikashop_social}';
-	}
-}
+<?php/** * @package    HikaShop for Joomla! * @version    2.6.3 * @author    hikashop.com * @copyright    (C) 2010-2016 HIKARI SOFTWARE. All rights reserved. * @license    GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html */defined('_JEXEC') or die('Restricted access');?><?php$image = reset($this->element->images);$this->image->checkSize($divWidth, $divHeight, $image);$image_url=$this->image->uploadFolder_url . $image->file_path;$pluginsClass = hikashop_get('class.plugins');$plugin = $pluginsClass->getByName('system', 'hikashopsocial');$userClass = hikashop_get('class.user');$this->user = hikashop_loadUser(true);$link='product&task=show&cid=' . $this->element->product_id . '&name=' . $this->element->alias . $this->itemid . $this->category_pathway;if($this->user->user_id){    $link = hikashop_contentLink($link.'&partner_id='.$this->user->user_id, $this->element);}else{    $link= hikashop_contentLink($link, $this->row);}$hikashop_social='{hikashop_social link="'.$link.'" image_url="'.$image_url.'" title="'.$this->element->product_name.'" }';if (@ $plugin->published || @ $plugin->enabled) {    echo $hikashop_social;} else { //backward compatibility added on 31/07/2014    $plugin = $pluginsClass->getByName('content', 'hikashopsocial');    if (@ $plugin->published || @ $plugin->enabled) {        echo $hikashop_social;    }}
