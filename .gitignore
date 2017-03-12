@@ -10,3 +10,6 @@
 /taobao_api
 /media/com_easysocial/config
 /media/com_easysocial/tmp
+/nbproject/private/
+/app_window/source
+/app_window/*.psd
