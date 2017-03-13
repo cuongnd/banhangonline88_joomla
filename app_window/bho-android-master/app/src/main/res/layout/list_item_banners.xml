@@ -12,12 +12,29 @@
         android:foreground="?android:attr/selectableItemBackground" >
 
         <!-- Needed custom implementation of resizing for support older devices. -->
-        <vantinviet.banhangonline88.views.ResizableImageView
-            android:id="@+id/banner_image"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="20dp"
-            android:scaleType="fitCenter"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <vantinviet.banhangonline88.views.ResizableImageView
+                android:id="@+id/banner_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="20dp"
+                android:scaleType="fitCenter" />
+
+            <TextView
+                android:id="@+id/textview_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_facebook_style"
+                android:paddingLeft="10px"
+                android:text="TextView"
+                android:textColor="#fff"
+                android:textSize="24sp" />
+        </LinearLayout>
+
     </FrameLayout>
 
 </RelativeLayout>
