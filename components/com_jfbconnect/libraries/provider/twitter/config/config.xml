@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+        <fieldset name="api">
+            <field name="twitter_app_id"
+                   type="text"
+                   label="COM_JFBCONNECT_CONFIG_TWITTER_API_APP_ID_LABEL"
+                   default=""
+                   labelclass="config_setting"
+                   />
+            <field name="twitter_secret_key"
+                   type="text"
+                   label="COM_JFBCONNECT_CONFIG_TWITTER_API_SECRET_KEY_LABEL"
+                   default=""
+                   labelclass="config_setting"
+                   />
+            <field type="spacer"
+                   label="COM_JFBCONNECT_CONFIG_TWITTER_APP_SETUP_LINK"
+                    />
+        </fieldset>
+</form>

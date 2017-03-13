@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="params">
+        <fields name="widget_settings">
+            <fieldset name="widget_settings">
+                <field name="href" type="text" label="COM_JFBCONNECT_WIDGET_FACEBOOK_LIKEBOX_HREF_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_LIKEBOX_HREF_DESCRIPTION" default=""/>
+                <field name="width" type="text" label="COM_JFBCONNECT_WIDGET_FACEBOOK_WIDTH_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_WIDTH_DESCRIPTION" default="292" />
+                <field name="height" type="text" label="COM_JFBCONNECT_WIDGET_FACEBOOK_HEIGHT_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_HEIGHT_DESCRIPTION" default="200" />
+                <field name="colorscheme" type="list" label="COM_JFBCONNECT_WIDGET_FACEBOOK_COLORSCHEME_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_COLORSCHEME_DESCRIPTION" default="light" >
+                    <option value="light">COM_JFBCONNECT_WIDGET_FACEBOOK_COLORSCHEME_OPTION_LIGHT</option>
+                    <option value="dark">COM_JFBCONNECT_WIDGET_FACEBOOK_COLORSCHEME_OPTION_DARK</option>
+                </field>
+                <field name="show_border" type="radio" label="COM_JFBCONNECT_WIDGET_FACEBOOK_LIKEBOX_SHOW_BORDER_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_LIKEBOX_SHOW_BORDER_DESCRIPTION" default="1" >
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field name="show_faces" type="radio" label="COM_JFBCONNECT_WIDGET_FACEBOOK_SHOW_FACES_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_LIKEBOX_SHOW_FACES_DESCRIPTION" default="1" >
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field name="stream" type="radio" label="COM_JFBCONNECT_WIDGET_FACEBOOK_LIKEBOX_STREAM_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_LIKEBOX_STREAM_DESCRIPTION" default="1">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field name="header" type="radio" label="COM_JFBCONNECT_WIDGET_FACEBOOK_HEADER_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_LIKEBOX_HEADER_DESCRIPTION" default="1">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field name="force_wall" type="radio" label="COM_JFBCONNECT_WIDGET_FACEBOOK_LIKEBOX_FORCE_WALL_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_LIKEBOX_FORCE_WALL_DESCRIPTION" default="0">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+            </fieldset>
+        </fields>
+    </fields>
+</form>

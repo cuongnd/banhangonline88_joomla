@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="params">
+        <fields name="widget_settings">
+            <fieldset name="widget_settings">
+                <field name="site" type="text" label="COM_JFBCONNECT_WIDGET_FACEBOOK_RECOMMENDATIONS_DOMAIN_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_RECOMMENDATIONS_DOMAIN_DESCRIPTION" default="" />
+                <field name="width" type="text" label="COM_JFBCONNECT_WIDGET_FACEBOOK_WIDTH_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_WIDTH_DESCRIPTION" default="300" />
+                <field name="height" type="text" label="COM_JFBCONNECT_WIDGET_FACEBOOK_HEIGHT_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_HEIGHT_DESCRIPTION" default="300" />
+                <field name="header" type="radio" label="COM_JFBCONNECT_WIDGET_FACEBOOK_HEADER_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_HEADER_DESCRIPTION" default="1">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field name="colorscheme" type="list" label="COM_JFBCONNECT_WIDGET_FACEBOOK_COLORSCHEME_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_COLORSCHEME_DESCRIPTION" default="light">
+                    <option value="light">COM_JFBCONNECT_WIDGET_FACEBOOK_COLORSCHEME_OPTION_LIGHT</option>
+                    <option value="dark">COM_JFBCONNECT_WIDGET_FACEBOOK_COLORSCHEME_OPTION_DARK</option>
+                </field>
+                <field name="link_target" type="list" label="COM_JFBCONNECT_WIDGET_FACEBOOK_LINK_TARGET_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_LINK_TARGET_DESCRIPTION" default="_blank">
+                    <option value="_blank">COM_JFBCONNECT_WIDGET_FACEBOOK_LINK_TARGET_OPTION_BLANK</option>
+                    <option value="_top">COM_JFBCONNECT_WIDGET_FACEBOOK_LINK_TARGET_OPTION_TOP</option>
+                    <option value="_parent">COM_JFBCONNECT_WIDGET_FACEBOOK_LINK_TARGET_OPTION_PARENT</option>
+                </field>
+                <field name="action" type="text" label="COM_JFBCONNECT_WIDGET_FACEBOOK_RECOMMENDATIONS_ACTION_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_RECOMMENDATIONS_ACTION_DESCRIPTION" default="" />
+                <field name="ref" type="text" label="COM_JFBCONNECT_WIDGET_FACEBOOK_REF_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_REF_DESCRIPTION" default="" />
+                <field name="max_age" type="text" label="Max Age" description="COM_JFBCONNECT_WIDGET_FACEBOOK_MAX_AGE_DESCRIPTION" default="" />
+            </fieldset>
+        </fields>
+    </fields>
+</form>

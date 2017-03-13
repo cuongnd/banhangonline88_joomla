@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="1.6.0" method="upgrade" client="site">
+    <name>JFBConnect</name>
+    <version>6.2.2</version>
+    <creationDate>2014/10/03</creationDate>
+    <author>SourceCoast | www.sourcecoast.com</author>
+    <authorEmail>support@sourcecoast.com</authorEmail>
+    <authorUrl>http://www.sourcecoast.com</authorUrl>
+    <copyright>Copyright (C) 2009-2014 SourceCoast. All rights reserved.</copyright>
+    <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+    <description></description>
+    <scriptfile>install.php</scriptfile>
+    <install>
+        <sql folder="admin">
+            <file driver="mysql" charset="utf8">install/sql/install.jfbconnect.sql</file>
+            <file driver="postgresql" charset="utf8">install/sql/install.jfbconnect.postgre.sql</file>
+        </sql>
+    </install>
+    <!-- Do not let Joomla do automatic schema updates as they don't allow for downgrades
+    <update>
+        <schemas>
+            <schemapath type="mysql">install/sql/updates</schemapath>
+        </schemas>
+    </update>
+    -->
+    <media folder="media" destination="sourcecoast">
+        <!-- <filename>js/jquery-1.8.3.min.js</filename>-->
+        <!-- <filename>js/bootstrap.min.js</filename>-->
+        <!-- <filename>css/bootstrap.min.css</filename>-->
+        <!-- <filename>css/jquery-ui-autocomplete.css</filename>-->
+        <folder>css/jquery-ui/</folder>
+        <folder>css/widgets/</folder>
+        <folder>js/widgets/</folder>
+        <filename>css/jfbconnect.css</filename>
+        <filename>js/jquery-ui.js</filename>
+        <filename>js/jquery-ui.min.js</filename>
+        <filename>images/icon-16-deny.png</filename>
+        <filename>images/opengraph/friend.png</filename>
+        <filename>images/opengraph/location.png</filename>
+        <filename>images/provider/amazon/icon_label.png</filename>
+        <filename>images/provider/amazon/icon.png</filename>
+        <filename>images/provider/facebook/icon_label.png</filename>
+        <filename>images/provider/facebook/icon.png</filename>
+        <filename>images/provider/github/icon_label.png</filename>
+        <filename>images/provider/github/icon.png</filename>
+        <filename>images/provider/google/icon_label.png</filename>
+        <filename>images/provider/google/icon.png</filename>
+        <filename>images/provider/instagram/icon_label.png</filename>
+        <filename>images/provider/instagram/icon.png</filename>
+        <filename>images/provider/linkedin/icon_label.png</filename>
+        <filename>images/provider/linkedin/icon.png</filename>
+        <filename>images/provider/meetup/icon_label.png</filename>
+        <filename>images/provider/meetup/icon.png</filename>
+        <filename>images/provider/twitter/icon_label.png</filename>
+        <filename>images/provider/twitter/icon.png</filename>
+        <filename>images/provider/vk/icon_label.png</filename>
+        <filename>images/provider/vk/icon.png</filename>
+        <filename>images/provider/windowslive/icon_label.png</filename>
+        <filename>images/provider/windowslive/icon.png</filename>
+        <filename>themes/scsocialstream/default/facebook.php</filename>
+        <filename>themes/scsocialstream/default/linkedin.php</filename>
+        <filename>themes/scsocialstream/default/styles.css</filename>
+        <filename>themes/scsocialstream/default/twitter.php</filename>
+    </media>
+    <files folder="frontend">
+        <filename>autoloader.php</filename>
+        <filename>controller.php</filename>
+        <filename>jfbconnect.php</filename>
+        <filename>assets/poweredBy.php</filename>
+        <filename>controllers/ajax.php</filename>
+        <filename>controllers/authenticate.php</filename>
+        <filename>controllers/login.php</filename>
+        <filename>controllers/loginregister.php</filename>
+        <filename>controllers/opengraph.php</filename>
+        <filename>controllers/request.php</filename>
+        <filename>controllers/social.php</filename>
+        <filename>includes/jfbconnect.js</filename>
+        <filename>libraries/cache.php</filename>
+        <filename>libraries/facebook.php</filename>
+        <filename>libraries/factory.php</filename>
+        <filename>libraries/point.php</filename>
+        <filename>libraries/profile.php</filename>
+        <filename>libraries/provider.php</filename>
+        <filename>libraries/stream.php</filename>
+        <filename>libraries/toolbar.php</filename>
+        <filename>libraries/widget.php</filename>
+        <filename>libraries/joomla/oauth1/client.php</filename>
+        <filename>libraries/authentication/oauth2.php</filename>
+        <filename>libraries/authentication/oauth2base.php</filename>
+        <filename>libraries/channel.php</filename>
+        <filename>libraries/profile/amazon.php</filename>
+        <filename>libraries/profile/facebook.php</filename>
+        <filename>libraries/profile/github.php</filename>
+        <filename>libraries/profile/google.php</filename>
+        <filename>libraries/profile/instagram.php</filename>
+        <filename>libraries/profile/linkedin.php</filename>
+        <filename>libraries/profile/meetup.php</filename>
+        <filename>libraries/profile/twitter.php</filename>
+        <filename>libraries/profile/vk.php</filename>
+        <filename>libraries/profile/windowslive.php</filename>
+        <filename>libraries/provider/amazon.php</filename>
+        <filename>libraries/provider/facebook.php</filename>
+        <filename>libraries/provider/github.php</filename>
+        <filename>libraries/provider/google.php</filename>
+        <filename>libraries/provider/instagram.php</filename>
+        <filename>libraries/provider/linkedin.php</filename>
+        <filename>libraries/provider/meetup.php</filename>
+        <filename>libraries/provider/twitter.php</filename>
+        <filename>libraries/provider/vk.php</filename>
+        <filename>libraries/provider/windowslive.php</filename>
+        <filename>libraries/provider/amazon/widget.php</filename>
+        <filename>libraries/provider/amazon/config/config.xml</filename>
+        <filename>libraries/provider/amazon/fields/amazoncategory.php</filename>
+        <filename>libraries/provider/amazon/fields/themeoverride.php</filename>
+        <filename>libraries/provider/amazon/widget/login.php</filename>
+        <filename>libraries/provider/amazon/widget/login.xml</filename>
+        <filename>libraries/provider/amazon/widget/carousel.php</filename>
+        <filename>libraries/provider/amazon/widget/carousel.xml</filename>
+        <filename>libraries/provider/amazon/widget/mp3clips.php</filename>
+        <filename>libraries/provider/amazon/widget/mp3clips.xml</filename>
+        <filename>libraries/provider/amazon/widget/myfavorites.php</filename>
+        <filename>libraries/provider/amazon/widget/myfavorites.xml</filename>
+        <filename>libraries/provider/amazon/widget/omakase.php</filename>
+        <filename>libraries/provider/amazon/widget/omakase.xml</filename>
+        <filename>libraries/provider/amazon/widget/search.php</filename>
+        <filename>libraries/provider/amazon/widget/search.xml</filename>
+        <filename>libraries/provider/facebook/canvas.php</filename>
+        <filename>libraries/provider/facebook/request.php</filename>
+        <filename>libraries/provider/facebook/channel/page.php</filename>
+        <filename>libraries/provider/facebook/channel/page_outbound.xml</filename>
+        <filename>libraries/provider/facebook/channel/group.php</filename>
+        <filename>libraries/provider/facebook/channel/group_outbound.xml</filename>
+        <filename>libraries/provider/facebook/channel/fields/facebookpagelist.php</filename>
+        <filename>libraries/provider/facebook/channel/fields/facebookgrouplist.php</filename>
+        <filename>libraries/provider/facebook/config/config.xml</filename>
+        <filename>libraries/provider/facebook/widget.php</filename>
+        <filename>libraries/provider/facebook/widget/action.php</filename>
+        <filename>libraries/provider/facebook/widget/action.xml</filename>
+        <filename>libraries/provider/facebook/widget/comments.php</filename>
+        <filename>libraries/provider/facebook/widget/comments.xml</filename>
+        <filename>libraries/provider/facebook/widget/commentscount.php</filename>
+        <filename>libraries/provider/facebook/widget/commentscount.xml</filename>
+        <filename>libraries/provider/facebook/widget/embeddedposts.php</filename>
+        <filename>libraries/provider/facebook/widget/embeddedposts.xml</filename>
+        <filename>libraries/provider/facebook/widget/facepile.php</filename>
+        <filename>libraries/provider/facebook/widget/facepile.xml</filename>
+        <filename>libraries/provider/facebook/widget/feed.php</filename>
+        <filename>libraries/provider/facebook/widget/feed.xml</filename>
+        <filename>libraries/provider/facebook/widget/follow.php</filename>
+        <filename>libraries/provider/facebook/widget/follow.xml</filename>
+        <filename>libraries/provider/facebook/widget/like.php</filename>
+        <filename>libraries/provider/facebook/widget/like.xml</filename>
+        <filename>libraries/provider/facebook/widget/likebox.php</filename>
+        <filename>libraries/provider/facebook/widget/likebox.xml</filename>
+        <filename>libraries/provider/facebook/widget/login.php</filename>
+        <filename>libraries/provider/facebook/widget/login.xml</filename>
+        <filename>libraries/provider/facebook/widget/recommendations.php</filename>
+        <filename>libraries/provider/facebook/widget/recommendations.xml</filename>
+        <filename>libraries/provider/facebook/widget/request.php</filename>
+        <filename>libraries/provider/facebook/widget/request.xml</filename>
+        <filename>libraries/provider/facebook/widget/send.php</filename>
+        <filename>libraries/provider/facebook/widget/send.xml</filename>
+        <filename>libraries/provider/facebook/widget/share.php</filename>
+        <filename>libraries/provider/facebook/widget/share.xml</filename>
+        <filename>libraries/provider/facebook/widget/sharedactivity.php</filename>
+        <filename>libraries/provider/facebook/widget/sharedactivity.xml</filename>
+        <filename>libraries/provider/github/config/config.xml</filename>
+        <filename>libraries/provider/github/widget/login.php</filename>
+        <filename>libraries/provider/github/widget/login.xml</filename>
+        <filename>libraries/provider/google/config/config.xml</filename>
+        <filename>libraries/provider/google/widget/communitybadge.php</filename>
+        <filename>libraries/provider/google/widget/communitybadge.xml</filename>
+        <filename>libraries/provider/google/widget/embeddedposts.php</filename>
+        <filename>libraries/provider/google/widget/embeddedposts.xml</filename>
+        <filename>libraries/provider/google/widget/follow.php</filename>
+        <filename>libraries/provider/google/widget/follow.xml</filename>
+        <filename>libraries/provider/google/widget/hangout.php</filename>
+        <filename>libraries/provider/google/widget/hangout.xml</filename>
+        <filename>libraries/provider/google/widget/login.php</filename>
+        <filename>libraries/provider/google/widget/login.xml</filename>
+        <filename>libraries/provider/google/widget/pagebadge.php</filename>
+        <filename>libraries/provider/google/widget/pagebadge.xml</filename>
+        <filename>libraries/provider/google/widget/personbadge.php</filename>
+        <filename>libraries/provider/google/widget/personbadge.xml</filename>
+        <filename>libraries/provider/google/widget/plusone.php</filename>
+        <filename>libraries/provider/google/widget/plusone.xml</filename>
+        <filename>libraries/provider/instagram/config/config.xml</filename>
+        <filename>libraries/provider/instagram/widget/login.php</filename>
+        <filename>libraries/provider/instagram/widget/login.xml</filename>
+        <filename>libraries/provider/instagram/widget/oembed.php</filename>
+        <filename>libraries/provider/instagram/widget/oembed.xml</filename>
+        <filename>libraries/provider/linkedin/channel/company.php</filename>
+        <filename>libraries/provider/linkedin/channel/company_outbound.xml</filename>
+        <filename>libraries/provider/linkedin/channel/fields/linkedincompanylist.php</filename>
+        <filename>libraries/provider/linkedin/config/config.xml</filename>
+        <filename>libraries/provider/linkedin/config/fields/jlinkedmigrator.php</filename>
+        <filename>libraries/provider/linkedin/widget/alumni.php</filename>
+        <filename>libraries/provider/linkedin/widget/alumni.xml</filename>
+        <filename>libraries/provider/linkedin/widget/companyinsider.php</filename>
+        <filename>libraries/provider/linkedin/widget/companyinsider.xml</filename>
+        <filename>libraries/provider/linkedin/widget/companyprofile.php</filename>
+        <filename>libraries/provider/linkedin/widget/companyprofile.xml</filename>
+        <filename>libraries/provider/linkedin/widget/followcompany.php</filename>
+        <filename>libraries/provider/linkedin/widget/followcompany.xml</filename>
+        <filename>libraries/provider/linkedin/widget/jobs.php</filename>
+        <filename>libraries/provider/linkedin/widget/jobs.xml</filename>
+        <filename>libraries/provider/linkedin/widget/login.php</filename>
+        <filename>libraries/provider/linkedin/widget/login.xml</filename>
+        <filename>libraries/provider/linkedin/widget/member.php</filename>
+        <filename>libraries/provider/linkedin/widget/member.xml</filename>
+        <filename>libraries/provider/linkedin/widget/recommend.php</filename>
+        <filename>libraries/provider/linkedin/widget/recommend.xml</filename>
+        <filename>libraries/provider/linkedin/widget/share.php</filename>
+        <filename>libraries/provider/linkedin/widget/share.xml</filename>
+        <filename>libraries/provider/meetup/widget.php</filename>
+        <filename>libraries/provider/meetup/config/config.xml</filename>
+        <filename>libraries/provider/meetup/widget/everywherebadge.php</filename>
+        <filename>libraries/provider/meetup/widget/everywherebadge.xml</filename>
+        <filename>libraries/provider/meetup/widget/everywherebasicstats.php</filename>
+        <filename>libraries/provider/meetup/widget/everywherebasicstats.xml</filename>
+        <filename>libraries/provider/meetup/widget/everywherecomments.php</filename>
+        <filename>libraries/provider/meetup/widget/everywherecomments.xml</filename>
+        <filename>libraries/provider/meetup/widget/groupstats.php</filename>
+        <filename>libraries/provider/meetup/widget/groupstats.xml</filename>
+        <filename>libraries/provider/meetup/widget/login.php</filename>
+        <filename>libraries/provider/meetup/widget/login.xml</filename>
+        <filename>libraries/provider/meetup/widget/oembed.php</filename>
+        <filename>libraries/provider/meetup/widget/oembed.xml</filename>
+        <filename>libraries/provider/meetup/widget/sponsoredgroups.php</filename>
+        <filename>libraries/provider/meetup/widget/sponsoredgroups.xml</filename>
+        <filename>libraries/provider/pinterest/widget.php</filename>
+        <filename>libraries/provider/pinterest/widget/share.php</filename>
+        <filename>libraries/provider/pinterest/widget/share.xml</filename>
+        <filename>libraries/provider/twitter/oauth1.php</filename>
+        <filename>libraries/provider/twitter/channel/stream.php</filename>
+        <filename>libraries/provider/twitter/channel/stream_outbound.xml</filename>
+        <filename>libraries/provider/twitter/config/config.xml</filename>
+        <filename>libraries/provider/twitter/widget/follow.php</filename>
+        <filename>libraries/provider/twitter/widget/follow.xml</filename>
+        <filename>libraries/provider/twitter/widget/hashtag.php</filename>
+        <filename>libraries/provider/twitter/widget/hashtag.xml</filename>
+        <filename>libraries/provider/twitter/widget/login.php</filename>
+        <filename>libraries/provider/twitter/widget/login.xml</filename>
+        <filename>libraries/provider/twitter/widget/mention.php</filename>
+        <filename>libraries/provider/twitter/widget/mention.xml</filename>
+        <filename>libraries/provider/twitter/widget/oembed.php</filename>
+        <filename>libraries/provider/twitter/widget/oembed.xml</filename>
+        <filename>libraries/provider/twitter/widget/share.php</filename>
+        <filename>libraries/provider/twitter/widget/share.xml</filename>
+        <filename>libraries/provider/vk/config/config.xml</filename>
+        <filename>libraries/provider/vk/widget/login.php</filename>
+        <filename>libraries/provider/vk/widget/login.xml</filename>
+        <filename>libraries/provider/windowslive/config/config.xml</filename>
+        <filename>libraries/provider/windowslive/widget/login.php</filename>
+        <filename>libraries/provider/windowslive/widget/login.xml</filename>
+        <filename>libraries/toolbar/button.php</filename>
+        <filename>libraries/toolbar/button/close.php</filename>
+        <filename>libraries/toolbar/button/meta.php</filename>
+        <filename>libraries/toolbar/button/post.php</filename>
+        <filename>libraries/toolbar/button/preview.php</filename>
+        <filename>libraries/widget/login.php</filename>
+        <filename>libraries/widget/oembed.php</filename>
+        <filename>models/channel.php</filename>
+        <filename>models/loginregister.php</filename>
+        <filename>models/notification.php</filename>
+        <filename>models/opengraphaction.php</filename>
+        <filename>models/opengraphactivity.php</filename>
+        <filename>models/opengraphobject.php</filename>
+        <filename>models/request.php</filename>
+        <filename>views/loginregister/metadata.xml</filename>
+        <filename>views/loginregister/view.html.php</filename>
+        <filename>views/loginregister/tmpl/default.php</filename>
+        <filename>views/loginregister/tmpl/default.xml</filename>
+        <filename>views/loginregister/tmpl/loginregister.css</filename>
+        <filename>views/opengraph/metadata.xml</filename>
+        <filename>views/opengraph/view.html.php</filename>
+        <filename>views/opengraph/tmpl/activity.php</filename>
+        <filename>views/opengraph/tmpl/activity.xml</filename>
+        <filename>views/opengraph/tmpl/settings.php</filename>
+        <filename>views/opengraph/tmpl/settings.xml</filename>
+    </files>
+    <languages folder="translations/frontend">
+        <language tag="ar-AA">ar-AA.com_jfbconnect.ini</language>
+        <language tag="ca-ES">ca-ES.com_jfbconnect.ini</language>
+        <language tag="cs-CZ">cs-CZ.com_jfbconnect.ini</language>
+        <language tag="de-DE">de-DE.com_jfbconnect.ini</language>
+        <language tag="el-GR">el-GR.com_jfbconnect.ini</language>
+        <language tag="en-GB">en-GB.com_jfbconnect.ini</language>
+        <language tag="es-ES">es-ES.com_jfbconnect.ini</language>
+        <language tag="fr-FR">fr-FR.com_jfbconnect.ini</language>
+        <language tag="he-IL">he-IL.com_jfbconnect.ini</language>
+        <language tag="hu-HU">hu-HU.com_jfbconnect.ini</language>
+        <language tag="it-IT">it-IT.com_jfbconnect.ini</language>
+        <language tag="lt-LT">lt-LT.com_jfbconnect.ini</language>
+        <language tag="nl-NL">nl-NL.com_jfbconnect.ini</language>
+        <language tag="pl-PL">pl-PL.com_jfbconnect.ini</language>
+        <language tag="pt-BR">pt-BR.com_jfbconnect.ini</language>
+        <language tag="pt-PT">pt-PT.com_jfbconnect.ini</language>
+        <language tag="ro-RO">ro-RO.com_jfbconnect.ini</language>
+        <language tag="ru-RU">ru-RU.com_jfbconnect.ini</language>
+        <language tag="sv-SE">sv-SE.com_jfbconnect.ini</language>
+        <language tag="tr-TR">tr-TR.com_jfbconnect.ini</language>
+        <language tag="vi-VN">vi-VN.com_jfbconnect.ini</language>
+        <language tag="zh-TW">zh-TW.com_jfbconnect.ini</language>
+    </languages>
+    <administration>
+        <menu img="components/com_jfbconnect/assets/images/jfbconn_icon.png">COM_JFBCONNECT</menu>
+        <submenu>
+            <menu view="jfbconnect" alt="COM_JFBCONNECT_JFBCONNECT">COM_JFBCONNECT_MENU_OVERVIEW</menu>
+            <menu view="config" img="components/com_jfbconnect/assets/images/16/icon-16-config2-sc.png" alt="COM_JFBCONNECT_MENU_CONFIGURATION">COM_JFBCONNECT_MENU_CONFIGURATION</menu>
+            <menu view="opengraph" img="components/com_jfbconnect/assets/images/16/icon-16-opengraph-sc.png" alt="COM_JFBCONNECT_MENU_OPENGRAPH">COM_JFBCONNECT_MENU_OPENGRAPH</menu>
+            <menu view="channels" img="components/com_jfbconnect/assets/images/16/icon-16-channels-sc.png" alt="COM_JFBCONNECT_MENU_CHANNELS">COM_JFBCONNECT_MENU_CHANNELS</menu>
+            <menu view="social" img="components/com_jfbconnect/assets/images/16/icon-16-social-sc.png" alt="COM_JFBCONNECT_MENU_SOCIAL">COM_JFBCONNECT_MENU_SOCIAL</menu>
+            <menu view="canvas" img="components/com_jfbconnect/assets/images/16/icon-16-pagetab-sc.png" alt="COM_JFBCONNECT_MENU_CANVAS">COM_JFBCONNECT_MENU_CANVAS</menu>
+            <menu view="request" img="components/com_jfbconnect/assets/images/16/icon-16-requests-sc.png" alt="COM_JFBCONNECT_MENU_REQUESTS">COM_JFBCONNECT_MENU_REQUESTS</menu>
+            <menu view="profiles" img="components/com_jfbconnect/assets/images/16/icon-16-profiles-sc.png" alt="COM_JFBCONNECT_MENU_PROFILES">COM_JFBCONNECT_MENU_PROFILES</menu>
+            <menu view="usermap" img="components/com_jfbconnect/assets/images/16/icon-16-usermap-sc.png" alt="COM_JFBCONNECT_MENU_USER_MAP">COM_JFBCONNECT_MENU_USER_MAP</menu>
+        </submenu>
+        <files folder="administrator">
+            <file>access.xml</file>
+            <file>config.xml</file>
+            <file>install/sql/updates/4.1.0.mysql.sql</file>
+            <file>install/sql/updates/4.2.0.mysql.sql</file>
+            <file>install/sql/updates/4.3.0.mysql.sql</file>
+            <file>install/sql/updates/5.1.0.mysql.sql</file>
+            <file>install/sql/updates/6.0.0.mysql.sql</file>
+            <file>install/sql/updates/6.0.0.postgre.sql</file>
+            <file>install/sql/updates/6.1.0.mysql.sql</file>
+            <file>install/sql/updates/6.1.0.postgre.sql</file>
+            <file>install/sql/updates/6.2.0.mysql.sql</file>
+            <file>install/sql/updates/6.2.0.postgre.sql</file>
+            <file>install/sql/install.jfbconnect.sql</file>
+            <file>install/sql/install.jfbconnect.postgre.sql</file>
+            <file>jfbconnect.php</file>
+            <file>controller.php</file>
+            <file>assets/css/default.css</file>
+            <file>assets/jfbconnect-admin.js</file>
+            <file>assets/sourcecoast.php</file>
+            <file>assets/js/jfbcadmin-template.js</file>
+            <file>assets/facebook-api/facebook.php</file>
+            <file>assets/facebook-api/base_facebook.php</file>
+            <file>assets/facebook-api/fb_ca_chain_bundle.crt</file>
+            <file>assets/footer/footer.php</file>
+            <file>assets/footer/SourceCoast_Logo.png</file>
+            <file>assets/images/jfbconn.png</file>
+            <file>assets/images/jfbconn_icon.png</file>
+            <file>assets/images/jfbconn_icon48.png</file>
+            <file>assets/images/icon-16-allow.png</file>
+            <file>assets/images/icon-16-deny.png</file>
+            <file>assets/images/icon-16-notice-note.png</file>
+            <file>assets/images/icon-32-refresh.png</file>
+            <file>assets/images/icon-32-opengraph.png</file>
+            <file>assets/images/icon-48-config.png</file>
+            <file>assets/images/icon-48-action-sc.png</file>
+            <file>assets/images/icon-48-activity-sc.png</file>
+            <file>assets/images/icon-48-object-sc.png</file>
+            <file>assets/images/icon-48-config-sc.png</file>
+            <file>assets/images/icon-48-config2-sc.png</file>
+            <file>assets/images/icon-48-social-sc.png</file>
+            <file>assets/images/icon-48-profiles-sc.png</file>
+            <file>assets/images/icon-48-usermap-sc.png</file>
+            <file>assets/images/icon-48-channels-sc.png</file>
+            <file>assets/images/icon-48-opengraph-sc.png</file>
+            <file>assets/images/icon-48-pagetab-sc.png</file>
+            <file>assets/images/icon-48-requests-sc.png</file>
+            <file>assets/images/icon-48-autotune-sc.png</file>
+            <file>assets/images/icon-48-updates-sc.png</file>
+            <file>assets/images/icon-48-support.png</file>
+            <file>assets/images/open-graph-example.png</file>
+            <file>assets/images/16/icon-16-usermap-sc.png</file>
+            <file>assets/images/16/icon-16-profiles-sc.png</file>
+            <file>assets/images/16/icon-16-requests-sc.png</file>
+            <file>assets/images/16/icon-16-pagetab-sc.png</file>
+            <file>assets/images/16/icon-16-social-sc.png</file>
+            <file>assets/images/16/icon-16-channels-sc.png</file>
+            <file>assets/images/16/icon-16-opengraph-sc.png</file>
+            <file>assets/images/16/icon-16-config2-sc.png</file>
+            <file>controllers/ajax.php</file>
+            <file>controllers/autotune.php</file>
+            <file>controllers/canvas.php</file>
+            <file>controllers/channel.php</file>
+            <file>controllers/channels.php</file>
+            <file>controllers/config.php</file>
+            <file>controllers/notification.php</file>
+            <file>controllers/opengraph.php</file>
+            <file>controllers/profiles.php</file>
+            <file>controllers/request.php</file>
+            <file>controllers/social.php</file>
+            <file>controllers/updates.php</file>
+            <file>controllers/usermap.php</file>
+            <file>includes/views.php</file>
+            <file>helpers/migrator/jlinked.php</file>
+            <file>models/autotune.php</file>
+            <file>models/channel.php</file>
+            <file>models/channels.php</file>
+            <file>models/config.php</file>
+            <file>models/notification.php</file>
+            <file>models/opengraphaction.php</file>
+            <file>models/opengraphactivity.php</file>
+            <file>models/opengraphobject.php</file>
+            <file>models/request.php</file>
+            <file>models/updates.php</file>
+            <file>models/usermap.php</file>
+            <file>models/fields/channeloutboundproviders.php</file>
+            <file>models/fields/channeloutboundtypes.php</file>
+            <file>models/fields/providerloginbutton.php</file>
+            <file>models/fields/buttonstype.php</file>
+            <file>models/fields/socialbuttons.php</file>
+            <file>models/fields/socialprofileregistration.php</file>
+            <file>models/forms/config.xml</file>
+            <file>models/forms/channeledit.xml</file>
+            <file>tables/config.php</file>
+            <file>tables/channel.php</file>
+            <file>tables/jfbconnectnotification.php</file>
+            <file>tables/jfbconnectopengraphaction.php</file>
+            <file>tables/jfbconnectopengraphobject.php</file>
+            <file>tables/jfbconnectrequest.php</file>
+            <file>tables/usermap.php</file>
+            <file>views/autotune/view.html.php</file>
+            <file>views/autotune/tmpl/basicinfo.php</file>
+            <file>views/autotune/tmpl/default.php</file>
+            <file>views/autotune/tmpl/errors.php</file>
+            <file>views/autotune/tmpl/fbapp.php</file>
+            <file>views/autotune/tmpl/fbappnew.php</file>
+            <file>views/autotune/tmpl/finish.php</file>
+            <file>views/autotune/tmpl/siteconfig.php</file>
+            <file>views/autotune/tmpl/step_sidebar.php</file>
+            <file>views/autotune/tmpl/subscription_status.php</file>
+            <file>views/config/view.html.php</file>
+            <file>views/config/tmpl/default.php</file>
+            <file>views/canvas/view.html.php</file>
+            <file>views/canvas/tmpl/default.php</file>
+            <file>views/channel/view.html.php</file>
+            <file>views/channel/tmpl/edit.php</file>
+            <file>views/channels/view.html.php</file>
+            <file>views/channels/tmpl/default.php</file>
+            <file>views/jfbconnect/view.html.php</file>
+            <file>views/jfbconnect/tmpl/default.php</file>
+            <file>views/opengraph/view.html.php</file>
+            <file>views/opengraph/tmpl/actioncreate.php</file>
+            <file>views/opengraph/tmpl/actionedit.php</file>
+            <file>views/opengraph/tmpl/actions.php</file>
+            <file>views/opengraph/tmpl/activitylist.php</file>
+            <file>views/opengraph/tmpl/default.php</file>
+            <file>views/opengraph/tmpl/objectcreate.php</file>
+            <file>views/opengraph/tmpl/objectedit.php</file>
+            <file>views/opengraph/tmpl/objects.php</file>
+            <file>views/opengraph/tmpl/settings.php</file>
+            <file>views/notification/view.html.php</file>
+            <file>views/notification/tmpl/default.php</file>
+            <file>views/profiles/view.html.php</file>
+            <file>views/profiles/tmpl/default.php</file>
+            <file>views/request/view.html.php</file>
+            <file>views/request/tmpl/default.php</file>
+            <file>views/request/tmpl/edit.php</file>
+            <file>views/request/tmpl/send.php</file>
+            <file>views/social/view.html.php</file>
+            <file>views/social/tmpl/default.php</file>
+            <file>views/social/tmpl/examples.php</file>
+            <file>views/updates/view.html.php</file>
+            <file>views/updates/tmpl/default.php</file>
+            <file>views/usermap/view.html.php</file>
+            <file>views/usermap/tmpl/list.php</file>
+            <file>views/usermap/tmpl/select_request.php</file>
+        </files>
+        <languages folder="translations/backend">
+            <language tag="ar-AA">ar-AA.com_jfbconnect.sys.ini</language>
+            <language tag="ar-AA">ar-AA.com_jfbconnect.ini</language>
+            <language tag="ca-ES">ca-ES.com_jfbconnect.sys.ini</language>
+            <language tag="ca-ES">ca-ES.com_jfbconnect.ini</language>
+            <language tag="cs-CZ">cs-CZ.com_jfbconnect.sys.ini</language>
+            <language tag="cs-CZ">cs-CZ.com_jfbconnect.ini</language>
+            <language tag="de-DE">de-DE.com_jfbconnect.sys.ini</language>
+            <language tag="de-DE">de-DE.com_jfbconnect.ini</language>
+            <language tag="el-GR">el-GR.com_jfbconnect.sys.ini</language>
+            <language tag="en-GB">en-GB.com_jfbconnect.sys.ini</language>
+            <language tag="en-GB">en-GB.com_jfbconnect.ini</language>
+            <language tag="es-ES">es-ES.com_jfbconnect.sys.ini</language>
+            <language tag="es-ES">es-ES.com_jfbconnect.ini</language>
+            <language tag="fr-FR">fr-FR.com_jfbconnect.sys.ini</language>
+            <language tag="he-IL">he-IL.com_jfbconnect.sys.ini</language>
+            <language tag="hu-HU">hu-HU.com_jfbconnect.sys.ini</language>
+            <language tag="it-IT">it-IT.com_jfbconnect.sys.ini</language>
+            <language tag="it-IT">it-IT.com_jfbconnect.ini</language>
+            <language tag="lt-LT">lt-LT.com_jfbconnect.sys.ini</language>
+            <language tag="lt-LT">lt-LT.com_jfbconnect.ini</language>
+            <language tag="nb-NO">nb-NO.com_jfbconnect.sys.ini</language>
+            <language tag="nl-NL">nl-NL.com_jfbconnect.sys.ini</language>
+            <language tag="nl-NL">nl-NL.com_jfbconnect.ini</language>
+            <language tag="pl-PL">pl-PL.com_jfbconnect.sys.ini</language>
+            <language tag="pl-PL">pl-PL.com_jfbconnect.ini</language>
+            <language tag="pt-BR">pt-BR.com_jfbconnect.sys.ini</language>
+            <language tag="pt-BR">pt-BR.com_jfbconnect.ini</language>
+            <language tag="pt-PT">pt-PT.com_jfbconnect.sys.ini</language>
+            <language tag="pt-PT">pt-PT.com_jfbconnect.ini</language>
+            <language tag="ro-RO">ro-RO.com_jfbconnect.sys.ini</language>
+            <language tag="ro-RO">ro-RO.com_jfbconnect.ini</language>
+            <language tag="ru-RU">ru-RU.com_jfbconnect.sys.ini</language>
+            <language tag="ru-RU">ru-RU.com_jfbconnect.ini</language>
+            <language tag="sv-SE">sv-SE.com_jfbconnect.sys.ini</language>
+            <language tag="sv-SE">sv-SE.com_jfbconnect.ini</language>
+            <language tag="tr-TR">tr-TR.com_jfbconnect.sys.ini</language>
+            <language tag="tr-TR">tr-TR.com_jfbconnect.ini</language>
+            <language tag="vi-VN">vi-VN.com_jfbconnect.sys.ini</language>
+            <language tag="vi-VN">vi-VN.com_jfbconnect.ini</language>
+            <language tag="zh-TW">zh-TW.com_jfbconnect.sys.ini</language>
+            <language tag="zh-TW">zh-TW.com_jfbconnect.ini</language>
+        </languages>
+    </administration>
+    <updateservers>
+        <server type="extension" priority="1" name="JFBConnect Updates"><![CDATA[http://www.sourcecoast.com/updates/jfbconnect.xml]]></server>
+    </updateservers>
+</extension>

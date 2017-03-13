@@ -475,6 +475,19 @@
 .mod_menu.homeverticalmenutag .device-xxxs-to-xxs .container-home-page .container-content {
   margin-left: 13px;
   padding: 5px 5px 5px 0px;
+  min-height: 60px;
+}
+.mod_menu.homeverticalmenutag .device-xxxs-to-xxs .container-home-page .container-content .wrapper-loading {
+  position: relative !important;
+}
+.mod_menu.homeverticalmenutag .device-xxxs-to-xxs .container-home-page .container-content .wrapper-loading .background {
+  background: none !important;
+  position: relative !important;
+}
+.mod_menu.homeverticalmenutag .device-xxxs-to-xxs .container-home-page .container-content .wrapper-loading .background .bho88loading {
+  position: relative !important;
+  left: auto !important;
+  margin: 0 auto !important;
 }
 .mod_menu.homeverticalmenutag .device-xxxs-to-xxs .container-home-page .container-content .mCSB_container_wrapper {
   margin-right: 5px;

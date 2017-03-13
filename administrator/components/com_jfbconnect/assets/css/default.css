@@ -1,0 +1,300 @@
+.icon-48-jfbconnect {
+    background-image:url('../images/jfbconn_icon48.png');
+}
+
+.toolbar .icon-32-config {
+    background-image:url('../images/icon-48-config.png');
+    background-size:32px 32px;
+}
+
+.icon-32-refresh {
+    background-image:url('../images/icon-32-refresh.png');
+}
+
+.icon-32-opengraph {
+    background-image:url('../images/icon-32-opengraph.png');
+}
+
+div.header.icon-48-jfbconnect {
+    padding-left:85px;
+}
+
+.config_setting {
+    float:left;
+    width:235px;
+}
+
+.sourcecoast #adminForm #social_notifications .config_setting {
+    width: 300px;
+}
+
+.sourcecoast.channel .config_setting {
+    width: 150px;
+}
+
+.sourcecoast #adminForm select {
+    width:150px;
+}
+
+.sourcecoast #adminForm select.input-large {
+    width: 210px;
+}
+
+.sourcecoast.channel #adminForm select {
+    width:200px;
+}
+
+.sourcecoast #adminForm #social_content_comment,
+.sourcecoast #adminForm #social_content_like,
+.sourcecoast #adminForm #social_content_k2_comment,
+.sourcecoast #adminForm #social_content_k2_like,
+.sourcecoast #adminForm #social_notifications,
+.sourcecoast #adminForm #social_misc,
+.sourcecoast #adminForm #social_examples {
+    background-color: #FFF;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    padding: 19px;
+    margin-bottom: 20px;
+}
+
+.sourcecoast #adminForm #social_content_comment .config_setting,
+.sourcecoast #adminForm #social_content_like .config_setting,
+.sourcecoast #adminForm #social_content_k2_comment .config_setting,
+.sourcecoast #adminForm #social_content_k2_like .config_setting,
+.sourcecoast #adminForm #social_notifications .config_setting,
+.sourcecoast #adminForm #social_misc .config_setting,
+.sourcecoast #adminForm #social_examples .config_setting {
+    font-size: 14px;
+}
+
+.sourcecoast #adminForm #social_content_comment .header,
+.sourcecoast #adminForm #social_content_like .header,
+.sourcecoast #adminForm #social_content_k2_comment .header,
+.sourcecoast #adminForm #social_content_k2_like .header,
+.sourcecoast #adminForm #social_notifications .header,
+.sourcecoast #adminForm #social_misc .header,
+.sourcecoast #adminForm #social_examples .header {
+    font-size:21px;
+    line-height:40px;
+    border-bottom: 1px solid #E5E5E5;
+    font-weight: bold;
+}
+
+div.config_option {
+    float:left;
+    width:350px;
+}
+
+div.config_setting_option {
+    float:left;
+    width:550px;
+}
+
+div.config_option fieldset {
+    border:0px;
+    margin:0px;
+    padding:0px;
+}
+
+div .control-group {
+    clear:left;
+}
+div.config_description {
+    float:left;
+    width:325px;
+    margin-left:10px;
+}
+
+div.config_setting.header,
+div.config_option.header,
+div.config_description.header,
+div.config_setting_option.header,
+.config_row div.header {
+    font-weight:bold;
+    font-size:12px;
+    margin-left:0px;
+    padding-left:0px;
+    line-height:20px;
+    background:none;
+}
+
+.config_row {
+    margin-bottom:10px;
+}
+
+table.options {
+    border-width:0px;
+    border-spacing:0px;
+    border-style:none;
+    border-color:gray;
+    border-collapse:collapse;
+    background-color:#F0F0F0;
+}
+
+table.options th {
+    border-width:1px;
+    padding:5px;
+    border-style:solid;
+    border-color:gray;
+    background-color:#F1F1F1;
+    -moz-border-radius:0px 0px 0px 0px;
+}
+
+table.options td {
+    border-width:1px;
+    padding:5px;
+    border-style:solid;
+    border-color:gray;
+    -moz-border-radius:0px 0px 0px 0px;
+}
+
+table.options td.even {
+    background-color:#F9F9F9;
+}
+
+table.options td.odd {
+    background-color:#F1F1F1;
+}
+
+div.autotune,
+div.autotune p,
+div.autotune ul,
+div.autotune ol,
+div.autotune .config_row div.header {
+    font-size:13px;
+}
+
+.active span.autotuneGood,
+.active span.autotuneBad {
+    color:#FFFFFF;
+}
+
+.autotuneGood {
+    color:#00AA00;
+}
+
+.autotuneBad, .jfbc-error {
+    color:#BB0000;
+    font-weight:bold;
+}
+
+.autotune ul.nav-stacked {
+  padding:0;
+}
+
+/*
+JFBConnect 5.1
+*/
+
+.jfbcControlIcons {
+    clear:both;
+    margin:-1px 0 8px;
+    position:relative;
+    z-index:8;
+}
+
+.jfbcControlIcons.k2NoLogo {
+    margin:0 0 8px;
+    padding:0;
+    border:none;
+}
+
+.jfbcControlIcons div.icon-wrapper {
+    float:left;
+    display:block !important;
+    width:auto !important;
+    height:auto !important;
+    line-height:12px !important;
+    background:none;
+}
+
+.jfbcControlIcons div.icon {
+    text-align:center;
+    margin-right:15px;
+    float:left;
+    margin-bottom:15px;
+}
+
+.jfbcControlIcons div.icon a {
+    background-color:#fff;
+    background-position:-30px;
+    display:block;
+    float:left;
+    height:97px;
+    width:108px;
+    color:#565656;
+    vertical-align:middle;
+    text-decoration:none;
+    border:1px solid #CCC;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
+    -webkit-transition-property:background-position, 0 0;
+    -moz-transition-property:background-position, 0 0;
+    -webkit-transition-duration:.8s;
+    -moz-transition-duration:.8s;
+}
+
+.jfbcControlIcons div.icon a:hover {
+    background-position:0;
+    -webkit-border-bottom-left-radius:50% 20px;
+    -moz-border-radius-bottomleft:50% 20px;
+    border-bottom-left-radius:50% 20px;
+    -webkit-box-shadow:-5px 10px 15px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow:-5px 10px 15px rgba(0, 0, 0, 0.25);
+    box-shadow:-5px 10px 15px rgba(0, 0, 0, 0.25);
+    position:relative;
+    z-index:10;
+}
+
+.jfbcControlIcons div.icon a img {
+    padding:10px 0;
+    margin:0 auto;
+}
+
+.jfbcControlIcons div.icon a span {
+    display:block;
+    text-align:center;
+}
+
+.sourcecoast .radio.btn-group input[type="radio"] {
+    display:none;
+}
+
+.sourcecoast fieldset.radio label {
+    margin:0 !important;
+    float:left;
+    clear:none;
+}
+
+.sourcecoast .radio.btn-group > label:first-of-type {
+    border-top-left-radius:4px;
+    border-bottom-left-radius:4px;
+    -webkit-border-top-left-radius:4px;
+    -webkit-border-bottom-left-radius:4px;
+}
+
+.sourcecoast .radio {
+    padding-left:0px !important;
+}
+
+.tip-wrap {
+    z-index:50;
+}
+
+.sourcecoast .pane-slider {
+    padding:10px;
+}
+
+.sourcecoast .form-horizontal .controls.login-button {
+    margin-left: 0px;
+}
+
+.sourcecoast .controls.login-button input[type="radio"] {
+    margin: 10px 5px 0px 5px;
+}
+
+.sourcecoast .login-button .providername {
+    display:none;
+}

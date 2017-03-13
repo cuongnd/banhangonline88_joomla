@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="params">
+        <fields name="widget_settings">
+            <fieldset name="widget_settings">
+                <field name="href" type="text" label="COM_JFBCONNECT_WIDGET_GOOGLE_FOLLOW_HREF_LABEL" description="COM_JFBCONNECT_WIDGET_GOOGLE_FOLLOW_HREF_DESCRIPTION" />
+                <field name="annotation" type="list" default="bubble" label="COM_JFBCONNECT_WIDGET_GOOGLE_FOLLOW_ANNOTATION_LABEL" description="COM_JFBCONNECT_WIDGET_GOOGLE_FOLLOW_ANNOTATION_DESCRIPTION">
+                    <option value="none">COM_JFBCONNECT_WIDGET_GOOGLE_FOLLOW_ANNOTATION_OPTION_NONE</option>
+                    <option value="bubble">COM_JFBCONNECT_WIDGET_GOOGLE_FOLLOW_ANNOTATION_OPTION_BUBBLE</option> 
+                    <option value="vertical-bubble">COM_JFBCONNECT_WIDGET_GOOGLE_FOLLOW_ANNOTATION_OPTION_VERTICAL_BUBBLE</option>                    
+                </field>
+                <field name="height" type="list" default="light" label="COM_JFBCONNECT_WIDGET_GOOGLE_FOLLOW_HEIGHT_LABEL" description="COM_JFBCONNECT_WIDGET_GOOGLE_FOLLOW_HEIGHT_DESCRIPTION">
+                    <option value="15">15</option>
+                    <option value="20">20</option> 
+                    <option value="24">24</option>                    
+                </field>
+                <field name="rel" type="list" default="light" label="COM_JFBCONNECT_WIDGET_GOOGLE_FOLLOW_REL_LABEL" description="COM_JFBCONNECT_WIDGET_GOOGLE_FOLLOW_REL_DESCRIPTION">
+                    <option value="-"></option>
+                    <option value="author">COM_JFBCONNECT_WIDGET_GOOGLE_FOLLOW_REL_OPTION_AUTHOR</option>
+                    <option value="publisher">COM_JFBCONNECT_WIDGET_GOOGLE_FOLLOW_REL_OPTION_PUBLISHER</option>                                      
+                </field>              
+            </fieldset>
+        </fields>
+    </fields>
+</form>

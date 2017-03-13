@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="params">
+        <fields name="widget_settings">
+            <fieldset name="widget_settings">
+                <field name="layout" type="list" label="COM_JFBCONNECT_WIDGET_FACEBOOK_LAYOUT_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_LAYOUT_DESCRIPTION" default="standard">
+                    <option value="standard">COM_JFBCONNECT_WIDGET_FACEBOOK_LAYOUT_OPTION_STANDARD</option>
+                    <option value="box_count">COM_JFBCONNECT_WIDGET_FACEBOOK_LAYOUT_OPTION_BOX_COUNT</option>
+                    <option value="button_count">COM_JFBCONNECT_WIDGET_FACEBOOK_LAYOUT_OPTION_BUTTON_COUNT</option>
+                    <option value="button">COM_JFBCONNECT_WIDGET_FACEBOOK_LAYOUT_OPTION_BUTTON</option>
+                </field>
+                <field name="href" type="text" label="COM_JFBCONNECT_WIDGET_FACEBOOK_FOLLOW_HREF_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_FOLLOW_HREF_DESCRIPTION" />
+                <field name="show_faces" type="radio" label="COM_JFBCONNECT_WIDGET_FACEBOOK_SHOW_FACES_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_SHOW_FACES_DESCRIPTION" default="1">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field name="width" type="text" label="COM_JFBCONNECT_WIDGET_FACEBOOK_WIDTH_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_WIDTH_DESCRIPTION" default="450" />
+                <field name="height" type="text" label="COM_JFBCONNECT_WIDGET_FACEBOOK_HEIGHT_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_HEIGHT_DESCRIPTION" default="" />
+                <field name="colorscheme" type="list" label="COM_JFBCONNECT_WIDGET_FACEBOOK_COLORSCHEME_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_COLORSCHEME_DESCRIPTION" default="light">
+                    <option value="light">COM_JFBCONNECT_WIDGET_FACEBOOK_COLORSCHEME_OPTION_LIGHT</option>
+                    <option value="dark">COM_JFBCONNECT_WIDGET_FACEBOOK_COLORSCHEME_OPTION_DARK</option>
+                </field>
+                <field name="kid_directed_site" type="radio" label="COM_JFBCONNECT_WIDGET_FACEBOOK_KID_DIRECTED_SITE_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_KID_DIRECTED_SITE_DESCRIPTION" default="0">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+            </fieldset>
+        </fields>
+    </fields>
+</form>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset name="api">
+        <field name="windowslive_app_id"
+               type="text"
+               label="COM_JFBCONNECT_CONFIG_WINDOWSLIVE_API_APP_ID_LABEL"
+               default=""
+               labelclass="config_setting"
+                />
+        <field name="windowslive_secret_key"
+               type="text"
+               label="COM_JFBCONNECT_CONFIG_WINDOWSLIVE_API_SECRET_KEY_LABEL"
+               default=""
+               labelclass="config_setting"
+                />
+        <field type="spacer"
+               name="setuplink"
+               label="COM_JFBCONNECT_CONFIG_WINDOWSLIVE_APP_SETUP_LINK"
+                />
+    </fieldset>
+</form>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="params">
+        <fields name="widget_settings">
+            <fieldset name="widget_account_settings">
+                <field name="region" type="list" default="US" label="COM_JFBCONNECT_WIDGET_AMAZON_REGION_LABEL" description="COM_JFBCONNECT_WIDGET_AMAZON_REGION_DESCRIPTION">
+                    <option value="US">COM_JFBCONNECT_WIDGET_AMAZON_REGION_OPTION_US</option>
+                    <option value="GB">COM_JFBCONNECT_WIDGET_AMAZON_REGION_OPTION_UK</option>
+                    <option value="DE">COM_JFBCONNECT_WIDGET_AMAZON_REGION_OPTION_DE</option>
+                    <option value="FR">COM_JFBCONNECT_WIDGET_AMAZON_REGION_OPTION_FR</option>
+                    <option value="JP">COM_JFBCONNECT_WIDGET_AMAZON_REGION_OPTION_JP</option>
+                    <option value="CA">COM_JFBCONNECT_WIDGET_AMAZON_REGION_OPTION_CA</option>
+<!--                    <option value="IT">COM_JFBCONNECT_WIDGET_AMAZON_REGION_OPTION_IT</option>-->
+                </field>
+            </fieldset>
+            <fieldset name="widget_search_settings" addfieldpath="/components/com_jfbconnect/libraries/provider/amazon/fields/">
+                <field name="default_search_category" type="amazoncategories" default="" label="COM_JFBCONNECT_WIDGET_AMAZON_CATEGORY_LABEL" description="COM_JFBCONNECT_WIDGET_AMAZON_DEFAULT_CATEGORY_DESCRIPTION" />
+                <field name="default_search_key" type="text" label="COM_JFBCONNECT_WIDGET_AMAZON_KEYWORDS_LABEL" description="COM_JFBCONNECT_WIDGET_AMAZON_KEYWORDS_DESCRIPTION"/>
+                <field name="search_type" default="1" type="radio" label="COM_JFBCONNECT_WIDGET_AMAZON_SEARCH_SHOW_SEARCH_RESULTS_IN_WIDGET_LABEL" description="COM_JFBCONNECT_WIDGET_AMAZON_SEARCH_SHOW_SEARCH_RESULTS_IN_WIDGET_DESCRIPTION">
+                    <option value="search_box">JNO</option>
+                    <option value="search_widget">JYES</option>
+                </field>
+            </fieldset>
+            <fieldset name="widget_amazon_com_settings">
+                <field name="size" type="list" default="auto" label="COM_JFBCONNECT_WIDGET_AMAZON_SIZE_LABEL" description="COM_JFBCONNECT_WIDGET_AMAZON_SEARCH_SELECT_AD_SIZE_DESCRIPTION">
+                    <option value="auto">COM_JFBCONNECT_WIDGET_AMAZON_SEARCH_SELECT_SIZE_OPTION_AUTO</option>
+<!--                    <option value="300x250">COM_JFBCONNECT_WIDGET_AMAZON_SEARCH_SELECT_SIZE_OPTION_300_X_250_MEDIUM_RECTANGLE</option>
+                    <option value="336x280">COM_JFBCONNECT_WIDGET_AMAZON_SEARCH_SELECT_SIZE_OPTION_336_X_280_MEDIUM_RECTANGLE</option>
+                    <option value="160x600">COM_JFBCONNECT_WIDGET_AMAZON_SEARCH_SELECT_SIZE_OPTION_160_X_600_MEDIUM_RECTANGLE</option>-->
+                    <option value="custom">COM_JFBCONNECT_WIDGET_AMAZON_SEARCH_SELECT_SIZE_OPTION_CUSTOM</option>
+                </field>
+                <field name="width" type="text" label="COM_JFBCONNECT_WIDGET_AMAZON_WIDTH_LABEL" description="COM_JFBCONNECT_WIDGET_AMAZON_WIDTH_DESCRIPTION"/>
+                <field name="height" type="text" label="COM_JFBCONNECT_WIDGET_AMAZON_HEIGHT_LABEL" description="COM_JFBCONNECT_WIDGET_AMAZON_HEIGHT_DESCRIPTION"/>
+                <field name="theme" type="list" default="light" label="COM_JFBCONNECT_WIDGET_AMAZON_THEME_LABEL" description="COM_JFBCONNECT_WIDGET_AMAZON_SEARCH_SELECT_THEME_DESCRIPTION" onchange="var color; if(this.value == 'light') {color='#ffffff'; }else{color='#000000';}; jfbcJQuery('#jform_params_widget_settings_backgroundhue').val(color); jfbcJQuery('.minicolors-swatch span').css('background-color', color);">
+                    <option value="light">COM_JFBCONNECT_WIDGET_AMAZON_SEARCH_SELECT_THEME_OPTION_LIGHT</option>
+                    <option value="dark">COM_JFBCONNECT_WIDGET_AMAZON_SEARCH_SELECT_THEME_OPTION_DARK</option>
+                </field>
+                <field name="backgroundhue" default="#ffffff" type="color" label="COM_JFBCONNECT_WIDGET_AMAZON_SEARCH_BACKGROUND_HUE_LABEL" description="COM_JFBCONNECT_WIDGET_AMAZON_SEARCH_BACKGROUND_HUE_DESCRIPTION"/>
+                <field name="tracking_id" type="text" label="COM_JFBCONNECT_WIDGET_AMAZON_TRACKING_ID_LABEL" description="COM_JFBCONNECT_WIDGET_AMAZON_TRACKING_ID_DESCRIPTION"/>
+            </fieldset>
+        </fields>
+    </fields>
+</form>

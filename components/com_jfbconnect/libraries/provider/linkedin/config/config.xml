@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset name="api">
+        <field name="linkedin_app_id"
+               type="text"
+               label="COM_JFBCONNECT_CONFIG_LINKEDIN_API_APP_ID_LABEL"
+               default=""
+               labelclass="config_setting"
+                />
+        <field name="linkedin_secret_key"
+               type="text"
+               label="COM_JFBCONNECT_CONFIG_LINKEDIN_API_SECRET_KEY_LABEL"
+               default=""
+               labelclass="config_setting"
+                />
+        <field type="spacer"
+               name="setuplink"
+               label="COM_JFBCONNECT_CONFIG_LINKEDIN_APP_SETUP_LINK"
+                />
+        <field type="jlinkedmigrator"
+                name="migrator"
+                label="COM_JFBCONNECT_CONFIG_LINKEDIN_MIGRATOR"
+                />
+    </fieldset>
+    <fieldset name="permissions">
+        <field name="linkedin_perm_custom"
+               type="textarea"
+               label="COM_JFBCONNECT_CONFIG_LINKEDIN_ADD_PERMISSION_REQ_LABEL"
+               description="COM_JFBCONNECT_CONFIG_LINKEDIN_ADD_PERMISSION_REQ_DESC"
+               rows="3"
+               cols="35"
+               labelclass="config_setting"
+                />
+        <field type="spacer"
+               label="COM_JFBCONNECT_CONFIG_LINKEDIN_ADD_PERMISSION_REQ_DESC2"
+                />
+    </fieldset>
+</form>

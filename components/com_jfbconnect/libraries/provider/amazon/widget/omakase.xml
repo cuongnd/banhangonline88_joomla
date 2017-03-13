@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="params">
+        <fields name="widget_settings">
+            <fieldset name="widget_account_settings">
+                <field name="region" type="list" default="US" label="COM_JFBCONNECT_WIDGET_AMAZON_REGION_LABEL" description="COM_JFBCONNECT_WIDGET_AMAZON_REGION_DESCRIPTION">
+                    <option value="US">COM_JFBCONNECT_WIDGET_AMAZON_REGION_OPTION_US</option>
+                    <option value="GB">COM_JFBCONNECT_WIDGET_AMAZON_REGION_OPTION_UK</option>
+                    <option value="DE">COM_JFBCONNECT_WIDGET_AMAZON_REGION_OPTION_DE</option>
+                    <!--<option value="FR">COM_JFBCONNECT_WIDGET_AMAZON_REGION_OPTION_FR</option>-->
+                    <option value="JP">COM_JFBCONNECT_WIDGET_AMAZON_REGION_OPTION_JP</option>
+                    <!--<option value="CA">COM_JFBCONNECT_WIDGET_AMAZON_REGION_OPTION_CA</option>-->
+                </field>
+            </fieldset>
+            <fieldset name="widget_omakase_settings">
+                <field name="size" type="list" default="728x90" label="COM_JFBCONNECT_WIDGET_AMAZON_OMAKASE_SIZE_LABEL" description="COM_JFBCONNECT_WIDGET_AMAZON_OMAKASE_SIZE_DESCRIPTION" >
+                    <option value="120x600">120x600</option>
+                    <option value="120x240">120x240</option>
+                    <option value="160x600">160x600</option>
+                    <option value="180x150">180x150</option>
+                    <option value="468x60">468x60</option>
+                    <option value="728x90">728x90</option>
+                    <option value="300x250">300x250</option>
+                    <option value="600x520">600x520</option>
+                </field>
+                <field name="logo" type="list" default="show" label="COM_JFBCONNECT_WIDGET_AMAZON_OMAKASE_LOGO_LABEL" description="COM_JFBCONNECT_WIDGET_AMAZON_OMAKASE_LOGO_DESCRIPTION" >
+                    <option value="show">COM_JFBCONNECT_WIDGET_AMAZON_OMAKASE_LOGO_OPTION_SHOW</option>
+                    <option value="hide">COM_JFBCONNECT_WIDGET_AMAZON_OMAKASE_LOGO_OPTION_TEXT</option>
+                </field>
+                <field name="images" type="list" default="show" label="COM_JFBCONNECT_WIDGET_AMAZON_SHOW_IMAGE_LABEL" description="COM_JFBCONNECT_WIDGET_AMAZON_SHOW_IMAGE_DESCRIPTION" >
+                    <option value="show">JSHOW</option>
+                    <option value="hide">JHIDE</option>
+                </field>
+                <field name="link" type="list" default="same" label="COM_JFBCONNECT_WIDGET_AMAZON_OMAKASE_LINK_LABEL" description="COM_JFBCONNECT_WIDGET_AMAZON_OMAKASE_LINK_DESCRIPTION" >
+                    <option value="same">COM_JFBCONNECT_WIDGET_AMAZON_OMAKASE_LINK_OPTION_SAME</option>
+                    <option value="new">COM_JFBCONNECT_WIDGET_AMAZON_OMAKASE_LINK_OPTION_NEW</option>
+                </field>
+                <field name="prices" type="list" default="all" label="COM_JFBCONNECT_WIDGET_AMAZON_OMAKASE_PRICES_LABEL" description="COM_JFBCONNECT_WIDGET_AMAZON_OMAKASE_PRICES_DESCRIPTION" >
+                    <option value="all">COM_JFBCONNECT_WIDGET_AMAZON_OMAKASE_PRICES_OPTION_ALL</option>
+                    <option value="retail">COM_JFBCONNECT_WIDGET_AMAZON_OMAKASE_PRICES_OPTION_RETAIL</option>
+                </field>
+                <field name="border" type="list" default="show" label="COM_JFBCONNECT_WIDGET_AMAZON_OMAKASE_BORDER_LABEL" description="COM_JFBCONNECT_WIDGET_AMAZON_OMAKASE_BORDER_DESCRIPTION" >
+                    <option value="show">JSHOW</option>
+                    <option value="hide">JHIDE</option>
+                </field>
+                <field name="discount" type="list" default="add" label="COM_JFBCONNECT_WIDGET_AMAZON_OMAKASE_DISCOUNT_LABEL" description="COM_JFBCONNECT_WIDGET_AMAZON_OMAKASE_DISCOUNT_DESCRIPTION" >
+                    <option value="add">JSHOW</option>
+                    <option value="remove">JHIDE</option>
+                </field>
+                <field name="border_color" default="#000000" type="color" label="COM_JFBCONNECT_WIDGET_AMAZON_OMAKASE_BORDER_COLOR_LABEL" description="COM_JFBCONNECT_WIDGET_AMAZON_OMAKASE_BORDER_COLOR_DESCRIPTION" />
+                <field name="background_color" default="#FFFFFF" type="color" label="COM_JFBCONNECT_WIDGET_AMAZON_OMAKASE_BACKGROUND_COLOR_LABEL" description="COM_JFBCONNECT_WIDGET_AMAZON_OMAKASE_BACKGROUND_COLOR_DESCRIPTION" />
+                <field name="details_color" default="#000000" type="color" label="COM_JFBCONNECT_WIDGET_AMAZON_OMAKASE_DETAILS_TEXT_COLOR_LABEL" description="COM_JFBCONNECT_WIDGET_AMAZON_OMAKASE_DETAILS_TEXT_COLOR_DESCRIPTION" />
+                <field name="link_color" default="#3399FF" type="color" label="COM_JFBCONNECT_WIDGET_AMAZON_OMAKASE_LINK_COLOR_LABEL" description="COM_JFBCONNECT_WIDGET_AMAZON_OMAKASE_LINK_COLOR_DESCRIPTION" />
+                <field name="price_color" default="#990000" type="color" label="COM_JFBCONNECT_WIDGET_AMAZON_OMAKASE_PRICE_COLOR_LABEL" description="COM_JFBCONNECT_WIDGET_AMAZON_OMAKASE_PRICE_COLOR_DESCRIPTION" />
+                <field name="amazon_color" default="#CC6600" type="color" label="COM_JFBCONNECT_WIDGET_AMAZON_OMAKASE_AMAZON_TEXT_COLOR_LABEL" description="COM_JFBCONNECT_WIDGET_AMAZON_OMAKASE_AMAZON_TEXT_COLOR_DESCRIPTION" />
+                <field name="tracking_id" type="text" label="COM_JFBCONNECT_WIDGET_AMAZON_TRACKING_ID_LABEL" description="COM_JFBCONNECT_WIDGET_AMAZON_TRACKING_ID_DESCRIPTION" />
+            </fieldset>
+        </fields>
+    </fields>
+</form>

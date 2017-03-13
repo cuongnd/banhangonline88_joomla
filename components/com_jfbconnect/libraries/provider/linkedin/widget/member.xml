@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="params">
+        <fields name="widget_settings">
+            <fieldset name="widget_settings">
+                <field name="href" type="text" label="COM_JFBCONNECT_WIDGET_LINKEDIN_MEMBER_HREF_LABEL" description="COM_JFBCONNECT_WIDGET_LINKEDIN_MEMBER_HREF_DESCRIPTION" default="" />
+                <field name="display_mode" type="radio" label="COM_JFBCONNECT_WIDGET_LINKEDIN_DISPLAY_MODE_LABEL" description="COM_JFBCONNECT_WIDGET_LINKEDIN_DISPLAY_MODE_DESCRIPTION" default="inline" >
+                    <option value="inline">COM_JFBCONNECT_WIDGET_LINKEDIN_OPTION_INLINE</option>
+                    <option value="icon_name">COM_JFBCONNECT_WIDGET_LINKEDIN_OPTION_ICON_NAME</option>
+                    <option value="icon">COM_JFBCONNECT_WIDGET_LINKEDIN_OPTION_ICON</option>
+                </field>
+                <field name="display_behavior" type="radio" label="COM_JFBCONNECT_WIDGET_LINKEDIN_DISPLAY_BEHAVIOR_LABEL" description="COM_JFBCONNECT_WIDGET_LINKEDIN_DISPLAY_BEHAVIOR_DESCRIPTION" default="hover">
+                    <option value="hover">COM_JFBCONNECT_WIDGET_LINKEDIN_OPTION_HOVER</option>
+                    <option value="click">COM_JFBCONNECT_WIDGET_LINKEDIN_OPTION_CLICK</option>
+                </field>
+                <field name="display_text" type="text" label="COM_JFBCONNECT_WIDGET_LINKEDIN_DISPLAY_TEXT_LABEL" description="COM_JFBCONNECT_WIDGET_LINKEDIN_DISPLAY_TEXT_DESCRIPTION" default="" />
+                <field name="related" type="radio" label="COM_JFBCONNECT_WIDGET_LINKEDIN_RELATED_LABEL" description="COM_JFBCONNECT_WIDGET_LINKEDIN_RELATED_DESCRIPTION" default="0">
+                    <option value="0">COM_JFBCONNECT_WIDGET_OPTION_HIDE</option>
+                    <option value="1">COM_JFBCONNECT_WIDGET_OPTION_SHOW</option>
+                </field>
+                <field name="width" type="text" label="COM_JFBCONNECT_WIDGET_LINKEDIN_MEMBER_WIDTH_LABEL" description="COM_JFBCONNECT_WIDGET_LINKEDIN_MEMBER_WIDTH_DESCRIPTION" default = "" />
+            </fieldset>
+        </fields>
+    </fields>
+</form>

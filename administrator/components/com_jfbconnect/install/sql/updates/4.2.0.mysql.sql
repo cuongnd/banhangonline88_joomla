@@ -1,0 +1,1 @@
+ALTER TABLE `#__jfbconnect_user_map` ADD COLUMN `authorized` TINYINT(1) DEFAULT 1;

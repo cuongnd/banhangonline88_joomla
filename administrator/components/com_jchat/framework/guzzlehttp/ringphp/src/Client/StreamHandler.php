@@ -1,16 +1,16 @@
 <?php
 namespace GuzzleHttp\Ring\Client;
-/**
- *
- * @package JCHAT::FRAMEWORK::administrator::components::com_jchat
- * @subpackage framework
- * @subpackage guzzlehttp
- * @subpackage ringphp
- * @subpackage Client
- * @author Joomla! Extensions Store
- * @copyright (C) 2015 - Joomla! Extensions Store
- * @license GNU/GPLv2 http://www.gnu.org/licenses/gpl-2.0.html
- */
+/**
+ *
+ * @package JCHAT::FRAMEWORK::administrator::components::com_jchat
+ * @subpackage framework
+ * @subpackage guzzlehttp
+ * @subpackage ringphp
+ * @subpackage Client
+ * @author Joomla! Extensions Store
+ * @copyright (C) 2015 - Joomla! Extensions Store
+ * @license GNU/GPLv2 http://www.gnu.org/licenses/gpl-2.0.html
+ */
 defined ( '_JEXEC' ) or die ( 'Restricted access' );
 use GuzzleHttp\Ring\Core;
 use GuzzleHttp\Ring\Exception\ConnectException;

@@ -11,6 +11,9 @@
   background: linear-gradient(to left, #f85032, #e73827);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
+.mod_tab_products .list-small-product .row {
+  margin-bottom: 5px;
+}
 @media (min-width: 1200px) {
   .mod_tab_products .list-small-product .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10 {
     float: left;
@@ -130,7 +133,7 @@
 .mod_tab_products .small-product {
   border-bottom: 1px solid #ccc;
   border-right: 1px solid #ccc;
-  height: 250px;
+  height: 270px;
   padding: 1%;
   text-align: center;
   overflow: hidden;
@@ -176,9 +179,9 @@
   text-transform: lowercase;
 }
 .mod_tab_products .small-product:hover {
-  /* border-color: #eee;
-         box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.15);
-         border: 1px solid #ccc;
+  /* border-color: #eee;
+         box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.15);
+         border: 1px solid #ccc;
          opacity: 0.95;*/
 }
 .mod_tab_products .product_slide {
@@ -212,6 +215,7 @@
   border-radius: 3px;
   padding: 10px;
   min-height: 320px;
+  margin-bottom: 5px;
   text-align: center;
 }
 .mod_tab_products .tab-product .item .title {

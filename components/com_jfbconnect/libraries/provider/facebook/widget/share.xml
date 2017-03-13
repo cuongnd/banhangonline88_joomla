@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="params">
+        <fields name="widget_settings">
+        <fieldset name="widget_settings">
+                <field name="href" type="text" label="COM_JFBCONNECT_WIDGET_FACEBOOK_SHARE_HREF_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_SHARE_HREF_DESCRIPTION" />
+                <field name="layout" type="list" label="COM_JFBCONNECT_WIDGET_FACEBOOK_LAYOUT_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_LAYOUT_DESCRIPTION" default="button_count">
+                    <option value="box_count">COM_JFBCONNECT_WIDGET_FACEBOOK_LAYOUT_OPTION_BOX_COUNT</option>
+                    <option value="button_count">COM_JFBCONNECT_WIDGET_FACEBOOK_LAYOUT_OPTION_BUTTON_COUNT</option>
+                    <option value="button">COM_JFBCONNECT_WIDGET_FACEBOOK_LAYOUT_OPTION_BUTTON</option>
+                    <option value="icon_link">COM_JFBCONNECT_WIDGET_FACEBOOK_LAYOUT_OPTION_ICON_LINK</option>
+                    <option value="icon">COM_JFBCONNECT_WIDGET_FACEBOOK_LAYOUT_OPTION_ICON</option>
+                    <option value="link">COM_JFBCONNECT_WIDGET_FACEBOOK_LAYOUT_OPTION_LINK</option>
+                </field>
+                <field name="width" type="text" label="COM_JFBCONNECT_WIDGET_FACEBOOK_WIDTH_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_SHARE_WIDTH_DESCRIPTION" default="450" />
+            </fieldset>
+        </fields>
+    </fields>
+</form>

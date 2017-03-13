@@ -1,218 +1,218 @@
-<?php
-
-// Portuguese Language Module for eXtplorer (translated by Paulo Brito, geral@oitavaesfera.com, http://www.oitavaesfera.com)
-global $_VERSION;
-
-$GLOBALS["charset"] = "UTF-8";
-$GLOBALS["text_dir"] = "ltr"; // ('ltr' for left to right, 'rtl' for right to left)
-$GLOBALS["date_fmt"] = "d/m/y H:i";
-$GLOBALS["error_msg"] = array(
-	// error
-	"error"			=> "ERRO(S)",
-	"back"			=> "Voltar",
-	
-	// root
-	"home"			=> "A directoria inicial não existe, verifique as configurações.",
-	"abovehome"		=> "A directoria actual não pode estar acima da directoria inicial.",
-	"targetabovehome"	=> "A directoria alvo não pode estar acima da directoria principal.",
-	
-	// exist
-	"direxist"		=> "Esta directoria não existe.",
-	//"filedoesexist"	=> "Este ficheiro já existe.",
-	"fileexist"		=> "Este ficheiro não existe.",
-	"itemdoesexist"		=> "Este item já existe.",
-	"itemexist"		=> "Este item não existe.",
-	"targetexist"		=> "A directoria não existe.",
-	"targetdoesexist"	=> "A directoria já existe.",
-	
-	// open
-	"opendir"		=> "Não é possível abrir a directoria.",
-	"readdir"		=> "Não é possível ler a directoria.",
-	
-	// access
-	"accessdir"		=> "Não está autorizado a aceder a esta directoria.",
-	"accessfile"		=> "Não está autorizado a aceder a este ficheiro.",
-	"accessitem"		=> "Não está autorizado a aceder a este item.",
-	"accessfunc"		=> "Não está autorizado a usar esta função.",
-	"accesstarget"		=> "Não está autorizado a aceder à directoria.",
-	
-	// actions
-	"permread"		=> "Não foi possível visualizar as permissões.",
-	"permchange"		=> "Não foi possível modificar as permissões.",
-	"openfile"		=> "Não foi possível abrir o ficheiro.",
-	"savefile"		=> "Não foi possível gravar o ficheiro.",
-	"createfile"		=> "Não foi possível criar o ficheiro.",
-	"createdir"		=> "Não foi possível criar a directoria.",
-	"uploadfile"		=> "Não foi possível o envio do ficheiro.",
-	"copyitem"		=> "Não foi possível a cópia.",
-	"moveitem"		=> "Não foi possível mover.",
-	"delitem"		=> "Não foi possível apagar o ficheiro.",
-	"chpass"		=> "Não foi possível modificar a password.",
-	"deluser"		=> "Não foi possível remover o utilizador.",
-	"adduser"		=> "Não foi possível adicionar o utilizador.",
-	"saveuser"		=> "Não foi possível gravar o utilizador.",
-	"searchnothing"		=> "Deve ser inserido um valor para ser feita a procura.",
-	
-	// misc
-	"miscnofunc"		=> "Função não disponível.",
-	"miscfilesize"		=> "O ficheiro ultrapassa o tamanho máximo permitido.",
-	"miscfilepart"		=> "O ficheiro foi apenas enviado parcialmente.",
-	"miscnoname"		=> "Deve ser fornecido um nome.",
-	"miscselitems"		=> "Não foi seleccionado qualquer item.",
-	"miscdelitems"		=> "Tem certeza que deseja apagar este(s) {0} item(s)?",
-	"miscdeluser"		=> "Tem certeza que deseja apagar o utilizador '{0}'?",
-	"miscnopassdiff"	=> "A nova password não é diferente da actual.",
-	"miscnopassmatch"	=> "As passwords não são iguais.",
-	"miscfieldmissed"	=> "Um campo importante está vazio.",
-	"miscnouserpass"	=> "Username ou password incorrectos.",
-	"miscselfremove"	=> "Não pode remover-se a si próprio.",
-	"miscuserexist"		=> "O utilizador já existe.",
-	"miscnofinduser"	=> "Não foi possível encontrar o utilizador.",
-	"extract_noarchive" => "O Ficheiro não é um arquivo de extracção.",
+<?php
+
+// Portuguese Language Module for eXtplorer (translated by Paulo Brito, geral@oitavaesfera.com, http://www.oitavaesfera.com)
+global $_VERSION;
+
+$GLOBALS["charset"] = "UTF-8";
+$GLOBALS["text_dir"] = "ltr"; // ('ltr' for left to right, 'rtl' for right to left)
+$GLOBALS["date_fmt"] = "d/m/y H:i";
+$GLOBALS["error_msg"] = array(
+	// error
+	"error"			=> "ERRO(S)",
+	"back"			=> "Voltar",
+	
+	// root
+	"home"			=> "A directoria inicial não existe, verifique as configurações.",
+	"abovehome"		=> "A directoria actual não pode estar acima da directoria inicial.",
+	"targetabovehome"	=> "A directoria alvo não pode estar acima da directoria principal.",
+	
+	// exist
+	"direxist"		=> "Esta directoria não existe.",
+	//"filedoesexist"	=> "Este ficheiro já existe.",
+	"fileexist"		=> "Este ficheiro não existe.",
+	"itemdoesexist"		=> "Este item já existe.",
+	"itemexist"		=> "Este item não existe.",
+	"targetexist"		=> "A directoria não existe.",
+	"targetdoesexist"	=> "A directoria já existe.",
+	
+	// open
+	"opendir"		=> "Não é possível abrir a directoria.",
+	"readdir"		=> "Não é possível ler a directoria.",
+	
+	// access
+	"accessdir"		=> "Não está autorizado a aceder a esta directoria.",
+	"accessfile"		=> "Não está autorizado a aceder a este ficheiro.",
+	"accessitem"		=> "Não está autorizado a aceder a este item.",
+	"accessfunc"		=> "Não está autorizado a usar esta função.",
+	"accesstarget"		=> "Não está autorizado a aceder à directoria.",
+	
+	// actions
+	"permread"		=> "Não foi possível visualizar as permissões.",
+	"permchange"		=> "Não foi possível modificar as permissões.",
+	"openfile"		=> "Não foi possível abrir o ficheiro.",
+	"savefile"		=> "Não foi possível gravar o ficheiro.",
+	"createfile"		=> "Não foi possível criar o ficheiro.",
+	"createdir"		=> "Não foi possível criar a directoria.",
+	"uploadfile"		=> "Não foi possível o envio do ficheiro.",
+	"copyitem"		=> "Não foi possível a cópia.",
+	"moveitem"		=> "Não foi possível mover.",
+	"delitem"		=> "Não foi possível apagar o ficheiro.",
+	"chpass"		=> "Não foi possível modificar a password.",
+	"deluser"		=> "Não foi possível remover o utilizador.",
+	"adduser"		=> "Não foi possível adicionar o utilizador.",
+	"saveuser"		=> "Não foi possível gravar o utilizador.",
+	"searchnothing"		=> "Deve ser inserido um valor para ser feita a procura.",
+	
+	// misc
+	"miscnofunc"		=> "Função não disponível.",
+	"miscfilesize"		=> "O ficheiro ultrapassa o tamanho máximo permitido.",
+	"miscfilepart"		=> "O ficheiro foi apenas enviado parcialmente.",
+	"miscnoname"		=> "Deve ser fornecido um nome.",
+	"miscselitems"		=> "Não foi seleccionado qualquer item.",
+	"miscdelitems"		=> "Tem certeza que deseja apagar este(s) {0} item(s)?",
+	"miscdeluser"		=> "Tem certeza que deseja apagar o utilizador '{0}'?",
+	"miscnopassdiff"	=> "A nova password não é diferente da actual.",
+	"miscnopassmatch"	=> "As passwords não são iguais.",
+	"miscfieldmissed"	=> "Um campo importante está vazio.",
+	"miscnouserpass"	=> "Username ou password incorrectos.",
+	"miscselfremove"	=> "Não pode remover-se a si próprio.",
+	"miscuserexist"		=> "O utilizador já existe.",
+	"miscnofinduser"	=> "Não foi possível encontrar o utilizador.",
+	"extract_noarchive" => "O Ficheiro não é um arquivo de extracção.",
 	"extract_unknowntype" => "Tipo de Arquivo Desconhecido",
 	
 	'chmod_none_not_allowed' => 'Changing Permissions to <none> is not allowed',
 	'archive_dir_notexists' => 'The Save-To Directory you have specified does not exist.',
 	'archive_dir_unwritable' => 'Please specify a writable directory to save the archive to.',
-	'archive_creation_failed' => 'Failed saving the Archive File'
-);
-$GLOBALS["messages"] = array(
-	// links
-	"permlink"		=> "MODIFICAR PERMISSÕES",
-	"editlink"		=> "EDITAR",
-	"downlink"		=> "DOWNLOAD",
-	"uplink"		=> "CIMA",
-	"homelink"		=> "PÁGINA INICIAL",
-	"reloadlink"		=> "ACTUALIZAR",
-	"copylink"		=> "COPIAR",
-	"movelink"		=> "MOVER",
-	"dellink"		=> "APAGAR",
-	"comprlink"		=> "ARQUIVO",
-	"adminlink"		=> "ADMIN",
-	"logoutlink"		=> "LOGOUT",
-	"uploadlink"		=> "UPLOAD",
-	"searchlink"		=> "PROCURAR",
-	"extractlink"	=> "Extrair Arquivo",
-	'chmodlink'		=> 'Modificar as Permissões (chmod) (Pasta/Ficheiro(s))', // new mic
-	'mossysinfolink'	=> 'eXtplorer Informação do Sistema (eXtplorer, Server, PHP, mySQL)', // new mic
-	'logolink'		=> 'Ir para o site do eXtplorer (nova janela)', // new mic
-	
-	// list
-	"nameheader"		=> "Nome",
-	"sizeheader"		=> "Tamanho",
-	"typeheader"		=> "Tipo",
-	"modifheader"		=> "Modificado",
-	"permheader"		=> "Permissões",
-	"actionheader"		=> "Acções",
-	"pathheader"		=> "Caminho",
-	
-	// buttons
-	"btncancel"		=> "Cancelar",
-	"btnsave"		=> "Gravar",
-	"btnchange"		=> "Modificar",
-	"btnreset"		=> "Reiniciar",
-	"btnclose"		=> "Fechar",
-	"btncreate"		=> "Criar",
-	"btnsearch"		=> "Procurar",
-	"btnupload"		=> "Upload",
-	"btncopy"		=> "Copiar",
-	"btnmove"		=> "Mover",
-	"btnlogin"		=> "Login",
-	"btnlogout"		=> "Logout",
-	"btnadd"		=> "Novo",
-	"btnedit"		=> "Editar",
-	"btnremove"		=> "Remover",
-	
-	// user messages, new in eXtplorer 1.3.0
-	'renamelink'	=> 'RENOMEAR',
-	'confirm_delete_file' => 'Tem a certeza que deseja apagar este ficheiro? \\n%s',
-	'success_delete_file' => 'Item(s) apagado com sucesso.',
-	'success_rename_file' => 'A directoria/ficheiro %s foi renomeada com sucesso para %s.',
-	
-	
-	// actions
-	"actdir"		=> "Directoria",
-	"actperms"		=> "Modificar permissões",
-	"actedit"		=> "Editar ficheiro",
-	"actsearchresults"	=> "Resultados da procura",
-	"actcopyitems"		=> "Copiar item(s)",
-	"actcopyfrom"		=> "Copiar de /%s para /%s ",
-	"actmoveitems"		=> "Mover item(s)",
-	"actmovefrom"		=> "Mover de /%s para /%s ",
-	"actlogin"		=> "Login",
-	"actloginheader"	=> "Faça o login para usar o QuiXplorer",
-	"actadmin"		=> "Administração",
-	"actchpwd"		=> "Modificar password",
-	"actusers"		=> "utilizadores",
-	"actarchive"		=> "Arquivo de item(s)",
-	"actupload"		=> "Upload de ficheiro(s)",
-	
-	// misc
-	"miscitems"		=> "Item(s)",
-	"miscfree"		=> "Livres",
-	"miscusername"		=> "Username",
-	"miscpassword"		=> "Password",
-	"miscoldpass"		=> "Password antiga",
-	"miscnewpass"		=> "Nova password",
-	"miscconfpass"		=> "Confirmar password",
-	"miscconfnewpass"	=> "Confirmar a nova password",
-	"miscchpass"		=> "Modificar password",
-	"mischomedir"		=> "Directoria inicial",
-	"mischomeurl"		=> "URL da página inicial",
-	"miscshowhidden"	=> "Mostrar items escondidos",
-	"mischidepattern"	=> "Esconder esquema",
-	"miscperms"		=> "Permissões",
-	"miscuseritems"		=> "(nome, directoria inicial, mostrar items escondidos, permissões, activo)",
-	"miscadduser"		=> "novo utilizador",
-	"miscedituser"		=> "editar utilizador '%s'",
-	"miscactive"		=> "Activo",
-	"misclang"		=> "Linguagem",
-	"miscnoresult"		=> "Não há resultados disponíveis.",
-	"miscsubdirs"		=> "Procurar subdirectorias",
-	"miscpermnames"		=> array("Ver apenas","Modificar","Alterar password","Modificar a password",
-					"Administrador"),
-	"miscyesno"		=> array("Sim","Não","Y","N"),
-	"miscchmod"		=> array("Proprietário", "Grupo", "Público"),
-	// from here all new by mic
-	'miscowner'			=> 'Proprietário',
-	'miscownerdesc'		=> '<strong>Desccrição:</strong><br />Utilizador (UID) /<br />Grupo (GID)<br />Permissões Actuais:<br /><strong> %s ( %s ) </strong>/<br /><strong> %s ( %s )</strong>',
-
-	// sysinfo (new by mic)
-	'simamsysinfo'		=> 'eXtplorer Info Sistema',
-	'sisysteminfo'		=> 'Info Sistema',
-	'sibuilton'			=> 'Sistema Operativo',
-	'sidbversion'		=> 'Versão da Base de Dados (MySQL)',
-	'siphpversion'		=> 'Versão de PHP',
-	'siphpupdate'		=> 'INFORMAÇÃO: <span style="color: red;">A versão de PHP usada <strong>não está</strong> actualizada!</span><br />Para garantir todas as funções e possibilidades do eXtplorer e dos addons,<br />deve estar a usar pelo menos a <strong>Versão 4.3 do PHP</strong>!',
-	'siwebserver'		=> 'Servidor Web',
-	'siwebsphpif'		=> 'Servidor Web - PHP Interface',
-	'simamboversion'	=> 'eXtplorer Versão',
-	'siuseragent'		=> 'Versão do Browser',
-	'sirelevantsettings' => 'Configurações de PHP Importantes',
-	'sisafemode'		=> 'Safe Mode',
-	'sibasedir'			=> 'Open basedir',
-	'sidisplayerrors'	=> 'Erros de PHP',
-	'sishortopentags'	=> 'Short Open Tags',
-	'sifileuploads'		=> 'Datei Uploads',
-	'simagicquotes'		=> 'Magic Quotes',
-	'siregglobals'		=> 'Registar Globais',
-	'sioutputbuf'		=> 'Output Buffer',
-	'sisesssavepath'	=> 'Session Savepath',
-	'sisessautostart'	=> 'Session auto start',
-	'sixmlenabled'		=> 'XML enabled',
-	'sizlibenabled'		=> 'ZLIB enabled',
-	'sidisabledfuncs'	=> 'Non enabled functions',
-	'sieditor'			=> 'Editor WYSIWYG',
-	'siconfigfile'		=> 'Configuration File',
-	'siphpinfo'			=> 'PHP Info',
-	'siphpinformation'	=> 'PHP Information',
-	'sipermissions'		=> 'Permissions',
-	'sidirperms'		=> 'Directory Permissions',
-	'sidirpermsmess'	=> 'Para ter certeza que todas as funções e possibilidades do eXtplorer estão a funcionar correctamente, as seguintes pastas devem ter a permissão de escrita [chmod 0777]',
-	'sionoff'			=> array( 'On', 'Off' ),
-	
-	'extract_warning' => "Deseja mesmo extrair este ficheiro? Aqui?\\nIsto irá apagar ficheiros existentes se não for usado com cuidado!",
-	'extract_success' => "A extracção foi um sucesso",
+	'archive_creation_failed' => 'Failed saving the Archive File'
+);
+$GLOBALS["messages"] = array(
+	// links
+	"permlink"		=> "MODIFICAR PERMISSÕES",
+	"editlink"		=> "EDITAR",
+	"downlink"		=> "DOWNLOAD",
+	"uplink"		=> "CIMA",
+	"homelink"		=> "PÁGINA INICIAL",
+	"reloadlink"		=> "ACTUALIZAR",
+	"copylink"		=> "COPIAR",
+	"movelink"		=> "MOVER",
+	"dellink"		=> "APAGAR",
+	"comprlink"		=> "ARQUIVO",
+	"adminlink"		=> "ADMIN",
+	"logoutlink"		=> "LOGOUT",
+	"uploadlink"		=> "UPLOAD",
+	"searchlink"		=> "PROCURAR",
+	"extractlink"	=> "Extrair Arquivo",
+	'chmodlink'		=> 'Modificar as Permissões (chmod) (Pasta/Ficheiro(s))', // new mic
+	'mossysinfolink'	=> 'eXtplorer Informação do Sistema (eXtplorer, Server, PHP, mySQL)', // new mic
+	'logolink'		=> 'Ir para o site do eXtplorer (nova janela)', // new mic
+	
+	// list
+	"nameheader"		=> "Nome",
+	"sizeheader"		=> "Tamanho",
+	"typeheader"		=> "Tipo",
+	"modifheader"		=> "Modificado",
+	"permheader"		=> "Permissões",
+	"actionheader"		=> "Acções",
+	"pathheader"		=> "Caminho",
+	
+	// buttons
+	"btncancel"		=> "Cancelar",
+	"btnsave"		=> "Gravar",
+	"btnchange"		=> "Modificar",
+	"btnreset"		=> "Reiniciar",
+	"btnclose"		=> "Fechar",
+	"btncreate"		=> "Criar",
+	"btnsearch"		=> "Procurar",
+	"btnupload"		=> "Upload",
+	"btncopy"		=> "Copiar",
+	"btnmove"		=> "Mover",
+	"btnlogin"		=> "Login",
+	"btnlogout"		=> "Logout",
+	"btnadd"		=> "Novo",
+	"btnedit"		=> "Editar",
+	"btnremove"		=> "Remover",
+	
+	// user messages, new in eXtplorer 1.3.0
+	'renamelink'	=> 'RENOMEAR',
+	'confirm_delete_file' => 'Tem a certeza que deseja apagar este ficheiro? \\n%s',
+	'success_delete_file' => 'Item(s) apagado com sucesso.',
+	'success_rename_file' => 'A directoria/ficheiro %s foi renomeada com sucesso para %s.',
+	
+	
+	// actions
+	"actdir"		=> "Directoria",
+	"actperms"		=> "Modificar permissões",
+	"actedit"		=> "Editar ficheiro",
+	"actsearchresults"	=> "Resultados da procura",
+	"actcopyitems"		=> "Copiar item(s)",
+	"actcopyfrom"		=> "Copiar de /%s para /%s ",
+	"actmoveitems"		=> "Mover item(s)",
+	"actmovefrom"		=> "Mover de /%s para /%s ",
+	"actlogin"		=> "Login",
+	"actloginheader"	=> "Faça o login para usar o QuiXplorer",
+	"actadmin"		=> "Administração",
+	"actchpwd"		=> "Modificar password",
+	"actusers"		=> "utilizadores",
+	"actarchive"		=> "Arquivo de item(s)",
+	"actupload"		=> "Upload de ficheiro(s)",
+	
+	// misc
+	"miscitems"		=> "Item(s)",
+	"miscfree"		=> "Livres",
+	"miscusername"		=> "Username",
+	"miscpassword"		=> "Password",
+	"miscoldpass"		=> "Password antiga",
+	"miscnewpass"		=> "Nova password",
+	"miscconfpass"		=> "Confirmar password",
+	"miscconfnewpass"	=> "Confirmar a nova password",
+	"miscchpass"		=> "Modificar password",
+	"mischomedir"		=> "Directoria inicial",
+	"mischomeurl"		=> "URL da página inicial",
+	"miscshowhidden"	=> "Mostrar items escondidos",
+	"mischidepattern"	=> "Esconder esquema",
+	"miscperms"		=> "Permissões",
+	"miscuseritems"		=> "(nome, directoria inicial, mostrar items escondidos, permissões, activo)",
+	"miscadduser"		=> "novo utilizador",
+	"miscedituser"		=> "editar utilizador '%s'",
+	"miscactive"		=> "Activo",
+	"misclang"		=> "Linguagem",
+	"miscnoresult"		=> "Não há resultados disponíveis.",
+	"miscsubdirs"		=> "Procurar subdirectorias",
+	"miscpermnames"		=> array("Ver apenas","Modificar","Alterar password","Modificar a password",
+					"Administrador"),
+	"miscyesno"		=> array("Sim","Não","Y","N"),
+	"miscchmod"		=> array("Proprietário", "Grupo", "Público"),
+	// from here all new by mic
+	'miscowner'			=> 'Proprietário',
+	'miscownerdesc'		=> '<strong>Desccrição:</strong><br />Utilizador (UID) /<br />Grupo (GID)<br />Permissões Actuais:<br /><strong> %s ( %s ) </strong>/<br /><strong> %s ( %s )</strong>',
+
+	// sysinfo (new by mic)
+	'simamsysinfo'		=> 'eXtplorer Info Sistema',
+	'sisysteminfo'		=> 'Info Sistema',
+	'sibuilton'			=> 'Sistema Operativo',
+	'sidbversion'		=> 'Versão da Base de Dados (MySQL)',
+	'siphpversion'		=> 'Versão de PHP',
+	'siphpupdate'		=> 'INFORMAÇÃO: <span style="color: red;">A versão de PHP usada <strong>não está</strong> actualizada!</span><br />Para garantir todas as funções e possibilidades do eXtplorer e dos addons,<br />deve estar a usar pelo menos a <strong>Versão 4.3 do PHP</strong>!',
+	'siwebserver'		=> 'Servidor Web',
+	'siwebsphpif'		=> 'Servidor Web - PHP Interface',
+	'simamboversion'	=> 'eXtplorer Versão',
+	'siuseragent'		=> 'Versão do Browser',
+	'sirelevantsettings' => 'Configurações de PHP Importantes',
+	'sisafemode'		=> 'Safe Mode',
+	'sibasedir'			=> 'Open basedir',
+	'sidisplayerrors'	=> 'Erros de PHP',
+	'sishortopentags'	=> 'Short Open Tags',
+	'sifileuploads'		=> 'Datei Uploads',
+	'simagicquotes'		=> 'Magic Quotes',
+	'siregglobals'		=> 'Registar Globais',
+	'sioutputbuf'		=> 'Output Buffer',
+	'sisesssavepath'	=> 'Session Savepath',
+	'sisessautostart'	=> 'Session auto start',
+	'sixmlenabled'		=> 'XML enabled',
+	'sizlibenabled'		=> 'ZLIB enabled',
+	'sidisabledfuncs'	=> 'Non enabled functions',
+	'sieditor'			=> 'Editor WYSIWYG',
+	'siconfigfile'		=> 'Configuration File',
+	'siphpinfo'			=> 'PHP Info',
+	'siphpinformation'	=> 'PHP Information',
+	'sipermissions'		=> 'Permissions',
+	'sidirperms'		=> 'Directory Permissions',
+	'sidirpermsmess'	=> 'Para ter certeza que todas as funções e possibilidades do eXtplorer estão a funcionar correctamente, as seguintes pastas devem ter a permissão de escrita [chmod 0777]',
+	'sionoff'			=> array( 'On', 'Off' ),
+	
+	'extract_warning' => "Deseja mesmo extrair este ficheiro? Aqui?\\nIsto irá apagar ficheiros existentes se não for usado com cuidado!",
+	'extract_success' => "A extracção foi um sucesso",
 	'extract_failure' => "A extracção falhou",
 	
 	'overwrite_files' => 'Overwrite existing file(s)?',
@@ -317,6 +317,6 @@ $GLOBALS["messages"] = array(
 	'your_version' => 'Your Version',
 	'search_processing' => 'Searching, please wait...',
 	'url_to_file' => 'URL of the File',
-	'file' => 'File'
-);
-?>
+	'file' => 'File'
+);
+?>

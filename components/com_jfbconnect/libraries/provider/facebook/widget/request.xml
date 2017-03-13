@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="params">
+        <fields name="widget_settings">
+        <fieldset name="widget_settings">
+                <field name="request_id" type="text" label="COM_JFBCONNECT_WIDGET_FACEBOOK_REQUEST_ID_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_REQUEST_ID_DESCRIPTION" default="" />
+                <field name="link_text" type="text" label="COM_JFBCONNECT_WIDGET_FACEBOOK_REQUEST_LINK_TEXT_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_REQUEST_LINK_TEXT_DESCRIPTION" default="" />
+                <field name="link_image" type="text" label="Link Image" description="COM_JFBCONNECT_WIDGET_FACEBOOK_REQUEST_LINK_IMAGE_DESCRIPTION" default="" />
+            </fieldset>
+        </fields>
+    </fields>
+</form>

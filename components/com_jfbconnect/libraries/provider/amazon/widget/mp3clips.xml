@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="params">
+        <fields name="widget_settings">
+            <fieldset name="widget_account_settings">
+                <field name="region" type="list" default="US" label="COM_JFBCONNECT_WIDGET_AMAZON_REGION_LABEL" description="COM_JFBCONNECT_WIDGET_AMAZON_REGION_DESCRIPTION">
+                    <option value="US">COM_JFBCONNECT_WIDGET_AMAZON_REGION_OPTION_US</option>
+                    <option value="GB">COM_JFBCONNECT_WIDGET_AMAZON_REGION_OPTION_UK</option>
+                    <option value="DE">COM_JFBCONNECT_WIDGET_AMAZON_REGION_OPTION_DE</option>
+                    <option value="FR">COM_JFBCONNECT_WIDGET_AMAZON_REGION_OPTION_FR</option>
+                    <!--<option value="JP">COM_JFBCONNECT_WIDGET_AMAZON_REGION_OPTION_JP</option>-->
+                    <!--<option value="CA">COM_JFBCONNECT_WIDGET_AMAZON_REGION_OPTION_CA</option>-->
+                    <!--<option value="IT">COM_JFBCONNECT_WIDGET_AMAZON_REGION_OPTION_IT</option>-->
+                </field>
+            </fieldset>
+            <fieldset name="widget_mp3clips_settings">
+                <field name="title" type="text" label="COM_JFBCONNECT_WIDGET_AMAZON_TITLE_LABEL" description="COM_JFBCONNECT_WIDGET_AMAZON_TITLE_DESCRIPTION" />
+                <field name="size" type="groupedlist" default="250x250" label="COM_JFBCONNECT_WIDGET_AMAZON_SIZE_LABEL" description="COM_JFBCONNECT_WIDGET_AMAZON_SIZE_DESCRIPTION">
+                    <group label="COM_JFBCONNECT_WIDGET_AMAZON_MP3_CLIPS_SIZE_OPTION_GROUP_SIDEBAR">
+                        <option value="120x300">120 x 300</option>
+                        <option value="160x300">160 x 300</option>
+                    </group>
+                    <group label="COM_JFBCONNECT_WIDGET_AMAZON_MP3_CLIPS_SIZE_OPTION_GROUP_LARGE">
+                        <option value="250x250">250 x 250</option>
+                        <option value="336x280">336 x 280</option>
+                    </group>
+                    <group label="COM_JFBCONNECT_WIDGET_AMAZON_MP3_CLIPS_SIZE_OPTION_GROUP_COMPACT">
+                        <option value="125x125">125 x 125</option>
+                        <option value="120x90">120 x 90</option>
+                        <option value="234x60">234 x 60</option>
+                    </group>
+                </field>
+                <field name="widget_type" type="list" default="Bestsellers" label="COM_JFBCONNECT_WIDGET_AMAZON_WIDGET_TYPE_LABEL" description="COM_JFBCONNECT_WIDGET_AMAZON_MP3_CLIPS_WIDGET_TYPE_DESCRIPTION" >
+                    <option value="Bestsellers">COM_JFBCONNECT_WIDGET_AMAZON_WIDGET_TYPE_OPTION_BEST_SELLERS</option>
+                    <option value="ASINList">COM_JFBCONNECT_WIDGET_AMAZON_WIDGET_TYPE_OPTION_ASIN_LIST</option>
+                    <option value="SearchAndAdd">COM_JFBCONNECT_WIDGET_AMAZON_WIDGET_TYPE_OPTION_SEARCH_AND_ADD_PRODUCTS</option>
+                </field>
+                <field name="browse_node" type="text" label="COM_JFBCONNECT_WIDGET_AMAZON_BROWSE_NODE_LABEL" description="COM_JFBCONNECT_WIDGET_AMAZON_BROWSE_NODE_DESCRIPTION" />
+                <field name="asin" type="text" label="COM_JFBCONNECT_WIDGET_AMAZON_ASIN_LABEL" description="COM_JFBCONNECT_WIDGET_AMAZON_ASIN_DESCRIPTION" />
+                <field name="keywords" type="text" label="COM_JFBCONNECT_WIDGET_AMAZON_KEYWORDS_LABEL" description="COM_JFBCONNECT_WIDGET_AMAZON_KEYWORDS_DESCRIPTION" />
+                <field name="max_results" type="text" label="COM_JFBCONNECT_WIDGET_AMAZON_MP3_CLIPS_MAX_RESULTS_LABEL" description="COM_JFBCONNECT_WIDGET_AMAZON_MP3_CLIPS_MAX_RESULTS_DESCRIPTION" />
+                <field name="shuffle_tracks" type="radio" default="1" label="COM_JFBCONNECT_WIDGET_AMAZON_MP3_CLIPS_SHUFFLE_TRACKS_LABEL" description="COM_JFBCONNECT_WIDGET_AMAZON_MP3_CLIPS_SHUFFLE_TRACKS_DESCRIPTION">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field name="tracking_id" type="text" label="COM_JFBCONNECT_WIDGET_AMAZON_TRACKING_ID_LABEL" description="COM_JFBCONNECT_WIDGET_AMAZON_TRACKING_ID_DESCRIPTION" />
+            </fieldset>
+        </fields>
+    </fields>
+</form>

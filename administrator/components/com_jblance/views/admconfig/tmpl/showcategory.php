@@ -21,7 +21,7 @@
  	$saveOrderingUrl = 'index.php?option=com_jblance&task=admconfig.saveOrderAjax&tmpl=component';
  	JHtml::_('sortablelist.sortable', 'configList', 'adminForm', strtolower($this->lists['order_Dir']), $saveOrderingUrl, false, true);
  }
- ?>
+ ?>
 <form action="index.php" method="post" id="adminForm" name="adminForm">	
 <div id="j-sidebar-container" class="span2">
 	<?php include_once(JPATH_COMPONENT.'/views/configmenu.php'); ?>
@@ -39,12 +39,12 @@
 			<th>
 				<?php echo JText::_('COM_JBLANCE_CATEGORY'); ?>
 			</th>
- 			<th width="1%">
- 				<?php echo JText::_('JPUBLISHED'); ?>
- 			</th>
- 			<th width="1%">
- 				<?php echo JText::_('JGRID_HEADING_ID'); ?>
-			</th>
+ 			<th width="1%">
+ 				<?php echo JText::_('JPUBLISHED'); ?>
+ 			</th>
+ 			<th width="1%">
+ 				<?php echo JText::_('JGRID_HEADING_ID'); ?>
+			</th>
 		</tr>
 	</thead>
 	<tfoot>
@@ -98,14 +98,14 @@
 				if($row->parent == 0)
 					$class = "style='font-weight: bold;'";
 				?>
-				<a href="<?php echo $link_edit?>" <?php echo $class; ?>><?php echo $row->category; ?></a>					
+				<a href="<?php echo $link_edit?>" <?php echo $class; ?>><?php echo $row->category; ?></a>					
 			</td>										
- 			<td class="center">
- 				<?php echo $published; ?>
- 			</td>
- 			<td class="center">
- 				<?php echo $row->id; ?>
-			</td>										
+ 			<td class="center">
+ 				<?php echo $published; ?>
+ 			</td>
+ 			<td class="center">
+ 				<?php echo $row->id; ?>
+			</td>										
 		</tr>
 		<?php
 	}
@@ -117,7 +117,7 @@
 	<input type="hidden" name="view" value="admconfig" />
 	<input type="hidden" name="layout" value="showcategory" />
 	<input type="hidden" name="task" value="" />
-	<input type="hidden" name="ctype" value="category" />
+	<input type="hidden" name="ctype" value="category" />
 	<input type="hidden" name="boxchecked" value="0" />
 	<input type="hidden" name="filter_order" value="<?php echo $this->lists['order']; ?>" />
 	<input type="hidden" name="filter_order_Dir" value="<?php echo $this->lists['order_Dir']; ?>" />

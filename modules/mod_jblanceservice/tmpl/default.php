@@ -17,8 +17,8 @@
  JHtml::_('bootstrap.framework');
  JHtml::_('bootstrap.carousel');
  
- $set_Itemid	= intval($params->get('set_itemid', 101));
- $Itemid = ($set_Itemid > 101) ? '&Itemid='.$set_Itemid : '';
+ $set_Itemid	= intval($params->get('set_itemid', 101));
+ $Itemid = ($set_Itemid > 101) ? '&Itemid='.$set_Itemid : '';
 
  $config 		  = JblanceHelper::getConfig();
  $showUsername 	  = $config->showUsername;
@@ -43,7 +43,7 @@
  
  $totalServices = count($rows);
  $servicesPerSlide = 4;
- $totalSlides = ceil($totalServices / $servicesPerSlide);
+ $totalSlides = ceil($totalServices / $servicesPerSlide);
 ?>
 <script type="text/javascript">
 <!--

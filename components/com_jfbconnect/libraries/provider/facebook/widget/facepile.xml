@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="params">
+        <fields name="widget_settings">
+            <fieldset name="widget_settings">
+                <field name="href" type="text" label="COM_JFBCONNECT_WIDGET_FACEBOOK_FACEPILE_HREF_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_FACEPILE_HREF_DESCRIPTION" default=""/>
+                <field name="max_rows" type="text" label="COM_JFBCONNECT_WIDGET_FACEBOOK_FACEPILE_MAXROWS_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_FACEPILE_MAXROWS_DESCRIPTION" default="1"/>
+                <field name="width" type="text" label="COM_JFBCONNECT_WIDGET_FACEBOOK_WIDTH_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_WIDTH_DESCRIPTION" default="200"/>
+                <field name="height" type="text" label="COM_JFBCONNECT_WIDGET_FACEBOOK_HEIGHT_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_HEIGHT_DESCRIPTION" default="200"/>
+                <field name="colorscheme" type="list" label="COM_JFBCONNECT_WIDGET_FACEBOOK_COLORSCHEME_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_COLORSCHEME_DESCRIPTION" default="light">
+                    <option value="light">COM_JFBCONNECT_WIDGET_FACEBOOK_COLORSCHEME_OPTION_LIGHT</option>
+                    <option value="dark">COM_JFBCONNECT_WIDGET_FACEBOOK_COLORSCHEME_OPTION_DARK</option>
+                </field>
+                <field name="size" type="list" label="COM_JFBCONNECT_WIDGET_FACEBOOK_FACEPILE_SIZE_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_FACEPILE_SIZE_DESCRIPTION" default="small">
+                    <option value="small">COM_JFBCONNECT_WIDGET_FACEBOOK_FACEPILE_SIZE_OPTION_SMALL</option>
+                    <option value="large">COM_JFBCONNECT_WIDGET_FACEBOOK_FACEPILE_SIZE_OPTION_LARGE</option>
+                </field>
+                <field name="show_count" type="radio" label="COM_JFBCONNECT_WIDGET_FACEBOOK_FACEPILE_SHOW_COUNT_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_FACEPILE_SHOW_COUNT_DESCRIPTION" default="1">
+                    <option value="0">COM_JFBCONNECT_WIDGET_OPTION_HIDE</option>
+                    <option value="1">COM_JFBCONNECT_WIDGET_OPTION_SHOW</option>
+                </field>
+                <field name="action" type="text" label="COM_JFBCONNECT_WIDGET_FACEBOOK_FACEPILE_ACTION_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_FACEPILE_ACTION_DESCRIPTION" default="" />
+            </fieldset>
+        </fields>
+    </fields>
+</form>

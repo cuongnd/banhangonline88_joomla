@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset name="user">
+        <field name="automatic_registration"
+               type="radio"
+               label="COM_JFBCONNECT_CONFIG_USER_AUTOMATIC_REGISTRATION_LABEL"
+               description="COM_JFBCONNECT_CONFIG_USER_AUTOMATIC_REGISTRATION_DESC"
+               default="0"
+               labelclass="config_setting"
+               class="btn-group"
+                >
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+        <field name="registration_component"
+               type="socialprofileregistration"
+               label="COM_JFBCONNECT_CONFIG_USER_REGISTRATION_COMPONENT_LABEL"
+               description="COM_JFBCONNECT_CONFIG_USER_REGISTRATION_COMPONENT_DESC"
+               default=""
+               labelclass="config_setting"
+                />
+        <field name="facebook_auto_map_by_email"
+               type="radio"
+               label="COM_JFBCONNECT_CONFIG_USER_AUTOMATIC_FB_LINK_LABEL"
+               description="COM_JFBCONNECT_CONFIG_USER_AUTOMATIC_FB_LINK_DESC"
+               default="0"
+               labelclass="config_setting"
+               class="btn-group">
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+        <field name="joomla_skip_newuser_activation"
+               type="radio"
+               label="COM_JFBCONNECT_CONFIG_USER_SKIP_JOOMLA_ACTIVATION_LABEL"
+               description="COM_JFBCONNECT_CONFIG_USER_SKIP_JOOMLA_ACTIVATION_DESC"
+               default="0"
+               labelclass="config_setting"
+               class="btn-group">
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+        <field name="auto_username_format"
+               type="list"
+               label="COM_JFBCONNECT_CONFIG_USER_AUTO_USERNAME_PREFIX_LABEL"
+               description="COM_JFBCONNECT_CONFIG_USER_AUTO_USERNAME_PREFIX_DESC"
+               default="2"
+               labelclass="config_setting"
+                >
+            <option value="0">COM_JFBCONNECT_CONFIG_USER_AUTO_USERNAME_PREFIX_FORMAT0</option>
+            <option value="1">COM_JFBCONNECT_CONFIG_USER_AUTO_USERNAME_PREFIX_FORMAT1</option>
+            <option value="2">COM_JFBCONNECT_CONFIG_USER_AUTO_USERNAME_PREFIX_FORMAT2</option>
+            <option value="3">COM_JFBCONNECT_CONFIG_USER_AUTO_USERNAME_PREFIX_FORMAT3</option>
+        </field>
+        <field name="registration_send_new_user_email"
+               type="radio"
+               label="COM_JFBCONNECT_CONFIG_USER_SEND_NEW_USER_EMAIL_LABEL"
+               description="COM_JFBCONNECT_CONFIG_USER_SEND_NEW_USER_EMAIL_DESC"
+               default="0"
+               labelclass="config_setting"
+               class="btn-group">
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+    </fieldset>
+    <fieldset name="automatic_registration">
+        <field name="generate_random_password"
+               type="radio"
+               label="COM_JFBCONNECT_CONFIG_USER_RANDOM_PASSWORD_LABEL"
+               description="COM_JFBCONNECT_CONFIG_USER_RANDOM_PASSWORD_DESC"
+               default="0"
+               labelclass="config_setting"
+               class="btn-group">
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+    </fieldset>
+    <fieldset name="normal_registration">
+        <field name="registration_display_mode"
+               type="list"
+               label="COM_JFBCONNECT_CONFIG_USER_REG_DISPLAY_MODE_LABEL"
+               description="COM_JFBCONNECT_CONFIG_USER_REG_DISPLAY_MODE_DESC"
+               default="vertical"
+               labelclass="config_setting"
+                >
+            <option value="horizontal">COM_JFBCONNECT_CONFIG_USER_REG_DISPLAY_MODE_RADIO1</option>
+            <option value="vertical">COM_JFBCONNECT_CONFIG_USER_REG_DISPLAY_MODE_RADIO2</option>
+            <option value="register-only">COM_JFBCONNECT_CONFIG_USER_REG_DISPLAY_MODE_RADIO3</option>
+        </field>
+        <field name="registration_show_username"
+               type="list"
+               label="COM_JFBCONNECT_CONFIG_USER_REG_USERNAME_LABEL"
+               description="COM_JFBCONNECT_CONFIG_USER_REG_USERNAME_DESC"
+               default="1"
+               labelclass="config_setting"
+                >
+            <option value="0">COM_JFBCONNECT_CONFIG_USER_REG_LEAVEBLANK_OPTION</option>
+            <option value="1">COM_JFBCONNECT_CONFIG_USER_REG_GENSHOW_OPTION</option>
+            <option value="2">COM_JFBCONNECT_CONFIG_USER_REG_GENHIDE_OPTION</option>
+            <option value="3">COM_JFBCONNECT_CONFIG_USER_REG_GENDISABLE_OPTION</option>
+        </field>
+        <field name="registration_show_password"
+               type="list"
+               label="COM_JFBCONNECT_CONFIG_USER_REG_PASSWORD_LABEL"
+               description="COM_JFBCONNECT_CONFIG_USER_REG_PASSWORD_DESC"
+               default="0"
+               labelclass="config_setting"
+                >
+            <option value="0">COM_JFBCONNECT_CONFIG_USER_REG_LEAVEBLANK_OPTION</option>
+            <option value="1">COM_JFBCONNECT_CONFIG_USER_REG_GENHIDE_OPTION</option>
+        </field>
+        <field name="registration_show_email"
+               type="list"
+               label="COM_JFBCONNECT_CONFIG_USER_REG_EMAIL_LABEL"
+               description="COM_JFBCONNECT_CONFIG_USER_REG_EMAIL_DESC"
+               default="0"
+               labelclass="config_setting"
+               >
+            <option value="0">COM_JFBCONNECT_CONFIG_USER_HIDE</option>
+            <option value="1">COM_JFBCONNECT_CONFIG_USER_SHOW</option>
+            <option value="2">COM_JFBCONNECT_CONFIG_USER_SHOW_DISABLE</option>
+        </field>
+        <field name="registration_show_name"
+                type="list"
+                label="COM_JFBCONNECT_CONFIG_USER_REG_NAME_LABEL"
+                description="COM_JFBCONNECT_CONFIG_USER_NAME_USERNAME_DESC"
+                default="1"
+                labelclass="config_setting"
+                >
+            <option value="0">COM_JFBCONNECT_CONFIG_USER_HIDE</option>
+            <option value="1">COM_JFBCONNECT_CONFIG_USER_SHOW</option>
+        </field>
+    </fieldset>
+    <fieldset name="login_logout">
+        <field name="facebook_new_user_redirect"
+               type="menuitem"
+               label="COM_JFBCONNECT_CONFIG_LOGIN_NEW_USER_REDIRECTION_LABEL"
+               description="COM_JFBCONNECT_CONFIG_LOGIN_NEW_USER_REDIRECTION_DESC"
+               default="0"
+               labelclass="config_setting"
+                >
+            <option value="">COM_JFBCONNECT_CONFIG_LOGIN_SAME_PAGE_LABEL</option>
+        </field>
+        <field name="facebook_login_redirect"
+               type="menuitem"
+               label="COM_JFBCONNECT_CONFIG_LOGIN_RET_USER_REDIRECTION_LABEL"
+               description="COM_JFBCONNECT_CONFIG_LOGIN_RET_USER_REDIRECTION_DESC"
+               default="0"
+               labelclass="config_setting"
+                >
+            <option value="">COM_JFBCONNECT_CONFIG_LOGIN_SAME_PAGE_LABEL</option>
+        </field>
+        <field name="show_login_with_joomla_reg"
+               type="list"
+               label="COM_JFBCONNECT_CONFIG_LOGIN_INTEGRATE_JOOMLA_LABEL"
+               description="COM_JFBCONNECT_CONFIG_LOGIN_INTEGRATE_JOOMLA_DESC"
+               default="0"
+               labelclass="config_setting"
+                >
+            <option value="0">COM_JFBCONNECT_SOCIAL_NONE_LABEL</option>
+            <option value="1">COM_JFBCONNECT_SOCIAL_TOP_LABEL</option>
+            <option value="2">COM_JFBCONNECT_SOCIAL_BOTTOM_LABEL</option>
+            <option value="3">COM_JFBCONNECT_SOCIAL_BOTH_LABEL</option>
+        </field>
+    </fieldset>
+    <fieldset name="advanced">
+        <field name="social_force_scheme"
+               type="radio"
+               label="COM_JFBCONNECT_CONFIG_FORCE_SCHEME_LABEL"
+               description="COM_JFBCONNECT_CONFIG_FORCE_SCHEME_DESC"
+               default="0"
+               labelclass="config_setting"
+               class="btn-group">
+            <option value="0">None</option>
+            <option value="1">http://</option>
+            <option value="2">https://</option>
+        </field>
+        <field name="social_tags_always_parse"
+               type="radio"
+               label="COM_JFBCONNECT_CONFIG_ALWAYS_PARSE_TAGS_LABEL"
+               description="COM_JFBCONNECT_CONFIG_ALWAYS_PARSE_TAGS_DESC"
+               default="0"
+               labelclass="config_setting"
+               class="btn-group">
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+        <field name="social_toolbar_enable"
+               type="radio"
+               label="COM_JFBCONNECT_CONFIG_SOCIAL_TOOLBAR_ENABLE_LABEL"
+               description="COM_JFBCONNECT_CONFIG_SOCIAL_TOOLBAR_ENABLE_DESC"
+               default="1"
+               labelclass="config_setting"
+               class="btn-group">
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+        <field name="jquery_load"
+               type="radio"
+               label="COM_JFBCONNECT_CONFIG_JQUERY_LOAD_LABEL"
+               description="COM_JFBCONNECT_CONFIG_JQUERY_LOAD_DESC"
+               default="1"
+               labelclass="config_setting"
+               class="btn-group">
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+        <field name="bootstrap_css"
+               type="radio"
+               label="COM_JFBCONNECT_CONFIG_BOOTSTRAP_CSS_LOAD_LABEL"
+               description="COM_JFBCONNECT_CONFIG_BOOTSTRAP_CSS_LOAD_DESC"
+               default="1"
+               labelclass="config_setting"
+               class="btn-group">
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+        <field name="cache_duration"
+               type="text"
+               label="COM_JFBCONNECT_CONFIG_CACHE_DURATION_LABEL"
+               description="COM_JFBCONNECT_CONFIG_CACHE_DURATION_DESC"
+               default="15"
+               labelclass="config_setting"
+                >
+        </field>
+        <field name="facebook_display_errors"
+               type="radio"
+               label="COM_JFBCONNECT_CONFIG_FB_API_DISPLAY_ERRORS_LABEL"
+               description="COM_JFBCONNECT_CONFIG_FB_API_DISPLAY_ERRORS_DESC"
+               default="0"
+               labelclass="config_setting"
+               class="btn-group">
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+    </fieldset>
+    <fieldset name="misc">
+        <field name="sc_download_id"
+               type="text"
+               label="COM_JFBCONNECT_CONFIG_MISC_SOURCECOAST_SUBSCRIPTION_ID_LABEL"
+               description="COM_JFBCONNECT_CONFIG_MISC_SOURCECOAST_SUBSCRIPTION_ID_LABEL"
+               default=""
+               length="40"
+               labelclass="config_setting"
+                />
+        <field name="show_powered_by_link"
+               type="radio"
+               label="COM_JFBCONNECT_CONFIG_MISC_SHOW_POWERED_LINK_LABEL"
+               description="COM_JFBCONNECT_CONFIG_MISC_SHOW_POWERED_LINK_DESC"
+               default="0"
+               labelclass="config_setting"
+               class="btn-group">
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+        <field name="affiliate_id"
+               type="text"
+               label="COM_JFBCONNECT_CONFIG_MISC_AFFILIATE_ID_LABEL"
+               description="COM_JFBCONNECT_CONFIG_MISC_AFFILIATE_ID_DESC"
+               default=""
+               length="40"
+               labelclass="config_setting"
+                />
+    </fieldset>
+</form>

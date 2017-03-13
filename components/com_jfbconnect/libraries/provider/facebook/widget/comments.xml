@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="params">
+        <fields name="widget_settings">
+            <fieldset name="widget_settings">
+                <field name="num_posts" type="text" label="COM_JFBCONNECT_WIDGET_FACEBOOK_COMMENTS_NUM_POSTS_LABEL"
+                       description="COM_JFBCONNECT_WIDGET_FACEBOOK_COMMENTS_NUM_POSTS_DESCRIPTION" default="2"/>
+                <field name="width" type="text" label="COM_JFBCONNECT_WIDGET_FACEBOOK_WIDTH_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_WIDTH_DESCRIPTION"
+                       default="500"/>
+                <field name="colorscheme" type="list" label="COM_JFBCONNECT_WIDGET_FACEBOOK_COLORSCHEME_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_COLORSCHEME_DESCRIPTION"
+                       default="light">
+                    <option value="light">COM_JFBCONNECT_WIDGET_FACEBOOK_COLORSCHEME_OPTION_LIGHT</option>
+                    <option value="dark">COM_JFBCONNECT_WIDGET_FACEBOOK_COLORSCHEME_OPTION_DARK</option>
+                </field>
+                <field name="href" type="text" label="COM_JFBCONNECT_WIDGET_FACEBOOK_COMMENTS_HREF_LABEL"
+                       description="COM_JFBCONNECT_WIDGET_FACEBOOK_COMMENTS_HREF_DESCRIPTION" default=""/>
+                <field name="mobile" type="radio" label="COM_JFBCONNECT_WIDGET_FACEBOOK_COMMENTS_MOBILE_LABEL"
+                       description="COM_JFBCONNECT_WIDGET_FACEBOOK_COMMENTS_MOBILE_DESCRIPTION" default="0">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field name="order_by" type="radio" label="COM_JFBCONNECT_WIDGET_FACEBOOK_COMMENTS_ORDER_BY_LABEL"
+                       description="COM_JFBCONNECT_WIDGET_FACEBOOK_COMMENTS_ORDER_BY_DESCRIPTION" default="social">
+                    <option value="social">COM_JFBCONNECT_WIDGET_FACEBOOK_COMMENTS_ORDER_BY_OPTION_SOCIAL</option>
+                    <option value="reverse_time">COM_JFBCONNECT_WIDGET_FACEBOOK_COMMENTS_ORDER_BY_OPTION_REVERSE_TIME</option>
+                    <option value="time">COM_JFBCONNECT_WIDGET_FACEBOOK_COMMENTS_ORDER_BY_OPTION_TIME</option>
+                </field>
+            </fieldset>
+        </fields>
+    </fields>
+</form>

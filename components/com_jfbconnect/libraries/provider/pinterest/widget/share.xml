@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="params">
+        <fields name="widget_settings">
+            <fieldset name="widget_settings">
+                <field name="href" type="text" label="COM_JFBCONNECT_WIDGET_PINTEREST_SHARE_HREF_LABEL" description="COM_JFBCONNECT_WIDGET_PINTEREST_SHARE_HREF_DESCRIPTION" />
+                <field name="pin_count" type="list" label="COM_JFBCONNECT_WIDGET_PINTEREST_SHARE_PIN_COUNT_LABEL" description="COM_JFBCONNECT_WIDGET_PINTEREST_SHARE_PIN_COUNT_DESCRIPTION">
+                    <option value="above">COM_JFBCONNECT_WIDGET_PINTEREST_SHARE_OPTION_ABOVE</option>
+                    <option value="beside">COM_JFBCONNECT_WIDGET_PINTEREST_SHARE_OPTION_BESIDE</option>
+                    <option value="none">COM_JFBCONNECT_WIDGET_PINTEREST_SHARE_OPTION_NONE</option>
+                </field>
+                <field name="image" type="text" label="COM_JFBCONNECT_WIDGET_PINTEREST_SHARE_IMAGE_LABEL" description="COM_JFBCONNECT_WIDGET_PINTEREST_SHARE_IMAGE_DESCRIPTION" default="" />
+                <field name="desc" type="text" label="COM_JFBCONNECT_WIDGET_PINTEREST_SHARE_DESC_LABEL" description="COM_JFBCONNECT_WIDGET_PINTEREST_SHARE_DESC_DESCRIPTION" default="" />
+            </fieldset>
+        </fields>
+    </fields>
+</form>

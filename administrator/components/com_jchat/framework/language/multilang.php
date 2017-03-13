@@ -72,16 +72,16 @@ class JChatLanguageMultilang {
 	 * 
 	 */
 	public static function loadLanguageID($languageTag) {
-		// Determine status of language filter plug-in.
-		$db = JFactory::getDBO();
-		$query = $db->getQuery(true);
-		
-		$query->select('lang_id');
-		$query->from($db->quoteName('#__languages'));
-		$query->where($db->quoteName('lang_code') . ' = ' . $db->quote($languageTag));
-		$db->setQuery($query);
-		
-		$langID = $db->loadResult();
+		// Determine status of language filter plug-in.
+		$db = JFactory::getDBO();
+		$query = $db->getQuery(true);
+		
+		$query->select('lang_id');
+		$query->from($db->quoteName('#__languages'));
+		$query->where($db->quoteName('lang_code') . ' = ' . $db->quote($languageTag));
+		$db->setQuery($query);
+		
+		$langID = $db->loadResult();
 		return $langID;
 	}
 }

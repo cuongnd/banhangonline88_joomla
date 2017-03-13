@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="params">
+        <fields name="widget_settings">
+            <fieldset name="widget_settings">
+                <field name="url_name" required="true" type="text" label="COM_JFBCONNECT_WIDGET_MEETUP_CONTAINER_URL_NAME_LABEL" description="COM_JFBCONNECT_WIDGET_MEETUP_CONTAINER_URL_NAME_DESCRIPTION" />
+                <field name="width" required="true" default="240" type="text" label="COM_JFBCONNECT_WIDGET_MEETUP_WIDTH_LABEL" description="COM_JFBCONNECT_WIDGET_MEETUP_WIDTH_DESCRIPTION" />
+                <field name="num_events" required="true" default="3" type="text" label="COM_JFBCONNECT_WIDGET_MEETUP_EVERYWHERE_BASIC_STATS_NUMBER_OF_EVENTS_LABEL" description="COM_JFBCONNECT_WIDGET_MEETUP_EVERYWHERE_BASIC_STATS_NUMBER_OF_EVENTS_DESCRIPTION" />
+            </fieldset>
+        </fields>
+    </fields>
+</form>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="1.6" type="module" method="upgrade" client="site">
+    <name>SCSocial Find Us</name>
+    <version>6.2.0</version>
+    <creationDate>2014/10/03</creationDate>
+    <author>SourceCoast | www.sourcecoast.com</author>
+    <authorEmail>support@sourcecoast.com</authorEmail>
+    <authorUrl>http://www.sourcecoast.com</authorUrl>
+    <copyright>Copyright (C) 2014-2014 SourceCoast. All rights reserved.</copyright>
+    <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+    <description>This is the Social Find Us module that goes with the JFBConnect component, which lets users share their social network pages.</description>
+    <files>
+        <filename module="mod_scsocialfindus">mod_scsocialfindus.php</filename>
+        <filename>helper.php</filename>
+        <filename>mod_scsocialfindus.xml</filename>
+        <filename>assets/style.css</filename>
+        <filename>assets/widget.png</filename>
+        <filename>tmpl/default.php</filename>
+    </files>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="orientation" type="list" label="Orientation" description="Determines whether the buttons are vertically or horizontally oriented" default="vertical">
+                    <option value="horizontal">Horizontal</option>
+                    <option value="vertical">Vertical</option>
+                </field>
+                <field name="position" type="list" label="Position" description="Choose whether the buttons show as a standard fixed module or float to the side/top of the screen" default="fixed">
+                    <option value="absolute">Fixed</option>
+                    <option value="fixed">Float</option>
+                </field>
+                <field name="margin" type="text" label="Margin" description="Set the margin around the entire set of buttons" default="" />
+                <field name="padding" type="text" label="Padding" description="Set the padding around the entire set of buttons" default="" />
+                <field name="float_position_top" type="text" label="Float Position from Top" description="Set the position from top in px when 'Float' Position is set. Using a number greater than 3000 will float to the bottom of the screen" default="" />
+                <field name="float_position_left" type="text" label="Float Position from Left" description="Set the position from the left in px when 'Float' Position is set. Using a number greater than 3000 will float to the right of the screen" default="" />
+                <field name="background_color" default="" type="color" label="Background Color" description="Set the background color" />
+            </fieldset>
+            <fieldset name="social" label="Social Options">
+                <field name="facebook_url" type="text" label="Facebook URL" description="Your Facebook profile or page link." />
+                <field name="linkedin_url" type="text" label="LinkedIn URL" description="Your LinkedIn profile, company or school page url." />
+                <field name="google_url" type="text" label="Google+ URL" description="Your Google+ profile or page url." />
+                <field name="twitter_url" type="text" label="Twitter URL" description="Your Twitter profile or stream url." />
+                <field name="pinterest_url" type="text" label="Pinterest URL" description="Your Pinterest profile or stream url." />
+                <field name="rss_url" type="text" label="RSS URL" description="Your RSS url." />
+            </fieldset>
+            <fieldset name="advanced">
+                <field name="moduleclass_sfx" type="text" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" default="" />
+                <field name="user_intro"
+                       type="textarea"
+                       rows="5"
+                       cols="40"
+                       label="Intro Text"
+                       description="This is the text or HTML that is displayed above the social content."
+                       default=""
+                       filter="safehtml" />
+                <field name="showPoweredByLink" type="radio" label="Show Powered By Link" description="Show 'Powered By' link" default="2">
+                    <option value="2">Use Global</option>
+                    <option value="0">Hide</option>
+                    <option value="1">Show</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

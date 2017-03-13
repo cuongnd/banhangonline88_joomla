@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="params">
+        <fieldset name="Custom Parameters" label="Custom Parameters">
+            <field name="category"
+                   type="category"
+                   extension="com_content"
+                   label="Select a category"
+                   description="Apply this object type to articles in selected category"/>
+            <field name="custom_desc_type"
+                   type="list"
+                   label="Description Type"
+                   description="How should the Open Graph Description (og:desc) be generated? From metatag information or article text"
+                   default="custom_desc_introwords">
+                <option value="custom_desc_meta">Meta</option>
+                <option value="custom_desc_introwords">Intro Words</option>
+                <option value="custom_desc_introchars">Intro Characters</option>
+            </field>
+            <field name="custom_desc_length"
+                   type="text"
+                   label="Description Length"
+                   description="Number of words or characters from beginning of article text to use as the Open Graph description. This option is only used if 'Intro Words' or 'Intro Characters' is selected for Description Type."
+                   default="20"
+            />
+            <field name="custom_image_type"
+                   type="list"
+                   label="Image Type"
+                   description="How should the Open Graph Image (og:image) be generated? From first article image, category image or a custom provided image"
+                   default="custom_image_first">
+                <option value="custom_image_first">First Article Image</option>
+                <option value="custom_image_intro">Article Intro Image</option>
+                <option value="custom_image_full">Article Full Image</option>
+                <option value="custom_image_category">Category Image</option>
+                <option value="custom_image_custom">Custom Image</option>
+            </field>
+            <field name="custom_image_path"
+                   type="text"
+                   label="Custom Image Path"
+                   description="This should be a URL to the image and is only used if 'Custom Image' is selected for Image Type."
+                   default=""
+            />
+        </fieldset>
+    </fields>
+</form>

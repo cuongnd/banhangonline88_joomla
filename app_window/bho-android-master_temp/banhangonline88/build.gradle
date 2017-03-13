@@ -1,0 +1,117 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.1"
+    // needed for okHttp from 23sdk. https://medium.com/android-news/android-networking-i-okhttp-volley-and-gson-72004efff196#.gsfpn3ez8
+    useLibrary 'org.apache.http.legacy'
+
+    dexOptions {
+        javaMaxHeapSize "3g"
+    }
+
+    signingConfigs {
+        release {
+            try {
+                storeFile file("openshopKeystore.jks")
+                storePassword KEYSTORE_PASSWORD
+                keyAlias KEYSTORE_ALIAS
+                keyPassword KEY_PASSWORD
+            } catch (ex) {
+                //throw new InvalidUserDataException("You should define KEYSTORE_PASSWORD, KEYSTORE_ALIAS and KEY_PASSWORD in gradle.properties." + ex)
+            }
+        }
+    }
+
+    defaultConfig {
+        applicationId 'vantinviet.banhangonline88'
+        minSdkVersion 15
+        targetSdkVersion 25
+        versionCode 3
+        versionName "1.2"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.release
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            debuggable true
+            versionNameSuffix '-DEBUG'
+        }
+
+        release {
+            minifyEnabled false
+            debuggable false
+            signingConfig signingConfigs.release
+
+            // For release build should be added custom proGuard
+//            minifyEnabled true
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+
+    productFlavors {
+        Modern {
+            minSdkVersion 23
+        }
+        Legacy {
+            minSdkVersion 15
+        }
+    }
+
+    sourceSets {
+        androidTest {
+            resources.srcDirs += ['src/androidTest/resources']
+        }
+    }
+}
+
+task clearData(type: Exec) {
+    def clearDataCommand = ['adb', 'shell', 'pm', 'clear', 'bf.io.openshop']
+    commandLine clearDataCommand
+}
+
+repositories { mavenCentral() }
+
+dependencies {
+    //  if needed jar libraries, add them to libs folder and load them here:
+    //  compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:appcompat-v7:25.2.0'
+    compile 'com.android.support:design:25.2.0'
+    compile 'com.android.support:recyclerview-v7:25.2.0'
+    compile 'com.jakewharton.timber:timber:4.1.2'
+    compile 'com.google.android.gms:play-services-analytics:10.2.0'
+    compile 'com.google.android.gms:play-services-gcm:10.2.0'
+    compile 'com.google.android.gms:play-services-maps:10.2.0'
+    compile 'com.google.code.gson:gson:2.7'
+    compile 'mbanje.kurt:fabbutton:1.2.1'
+    compile 'com.facebook.android:facebook-android-sdk:4.9.0'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.squareup.okhttp3:okhttp:3.2.0'
+    compile 'com.android.volley:volley:1.0.0'
+    compile 'com.android.support.test.espresso:espresso-idling-resource:2.2.2'
+    //// Unit testing dependencies
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.mockito:mockito-all:1.10.19'
+    // Set this dependency if you want to use the Hamcrest matcher library
+    testCompile 'org.hamcrest:hamcrest-library:1.3'
+    testCompile 'org.powermock:powermock-module-junit4:1.6.4'
+    testCompile 'org.powermock:powermock-api-mockito:1.6.4'
+    //// Instrumentation test dependencies
+    androidTestCompile 'com.android.support:support-annotations:25.2.0'
+    androidTestCompile 'com.android.support.test:runner:0.5'
+    androidTestCompile 'com.android.support.test:rules:0.5'
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
+    androidTestCompile 'com.android.support.test.espresso:espresso-intents:2.2.2'
+}
+
+apply plugin: 'com.google.gms.google-services'
+
+
+
+

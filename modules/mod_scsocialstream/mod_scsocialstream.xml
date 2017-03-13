@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="1.6" type="module" method="upgrade" client="site">
+    <name>SCSocial Stream</name>
+    <version>6.2.0</version>
+    <creationDate>2014/10/03</creationDate>
+    <author>SourceCoast | www.sourcecoast.com</author>
+    <authorEmail>support@sourcecoast.com</authorEmail>
+    <authorUrl>http://www.sourcecoast.com</authorUrl>
+    <copyright>Copyright (C) 2011-2014 SourceCoast. All rights reserved.</copyright>
+    <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+    <description>This is the Social Stream module that goes with the JFBConnect, which lets users display streams/posts from each social network provider.</description>
+    <files>
+        <filename module="mod_scsocialstream">mod_scsocialstream.php</filename>
+        <filename>mod_scsocialstream.xml</filename>
+        <filename>fields/channels.php</filename>
+        <filename>tmpl/default.php</filename>
+    </files>
+    <config>
+        <fields name="params">
+            <fieldset name="basic" label="COM_MODULES_BASIC_FIELDSET_LABEL" addfieldpath="/modules/mod_scsocialstream/fields/">
+                <field name="channel_id" type="channels" label="Channel Selection"
+                       description="Select the channels that should display in the stream"
+                       default="" />
+                <field name="show_provider" type="radio" label="Show Provider"
+                       description="Show Social Network Provider for each stream item"
+                       default="1">
+                    <option value="0">Hide</option>
+                    <option value="1">Show</option>
+                </field>
+                <field name="show_date" type="radio" label="Show Date/Time"
+                       description="Show Date/Time for each post"
+                       default="1">
+                    <option value="0">Hide</option>
+                    <option value="1">Show</option>
+                </field>
+                <field name="show_link" type="list" label="Show Link Info"
+                       description="Show information for associated webpage that is linked to in post"
+                        default="full">
+                    <option value="full">Full</option>
+                    <option value="title">Title with Link</option>
+                    <option value="none">None</option>
+                </field>
+                <field name="post_limit" type="text" label="Post Limit"
+                       description="Limit the number of displayed posts. Leave blank to show all posts"
+                       default="" />
+                <field name="datetime_format" type="text" label="Date/Time Format"
+                       description="Format for date/time"
+                        default="l, d F Y H:i" />
+                <field name="height" type="text" label="Height"
+                       description="Height in pixels. If set, a scrolling view of your posts will be created. Leave blank to show all posts with no scrollbars"
+                       default="" />
+            </fieldset>
+            <fieldset name="advanced">
+                <field name="moduleclass_sfx" type="text" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+                       description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" default=""/>
+                <field name="user_intro"
+                       type="textarea"
+                       rows="5"
+                       cols="40"
+                       label="Intro Text"
+                       description="This is the text or HTML that is displayed above the social content."
+                       default=""
+                       filter="safehtml"/>
+                <field name="showPoweredByLink" type="radio" label="Show Powered By Link"
+                       description="Show 'Powered By' link" default="2">
+                    <option value="2">Use Global</option>
+                    <option value="0">Hide</option>
+                    <option value="1">Show</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

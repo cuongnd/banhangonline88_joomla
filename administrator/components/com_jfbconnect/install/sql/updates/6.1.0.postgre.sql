@@ -1,0 +1,1 @@
+UPDATE "#__jfbconnect_config" SET value=MOD(CAST(value as BIGINT)+1,2), setting = 'automatic_registration' WHERE setting = 'create_new_users';

@@ -14,8 +14,8 @@
  defined('_JEXEC') or die('Restricted access');
  
  $show_logo = intval($params->get('show_logo', 1));
- $set_Itemid	= intval($params->get('set_itemid', 0));
- $Itemid = ($set_Itemid > 0) ? '&Itemid='.$set_Itemid : '';
+ $set_Itemid	= intval($params->get('set_itemid', 0));
+ $Itemid = ($set_Itemid > 0) ? '&Itemid='.$set_Itemid : '';
 
  $user			  = JFactory::getUser();
  $config 		  = JblanceHelper::getConfig();
@@ -40,7 +40,7 @@
  $link_listproject = JRoute::_('index.php?option=com_jblance&view=project&layout=listproject'.$Itemid); 
 
  $lang = JFactory::getLanguage();
- $lang->load('com_jblance', JPATH_SITE);
+ $lang->load('com_jblance', JPATH_SITE);
 ?>
 <div id="no-more-tables">
 <table class="table table-bordered table-hover table-striped">

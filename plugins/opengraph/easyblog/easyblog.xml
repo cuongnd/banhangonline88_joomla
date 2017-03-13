@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="1.6" type="plugin" group="opengraph" method="upgrade" client="site">
+    <name>Open Graph - EasyBlog</name>
+    <version>6.1.1</version>
+    <creationDate>2014/10/03</creationDate>
+    <author>SourceCoast | www.sourcecoast.com</author>
+    <authorEmail>support@sourcecoast.com</authorEmail>
+    <authorUrl>http://www.sourcecoast.com</authorUrl>
+    <copyright>Copyright (C) 2010-2014 SourceCoast. All rights reserved.</copyright>
+    <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+    <description>EasyBlog Open Graph description and actions plugin for JFBConnect</description>
+    <files>
+        <filename plugin="easyblog">easyblog.php</filename>
+        <filename>objects/post.xml</filename>
+        <filename>elements/fields/easyblogcategories.php</filename>
+    </files>
+</extension>

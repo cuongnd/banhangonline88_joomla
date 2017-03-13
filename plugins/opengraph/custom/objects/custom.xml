@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="params">
+        <fieldset name="Custom Parameters" label="Custom Parameters">
+            <field name="og_query_parameters"
+                   type="textarea"
+                   label="URL Query Parameters"
+                   description="List of URL query parameter / value pairs to match for this object to apply. Example below would apply to the Joomla content view of Article 23:
+                   &lt;br/&gt;option=com_content
+                   &lt;br/&gt;view=article
+                   &lt;br/&gt;id=23
+                   "/>
+            <field name="og_open_graph_tags"
+                   type="textarea"
+                   label="Open Graph tags"
+                   description="List of Open Graph parameter / values to apply to these types of pages. Example:
+                   &lt;br/&gt;title=Title for These Pages
+                   &lt;br/&gt;description=Description for any of these pages
+                   &lt;br/&gt;image=Image for this type of page
+                   "/>
+        </fieldset>
+    </fields>
+</form>

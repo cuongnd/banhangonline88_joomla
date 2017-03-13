@@ -1,0 +1,205 @@
+<resources>
+
+    <string name="app_name" translatable="false">banhnangonline88.com</string>
+    <string name="facebook_app_id" translatable="false">1686631971595434</string>
+    <string name="android_key" translatable="false">AIzaSyB4b2hBDqGh6yakmERv95JNMuSGbvf20jo</string>
+
+    <!-- General strings-->
+    <string name="No_network_connection">Không có kết nối internet</string>
+    <string name="Internal_error">Lỗi kết nối internet,Vui lòng thử lại</string>
+    <string name="Loading">Đang tải …</string>
+    <string name="Retry">Kết nối lại</string>
+    <string name="Ok">OK</string>
+    <string name="KEYSTORE_PASSWORD" translatable="false">OK</string>
+    <string name="KEYSTORE_ALIAS" translatable="false">OK</string>
+    <string name="KEY_PASSWORD" translatable="false">OK</string>
+    <string name="Cancel">Hủy</string>
+    <string name="Close">Đóng</string>
+    <string name="Clear">xóa</string>
+    <string name="Undo">quay lại</string>
+    <string name="Required_field">Phần bắt buộc</string>
+    <string name="The_entries_must_match">Các mục phải khớp</string>
+    <string name="Content_is_empty">Nội dung không được trống.</string>
+
+    <!-- Strings related to splash screen -->
+    <string name="Select_shop">Vui lòng lựa chọn quốc gia</string>
+    <string name="Select_the_country_where_you_want_to_shop">Lựa chọn quốc\n Nơi bạn muốn mua hàng</string>
+    <string name="Continue">Tiếp tục</string>
+
+    <!-- Main activity related -->
+    <string name="Another_click_for_leaving_app">Nhấn vào chỗ khác để rời khỏi ứng dụng</string>
+    <string name="All_categories">Toàn bộ danh mục</string>
+    <string name="menu_action_search">Tìm kiếm</string>
+    <string name="Type_your_wish">Kiểu mong muốn của bạn</string>
+    <string name="menu_action_cart">Giỏ hàng</string>
+    <string name="menu_action_wishlist">Danh sách</string>
+
+
+    <!-- Products related strings -->e
+    <string name="Just_arrived">Bạn vừa đến</string>
+    <string name="No_banners">Không có banner</string>
+    <string name="Show_offers">Hiển thị phiếu mua hàng</string>
+    <string name="FILTER">Lọc</string>
+    <string name="Apply">Áp dụng</string>
+    <string name="Restart">Khởi động lại</string>
+    <string name="Filter_unavailable">Bộ lọc không khả dụng</string>
+    <string name="Products_not_found">Không tìm thấy sản phẩm.</string>
+    <string name="Product_not_found">Sản phẩm không tìm thấy.</string>
+    <string name="ADD_TO_CART">THÊM VÀO GIỎ HÀNG</string>
+    <string name="SEND_TO_A_FRIEND">GỬI CHO BẠN BÈ</string>
+    <string name="RECOMMENDED">RECOMMENDED</string>
+    <string name="Select_size">Lựa chọn kích thước</string>
+    <string name="Product">Sản phẩm</string>
+    <string name="All">Tất cả</string>
+
+    <!-- Products sort options -->
+    <string name="Recommended">Recommended</string>
+    <string name="Whats_new">Có gì mới</string>
+    <string name="Highest_price">Giá cao nhất</string>
+    <string name="Lowest_price">Giá thấp nhất</string>
+
+
+    <!-- User related strings -->
+    <string name="Unknown_user">Người dùng khách</string>
+    <string name="Profile">Hồ sơ</string>
+    <string name="Name_colon">Tên:</string>
+    <string name="Address_colon">Địa chỉ:</string>
+    <string name="Email_colon">Email:</string>
+    <string name="Phone_colon">Số điện thoại:</string>
+
+    <string name="Account">Tài khoản</string>
+    <string name="Email">Email</string>
+    <string name="Phone">Điện thoại</string>
+    <string name="Street">Đường</string>
+    <string name="House_code">Số nhà</string>
+    <string name="City">Thành phố</string>
+    <string name="ZIP">Mã bưu điện</string>
+
+    <string name="Changing_the_password">Thay đổi mật khẩu</string>
+    <string name="Password">Mật khẩu</string>
+    <string name="New_password">Mật khẩu mới</string>
+    <string name="Password_again">Nhập lại mật khẩu</string>
+    <string name="Change_password">Thay đổi mật khẩu</string>
+    <string name="Save">Lưu lại</string>
+
+    <string name="My_orders">Đơn đặt hàng của tôi</string>
+    <string name="Branches">Branches</string>
+    <string name="Settings">Cài đặt</string>
+
+
+    <!-- Login related strings-->
+    <string name="Log_in">Đăng nhập</string>
+    <string name="Log_out">Đăng xuất</string>
+    <string name="Log_in_to_shop_via">Vui lòng đăng nhập để mua sắm</string>
+    <string name="Log_in_to_shop_via_email">Đăng nhập mua sắm bằng email</string>
+    <string name="Dont_have_an_account">Chưa có tài khoản</string>
+    <string name="Skip">Bỏ qua</string>
+    <string name="Forgot_your_password">Quên mật khẩu ?</string>
+    <string name="Email_for_recovery">Email khôi phục</string>
+    <string name="Reset">Làm lại</string>
+    <string name="Log_me_in">Tôi đăng nhập</string>
+    <string name="E_MAIL">E-MAIL</string>
+    <string name="FACEBOOK">FACEBOOK</string>
+    <string name="Register">Đăng ký</string>
+    <string name="Male">Nam</string>
+    <string name="Female">Nữ</string>
+    <string name="Check_your_email_we_sent_you_an_confirmation_email">Vui lòng kiểm tra email.Chúng tôi vừa gửi cho bạn email xác thực về việc cài đặt lại mật khẩu</string>
+    <string name="Facebook_login_failed">Đăng nhập Facebook không thành công.</string>
+    <string name="Receiving_facebook_profile_failed">Nhận hồ sơ facebook không thành công</string>
+    <string name="Oops_login_expired">Quá trình đăng nhập đã hết hạn</string>
+    <string name="Your_session_has_expired_Please_log_in_again">Phiên của bạn đã hết hạn Vui lòng đăng nhập lại.</string>
+
+
+    <!-- Cart and order related strings -->
+    <string name="Shopping_cart">Giỏ hàng</string>
+    <string name="Your_cart_is_empty">Giỏ hàng trống</string>
+    <string name="START_SHOPPING">BẮT ĐẦU MUA SẮP</string>
+    <string name="SHIPPING_AND_PAYMENT">SHIPPING VÀ THANH TOÁN</string>
+    <string name="Please_select_a_size">Vui lòng chọn một kích cỡ.</string>
+    <string name="added_to_cart">Đã thêm vào giỏ hàng</string>
+    <string name="Go_to_cart">Đi đến giỏ hàng</string>
+    <string name="Delete">Xóa</string>
+    <string name="Edit">Sửa</string>
+    <string name="Update_item">Cập nhật:</string>
+    <string name="The_item_has_been_successfully_removed">Mục đã được xóa thành công</string>
+    <string name="Discount_code">Mã giảm giá</string>
+    <string name="Do_you_have_a_discount_code">Bạn có mã giảm giá không?</string>
+    <string name="Enter_the_discount_code">Nhập mã giảm giá</string>
+    <string name="Internal_error_reload_cart_please">Lỗi bên trong. Vui lòng tải lại giỏ hàng.</string>
+
+    <!-- Order related strings-->
+    <string name="Order">Đơn hàng</string>
+    <string name="Order_colon">Đơn hàng:</string>
+    <string name="Date_created">Ngày tạo</string>
+    <string name="Date_created_colon">Ngày tạo:</string>
+    <string name="Total_price">Tổng giá</string>
+    <string name="Order_summary">Tóm tắt đơn hàng</string>
+    <string name="Order_history">Lịch sử đơn hàng</string>
+    <string name="Your_orders_history_is_empty">Lịch sử đơn hàng trống</string>
+    <string name="Order_details">Chi tiết đơn hàng</string>
+    <string name="Shipping">Vận chuyển</string>
+    <string name="Payment">Thanh toán</string>
+    <string name="Shipping_method">Phương thức vận chuyển</string>
+    <string name="Choose_shipping_method">Vui lòng chọn phương thức vânchuyển</string>
+    <string name="Choose_payment_method">Vui lòng chọn phương thức thanh toán</string>
+    <string name="Shipping_details">Chi tiết vận chuyển</string>
+    <string name="Note">Ghi chú</string>
+    <string name="Click_on_Order_to_allow_our_Terms_and_Conditions">Nhấn vào đơn hàng để cho phép chúng tôi <![CDATA[<b><font color=#ee1f65>Các điều khoản và điều kiện</b>]]></string>
+    <string name="Finish_order">Kết thúc đơn hàng</string>
+    <string name="Shipping_is_empty">Không có phương thức vân chuyển</string>
+    <string name="Personal_pickup">Đến tận nơi mua hàng</string>
+    <string name="Shipping_type_colon">Phương thức vận chuyển:</string>
+    <string name="Shipping_price_colon">Giá vận chuyển:</string>
+    <string name="free">Miễn phí</string>
+    <string name="Summary">Tổng quan</string>
+    <string name="Total_colon">Tổng:</string>
+
+
+    <!-- Wishlist related -->
+    <string name="Your_wishlist_is_empty">Danh sách yêu thích rỗng</string>
+    <string name="Wishlist">Yêu thích</string>
+    <string name="Product_deleted_from_wishlist">Xóa sản phẩm từ danh sách yêu thích</string>
+    <string name="Product_added_to_wishlist">Sản phẩm đã được thêm vào danh sách yêu thích</string>
+    <string name="Go_to_wishlist">Đi đến danh sách yêu thích</string>
+
+
+    <!-- Others -->
+    <string name="Select">Lựa chọn</string>
+    <string name="Open_source_libraries">Thư viện mã nguồn mở</string>
+    <string name="License_details_for_open_source_software">Chi tiết giấy phép cho phần mềm nguồn mở</string>
+    <string name="Privacy_policy">Chính sách bảo mật</string>
+    <string name="Basic_information_about_Privacy_Policy">Thông tin cơ bản về Chính sách Bảo mật</string>
+    <string name="App_needs_to_be_restarted">Để thay đổi cửa hàng cần khởi động lại ứng dụng.</string>
+    <string name="including_VAT">inc. Thuế</string>
+    <string name="Thank_you_for_your_order">cám ơn bạn đã mua hàng</string>
+    <string name="Wait_for_sms_or_email_order_confirmation">Đợi &lt;b>SMS&lt;/b> hoặc &lt;b>email&lt;/b> Thông tin xác thực đơn hàng.</string>
+    <string name="This_is_a_sample_app">Đây là mẫu ứng dụng</string>
+    <string name="Sample_app_description">Thank you for your time. To find out more about this project, please visit us here: <a href="http://openshop.io/">Openshop.io</a>.</string>
+    <string name="Link_is_invalid">Liên kết lỗi</string>
+    <string name="Min">Nhỏ nhất</string>
+    <string name="Max">Lớn nhất</string>
+
+
+    <!-- Format strings -->
+    <string name="format_space_prefix"> %1$s</string>
+    <string name="format_comma_prefix">, %1$s</string>
+    <string name="format_string_division">%1$s / %2$s</string>
+    <string name="format_quantity">%1$d pcs</string>
+    <string name="format_string_quantity">%1$s %2$dx</string>
+    <string name="format_plus">+ %1$s</string>
+    <string name="format_number">%1$d</string>
+    <string name="format_price_range">%1$d %2$s - %3$d %4$s</string>
+    <string name="format_price_discount_percents">-%1$d %%</string>
+
+    <!-- Content description strings -->
+    <string name="content_description_open_navigation_drawer">Mở thanh điều hướng</string>
+    <string name="content_description_close_navigation_drawer">Đóng thanh điều hướng</string>
+    <string name="content_description_submenu">Điền vào menu phụ</string>
+    <string name="content_description_move_right">Di chuyển sang phải</string>
+    <string name="content_description_move_left">Di chuyển sang trái</string>
+    <string name="content_description_background">Lý lịch</string>
+    <string name="content_description_back_arrow">Quay lại</string>
+    <string name="content_description_intro_screen">Giới thiệu</string>
+    <string name="content_description_product_image">Ảnh sản phẩm</string>
+    <string name="content_description_shipping_info">Thông tin vận chuyển</string>
+</resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="params">
+        <fields name="widget_settings">
+            <fieldset name="widget_settings">
+                <field name="companyid" type="text" label="COM_JFBCONNECT_WIDGET_LINKEDIN_COMPANYID_LABEL" description="COM_JFBCONNECT_WIDGET_LINKEDIN_COMPANYID_DESCRIPTION" default="" />
+                <field name="productid" type="text" label="COM_JFBCONNECT_WIDGET_LINKEDIN_RECOMMEND_PRODUCTID_LABEL" description="COM_JFBCONNECT_WIDGET_LINKEDIN_RECOMMEND_PRODUCTID_DESCRIPTION" default="" />
+                <field name="counter" type="list" label="COM_JFBCONNECT_WIDGET_LINKEDIN_COUNTER_LABEL" description="COM_JFBCONNECT_WIDGET_LINKEDIN_RECOMMEND_COUNTER_DESCRIPTION" default="0" >
+                    <option value="top">COM_JFBCONNECT_WIDGET_LINKEDIN_OPTION_VERTICAL</option>
+                    <option value="right">COM_JFBCONNECT_WIDGET_LINKEDIN_OPTION_HORIZONTAL</option>
+                    <option value="no_count">COM_JFBCONNECT_WIDGET_LINKEDIN_OPTION_NO_COUNT</option>
+                </field>
+            </fieldset>
+        </fields>
+    </fields>
+</form>

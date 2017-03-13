@@ -45,11 +45,11 @@ class JChatHttp {
 	 */
 	protected $cParams;
 	
-	/**
-	 * Application object
-	 * @var    Object&
-	 * @access protected
-	 */
+	/**
+	 * Application object
+	 * @var    Object&
+	 * @access protected
+	 */
 	protected $app;
 
 	/**

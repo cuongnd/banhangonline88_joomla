@@ -37,12 +37,12 @@
 			<th>
 				<?php echo JText::_('COM_JBLANCE_TOOLBAR_PROJECT_DURATION'); ?>
 			</th>
- 			<th width="1%" class="nowrap center">
- 				<?php echo JText::_('JPUBLISHED'); ?>
- 			</th>
- 			<th width="1%" class="nowrap center">
- 				<?php echo JText::_('JGRID_HEADING_ID'); ?>
-			</th>
+ 			<th width="1%" class="nowrap center">
+ 				<?php echo JText::_('JPUBLISHED'); ?>
+ 			</th>
+ 			<th width="1%" class="nowrap center">
+ 				<?php echo JText::_('JGRID_HEADING_ID'); ?>
+			</th>
 		</tr>
 	</thead>
 	<tfoot>
@@ -84,14 +84,14 @@
 					<?php
 					//echo $row->duration_from.' - '.$row->duration_to;
 					?>
-				</a>					
+				</a>					
 			</td>
- 			<td class="nowrap center">
- 				<?php echo $published; ?>
- 			</td>
- 			<td class="nowrap center">
- 				<?php echo $row->id; ?>
-			</td>										
+ 			<td class="nowrap center">
+ 				<?php echo $published; ?>
+ 			</td>
+ 			<td class="nowrap center">
+ 				<?php echo $row->id; ?>
+			</td>										
 		</tr>
 		<?php
 	}
@@ -103,7 +103,7 @@
 	<input type="hidden" name="view" value="admconfig" />
 	<input type="hidden" name="layout" value="showduration" />
 	<input type="hidden" name="task" value="" />
-	<input type="hidden" name="ctype" value="duration" />
+	<input type="hidden" name="ctype" value="duration" />
 	<input type="hidden" name="boxchecked" value="0" />
 	<input type="hidden" name="filter_order" value="<?php echo $this->lists['order']; ?>" />
 	<input type="hidden" name="filter_order_Dir" value="<?php echo $this->lists['order_Dir']; ?>" />

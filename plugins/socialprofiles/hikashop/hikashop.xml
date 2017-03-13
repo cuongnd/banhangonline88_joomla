@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="1.6" type="plugin" group="socialprofiles" method="upgrade" client="site">
+    <name>Social Profiles - Hikashop</name>
+    <version>6.2.0</version>
+    <creationDate>2014/10/03</creationDate>
+    <author>SourceCoast | www.sourcecoast.com</author>
+    <authorEmail>support@sourcecoast.com</authorEmail>
+    <authorUrl>http://www.sourcecoast.com</authorUrl>
+    <copyright>Copyright (C) 2010-2014 SourceCoast. All rights reserved.</copyright>
+    <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+    <description>Hikashop social network profile integration for JFBConnect (Facebook) and JLinked (LinkedIn)</description>
+    <files>
+        <filename plugin="hikashop">hikashop.php</filename>
+        <filename>forms/config.xml</filename>
+    </files>
+    <languages folder="translations">
+        <language tag="de-DE">de-DE.plg_socialprofiles_hikashop.ini</language>
+        <language tag="en-GB">en-GB.plg_socialprofiles_hikashop.ini</language>
+        <language tag="ru-RU">ru-RU.plg_socialprofiles_hikashop.ini</language>
+        <language tag="tr-TR">tr-TR.plg_socialprofiles_hikashop.ini</language>
+    </languages>
+</extension>

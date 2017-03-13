@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="1.6" type="plugin" group="opengraph" method="upgrade" client="site">
+    <name>Open Graph - EasySocial</name>
+    <version>6.0.0</version>
+    <creationDate>2014/10/03</creationDate>
+    <author>SourceCoast | www.sourcecoast.com</author>
+    <authorEmail>support@sourcecoast.com</authorEmail>
+    <authorUrl>http://www.sourcecoast.com</authorUrl>
+    <copyright>Copyright (C) 2010-2014 SourceCoast. All rights reserved.</copyright>
+    <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+    <description>EasySocial Open Graph description and actions plugin for JFBConnect</description>
+    <files>
+        <filename plugin="easysocial">easysocial.php</filename>
+    </files>
+    <media folder="media" destination="com_easysocial/apps/user/jfbconnect">
+        <folder>assets</folder>
+        <filename>index.html</filename>
+        <filename>jfbconnect.php</filename>
+        <filename>jfbconnect.xml</filename>
+    </media>
+</extension>

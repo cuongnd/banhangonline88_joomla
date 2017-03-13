@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="params">
+        <fields name="widget_settings">
+            <fieldset name="widget_parameters_button">
+                <field type="spacer" name="myspacer" label="COM_JFBCONNECT_WIDGET_GOOGLE_HANGOUT_SPACER_BUTTON_PARAMS_LABEL" />
+                <field name="topic" type="text" label="COM_JFBCONNECT_WIDGET_GOOGLE_HANGOUT_TOPIC_LABEL" description="COM_JFBCONNECT_WIDGET_GOOGLE_HANGOUT_TOPIC_DESCRIPTION" />
+                <field name="hangout_type" type="list" default="normal" label="COM_JFBCONNECT_WIDGET_GOOGLE_HANGOUT_TYPE_LABEL" description="COM_JFBCONNECT_WIDGET_GOOGLE_HANGOUT_TYPE_DESCRIPTION">
+                    <option value="normal">COM_JFBCONNECT_WIDGET_GOOGLE_HANGOUT_TYPE_OPTION_NORMAL</option>
+                    <option value="onair">COM_JFBCONNECT_WIDGET_GOOGLE_HANGOUT_TYPE_OPTION_ONAIR</option>
+                    <option value="party">COM_JFBCONNECT_WIDGET_GOOGLE_HANGOUT_TYPE_OPTION_PARTY</option>
+                    <option value="moderated">COM_JFBCONNECT_WIDGET_GOOGLE_HANGOUT_TYPE_OPTION_MODERATED</option>
+                </field>
+                <field name="widget_size" type="text" label="COM_JFBCONNECT_WIDGET_GOOGLE_HANGOUT_SIZE_LABEL" default="136"
+                       description="COM_JFBCONNECT_WIDGET_GOOGLE_HANGOUT_SIZE_DESCRIPTION" />
+            </fieldset>
+            <fieldset name="widget_parameters_app">
+                <field type="spacer" name="myspacer" label="COM_JFBCONNECT_WIDGET_GOOGLE_HANGOUT_SPACER_INITIAL_APP_PARAMS_LABEL" />
+                <field name="app_id" type="text" label="COM_JFBCONNECT_WIDGET_GOOGLE_HANGOUT_APP_ID_LABEL" description="COM_JFBCONNECT_WIDGET_GOOGLE_HANGOUT_APP_ID_DESCRIPTION" />
+                <field name="start_data" type="text" label="COM_JFBCONNECT_WIDGET_GOOGLE_HANGOUT_START_DATA_LABEL" description="COM_JFBCONNECT_WIDGET_GOOGLE_HANGOUT_START_DATA_DESCRIPTION" />
+                <field name="app_type" type="list" default="ROOM_APP" label="COM_JFBCONNECT_WIDGET_GOOGLE_HANGOUT_APP_TYPE_LABEL" description="COM_JFBCONNECT_WIDGET_GOOGLE_HANGOUT_APP_TYPE_DESCRIPTION">
+                    <option value="LOCAL_APP">LOCAL_APP</option>
+                    <option value="ROOM_APP">ROOM_APP</option>
+                </field>
+            </fieldset>
+        </fields>
+    </fields>
+</form>

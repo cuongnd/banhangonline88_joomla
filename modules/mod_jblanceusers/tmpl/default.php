@@ -28,9 +28,9 @@
  $document->addStyleSheet("modules/mod_jblanceusers/css/style.css"); 
 
  $show_logo = intval($params->get('show_logo', 1));
- $set_Itemid	= intval($params->get('set_itemid', 0));
+ $set_Itemid	= intval($params->get('set_itemid', 0));
  $Itemid = ($set_Itemid > 0) ? '&Itemid='.$set_Itemid : '';
- $show_rating = intval($params->get('show_usertype', 0));
+ $show_rating = intval($params->get('show_usertype', 0));
 
 for ($i=0, $n=count($rows); $i < $n; $i++) {
 	$row = $rows[$i];

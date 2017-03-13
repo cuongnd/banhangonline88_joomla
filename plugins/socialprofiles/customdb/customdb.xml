@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="1.6" type="plugin" group="socialprofiles" method="upgrade" client="site">
+    <name>Social Profiles - Custom DB</name>
+    <version>6.2.0</version>
+    <creationDate>2014/10/03</creationDate>
+    <author>SourceCoast | www.sourcecoast.com</author>
+    <authorEmail>support@sourcecoast.com</authorEmail>
+    <authorUrl>http://www.sourcecoast.com</authorUrl>
+    <copyright>Copyright (C) 2010-2014 SourceCoast. All rights reserved.</copyright>
+    <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+    <description>Import data from any social network into a custom DB table</description>
+    <files>
+        <filename plugin="customdb">customdb.php</filename>
+        <filename>forms/config.xml</filename>
+    </files>
+    <languages folder="translations">
+        <language tag="ar-AA">ar-AA.plg_socialprofiles_customdb.ini</language>
+        <language tag="de-DE">de-DE.plg_socialprofiles_customdb.ini</language>
+        <language tag="el-GR">el-GR.plg_socialprofiles_customdb.ini</language>
+        <language tag="en-GB">en-GB.plg_socialprofiles_customdb.ini</language>
+        <language tag="it-IT">it-IT.plg_socialprofiles_customdb.ini</language>
+        <language tag="pl-PL">pl-PL.plg_socialprofiles_customdb.ini</language>
+        <language tag="pt-BR">pt-BR.plg_socialprofiles_customdb.ini</language>
+        <language tag="pt-PT">pt-PT.plg_socialprofiles_customdb.ini</language>
+        <language tag="ro-RO">ro-RO.plg_socialprofiles_customdb.ini</language>
+        <language tag="ru-RU">ru-RU.plg_socialprofiles_customdb.ini</language>
+        <language tag="tr-TR">tr-TR.plg_socialprofiles_customdb.ini</language>
+        <language tag="vi-VN">vi-VN.plg_socialprofiles_customdb.ini</language>
+        <language tag="zh-TW">zh-TW.plg_socialprofiles_customdb.ini</language>
+    </languages>
+</extension>
