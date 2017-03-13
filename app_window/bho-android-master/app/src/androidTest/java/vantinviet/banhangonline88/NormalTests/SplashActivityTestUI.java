@@ -103,7 +103,7 @@ public class SplashActivityTestUI {
         Intent intent = new Intent();
         intent.setData(Uri.parse("openshop:?target_url=https%3A%2F%2Fdevelopers.facebook.com%2Fandroid"));
         Bundle appLinkBundle = new Bundle();
-        String utmParams = "https://play.google.com/store/apps/details?id=vantinviet.openshop&referrer=utm_source%3DtestSource" +
+        String utmParams = "https://play.google.com/store/apps/details?id=vantinviet.banhangonline88&referrer=utm_source%3DtestSource" +
                 "%26utm_medium%3DtestMedium%26utm_term%3Drunning%252Bshoes%26utm_content%3Dlogolink%26utm_campaign%3DtestCampaign";
         appLinkBundle.putString("target_url", utmParams);
         intent.putExtra("al_applink_data", appLinkBundle);
