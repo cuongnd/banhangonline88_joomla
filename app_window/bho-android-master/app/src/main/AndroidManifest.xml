@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest
-    package="bf.io.openshop"
+    package="vantinviet.banhangonline88"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- General permissions -->
@@ -13,13 +13,13 @@
 
     <!-- GCM permission to prevent other Android applications from registering and receiving the Android application's messages.-->
     <permission
-        android:name="bf.io.openshop.permission.C2D_MESSAGE"
+        android:name="vantinviet.banhangonline88.permission.C2D_MESSAGE"
         android:protectionLevel="signature"/>
-    <uses-permission android:name="bf.io.openshop.permission.C2D_MESSAGE"/>
+    <uses-permission android:name="vantinviet.openshop.permission.C2D_MESSAGE"/>
 
 
     <application
-        android:name="bf.io.openshop.MyApplication"
+        android:name="vantinviet.banhangonline88.MyApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -32,7 +32,7 @@
             android:value="@string/facebook_app_id"/>
 
         <activity
-            android:name=".ux.SplashActivity"
+            android:name="vantinviet.banhangonline88.ux.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -46,7 +46,7 @@
         </activity>
 
         <activity
-            android:name=".ux.MainActivity"
+            android:name="vantinviet.banhangonline88.ux.MainActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize">
             <intent-filter>
@@ -59,7 +59,7 @@
         </activity>
 
         <activity
-            android:name="bf.io.openshop.ux.RestartAppActivity"
+            android:name="vantinviet.banhangonline88.ux.RestartAppActivity"
             android:screenOrientation="portrait"/>
 
         <!-- Facebook activity used for FB login-->
@@ -83,21 +83,21 @@
         </receiver>
 
         <service
-            android:name="bf.io.openshop.utils.MyGcmListenerService"
+            android:name="vantinviet.banhangonline88.utils.MyGcmListenerService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
             </intent-filter>
         </service>
         <service
-            android:name="bf.io.openshop.utils.MyInstanceIDListenerService"
+            android:name="vantinviet.banhangonline88.utils.MyInstanceIDListenerService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.android.gms.iid.InstanceID"/>
             </intent-filter>
         </service>
         <service
-            android:name="bf.io.openshop.utils.MyRegistrationIntentService"
+            android:name="vantinviet.banhangonline88.utils.MyRegistrationIntentService"
             android:exported="false"/>
         <!-- end of GCM part-->
 

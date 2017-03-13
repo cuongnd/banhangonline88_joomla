@@ -8,10 +8,10 @@
     {
       "client_info": {
         "mobilesdk_app_id": "1:325761325996:android:88c2d391918f6b36",
-        "client_id": "android:bf.io.openshop",
+        "client_id": "android:vantinviet.openshop",
         "client_type": 1,
         "android_client_info": {
-          "package_name": "bf.io.openshop"
+          "package_name": "vantinviet.openshop"
         }
       },
       "oauth_client": [],

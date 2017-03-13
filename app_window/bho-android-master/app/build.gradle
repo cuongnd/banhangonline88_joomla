@@ -24,7 +24,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "bf.io.openshop"
+        applicationId "vantinviet.openshop"
         minSdkVersion 15
         targetSdkVersion 25
         versionCode 3
@@ -72,7 +72,7 @@ android {
 }
 
 task clearData(type: Exec) {
-    def clearDataCommand = ['adb', 'shell', 'pm', 'clear', 'bf.io.openshop']
+    def clearDataCommand = ['adb', 'shell', 'pm', 'clear', 'vantinviet.openshop']
     commandLine clearDataCommand
 }
 
