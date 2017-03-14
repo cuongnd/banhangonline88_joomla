@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:orientation="vertical">
@@ -42,7 +43,9 @@
             android:paddingTop="3dp"
             android:shrinkColumns="0">
 
-            <TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
                 <TextView
                     android:id="@+id/product_item_price"
@@ -54,7 +57,7 @@
                     android:paddingRight="4dp"
                     android:textColor="@color/textPrimary"
                     android:textSize="12sp"
-                    tools:text="150 USD"/>
+                    tools:text="150 USD" />
 
                 <TextView
                     android:id="@+id/product_item_discount"
@@ -66,8 +69,24 @@
                     android:textColor="@color/colorAccent"
                     android:textSize="12sp"
                     android:textStyle="bold"
-                    tools:text="149 USD"/>
+                    tools:text="149 USD" />
             </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                >
+
+                <ImageView
+                    android:id="@+id/btn_imageview_chat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="chat_width_supplier"
+                    android:textAlignment="center"
+                    app:srcCompat="@drawable/messenger_bubble_small_blue" />
+            </TableRow>
+
         </TableLayout>
     </RelativeLayout>
 </LinearLayout>

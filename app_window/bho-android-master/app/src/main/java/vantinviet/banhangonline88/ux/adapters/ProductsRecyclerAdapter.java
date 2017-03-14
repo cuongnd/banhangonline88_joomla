@@ -1,11 +1,13 @@
 package vantinviet.banhangonline88.ux.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Paint;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -141,6 +143,18 @@ public class ProductsRecyclerAdapter extends RecyclerView.Adapter<ProductsRecycl
 
         Timber.d("Image high quality selected: %s", loadHighRes);
         notifyDataSetChanged();
+    }
+
+    public void chat_width_supplier(View view) {
+        // Perform action on click
+        try{
+            Intent i = new Intent(context, chattingfrom.class);
+            context.startActivity(i);
+        }
+        catch(Exception ex)
+        {
+            Log.e("main",ex.toString());
+        }
     }
 
 
