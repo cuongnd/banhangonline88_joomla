@@ -2,6 +2,7 @@ package vantinviet.banhangonline88.ux.fragments;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -59,7 +60,7 @@ public class AccountFragment extends Fragment {
     private Button myOrdersBtn;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
         Timber.d("%s - OnCreateView", this.getClass().getSimpleName());
         MainActivity.setActionBarTitle(getString(R.string.Profile));
 
@@ -118,6 +119,9 @@ public class AccountFragment extends Fragment {
         loginLogoutBtn.setOnClickListener(new OnSingleClickListener() {
             @Override
             public void onSingleClick(View v) {
+
+
+
                 if (SettingsMy.getActiveUser() != null) {
                     LoginDialogFragment.logoutUser();
                     refreshScreen(null);

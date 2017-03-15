@@ -5,7 +5,7 @@
     android:id="@+id/chat_layout"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@drawable/background"
-    tools:context="vantinviet.banhangonline88.ux.adapters.chattingfrom">
+    tools:context=".MainActivity">
 
 
     <ListView

@@ -72,20 +72,6 @@
                     tools:text="149 USD" />
             </TableRow>
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-
-                >
-
-                <ImageView
-                    android:id="@+id/btn_imageview_chat"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="chat_width_supplier"
-                    android:textAlignment="center"
-                    app:srcCompat="@drawable/messenger_bubble_small_blue" />
-            </TableRow>
 
         </TableLayout>
     </RelativeLayout>

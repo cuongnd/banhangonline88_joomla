@@ -145,17 +145,6 @@ public class ProductsRecyclerAdapter extends RecyclerView.Adapter<ProductsRecycl
         notifyDataSetChanged();
     }
 
-    public void chat_width_supplier(View view) {
-        // Perform action on click
-        try{
-            Intent i = new Intent(context, chattingfrom.class);
-            context.startActivity(i);
-        }
-        catch(Exception ex)
-        {
-            Log.e("main",ex.toString());
-        }
-    }
 
 
     // Provide a reference to the views for each data item

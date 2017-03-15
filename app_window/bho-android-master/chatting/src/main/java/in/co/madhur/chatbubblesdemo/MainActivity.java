@@ -1,10 +1,8 @@
-package vantinviet.banhangonline88.ux.adapters;
-
+package in.co.madhur.chatbubblesdemo;
 
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Rect;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -19,31 +17,21 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import in.co.madhur.chatbubblesdemo.AndroidUtilities;
-import in.co.madhur.chatbubblesdemo.App;
-import in.co.madhur.chatbubblesdemo.ChatListAdapter;
-import in.co.madhur.chatbubblesdemo.Constants;
-import in.co.madhur.chatbubblesdemo.NotificationCenter;
 import in.co.madhur.chatbubblesdemo.model.ChatMessage;
 import in.co.madhur.chatbubblesdemo.model.Status;
 import in.co.madhur.chatbubblesdemo.model.UserType;
 import in.co.madhur.chatbubblesdemo.widgets.Emoji;
 import in.co.madhur.chatbubblesdemo.widgets.EmojiView;
 import in.co.madhur.chatbubblesdemo.widgets.SizeNotifierRelativeLayout;
-import vantinviet.banhangonline88.R;
 
 
-public class chattingfrom extends ActionBarActivity implements SizeNotifierRelativeLayout.SizeNotifierRelativeLayoutDelegate, NotificationCenter.NotificationCenterDelegate {
+public class MainActivity extends ActionBarActivity implements SizeNotifierRelativeLayout.SizeNotifierRelativeLayoutDelegate, NotificationCenter.NotificationCenterDelegate {
 
     private ListView chatListView;
     private EditText chatEditText1;
@@ -69,7 +57,8 @@ public class chattingfrom extends ActionBarActivity implements SizeNotifierRelat
 
                 EditText editText = (EditText) v;
 
-                if (v == chatEditText1) {
+                if(v==chatEditText1)
+                {
                     sendMessage(editText.getText().toString(), UserType.OTHER);
                 }
 
@@ -86,7 +75,8 @@ public class chattingfrom extends ActionBarActivity implements SizeNotifierRelat
         @Override
         public void onClick(View v) {
 
-            if (v == enterChatView1) {
+            if(v==enterChatView1)
+            {
                 sendMessage(chatEditText1.getText().toString(), UserType.OTHER);
             }
 
@@ -112,24 +102,19 @@ public class chattingfrom extends ActionBarActivity implements SizeNotifierRelat
 
         @Override
         public void afterTextChanged(Editable editable) {
-            if (editable.length() == 0) {
+            if(editable.length()==0){
                 enterChatView1.setImageResource(R.drawable.ic_chat_send);
-            } else {
+            }else{
                 enterChatView1.setImageResource(R.drawable.ic_chat_send_active);
             }
         }
     };
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.chattingform);
+        setContentView(R.layout.activity_main);
 
         AndroidUtilities.statusBarHeight = getStatusBarHeight();
 
@@ -150,7 +135,7 @@ public class chattingfrom extends ActionBarActivity implements SizeNotifierRelat
         });
 
 
-        emojiButton = (ImageView) findViewById(R.id.emojiButton);
+        emojiButton = (ImageView)findViewById(R.id.emojiButton);
 
         emojiButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -159,7 +144,7 @@ public class chattingfrom extends ActionBarActivity implements SizeNotifierRelat
             }
         });
 
-        listAdapter = new ChatListAdapter(chatMessages, this);
+         listAdapter = new ChatListAdapter(chatMessages, this);
 
         chatListView.setAdapter(listAdapter);
 
@@ -173,13 +158,11 @@ public class chattingfrom extends ActionBarActivity implements SizeNotifierRelat
         sizeNotifierRelativeLayout.delegate = this;
 
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.emojiDidLoaded);
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
-    private void sendMessage(final String messageText, final UserType userType) {
-        if (messageText.trim().length() == 0)
+    private void sendMessage(final String messageText, final UserType userType)
+    {
+        if(messageText.trim().length()==0)
             return;
 
         final ChatMessage message = new ChatMessage();
@@ -189,27 +172,26 @@ public class chattingfrom extends ActionBarActivity implements SizeNotifierRelat
         message.setMessageTime(new Date().getTime());
         chatMessages.add(message);
 
-        if (listAdapter != null)
+        if(listAdapter!=null)
             listAdapter.notifyDataSetChanged();
 
         // Mark message as delivered after one second
 
         final ScheduledExecutorService exec = Executors.newScheduledThreadPool(1);
 
-        exec.schedule(new Runnable() {
+        exec.schedule(new Runnable(){
             @Override
-            public void run() {
-                message.setMessageStatus(Status.DELIVERED);
+            public void run(){
+               message.setMessageStatus(Status.DELIVERED);
 
                 final ChatMessage message = new ChatMessage();
                 message.setMessageStatus(Status.SENT);
                 message.setMessageText(messageText);
                 message.setUserType(UserType.SELF);
                 message.setMessageTime(new Date().getTime());
-
                 chatMessages.add(message);
 
-                chattingfrom.this.runOnUiThread(new Runnable() {
+                MainActivity.this.runOnUiThread(new Runnable() {
                     public void run() {
                         listAdapter.notifyDataSetChanged();
                     }
@@ -221,7 +203,8 @@ public class chattingfrom extends ActionBarActivity implements SizeNotifierRelat
 
     }
 
-    private Activity getActivity() {
+    private Activity getActivity()
+    {
         return this;
     }
 
@@ -309,7 +292,8 @@ public class chattingfrom extends ActionBarActivity implements SizeNotifierRelat
                 return;
             }
 
-        } else {
+        }
+        else {
             removeEmojiWindow();
             if (sizeNotifierRelativeLayout != null) {
                 sizeNotifierRelativeLayout.post(new Runnable() {
@@ -344,6 +328,7 @@ public class chattingfrom extends ActionBarActivity implements SizeNotifierRelat
     }
 
 
+
     /**
      * Hides the emoji popup
      */
@@ -361,6 +346,7 @@ public class chattingfrom extends ActionBarActivity implements SizeNotifierRelat
     public boolean isEmojiPopupShowing() {
         return showingEmoji;
     }
+
 
 
     /**
@@ -444,7 +430,6 @@ public class chattingfrom extends ActionBarActivity implements SizeNotifierRelat
 
     /**
      * Get the system status bar height
-     *
      * @return
      */
     public int getStatusBarHeight() {
@@ -461,45 +446,5 @@ public class chattingfrom extends ActionBarActivity implements SizeNotifierRelat
         super.onPause();
 
         hideEmojiPopup();
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client.connect();
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "chattingfrom Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app URL is correct.
-                Uri.parse("android-app://com.vantinviet.vtv/http/host/path")
-        );
-        AppIndex.AppIndexApi.start(client, viewAction);
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "chattingfrom Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app URL is correct.
-                Uri.parse("android-app://com.vantinviet.vtv/http/host/path")
-        );
-        AppIndex.AppIndexApi.end(client, viewAction);
-        client.disconnect();
     }
 }

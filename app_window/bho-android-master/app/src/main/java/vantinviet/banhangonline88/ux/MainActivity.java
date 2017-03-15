@@ -26,6 +26,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.provider.BaseColumns;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -188,6 +189,8 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
         MyApplication.setAppLocale(lang);
 
         setContentView(R.layout.activity_main);
+
+
 
 //        if (BuildConfig.DEBUG) {
 //            // Only debug properties, used for checking image memory management.
