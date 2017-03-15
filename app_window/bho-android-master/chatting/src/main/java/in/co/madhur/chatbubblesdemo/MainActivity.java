@@ -16,11 +16,14 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Timer;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
 import in.co.madhur.chatbubblesdemo.model.ChatMessage;
@@ -30,9 +33,10 @@ import in.co.madhur.chatbubblesdemo.widgets.Emoji;
 import in.co.madhur.chatbubblesdemo.widgets.EmojiView;
 import in.co.madhur.chatbubblesdemo.widgets.SizeNotifierRelativeLayout;
 
+import static java.util.concurrent.TimeUnit.MINUTES;
+import static java.util.concurrent.TimeUnit.SECONDS;
 
 public class MainActivity extends ActionBarActivity implements SizeNotifierRelativeLayout.SizeNotifierRelativeLayoutDelegate, NotificationCenter.NotificationCenterDelegate {
-
     private ListView chatListView;
     private EditText chatEditText1;
     private ArrayList<ChatMessage> chatMessages;
@@ -44,47 +48,32 @@ public class MainActivity extends ActionBarActivity implements SizeNotifierRelat
     private int keyboardHeight;
     private boolean keyboardVisible;
     private WindowManager.LayoutParams windowLayoutParams;
-
-
     private EditText.OnKeyListener keyListener = new View.OnKeyListener() {
         @Override
         public boolean onKey(View v, int keyCode, KeyEvent event) {
-
             // If the event is a key-down event on the "enter" button
             if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
                     (keyCode == KeyEvent.KEYCODE_ENTER)) {
                 // Perform action on key press
-
                 EditText editText = (EditText) v;
-
-                if(v==chatEditText1)
-                {
+                if (v == chatEditText1) {
                     sendMessage(editText.getText().toString(), UserType.OTHER);
                 }
-
                 chatEditText1.setText("");
-
                 return true;
             }
             return false;
-
         }
     };
-
     private ImageView.OnClickListener clickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
-            if(v==enterChatView1)
-            {
+            if (v == enterChatView1) {
                 sendMessage(chatEditText1.getText().toString(), UserType.OTHER);
             }
-
             chatEditText1.setText("");
-
         }
     };
-
     private final TextWatcher watcher1 = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
@@ -93,38 +82,63 @@ public class MainActivity extends ActionBarActivity implements SizeNotifierRelat
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
             if (chatEditText1.getText().toString().equals("")) {
-
             } else {
                 enterChatView1.setImageResource(R.drawable.ic_chat_send);
-
             }
         }
 
         @Override
         public void afterTextChanged(Editable editable) {
-            if(editable.length()==0){
+            if (editable.length() == 0) {
                 enterChatView1.setImageResource(R.drawable.ic_chat_send);
-            }else{
+            } else {
                 enterChatView1.setImageResource(R.drawable.ic_chat_send_active);
             }
         }
     };
 
+    private final ScheduledExecutorService scheduler =
+            Executors.newScheduledThreadPool(1);
+    public void beepForAnHour() {
+        final Runnable beeper = new Runnable() {
+            public void run() {
+                final ChatMessage message = new ChatMessage();
+                message.setMessageStatus(Status.SENT);
+                message.setMessageText("hello123");
+                message.setUserType(UserType.OTHER);
+                message.setMessageTime(new Date().getTime());
+                chatMessages.add(message);
+                MainActivity.this.runOnUiThread(new Runnable() {
+                    public void run() {
+                        listAdapter.notifyDataSetChanged();
+                    }
+                });
+            }
+        };
+        final ScheduledFuture<?> beeperHandle =
+                scheduler.scheduleAtFixedRate(beeper, 10, 5, SECONDS);
+        scheduler.schedule(new Runnable() {
+            public void run() { beeperHandle.cancel(true); }
+        }, 60*60, MINUTES);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        beepForAnHour();
+
+
+
         AndroidUtilities.statusBarHeight = getStatusBarHeight();
-
         chatMessages = new ArrayList<>();
-
         chatListView = (ListView) findViewById(R.id.chat_list_view);
-
         chatEditText1 = (EditText) findViewById(R.id.chat_edit_text1);
         enterChatView1 = (ImageView) findViewById(R.id.enter_chat1);
-
         // Hide the emoji on click of edit text
         chatEditText1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,81 +147,62 @@ public class MainActivity extends ActionBarActivity implements SizeNotifierRelat
                     hideEmojiPopup();
             }
         });
-
-
-        emojiButton = (ImageView)findViewById(R.id.emojiButton);
-
+        emojiButton = (ImageView) findViewById(R.id.emojiButton);
         emojiButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showEmojiPopup(!showingEmoji);
             }
         });
-
-         listAdapter = new ChatListAdapter(chatMessages, this);
-
+        listAdapter = new ChatListAdapter(chatMessages, this);
         chatListView.setAdapter(listAdapter);
-
         chatEditText1.setOnKeyListener(keyListener);
-
         enterChatView1.setOnClickListener(clickListener);
-
         chatEditText1.addTextChangedListener(watcher1);
-
         sizeNotifierRelativeLayout = (SizeNotifierRelativeLayout) findViewById(R.id.chat_layout);
         sizeNotifierRelativeLayout.delegate = this;
-
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.emojiDidLoaded);
+
+
+
     }
 
-    private void sendMessage(final String messageText, final UserType userType)
-    {
-        if(messageText.trim().length()==0)
+    private void sendMessage(final String messageText, final UserType userType) {
+        if (messageText.trim().length() == 0)
             return;
-
         final ChatMessage message = new ChatMessage();
         message.setMessageStatus(Status.SENT);
         message.setMessageText(messageText);
         message.setUserType(userType);
         message.setMessageTime(new Date().getTime());
         chatMessages.add(message);
-
-        if(listAdapter!=null)
+        if (listAdapter != null)
             listAdapter.notifyDataSetChanged();
-
         // Mark message as delivered after one second
-
         final ScheduledExecutorService exec = Executors.newScheduledThreadPool(1);
-
-        exec.schedule(new Runnable(){
+        exec.schedule(new Runnable() {
             @Override
-            public void run(){
-               message.setMessageStatus(Status.DELIVERED);
-
+            public void run() {
+                message.setMessageStatus(Status.DELIVERED);
                 final ChatMessage message = new ChatMessage();
                 message.setMessageStatus(Status.SENT);
                 message.setMessageText(messageText);
                 message.setUserType(UserType.SELF);
                 message.setMessageTime(new Date().getTime());
                 chatMessages.add(message);
-
                 MainActivity.this.runOnUiThread(new Runnable() {
                     public void run() {
                         listAdapter.notifyDataSetChanged();
                     }
                 });
 
-
             }
-        }, 1, TimeUnit.SECONDS);
-
+        }, 1, SECONDS);
     }
 
-    private Activity getActivity()
-    {
+    private Activity getActivity() {
         return this;
     }
-
 
     /**
      * Show or hide the emoji popup
@@ -216,14 +211,12 @@ public class MainActivity extends ActionBarActivity implements SizeNotifierRelat
      */
     private void showEmojiPopup(boolean show) {
         showingEmoji = show;
-
         if (show) {
             if (emojiView == null) {
                 if (getActivity() == null) {
                     return;
                 }
                 emojiView = new EmojiView(getActivity());
-
                 emojiView.setListener(new EmojiView.Listener() {
                     public void onBackspace() {
                         chatEditText1.dispatchKeyEvent(new KeyEvent(0, 67));
@@ -244,8 +237,6 @@ public class MainActivity extends ActionBarActivity implements SizeNotifierRelat
                         }
                     }
                 });
-
-
                 windowLayoutParams = new WindowManager.LayoutParams();
                 windowLayoutParams.gravity = Gravity.BOTTOM | Gravity.LEFT;
                 if (Build.VERSION.SDK_INT >= 21) {
@@ -256,19 +247,13 @@ public class MainActivity extends ActionBarActivity implements SizeNotifierRelat
                 }
                 windowLayoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
             }
-
             final int currentHeight;
-
             if (keyboardHeight <= 0)
                 keyboardHeight = App.getInstance().getSharedPreferences("emoji", 0).getInt("kbd_height", AndroidUtilities.dp(200));
-
             currentHeight = keyboardHeight;
-
             WindowManager wm = (WindowManager) App.getInstance().getSystemService(Activity.WINDOW_SERVICE);
-
             windowLayoutParams.height = currentHeight;
             windowLayoutParams.width = AndroidUtilities.displaySize.x;
-
             try {
                 if (emojiView.getParent() != null) {
                     wm.removeViewImmediate(emojiView);
@@ -276,24 +261,19 @@ public class MainActivity extends ActionBarActivity implements SizeNotifierRelat
             } catch (Exception e) {
                 Log.e(Constants.TAG, e.getMessage());
             }
-
             try {
                 wm.addView(emojiView, windowLayoutParams);
             } catch (Exception e) {
                 Log.e(Constants.TAG, e.getMessage());
                 return;
             }
-
             if (!keyboardVisible) {
                 if (sizeNotifierRelativeLayout != null) {
                     sizeNotifierRelativeLayout.setPadding(0, 0, 0, currentHeight);
                 }
-
                 return;
             }
-
-        }
-        else {
+        } else {
             removeEmojiWindow();
             if (sizeNotifierRelativeLayout != null) {
                 sizeNotifierRelativeLayout.post(new Runnable() {
@@ -305,10 +285,7 @@ public class MainActivity extends ActionBarActivity implements SizeNotifierRelat
                 });
             }
         }
-
-
     }
-
 
     /**
      * Remove emoji window
@@ -326,8 +303,6 @@ public class MainActivity extends ActionBarActivity implements SizeNotifierRelat
             Log.e(Constants.TAG, e.getMessage());
         }
     }
-
-
 
     /**
      * Hides the emoji popup
@@ -347,8 +322,6 @@ public class MainActivity extends ActionBarActivity implements SizeNotifierRelat
         return showingEmoji;
     }
 
-
-
     /**
      * Updates emoji views when they are complete loading
      *
@@ -361,7 +334,6 @@ public class MainActivity extends ActionBarActivity implements SizeNotifierRelat
             if (emojiView != null) {
                 emojiView.invalidateViews();
             }
-
             if (chatListView != null) {
                 chatListView.invalidateViews();
             }
@@ -370,31 +342,22 @@ public class MainActivity extends ActionBarActivity implements SizeNotifierRelat
 
     @Override
     public void onSizeChanged(int height) {
-
         Rect localRect = new Rect();
         getActivity().getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
-
         WindowManager wm = (WindowManager) App.getInstance().getSystemService(Activity.WINDOW_SERVICE);
         if (wm == null || wm.getDefaultDisplay() == null) {
             return;
         }
-
-
         if (height > AndroidUtilities.dp(50) && keyboardVisible) {
             keyboardHeight = height;
             App.getInstance().getSharedPreferences("emoji", 0).edit().putInt("kbd_height", keyboardHeight).commit();
         }
-
-
         if (showingEmoji) {
             int newHeight = 0;
-
             newHeight = keyboardHeight;
-
             if (windowLayoutParams.width != AndroidUtilities.displaySize.x || windowLayoutParams.height != newHeight) {
                 windowLayoutParams.width = AndroidUtilities.displaySize.x;
                 windowLayoutParams.height = newHeight;
-
                 wm.updateViewLayout(emojiView, windowLayoutParams);
                 if (!keyboardVisible) {
                     sizeNotifierRelativeLayout.post(new Runnable() {
@@ -409,8 +372,6 @@ public class MainActivity extends ActionBarActivity implements SizeNotifierRelat
                 }
             }
         }
-
-
         boolean oldValue = keyboardVisible;
         keyboardVisible = height > 0;
         if (keyboardVisible && sizeNotifierRelativeLayout.getPaddingBottom() > 0) {
@@ -418,18 +379,17 @@ public class MainActivity extends ActionBarActivity implements SizeNotifierRelat
         } else if (!keyboardVisible && keyboardVisible != oldValue && showingEmoji) {
             showEmojiPopup(false);
         }
-
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.emojiDidLoaded);
     }
 
     /**
      * Get the system status bar height
+     *
      * @return
      */
     public int getStatusBarHeight() {
@@ -444,7 +404,8 @@ public class MainActivity extends ActionBarActivity implements SizeNotifierRelat
     @Override
     protected void onPause() {
         super.onPause();
-
         hideEmojiPopup();
     }
+
+
 }
