@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
-    package="vantinviet.banhangonline88"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest package="vantinviet.banhangonline88"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <!-- General permissions -->
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
@@ -25,7 +25,9 @@
         android:label="@string/app_name"
         android:largeHeap="true"
         android:supportsRtl="false"
+        tools:replace="android:allowBackup"
         android:theme="@style/MaterialTheme">
+
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
