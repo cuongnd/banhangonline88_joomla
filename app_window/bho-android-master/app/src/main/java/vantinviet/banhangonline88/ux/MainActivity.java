@@ -61,6 +61,7 @@ import vantinviet.banhangonline88.api.EndPoints;
 import vantinviet.banhangonline88.entities.drawerMenu.DrawerItemCategory;
 import vantinviet.banhangonline88.utils.JsonUtils;
 import vantinviet.banhangonline88.utils.Utils;
+import vantinviet.banhangonline88.ux.fragments.ChattingFragment;
 import vantinviet.banhangonline88.ux.fragments.OrderFragment;
 import vantinviet.banhangonline88.BuildConfig;
 import vantinviet.banhangonline88.CONST;
@@ -582,6 +583,11 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
     public void onAccountSelected() {
         AccountFragment fragment = new AccountFragment();
         replaceFragment(fragment, AccountFragment.class.getSimpleName());
+    }
+    @Override
+    public void onChattingSelected(long productId){
+        ChattingFragment fragment = new ChattingFragment();
+        replaceFragment(fragment, ChattingFragment.class.getSimpleName());
     }
 
     /**

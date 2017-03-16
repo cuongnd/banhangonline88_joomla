@@ -75,4 +75,10 @@
 
         </TableLayout>
     </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/btn_image_view_chatting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/messenger_bubble_large_blue" />
 </LinearLayout>

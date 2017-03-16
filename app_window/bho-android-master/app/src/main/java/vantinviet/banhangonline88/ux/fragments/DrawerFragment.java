@@ -409,6 +409,10 @@ public class DrawerFragment extends Fragment {
          * Launch {@link AccountFragment}.
          */
         void onAccountSelected();
+        /**
+         * Launch {@link ChattingFragment}.
+         */
+        void onChattingSelected(long productId);
 
         /**
          * Prepare all search strings for search whisperer.

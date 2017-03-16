@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -153,6 +154,7 @@ public class ProductsRecyclerAdapter extends RecyclerView.Adapter<ProductsRecycl
         public TextView productNameTV;
         public TextView productPriceTV;
         public TextView productPriceDiscountTV;
+        public ImageView btn_image_view_chatting;
         private Product product;
 
         public ViewHolder(View v, final CategoryRecyclerInterface categoryRecyclerInterface) {
@@ -161,10 +163,17 @@ public class ProductsRecyclerAdapter extends RecyclerView.Adapter<ProductsRecycl
             productPriceTV = (TextView) v.findViewById(R.id.product_item_price);
             productPriceDiscountTV = (TextView) v.findViewById(R.id.product_item_discount);
             productImage = (ResizableImageView) v.findViewById(R.id.product_item_image);
+            btn_image_view_chatting = (ImageView) v.findViewById(R.id.btn_image_view_chatting);
             v.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     categoryRecyclerInterface.onProductSelected(v, product);
+                }
+            });
+            btn_image_view_chatting.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    categoryRecyclerInterface.onChattingSelected(v, product);
                 }
             });
         }

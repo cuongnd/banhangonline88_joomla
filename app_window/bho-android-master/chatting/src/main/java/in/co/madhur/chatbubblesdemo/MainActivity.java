@@ -108,6 +108,9 @@ public class MainActivity extends ActionBarActivity implements SizeNotifierRelat
                 message.setUserType(UserType.OTHER);
                 message.setMessageTime(new Date().getTime());
                 chatMessages.add(message);
+
+
+
                 MainActivity.this.runOnUiThread(new Runnable() {
                     public void run() {
                         listAdapter.notifyDataSetChanged();

@@ -1,1 +1,1 @@
-include ':app', ':chatting'
+include ':app', ':chatting', ':ApplicationActiveNotifications'

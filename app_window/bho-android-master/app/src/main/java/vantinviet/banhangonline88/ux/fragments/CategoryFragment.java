@@ -316,6 +316,13 @@ public class CategoryFragment extends Fragment {
                 }
                 ((MainActivity) getActivity()).onProductSelected(product.getId());
             }
+            @Override
+            public void onChattingSelected(View caller, Product product) {
+                if (android.os.Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
+                    setReenterTransition(TransitionInflater.from(getActivity()).inflateTransition(android.R.transition.fade));
+                }
+                ((MainActivity) getActivity()).onChattingSelected(product.getId());
+            }
         });
     }
 

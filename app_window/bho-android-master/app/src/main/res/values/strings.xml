@@ -214,4 +214,6 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="title_activity_test_chatting">test_chatting</string>
+    <string name="title_activity_form_text">FormText</string>
 </resources>
