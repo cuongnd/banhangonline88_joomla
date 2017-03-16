@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest package="vantinviet.banhangonline88"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    tools:overrideLibrary="com.google.android.gms.appindexing"
+
     xmlns:tools="http://schemas.android.com/tools">
 
     <!-- General permissions -->
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-
+    <uses-sdk
+        tools:overrideLibrary="com.google.android.gms.appindexing"
+        />
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
 
@@ -27,7 +29,7 @@
         android:largeHeap="true"
         android:supportsRtl="false"
         tools:replace="android:allowBackup"
-        tools:overrideLibrary="com.google.android.gms.appindexing"
+
         android:theme="@style/MaterialTheme">
 
 
@@ -51,7 +53,6 @@
         <activity
             android:name=".ux.MainActivity"
             android:screenOrientation="portrait"
-            tools:overrideLibrary="com.google.android.gms.appindexing"
             android:windowSoftInputMode="stateHidden|adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH"/>

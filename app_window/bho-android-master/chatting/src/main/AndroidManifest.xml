@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
-        tools:overrideLibrary="com.google.android.gms.appindexing"
+
         android:allowBackup="true">
         <activity android:name=".MainActivity">
             <intent-filter>
