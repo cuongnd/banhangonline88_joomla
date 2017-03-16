@@ -3,6 +3,7 @@ package in.co.madhur.chatbubblesdemo.widgets;
 
 import android.content.Context;
 import android.graphics.Rect;
+import android.os.Build;
 import android.view.View;
 import android.widget.RelativeLayout;
 
@@ -39,6 +40,7 @@ public class SizeNotifierRelativeLayout extends RelativeLayout {
      * @param r
      * @param b
      */
+    @android.support.annotation.RequiresApi(api = Build.VERSION_CODES.CUPCAKE)
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         super.onLayout(changed, l, t, r, b);

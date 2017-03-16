@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest package="vantinviet.banhangonline88"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:overrideLibrary="com.google.android.gms.appindexing"
     xmlns:tools="http://schemas.android.com/tools">
 
     <!-- General permissions -->
@@ -26,6 +27,7 @@
         android:largeHeap="true"
         android:supportsRtl="false"
         tools:replace="android:allowBackup"
+        tools:overrideLibrary="com.google.android.gms.appindexing"
         android:theme="@style/MaterialTheme">
 
 
@@ -38,7 +40,6 @@
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
@@ -50,6 +51,7 @@
         <activity
             android:name=".ux.MainActivity"
             android:screenOrientation="portrait"
+            tools:overrideLibrary="com.google.android.gms.appindexing"
             android:windowSoftInputMode="stateHidden|adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH"/>

@@ -27,11 +27,6 @@ public class AndroidUtilities {
     public static int statusBarHeight = 0;
     public static Point displaySize = new Point();
 
-    static {
-        density = App.getInstance().getResources().getDisplayMetrics().density;
-        checkDisplaySize();
-    }
-
     public static int dp(float value) {
         return (int)Math.ceil(density * value);
     }

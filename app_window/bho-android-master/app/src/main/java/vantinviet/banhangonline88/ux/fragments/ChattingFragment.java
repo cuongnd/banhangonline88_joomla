@@ -132,9 +132,7 @@ public class ChattingFragment extends Fragment  implements SizeNotifierRelativeL
         sizeNotifierRelativeLayout.delegate = this;
 
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.emojiDidLoaded);
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client = new GoogleApiClient.Builder(view.getContext()).addApi(AppIndex.API).build();
+
 
         return view;
     }
@@ -297,40 +295,7 @@ public class ChattingFragment extends Fragment  implements SizeNotifierRelativeL
                 windowLayoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
             }
 
-            final int currentHeight;
 
-            if (keyboardHeight <= 0)
-                keyboardHeight = App.getInstance().getSharedPreferences("emoji", 0).getInt("kbd_height", AndroidUtilities.dp(200));
-
-            currentHeight = keyboardHeight;
-
-            WindowManager wm = (WindowManager) App.getInstance().getSystemService(Activity.WINDOW_SERVICE);
-
-            windowLayoutParams.height = currentHeight;
-            windowLayoutParams.width = AndroidUtilities.displaySize.x;
-
-            try {
-                if (emojiView.getParent() != null) {
-                    wm.removeViewImmediate(emojiView);
-                }
-            } catch (Exception e) {
-                Log.e(Constants.TAG, e.getMessage());
-            }
-
-            try {
-                wm.addView(emojiView, windowLayoutParams);
-            } catch (Exception e) {
-                Log.e(Constants.TAG, e.getMessage());
-                return;
-            }
-
-            if (!keyboardVisible) {
-                if (sizeNotifierRelativeLayout != null) {
-                    sizeNotifierRelativeLayout.setPadding(0, 0, 0, currentHeight);
-                }
-
-                return;
-            }
 
         } else {
             removeEmojiWindow();
@@ -408,53 +373,7 @@ public class ChattingFragment extends Fragment  implements SizeNotifierRelativeL
     @Override
     public void onSizeChanged(int height) {
 
-        Rect localRect = new Rect();
-        getActivity().getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
 
-        WindowManager wm = (WindowManager) App.getInstance().getSystemService(Activity.WINDOW_SERVICE);
-        if (wm == null || wm.getDefaultDisplay() == null) {
-            return;
-        }
-
-
-        if (height > AndroidUtilities.dp(50) && keyboardVisible) {
-            keyboardHeight = height;
-            App.getInstance().getSharedPreferences("emoji", 0).edit().putInt("kbd_height", keyboardHeight).commit();
-        }
-
-
-        if (showingEmoji) {
-            int newHeight = 0;
-
-            newHeight = keyboardHeight;
-
-            if (windowLayoutParams.width != AndroidUtilities.displaySize.x || windowLayoutParams.height != newHeight) {
-                windowLayoutParams.width = AndroidUtilities.displaySize.x;
-                windowLayoutParams.height = newHeight;
-
-                wm.updateViewLayout(emojiView, windowLayoutParams);
-                if (!keyboardVisible) {
-                    sizeNotifierRelativeLayout.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            if (sizeNotifierRelativeLayout != null) {
-                                sizeNotifierRelativeLayout.setPadding(0, 0, 0, windowLayoutParams.height);
-                                sizeNotifierRelativeLayout.requestLayout();
-                            }
-                        }
-                    });
-                }
-            }
-        }
-
-
-        boolean oldValue = keyboardVisible;
-        keyboardVisible = height > 0;
-        if (keyboardVisible && sizeNotifierRelativeLayout.getPaddingBottom() > 0) {
-            showEmojiPopup(false);
-        } else if (!keyboardVisible && keyboardVisible != oldValue && showingEmoji) {
-            showEmojiPopup(false);
-        }
 
     }
 
@@ -477,46 +396,6 @@ public class ChattingFragment extends Fragment  implements SizeNotifierRelativeL
             result = getResources().getDimensionPixelSize(resourceId);
         }
         return result;
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client.connect();
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "chattingfrom Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app URL is correct.
-                Uri.parse("android-app://com.vantinviet.vtv/http/host/path")
-        );
-        AppIndex.AppIndexApi.start(client, viewAction);
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "chattingfrom Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app URL is correct.
-                Uri.parse("android-app://com.vantinviet.vtv/http/host/path")
-        );
-        AppIndex.AppIndexApi.end(client, viewAction);
-        client.disconnect();
     }
 
 
