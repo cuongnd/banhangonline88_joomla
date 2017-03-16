@@ -15,12 +15,16 @@
  *******************************************************************************/
 package vantinviet.banhangonline88.ux;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.SearchManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.MatrixCursor;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -31,6 +35,8 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.CursorAdapter;
@@ -44,6 +50,7 @@ import android.transition.TransitionInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RemoteViews;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -54,8 +61,15 @@ import com.facebook.appevents.AppEventsLogger;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
 
+import in.co.madhur.chatbubblesdemo.model.ChatMessage;
+import in.co.madhur.chatbubblesdemo.model.Status;
+import in.co.madhur.chatbubblesdemo.model.UserType;
 import vantinviet.banhangonline88.MyApplication;
 import vantinviet.banhangonline88.api.EndPoints;
 import vantinviet.banhangonline88.entities.drawerMenu.DrawerItemCategory;
@@ -92,6 +106,9 @@ import vantinviet.banhangonline88.ux.fragments.ProductFragment;
 import vantinviet.banhangonline88.ux.fragments.SettingsFragment;
 import vantinviet.banhangonline88.ux.fragments.WishlistFragment;
 import timber.log.Timber;
+
+import static java.util.concurrent.TimeUnit.MINUTES;
+import static java.util.concurrent.TimeUnit.SECONDS;
 
 /**
  * Application is based on one core activity, which handles fragment operations.
@@ -169,6 +186,59 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
         }
     }
 
+    // Add app running notification
+
+    private void addNotification() {
+        NotificationCompat.Builder builder =
+                new NotificationCompat.Builder(this)
+                        .setSmallIcon(R.drawable.ic_launcher)
+                        .setContentTitle("Notifications Example")
+                        .setContentText("This is a test notification")
+
+                ;
+
+        Intent notificationIntent = new Intent(this, MainActivity.class);
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
+        builder.setContentIntent(contentIntent);
+
+        // Add as notification
+        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        manager.notify(12, builder.build());
+
+
+
+
+    }
+
+    // Remove notification
+    private void removeNotification() {
+        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        
+        manager.cancel(12);
+    }
+
+
+    private final ScheduledExecutorService scheduler =
+            Executors.newScheduledThreadPool(1);
+    public void beepForAnHour() {
+        final Runnable beeper = new Runnable() {
+            public void run() {
+            System.out.println("action update");
+                addNotification();
+
+
+
+            }
+        };
+        final ScheduledFuture<?> beeperHandle =
+                scheduler.scheduleAtFixedRate(beeper, 10, 5, SECONDS);
+        scheduler.schedule(new Runnable() {
+            public void run() { beeperHandle.cancel(true); }
+        }, 60*60, MINUTES);
+    }
+
+
     /**
      * Return MainActivity instance. Null if activity doesn't exist.
      *
@@ -188,7 +258,7 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
         // Set app specific language localization by selected shop.
         String lang = SettingsMy.getActualNonNullShop(this).getLanguage();
         MyApplication.setAppLocale(lang);
-
+        beepForAnHour();
         setContentView(R.layout.activity_main);
 
 
