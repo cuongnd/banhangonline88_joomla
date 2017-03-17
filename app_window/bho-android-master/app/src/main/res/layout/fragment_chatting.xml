@@ -84,7 +84,42 @@
             android:text="@string/Products_not_found"
             android:visibility="gone"/>
 
+
+
     </android.support.design.widget.CoordinatorLayout>
+    <LinearLayout
+        android:id="@+id/footer_section"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:minHeight="48dp">
+
+        <ImageView
+            android:id="@+id/emoticons_button"
+            android:layout_width="48dp"
+            android:layout_height="match_parent"
+            android:contentDescription=""
+            android:src="@drawable/messenger_bubble_large_blue" />
+
+        <EditText
+            android:id="@+id/message_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:inputType="textMultiLine"
+            android:maxLines="4"
+            android:minLines="1"
+            android:textColor="#000" />
+
+        <ImageView
+            android:id="@+id/send_button"
+            android:layout_width="48dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:src="@android:drawable/ic_menu_send" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/category_load_more_progress"

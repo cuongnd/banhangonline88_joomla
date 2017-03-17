@@ -4,13 +4,6 @@
 	android:enterFadeDuration="200"
 	android:exitFadeDuration="300"
 	>
-	<item
-		android:state_selected="true"
-		android:drawable="@drawable/ic_smiles_smile_active"
-		>
-	</item>
-	<item
-		android:drawable="@drawable/ic_smiles_smile"
-		>
-	</item>
+    <item android:state_selected="true" android:drawable="@drawable/ic_smiles_smile_active" />
+    <item android:drawable="@drawable/ic_smiles_smile" />
 </selector>

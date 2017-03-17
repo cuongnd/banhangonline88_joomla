@@ -1,5 +1,6 @@
 package vantinviet.banhangonline88.ux.fragments;
 
+import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -17,7 +18,9 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.DecelerateInterpolator;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -52,6 +55,7 @@ import vantinviet.banhangonline88.utils.Analytics;
 import vantinviet.banhangonline88.utils.EndlessRecyclerScrollListener;
 import vantinviet.banhangonline88.utils.MsgUtils;
 import vantinviet.banhangonline88.utils.RecyclerMarginDecorator;
+import vantinviet.banhangonline88.utils.Utils;
 import vantinviet.banhangonline88.ux.MainActivity;
 import vantinviet.banhangonline88.ux.adapters.ChattingRecyclerAdapter;
 import vantinviet.banhangonline88.ux.adapters.ProductsRecyclerAdapter;
@@ -91,6 +95,7 @@ public class ChattingFragment extends Fragment {
 
     // Content specific
     private TextView emptyContentView;
+    private EditText message_text;
     private RecyclerView productsRecycler;
     private GridLayoutManager productsRecyclerLayoutManager;
     private ChattingRecyclerAdapter chattingRecyclerAdapter;
@@ -152,10 +157,11 @@ public class ChattingFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_chatting, container, false);
 
         this.emptyContentView = (TextView) view.findViewById(R.id.category_products_empty);
+
         this.loadMoreProgress = view.findViewById(R.id.category_load_more_progress);
         this.sortSpinner = (Spinner) view.findViewById(R.id.category_sort_spinner);
         this.switchLayoutManager = (ImageSwitcher) view.findViewById(R.id.category_switch_layout_manager);
-
+        init(view);
         Bundle startBundle = getArguments();
         if (startBundle != null) {
             productId = startBundle.getLong(PRODUCT_ID, 0);
@@ -196,6 +202,34 @@ public class ChattingFragment extends Fragment {
             Timber.e(new RuntimeException(), "Run category fragment without arguments.");
         }
         return view;
+    }
+
+    private void init(View view) {
+        message_text = (EditText) view.findViewById(R.id.message_text);
+        message_text.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                message_text.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                        imm.showSoftInput(message_text, InputMethodManager.SHOW_IMPLICIT);
+                    }
+                });
+            }
+        });
+        message_text.requestFocus();
+        message_text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                InputMethodManager inputMethodManager = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                if (inputMethodManager != null) {
+                    inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+
+                }
+            }
+
+        });
     }
 
 
