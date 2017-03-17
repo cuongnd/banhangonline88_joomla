@@ -10,8 +10,8 @@ public class EndPoints {
     private static final String API_URL                  = "http://77.93.198.186/v1.2/";    // staging
     private static final String API_URL1                  = "http://banhangonline88.com/";    // staging
 
-    //public static final String SHOPS                    = API_URL.concat(CONST.ORGANIZATION_ID + "/shops");
-    public static final String SHOPS                    = API_URL1.concat("index.php?format=json&tmpl=component&ignoreMessages=true&option=com_hikashop&ctrl=country&task=ajax_get_list_country");
+    public static final String SHOPS                    = API_URL.concat(CONST.ORGANIZATION_ID + "/shops");
+    //public static final String SHOPS                    = API_URL1.concat("index.php?format=json&tmpl=component&ignoreMessages=true&option=com_hikashop&ctrl=country&task=ajax_get_list_country");
     public static final String SHOPS_SINGLE             = API_URL.concat(CONST.ORGANIZATION_ID + "/shops/%d");
     //public static final String NAVIGATION_DRAWER        = API_URL.concat("%d/navigation_drawer");
     public static final String NAVIGATION_DRAWER        = API_URL1.concat("index.php?format=json&tmpl=component&ignoreMessages=true&option=com_menus&task=items.ajax_get_left_menu_category");

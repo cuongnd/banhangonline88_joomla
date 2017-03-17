@@ -1,42 +1,36 @@
 package vantinviet.banhangonline88.ux.fragments;
-import android.app.Activity;
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.graphics.Rect;
-import android.net.Uri;
+
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.AppBarLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
-import android.view.Gravity;
-import android.view.KeyEvent;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.transition.TransitionInflater;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.EditText;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.DecelerateInterpolator;
+import android.widget.AdapterView;
+import android.widget.ImageSwitcher;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.ViewSwitcher;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 import timber.log.Timber;
 import vantinviet.banhangonline88.CONST;
 import vantinviet.banhangonline88.MyApplication;
@@ -44,272 +38,400 @@ import vantinviet.banhangonline88.R;
 import vantinviet.banhangonline88.SettingsMy;
 import vantinviet.banhangonline88.api.EndPoints;
 import vantinviet.banhangonline88.api.GsonRequest;
-import vantinviet.banhangonline88.entities.User;
+import vantinviet.banhangonline88.entities.Metadata;
+import vantinviet.banhangonline88.entities.SortItem;
+import vantinviet.banhangonline88.entities.drawerMenu.DrawerItemCategory;
+import vantinviet.banhangonline88.entities.drawerMenu.DrawerItemChatting;
+import vantinviet.banhangonline88.entities.filtr.Filters;
+import vantinviet.banhangonline88.entities.product.Product;
+import vantinviet.banhangonline88.entities.product.ProductListResponse;
+import vantinviet.banhangonline88.interfaces.CategoryRecyclerInterface;
+import vantinviet.banhangonline88.interfaces.ChattingRecyclerInterface;
+import vantinviet.banhangonline88.listeners.OnSingleClickListener;
+import vantinviet.banhangonline88.utils.Analytics;
+import vantinviet.banhangonline88.utils.EndlessRecyclerScrollListener;
 import vantinviet.banhangonline88.utils.MsgUtils;
-import vantinviet.banhangonline88.utils.Utils;
+import vantinviet.banhangonline88.utils.RecyclerMarginDecorator;
 import vantinviet.banhangonline88.ux.MainActivity;
-import in.co.madhur.chatbubblesdemo.AndroidUtilities;
-import in.co.madhur.chatbubblesdemo.App;
-import in.co.madhur.chatbubblesdemo.ChatListAdapter;
-import in.co.madhur.chatbubblesdemo.Constants;
-import in.co.madhur.chatbubblesdemo.NotificationCenter;
-import in.co.madhur.chatbubblesdemo.model.ChatMessage;
-import in.co.madhur.chatbubblesdemo.model.Status;
-import in.co.madhur.chatbubblesdemo.model.UserType;
-import in.co.madhur.chatbubblesdemo.widgets.Emoji;
-import in.co.madhur.chatbubblesdemo.widgets.EmojiView;
-import in.co.madhur.chatbubblesdemo.widgets.SizeNotifierRelativeLayout;
-import static in.co.madhur.chatbubblesdemo.R.layout.activity_main;
+import vantinviet.banhangonline88.ux.adapters.ChattingRecyclerAdapter;
+import vantinviet.banhangonline88.ux.adapters.ProductsRecyclerAdapter;
+import vantinviet.banhangonline88.ux.adapters.SortSpinnerAdapter;
+
 /**
- * Fragment provides the account screen with options such as logging, editing and more.
+ * Fragment handles various types of product lists.
+ * Also allows displaying the search results.
  */
-public class ChattingFragment extends Fragment implements SizeNotifierRelativeLayout.SizeNotifierRelativeLayoutDelegate, NotificationCenter.NotificationCenterDelegate {
-    private ProgressDialog pDialog;
-    private ListView chatListView;
-    private EditText chatEditText1;
-    private ArrayList<ChatMessage> chatMessages;
-    private ImageView enterChatView1, emojiButton;
-    private ChatListAdapter listAdapter;
-    private EmojiView emojiView;
-    private SizeNotifierRelativeLayout sizeNotifierRelativeLayout;
-    private boolean showingEmoji;
-    private int keyboardHeight;
-    private boolean keyboardVisible;
-    private WindowManager.LayoutParams windowLayoutParams;
-    public View view;
-    @Override
-    public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
-        Timber.d("%s - OnCreateView", this.getClass().getSimpleName());
-        MainActivity.setActionBarTitle(getString(R.string.Profile));
-        view = inflater.inflate(R.layout.fragment_chatting, container, false);
-        pDialog = Utils.generateProgressDialog(getActivity(), false);
-        chatMessages = new ArrayList<>();
-        chatListView = (ListView) view.findViewById(R.id.chat_list_view);
-        chatEditText1 = (EditText) view.findViewById(R.id.chat_edit_text1);
+public class ChattingFragment extends Fragment {
 
-        enterChatView1 = (ImageView) view.findViewById(R.id.enter_chat1);
-        // Hide the emoji on click of edit text
-        chatEditText1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (showingEmoji)
-                    hideEmojiPopup();
-            }
-        });
-        emojiButton = (ImageView) view.findViewById(R.id.emojiButton);
-        emojiButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showEmojiPopup(!showingEmoji);
-            }
-        });
-        listAdapter = new ChatListAdapter(chatMessages, view.getContext());
-        chatListView.setAdapter(listAdapter);
-        chatEditText1.setOnKeyListener(keyListener);
-        enterChatView1.setOnClickListener(clickListener);
-        chatEditText1.addTextChangedListener(watcher1);
-        sizeNotifierRelativeLayout = (SizeNotifierRelativeLayout) view.findViewById(R.id.chat_layout);
-        sizeNotifierRelativeLayout.delegate = this;
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.emojiDidLoaded);
-        return view;
-    }
-    private EditText.OnKeyListener keyListener = new View.OnKeyListener() {
-        @Override
-        public boolean onKey(View v, int keyCode, KeyEvent event) {
-            // If the event is a key-down event on the "enter" button
-            if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
-                    (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                // Perform action on key press
-                EditText editText = (EditText) v;
-                if (v == chatEditText1) {
-                    sendMessage(editText.getText().toString(), UserType.OTHER);
-                }
-                chatEditText1.setText("");
-                return true;
-            }
-            return false;
-        }
-    };
-    private ImageView.OnClickListener clickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            if (v == enterChatView1) {
-                sendMessage(chatEditText1.getText().toString(), UserType.OTHER);
-            }
-            chatEditText1.setText("");
-        }
-    };
-    private final TextWatcher watcher1 = new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-        }
-        @Override
-        public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-            if (chatEditText1.getText().toString().equals("")) {
-            } else {
-                enterChatView1.setImageResource(R.drawable.ic_chat_send);
-            }
-        }
-        @Override
-        public void afterTextChanged(Editable editable) {
-            if (editable.length() == 0) {
-                enterChatView1.setImageResource(R.drawable.ic_chat_send);
-            } else {
-                enterChatView1.setImageResource(R.drawable.ic_chat_send_active);
-            }
-        }
-    };
+    private static final String PRODUCT_ID = "product_id";
+    private static final String SEARCH_QUERY = "fdfdf";
+
     /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     * Prevent the sort selection callback during initialization.
      */
-    private GoogleApiClient client;
-    private void sendMessage(final String messageText, final UserType userType) {
-        if (messageText.trim().length() == 0)
-            return;
-        final ChatMessage message = new ChatMessage();
-        message.setMessageStatus(Status.SENT);
-        message.setMessageText(messageText);
-        message.setUserType(userType);
-        Context context = getContext();
-        CharSequence text = "Hello toast!";
-        int duration = Toast.LENGTH_SHORT;
+    private boolean firstTimeSort = true;
 
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
-        message.setMessageTime(new Date().getTime());
-        if (listAdapter != null)
-            listAdapter.notifyDataSetChanged();
-        // Mark message as delivered after one second
-        message.setMessageStatus(Status.DELIVERED);
-        message.setUserType(UserType.SELF);
-        message.setMessageTime(new Date().getTime());
-        chatMessages.add(message);
-        listAdapter.notifyDataSetChanged();
-    }
+    private View loadMoreProgress;
+
+    private long productId;
+    private String categoryType;
+
     /**
-     * Show or hide the emoji popup
+     * Search string. The value is set only if the fragment is launched in order to searching.
+     */
+    private String searchQuery = null;
+
+    /**
+     * Request metadata containing URLs for endlessScroll.
+     */
+    private Metadata productsMetadata;
+
+    private ImageSwitcher switchLayoutManager;
+    private Spinner sortSpinner;
+
+    // Content specific
+    private TextView emptyContentView;
+    private RecyclerView productsRecycler;
+    private GridLayoutManager productsRecyclerLayoutManager;
+    private ChattingRecyclerAdapter chattingRecyclerAdapter;
+    private EndlessRecyclerScrollListener endlessRecyclerScrollListener;
+
+    // Filters parameters
+    private Filters filters;
+    private String filterParameters = null;
+    private ImageView filterButton;
+
+    // Properties used to restore previous state
+    private int toolbarOffset = -1;
+    private boolean isList = false;
+
+
+    public static ChattingFragment newInstance(long productId) {
+        System.out.println("ChattingFragment");
+        Bundle args = new Bundle();
+        args.putLong(PRODUCT_ID, productId);
+        ChattingFragment fragment = new ChattingFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+
+    /**
+     * Show product list based on search results.
      *
-     * @param show
+     * @param searchQuery word for searching.
+     * @return new fragment instance.
      */
-    private void showEmojiPopup(boolean show) {
-        showingEmoji = show;
-        if (show) {
-            if (emojiView == null) {
-                if (getActivity() == null) {
-                    return;
+    public static ChattingFragment newInstance(String searchQuery) {
+        Bundle args = new Bundle();
+        args.putString(SEARCH_QUERY, searchQuery);
+
+        ChattingFragment fragment = new ChattingFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    /**
+     * Show product list populated from drawer menu.
+     *
+     * @param drawerItemChatting corresponding drawer menu item.
+     * @return new fragment instance.
+     */
+    public static ChattingFragment newInstance(DrawerItemChatting drawerItemChatting) {
+        if (drawerItemChatting != null)
+            return newInstance(drawerItemChatting.getOriginalId());
+        else {
+            Timber.e(new RuntimeException(), "Creating category with null arguments");
+            return null;
+        }
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        Timber.d("%s - onCreateView", this.getClass().getSimpleName());
+        View view = inflater.inflate(R.layout.fragment_chatting, container, false);
+
+        this.emptyContentView = (TextView) view.findViewById(R.id.category_products_empty);
+        this.loadMoreProgress = view.findViewById(R.id.category_load_more_progress);
+        this.sortSpinner = (Spinner) view.findViewById(R.id.category_sort_spinner);
+        this.switchLayoutManager = (ImageSwitcher) view.findViewById(R.id.category_switch_layout_manager);
+
+        Bundle startBundle = getArguments();
+        if (startBundle != null) {
+            productId = startBundle.getLong(PRODUCT_ID, 0);
+            searchQuery = startBundle.getString(SEARCH_QUERY, null);
+            boolean isSearch = false;
+            if (searchQuery != null && !searchQuery.isEmpty()) {
+                isSearch = true;
+                productId = -10;
+            }
+
+            Timber.d("productId: %d.", productId);
+
+            AppBarLayout appBarLayout = (AppBarLayout) view.findViewById(R.id.category_appbar_layout);
+            if (toolbarOffset != -1) appBarLayout.offsetTopAndBottom(toolbarOffset);
+            appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+                @Override
+                public void onOffsetChanged(AppBarLayout appBarLayout, int i) {
+                    toolbarOffset = i;
                 }
-                emojiView = new EmojiView(getActivity());
-                emojiView.setListener(new EmojiView.Listener() {
-                    public void onBackspace() {
-                        chatEditText1.dispatchKeyEvent(new KeyEvent(0, 67));
-                    }
-                    public void onEmojiSelected(String symbol) {
-                        int i = chatEditText1.getSelectionEnd();
-                        if (i < 0) {
-                            i = 0;
-                        }
-                        try {
-                            CharSequence localCharSequence = Emoji.replaceEmoji(symbol, chatEditText1.getPaint().getFontMetricsInt(), AndroidUtilities.dp(20));
-                            chatEditText1.setText(chatEditText1.getText().insert(i, localCharSequence));
-                            int j = i + localCharSequence.length();
-                            chatEditText1.setSelection(j, j);
-                        } catch (Exception e) {
-                            Log.e(Constants.TAG, "Error showing emoji");
-                        }
-                    }
-                });
-                windowLayoutParams = new WindowManager.LayoutParams();
-                windowLayoutParams.gravity = Gravity.BOTTOM | Gravity.LEFT;
-                if (Build.VERSION.SDK_INT >= 21) {
-                    windowLayoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ERROR;
-                } else {
-                    windowLayoutParams.type = WindowManager.LayoutParams.TYPE_APPLICATION_PANEL;
-                    windowLayoutParams.token = getActivity().getWindow().getDecorView().getWindowToken();
-                }
-                windowLayoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
+            });
+            MainActivity.setActionBarTitle("Chatting");
+
+            // Opened first time (not form backstack)
+            if (chattingRecyclerAdapter == null || chattingRecyclerAdapter.getItemCount() == 0) {
+                prepareRecyclerAdapter();
+                prepareChattingRecycler(view);
+                prepareSortSpinner();
+                getChatting(null);
+
+                Analytics.logProductView(productId,"logProductView");
+            } else {
+                prepareChattingRecycler(view);
+                prepareSortSpinner();
+                Timber.d("Restore previous category state. (Products already loaded) ");
             }
         } else {
-            removeEmojiWindow();
-            if (sizeNotifierRelativeLayout != null) {
-                sizeNotifierRelativeLayout.post(new Runnable() {
-                    public void run() {
-                        if (sizeNotifierRelativeLayout != null) {
-                            sizeNotifierRelativeLayout.setPadding(0, 0, 0, 0);
-                        }
+            MsgUtils.showToast(getActivity(), MsgUtils.TOAST_TYPE_INTERNAL_ERROR, getString(R.string.Internal_error), MsgUtils.ToastLength.LONG);
+            Timber.e(new RuntimeException(), "Run category fragment without arguments.");
+        }
+        return view;
+    }
+
+
+    /**
+     * Prepare content recycler. Create custom adapter and endless scroll.
+     *
+     * @param view root fragment view.
+     */
+    private void prepareChattingRecycler(View view) {
+        this.productsRecycler = (RecyclerView) view.findViewById(R.id.category_products_recycler);
+        productsRecycler.addItemDecoration(new RecyclerMarginDecorator(getActivity(), RecyclerMarginDecorator.ORIENTATION.BOTH));
+        productsRecycler.setItemAnimator(new DefaultItemAnimator());
+        productsRecycler.setHasFixedSize(true);
+        switchLayoutManager.setFactory(new ViewSwitcher.ViewFactory() {
+            @Override
+            public View makeView() {
+                return new ImageView(getContext());
+            }
+        });
+        if (isList) {
+            switchLayoutManager.setImageResource(R.drawable.grid_off);
+            productsRecyclerLayoutManager = new GridLayoutManager(getActivity(), 1);
+        } else {
+            switchLayoutManager.setImageResource(R.drawable.grid_on);
+            // TODO A better solution would be to dynamically determine the number of columns.
+            productsRecyclerLayoutManager = new GridLayoutManager(getActivity(), 2);
+        }
+        productsRecycler.setLayoutManager(productsRecyclerLayoutManager);
+        endlessRecyclerScrollListener = new EndlessRecyclerScrollListener(productsRecyclerLayoutManager) {
+            @Override
+            public void onLoadMore(int currentPage) {
+                Timber.e("Load more");
+                if (productsMetadata != null && productsMetadata.getLinks() != null && productsMetadata.getLinks().getNext() != null) {
+                    getChatting(productsMetadata.getLinks().getNext());
+                } else {
+                    Timber.d("CustomLoadMoreDataFromApi NO MORE DATA");
+                }
+            }
+        };
+        productsRecycler.addOnScrollListener(endlessRecyclerScrollListener);
+        productsRecycler.setAdapter(chattingRecyclerAdapter);
+
+        switchLayoutManager.setOnClickListener(new OnSingleClickListener() {
+            @Override
+            public void onSingleClick(View v) {
+                if (isList) {
+                    isList = false;
+                    switchLayoutManager.setImageResource(R.drawable.grid_on);
+                    chattingRecyclerAdapter.defineImagesQuality(false);
+                    animateRecyclerLayoutChange(2);
+                } else {
+                    isList = true;
+                    switchLayoutManager.setImageResource(R.drawable.grid_off);
+                    chattingRecyclerAdapter.defineImagesQuality(true);
+                    animateRecyclerLayoutChange(1);
+                }
+            }
+        });
+    }
+
+    private void prepareRecyclerAdapter() {
+        chattingRecyclerAdapter = new ChattingRecyclerAdapter(getActivity(), new ChattingRecyclerInterface() {
+
+
+            @Override
+            public void onChattingSelected(View caller, Product product) {
+                if (android.os.Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
+                    setReenterTransition(TransitionInflater.from(getActivity()).inflateTransition(android.R.transition.fade));
+                }
+                ((MainActivity) getActivity()).onChattingSelected(product.getId());
+            }
+        });
+    }
+
+    /**
+     * Animate change of rows in products recycler LayoutManager.
+     *
+     * @param layoutSpanCount number of rows to display.
+     */
+    private void animateRecyclerLayoutChange(final int layoutSpanCount) {
+        Animation fadeOut = new AlphaAnimation(1, 0);
+        fadeOut.setInterpolator(new DecelerateInterpolator());
+        fadeOut.setDuration(400);
+        fadeOut.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                productsRecyclerLayoutManager.setSpanCount(layoutSpanCount);
+                productsRecyclerLayoutManager.requestLayout();
+                Animation fadeIn = new AlphaAnimation(0, 1);
+                fadeIn.setInterpolator(new AccelerateInterpolator());
+                fadeIn.setDuration(400);
+                productsRecycler.startAnimation(fadeIn);
+            }
+        });
+        productsRecycler.startAnimation(fadeOut);
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Animation in = AnimationUtils.loadAnimation(getContext(), R.anim.fade_in_slowed);
+        Animation out = AnimationUtils.loadAnimation(getContext(), android.R.anim.fade_out);
+        switchLayoutManager.setInAnimation(in);
+        switchLayoutManager.setOutAnimation(out);
+    }
+
+    private void prepareSortSpinner() {
+        SortSpinnerAdapter sortSpinnerAdapter = new SortSpinnerAdapter(getActivity());
+        sortSpinner.setAdapter(sortSpinnerAdapter);
+        sortSpinner.setOnItemSelectedListener(null);
+        sortSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            private int lastSortSpinnerPosition = -1;
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (firstTimeSort) {
+                    firstTimeSort = false;
+                    return;
+                }
+                Timber.d("Selected pos: %d", position);
+
+                if (position != lastSortSpinnerPosition) {
+                    Timber.d("OnItemSelected change");
+                    lastSortSpinnerPosition = position;
+                    getChatting(null);
+                } else {
+                    Timber.d("OnItemSelected no change");
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                Timber.d("OnNothingSelected - no change");
+            }
+        });
+    }
+
+
+    /**
+     * Endless content loader. Should be used after views inflated.
+     *
+     * @param url null for fresh load. Otherwise use URLs from response metadata.
+     */
+    private void getChatting(String url) {
+        loadMoreProgress.setVisibility(View.VISIBLE);
+        if (url == null) {
+            if (endlessRecyclerScrollListener != null) endlessRecyclerScrollListener.clean();
+            chattingRecyclerAdapter.clear();
+            url = String.format(EndPoints.PRODUCTS, SettingsMy.getActualNonNullShop(getActivity()).getId());
+
+            // Build request url
+            if (searchQuery != null) {
+                String newSearchQueryString;
+                try {
+                    newSearchQueryString = URLEncoder.encode(searchQuery, "UTF-8");
+                } catch (UnsupportedEncodingException e) {
+                    Timber.e(e, "Unsupported encoding exception");
+                    newSearchQueryString = URLEncoder.encode(searchQuery);
+                }
+                Timber.d("GetFirstProductsInCategory isSearch: %s", searchQuery);
+                url += "&search=" + newSearchQueryString;
+            } else {
+                url +="&"+ categoryType + "=" + productId;
+            }
+            url += "&Itemid=" + productId;
+            // Add filters parameter if exist
+            if (filterParameters != null && !filterParameters.isEmpty()) {
+                url += filterParameters;
+            }
+
+            SortItem sortItem = (SortItem) sortSpinner.getSelectedItem();
+            if (sortItem != null) {
+                url = url + "&sort=" + sortItem.getValue();
+            }
+        }
+
+        GsonRequest<ProductListResponse> getProductsRequest = new GsonRequest<>(Request.Method.GET, url, null, ProductListResponse.class,
+                new Response.Listener<ProductListResponse>() {
+                    @Override
+                    public void onResponse(@NonNull ProductListResponse response) {
+                        firstTimeSort = false;
+//                        Timber.d("response:" + response.toString());
+                        chattingRecyclerAdapter.addProducts(response.getProducts());
+                        productsMetadata = response.getMetadata();
+                        if (filters == null) filters = productsMetadata.getFilters();
+                        checkEmptyContent();
+                        loadMoreProgress.setVisibility(View.GONE);
                     }
-                });
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                if (loadMoreProgress != null) loadMoreProgress.setVisibility(View.GONE);
+                checkEmptyContent();
+                MsgUtils.logAndShowErrorMessage(getActivity(), error);
             }
+        });
+        getProductsRequest.setRetryPolicy(MyApplication.getDefaultRetryPolice());
+        getProductsRequest.setShouldCache(false);
+        MyApplication.getInstance().addToRequestQueue(getProductsRequest, CONST.CATEGORY_REQUESTS_TAG);
+    }
+
+    private void checkEmptyContent() {
+        if (chattingRecyclerAdapter != null && chattingRecyclerAdapter.getItemCount() > 0) {
+            emptyContentView.setVisibility(View.INVISIBLE);
+            productsRecycler.setVisibility(View.VISIBLE);
+        } else {
+            emptyContentView.setVisibility(View.VISIBLE);
+            productsRecycler.setVisibility(View.INVISIBLE);
         }
     }
-    /**
-     * Remove emoji window
-     */
-    private void removeEmojiWindow() {
-        if (emojiView == null) {
-            return;
-        }
-        try {
-            if (emojiView.getParent() != null) {
-                WindowManager wm = (WindowManager) App.getInstance().getSystemService(Context.WINDOW_SERVICE);
-                wm.removeViewImmediate(emojiView);
-            }
-        } catch (Exception e) {
-            Log.e(Constants.TAG, e.getMessage());
-        }
-    }
-    /**
-     * Hides the emoji popup
-     */
-    public void hideEmojiPopup() {
-        if (showingEmoji) {
-            showEmojiPopup(false);
-        }
-    }
-    /**
-     * Check if the emoji popup is showing
-     *
-     * @return
-     */
-    public boolean isEmojiPopupShowing() {
-        return showingEmoji;
-    }
-    /**
-     * Updates emoji views when they are complete loading
-     *
-     * @param id
-     * @param args
-     */
+
     @Override
-    public void didReceivedNotification(int id, Object... args) {
-        if (id == NotificationCenter.emojiDidLoaded) {
-            if (emojiView != null) {
-                emojiView.invalidateViews();
+    public void onStop() {
+        if (loadMoreProgress != null) {
+            // Hide progress dialog if exist.
+            if (loadMoreProgress.getVisibility() == View.VISIBLE && endlessRecyclerScrollListener != null) {
+                // Fragment stopped during loading data. Allow new loading on return.
+                endlessRecyclerScrollListener.resetLoading();
             }
-            if (chatListView != null) {
-                chatListView.invalidateViews();
-            }
+            loadMoreProgress.setVisibility(View.GONE);
         }
+        MyApplication.getInstance().cancelPendingRequests(CONST.CATEGORY_REQUESTS_TAG);
+        super.onStop();
     }
+
     @Override
-    public void onSizeChanged(int height) {
-    }
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.emojiDidLoaded);
-    }
-    /**
-     * Get the system status bar height
-     *
-     * @return
-     */
-    public int getStatusBarHeight() {
-        int result = 0;
-        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
-        if (resourceId > 0) {
-            result = getResources().getDimensionPixelSize(resourceId);
-        }
-        return result;
+    public void onDestroyView() {
+        if (productsRecycler != null) productsRecycler.clearOnScrollListeners();
+        super.onDestroyView();
     }
 }

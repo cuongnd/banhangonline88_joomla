@@ -257,6 +257,10 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
 
         // Set app specific language localization by selected shop.
         String lang = SettingsMy.getActualNonNullShop(this).getLanguage();
+        if(lang==null){
+            lang="en_GB";
+        }
+        System.out.println(lang);
         MyApplication.setAppLocale(lang);
         beepForAnHour();
         setContentView(R.layout.activity_main);
@@ -656,7 +660,8 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
     }
     @Override
     public void onChattingSelected(long productId){
-        ChattingFragment fragment = new ChattingFragment();
+        clearBackStack();
+        ChattingFragment fragment = ChattingFragment.newInstance(productId);
         replaceFragment(fragment, ChattingFragment.class.getSimpleName());
     }
 
