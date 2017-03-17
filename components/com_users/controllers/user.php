@@ -101,6 +101,13 @@ class UsersControllerUser extends UsersController
         $app->setUserState('users.login.form.data', array());
         $app->redirect(JRoute::_($app->getUserState('users.login.form.return'), false));
     }
+    public function ajax_get_user_info(){
+        $input=JFactory::getApplication()->input;
+        $post=json_decode(file_get_contents('php://input'));
+        $html='{    "metadata":null,    "records":[       {          "id":21,          "name":"English",          "description":"",          "url":"",          "logo":"",          "google_ua":"UA-73690730-4",          "language":"en",          "currency":"USD",          "flag_icon":"http:\/\/77.93.198.186\/images\/flags\/48\/us.png"       },       {          "id":18,          "name":"\u010de\u0161tina",          "description":"",          "url":"",          "logo":"",          "google_ua":"UA-73690730-3",          "language":"cs",          "currency":"K\u010d",          "flag_icon":"http:\/\/77.93.198.186\/images\/flags\/48\/cz.png"       }    ] }';
+        $json= new JResponseJson($html, null, false, $input->get('ignoreMessages', true, 'bool'));
+        echo $json->android_response();
+    }
 
     /**
      * Method to log out a user.

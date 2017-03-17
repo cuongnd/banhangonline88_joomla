@@ -28,6 +28,11 @@ class UsersController extends JControllerLegacy
 	 */
 	public function display($cachable = false, $urlparams = false)
 	{
+		$input=JFactory::getApplication()->input;
+		$os=$input->getString('os','');
+
+
+
 		// Get the document object.
 		$document = JFactory::getDocument();
 
@@ -38,6 +43,12 @@ class UsersController extends JControllerLegacy
 
 		if ($view = $this->getView($vName, $vFormat))
 		{
+			if($os){
+				$view->display();
+				return;
+
+			}
+
 			// Do any specific processing by view.
 			switch ($vName)
 			{

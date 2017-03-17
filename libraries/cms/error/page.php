@@ -27,6 +27,14 @@ class JErrorPage
 	 */
 	public static function render($error)
 	{
+		$doc=JFactory::getDocument();
+		if($doc->getType()=="json"){
+			$response= json_encode(array(
+				error=>1
+			));
+			echo $response;
+			die;
+		}
 		$expectedClass = PHP_MAJOR_VERSION >= 7 ? 'Throwable' : 'Exception';
 		$isException   = $error instanceof $expectedClass;
 

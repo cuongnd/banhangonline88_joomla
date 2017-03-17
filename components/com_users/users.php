@@ -8,9 +8,17 @@
  */
 
 defined('_JEXEC') or die;
+$input=JFactory::getApplication()->input;
+$os=$input->getString('os','');
 
+if($os){
+    $controller = JControllerLegacy::getInstance('Users');
+    $controller->execute($input->get('task', 'display'));
+    $controller->redirect();
+    return;
+
+}
 require_once JPATH_COMPONENT . '/helpers/route.php';
-
 $controller = JControllerLegacy::getInstance('Users');
-$controller->execute(JFactory::getApplication()->input->get('task', 'display'));
+$controller->execute($input->get('task', 'display'));
 $controller->redirect();

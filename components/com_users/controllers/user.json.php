@@ -65,20 +65,30 @@ class UsersControllerUser extends UsersController
         $response->id=$user->id;
         $response->fbId=3;
         $response->name=$user->name;
+        $response->email=$user->email;
         $response->street="new street";
         $response->city="new city";
         $response->accessToken=JFactory::getSession()->getToken();
         $response->token=JFactory::getSession()->getToken();
         echo json_encode($response);
     }
-    public function ajax_get_user_info(){
-        echo "dfsdf";
-        die;
-        $input=JFactory::getApplication()->input;
-        $post=json_decode(file_get_contents('php://input'));
-        $html='{    "metadata":null,    "records":[       {          "id":21,          "name":"English",          "description":"",          "url":"",          "logo":"",          "google_ua":"UA-73690730-4",          "language":"en",          "currency":"USD",          "flag_icon":"http:\/\/77.93.198.186\/images\/flags\/48\/us.png"       },       {          "id":18,          "name":"\u010de\u0161tina",          "description":"",          "url":"",          "logo":"",          "google_ua":"UA-73690730-3",          "language":"cs",          "currency":"K\u010d",          "flag_icon":"http:\/\/77.93.198.186\/images\/flags\/48\/cz.png"       }    ] }';
-        $json= new JResponseJson($html, null, false, $input->get('ignoreMessages', true, 'bool'));
-        echo $json->android_response();
+    public function ajax_get_user_info()
+    {
+        $app = JFactory::getApplication();
+        $input = $app->input;
+        $user_id=$input->getInt('user_id',0);
+        $user=JFactory::getUser($user_id);
+        $response=new stdClass();
+        $response->user=JFactory::getUser($user_id);
+        $response->id=$user->id;
+        $response->fbId=3;
+        $response->name=$user->name;
+        $response->email=$user->email;
+        $response->street="new street";
+        $response->city="new city";
+        $response->accessToken=JFactory::getSession()->getToken();
+        $response->token=JFactory::getSession()->getToken();
+        echo json_encode($response);
     }
     public function aajax_login(){
 
