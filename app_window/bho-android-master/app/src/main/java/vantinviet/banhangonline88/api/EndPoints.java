@@ -27,10 +27,10 @@ public class EndPoints {
     public static final String USER_LOGIN_EMAIL         = API_URL1.concat("index.php?format=json&os=android&tmpl=component&ignoreMessages=true&option=com_users&task=user.ajax_login");;
     public static final String USER_LOGIN_FACEBOOK      = API_URL.concat("%d/login/facebook");
     public static final String USER_RESET_PASSWORD      = API_URL.concat("%d/users/reset-password");
-    public static final String USER_SINGLE              = API_URL.concat("%d/users/%d");
+    public static final String USER_SINGLE              = API_URL1.concat("index.php?format=json&os=android&tmpl=component&ignoreMessages=true&option=com_users&task=user.ajax_get_user_info");
     public static final String USER_CHANGE_PASSWORD     = API_URL.concat("%d/users/%d/password");
-    public static final String CART                     = API_URL.concat("%d/cart");
-    public static final String CART_INFO                = API_URL.concat("%d/cart/info");
+    public static final String CART                     = API_URL1.concat("index.php?format=json&os=android&tmpl=component&ignoreMessages=true&option=com_hikashop&ctrl=product&task=ajax_get_cart");;
+    public static final String CART_INFO                = API_URL1.concat("index.php?format=json&os=android&tmpl=component&ignoreMessages=true&option=com_hikashop&ctrl=product&task=ajax_get_cart_info");
     public static final String CART_ITEM                = API_URL.concat("%d/cart/%d");
     public static final String CART_DELIVERY_INFO       = API_URL.concat("%d/cart/delivery-info");
     public static final String CART_DISCOUNTS           = API_URL.concat("%d/cart/discounts");
@@ -38,7 +38,7 @@ public class EndPoints {
     public static final String ORDERS                   = API_URL.concat("%d/orders");
     public static final String ORDERS_SINGLE            = API_URL.concat("%d/orders/%d");
     public static final String BRANCHES                 = API_URL.concat("%d/branches");
-    public static final String WISHLIST                 = API_URL1.concat("index.php?format=json&os=android&tmpl=component&ignoreMessages=true&option=com_hikashop&task=product.ajax_get_wishlist");;
+    public static final String WISHLIST                 = API_URL1.concat("index.php?format=json&os=android&tmpl=component&ignoreMessages=true&option=com_hikashop&ctrl=product&task=ajax_get_wishlist");
     public static final String WISHLIST_SINGLE          = API_URL.concat("%d/wishlist/%d");
     public static final String WISHLIST_IS_IN_WISHLIST  = API_URL.concat("%d/wishlist/is-in-wishlist/%d");
     public static final String REGISTER_NOTIFICATION    = API_URL.concat("%d/devices");

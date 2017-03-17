@@ -58,6 +58,7 @@ public class AccountFragment extends Fragment {
     private Button loginLogoutBtn;
     private Button updateUserBtn;
     private Button myOrdersBtn;
+    private MyApplication app;
 
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
@@ -156,7 +157,10 @@ public class AccountFragment extends Fragment {
     }
 
     private void syncUserData(@NonNull User user) {
-        String url = String.format(EndPoints.USER_SINGLE, SettingsMy.getActualNonNullShop(getActivity()).getId(), user.getId());
+        app=MyApplication.getInstance();
+        String url=app.get_token_link(EndPoints.USER_SINGLE);
+
+        url = String.format(url+"&user_id=%d", user.getId());
         pDialog.show();
 
         GsonRequest<User> getUser = new GsonRequest<>(Request.Method.GET, url, null, User.class,

@@ -78,6 +78,9 @@ android {
             resources.srcDirs += ['src/androidTest/resources']
         }
     }
+    lintOptions {
+        abortOnError true
+    }
 }
 
 task clearData(type: Exec) {

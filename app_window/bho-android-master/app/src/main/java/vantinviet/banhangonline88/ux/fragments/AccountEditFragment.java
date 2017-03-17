@@ -63,6 +63,7 @@ public class AccountEditFragment extends Fragment {
     private TextInputLayout currentPasswordWrapper;
     private TextInputLayout newPasswordWrapper;
     private TextInputLayout newPasswordAgainWrapper;
+    private MyApplication app;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -242,8 +243,9 @@ public class AccountEditFragment extends Fragment {
                     MsgUtils.showToast(getActivity(), MsgUtils.TOAST_TYPE_INTERNAL_ERROR, null, MsgUtils.ToastLength.SHORT);
                     return;
                 }
-
-                String url = String.format(EndPoints.USER_SINGLE, SettingsMy.getActualNonNullShop(getActivity()).getId(), activeUser.getId());
+                app=MyApplication.getInstance();
+                String url=app.get_token_link(EndPoints.USER_SINGLE);
+                url = String.format(url+"&user_id=%d", SettingsMy.getActualNonNullShop(getActivity()).getId(), activeUser.getId());
 
                 progressDialog.show();
                 GsonRequest<User> req = new GsonRequest<>(Request.Method.PUT, url, joUser.toString(), User.class,
