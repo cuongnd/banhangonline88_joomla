@@ -24,7 +24,7 @@ public class EndPoints {
     public static final String PRODUCTS_SINGLE          = API_URL.concat("%d/products123/%d");
     public static final String PRODUCTS_SINGLE_RELATED  = API_URL.concat("%d/products/%d?include=related");
     public static final String USER_REGISTER            = API_URL.concat("%d/users/register");
-    public static final String USER_LOGIN_EMAIL         = API_URL.concat("%d/login/email");
+    public static final String USER_LOGIN_EMAIL         = API_URL1.concat("index.php?format=json&os=android&tmpl=component&ignoreMessages=true&option=com_users&task=user.ajax_login");;
     public static final String USER_LOGIN_FACEBOOK      = API_URL.concat("%d/login/facebook");
     public static final String USER_RESET_PASSWORD      = API_URL.concat("%d/users/reset-password");
     public static final String USER_SINGLE              = API_URL.concat("%d/users/%d");
@@ -38,7 +38,7 @@ public class EndPoints {
     public static final String ORDERS                   = API_URL.concat("%d/orders");
     public static final String ORDERS_SINGLE            = API_URL.concat("%d/orders/%d");
     public static final String BRANCHES                 = API_URL.concat("%d/branches");
-    public static final String WISHLIST                 = API_URL.concat("%d/wishlist");
+    public static final String WISHLIST                 = API_URL1.concat("index.php?format=json&os=android&tmpl=component&ignoreMessages=true&option=com_hikashop&task=product.ajax_get_wishlist");;
     public static final String WISHLIST_SINGLE          = API_URL.concat("%d/wishlist/%d");
     public static final String WISHLIST_IS_IN_WISHLIST  = API_URL.concat("%d/wishlist/is-in-wishlist/%d");
     public static final String REGISTER_NOTIFICATION    = API_URL.concat("%d/devices");
@@ -51,6 +51,8 @@ public class EndPoints {
     public static final String NOTIFICATION_IMAGE_URL   = "image_url";
     public static final String NOTIFICATION_SHOP_ID     = "shop_id";
     public static final String NOTIFICATION_UTM         = "utm";
+    public static final String LINK_FIRST_LOAD_WEBSITE = API_URL1.concat("index.php?format=json&os=android&tmpl=component&ignoreMessages=true&option=com_users&view=profile");;
+    public static final String LINK_NOTIFICATION = API_URL1.concat("index.php?format=json&os=android&tmpl=component&ignoreMessages=true&option=com_jchat&view=notification");;
 
     private EndPoints() {}
 }

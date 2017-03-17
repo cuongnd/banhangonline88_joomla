@@ -3,7 +3,7 @@ package vantinviet.banhangonline88.entities;
 
 import com.google.gson.annotations.SerializedName;
 
-public class User {
+public class Notification {
 
     private long id;
 
@@ -26,7 +26,7 @@ public class User {
     private String country;
 
 
-    public User() {
+    public Notification() {
     }
 
     public long getId() {
@@ -136,7 +136,7 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        User user = (User) o;
+        Notification user = (Notification) o;
 
         if (id != user.id) return false;
         if (fbId != null ? !fbId.equals(user.fbId) : user.fbId != null) return false;

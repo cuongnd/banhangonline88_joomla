@@ -15,6 +15,8 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.google.gson.JsonSyntaxException;
 
+import org.apache.http.util.EntityUtils;
+
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.util.HashMap;
@@ -133,8 +135,12 @@ public class GsonRequest<T> extends Request<T> {
             if (BuildConfig.DEBUG)
                 Timber.d("%s URL: %s. ResponseCode: %d", this.getClass().getSimpleName(), requestUrl, response.statusCode);
 
+
+
             // Parse response and return obtained object
             String json = new String(response.data, PROTOCOL_CHARSET);
+            Timber.d("%s URL: %s. ResponseData: %s", this.getClass().getSimpleName(), requestUrl,json);
+
             T result = Utils.getGsonParser().fromJson(json, clazz);
             if (result == null) return Response.error(new ParseError(new NullPointerException()));
             else return Response.success(result, HttpHeaderParser.parseCacheHeaders(response));

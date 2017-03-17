@@ -1,29 +1,46 @@
 package vantinviet.banhangonline88;
 
 import android.app.Application;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.provider.Settings;
+import android.support.annotation.NonNull;
 import android.support.annotation.VisibleForTesting;
 import android.support.test.espresso.IdlingResource;
+import android.support.v4.app.NotificationCompat;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 import com.facebook.FacebookSdk;
 
 import java.util.Locale;
 
+import vantinviet.banhangonline88.api.EndPoints;
+import vantinviet.banhangonline88.api.GsonRequest;
 import vantinviet.banhangonline88.api.OkHttpStack;
+import vantinviet.banhangonline88.entities.Notification;
+import vantinviet.banhangonline88.entities.User;
 import vantinviet.banhangonline88.testing.EspressoIdlingResource;
 import timber.log.Timber;
+import vantinviet.banhangonline88.utils.MsgUtils;
+import vantinviet.banhangonline88.ux.MainActivity;
+
+import static vantinviet.banhangonline88.ux.MainActivity.MyPREFERENCES;
+import static vantinviet.banhangonline88.ux.MainActivity.SESSION;
 
 /**
  * Created by petr.melicherik.
@@ -152,6 +169,63 @@ public class MyApplication extends Application {
         if (mRequestQueue != null) {
             mRequestQueue.cancelAll(tag);
         }
+    }
+    private void addNotification() {
+        NotificationCompat.Builder builder =
+                new NotificationCompat.Builder(this)
+                        .setSmallIcon(R.drawable.ic_launcher)
+                        .setContentTitle("Notifications Example")
+                        .setContentText("This is a test notification")
+
+                ;
+
+        Intent notificationIntent = new Intent(this, MainActivity.class);
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
+        builder.setContentIntent(contentIntent);
+
+        // Add as notification
+        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        manager.notify(12, builder.build());
+
+
+
+
+    }
+
+    public void getNotification() {
+
+
+        String session=get_session();
+        GsonRequest<Notification> getNotification = new GsonRequest<>(Request.Method.GET, EndPoints.LINK_NOTIFICATION+"&token="+session+"&1="+session, null, Notification.class,
+                new Response.Listener<Notification>() {
+                    @Override
+                    public void onResponse(@NonNull Notification response) {
+                        Timber.d("Available shops response: %s", response.toString());
+                        addNotification();
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+
+            }
+        });
+        addToRequestQueue(getNotification, CONST.CATEGORY_REQUESTS_TAG);
+    }
+
+    public String get_session() {
+        final SharedPreferences sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        String session=sharedpreferences.getString(SESSION,"");
+        return session;
+    }
+
+    public String get_token_link(String url) {
+        String session=get_session();
+        url=url+"&token="+session+"&"+session+"=1";
+        return url;
+
     }
     //////////////////////// end of Volley request. ///////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -85,6 +85,7 @@ public class LoginDialogFragment extends DialogFragment implements FacebookCallb
     private TextInputLayout loginEmailEmailWrapper;
     private TextInputLayout loginEmailPasswordWrapper;
     private TextInputLayout loginEmailForgottenEmailWrapper;
+    private MyApplication app;
 
     /**
      * Creates dialog which handles user login, registration and forgotten password function.
@@ -393,7 +394,9 @@ public class LoginDialogFragment extends DialogFragment implements FacebookCallb
 
     private void logInWithEmail(EditText editTextEmail, EditText editTextPassword) {
         SettingsMy.setUserEmailHint(editTextEmail.getText().toString());
-        String url = String.format(EndPoints.USER_LOGIN_EMAIL, SettingsMy.getActualNonNullShop(getActivity()).getId());
+        app = MyApplication.getInstance();
+        String url= app.get_token_link(EndPoints.USER_LOGIN_EMAIL);
+        url = String.format(url, SettingsMy.getActualNonNullShop(getActivity()).getId());
         progressDialog.show();
 
         JSONObject jo;

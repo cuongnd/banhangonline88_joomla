@@ -18,11 +18,13 @@ package vantinviet.banhangonline88.ux;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.app.ProgressDialog;
 import android.app.SearchManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.database.MatrixCursor;
 import android.net.Uri;
 import android.os.Build;
@@ -72,6 +74,7 @@ import in.co.madhur.chatbubblesdemo.model.Status;
 import in.co.madhur.chatbubblesdemo.model.UserType;
 import vantinviet.banhangonline88.MyApplication;
 import vantinviet.banhangonline88.api.EndPoints;
+import vantinviet.banhangonline88.entities.ShopResponse;
 import vantinviet.banhangonline88.entities.drawerMenu.DrawerItemCategory;
 import vantinviet.banhangonline88.utils.JsonUtils;
 import vantinviet.banhangonline88.utils.Utils;
@@ -117,7 +120,8 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
 
     public static final String MSG_MAIN_ACTIVITY_INSTANCE_IS_NULL = "MainActivity instance is null.";
     private static MainActivity mInstance = null;
-
+    public static final String MyPREFERENCES = "MyPrefs" ;
+    public static final String SESSION = "session";
     /**
      * Reference tied drawer menu, represented as fragment.
      */
@@ -143,6 +147,8 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
     // Fields used in searchView.
     private SimpleCursorAdapter searchSuggestionsAdapter;
     private ArrayList<String> searchSuggestionsList;
+    private ProgressDialog progressDialog;
+    private MyApplication app;
 
     /**
      * Refresh notification number of products in shopping cart.
@@ -188,28 +194,6 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
 
     // Add app running notification
 
-    private void addNotification() {
-        NotificationCompat.Builder builder =
-                new NotificationCompat.Builder(this)
-                        .setSmallIcon(R.drawable.ic_launcher)
-                        .setContentTitle("Notifications Example")
-                        .setContentText("This is a test notification")
-
-                ;
-
-        Intent notificationIntent = new Intent(this, MainActivity.class);
-        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT);
-        builder.setContentIntent(contentIntent);
-
-        // Add as notification
-        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        manager.notify(12, builder.build());
-
-
-
-
-    }
 
     // Remove notification
     private void removeNotification() {
@@ -225,7 +209,7 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
         final Runnable beeper = new Runnable() {
             public void run() {
             System.out.println("action update");
-                addNotification();
+                MyApplication.getInstance().getNotification();
 
 
 
@@ -251,8 +235,47 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (progressDialog == null) {
+            progressDialog = new ProgressDialog(MainActivity.this);
+        }
+        progressDialog.setMessage("Downloading element...");
+        if (progressDialog != null) {
+            progressDialog.show();
+        }
+        app=MyApplication.getInstance();
+        final SharedPreferences sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        String session=sharedpreferences.getString(SESSION,"");
+        String url=app.get_token_link(EndPoints.LINK_FIRST_LOAD_WEBSITE);
+        GsonRequest<User> getUserRequest = new GsonRequest<>(Request.Method.GET, url, null, User.class,
+                new Response.Listener<User>() {
+                    @Override
+                    public void onResponse(@NonNull User response) {
+                        Timber.d("Available shops response: %s", response.toString());
+                        SharedPreferences.Editor editor = sharedpreferences.edit();
+                        editor.putString(SESSION,response.getToken() );
+                        editor.commit();
+
+                        if (progressDialog != null) progressDialog.cancel();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                if (progressDialog != null) progressDialog.cancel();
+                MsgUtils.logAndShowErrorMessage(MainActivity.this, error);
+
+            }
+        });
+        MyApplication.getInstance().addToRequestQueue(getUserRequest, CONST.CATEGORY_REQUESTS_TAG);
         mInstance = this;
 
+
+        init(mInstance);
+
+
+
+    }
+
+    private void init(MainActivity mInstance) {
         Timber.d("%s onCreate", MainActivity.class.getSimpleName());
 
         // Set app specific language localization by selected shop.
