@@ -158,7 +158,7 @@ public class MapDialogFragment extends DialogFragment implements OnMapReadyCallb
 //                    View transportView = inflater.inflate(R.layout.dialog_map_transport_item, locationPaths, false);
 //                    ImageView locationIcon = (ImageView) transportView.findViewById(R.id.dialog_map_transport_item_image);
 //                    TextView locationText = (TextView) transportView.findViewById(R.id.dialog_map_transport_item_text);
-//                    locationText.setText(transports.get(i).getText());
+//                    locationText.setMessage(transports.get(i).getMessage());
 //
 //                    locationPaths.addView(transportView);
 //                }

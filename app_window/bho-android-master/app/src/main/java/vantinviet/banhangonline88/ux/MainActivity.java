@@ -283,7 +283,7 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
         }
         System.out.println(lang);
         MyApplication.setAppLocale(lang);
-        beepForAnHour();
+        //beepForAnHour();
         setContentView(R.layout.activity_main);
 
 

@@ -343,7 +343,7 @@ public class LoginDialogFragment extends DialogFragment implements FacebookCallb
     private void invokeRegisterNewUser() {
         hideSoftKeyboard();
         if (isRequiredFields(loginRegistrationEmailWrapper, loginRegistrationPasswordWrapper)) {
-//            SettingsMy.setUserEmailHint(etRegistrationEmail.getText().toString());
+//            SettingsMy.setUserEmailHint(etRegistrationEmail.getMessage().toString());
             registerNewUser(loginRegistrationEmailWrapper.getEditText(), loginRegistrationPasswordWrapper.getEditText());
         }
     }

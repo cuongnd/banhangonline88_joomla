@@ -5,33 +5,22 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-import vantinviet.banhangonline88.entities.messenger.MessengerVariant;
-
 public class Messenger {
 
     private long id;
 
-    @SerializedName("remote_id")
-    private long remoteId;
-    private String url;
-    private String name;
-    private double price;
-
-    @SerializedName("price_formatted")
-    private String priceFormatted;
-
-    @SerializedName("discount_price")
-    private double discountPrice;
-
-    @SerializedName("discount_price_formatted")
-    private String discountPriceFormatted;
-    private long category;
-    private String currency;
-    private String code;
-    private String description;
+    private int from;
+    private String fromuserid;
+    private String fromuser;
+    private String userid;
+    private String profilelink;
+    private String time;
+    private String message;
+    private String self;
+    private String old;
 
     @SerializedName("main_image")
-    private String mainImage;
+    private String avatar;
 
     @SerializedName("main_image_high_res")
     private String mainImageHighRes;
@@ -49,100 +38,20 @@ public class Messenger {
         this.id = id;
     }
 
-    public long getRemoteId() {
-        return remoteId;
+    public String getMessage() {
+        return message;
     }
 
-    public void setRemoteId(long remoteId) {
-        this.remoteId = remoteId;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
-    public String getUrl() {
-        return url;
+    public String getAvatar() {
+        return avatar;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public String getPriceFormatted() {
-        return priceFormatted;
-    }
-
-    public void setPriceFormatted(String priceFormatted) {
-        this.priceFormatted = priceFormatted;
-    }
-
-    public double getDiscountPrice() {
-        return discountPrice;
-    }
-
-    public void setDiscountPrice(double discountPrice) {
-        this.discountPrice = discountPrice;
-    }
-
-    public String getDiscountPriceFormatted() {
-        return discountPriceFormatted;
-    }
-
-    public void setDiscountPriceFormatted(String discountPriceFormatted) {
-        this.discountPriceFormatted = discountPriceFormatted;
-    }
-
-    public long getCategory() {
-        return category;
-    }
-
-    public void setCategory(long category) {
-        this.category = category;
-    }
-
-    public String getCurrency() {
-        return currency;
-    }
-
-    public void setCurrency(String currency) {
-        this.currency = currency;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getMainImage() {
-        return mainImage;
-    }
-
-    public void setMainImage(String mainImage) {
-        this.mainImage = mainImage;
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public String getMainImageHighRes() {
@@ -177,22 +86,8 @@ public class Messenger {
         Messenger product = (Messenger) o;
 
         if (id != product.id) return false;
-        if (remoteId != product.remoteId) return false;
-        if (Double.compare(product.price, price) != 0) return false;
-        if (Double.compare(product.discountPrice, discountPrice) != 0) return false;
-        if (category != product.category) return false;
-        if (url != null ? !url.equals(product.url) : product.url != null) return false;
-        if (name != null ? !name.equals(product.name) : product.name != null) return false;
-        if (priceFormatted != null ? !priceFormatted.equals(product.priceFormatted) : product.priceFormatted != null)
-            return false;
-        if (discountPriceFormatted != null ? !discountPriceFormatted.equals(product.discountPriceFormatted) : product.discountPriceFormatted != null)
-            return false;
-        if (currency != null ? !currency.equals(product.currency) : product.currency != null)
-            return false;
-        if (code != null ? !code.equals(product.code) : product.code != null) return false;
-        if (description != null ? !description.equals(product.description) : product.description != null)
-            return false;
-        if (mainImage != null ? !mainImage.equals(product.mainImage) : product.mainImage != null)
+        if (message != null ? !message.equals(product.message) : product.message != null) return false;
+        if (avatar != null ? !avatar.equals(product.avatar) : product.avatar != null)
             return false;
         if (mainImageHighRes != null ? !mainImageHighRes.equals(product.mainImageHighRes) : product.mainImageHighRes != null)
             return false;
@@ -207,20 +102,8 @@ public class Messenger {
         int result;
         long temp;
         result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (int) (remoteId ^ (remoteId >>> 32));
-        result = 31 * result + (url != null ? url.hashCode() : 0);
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        temp = Double.doubleToLongBits(price);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + (priceFormatted != null ? priceFormatted.hashCode() : 0);
-        temp = Double.doubleToLongBits(discountPrice);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + (discountPriceFormatted != null ? discountPriceFormatted.hashCode() : 0);
-        result = 31 * result + (int) (category ^ (category >>> 32));
-        result = 31 * result + (currency != null ? currency.hashCode() : 0);
-        result = 31 * result + (code != null ? code.hashCode() : 0);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + (mainImage != null ? mainImage.hashCode() : 0);
+        result = 31 * result + (message != null ? message.hashCode() : 0);
+        result = 31 * result + (avatar != null ? avatar.hashCode() : 0);
         result = 31 * result + (mainImageHighRes != null ? mainImageHighRes.hashCode() : 0);
         result = 31 * result + (variants != null ? variants.hashCode() : 0);
         result = 31 * result + (related != null ? related.hashCode() : 0);
@@ -229,20 +112,10 @@ public class Messenger {
 
     @Override
     public String toString() {
-        return "Product{" +
+        return "Messenger{" +
                 "id=" + id +
-                ", remoteId=" + remoteId +
-                ", url='" + url + '\'' +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                ", priceFormatted='" + priceFormatted + '\'' +
-                ", discountPrice=" + discountPrice +
-                ", discountPriceFormatted='" + discountPriceFormatted + '\'' +
-                ", category=" + category +
-                ", currency='" + currency + '\'' +
-                ", code='" + code + '\'' +
-                ", description='" + description + '\'' +
-                ", mainImage='" + mainImage + '\'' +
+                ", message='" + message + '\'' +
+                ", avatar='" + avatar + '\'' +
                 ", mainImageHighRes='" + mainImageHighRes + '\'' +
                 ", variants=" + variants +
                 ", related=" + related +

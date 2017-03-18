@@ -49,7 +49,7 @@
             android:layout_width="48dp"
             android:layout_height="match_parent"
             android:contentDescription=""
-            android:src="@drawable/messenger_bubble_large_blue" />
+            android:src="@drawable/messenger_bubble_small_blue" />
 
         <EditText
             android:id="@+id/message_text"

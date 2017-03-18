@@ -53,7 +53,7 @@ public class SortSpinnerAdapter extends ArrayAdapter<SortItem> {
 //        TextView label = new TextView(context);
 //        label.setSingleLine(true);
 //        label.setEllipsize(TextUtils.TruncateAt.END);
-//        label.setText(getItemDescription(position));
+//        label.setMessage(getItemDescription(position));
 //
 //        return label;
 //    }

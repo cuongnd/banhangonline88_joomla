@@ -31,32 +31,44 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
 
 import timber.log.Timber;
+import vantinviet.banhangonline88.BuildConfig;
 import vantinviet.banhangonline88.CONST;
 import vantinviet.banhangonline88.MyApplication;
 import vantinviet.banhangonline88.R;
 import vantinviet.banhangonline88.SettingsMy;
 import vantinviet.banhangonline88.api.EndPoints;
 import vantinviet.banhangonline88.api.GsonRequest;
+import vantinviet.banhangonline88.api.JsonRequest;
 import vantinviet.banhangonline88.entities.Metadata;
 import vantinviet.banhangonline88.entities.SortItem;
+import vantinviet.banhangonline88.entities.User;
 import vantinviet.banhangonline88.entities.drawerMenu.DrawerItemChatting;
 import vantinviet.banhangonline88.entities.filtr.Filters;
 import vantinviet.banhangonline88.entities.messenger.Messenger;
+import vantinviet.banhangonline88.entities.messenger.Storing;
 import vantinviet.banhangonline88.entities.product.Product;
 import vantinviet.banhangonline88.entities.messenger.MessengerListResponse;
 import vantinviet.banhangonline88.interfaces.ChattingRecyclerInterface;
 import vantinviet.banhangonline88.listeners.OnSingleClickListener;
 import vantinviet.banhangonline88.utils.Analytics;
 import vantinviet.banhangonline88.utils.EndlessRecyclerScrollListener;
+import vantinviet.banhangonline88.utils.JsonUtils;
 import vantinviet.banhangonline88.utils.MsgUtils;
 import vantinviet.banhangonline88.utils.RecyclerMarginDecorator;
+import vantinviet.banhangonline88.utils.Utils;
 import vantinviet.banhangonline88.ux.MainActivity;
 import vantinviet.banhangonline88.ux.adapters.ChattingRecyclerAdapter;
 import vantinviet.banhangonline88.ux.adapters.SortSpinnerAdapter;
+import vantinviet.banhangonline88.ux.dialogs.LoginExpiredDialogFragment;
 
 /**
  * Fragment handles various types of product lists.
@@ -106,6 +118,8 @@ public class ChattingFragment extends Fragment {
     // Properties used to restore previous state
     private int toolbarOffset = -1;
     private boolean isList = false;
+    private MyApplication app;
+    private ImageView send_button;
 
 
     public static ChattingFragment newInstance(long userId) {
@@ -138,8 +152,8 @@ public class ChattingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Timber.d("%s - onCreateView", this.getClass().getSimpleName());
         View view = inflater.inflate(R.layout.fragment_chatting, container, false);
-
-        this.emptyContentView = (TextView) view.findViewById(R.id.category_products_empty);
+        message_text = (EditText) view.findViewById(R.id.message_text);
+        send_button = (ImageView) view.findViewById(R.id.send_button);
 
         this.loadMoreProgress = view.findViewById(R.id.category_load_more_progress);
         this.sortSpinner = (Spinner) view.findViewById(R.id.category_sort_spinner);
@@ -179,7 +193,7 @@ public class ChattingFragment extends Fragment {
     }
 
     private void init(View view) {
-        message_text = (EditText) view.findViewById(R.id.message_text);
+
         message_text.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -204,8 +218,57 @@ public class ChattingFragment extends Fragment {
             }
 
         });
+
+        send_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(message_text.getText()!=null)
+                {
+                    sendMessenger();
+                }
+            }
+        });
     }
 
+    private void sendMessenger() {
+        User user = SettingsMy.getActiveUser();
+        app=MyApplication.getInstance();
+        String url=EndPoints.SAVEENTITY;
+        url=app.get_token_link(url);
+        //url= String.format(url+"&user_id=%d", user.getId());
+        JSONObject jo = new JSONObject();
+        try {
+            jo.put(JsonUtils.MESSENGER, message_text.getText());
+            jo.put("task", "stream.saveEntity");
+            jo.put("to", "b1kbogkkmh4h7qhrfo6p869375");
+            jo.put("tologged", "");
+        } catch (JSONException e) {
+            Timber.e(e, "Parsing change  exception.");
+            return;
+        }
+        if (BuildConfig.DEBUG) Timber.d("send messenger: %s", jo.toString());
+        GsonRequest<Storing> get_storing = new GsonRequest<>(Request.Method.POST, url,  jo.toString(), Storing.class,
+                new Response.Listener<Storing>() {
+                    @Override
+                    public void onResponse(@NonNull Storing response) {
+                        Timber.d("Storing response:" + response.toString());
+                        Messenger messenger=new Messenger();
+                        messenger.setMessage(message_text.getText().toString());
+                        ArrayList<Messenger> Messengers=new ArrayList<Messenger>();
+                        Messengers.add(messenger);
+                        chattingRecyclerAdapter.addMessengers(Messengers);
+                        message_text.setText("");
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
+
+        MyApplication.getInstance().addToRequestQueue(get_storing, CONST.ACCOUNT_EDIT_REQUESTS_TAG);
+    }
 
     /**
      * Prepare content recycler. Create custom adapter and endless scroll.
@@ -264,22 +327,32 @@ public class ChattingFragment extends Fragment {
      * @param url null for fresh load. Otherwise use URLs from response metadata.
      */
     private void getChatting(String url) {
+        app=MyApplication.getInstance();
         if(url==null)
         {
-            url=EndPoints.MESSENGERS;
+            url=app.get_token_link(EndPoints.MESSENGERS);
         }
         loadMoreProgress.setVisibility(View.VISIBLE);
-
-        GsonRequest<MessengerListResponse> getmessengerRequest = new GsonRequest<>(Request.Method.GET, url, null, MessengerListResponse.class,
+        JSONObject jo;
+        try {
+            jo = JsonUtils.createChatJson();
+        } catch (JSONException e) {
+            Timber.e(e, "Parse logInWithEmail exception");
+            MsgUtils.showToast(getActivity(), MsgUtils.TOAST_TYPE_INTERNAL_ERROR, null, MsgUtils.ToastLength.SHORT);
+            return;
+        }
+        if (BuildConfig.DEBUG) Timber.d("Chatting Post: %s", jo.toString());
+        GsonRequest<MessengerListResponse> getmessengerRequest = new GsonRequest<>(Request.Method.POST, url,  jo.toString(), MessengerListResponse.class,
                 new Response.Listener<MessengerListResponse>() {
                     @Override
                     public void onResponse(@NonNull MessengerListResponse response) {
                         firstTimeSort = false;
-//                        Timber.d("response:" + response.toString());
-                        chattingRecyclerAdapter.addMessengers(response.getMessengers());
-                        chattingsMetadata = response.getMetadata();
-                        if (filters == null) filters = chattingsMetadata.getFilters();
-                        checkEmptyContent();
+                        Timber.d("chatting response:" + response.toString());
+                        ArrayList<Messenger> Messengers=response.getMessengers();
+                        if(Messengers.size()>0)
+                        {
+                            chattingRecyclerAdapter.addMessengers(Messengers);
+                        }
                         loadMoreProgress.setVisibility(View.GONE);
                     }
                 }, new Response.ErrorListener() {

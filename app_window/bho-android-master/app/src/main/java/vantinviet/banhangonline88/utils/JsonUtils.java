@@ -43,6 +43,7 @@ public class JsonUtils {
     public static final String TAG_TOTAL_FORMATTED = "total_formatted";
     public static final String TAG_SHIPPING_PRICE_FORMATTED = "shipping_price_formatted";
     public static final String TAG_NOTE = "note";
+    public static final String MESSENGER = "messenger";
 
     private JsonUtils() {}
 
@@ -86,6 +87,18 @@ public class JsonUtils {
         JSONObject jo = new JSONObject();
         jo.put(JsonUtils.TAG_EMAIL, email);
         jo.put(JsonUtils.TAG_PASSWORD, password);
+        return jo;
+    }
+    public static JSONObject createChatJson() throws JSONException {
+        JSONObject jo = new JSONObject();
+        jo.put("buddylist", 1);
+        jo.put("conferenceview", 0);
+        jo.put("force_refresh", 0);
+        jo.put("initialize", 1);
+        jo.put("last_received_msg_id", 0);
+        jo.put("sessionvars[options]", 0);
+        jo.put("task", "stream.display");
+        jo.put("updatesession", 0);
         return jo;
     }
 }

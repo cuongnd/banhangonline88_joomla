@@ -2,8 +2,6 @@ package vantinviet.banhangonline88.ux.adapters;
 
 import android.content.Context;
 import android.content.res.Configuration;
-import android.graphics.Paint;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -79,7 +77,7 @@ public class ChattingRecyclerAdapter extends RecyclerView.Adapter<ChattingRecycl
         Messenger messenger = getItem(position);
         holder.bindContent(messenger);
         // - replace the contents of the view with that element
-        holder.messengerNameTV.setText(holder.messenger.getName());
+        holder.messengerNameTV.setText(holder.messenger.getMessage());
 
         if (loadHighRes && messenger.getMainImageHighRes() != null) {
             Picasso.with(context).load(messenger.getMainImageHighRes())
@@ -88,30 +86,13 @@ public class ChattingRecyclerAdapter extends RecyclerView.Adapter<ChattingRecycl
                     .error(R.drawable.placeholder_error)
                     .into(holder.messengerImage);
         } else {
-            Picasso.with(context).load(holder.messenger.getMainImage())
+            Picasso.with(context).load(holder.messenger.getAvatar())
                     .fit().centerInside()
                     .placeholder(R.drawable.placeholder_loading)
                     .error(R.drawable.placeholder_error)
                     .into(holder.messengerImage);
         }
 
-        // Determine if product is on sale
-        double pr = holder.messenger.getPrice();
-        double dis = holder.messenger.getDiscountPrice();
-        if (pr == dis || Math.abs(pr - dis) / Math.max(Math.abs(pr), Math.abs(dis)) < 0.000001) {
-            holder.messengerPriceTV.setVisibility(View.VISIBLE);
-            holder.productPriceDiscountTV.setVisibility(View.GONE);
-            holder.messengerPriceTV.setText(holder.messenger.getPriceFormatted());
-            holder.messengerPriceTV.setPaintFlags(holder.messengerPriceTV.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
-            holder.messengerPriceTV.setTextColor(ContextCompat.getColor(context, R.color.textPrimary));
-        } else {
-            holder.messengerPriceTV.setVisibility(View.VISIBLE);
-            holder.productPriceDiscountTV.setVisibility(View.VISIBLE);
-            holder.messengerPriceTV.setText(holder.messenger.getPriceFormatted());
-            holder.messengerPriceTV.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
-            holder.messengerPriceTV.setTextColor(ContextCompat.getColor(context, R.color.textSecondary));
-            holder.productPriceDiscountTV.setText(holder.messenger.getDiscountPriceFormatted());
-        }
     }
 
     public void clear() {
