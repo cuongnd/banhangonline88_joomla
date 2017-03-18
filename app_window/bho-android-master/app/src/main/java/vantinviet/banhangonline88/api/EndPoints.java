@@ -53,6 +53,7 @@ public class EndPoints {
     public static final String NOTIFICATION_UTM         = "utm";
     public static final String LINK_FIRST_LOAD_WEBSITE = API_URL1.concat("index.php?format=json&os=android&tmpl=component&ignoreMessages=true&option=com_users&view=profile");;
     public static final String LINK_NOTIFICATION = API_URL1.concat("index.php?format=json&os=android&tmpl=component&ignoreMessages=true&option=com_jchat&view=notification");;
+    public static final String MESSENGERS = API_URL1.concat("index.php?format=json&os=android&tmpl=component&ignoreMessages=true&option=com_jchat&view=notification");
 
     private EndPoints() {}
 }

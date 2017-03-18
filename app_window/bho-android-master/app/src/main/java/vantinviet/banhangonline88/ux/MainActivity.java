@@ -680,9 +680,9 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
         replaceFragment(fragment, AccountFragment.class.getSimpleName());
     }
     @Override
-    public void onChattingSelected(long productId){
+    public void onChattingSelected(long userId){
         clearBackStack();
-        ChattingFragment fragment = ChattingFragment.newInstance(productId);
+        ChattingFragment fragment = ChattingFragment.newInstance(userId);
         replaceFragment(fragment, ChattingFragment.class.getSimpleName());
     }
 

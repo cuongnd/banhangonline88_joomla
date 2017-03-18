@@ -20,8 +20,7 @@ import java.util.List;
 import timber.log.Timber;
 import vantinviet.banhangonline88.MyApplication;
 import vantinviet.banhangonline88.R;
-import vantinviet.banhangonline88.entities.product.Product;
-import vantinviet.banhangonline88.interfaces.ChattingRecyclerInterface;
+import vantinviet.banhangonline88.entities.messenger.Messenger;
 import vantinviet.banhangonline88.interfaces.ChattingRecyclerInterface;
 import vantinviet.banhangonline88.views.ResizableImageView;
 
@@ -32,7 +31,7 @@ public class ChattingRecyclerAdapter extends RecyclerView.Adapter<ChattingRecycl
 
     private final Context context;
     private final ChattingRecyclerInterface chattingRecyclerInterface;
-    private List<Product> products = new ArrayList<>();
+    private List<Messenger> messengers = new ArrayList<>();
     private LayoutInflater layoutInflater;
 
     private boolean loadHighRes = false;
@@ -49,18 +48,18 @@ public class ChattingRecyclerAdapter extends RecyclerView.Adapter<ChattingRecycl
         defineImagesQuality(false);
     }
 
-    private Product getItem(int position) {
-        return products.get(position);
+    private Messenger getItem(int position) {
+        return messengers.get(position);
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return products.size();
+        return messengers.size();
     }
 
-    public void addProducts(List<Product> productList) {
-        products.addAll(productList);
+    public void addMessengers(List<Messenger> messengers) {
+        messengers.addAll(messengers);
         notifyDataSetChanged();
     }
 
@@ -77,46 +76,46 @@ public class ChattingRecyclerAdapter extends RecyclerView.Adapter<ChattingRecycl
     // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Product product = getItem(position);
-        holder.bindContent(product);
+        Messenger messenger = getItem(position);
+        holder.bindContent(messenger);
         // - replace the contents of the view with that element
-        holder.productNameTV.setText(holder.product.getName());
+        holder.messengerNameTV.setText(holder.messenger.getName());
 
-        if (loadHighRes && product.getMainImageHighRes() != null) {
-            Picasso.with(context).load(product.getMainImageHighRes())
+        if (loadHighRes && messenger.getMainImageHighRes() != null) {
+            Picasso.with(context).load(messenger.getMainImageHighRes())
                     .fit().centerInside()
                     .placeholder(R.drawable.placeholder_loading)
                     .error(R.drawable.placeholder_error)
-                    .into(holder.productImage);
+                    .into(holder.messengerImage);
         } else {
-            Picasso.with(context).load(holder.product.getMainImage())
+            Picasso.with(context).load(holder.messenger.getMainImage())
                     .fit().centerInside()
                     .placeholder(R.drawable.placeholder_loading)
                     .error(R.drawable.placeholder_error)
-                    .into(holder.productImage);
+                    .into(holder.messengerImage);
         }
 
         // Determine if product is on sale
-        double pr = holder.product.getPrice();
-        double dis = holder.product.getDiscountPrice();
+        double pr = holder.messenger.getPrice();
+        double dis = holder.messenger.getDiscountPrice();
         if (pr == dis || Math.abs(pr - dis) / Math.max(Math.abs(pr), Math.abs(dis)) < 0.000001) {
-            holder.productPriceTV.setVisibility(View.VISIBLE);
+            holder.messengerPriceTV.setVisibility(View.VISIBLE);
             holder.productPriceDiscountTV.setVisibility(View.GONE);
-            holder.productPriceTV.setText(holder.product.getPriceFormatted());
-            holder.productPriceTV.setPaintFlags(holder.productPriceTV.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
-            holder.productPriceTV.setTextColor(ContextCompat.getColor(context, R.color.textPrimary));
+            holder.messengerPriceTV.setText(holder.messenger.getPriceFormatted());
+            holder.messengerPriceTV.setPaintFlags(holder.messengerPriceTV.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
+            holder.messengerPriceTV.setTextColor(ContextCompat.getColor(context, R.color.textPrimary));
         } else {
-            holder.productPriceTV.setVisibility(View.VISIBLE);
+            holder.messengerPriceTV.setVisibility(View.VISIBLE);
             holder.productPriceDiscountTV.setVisibility(View.VISIBLE);
-            holder.productPriceTV.setText(holder.product.getPriceFormatted());
-            holder.productPriceTV.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
-            holder.productPriceTV.setTextColor(ContextCompat.getColor(context, R.color.textSecondary));
-            holder.productPriceDiscountTV.setText(holder.product.getDiscountPriceFormatted());
+            holder.messengerPriceTV.setText(holder.messenger.getPriceFormatted());
+            holder.messengerPriceTV.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
+            holder.messengerPriceTV.setTextColor(ContextCompat.getColor(context, R.color.textSecondary));
+            holder.productPriceDiscountTV.setText(holder.messenger.getDiscountPriceFormatted());
         }
     }
 
     public void clear() {
-        products.clear();
+        messengers.clear();
     }
 
     /**
@@ -148,30 +147,30 @@ public class ChattingRecyclerAdapter extends RecyclerView.Adapter<ChattingRecycl
 
     // Provide a reference to the views for each data item
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public ResizableImageView productImage;
-        public TextView productNameTV;
-        public TextView productPriceTV;
+        public ResizableImageView messengerImage;
+        public TextView messengerNameTV;
+        public TextView messengerPriceTV;
         public TextView productPriceDiscountTV;
         public ImageView btn_image_view_chatting;
-        private Product product;
+        private Messenger messenger;
 
         public ViewHolder(View v, final ChattingRecyclerInterface ChattingRecyclerInterface) {
             super(v);
-            productNameTV = (TextView) v.findViewById(R.id.product_item_name);
-            productPriceTV = (TextView) v.findViewById(R.id.product_item_price);
+            messengerNameTV = (TextView) v.findViewById(R.id.product_item_name);
+            messengerPriceTV = (TextView) v.findViewById(R.id.product_item_price);
             productPriceDiscountTV = (TextView) v.findViewById(R.id.product_item_discount);
-            productImage = (ResizableImageView) v.findViewById(R.id.product_item_image);
+            messengerImage = (ResizableImageView) v.findViewById(R.id.product_item_image);
 
             btn_image_view_chatting.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ChattingRecyclerInterface.onChattingSelected(v, product);
+                    ChattingRecyclerInterface.onChattingSelected(v, messenger);
                 }
             });
         }
 
-        public void bindContent(Product product) {
-            this.product = product;
+        public void bindContent(Messenger messenger) {
+            this.messenger = messenger;
         }
     }
 }

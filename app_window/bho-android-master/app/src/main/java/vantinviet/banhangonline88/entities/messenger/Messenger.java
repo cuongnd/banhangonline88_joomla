@@ -1,11 +1,13 @@
-package vantinviet.banhangonline88.entities.product;
+package vantinviet.banhangonline88.entities.messenger;
 
 
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class Product {
+import vantinviet.banhangonline88.entities.messenger.MessengerVariant;
+
+public class Messenger {
 
     private long id;
 
@@ -33,10 +35,10 @@ public class Product {
 
     @SerializedName("main_image_high_res")
     private String mainImageHighRes;
-    private List<vantinviet.banhangonline88.entities.product.ProductVariant> variants;
-    private List<Product> related;
+    private List<MessengerVariant> variants;
+    private List<Messenger> related;
 
-    public Product() {
+    public Messenger() {
     }
 
     public long getId() {
@@ -151,19 +153,19 @@ public class Product {
         this.mainImageHighRes = mainImageHighRes;
     }
 
-    public List<vantinviet.banhangonline88.entities.product.ProductVariant> getVariants() {
+    public List<MessengerVariant> getVariants() {
         return variants;
     }
 
-    public void setVariants(List<vantinviet.banhangonline88.entities.product.ProductVariant> variants) {
+    public void setVariants(List<MessengerVariant> variants) {
         this.variants = variants;
     }
 
-    public List<Product> getRelated() {
+    public List<Messenger> getRelated() {
         return related;
     }
 
-    public void setRelated(List<Product> related) {
+    public void setRelated(List<Messenger> related) {
         this.related = related;
     }
 
@@ -172,7 +174,7 @@ public class Product {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Product product = (Product) o;
+        Messenger product = (Messenger) o;
 
         if (id != product.id) return false;
         if (remoteId != product.remoteId) return false;

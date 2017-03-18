@@ -43,22 +43,19 @@ import vantinviet.banhangonline88.api.EndPoints;
 import vantinviet.banhangonline88.api.GsonRequest;
 import vantinviet.banhangonline88.entities.Metadata;
 import vantinviet.banhangonline88.entities.SortItem;
-import vantinviet.banhangonline88.entities.drawerMenu.DrawerItemCategory;
 import vantinviet.banhangonline88.entities.drawerMenu.DrawerItemChatting;
 import vantinviet.banhangonline88.entities.filtr.Filters;
+import vantinviet.banhangonline88.entities.messenger.Messenger;
 import vantinviet.banhangonline88.entities.product.Product;
-import vantinviet.banhangonline88.entities.product.ProductListResponse;
-import vantinviet.banhangonline88.interfaces.CategoryRecyclerInterface;
+import vantinviet.banhangonline88.entities.messenger.MessengerListResponse;
 import vantinviet.banhangonline88.interfaces.ChattingRecyclerInterface;
 import vantinviet.banhangonline88.listeners.OnSingleClickListener;
 import vantinviet.banhangonline88.utils.Analytics;
 import vantinviet.banhangonline88.utils.EndlessRecyclerScrollListener;
 import vantinviet.banhangonline88.utils.MsgUtils;
 import vantinviet.banhangonline88.utils.RecyclerMarginDecorator;
-import vantinviet.banhangonline88.utils.Utils;
 import vantinviet.banhangonline88.ux.MainActivity;
 import vantinviet.banhangonline88.ux.adapters.ChattingRecyclerAdapter;
-import vantinviet.banhangonline88.ux.adapters.ProductsRecyclerAdapter;
 import vantinviet.banhangonline88.ux.adapters.SortSpinnerAdapter;
 
 /**
@@ -67,7 +64,7 @@ import vantinviet.banhangonline88.ux.adapters.SortSpinnerAdapter;
  */
 public class ChattingFragment extends Fragment {
 
-    private static final String PRODUCT_ID = "product_id";
+    private static final String USER_ID = "user_id";
     private static final String SEARCH_QUERY = "fdfdf";
 
     /**
@@ -88,7 +85,7 @@ public class ChattingFragment extends Fragment {
     /**
      * Request metadata containing URLs for endlessScroll.
      */
-    private Metadata productsMetadata;
+    private Metadata chattingsMetadata;
 
     private ImageSwitcher switchLayoutManager;
     private Spinner sortSpinner;
@@ -96,8 +93,8 @@ public class ChattingFragment extends Fragment {
     // Content specific
     private TextView emptyContentView;
     private EditText message_text;
-    private RecyclerView productsRecycler;
-    private GridLayoutManager productsRecyclerLayoutManager;
+    private RecyclerView chattingRecycler;
+    private GridLayoutManager chattingsRecyclerLayoutManager;
     private ChattingRecyclerAdapter chattingRecyclerAdapter;
     private EndlessRecyclerScrollListener endlessRecyclerScrollListener;
 
@@ -111,30 +108,16 @@ public class ChattingFragment extends Fragment {
     private boolean isList = false;
 
 
-    public static ChattingFragment newInstance(long productId) {
+    public static ChattingFragment newInstance(long userId) {
         System.out.println("ChattingFragment");
         Bundle args = new Bundle();
-        args.putLong(PRODUCT_ID, productId);
+        args.putLong(USER_ID, userId);
         ChattingFragment fragment = new ChattingFragment();
         fragment.setArguments(args);
         return fragment;
     }
 
 
-    /**
-     * Show product list based on search results.
-     *
-     * @param searchQuery word for searching.
-     * @return new fragment instance.
-     */
-    public static ChattingFragment newInstance(String searchQuery) {
-        Bundle args = new Bundle();
-        args.putString(SEARCH_QUERY, searchQuery);
-
-        ChattingFragment fragment = new ChattingFragment();
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     /**
      * Show product list populated from drawer menu.
@@ -164,7 +147,7 @@ public class ChattingFragment extends Fragment {
         init(view);
         Bundle startBundle = getArguments();
         if (startBundle != null) {
-            productId = startBundle.getLong(PRODUCT_ID, 0);
+            productId = startBundle.getLong(USER_ID, 0);
             searchQuery = startBundle.getString(SEARCH_QUERY, null);
             boolean isSearch = false;
             if (searchQuery != null && !searchQuery.isEmpty()) {
@@ -174,27 +157,18 @@ public class ChattingFragment extends Fragment {
 
             Timber.d("productId: %d.", productId);
 
-            AppBarLayout appBarLayout = (AppBarLayout) view.findViewById(R.id.category_appbar_layout);
-            if (toolbarOffset != -1) appBarLayout.offsetTopAndBottom(toolbarOffset);
-            appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
-                @Override
-                public void onOffsetChanged(AppBarLayout appBarLayout, int i) {
-                    toolbarOffset = i;
-                }
-            });
+
             MainActivity.setActionBarTitle("Chatting");
 
             // Opened first time (not form backstack)
             if (chattingRecyclerAdapter == null || chattingRecyclerAdapter.getItemCount() == 0) {
                 prepareRecyclerAdapter();
                 prepareChattingRecycler(view);
-                prepareSortSpinner();
                 getChatting(null);
 
                 Analytics.logProductView(productId,"logProductView");
             } else {
                 prepareChattingRecycler(view);
-                prepareSortSpinner();
                 Timber.d("Restore previous category state. (Products already loaded) ");
             }
         } else {
@@ -239,55 +213,26 @@ public class ChattingFragment extends Fragment {
      * @param view root fragment view.
      */
     private void prepareChattingRecycler(View view) {
-        this.productsRecycler = (RecyclerView) view.findViewById(R.id.category_products_recycler);
-        productsRecycler.addItemDecoration(new RecyclerMarginDecorator(getActivity(), RecyclerMarginDecorator.ORIENTATION.BOTH));
-        productsRecycler.setItemAnimator(new DefaultItemAnimator());
-        productsRecycler.setHasFixedSize(true);
-        switchLayoutManager.setFactory(new ViewSwitcher.ViewFactory() {
-            @Override
-            public View makeView() {
-                return new ImageView(getContext());
-            }
-        });
-        if (isList) {
-            switchLayoutManager.setImageResource(R.drawable.grid_off);
-            productsRecyclerLayoutManager = new GridLayoutManager(getActivity(), 1);
-        } else {
-            switchLayoutManager.setImageResource(R.drawable.grid_on);
-            // TODO A better solution would be to dynamically determine the number of columns.
-            productsRecyclerLayoutManager = new GridLayoutManager(getActivity(), 2);
-        }
-        productsRecycler.setLayoutManager(productsRecyclerLayoutManager);
-        endlessRecyclerScrollListener = new EndlessRecyclerScrollListener(productsRecyclerLayoutManager) {
+        this.chattingRecycler = (RecyclerView) view.findViewById(R.id.chattings_recycler);
+        chattingRecycler.addItemDecoration(new RecyclerMarginDecorator(getActivity(), RecyclerMarginDecorator.ORIENTATION.BOTH));
+        chattingRecycler.setItemAnimator(new DefaultItemAnimator());
+        chattingRecycler.setHasFixedSize(true);
+
+        chattingRecycler.setLayoutManager(chattingsRecyclerLayoutManager);
+        endlessRecyclerScrollListener = new EndlessRecyclerScrollListener(chattingsRecyclerLayoutManager) {
             @Override
             public void onLoadMore(int currentPage) {
                 Timber.e("Load more");
-                if (productsMetadata != null && productsMetadata.getLinks() != null && productsMetadata.getLinks().getNext() != null) {
-                    getChatting(productsMetadata.getLinks().getNext());
+                if (chattingsMetadata != null && chattingsMetadata.getLinks() != null && chattingsMetadata.getLinks().getNext() != null) {
+                    getChatting(chattingsMetadata.getLinks().getNext());
                 } else {
                     Timber.d("CustomLoadMoreDataFromApi NO MORE DATA");
                 }
             }
         };
-        productsRecycler.addOnScrollListener(endlessRecyclerScrollListener);
-        productsRecycler.setAdapter(chattingRecyclerAdapter);
+        chattingRecycler.addOnScrollListener(endlessRecyclerScrollListener);
+        chattingRecycler.setAdapter(chattingRecyclerAdapter);
 
-        switchLayoutManager.setOnClickListener(new OnSingleClickListener() {
-            @Override
-            public void onSingleClick(View v) {
-                if (isList) {
-                    isList = false;
-                    switchLayoutManager.setImageResource(R.drawable.grid_on);
-                    chattingRecyclerAdapter.defineImagesQuality(false);
-                    animateRecyclerLayoutChange(2);
-                } else {
-                    isList = true;
-                    switchLayoutManager.setImageResource(R.drawable.grid_off);
-                    chattingRecyclerAdapter.defineImagesQuality(true);
-                    animateRecyclerLayoutChange(1);
-                }
-            }
-        });
     }
 
     private void prepareRecyclerAdapter() {
@@ -295,85 +240,22 @@ public class ChattingFragment extends Fragment {
 
 
             @Override
-            public void onChattingSelected(View caller, Product product) {
+            public void onChattingSelected(View caller, Messenger chatting) {
                 if (android.os.Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
                     setReenterTransition(TransitionInflater.from(getActivity()).inflateTransition(android.R.transition.fade));
                 }
-                ((MainActivity) getActivity()).onChattingSelected(product.getId());
+                ((MainActivity) getActivity()).onChattingSelected(chatting.getId());
             }
         });
     }
 
-    /**
-     * Animate change of rows in products recycler LayoutManager.
-     *
-     * @param layoutSpanCount number of rows to display.
-     */
-    private void animateRecyclerLayoutChange(final int layoutSpanCount) {
-        Animation fadeOut = new AlphaAnimation(1, 0);
-        fadeOut.setInterpolator(new DecelerateInterpolator());
-        fadeOut.setDuration(400);
-        fadeOut.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                productsRecyclerLayoutManager.setSpanCount(layoutSpanCount);
-                productsRecyclerLayoutManager.requestLayout();
-                Animation fadeIn = new AlphaAnimation(0, 1);
-                fadeIn.setInterpolator(new AccelerateInterpolator());
-                fadeIn.setDuration(400);
-                productsRecycler.startAnimation(fadeIn);
-            }
-        });
-        productsRecycler.startAnimation(fadeOut);
-    }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Animation in = AnimationUtils.loadAnimation(getContext(), R.anim.fade_in_slowed);
-        Animation out = AnimationUtils.loadAnimation(getContext(), android.R.anim.fade_out);
-        switchLayoutManager.setInAnimation(in);
-        switchLayoutManager.setOutAnimation(out);
+
     }
 
-    private void prepareSortSpinner() {
-        SortSpinnerAdapter sortSpinnerAdapter = new SortSpinnerAdapter(getActivity());
-        sortSpinner.setAdapter(sortSpinnerAdapter);
-        sortSpinner.setOnItemSelectedListener(null);
-        sortSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            private int lastSortSpinnerPosition = -1;
-
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (firstTimeSort) {
-                    firstTimeSort = false;
-                    return;
-                }
-                Timber.d("Selected pos: %d", position);
-
-                if (position != lastSortSpinnerPosition) {
-                    Timber.d("OnItemSelected change");
-                    lastSortSpinnerPosition = position;
-                    getChatting(null);
-                } else {
-                    Timber.d("OnItemSelected no change");
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                Timber.d("OnNothingSelected - no change");
-            }
-        });
-    }
 
 
     /**
@@ -382,47 +264,21 @@ public class ChattingFragment extends Fragment {
      * @param url null for fresh load. Otherwise use URLs from response metadata.
      */
     private void getChatting(String url) {
-        loadMoreProgress.setVisibility(View.VISIBLE);
-        if (url == null) {
-            if (endlessRecyclerScrollListener != null) endlessRecyclerScrollListener.clean();
-            chattingRecyclerAdapter.clear();
-            url = String.format(EndPoints.PRODUCTS, SettingsMy.getActualNonNullShop(getActivity()).getId());
-
-            // Build request url
-            if (searchQuery != null) {
-                String newSearchQueryString;
-                try {
-                    newSearchQueryString = URLEncoder.encode(searchQuery, "UTF-8");
-                } catch (UnsupportedEncodingException e) {
-                    Timber.e(e, "Unsupported encoding exception");
-                    newSearchQueryString = URLEncoder.encode(searchQuery);
-                }
-                Timber.d("GetFirstProductsInCategory isSearch: %s", searchQuery);
-                url += "&search=" + newSearchQueryString;
-            } else {
-                url +="&"+ categoryType + "=" + productId;
-            }
-            url += "&Itemid=" + productId;
-            // Add filters parameter if exist
-            if (filterParameters != null && !filterParameters.isEmpty()) {
-                url += filterParameters;
-            }
-
-            SortItem sortItem = (SortItem) sortSpinner.getSelectedItem();
-            if (sortItem != null) {
-                url = url + "&sort=" + sortItem.getValue();
-            }
+        if(url==null)
+        {
+            url=EndPoints.MESSENGERS;
         }
+        loadMoreProgress.setVisibility(View.VISIBLE);
 
-        GsonRequest<ProductListResponse> getProductsRequest = new GsonRequest<>(Request.Method.GET, url, null, ProductListResponse.class,
-                new Response.Listener<ProductListResponse>() {
+        GsonRequest<MessengerListResponse> getmessengerRequest = new GsonRequest<>(Request.Method.GET, url, null, MessengerListResponse.class,
+                new Response.Listener<MessengerListResponse>() {
                     @Override
-                    public void onResponse(@NonNull ProductListResponse response) {
+                    public void onResponse(@NonNull MessengerListResponse response) {
                         firstTimeSort = false;
 //                        Timber.d("response:" + response.toString());
-                        chattingRecyclerAdapter.addProducts(response.getProducts());
-                        productsMetadata = response.getMetadata();
-                        if (filters == null) filters = productsMetadata.getFilters();
+                        chattingRecyclerAdapter.addMessengers(response.getMessengers());
+                        chattingsMetadata = response.getMetadata();
+                        if (filters == null) filters = chattingsMetadata.getFilters();
                         checkEmptyContent();
                         loadMoreProgress.setVisibility(View.GONE);
                     }
@@ -434,18 +290,18 @@ public class ChattingFragment extends Fragment {
                 MsgUtils.logAndShowErrorMessage(getActivity(), error);
             }
         });
-        getProductsRequest.setRetryPolicy(MyApplication.getDefaultRetryPolice());
-        getProductsRequest.setShouldCache(false);
-        MyApplication.getInstance().addToRequestQueue(getProductsRequest, CONST.CATEGORY_REQUESTS_TAG);
+        getmessengerRequest.setRetryPolicy(MyApplication.getDefaultRetryPolice());
+        getmessengerRequest.setShouldCache(false);
+        MyApplication.getInstance().addToRequestQueue(getmessengerRequest, CONST.CATEGORY_REQUESTS_TAG);
     }
 
     private void checkEmptyContent() {
         if (chattingRecyclerAdapter != null && chattingRecyclerAdapter.getItemCount() > 0) {
             emptyContentView.setVisibility(View.INVISIBLE);
-            productsRecycler.setVisibility(View.VISIBLE);
+            chattingRecycler.setVisibility(View.VISIBLE);
         } else {
             emptyContentView.setVisibility(View.VISIBLE);
-            productsRecycler.setVisibility(View.INVISIBLE);
+            chattingRecycler.setVisibility(View.INVISIBLE);
         }
     }
 
@@ -465,7 +321,7 @@ public class ChattingFragment extends Fragment {
 
     @Override
     public void onDestroyView() {
-        if (productsRecycler != null) productsRecycler.clearOnScrollListeners();
+        if (chattingRecycler != null) chattingRecycler.clearOnScrollListeners();
         super.onDestroyView();
     }
 }
