@@ -69,9 +69,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 
-import in.co.madhur.chatbubblesdemo.model.ChatMessage;
-import in.co.madhur.chatbubblesdemo.model.Status;
-import in.co.madhur.chatbubblesdemo.model.UserType;
+
 import vantinviet.banhangonline88.MyApplication;
 import vantinviet.banhangonline88.api.EndPoints;
 import vantinviet.banhangonline88.entities.ShopResponse;

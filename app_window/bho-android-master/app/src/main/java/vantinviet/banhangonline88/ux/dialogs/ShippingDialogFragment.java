@@ -25,6 +25,7 @@ import java.util.List;
 
 import vantinviet.banhangonline88.CONST;
 import vantinviet.banhangonline88.MyApplication;
+import vantinviet.banhangonline88.R;
 import vantinviet.banhangonline88.SettingsMy;
 import vantinviet.banhangonline88.api.EndPoints;
 import vantinviet.banhangonline88.api.GsonRequest;
@@ -36,7 +37,6 @@ import vantinviet.banhangonline88.interfaces.ShippingDialogInterface;
 import vantinviet.banhangonline88.utils.MsgUtils;
 import vantinviet.banhangonline88.ux.adapters.BranchesAdapter;
 import vantinviet.banhangonline88.ux.adapters.ShippingSpinnerAdapter;
-import vantinviet.banhangonline88.R;
 import vantinviet.banhangonline88.entities.delivery.BranchesRequest;
 import vantinviet.banhangonline88.listeners.OnSingleClickListener;
 import timber.log.Timber;
