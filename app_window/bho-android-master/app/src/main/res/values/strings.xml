@@ -19,7 +19,7 @@
     <string name="Content_is_empty">Nội dung trống.</string>
 
     <!-- Strings related to splash screen -->
-    <string name="Select_shop">Vui lòng lựa chon ngôn ngữ</string>
+    <string name="Select_shop">Vui lòng lựa chọn quốc gia</string>
     <string name="Select_the_country_where_you_want_to_shop">Lựa chọn quốc gia nơi bạn muốn mua sắm</string>
     <string name="Continue">Tiếp tục</string>
 

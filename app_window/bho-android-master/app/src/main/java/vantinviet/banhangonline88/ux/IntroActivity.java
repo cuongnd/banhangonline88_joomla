@@ -19,7 +19,6 @@ import android.animation.Animator;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -42,11 +41,12 @@ import com.facebook.applinks.AppLinkData;
 import java.util.List;
 import java.util.Locale;
 
-import vantinviet.banhangonline88.MyApplication;
-import vantinviet.banhangonline88.api.EndPoints;
+import timber.log.Timber;
 import vantinviet.banhangonline88.CONST;
+import vantinviet.banhangonline88.MyApplication;
 import vantinviet.banhangonline88.R;
 import vantinviet.banhangonline88.SettingsMy;
+import vantinviet.banhangonline88.api.EndPoints;
 import vantinviet.banhangonline88.api.GsonRequest;
 import vantinviet.banhangonline88.entities.Shop;
 import vantinviet.banhangonline88.entities.ShopResponse;
@@ -56,18 +56,15 @@ import vantinviet.banhangonline88.utils.MsgUtils;
 import vantinviet.banhangonline88.utils.Utils;
 import vantinviet.banhangonline88.ux.adapters.ShopSpinnerAdapter;
 import vantinviet.banhangonline88.ux.dialogs.LoginDialogFragment;
-import timber.log.Timber;
-
-import static vantinviet.banhangonline88.SettingsMy.PREF_ACTUAL_SHOP;
 
 /**
  * Initial activity. Handle install referrers, notifications and shop selection;
  * <p>
  * Created by Petr Melicherik.
  */
-public class SplashActivity extends AppCompatActivity {
+public class IntroActivity extends AppCompatActivity {
     public static final String REFERRER = "referrer";
-    private static final String TAG = SplashActivity.class.getSimpleName();
+    private static final String TAG = IntroActivity.class.getSimpleName();
 
     private Activity activity;
     private ProgressDialog progressDialog;
@@ -100,23 +97,14 @@ public class SplashActivity extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         Timber.tag(TAG);
         activity = this;
-        clear_shop_data();
-
 
         // init loading dialog
         progressDialog = Utils.generateProgressDialog(this, false);
 
         init();
-    }
-
-    private void clear_shop_data() {
-        SharedPreferences.Editor editor = SettingsMy.getSettings().edit();
-        editor.putString(PREF_ACTUAL_SHOP, "");
-        editor.apply();
     }
 
     /**
@@ -285,19 +273,13 @@ public class SplashActivity extends AppCompatActivity {
             continueToShopBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    select_shop();
-
+                    Shop selectedShop = (Shop) shopSelectionSpinner.getSelectedItem();
+                    if (selectedShop != null && selectedShop.getId() != CONST.DEFAULT_EMPTY_ID)
+                        setShopInformationAndStartMainActivity(selectedShop, null);
+                    else
+                        Timber.e("Cannot continue. Shop is not selected or is null.");
                 }
             });
-            final Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    System.out.println("dfffffffffffffffffffffffffff");
-                    select_shop();
-                }
-            }, 100);
-
             Button reRunButton = (Button) findViewById(R.id.splash_re_run_btn);
             if (reRunButton != null) {
                 reRunButton.setOnClickListener(new View.OnClickListener() {
@@ -316,19 +298,9 @@ public class SplashActivity extends AppCompatActivity {
                 Timber.e(new RuntimeException(), "ReRunButton didn't found");
             }
             layoutCreated = true;
-
-
         } else {
             Timber.d("%s screen is already created.", this.getClass().getSimpleName());
         }
-    }
-
-    private void select_shop() {
-        Shop selectedShop = (Shop) shopSelectionSpinner.getSelectedItem();
-        if (selectedShop != null && selectedShop.getId() != CONST.DEFAULT_EMPTY_ID)
-            setShopInformationAndStartMainActivity(selectedShop, null);
-        else
-            Timber.e("Cannot continue. Shop is not selected or is null.");
     }
 
     /**
@@ -337,7 +309,7 @@ public class SplashActivity extends AppCompatActivity {
      * @param bundle notification specific data.
      */
     private void startMainActivity(Bundle bundle) {
-        if (SettingsMy.getActualShop()== null) {
+        if (SettingsMy.getActualShop()!= null) {
             // First run, allow user choose desired shop.
             Timber.d("Missing active shop. Show shop selection.");
             initSplashLayout();
@@ -345,7 +317,7 @@ public class SplashActivity extends AppCompatActivity {
             layoutContentSelectShop.setVisibility(View.VISIBLE);
             requestShops();
         } else {
-            Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
+            Intent mainIntent = new Intent(IntroActivity.this, MainActivity.class);
             if (bundle != null) {
                 Timber.d("Pass bundle to main activity");
                 mainIntent.putExtras(bundle);
@@ -463,7 +435,7 @@ public class SplashActivity extends AppCompatActivity {
                                 if (layoutContent != null) layoutContent.setVisibility(View.VISIBLE);
                             } else {
 //                            // If lollipop use reveal animation. On older phones use fade animation.
-                                if (android.os.Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
+                                if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
                                     Timber.d("Circular animation.");
                                     // get the center for the animation circle
                                     final int cx = (layoutContent.getLeft() + layoutContent.getRight()) / 2;
