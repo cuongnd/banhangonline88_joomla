@@ -97,6 +97,7 @@ public class SplashActivity extends AppCompatActivity {
     private View layoutContent;
     private View layoutContentNoConnection;
     private View layoutContentSelectShop;
+    private boolean shop_selected=false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -138,6 +139,7 @@ public class SplashActivity extends AppCompatActivity {
             // Show retry button.
             layoutContentNoConnection.setVisibility(View.VISIBLE);
             layoutContentSelectShop.setVisibility(View.GONE);
+
         } else {
             progressDialog.hide();
 
@@ -289,14 +291,7 @@ public class SplashActivity extends AppCompatActivity {
 
                 }
             });
-            final Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    System.out.println("dfffffffffffffffffffffffffff");
-                    select_shop();
-                }
-            }, 100);
+
 
             Button reRunButton = (Button) findViewById(R.id.splash_re_run_btn);
             if (reRunButton != null) {
@@ -329,6 +324,7 @@ public class SplashActivity extends AppCompatActivity {
             setShopInformationAndStartMainActivity(selectedShop, null);
         else
             Timber.e("Cannot continue. Shop is not selected or is null.");
+        shop_selected=true;
     }
 
     /**
@@ -344,6 +340,20 @@ public class SplashActivity extends AppCompatActivity {
             layoutContentNoConnection.setVisibility(View.GONE);
             layoutContentSelectShop.setVisibility(View.VISIBLE);
             requestShops();
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+
+                    if(!shop_selected)
+                    {
+                        Timber.d("auto shop selected");
+                        select_shop();
+                    }else{
+                        Timber.d("shop is select by user click");
+                    }
+                }
+            }, 7000);
         } else {
             Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
             if (bundle != null) {
