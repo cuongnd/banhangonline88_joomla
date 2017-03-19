@@ -26,6 +26,7 @@ public class Messenger {
     private String mainImageHighRes;
     private List<MessengerVariant> variants;
     private List<Messenger> related;
+    private int _full_name;
 
     public Messenger() {
     }
@@ -120,6 +121,14 @@ public class Messenger {
                 ", variants=" + variants +
                 ", related=" + related +
                 '}';
+    }
+
+    public void set_full_name(String full_name) {
+        fromuserid=full_name;
+    }
+
+    public String get_full_name() {
+        return fromuserid;
     }
 }
 

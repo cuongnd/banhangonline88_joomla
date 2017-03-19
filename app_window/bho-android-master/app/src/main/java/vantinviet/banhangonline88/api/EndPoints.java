@@ -10,8 +10,8 @@ public class EndPoints {
     private static final String API_URL                  = "http://77.93.198.186/v1.2/";    // staging
     private static final String API_URL1                  = "http://banhangonline88.com/";    // staging
 
-    public static final String SHOPS                    = API_URL.concat(CONST.ORGANIZATION_ID + "/shops");
-    //public static final String SHOPS                    = API_URL1.concat("index.php?format=json&tmpl=component&ignoreMessages=true&option=com_hikashop&ctrl=country&task=ajax_get_list_country");
+    //public static final String SHOPS                    = API_URL.concat(CONST.ORGANIZATION_ID + "/shops");
+    public static final String SHOPS                    = API_URL1.concat("index.php?format=json&tmpl=component&ignoreMessages=true&option=com_hikashop&ctrl=country&task=ajax_get_list_country");
     public static final String SHOPS_SINGLE             = API_URL.concat(CONST.ORGANIZATION_ID + "/shops/%d");
     //public static final String NAVIGATION_DRAWER        = API_URL.concat("%d/navigation_drawer");
     public static final String NAVIGATION_DRAWER        = API_URL1.concat("index.php?format=json&tmpl=component&ignoreMessages=true&option=com_menus&task=items.ajax_get_left_menu_category");
@@ -52,7 +52,7 @@ public class EndPoints {
     public static final String NOTIFICATION_SHOP_ID     = "shop_id";
     public static final String NOTIFICATION_UTM         = "utm";
     public static final String LINK_FIRST_LOAD_WEBSITE = API_URL1.concat("index.php?format=json&os=android&tmpl=component&ignoreMessages=true&option=com_users&view=profile");;
-    public static final String LINK_NOTIFICATION = API_URL1.concat("index.php?format=json&os=android&tmpl=component&ignoreMessages=true&option=com_jchat&view=notification");;
+    public static final String LINK_NOTIFICATION = API_URL1.concat("index.php?format=json&os=android&tmpl=component&ignoreMessages=true&option=com_jchat");;
     public static final String MESSENGERS = API_URL1.concat("index.php?format=json&os=android&tmpl=component&ignoreMessages=true&option=com_jchat&initialize=1");
     public static final String SAVEENTITY = API_URL1.concat("index.php?format=json&os=android&tmpl=component&ignoreMessages=true&option=com_jchat");
 

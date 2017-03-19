@@ -196,8 +196,10 @@ public class MyApplication extends Application {
     public void getNotification() {
 
 
+        String url=EndPoints.LINK_NOTIFICATION;
+        url=get_token_link(url);
         String session=get_session();
-        GsonRequest<Notification> getNotification = new GsonRequest<>(Request.Method.GET, EndPoints.LINK_NOTIFICATION+"&token="+session+"&1="+session, null, Notification.class,
+        GsonRequest<Notification> getNotification = new GsonRequest<>(Request.Method.GET, url, null, Notification.class,
                 new Response.Listener<Notification>() {
                     @Override
                     public void onResponse(@NonNull Notification response) {

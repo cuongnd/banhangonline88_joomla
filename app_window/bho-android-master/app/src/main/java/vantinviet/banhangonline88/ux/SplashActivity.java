@@ -309,7 +309,7 @@ public class SplashActivity extends AppCompatActivity {
      * @param bundle notification specific data.
      */
     private void startMainActivity(Bundle bundle) {
-        if (SettingsMy.getActualShop() == null) {
+        if (SettingsMy.getActualShop()== null) {
             // First run, allow user choose desired shop.
             Timber.d("Missing active shop. Show shop selection.");
             initSplashLayout();

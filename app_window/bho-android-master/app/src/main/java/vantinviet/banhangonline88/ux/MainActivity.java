@@ -233,6 +233,18 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //check_user();
+
+        mInstance = this;
+
+
+        init(mInstance);
+
+
+
+    }
+
+    private void check_user() {
         if (progressDialog == null) {
             progressDialog = new ProgressDialog(MainActivity.this);
         }
@@ -264,13 +276,6 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
             }
         });
         MyApplication.getInstance().addToRequestQueue(getUserRequest, CONST.CATEGORY_REQUESTS_TAG);
-        mInstance = this;
-
-
-        init(mInstance);
-
-
-
     }
 
     private void init(MainActivity mInstance) {
@@ -283,7 +288,7 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
         }
         System.out.println(lang);
         MyApplication.setAppLocale(lang);
-        //beepForAnHour();
+        beepForAnHour();
         setContentView(R.layout.activity_main);
 
 

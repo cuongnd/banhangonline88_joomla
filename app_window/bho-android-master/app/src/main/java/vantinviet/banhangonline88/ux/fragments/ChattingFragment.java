@@ -1,15 +1,12 @@
 package vantinviet.banhangonline88.ux.fragments;
 
 import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.transition.TransitionInflater;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +17,6 @@ import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.ViewSwitcher;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -45,16 +41,11 @@ import vantinviet.banhangonline88.entities.User;
 import vantinviet.banhangonline88.entities.drawerMenu.DrawerItemChatting;
 import vantinviet.banhangonline88.entities.filtr.Filters;
 import vantinviet.banhangonline88.entities.messenger.Messenger;
-import vantinviet.banhangonline88.entities.messenger.Movie;
 import vantinviet.banhangonline88.entities.messenger.Storing;
 import vantinviet.banhangonline88.entities.messenger.MessengerListResponse;
-import vantinviet.banhangonline88.interfaces.ChattingRecyclerInterface;
-import vantinviet.banhangonline88.utils.Analytics;
 import vantinviet.banhangonline88.utils.EndlessRecyclerScrollListener;
 import vantinviet.banhangonline88.utils.JsonUtils;
 import vantinviet.banhangonline88.utils.MsgUtils;
-import vantinviet.banhangonline88.utils.RecyclerMarginDecorator;
-import vantinviet.banhangonline88.ux.MainActivity;
 import vantinviet.banhangonline88.ux.adapters.ChattingRecyclerAdapter;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
@@ -94,7 +85,6 @@ public class ChattingFragment extends Fragment {
     // Content specific
     private TextView emptyContentView;
     private EditText message_text;
-    private RecyclerView chattingRecycler;
     private ChattingRecyclerAdapter chattingRecyclerAdapter;
     private EndlessRecyclerScrollListener endlessRecyclerScrollListener;
 
@@ -108,8 +98,7 @@ public class ChattingFragment extends Fragment {
     private boolean isList = false;
     private MyApplication app;
     private ImageView send_button;
-    private LinearLayoutManager mLayoutManager;
-    private RecyclerView recyclerView;
+    private RecyclerView chattingRecycler;
 
 
     public static ChattingFragment newInstance(long userId) {
@@ -144,27 +133,9 @@ public class ChattingFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_chatting, container, false);
         message_text = (EditText) view.findViewById(R.id.message_text);
         send_button = (ImageView) view.findViewById(R.id.send_button);
-
-        recyclerView = (RecyclerView) view.findViewById(R.id.chattings_recycler);
-        recyclerView.setHasFixedSize(true);
-        chattingRecyclerAdapter = new ChattingRecyclerAdapter(movieList);
-
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(chattingRecyclerAdapter);
-
-        endlessRecyclerScrollListener = new EndlessRecyclerScrollListener((LinearLayoutManager) mLayoutManager) {
-            @Override
-            public void onLoadMore(int currentPage) {
-                Timber.e("Load more");
-
-            }
-        };
-        recyclerView.addOnScrollListener(endlessRecyclerScrollListener);
-
-        prepareMovieData();
+        chattingRecycler = (RecyclerView) view.findViewById(R.id.chattings_recycler);
         init(view);
+        prepareChattingRecycler(view);
         return view;
     }
 
@@ -243,13 +214,10 @@ public class ChattingFragment extends Fragment {
                         Timber.d("Storing response:" + response.toString());
                         Messenger messenger=new Messenger();
                         messenger.setMessage(message_text.getText().toString());
-                        ArrayList<Messenger> Messengers=new ArrayList<Messenger>();
-                        Messengers.add(messenger);
-
-                        Movie movie = new Movie(message_text.getText().toString(), "Action & Adventure", "2015");
-                        movieList.add(movie);
+                        messenger.set_full_name("cuongnd");
+                        messengerList.add(messenger);
                         chattingRecyclerAdapter.notifyDataSetChanged();
-                        recyclerView.smoothScrollToPosition(movieList.size());
+                        chattingRecycler.smoothScrollToPosition(messengerList.size());
                         message_text.setText("");
                     }
                 }, new Response.ErrorListener() {
@@ -262,58 +230,7 @@ public class ChattingFragment extends Fragment {
 
         MyApplication.getInstance().addToRequestQueue(get_storing, CONST.ACCOUNT_EDIT_REQUESTS_TAG);
     }
-    private List<Movie> movieList = new ArrayList<>();
-    private void prepareMovieData() {
-        Movie movie = new Movie("Mad Max: Fury Road", "Action & Adventure", "2015");
-        movieList.add(movie);
-
-        movie = new Movie("Inside Out", "Animation, Kids & Family", "2015");
-        movieList.add(movie);
-
-        movie = new Movie("Star Wars: Episode VII - The Force Awakens", "Action", "2015");
-        movieList.add(movie);
-
-        movie = new Movie("Shaun the Sheep", "Animation", "2015");
-        movieList.add(movie);
-
-        movie = new Movie("The Martian", "Science Fiction & Fantasy", "2015");
-        movieList.add(movie);
-
-        movie = new Movie("Mission: Impossible Rogue Nation", "Action", "2015");
-        movieList.add(movie);
-
-        movie = new Movie("Up", "Animation", "2009");
-        movieList.add(movie);
-
-        movie = new Movie("Star Trek", "Science Fiction", "2009");
-        movieList.add(movie);
-
-        movie = new Movie("The LEGO Movie", "Animation", "2014");
-        movieList.add(movie);
-
-        movie = new Movie("Iron Man", "Action & Adventure", "2008");
-        movieList.add(movie);
-
-        movie = new Movie("Aliens", "Science Fiction", "1986");
-        movieList.add(movie);
-
-        movie = new Movie("Chicken Run", "Animation", "2000");
-        movieList.add(movie);
-
-        movie = new Movie("Back to the Future", "Science Fiction", "1985");
-        movieList.add(movie);
-
-        movie = new Movie("Raiders of the Lost Ark", "Action & Adventure", "1981");
-        movieList.add(movie);
-
-        movie = new Movie("Goldfinger", "Action & Adventure", "1965");
-        movieList.add(movie);
-
-        movie = new Movie("Guardians of the Galaxy", "Science Fiction & Fantasy", "2014");
-        movieList.add(movie);
-        chattingRecyclerAdapter.notifyDataSetChanged();
-
-    }
+    private List<Messenger> messengerList = new ArrayList<>();
     /**
      * Prepare content recycler. Create custom adapter and endless scroll.
      *
@@ -321,9 +238,21 @@ public class ChattingFragment extends Fragment {
      */
     private void prepareChattingRecycler(View view) {
 
+        chattingRecycler.setHasFixedSize(true);
+        chattingRecyclerAdapter = new ChattingRecyclerAdapter(messengerList);
 
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        chattingRecycler.setLayoutManager(mLayoutManager);
+        chattingRecycler.setItemAnimator(new DefaultItemAnimator());
+        chattingRecycler.setAdapter(chattingRecyclerAdapter);
+        endlessRecyclerScrollListener = new EndlessRecyclerScrollListener((LinearLayoutManager) mLayoutManager) {
+            @Override
+            public void onLoadMore(int currentPage) {
+                Timber.e("Load more");
 
-
+            }
+        };
+        chattingRecycler.addOnScrollListener(endlessRecyclerScrollListener);
     }
 
 

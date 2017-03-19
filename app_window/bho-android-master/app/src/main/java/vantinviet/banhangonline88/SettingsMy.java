@@ -43,9 +43,6 @@ public class SettingsMy {
         } else {
             SharedPreferences prefs = getSettings();
             String json = prefs.getString(PREF_ACTUAL_SHOP, "");
-            System.out.println("-------------json--------------");
-            System.out.println(json);
-            System.out.println("-------------json--------------");
             if (json.isEmpty() || "null".equals(json)) {
                 Timber.e("%s - Returned null shop", TAG);
                 return null;
