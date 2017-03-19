@@ -4,22 +4,16 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.AppBarLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.transition.TransitionInflater;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.view.animation.DecelerateInterpolator;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
@@ -34,8 +28,6 @@ import com.android.volley.VolleyError;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,28 +39,24 @@ import vantinviet.banhangonline88.R;
 import vantinviet.banhangonline88.SettingsMy;
 import vantinviet.banhangonline88.api.EndPoints;
 import vantinviet.banhangonline88.api.GsonRequest;
-import vantinviet.banhangonline88.api.JsonRequest;
 import vantinviet.banhangonline88.entities.Metadata;
-import vantinviet.banhangonline88.entities.SortItem;
 import vantinviet.banhangonline88.entities.User;
 import vantinviet.banhangonline88.entities.drawerMenu.DrawerItemChatting;
 import vantinviet.banhangonline88.entities.filtr.Filters;
 import vantinviet.banhangonline88.entities.messenger.Messenger;
+import vantinviet.banhangonline88.entities.messenger.Movie;
 import vantinviet.banhangonline88.entities.messenger.Storing;
-import vantinviet.banhangonline88.entities.product.Product;
 import vantinviet.banhangonline88.entities.messenger.MessengerListResponse;
 import vantinviet.banhangonline88.interfaces.ChattingRecyclerInterface;
-import vantinviet.banhangonline88.listeners.OnSingleClickListener;
 import vantinviet.banhangonline88.utils.Analytics;
 import vantinviet.banhangonline88.utils.EndlessRecyclerScrollListener;
 import vantinviet.banhangonline88.utils.JsonUtils;
 import vantinviet.banhangonline88.utils.MsgUtils;
 import vantinviet.banhangonline88.utils.RecyclerMarginDecorator;
-import vantinviet.banhangonline88.utils.Utils;
 import vantinviet.banhangonline88.ux.MainActivity;
 import vantinviet.banhangonline88.ux.adapters.ChattingRecyclerAdapter;
-import vantinviet.banhangonline88.ux.adapters.SortSpinnerAdapter;
-import vantinviet.banhangonline88.ux.dialogs.LoginExpiredDialogFragment;
+
+import static com.facebook.FacebookSdk.getApplicationContext;
 
 /**
  * Fragment handles various types of product lists.
@@ -86,7 +74,7 @@ public class ChattingFragment extends Fragment {
 
     private View loadMoreProgress;
 
-    private long productId;
+    private long user_id;
     private String categoryType;
 
     /**
@@ -120,6 +108,8 @@ public class ChattingFragment extends Fragment {
     private boolean isList = false;
     private MyApplication app;
     private ImageView send_button;
+    private LinearLayoutManager mLayoutManager;
+    private RecyclerView recyclerView;
 
 
     public static ChattingFragment newInstance(long userId) {
@@ -155,40 +145,15 @@ public class ChattingFragment extends Fragment {
         message_text = (EditText) view.findViewById(R.id.message_text);
         send_button = (ImageView) view.findViewById(R.id.send_button);
 
-        this.loadMoreProgress = view.findViewById(R.id.category_load_more_progress);
-        this.sortSpinner = (Spinner) view.findViewById(R.id.category_sort_spinner);
-        this.switchLayoutManager = (ImageSwitcher) view.findViewById(R.id.category_switch_layout_manager);
-        init(view);
-        Bundle startBundle = getArguments();
-        if (startBundle != null) {
-            productId = startBundle.getLong(USER_ID, 0);
-            searchQuery = startBundle.getString(SEARCH_QUERY, null);
-            boolean isSearch = false;
-            if (searchQuery != null && !searchQuery.isEmpty()) {
-                isSearch = true;
-                productId = -10;
-            }
+        recyclerView = (RecyclerView) view.findViewById(R.id.chattings_recycler);
 
-            Timber.d("productId: %d.", productId);
+        chattingRecyclerAdapter = new ChattingRecyclerAdapter(movieList);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(chattingRecyclerAdapter);
 
-
-            MainActivity.setActionBarTitle("Chatting");
-
-            // Opened first time (not form backstack)
-            if (chattingRecyclerAdapter == null || chattingRecyclerAdapter.getItemCount() == 0) {
-                prepareRecyclerAdapter();
-                prepareChattingRecycler(view);
-                getChatting(null);
-
-                Analytics.logProductView(productId,"logProductView");
-            } else {
-                prepareChattingRecycler(view);
-                Timber.d("Restore previous category state. (Products already loaded) ");
-            }
-        } else {
-            MsgUtils.showToast(getActivity(), MsgUtils.TOAST_TYPE_INTERNAL_ERROR, getString(R.string.Internal_error), MsgUtils.ToastLength.LONG);
-            Timber.e(new RuntimeException(), "Run category fragment without arguments.");
-        }
+        prepareMovieData();
         return view;
     }
 
@@ -256,7 +221,6 @@ public class ChattingFragment extends Fragment {
                         messenger.setMessage(message_text.getText().toString());
                         ArrayList<Messenger> Messengers=new ArrayList<Messenger>();
                         Messengers.add(messenger);
-                        chattingRecyclerAdapter.addMessengers(Messengers);
                         message_text.setText("");
                     }
                 }, new Response.ErrorListener() {
@@ -269,48 +233,83 @@ public class ChattingFragment extends Fragment {
 
         MyApplication.getInstance().addToRequestQueue(get_storing, CONST.ACCOUNT_EDIT_REQUESTS_TAG);
     }
+    private List<Movie> movieList = new ArrayList<>();
+    private void prepareMovieData() {
+        Movie movie = new Movie("Mad Max: Fury Road", "Action & Adventure", "2015");
+        movieList.add(movie);
 
+        movie = new Movie("Inside Out", "Animation, Kids & Family", "2015");
+        movieList.add(movie);
+
+        movie = new Movie("Star Wars: Episode VII - The Force Awakens", "Action", "2015");
+        movieList.add(movie);
+
+        movie = new Movie("Shaun the Sheep", "Animation", "2015");
+        movieList.add(movie);
+
+        movie = new Movie("The Martian", "Science Fiction & Fantasy", "2015");
+        movieList.add(movie);
+
+        movie = new Movie("Mission: Impossible Rogue Nation", "Action", "2015");
+        movieList.add(movie);
+
+        movie = new Movie("Up", "Animation", "2009");
+        movieList.add(movie);
+
+        movie = new Movie("Star Trek", "Science Fiction", "2009");
+        movieList.add(movie);
+
+        movie = new Movie("The LEGO Movie", "Animation", "2014");
+        movieList.add(movie);
+
+        movie = new Movie("Iron Man", "Action & Adventure", "2008");
+        movieList.add(movie);
+
+        movie = new Movie("Aliens", "Science Fiction", "1986");
+        movieList.add(movie);
+
+        movie = new Movie("Chicken Run", "Animation", "2000");
+        movieList.add(movie);
+
+        movie = new Movie("Back to the Future", "Science Fiction", "1985");
+        movieList.add(movie);
+
+        movie = new Movie("Raiders of the Lost Ark", "Action & Adventure", "1981");
+        movieList.add(movie);
+
+        movie = new Movie("Goldfinger", "Action & Adventure", "1965");
+        movieList.add(movie);
+
+        movie = new Movie("Guardians of the Galaxy", "Science Fiction & Fantasy", "2014");
+        movieList.add(movie);
+        chattingRecyclerAdapter.notifyDataSetChanged();
+
+    }
     /**
      * Prepare content recycler. Create custom adapter and endless scroll.
      *
      * @param view root fragment view.
      */
     private void prepareChattingRecycler(View view) {
-        this.chattingRecycler = (RecyclerView) view.findViewById(R.id.chattings_recycler);
-        chattingRecycler.addItemDecoration(new RecyclerMarginDecorator(getActivity(), RecyclerMarginDecorator.ORIENTATION.BOTH));
-        chattingRecycler.setItemAnimator(new DefaultItemAnimator());
+        chattingRecycler= (RecyclerView) view.findViewById(R.id.chattings_recycler);
         chattingRecycler.setHasFixedSize(true);
+
 
         chattingRecycler.setLayoutManager(chattingsRecyclerLayoutManager);
         endlessRecyclerScrollListener = new EndlessRecyclerScrollListener(chattingsRecyclerLayoutManager) {
             @Override
             public void onLoadMore(int currentPage) {
                 Timber.e("Load more");
-                if (chattingsMetadata != null && chattingsMetadata.getLinks() != null && chattingsMetadata.getLinks().getNext() != null) {
-                    getChatting(chattingsMetadata.getLinks().getNext());
-                } else {
-                    Timber.d("CustomLoadMoreDataFromApi NO MORE DATA");
-                }
+
             }
         };
         chattingRecycler.addOnScrollListener(endlessRecyclerScrollListener);
         chattingRecycler.setAdapter(chattingRecyclerAdapter);
 
+
+
     }
 
-    private void prepareRecyclerAdapter() {
-        chattingRecyclerAdapter = new ChattingRecyclerAdapter(getActivity(), new ChattingRecyclerInterface() {
-
-
-            @Override
-            public void onChattingSelected(View caller, Messenger chatting) {
-                if (android.os.Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
-                    setReenterTransition(TransitionInflater.from(getActivity()).inflateTransition(android.R.transition.fade));
-                }
-                ((MainActivity) getActivity()).onChattingSelected(chatting.getId());
-            }
-        });
-    }
 
 
     @Override
@@ -351,7 +350,6 @@ public class ChattingFragment extends Fragment {
                         ArrayList<Messenger> Messengers=response.getMessengers();
                         if(Messengers.size()>0)
                         {
-                            chattingRecyclerAdapter.addMessengers(Messengers);
                         }
                         loadMoreProgress.setVisibility(View.GONE);
                     }

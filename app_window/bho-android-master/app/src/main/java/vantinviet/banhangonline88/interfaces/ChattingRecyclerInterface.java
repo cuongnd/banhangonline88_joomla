@@ -7,7 +7,6 @@ import vantinviet.banhangonline88.entities.product.Product;
 
 public interface ChattingRecyclerInterface {
 
-    void onChattingSelected(View view, Messenger messenger);
 
 
 }
