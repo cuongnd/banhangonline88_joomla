@@ -10,6 +10,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.transition.TransitionInflater;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -94,7 +95,6 @@ public class ChattingFragment extends Fragment {
     private TextView emptyContentView;
     private EditText message_text;
     private RecyclerView chattingRecycler;
-    private GridLayoutManager chattingsRecyclerLayoutManager;
     private ChattingRecyclerAdapter chattingRecyclerAdapter;
     private EndlessRecyclerScrollListener endlessRecyclerScrollListener;
 
@@ -146,14 +146,25 @@ public class ChattingFragment extends Fragment {
         send_button = (ImageView) view.findViewById(R.id.send_button);
 
         recyclerView = (RecyclerView) view.findViewById(R.id.chattings_recycler);
-
+        recyclerView.setHasFixedSize(true);
         chattingRecyclerAdapter = new ChattingRecyclerAdapter(movieList);
+
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(chattingRecyclerAdapter);
 
+        endlessRecyclerScrollListener = new EndlessRecyclerScrollListener((LinearLayoutManager) mLayoutManager) {
+            @Override
+            public void onLoadMore(int currentPage) {
+                Timber.e("Load more");
+
+            }
+        };
+        recyclerView.addOnScrollListener(endlessRecyclerScrollListener);
+
         prepareMovieData();
+        init(view);
         return view;
     }
 
@@ -193,6 +204,19 @@ public class ChattingFragment extends Fragment {
                 }
             }
         });
+        message_text.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                // If the event is a key-down event on the "enter" button
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
+                        (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    // Perform action on key press
+                    sendMessenger();
+                    return true;
+                }
+                return false;
+            }
+        });
+
     }
 
     private void sendMessenger() {
@@ -221,6 +245,11 @@ public class ChattingFragment extends Fragment {
                         messenger.setMessage(message_text.getText().toString());
                         ArrayList<Messenger> Messengers=new ArrayList<Messenger>();
                         Messengers.add(messenger);
+
+                        Movie movie = new Movie(message_text.getText().toString(), "Action & Adventure", "2015");
+                        movieList.add(movie);
+                        chattingRecyclerAdapter.notifyDataSetChanged();
+                        recyclerView.smoothScrollToPosition(movieList.size());
                         message_text.setText("");
                     }
                 }, new Response.ErrorListener() {
@@ -291,20 +320,7 @@ public class ChattingFragment extends Fragment {
      * @param view root fragment view.
      */
     private void prepareChattingRecycler(View view) {
-        chattingRecycler= (RecyclerView) view.findViewById(R.id.chattings_recycler);
-        chattingRecycler.setHasFixedSize(true);
 
-
-        chattingRecycler.setLayoutManager(chattingsRecyclerLayoutManager);
-        endlessRecyclerScrollListener = new EndlessRecyclerScrollListener(chattingsRecyclerLayoutManager) {
-            @Override
-            public void onLoadMore(int currentPage) {
-                Timber.e("Load more");
-
-            }
-        };
-        chattingRecycler.addOnScrollListener(endlessRecyclerScrollListener);
-        chattingRecycler.setAdapter(chattingRecyclerAdapter);
 
 
 
