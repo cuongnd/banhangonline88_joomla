@@ -371,6 +371,7 @@ public class SplashActivity extends AppCompatActivity {
     private void requestShops() {
         if (layoutIntroScreen.getVisibility() != View.VISIBLE)
             progressDialog.show();
+        Timber.d("Now request list shop %s", EndPoints.SHOPS);
         GsonRequest<ShopResponse> getShopsRequest = new GsonRequest<>(Request.Method.GET, EndPoints.SHOPS, null, ShopResponse.class,
                 new Response.Listener<ShopResponse>() {
                     @Override
@@ -383,9 +384,11 @@ public class SplashActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                Timber.d("error request list shop");
                 if (progressDialog != null) progressDialog.cancel();
                 MsgUtils.logAndShowErrorMessage(activity, error);
                 finish();
+                Timber.d("-----------------------------");
             }
         });
         getShopsRequest.setRetryPolicy(MyApplication.getDefaultRetryPolice());

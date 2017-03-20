@@ -33,10 +33,8 @@ import vantinviet.banhangonline88.api.EndPoints;
 import vantinviet.banhangonline88.api.GsonRequest;
 import vantinviet.banhangonline88.api.OkHttpStack;
 import vantinviet.banhangonline88.entities.Notification;
-import vantinviet.banhangonline88.entities.User;
 import vantinviet.banhangonline88.testing.EspressoIdlingResource;
 import timber.log.Timber;
-import vantinviet.banhangonline88.utils.MsgUtils;
 import vantinviet.banhangonline88.ux.MainActivity;
 
 import static vantinviet.banhangonline88.ux.MainActivity.MyPREFERENCES;
@@ -197,7 +195,7 @@ public class MyApplication extends Application {
 
 
         String url=EndPoints.LINK_NOTIFICATION;
-        url=get_token_link(url);
+        url= get_token_android_link(url);
         String session=get_session();
         GsonRequest<Notification> getNotification = new GsonRequest<>(Request.Method.GET, url, null, Notification.class,
                 new Response.Listener<Notification>() {
@@ -223,9 +221,9 @@ public class MyApplication extends Application {
         return session;
     }
 
-    public String get_token_link(String url) {
+    public String get_token_android_link(String url) {
         String session=get_session();
-        url=url+"&token="+session+"&"+session+"=1";
+        url=url+"&tmpl=component&ignoreMessages=true&format=json&os=android&token="+session+"&"+session+"=1";
         return url;
 
     }

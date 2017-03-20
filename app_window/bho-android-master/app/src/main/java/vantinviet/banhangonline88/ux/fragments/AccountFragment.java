@@ -2,7 +2,6 @@ package vantinviet.banhangonline88.ux.fragments;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -158,7 +157,7 @@ public class AccountFragment extends Fragment {
 
     private void syncUserData(@NonNull User user) {
         app=MyApplication.getInstance();
-        String url=app.get_token_link(EndPoints.USER_SINGLE);
+        String url=app.get_token_android_link(EndPoints.USER_SINGLE);
 
         url = String.format(url+"&user_id=%d", user.getId());
         pDialog.show();

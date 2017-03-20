@@ -267,7 +267,7 @@ public class UpdateCartItemDialogFragment extends DialogFragment {
             if (!variantSizeArrayList.isEmpty()) {
                 int sizeSelection = 0;
                 for (int i = 0; i < variantSizeArrayList.size(); i++) {
-//                    Timber.d("Compare list: " + variantSizeArrayList.get(i).getId() + " == " + cartProductItem.getVariant().getId() + " as actual");
+//                    Timber.d("Compare list: " + variantSizeArrayList.get(i).getMenu_item_id() + " == " + cartProductItem.getVariant().getMenu_item_id() + " as actual");
                     if (variantSizeArrayList.get(i).getId() == cartProductItem.getVariant().getId()) {
                         sizeSelection = i;
                     }

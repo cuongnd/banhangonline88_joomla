@@ -4,17 +4,17 @@ import java.util.List;
 
 public class DrawerResponse {
 
-    private List<DrawerItemCategory> navigation;
+    private List<DrawerMenuItem> navigation;
     private List<DrawerItemPage> pages;
 
     public DrawerResponse() {
     }
 
-    public List<DrawerItemCategory> getNavigation() {
+    public List<DrawerMenuItem> getNavigation() {
         return navigation;
     }
 
-    public void setNavigation(List<DrawerItemCategory> navigation) {
+    public void setNavigation(List<DrawerMenuItem> navigation) {
         this.navigation = navigation;
     }
 

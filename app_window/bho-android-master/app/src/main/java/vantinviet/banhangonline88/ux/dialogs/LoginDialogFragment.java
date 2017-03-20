@@ -395,7 +395,7 @@ public class LoginDialogFragment extends DialogFragment implements FacebookCallb
     private void logInWithEmail(EditText editTextEmail, EditText editTextPassword) {
         SettingsMy.setUserEmailHint(editTextEmail.getText().toString());
         app = MyApplication.getInstance();
-        String url= app.get_token_link(EndPoints.USER_LOGIN_EMAIL);
+        String url= app.get_token_android_link(EndPoints.USER_LOGIN_EMAIL);
         url = String.format(url, SettingsMy.getActualNonNullShop(getActivity()).getId());
         progressDialog.show();
 

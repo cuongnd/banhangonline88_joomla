@@ -27,15 +27,15 @@
     <string name="Another_click_for_leaving_app">Nhấn vào khu vực khác để rời khỏi ứng dụng</string>
     <string name="All_categories">Tất cả các danh mục</string>
     <string name="menu_action_search">Tìm kiếm</string>
-    <string name="Type_your_wish">Type your wish</string>
-    <string name="menu_action_cart">Shopping cart</string>
+    <string name="Type_your_wish">Kiểu mong muốn của bạn</string>
+    <string name="menu_action_cart">Giỏ hàng</string>
     <string name="menu_action_wishlist">Wishlist</string>
 
 
     <!-- Products related strings -->
-    <string name="Just_arrived">Just arrived</string>
+    <string name="Just_arrived">Trang chủ</string>
     <string name="No_banners">Không có banner</string>
-    <string name="Show_offers">Show offers</string>
+    <string name="Show_offers">Hiển thị phiếu mua hàng</string>
     <string name="FILTER">LỌC</string>
     <string name="Apply">Áp dụng</string>
     <string name="Restart">làm lại</string>
@@ -44,13 +44,13 @@
     <string name="Product_not_found">Sản phẩm không có.</string>
     <string name="ADD_TO_CART">THÊM VÀO GIỎ HÀNG</string>
     <string name="SEND_TO_A_FRIEND">GỬI CHO BẠN BÈ</string>
-    <string name="RECOMMENDED">RECOMMENDED</string>
+    <string name="RECOMMENDED">LỜI KHUYÊN CHO BẠN</string>
     <string name="Select_size">Chọn kích thước</string>
     <string name="Product">Sản phẩm</string>
     <string name="All">Tất cả</string>
 
     <!-- Products sort options -->
-    <string name="Recommended">Recommended</string>
+    <string name="Recommended">Lời khuyên cho bạn</string>
     <string name="Whats_new">Có gì mới</string>
     <string name="Highest_price">Giá cao nhất</string>
     <string name="Lowest_price">Giá thấp nhất</string>
@@ -80,7 +80,7 @@
     <string name="Save">Lưu lại</string>
 
     <string name="My_orders">Đơn hàng của tôi</string>
-    <string name="Branches">Branches</string>
+    <string name="Branches">Chi nhánh</string>
     <string name="Settings">Cài đặt</string>
 
 

@@ -2,7 +2,7 @@
    "metadata":null,
    "records":[
       {
-         "id":21,
+         "menu_item_id":21,
          "name":"English",
          "description":"",
          "url":"",
@@ -13,7 +13,7 @@
          "flag_icon":"http:\/\/77.93.198.186\/images\/flags\/48\/us.png"
       },
       {
-         "id":18,
+         "menu_item_id":18,
          "name":"\u010de\u0161tina",
          "description":"",
          "url":"",

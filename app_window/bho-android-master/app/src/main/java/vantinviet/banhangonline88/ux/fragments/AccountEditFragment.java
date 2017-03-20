@@ -244,7 +244,7 @@ public class AccountEditFragment extends Fragment {
                     return;
                 }
                 app=MyApplication.getInstance();
-                String url=app.get_token_link(EndPoints.USER_SINGLE);
+                String url=app.get_token_android_link(EndPoints.USER_SINGLE);
                 url = String.format(url+"&user_id=%d", SettingsMy.getActualNonNullShop(getActivity()).getId(), activeUser.getId());
 
                 progressDialog.show();

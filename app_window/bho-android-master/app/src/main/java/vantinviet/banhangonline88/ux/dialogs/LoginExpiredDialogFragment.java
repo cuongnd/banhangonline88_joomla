@@ -9,12 +9,10 @@ import android.support.v4.app.DialogFragment;
 
 import vantinviet.banhangonline88.ux.MainActivity;
 import vantinviet.banhangonline88.R;
-import vantinviet.banhangonline88.ux.fragments.BannersFragment;
 import timber.log.Timber;
 
 /**
  * Dialog informs user about session timeout.
- * User is redirected to {@link BannersFragment}.
  */
 public class LoginExpiredDialogFragment extends DialogFragment {
 
@@ -27,15 +25,7 @@ public class LoginExpiredDialogFragment extends DialogFragment {
         builder.setTitle(R.string.Oops_login_expired);
         builder.setMessage(R.string.Your_session_has_expired_Please_log_in_again);
 
-        builder.setPositiveButton(R.string.Ok, new DialogInterface.OnClickListener() {
 
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                if (getActivity() instanceof MainActivity)
-                    ((MainActivity) getActivity()).onDrawerBannersSelected();
-                dialog.dismiss();
-            }
-        });
 
         return builder.create();
     }

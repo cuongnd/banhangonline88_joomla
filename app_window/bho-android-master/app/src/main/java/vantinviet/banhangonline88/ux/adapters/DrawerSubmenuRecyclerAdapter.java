@@ -11,7 +11,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import vantinviet.banhangonline88.entities.drawerMenu.DrawerItemCategory;
+import vantinviet.banhangonline88.entities.drawerMenu.DrawerMenuItem;
 import vantinviet.banhangonline88.R;
 import vantinviet.banhangonline88.interfaces.DrawerSubmenuRecyclerInterface;
 
@@ -22,7 +22,7 @@ public class DrawerSubmenuRecyclerAdapter extends RecyclerView.Adapter<RecyclerV
 
     private final DrawerSubmenuRecyclerInterface drawerSubmenuRecyclerInterface;
     private LayoutInflater layoutInflater;
-    private List<DrawerItemCategory> drawerItemCategoryList = new ArrayList<>();
+    private List<DrawerMenuItem> drawerMenuItemList = new ArrayList<>();
 
     /**
      * Creates an adapter that handles a list of drawer sub-items.
@@ -47,9 +47,9 @@ public class DrawerSubmenuRecyclerAdapter extends RecyclerView.Adapter<RecyclerV
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         ViewHolderItemCategory viewHolderItemCategory = (ViewHolderItemCategory) holder;
 
-        DrawerItemCategory drawerItemCategory = getDrawerItem(position);
-        viewHolderItemCategory.bindContent(drawerItemCategory);
-        viewHolderItemCategory.itemText.setText(drawerItemCategory.getName());
+        DrawerMenuItem drawerMenuItem = getDrawerItem(position);
+        viewHolderItemCategory.bindContent(drawerMenuItem);
+        viewHolderItemCategory.itemText.setText(drawerMenuItem.getName());
         viewHolderItemCategory.subMenuIndicator.setVisibility(View.INVISIBLE);
     }
 
@@ -57,17 +57,17 @@ public class DrawerSubmenuRecyclerAdapter extends RecyclerView.Adapter<RecyclerV
     // This method returns the number of items present in the list
     @Override
     public int getItemCount() {
-        return drawerItemCategoryList.size();
+        return drawerMenuItemList.size();
     }
 
 
-    private DrawerItemCategory getDrawerItem(int position) {
-        return drawerItemCategoryList.get(position);
+    private DrawerMenuItem getDrawerItem(int position) {
+        return drawerMenuItemList.get(position);
     }
 
-    public void changeDrawerItems(List<DrawerItemCategory> children) {
-        drawerItemCategoryList.clear();
-        drawerItemCategoryList.addAll(children);
+    public void changeDrawerItems(List<DrawerMenuItem> children) {
+        drawerMenuItemList.clear();
+        drawerMenuItemList.addAll(children);
         notifyDataSetChanged();
     }
 
@@ -77,7 +77,7 @@ public class DrawerSubmenuRecyclerAdapter extends RecyclerView.Adapter<RecyclerV
         public TextView itemText;
         public ImageView subMenuIndicator;
         public LinearLayout layout;
-        private DrawerItemCategory drawerItemCategory;
+        private DrawerMenuItem drawerMenuItem;
 
         public ViewHolderItemCategory(View itemView, final DrawerSubmenuRecyclerInterface drawerSubmenuRecyclerInterface) {
             super(itemView);
@@ -87,13 +87,13 @@ public class DrawerSubmenuRecyclerAdapter extends RecyclerView.Adapter<RecyclerV
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    drawerSubmenuRecyclerInterface.onSubCategorySelected(v, drawerItemCategory);
+                    drawerSubmenuRecyclerInterface.onSubCategorySelected(v, drawerMenuItem);
                 }
             });
         }
 
-        public void bindContent(DrawerItemCategory drawerItemCategory) {
-            this.drawerItemCategory = drawerItemCategory;
+        public void bindContent(DrawerMenuItem drawerMenuItem) {
+            this.drawerMenuItem = drawerMenuItem;
         }
     }
 }

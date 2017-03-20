@@ -111,14 +111,7 @@ public class OrderCreateFragment extends Fragment {
 
         orderTotalPriceTv = (TextView) view.findViewById(R.id.order_create_summary_total_price);
         TextView termsAndConditionsTv = (TextView) view.findViewById(R.id.order_create_summary_terms_and_condition);
-        termsAndConditionsTv.setText(Html.fromHtml(getString(R.string.Click_on_Order_to_allow_our_Terms_and_Conditions)));
-        termsAndConditionsTv.setOnClickListener(new OnSingleClickListener() {
-            @Override
-            public void onSingleClick(View view) {
-                if (getActivity() instanceof MainActivity)
-                    ((MainActivity) getActivity()).onTermsAndConditionsSelected();
-            }
-        });
+
 
         prepareFields(view);
         prepareDeliveryLayout(view);
@@ -346,7 +339,6 @@ public class OrderCreateFragment extends Fragment {
                     if (progressDialog != null) progressDialog.cancel();
                     Timber.e("Get request cart error: %s", error.getMessage());
                     MsgUtils.logAndShowErrorMessage(getActivity(), error);
-                    if (getActivity() instanceof MainActivity) ((MainActivity) getActivity()).onDrawerBannersSelected();
                 }
             }, getFragmentManager(), user.getAccessToken());
             getCart.setRetryPolicy(MyApplication.getDefaultRetryPolice());
@@ -363,7 +355,6 @@ public class OrderCreateFragment extends Fragment {
         List<CartProductItem> cartProductItems = cart.getItems();
         if (cartProductItems == null || cartProductItems.isEmpty()) {
             Timber.e(new RuntimeException(), "Received null cart during order creation.");
-            if (getActivity() instanceof MainActivity) ((MainActivity) getActivity()).onDrawerBannersSelected();
         } else {
 
             LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -415,7 +406,6 @@ public class OrderCreateFragment extends Fragment {
                     MsgUtils.logAndShowErrorMessage(getActivity(), error);
 
                     deliveryProgressBar.setVisibility(View.GONE);
-                    if (getActivity() instanceof MainActivity) ((MainActivity) getActivity()).onDrawerBannersSelected();
                 }
             }, getFragmentManager(), user.getAccessToken());
             getDelivery.setRetryPolicy(MyApplication.getDefaultRetryPolice());

@@ -132,6 +132,7 @@ public class ProductFragment extends Fragment {
      * Id of the wishlist item representing product.
      */
     private long wishlistId = CONST.DEFAULT_EMPTY_ID;
+    private MyApplication app;
 
     /**
      * Create a new fragment instance for product detail.
@@ -369,9 +370,11 @@ public class ProductFragment extends Fragment {
      */
     private void getProduct(final long productId) {
         // Load product info
-        String url = String.format(EndPoints.PRODUCTS_SINGLE_RELATED, SettingsMy.getActualNonNullShop(getActivity()).getId(), productId);
+        app=MyApplication.getInstance();
+        String url = EndPoints.PRODUCTS_SINGLE_RELATED;
+        url=app.get_token_android_link(url);
+        url = String.format(url, productId);
         setContentVisible(CONST.VISIBLE.PROGRESS);
-
         GsonRequest<Product> getProductRequest = new GsonRequest<>(Request.Method.GET, url, null, Product.class,
                 new Response.Listener<Product>() {
                     @Override

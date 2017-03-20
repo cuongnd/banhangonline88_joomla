@@ -15,30 +15,23 @@
  *******************************************************************************/
 package vantinviet.banhangonline88.ux;
 
-import android.app.Notification;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.app.ProgressDialog;
-import android.app.SearchManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.database.MatrixCursor;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.BaseColumns;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.CursorAdapter;
@@ -52,7 +45,6 @@ import android.transition.TransitionInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.RemoteViews;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -63,7 +55,6 @@ import com.facebook.appevents.AppEventsLogger;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -72,8 +63,7 @@ import java.util.concurrent.ScheduledFuture;
 
 import vantinviet.banhangonline88.MyApplication;
 import vantinviet.banhangonline88.api.EndPoints;
-import vantinviet.banhangonline88.entities.ShopResponse;
-import vantinviet.banhangonline88.entities.drawerMenu.DrawerItemCategory;
+import vantinviet.banhangonline88.entities.drawerMenu.DrawerMenuItem;
 import vantinviet.banhangonline88.utils.JsonUtils;
 import vantinviet.banhangonline88.utils.Utils;
 import vantinviet.banhangonline88.ux.fragments.ChattingFragment;
@@ -87,7 +77,6 @@ import vantinviet.banhangonline88.api.JsonRequest;
 import vantinviet.banhangonline88.entities.Banner;
 import vantinviet.banhangonline88.entities.User;
 import vantinviet.banhangonline88.entities.cart.CartInfo;
-import vantinviet.banhangonline88.entities.drawerMenu.DrawerItemPage;
 import vantinviet.banhangonline88.entities.order.Order;
 import vantinviet.banhangonline88.interfaces.LoginDialogInterface;
 import vantinviet.banhangonline88.utils.Analytics;
@@ -96,13 +85,11 @@ import vantinviet.banhangonline88.utils.MyRegistrationIntentService;
 import vantinviet.banhangonline88.ux.dialogs.LoginDialogFragment;
 import vantinviet.banhangonline88.ux.fragments.AccountEditFragment;
 import vantinviet.banhangonline88.ux.fragments.AccountFragment;
-import vantinviet.banhangonline88.ux.fragments.BannersFragment;
 import vantinviet.banhangonline88.ux.fragments.CartFragment;
-import vantinviet.banhangonline88.ux.fragments.CategoryFragment;
-import vantinviet.banhangonline88.ux.fragments.DrawerFragment;
+import vantinviet.banhangonline88.ux.fragments.PageMenuItemFragment;
+import vantinviet.banhangonline88.ux.fragments.MenuDrawerFragment;
 import vantinviet.banhangonline88.ux.fragments.OrderCreateFragment;
 import vantinviet.banhangonline88.ux.fragments.OrdersHistoryFragment;
-import vantinviet.banhangonline88.ux.fragments.PageFragment;
 import vantinviet.banhangonline88.ux.fragments.ProductFragment;
 import vantinviet.banhangonline88.ux.fragments.SettingsFragment;
 import vantinviet.banhangonline88.ux.fragments.WishlistFragment;
@@ -114,7 +101,7 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 /**
  * Application is based on one core activity, which handles fragment operations.
  */
-public class MainActivity extends AppCompatActivity implements DrawerFragment.FragmentDrawerListener {
+public class MainActivity extends AppCompatActivity implements MenuDrawerFragment.FragmentDrawerListener {
 
     public static final String MSG_MAIN_ACTIVITY_INSTANCE_IS_NULL = "MainActivity instance is null.";
     private static MainActivity mInstance = null;
@@ -123,7 +110,7 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
     /**
      * Reference tied drawer menu, represented as fragment.
      */
-    public DrawerFragment drawerFragment;
+    public MenuDrawerFragment drawerFragment;
     /**
      * Indicate that app will be closed on next back press
      */
@@ -255,7 +242,7 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
         app=MyApplication.getInstance();
         final SharedPreferences sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         String session=sharedpreferences.getString(SESSION,"");
-        String url=app.get_token_link(EndPoints.LINK_FIRST_LOAD_WEBSITE);
+        String url=app.get_token_android_link(EndPoints.LINK_FIRST_LOAD_WEBSITE);
         GsonRequest<User> getUserRequest = new GsonRequest<>(Request.Method.GET, url, null, User.class,
                 new Response.Listener<User>() {
                     @Override
@@ -311,7 +298,7 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
         } else {
             Timber.e(new RuntimeException(), "GetSupportActionBar returned null.");
         }
-        drawerFragment = (DrawerFragment) getSupportFragmentManager().findFragmentById(R.id.main_navigation_drawer_fragment);
+        drawerFragment = (MenuDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.main_navigation_drawer_fragment);
         drawerFragment.setUp((DrawerLayout) findViewById(R.id.main_drawer_layout), toolbar, this);
 
         // Initialize list for search suggestions
@@ -343,7 +330,7 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
             Banner banner = new Banner();
             banner.setTarget(target);
             banner.setName(title);
-            onBannerSelected(banner);
+
 
             Analytics.logOpenedByNotification(target);
         }
@@ -367,9 +354,7 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
 
         // Prepare search view
         MenuItem searchItem = menu.findItem(R.id.action_search);
-        if (searchItem != null) {
-            prepareSearchView(searchItem);
-        }
+
 
         // Prepare cart count info
         MenuItem cartItem = menu.findItem(R.id.action_cart);
@@ -475,52 +460,7 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
         }
     }
 
-    /**
-     * Prepare toolbar search view. Invoke search suggestions and handle search queries.
-     *
-     * @param searchItem corresponding menu item.
-     */
-    private void prepareSearchView(@NonNull final MenuItem searchItem) {
-        final SearchView searchView = (SearchView) searchItem.getActionView();
-        searchView.setSubmitButtonEnabled(true);
-        SearchManager searchManager = (SearchManager) MainActivity.this.getSystemService(Context.SEARCH_SERVICE);
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(MainActivity.this.getComponentName()));
-        SearchView.OnQueryTextListener queryTextListener = new SearchView.OnQueryTextListener() {
-            public boolean onQueryTextChange(String newText) {
-                Timber.d("Search query text changed to: %s", newText);
-                showSearchSuggestions(newText, searchView);
-                return false;
-            }
 
-            public boolean onQueryTextSubmit(String query) {
-                // Submit search query and hide search action view.
-                onSearchSubmitted(query);
-                searchView.setQuery("", false);
-                searchView.setIconified(true);
-                searchItem.collapseActionView();
-                return true;
-            }
-        };
-
-        searchView.setOnSuggestionListener(new SearchView.OnSuggestionListener() {
-            @Override
-            public boolean onSuggestionSelect(int position) {
-                return false;
-            }
-
-            @Override
-            public boolean onSuggestionClick(int position) {
-                // Submit search suggestion query and hide search action view.
-                MatrixCursor c = (MatrixCursor) searchSuggestionsAdapter.getItem(position);
-                onSearchSubmitted(c.getString(1));
-                searchView.setQuery("", false);
-                searchView.setIconified(true);
-                searchItem.collapseActionView();
-                return true;
-            }
-        });
-        searchView.setOnQueryTextListener(queryTextListener);
-    }
 
     /**
      * Show user search whisperer with generated suggestions.
@@ -544,7 +484,7 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
     }
 
     @Override
-    public void prepareSearchSuggestions(List<DrawerItemCategory> navigation) {
+    public void prepareSearchSuggestions(List<DrawerMenuItem> navigation) {
         final String[] from = new String[]{"categories"};
         final int[] to = new int[]{android.R.id.text1};
 
@@ -595,10 +535,8 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
      * When fragment stack is cleared {@link #clearBackStack}, this fragment will be shown.
      */
     private void addInitialFragment() {
-        Fragment fragment = new BannersFragment();
         FragmentManager frgManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = frgManager.beginTransaction();
-        fragmentTransaction.add(R.id.main_content_frame, fragment).commit();
         frgManager.executePendingTransactions();
     }
 
@@ -641,43 +579,16 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
 //        http://stackoverflow.com/questions/12529499/problems-with-android-fragment-back-stack
     }
 
-    /**
-     * Method create new {@link CategoryFragment} with defined search query.
-     *
-     * @param searchQuery text used for products search.
-     */
-    private void onSearchSubmitted(String searchQuery) {
-        clearBackStack();
-        Timber.d("Called onSearchSubmitted with text: %s", searchQuery);
-        Fragment fragment = CategoryFragment.newInstance(searchQuery);
-        replaceFragment(fragment, CategoryFragment.class.getSimpleName());
-    }
+
+
 
     @Override
-    public void onDrawerBannersSelected() {
+    public void onDrawerMenuItemSelected(DrawerMenuItem drawerMenuItem) {
         clearBackStack();
-        Fragment f = getSupportFragmentManager().findFragmentById(R.id.main_content_frame);
-        if (f == null || !(f instanceof BannersFragment)) {
-            Fragment fragment = new BannersFragment();
-            replaceFragment(fragment, BannersFragment.class.getSimpleName());
-        } else {
-            Timber.d("Banners already displayed.");
-        }
+        Fragment fragment = PageMenuItemFragment.newInstance(drawerMenuItem);
+        replaceFragment(fragment, PageMenuItemFragment.class.getSimpleName());
     }
 
-    @Override
-    public void onDrawerItemCategorySelected(DrawerItemCategory drawerItemCategory) {
-        clearBackStack();
-        Fragment fragment = CategoryFragment.newInstance(drawerItemCategory);
-        replaceFragment(fragment, CategoryFragment.class.getSimpleName());
-    }
-
-    @Override
-    public void onDrawerItemPageSelected(DrawerItemPage drawerItemPage) {
-        clearBackStack();
-        Fragment fragment = PageFragment.newInstance(drawerItemPage.getId());
-        replaceFragment(fragment, PageFragment.class.getSimpleName());
-    }
 
     @Override
     public void onAccountSelected() {
@@ -691,49 +602,6 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
         replaceFragment(fragment, ChattingFragment.class.getSimpleName());
     }
 
-    /**
-     * Launch {@link PageFragment} with default values. It leads to load terms and conditions defined on server.
-     */
-    public void onTermsAndConditionsSelected() {
-        Fragment fragment = PageFragment.newInstance();
-        replaceFragment(fragment, PageFragment.class.getSimpleName());
-    }
-
-    /**
-     * Method parse selected banner and launch corresponding fragment.
-     * If banner type is 'list' then launch {@link CategoryFragment}.
-     * If banner type is 'detail' then launch {@link ProductFragment}.
-     *
-     * @param banner selected banner for display.
-     */
-    public void onBannerSelected(Banner banner) {
-        if (banner != null) {
-            String target = banner.getTarget();
-            Timber.d("Open banner with target: %s", target);
-            String[] targetParams = target.split(":");
-            if (targetParams.length >= 2) {
-                switch (targetParams[0]) {
-                    case "list": {
-                        Fragment fragment = CategoryFragment.newInstance(Long.parseLong(targetParams[1]), banner.getName(), null);
-                        replaceFragment(fragment, CategoryFragment.class.getSimpleName() + " - banner");
-                        break;
-                    }
-                    case "detail": {
-                        Fragment fragment = ProductFragment.newInstance(Long.parseLong(targetParams[1]));
-                        replaceFragment(fragment, ProductFragment.class.getSimpleName() + " - banner select");
-                        break;
-                    }
-                    default:
-                        Timber.e("Unknown banner target type.");
-                        break;
-                }
-            } else {
-                Timber.e(new RuntimeException(), "Parsed banner target has too less parameters.");
-            }
-        } else {
-            Timber.e("onBannerSelected called with null parameters.");
-        }
-    }
 
     /**
      * Launch {@link ProductFragment}.

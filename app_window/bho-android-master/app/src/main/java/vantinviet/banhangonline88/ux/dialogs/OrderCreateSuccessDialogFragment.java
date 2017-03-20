@@ -59,7 +59,7 @@ public class OrderCreateSuccessDialogFragment extends DialogFragment {
             @Override
             public void onClick(View v) {
                 if (getActivity() instanceof MainActivity)
-                    ((MainActivity) getActivity()).onDrawerBannersSelected();
+
                 dismiss();
             }
         });

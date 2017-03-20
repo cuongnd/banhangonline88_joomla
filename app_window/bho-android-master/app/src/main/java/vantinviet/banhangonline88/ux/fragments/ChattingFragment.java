@@ -141,18 +141,7 @@ public class ChattingFragment extends Fragment {
 
     private void init(View view) {
 
-        message_text.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                message_text.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                        imm.showSoftInput(message_text, InputMethodManager.SHOW_IMPLICIT);
-                    }
-                });
-            }
-        });
+
         message_text.requestFocus();
         message_text.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -194,8 +183,8 @@ public class ChattingFragment extends Fragment {
         User user = SettingsMy.getActiveUser();
         app=MyApplication.getInstance();
         String url=EndPoints.SAVEENTITY;
-        url=app.get_token_link(url);
-        //url= String.format(url+"&user_id=%d", user.getId());
+        url=app.get_token_android_link(url);
+        //url= String.format(url+"&user_id=%d", user.getMenu_item_id());
         JSONObject jo = new JSONObject();
         try {
             jo.put(JsonUtils.MESSENGER, message_text.getText());
@@ -274,7 +263,7 @@ public class ChattingFragment extends Fragment {
         app=MyApplication.getInstance();
         if(url==null)
         {
-            url=app.get_token_link(EndPoints.MESSENGERS);
+            url=app.get_token_android_link(EndPoints.MESSENGERS);
         }
         loadMoreProgress.setVisibility(View.VISIBLE);
         JSONObject jo;
