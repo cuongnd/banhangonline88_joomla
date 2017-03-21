@@ -19,6 +19,9 @@ import com.android.volley.VolleyError;
 import com.google.gson.Gson;
 
 import java.io.Serializable;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 import vantinviet.banhangonline88.CONST;
 import vantinviet.banhangonline88.MyApplication;
@@ -116,7 +119,7 @@ public class PageMenuItemFragment extends Fragment {
     }
 
 
-    private void load_home_page(String page_object )  {
+    private void load_home_page(final String page_object )  {
         Gson gson = new Gson();
 
         final DrawerMenuItem drawerMenuItem = gson.fromJson(page_object, DrawerMenuItem.class);
@@ -140,7 +143,7 @@ public class PageMenuItemFragment extends Fragment {
         GsonRequest<Page> getPage = new GsonRequest<>(Request.Method.GET, url, null, Page.class,
                 new Response.Listener<Page>() {
                     @Override
-                    public void onResponse(@NonNull Page response) {
+                    public void onResponse(@NonNull Page page) {
                         String component=drawerMenuItem.getComponent();
                         String type=drawerMenuItem.getType();
                         if(type.equals("component")) {
@@ -151,12 +154,18 @@ public class PageMenuItemFragment extends Fragment {
                             Class<?> class_fragment = null;
                             try {
                                 class_fragment = Class.forName("vantinviet.banhangonline88.ux.fragments." + str_fragmentManager);
-                                fragment = (Fragment) class_fragment.newInstance() ;
+                                Constructor<?> cons = class_fragment.getConstructor(DrawerMenuItem.class,Page.class);
+                                Object object = cons.newInstance(drawerMenuItem,page);
+                                fragment=(Fragment)object;
                             } catch (ClassNotFoundException e) {
                                 e.printStackTrace();
-                            } catch (java.lang.InstantiationException e) {
-                                e.printStackTrace();
                             } catch (IllegalAccessException e) {
+                                e.printStackTrace();
+                            } catch (NoSuchMethodException e) {
+                                e.printStackTrace();
+                            } catch (InvocationTargetException e) {
+                                e.printStackTrace();
+                            } catch (java.lang.InstantiationException e) {
                                 e.printStackTrace();
                             }
 
