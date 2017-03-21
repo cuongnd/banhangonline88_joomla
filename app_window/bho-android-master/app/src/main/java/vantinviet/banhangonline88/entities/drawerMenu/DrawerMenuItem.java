@@ -1,6 +1,7 @@
 package vantinviet.banhangonline88.entities.drawerMenu;
 
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.annotations.Since;
 
 import java.util.List;
 
@@ -14,6 +15,9 @@ public class DrawerMenuItem {
     private String link;
     private List<DrawerMenuItem> children;
     private String type;
+    private String component;
+    private String view;
+    private String layout;
 
     public DrawerMenuItem() {
     }
@@ -39,6 +43,11 @@ public class DrawerMenuItem {
     public void setOriginalId(long originalId) {
         this.originalId = originalId;
     }
+
+    public String getComponent() {
+        return component;
+    }
+
 
     public String getName() {
         return name;
@@ -98,6 +107,7 @@ public class DrawerMenuItem {
                 ", name='" + name + '\'' +
                 ", children=" + children +
                 ", type='" + type + '\'' +
+                ", component='" + component + '\'' +
                 ", link='" + link + '\'' +
                 '}';
     }
@@ -108,5 +118,13 @@ public class DrawerMenuItem {
 
     public String getLink() {
         return link;
+    }
+
+    public String getView() {
+        return view;
+    }
+
+    public String getLayout() {
+        return layout;
     }
 }

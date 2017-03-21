@@ -13,7 +13,7 @@ We as a Facebook Marketing Partner company have experienced neverending struggle
 
 Do you want to see the app in action? 
 
-<a href='https://play.google.com/store/apps/details?id=bf.io.openshop'>
+<a href='https://play.google.com/store/apps/details?menu_item_id=bf.io.openshop'>
 <img src='http://s24.postimg.org/mmox1wai9/google_play_badge.png' border='0' alt="google play badge" />
 </a>
 
@@ -56,7 +56,7 @@ The example OpenShop.io application you can download from this repository or [Go
 Do you want to release the app like 1, 2, 3, BLAST OFF!? It is as easy as creaing a few web services and editing a few files and you are done.
 
 1. Rename the project. Especialy a package name in [Manifest and Build files](http://stackoverflow.com/questions/16804093/android-studio-rename-package).
-2. Put your Organization id into the `ORGANIZATION_ID` variable inside the "CONST.java" file. You will receive the Organization id after a successfull connection, take a look at the section [how to connect](#how-to-connect).
+2. Put your Organization menu_item_id into the `ORGANIZATION_ID` variable inside the "CONST.java" file. You will receive the Organization menu_item_id after a successfull connection, take a look at the section [how to connect](#how-to-connect).
     ![ORGANIZATION_ID](http://s29.postimg.org/n1ptf3hqv/tutorial_organization_id.jpg)
 3. Update UI 
     * colors - currently defined in the "colors.xml" file under resources folder.
