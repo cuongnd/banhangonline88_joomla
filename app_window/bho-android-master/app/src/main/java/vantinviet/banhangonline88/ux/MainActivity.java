@@ -275,7 +275,7 @@ public class MainActivity extends AppCompatActivity implements MenuDrawerFragmen
         }
         System.out.println(lang);
         MyApplication.setAppLocale(lang);
-        beepForAnHour();
+        //beepForAnHour();
         setContentView(R.layout.activity_main);
 
 
@@ -334,6 +334,8 @@ public class MainActivity extends AppCompatActivity implements MenuDrawerFragmen
 
             Analytics.logOpenedByNotification(target);
         }
+        PageMenuItemFragment fragment = new PageMenuItemFragment();
+        fragment.load_page(null);
     }
 
     /**
@@ -462,26 +464,7 @@ public class MainActivity extends AppCompatActivity implements MenuDrawerFragmen
 
 
 
-    /**
-     * Show user search whisperer with generated suggestions.
-     *
-     * @param query      actual search query
-     * @param searchView corresponding search action view.
-     */
-    private void showSearchSuggestions(String query, SearchView searchView) {
-        if (searchSuggestionsAdapter != null && searchSuggestionsList != null) {
-            Timber.d("Populate search adapter - mySuggestions.size(): %d", searchSuggestionsList.size());
-            final MatrixCursor c = new MatrixCursor(new String[]{BaseColumns._ID, "categories"});
-            for (int i = 0; i < searchSuggestionsList.size(); i++) {
-                if (searchSuggestionsList.get(i) != null && searchSuggestionsList.get(i).toLowerCase().startsWith(query.toLowerCase()))
-                    c.addRow(new Object[]{i, searchSuggestionsList.get(i)});
-            }
-            searchView.setSuggestionsAdapter(searchSuggestionsAdapter);
-            searchSuggestionsAdapter.changeCursor(c);
-        } else {
-            Timber.e("Search adapter is null or search data suggestions missing");
-        }
-    }
+
 
     @Override
     public void prepareSearchSuggestions(List<DrawerMenuItem> navigation) {

@@ -18,14 +18,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.google.gson.Gson;
 
-import java.io.Serializable;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 
 import vantinviet.banhangonline88.CONST;
 import vantinviet.banhangonline88.MyApplication;
-import vantinviet.banhangonline88.SettingsMy;
 import vantinviet.banhangonline88.api.EndPoints;
 import vantinviet.banhangonline88.api.GsonRequest;
 import vantinviet.banhangonline88.entities.Page;
@@ -37,7 +34,6 @@ import vantinviet.banhangonline88.R;
 import timber.log.Timber;
 
 import static java.lang.Class.forName;
-import static vantinviet.banhangonline88.R.drawable.user;
 
 /**
  * Fragment allow displaying useful information content like web page.
@@ -89,13 +85,11 @@ public class PageMenuItemFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        Timber.d("load home.");
         Timber.d("%s - onCreateView", this.getClass().getSimpleName());
         View view = inflater.inflate(R.layout.fragment_page, container, false);
-
         MainActivity.setActionBarTitle(getString(R.string.app_name));
-
         progressDialog = Utils.generateProgressDialog(getActivity(), false);
-
         layoutEmpty = view.findViewById(R.id.page_empty);
         layoutContent = view.findViewById(R.id.page_content_layout);
 
@@ -104,13 +98,13 @@ public class PageMenuItemFragment extends Fragment {
 
         // Check if fragment received some arguments.
         if (getArguments() != null && getArguments().getString(PageMenuItemFragment.PAGE_OBJECT) !=null) {
-            String page_object=getArguments().getString(PageMenuItemFragment.PAGE_OBJECT);
+            String json_page=getArguments().getString(PageMenuItemFragment.PAGE_OBJECT);
             System.out.println("page id loading");
-            System.out.println(page_object);
-            load_home_page(page_object);
+            System.out.println(json_page);
+            load_page(json_page);
         } else {
-            System.out.println("loading page default");
-            load_home_page(null);
+
+            load_page(null);
             Timber.e(new RuntimeException(), "Created fragment with null arguments.");
             setContentVisible(false);
             MsgUtils.showToast(getActivity(), MsgUtils.TOAST_TYPE_INTERNAL_ERROR, "", MsgUtils.ToastLength.LONG);
@@ -119,26 +113,23 @@ public class PageMenuItemFragment extends Fragment {
     }
 
 
-    private void load_home_page(final String page_object )  {
+    public void load_page(final String json_page)  {
         Gson gson = new Gson();
 
-        final DrawerMenuItem drawerMenuItem = gson.fromJson(page_object, DrawerMenuItem.class);
-        Timber.d("drawerMenuItem %s",drawerMenuItem.toString());
+        final DrawerMenuItem drawerMenuItem = gson.fromJson(json_page, DrawerMenuItem.class);
+
 
         String url="";
-        if(page_object==null)
+        if(json_page==null)
         {
-            url=EndPoints.API_URL1;
+            url=EndPoints.API_URL1+"?";
         }else{
+            Timber.d("drawerMenuItem %s",drawerMenuItem.toString());
             url=drawerMenuItem.getLink();
         }
-
-
-
-
         app=MyApplication.getInstance();
-        url=EndPoints.API_URL1.concat(app.get_token_android_link(url));
-        progressDialog.show();
+        url=app.get_token_android_link(url);
+
 
         GsonRequest<Page> getPage = new GsonRequest<>(Request.Method.GET, url, null, Page.class,
                 new Response.Listener<Page>() {
@@ -149,7 +140,7 @@ public class PageMenuItemFragment extends Fragment {
                         if(type.equals("component")) {
                             String view = drawerMenuItem.getView();
                             String layout = drawerMenuItem.getLayout();
-                            String str_fragmentManager = String.format("%s%s%sFragment",component, view,layout);
+                            String str_fragmentManager = String.format("fragment_%s_%s_%s",component, view,layout);
                             Timber.d(str_fragmentManager);
                             Class<?> class_fragment = null;
                             try {
@@ -190,11 +181,6 @@ public class PageMenuItemFragment extends Fragment {
         getPage.setRetryPolicy(MyApplication.getDefaultRetryPolice());
         getPage.setShouldCache(false);
         MyApplication.getInstance().addToRequestQueue(getPage, CONST.PAGE_REQUESTS_TAG);
-
-
-
-
-
     }
 
 

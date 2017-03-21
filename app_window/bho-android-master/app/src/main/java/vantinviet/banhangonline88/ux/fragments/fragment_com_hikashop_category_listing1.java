@@ -37,7 +37,6 @@ import vantinviet.banhangonline88.api.GsonRequest;
 import vantinviet.banhangonline88.entities.Metadata;
 import vantinviet.banhangonline88.entities.Page;
 import vantinviet.banhangonline88.entities.User;
-import vantinviet.banhangonline88.entities.drawerMenu.DrawerItemChatting;
 import vantinviet.banhangonline88.entities.drawerMenu.DrawerMenuItem;
 import vantinviet.banhangonline88.entities.filtr.Filters;
 import vantinviet.banhangonline88.entities.messenger.Messenger;
@@ -55,7 +54,7 @@ import static com.facebook.FacebookSdk.getApplicationContext;
  * Also allows displaying the search results.
  */
 @SuppressLint("ValidFragment")
-public class com_hikashopcategorylistingFragment extends Fragment {
+public class fragment_com_hikashop_category_listing1 extends Fragment {
 
     private static final String USER_ID = "user_id";
     private static final String SEARCH_QUERY = "fdfdf";
@@ -104,7 +103,7 @@ public class com_hikashopcategorylistingFragment extends Fragment {
     private RecyclerView chattingRecycler;
 
     @SuppressLint("ValidFragment")
-    public com_hikashopcategorylistingFragment(DrawerMenuItem drawerMenuItem, Page page) {
+    public fragment_com_hikashop_category_listing1(DrawerMenuItem drawerMenuItem, Page page) {
         this.drawerMenuItem=drawerMenuItem;
         this.page=drawerMenuItem;
     }
@@ -115,7 +114,7 @@ public class com_hikashopcategorylistingFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Timber.d("%s - onCreateView", this.getClass().getSimpleName());
-        View view = inflater.inflate(R.layout.fragment_com_hikashopcategorylisting, container, false);
+        View view = inflater.inflate(R.layout.fragment_com_hikashop_category_listing, container, false);
         message_text = (EditText) view.findViewById(R.id.message_text);
         send_button = (ImageView) view.findViewById(R.id.send_button);
         chattingRecycler = (RecyclerView) view.findViewById(R.id.chattings_recycler);

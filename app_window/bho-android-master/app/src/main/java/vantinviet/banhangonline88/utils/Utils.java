@@ -11,7 +11,11 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.provider.Browser;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.URLSpan;
@@ -19,12 +23,24 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+
+import vantinviet.banhangonline88.CONST;
+import vantinviet.banhangonline88.MyApplication;
 import vantinviet.banhangonline88.R;
+import vantinviet.banhangonline88.api.EndPoints;
+import vantinviet.banhangonline88.api.GsonRequest;
+import vantinviet.banhangonline88.entities.Page;
+import vantinviet.banhangonline88.entities.drawerMenu.DrawerMenuItem;
 import vantinviet.banhangonline88.entities.filtr.DeserializerFilters;
 import vantinviet.banhangonline88.entities.filtr.Filters;
 import timber.log.Timber;
