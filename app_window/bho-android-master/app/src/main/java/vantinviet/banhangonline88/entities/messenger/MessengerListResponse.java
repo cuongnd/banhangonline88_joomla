@@ -1,10 +1,8 @@
 package vantinviet.banhangonline88.entities.messenger;
 
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.internal.Streams;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import vantinviet.banhangonline88.entities.Metadata;
 
@@ -21,9 +19,9 @@ public class MessengerListResponse {
     private Webrtc_signaling_channel webrtc_signaling_channel;
 
     @SerializedName("records")
-    private ArrayList<Buddylist> buddylist=new ArrayList<Buddylist>();
+    private ArrayList<Buddy> buddylist=new ArrayList<Buddy>();
     private ArrayList<Typing_status> typing_status=new ArrayList<Typing_status>();
-    private ArrayList<Buddylist> buddylist_ids=new ArrayList<Buddylist>();
+    private ArrayList<Buddy> buddylist_ids=new ArrayList<Buddy>();
     private ArrayList<Chatrooms> chatrooms=new ArrayList<Chatrooms>();
     private ArrayList<Messenger> wallmessages=new ArrayList<Messenger>();
 

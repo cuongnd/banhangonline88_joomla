@@ -1,7 +1,6 @@
 package vantinviet.banhangonline88.entities.drawerMenu;
 
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.annotations.Since;
 
 import java.util.List;
 
@@ -18,6 +17,7 @@ public class DrawerMenuItem {
     private String component;
     private String view;
     private String layout;
+    private String template;
 
     public DrawerMenuItem() {
     }
@@ -126,5 +126,9 @@ public class DrawerMenuItem {
 
     public String getLayout() {
         return layout;
+    }
+
+    public String getTemplate() {
+        return template;
     }
 }

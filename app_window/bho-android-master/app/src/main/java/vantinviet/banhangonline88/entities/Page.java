@@ -1,10 +1,16 @@
 package vantinviet.banhangonline88.entities;
 
+
+import vantinviet.banhangonline88.entities.template.Template;
+
 public class Page {
 
     private long id;
-    private String title;
-    private String text;
+    public String title;
+    public String text;
+    public Template template;
+    public DocOptions docOptions;
+    public Document document;
 
     public Page() {
     }
@@ -58,6 +64,7 @@ public class Page {
         return "Page{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
+                ", template='" + template + '\'' +
                 ", text='" + text + '\'' +
                 '}';
     }

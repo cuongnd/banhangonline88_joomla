@@ -81,7 +81,7 @@ import vantinviet.banhangonline88.ux.dialogs.ProductImagesDialogFragment;
  * Fragment shows a detail of the product.
  */
 @SuppressLint("ValidFragment")
-public class fragment_com_hikashop_category_listing extends Fragment {
+public class fragment_template_vina_bonnie extends Fragment {
 
     private static final String PRODUCT_ID = "product_id";
     private final DrawerMenuItem drawerMenuItem;
@@ -140,7 +140,7 @@ public class fragment_com_hikashop_category_listing extends Fragment {
     private long wishlistId = CONST.DEFAULT_EMPTY_ID;
     private MyApplication app;
     @SuppressLint("ValidFragment")
-    public fragment_com_hikashop_category_listing(DrawerMenuItem drawerMenuItem, Page page) {
+    public fragment_template_vina_bonnie(DrawerMenuItem drawerMenuItem, Page page) {
         this.drawerMenuItem=drawerMenuItem;
         this.page=drawerMenuItem;
     }
@@ -150,7 +150,7 @@ public class fragment_com_hikashop_category_listing extends Fragment {
         Timber.d("%s - onCreateView", this.getClass().getSimpleName());
         MainActivity.setActionBarTitle(getString(R.string.Product));
 
-        View view = inflater.inflate(R.layout.fragment_product, container, false);
+        View view = inflater.inflate(R.layout.fragment_com_hikashop_category_listing, container, false);
 
         progressView = (ProgressBar) view.findViewById(R.id.product_progress);
 
@@ -165,11 +165,7 @@ public class fragment_com_hikashop_category_listing extends Fragment {
         productInfoTv = (TextView) view.findViewById(R.id.product_info);
 
         colorSpinner = (Spinner) view.findViewById(R.id.product_color_spinner);
-        prepareSizeSpinner(view);
 
-        prepareButtons(view);
-        prepareProductImagesLayout(view);
-        prepareScrollViewAndWishlist(view);
 
 
         return view;
@@ -211,59 +207,6 @@ public class fragment_com_hikashop_category_listing extends Fragment {
         });
     }
 
-    /**
-     * Prepare buttons views and listeners.
-     *
-     * @param view fragment base view.
-     */
-    private void prepareButtons(View view) {
-        addToCartImage = (ImageView) view.findViewById(R.id.product_add_to_cart_image);
-        addToCartProgress = (ProgressBar) view.findViewById(R.id.product_add_to_cart_progress);
-        addToCartProgress.getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(getActivity(), R.color.textIconColorPrimary), PorterDuff.Mode.MULTIPLY);
-        View addToCart = view.findViewById(R.id.product_add_to_cart_layout);
-
-        addToCart.setOnClickListener(new OnSingleClickListener() {
-            @Override
-            public void onSingleClick(View v) {
-                postProductToCart();
-            }
-        });
-
-        Button sendToFriendBtn = (Button) view.findViewById(R.id.product_send_to_a_friend);
-        sendToFriendBtn.setOnClickListener(new OnSingleClickListener() {
-            @Override
-            public void onSingleClick(View v) {
-                if (MyApplication.getInstance().isDataConnected()) {
-                    Timber.d("FragmentProductDetail share link clicked");
-                    // send message with prepared content
-                    try {
-                        MessageDialog messageDialog = new MessageDialog(getActivity());
-                        if (MessageDialog.canShow(ShareLinkContent.class)) {
-                            ShareLinkContent linkContent = new ShareLinkContent.Builder()
-                                    .setContentTitle(product.getName())
-                                    .setContentDescription(product.getDescription())
-                                    .setContentUrl(Uri.parse(product.getUrl()))
-                                    .setImageUrl(Uri.parse(product.getMainImage()))
-                                    .build();
-                            messageDialog.show(linkContent);
-                        } else {
-                            Timber.e("FragmentProductDetail - APP is NOT installed");
-                            final String appPackageName = "com.facebook.orca"; // getPackageName() from Context or Activity object
-                            try {
-                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
-                            } catch (android.content.ActivityNotFoundException anfe) {
-                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=" + appPackageName)));
-                            }
-                        }
-                    } catch (Exception e) {
-                        Timber.e(e, "Create share dialog exception");
-                    }
-                } else {
-                    MsgUtils.showToast(getActivity(), MsgUtils.TOAST_TYPE_NO_NETWORK, null, MsgUtils.ToastLength.SHORT);
-                }
-            }
-        });
-    }
 
     /**
      * Prepare product images and related products views, adapters and listeners.

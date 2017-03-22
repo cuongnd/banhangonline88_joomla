@@ -223,7 +223,7 @@ public class MyApplication extends Application {
 
     public String get_token_android_link(String url) {
         String session=get_session();
-        url=url+"&tmpl=component&ignoreMessages=true&format=json&os=android&token="+session+"&"+session+"=1";
+        url=url+"&ignoreMessages=true&format=json&os=android&token="+session+"&"+session+"=1";
         return url;
 
     }

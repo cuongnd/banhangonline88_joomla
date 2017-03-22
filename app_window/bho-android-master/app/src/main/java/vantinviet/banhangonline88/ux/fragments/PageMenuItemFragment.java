@@ -135,33 +135,27 @@ public class PageMenuItemFragment extends Fragment {
                 new Response.Listener<Page>() {
                     @Override
                     public void onResponse(@NonNull Page page) {
-                        String component=drawerMenuItem.getComponent();
-                        String type=drawerMenuItem.getType();
-                        if(type.equals("component")) {
-                            String view = drawerMenuItem.getView();
-                            String layout = drawerMenuItem.getLayout();
-                            String str_fragmentManager = String.format("fragment_%s_%s_%s",component, view,layout);
-                            Timber.d(str_fragmentManager);
-                            Class<?> class_fragment = null;
-                            try {
-                                class_fragment = Class.forName("vantinviet.banhangonline88.ux.fragments." + str_fragmentManager);
-                                Constructor<?> cons = class_fragment.getConstructor(DrawerMenuItem.class,Page.class);
-                                Object object = cons.newInstance(drawerMenuItem,page);
-                                fragment=(Fragment)object;
-                            } catch (ClassNotFoundException e) {
-                                e.printStackTrace();
-                            } catch (IllegalAccessException e) {
-                                e.printStackTrace();
-                            } catch (NoSuchMethodException e) {
-                                e.printStackTrace();
-                            } catch (InvocationTargetException e) {
-                                e.printStackTrace();
-                            } catch (java.lang.InstantiationException e) {
-                                e.printStackTrace();
-                            }
-
+                        String template=page.template.getTemplate();
+                        String str_fragmentManager = String.format("fragment_template_%s",template);
+                        Timber.d("Page %s",page.toString());
+                        Timber.d(str_fragmentManager);
+                        Class<?> class_fragment = null;
+                        try {
+                            class_fragment = Class.forName("vantinviet.banhangonline88.ux.fragments." + str_fragmentManager);
+                            Constructor<?> cons = class_fragment.getConstructor(DrawerMenuItem.class,Page.class);
+                            Object object = cons.newInstance(drawerMenuItem,page);
+                            fragment=(Fragment)object;
+                        } catch (ClassNotFoundException e) {
+                            e.printStackTrace();
+                        } catch (IllegalAccessException e) {
+                            e.printStackTrace();
+                        } catch (NoSuchMethodException e) {
+                            e.printStackTrace();
+                        } catch (InvocationTargetException e) {
+                            e.printStackTrace();
+                        } catch (java.lang.InstantiationException e) {
+                            e.printStackTrace();
                         }
-
                         FragmentManager frgManager = getFragmentManager();
                         FragmentTransaction fragmentTransaction = frgManager.beginTransaction();
                         fragmentTransaction.setAllowOptimization(false);

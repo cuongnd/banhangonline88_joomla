@@ -335,7 +335,7 @@ public class MainActivity extends AppCompatActivity implements MenuDrawerFragmen
             Analytics.logOpenedByNotification(target);
         }
         PageMenuItemFragment fragment = new PageMenuItemFragment();
-        fragment.load_page(null);
+        //fragment.load_page(null);
     }
 
     /**
