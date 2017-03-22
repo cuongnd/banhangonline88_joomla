@@ -135,7 +135,7 @@ public class PageMenuItemFragment extends Fragment {
                 new Response.Listener<Page>() {
                     @Override
                     public void onResponse(@NonNull Page page) {
-                        String template=page.template.getTemplate();
+                        String template=page.getTemplate().getTemplateName();
                         String str_fragmentManager = String.format("fragment_template_%s",template);
                         Timber.d("Page %s",page.toString());
                         Timber.d(str_fragmentManager);

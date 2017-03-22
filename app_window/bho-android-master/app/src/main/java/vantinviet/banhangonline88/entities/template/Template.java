@@ -10,9 +10,6 @@ public class Template {
     String template;
     int parent_template_style_id;
     Params params;
-    public String getTemplate(){
-        return template;
-    }
     @Override
     public String toString() {
         return "Template{" +
@@ -22,5 +19,9 @@ public class Template {
                 ", parent_template_style_id='" + parent_template_style_id + '\'' +
                 ", params='" + params + '\'' +
                 '}';
+    }
+
+    public String getTemplateName() {
+        return template;
     }
 }

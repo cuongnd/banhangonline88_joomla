@@ -68,4 +68,8 @@ public class Page {
                 ", text='" + text + '\'' +
                 '}';
     }
+
+    public Template getTemplate() {
+        return template;
+    }
 }
