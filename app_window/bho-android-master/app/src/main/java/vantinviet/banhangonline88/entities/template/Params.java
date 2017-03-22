@@ -9,7 +9,7 @@ import vantinviet.banhangonline88.entities.template.bootstrap.Row;
  * Created by cuongnd on 22/03/2017.
  */
 
-class Params {
+public class Params {
     int layout_width;
     String layout_type;
     ArrayList<Column> layout=new ArrayList<Column>();
@@ -20,5 +20,9 @@ class Params {
                 ", layout_type='" + layout_type + '\'' +
                 ", layout='" + layout + '\'' +
                 '}';
+    }
+
+    public ArrayList<Column> getLayout() {
+        return layout;
     }
 }

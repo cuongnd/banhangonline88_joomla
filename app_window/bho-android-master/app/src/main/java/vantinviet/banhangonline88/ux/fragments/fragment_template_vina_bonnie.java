@@ -58,6 +58,7 @@ import vantinviet.banhangonline88.entities.product.Product;
 import vantinviet.banhangonline88.entities.product.ProductColor;
 import vantinviet.banhangonline88.entities.product.ProductSize;
 import vantinviet.banhangonline88.entities.product.ProductVariant;
+import vantinviet.banhangonline88.entities.template.bootstrap.Column;
 import vantinviet.banhangonline88.interfaces.LoginDialogInterface;
 import vantinviet.banhangonline88.interfaces.ProductImagesRecyclerInterface;
 import vantinviet.banhangonline88.interfaces.RelatedProductsRecyclerInterface;
@@ -93,7 +94,7 @@ public class fragment_template_vina_bonnie extends Fragment {
     private RelativeLayout productContainer;
     private ScrollView contentScrollLayout;
 
-
+    ArrayList<Column> layout;
     private ViewTreeObserver.OnScrollChangedListener scrollViewListener;
     private MyApplication app;
     @SuppressLint("ValidFragment")
@@ -106,7 +107,8 @@ public class fragment_template_vina_bonnie extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Timber.d("%s - onCreateView", this.getClass().getSimpleName());
         MainActivity.setActionBarTitle("hello title");
-        page.getTemplate();
+        layout= page.getTemplate().getParams().getLayout();
+        Timber.d("page layout %s", layout.toString());
         View view = inflater.inflate(R.layout.fragment_template_vina_bonnie, container, false);
         return view;
     }
