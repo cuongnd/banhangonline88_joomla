@@ -81,4 +81,12 @@ public class Column {
     public ArrayList<Row> getRows() {
         return children;
     }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getPosition() {
+        return position;
+    }
 }
