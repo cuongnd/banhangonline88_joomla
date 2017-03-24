@@ -110,8 +110,14 @@ public class fragment_template_vina_bonnie extends Fragment {
         layout= page.getTemplate().getParams().getLayout();
         Timber.d("page layout %s", layout.toString());
         View view = inflater.inflate(R.layout.fragment_template_vina_bonnie, container, false);
+        render_layout(layout);
         return view;
     }
+
+    private void render_layout(ArrayList<Column> layout) {
+
+    }
+
     private void setContentVisible(CONST.VISIBLE visible) {
         if (layoutEmpty != null && contentScrollLayout != null && progressView != null) {
             switch (visible) {

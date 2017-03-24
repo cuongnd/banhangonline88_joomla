@@ -9,7 +9,6 @@ public class Page {
     public String title;
     public String text;
     public Template template;
-    public DocOptions docOptions;
     public Document document;
 
     public Page() {
