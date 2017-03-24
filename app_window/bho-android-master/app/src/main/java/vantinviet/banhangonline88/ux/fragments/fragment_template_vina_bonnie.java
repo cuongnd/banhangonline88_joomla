@@ -81,6 +81,8 @@ import vantinviet.banhangonline88.ux.dialogs.LoginDialogFragment;
 import vantinviet.banhangonline88.ux.dialogs.LoginExpiredDialogFragment;
 import vantinviet.banhangonline88.ux.dialogs.ProductImagesDialogFragment;
 
+import static vantinviet.banhangonline88.ux.MainActivity.mInstance;
+
 /**
  * Fragment shows a detail of the product.
  */
@@ -100,6 +102,9 @@ public class fragment_template_vina_bonnie extends Fragment {
     ArrayList<Row> layout;
     private ViewTreeObserver.OnScrollChangedListener scrollViewListener;
     private MyApplication app;
+    private int screen_size_width;
+    private int screen_size_height;
+
     @SuppressLint("ValidFragment")
     public fragment_template_vina_bonnie(DrawerMenuItem drawerMenuItem, Page page) {
         this.drawerMenuItem=drawerMenuItem;
@@ -114,34 +119,71 @@ public class fragment_template_vina_bonnie extends Fragment {
         Timber.d("page layout %s", layout.toString());
         View view = inflater.inflate(R.layout.fragment_template_vina_bonnie, container, false);
         LinearLayout rootLinearLayout=(LinearLayout)view.findViewById(R.id.root_layout);
+        DisplayMetrics metrics = new DisplayMetrics();
+        mInstance.getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        int screenDensity = (int) metrics.density;
+        int screenDensityDPI = metrics.densityDpi;
+        float screenscaledDensity = metrics.scaledDensity;
+        int width = metrics.widthPixels;
+        int height = metrics.heightPixels;
+
+
+        System.out.println("Screen Density=" + screenDensity + "\n"
+                + "Screen DensityDPI=" + screenDensityDPI + "\n"
+                + "Screen Scaled DensityDPI=" + screenscaledDensity + "\n"
+                + "Height=" + height + "\n"
+                + "Width=" + width);
+
+        screen_size_width = width;
+        screen_size_height = height;
+        if (screenDensity == 0) {
+            screenDensity = 1;
+        }
+        String screenSize = Integer.toString(width / screenDensity) + "x" + Integer.toString(height);
+        System.out.println(width / screenDensity);
+
         render_layout(layout,rootLinearLayout);
         return view;
     }
 
     private void render_layout(ArrayList<Row> layout, LinearLayout rootLinearLayout) {
-        LayoutParams params;
+        LayoutParams layout_params;
         for (int i = 0; i < layout.size(); i++) {
-            params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+            layout_params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
             LinearLayout new_row_linear_layout=new LinearLayout(getContext());
-            new_row_linear_layout.setLayoutParams(params);
+            new_row_linear_layout.setLayoutParams(layout_params);
             new_row_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
 
-            params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+            layout_params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
             LinearLayout new_wrapper_of_row_linear_layout=new LinearLayout(getContext());
-            new_wrapper_of_row_linear_layout.setLayoutParams(params);
+            new_wrapper_of_row_linear_layout.setLayoutParams(layout_params);
             new_wrapper_of_row_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
-            new_row_linear_layout.addView(new_wrapper_of_row_linear_layout);
+
             Row row=layout.get(i);
             ArrayList<Column> list_column=row.getColumns();
             for (int j = 0; j < list_column.size(); j++) {
                 Column column=list_column.get(j);
-                double width=Double.parseDouble(column.getSpan());
-                width=width*
-                params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+                int column_width=Integer.parseInt(column.getSpan());
+                column_width=screen_size_width*column_width/12;
+                layout_params = new LayoutParams(column_width, LayoutParams.MATCH_PARENT);
+                int column_offset=Integer.parseInt(column.getOffset());
+                column_offset=screen_size_width*column_offset/12;
+                layout_params.setMargins(column_offset, 0, 0, 0);
                 LinearLayout new_column_linear_layout=new LinearLayout(getContext());
-                new_column_linear_layout.setLayoutParams(params);
+                new_column_linear_layout.setLayoutParams(layout_params);
                 new_column_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
+                ArrayList<Row> list_row=column.getRows();
+                render_layout(list_row,new_column_linear_layout);
+                if(list_row.size()==0){
+                    TextView new_item_text_view=new TextView(getContext());
+                    new_item_text_view.setText("hello "+column.getSpan()+" ( offset:"+column.getOffset()+") ");
+                    new_column_linear_layout.addView(new_item_text_view);
+                }
+                new_wrapper_of_row_linear_layout.addView(new_column_linear_layout);
+
+
             }
+            new_row_linear_layout.addView(new_wrapper_of_row_linear_layout);
             rootLinearLayout.addView(new_row_linear_layout);
 
         }

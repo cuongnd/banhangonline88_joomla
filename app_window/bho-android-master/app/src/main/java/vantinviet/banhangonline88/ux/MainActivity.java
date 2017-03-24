@@ -104,7 +104,7 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 public class MainActivity extends AppCompatActivity implements MenuDrawerFragment.FragmentDrawerListener {
 
     public static final String MSG_MAIN_ACTIVITY_INSTANCE_IS_NULL = "MainActivity instance is null.";
-    private static MainActivity mInstance = null;
+    public static MainActivity mInstance = null;
     public static final String MyPREFERENCES = "MyPrefs" ;
     public static final String SESSION = "session";
     /**

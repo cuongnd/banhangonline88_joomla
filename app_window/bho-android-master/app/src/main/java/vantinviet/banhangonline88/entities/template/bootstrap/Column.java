@@ -73,4 +73,12 @@ public class Column {
     public String getSpan() {
         return span;
     }
+
+    public String getOffset() {
+        return offset;
+    }
+
+    public ArrayList<Row> getRows() {
+        return children;
+    }
 }
