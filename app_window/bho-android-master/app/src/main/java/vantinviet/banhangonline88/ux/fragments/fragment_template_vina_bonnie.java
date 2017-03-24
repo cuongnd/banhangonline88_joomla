@@ -148,44 +148,48 @@ public class fragment_template_vina_bonnie extends Fragment {
 
     private void render_layout(ArrayList<Row> layout, LinearLayout rootLinearLayout) {
         LayoutParams layout_params;
-        for (int i = 0; i < layout.size(); i++) {
-            layout_params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-            LinearLayout new_row_linear_layout=new LinearLayout(getContext());
-            new_row_linear_layout.setLayoutParams(layout_params);
-            new_row_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
+        if(layout!=null && !layout.isEmpty())
+        {
+            for (int i = 0; i < layout.size(); i++) {
+                layout_params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+                LinearLayout new_row_linear_layout=new LinearLayout(getContext());
+                new_row_linear_layout.setLayoutParams(layout_params);
+                new_row_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
 
-            layout_params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-            LinearLayout new_wrapper_of_row_linear_layout=new LinearLayout(getContext());
-            new_wrapper_of_row_linear_layout.setLayoutParams(layout_params);
-            new_wrapper_of_row_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
+                layout_params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+                LinearLayout new_wrapper_of_row_linear_layout=new LinearLayout(getContext());
+                new_wrapper_of_row_linear_layout.setLayoutParams(layout_params);
+                new_wrapper_of_row_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
 
-            Row row=layout.get(i);
-            ArrayList<Column> list_column=row.getColumns();
-            for (int j = 0; j < list_column.size(); j++) {
-                Column column=list_column.get(j);
-                int column_width=Integer.parseInt(column.getSpan());
-                column_width=screen_size_width*column_width/12;
-                layout_params = new LayoutParams(column_width, LayoutParams.MATCH_PARENT);
-                int column_offset=Integer.parseInt(column.getOffset());
-                column_offset=screen_size_width*column_offset/12;
-                layout_params.setMargins(column_offset, 0, 0, 0);
-                LinearLayout new_column_linear_layout=new LinearLayout(getContext());
-                new_column_linear_layout.setLayoutParams(layout_params);
-                new_column_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
-                ArrayList<Row> list_row=column.getRows();
-                render_layout(list_row,new_column_linear_layout);
-                if(list_row.size()==0){
-                    TextView new_item_text_view=new TextView(getContext());
-                    new_item_text_view.setText("hello "+column.getSpan()+" ( offset:"+column.getOffset()+") ");
-                    new_column_linear_layout.addView(new_item_text_view);
+                Row row=layout.get(i);
+                ArrayList<Column> list_column=row.getColumns();
+                for (int j = 0; j < list_column.size(); j++) {
+                    Column column=list_column.get(j);
+                    int column_width=Integer.parseInt(column.getSpan());
+                    column_width=screen_size_width*column_width/12;
+                    layout_params = new LayoutParams(column_width, LayoutParams.MATCH_PARENT);
+                    int column_offset=Integer.parseInt(column.getOffset().equals("")?"0":column.getOffset());
+                    column_offset=screen_size_width*column_offset/12;
+                    layout_params.setMargins(column_offset, 0, 0, 0);
+                    LinearLayout new_column_linear_layout=new LinearLayout(getContext());
+                    new_column_linear_layout.setLayoutParams(layout_params);
+                    new_column_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
+                    ArrayList<Row> list_row=column.getRows();
+                    if(list_row!=null && list_row.isEmpty()){
+                        TextView new_item_text_view=new TextView(getContext());
+                        new_item_text_view.setText("hello "+column.getSpan()+" ( offset:"+column.getOffset()+") ");
+                        new_column_linear_layout.addView(new_item_text_view);
+                    }else{
+                        render_layout(list_row,new_column_linear_layout);
+                    }
+                    new_wrapper_of_row_linear_layout.addView(new_column_linear_layout);
+
+
                 }
-                new_wrapper_of_row_linear_layout.addView(new_column_linear_layout);
-
+                new_row_linear_layout.addView(new_wrapper_of_row_linear_layout);
+                rootLinearLayout.addView(new_row_linear_layout);
 
             }
-            new_row_linear_layout.addView(new_wrapper_of_row_linear_layout);
-            rootLinearLayout.addView(new_row_linear_layout);
-
         }
 
 

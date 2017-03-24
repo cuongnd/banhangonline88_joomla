@@ -12,7 +12,7 @@ public class Column {
     @SerializedName("span")
     String span="";
     @SerializedName("offset")
-    String offset="";
+    String offset="0";
     @SerializedName("xxxsspan")
     String xxxsspan="";
     @SerializedName("xxxsoffset")
