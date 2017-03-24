@@ -22,6 +22,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.database.MatrixCursor;
 import android.os.Build;
 import android.os.Bundle;
@@ -230,7 +231,11 @@ public class MainActivity extends AppCompatActivity implements MenuDrawerFragmen
 
 
     }
-
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        System.out.println("ratator");
+    }
     private void check_user() {
         if (progressDialog == null) {
             progressDialog = new ProgressDialog(MainActivity.this);

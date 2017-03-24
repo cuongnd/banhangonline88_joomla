@@ -22,6 +22,7 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
@@ -151,7 +152,7 @@ public class fragment_template_vina_bonnie extends Fragment {
         if(layout!=null && !layout.isEmpty())
         {
             for (int i = 0; i < layout.size(); i++) {
-                layout_params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+                layout_params = new LayoutParams(screen_size_width, LayoutParams.MATCH_PARENT);
                 LinearLayout new_row_linear_layout=new LinearLayout(getContext());
                 new_row_linear_layout.setLayoutParams(layout_params);
                 new_row_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
@@ -175,10 +176,8 @@ public class fragment_template_vina_bonnie extends Fragment {
                     new_column_linear_layout.setLayoutParams(layout_params);
                     new_column_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
                     ArrayList<Row> list_row=column.getRows();
-                    add_text_view_test(new_column_linear_layout,"hello "+column.getSpan()+" ( offset:"+column.getOffset()+") ");
+                    add_text_view_test(new_column_linear_layout,"hello column"+column.getSpan()+" ( offset:"+column.getOffset()+") ");
                     if(list_row!=null && list_row.isEmpty()){
-
-
                     }else{
                         render_layout(list_row,new_column_linear_layout);
                     }
@@ -187,7 +186,9 @@ public class fragment_template_vina_bonnie extends Fragment {
 
                 }
                 new_row_linear_layout.addView(new_wrapper_of_row_linear_layout);
-                rootLinearLayout.addView(new_row_linear_layout);
+                HorizontalScrollView horizontal_scrollview=new HorizontalScrollView(getContext());
+                horizontal_scrollview.addView(new_row_linear_layout);
+                rootLinearLayout.addView(horizontal_scrollview);
 
             }
         }
