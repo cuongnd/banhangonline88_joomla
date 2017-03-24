@@ -23,6 +23,8 @@ import android.view.ViewTreeObserver;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
@@ -59,6 +61,7 @@ import vantinviet.banhangonline88.entities.product.ProductColor;
 import vantinviet.banhangonline88.entities.product.ProductSize;
 import vantinviet.banhangonline88.entities.product.ProductVariant;
 import vantinviet.banhangonline88.entities.template.bootstrap.Column;
+import vantinviet.banhangonline88.entities.template.bootstrap.Row;
 import vantinviet.banhangonline88.interfaces.LoginDialogInterface;
 import vantinviet.banhangonline88.interfaces.ProductImagesRecyclerInterface;
 import vantinviet.banhangonline88.interfaces.RelatedProductsRecyclerInterface;
@@ -94,7 +97,7 @@ public class fragment_template_vina_bonnie extends Fragment {
     private RelativeLayout productContainer;
     private ScrollView contentScrollLayout;
 
-    ArrayList<Column> layout;
+    ArrayList<Row> layout;
     private ViewTreeObserver.OnScrollChangedListener scrollViewListener;
     private MyApplication app;
     @SuppressLint("ValidFragment")
@@ -110,11 +113,40 @@ public class fragment_template_vina_bonnie extends Fragment {
         layout= page.getTemplate().getParams().getLayout();
         Timber.d("page layout %s", layout.toString());
         View view = inflater.inflate(R.layout.fragment_template_vina_bonnie, container, false);
-        render_layout(layout);
+        LinearLayout rootLinearLayout=(LinearLayout)view.findViewById(R.id.root_layout);
+        render_layout(layout,rootLinearLayout);
         return view;
     }
 
-    private void render_layout(ArrayList<Column> layout) {
+    private void render_layout(ArrayList<Row> layout, LinearLayout rootLinearLayout) {
+        LayoutParams params;
+        for (int i = 0; i < layout.size(); i++) {
+            params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+            LinearLayout new_row_linear_layout=new LinearLayout(getContext());
+            new_row_linear_layout.setLayoutParams(params);
+            new_row_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
+
+            params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+            LinearLayout new_wrapper_of_row_linear_layout=new LinearLayout(getContext());
+            new_wrapper_of_row_linear_layout.setLayoutParams(params);
+            new_wrapper_of_row_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
+            new_row_linear_layout.addView(new_wrapper_of_row_linear_layout);
+            Row row=layout.get(i);
+            ArrayList<Column> list_column=row.getColumns();
+            for (int j = 0; j < list_column.size(); j++) {
+                Column column=list_column.get(j);
+                double width=Double.parseDouble(column.getSpan());
+                width=width*
+                params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+                LinearLayout new_column_linear_layout=new LinearLayout(getContext());
+                new_column_linear_layout.setLayoutParams(params);
+                new_column_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
+            }
+            rootLinearLayout.addView(new_row_linear_layout);
+
+        }
+
+
 
     }
 

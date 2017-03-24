@@ -69,4 +69,8 @@ public class Column {
                 ", children='" + children + '\'' +
                 '}';
     }
+
+    public String getSpan() {
+        return span;
+    }
 }

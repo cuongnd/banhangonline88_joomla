@@ -32,4 +32,7 @@ public class Row {
                 '}';
     }
 
+    public ArrayList<Column> getColumns() {
+        return children;
+    }
 }

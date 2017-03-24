@@ -12,7 +12,7 @@ import vantinviet.banhangonline88.entities.template.bootstrap.Row;
 public class Params {
     int layout_width;
     String layout_type;
-    ArrayList<Column> layout=new ArrayList<Column>();
+    ArrayList<Row> layout=new ArrayList<Row>();
     @Override
     public String toString() {
         return "Params{" +
@@ -22,7 +22,7 @@ public class Params {
                 '}';
     }
 
-    public ArrayList<Column> getLayout() {
+    public ArrayList<Row> getLayout() {
         return layout;
     }
 }
