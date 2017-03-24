@@ -35,4 +35,8 @@ public class Row {
     public ArrayList<Column> getColumns() {
         return children;
     }
+
+    public String getName() {
+        return name;
+    }
 }

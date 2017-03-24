@@ -160,8 +160,8 @@ public class fragment_template_vina_bonnie extends Fragment {
                 LinearLayout new_wrapper_of_row_linear_layout=new LinearLayout(getContext());
                 new_wrapper_of_row_linear_layout.setLayoutParams(layout_params);
                 new_wrapper_of_row_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
-
                 Row row=layout.get(i);
+                add_text_view_test(new_wrapper_of_row_linear_layout,"hello row "+row.getName());
                 ArrayList<Column> list_column=row.getColumns();
                 for (int j = 0; j < list_column.size(); j++) {
                     Column column=list_column.get(j);
@@ -175,10 +175,10 @@ public class fragment_template_vina_bonnie extends Fragment {
                     new_column_linear_layout.setLayoutParams(layout_params);
                     new_column_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
                     ArrayList<Row> list_row=column.getRows();
+                    add_text_view_test(new_column_linear_layout,"hello "+column.getSpan()+" ( offset:"+column.getOffset()+") ");
                     if(list_row!=null && list_row.isEmpty()){
-                        TextView new_item_text_view=new TextView(getContext());
-                        new_item_text_view.setText("hello "+column.getSpan()+" ( offset:"+column.getOffset()+") ");
-                        new_column_linear_layout.addView(new_item_text_view);
+
+
                     }else{
                         render_layout(list_row,new_column_linear_layout);
                     }
@@ -195,7 +195,11 @@ public class fragment_template_vina_bonnie extends Fragment {
 
 
     }
-
+    private void add_text_view_test(LinearLayout view_linear_layout,String text) {
+        TextView new_item_text_view=new TextView(getContext());
+        new_item_text_view.setText(text);
+        view_linear_layout.addView(new_item_text_view);
+    }
     private void setContentVisible(CONST.VISIBLE visible) {
         if (layoutEmpty != null && contentScrollLayout != null && progressView != null) {
             switch (visible) {
