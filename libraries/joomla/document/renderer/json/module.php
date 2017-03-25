@@ -61,7 +61,7 @@ class JDocumentRendererJsonModule extends JDocumentRenderer
             $template_params = new Registry(html_entity_decode($attribs['params'], ENT_COMPAT, 'UTF-8'));
             $params->merge($template_params);
             $module = clone $module;
-            $module->params = (string)$params;
+            $module->params = $params;
         }
         // Default for compatibility purposes. Set cachemode parameter or use JModuleHelper::moduleCache from within the module instead
         $cachemode = $params->get('cachemode', 'oldstatic');
