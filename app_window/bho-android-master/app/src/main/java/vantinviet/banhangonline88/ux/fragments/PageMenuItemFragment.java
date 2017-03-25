@@ -128,7 +128,7 @@ public class PageMenuItemFragment extends Fragment {
             url=drawerMenuItem.getLink();
         }
         app=MyApplication.getInstance();
-        url=app.get_token_android_link(url);
+        url=app.get_page_config_app(url);
 
 
         GsonRequest<Page> getPage = new GsonRequest<>(Request.Method.GET, url, null, Page.class,

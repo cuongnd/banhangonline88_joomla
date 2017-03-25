@@ -1,6 +1,9 @@
 package vantinviet.banhangonline88.entities;
 
 
+import java.util.ArrayList;
+
+import vantinviet.banhangonline88.entities.module.Module;
 import vantinviet.banhangonline88.entities.template.Template;
 
 public class Page {
@@ -8,8 +11,10 @@ public class Page {
     private long id;
     public String title;
     public String text;
+    public String component_response;
     public Template template;
     public Document document;
+    ArrayList<Module> modules=new ArrayList<Module>();
 
     public Page() {
     }
@@ -63,7 +68,9 @@ public class Page {
         return "Page{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
+                ", component_response='" + component_response + '\'' +
                 ", template='" + template + '\'' +
+                ", modules='" + modules + '\'' +
                 ", text='" + text + '\'' +
                 '}';
     }

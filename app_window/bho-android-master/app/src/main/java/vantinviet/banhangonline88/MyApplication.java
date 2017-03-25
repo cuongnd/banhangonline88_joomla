@@ -227,6 +227,12 @@ public class MyApplication extends Application {
         return url;
 
     }
+    public String get_page_config_app(String url) {
+        String session=get_session();
+        url=url+"&get_page_config_app=1&ignoreMessages=true&format=json&os=android&token="+session+"&"+session+"=1";
+        return url;
+
+    }
     //////////////////////// end of Volley request. ///////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
