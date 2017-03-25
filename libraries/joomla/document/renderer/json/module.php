@@ -75,9 +75,21 @@ class JDocumentRendererJsonModule extends JDocumentRenderer
             $cacheparams->methodparams = array($module, $attribs);
 
             $module->response= JModuleHelper::ModuleCache($module, $params, $cacheparams);
-            $app->modules[$module->id]= $module;
+
+        }else{
+            $module->response= JModuleHelper::renderModule($module, $attribs);
         }
-        $module->response= JModuleHelper::renderModule($module, $attribs);
-        $app->modules[$module->id]= $module;
+        $func_check_module_in_array=function($module_id,$modules){
+            foreach($modules as $module){
+                if($module->id==$module_id){
+                    return true;
+                }
+                return false;
+            }
+        };
+        if(!$func_check_module_in_array($module->id,$app->modules))
+        {
+            $app->modules[]= $module;
+        }
     }
 }
