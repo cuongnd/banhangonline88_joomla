@@ -178,15 +178,10 @@ public class fragment_template_vina_bonnie extends Fragment {
                     ArrayList<Row> list_row=column.getRows();
                     String type=column.getType();
                     String position=column.getPosition();
-                    add_text_view_test(new_column_linear_layout,type);
-                    add_text_view_test(new_column_linear_layout,position);
-
                     if(type.equals("modules")){
                         ArrayList<Module> modules=page.getModules();
-                        Timber.d(modules.toString());
                         for (Module module : modules)
                         {
-                            Timber.d(module.getTitle());
                             if(module.getPosition().equals(position)){
                                 add_text_view_test(new_column_linear_layout,module.getTitle());
                             }
