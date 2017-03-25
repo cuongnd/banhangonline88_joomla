@@ -88,9 +88,12 @@ class JDocumentRendererHtmlModule extends JDocumentRenderer
 			$cacheparams->method = 'renderModule';
 			$cacheparams->methodparams = array($module, $attribs);
 
-			return JModuleHelper::ModuleCache($module, $params, $cacheparams);
+			$html= JModuleHelper::ModuleCache($module, $params, $cacheparams);
 		}
-
-		return JModuleHelper::renderModule($module, $attribs);
+		else
+		{
+			$html= JModuleHelper::renderModule($module, $attribs);
+		}
+		return $html;
 	}
 }

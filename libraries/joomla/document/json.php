@@ -259,6 +259,7 @@ class JDocumentJson extends JDocument
                 $options['nopathway'] = 1;
                 $options['nomodules'] = 1;
                 $options['modulemode'] = 1;
+
                 $this->setBuffer($renderer->render($name, $attribs, null), $type, $name);
                 $data = parent::$_buffer[$type][$name][$title];
                 $tmpdata = JCache::setWorkarounds($data, $options);
@@ -503,6 +504,7 @@ class JDocumentJson extends JDocument
 
         $replace = array();
         $with = array();
+
         foreach ($this->_template_tags as $jdoc => $args) {
             $replace[] = $jdoc;
             $with[] = $this->getBuffer($args['type'], $args['name'], $args['attribs']);
