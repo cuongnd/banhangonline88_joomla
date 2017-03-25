@@ -1,9 +1,9 @@
 package vantinviet.banhangonline88.libraries.joomla.session;
 
-import com.vantinviet.vtv.configuration.JConfig;
-import com.vantinviet.vtv.libraries.joomla.JFactory;
-import com.vantinviet.vtv.libraries.joomla.cache.jstorage.JCacheFile;
-import com.vantinviet.vtv.libraries.joomla.filesystem.JFile;
+import vantinviet.banhangonline88.configuration.JConfig;
+import vantinviet.banhangonline88.libraries.joomla.JFactory;
+import vantinviet.banhangonline88.libraries.joomla.cache.jstorage.JCacheFile;
+import vantinviet.banhangonline88.libraries.joomla.filesystem.JFile;
 
 /**
  * Created by cuongnd on 6/8/2016.

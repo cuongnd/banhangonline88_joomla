@@ -7,24 +7,21 @@ import android.widget.TextView;
 
 import com.beardedhen.androidbootstrap.BootstrapEditText;
 import com.beardedhen.androidbootstrap.BootstrapLabel;
-import com.vantinviet.vtv.libraries.joomla.JFactory;
-import com.vantinviet.vtv.libraries.joomla.form.JFormField;
-import com.vantinviet.vtv.libraries.legacy.application.JApplication;
-import com.vantinviet.vtv.libraries.utilities.JUtilities;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import vantinviet.banhangonline88.libraries.joomla.JFactory;
+import vantinviet.banhangonline88.libraries.joomla.form.JFormField;
+import vantinviet.banhangonline88.libraries.legacy.application.JApplication;
+import vantinviet.banhangonline88.libraries.utilities.JUtilities;
 
 /**
  * Created by cuongnd on 6/11/2016.
  */
 public class JFormFieldLink extends JFormField{
     static Map<String, JFormFieldText> map_form_field_text = new HashMap<String, JFormFieldText>();
-    public JFormFieldLink(JSONObject field, String type, String name, String group, String value){
+    public JFormFieldLink(JFormField field, String type, String name, String group, String value){
         this.type=type;
         this.name=name;
         this.group=group;
@@ -38,13 +35,9 @@ public class JFormFieldLink extends JFormField{
     @Override
     public View getInput() {
         LinearLayout linear_layout = new LinearLayout(context);
-        JSONObject option=this.option;
+        JFormField option=this.option;
         boolean show_label=true;
-        try {
-            show_label = option.has("show_label")?option.getBoolean("show_label"):false;
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        show_label = option.getShowLabel();
 
         if(show_label){
             BootstrapLabel label_text = new BootstrapLabel(context);
@@ -65,28 +58,10 @@ public class JFormFieldLink extends JFormField{
             public void onClick(View v) {
                 String tag= (String) v.getTag();
                 JFormFieldLink form_field_link=(JFormFieldLink)JFormField.map_form_field.get(tag);
-                JSONObject option=form_field_link.option;
+                JFormField option=form_field_link.getOption();
                 String link="";
                 JApplication app=JFactory.getApplication();
-                JSONArray config_property;
-                try {
-                    config_property = option.has("config_property")?option.getJSONArray("config_property"):new JSONArray();
-                    for(int i = 0; i < config_property.length(); i++){
-                        String property_key = config_property.getJSONObject(i).getString("property_key");
-                        String property_value = config_property.getJSONObject(i).getString("property_value");
-                        if(property_key.equals("link"))
-                        {
-                            link=property_value;
-                            break;
-                        }
-                    }
-                    link=link.replaceAll("&amp;", "&");
-                    app.setRedirect(link);
 
-                    System.out.println(config_property);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
 
 
                 // TODO Auto-generated method stub

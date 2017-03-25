@@ -12,16 +12,14 @@ import com.beardedhen.androidbootstrap.BootstrapEditText;
 import com.beardedhen.androidbootstrap.BootstrapLabel;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapSize;
-import com.vantinviet.vtv.libraries.joomla.JFactory;
-import com.vantinviet.vtv.libraries.joomla.form.JFormField;
-import com.vantinviet.vtv.libraries.legacy.application.JApplication;
-import com.vantinviet.vtv.libraries.utilities.JUtilities;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import vantinviet.banhangonline88.libraries.joomla.JFactory;
+import vantinviet.banhangonline88.libraries.joomla.form.JFormField;
+import vantinviet.banhangonline88.libraries.legacy.application.JApplication;
+import vantinviet.banhangonline88.libraries.utilities.JUtilities;
 
 /**
  * Created by cuongnd on 6/11/2016.
@@ -30,7 +28,7 @@ public class JFormFieldRangeOfIntegers extends JFormField{
     static Map<String, JFormFieldRangeOfIntegers> map_form_field_text = new HashMap<String, JFormFieldRangeOfIntegers>();
     private AbsoluteLayout control_linear_layout;
 
-    public JFormFieldRangeOfIntegers(JSONObject field, String type, String name, String group, String value){
+    public JFormFieldRangeOfIntegers(JFormField field, String type, String name, String group, String value){
         this.type=type;
         this.name=name;
         this.group=group;
@@ -44,14 +42,9 @@ public class JFormFieldRangeOfIntegers extends JFormField{
     @Override
     public View getInput() {
         LinearLayout linear_layout = new LinearLayout(context);
-        JSONObject option=this.option;
+        JFormField option=this.option;
         boolean show_label=true;
-        try {
-            show_label = option.has("show_label")?option.getBoolean("show_label"):false;
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
+        show_label = option.getShowLabel();
         if(show_label){
             BootstrapLabel label_text = new BootstrapLabel(context);
             label_text.setText(this.label);

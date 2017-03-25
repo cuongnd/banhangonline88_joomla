@@ -5,15 +5,16 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.webkit.WebView;
 
-import com.vantinviet.vtv.VTVConfig;
-import com.vantinviet.vtv.configuration.JConfig;
-import com.vantinviet.vtv.configuration.JConfig_countdown;
-import com.vantinviet.vtv.libraries.cms.application.JApplicationSite;
-import com.vantinviet.vtv.libraries.cms.menu.JMenu;
-import com.vantinviet.vtv.libraries.joomla.session.JSession;
-import com.vantinviet.vtv.libraries.joomla.uri.JUri;
-import com.vantinviet.vtv.libraries.joomla.user.JUser;
-import com.vantinviet.vtv.libraries.legacy.application.JApplication;
+import vantinviet.banhangonline88.VTVConfig;
+import vantinviet.banhangonline88.configuration.JConfig;
+import vantinviet.banhangonline88.configuration.JConfig_countdown;
+import vantinviet.banhangonline88.libraries.cms.application.JApplicationSite;
+import vantinviet.banhangonline88.libraries.cms.menu.JMenu;
+import vantinviet.banhangonline88.libraries.joomla.session.JSession;
+import vantinviet.banhangonline88.libraries.joomla.uri.JUri;
+import vantinviet.banhangonline88.libraries.joomla.user.JUser;
+import vantinviet.banhangonline88.libraries.legacy.application.JApplication;
+
 
 /**
  * Created by cuongnd on 6/8/2016.

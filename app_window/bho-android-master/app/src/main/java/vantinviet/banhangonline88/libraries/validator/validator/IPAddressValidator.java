@@ -3,8 +3,8 @@ package vantinviet.banhangonline88.libraries.validator.validator;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 
-import com.vantinviet.vtv.R;
-import com.vantinviet.vtv.libraries.validator.AbstractValidator;
+import vantinviet.banhangonline88.R;
+import vantinviet.banhangonline88.libraries.validator.AbstractValidator;
 
 import java.util.regex.Pattern;
 

@@ -2,7 +2,7 @@ package vantinviet.banhangonline88.libraries.joomla.cache.jstorage;
 
 import android.os.Environment;
 
-import com.vantinviet.vtv.libraries.joomla.filesystem.JFile;
+import vantinviet.banhangonline88.libraries.joomla.filesystem.JFile;
 
 import java.io.File;
 

@@ -3,7 +3,8 @@
     <string name="app_name" translatable="false">banhangonline88.com</string>
     <string name="facebook_app_id" translatable="false">970288516370238</string>
     <string name="android_key" translatable="false">d97dd7ebef54402a5416a56ed982d943</string>
-
+    <string name="root_url">http://www.banhangonline88.com/</string>
+    <string name="vtv_root_url">http://www.vantinviet.com</string>
     <!-- General strings-->
     <string name="No_network_connection">Không có kết nối internet</string>
     <string name="Internal_error">Lỗi kết nối, Vui lòng thử lại</string>
@@ -22,7 +23,29 @@
     <string name="Select_shop">Vui lòng lựa chọn quốc gia</string>
     <string name="Select_the_country_where_you_want_to_shop">Lựa chọn quốc gia nơi bạn muốn mua sắm</string>
     <string name="Continue">Tiếp tục</string>
+    <string name="btn_get_involved_caption">Open Source - Get involved...</string>
 
+    <string name="dialog_device_not_supported_title">Unsupported Device detected!</string>
+    <string name="dialog_device_not_supported_message">Your device isn\'t supported by <b>AndEngine</b>!\n\nPlease send your device information to nicolasgramlich@gmail.com so that we can hopefully add support in the next release!</string>
+
+    <string name="dialog_first_app_launch_title">AndEngine - Examples</string>
+    <string name="dialog_first_app_launch_message">Welcome to <b>AndEngine</b> the:\n - Free\n - Open Source\n - 2D OpenGL \n - Game-Engine\nfor the Google Android platform.\n\nThese <b>examples</b> are meant for <b>developers</b> to showcase what can be done with <b>AndEngine</b>.\n\nIt\'s Open Source - Get involved!\n\nBest Regards,\nNicolas Gramlich</string>
+
+    <string name="dialog_new_in_this_version_title">New in this version...</string>
+
+    <string name="dialog_benchmark_submit_title">Submitting Result...</string>
+    <string name="dialog_benchmark_submit_message">Please wait a moment...</string>
+
+    <string name="dialog_benchmarks_submit_please_title">Benchmarks</string>
+    <string name="dialog_benchmarks_submit_please_message">Hi,\n\nmaybe you already noticed that the <b>AndEngineExamples</b> contain some <b>Benchmarks</b>.\n\nThe reason for that is that I am building a public <b>Performance-Database</b> that everyone can access and use for i.e. a feasibility analysis.\n\nSo please submit Benchmarks from all your devices and from time to time when there is a new version of AndEngine, so I can analyze if the tweaks I added were for the good or for the bad ;)\n\nBest Regards,\nNicolas</string>
+
+    <string name="dialog_modplayerexample_loading_to_external_title">Loading</string>
+    <string name="dialog_modplayerexample_loading_to_external_message">Transferring \'lepeltheme.mod\' to SDCard...</string>
+
+    <string name="tv_xmllayoutexample_above">You can put <b>one</b> <i>AndEngine</i> View into any Activity.</string>
+    <string name="tv_xmllayoutexample_below">Lorem ipsum dolor sit amat...</string>
+
+    <string name="textbreakexample_text_default">Hello, World!</string>
     <!-- Main activity related -->
     <string name="Another_click_for_leaving_app">Nhấn vào khu vực khác để rời khỏi ứng dụng</string>
     <string name="All_categories">Tất cả các danh mục</string>

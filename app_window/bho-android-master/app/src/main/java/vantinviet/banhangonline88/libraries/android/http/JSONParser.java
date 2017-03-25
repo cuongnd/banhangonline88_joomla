@@ -2,8 +2,6 @@ package vantinviet.banhangonline88.libraries.android.http;
 
 import android.util.Log;
 
-import com.vantinviet.vtv.libraries.joomla.JFactory;
-import com.vantinviet.vtv.libraries.joomla.session.JSession;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -22,6 +20,9 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
+
+import vantinviet.banhangonline88.libraries.joomla.JFactory;
+import vantinviet.banhangonline88.libraries.joomla.session.JSession;
 
 /**
  * Created by cuongnd on 12/17/2015.

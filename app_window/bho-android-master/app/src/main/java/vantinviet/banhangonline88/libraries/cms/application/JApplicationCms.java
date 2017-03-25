@@ -6,12 +6,12 @@ import android.text.Spanned;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.vantinviet.vtv.configuration.JConfig;
-import com.vantinviet.vtv.libraries.cms.component.JComponentHelper;
-import com.vantinviet.vtv.libraries.cms.menu.JMenu;
-import com.vantinviet.vtv.libraries.joomla.JFactory;
-import com.vantinviet.vtv.libraries.joomla.language.JLanguage;
-import com.vantinviet.vtv.libraries.legacy.exception.exception;
+import vantinviet.banhangonline88.configuration.JConfig;
+import vantinviet.banhangonline88.libraries.cms.component.JComponentHelper;
+import vantinviet.banhangonline88.libraries.cms.menu.JMenu;
+import vantinviet.banhangonline88.libraries.joomla.JFactory;
+import vantinviet.banhangonline88.libraries.joomla.language.JLanguage;
+import vantinviet.banhangonline88.libraries.legacy.exception.exception;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -48,7 +48,7 @@ public class JApplicationCms {
         if(mobile_response_type.equals("json"))
         {
             JSONObject json_element = new JSONObject(component_content);
-            JComponentHelper.renderComponent(context,json_element,linear_layout);
+            //JComponentHelper.renderComponent(context,json_element,linear_layout);
         }else {
             TextView myTextview = new TextView(context);
             Spanned sp = Html.fromHtml(component_content);

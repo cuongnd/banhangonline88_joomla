@@ -3,13 +3,11 @@ package vantinviet.banhangonline88.libraries.cms.application;
 import android.annotation.TargetApi;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Environment;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -25,21 +23,6 @@ import android.widget.ScrollView;
 
 import com.beardedhen.androidbootstrap.BootstrapEditText;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
-import com.vantinviet.vtv.R;
-import com.vantinviet.vtv.VTVConfig;
-import com.vantinviet.vtv.chattingfrom;
-import com.vantinviet.vtv.libraries.cms.component.JComponentHelper;
-import com.vantinviet.vtv.libraries.cms.component.JPluginHelper;
-import com.vantinviet.vtv.libraries.cms.menu.JMenu;
-import com.vantinviet.vtv.libraries.joomla.JFactory;
-import com.vantinviet.vtv.libraries.joomla.user.JUser;
-import com.vantinviet.vtv.libraries.legacy.application.JApplication;
-import com.vantinviet.vtv.libraries.legacy.request.JRequest;
-import com.vantinviet.vtv.media.element.slider.banner_rotator.elementBanner_RotatorHelper;
-import com.vantinviet.vtv.media.element.ui.grid.element_grid_helper;
-import com.vantinviet.vtv.media.element.ui.link_image.element_link_image_helper;
-import com.vantinviet.vtv.modules.mod_menu.modMenuHelper;
-import com.vantinviet.vtv.modules.mod_virtuemart_category.mod_virtuemart_category_helper;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -58,6 +41,20 @@ import java.util.Map;
 import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import vantinviet.banhangonline88.R;
+import vantinviet.banhangonline88.VTVConfig;
+import vantinviet.banhangonline88.libraries.cms.component.JPluginHelper;
+import vantinviet.banhangonline88.libraries.cms.menu.JMenu;
+import vantinviet.banhangonline88.libraries.joomla.JFactory;
+import vantinviet.banhangonline88.libraries.joomla.user.JUser;
+import vantinviet.banhangonline88.libraries.legacy.application.JApplication;
+import vantinviet.banhangonline88.libraries.legacy.request.JRequest;
+import vantinviet.banhangonline88.media.element.slider.banner_rotator.elementBanner_RotatorHelper;
+import vantinviet.banhangonline88.media.element.ui.grid.element_grid_helper;
+import vantinviet.banhangonline88.media.element.ui.link_image.element_link_image_helper;
+import vantinviet.banhangonline88.modules.mod_menu.modMenuHelper;
+import vantinviet.banhangonline88.modules.mod_virtuemart_category.mod_virtuemart_category_helper;
 
 /**
  * Created by cuongnd on 6/10/2016.
@@ -102,15 +99,6 @@ public class JApplicationSite extends JApplicationCms {
 
         JUser user = JFactory.getUser();
         int guestUserGroup=1;
-        if(user.guest)
-        {
-            try {
-                guestUserGroup = JComponentHelper.getParams("com_users").getInt("guest_usergroup");
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            user.groups.add(guestUserGroup);
-        }
         JPluginHelper.importPlugin("system", "languagefilter");
         Map<String,String> option=new Hashtable<>();
 
@@ -608,7 +596,7 @@ public class JApplicationSite extends JApplicationCms {
                     host_tmpl_component = host_tmpl_component + "&tmpl=android&layout=android";
                     try {
                         JApplicationCms.execute_component(app.context, linear_layout, host, component_content);
-                    } catch (com.vantinviet.vtv.libraries.legacy.exception.exception exception) {
+                    } catch (vantinviet.banhangonline88.libraries.legacy.exception.exception exception) {
                         exception.printStackTrace();
                     }
                     //((LinearLayout) linear_layout).addView(edit_text);
@@ -700,18 +688,6 @@ public class JApplicationSite extends JApplicationCms {
     }
 
     private static void initChatting() {
-        final JApplication app=JFactory.getApplication();
-        final FloatingActionButton btn_chatting=(FloatingActionButton)app.context.findViewById(R.id.btn_chatting);
-        btn_chatting.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-
-                Intent intent = new Intent(app.context, chattingfrom.class);
-                //Bundle b = new Bundle();
-                //intent.putExtra("link", link);
-                app.context.startActivity(intent);
-            }
-        });
     }
 }

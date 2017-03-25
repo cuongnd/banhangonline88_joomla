@@ -3,11 +3,6 @@ package vantinviet.banhangonline88.libraries.joomla.form;
 import android.content.Context;
 import android.view.View;
 
-import com.vantinviet.vtv.libraries.cms.menu.JMenu;
-import com.vantinviet.vtv.libraries.joomla.JFactory;
-import com.vantinviet.vtv.libraries.legacy.application.JApplication;
-import com.vantinviet.vtv.libraries.utilities.md5;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -17,6 +12,11 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
 
+import vantinviet.banhangonline88.libraries.cms.menu.JMenu;
+import vantinviet.banhangonline88.libraries.joomla.JFactory;
+import vantinviet.banhangonline88.libraries.legacy.application.JApplication;
+import vantinviet.banhangonline88.libraries.utilities.md5;
+
 /**
  * Created by cuongnd on 6/11/2016.
  */
@@ -24,18 +24,20 @@ public abstract class JFormField {
     private static JFormField ourInstance;
     public final Context context;
     protected String fieldName;
-    protected String type;
+    protected String type="text";
     protected String label;
-    public JSONObject option;
+    public JFormField option;
     protected String value;
     protected String group;
     private File jarFile;
-    private static String p_package="com.vantinviet.vtv.libraries.joomla.form.fields";
+    private static String p_package="vantinviet.banhangonline88.libraries.joomla.form.fields";
     public static Map<String, JFormField> map_form_field = new HashMap<String, JFormField>();
     public String name;
     protected String key;
     public int key_id;
     public String value_default="";
+    private String aDefault;
+    private boolean showLabel;
 
     public JFormField(){
         JApplication app= JFactory.getApplication();
@@ -101,47 +103,78 @@ public abstract class JFormField {
         return value;
     }
 
-    public static JFormField getInstance(JSONObject field, String type, String name, String group, String value) {
-        String label="";
-        String value_default="";
-        try {
-
-            label = field.has("label")?field.getString("label"):"";
-            value_default = field.has("default")?field.getString("default"):"";
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        JMenu menu=JFactory.getMenu();
-        JSONObject menuActive= menu.getMenuActive();
-        String active_menu_item_id="";
+    public static JFormField getInstance(JFormField field, String type, String name, String group, String value) {
+        String label = "";
+        String value_default = "";
+        label = field.getLabel();
+        value_default = field.getDefault();
+        JMenu menu = JFactory.getMenu();
+        JSONObject menuActive = menu.getMenuActive();
+        String active_menu_item_id = "";
         try {
             active_menu_item_id = menuActive.getString("id");
         } catch (JSONException e) {
             e.printStackTrace();
         }
         System.out.println("active_menu_item_id:" + active_menu_item_id);
-        String key=type+name+active_menu_item_id +value_default+label+group;
-        key= md5.encryptMD5(key);
+        String key = type + name + active_menu_item_id + value_default + label + group;
+        key = md5.encryptMD5(key);
         JFormField form_field = (JFormField) map_form_field.get(key);
-        if(form_field==null)
-        {
-            form_field= getFormField(type,key);
-            form_field.key=key;
-            form_field.option=field;
-            form_field.type=type;
-            form_field.name=name;
-            form_field.group=group;
-            form_field.value=value;
-            try {
-                form_field.label=field.has("label")?field.getString("label"):"";
-                System.out.println("field:" + field.toString());
-                form_field.value_default=field.has("default")?field.getString("default"):"";
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            map_form_field.put(key,form_field);
+        if (form_field == null) {
+            form_field = getFormField(type, key);
+            form_field.setKey(key);
+            form_field.setOption(field);
+            form_field.setType(type);
+            form_field.setName(name);
+            form_field.setGroup(group);
+            form_field.setValue(value);
+            map_form_field.put(key, form_field);
 
         }
         return form_field;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public String getDefault() {
+        return aDefault;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public void setOption(JFormField option) {
+        this.option = option;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setGroup(String group) {
+        this.group = group;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    public boolean getShowLabel() {
+        return showLabel;
+    }
+
+    public JFormField getOption() {
+        return option;
     }
 }

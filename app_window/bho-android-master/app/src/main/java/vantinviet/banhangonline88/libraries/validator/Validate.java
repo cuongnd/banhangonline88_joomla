@@ -3,7 +3,7 @@ package vantinviet.banhangonline88.libraries.validator;
 import android.graphics.drawable.Drawable;
 import android.widget.TextView;
 
-import com.vantinviet.vtv.libraries.validator.interfaces.CustomErrorNotification;
+import vantinviet.banhangonline88.libraries.validator.interfaces.CustomErrorNotification;
 
 import java.util.ArrayList;
 import java.util.List;

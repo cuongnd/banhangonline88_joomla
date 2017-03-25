@@ -1,8 +1,8 @@
 package vantinviet.banhangonline88.libraries.joomla.cache;
 
-import com.vantinviet.vtv.configuration.JConfig;
-import com.vantinviet.vtv.libraries.joomla.cache.jstorage.JCacheFile;
-import com.vantinviet.vtv.libraries.joomla.JFactory;
+import vantinviet.banhangonline88.configuration.JConfig;
+import vantinviet.banhangonline88.libraries.joomla.cache.jstorage.JCacheFile;
+import vantinviet.banhangonline88.libraries.joomla.JFactory;
 
 /**
  * Created by cuongnd on 6/8/2016.

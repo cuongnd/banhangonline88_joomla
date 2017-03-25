@@ -3,9 +3,9 @@ package vantinviet.banhangonline88.libraries.validator.validate;
 import android.content.Context;
 import android.widget.TextView;
 
-import com.vantinviet.vtv.libraries.validator.AbstractValidate;
-import com.vantinviet.vtv.libraries.validator.Validate;
-import com.vantinviet.vtv.libraries.validator.validator.NotEmptyValidator;
+import vantinviet.banhangonline88.libraries.validator.AbstractValidate;
+import vantinviet.banhangonline88.libraries.validator.Validate;
+import vantinviet.banhangonline88.libraries.validator.validator.NotEmptyValidator;
 
 
 /**

@@ -10,20 +10,6 @@ import android.widget.LinearLayout.LayoutParams;
 import com.beardedhen.androidbootstrap.BootstrapButtonGroup;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapSize;
-import com.vantinviet.vtv.R;
-import com.vantinviet.vtv.configuration.JConfig;
-import com.vantinviet.vtv.libraries.android.registry.JRegistry;
-import com.vantinviet.vtv.libraries.cms.menu.JMenu;
-import com.vantinviet.vtv.libraries.joomla.JFactory;
-import com.vantinviet.vtv.libraries.joomla.cache.cache;
-import com.vantinviet.vtv.libraries.joomla.filesystem.JPath;
-import com.vantinviet.vtv.libraries.joomla.form.JFormField;
-import com.vantinviet.vtv.libraries.joomla.form.fields.JFormFieldButton;
-import com.vantinviet.vtv.libraries.joomla.input.JInput;
-import com.vantinviet.vtv.libraries.legacy.application.JApplication;
-import com.vantinviet.vtv.libraries.legacy.request.JRequest;
-import com.vantinviet.vtv.libraries.utilities.JUtilities;
-import com.vantinviet.vtv.libraries.utilities.md5;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -36,11 +22,22 @@ import java.util.List;
 import java.util.Map;
 
 import de.codecrafters.tableview.SortableTableView;
-import de.codecrafters.tableview.TableDataAdapter;
 import de.codecrafters.tableview.listeners.TableDataClickListener;
 import de.codecrafters.tableview.toolkit.SimpleTableHeaderAdapter;
 import de.codecrafters.tableview.toolkit.SortStateViewProviders;
 import de.codecrafters.tableview.toolkit.TableDataRowColorizers;
+import vantinviet.banhangonline88.R;
+import vantinviet.banhangonline88.configuration.JConfig;
+import vantinviet.banhangonline88.entities.module.Module;
+import vantinviet.banhangonline88.libraries.android.registry.JRegistry;
+import vantinviet.banhangonline88.libraries.cms.menu.JMenu;
+import vantinviet.banhangonline88.libraries.joomla.JFactory;
+import vantinviet.banhangonline88.libraries.joomla.cache.cache;
+import vantinviet.banhangonline88.libraries.joomla.form.JFormField;
+import vantinviet.banhangonline88.libraries.joomla.input.JInput;
+import vantinviet.banhangonline88.libraries.legacy.application.JApplication;
+import vantinviet.banhangonline88.libraries.utilities.JUtilities;
+import vantinviet.banhangonline88.libraries.utilities.md5;
 
 /**
  * Created by cuongnd on 6/8/2016.
@@ -99,25 +96,25 @@ public class JComponentHelper {
 
     }
 
-    public static void renderComponent(Context context, JSONObject json_element, LinearLayout linear_layout) throws JSONException {
-        component_json_element = json_element;
+    public static void renderModule(Context context, Module module, LinearLayout linear_layout)  {
         linear_layout = linear_layout;
         JMenu menu = JFactory.getMenu();
         JSONObject menu_active = menu.getMenuActive();
-        JRegistry menu_active_params = JRegistry.getParams(menu_active);
+        JRegistry menu_active_params = null;
+        menu_active_params = JRegistry.getParams(menu_active);
         String android_render = menu_active_params.get("android_render", "auto", "String");
         if (android_render.equals("auto")) {
-            auto_render_component(context, json_element, linear_layout);
+            auto_render_module(context, module, linear_layout);
         } else {
-            customizable_render_component(context, json_element, linear_layout);
+            customizable_render_module(context, module, linear_layout);
         }
 
     }
 
-    private static void customizable_render_component(Context context, JSONObject json_element, LinearLayout linear_layout) {
+    private static void customizable_render_module(Context context, Module module, LinearLayout linear_layout) {
     }
 
-    private static void auto_render_component(Context context, JSONObject json_element, LinearLayout linear_layout) throws JSONException {
+    private static void auto_render_module(Context context, Module module, LinearLayout linear_layout)  {
         JMenu menu = JFactory.getMenu();
         JSONObject menu_active = menu.getMenuActive();
         JRegistry menu_active_params = JRegistry.getParams(menu_active);
@@ -125,45 +122,36 @@ public class JComponentHelper {
         JComponentHelper.android_render_form_type=android_render_form_type;
         System.out.println("android_render_form_type:" + android_render_form_type);
         if (android_render_form_type.equals(JComponentHelper.ANDROID_RENDER_FORM_TYPE_LIST)) {
-            auto_render_component_list_type(context, json_element, linear_layout);
+            auto_render_module_list_type(context, module, linear_layout);
         } else {
-            auto_render_component_form_type(context, json_element, linear_layout);
+            auto_render_module_form_type(context, module, linear_layout);
         }
 
     }
 
-    private static void auto_render_component_form_type(Context context, JSONObject json_element, View linear_layout) {
+    private static void auto_render_module_form_type(Context context, Module module, View linear_layout) {
         JApplication app = JFactory.getApplication();
         JInput input = app.input;
-        String component = input.getString("option", "");
-        String component_path = JPath.getComponentPath(component);
         try {
             View view_field;
-            JSONArray item_fields = json_element.has("item_fields") ? json_element.getJSONArray("item_fields") : new JSONArray();
-            JSONObject item_json_object = json_element.has("item") ? json_element.getJSONObject("item") : new JSONObject();
-            for (int i = 0; i < item_fields.length(); i++) {
-                JSONObject field = item_fields.getJSONObject(i);
-                if (field.has("name") && field.has("label")) {
-                    String type = field.has("type") ? field.getString("type") : "text";
-                    String name = field.getString("name");
-                    String label = field.getString("label");
-                    String group = "";
-                    String value = "";
-                    value = item_json_object.has(name) ? item_json_object.getString(name) : "";
-                    System.out.println("value:" + value);
-                    JFormField formField = JFormField.getInstance(field, type, name, group, value);
-                    view_field = formField.getInput();
-                    ((LinearLayout) linear_layout).addView(view_field);
-                }
+            ArrayList<JFormField> list_fields = module.getFields();
+            JSONObject item = module.getItem();
+            for (int i = 0; i < list_fields.size(); i++) {
+                JFormField field = list_fields.get(i);
+                String type = field.getType();
+                String name = field.getName();
+                String group = "";
+                String value = "";
+                value = item.has(name) ? item.getString(name) : "";
+                System.out.println("value:" + value);
+                JFormField formField = JFormField.getInstance(field, type, name, group, value);
+                view_field = formField.getInput();
+                ((LinearLayout) linear_layout).addView(view_field);
             }
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-
-
-
 
         BootstrapButtonGroup bootstrap_button_group = new BootstrapButtonGroup(context);
         HorizontalScrollView scroll_view = new HorizontalScrollView(context);
@@ -173,33 +161,25 @@ public class JComponentHelper {
         bootstrap_button_group.setBootstrapSize(DefaultBootstrapSize.LG);
         scroll_view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
-        try {
-            View view_field;
-            JSONArray list_control_item = json_element.has("list_control_item") ? json_element.getJSONArray("list_control_item") : new JSONArray();
-            for (int i = 0; i < list_control_item.length(); i++) {
-                JSONObject field = list_control_item.getJSONObject(i);
-                if (field.has("name") && field.has("label")) {
-                    String type = field.has("type") ? field.getString("type") : "text";
-                    String name = field.getString("name");
-                    String label = field.getString("label");
-                    String group = "";
-                    String value = "";
-                    JFormField formField = JFormField.getInstance(field, type, name, group, value);
-                    view_field = formField.getInput();
+        View view_field;
+        ArrayList<JFormField> list_control_item = module.getControlItems();
+        for (int i = 0; i < list_control_item.size(); i++) {
+            JFormField field = list_control_item.get(i);
+            String type = field.getType();
+            String name = field.getName();
+            String group = "";
+            String value = "";
+            JFormField formField = JFormField.getInstance(field, type, name, group, value);
+            view_field = formField.getInput();
 
-                    LayoutParams params = new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
-                    params.setMargins(10, 0, 10, 0);
+            LayoutParams params = new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
+            params.setMargins(10, 0, 10, 0);
 
-                    view_field.setLayoutParams(params);
+            view_field.setLayoutParams(params);
 
 
 
-                    bootstrap_button_group.addView(view_field);
-                }
-            }
-
-        } catch (JSONException e) {
-            e.printStackTrace();
+            bootstrap_button_group.addView(view_field);
         }
 
 
@@ -212,116 +192,13 @@ public class JComponentHelper {
         ((LinearLayout) linear_layout).addView(scroll_view);
 
 
-
-
-
-
-        try {
-            JSONArray list_hidden_field_item = (JSONArray)(json_element.has("list_hidden_field_item") ? json_element.getJSONArray("list_hidden_field_item") : new JSONArray());
-            JComponentHelper.list_hidden_field_item = list_hidden_field_item;
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        abstract class subRenderComponent {
-            public abstract void render_element(JSONObject array_element, String root_element, View linear_layout, int level, int max_level) throws JSONException;
-        }
-        final subRenderComponent subRenderComponent = new subRenderComponent() {
-
-            @Override
-            public void render_element(JSONObject json_element, String root_element, View linear_layout, int level, int max_level) throws JSONException {
-                int level1 = level + 1;
-                Iterator<?> keys = json_element.keys();
-                while (keys.hasNext()) {
-                    String key = (String) keys.next();
-                    System.out.println(json_element.get(key));
-                    if (json_element.get(key) instanceof JSONObject) {
-                        JSONObject a_object = (JSONObject) json_element.get(key);
-                        render_element(a_object, root_element, linear_layout, level1, max_level);
-                    }
-                }
-
-
-            }
-        };
         String root_element = "html";
         //subRenderComponent.render_element(json_element, root_element, linear_layout, 0, 999);
 
     }
 
-    public static Map<String, String> getMapStringInputComponent(JFormFieldButton form_field_button) {
-        Map<String, String> map_input_component = new HashMap<String, String>();
-        if (android_render_form_type.equals("list")) {
-            JSONObject option=form_field_button.option;
-            try {
-                String d_default= option.has("default") ?option.getString("default") : "";
-                if(d_default.contains("="))
-                {
-                    String[] parts = d_default.split("=");
-                    String part1 = parts[0];
-                    String part2 = parts[1];
-                    map_input_component.put(part1, part2);
-                }
 
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
 
-        } else {
-            try {
-                JSONArray item_fields = component_json_element.has("item_fields") ? component_json_element.getJSONArray("item_fields") : new JSONArray();
-                for (int i = 0; i < item_fields.length(); i++) {
-                    JSONObject field = item_fields.getJSONObject(i);
-                    if (field.has("name") && field.has("label")) {
-                        String type = field.has("type") ? field.getString("type") : "text";
-                        String name = field.getString("name");
-                        String label = field.getString("label");
-                        String group = "";
-                        JFormField formField = JFormField.getInstance(field, type, name, group, "");
-                        String value = formField.getValue();
-                        map_input_component.put(name, value);
-                    }
-                }
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-        return map_input_component;
-    }
-
-    public static JSONObject getParams(String component_name) {
-        return null;
-    }
-
-    public static Map<String, String> getMapStringControl(JFormFieldButton button) {
-        JSONArray list_hidden_field_item= JComponentHelper.android_render_form_type.equals(JComponentHelper.ANDROID_RENDER_FORM_TYPE_LIST)? JComponentHelper.list_hidden_field_list:JComponentHelper.list_hidden_field_item;
-        Map<String, String> map_input_control = new HashMap<String, String>();
-        boolean exists_option=false;
-        for (int i=0;i<list_hidden_field_item.length();i++){
-            try {
-                JSONObject item=list_hidden_field_item.getJSONObject(i);
-                String name = item.getString("name");
-                if(name.equals("option"))
-                {
-                    exists_option=true;
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-        if(!exists_option)
-        {
-            String option=JRequest.getString("option","");
-            map_input_control.put("option", option);
-        }
-        String str_value=button.getValue();
-        System.out.println("button.value_default:"+button.value_default);
-        System.out.println("str_value:"+str_value);
-        str_value=str_value.equals("")||str_value==null?button.value_default:str_value;
-        map_input_control.put(button.name,str_value );
-        return map_input_control;
-    }
 
     private static class TableClickListener implements TableDataClickListener {
 
@@ -333,7 +210,7 @@ public class JComponentHelper {
         }
     }
 
-    private static void auto_render_component_list_type(final Context context, JSONObject json_element, final LinearLayout linear_layout) throws JSONException {
+    private static void auto_render_module_list_type(final Context context, Module module, final LinearLayout linear_layout)  {
 
         JApplication app = JFactory.getApplication();
         BootstrapButtonGroup bootstrap_button_group = new BootstrapButtonGroup(context);
@@ -344,27 +221,19 @@ public class JComponentHelper {
         bootstrap_button_group.setBootstrapSize(DefaultBootstrapSize.LG);
         scroll_view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
-        try {
-            View view_field;
-            JSONArray list_control_item = json_element.has("list_control_list") ? json_element.getJSONArray("list_control_list") : new JSONArray();
-            for (int i = 0; i < list_control_item.length(); i++) {
-                JSONObject field = list_control_item.getJSONObject(i);
-                if (field.has("name") && field.has("label")) {
-                    String type = field.has("type") ? field.getString("type") : "text";
-                    String name = field.getString("name");
-                    String label = field.getString("label");
-                    String group = "";
-                    String value = "";
-                    JFormField formField = JFormField.getInstance(field, type, name, group, value);
-                    view_field = formField.getInput();
-                    bootstrap_button_group.addView(view_field);
-                }
-            }
-
-        } catch (JSONException e) {
-            e.printStackTrace();
+        View view_field;
+        ArrayList<JFormField> list_control_item = module.getControlItems();
+        for (int i = 0; i < list_control_item.size(); i++) {
+            JFormField field = list_control_item.get(i);
+            String type = field.getType();
+            String name = field.getName();
+            String label = field.getLabel();
+            String group = "";
+            String value = "";
+            JFormField formField = JFormField.getInstance(field, type, name, group, value);
+            view_field = formField.getInput();
+            bootstrap_button_group.addView(view_field);
         }
-
 
         scroll_view.addView(bootstrap_button_group);
         LayoutParams params = new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
@@ -374,31 +243,17 @@ public class JComponentHelper {
         scroll_view.setRight(0);
         ((LinearLayout) linear_layout).addView(scroll_view);
 
-        try {
-            JSONArray list_hidden_field_list = json_element.has("list_hidden_field_list") ? json_element.getJSONArray("list_hidden_field_list") : new JSONArray();
-            JComponentHelper.list_hidden_field_list = list_hidden_field_list;
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
 
         SortableTableView<? extends Object> table_view = new SortableTableView<Object>(context);
-        String columnFields = json_element.getString("columnFields");
-        final JSONArray fields = new JSONArray(columnFields);
+        ArrayList<JFormField> columnFields = module.getColumnFields();
         List<String> list_column_title = new ArrayList<String>();
         columns = new ArrayList<String>();
-        for (int i = 0; i < fields.length(); i++) {
-            JSONObject field = fields.getJSONObject(i);
-            if (field.has("label")) {
-                String column_title = field.getString("label");
-                list_column_title.add(column_title);
-            }
-
-            if (field.has("name")) {
-                String column_name = field.getString("name");
-                columns.add(column_name);
-
-            }
+        for (int i = 0; i < columnFields.size(); i++) {
+            JFormField field = columnFields.get(i);
+            String column_title = field.getLabel();
+            list_column_title.add(column_title);
+            String column_name = field.getName();
+            columns.add(column_name);
 
         }
         System.out.println(list_column_title.toString());
@@ -419,51 +274,13 @@ public class JComponentHelper {
         table_view.setColumnWeight(2, 3);
         table_view.setColumnWeight(3, 2);
         table_view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, 1000));
-        JSONArray items = json_element.getJSONArray("items");
+        ArrayList<String> items = module.getItems();
         List<String> list_data = new ArrayList<String>();
-        for (int i = 0; i < items.length(); i++) {
-            JSONObject row = items.getJSONObject(i);
+        for (int i = 0; i < items.size(); i++) {
+            String row = items.get(i);
             list_data.add(row.toString());
         }
 
-        table_view.setDataAdapter(new TableDataAdapter(context, list_data) {
-            @Override
-            public View getCellView(int rowIndex, int columnIndex, ViewGroup parentView) {
-                Object item = getRowData(rowIndex);
-                JSONObject item_json_object = new JSONObject();
-                try {
-                    item_json_object = new JSONObject(item.toString());
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                View view_field = new View(context);
-                if (columnIndex < fields.length()) {
-                    JSONObject field = null;
-                    try {
-                        field = (JSONObject) fields.getJSONObject(columnIndex);
-                        if (field.has("name") && field.has("label")) {
-                            String type = field.has("type") ? field.getString("type") : "text";
-                            String name = field.getString("name");
-                            String label = field.getString("label");
-                            String group = "";
-                            String value = "";
-                            value = item_json_object.has(name)?item_json_object.getString(name):"";
-                            name=name+"_"+String.valueOf(rowIndex);
-                            System.out.println("value:" + value);
-                            field.put("show_label", false);
-                            JFormField formField = JFormField.getInstance(field, type, name, group, value);
-                            view_field = formField.getInput();
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-
-
-                }
-                return view_field;
-            }
-        });
-        table_view.addDataClickListener(new TableClickListener());
 
 
         ((LinearLayout) linear_layout).addView(table_view);

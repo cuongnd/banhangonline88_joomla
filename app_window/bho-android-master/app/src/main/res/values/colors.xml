@@ -13,7 +13,9 @@
     <color name="textBlack">#000000</color>
     <color name="textPrimary">#212121</color>
     <color name="textSecondary">#727272</color>
-
+    <color name="table_header_text">#CCFFFFFF</color>
+    <color name="table_data_row_even">#11C5CAE9</color>
+    <color name="table_data_row_odd">#33C5CAE9</color>
     <color name="colorAccentLight">#F8BBD0</color>
     <color name="colorAccent">#ee1f65</color>
     <color name="colorAccentDark">#c2185b</color>

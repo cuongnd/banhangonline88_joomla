@@ -1,7 +1,7 @@
 package vantinviet.banhangonline88.libraries.validator.interfaces;
 
 
-import com.vantinviet.vtv.libraries.validator.Validate;
+import vantinviet.banhangonline88.libraries.validator.Validate;
 
 /**
  * Implemented to perform custom error actions rather

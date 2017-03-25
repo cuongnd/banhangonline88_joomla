@@ -6,11 +6,11 @@ package vantinviet.banhangonline88.entities.module;
 
 class Params {
     String layout;
-    boolean cache;
-    int cache_time;
+    String cache;
+    String cache_time;
     String module_image;
     String module_image_tip;
-    boolean lazyload;
+    String lazyload;
     @Override
     public String toString() {
         return "Params{" +
@@ -21,5 +21,10 @@ class Params {
                 ", module_image_tip='" + module_image_tip + '\'' +
                 ", lazyload='" + lazyload + '\'' +
                 '}';
+    }
+    @Override
+    public boolean equals(Object o) {
+        return  true;
+
     }
 }

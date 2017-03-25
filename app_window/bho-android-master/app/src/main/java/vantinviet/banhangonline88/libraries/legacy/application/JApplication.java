@@ -3,22 +3,22 @@ package vantinviet.banhangonline88.libraries.legacy.application;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 
-import com.vantinviet.vtv.MainActivity;
-import com.vantinviet.vtv.VTVConfig;
-import com.vantinviet.vtv.configuration.JConfig;
-import com.vantinviet.vtv.libraries.android.http.JSONParser;
-import com.vantinviet.vtv.libraries.cms.application.JApplicationSite;
-import com.vantinviet.vtv.libraries.cms.menu.JMenu;
-import com.vantinviet.vtv.libraries.joomla.JFactory;
-import com.vantinviet.vtv.libraries.joomla.application.JApplicationBase;
-import com.vantinviet.vtv.libraries.joomla.cache.cache;
-import com.vantinviet.vtv.libraries.joomla.input.JInput;
-import com.vantinviet.vtv.libraries.utilities.md5;
-
 import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import vantinviet.banhangonline88.VTVConfig;
+import vantinviet.banhangonline88.configuration.JConfig;
+import vantinviet.banhangonline88.libraries.android.http.JSONParser;
+import vantinviet.banhangonline88.libraries.cms.application.JApplicationSite;
+import vantinviet.banhangonline88.libraries.cms.menu.JMenu;
+import vantinviet.banhangonline88.libraries.joomla.JFactory;
+import vantinviet.banhangonline88.libraries.joomla.application.JApplicationBase;
+import vantinviet.banhangonline88.libraries.joomla.cache.cache;
+import vantinviet.banhangonline88.libraries.joomla.input.JInput;
+import vantinviet.banhangonline88.libraries.utilities.md5;
+import vantinviet.banhangonline88.ux.MainActivity;
 
 /**
  * Created by cuongnd on 6/7/2016.

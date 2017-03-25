@@ -4,9 +4,9 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.Patterns;
 
-import com.vantinviet.vtv.R;
-import com.vantinviet.vtv.libraries.validator.AbstractValidator;
-import com.vantinviet.vtv.libraries.validator.ValidatorException;
+import vantinviet.banhangonline88.R;
+import vantinviet.banhangonline88.libraries.validator.AbstractValidator;
+import vantinviet.banhangonline88.libraries.validator.ValidatorException;
 
 import java.util.regex.Pattern;
 

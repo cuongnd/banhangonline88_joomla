@@ -5,8 +5,8 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.widget.TextView;
 
-import com.vantinviet.vtv.R;
-import com.vantinviet.vtv.libraries.validator.AbstractValidate;
+import vantinviet.banhangonline88.R;
+import vantinviet.banhangonline88.libraries.validator.AbstractValidate;
 
 public class ConfirmValidate extends AbstractValidate {
 

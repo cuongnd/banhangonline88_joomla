@@ -93,10 +93,18 @@ public class JRegistry {
         return output;
     }
 
-    public static JRegistry getParams(JSONObject json_object) throws JSONException {
-        String params=json_object.getString("params");
-        JSONObject json_object_params=new JSONObject(params);
-        JRegistry a_params = new JRegistry(json_object_params);
+    public static JRegistry getParams(JSONObject json_object)  {
+        String params= null;
+        JRegistry a_params=null;
+        try {
+            params = json_object.getString("params");
+            JSONObject json_object_params=new JSONObject(params);
+            a_params = new JRegistry(json_object_params);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
         return  a_params;
     }
 }
