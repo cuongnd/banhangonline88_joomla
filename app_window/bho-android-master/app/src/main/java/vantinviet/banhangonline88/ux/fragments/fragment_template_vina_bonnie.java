@@ -68,6 +68,7 @@ import vantinviet.banhangonline88.interfaces.LoginDialogInterface;
 import vantinviet.banhangonline88.interfaces.ProductImagesRecyclerInterface;
 import vantinviet.banhangonline88.interfaces.RelatedProductsRecyclerInterface;
 import vantinviet.banhangonline88.interfaces.RequestListener;
+import vantinviet.banhangonline88.libraries.cms.component.JComponentHelper;
 import vantinviet.banhangonline88.listeners.OnSingleClickListener;
 import vantinviet.banhangonline88.utils.Analytics;
 import vantinviet.banhangonline88.utils.JsonUtils;
@@ -83,6 +84,7 @@ import vantinviet.banhangonline88.ux.dialogs.LoginDialogFragment;
 import vantinviet.banhangonline88.ux.dialogs.LoginExpiredDialogFragment;
 import vantinviet.banhangonline88.ux.dialogs.ProductImagesDialogFragment;
 
+import static vantinviet.banhangonline88.libraries.cms.component.JComponentHelper.renderComponent;
 import static vantinviet.banhangonline88.ux.MainActivity.mInstance;
 
 /**
@@ -183,7 +185,7 @@ public class fragment_template_vina_bonnie extends Fragment {
                         for (Module module : modules)
                         {
                             if(module.getPosition().equals(position)){
-                                add_text_view_test(new_column_linear_layout,module.getTitle());
+                                renderComponent(module,new_column_linear_layout);
                             }
                         }
 

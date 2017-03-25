@@ -239,7 +239,7 @@ class PlgSystemInlineContent extends JPlugin
 				$invokeLoad->setAccessible(true);
 				
 				$modules = $invokeLoad->invoke(null);
-							
+
 				for($i = 0; $i < count($modules); $i++)
 				{
 					if($modules[$i]->module == "mod_custom")
