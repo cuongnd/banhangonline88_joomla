@@ -253,7 +253,22 @@ class JDocumentJson extends JDocument
             $hash = md5(serialize(array($name, $attribs, null, $renderer)));
             $cbuffer = $cache->get('cbuffer_' . $type);
             if (isset($cbuffer[$hash])) {
-                return JCache::getWorkarounds($cbuffer[$hash], array('mergehead' => 1));
+                $a_cbuffer= JCache::getWorkarounds($cbuffer[$hash], array('mergehead' => 1));
+                $module=$a_cbuffer['module'];
+                $func_check_module_in_array=function($module_id,$modules){
+                    foreach($modules as $module){
+                        if($module->id==$module_id){
+                            return true;
+                        }
+                        return false;
+                    }
+                };
+                if(!$func_check_module_in_array($module->id,$app->modules))
+                {
+                    array_push($app->modules,$module);
+                }
+
+                return $a_cbuffer;
             } else {
                 $options = array();
                 $options['nopathway'] = 1;
@@ -263,6 +278,8 @@ class JDocumentJson extends JDocument
                 $this->setBuffer($renderer->render($name, $attribs, null), $type, $name);
                 $data = parent::$_buffer[$type][$name][$title];
                 $tmpdata = JCache::setWorkarounds($data, $options);
+
+                $tmpdata['module']=$data;
                 $cbuffer[$hash] = $tmpdata;
                 $cache->store($cbuffer, 'cbuffer_' . $type);
             }
@@ -501,14 +518,23 @@ class JDocumentJson extends JDocument
      */
     protected function _renderTemplate()
     {
-
+        $app=JFactory::getApplication();
         $replace = array();
         $with = array();
-
         foreach ($this->_template_tags as $jdoc => $args) {
             $replace[] = $jdoc;
             $with[] = $this->getBuffer($args['type'], $args['name'], $args['attribs']);
         }
+        $cache = JFactory::getCache('com_modules', '');
+        $hash = md5(serialize($this->_template_tags));
+        $list_module_by_template_tags = $cache->get('list_module_by_template_tags');
+        if (!isset($list_module_by_template_tags[$hash])) {
+            $list_module_by_template_tags[$hash]=$app->modules;
+            $cache->store($list_module_by_template_tags, 'list_module_by_template_tags');
+        }else{
+            $app->modules=$list_module_by_template_tags[$hash];
+        }
+
         return str_replace($replace, $with, $this->_template);
     }
 }

@@ -89,7 +89,8 @@ class JDocumentRendererJsonModule extends JDocumentRenderer
         };
         if(!$func_check_module_in_array($module->id,$app->modules))
         {
-            $app->modules[]= $module;
+            array_push($app->modules,$module);
         }
+        return $module->response;
     }
 }

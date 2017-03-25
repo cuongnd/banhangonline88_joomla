@@ -35,7 +35,7 @@ class JDocumentRendererJsonModules extends JDocumentRenderer
         foreach (JModuleHelper::getModules($position) as $mod) {
             $moduleHtml ='';
             $moduleHtml = $renderer->render($mod, $params, $content);
-            $buffer .= $moduleHtml;
+            $buffer.= $moduleHtml;
         }
         return $buffer;
     }
