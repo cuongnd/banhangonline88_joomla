@@ -26,4 +26,12 @@ public class Module {
                 ", params='" + params + '\'' +
                 '}';
     }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public String getTitle() {
+        return title;
+    }
 }

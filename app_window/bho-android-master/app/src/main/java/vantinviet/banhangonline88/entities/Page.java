@@ -78,4 +78,8 @@ public class Page {
     public Template getTemplate() {
         return template;
     }
+
+    public ArrayList<Module> getModules() {
+        return modules;
+    }
 }

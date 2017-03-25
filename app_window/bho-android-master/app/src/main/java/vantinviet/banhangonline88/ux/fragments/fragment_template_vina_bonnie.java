@@ -57,6 +57,7 @@ import vantinviet.banhangonline88.api.JsonRequest;
 import vantinviet.banhangonline88.entities.Page;
 import vantinviet.banhangonline88.entities.User;
 import vantinviet.banhangonline88.entities.drawerMenu.DrawerMenuItem;
+import vantinviet.banhangonline88.entities.module.Module;
 import vantinviet.banhangonline88.entities.product.Product;
 import vantinviet.banhangonline88.entities.product.ProductColor;
 import vantinviet.banhangonline88.entities.product.ProductSize;
@@ -175,8 +176,25 @@ public class fragment_template_vina_bonnie extends Fragment {
                     new_column_linear_layout.setLayoutParams(layout_params);
                     new_column_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
                     ArrayList<Row> list_row=column.getRows();
-                    add_text_view_test(new_column_linear_layout,column.getType());
+                    String type=column.getType();
+                    String position=column.getPosition();
+                    add_text_view_test(new_column_linear_layout,type);
+                    add_text_view_test(new_column_linear_layout,position);
+
+                    if(type.equals("modules")){
+                        ArrayList<Module> modules=page.getModules();
+                        Timber.d(modules.toString());
+                        for (Module module : modules)
+                        {
+                            Timber.d(module.getTitle());
+                            if(module.getPosition().equals(position)){
+                                add_text_view_test(new_column_linear_layout,module.getTitle());
+                            }
+                        }
+
+                    }
                     if(list_row!=null && list_row.isEmpty()){
+
                     }else{
                         render_layout(list_row,new_column_linear_layout);
                     }
