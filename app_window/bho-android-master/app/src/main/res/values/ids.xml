@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="transformers" type="id">gdfgdf</item>
+    <item name="custom_indicator" type="id">custom_indicator</item>
+    <item name="dimensionsLabel" type="id">sds</item>
+    <item name="container" type="id">sdfsd</item>
+    <item name="placeholder" type="id">sfsd</item>
+    <item name="lblText" type="id">sfsd</item>
+</resources>

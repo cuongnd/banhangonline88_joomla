@@ -27,7 +27,7 @@ import android.util.TypedValue;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.vantinviet.vtv.R;
+import vantinviet.banhangonline88.R;
 
 /**
  * <p>

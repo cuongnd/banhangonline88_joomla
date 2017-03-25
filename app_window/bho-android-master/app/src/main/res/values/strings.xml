@@ -239,4 +239,5 @@
     </string>
     <string name="title_activity_test_chatting">test_chatting</string>
     <string name="title_activity_form_text">FormText</string>
+    <string name="dummy_content" />
 </resources>
