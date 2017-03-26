@@ -100,7 +100,7 @@ public class fragment_template_vina_bonnie extends Fragment {
         if(layout!=null && !layout.isEmpty())
         {
             for (int i = 0; i < layout.size(); i++) {
-                layout_params = new LayoutParams(screen_size_width, 500);
+                layout_params = new LayoutParams(screen_size_width,  LayoutParams.MATCH_PARENT);
                 LinearLayout new_row_linear_layout=new LinearLayout(getContext());
                 new_row_linear_layout.setLayoutParams(layout_params);
                 new_row_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
@@ -130,6 +130,7 @@ public class fragment_template_vina_bonnie extends Fragment {
                         for (Module module : modules)
                         {
                             if(module.getPosition().equals(position)){
+                                add_text_view_test(new_column_linear_layout,"hello");
                                 JModuleHelper.renderModule(getContext(),module, new_column_linear_layout);
                             }
                         }

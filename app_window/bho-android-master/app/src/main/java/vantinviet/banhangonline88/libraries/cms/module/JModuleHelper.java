@@ -3,6 +3,7 @@ package vantinviet.banhangonline88.libraries.cms.module;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
@@ -29,8 +30,7 @@ import de.codecrafters.tableview.toolkit.TableDataRowColorizers;
 import vantinviet.banhangonline88.R;
 import vantinviet.banhangonline88.configuration.JConfig;
 import vantinviet.banhangonline88.entities.module.Module;
-import vantinviet.banhangonline88.libraries.android.registry.JRegistry;
-import vantinviet.banhangonline88.libraries.cms.menu.JMenu;
+import vantinviet.banhangonline88.entities.module.Params;
 import vantinviet.banhangonline88.libraries.joomla.JFactory;
 import vantinviet.banhangonline88.libraries.joomla.cache.cache;
 import vantinviet.banhangonline88.libraries.joomla.form.JFormField;
@@ -43,6 +43,7 @@ import vantinviet.banhangonline88.libraries.utilities.md5;
  * Created by cuongnd on 6/8/2016.
  */
 public class JModuleHelper {
+    public static final String ANDROID_RENDER_FORM_HTML = "html";
     public static  String ANDROID_RENDER_FORM_TYPE_LIST = "list";
     public static Map<String, String> content_component = new HashMap<String, String>();
     public static List<String> columns;
@@ -97,12 +98,8 @@ public class JModuleHelper {
     }
 
     public static void renderModule(Context context, Module module, LinearLayout linear_layout)  {
-        linear_layout = linear_layout;
-        JMenu menu = JFactory.getMenu();
-        JSONObject menu_active = menu.getMenuActive();
-        JRegistry menu_active_params = null;
-        menu_active_params = JRegistry.getParams(menu_active);
-        String android_render = menu_active_params.get("android_render", "auto", "String");
+        Params params=module.getParams();
+       String android_render = params.getAndroidRender();
         if (android_render.equals("auto")) {
             auto_render_module(context, module, linear_layout);
         } else {
@@ -115,15 +112,14 @@ public class JModuleHelper {
     }
 
     private static void auto_render_module(Context context, Module module, LinearLayout linear_layout)  {
-        JMenu menu = JFactory.getMenu();
-        JSONObject menu_active = menu.getMenuActive();
-        JRegistry menu_active_params = JRegistry.getParams(menu_active);
-        android_render_form_type = menu_active_params.get("android_render_form_type", "list", "String");
-        JModuleHelper.android_render_form_type=android_render_form_type;
+        Params params=module.getParams();
+        android_render_form_type = params.get_android_render_form_type();
         System.out.println("android_render_form_type:" + android_render_form_type);
         if (android_render_form_type.equals(JModuleHelper.ANDROID_RENDER_FORM_TYPE_LIST)) {
             auto_render_module_list_type(context, module, linear_layout);
-        } else {
+        } else if (android_render_form_type.equals(JModuleHelper.ANDROID_RENDER_FORM_HTML)){
+            auto_render_module_form_html(context, module, linear_layout);
+        }else {
             auto_render_module_form_type(context, module, linear_layout);
         }
 
@@ -194,6 +190,21 @@ public class JModuleHelper {
 
         String root_element = "html";
         //subRenderComponent.render_element(json_element, root_element, linear_layout, 0, 999);
+
+    }
+    private static void auto_render_module_form_html(Context context, Module module, View linear_layout) {
+
+        String content=module.getContent();
+        String header = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">"
+                + "<html>  <head>  <meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\">"
+                + "</head>  <body>";
+        String footer = "</body></html>";
+
+        WebView pageContent=new WebView(context);
+        pageContent.loadData(header + content + footer, "text/html; charset=UTF-8", null);
+
+
+        ((LinearLayout) linear_layout).addView(pageContent);
 
     }
 

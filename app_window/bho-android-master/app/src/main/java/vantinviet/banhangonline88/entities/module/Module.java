@@ -23,9 +23,10 @@ public class Module {
     Params params;
     private ArrayList<JFormField> fields;
     private JSONObject item;
-    private ArrayList<JFormField> controlItems;
-    private ArrayList<JFormField> columnFields;
-    private ArrayList<String> items;
+    private ArrayList<JFormField> controlItems=new ArrayList<JFormField>();
+    private ArrayList<JFormField> columnFields=new ArrayList<JFormField>();
+    private ArrayList<String> items=new ArrayList<String>();
+    private String content="";
 
     @Override
     public String toString() {
@@ -69,5 +70,9 @@ public class Module {
 
     public ArrayList<String> getItems() {
         return items;
+    }
+
+    public String getContent() {
+        return content;
     }
 }
