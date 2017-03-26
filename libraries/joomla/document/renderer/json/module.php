@@ -55,13 +55,13 @@ class JDocumentRendererJsonModule extends JDocumentRenderer
         if (empty($params->toArray())) {
             $params->loadString($module->params);
         }
-        $app=JFactory::getApplication();
+        $app = JFactory::getApplication();
         // Use parameters from template
         if (isset($attribs['params'])) {
             $template_params = new Registry(html_entity_decode($attribs['params'], ENT_COMPAT, 'UTF-8'));
             $params->merge($template_params);
             $module = clone $module;
-            $module->params = $params->toObject();
+            $module->params = $params;
         }
         // Default for compatibility purposes. Set cachemode parameter or use JModuleHelper::moduleCache from within the module instead
         $cachemode = $params->get('cachemode', 'oldstatic');
@@ -73,23 +73,34 @@ class JDocumentRendererJsonModule extends JDocumentRenderer
             $cacheparams->class = 'JModuleHelper';
             $cacheparams->method = 'renderModule';
             $cacheparams->methodparams = array($module, $attribs);
-
-            $module->response= JModuleHelper::ModuleCache($module, $params, $cacheparams);
-
-        }else{
-            $module->response= JModuleHelper::renderModule($module, $attribs);
+            $module->response = JModuleHelper::ModuleCache($module, $params, $cacheparams);
+        } else {
+            $module->response = JModuleHelper::renderModule($module, $attribs);
         }
-        $func_check_module_in_array=function($module_id,$modules){
-            foreach($modules as $module){
-                if($module->id==$module_id){
+        $func_check_module_in_array = function ($module_id, $modules) {
+            foreach ($modules as $module) {
+                if ($module->id == $module_id) {
                     return true;
                 }
                 return false;
             }
         };
-        if(!$func_check_module_in_array($module->id,$app->modules))
-        {
-            array_push($app->modules,$module);
+        if (!$func_check_module_in_array($module->id, $app->modules)) {
+            if ($module->params instanceof Registry) {
+            } else if (is_string($module->params)) {
+                $params = new Registry();
+                $params->loadString($module->params);
+                $module->params = $params;
+            } else if (is_array($module->params)) {
+                $params = new Registry();
+                $params->loadArray($module->params);
+                $module->params = $params;
+            } else if (is_object($module->params)) {
+                $params = new Registry();
+                $params->loadObject($module->params);
+                $module->params = $params;
+            }
+            array_push($app->modules, $module);
         }
         return $module->response;
     }
