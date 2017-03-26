@@ -8,7 +8,6 @@
  */
 defined('_JEXEC') or die;
 use Joomla\Registry\Registry;
-
 /**
  * Template style model.
  *
@@ -23,7 +22,6 @@ class TemplatesModelStyle extends JModelAdmin
      * @since   1.6
      */
     protected $helpKey = 'JHELP_EXTENSIONS_TEMPLATE_MANAGER_STYLES_EDIT';
-
     /**
      * The help screen base URL for the module.
      *
@@ -31,7 +29,6 @@ class TemplatesModelStyle extends JModelAdmin
      * @since   1.6
      */
     protected $helpURL;
-
     /**
      * Item cache.
      *
@@ -39,7 +36,6 @@ class TemplatesModelStyle extends JModelAdmin
      * @since  1.6
      */
     private $_cache = array();
-
     /**
      * Constructor.
      *
@@ -58,7 +54,6 @@ class TemplatesModelStyle extends JModelAdmin
         );
         parent::__construct($config);
     }
-
     /**
      * Method to auto-populate the model state.
      *
@@ -78,7 +73,6 @@ class TemplatesModelStyle extends JModelAdmin
         $params = JComponentHelper::getParams('com_templates');
         $this->setState('params', $params);
     }
-
     /**
      * Method to delete rows.
      *
@@ -126,7 +120,6 @@ class TemplatesModelStyle extends JModelAdmin
         $this->cleanCache();
         return true;
     }
-
     /**
      * Method to duplicate styles.
      *
@@ -175,7 +168,6 @@ class TemplatesModelStyle extends JModelAdmin
         $this->cleanCache();
         return true;
     }
-
     /**
      * Method to change the title.
      *
@@ -196,7 +188,6 @@ class TemplatesModelStyle extends JModelAdmin
         }
         return $title;
     }
-
     /**
      * Method to get the record form.
      *
@@ -239,7 +230,6 @@ class TemplatesModelStyle extends JModelAdmin
         }
         return $form;
     }
-
     /**
      * Method to get the data that should be injected in the form.
      *
@@ -257,7 +247,6 @@ class TemplatesModelStyle extends JModelAdmin
         $this->preprocessData('com_templates.style', $data);
         return $data;
     }
-
     /**
      * Method to get a single record.
      *
@@ -266,7 +255,11 @@ class TemplatesModelStyle extends JModelAdmin
      * @return  mixed  Object on success, false on failure.
      */
     public function getItem($pk = null)
+
     {
+        $input=JFactory::getApplication()->input;
+        $device_editing=$input->getString('device_editing','browser');
+        $key_layout=$device_editing."_layout";
         $pk = (!empty($pk)) ? $pk : (int)$this->getState('style.id');
         if (!isset($this->_cache[$pk])) {
             // Get a row instance.
@@ -282,13 +275,13 @@ class TemplatesModelStyle extends JModelAdmin
             // Convert to the JObject before adding other data.
             $properties = $table->getProperties(1);
             $this->_cache[$pk] = JArrayHelper::toObject($properties, 'JObject');
-
             // Convert the params field to an array.
             $registry = new Registry;
             $registry->loadString($table->params);
-            $layout_params=$registry->get('layout',new stdClass());
-            $parent_template_style_id = $table->parent_template_style_id;
 
+            $layout_params = $registry->get($key_layout, new stdClass());
+
+            $parent_template_style_id = $table->parent_template_style_id;
             if ($parent_template_style_id) {
                 $table_parent_template = $this->getTable();
                 $table_parent_template->load($parent_template_style_id);
@@ -296,27 +289,30 @@ class TemplatesModelStyle extends JModelAdmin
                 $registry_parent_template = new Registry;
                 $registry_parent_template->loadString($params_parent_template);
 
-                $layout_parent_template = $registry_parent_template->get('layout', array());
-                $function_tree_node = function ($function_call_back, &$layout,$layout_params) {
-                    if($layout->type == "component")
-                    {
-                        $layout->is_sub_content=1;
-                        $layout->is_main_frame=1;
-                        $layout->children=$layout_params[0]->children;
+                $layout_parent_template = $registry_parent_template->get($key_layout, array());
+                $function_tree_node = function ($function_call_back, &$layout, $layout_params) {
+                    if ($layout->type == "component") {
+                        $layout->is_sub_content = 1;
+                        $layout->is_main_frame = 1;
+                        if (is_object($layout_params)) {
+                            $layout_params = array($layout_params);
+                        }
+                        $layout->children = $layout_params[0]->children;
                         return;
-
-                    }else{
+                    } else {
                         foreach ($layout->children as &$node) {
-                            $node->is_main_frame=1;
-                            $function_call_back($function_call_back, $node,$layout_params);
+                            $node->is_main_frame = 1;
+                            $function_call_back($function_call_back, $node, $layout_params);
                         }
                     }
                 };
                 foreach ($layout_parent_template as &$node) {
-                    $node->is_main_frame=1;
-                    $function_tree_node($function_tree_node, $node,$layout_params);
+                    $node->is_main_frame = 1;
+                    $function_tree_node($function_tree_node, $node, $layout_params);
                 }
-                $registry->set('layout',$layout_parent_template);
+                $registry->set($key_layout, $layout_parent_template);
+            }else{
+                $registry->set($key_layout, $layout_params);
             }
             $this->_cache[$pk]->params = $registry->toArray();
             // Get the template XML.
@@ -328,9 +324,9 @@ class TemplatesModelStyle extends JModelAdmin
                 $this->_cache[$pk]->xml = null;
             }
         }
+
         return $this->_cache[$pk];
     }
-
     /**
      * Returns a reference to the a Table object, always creating it.
      *
@@ -344,7 +340,6 @@ class TemplatesModelStyle extends JModelAdmin
     {
         return JTable::getInstance($type, $prefix, $config);
     }
-
     /**
      * Method to allow derived classes to preprocess the form.
      *
@@ -398,7 +393,6 @@ class TemplatesModelStyle extends JModelAdmin
         // Trigger the default form events.
         parent::preprocessForm($form, $data, $group);
     }
-
     /**
      * Method to save the form data.
      *
@@ -408,43 +402,44 @@ class TemplatesModelStyle extends JModelAdmin
      */
     public function save($data)
     {
+        $input = JFactory::getApplication()->input;
 
-        $app=JFactory::getApplication();
-        $task=$app->input->get('task','');
-        $parent_template_style_id=$data['parent_template_style_id'];
-        $array_layout=$data['params']['layout'];
-        if ($parent_template_style_id && $task!='change_parent_template') {
-
+        $app = JFactory::getApplication();
+        $device_editing = $app->input->getString('device_editing', 'browser');
+        $post = $input->getArray();
+        $app = JFactory::getApplication();
+        $task = $app->input->get('task', '');
+        $key_layout = $device_editing . '_layout';
+        $parent_template_style_id = $data['parent_template_style_id'];
+        $array_layout = $post['jform']['params'][$key_layout];
+        if ($parent_template_style_id && $task != 'change_parent_template' && $task != 'change_device_editing') {
             $function_get_sub_layout_and_parent_layout = function ($function_call_back, &$node, &$sub_layout) {
-                if($node['is_sub_content'] == 1)
-                {
-                    $sub_layout=array($node);
-                    $node['type']='component';
+                if ($node['is_sub_content'] == 1) {
+                    $sub_layout = array($node);
+                    $node['type'] = 'component';
                     unset($node['children']);
                     return;
-                }elseif(is_array($node['children'])&&count($node['children'])){
+                } elseif (is_array($node['children']) && count($node['children'])) {
                     foreach ($node['children'] as &$node1) {
-                        $function_call_back($function_call_back,$node1,$sub_layout);
+                        $function_call_back($function_call_back, $node1, $sub_layout);
                     }
-
                 }
-
             };
-            $sub_layout=null;
-            foreach($array_layout as &$node) {
+            $sub_layout = null;
+            foreach ($array_layout as &$node) {
                 $function_get_sub_layout_and_parent_layout($function_get_sub_layout_and_parent_layout, $node, $sub_layout);
             }
-            $data['params']['layout']=$sub_layout;
-            $table_parent_template=$this->getTable();
+            $data['params'][$key_layout] = $sub_layout;
+            $table_parent_template = $this->getTable();
             $table_parent_template->load($parent_template_style_id);
-            $parent_template_params=$table_parent_template->params;
+            $parent_template_params = $table_parent_template->params;
             $registry_parent_params = new Registry;
             $registry_parent_params->loadString($parent_template_params);
-            $registry_parent_params->set('layout',$array_layout);
-            $table_parent_template->params=$registry_parent_params->toString();
+            $registry_parent_params->set($key_layout, $array_layout);
+            $table_parent_template->params = $registry_parent_params->toString();
             //$table_parent_template->store();
-
-
+        }else if(!$parent_template_style_id && $task != 'change_parent_template' && $task != 'change_device_editing'){
+            $data['params'][$key_layout]=$array_layout;
         }
         // Detect disabled extension
         $extension = JTable::getInstance('Extension');
@@ -457,6 +452,7 @@ class TemplatesModelStyle extends JModelAdmin
         $table = $this->getTable();
         $pk = (!empty($data['id'])) ? $data['id'] : (int)$this->getState('style.id');
         $isNew = true;
+
         // Include the extension plugins for the save events.
         JPluginHelper::importPlugin($this->events_map['save']);
         // Load the row if saving an existing record.
@@ -468,6 +464,20 @@ class TemplatesModelStyle extends JModelAdmin
             $data['title'] = $this->generateNewTitle(null, null, $data['title']);
             $data['home'] = 0;
             $data['assigned'] = '';
+        }
+        if ($pk > 0) {
+            $current_registry_params = new Registry;
+            $current_registry_params->loadString($table->params);
+            $list_layout = array(
+                'browser_layout' => $current_registry_params->get('browser_layout', ''),
+                'ios_layout' => $current_registry_params->get('ios_layout', ''),
+                'android_layout' => $current_registry_params->get('android_layout', '')
+            );
+            foreach ($list_layout as $key => $layout) {
+                if ($key_layout != $key) {
+                    $data['params'][$key] = $layout;
+                }
+            }
         }
         // Bind the data.
         if (!$table->bind($data)) {
@@ -488,7 +498,6 @@ class TemplatesModelStyle extends JModelAdmin
             $this->setError($table->getError());
             return false;
         }
-
         $user = JFactory::getUser();
         if ($user->authorise('core.edit', 'com_menus') && $table->client_id == 0) {
             $n = 0;
@@ -531,7 +540,6 @@ class TemplatesModelStyle extends JModelAdmin
         $this->setState('style.id', $table->id);
         return true;
     }
-
     /**
      * Method to set a template style as home.
      *
@@ -577,7 +585,6 @@ class TemplatesModelStyle extends JModelAdmin
         $this->cleanCache();
         return true;
     }
-
     /**
      * Method to unset a template style as default for a language.
      *
@@ -618,7 +625,6 @@ class TemplatesModelStyle extends JModelAdmin
         $this->cleanCache();
         return true;
     }
-
     /**
      * Get the necessary data to load an item help screen.
      *
@@ -630,7 +636,6 @@ class TemplatesModelStyle extends JModelAdmin
     {
         return (object)array('key' => $this->helpKey, 'url' => $this->helpURL);
     }
-
     /**
      * Custom clean cache method
      *

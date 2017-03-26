@@ -7,6 +7,8 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 defined('_JEXEC') or die;
+$app=JFactory::getApplication();
+$device_editing=$app->input->getString('device_editing','browser');
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 JHtml::_('behavior.formvalidator');
 JHtml::_('behavior.keepalive');
@@ -94,6 +96,7 @@ JFactory::getDocument()->addScriptDeclaration("
 
         <?php echo JHtml::_('bootstrap.endTabSet'); ?>
         <input type="hidden" name="task" value=""/>
+        <input type="hidden" name="selected_device_editing" value="<?php echo $device_editing ?>"/>
         <?php echo JHtml::_('form.token'); ?>
     </div>
 </form>
