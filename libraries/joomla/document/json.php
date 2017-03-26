@@ -251,7 +251,7 @@ class JDocumentJson extends JDocument
         if ($this->_caching == true && $type == 'modules') {
             $cache = JFactory::getCache('com_modules', '');
             $hash = md5(serialize(array($name, $attribs, null, $renderer)));
-            $cbuffer = $cache->get('cbuffer_' . $type);
+            $cbuffer = $cache->get('json_cbuffer_' . $type);
             if (isset($cbuffer[$hash])) {
                 $a_cbuffer= JCache::getWorkarounds($cbuffer[$hash], array('mergehead' => 1));
                 $module=$a_cbuffer['module'];
@@ -281,7 +281,7 @@ class JDocumentJson extends JDocument
 
                 $tmpdata['module']=$data;
                 $cbuffer[$hash] = $tmpdata;
-                $cache->store($cbuffer, 'cbuffer_' . $type);
+                $cache->store($cbuffer, 'json_cbuffer_' . $type);
             }
         } else {
             $this->setBuffer($renderer->render($name, $attribs, null), $type, $name, $title);
