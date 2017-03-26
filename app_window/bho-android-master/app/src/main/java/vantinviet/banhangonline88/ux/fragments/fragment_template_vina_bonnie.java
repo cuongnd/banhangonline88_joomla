@@ -97,7 +97,7 @@ public class fragment_template_vina_bonnie extends Fragment {
 
     private void render_layout(ArrayList<Row> layout, LinearLayout rootLinearLayout,int screen_size_width,int screen_size_heght) {
         LayoutParams layout_params;
-        for (int i = 0; i < layout.size(); i++) {
+        if(layout!=null)for (Row row: layout) {
             layout_params = new LayoutParams(screen_size_width,screen_size_heght  );
             LinearLayout new_row_linear_layout=new LinearLayout(getContext());
             new_row_linear_layout.setLayoutParams(layout_params);
@@ -107,11 +107,9 @@ public class fragment_template_vina_bonnie extends Fragment {
             LinearLayout new_wrapper_of_row_linear_layout=new LinearLayout(getContext());
             new_wrapper_of_row_linear_layout.setLayoutParams(layout_params);
             new_wrapper_of_row_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
-            Row row=layout.get(i);
             Timber.d("row name(%s)",row.getName());
             ArrayList<Column> list_column=row.getColumns();
-            for (int j = 0; j < list_column.size(); j++) {
-                Column column=list_column.get(j);
+            if(list_column!=null)for (Column column: list_column) {
                 int column_width=Integer.parseInt(column.getSpan());
                 column_width=screen_size_width*column_width/12;
                 layout_params = new LayoutParams(screen_size_width,screen_size_heght  );
@@ -142,8 +140,8 @@ public class fragment_template_vina_bonnie extends Fragment {
                 column_scroll_view.addView(new_column_linear_layout);
                 new_wrapper_of_row_linear_layout.addView(column_scroll_view);
 
-
             }
+
             add_text_view_test(new_row_linear_layout,row.getName());
 
             new_row_linear_layout.addView(new_wrapper_of_row_linear_layout);
@@ -152,6 +150,7 @@ public class fragment_template_vina_bonnie extends Fragment {
             rootLinearLayout.addView(horizontal_scrollview);
 
         }
+
 
 
 

@@ -202,7 +202,7 @@ public class JModuleHelper {
 
         WebView pageContent=new WebView(context);
         content=header + content + footer;
-        pageContent.loadData(module.getTitle(), "text/html; charset=UTF-8", null);
+        pageContent.loadData(content, "text/html; charset=UTF-8", null);
 
 
         ((LinearLayout) linear_layout).addView(pageContent);
