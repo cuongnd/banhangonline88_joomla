@@ -2,7 +2,6 @@ package vantinviet.banhangonline88.entities.template;
 
 import java.util.ArrayList;
 
-import vantinviet.banhangonline88.entities.template.bootstrap.Column;
 import vantinviet.banhangonline88.entities.template.bootstrap.Row;
 
 /**
@@ -12,17 +11,17 @@ import vantinviet.banhangonline88.entities.template.bootstrap.Row;
 public class Params {
     int layout_width;
     String layout_type;
-    ArrayList<Row> layout=new ArrayList<Row>();
+    ArrayList<Row> android_layout =new ArrayList<Row>();
     @Override
     public String toString() {
         return "Params{" +
                 "layout_width=" + layout_width +
                 ", layout_type='" + layout_type + '\'' +
-                ", layout='" + layout + '\'' +
+                ", android_layout='" + android_layout + '\'' +
                 '}';
     }
 
-    public ArrayList<Row> getLayout() {
-        return layout;
+    public ArrayList<Row> getAndroid_layout() {
+        return android_layout;
     }
 }

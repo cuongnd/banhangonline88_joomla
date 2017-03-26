@@ -64,7 +64,7 @@ public class fragment_template_vina_bonnie extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Timber.d("%s - onCreateView", this.getClass().getSimpleName());
         MainActivity.setActionBarTitle("hello title");
-        layout= page.getTemplate().getParams().getLayout();
+        layout= page.getTemplate().getParams().getAndroid_layout();
         Timber.d("page layout %s", layout.toString());
         View view = inflater.inflate(R.layout.fragment_template_vina_bonnie, container, false);
         LinearLayout rootLinearLayout=(LinearLayout)view.findViewById(R.id.root_layout);
