@@ -526,7 +526,10 @@ class JDocumentJson extends JDocument
             $with[] = $this->getBuffer($args['type'], $args['name'], $args['attribs']);
         }
         $cache = JFactory::getCache('com_modules', '');
-        $hash = md5(serialize($this->_template_tags));
+
+        $menu=JFactory::getApplication()->getMenu();
+        $menu_active_id=$menu->getActive()->id;
+        $hash = md5($menu_active_id.serialize($this->_template_tags));
         $list_module_by_template_tags = $cache->get('list_module_by_template_tags');
         if (!isset($list_module_by_template_tags[$hash])) {
             $list_module_by_template_tags[$hash]=$app->modules;
