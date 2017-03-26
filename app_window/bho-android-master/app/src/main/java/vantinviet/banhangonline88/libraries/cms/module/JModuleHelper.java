@@ -201,7 +201,8 @@ public class JModuleHelper {
         String footer = "</body></html>";
 
         WebView pageContent=new WebView(context);
-        pageContent.loadData(header + content + footer, "text/html; charset=UTF-8", null);
+        content=header + content + footer;
+        pageContent.loadData(module.getTitle(), "text/html; charset=UTF-8", null);
 
 
         ((LinearLayout) linear_layout).addView(pageContent);

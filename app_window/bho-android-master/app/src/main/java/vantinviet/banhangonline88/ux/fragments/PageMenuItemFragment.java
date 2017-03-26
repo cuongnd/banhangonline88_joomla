@@ -21,8 +21,10 @@ import com.google.gson.Gson;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
+import timber.log.Timber;
 import vantinviet.banhangonline88.CONST;
 import vantinviet.banhangonline88.MyApplication;
+import vantinviet.banhangonline88.R;
 import vantinviet.banhangonline88.api.EndPoints;
 import vantinviet.banhangonline88.api.GsonRequest;
 import vantinviet.banhangonline88.entities.Page;
@@ -30,10 +32,6 @@ import vantinviet.banhangonline88.entities.drawerMenu.DrawerMenuItem;
 import vantinviet.banhangonline88.utils.MsgUtils;
 import vantinviet.banhangonline88.utils.Utils;
 import vantinviet.banhangonline88.ux.MainActivity;
-import vantinviet.banhangonline88.R;
-import timber.log.Timber;
-
-import static java.lang.Class.forName;
 
 /**
  * Fragment allow displaying useful information content like web page.
@@ -115,35 +113,39 @@ public class PageMenuItemFragment extends Fragment {
 
     public void load_page(final String json_page)  {
         Gson gson = new Gson();
-
-        final DrawerMenuItem drawerMenuItem = gson.fromJson(json_page, DrawerMenuItem.class);
-
+        DrawerMenuItem drawerMenuItem =new DrawerMenuItem();
 
         String url="";
         if(json_page==null)
         {
             url=EndPoints.API_URL1+"?";
         }else{
+            drawerMenuItem =  gson.fromJson(json_page, DrawerMenuItem.class);
             Timber.d("drawerMenuItem %s",drawerMenuItem.toString());
             url=drawerMenuItem.getLink();
+            if(url==null || url.equals("")){
+                url=EndPoints.API_URL1+"?";
+            }
         }
+        Timber.d("url:%s",url);
         app=MyApplication.getInstance();
         url=app.get_page_config_app(url);
 
 
+        final DrawerMenuItem finalDrawerMenuItem = drawerMenuItem;
         GsonRequest<Page> getPage = new GsonRequest<>(Request.Method.GET, url, null, Page.class,
                 new Response.Listener<Page>() {
                     @Override
                     public void onResponse(@NonNull Page page) {
                         String template=page.getTemplate().getTemplateName();
                         String str_fragmentManager = String.format("fragment_template_%s",template);
-                        //Timber.d("modules %s",page.getModules().toString());
-                        //Timber.d(str_fragmentManager);
+                        Timber.d("modules: %s",page.getModules().toString());
+                        Timber.d("template: %s",str_fragmentManager);
                         Class<?> class_fragment = null;
                         try {
                             class_fragment = Class.forName("vantinviet.banhangonline88.ux.fragments." + str_fragmentManager);
                             Constructor<?> cons = class_fragment.getConstructor(DrawerMenuItem.class,Page.class);
-                            Object object = cons.newInstance(drawerMenuItem,page);
+                            Object object = cons.newInstance(finalDrawerMenuItem,page);
                             fragment=(Fragment)object;
                         } catch (ClassNotFoundException e) {
                             e.printStackTrace();
