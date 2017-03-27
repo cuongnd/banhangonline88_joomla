@@ -85,6 +85,50 @@ class JDocumentRendererJsonModule extends JDocumentRenderer
                 return false;
             }
         };
+
+        preg_match_all('/src="(.+?)"/', $module->response, $matches);
+
+        if(count($matches[1])) {
+
+            foreach ($matches[1] AS &$item) {
+
+                $item=strtolower($item);
+
+                if (strpos($item, 'http') == false) {
+
+                    $item = 'src="'.JUri::root().$item.'"';
+
+                }
+
+
+
+            }
+
+            $module->response=str_replace($matches[0],$matches[1],$module->response);
+
+        }
+        preg_match_all('/src="(.+?)"/', $module->content, $matches);
+
+        if(count($matches[1])) {
+
+            foreach ($matches[1] AS &$item) {
+
+                $item=strtolower($item);
+
+                if (strpos($item, 'http') == false) {
+
+                    $item = 'src="'.JUri::root().$item.'"';
+
+                }
+
+
+
+            }
+
+            $module->content=str_replace($matches[0],$matches[1],$module->content);
+
+        }
+
         if (!$func_check_module_in_array($module->id, $app->modules)) {
             if ($module->params instanceof Registry) {
             } else if (is_string($module->params)) {
@@ -100,6 +144,7 @@ class JDocumentRendererJsonModule extends JDocumentRenderer
                 $params->loadObject($module->params);
                 $module->params = $params;
             }
+            $module->strparams = $params->toString();
             array_push($app->modules, $module);
         }
         return $module->response;

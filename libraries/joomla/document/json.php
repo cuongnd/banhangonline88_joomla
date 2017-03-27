@@ -530,12 +530,12 @@ class JDocumentJson extends JDocument
         $menu=JFactory::getApplication()->getMenu();
         $menu_active_id=$menu->getActive()->id;
         $hash = md5($menu_active_id.serialize($this->_template_tags));
-        $list_module_by_template_tags = $cache->get('list_module_by_template_tags');
-        if (!isset($list_module_by_template_tags[$hash])) {
-            $list_module_by_template_tags[$hash]=$app->modules;
-            $cache->store($list_module_by_template_tags, 'list_module_by_template_tags');
+        $list_module = $cache->get($hash);
+        if (!$list_module) {
+            $list_module=$app->modules;
+            $cache->store($list_module, $hash);
         }else{
-            $app->modules=$list_module_by_template_tags[$hash];
+            $app->modules=$list_module;
         }
 
         return str_replace($replace, $with, $this->_template);
