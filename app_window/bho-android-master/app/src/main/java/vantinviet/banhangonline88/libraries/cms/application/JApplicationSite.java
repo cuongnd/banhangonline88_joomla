@@ -53,7 +53,7 @@ import vantinviet.banhangonline88.libraries.legacy.request.JRequest;
 import vantinviet.banhangonline88.media.element.slider.banner_rotator.elementBanner_RotatorHelper;
 import vantinviet.banhangonline88.media.element.ui.grid.element_grid_helper;
 import vantinviet.banhangonline88.media.element.ui.link_image.element_link_image_helper;
-import vantinviet.banhangonline88.modules.mod_menu.modMenuHelper;
+import vantinviet.banhangonline88.modules.mod_menu.mod_menu;
 import vantinviet.banhangonline88.modules.mod_virtuemart_category.mod_virtuemart_category_helper;
 
 /**
@@ -609,7 +609,7 @@ public class JApplicationSite extends JApplicationCms {
                             String module_name = module.getString("module");
                             switch (module_name) {
                                 case "mod_menu":
-                                    modMenuHelper.render_menu(app.context, linear_layout, module, width);
+                                    mod_menu.render_menu(app.context, linear_layout, module, width);
                                     break;
                                 case "mod_virtuemart_category":
                                     mod_virtuemart_category_helper.render_module(app.context, linear_layout, module, width);

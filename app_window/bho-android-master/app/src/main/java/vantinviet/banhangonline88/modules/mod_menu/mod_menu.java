@@ -1,8 +1,12 @@
 package vantinviet.banhangonline88.modules.mod_menu;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.View;
+import android.widget.LinearLayout;
 
+import timber.log.Timber;
+import vantinviet.banhangonline88.entities.module.Module;
 import vantinviet.banhangonline88.libraries.android.registry.JRegistry;
 
 import org.json.JSONException;
@@ -11,9 +15,20 @@ import org.json.JSONObject;
 /**
  * Created by cuongnd on 12/17/2015.
  */
-public class modMenuHelper {
+public class mod_menu {
 
     public static  Context main_context;
+    private final Context context;
+    private final Module module;
+    private final LinearLayout linear_layout;
+
+    @SuppressLint("ValidFragment")
+    public mod_menu(Context context, Module module, LinearLayout linear_layout) {
+        this.context=context;
+        this.module=module;
+        this.linear_layout=linear_layout;
+        Timber.d("hello %s", this.getClass().getSimpleName());
+    }
     public static void render_menu(final Context context, View parent_object, JSONObject object, int width)
     {
         main_context=context;

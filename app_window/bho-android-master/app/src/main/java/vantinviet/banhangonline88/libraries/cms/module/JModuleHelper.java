@@ -1,6 +1,9 @@
 package vantinviet.banhangonline88.libraries.cms.module;
 
 import android.content.Context;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
@@ -16,6 +19,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -27,8 +32,12 @@ import de.codecrafters.tableview.listeners.TableDataClickListener;
 import de.codecrafters.tableview.toolkit.SimpleTableHeaderAdapter;
 import de.codecrafters.tableview.toolkit.SortStateViewProviders;
 import de.codecrafters.tableview.toolkit.TableDataRowColorizers;
+import timber.log.Timber;
 import vantinviet.banhangonline88.R;
+import vantinviet.banhangonline88.modules.*;
 import vantinviet.banhangonline88.configuration.JConfig;
+import vantinviet.banhangonline88.entities.Page;
+import vantinviet.banhangonline88.entities.drawerMenu.DrawerMenuItem;
 import vantinviet.banhangonline88.entities.module.Module;
 import vantinviet.banhangonline88.entities.module.Params;
 import vantinviet.banhangonline88.libraries.joomla.JFactory;
@@ -98,13 +107,37 @@ public class JModuleHelper {
     }
 
     public static void renderModule(Context context, Module module, LinearLayout linear_layout)  {
+
         Params params=module.getParams();
-       String android_render = params.getAndroidRender();
-        if (android_render.equals("auto")) {
-            auto_render_module(context, module, linear_layout);
-        } else {
-            customizable_render_module(context, module, linear_layout);
+        String module_name=module.getModuleName();
+        Timber.d("module: %s",module_name);
+        Class<?> class_fragment = null;
+        try {
+            class_fragment = Class.forName("vantinviet.banhangonline88.modules." + module_name+"."+module_name);
+            Constructor<?> cons = class_fragment.getConstructor(Context.class,Module.class,LinearLayout.class);
+            Object object = cons.newInstance(context,module,linear_layout);
+        } catch (ClassNotFoundException e) {
+            String android_render = params.getAndroidRender();
+            if (android_render.equals("auto")) {
+                auto_render_module(context, module, linear_layout);
+            } else {
+                customizable_render_module(context, module, linear_layout);
+            }
+
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (java.lang.InstantiationException e) {
+            e.printStackTrace();
         }
+
+
+
+
+
 
     }
 

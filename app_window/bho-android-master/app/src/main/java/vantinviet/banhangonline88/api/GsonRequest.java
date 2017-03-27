@@ -41,7 +41,7 @@ public class GsonRequest<T> extends Request<T> {
     /**
      * Default charset for JSON request.
      */
-    private static final String PROTOCOL_CHARSET = "utf-8";
+    public static final String PROTOCOL_CHARSET = "utf-8";
 
     /**
      * Class of object which is serializable from request.

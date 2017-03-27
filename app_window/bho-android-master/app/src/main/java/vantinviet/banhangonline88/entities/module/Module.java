@@ -1,5 +1,9 @@
 package vantinviet.banhangonline88.entities.module;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.widget.LinearLayout;
+
 import com.google.gson.annotations.SerializedName;
 
 import org.json.JSONObject;
@@ -13,14 +17,15 @@ import vantinviet.banhangonline88.libraries.joomla.form.JFormField;
  */
 
 public class Module {
-    int id;
-    String title;
-    String module;
-    String position;
-    String showtitle;
-    String response;
+    protected int id;
+    protected String title;
+    protected String module;
+    protected String position;
+    protected String shotitle;
+    protected String response;
     @SerializedName("params")
-    Params params;
+    protected Params params;
+    protected String strparams="";
     private ArrayList<JFormField> fields;
     private JSONObject item;
     private ArrayList<JFormField> controlItems=new ArrayList<JFormField>();
@@ -35,7 +40,6 @@ public class Module {
                 ", title='" + title + '\'' +
                 ", module='" + module + '\'' +
                 ", position='" + position + '\'' +
-                ", showtitle='" + showtitle + '\'' +
                 ", response='" + response + '\'' +
                 ", params='" + params + '\'' +
                 '}';
@@ -74,5 +78,21 @@ public class Module {
 
     public String getContent() {
         return content;
+    }
+
+    public String getModuleName() {
+        return module;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getStrparams() {
+        return strparams;
+    }
+
+    public String getResponse() {
+        return response;
     }
 }

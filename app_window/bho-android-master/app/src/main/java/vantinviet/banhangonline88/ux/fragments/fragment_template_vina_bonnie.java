@@ -119,16 +119,19 @@ public class fragment_template_vina_bonnie extends Fragment {
                 LinearLayout new_column_linear_layout=new LinearLayout(getContext());
                 new_column_linear_layout.setLayoutParams(layout_params);
                 new_column_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
-                add_text_view_test(new_column_linear_layout,column.getPosition());
+                //add_text_view_test(new_column_linear_layout,column.getType());
                 ArrayList<Row> list_row=column.getRows();
                 String type=column.getType();
                 String position=column.getPosition();
+                Timber.d("position name(%s)",position);
                 if(type.equals("modules")){
+
                     ArrayList<Module> modules=page.getModules();
                     for (Module module : modules)
                     {
                         if(module.getPosition().equals(position)){
-                            //add_text_view_test(new_column_linear_layout,"hello");
+
+                            //add_text_view_test(new_column_linear_layout,position);
                             JModuleHelper.renderModule(getContext(),module, new_column_linear_layout);
                         }
                     }
@@ -142,7 +145,7 @@ public class fragment_template_vina_bonnie extends Fragment {
 
             }
 
-            add_text_view_test(new_row_linear_layout,row.getName());
+            //add_text_view_test(new_row_linear_layout,row.getName());
 
             new_row_linear_layout.addView(new_wrapper_of_row_linear_layout);
             HorizontalScrollView horizontal_scrollview=new HorizontalScrollView(getContext());
