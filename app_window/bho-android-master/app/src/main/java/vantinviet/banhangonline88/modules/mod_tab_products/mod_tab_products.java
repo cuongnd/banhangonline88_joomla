@@ -62,7 +62,7 @@ public class mod_tab_products extends ActionBarActivity implements MaterialTabLi
 
         tabHost = new MaterialTabHost(mInstance);
 
-        tabHost.setLayoutParams(new LinearLayout.LayoutParams(MATCH_PARENT, 300));
+        tabHost.setLayoutParams(new LinearLayout.LayoutParams(MATCH_PARENT, 600));
         // insert all tabs from pagerAdapter data
         pager = new ViewPager(mInstance);
         // init view pager
@@ -97,6 +97,7 @@ public class mod_tab_products extends ActionBarActivity implements MaterialTabLi
 
     @Override
     public void onTabSelected(MaterialTab tab) {
+        Timber.d("hello onTabSelected");
         pager.setCurrentItem(tab.getPosition());
     }
 
@@ -118,6 +119,7 @@ public class mod_tab_products extends ActionBarActivity implements MaterialTabLi
         }
 
         public Fragment getItem(int num) {
+            Timber.d("hello Fragment");
             return new FragmentText();
         }
 
