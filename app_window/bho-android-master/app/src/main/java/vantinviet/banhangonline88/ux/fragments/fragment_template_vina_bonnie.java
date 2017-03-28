@@ -30,6 +30,8 @@ import vantinviet.banhangonline88.entities.template.bootstrap.Row;
 import vantinviet.banhangonline88.libraries.cms.module.JModuleHelper;
 import vantinviet.banhangonline88.ux.MainActivity;
 
+import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
+import static android.widget.ListPopupWindow.MATCH_PARENT;
 import static vantinviet.banhangonline88.ux.MainActivity.mInstance;
 
 /**
@@ -91,7 +93,7 @@ public class fragment_template_vina_bonnie extends Fragment {
         String screenSize = Integer.toString(width / screenDensity) + "x" + Integer.toString(height);
         System.out.println(width / screenDensity);
 
-        render_layout(layout,rootLinearLayout,screen_size_width,LayoutParams.WRAP_CONTENT);
+        render_layout(layout,rootLinearLayout,screen_size_width, WRAP_CONTENT);
         return view;
     }
 
@@ -130,9 +132,12 @@ public class fragment_template_vina_bonnie extends Fragment {
                     for (Module module : modules)
                     {
                         if(module.getPosition().equals(position)){
-
+                            LayoutParams module_layout_params = new LayoutParams(MATCH_PARENT,WRAP_CONTENT  );
+                            LinearLayout new_module_linear_layout=new LinearLayout(getContext());
+                            new_module_linear_layout.setLayoutParams(module_layout_params);
                             //add_text_view_test(new_column_linear_layout,position);
-                            JModuleHelper.renderModule(getContext(),module, new_column_linear_layout);
+                            JModuleHelper.renderModule(getContext(),module, new_module_linear_layout);
+                            new_column_linear_layout.addView(new_module_linear_layout);
                         }
                     }
 

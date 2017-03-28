@@ -18,13 +18,11 @@ import org.json.JSONObject;
 public class mod_menu {
 
     public static  Context main_context;
-    private final Context context;
     private final Module module;
     private final LinearLayout linear_layout;
 
     @SuppressLint("ValidFragment")
-    public mod_menu(Context context, Module module, LinearLayout linear_layout) {
-        this.context=context;
+    public mod_menu(Module module, LinearLayout linear_layout) {
         this.module=module;
         this.linear_layout=linear_layout;
         Timber.d("hello %s", this.getClass().getSimpleName());

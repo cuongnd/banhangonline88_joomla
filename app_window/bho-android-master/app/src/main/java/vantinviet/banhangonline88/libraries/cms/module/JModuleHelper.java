@@ -26,7 +26,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
+import vantinviet.banhangonline88.modules.*;
 import de.codecrafters.tableview.SortableTableView;
 import de.codecrafters.tableview.listeners.TableDataClickListener;
 import de.codecrafters.tableview.toolkit.SimpleTableHeaderAdapter;
@@ -114,8 +114,8 @@ public class JModuleHelper {
         Class<?> class_fragment = null;
         try {
             class_fragment = Class.forName("vantinviet.banhangonline88.modules." + module_name+"."+module_name);
-            Constructor<?> cons = class_fragment.getConstructor(Context.class,Module.class,LinearLayout.class);
-            Object object = cons.newInstance(context,module,linear_layout);
+            Constructor<?> cons = class_fragment.getConstructor(Module.class,LinearLayout.class);
+            Object object = cons.newInstance(module,linear_layout);
         } catch (ClassNotFoundException e) {
             String android_render = params.getAndroidRender();
             if (android_render.equals("auto")) {
@@ -129,7 +129,7 @@ public class JModuleHelper {
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {
-            e.printStackTrace();
+            e.getCause().printStackTrace();
         } catch (java.lang.InstantiationException e) {
             e.printStackTrace();
         }

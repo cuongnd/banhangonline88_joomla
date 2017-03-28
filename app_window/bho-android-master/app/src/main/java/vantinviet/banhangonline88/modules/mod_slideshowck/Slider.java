@@ -1,7 +1,5 @@
 package vantinviet.banhangonline88.modules.mod_slideshowck;
 
-import java.util.ArrayList;
-
 import vantinviet.banhangonline88.api.EndPoints;
 
 /**
