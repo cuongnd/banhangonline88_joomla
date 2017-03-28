@@ -161,6 +161,8 @@ public class PageMenuItemFragment extends Fragment {
                         FragmentManager frgManager = getFragmentManager();
                         FragmentTransaction fragmentTransaction = frgManager.beginTransaction();
                         fragmentTransaction.setAllowOptimization(false);
+                        app.fragment=fragment;
+                        app.frgManager=frgManager;
                         fragmentTransaction.replace(R.id.main_content_frame, fragment).commit();
                         frgManager.executePendingTransactions();
 

@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import timber.log.Timber;
 import vantinviet.banhangonline88.utils.Utils;
 
+import static android.view.ViewGroup.LayoutParams.FILL_PARENT;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 import static android.widget.ListPopupWindow.MATCH_PARENT;
 import static vantinviet.banhangonline88.ux.MainActivity.mInstance;
@@ -43,7 +44,7 @@ public class mod_slideshowck {
         ArrayList<Slider> list_slide = Utils.getGsonParser().fromJson(response, listType);
         Timber.d("mod_slideshowck list_slide %s",list_slide.toString());
         SliderLayout mDemoSlider =new SliderLayout(mInstance);
-        mDemoSlider.setLayoutParams(new LinearLayout.LayoutParams(WRAP_CONTENT, 400));
+        mDemoSlider.setLayoutParams(new LinearLayout.LayoutParams(MATCH_PARENT, 400));
         if(list_slide!=null)for (Slider item: list_slide) {
             TextSliderView textSliderView = new TextSliderView(mInstance);
             // initialize a SliderLayout

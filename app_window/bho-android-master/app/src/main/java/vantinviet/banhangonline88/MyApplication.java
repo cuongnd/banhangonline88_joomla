@@ -15,6 +15,8 @@ import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.VisibleForTesting;
 import android.support.test.espresso.IdlingResource;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.NotificationCompat;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
@@ -55,6 +57,8 @@ public class MyApplication extends Application {
     private static MyApplication mInstance;
 
     private RequestQueue mRequestQueue;
+    public Fragment fragment;
+    public FragmentManager frgManager;
 
 
     public static synchronized MyApplication getInstance() {
@@ -232,6 +236,14 @@ public class MyApplication extends Application {
         url=url+"&get_page_config_app=1&ignoreMessages=true&format=json&os=android&token="+session+"&"+session+"=1";
         return url;
 
+    }
+
+    public Fragment getFragment() {
+        return fragment;
+    }
+
+    public FragmentManager getFrgManager() {
+        return frgManager;
     }
     //////////////////////// end of Volley request. ///////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -15,6 +15,7 @@
  *******************************************************************************/
 package vantinviet.banhangonline88.ux;
 
+import android.app.ActivityGroup;
 import android.app.NotificationManager;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;

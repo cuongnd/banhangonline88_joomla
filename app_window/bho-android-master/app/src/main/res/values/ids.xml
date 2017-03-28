@@ -6,4 +6,6 @@
     <item name="container" type="id">sdfsd</item>
     <item name="placeholder" type="id">sfsd</item>
     <item name="lblText" type="id">sfsd</item>
+    <item name="viewpager" type="id">mytab</item>
+    <item name="materialTabHost" type="id">dsdsdsds</item>
 </resources>

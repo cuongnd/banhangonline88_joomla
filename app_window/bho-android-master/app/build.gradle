@@ -114,6 +114,7 @@ dependencies {
     compile 'com.daimajia.slider:library:1.1.5'
     compile project(path: ':tableview')
     compile 'im.ene.toro2:toro-ext-exoplayer2:2.1.0'
+    compile 'com.github.markushi:android-ui:1.2'
 }
 
 apply plugin: 'com.google.gms.google-services'

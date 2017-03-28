@@ -6,6 +6,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,8 +21,12 @@ import android.widget.TabWidget;
 import android.widget.TextView;
 
 import timber.log.Timber;
+import vantinviet.banhangonline88.MyApplication;
 import vantinviet.banhangonline88.R;
 import vantinviet.banhangonline88.entities.module.Module;
+import vantinviet.banhangonline88.libraries.tab.materialtabs.MaterialTab;
+import vantinviet.banhangonline88.libraries.tab.materialtabs.MaterialTabHost;
+import vantinviet.banhangonline88.libraries.tab.materialtabs.MaterialTabListener;
 
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 import static android.widget.ListPopupWindow.MATCH_PARENT;
@@ -28,12 +37,17 @@ import static vantinviet.banhangonline88.ux.MainActivity.mInstance;
 /**
  * Fragment provides the account screen with options such as logging, editing and more.
  */
-public class mod_tab_products extends TabActivity {
+public class mod_tab_products extends ActionBarActivity implements MaterialTabListener {
 
 
     private final Module module;
     private final LinearLayout linear_layout;
     private static final String KEY_DEMO = "demo";
+    private MaterialTabHost tabHost;
+    private ViewPager pager;
+    private ViewPagerAdapter adapter;
+    private MyApplication app;
+
     public mod_tab_products(Module module, LinearLayout linear_layout) {
         this.module=module;
         this.linear_layout=linear_layout;
@@ -41,50 +55,81 @@ public class mod_tab_products extends TabActivity {
     }
 
     private void init() {
+        app= MyApplication.getInstance();
+
         String response=this.module.getResponse();
         Timber.d("mod_tab_products response %s",response.toString());
-        TextView tv=new TextView(mInstance);
-        tv.setText("Tab1Activity");
-        tv.setLayoutParams(new LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT));
-        linear_layout.addView(tv);
+
+        tabHost = new MaterialTabHost(mInstance);
+
+        tabHost.setLayoutParams(new LinearLayout.LayoutParams(MATCH_PARENT, 300));
+        // insert all tabs from pagerAdapter data
+        pager = new ViewPager(mInstance);
+        // init view pager
+        adapter = new ViewPagerAdapter( app.getFrgManager());
+        pager.setAdapter(adapter);
+        pager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+            @Override
+            public void onPageSelected(int position) {
+                // when user do a swipe the selected tab change
+                tabHost.setSelectedNavigationItem(position);
+
+            }
+        });
 
 
+
+        for (int i = 0; i < adapter.getCount(); i++) {
+            tabHost.addTab(
+                    tabHost.newTab()
+                            .setText(adapter.getPageTitle(i))
+                            .setTabListener(this)
+            );
+
+        }
+
+
+        linear_layout.addView(tabHost);
 
 
 
     }
-    private void setNewTab(Context context, TabHost tabHost, String tag, int title, int icon, int contentID ){
-        TabHost.TabSpec tabSpec = tabHost.newTabSpec(tag);
-        String titleString = "title";
-        tabSpec.setIndicator(titleString, context.getResources().getDrawable(android.R.drawable.star_on));
-        tabSpec.setContent(contentID);
-        tabHost.addTab(tabSpec);
-    }
-    public static TabHost createTabHost(Context context) {
-        // Create the TabWidget (the tabs)
-        TabWidget tabWidget = new TabWidget(context);
-        tabWidget.setId(android.R.id.tabs);
 
-        // Create the FrameLayout (the content area)
-        FrameLayout frame = new FrameLayout(context);
-        frame.setId(android.R.id.tabcontent);
-        LinearLayout.LayoutParams frameLayoutParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1);
-        frameLayoutParams.setMargins(4, 4, 4, 4);
-        frame.setLayoutParams(frameLayoutParams);
-
-        // Create the container for the above widgets
-        LinearLayout tabHostLayout = new LinearLayout(context);
-        tabHostLayout.setOrientation(LinearLayout.VERTICAL);
-        tabHostLayout.addView(tabWidget);
-        tabHostLayout.addView(frame);
-
-        // Create the TabHost and add the container to it.
-        TabHost tabHost = new TabHost(context, null);
-        tabHost.addView(tabHostLayout);
-        tabHost.setup();
-
-        return tabHost;
+    @Override
+    public void onTabSelected(MaterialTab tab) {
+        pager.setCurrentItem(tab.getPosition());
     }
 
+    @Override
+    public void onTabReselected(MaterialTab tab) {
+
+    }
+
+    @Override
+    public void onTabUnselected(MaterialTab tab) {
+
+    }
+
+    private class ViewPagerAdapter extends FragmentStatePagerAdapter {
+
+        public ViewPagerAdapter(FragmentManager fm) {
+            super(fm);
+
+        }
+
+        public Fragment getItem(int num) {
+            return new FragmentText();
+        }
+
+        @Override
+        public int getCount() {
+            return 3;
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return "Sezione " + position;
+        }
+
+    }
 }
