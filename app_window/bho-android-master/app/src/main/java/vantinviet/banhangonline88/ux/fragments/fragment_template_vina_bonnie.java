@@ -121,12 +121,22 @@ public class fragment_template_vina_bonnie extends Fragment {
                 LinearLayout new_column_linear_layout=new LinearLayout(getContext());
                 new_column_linear_layout.setLayoutParams(layout_params);
                 new_column_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
+
+                LayoutParams new_vertical_wrapper_of_column_linear_layout_params = new LayoutParams(MATCH_PARENT,WRAP_CONTENT  );
+                LinearLayout new_wrapper_of_column_linear_layout=new LinearLayout(getContext());
+                new_wrapper_of_column_linear_layout.setLayoutParams(new_vertical_wrapper_of_column_linear_layout_params);
+                new_wrapper_of_column_linear_layout.setOrientation(LinearLayout.VERTICAL);
+
+
                 //add_text_view_test(new_column_linear_layout,column.getType());
                 ArrayList<Row> list_row=column.getRows();
                 String type=column.getType();
                 String position=column.getPosition();
                 Timber.d("position name(%s)",position);
                 if(type.equals("modules")){
+
+
+
 
                     ArrayList<Module> modules=page.getModules();
                     for (Module module : modules)
@@ -135,18 +145,18 @@ public class fragment_template_vina_bonnie extends Fragment {
                             LayoutParams module_layout_params = new LayoutParams(MATCH_PARENT,WRAP_CONTENT  );
                             LinearLayout new_module_linear_layout=new LinearLayout(getContext());
                             new_module_linear_layout.setLayoutParams(module_layout_params);
+                            new_module_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
                             //add_text_view_test(new_column_linear_layout,position);
                             JModuleHelper.renderModule(getContext(),module, new_module_linear_layout);
-                            new_column_linear_layout.addView(new_module_linear_layout);
+                            new_wrapper_of_column_linear_layout.addView(new_module_linear_layout);
                         }
                     }
 
                 }
+                new_column_linear_layout.addView(new_wrapper_of_column_linear_layout);
                 Timber.d("column position(%s),type(%s) span(%s)",column.getPosition(),column.getType(),column.getSpan());
                 render_layout(list_row,new_column_linear_layout,column_width,screen_size_heght);
-                ScrollView column_scroll_view=new ScrollView(getContext());
-                column_scroll_view.addView(new_column_linear_layout);
-                new_wrapper_of_row_linear_layout.addView(column_scroll_view);
+                new_wrapper_of_row_linear_layout.addView(new_column_linear_layout);
 
             }
 
