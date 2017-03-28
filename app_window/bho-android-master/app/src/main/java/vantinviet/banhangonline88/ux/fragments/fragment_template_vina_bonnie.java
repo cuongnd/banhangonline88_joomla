@@ -122,7 +122,7 @@ public class fragment_template_vina_bonnie extends Fragment {
                 new_column_linear_layout.setLayoutParams(layout_params);
                 new_column_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
 
-                LayoutParams new_vertical_wrapper_of_column_linear_layout_params = new LayoutParams(MATCH_PARENT,WRAP_CONTENT  );
+                LayoutParams new_vertical_wrapper_of_column_linear_layout_params = new LayoutParams(column_width,WRAP_CONTENT  );
                 LinearLayout new_wrapper_of_column_linear_layout=new LinearLayout(getContext());
                 new_wrapper_of_column_linear_layout.setLayoutParams(new_vertical_wrapper_of_column_linear_layout_params);
                 new_wrapper_of_column_linear_layout.setOrientation(LinearLayout.VERTICAL);
