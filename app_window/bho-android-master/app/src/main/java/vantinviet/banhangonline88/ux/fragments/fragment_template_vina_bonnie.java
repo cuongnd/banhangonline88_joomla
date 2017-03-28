@@ -153,9 +153,10 @@ public class fragment_template_vina_bonnie extends Fragment {
                     }
 
                 }
-                new_column_linear_layout.addView(new_wrapper_of_column_linear_layout);
+
                 Timber.d("column position(%s),type(%s) span(%s)",column.getPosition(),column.getType(),column.getSpan());
-                render_layout(list_row,new_column_linear_layout,column_width,screen_size_heght);
+                render_layout(list_row,new_wrapper_of_column_linear_layout,column_width,screen_size_heght);
+                new_column_linear_layout.addView(new_wrapper_of_column_linear_layout);
                 new_wrapper_of_row_linear_layout.addView(new_column_linear_layout);
 
             }
