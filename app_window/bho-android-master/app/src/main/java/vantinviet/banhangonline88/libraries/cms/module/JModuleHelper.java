@@ -1,9 +1,6 @@
 package vantinviet.banhangonline88.libraries.cms.module;
 
 import android.content.Context;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
@@ -26,7 +23,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import vantinviet.banhangonline88.modules.*;
+
 import de.codecrafters.tableview.SortableTableView;
 import de.codecrafters.tableview.listeners.TableDataClickListener;
 import de.codecrafters.tableview.toolkit.SimpleTableHeaderAdapter;
@@ -34,10 +31,7 @@ import de.codecrafters.tableview.toolkit.SortStateViewProviders;
 import de.codecrafters.tableview.toolkit.TableDataRowColorizers;
 import timber.log.Timber;
 import vantinviet.banhangonline88.R;
-import vantinviet.banhangonline88.modules.*;
 import vantinviet.banhangonline88.configuration.JConfig;
-import vantinviet.banhangonline88.entities.Page;
-import vantinviet.banhangonline88.entities.drawerMenu.DrawerMenuItem;
 import vantinviet.banhangonline88.entities.module.Module;
 import vantinviet.banhangonline88.entities.module.Params;
 import vantinviet.banhangonline88.libraries.joomla.JFactory;
@@ -227,7 +221,7 @@ public class JModuleHelper {
     }
     private static void auto_render_module_form_html(Context context, Module module, View linear_layout) {
 
-        String content=module.getContent();
+        String content=module.getAcontent();
         String header = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">"
                 + "<html>  <head>  <meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\">"
                 + "</head>  <body>";

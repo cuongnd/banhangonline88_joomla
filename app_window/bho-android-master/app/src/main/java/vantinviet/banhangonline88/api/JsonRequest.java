@@ -98,7 +98,9 @@ public class JsonRequest extends JsonObjectRequest {
         } catch (Exception e) {
             return Response.error(new ParseError(e));
         }
-        return super.parseNetworkResponse(response);
+        Response<JSONObject> response_json_object=  super.parseNetworkResponse(response);
+
+        return response_json_object;
     }
 
     @Override

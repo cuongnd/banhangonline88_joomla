@@ -1,25 +1,59 @@
 package vantinviet.banhangonline88.ux.fragments;
 
+import android.annotation.TargetApi;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.beardedhen.androidbootstrap.BootstrapEditText;
+import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 import com.google.gson.Gson;
+import com.google.gson.stream.JsonReader;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.StringReader;
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import timber.log.Timber;
 import vantinviet.banhangonline88.CONST;
@@ -29,6 +63,9 @@ import vantinviet.banhangonline88.api.EndPoints;
 import vantinviet.banhangonline88.api.GsonRequest;
 import vantinviet.banhangonline88.entities.Page;
 import vantinviet.banhangonline88.entities.drawerMenu.DrawerMenuItem;
+import vantinviet.banhangonline88.libraries.cms.application.AsyncJsonElementViewLoader;
+import vantinviet.banhangonline88.libraries.joomla.JFactory;
+import vantinviet.banhangonline88.libraries.legacy.application.JApplication;
 import vantinviet.banhangonline88.utils.MsgUtils;
 import vantinviet.banhangonline88.utils.Utils;
 import vantinviet.banhangonline88.ux.MainActivity;
@@ -37,7 +74,7 @@ import vantinviet.banhangonline88.ux.MainActivity;
  * Fragment allow displaying useful information content like web page.
  * Requires input argument - id of selected page. Pages are created in OpenShop server administration.
  */
-public class PageMenuItemFragment extends Fragment {
+public class PageMenuItemFragment extends Fragment  {
 
     /**
      * Name for input argument.
@@ -62,8 +99,7 @@ public class PageMenuItemFragment extends Fragment {
     // Content view elements
     private TextView pageTitle;
     private WebView pageContent;
-    private MyApplication app;
-    private Fragment fragment;
+    private static MyApplication app;
 
 
     /**
@@ -110,6 +146,100 @@ public class PageMenuItemFragment extends Fragment {
         return view;
     }
 
+    public void start_remote(String host){
+        WebViewClient web_view_client = new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                return false;
+            }
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+
+                view.loadUrl("javascript:HtmlViewer.showHTML" +
+                        "(document.getElementsByTagName('body')[0].innerHTML);");
+            }
+        };
+
+
+        WebView web_browser = JFactory.getWebBrowser();
+        web_browser.getSettings().setJavaScriptEnabled(true);
+        web_browser.getSettings().setSupportZoom(true);
+        web_browser.getSettings().setBuiltInZoomControls(true);
+        web_browser.setWebViewClient(web_view_client);
+
+
+        web_browser.clearHistory();
+        web_browser.clearFormData();
+        web_browser.clearCache(true);
+
+        System.out.println("-------host---------");
+        System.out.println(host);
+        System.out.println("-------host---------");
+        web_browser.loadUrl(host);
+        web_browser.addJavascriptInterface(new MyJavaScriptInterfaceWebsite(), "HtmlViewer");
+    }
+
+    private class MyJavaScriptInterfaceWebsite {
+        DrawerMenuItem drawerMenuItem =new DrawerMenuItem();
+        private  Fragment fragment=new Fragment();
+        public MyJavaScriptInterfaceWebsite() {
+        }
+        final DrawerMenuItem finalDrawerMenuItem = drawerMenuItem;
+        @JavascriptInterface
+        public void showHTML(String html) {
+            Timber.d("json_string %s",html);
+            byte[] data=Base64.decode(html, Base64.DEFAULT);
+            try {
+                html=new String(data, "UTF-8");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+            Timber.d("json_string %s",html);
+            Gson gson = new Gson();
+            JsonReader reader = new JsonReader(new StringReader(html));
+            reader.setLenient(true);
+
+            Page page = gson.fromJson(reader, Page.class);
+            String template=page.getTemplate().getTemplateName();
+            String str_fragmentManager = String.format("fragment_template_%s",template);
+            Timber.d("modules: %s",page.getModules().toString());
+            Timber.d("template: %s",str_fragmentManager);
+            Class<?> class_fragment = null;
+            try {
+                class_fragment = Class.forName("vantinviet.banhangonline88.ux.fragments." + str_fragmentManager);
+                Constructor<?> cons = class_fragment.getConstructor(DrawerMenuItem.class,Page.class);
+                Object object = cons.newInstance(finalDrawerMenuItem,page);
+                fragment=(Fragment)object;
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            } catch (java.lang.InstantiationException e) {
+                e.printStackTrace();
+            }
+            if (fragment != null) {
+                FragmentManager frgManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = frgManager.beginTransaction();
+                fragmentTransaction.setAllowOptimization(false);
+                fragmentTransaction.addToBackStack("hello");
+                fragmentTransaction.replace(R.id.main_content_frame, fragment).commit();
+            } else {
+                Timber.e(new RuntimeException(), "Replace fragments with null newFragment parameter.");
+            }
+
+
+
+
+        }
+
+    }
+
+
 
     public void load_page(final String json_page)  {
         Gson gson = new Gson();
@@ -130,9 +260,9 @@ public class PageMenuItemFragment extends Fragment {
         Timber.d("url:%s",url);
         app=MyApplication.getInstance();
         url=app.get_page_config_app(url);
+        start_remote(url);
 
-
-        final DrawerMenuItem finalDrawerMenuItem = drawerMenuItem;
+       /* final DrawerMenuItem finalDrawerMenuItem = drawerMenuItem;
         GsonRequest<Page> getPage = new GsonRequest<>(Request.Method.GET, url, null, Page.class,
                 new Response.Listener<Page>() {
                     @Override
@@ -178,7 +308,7 @@ public class PageMenuItemFragment extends Fragment {
         },getFragmentManager() ,null);
         getPage.setRetryPolicy(MyApplication.getDefaultRetryPolice());
         getPage.setShouldCache(false);
-        MyApplication.getInstance().addToRequestQueue(getPage, CONST.PAGE_REQUESTS_TAG);
+        MyApplication.getInstance().addToRequestQueue(getPage, CONST.PAGE_REQUESTS_TAG);*/
     }
 
 

@@ -15,6 +15,8 @@ import vantinviet.banhangonline88.libraries.joomla.uri.JUri;
 import vantinviet.banhangonline88.libraries.joomla.user.JUser;
 import vantinviet.banhangonline88.libraries.legacy.application.JApplication;
 
+import static vantinviet.banhangonline88.ux.MainActivity.mInstance;
+
 
 /**
  * Created by cuongnd on 6/8/2016.
@@ -93,7 +95,7 @@ public class JFactory {
     public static WebView getWebBrowser() {
         if(webBrowser==null)
         {
-            webBrowser=new WebView(context);
+            webBrowser=new WebView(mInstance);
         }
         return webBrowser;
     }
