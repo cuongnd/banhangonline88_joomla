@@ -27,7 +27,7 @@ public class Module {
     private ArrayList<JFormField> controlItems=new ArrayList<JFormField>();
     private ArrayList<JFormField> columnFields=new ArrayList<JFormField>();
     private ArrayList<String> items=new ArrayList<String>();
-    private String acontent ="";
+    private String content ="";
 
     @Override
     public String toString() {
@@ -72,8 +72,8 @@ public class Module {
         return items;
     }
 
-    public String getAcontent() {
-        return acontent;
+    public String getContent() {
+        return content;
     }
 
     public String getModuleName() {

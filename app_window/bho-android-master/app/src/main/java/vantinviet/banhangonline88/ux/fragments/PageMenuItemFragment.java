@@ -100,6 +100,9 @@ public class PageMenuItemFragment extends Fragment  {
     private TextView pageTitle;
     private WebView pageContent;
     private static MyApplication app;
+    private String data;
+    private String mimeType;
+    private String encoding;
 
 
     /**
@@ -155,10 +158,14 @@ public class PageMenuItemFragment extends Fragment  {
 
             @Override
             public void onPageFinished(WebView view, String url) {
-
                 view.loadUrl("javascript:HtmlViewer.showHTML" +
                         "(document.getElementsByTagName('body')[0].innerHTML);");
             }
+
+
+
+
+
         };
 
 

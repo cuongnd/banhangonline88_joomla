@@ -221,7 +221,7 @@ public class JModuleHelper {
     }
     private static void auto_render_module_form_html(Context context, Module module, View linear_layout) {
 
-        String content=module.getAcontent();
+        String content=module.getContent();
         String header = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">"
                 + "<html>  <head>  <meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\">"
                 + "</head>  <body>";
