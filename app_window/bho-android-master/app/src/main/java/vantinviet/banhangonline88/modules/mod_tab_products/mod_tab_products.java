@@ -47,7 +47,7 @@ public class mod_tab_products extends ActionBarActivity implements MaterialTabLi
     private ViewPager pager;
     private ViewPagerAdapter adapter;
     private MyApplication app;
-
+    LinearLayout tab_content;
     public mod_tab_products(Module module, LinearLayout linear_layout) {
         this.module=module;
         this.linear_layout=linear_layout;
@@ -60,13 +60,25 @@ public class mod_tab_products extends ActionBarActivity implements MaterialTabLi
         String response=this.module.getResponse();
         Timber.d("mod_tab_products response %s",response.toString());
 
+
+        LinearLayout.LayoutParams new_vertical_wrapper_of_module_linear_layout_params = new LinearLayout.LayoutParams(MATCH_PARENT,WRAP_CONTENT  );
+        LinearLayout new_wrapper_of_module_content_linear_layout=new LinearLayout(mInstance);
+        new_wrapper_of_module_content_linear_layout.setLayoutParams(new_vertical_wrapper_of_module_linear_layout_params);
+        new_wrapper_of_module_content_linear_layout.setOrientation(LinearLayout.VERTICAL);
+
+
+
         tabHost = new MaterialTabHost(mInstance);
 
-        tabHost.setLayoutParams(new LinearLayout.LayoutParams(MATCH_PARENT, 600));
+        tabHost.setLayoutParams(new LinearLayout.LayoutParams(MATCH_PARENT, 100));
         // insert all tabs from pagerAdapter data
         pager = new ViewPager(mInstance);
+
+        pager.setLayoutParams(new LinearLayout.LayoutParams(WRAP_CONTENT, 100));
+
+
         // init view pager
-        adapter = new ViewPagerAdapter( app.getFrgManager());
+        adapter = new ViewPagerAdapter( (getSupportFragmentManager()));
         pager.setAdapter(adapter);
         pager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
@@ -88,8 +100,23 @@ public class mod_tab_products extends ActionBarActivity implements MaterialTabLi
 
         }
 
+        tab_content=new LinearLayout(mInstance);
+        tab_content.setLayoutParams(new LinearLayout.LayoutParams(MATCH_PARENT, 500));
 
-        linear_layout.addView(tabHost);
+
+        tabHost.setLayoutParams(new LinearLayout.LayoutParams(MATCH_PARENT, 100));
+
+
+        new_wrapper_of_module_content_linear_layout.addView(tabHost);
+        new_wrapper_of_module_content_linear_layout.addView(tab_content);
+
+
+
+
+        linear_layout.addView(new_wrapper_of_module_content_linear_layout);
+
+
+
 
 
 
@@ -98,6 +125,10 @@ public class mod_tab_products extends ActionBarActivity implements MaterialTabLi
     @Override
     public void onTabSelected(MaterialTab tab) {
         Timber.d("hello onTabSelected");
+        TextView text = new TextView(mInstance);
+        text.setText("Fragment content");
+        text.setGravity(Gravity.CENTER);
+        tab_content.addView(text);
         pager.setCurrentItem(tab.getPosition());
     }
 
@@ -117,7 +148,7 @@ public class mod_tab_products extends ActionBarActivity implements MaterialTabLi
             super(fm);
 
         }
-
+        @Override
         public Fragment getItem(int num) {
             Timber.d("hello Fragment");
             return new FragmentText();
@@ -125,7 +156,7 @@ public class mod_tab_products extends ActionBarActivity implements MaterialTabLi
 
         @Override
         public int getCount() {
-            return 3;
+            return 10;
         }
 
         @Override
