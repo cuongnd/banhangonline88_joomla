@@ -3,6 +3,7 @@ package vantinviet.banhangonline88.ux.fragments;
 import android.annotation.TargetApi;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -61,6 +62,7 @@ import vantinviet.banhangonline88.MyApplication;
 import vantinviet.banhangonline88.R;
 import vantinviet.banhangonline88.api.EndPoints;
 import vantinviet.banhangonline88.api.GsonRequest;
+import android.content.SharedPreferences;
 import vantinviet.banhangonline88.entities.Page;
 import vantinviet.banhangonline88.entities.drawerMenu.DrawerMenuItem;
 import vantinviet.banhangonline88.libraries.cms.application.AsyncJsonElementViewLoader;
@@ -69,6 +71,11 @@ import vantinviet.banhangonline88.libraries.legacy.application.JApplication;
 import vantinviet.banhangonline88.utils.MsgUtils;
 import vantinviet.banhangonline88.utils.Utils;
 import vantinviet.banhangonline88.ux.MainActivity;
+
+import static android.content.Context.MODE_PRIVATE;
+import static vantinviet.banhangonline88.SettingsMy.PREF_USER_EMAIL;
+import static vantinviet.banhangonline88.ux.MainActivity.MyPREFERENCES;
+import static vantinviet.banhangonline88.ux.MainActivity.SESSION;
 
 /**
  * Fragment allow displaying useful information content like web page.
@@ -84,6 +91,7 @@ public class PageMenuItemFragment extends Fragment  {
     private static final long TERMS_AND_CONDITIONS = -131;
     private static final String LINK = "link";
     private static final String PAGE_OBJECT = "page";
+    private static final String LIST_DATA_RESPONSE_BY_URL = "list_data_response_by_url";
 
     private ProgressDialog progressDialog;
 
@@ -103,8 +111,11 @@ public class PageMenuItemFragment extends Fragment  {
     private String data;
     private String mimeType;
     private String encoding;
-
-
+    DrawerMenuItem drawerMenuItem =new DrawerMenuItem();
+    private  Fragment fragment=new Fragment();
+    final DrawerMenuItem finalDrawerMenuItem = drawerMenuItem;
+    SharedPreferences sharedpreferences;
+    String url;
     /**
      * Create fragment instance which displays Terms and Conditions defined on server.
      *
@@ -150,98 +161,103 @@ public class PageMenuItemFragment extends Fragment  {
     }
 
     public void start_remote(String host){
-        WebViewClient web_view_client = new WebViewClient() {
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                return false;
-            }
+        sharedpreferences = MyApplication.getInstance().getSharedPreferences(LIST_DATA_RESPONSE_BY_URL,Context.MODE_PRIVATE);
 
-            @Override
-            public void onPageFinished(WebView view, String url) {
-                view.loadUrl("javascript:HtmlViewer.showHTML" +
-                        "(document.getElementsByTagName('body')[0].innerHTML);");
-            }
+        String response_data=sharedpreferences.getString(host,"");
+       if(response_data.equals("")) {
+           WebViewClient web_view_client = new WebViewClient() {
+               @Override
+               public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                   return false;
+               }
 
-
-
-
-
-        };
+               @Override
+               public void onPageFinished(WebView view, String url) {
+                   view.loadUrl("javascript:HtmlViewer.showHTML" +
+                           "(document.getElementsByTagName('body')[0].innerHTML);");
+               }
 
 
-        WebView web_browser = JFactory.getWebBrowser();
-        web_browser.getSettings().setJavaScriptEnabled(true);
-        web_browser.getSettings().setSupportZoom(true);
-        web_browser.getSettings().setBuiltInZoomControls(true);
-        web_browser.setWebViewClient(web_view_client);
+           };
 
 
-        web_browser.clearHistory();
-        web_browser.clearFormData();
-        web_browser.clearCache(true);
+           WebView web_browser = JFactory.getWebBrowser();
+           web_browser.getSettings().setJavaScriptEnabled(true);
+           web_browser.getSettings().setSupportZoom(true);
+           web_browser.getSettings().setBuiltInZoomControls(true);
+           web_browser.setWebViewClient(web_view_client);
 
-        System.out.println("-------host---------");
-        System.out.println(host);
-        System.out.println("-------host---------");
-        web_browser.loadUrl(host);
-        web_browser.addJavascriptInterface(new MyJavaScriptInterfaceWebsite(), "HtmlViewer");
+
+           web_browser.clearHistory();
+           web_browser.clearFormData();
+           web_browser.clearCache(true);
+
+           System.out.println("-------host---------");
+           System.out.println(host);
+           System.out.println("-------host---------");
+           web_browser.loadUrl(host);
+           web_browser.addJavascriptInterface(new MyJavaScriptInterfaceWebsite(), "HtmlViewer");
+       }else{
+           go_to_page(response_data);
+       }
     }
 
+    public void go_to_page(String html){
+        byte[] data=Base64.decode(html, Base64.DEFAULT);
+        try {
+            html=new String(data, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        Timber.d("json_string %s",html);
+        Gson gson = new Gson();
+        JsonReader reader = new JsonReader(new StringReader(html));
+        reader.setLenient(true);
+
+        Page page = gson.fromJson(reader, Page.class);
+        String template=page.getTemplate().getTemplateName();
+        String str_fragmentManager = String.format("fragment_template_%s",template);
+        Timber.d("modules: %s",page.getModules().toString());
+        Timber.d("template: %s",str_fragmentManager);
+        Class<?> class_fragment = null;
+        try {
+            class_fragment = Class.forName("vantinviet.banhangonline88.ux.fragments." + str_fragmentManager);
+            Constructor<?> cons = class_fragment.getConstructor(DrawerMenuItem.class,Page.class);
+            Object object = cons.newInstance(finalDrawerMenuItem,page);
+            fragment=(Fragment)object;
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (java.lang.InstantiationException e) {
+            e.printStackTrace();
+        }
+        if (fragment != null) {
+            FragmentManager frgManager = getFragmentManager();
+            FragmentTransaction fragmentTransaction = frgManager.beginTransaction();
+            fragmentTransaction.setAllowOptimization(false);
+            fragmentTransaction.addToBackStack("hello");
+            fragmentTransaction.replace(R.id.main_content_frame, fragment).commit();
+        } else {
+            Timber.e(new RuntimeException(), "Replace fragments with null newFragment parameter.");
+        }
+    }
     private class MyJavaScriptInterfaceWebsite {
-        DrawerMenuItem drawerMenuItem =new DrawerMenuItem();
-        private  Fragment fragment=new Fragment();
+
         public MyJavaScriptInterfaceWebsite() {
         }
-        final DrawerMenuItem finalDrawerMenuItem = drawerMenuItem;
+
         @JavascriptInterface
         public void showHTML(String html) {
             Timber.d("json_string %s",html);
-            byte[] data=Base64.decode(html, Base64.DEFAULT);
-            try {
-                html=new String(data, "UTF-8");
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }
-            Timber.d("json_string %s",html);
-            Gson gson = new Gson();
-            JsonReader reader = new JsonReader(new StringReader(html));
-            reader.setLenient(true);
-
-            Page page = gson.fromJson(reader, Page.class);
-            String template=page.getTemplate().getTemplateName();
-            String str_fragmentManager = String.format("fragment_template_%s",template);
-            Timber.d("modules: %s",page.getModules().toString());
-            Timber.d("template: %s",str_fragmentManager);
-            Class<?> class_fragment = null;
-            try {
-                class_fragment = Class.forName("vantinviet.banhangonline88.ux.fragments." + str_fragmentManager);
-                Constructor<?> cons = class_fragment.getConstructor(DrawerMenuItem.class,Page.class);
-                Object object = cons.newInstance(finalDrawerMenuItem,page);
-                fragment=(Fragment)object;
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            } catch (NoSuchMethodException e) {
-                e.printStackTrace();
-            } catch (InvocationTargetException e) {
-                e.printStackTrace();
-            } catch (java.lang.InstantiationException e) {
-                e.printStackTrace();
-            }
-            if (fragment != null) {
-                FragmentManager frgManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = frgManager.beginTransaction();
-                fragmentTransaction.setAllowOptimization(false);
-                fragmentTransaction.addToBackStack("hello");
-                fragmentTransaction.replace(R.id.main_content_frame, fragment).commit();
-            } else {
-                Timber.e(new RuntimeException(), "Replace fragments with null newFragment parameter.");
-            }
-
-
-
-
+            SharedPreferences.Editor editor = sharedpreferences.edit();
+            editor.putString(url,html );
+            editor.commit();
+            go_to_page(html);
         }
 
     }
@@ -252,7 +268,6 @@ public class PageMenuItemFragment extends Fragment  {
         Gson gson = new Gson();
         DrawerMenuItem drawerMenuItem =new DrawerMenuItem();
 
-        String url="";
         if(json_page==null)
         {
             url=EndPoints.API_URL1+"?";
