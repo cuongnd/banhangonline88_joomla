@@ -93,7 +93,7 @@ public class mod_tab_products extends ActionBarActivity implements MaterialTabLi
 
 
         new_wrapper_of_module_content_linear_layout.addView(tabHost);
-        tab_content my_view=new tab_content(mInstance);
+        tab_content my_view=new tab_content(mInstance,this.module);
         my_view.setLayoutParams(new LinearLayout.LayoutParams(MATCH_PARENT, 500));
         new_wrapper_of_module_content_linear_layout.addView(my_view);
 

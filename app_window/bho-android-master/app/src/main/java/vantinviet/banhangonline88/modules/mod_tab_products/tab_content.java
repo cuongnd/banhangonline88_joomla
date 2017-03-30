@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.RelativeLayout;
 
 import vantinviet.banhangonline88.R;
+import vantinviet.banhangonline88.entities.module.Module;
 
 import static vantinviet.banhangonline88.libraries.joomla.JFactory.getContext;
 
@@ -21,23 +22,17 @@ import static vantinviet.banhangonline88.libraries.joomla.JFactory.getContext;
 public class tab_content extends RelativeLayout {
 
 
-    public tab_content(Context context) {
+    private Module module;
+
+    public tab_content(Context context, Module module) {
         super(context);
+        this.module=module;
         init(null, 0);
     }
 
-    public tab_content(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        init(attrs, 0);
-    }
-
-    public tab_content(Context context, AttributeSet attrs, int defStyle) {
-        super(context, attrs, defStyle);
-        init(attrs, defStyle);
-    }
-
     private void init(AttributeSet attrs, int defStyle) {
-        inflate(getContext(), R.layout.payment_dialog, this);
+        inflate(getContext(), R.layout.dialog_login, this);
+
     }
 
 
