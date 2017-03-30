@@ -9,6 +9,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -19,13 +20,17 @@ import vantinviet.banhangonline88.components.com_users.views.profile.view;
 /**
  * Created by neokree on 16/12/14.
  */
-public class FragmentText extends RelativeLayout {
 
-    public FragmentText(Context context) {
-        super(context);
-        init(null, 0);
-    }
-    private void init(AttributeSet attrs, int defStyle) {
-        inflate(getContext(), R.layout.modules_mod_tab_products_tmpl_default, this);
+/**
+ * Created by neokree on 16/12/14.
+ */
+public class FragmentText extends Fragment{
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        TextView text = new TextView(container.getContext());
+        text.setText("Fragment content");
+        text.setGravity(Gravity.CENTER);
+
+        return text;
     }
 }

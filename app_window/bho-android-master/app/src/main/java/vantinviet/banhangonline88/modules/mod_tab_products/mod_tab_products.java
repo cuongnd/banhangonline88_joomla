@@ -7,10 +7,13 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -29,9 +32,11 @@ import vantinviet.banhangonline88.entities.module.Module;
 
 import vantinviet.banhangonline88.utils.Utils;
 
+import static android.content.Context.LAYOUT_INFLATER_SERVICE;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 import static android.widget.ListPopupWindow.MATCH_PARENT;
 import static vantinviet.banhangonline88.R.id.tabHost;
+import static vantinviet.banhangonline88.libraries.joomla.JFactory.getContext;
 import static vantinviet.banhangonline88.ux.MainActivity.mInstance;
 
 
@@ -69,7 +74,7 @@ public class mod_tab_products extends ActionBarActivity implements MaterialTabLi
         pager = (ViewPager) object_tab_product_tmpl_default.findViewById(R.id.pager );
 
         // init view pager
-        adapter =new ViewPagerAdapter();
+        adapter =new ViewPagerAdapter(getContext());
         pager.setAdapter(adapter);
         pager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
@@ -116,18 +121,24 @@ public class mod_tab_products extends ActionBarActivity implements MaterialTabLi
 
     private class ViewPagerAdapter extends PagerAdapter {
 
+        Context mContext;
+        LayoutInflater mLayoutInflater;
 
-
-        public RelativeLayout getItem(int num) {
-            Timber.d("hello Fragment getItem");
-            FragmentText  FragmentText  = new FragmentText(mInstance);
-            return FragmentText;
+        public ViewPagerAdapter(Context context) {
+            mContext = context;
         }
         @Override
-        public Object instantiateItem(ViewGroup container, int position) {
-            Timber.d("hello Fragment getItem");
-            FragmentText  FragmentText  = new FragmentText(mInstance);
-            return FragmentText;
+        public void destroyItem(ViewGroup container, int position, Object object) {
+            // TODO Auto-generated method stub
+            ((ViewPager) container).removeView((View) object);
+        }
+
+
+        @Override
+        public LinearLayout instantiateItem(ViewGroup container, int position) {
+            LinearLayout linear_layout=new Module_tab_product_tmpl_default2(mInstance,module);
+            container.addView(linear_layout);
+            return  linear_layout;
         }
         public int getCount() {
             return 16;
