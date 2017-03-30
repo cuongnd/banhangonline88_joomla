@@ -92,7 +92,7 @@ public class fragment_template_vina_bonnie extends Fragment {
         }
         String screenSize = Integer.toString(width / screenDensity) + "x" + Integer.toString(height);
         System.out.println(width / screenDensity);
-
+        this.
         render_layout(layout,rootLinearLayout,screen_size_width, WRAP_CONTENT);
         return view;
     }

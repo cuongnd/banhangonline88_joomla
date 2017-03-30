@@ -1,28 +1,14 @@
 package vantinviet.banhangonline88.modules.mod_tab_products;
 
-import android.app.Activity;
-import android.app.TabActivity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import android.widget.TabHost;
-import android.widget.TabWidget;
-import android.widget.TextView;
 
 import timber.log.Timber;
 import vantinviet.banhangonline88.MyApplication;
-import vantinviet.banhangonline88.R;
 import vantinviet.banhangonline88.entities.module.Module;
 import vantinviet.banhangonline88.libraries.tab.materialtabs.MaterialTab;
 import vantinviet.banhangonline88.libraries.tab.materialtabs.MaterialTabHost;
@@ -30,7 +16,6 @@ import vantinviet.banhangonline88.libraries.tab.materialtabs.MaterialTabListener
 
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 import static android.widget.ListPopupWindow.MATCH_PARENT;
-import static vantinviet.banhangonline88.libraries.joomla.JFactory.getContext;
 import static vantinviet.banhangonline88.ux.MainActivity.mInstance;
 
 
@@ -108,7 +93,9 @@ public class mod_tab_products extends ActionBarActivity implements MaterialTabLi
 
 
         new_wrapper_of_module_content_linear_layout.addView(tabHost);
-        new_wrapper_of_module_content_linear_layout.addView(tab_content);
+        tab_content my_view=new tab_content(mInstance);
+        my_view.setLayoutParams(new LinearLayout.LayoutParams(MATCH_PARENT, 500));
+        new_wrapper_of_module_content_linear_layout.addView(my_view);
 
 
 
@@ -125,10 +112,8 @@ public class mod_tab_products extends ActionBarActivity implements MaterialTabLi
     @Override
     public void onTabSelected(MaterialTab tab) {
         Timber.d("hello onTabSelected");
-        TextView text = new TextView(mInstance);
-        text.setText("Fragment content");
-        text.setGravity(Gravity.CENTER);
-        tab_content.addView(text);
+       // LinearLayout text =  R.id.email_login_form;
+
         pager.setCurrentItem(tab.getPosition());
     }
 
