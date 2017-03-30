@@ -115,6 +115,7 @@ dependencies {
     compile project(path: ':tableview')
     compile 'im.ene.toro2:toro-ext-exoplayer2:2.1.0'
     compile 'com.github.markushi:android-ui:1.2'
+    compile project(path: ':MaterialTabsModule')
 }
 
 apply plugin: 'com.google.gms.google-services'

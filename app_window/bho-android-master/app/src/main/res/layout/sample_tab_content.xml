@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <vantinviet.banhangonline88.modules.mod_tab_products.tab_content
+    <vantinviet.banhangonline88.modules.mod_tab_products.Module_tab_product_tmpl_default
         android:id="@+id/tab_content"
         android:layout_width="351dp"
         android:layout_height="302dp"
