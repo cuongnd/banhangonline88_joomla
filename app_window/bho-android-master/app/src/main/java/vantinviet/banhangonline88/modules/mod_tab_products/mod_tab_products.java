@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
@@ -35,6 +36,7 @@ import vantinviet.banhangonline88.utils.Utils;
 import static android.content.Context.LAYOUT_INFLATER_SERVICE;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 import static android.widget.ListPopupWindow.MATCH_PARENT;
+import static vantinviet.banhangonline88.R.id.TextureView;
 import static vantinviet.banhangonline88.R.id.tabHost;
 import static vantinviet.banhangonline88.libraries.joomla.JFactory.getContext;
 import static vantinviet.banhangonline88.ux.MainActivity.mInstance;
@@ -74,7 +76,8 @@ public class mod_tab_products extends ActionBarActivity implements MaterialTabLi
         pager = (ViewPager) object_tab_product_tmpl_default.findViewById(R.id.pager );
 
         // init view pager
-        adapter =new ViewPagerAdapter(getContext());
+        FragmentManager fragManager = mInstance.getSupportFragmentManager();
+        adapter = new ViewPagerAdapter(fragManager);
         pager.setAdapter(adapter);
         pager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
@@ -119,36 +122,23 @@ public class mod_tab_products extends ActionBarActivity implements MaterialTabLi
 
     }
 
-    private class ViewPagerAdapter extends PagerAdapter {
+    private class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
-        Context mContext;
-        LayoutInflater mLayoutInflater;
 
-        public ViewPagerAdapter(Context context) {
-            mContext = context;
-        }
-        @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
-            // TODO Auto-generated method stub
-            ((ViewPager) container).removeView((View) object);
+        public ViewPagerAdapter(FragmentManager fm) {
+            super(fm);
         }
 
+        public Fragment getItem(int num) {
+            return new FragmentText();
+        }
 
         @Override
-        public LinearLayout instantiateItem(ViewGroup container, int position) {
-            LinearLayout linear_layout=new Module_tab_product_tmpl_default2(mInstance,module);
-            container.addView(linear_layout);
-            return  linear_layout;
-        }
         public int getCount() {
             return 16;
         }
 
         @Override
-        public boolean isViewFromObject(View view, Object object) {
-            return false;
-        }
-
         public CharSequence getPageTitle(int position) {
             return "Section " + position;
         }
