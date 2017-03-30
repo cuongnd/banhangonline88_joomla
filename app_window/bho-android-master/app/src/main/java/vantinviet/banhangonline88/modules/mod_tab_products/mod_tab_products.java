@@ -1,11 +1,16 @@
 package vantinviet.banhangonline88.modules.mod_tab_products;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -19,6 +24,7 @@ import timber.log.Timber;
 import vantinviet.banhangonline88.MyApplication;
 import vantinviet.banhangonline88.R;
 import vantinviet.banhangonline88.administrator.components.com_hikashop.classes.Category;
+import vantinviet.banhangonline88.components.com_users.views.profile.view;
 import vantinviet.banhangonline88.entities.module.Module;
 
 import vantinviet.banhangonline88.utils.Utils;
@@ -44,7 +50,7 @@ public class mod_tab_products extends ActionBarActivity implements MaterialTabLi
     Module_tab_product_tmpl_default object_tab_product_tmpl_default;
     ArrayList<Mod_tab_product_helper.List_category_product> list_main_category_product;
     private ViewPager pager;
-    private ViewPagerAdapter adapter;
+    private PagerAdapter adapter;
 
     public mod_tab_products(Module module, LinearLayout linear_layout) {
         this.module=module;
@@ -63,7 +69,7 @@ public class mod_tab_products extends ActionBarActivity implements MaterialTabLi
         pager = (ViewPager) object_tab_product_tmpl_default.findViewById(R.id.pager );
 
         // init view pager
-        adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter =new ViewPagerAdapter();
         pager.setAdapter(adapter);
         pager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
@@ -108,25 +114,30 @@ public class mod_tab_products extends ActionBarActivity implements MaterialTabLi
 
     }
 
-    private class ViewPagerAdapter extends FragmentStatePagerAdapter {
+    private class ViewPagerAdapter extends PagerAdapter {
 
-        public ViewPagerAdapter(FragmentManager fm) {
-            super(fm);
 
-        }
 
-        public Fragment getItem(int num) {
+        public RelativeLayout getItem(int num) {
             Timber.d("hello Fragment getItem");
-            FragmentText  FragmentText  = new FragmentText();
+            FragmentText  FragmentText  = new FragmentText(mInstance);
             return FragmentText;
         }
-
         @Override
+        public Object instantiateItem(ViewGroup container, int position) {
+            Timber.d("hello Fragment getItem");
+            FragmentText  FragmentText  = new FragmentText(mInstance);
+            return FragmentText;
+        }
         public int getCount() {
             return 16;
         }
 
         @Override
+        public boolean isViewFromObject(View view, Object object) {
+            return false;
+        }
+
         public CharSequence getPageTitle(int position) {
             return "Section " + position;
         }
