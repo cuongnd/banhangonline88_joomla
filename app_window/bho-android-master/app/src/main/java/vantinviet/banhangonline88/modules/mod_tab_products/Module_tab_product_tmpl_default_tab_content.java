@@ -40,7 +40,7 @@ public class Module_tab_product_tmpl_default_tab_content extends Fragment implem
     private MaterialTabHost tabHost;
     private ViewPager pager;
     private ViewPagerAdapter adapter;
-    private ArrayList<Category> list_sub_category_detail;
+    private static ArrayList<Category> list_sub_category_detail;
 
     public Module_tab_product_tmpl_default_tab_content(Mod_tab_product_helper.List_category_product list_category_product) {
         this.list_category_product=list_category_product;
@@ -94,7 +94,7 @@ public class Module_tab_product_tmpl_default_tab_content extends Fragment implem
 
     }
 
-    private class ViewPagerAdapter extends FragmentStatePagerAdapter {
+    public static class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
 
         public ViewPagerAdapter(FragmentManager fm) {
@@ -122,16 +122,17 @@ public class Module_tab_product_tmpl_default_tab_content extends Fragment implem
             return category.getName();
         }
 
-        public  class sub_category_content extends Fragment {
-            public sub_category_content(Category category) {
-
-            }
-            @Override
-            public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-                View view = inflater.inflate(R.layout.modules_mod_tab_products_tmpl_default_sub_tab_content, container, false);
-                return view;
-            }
+    }
+    public static   class sub_category_content extends Fragment {
+        public sub_category_content(Category category) {
 
         }
+        @Override
+        public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+            View view = inflater.inflate(R.layout.modules_mod_tab_products_tmpl_default_sub_tab_content, container, false);
+            return view;
+        }
+
     }
+
 }
