@@ -8,12 +8,10 @@
         android:orientation="horizontal"
         xmlns:android="http://schemas.android.com/apk/res/android">
 
-        <it.neokree.materialtabs.MaterialTabHost
-            android:id="@+id/tabHost"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_below="@+id/toolbar"
-            android:visibility="visible" />
+        <HorizontalScrollView android:layout_height="20dp"
+            android:layout_width="30dp">
+
+        </HorizontalScrollView>
     </LinearLayout>
 
     <LinearLayout
@@ -22,7 +20,7 @@
         android:orientation="horizontal">
 
         <android.support.v4.view.ViewPager
-            android:id="@+id/pager"
+            android:id="@+id/sub_page_view"
             android:layout_width="match_parent"
             android:layout_height="400dp"
             android:layout_below="@+id/tabHost">

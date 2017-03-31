@@ -3,9 +3,11 @@ package vantinviet.banhangonline88.modules.mod_tab_products;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
+import android.view.View;
 import android.widget.LinearLayout;
 
 import com.google.gson.reflect.TypeToken;
@@ -43,6 +45,7 @@ public class mod_tab_products extends ActionBarActivity implements MaterialTabLi
     MaterialTabHost tabHost;
     Module_tab_product_tmpl_default object_tab_product_tmpl_default;
     ArrayList<Mod_tab_product_helper.List_category_product> list_main_category_product;
+    ArrayList<Module_tab_product_tmpl_default_tab_content> list_module_tab_product_tmpl_default_tab_content;
     private ViewPager pager;
     private PagerAdapter adapter;
 
@@ -117,7 +120,7 @@ public class mod_tab_products extends ActionBarActivity implements MaterialTabLi
         }
 
         public Fragment getItem(int num) {
-            Mod_tab_product_helper.List_category_product list_category_product=list_main_category_product.get(num);
+            Mod_tab_product_helper.List_category_product list_category_product=list_main_category_product!=null?list_main_category_product.get(num):null;
             return new Module_tab_product_tmpl_default_tab_content(list_category_product);
         }
 
@@ -132,6 +135,17 @@ public class mod_tab_products extends ActionBarActivity implements MaterialTabLi
             return category.getName();
         }
 
+        @Override
+        public void destroyItem(View container, int position, Object object) {
+            super.destroyItem(container, position, object);
+
+            if (position <= getCount()) {
+                FragmentManager manager = ((Fragment) object).getFragmentManager();
+                FragmentTransaction trans = manager.beginTransaction();
+                trans.remove((Fragment) object);
+                trans.commit();
+            }
+        }
     }
 
 /*

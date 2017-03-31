@@ -1,30 +1,23 @@
 package vantinviet.banhangonline88.modules.mod_tab_products;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
-import android.util.AttributeSet;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
 import it.neokree.materialtabs.MaterialTab;
 import it.neokree.materialtabs.MaterialTabHost;
 import it.neokree.materialtabs.MaterialTabListener;
-import timber.log.Timber;
 import vantinviet.banhangonline88.R;
 import vantinviet.banhangonline88.administrator.components.com_hikashop.classes.Category;
-import vantinviet.banhangonline88.components.com_users.views.profile.view;
 
 import static vantinviet.banhangonline88.ux.MainActivity.mInstance;
 
@@ -37,9 +30,9 @@ import static vantinviet.banhangonline88.ux.MainActivity.mInstance;
  */
 public class Module_tab_product_tmpl_default_tab_content extends Fragment implements MaterialTabListener {
     private final Mod_tab_product_helper.List_category_product list_category_product;
-    private MaterialTabHost tabHost;
-    private ViewPager pager;
-    private ViewPagerAdapter adapter;
+    private MaterialTabHost sub_tab_host;
+    private ViewPager sub_page_view;
+    private SubViewPagerAdapter sub_adapter;
     private static ArrayList<Category> list_sub_category_detail;
 
     public Module_tab_product_tmpl_default_tab_content(Mod_tab_product_helper.List_category_product list_category_product) {
@@ -50,27 +43,27 @@ public class Module_tab_product_tmpl_default_tab_content extends Fragment implem
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.modules_mod_tab_products_tmpl_default_tab_content, container, false);
-        tabHost = (MaterialTabHost) view.findViewById(R.id.tabHost);
-        pager = (ViewPager) view.findViewById(R.id.pager );
+        sub_tab_host = (MaterialTabHost) view.findViewById(R.id.sub_tab_host);
+        sub_page_view = (ViewPager) view.findViewById(R.id.sub_page_view );
 
-        // init view pager
+        // init view sub_page_view
         FragmentManager fragManager = mInstance.getSupportFragmentManager();
-        adapter = new ViewPagerAdapter(fragManager);
-        pager.setAdapter(adapter);
-        pager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+        sub_adapter = new SubViewPagerAdapter(fragManager);
+        sub_page_view.setAdapter(sub_adapter);
+        sub_page_view.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
                 // when user do a swipe the selected tab change
-                tabHost.setSelectedNavigationItem(position);
+                sub_tab_host.setSelectedNavigationItem(position);
 
             }
         });
 
         // insert all tabs from pagerAdapter data
-        for (int i = 0; i < adapter.getCount(); i++) {
-            tabHost.addTab(
-                    tabHost.newTab()
-                            .setText(adapter.getPageTitle(i))
+        for (int i = 0; i < sub_adapter.getCount(); i++) {
+            sub_tab_host.addTab(
+                    sub_tab_host.newTab()
+                            .setText(sub_adapter.getPageTitle(i))
                             .setTabListener(this)
             );
 
@@ -81,7 +74,7 @@ public class Module_tab_product_tmpl_default_tab_content extends Fragment implem
 
     @Override
     public void onTabSelected(MaterialTab tab) {
-        pager.setCurrentItem(tab.getPosition());
+        sub_page_view.setCurrentItem(tab.getPosition());
     }
 
     @Override
@@ -94,10 +87,10 @@ public class Module_tab_product_tmpl_default_tab_content extends Fragment implem
 
     }
 
-    public static class ViewPagerAdapter extends FragmentStatePagerAdapter {
+    public static class SubViewPagerAdapter extends FragmentStatePagerAdapter {
 
 
-        public ViewPagerAdapter(FragmentManager fm) {
+        public SubViewPagerAdapter(FragmentManager fm) {
             super(fm);
         }
 
@@ -120,6 +113,17 @@ public class Module_tab_product_tmpl_default_tab_content extends Fragment implem
         public CharSequence getPageTitle(int position) {
             Category category=list_sub_category_detail.get(position);
             return category.getName();
+        }
+        @Override
+        public void destroyItem(View container, int position, Object object) {
+            super.destroyItem(container, position, object);
+
+            if (position <= getCount()) {
+                FragmentManager manager = ((Fragment) object).getFragmentManager();
+                FragmentTransaction trans = manager.beginTransaction();
+                trans.remove((Fragment) object);
+                trans.commit();
+            }
         }
 
     }
