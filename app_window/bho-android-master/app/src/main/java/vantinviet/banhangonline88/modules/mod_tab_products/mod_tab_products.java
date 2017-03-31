@@ -117,7 +117,8 @@ public class mod_tab_products extends ActionBarActivity implements MaterialTabLi
         }
 
         public Fragment getItem(int num) {
-            return new Module_tab_product_tmpl_default_tab_content();
+            Mod_tab_product_helper.List_category_product list_category_product=list_main_category_product.get(num);
+            return new Module_tab_product_tmpl_default_tab_content(list_category_product);
         }
 
         @Override
