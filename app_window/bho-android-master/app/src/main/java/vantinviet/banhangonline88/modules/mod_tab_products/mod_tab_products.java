@@ -1,20 +1,12 @@
 package vantinviet.banhangonline88.modules.mod_tab_products;
 
-import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -28,17 +20,12 @@ import timber.log.Timber;
 import vantinviet.banhangonline88.MyApplication;
 import vantinviet.banhangonline88.R;
 import vantinviet.banhangonline88.administrator.components.com_hikashop.classes.Category;
-import vantinviet.banhangonline88.components.com_users.views.profile.view;
 import vantinviet.banhangonline88.entities.module.Module;
 
 import vantinviet.banhangonline88.utils.Utils;
 
-import static android.content.Context.LAYOUT_INFLATER_SERVICE;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 import static android.widget.ListPopupWindow.MATCH_PARENT;
-import static vantinviet.banhangonline88.R.id.TextureView;
-import static vantinviet.banhangonline88.R.id.tabHost;
-import static vantinviet.banhangonline88.libraries.joomla.JFactory.getContext;
 import static vantinviet.banhangonline88.ux.MainActivity.mInstance;
 
 
@@ -130,17 +117,18 @@ public class mod_tab_products extends ActionBarActivity implements MaterialTabLi
         }
 
         public Fragment getItem(int num) {
-            return new FragmentText();
+            return new Module_tab_product_tmpl_default_tab_content();
         }
 
         @Override
         public int getCount() {
-            return 16;
+            return list_main_category_product.size();
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
-            return "Section " + position;
+            Category category=list_main_category_product.get(position).getDetail();
+            return category.getName();
         }
 
     }

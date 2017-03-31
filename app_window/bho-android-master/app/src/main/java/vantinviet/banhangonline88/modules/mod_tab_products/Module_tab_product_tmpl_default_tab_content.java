@@ -24,13 +24,10 @@ import vantinviet.banhangonline88.components.com_users.views.profile.view;
 /**
  * Created by neokree on 16/12/14.
  */
-public class FragmentText extends Fragment{
+public class Module_tab_product_tmpl_default_tab_content extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        TextView text = new TextView(container.getContext());
-        text.setText("Fragment content");
-        text.setGravity(Gravity.CENTER);
-
-        return text;
+        View view = inflater.inflate(R.layout.modules_mod_tab_products_tmpl_default_tab_content, container, false);
+        return view;
     }
 }
