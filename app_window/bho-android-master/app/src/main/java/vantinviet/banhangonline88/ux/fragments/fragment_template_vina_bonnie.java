@@ -92,8 +92,7 @@ public class fragment_template_vina_bonnie extends Fragment {
         }
         String screenSize = Integer.toString(width / screenDensity) + "x" + Integer.toString(height);
         System.out.println(width / screenDensity);
-        this.
-        render_layout(layout,rootLinearLayout,screen_size_width, WRAP_CONTENT);
+        this.render_layout(layout,rootLinearLayout,screen_size_width, WRAP_CONTENT);
         return view;
     }
 
@@ -164,9 +163,7 @@ public class fragment_template_vina_bonnie extends Fragment {
             //add_text_view_test(new_row_linear_layout,row.getName());
 
             new_row_linear_layout.addView(new_wrapper_of_row_linear_layout);
-            HorizontalScrollView horizontal_scrollview=new HorizontalScrollView(getContext());
-            horizontal_scrollview.addView(new_row_linear_layout);
-            rootLinearLayout.addView(horizontal_scrollview);
+            rootLinearLayout.addView(new_row_linear_layout);
 
         }
 

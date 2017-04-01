@@ -17,7 +17,7 @@ public class Mod_tab_product_helper {
         ArrayList<Category> list_sub_category_detail=new ArrayList<Category>();
         ArrayList<Integer> list_category=new ArrayList<Integer>();
         Category detail;
-        ArrayList<Product> list=new ArrayList<Product>();
+        ArrayList<Product> list=new ArrayList<Product>(0);
         ArrayList<Product> list_small_product=new ArrayList<Product>();
         @Override
         public String toString() {
@@ -36,6 +36,15 @@ public class Mod_tab_product_helper {
 
         public ArrayList<Category> getList_sub_category_detail() {
             return list_sub_category_detail;
+        }
+        public void setList(ArrayList<Product> list) {
+            if(list!=null)
+            {
+                this.list=list;
+            }
+        }
+        public ArrayList<Product> getList() {
+            return list;
         }
     }
 }

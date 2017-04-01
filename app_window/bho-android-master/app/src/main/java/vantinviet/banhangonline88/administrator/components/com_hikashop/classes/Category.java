@@ -1,5 +1,7 @@
 package vantinviet.banhangonline88.administrator.components.com_hikashop.classes;
 
+import java.util.ArrayList;
+
 /**
  * Created by cuongnd on 30/03/2017.
  */
@@ -11,6 +13,8 @@ public class Category {
     String category_name="";
     String category_description="";
     String file_path="";
+    Image icon;
+
     @Override
     public String toString() {
         return "Category{" +
@@ -19,7 +23,7 @@ public class Category {
                 ", category_type='" + category_type + '\'' +
                 ", category_name='" + category_name + '\'' +
                 ", category_description='" + category_description + '\'' +
-                ", file_path='" + file_path + '\'' +
+                ", icon='" + icon + '\'' +
                 '}';
     }
 
@@ -27,7 +31,8 @@ public class Category {
         return category_name;
     }
 
-    public String getIcon() {
-        return file_path;
+    public Image getIcon() {
+        return icon;
     }
+
 }

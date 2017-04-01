@@ -8,6 +8,7 @@ android {
 
     dexOptions {
         javaMaxHeapSize "3g"
+        jumboMode = true
     }
 
     signingConfigs {
@@ -69,6 +70,7 @@ android {
             resources.srcDirs += ['src/androidTest/resources']
         }
     }
+
 }
 
 task clearData(type: Exec) {
@@ -116,6 +118,7 @@ dependencies {
     compile 'im.ene.toro2:toro-ext-exoplayer2:2.1.0'
     compile 'com.github.markushi:android-ui:1.2'
     compile project(path: ':MaterialTabsModule')
+    compile 'me.everything:overscroll-decor-android:1.0.4'
 }
 
 apply plugin: 'com.google.gms.google-services'

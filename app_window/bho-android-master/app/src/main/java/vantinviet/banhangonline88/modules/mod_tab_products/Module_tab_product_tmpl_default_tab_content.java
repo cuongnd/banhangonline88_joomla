@@ -3,140 +3,81 @@ package vantinviet.banhangonline88.modules.mod_tab_products;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.ViewPager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.HorizontalScrollView;
+import android.widget.TextView;
 
+import java.io.IOException;
+import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Timer;
 
-import it.neokree.materialtabs.MaterialTab;
-import it.neokree.materialtabs.MaterialTabHost;
-import it.neokree.materialtabs.MaterialTabListener;
+import me.everything.android.ui.overscroll.OverScrollDecoratorHelper;
+import timber.log.Timber;
 import vantinviet.banhangonline88.R;
 import vantinviet.banhangonline88.administrator.components.com_hikashop.classes.Category;
-
-import static vantinviet.banhangonline88.ux.MainActivity.mInstance;
-
-/**
- * Created by neokree on 16/12/14.
- */
+import vantinviet.banhangonline88.administrator.components.com_hikashop.classes.Product;
 
 /**
  * Created by neokree on 16/12/14.
  */
-public class Module_tab_product_tmpl_default_tab_content extends Fragment implements MaterialTabListener {
-    private final Mod_tab_product_helper.List_category_product list_category_product;
-    private MaterialTabHost sub_tab_host;
-    private ViewPager sub_page_view;
-    private SubViewPagerAdapter sub_adapter;
-    private static ArrayList<Category> list_sub_category_detail;
 
-    public Module_tab_product_tmpl_default_tab_content(Mod_tab_product_helper.List_category_product list_category_product) {
-        this.list_category_product=list_category_product;
-        list_sub_category_detail=list_category_product.getList_sub_category_detail();
-    }
+/**
+ * Created by neokree on 16/12/14.
+ */
+public class Module_tab_product_tmpl_default_tab_content extends Fragment {
+    public Mod_tab_product_helper.List_category_product list_category_product;
+    private ArrayList<Product> list_product=new ArrayList<Product>();
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+/*
         View view = inflater.inflate(R.layout.modules_mod_tab_products_tmpl_default_tab_content, container, false);
-        sub_tab_host = (MaterialTabHost) view.findViewById(R.id.sub_tab_host);
-        sub_page_view = (ViewPager) view.findViewById(R.id.sub_page_view );
 
-        // init view sub_page_view
-        FragmentManager fragManager = mInstance.getSupportFragmentManager();
-        sub_adapter = new SubViewPagerAdapter(fragManager);
-        sub_page_view.setAdapter(sub_adapter);
-        sub_page_view.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-            @Override
-            public void onPageSelected(int position) {
-                // when user do a swipe the selected tab change
-                sub_tab_host.setSelectedNavigationItem(position);
+        Show_product_recycler_view show_product_recycler_view=new Show_product_recycler_view(list_category_product);
+        RecyclerView product_recycler_view = (RecyclerView) view.findViewById(R.id.product_recycler_view);
+        product_recycler_view.setHasFixedSize(true);
+        RecyclerViewDataAdapter adapter = new RecyclerViewDataAdapter(getContext(), show_product_recycler_view);
+        product_recycler_view.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        product_recycler_view.setAdapter(adapter);
 
-            }
-        });
+        RecyclerView cagory_recycler_view = (RecyclerView) view.findViewById(R.id.category_recycler_view);
+        cagory_recycler_view.setHasFixedSize(true);
+        CategoryListDataAdapter category_adapter = new CategoryListDataAdapter(getContext(), list_category_product.getList_sub_category_detail());
+        cagory_recycler_view.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        cagory_recycler_view.setAdapter(category_adapter);
+        Timber.d("module list_category_product %s",list_category_product.toString());
+*/
 
-        // insert all tabs from pagerAdapter data
-        for (int i = 0; i < sub_adapter.getCount(); i++) {
-            sub_tab_host.addTab(
-                    sub_tab_host.newTab()
-                            .setText(sub_adapter.getPageTitle(i))
-                            .setTabListener(this)
-            );
 
-        }
-
-        return view;
+        TextView text_view=new TextView(container.getContext());
+        text_view.setText("hekkko");
+        return text_view;
     }
 
-    @Override
-    public void onTabSelected(MaterialTab tab) {
-        sub_page_view.setCurrentItem(tab.getPosition());
+
+    public class Show_product_recycler_view {
+        private final Mod_tab_product_helper.List_category_product list_category_product;
+        Category category;
+        ArrayList<Product> list_product;
+        public Show_product_recycler_view(Mod_tab_product_helper.List_category_product list_category_product) {
+            this.list_category_product=list_category_product;
+            category=list_category_product.getDetail();
+            list_product=list_category_product.getList();
+
+        }
+
+        public ArrayList<Product> getList_product() {
+            return list_product;
+        }
+
+        public Category getCategory() {
+            return category;
+        }
     }
-
-    @Override
-    public void onTabReselected(MaterialTab tab) {
-
-    }
-
-    @Override
-    public void onTabUnselected(MaterialTab tab) {
-
-    }
-
-    public static class SubViewPagerAdapter extends FragmentStatePagerAdapter {
-
-
-        public SubViewPagerAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        public Fragment getItem(int num) {
-            Category category= list_sub_category_detail.get(num);
-            return new sub_category_content(category);
-        }
-
-        @Override
-        public int getCount() {
-            if(list_sub_category_detail!=null)
-            {
-                return list_sub_category_detail.size();
-            }else{
-                return 0;
-            }
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            Category category=list_sub_category_detail.get(position);
-            return category.getName();
-        }
-        @Override
-        public void destroyItem(View container, int position, Object object) {
-            super.destroyItem(container, position, object);
-
-            if (position <= getCount()) {
-                FragmentManager manager = ((Fragment) object).getFragmentManager();
-                FragmentTransaction trans = manager.beginTransaction();
-                trans.remove((Fragment) object);
-                trans.commit();
-            }
-        }
-
-    }
-    public static   class sub_category_content extends Fragment {
-        public sub_category_content(Category category) {
-
-        }
-        @Override
-        public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-            View view = inflater.inflate(R.layout.modules_mod_tab_products_tmpl_default_sub_tab_content, container, false);
-            return view;
-        }
-
-    }
-
 }

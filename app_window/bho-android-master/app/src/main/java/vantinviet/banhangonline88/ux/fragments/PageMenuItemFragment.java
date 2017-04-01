@@ -63,6 +63,8 @@ import vantinviet.banhangonline88.R;
 import vantinviet.banhangonline88.api.EndPoints;
 import vantinviet.banhangonline88.api.GsonRequest;
 import android.content.SharedPreferences;
+
+import vantinviet.banhangonline88.configuration.JConfig;
 import vantinviet.banhangonline88.entities.Page;
 import vantinviet.banhangonline88.entities.drawerMenu.DrawerMenuItem;
 import vantinviet.banhangonline88.libraries.cms.application.AsyncJsonElementViewLoader;
@@ -163,44 +165,58 @@ public class PageMenuItemFragment extends Fragment  {
     public void start_remote(String host){
         sharedpreferences = MyApplication.getInstance().getSharedPreferences(LIST_DATA_RESPONSE_BY_URL,Context.MODE_PRIVATE);
 
-        String response_data=sharedpreferences.getString(host,"");
-       if(response_data.equals("")) {
-           WebViewClient web_view_client = new WebViewClient() {
-               @Override
-               public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                   return false;
-               }
 
-               @Override
-               public void onPageFinished(WebView view, String url) {
-                   view.loadUrl("javascript:HtmlViewer.showHTML" +
-                           "(document.getElementsByTagName('body')[0].innerHTML);");
-               }
+        int caching= JConfig.getInstance().caching;
+        if(caching==1){
+            String response_data=sharedpreferences.getString(host,"");
+            if(response_data.equals("")) {
+                create_browser(host);
 
-
-           };
+            }else{
+                go_to_page(response_data);
+            }
+        }else{
+            create_browser(host);
+        }
 
 
-           WebView web_browser = JFactory.getWebBrowser();
-           web_browser.getSettings().setJavaScriptEnabled(true);
-           web_browser.getSettings().setSupportZoom(true);
-           web_browser.getSettings().setBuiltInZoomControls(true);
-           web_browser.setWebViewClient(web_view_client);
-
-
-           web_browser.clearHistory();
-           web_browser.clearFormData();
-           web_browser.clearCache(true);
-
-           System.out.println("-------host---------");
-           System.out.println(host);
-           System.out.println("-------host---------");
-           web_browser.loadUrl(host);
-           web_browser.addJavascriptInterface(new MyJavaScriptInterfaceWebsite(), "HtmlViewer");
-       }else{
-           go_to_page(response_data);
-       }
     }
+
+    private void create_browser(String host) {
+        WebViewClient web_view_client = new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                return false;
+            }
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                view.loadUrl("javascript:HtmlViewer.showHTML" +
+                        "(document.getElementsByTagName('body')[0].innerHTML);");
+            }
+
+
+        };
+
+
+        WebView web_browser = JFactory.getWebBrowser();
+        web_browser.getSettings().setJavaScriptEnabled(true);
+        web_browser.getSettings().setSupportZoom(true);
+        web_browser.getSettings().setBuiltInZoomControls(true);
+        web_browser.setWebViewClient(web_view_client);
+
+
+        web_browser.clearHistory();
+        web_browser.clearFormData();
+        web_browser.clearCache(true);
+
+        System.out.println("-------host---------");
+        System.out.println(host);
+        System.out.println("-------host---------");
+        web_browser.loadUrl(host);
+        web_browser.addJavascriptInterface(new MyJavaScriptInterfaceWebsite(), "HtmlViewer");
+    }
+
 
     public void go_to_page(String html){
         byte[] data=Base64.decode(html, Base64.DEFAULT);
@@ -209,12 +225,13 @@ public class PageMenuItemFragment extends Fragment  {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        Timber.d("json_string %s",html);
+
         Gson gson = new Gson();
         JsonReader reader = new JsonReader(new StringReader(html));
         reader.setLenient(true);
 
         Page page = gson.fromJson(reader, Page.class);
+        System.out.print("Page response: "+page.toString());
         String template=page.getTemplate().getTemplateName();
         String str_fragmentManager = String.format("fragment_template_%s",template);
         Timber.d("modules: %s",page.getModules().toString());

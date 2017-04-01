@@ -91,4 +91,8 @@ public class Module {
     public String getResponse() {
         return response;
     }
+
+    public String getModuleTtitle() {
+        return title;
+    }
 }

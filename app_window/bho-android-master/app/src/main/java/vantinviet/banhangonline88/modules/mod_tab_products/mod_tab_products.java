@@ -9,6 +9,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -87,6 +88,8 @@ public class mod_tab_products extends ActionBarActivity implements MaterialTabLi
             );
 
         }
+        TextView module_title=(TextView)object_tab_product_tmpl_default.findViewById(R.id.module_title );
+        module_title.setText(module.getModuleTtitle());
         LinearLayout.LayoutParams new_vertical_wrapper_of_module_linear_layout_params = new LinearLayout.LayoutParams(MATCH_PARENT,WRAP_CONTENT  );
         LinearLayout new_wrapper_of_module_content_linear_layout=new LinearLayout(mInstance);
         new_wrapper_of_module_content_linear_layout.setLayoutParams(new_vertical_wrapper_of_module_linear_layout_params);
@@ -121,7 +124,9 @@ public class mod_tab_products extends ActionBarActivity implements MaterialTabLi
 
         public Fragment getItem(int num) {
             Mod_tab_product_helper.List_category_product list_category_product=list_main_category_product!=null?list_main_category_product.get(num):null;
-            return new Module_tab_product_tmpl_default_tab_content(list_category_product);
+            Module_tab_product_tmpl_default_tab_content module_tab_product_tmpl_default_tab_content = new Module_tab_product_tmpl_default_tab_content();
+            module_tab_product_tmpl_default_tab_content.list_category_product=list_category_product;
+            return module_tab_product_tmpl_default_tab_content;
         }
 
         @Override
@@ -210,43 +215,5 @@ public class mod_tab_products extends ActionBarActivity implements MaterialTabLi
     }
 */
 
-    public void onPageSelectedMainCategory(MaterialTab tab) {
-        Timber.d("hello onPageSelectedMainCategory");
-        pager.setCurrentItem(tab.getPosition());
-
-        int category_index=tab.getPosition();
-        MaterialTabHost sub_tab_host = new MaterialTabHost(mInstance);
-
-        sub_tab_host.setLayoutParams(new LinearLayout.LayoutParams(MATCH_PARENT, 100));
-        ArrayList<Category> list_sub_category_detail= list_main_category_product.get(category_index).getList_sub_category_detail();
-      /*  if(list_sub_category_detail!=null)for (Category item: list_sub_category_detail) {
-            String category_name=item.getName();
-            String icon_file_path=item.getIcon();
-            MaterialTab sub_tab = new MaterialTab(mInstance, false);
-            sub_tab.setText(category_name);
-            MaterialTabListener sub_materialTabListener= new MaterialTabListener() {
-                @Override
-                public void onTabSelected(MaterialTab tab) {
-                    onPageSelectedSubMainCategory(tab);
-                }
-
-                @Override
-                public void onTabReselected(MaterialTab tab) {
-
-                }
-
-                @Override
-                public void onTabUnselected(MaterialTab tab) {
-
-                }
-            };
-            tab.setTabListener(sub_materialTabListener);
-            sub_tab_host.addTab(tab);
-        }
-        sub_tab_host.setLayoutParams(new LinearLayout.LayoutParams(MATCH_PARENT, 100));
-        LinearLayout tmpl_tab_sub_category =(LinearLayout) object_tab_product_tmpl_default.findViewById(R.id.tab_sub_category);
-        tmpl_tab_sub_category.removeAllViews();
-        tmpl_tab_sub_category.addView(sub_tab_host);*/
-    }
 
 }
