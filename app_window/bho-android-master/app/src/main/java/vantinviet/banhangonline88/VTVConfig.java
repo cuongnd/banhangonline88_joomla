@@ -18,11 +18,22 @@ public class VTVConfig {
     public static int screen_size_width;
     public static int screen_size_height;
     public static int screenDensity;
-    //public static String root_url ="http://www.banhangonline88.com";
-    //public static String root_url ="http://www.countdown.vantinviet.com";
-    //public static String root_url ="http://www.phatthanhnghean.vantinviet.com";
-    public  String root_url;
+    private static VTVConfig instance;
+    //public static String rootUrl ="http://www.banhangonline88.com";
+    //public static String rootUrl ="http://www.countdown.vantinviet.com";
+    //public static String rootUrl ="http://www.phatthanhnghean.vantinviet.com";
+    public  String rootUrl="http://www.banhangonline88.com/";
+    private String local_version="2.5";
+    private int caching=0;
 
+    /* Static 'instance' method */
+    public static VTVConfig getInstance() {
+
+        if (instance == null) {
+            instance = new VTVConfig();
+        }
+        return instance;
+    }
     @TargetApi(Build.VERSION_CODES.KITKAT)
     public  static  String get_version()
     {
@@ -68,8 +79,34 @@ public class VTVConfig {
         return content;
     }
 
-    public void set_root_url(String a_root_url) {
-        this.root_url=a_root_url;
-        System.out.println("this.root_url:"+this.root_url);
+    public void setScreenDensity(int screenDensity) {
+        VTVConfig.screenDensity = screenDensity;
+    }
+
+    public void setScreen_size_height(int screen_size_height) {
+        VTVConfig.screen_size_height = screen_size_height;
+    }
+
+    public void setRootUrl(String rootUrl) {
+        this.rootUrl =rootUrl;
+        System.out.println("this.rootUrl:"+this.rootUrl);
+    }
+    public String getRootUrl() {
+        return rootUrl;
+    }
+
+    public void setScreen_size_width(int screen_size_width) {
+        this.screen_size_width = screen_size_width;
+    }
+    public int getScreen_size_width() {
+        return this.screen_size_width;
+    }
+
+    public String getLocal_version() {
+        return local_version;
+    }
+
+    public int getCaching() {
+        return caching;
     }
 }

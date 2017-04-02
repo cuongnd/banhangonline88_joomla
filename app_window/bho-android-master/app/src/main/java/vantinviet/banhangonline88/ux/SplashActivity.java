@@ -43,13 +43,17 @@ import java.util.List;
 import java.util.Locale;
 
 import vantinviet.banhangonline88.MyApplication;
+import vantinviet.banhangonline88.VTVConfig;
 import vantinviet.banhangonline88.api.EndPoints;
 import vantinviet.banhangonline88.CONST;
 import vantinviet.banhangonline88.R;
 import vantinviet.banhangonline88.SettingsMy;
 import vantinviet.banhangonline88.api.GsonRequest;
+import vantinviet.banhangonline88.configuration.JConfig;
 import vantinviet.banhangonline88.entities.Shop;
 import vantinviet.banhangonline88.entities.ShopResponse;
+import vantinviet.banhangonline88.libraries.joomla.JFactory;
+import vantinviet.banhangonline88.libraries.legacy.application.JApplication;
 import vantinviet.banhangonline88.testing.EspressoIdlingResource;
 import vantinviet.banhangonline88.utils.Analytics;
 import vantinviet.banhangonline88.utils.MsgUtils;
@@ -57,6 +61,7 @@ import vantinviet.banhangonline88.utils.Utils;
 import vantinviet.banhangonline88.ux.adapters.ShopSpinnerAdapter;
 import vantinviet.banhangonline88.ux.dialogs.LoginDialogFragment;
 import timber.log.Timber;
+import vantinviet.banhangonline88.ux.fragments.PageMenuItemFragment;
 
 import static vantinviet.banhangonline88.SettingsMy.PREF_ACTUAL_SHOP;
 
@@ -68,7 +73,7 @@ import static vantinviet.banhangonline88.SettingsMy.PREF_ACTUAL_SHOP;
 public class SplashActivity extends AppCompatActivity {
     public static final String REFERRER = "referrer";
     private static final String TAG = SplashActivity.class.getSimpleName();
-
+    private static VTVConfig vtvconfig=VTVConfig.getInstance();
     private Activity activity;
     private ProgressDialog progressDialog;
 
@@ -98,7 +103,7 @@ public class SplashActivity extends AppCompatActivity {
     private View layoutContentNoConnection;
     private View layoutContentSelectShop;
     private boolean shop_selected=false;
-
+    private JApplication app=JFactory.getApplication();
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
@@ -125,6 +130,8 @@ public class SplashActivity extends AppCompatActivity {
      */
 
     private void init() {
+        app.setCurrentActivity(this);
+        app.setProgressDialog(progressDialog);
         // Check if data connected.
         if (!MyApplication.getInstance().isDataConnected()) {
             progressDialog.hide();
@@ -355,13 +362,10 @@ public class SplashActivity extends AppCompatActivity {
                 }
             }, 7000);
         } else {
-            Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
-            if (bundle != null) {
-                Timber.d("Pass bundle to main activity");
-                mainIntent.putExtras(bundle);
-            }
-            startActivity(mainIntent);
-            finish();
+
+            String root_url= vtvconfig.getRootUrl()+"?";
+            root_url=app.get_page_config_app(root_url);
+            app.setRedirect(root_url);
         }
     }
 

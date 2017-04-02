@@ -36,7 +36,7 @@ public class Module_tab_product_tmpl_default_tab_content extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-/*
+
         View view = inflater.inflate(R.layout.modules_mod_tab_products_tmpl_default_tab_content, container, false);
 
         Show_product_recycler_view show_product_recycler_view=new Show_product_recycler_view(list_category_product);
@@ -49,15 +49,13 @@ public class Module_tab_product_tmpl_default_tab_content extends Fragment {
         RecyclerView cagory_recycler_view = (RecyclerView) view.findViewById(R.id.category_recycler_view);
         cagory_recycler_view.setHasFixedSize(true);
         CategoryListDataAdapter category_adapter = new CategoryListDataAdapter(getContext(), list_category_product.getList_sub_category_detail());
-        cagory_recycler_view.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        cagory_recycler_view.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         cagory_recycler_view.setAdapter(category_adapter);
         Timber.d("module list_category_product %s",list_category_product.toString());
-*/
 
 
-        TextView text_view=new TextView(container.getContext());
-        text_view.setText("hekkko");
-        return text_view;
+
+        return view;
     }
 
 

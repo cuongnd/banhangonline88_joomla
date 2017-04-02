@@ -93,7 +93,7 @@ public class PageMenuItemFragment extends Fragment  {
     private static final long TERMS_AND_CONDITIONS = -131;
     private static final String LINK = "link";
     private static final String PAGE_OBJECT = "page";
-    private static final String LIST_DATA_RESPONSE_BY_URL = "list_data_response_by_url";
+    public static final String LIST_DATA_RESPONSE_BY_URL = "list_data_response_by_url";
 
     private ProgressDialog progressDialog;
 
@@ -151,10 +151,8 @@ public class PageMenuItemFragment extends Fragment  {
             String json_page=getArguments().getString(PageMenuItemFragment.PAGE_OBJECT);
             System.out.println("page id loading");
             System.out.println(json_page);
-            load_page(json_page);
         } else {
 
-            load_page(null);
             Timber.e(new RuntimeException(), "Created fragment with null arguments.");
             setContentVisible(false);
             MsgUtils.showToast(getActivity(), MsgUtils.TOAST_TYPE_INTERNAL_ERROR, "", MsgUtils.ToastLength.LONG);
@@ -281,6 +279,7 @@ public class PageMenuItemFragment extends Fragment  {
 
 
 
+/*
     public void load_page(final String json_page)  {
         Gson gson = new Gson();
         DrawerMenuItem drawerMenuItem =new DrawerMenuItem();
@@ -301,7 +300,8 @@ public class PageMenuItemFragment extends Fragment  {
         url=app.get_page_config_app(url);
         start_remote(url);
 
-       /* final DrawerMenuItem finalDrawerMenuItem = drawerMenuItem;
+       */
+/* final DrawerMenuItem finalDrawerMenuItem = drawerMenuItem;
         GsonRequest<Page> getPage = new GsonRequest<>(Request.Method.GET, url, null, Page.class,
                 new Response.Listener<Page>() {
                     @Override
@@ -347,8 +347,10 @@ public class PageMenuItemFragment extends Fragment  {
         },getFragmentManager() ,null);
         getPage.setRetryPolicy(MyApplication.getDefaultRetryPolice());
         getPage.setShouldCache(false);
-        MyApplication.getInstance().addToRequestQueue(getPage, CONST.PAGE_REQUESTS_TAG);*/
+        MyApplication.getInstance().addToRequestQueue(getPage, CONST.PAGE_REQUESTS_TAG);*//*
+
     }
+*/
 
 
 

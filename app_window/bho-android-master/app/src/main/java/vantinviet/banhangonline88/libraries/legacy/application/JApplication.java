@@ -5,31 +5,33 @@ import android.support.v7.app.AppCompatActivity;
 
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 import vantinviet.banhangonline88.VTVConfig;
-import vantinviet.banhangonline88.configuration.JConfig;
+import vantinviet.banhangonline88.entities.Page;
+import vantinviet.banhangonline88.entities.module.Module;
+import vantinviet.banhangonline88.entities.template.Template;
 import vantinviet.banhangonline88.libraries.android.http.JSONParser;
 import vantinviet.banhangonline88.libraries.cms.application.JApplicationSite;
 import vantinviet.banhangonline88.libraries.cms.menu.JMenu;
 import vantinviet.banhangonline88.libraries.joomla.JFactory;
 import vantinviet.banhangonline88.libraries.joomla.application.JApplicationBase;
-import vantinviet.banhangonline88.libraries.joomla.cache.cache;
 import vantinviet.banhangonline88.libraries.joomla.input.JInput;
-import vantinviet.banhangonline88.libraries.utilities.md5;
 import vantinviet.banhangonline88.ux.MainActivity;
 
 /**
  * Created by cuongnd on 6/7/2016.
  */
 public class JApplication extends JApplicationBase {
-    public static Map<String, String> content_website =new HashMap<String, String>();
     public static JApplication instance;
     public AppCompatActivity context;
     private String redirect;
-    public MainActivity activity;
-    private Map<String, String> data_post;
+    public VTVConfig vtvConfig=VTVConfig.getInstance();
+    Map<String, String> list_input = new HashMap<String, String>();
+    private MainActivity mainActivity;
+    private String title;
     public JInput input;
 
     /* Static 'instance' method */
@@ -42,36 +44,19 @@ public class JApplication extends JApplicationBase {
     }
 
     public JApplication(){
-        this.input=new JInput();
     }
     public JMenu getMenu() {
         JMenu menu = JMenu.getInstance();
         return menu;
     }
-
-    public static String get_content_website(String link) {
-        String md5_link= md5.encryptMD5(link);
-        JConfig config= JFactory.getConfig();
-        String content ="";
-        int caching=config.caching;
-        if(caching==1)
-        {
-            content= cache.get_content_website(md5_link);
-            if(content == null || content.isEmpty()){
-                content = call_json_get_content_website(link);
-                cache.set_content_website(md5_link, content);
-            }
-            return content;
-
-        }else {
-            content = content_website.get(md5_link);
-            if(content == null || content.isEmpty()){
-                content = call_json_get_content_website(link);
-                content_website.put(md5_link,content);
-            }
-        }
-        return content;
+    public Template getTemplate() {
+        return template;
     }
+
+    public ArrayList<Module> getModules() {
+        return modules;
+    }
+
     private static String call_json_get_content_website(String link) {
         String return_json="";
         int responseCode = 0;
@@ -98,26 +83,46 @@ public class JApplication extends JApplicationBase {
         return return_json;
 
     }
+    public String get_session() {
+        //final SharedPreferences sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        //String session=sharedpreferences.getString(SESSION,"");
+        String session="";
+        return session;
+    }
+    public String get_token_android_link(String url) {
+        String session=get_session();
+        url=url+"&ignoreMessages=true&format=json&os=android&token="+session+"&"+session+"=1";
+        return url;
 
-    private static void startActivity(Intent intent) {
+    }
+    public String get_page_config_app(String url) {
+        String session=get_session();
+        url=url+"&get_page_config_app=1&ignoreMessages=true&format=json&os=android&token="+session+"&"+session+"=1";
+        return url;
 
     }
 
     public void setRedirect(String link) {
-        JApplication app=JFactory.getApplication();
+        /*String test_page = "&Itemid=433";
+        test_page = "";
+        if (link.equals("")) {
+            link =  vtvConfig.getRootUrl()+ "/index.php?os=android&screenSize=" + vtvConfig.getScreen_size_width() + "&version=" +vtvConfig.getLocal_version() + test_page+"&format=json&get_page_config_app=1";
+        } else if (!link.contains( vtvConfig.getRootUrl())) {
+            link =  vtvConfig.getRootUrl() + "/" + link;
+        }else if(link.equals(vtvConfig.getRootUrl())){
+            link =  vtvConfig.getRootUrl()+ "/index.php?os=android&screenSize=" + vtvConfig.getScreen_size_width() + "&version=" +vtvConfig.getLocal_version() + test_page+"&format=json&get_page_config_app=1";
+        }else if (link.contains( vtvConfig.getRootUrl())) {
+            link =  link+ "&os=android&screenSize=" + vtvConfig.getScreen_size_width() + "&version=" +vtvConfig.getLocal_version() + test_page+"&format=json&get_page_config_app=1";
+        }*/
+        setLink(link);
+        Intent myIntent = new Intent(getCurrentActivity(), MainActivity.class);
+        //myIntent.putExtra("key", value); //Optional parameters
+        getCurrentActivity().startActivity(myIntent);
 
-        String screenSize = Integer.toString(VTVConfig.screen_size_width/ VTVConfig.screenDensity) + "x" + Integer.toString( VTVConfig.screen_size_height);
-        String local_version= VTVConfig.get_version();
-
-        link=link+"&os=android&screenSize="+ screenSize+"&version="+local_version;
-        JApplicationSite.host=link;
-        Intent i = new Intent(this.context, app.context.getClass());
-        this.context.startActivity(i);
     }
 
     public void setRedirect(String link, Map<String, String> data_post) {
         JApplication app=JFactory.getApplication();
-        app.data_post=data_post;
         String screenSize = Integer.toString(VTVConfig.screen_size_width/ VTVConfig.screenDensity) + "x" + Integer.toString( VTVConfig.screen_size_height);
         String local_version= VTVConfig.get_version();
 
@@ -127,5 +132,24 @@ public class JApplication extends JApplicationBase {
         Intent i = new Intent(this.context, app.context.getClass());
         this.context.startActivity(i);
 
+    }
+
+    public void execute() {
+        super.doExecute();
+    }
+
+
+    public void setAplication(Page page) {
+        this.template = page.getTemplate();
+        this.modules = page.getModules();
+        this.list_input = page.getInput();
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public Map<String, String> getInput() {
+        return list_input;
     }
 }

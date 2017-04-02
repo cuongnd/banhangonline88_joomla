@@ -15,19 +15,16 @@
  *******************************************************************************/
 package vantinviet.banhangonline88.ux;
 
-import android.app.ActivityGroup;
 import android.app.NotificationManager;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -65,15 +62,17 @@ import vantinviet.banhangonline88.CONST;
 import vantinviet.banhangonline88.MyApplication;
 import vantinviet.banhangonline88.R;
 import vantinviet.banhangonline88.SettingsMy;
+import vantinviet.banhangonline88.VTVConfig;
 import vantinviet.banhangonline88.api.EndPoints;
 import vantinviet.banhangonline88.api.GsonRequest;
 import vantinviet.banhangonline88.api.JsonRequest;
-import vantinviet.banhangonline88.entities.Banner;
 import vantinviet.banhangonline88.entities.User;
 import vantinviet.banhangonline88.entities.cart.CartInfo;
 import vantinviet.banhangonline88.entities.drawerMenu.DrawerMenuItem;
 import vantinviet.banhangonline88.entities.order.Order;
 import vantinviet.banhangonline88.interfaces.LoginDialogInterface;
+import vantinviet.banhangonline88.libraries.joomla.JFactory;
+import vantinviet.banhangonline88.libraries.legacy.application.JApplication;
 import vantinviet.banhangonline88.utils.Analytics;
 import vantinviet.banhangonline88.utils.JsonUtils;
 import vantinviet.banhangonline88.utils.MsgUtils;
@@ -105,6 +104,7 @@ public class MainActivity extends AppCompatActivity implements MenuDrawerFragmen
     public static MainActivity mInstance = null;
     public static final String MyPREFERENCES = "MyPrefs" ;
     public static final String SESSION = "session";
+    public static VTVConfig vtvconfig=VTVConfig.getInstance();
     /**
      * Reference tied drawer menu, represented as fragment.
      */
@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity implements MenuDrawerFragmen
     private SimpleCursorAdapter searchSuggestionsAdapter;
     private ArrayList<String> searchSuggestionsList;
     private ProgressDialog progressDialog;
-    private MyApplication app;
+    private JApplication app=JFactory.getApplication();
 
     /**
      * Refresh notification number of products in shopping cart.
@@ -233,43 +233,14 @@ public class MainActivity extends AppCompatActivity implements MenuDrawerFragmen
         super.onConfigurationChanged(newConfig);
         System.out.println("ratator");
     }
-    private void check_user() {
-        if (progressDialog == null) {
-            progressDialog = new ProgressDialog(MainActivity.this);
-        }
-        progressDialog.setMessage("Downloading element...");
-        if (progressDialog != null) {
-            progressDialog.show();
-        }
-        app=MyApplication.getInstance();
-        final SharedPreferences sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-        String session=sharedpreferences.getString(SESSION,"");
-        String url=app.get_token_android_link(EndPoints.LINK_FIRST_LOAD_WEBSITE);
-        GsonRequest<User> getUserRequest = new GsonRequest<>(Request.Method.GET, url, null, User.class,
-                new Response.Listener<User>() {
-                    @Override
-                    public void onResponse(@NonNull User response) {
-                        Timber.d("Available shops response: %s", response.toString());
-                        SharedPreferences.Editor editor = sharedpreferences.edit();
-                        editor.putString(SESSION,response.getToken() );
-                        editor.commit();
-
-                        if (progressDialog != null) progressDialog.cancel();
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                if (progressDialog != null) progressDialog.cancel();
-                MsgUtils.logAndShowErrorMessage(MainActivity.this, error);
-
-            }
-        });
-        MyApplication.getInstance().addToRequestQueue(getUserRequest, CONST.CATEGORY_REQUESTS_TAG);
-    }
 
     private void init(MainActivity mInstance) {
         Timber.d("%s onCreate", MainActivity.class.getSimpleName());
-
+        app.setCurrentActivity(mInstance);
+        // init loading dialog
+        progressDialog = Utils.generateProgressDialog(this, false);
+        app.setProgressDialog(progressDialog);
+        app.execute();
         // Set app specific language localization by selected shop.
         String lang = SettingsMy.getActualNonNullShop(this).getLanguage();
         if(lang==null){
@@ -279,15 +250,6 @@ public class MainActivity extends AppCompatActivity implements MenuDrawerFragmen
         MyApplication.setAppLocale(lang);
         //beepForAnHour();
         setContentView(R.layout.activity_main);
-
-
-
-//        if (BuildConfig.DEBUG) {
-//            // Only debug properties, used for checking image memory management.
-//            Picasso.with(this).setIndicatorsEnabled(true);
-//            Picasso.with(this).setLoggingEnabled(true);
-//        }
-
         // Initialize trackers and fbLogger
         Analytics.prepareTrackersAndFbLogger(SettingsMy.getActualNonNullShop(this), getApplicationContext());
 
@@ -323,21 +285,6 @@ public class MainActivity extends AppCompatActivity implements MenuDrawerFragmen
 
         addInitialFragment();
 
-        // Opened by notification with some data
-        if (this.getIntent() != null && this.getIntent().getExtras() != null) {
-            String target = this.getIntent().getExtras().getString(CONST.BUNDLE_PASS_TARGET, "");
-            String title = this.getIntent().getExtras().getString(CONST.BUNDLE_PASS_TITLE, "");
-            Timber.d("Start notification with banner target: %s", target);
-
-            Banner banner = new Banner();
-            banner.setTarget(target);
-            banner.setName(title);
-
-
-            Analytics.logOpenedByNotification(target);
-        }
-        PageMenuItemFragment fragment = new PageMenuItemFragment();
-        //fragment.load_page(null);
     }
 
     /**
@@ -569,9 +516,16 @@ public class MainActivity extends AppCompatActivity implements MenuDrawerFragmen
 
     @Override
     public void onDrawerMenuItemSelected(DrawerMenuItem drawerMenuItem) {
+        Timber.d("drawerMenuItem %s",drawerMenuItem.toString());
         clearBackStack();
-        Fragment fragment = PageMenuItemFragment.newInstance(drawerMenuItem);
-        replaceFragment(fragment, PageMenuItemFragment.class.getSimpleName());
+        String link=drawerMenuItem.getLink();
+        if(link==null || link==""){
+            link=vtvconfig.getRootUrl()+"?";
+        }
+        link=app.get_page_config_app(link);
+        app.setRedirect(link);
+        //Fragment fragment = PageMenuItemFragment.newInstance(drawerMenuItem);
+        //replaceFragment(fragment, PageMenuItemFragment.class.getSimpleName());
     }
 
 

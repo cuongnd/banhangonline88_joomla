@@ -1,4 +1,4 @@
-package vantinviet.banhangonline88.ux.fragments;
+package vantinviet.banhangonline88.templates.vina_bonnie;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
-import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ProgressBar;
@@ -27,7 +26,10 @@ import vantinviet.banhangonline88.entities.drawerMenu.DrawerMenuItem;
 import vantinviet.banhangonline88.entities.module.Module;
 import vantinviet.banhangonline88.entities.template.bootstrap.Column;
 import vantinviet.banhangonline88.entities.template.bootstrap.Row;
+import vantinviet.banhangonline88.libraries.cms.component.JComponentHelper;
 import vantinviet.banhangonline88.libraries.cms.module.JModuleHelper;
+import vantinviet.banhangonline88.libraries.joomla.JFactory;
+import vantinviet.banhangonline88.libraries.legacy.application.JApplication;
 import vantinviet.banhangonline88.ux.MainActivity;
 
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
@@ -38,10 +40,9 @@ import static vantinviet.banhangonline88.ux.MainActivity.mInstance;
  * Fragment shows a detail of the product.
  */
 @SuppressLint("ValidFragment")
-public class fragment_template_vina_bonnie extends Fragment {
+public class index extends Fragment {
 
     private final DrawerMenuItem drawerMenuItem;
-    private final Page page;
 
     private ProgressBar progressView;
 
@@ -49,24 +50,23 @@ public class fragment_template_vina_bonnie extends Fragment {
     private View layoutEmpty;
     private RelativeLayout productContainer;
     private ScrollView contentScrollLayout;
+    public JApplication app= JFactory.getApplication();
 
     ArrayList<Row> layout;
     private ViewTreeObserver.OnScrollChangedListener scrollViewListener;
-    private MyApplication app;
     private int screen_size_width;
     private int screen_size_height;
 
     @SuppressLint("ValidFragment")
-    public fragment_template_vina_bonnie(DrawerMenuItem drawerMenuItem, Page page) {
+    public index(DrawerMenuItem drawerMenuItem) {
         this.drawerMenuItem=drawerMenuItem;
-        this.page=page;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Timber.d("%s - onCreateView", this.getClass().getSimpleName());
-        MainActivity.setActionBarTitle(page.getTitle());
-        layout= page.getTemplate().getParams().getAndroid_layout();
+        MainActivity.setActionBarTitle(app.getTitle());
+        layout= app.getTemplate().getParams().getAndroid_layout();
         Timber.d("page layout %s", layout.toString());
         View view = inflater.inflate(R.layout.fragment_template_vina_bonnie, container, false);
         LinearLayout rootLinearLayout=(LinearLayout)view.findViewById(R.id.root_layout);
@@ -97,6 +97,7 @@ public class fragment_template_vina_bonnie extends Fragment {
     }
 
     private void render_layout(ArrayList<Row> layout, LinearLayout rootLinearLayout,int screen_size_width,int screen_size_heght) {
+
         LayoutParams layout_params;
         if(layout!=null)for (Row row: layout) {
             layout_params = new LayoutParams(screen_size_width,screen_size_heght  );
@@ -135,10 +136,7 @@ public class fragment_template_vina_bonnie extends Fragment {
                 Timber.d("position name(%s)",position);
                 if(type.equals("modules")){
 
-
-
-
-                    ArrayList<Module> modules=page.getModules();
+                    ArrayList<Module> modules=app.getModules();
                     for (Module module : modules)
                     {
                         if(module.getPosition().equals(position)){
@@ -151,6 +149,17 @@ public class fragment_template_vina_bonnie extends Fragment {
                             new_wrapper_of_column_linear_layout.addView(new_module_linear_layout);
                         }
                     }
+
+                }
+                if(type.equals("component")){
+
+                    LayoutParams component_layout_params = new LayoutParams(MATCH_PARENT,WRAP_CONTENT  );
+                    LinearLayout component_linear_layout=new LinearLayout(getContext());
+                    component_linear_layout.setLayoutParams(component_layout_params);
+                    component_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
+                    //add_text_view_test(new_column_linear_layout,position);
+                    JComponentHelper.renderComponent(getContext(), component_linear_layout);
+                    new_wrapper_of_column_linear_layout.addView(component_linear_layout);
 
                 }
 

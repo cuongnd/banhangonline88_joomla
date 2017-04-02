@@ -60,6 +60,11 @@
         <item name="android:textColorHint">@color/textSecondary</item>
         <item name="colorControlNormal">@color/colorPrimaryLight</item>
     </style>
+    <style name="module_title_text" >
+        <item name="android:drawableLeft">@drawable/com_facebook_send_button_icon</item>
+        <item name="android:text">@string/com_facebook_send_button_text</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+    </style>
 
     <style name="dialogFragmentAnimation">
         <item name="android:windowEnterAnimation">@anim/slide_in_appear</item>

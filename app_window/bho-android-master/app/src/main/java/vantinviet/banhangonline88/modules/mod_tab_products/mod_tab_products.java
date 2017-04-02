@@ -1,5 +1,6 @@
 package vantinviet.banhangonline88.modules.mod_tab_products;
 
+import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -65,7 +66,7 @@ public class mod_tab_products extends ActionBarActivity implements MaterialTabLi
         object_tab_product_tmpl_default =new Module_tab_product_tmpl_default(mInstance,this.module);
         tabHost = (MaterialTabHost) object_tab_product_tmpl_default.findViewById(R.id.tabHost);
         pager = (ViewPager) object_tab_product_tmpl_default.findViewById(R.id.pager );
-
+        pager.setId(module.getId());
         // init view pager
         FragmentManager fragManager = mInstance.getSupportFragmentManager();
         adapter = new ViewPagerAdapter(fragManager);
@@ -88,8 +89,15 @@ public class mod_tab_products extends ActionBarActivity implements MaterialTabLi
             );
 
         }
-        TextView module_title=(TextView)object_tab_product_tmpl_default.findViewById(R.id.module_title );
-        module_title.setText(module.getModuleTtitle());
+        LinearLayout.LayoutParams module_title_params = new LinearLayout.LayoutParams(MATCH_PARENT,WRAP_CONTENT  );
+        LinearLayout module_title=(LinearLayout)object_tab_product_tmpl_default.findViewById(R.id.module_title );
+        module_title.setBackgroundColor(Color.parseColor("#eff0f1"));
+        module_title_params.setMargins(0,0,0,20);
+        module_title.setLayoutParams(module_title_params);
+        TextView title=(TextView) module_title.findViewById(R.id.title);
+        title.setText(module.getTitle());
+        title.setTextAppearance(mInstance, R.style.module_title_text);
+
         LinearLayout.LayoutParams new_vertical_wrapper_of_module_linear_layout_params = new LinearLayout.LayoutParams(MATCH_PARENT,WRAP_CONTENT  );
         LinearLayout new_wrapper_of_module_content_linear_layout=new LinearLayout(mInstance);
         new_wrapper_of_module_content_linear_layout.setLayoutParams(new_vertical_wrapper_of_module_linear_layout_params);

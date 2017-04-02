@@ -7,6 +7,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import vantinviet.banhangonline88.configuration.JConfig;
+import vantinviet.banhangonline88.entities.Document;
+import vantinviet.banhangonline88.entities.module.Module;
+import vantinviet.banhangonline88.entities.template.Template;
 import vantinviet.banhangonline88.libraries.cms.component.JComponentHelper;
 import vantinviet.banhangonline88.libraries.cms.menu.JMenu;
 import vantinviet.banhangonline88.libraries.joomla.JFactory;
@@ -16,11 +19,15 @@ import vantinviet.banhangonline88.libraries.legacy.exception.exception;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 
 /**
  * Created by cuongnd on 12/17/2015.
  */
 public class JApplicationCms {
+
+
     public static Context main_context;
     private JConfig config;
     private String language;

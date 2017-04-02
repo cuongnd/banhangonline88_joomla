@@ -10,6 +10,7 @@ package vantinviet.banhangonline88.modules.mod_tab_products;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,7 +39,7 @@ public class ProductListDataAdapter extends RecyclerView.Adapter<ProductListData
 
     @Override
     public SingleProductRowHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.module_tab_product_tmpl_default_list_single_card, null);
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.module_tab_product_tmpl_default_list_single_product_card, null);
         SingleProductRowHolder mh = new SingleProductRowHolder(v);
         return mh;
     }
@@ -49,9 +50,13 @@ public class ProductListDataAdapter extends RecyclerView.Adapter<ProductListData
         Product product = list_product.get(i);
         holder.productName.setText(product.getName());
         ArrayList<Image> list_image=product.getList_image();
-        Image first_image=list_image.get(0);
-        String url=first_image.getUrl();
-        Picasso.with(mContext).load(EndPoints.API_URL1.concat(url)).into((ImageView) holder.ProductImage);
+        if(list_image!=null && list_image.size()>0) {
+            Image first_image = list_image.get(0);
+            String url = first_image.getUrl();
+
+            Picasso.with(mContext).load(EndPoints.API_URL1.concat(url)).into((ImageView) holder.ProductImage);
+        }
+        holder.productName.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
     }
 
     @Override
@@ -65,8 +70,8 @@ public class ProductListDataAdapter extends RecyclerView.Adapter<ProductListData
         public SingleProductRowHolder(View view) {
             super(view);
 
-            this.productName = (TextView) view.findViewById(R.id.categoryName);
-            this.ProductImage = (ImageView) view.findViewById(R.id.categoryImage);
+            this.productName = (TextView) view.findViewById(R.id.productName);
+            this.ProductImage = (ImageView) view.findViewById(R.id.productImage);
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

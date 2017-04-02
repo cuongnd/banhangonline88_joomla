@@ -2,6 +2,7 @@ package vantinviet.banhangonline88.entities;
 
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import vantinviet.banhangonline88.entities.module.Module;
 import vantinviet.banhangonline88.entities.template.Template;
@@ -15,6 +16,7 @@ public class Page {
     public Template template;
     public Document document;
     ArrayList<Module> modules=new ArrayList<Module>();
+    private Map<String, String> input;
 
     public Page() {
     }
@@ -72,6 +74,7 @@ public class Page {
                 ", template='" + template + '\'' +
                 ", modules='" + modules + '\'' +
                 ", text='" + text + '\'' +
+                ", input='" + input + '\'' +
                 '}';
     }
 
@@ -81,5 +84,9 @@ public class Page {
 
     public ArrayList<Module> getModules() {
         return modules;
+    }
+
+    public Map<String, String> getInput() {
+        return input;
     }
 }
