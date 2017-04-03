@@ -99,6 +99,7 @@ public class WebView {
         Page page = gson.fromJson(reader, Page.class);
         app.setAplication(page);
         System.out.print("Page response: "+page.toString());
+        System.out.print("list_input response: "+page.getList_input().toString());
         String template_name=app.getTemplate().getTemplateName();
         Timber.d("modules: %s",app.getModules().toString());
         Timber.d("template: %s",template_name);

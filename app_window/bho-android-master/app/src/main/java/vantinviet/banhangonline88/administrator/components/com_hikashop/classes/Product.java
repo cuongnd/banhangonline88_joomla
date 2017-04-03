@@ -13,8 +13,11 @@ public class Product {
     int category_id=0;
     String product_name="";
     String product_code="";
+    String html_price="";
     private ArrayList<Image> list_image;
     int price_value=0;
+    private ArrayList<Image> images;
+
     @Override
     public String toString() {
         return "Product{" +
@@ -33,5 +36,13 @@ public class Product {
 
     public ArrayList<Image> getList_image() {
         return list_image;
+    }
+
+    public ArrayList<Image> getImages() {
+        return images;
+    }
+
+    public String getHtml_price() {
+        return html_price;
     }
 }

@@ -158,6 +158,7 @@ public class index extends Fragment {
                     component_linear_layout.setLayoutParams(component_layout_params);
                     component_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
                     //add_text_view_test(new_column_linear_layout,position);
+                    app.input.set_component_linear_layout(component_linear_layout);
                     JComponentHelper.renderComponent(getContext(), component_linear_layout);
                     new_wrapper_of_column_linear_layout.addView(component_linear_layout);
 

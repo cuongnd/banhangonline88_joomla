@@ -10,6 +10,7 @@ package vantinviet.banhangonline88.modules.mod_tab_products;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,6 +50,7 @@ public class ProductListDataAdapter extends RecyclerView.Adapter<ProductListData
 
         Product product = list_product.get(i);
         holder.productName.setText(product.getName());
+        holder.html_price.setText(Html.fromHtml(product.getHtml_price()));
         ArrayList<Image> list_image=product.getList_image();
         if(list_image!=null && list_image.size()>0) {
             Image first_image = list_image.get(0);
@@ -66,12 +68,14 @@ public class ProductListDataAdapter extends RecyclerView.Adapter<ProductListData
 
     public class SingleProductRowHolder extends RecyclerView.ViewHolder {
         protected TextView productName;
+        protected TextView html_price;
         protected ImageView ProductImage;
         public SingleProductRowHolder(View view) {
             super(view);
 
             this.productName = (TextView) view.findViewById(R.id.productName);
             this.ProductImage = (ImageView) view.findViewById(R.id.productImage);
+            this.html_price = (TextView) view.findViewById(R.id.html_price);
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

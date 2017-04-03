@@ -16,7 +16,7 @@ public class Page {
     public Template template;
     public Document document;
     ArrayList<Module> modules=new ArrayList<Module>();
-    private Map<String, String> input;
+    private Map<String, String> list_input;
 
     public Page() {
     }
@@ -74,7 +74,7 @@ public class Page {
                 ", template='" + template + '\'' +
                 ", modules='" + modules + '\'' +
                 ", text='" + text + '\'' +
-                ", input='" + input + '\'' +
+                ", list_input='" + list_input + '\'' +
                 '}';
     }
 
@@ -86,7 +86,11 @@ public class Page {
         return modules;
     }
 
-    public Map<String, String> getInput() {
-        return input;
+    public Map<String, String> getList_input() {
+        return list_input;
+    }
+
+    public String getComponent_response() {
+        return component_response;
     }
 }

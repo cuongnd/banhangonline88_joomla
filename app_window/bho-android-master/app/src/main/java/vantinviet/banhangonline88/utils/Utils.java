@@ -110,7 +110,7 @@ public class Utils {
     /**
      * Method converts iso date string to better readable form.
      *
-     * @param isoDate input iso date. Example: "2016-04-13 13:21:04".
+     * @param isoDate list_input iso date. Example: "2016-04-13 13:21:04".
      * @return processed date string.
      */
     public static String parseDate(String isoDate) {
@@ -214,7 +214,7 @@ public class Utils {
         if (textInputLayout != null && textInputLayout.getEditText() != null) {
             textInputLayout.getEditText().setText(text);
         } else {
-            Timber.e("Setting text to null input wrapper, or without editText");
+            Timber.e("Setting text to null list_input wrapper, or without editText");
         }
     }
 
@@ -234,11 +234,11 @@ public class Utils {
 
 
     /**
-     * Method checks if text input layout exist and contains some value.
+     * Method checks if text list_input layout exist and contains some value.
      * If layout is empty, then show error value under the textInputLayout.
      *
      * @param textInputLayout textInputFiled for check.
-     * @param errorValue      value displayed when ext input is empty.
+     * @param errorValue      value displayed when ext list_input is empty.
      * @return true if everything ok.
      */
     public static boolean checkTextInputLayoutValueRequirement(TextInputLayout textInputLayout, String errorValue) {
@@ -255,7 +255,7 @@ public class Utils {
                 return true;
             }
         } else {
-            Timber.e(new RuntimeException(), "Checking null input field during order send.");
+            Timber.e(new RuntimeException(), "Checking null list_input field during order send.");
             return false;
         }
     }

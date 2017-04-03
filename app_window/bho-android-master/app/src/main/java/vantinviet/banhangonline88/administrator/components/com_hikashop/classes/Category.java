@@ -14,6 +14,7 @@ public class Category {
     String category_description="";
     String file_path="";
     Image icon;
+    Image medium_image;
 
     @Override
     public String toString() {
@@ -24,6 +25,7 @@ public class Category {
                 ", category_name='" + category_name + '\'' +
                 ", category_description='" + category_description + '\'' +
                 ", icon='" + icon + '\'' +
+                ", medium_image='" + medium_image + '\'' +
                 '}';
     }
 
@@ -35,4 +37,7 @@ public class Category {
         return icon;
     }
 
+    public Image getMedium_image() {
+        return medium_image;
+    }
 }

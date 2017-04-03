@@ -104,6 +104,7 @@ public class JComponentHelper {
 
     public static void renderComponent(Context context, LinearLayout linear_layout)  {
         Class<?> class_component = null;
+        Timber.d("input %s",input.toString());
         String option=input.getString("option","com_content");
         try {
             class_component = Class.forName(String.format("vantinviet.banhangonline88.components.%s.%s",option,option.substring(4)));

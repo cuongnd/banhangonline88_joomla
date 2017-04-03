@@ -33,6 +33,7 @@ public class JApplication extends JApplicationBase {
     private MainActivity mainActivity;
     private String title;
     public JInput input;
+    private String component_response;
 
     /* Static 'instance' method */
     public static JApplication getInstance() {
@@ -44,6 +45,7 @@ public class JApplication extends JApplicationBase {
     }
 
     public JApplication(){
+        input=JInput.getInstance();
     }
     public JMenu getMenu() {
         JMenu menu = JMenu.getInstance();
@@ -142,14 +144,21 @@ public class JApplication extends JApplicationBase {
     public void setAplication(Page page) {
         this.template = page.getTemplate();
         this.modules = page.getModules();
-        this.list_input = page.getInput();
+        this.list_input = page.getList_input();
+        this.component_response = page.getComponent_response();
+        this.input.setList_input(page.getList_input());
+        this.input=JInput.getInstance();
     }
 
     public String getTitle() {
         return title;
     }
 
-    public Map<String, String> getInput() {
+    public Map<String, String> getList_input() {
         return list_input;
+    }
+
+    public String getComponent_response() {
+        return component_response;
     }
 }
