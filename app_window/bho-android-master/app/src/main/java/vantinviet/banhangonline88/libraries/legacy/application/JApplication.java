@@ -1,6 +1,8 @@
 package vantinviet.banhangonline88.libraries.legacy.application;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 
 import org.json.JSONObject;
@@ -21,10 +23,14 @@ import vantinviet.banhangonline88.libraries.joomla.application.JApplicationBase;
 import vantinviet.banhangonline88.libraries.joomla.input.JInput;
 import vantinviet.banhangonline88.ux.MainActivity;
 
+
+
 /**
  * Created by cuongnd on 6/7/2016.
  */
 public class JApplication extends JApplicationBase {
+    private static final String CURRENT_LINK = "current_link";
+    private static final String VTV_PREFERENCES = "vtv_preferences";
     public static JApplication instance;
     public AppCompatActivity context;
     private String redirect;
@@ -34,7 +40,7 @@ public class JApplication extends JApplicationBase {
     private String title;
     public JInput input;
     private String component_response;
-
+    SharedPreferences shared_preferences;
     /* Static 'instance' method */
     public static JApplication getInstance() {
 
@@ -117,10 +123,27 @@ public class JApplication extends JApplicationBase {
             link =  link+ "&os=android&screenSize=" + vtvConfig.getScreen_size_width() + "&version=" +vtvConfig.getLocal_version() + test_page+"&format=json&get_page_config_app=1";
         }*/
         setLink(link);
+        saveCurrentLink(link);
         Intent myIntent = new Intent(getCurrentActivity(), MainActivity.class);
         //myIntent.putExtra("key", value); //Optional parameters
         getCurrentActivity().startActivity(myIntent);
 
+    }
+
+    private void saveCurrentLink(String link) {
+        shared_preferences = PreferenceManager
+                .getDefaultSharedPreferences(getCurrentActivity());
+        SharedPreferences.Editor editor = shared_preferences.edit();
+        editor.putString(CURRENT_LINK, link);
+        editor.apply();
+    }
+
+
+    public String getCurrentLink() {
+        shared_preferences = PreferenceManager
+                .getDefaultSharedPreferences(getCurrentActivity());
+        String current_link = shared_preferences.getString(CURRENT_LINK, null);
+        return  current_link;
     }
 
     public void setRedirect(String link, Map<String, String> data_post) {

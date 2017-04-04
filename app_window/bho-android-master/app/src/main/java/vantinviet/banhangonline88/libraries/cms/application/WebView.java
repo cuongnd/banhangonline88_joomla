@@ -12,10 +12,14 @@ import android.webkit.WebViewClient;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 
+import org.apache.http.util.EncodingUtils;
+
 import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Collection;
+import java.util.Map;
 
 import timber.log.Timber;
 import vantinviet.banhangonline88.MyApplication;
@@ -27,6 +31,7 @@ import vantinviet.banhangonline88.entities.Page;
 import vantinviet.banhangonline88.entities.drawerMenu.DrawerMenuItem;
 import vantinviet.banhangonline88.libraries.joomla.JFactory;
 import vantinviet.banhangonline88.libraries.legacy.application.JApplication;
+import vantinviet.banhangonline88.libraries.utilities.JUtilities;
 
 
 /**
@@ -80,7 +85,8 @@ public class WebView {
         System.out.println("-------host---------");
         System.out.println(link);
         System.out.println("-------host---------");
-        web_browser.loadUrl(link);
+        byte[] post = EncodingUtils.getBytes("get_page_config_app=1&ignoreMessages=true&format=json&os=android", "BASE64");
+        web_browser.postUrl(link,post);
         web_browser.addJavascriptInterface(new MyJavaScriptInterfaceWebsite(), "HtmlViewer");
     }
 
@@ -91,7 +97,7 @@ public class WebView {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-
+        Timber.d("html response: %s",html);
         Gson gson = new Gson();
         JsonReader reader = new JsonReader(new StringReader(html));
         reader.setLenient(true);
@@ -139,7 +145,7 @@ public class WebView {
 
         @JavascriptInterface
         public void showHTML(String html) {
-            //Timber.d("json_string %s",html);
+            Timber.d("html response: %s",html);
             if(vtv_config.getCaching()==1) {
                 SharedPreferences.Editor editor = sharedpreferences.edit();
                 editor.putString(link, html);

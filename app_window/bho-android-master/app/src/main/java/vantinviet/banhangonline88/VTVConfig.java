@@ -22,7 +22,7 @@ public class VTVConfig {
     //public static String rootUrl ="http://www.banhangonline88.com";
     //public static String rootUrl ="http://www.countdown.vantinviet.com";
     //public static String rootUrl ="http://www.phatthanhnghean.vantinviet.com";
-    public  String rootUrl="http://www.banhangonline88.com/";
+    public static String rootUrl="http://www.banhangonline88.com/";
     private String local_version="2.5";
     private int caching=0;
 

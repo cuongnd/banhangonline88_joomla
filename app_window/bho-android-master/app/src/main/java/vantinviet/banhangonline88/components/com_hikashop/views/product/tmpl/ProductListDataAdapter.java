@@ -1,4 +1,4 @@
-package vantinviet.banhangonline88.components.com_hikashop.views.category.tmpl;
+package vantinviet.banhangonline88.components.com_hikashop.views.product.tmpl;
 
 /**
  * Created by cuongnd on 31/03/2017.
@@ -17,18 +17,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.jar.JarEntry;
 
 import vantinviet.banhangonline88.R;
 import vantinviet.banhangonline88.administrator.components.com_hikashop.classes.Image;
 import vantinviet.banhangonline88.administrator.components.com_hikashop.classes.Product;
 import vantinviet.banhangonline88.api.EndPoints;
-import vantinviet.banhangonline88.libraries.cms.application.WebView;
 import vantinviet.banhangonline88.libraries.joomla.JFactory;
 import vantinviet.banhangonline88.libraries.legacy.application.JApplication;
 

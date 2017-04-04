@@ -362,10 +362,11 @@ public class SplashActivity extends AppCompatActivity {
                 }
             }, 7000);
         } else {
-
-            String root_url= vtvconfig.getRootUrl()+"?";
-            root_url=app.get_page_config_app(root_url);
-            app.setRedirect(root_url);
+            String url=app.getCurrentLink();
+            if(url==null) {
+                url = vtvconfig.getRootUrl();
+            }
+            app.setRedirect(url);
         }
     }
 
