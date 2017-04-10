@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.LinearLayout;
 
 import org.json.JSONObject;
 
@@ -41,6 +42,8 @@ public class JApplication extends JApplicationBase {
     public JInput input;
     private String component_response;
     SharedPreferences shared_preferences;
+    public LinearLayout rootLinearLayout;
+
     /* Static 'instance' method */
     public static JApplication getInstance() {
 

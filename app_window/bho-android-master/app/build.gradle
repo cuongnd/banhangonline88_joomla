@@ -119,6 +119,7 @@ dependencies {
     compile 'com.github.markushi:android-ui:1.2'
     compile project(path: ':MaterialTabsModule')
     compile 'me.everything:overscroll-decor-android:1.0.4'
+    compile 'com.aurelhubert:ahbottomnavigation:2.0.6'
 }
 
 apply plugin: 'com.google.gms.google-services'
