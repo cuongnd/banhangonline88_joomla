@@ -41,6 +41,7 @@ import android.transition.TransitionInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -87,7 +88,6 @@ import vantinviet.banhangonline88.ux.fragments.MenuDrawerFragment;
 import vantinviet.banhangonline88.ux.fragments.OrderCreateFragment;
 import vantinviet.banhangonline88.ux.fragments.OrderFragment;
 import vantinviet.banhangonline88.ux.fragments.OrdersHistoryFragment;
-import vantinviet.banhangonline88.ux.fragments.PageMenuItemFragment;
 import vantinviet.banhangonline88.ux.fragments.ProductFragment;
 import vantinviet.banhangonline88.ux.fragments.SettingsFragment;
 import vantinviet.banhangonline88.ux.fragments.WishlistFragment;
@@ -264,7 +264,7 @@ public class MainActivity extends AppCompatActivity implements MenuDrawerFragmen
         }
         drawerFragment = (MenuDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.main_navigation_drawer_fragment);
         drawerFragment.setUp((DrawerLayout) findViewById(R.id.main_drawer_layout), toolbar, this);
-
+        app.main_linear_layout =(LinearLayout) findViewById(R.id.main_linear_layout);
         // Initialize list for search suggestions
         searchSuggestionsList = new ArrayList<>();
 

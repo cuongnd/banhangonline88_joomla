@@ -3,6 +3,8 @@ package vantinviet.banhangonline88.libraries.legacy.application;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.support.v4.app.Fragment;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.LinearLayout;
 
@@ -43,6 +45,9 @@ public class JApplication extends JApplicationBase {
     private String component_response;
     SharedPreferences shared_preferences;
     public LinearLayout rootLinearLayout;
+    public DrawerLayout maindrawerlayout;
+    public Fragment main_navigation_drawer_fragment;
+    public LinearLayout main_linear_layout;
 
     /* Static 'instance' method */
     public static JApplication getInstance() {
