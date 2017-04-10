@@ -22,6 +22,7 @@ public class Product {
     int price_value=0;
     String link="";
     private ArrayList<Image> images;
+    private String product_description;
 
     @Override
     public String toString() {
@@ -55,5 +56,9 @@ public class Product {
 
         JApplication app=JFactory.getApplication();
         return VTVConfig.rootUrl.concat(link);
+    }
+
+    public String getProduct_description() {
+        return product_description;
     }
 }

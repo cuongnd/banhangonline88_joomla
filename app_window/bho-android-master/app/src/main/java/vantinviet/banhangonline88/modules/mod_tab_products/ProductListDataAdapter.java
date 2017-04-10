@@ -27,6 +27,8 @@ import vantinviet.banhangonline88.R;
 import vantinviet.banhangonline88.administrator.components.com_hikashop.classes.Image;
 import vantinviet.banhangonline88.administrator.components.com_hikashop.classes.Product;
 import vantinviet.banhangonline88.api.EndPoints;
+import vantinviet.banhangonline88.libraries.joomla.JFactory;
+import vantinviet.banhangonline88.libraries.legacy.application.JApplication;
 
 public class ProductListDataAdapter extends RecyclerView.Adapter<ProductListDataAdapter.SingleProductRowHolder> {
 
@@ -50,6 +52,7 @@ public class ProductListDataAdapter extends RecyclerView.Adapter<ProductListData
 
         Product product = list_product.get(i);
         holder.productName.setText(product.getName());
+        holder.link=product.getLink();
         holder.html_price.setText(Html.fromHtml(product.getHtml_price()));
         ArrayList<Image> list_image=product.getList_image();
         if(list_image!=null && list_image.size()>0) {
@@ -70,6 +73,8 @@ public class ProductListDataAdapter extends RecyclerView.Adapter<ProductListData
         protected TextView productName;
         protected TextView html_price;
         protected ImageView ProductImage;
+        public String link;
+        private JApplication app= JFactory.getApplication();
         public SingleProductRowHolder(View view) {
             super(view);
 
@@ -77,9 +82,14 @@ public class ProductListDataAdapter extends RecyclerView.Adapter<ProductListData
             this.ProductImage = (ImageView) view.findViewById(R.id.productImage);
             this.html_price = (TextView) view.findViewById(R.id.html_price);
             view.setOnClickListener(new View.OnClickListener() {
+                public String getLink() {
+                    return link;
+                }
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(v.getContext(), productName.getText(), Toast.LENGTH_SHORT).show();
+
+                    //Toast.makeText(v.getContext(), this.getLink(), Toast.LENGTH_SHORT).show();
+                    app.setRedirect(this.getLink());
                 }
             });
 

@@ -2,6 +2,10 @@ package vantinviet.banhangonline88.administrator.components.com_hikashop.classes
 
 import java.util.ArrayList;
 
+import vantinviet.banhangonline88.VTVConfig;
+import vantinviet.banhangonline88.libraries.joomla.JFactory;
+import vantinviet.banhangonline88.libraries.legacy.application.JApplication;
+
 /**
  * Created by cuongnd on 30/03/2017.
  */
@@ -13,6 +17,7 @@ public class Category {
     String category_name="";
     String category_description="";
     String file_path="";
+    String link="";
     Image icon;
     Image medium_image;
 
@@ -35,6 +40,10 @@ public class Category {
 
     public Image getIcon() {
         return icon;
+    }
+    public String getLink() {
+        JApplication app= JFactory.getApplication();
+        return VTVConfig.rootUrl.concat(link);
     }
 
     public Image getMedium_image() {
