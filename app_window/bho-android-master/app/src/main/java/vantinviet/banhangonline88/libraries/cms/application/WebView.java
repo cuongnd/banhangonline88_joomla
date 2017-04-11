@@ -81,11 +81,12 @@ public class WebView {
         web_browser.clearHistory();
         web_browser.clearFormData();
         web_browser.clearCache(true);
-
+        String link_post="get_page_config_app=1&ignoreMessages=true&format=json&os=android";
         System.out.println("-------host---------");
         System.out.println(link);
+        System.out.println("link_post:"+link_post+"&base64=0");
         System.out.println("-------host---------");
-        byte[] post = EncodingUtils.getBytes("get_page_config_app=1&ignoreMessages=true&format=json&os=android", "BASE64");
+        byte[] post = EncodingUtils.getBytes(link_post, "BASE64");
         web_browser.postUrl(link,post);
         web_browser.addJavascriptInterface(new MyJavaScriptInterfaceWebsite(), "HtmlViewer");
     }

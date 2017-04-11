@@ -2,21 +2,21 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_chating"
+        android:id="@+id/action_capture_product"
         android:enabled="true"
-        android:icon="@drawable/messages_32"
-        android:title="Chating"
+        android:icon="@android:drawable/ic_menu_camera"
+        android:title="Đăng bán"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/action_add_to_cart"
+        android:id="@+id/user_page"
         android:enabled="true"
-        android:icon="@drawable/cart_add"
-        android:title="@string/added_to_cart"
+        android:icon="@drawable/user"
+        android:title="Trang ca nhân"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/action_quick_buy"
+        android:id="@+id/notification"
         android:enabled="true"
-        android:icon="@mipmap/ic_quick_buy"
-        android:title="mua ngay"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="Thông báo"
         app:showAsAction="ifRoom" />
 </menu>

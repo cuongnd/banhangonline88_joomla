@@ -1,4 +1,4 @@
-package vantinviet.banhangonline88.components.com_hikashop.views.product.tmpl;
+package vantinviet.banhangonline88.components.com_hikamarket.views.product.tmpl;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -7,25 +7,25 @@ import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.util.AttributeSet;
 import android.view.View;
-import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
+import com.google.gson.Gson;
 import com.google.gson.JsonElement;
+import com.google.gson.stream.JsonReader;
 
+import java.io.StringReader;
 import java.util.ArrayList;
-import java.util.Timer;
 
-import okio.Timeout;
 import timber.log.Timber;
 import vantinviet.banhangonline88.R;
 import vantinviet.banhangonline88.VTVConfig;
 import vantinviet.banhangonline88.administrator.components.com_hikashop.classes.Image;
 import vantinviet.banhangonline88.administrator.components.com_hikashop.classes.Product;
-import vantinviet.banhangonline88.libraries.cms.application.WebView;
+import vantinviet.banhangonline88.libraries.html.ParseHtml;
 import vantinviet.banhangonline88.libraries.joomla.JFactory;
 import vantinviet.banhangonline88.libraries.legacy.application.JApplication;
 
@@ -73,8 +73,16 @@ public class ShowContent extends LinearLayout {
         TextView html_price= (TextView) view.findViewById(R.id.html_price);
         html_price.setText(Html.fromHtml(product.getHtml_price()));
 
-        LinearLayout product_description= (LinearLayout) view.findViewById(R.id.product_description);
+        String html_product=product.getHtml_product();
+        Gson gson = new Gson();
+        JsonReader reader = new JsonReader(new StringReader(html_product));
+        reader.setLenient(true);
+        ParseHtml html= gson.fromJson(reader, ParseHtml.class);
+        LinearLayout html_linear_layout=ParseHtml.get_html_linear_layout(html);
 
+        LinearLayout product_description= (LinearLayout) view.findViewById(R.id.product_description);
+        LinearLayout html_product_linear_layout= (LinearLayout) view.findViewById(R.id.html_product);
+        ((LinearLayout) html_product_linear_layout).addView(html_linear_layout);
 
         String content=product.getProduct_description();
         String header = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">"

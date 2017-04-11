@@ -59,6 +59,7 @@
             app:layout="@layout/fragment_drawer"
             tools:layout="@layout/fragment_drawer"/>
 
+
     </android.support.v4.widget.DrawerLayout>
 
     <android.support.design.widget.BottomNavigationView
@@ -66,7 +67,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:itemBackground="@color/colorPrimary"
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
