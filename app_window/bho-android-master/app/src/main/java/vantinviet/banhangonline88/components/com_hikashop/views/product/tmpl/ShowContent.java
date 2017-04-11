@@ -17,7 +17,10 @@ import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.google.gson.JsonElement;
 
 import java.util.ArrayList;
+import java.util.Timer;
 
+import okio.Timeout;
+import timber.log.Timber;
 import vantinviet.banhangonline88.R;
 import vantinviet.banhangonline88.VTVConfig;
 import vantinviet.banhangonline88.administrator.components.com_hikashop.classes.Image;
@@ -97,6 +100,13 @@ public class ShowContent extends LinearLayout {
 
 
 
+    }
+    protected void start() {
+        // Perform initialization (bindings, timers, etc) here
+    }
+    protected void stop() {
+        Timber.d("hello 22222222222222222222");
+        // Unbind, destroy timers, yadda yadda
     }
 
 

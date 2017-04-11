@@ -42,6 +42,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -265,6 +266,7 @@ public class MainActivity extends AppCompatActivity implements MenuDrawerFragmen
         drawerFragment = (MenuDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.main_navigation_drawer_fragment);
         drawerFragment.setUp((DrawerLayout) findViewById(R.id.main_drawer_layout), toolbar, this);
         app.main_linear_layout =(LinearLayout) findViewById(R.id.main_linear_layout);
+        app.root_relative_layout =(RelativeLayout) findViewById(R.id.root_relative_layout);
         // Initialize list for search suggestions
         searchSuggestionsList = new ArrayList<>();
 

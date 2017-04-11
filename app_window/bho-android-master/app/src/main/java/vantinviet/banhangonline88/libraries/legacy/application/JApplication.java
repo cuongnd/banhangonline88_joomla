@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import org.json.JSONObject;
 
@@ -48,6 +49,7 @@ public class JApplication extends JApplicationBase {
     public DrawerLayout maindrawerlayout;
     public Fragment main_navigation_drawer_fragment;
     public LinearLayout main_linear_layout;
+    public RelativeLayout root_relative_layout;
 
     /* Static 'instance' method */
     public static JApplication getInstance() {

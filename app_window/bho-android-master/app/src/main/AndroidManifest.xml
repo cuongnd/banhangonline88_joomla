@@ -159,7 +159,10 @@
         <activity
             android:name=".ux.fragments.Main3Activity"
             android:label="@string/title_activity_main3"
-            android:theme="@style/MaterialTheme.NoActionBar"></activity>
+            android:theme="@style/MaterialTheme.NoActionBar" />
+        <activity
+            android:name=".components.com_hikashop.views.product.tmpl.product_show_footer"
+            android:label="@string/title_activity_product_show_footer"></activity>
     </application>
 
 </manifest>
