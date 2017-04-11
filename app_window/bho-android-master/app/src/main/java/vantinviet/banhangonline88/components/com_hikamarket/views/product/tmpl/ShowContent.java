@@ -78,6 +78,7 @@ public class ShowContent extends LinearLayout {
         JsonReader reader = new JsonReader(new StringReader(html_product));
         reader.setLenient(true);
         ParseHtml html= gson.fromJson(reader, ParseHtml.class);
+        Timber.d("html product %s",html.toString());
         LinearLayout html_linear_layout=ParseHtml.get_html_linear_layout(html);
 
         LinearLayout product_description= (LinearLayout) view.findViewById(R.id.product_description);
