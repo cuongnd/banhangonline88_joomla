@@ -1,5 +1,6 @@
 package vantinviet.banhangonline88.modules.mod_slideshowck;
 
+import vantinviet.banhangonline88.VTVConfig;
 import vantinviet.banhangonline88.api.EndPoints;
 
 /**
@@ -50,6 +51,6 @@ public class Slider  {
     }
 
     public String getSource() {
-        return EndPoints.API_URL1.concat(imgname);
+        return VTVConfig.rootUrl.concat(imgname);
     }
 }

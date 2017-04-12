@@ -22,6 +22,7 @@ import java.lang.reflect.InvocationTargetException;
 import timber.log.Timber;
 import vantinviet.banhangonline88.MyApplication;
 import vantinviet.banhangonline88.R;
+import vantinviet.banhangonline88.VTVConfig;
 import vantinviet.banhangonline88.api.EndPoints;
 import vantinviet.banhangonline88.configuration.JConfig;
 import vantinviet.banhangonline88.entities.Page;
@@ -164,13 +165,13 @@ public class cms {
 
         if(json_page==null)
         {
-            url= EndPoints.API_URL1+"?";
+            url= VTVConfig.rootUrl+"?";
         }else{
             drawerMenuItem =  gson.fromJson(json_page, DrawerMenuItem.class);
             Timber.d("drawerMenuItem %s",drawerMenuItem.toString());
             url=drawerMenuItem.getLink();
             if(url==null || url.equals("")){
-                url=EndPoints.API_URL1+"?";
+                url=VTVConfig.rootUrl+"?";
             }
         }
         Timber.d("url:%s",url);

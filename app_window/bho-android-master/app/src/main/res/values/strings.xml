@@ -3,8 +3,6 @@
     <string name="app_name" translatable="false">banhangonline88.com</string>
     <string name="facebook_app_id" translatable="false">970288516370238</string>
     <string name="android_key" translatable="false">d97dd7ebef54402a5416a56ed982d943</string>
-    <string name="root_url">http://www.banhangonline88.com/</string>
-    <string name="vtv_root_url">http://www.vantinviet.com</string>
     <!-- General strings-->
     <string name="No_network_connection">Không có kết nối internet</string>
     <string name="Internal_error">Lỗi kết nối, Vui lòng thử lại</string>

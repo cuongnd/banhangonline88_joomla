@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import vantinviet.banhangonline88.R;
+import vantinviet.banhangonline88.VTVConfig;
 import vantinviet.banhangonline88.libraries.android.http.JSONParser;
 import vantinviet.banhangonline88.libraries.android.registry.JRegistry;
 
@@ -110,8 +111,7 @@ public class element_grid_helper {
 
 
             String binding_source =a_params.get("data.bindingSource", "", "string");
-            String root_url = context.getResources().getString(R.string.root_url);
-            String url_get_data= root_url+"index.php?option=com_phpmyadmin&task=datasource.readData&block_id="+String.valueOf(id);
+            String url_get_data= VTVConfig.rootUrl+"index.php?option=com_phpmyadmin&task=datasource.readData&block_id="+String.valueOf(id);
             table_view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, 1000));
             (new AsyncJsonDataLoader()).execute(url_get_data);
 

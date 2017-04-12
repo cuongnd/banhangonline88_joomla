@@ -11,6 +11,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
+import static vantinviet.banhangonline88.libraries.cms.application.JApplicationSite.debug;
+
 /**
  * Created by cuongnd on 12/17/2015.
  */
@@ -33,6 +35,9 @@ public class VTVConfig {
             instance = new VTVConfig();
         }
         return instance;
+    }
+    public static boolean getDebug(){
+        return debug;
     }
     @TargetApi(Build.VERSION_CODES.KITKAT)
     public  static  String get_version()

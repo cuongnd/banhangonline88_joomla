@@ -69,7 +69,7 @@ public class JApplicationSite extends JApplicationCms {
     public static int screen_size_width;
     public static int screen_size_height;
     public static String host="";
-    public static boolean debug;
+    public static boolean debug=true;
     public static String component_content;
     public static JApplicationSite getInstance(String client) {
         if (ourInstance == null) {

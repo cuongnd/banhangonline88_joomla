@@ -286,13 +286,13 @@ public class PageMenuItemFragment extends Fragment  {
 
         if(json_page==null)
         {
-            url=EndPoints.API_URL1+"?";
+            url=VTVConfig.rootUrl+"?";
         }else{
             drawerMenuItem =  gson.fromJson(json_page, DrawerMenuItem.class);
             Timber.d("drawerMenuItem %s",drawerMenuItem.toString());
             url=drawerMenuItem.getLink();
             if(url==null || url.equals("")){
-                url=EndPoints.API_URL1+"?";
+                url=VTVConfig.rootUrl+"?";
             }
         }
         Timber.d("url:%s",url);

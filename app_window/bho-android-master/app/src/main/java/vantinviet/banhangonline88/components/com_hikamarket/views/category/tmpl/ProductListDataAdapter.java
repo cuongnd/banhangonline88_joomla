@@ -23,6 +23,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import vantinviet.banhangonline88.R;
+import vantinviet.banhangonline88.VTVConfig;
 import vantinviet.banhangonline88.administrator.components.com_hikashop.classes.Image;
 import vantinviet.banhangonline88.administrator.components.com_hikashop.classes.Product;
 import vantinviet.banhangonline88.api.EndPoints;
@@ -58,7 +59,7 @@ public class ProductListDataAdapter extends RecyclerView.Adapter<ProductListData
             Image first_image = images.get(0);
             String url = first_image.getUrl();
 
-            Picasso.with(mContext).load(EndPoints.API_URL1.concat(url)).into((ImageView) holder.ProductImage);
+            Picasso.with(mContext).load(VTVConfig.rootUrl.concat(url)).into((ImageView) holder.ProductImage);
         }
         holder.productName.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
     }

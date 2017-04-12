@@ -21,6 +21,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import vantinviet.banhangonline88.R;
+import vantinviet.banhangonline88.VTVConfig;
 import vantinviet.banhangonline88.administrator.components.com_hikashop.classes.Category;
 import vantinviet.banhangonline88.administrator.components.com_hikashop.classes.Image;
 import vantinviet.banhangonline88.api.EndPoints;
@@ -52,7 +53,7 @@ public class CategoryListDataAdapter extends RecyclerView.Adapter<CategoryListDa
         holder.link=category.getLink();
         Image medium_image=category.getMedium_image();
         String url=medium_image.getUrl();
-        Picasso.with(mContext).load(EndPoints.API_URL1.concat(url)).into((ImageView) holder.categoryImage);
+        Picasso.with(mContext).load(VTVConfig.rootUrl.concat(url)).into((ImageView) holder.categoryImage);
     }
 
     @Override
