@@ -14,8 +14,11 @@ import android.widget.TextView;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
+import com.google.gson.Gson;
 import com.google.gson.JsonElement;
+import com.google.gson.stream.JsonReader;
 
+import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Timer;
 
@@ -26,6 +29,7 @@ import vantinviet.banhangonline88.VTVConfig;
 import vantinviet.banhangonline88.administrator.components.com_hikashop.classes.Image;
 import vantinviet.banhangonline88.administrator.components.com_hikashop.classes.Product;
 import vantinviet.banhangonline88.libraries.cms.application.WebView;
+import vantinviet.banhangonline88.libraries.html.ParseHtml;
 import vantinviet.banhangonline88.libraries.joomla.JFactory;
 import vantinviet.banhangonline88.libraries.legacy.application.JApplication;
 
@@ -72,6 +76,21 @@ public class ShowContent extends LinearLayout {
 
         TextView html_price= (TextView) view.findViewById(R.id.html_price);
         html_price.setText(Html.fromHtml(product.getHtml_price()));
+
+
+
+        String html_product=product.getHtml_product();
+        Timber.d("html_product %s",html_product.toString());
+        Gson gson = new Gson();
+        JsonReader reader = new JsonReader(new StringReader(html_product));
+        reader.setLenient(true);
+        ParseHtml html= gson.fromJson(reader, ParseHtml.class);
+
+
+        LinearLayout html_linear_layout=ParseHtml.get_html_linear_layout(html);
+        LinearLayout html_product_linear_layout= (LinearLayout) view.findViewById(R.id.html_product);
+        ((LinearLayout) html_product_linear_layout).addView(html_linear_layout);
+
 
         LinearLayout product_description= (LinearLayout) view.findViewById(R.id.product_description);
 

@@ -20,7 +20,7 @@ public class JConfig {
     public int caching=0;
     public String cache_handler="file";
     public String android_ses_id=null;
-    private String rootUrl="http://banhangonline88.com/";
+    private String rootUrl="http://www.banhangonline88.com/";
 
     public static JConfig getInstance() {
         if(instance==null)

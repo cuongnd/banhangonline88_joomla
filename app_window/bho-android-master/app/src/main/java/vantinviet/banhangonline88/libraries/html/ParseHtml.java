@@ -17,10 +17,10 @@ import static vantinviet.banhangonline88.libraries.joomla.JFactory.getContext;
  */
 
 public class ParseHtml {
-    String tag;
-    String lang;
-    String html;
-    String class_name;
+    String tag="";
+    String lang="";
+    String html="";
+    String class_name="";
     private ArrayList<ParseHtml> children;
     private static ArrayList<String> _list_allow_tag;
 
@@ -79,19 +79,22 @@ public class ParseHtml {
             if(check_has_tag(class_name,tag))
             {
                 tag = "render_tag_" + tag;
-                //no paramater
-                Class noparams[] = {};
-                Method method = null;
+
                 try {
-                    method = ParseHtml.class.getDeclaredMethod(tag, (Class<?>[]) new Object[]{root_linear_layout, screen_size_width, screen_size_height});
-                    return (LinearLayout)method.invoke(ParseHtml.class, null);
-                } catch (NoSuchMethodException e) {
-                    e.printStackTrace();
-                } catch (InvocationTargetException e) {
-                    e.printStackTrace();
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
+                    Class<?> c = html.getClass();
+                    Method tag_method = c.getDeclaredMethod(tag,ParseHtml.class, LinearLayout.class,int.class,int.class);
+                    return (LinearLayout)tag_method.invoke(html,html,root_linear_layout,screen_size_width,screen_size_height);
+
+                    // production code should handle these exceptions more gracefully
+                } catch (InvocationTargetException x) {
+                    Throwable cause = x.getCause();
+                    System.err.format("%s() failed: %s%n",tag, cause.getMessage());
+                } catch (Exception x) {
+                    x.printStackTrace();
                 }
+                //method = ParseHtml.class.getDeclaredMethod(tag,ParseHtml.class, LinearLayout.class,int.class,int.class);
+                //return (LinearLayout)method.invoke(ParseHtml.class, html,root_linear_layout,screen_size_width,screen_size_height);
+
                 break;
             }
         }
@@ -107,22 +110,19 @@ public class ParseHtml {
         }
         return class_name.toLowerCase().contains(tag.toLowerCase());
     }
-
-    private static LinearLayout render_tag_row(LinearLayout root_linear_layout, int screen_size_width, int screen_size_height)
+    private static LinearLayout render_tag1_row(int test)
+    {
+        return  null;
+    }
+    private static LinearLayout render_tag_row(ParseHtml html,LinearLayout root_linear_layout,int screen_size_width,int screen_size_height)
     {
         LinearLayout.LayoutParams layout_params;
-        layout_params = new LinearLayout.LayoutParams(screen_size_width, screen_size_height);
-        layout_params.setMargins(0, 10, 0, 10);
-        LinearLayout new_row_linear_layout = new LinearLayout(getContext());
+       /* layout_params = new LinearLayout.LayoutParams(screen_size_width,screen_size_height  );
+        layout_params.setMargins(0,10,0,10);
+        LinearLayout new_row_linear_layout=new LinearLayout(getContext());
         new_row_linear_layout.setLayoutParams(layout_params);
-        new_row_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
-
-        layout_params = new LinearLayout.LayoutParams(screen_size_width, screen_size_height);
-        LinearLayout new_wrapper_of_row_linear_layout = new LinearLayout(getContext());
-        new_wrapper_of_row_linear_layout.setLayoutParams(layout_params);
-        new_wrapper_of_row_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
-
-        return null;
+        new_row_linear_layout.setOrientation(LinearLayout.HORIZONTAL);*/
+        return root_linear_layout;
     }
     private static LinearLayout render_tag_column(LinearLayout root_linear_layout, int screen_size_width, int screen_size_height)
     {

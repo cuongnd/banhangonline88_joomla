@@ -8,7 +8,7 @@ public class EndPoints {
      * Base server url.
      */
     private static final String API_URL                  = "http://77.93.198.186/v1.2/";    // staging
-    public static final String API_URL1                  = "http://banhangonline88.com/";    // staging
+    public static final String API_URL1                  = "http://www.banhangonline88.com/";    // staging
 
     //public static final String SHOPS                    = API_URL.concat(CONST.ORGANIZATION_ID + "/shops");
     public static final String SHOPS                    = API_URL1.concat("index.php?format=json&tmpl=component&ignoreMessages=true&option=com_hikashop&ctrl=country&task=ajax_get_list_country");

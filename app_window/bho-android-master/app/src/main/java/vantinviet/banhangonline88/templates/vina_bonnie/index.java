@@ -97,17 +97,17 @@ public class index extends Fragment {
         return view;
     }
 
-    private void render_layout(ArrayList<Row> layout, LinearLayout rootLinearLayout,int screen_size_width,int screen_size_heght) {
+    private void render_layout(ArrayList<Row> layout, LinearLayout rootLinearLayout,int screen_size_width,int screen_size_height) {
 
         LayoutParams layout_params;
         if(layout!=null)for (Row row: layout) {
-            layout_params = new LayoutParams(screen_size_width,screen_size_heght  );
+            layout_params = new LayoutParams(screen_size_width,screen_size_height  );
             layout_params.setMargins(0,10,0,10);
             LinearLayout new_row_linear_layout=new LinearLayout(getContext());
             new_row_linear_layout.setLayoutParams(layout_params);
             new_row_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
 
-            layout_params = new LayoutParams(screen_size_width,screen_size_heght );
+            layout_params = new LayoutParams(screen_size_width,screen_size_height );
             LinearLayout new_wrapper_of_row_linear_layout=new LinearLayout(getContext());
             new_wrapper_of_row_linear_layout.setLayoutParams(layout_params);
             new_wrapper_of_row_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
@@ -116,7 +116,7 @@ public class index extends Fragment {
             if(list_column!=null)for (Column column: list_column) {
                 int column_width=Integer.parseInt(column.getSpan());
                 column_width=screen_size_width*column_width/12;
-                layout_params = new LayoutParams(screen_size_width,screen_size_heght  );
+                layout_params = new LayoutParams(screen_size_width,screen_size_height  );
                 int column_offset=Integer.parseInt(column.getOffset().equals("")?"0":column.getOffset());
                 column_offset=screen_size_width*column_offset/12;
                 layout_params.setMargins(column_offset, 0, 0, 0);
@@ -166,7 +166,7 @@ public class index extends Fragment {
                 }
 
                 Timber.d("column position(%s),type(%s) span(%s)",column.getPosition(),column.getType(),column.getSpan());
-                render_layout(list_row,new_wrapper_of_column_linear_layout,column_width,screen_size_heght);
+                render_layout(list_row,new_wrapper_of_column_linear_layout,column_width,screen_size_height);
                 new_column_linear_layout.addView(new_wrapper_of_column_linear_layout);
                 new_wrapper_of_row_linear_layout.addView(new_column_linear_layout);
 
