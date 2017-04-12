@@ -208,14 +208,15 @@ class Less_Parser{
 
 
 			$this->PostVisitors($evaldRoot);
-
 			if( Less_Parser::$options['sourceMap'] ){
 				$generator = new Less_SourceMap_Generator($evaldRoot, Less_Parser::$contentsMap, Less_Parser::$options );
+
 				// will also save file
 				// FIXME: should happen somewhere else?
 				$css = $generator->generateCSS();
 			}else{
 				$css = $evaldRoot->toCSS();
+
 			}
 
 			if( Less_Parser::$options['compress'] ){
@@ -4720,7 +4721,6 @@ class Less_Tree_Attribute extends Less_Tree{
 			$value .= $this->op;
 			$value .= (is_object($this->value) ? $this->value->toCSS() : $this->value);
 		}
-
 		return '[' . $value . ']';
 	}
 } 
@@ -7130,7 +7130,6 @@ class Less_Tree_Ruleset extends Less_Tree{
 	 * @see Less_Tree::genCSS
 	 */
 	public function genCSS( $output ){
-
 		if( !$this->root ){
 			Less_Environment::$tabLevel++;
 		}

@@ -168,6 +168,7 @@ if(!empty($this->row->extraData->top)) { echo implode("\r\n",$this->row->extraDa
 		 } else { ?>
 		<input type="checkbox" class="hikashop_compare_checkbox" id="hikashop_listing_chk_<?php echo $this->row->product_id;?>" onchange="setToCompareList(<?php echo $this->row->product_id;?>,'<?php echo $this->escape($this->row->product_name); ?>',this);"><label for="hikashop_listing_chk_<?php echo $this->row->product_id;?>"><?php echo JText::_('ADD_TO_COMPARE_LIST'); ?></label>
 	<?php }
+		JText::_()
 	} ?>
 	<!-- EO COMPARISON AREA -->
 </div>

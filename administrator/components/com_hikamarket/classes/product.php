@@ -1971,8 +1971,10 @@ class hikamarketProductClass extends hikamarketClass {
 	}
 
 	public function processViewFront(&$view) {
+		$doc=JFactory::getDocument();
+		$doc_type=$doc->getType();
 		$layout = $view->getLayout();
-		if(!in_array($layout, array('show','listing','contact')))
+		if(!in_array($layout, array('show','show.android','listing.android','contact.android')))
 			return;
 
 		$currentVendorid = hikamarket::loadVendor(false);
@@ -1997,7 +1999,8 @@ class hikamarketProductClass extends hikamarketClass {
 		else
 			$url_itemid = '';
 
-		if($layout == 'show') {
+		if($layout == 'show'||$layout == 'show.android') {
+
 			if(!isset($view->element->product_vendor_id))
 				return;
 
@@ -2025,11 +2028,16 @@ class hikamarketProductClass extends hikamarketClass {
 				$view->element->extraData->topEnd = array();
 
 			$slot = 'vendor';
-			if($show_sold_by && ($vendor->vendor_id > 1 || $show_sold_by_me)) {
-				$vendorLink = '<a href="'.hikamarket::completeLink('vendor&task=show&cid=' . $vendor->vendor_id . '&name=' . $vendor->alias . $url_itemid).'">' . $vendor->vendor_name . '</a>';
-				$view->element->extraData->topEnd[$slot] = '<span class="hikamarket_vendor">'.JText::sprintf('SOLD_BY_VENDOR', $vendorLink).'</span>';
+			if($doc_type=="json"){
+				if($show_sold_by && ($vendor->vendor_id > 1 || $show_sold_by_me)) {
+					$view->element->extraData->topEnd["vendor"] =$vendor;
+				}
+			}else{
+				if($show_sold_by && ($vendor->vendor_id > 1 || $show_sold_by_me)) {
+					$vendorLink = '<a href="'.hikamarket::completeLink('vendor&task=show&cid=' . $vendor->vendor_id . '&name=' . $vendor->alias . $url_itemid).'">' . $vendor->vendor_name . '('.$vendor->vendor_address_telephone.')</a>';
+					$view->element->extraData->topEnd[$slot] = '<span class="hikamarket_vendor">'.JText::sprintf('SOLD_BY_VENDOR', $vendorLink).'</span>';
+				}
 			}
-
 			if($show_edit_btn) {
 				if(empty($view->element->extraData->topBegin))
 					$view->element->extraData->topBegin = array();

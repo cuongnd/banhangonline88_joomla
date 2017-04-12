@@ -134,18 +134,7 @@ jQuery(function($){
             $('#attrib-preset').find('[class$="'+$(this).data('preset')+'"]').closest('.pickerblock').show();
         });
         var device_editing=$('input[name="selected_device_editing"]').val();
-        var $select_device=$(
-            '<div class="control-group">'+
-                '<div class="control-label"><label >Select device edtting<span class="star">&nbsp;*</span></label></div>'+
-                '<div class="controls">'+
-                        '<select name="device_editing" class="select_device" onchange="Joomla.submitbutton(\'style.change_device_editing\')">' +
-                            '<option value="browser" '+(device_editing=='browser'?' selected ':'')+'>Browser</option>'+
-                            '<option value="android" '+(device_editing=='android'?' selected ':'')+'>App android</option>'+
-                            '<option value="ios" '+(device_editing=='ios'?' selected ':'')+'>App ios</option>'+
-                    '</select>'+
-                '</div>'+
-            '</div>'
-            );
+        var $select_device=$('.control-group.select_device');
         //Template Information
         $select_device.appendTo( $( '.form-inline.form-inline-header' ) );
         $('#jform_template').closest('.control-group').appendTo( $( '.form-inline.form-inline-header' ) );

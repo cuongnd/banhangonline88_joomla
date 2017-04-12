@@ -73,16 +73,6 @@ public class ShowContent extends LinearLayout {
         TextView html_price= (TextView) view.findViewById(R.id.html_price);
         html_price.setText(Html.fromHtml(product.getHtml_price()));
 
-        String html_product=product.getHtml_product();
-        Timber.d("html_product %s",html_product.toString());
-        Gson gson = new Gson();
-        JsonReader reader = new JsonReader(new StringReader(html_product));
-        reader.setLenient(true);
-        ParseHtml html= gson.fromJson(reader, ParseHtml.class);
-
-        LinearLayout html_linear_layout=ParseHtml.get_html_linear_layout(html);
-        LinearLayout html_product_linear_layout= (LinearLayout) view.findViewById(R.id.html_product);
-        ((LinearLayout) html_product_linear_layout).addView(html_linear_layout);
 
 
         LinearLayout product_description= (LinearLayout) view.findViewById(R.id.product_description);
