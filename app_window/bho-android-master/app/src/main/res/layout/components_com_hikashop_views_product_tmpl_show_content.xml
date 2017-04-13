@@ -51,12 +51,16 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/html_product"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:orientation="horizontal">
 
+        <LinearLayout
+            android:id="@+id/html_product"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"></LinearLayout>
     </LinearLayout>
 
     <LinearLayout

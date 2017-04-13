@@ -46,6 +46,13 @@ public class Column {
     @SerializedName("is_sub_content")
     String is_sub_content="";
     private ArrayList<Row> children=new ArrayList<Row>();
+    private int width;
+    private String class_default_offset;
+    private String default_class_column_offset;
+    private String class_default_width;
+    private String default_class_column_width;
+    private int default_offset=0;
+
     public String toString() {
         return "Column{" +
                 "span=" + span +
@@ -70,13 +77,10 @@ public class Column {
                 '}';
     }
 
-    public String getSpan() {
+    public String getDefault_span() {
         return span;
     }
 
-    public String getOffset() {
-        return offset;
-    }
 
     public ArrayList<Row> getRows() {
         return children;
@@ -89,4 +93,57 @@ public class Column {
     public String getPosition() {
         return position;
     }
+
+    public void setSpan(String span) {
+        this.span = span;
+    }
+
+    public int get_Default_offset() {
+        return default_offset;
+    }
+    public String getOffset() {
+        return offset;
+    }
+    public void setDefault_offset(int default_offset) {
+        this.default_offset = default_offset;
+    }
+
+    public void setDefault_class_column_width(String default_class_column_width) {
+        this.default_class_column_width = default_class_column_width;
+    }
+    public String getDefault_class_column_width() {
+        return default_class_column_width;
+    }
+    public void setDefault_class_column_offset(String default_class_column_offset) {
+        this.default_class_column_offset = default_class_column_offset;
+    }
+
+    public String getDefault_class_column_offset() {
+        return default_class_column_offset;
+    }
+
+    public static ArrayList<Column> get_list_default_class_column_offset() {
+
+        ArrayList<Column> list_list_default_class_column_offset = new ArrayList<Column>();
+        for (int i = 1; i <= 12; i++) {
+            Column column_default_offset = new Column();
+            column_default_offset.setDefault_offset(i);
+            column_default_offset.setDefault_class_column_offset(String.format("col-md-offset-%d", i));
+            list_list_default_class_column_offset.add(column_default_offset);
+        }
+        return list_list_default_class_column_offset;
+    }
+    public static ArrayList<Column> get_list_default_class_column_width() {
+        ArrayList<Column> list_class_default_column_width = new ArrayList<Column>();
+        for (int i = 1; i <= 12; i++) {
+            Column column_md=new Column();
+            column_md.setSpan(String.valueOf(i));
+            column_md.setDefault_class_column_width(String.format("col-md-%d",i));
+            list_class_default_column_width.add(column_md);
+        }
+        return list_class_default_column_width;
+    }
+
+
+
 }

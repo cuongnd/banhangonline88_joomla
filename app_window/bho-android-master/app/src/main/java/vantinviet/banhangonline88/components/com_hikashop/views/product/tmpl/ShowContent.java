@@ -9,10 +9,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewConfiguration;
 import android.view.ViewTreeObserver;
-import android.view.animation.Animation;
-import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -26,16 +23,13 @@ import com.google.gson.stream.JsonReader;
 
 import java.io.StringReader;
 import java.util.ArrayList;
-import java.util.Timer;
 
-import okio.Timeout;
 import timber.log.Timber;
 import vantinviet.banhangonline88.R;
 import vantinviet.banhangonline88.VTVConfig;
 import vantinviet.banhangonline88.administrator.components.com_hikashop.classes.Image;
 import vantinviet.banhangonline88.administrator.components.com_hikashop.classes.Product;
-import vantinviet.banhangonline88.libraries.cms.application.WebView;
-import vantinviet.banhangonline88.libraries.html.ParseHtml;
+import vantinviet.banhangonline88.libraries.html.TagHtml;
 import vantinviet.banhangonline88.libraries.joomla.JFactory;
 import vantinviet.banhangonline88.libraries.legacy.application.JApplication;
 
@@ -90,11 +84,11 @@ public class ShowContent extends LinearLayout {
         Gson gson = new Gson();
         JsonReader reader = new JsonReader(new StringReader(html_product));
         reader.setLenient(true);
-        ParseHtml html= gson.fromJson(reader, ParseHtml.class);
+        TagHtml html= gson.fromJson(reader, TagHtml.class);
 
 
         LinearLayout html_product_linear_layout= (LinearLayout) view.findViewById(R.id.html_product);
-        ParseHtml.get_html_linear_layout(html,html_product_linear_layout);
+        TagHtml.get_html_linear_layout(html,html_product_linear_layout);
 
 
         LinearLayout product_description= (LinearLayout) view.findViewById(R.id.product_description);
@@ -121,7 +115,9 @@ public class ShowContent extends LinearLayout {
 
             }
         });
+
         main_scroll_view.setOnTouchListener(new OnTouchListener() {
+            boolean reload=false;
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction() == MotionEvent.ACTION_UP) {
@@ -129,13 +125,17 @@ public class ShowContent extends LinearLayout {
                     int scrollX = main_scroll_view.getScrollX(); // For HorizontalScrollView
                     // DO SOMETHING WITH THE SCROLL COORDINATES
                     Timber.d("scrollY %d scrollX %d",scrollY,scrollX);
-                    if(scrollY==0){
+                    if(reload==true){
                         String link=app.getLink();
                         app.setRedirect(link);
                         Log.i("Touche", "ScrollView ACTION_DOWN");
+                    }
+                    if(scrollY==0){
+                        reload=true;
                     }else{
 
                     }
+
                     return true;
                 }
                 return false;

@@ -19,9 +19,7 @@ import java.util.ArrayList;
 
 import timber.log.Timber;
 import vantinviet.banhangonline88.CONST;
-import vantinviet.banhangonline88.MyApplication;
 import vantinviet.banhangonline88.R;
-import vantinviet.banhangonline88.entities.Page;
 import vantinviet.banhangonline88.entities.drawerMenu.DrawerMenuItem;
 import vantinviet.banhangonline88.entities.module.Module;
 import vantinviet.banhangonline88.entities.template.bootstrap.Column;
@@ -116,7 +114,7 @@ public class index extends Fragment {
             Timber.d("row name(%s)",row.getName());
             ArrayList<Column> list_column=row.getColumns();
             if(list_column!=null)for (Column column: list_column) {
-                int column_width=Integer.parseInt(column.getSpan());
+                int column_width=Integer.parseInt(column.getDefault_span());
                 column_width=screen_size_width*column_width/12;
                 layout_params = new LayoutParams(screen_size_width,screen_size_heght  );
                 int column_offset=Integer.parseInt(column.getOffset().equals("")?"0":column.getOffset());
@@ -168,7 +166,7 @@ public class index extends Fragment {
 
                 }
 
-                Timber.d("column position(%s),type(%s) span(%s)",column.getPosition(),column.getType(),column.getSpan());
+                Timber.d("column position(%s),type(%s) span(%s)",column.getPosition(),column.getType(),column.getDefault_span());
                 render_layout(list_row,new_wrapper_of_column_linear_layout,column_width,screen_size_heght);
                 new_column_linear_layout.addView(new_wrapper_of_column_linear_layout);
                 new_wrapper_of_row_linear_layout.addView(new_column_linear_layout);
