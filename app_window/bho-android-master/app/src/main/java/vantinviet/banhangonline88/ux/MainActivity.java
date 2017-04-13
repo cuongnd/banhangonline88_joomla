@@ -43,6 +43,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -238,6 +239,7 @@ public class MainActivity extends AppCompatActivity implements MenuDrawerFragmen
     private void init(MainActivity mInstance) {
         Timber.d("%s onCreate", MainActivity.class.getSimpleName());
         app.setCurrentActivity(mInstance);
+
         // init loading dialog
         progressDialog = Utils.generateProgressDialog(this, false);
         app.setProgressDialog(progressDialog);

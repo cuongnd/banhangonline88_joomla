@@ -1,5 +1,8 @@
 package vantinviet.banhangonline88.libraries.utilities;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,6 +21,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import vantinviet.banhangonline88.libraries.joomla.JFactory;
+import vantinviet.banhangonline88.libraries.legacy.application.JApplication;
 
 /**
  * Created by cuongnd on 6/7/2016.
@@ -52,6 +58,7 @@ public class JUtilities {
 
         return sb.toString();
     }
+
     private static Set<Class> getClassesInPackage(String packageName) {
         Set<Class> classes = new HashSet<Class>();
         String packageNameSlashed = "/" + packageName.replace(".", "/");
@@ -167,5 +174,35 @@ public class JUtilities {
         return random;
     }
 
+    public static void show_alert_dialog(final String url) {
+        final JApplication app= JFactory.getApplication();
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                app.getCurrentActivity());
+
+        alertDialogBuilder.setTitle("Error load page");
+
+        alertDialogBuilder
+                .setMessage("Are you sure want to trying load page?")
+                .setCancelable(false)
+                .setPositiveButton("Yes",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        app.setRedirect(url);
+                        // if this button is clicked, close
+                        // current activity
+                        //menu.this.finish();
+                    }
+                })
+                .setNegativeButton("No",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        // if this button is clicked, just close
+                        // the dialog box and do nothing
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // show it
+        alertDialog.show();
+    }
 }
 

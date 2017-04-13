@@ -6,9 +6,15 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.util.AttributeSet;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewConfiguration;
+import android.view.ViewTreeObserver;
+import android.view.animation.Animation;
 import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.daimajia.slider.library.SliderLayout;
@@ -104,6 +110,37 @@ public class ShowContent extends LinearLayout {
         android.webkit.WebView pageContent=new android.webkit.WebView(app.getCurrentActivity());
         content=header + content + footer;
         pageContent.loadData(content, "text/html; charset=UTF-8", null);
+
+
+
+        final ScrollView main_scroll_view= app.getMain_scroll_view();
+        main_scroll_view.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
+
+            @Override
+            public void onScrollChanged() {
+
+            }
+        });
+        main_scroll_view.setOnTouchListener(new OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_UP) {
+                    int scrollY = main_scroll_view.getScrollY(); // For ScrollView
+                    int scrollX = main_scroll_view.getScrollX(); // For HorizontalScrollView
+                    // DO SOMETHING WITH THE SCROLL COORDINATES
+                    Timber.d("scrollY %d scrollX %d",scrollY,scrollX);
+                    if(scrollY==0){
+                        String link=app.getLink();
+                        app.setRedirect(link);
+                        Log.i("Touche", "ScrollView ACTION_DOWN");
+                    }else{
+
+                    }
+                    return true;
+                }
+                return false;
+            }
+        });
 
 
         ((LinearLayout) product_description).addView(pageContent);

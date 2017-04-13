@@ -102,14 +102,14 @@ public class JComponentHelper {
 
     }
 
-    public static void renderComponent(Context context, LinearLayout linear_layout)  {
+    public static void renderComponent(Context context, LinearLayout linear_layout, int component_width)  {
         Class<?> class_component = null;
         Timber.d("input %s",input.toString());
         String option=input.getString("option","com_content");
         try {
             class_component = Class.forName(String.format("vantinviet.banhangonline88.components.%s.%s",option,option.substring(4)));
-            Constructor<?> cons = class_component.getConstructor(LinearLayout.class);
-            Object object = cons.newInstance(linear_layout);
+            Constructor<?> cons = class_component.getConstructor(LinearLayout.class,int.class);
+            Object object = cons.newInstance(linear_layout,component_width);
         } catch (ClassNotFoundException e) {
 
         } catch (IllegalAccessException e) {

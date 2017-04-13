@@ -8,11 +8,13 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import timber.log.Timber;
 import vantinviet.banhangonline88.R;
 import vantinviet.banhangonline88.VTVConfig;
 import vantinviet.banhangonline88.libraries.joomla.JFactory;
 import vantinviet.banhangonline88.libraries.legacy.application.JApplication;
 
+import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
 /**
@@ -95,10 +97,10 @@ public class ParseHtml {
 
     public static void get_html_linear_layout(ParseHtml html, LinearLayout root_linear_layout) {
         JApplication app = JFactory.getApplication();
-        int screen_size_width = 400;
+        int component_width = app.get_Component_width();
         int screen_size_height = 400;
         ParseHtml body_html = html.getChildren().get(0);
-        ParseHtml.render_layout(body_html, root_linear_layout, screen_size_width, screen_size_height /*WRAP_CONTENT*/);
+        ParseHtml.render_layout(body_html, root_linear_layout, component_width, WRAP_CONTENT /*WRAP_CONTENT*/);
     }
 
     public static void render_layout(ParseHtml html, LinearLayout root_linear_layout, int screen_size_width, int screen_size_height) {
@@ -120,7 +122,7 @@ public class ParseHtml {
                 tag = "render_tag_" + tag;
                 try {
                     Class<?> c = html.getClass();
-                    Method tag_method = c.getDeclaredMethod(tag, ParseHtml.class, LinearLayout.class, int.class, int.class);
+                    Method tag_method = c.getDeclaredMethod(tag, ParseHtml.class, int.class, int.class);
                     return (LinearLayout) tag_method.invoke(html, html, screen_size_width, screen_size_height);
 
                     // production code should handle these exceptions more gracefully
@@ -150,7 +152,8 @@ public class ParseHtml {
                 }
             }
             return false;
-        } else if (class_name.contains(tag)) {
+        } else if (class_name.indexOf(tag) != -1) {
+            Timber.d("class_name: %s,tag: %s ",class_name,tag);
             return true;
         } else {
             return false;
@@ -204,10 +207,11 @@ public class ParseHtml {
 
     private static LinearLayout render_tag_h4(ParseHtml html, int screen_size_width, int screen_size_height) {
         JApplication app = JFactory.getApplication();
+        LinearLayout new_h4_linear_layout = new LinearLayout(app.getCurrentActivity());
         boolean debug = VTVConfig.getDebug();
         LinearLayout.LayoutParams layout_params;
         layout_params = new LinearLayout.LayoutParams(screen_size_width, screen_size_height);
-        LinearLayout new_h4_linear_layout = new LinearLayout(app.getCurrentActivity());
+
         new_h4_linear_layout.setLayoutParams(layout_params);
         new_h4_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
         String html_content = html.get_Html_content();

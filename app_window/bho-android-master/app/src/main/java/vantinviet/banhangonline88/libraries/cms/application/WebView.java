@@ -1,6 +1,8 @@
 package vantinviet.banhangonline88.libraries.cms.application;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -10,6 +12,7 @@ import android.webkit.JavascriptInterface;
 import android.webkit.WebViewClient;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonParseException;
 import com.google.gson.stream.JsonReader;
 
 import org.apache.http.util.EncodingUtils;
@@ -92,18 +95,32 @@ public class WebView {
     }
 
     public void go_to_page(String html){
+        app.getProgressDialog().dismiss();
         byte[] data= Base64.decode(html, Base64.DEFAULT);
+        // create alert dialog
         try {
+
             html=new String(data, "UTF-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
+
+            return;
         }
         Timber.d("html response: %s",html);
         Gson gson = new Gson();
         JsonReader reader = new JsonReader(new StringReader(html));
         reader.setLenient(true);
+        Page page=null;
+        try {
+            page = gson.fromJson(reader, Page.class);
+        }
+        catch (JsonParseException e) {
+            Timber.d("JsonParseException error : %s",e.toString());
 
-        Page page = gson.fromJson(reader, Page.class);
+            JUtilities.show_alert_dialog(app.getLink());
+            return;
+        }
+
         app.setAplication(page);
         System.out.print("Page response: "+page.toString());
         System.out.print("list_input response: "+page.getList_input().toString());
@@ -136,7 +153,7 @@ public class WebView {
         } else {
             Timber.e(new RuntimeException(), "Replace fragments with null newFragment parameter.");
         }
-        app.getProgressDialog().dismiss();
+
 
     }
     private class MyJavaScriptInterfaceWebsite {

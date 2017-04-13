@@ -8,6 +8,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 
 import org.json.JSONObject;
 
@@ -50,6 +51,8 @@ public class JApplication extends JApplicationBase {
     public Fragment main_navigation_drawer_fragment;
     public LinearLayout main_linear_layout;
     public RelativeLayout root_relative_layout;
+    public int component_width;
+    private ScrollView main_scroll_view;
 
     /* Static 'instance' method */
     public static JApplication getInstance() {
@@ -193,5 +196,17 @@ public class JApplication extends JApplicationBase {
 
     public String getComponent_response() {
         return component_response;
+    }
+
+    public int get_Component_width() {
+        return component_width;
+    }
+
+    public void setMain_scroll_view(ScrollView main_scroll_view) {
+        this.main_scroll_view = main_scroll_view;
+    }
+
+    public ScrollView getMain_scroll_view() {
+        return main_scroll_view;
     }
 }

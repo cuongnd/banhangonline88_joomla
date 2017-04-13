@@ -66,9 +66,11 @@ public class index extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Timber.d("%s - onCreateView", this.getClass().getSimpleName());
         MainActivity.setActionBarTitle(app.getTitle());
+
         layout= app.getTemplate().getParams().getAndroid_layout();
         Timber.d("page layout %s", layout.toString());
         View view = inflater.inflate(R.layout.fragment_template_vina_bonnie, container, false);
+        app.setMain_scroll_view((ScrollView) view.findViewById(R.id.main_scroll_view));
         LinearLayout rootLinearLayout=(LinearLayout)view.findViewById(R.id.root_layout);
         DisplayMetrics metrics = new DisplayMetrics();
         mInstance.getWindowManager().getDefaultDisplay().getMetrics(metrics);
@@ -160,7 +162,8 @@ public class index extends Fragment {
                     component_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
                     //add_text_view_test(new_column_linear_layout,position);
                     app.input.set_component_linear_layout(component_linear_layout);
-                    JComponentHelper.renderComponent(getContext(), component_linear_layout);
+                    app.component_width=column_width;
+                    JComponentHelper.renderComponent(getContext(), component_linear_layout,column_width);
                     new_wrapper_of_column_linear_layout.addView(component_linear_layout);
 
                 }

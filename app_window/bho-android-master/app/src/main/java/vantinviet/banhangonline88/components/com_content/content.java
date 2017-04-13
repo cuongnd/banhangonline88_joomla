@@ -9,7 +9,7 @@ import timber.log.Timber;
  */
 
 public class content {
-    public  content(LinearLayout linear_layout){
+    public  content(LinearLayout linear_layout,int component_width){
         Timber.d("hello content component");
     }
 }

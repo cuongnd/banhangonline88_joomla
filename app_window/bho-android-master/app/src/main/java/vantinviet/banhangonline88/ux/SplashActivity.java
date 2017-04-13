@@ -17,7 +17,9 @@ package vantinviet.banhangonline88.ux;
 
 import android.animation.Animator;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -54,6 +56,7 @@ import vantinviet.banhangonline88.entities.Shop;
 import vantinviet.banhangonline88.entities.ShopResponse;
 import vantinviet.banhangonline88.libraries.joomla.JFactory;
 import vantinviet.banhangonline88.libraries.legacy.application.JApplication;
+import vantinviet.banhangonline88.libraries.utilities.FileUtils;
 import vantinviet.banhangonline88.testing.EspressoIdlingResource;
 import vantinviet.banhangonline88.utils.Analytics;
 import vantinviet.banhangonline88.utils.MsgUtils;
@@ -392,7 +395,35 @@ public class SplashActivity extends AppCompatActivity {
                 Timber.d("error request list shop");
                 if (progressDialog != null) progressDialog.cancel();
                 MsgUtils.logAndShowErrorMessage(activity, error);
-                finish();
+                //
+                final JApplication app= JFactory.getApplication();
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(SplashActivity.this);
+                alertDialogBuilder.setTitle("Error load shop page");
+                alertDialogBuilder
+                        .setMessage("Are you sure want to trying load page?")
+                        .setCancelable(false)
+                        .setPositiveButton("Yes",new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,int id) {
+                                FileUtils.deleteCache(SplashActivity.this);
+                                requestShops();
+                                // if this button is clicked, close
+                                // current activity
+                                //menu.this.finish();
+                            }
+                        })
+                        .setNegativeButton("No",new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,int id) {
+                                // if this button is clicked, just close
+                                // the dialog box and do nothing
+                                dialog.cancel();
+                                finish();
+                            }
+                        });
+                AlertDialog alertDialog = alertDialogBuilder.create();
+
+                // show it
+                alertDialog.show();
+
                 Timber.d("-----------------------------");
             }
         });
