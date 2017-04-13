@@ -1,7 +1,11 @@
 package vantinviet.banhangonline88.libraries.html;
 
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -25,6 +29,7 @@ public class TagHtml {
     String lang = "";
     String html = "";
     String class_name = "";
+    String src = "";
     private ArrayList<TagHtml> children;
     private static ArrayList<String> _list_allow_tag;
 
@@ -39,6 +44,8 @@ public class TagHtml {
         list_allow_tag.add("h4");
         list_allow_tag.add("h5");
         list_allow_tag.add("h6");
+        list_allow_tag.add("img");
+        list_allow_tag.add("image_button");
         return list_allow_tag;
     }
 
@@ -238,6 +245,38 @@ public class TagHtml {
         return new_h4_linear_layout;
     }
 
+    private static LinearLayout render_tag_img(TagHtml html, int screen_size_width, int screen_size_height) {
+        JApplication app = JFactory.getApplication();
+        LinearLayout new_img_linear_layout = new LinearLayout(app.getCurrentActivity());
+        boolean debug = VTVConfig.getDebug();
+        LinearLayout.LayoutParams layout_params;
+        layout_params = new LinearLayout.LayoutParams(screen_size_width, screen_size_height);
+
+        new_img_linear_layout.setLayoutParams(layout_params);
+        new_img_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
+        String html_content = html.get_Html_content();
+        ImageView image_view = new ImageView(app.getCurrentActivity());
+        String src = html.getSrc();
+        Picasso.with(app.getCurrentActivity()).load(src).into(image_view);
+        new_img_linear_layout.addView(image_view);
+        return new_img_linear_layout;
+    }
+    private static LinearLayout render_tag_image_button(TagHtml html, int screen_size_width, int screen_size_height) {
+        JApplication app = JFactory.getApplication();
+        LinearLayout new_img_linear_layout = new LinearLayout(app.getCurrentActivity());
+        boolean debug = VTVConfig.getDebug();
+        LinearLayout.LayoutParams layout_params;
+        layout_params = new LinearLayout.LayoutParams(screen_size_width, screen_size_height);
+
+        new_img_linear_layout.setLayoutParams(layout_params);
+        new_img_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
+        ImageButton image_view = new ImageButton(app.getCurrentActivity());
+        String src = html.getSrc();
+        Picasso.with(app.getCurrentActivity()).load(src).into(image_view);
+        new_img_linear_layout.addView(image_view);
+        return new_img_linear_layout;
+    }
+
     public ArrayList<TagHtml> getChildren() {
         return children;
     }
@@ -257,5 +296,9 @@ public class TagHtml {
     public static boolean is_row(TagHtml html) {
         String class_name=html.getClass_name();
         return class_name.indexOf("row") != -1;
+    }
+
+    public String getSrc() {
+        return src;
     }
 }
