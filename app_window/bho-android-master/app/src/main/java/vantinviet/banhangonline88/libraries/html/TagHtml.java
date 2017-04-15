@@ -1,8 +1,10 @@
 package vantinviet.banhangonline88.libraries.html;
 
+import android.view.Gravity;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListPopupWindow;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -14,9 +16,11 @@ import java.util.ArrayList;
 import timber.log.Timber;
 import vantinviet.banhangonline88.VTVConfig;
 import vantinviet.banhangonline88.entities.template.bootstrap.Column;
+import vantinviet.banhangonline88.libraries.cms.module.JModuleHelper;
 import vantinviet.banhangonline88.libraries.joomla.JFactory;
 import vantinviet.banhangonline88.libraries.legacy.application.JApplication;
 
+import static android.view.ViewGroup.LayoutParams.FILL_PARENT;
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
@@ -46,6 +50,7 @@ public class TagHtml {
         list_allow_tag.add("h6");
         list_allow_tag.add("img");
         list_allow_tag.add("image_button");
+        list_allow_tag.add("div");
         return list_allow_tag;
     }
 
@@ -93,6 +98,36 @@ public class TagHtml {
         return column_offset;
     }
 
+    public static void set_style(TagHtml tag, LinearLayout linear_layout) {
+        String class_name=tag.getClass_name();
+        class_name=class_name.toLowerCase();
+        String[] splited_class_name = class_name.split("\\s+");
+        String[] list_styles = Style.get_list_styles();
+        if (splited_class_name != null) for (String item_class : splited_class_name) {
+            if (list_styles != null) for (String style : list_styles) {
+                if (item_class.equals(style)) {
+                    style = style.replaceAll("-", "_");
+                    style = "style_" + style;
+                    try {
+                        Style cls = new Style();
+                        Class c = cls.getClass();
+                        Method style_method = c.getDeclaredMethod(style, TagHtml.class, LinearLayout.class);
+                        style_method.invoke(cls, tag, linear_layout);
+                        // production code should handle these exceptions more gracefully
+                    } catch (InvocationTargetException x) {
+                        Throwable cause = x.getCause();
+                        System.err.format("%s() failed: %s%n", style, cause.getMessage());
+                    } catch (Exception x) {
+                        x.printStackTrace();
+                    }
+                }
+            }
+        }
+
+
+
+    }
+
     @Override
     public String toString() {
         return "TagHtml{" +
@@ -122,25 +157,26 @@ public class TagHtml {
             LinearLayout new_row_linear_layout = new LinearLayout(app.getCurrentActivity());
             new_row_linear_layout.setLayoutParams(layout_params);
             new_row_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
-
+            set_style(tag,new_row_linear_layout);
             ArrayList<TagHtml> list_column = tag.getChildren();
             if (list_column != null) for (TagHtml column_tag : list_column) {
                 if(TagHtml.is_column(column_tag)) {
                     int column_width = TagHtml.getDefaultColumnWidth(column_tag);
                     int column_offset = TagHtml.getDefaultColumnOffset(column_tag);
                     column_width = screen_size_width * column_width / 12;
-                    layout_params = new LinearLayout.LayoutParams(column_width, screen_size_height);
+                    layout_params = new LinearLayout.LayoutParams(column_width, MATCH_PARENT);
                     column_offset = screen_size_width * column_offset / 12;
                     layout_params.setMargins(column_offset, 0, 0, 0);
                     LinearLayout new_column_linear_layout = new LinearLayout(app.getCurrentActivity());
                     new_column_linear_layout.setLayoutParams(layout_params);
                     new_column_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
-                    LinearLayout.LayoutParams new_vertical_wrapper_of_column_linear_layout_params = new LinearLayout.LayoutParams(column_width, WRAP_CONTENT);
+                    LinearLayout.LayoutParams new_vertical_wrapper_of_column_linear_layout_params = new LinearLayout.LayoutParams(column_width, MATCH_PARENT);
                     LinearLayout new_wrapper_of_column_linear_layout = new LinearLayout(app.getCurrentActivity());
                     new_wrapper_of_column_linear_layout.setLayoutParams(new_vertical_wrapper_of_column_linear_layout_params);
                     new_wrapper_of_column_linear_layout.setOrientation(LinearLayout.VERTICAL);
                     new_column_linear_layout.addView(new_wrapper_of_column_linear_layout);
                     new_row_linear_layout.addView(new_column_linear_layout);
+                    set_style(column_tag,new_wrapper_of_column_linear_layout);
                     ArrayList<TagHtml> list_sub_tag = column_tag.getChildren();
                     if (list_sub_tag != null) for (TagHtml item_sub_tag : list_sub_tag) {
                         render_layout(item_sub_tag, new_wrapper_of_column_linear_layout, column_width, screen_size_height);
@@ -149,9 +185,11 @@ public class TagHtml {
                     //sai cau truc bootstrap
                 }
             }
+
             root_linear_layout.addView(new_row_linear_layout);
         }else {
             LinearLayout sub_linear_layout=render_layout_by_tag(tag, screen_size_width, screen_size_height);
+
             root_linear_layout.addView(sub_linear_layout);
             ArrayList<TagHtml> children_tag = tag.getChildren();
             if (children_tag != null) for (TagHtml sub_html : children_tag) {
@@ -234,15 +272,27 @@ public class TagHtml {
         LinearLayout new_h4_linear_layout = new LinearLayout(app.getCurrentActivity());
         boolean debug = VTVConfig.getDebug();
         LinearLayout.LayoutParams layout_params;
-        layout_params = new LinearLayout.LayoutParams(screen_size_width, screen_size_height);
+        layout_params = new LinearLayout.LayoutParams(WRAP_CONTENT, MATCH_PARENT);
 
         new_h4_linear_layout.setLayoutParams(layout_params);
-        new_h4_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
         String html_content = html.get_Html_content();
-        TextView text_view = new TextView(app.getCurrentActivity());
-        text_view.setText(html_content);
-        new_h4_linear_layout.addView(text_view);
+        TextView text_view_h4 = new TextView(app.getCurrentActivity());
+        text_view_h4.setText(html_content);
+
+        LinearLayout.LayoutParams layout_params_text_view_h4;
+        layout_params_text_view_h4 = new LinearLayout.LayoutParams(WRAP_CONTENT, MATCH_PARENT);
+        text_view_h4.setLayoutParams(layout_params_text_view_h4);
+        text_view_h4.setGravity(Gravity.CENTER_VERTICAL);
+        new_h4_linear_layout.addView(text_view_h4);
         return new_h4_linear_layout;
+    }
+    private static LinearLayout render_tag_div(TagHtml html, int screen_size_width, int screen_size_height) {
+        JApplication app = JFactory.getApplication();
+        LinearLayout.LayoutParams layout_params;
+        layout_params = new LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT);
+        LinearLayout new_div_linear_layout = new LinearLayout(app.getCurrentActivity());
+        new_div_linear_layout.setLayoutParams(layout_params);
+        return new_div_linear_layout;
     }
 
     private static LinearLayout render_tag_img(TagHtml html, int screen_size_width, int screen_size_height) {
@@ -250,11 +300,9 @@ public class TagHtml {
         LinearLayout new_img_linear_layout = new LinearLayout(app.getCurrentActivity());
         boolean debug = VTVConfig.getDebug();
         LinearLayout.LayoutParams layout_params;
-        layout_params = new LinearLayout.LayoutParams(screen_size_width, screen_size_height);
+        layout_params = new LinearLayout.LayoutParams(WRAP_CONTENT, MATCH_PARENT);
 
         new_img_linear_layout.setLayoutParams(layout_params);
-        new_img_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
-        String html_content = html.get_Html_content();
         ImageView image_view = new ImageView(app.getCurrentActivity());
         String src = html.getSrc();
         Picasso.with(app.getCurrentActivity()).load(src).into(image_view);
@@ -266,7 +314,7 @@ public class TagHtml {
         LinearLayout new_img_linear_layout = new LinearLayout(app.getCurrentActivity());
         boolean debug = VTVConfig.getDebug();
         LinearLayout.LayoutParams layout_params;
-        layout_params = new LinearLayout.LayoutParams(screen_size_width, screen_size_height);
+        layout_params = new LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT);
 
         new_img_linear_layout.setLayoutParams(layout_params);
         new_img_linear_layout.setOrientation(LinearLayout.HORIZONTAL);

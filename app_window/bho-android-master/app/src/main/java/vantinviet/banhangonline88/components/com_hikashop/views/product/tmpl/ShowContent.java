@@ -149,11 +149,11 @@ public class ShowContent extends LinearLayout {
 
 
 
-        RecyclerView cagory_recycler_view = (RecyclerView) view.findViewById(R.id.category_recycler_view);
+       /* RecyclerView cagory_recycler_view = (RecyclerView) view.findViewById(R.id.category_recycler_view);
         CategoryListDataAdapter category_adapter = new CategoryListDataAdapter(getContext(), product_response.getCategories());
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2, GridLayoutManager.HORIZONTAL, false);
         cagory_recycler_view.setLayoutManager(gridLayoutManager);
-        cagory_recycler_view.setAdapter(category_adapter);
+        cagory_recycler_view.setAdapter(category_adapter);*/
 
 
 
