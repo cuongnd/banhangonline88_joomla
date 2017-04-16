@@ -51,6 +51,7 @@ public class TagHtml {
         list_allow_tag.add("img");
         list_allow_tag.add("image_button");
         list_allow_tag.add("div");
+        list_allow_tag.add("icon");
         return list_allow_tag;
     }
 
@@ -267,7 +268,7 @@ public class TagHtml {
         }
 
     }
-    private static LinearLayout render_tag_h4(TagHtml html, int screen_size_width, int screen_size_height) {
+    private static LinearLayout render_tag_h4(TagHtml tag, int screen_size_width, int screen_size_height) {
         JApplication app = JFactory.getApplication();
         LinearLayout new_h4_linear_layout = new LinearLayout(app.getCurrentActivity());
         boolean debug = VTVConfig.getDebug();
@@ -275,7 +276,7 @@ public class TagHtml {
         layout_params = new LinearLayout.LayoutParams(WRAP_CONTENT, MATCH_PARENT);
 
         new_h4_linear_layout.setLayoutParams(layout_params);
-        String html_content = html.get_Html_content();
+        String html_content = tag.get_Html_content();
         TextView text_view_h4 = new TextView(app.getCurrentActivity());
         text_view_h4.setText(html_content);
 
@@ -285,6 +286,25 @@ public class TagHtml {
         text_view_h4.setGravity(Gravity.CENTER_VERTICAL);
         new_h4_linear_layout.addView(text_view_h4);
         return new_h4_linear_layout;
+    }
+    private static LinearLayout render_tag_icon(TagHtml tag, int screen_size_width, int screen_size_height) {
+        JApplication app = JFactory.getApplication();
+        LinearLayout new_icon_linear_layout = new LinearLayout(app.getCurrentActivity());
+        boolean debug = VTVConfig.getDebug();
+        LinearLayout.LayoutParams layout_params;
+        layout_params = new LinearLayout.LayoutParams(WRAP_CONTENT, MATCH_PARENT);
+
+        new_icon_linear_layout.setLayoutParams(layout_params);
+        String icon_name = tag.get_Icon_name(tag);
+        TextView text_view_icon = new TextView(app.getCurrentActivity());
+        text_view_icon.setText(icon_name);
+
+        LinearLayout.LayoutParams layout_params_text_view_icon;
+        layout_params_text_view_icon = new LinearLayout.LayoutParams(WRAP_CONTENT, MATCH_PARENT);
+        text_view_icon.setLayoutParams(layout_params_text_view_icon);
+        text_view_icon.setGravity(Gravity.CENTER_VERTICAL);
+        new_icon_linear_layout.addView(text_view_icon);
+        return new_icon_linear_layout;
     }
     private static LinearLayout render_tag_div(TagHtml html, int screen_size_width, int screen_size_height) {
         JApplication app = JFactory.getApplication();
@@ -348,5 +368,19 @@ public class TagHtml {
 
     public String getSrc() {
         return src;
+    }
+
+    public String get_Icon_name(TagHtml tag) {
+        String class_name = tag.getClass_name();
+        class_name=class_name.toLowerCase();
+        String[] splited_class_name = class_name.split("\\s+");
+        String icon_class_name="";
+        if (splited_class_name != null) for (String item_class : splited_class_name) {
+            if (item_class.contains("icon-")) {
+                icon_class_name=item_class;
+                break;
+            }
+        }
+        return icon_class_name;
     }
 }
