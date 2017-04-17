@@ -20,6 +20,7 @@ public class Product {
     String product_code="";
     String html_price="";
     String html_product="";
+    String style_product="";
     private ArrayList<Image> list_image;
     int price_value=0;
     String link="";

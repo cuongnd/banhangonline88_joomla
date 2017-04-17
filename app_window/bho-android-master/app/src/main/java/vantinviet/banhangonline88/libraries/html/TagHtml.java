@@ -54,6 +54,7 @@ public class TagHtml {
         list_allow_tag.add("image_button");
         list_allow_tag.add("div");
         list_allow_tag.add("icon");
+        list_allow_tag.add("button_icon");
         return list_allow_tag;
     }
 
@@ -305,6 +306,24 @@ public class TagHtml {
         int resID = app.getCurrentActivity().getResources().getIdentifier(icon_name , "drawable", "vantinviet.banhangonline88");
         image_view_icon.setImageResource(resID);
         new_icon_linear_layout.addView(image_view_icon);
+        return new_icon_linear_layout;
+    }
+    private static LinearLayout render_tag_button_icon(TagHtml tag, int screen_size_width, int screen_size_height) {
+
+        JApplication app = JFactory.getApplication();
+        LinearLayout new_icon_linear_layout = new LinearLayout(app.getCurrentActivity());
+        boolean debug = VTVConfig.getDebug();
+        LinearLayout.LayoutParams layout_params;
+        layout_params = new LinearLayout.LayoutParams(WRAP_CONTENT, MATCH_PARENT);
+
+        new_icon_linear_layout.setLayoutParams(layout_params);
+        String icon_name = tag.get_Icon_name(tag);
+        ImageButton image_button_icon = new ImageButton(app.getCurrentActivity());
+        Timber.d("PackageName %s",app.getCurrentActivity().getPackageName());
+        Timber.d("button_icon %s",icon_name);
+        int resID = app.getCurrentActivity().getResources().getIdentifier(icon_name , "drawable", "vantinviet.banhangonline88");
+        image_button_icon.setImageResource(resID);
+        new_icon_linear_layout.addView(image_button_icon);
         return new_icon_linear_layout;
     }
     private static LinearLayout render_tag_div(TagHtml html, int screen_size_width, int screen_size_height) {

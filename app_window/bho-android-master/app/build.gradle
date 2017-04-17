@@ -70,6 +70,14 @@ android {
         androidTest {
             resources.srcDirs += ['src/androidTest/resources']
         }
+        main {
+            res.srcDirs =
+                    [
+                            'src/main/res/layouts/layouts_category2',
+                            'src/main/res/layouts',
+                            'src/main/res'
+                    ]
+        }
     }
 
 
