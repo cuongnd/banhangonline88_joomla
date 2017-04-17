@@ -5,6 +5,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListPopupWindow;
+import android.widget.TableLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -14,6 +15,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 import timber.log.Timber;
+import vantinviet.banhangonline88.R;
 import vantinviet.banhangonline88.VTVConfig;
 import vantinviet.banhangonline88.entities.template.bootstrap.Column;
 import vantinviet.banhangonline88.libraries.cms.module.JModuleHelper;
@@ -288,6 +290,7 @@ public class TagHtml {
         return new_h4_linear_layout;
     }
     private static LinearLayout render_tag_icon(TagHtml tag, int screen_size_width, int screen_size_height) {
+
         JApplication app = JFactory.getApplication();
         LinearLayout new_icon_linear_layout = new LinearLayout(app.getCurrentActivity());
         boolean debug = VTVConfig.getDebug();
@@ -296,14 +299,12 @@ public class TagHtml {
 
         new_icon_linear_layout.setLayoutParams(layout_params);
         String icon_name = tag.get_Icon_name(tag);
-        TextView text_view_icon = new TextView(app.getCurrentActivity());
-        text_view_icon.setText(icon_name);
-
-        LinearLayout.LayoutParams layout_params_text_view_icon;
-        layout_params_text_view_icon = new LinearLayout.LayoutParams(WRAP_CONTENT, MATCH_PARENT);
-        text_view_icon.setLayoutParams(layout_params_text_view_icon);
-        text_view_icon.setGravity(Gravity.CENTER_VERTICAL);
-        new_icon_linear_layout.addView(text_view_icon);
+        ImageView image_view_icon = new ImageView(app.getCurrentActivity());
+        Timber.d("PackageName %s",app.getCurrentActivity().getPackageName());
+        Timber.d("icon_name %s",icon_name);
+        int resID = app.getCurrentActivity().getResources().getIdentifier(icon_name , "drawable", "vantinviet.banhangonline88");
+        image_view_icon.setImageResource(resID);
+        new_icon_linear_layout.addView(image_view_icon);
         return new_icon_linear_layout;
     }
     private static LinearLayout render_tag_div(TagHtml html, int screen_size_width, int screen_size_height) {
@@ -381,6 +382,7 @@ public class TagHtml {
                 break;
             }
         }
+        icon_class_name=icon_class_name.substring(5);
         return icon_class_name;
     }
 }
