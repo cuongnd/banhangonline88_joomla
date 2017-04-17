@@ -18,17 +18,27 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.stream.JsonReader;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.StringReader;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 import timber.log.Timber;
 import vantinviet.banhangonline88.R;
 import vantinviet.banhangonline88.VTVConfig;
 import vantinviet.banhangonline88.administrator.components.com_hikashop.classes.Image;
 import vantinviet.banhangonline88.administrator.components.com_hikashop.classes.Product;
+import vantinviet.banhangonline88.libraries.html.StyleSheet;
 import vantinviet.banhangonline88.libraries.html.TagHtml;
 import vantinviet.banhangonline88.libraries.joomla.JFactory;
 import vantinviet.banhangonline88.libraries.legacy.application.JApplication;
@@ -142,6 +152,29 @@ public class ShowContent extends LinearLayout {
                 return false;
             }
         });
+
+
+        String style_product=product.getStyle_product();
+
+        Map<String, StyleSheet> list_style_sheet = new HashMap<String, StyleSheet>();
+        Timber.d("style_product object %s",style_product.toString());
+        try {
+            JSONObject jsonObject= new JSONObject(style_product);
+            Iterator<?> keys = jsonObject.keys();
+            while(keys.hasNext() ) {
+                String key = (String)keys.next();
+                Timber.d("key %s",key.toString());
+                if ( jsonObject.get(key) instanceof JSONObject ) {
+                    String value_of_key=jsonObject.get(key).toString();
+                    StyleSheet style_sheet= gson.fromJson(value_of_key, StyleSheet.class);
+                    list_style_sheet.put(key, style_sheet);
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
 
 
         ((LinearLayout) product_description).addView(pageContent);

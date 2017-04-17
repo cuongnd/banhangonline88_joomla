@@ -69,4 +69,8 @@ public class Product {
     public String getHtml_product() {
         return html_product;
     }
+
+    public String getStyle_product() {
+        return style_product;
+    }
 }
