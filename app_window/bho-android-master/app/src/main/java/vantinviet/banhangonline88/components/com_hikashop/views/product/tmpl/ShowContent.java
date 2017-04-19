@@ -96,9 +96,12 @@ public class ShowContent extends LinearLayout {
         reader.setLenient(true);
         TagHtml html= gson.fromJson(reader, TagHtml.class);
 
+        Map<String, StyleSheet> list_style_sheet = new HashMap<String, StyleSheet>();
+        String style_product=product.getStyle_product();
+        list_style_sheet=StyleSheet.get_list_style_sheet(style_product);
 
         LinearLayout html_product_linear_layout= (LinearLayout) view.findViewById(R.id.html_product);
-        TagHtml.get_html_linear_layout(html,html_product_linear_layout);
+        TagHtml.get_html_linear_layout(html,html_product_linear_layout,list_style_sheet);
 
 
         LinearLayout product_description= (LinearLayout) view.findViewById(R.id.product_description);
@@ -154,25 +157,6 @@ public class ShowContent extends LinearLayout {
         });
 
 
-        String style_product=product.getStyle_product();
-
-        Map<String, StyleSheet> list_style_sheet = new HashMap<String, StyleSheet>();
-        Timber.d("style_product object %s",style_product.toString());
-        try {
-            JSONObject jsonObject= new JSONObject(style_product);
-            Iterator<?> keys = jsonObject.keys();
-            while(keys.hasNext() ) {
-                String key = (String)keys.next();
-                Timber.d("key %s",key.toString());
-                if ( jsonObject.get(key) instanceof JSONObject ) {
-                    String value_of_key=jsonObject.get(key).toString();
-                    StyleSheet style_sheet= gson.fromJson(value_of_key, StyleSheet.class);
-                    list_style_sheet.put(key, style_sheet);
-                }
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
 
 
 
