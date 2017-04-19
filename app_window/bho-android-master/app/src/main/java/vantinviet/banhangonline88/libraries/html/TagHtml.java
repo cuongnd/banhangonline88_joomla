@@ -101,20 +101,8 @@ public class TagHtml {
     }
 
     public static void set_style(TagHtml tag, LinearLayout linear_layout, String class_path,Map<String, StyleSheet> list_style_sheet) {
-        String class_name=tag.getClass_name();
-        class_name=class_name.toLowerCase();
-        String current_class_tag = get_current_class_tag(tag);
+        ArrayList<StyleSheet> stylesheet = get_stylesheet_apply(tag,class_path,list_style_sheet);
 
-
-        for(Map.Entry<String, StyleSheet> entry : list_style_sheet.entrySet()) {
-            String style_key = entry.getKey();
-            StyleSheet style = entry.getValue();
-            Timber.d("style_key %s",style_key);
-            Timber.d("class_path %s",class_path);
-            //Timber.d("current_class_tag %s",current_class_tag);
-            // do what you have to do here
-            // In your case, an other loop.
-        }
 
         /*String[] splited_class_name = class_name.split("\\s+");
         String[] list_styles = Style.get_list_styles();
@@ -140,6 +128,86 @@ public class TagHtml {
         }*/
 
 
+
+    }
+    public static void set_style(TagHtml tag, ImageView image_view, String class_path,Map<String, StyleSheet> list_style_sheet) {
+        ArrayList<StyleSheet> stylesheet = get_stylesheet_apply(tag,class_path,list_style_sheet);
+
+
+        /*String[] splited_class_name = class_name.split("\\s+");
+        String[] list_styles = Style.get_list_styles();
+        if (splited_class_name != null) for (String item_class : splited_class_name) {
+            if (list_styles != null) for (String style : list_styles) {
+                if (item_class.equals(style)) {
+                    style = style.replaceAll("-", "_");
+                    style = "style_" + style;
+                    try {
+                        Style cls = new Style();
+                        Class c = cls.getClass();
+                        Method style_method = c.getDeclaredMethod(style, TagHtml.class, LinearLayout.class);
+                        style_method.invoke(cls, tag, linear_layout);
+                        // production code should handle these exceptions more gracefully
+                    } catch (InvocationTargetException x) {
+                        Throwable cause = x.getCause();
+                        System.err.format("%s() failed: %s%n", style, cause.getMessage());
+                    } catch (Exception x) {
+                        x.printStackTrace();
+                    }
+                }
+            }
+        }*/
+
+
+
+    }
+    public static void set_style(TagHtml tag, ImageButton image_button, String class_path,Map<String, StyleSheet> list_style_sheet) {
+        ArrayList<StyleSheet> stylesheet = get_stylesheet_apply(tag,class_path,list_style_sheet);
+
+
+        /*String[] splited_class_name = class_name.split("\\s+");
+        String[] list_styles = Style.get_list_styles();
+        if (splited_class_name != null) for (String item_class : splited_class_name) {
+            if (list_styles != null) for (String style : list_styles) {
+                if (item_class.equals(style)) {
+                    style = style.replaceAll("-", "_");
+                    style = "style_" + style;
+                    try {
+                        Style cls = new Style();
+                        Class c = cls.getClass();
+                        Method style_method = c.getDeclaredMethod(style, TagHtml.class, LinearLayout.class);
+                        style_method.invoke(cls, tag, linear_layout);
+                        // production code should handle these exceptions more gracefully
+                    } catch (InvocationTargetException x) {
+                        Throwable cause = x.getCause();
+                        System.err.format("%s() failed: %s%n", style, cause.getMessage());
+                    } catch (Exception x) {
+                        x.printStackTrace();
+                    }
+                }
+            }
+        }*/
+
+
+
+    }
+
+    private static ArrayList<StyleSheet> get_stylesheet_apply(TagHtml tag, String class_path, Map<String, StyleSheet> list_style_sheet) {
+        ArrayList<StyleSheet> list_stylesheet = null;
+        String class_name=tag.getClass_name();
+        class_name=class_name.toLowerCase();
+        String current_class_tag = get_current_class_tag(tag);
+        for(Map.Entry<String, StyleSheet> entry : list_style_sheet.entrySet()) {
+            String style_key = entry.getKey();
+            StyleSheet style = entry.getValue();
+            Timber.d("style_key %s",style_key);
+            Timber.d("class_path %s",class_path);
+            Timber.d("current_class_tag %s",class_path);
+            list_stylesheet.add(style);
+            //Timber.d("current_class_tag %s",current_class_tag);
+            // do what you have to do here
+            // In your case, an other loop.
+        }
+        return  list_stylesheet;
 
     }
 
@@ -340,6 +408,7 @@ public class TagHtml {
         Timber.d("icon_name %s",icon_name);
         int resID = app.getCurrentActivity().getResources().getIdentifier(icon_name , "drawable", "vantinviet.banhangonline88");
         image_view_icon.setImageResource(resID);
+        set_style(tag,image_view_icon,class_path,list_style_sheet);
         new_icon_linear_layout.addView(image_view_icon);
         return new_icon_linear_layout;
     }
@@ -358,19 +427,21 @@ public class TagHtml {
         Timber.d("button_icon %s",icon_name);
         int resID = app.getCurrentActivity().getResources().getIdentifier(icon_name , "drawable", "vantinviet.banhangonline88");
         image_button_icon.setImageResource(resID);
+        set_style(tag,image_button_icon,class_path,list_style_sheet);
         new_icon_linear_layout.addView(image_button_icon);
         return new_icon_linear_layout;
     }
-    private static LinearLayout render_tag_div(TagHtml html, int screen_size_width, int screen_size_height, String class_path,Map<String, StyleSheet> list_style_sheet) {
+    private static LinearLayout render_tag_div(TagHtml tag, int screen_size_width, int screen_size_height, String class_path,Map<String, StyleSheet> list_style_sheet) {
         JApplication app = JFactory.getApplication();
         LinearLayout.LayoutParams layout_params;
         layout_params = new LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT);
         LinearLayout new_div_linear_layout = new LinearLayout(app.getCurrentActivity());
         new_div_linear_layout.setLayoutParams(layout_params);
+        set_style(tag,new_div_linear_layout,class_path,list_style_sheet);
         return new_div_linear_layout;
     }
 
-    private static LinearLayout render_tag_img(TagHtml html, int screen_size_width, int screen_size_height,String class_path,Map<String, StyleSheet> list_style_sheet) {
+    private static LinearLayout render_tag_img(TagHtml tag, int screen_size_width, int screen_size_height,String class_path,Map<String, StyleSheet> list_style_sheet) {
         JApplication app = JFactory.getApplication();
         LinearLayout new_img_linear_layout = new LinearLayout(app.getCurrentActivity());
         boolean debug = VTVConfig.getDebug();
@@ -379,9 +450,10 @@ public class TagHtml {
 
         new_img_linear_layout.setLayoutParams(layout_params);
         ImageView image_view = new ImageView(app.getCurrentActivity());
-        String src = html.getSrc();
+        String src = tag.getSrc();
         Picasso.with(app.getCurrentActivity()).load(src).into(image_view);
         new_img_linear_layout.addView(image_view);
+        set_style(tag,image_view,class_path,list_style_sheet);
         return new_img_linear_layout;
     }
     private static LinearLayout render_tag_image_button(TagHtml html, int screen_size_width, int screen_size_height,String class_path,Map<String, StyleSheet> list_style_sheet) {
