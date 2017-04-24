@@ -26,15 +26,20 @@ if($vtlai_firewall_redirect=="home"){
         $user_return=base64_decode($user_return);
         $app->redirect($user_return);
     }else{
-
 //check that zlib compression is enabled
         if (!ini_get('zlib.output_compression')) {
             die();
         }
+        echo "<pre>";
+        print_r($app->input->getArray(),true);
+        echo "</pre>";
+        die;
         $allowed = array('css', 'js'); //set array of allowed file types to prevent abuse
 //check for request variable existence and that file type is allowed
         if (isset($_GET['file']) && isset($_GET['type']) && in_array(substr($_GET['file'], strrpos($_GET['file'], '.') + 1), $allowed)) {
-            $data = file_get_contents(dirname(__FILE__) . '/' . $_GET['file']); // grab the file contents
+            $file_path=dirname(__FILE__) . '/' . $_GET['file'];
+
+            $data = file_get_contents($file_path); // grab the file contents
             $etag = '"' . md5($data) . '"'; // generate a file Etag
             header('Etag: ' . $etag); // output the Etag in the header
             // output the content-type header for each file type
