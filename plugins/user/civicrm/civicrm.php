@@ -82,6 +82,7 @@ class plgUserCivicrm extends JPlugin
    * @since    1.6
    */
   public function onUserLogin($user, $options = array()) {
+    return;
     $app  = JFactory::getApplication();
     if ( $app->isAdmin() ) {
       $jUser = JFactory::getUser();

@@ -69,6 +69,7 @@ class ContentViewCategory extends JViewCategory
 	 */
 	public function display($tpl = null)
 	{
+		return;
 		parent::commonCategoryDisplay();
 
 		// Prepare the data

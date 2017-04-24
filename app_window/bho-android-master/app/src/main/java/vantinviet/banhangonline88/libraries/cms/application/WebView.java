@@ -21,8 +21,10 @@ import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.Map;
+import java.util.concurrent.Callable;
 
 import timber.log.Timber;
 import vantinviet.banhangonline88.MyApplication;
@@ -45,6 +47,7 @@ public class WebView {
     private static WebView ourInstance;
     DrawerMenuItem drawerMenuItem =new DrawerMenuItem();
     private  Fragment fragment=new Fragment();
+    private Class<?> current_class;
     final DrawerMenuItem finalDrawerMenuItem = drawerMenuItem;
     SharedPreferences sharedpreferences;
     String link;
@@ -92,9 +95,50 @@ public class WebView {
         byte[] post = EncodingUtils.getBytes(link_post, "BASE64");
         web_browser.postUrl(link,post);
         web_browser.addJavascriptInterface(new MyJavaScriptInterfaceWebsite(), "HtmlViewer");
+
+
+    }
+    public void create_browser_call_back(String link, Class<?> a_class) {
+        current_class=a_class;
+        app.getProgressDialog().show();
+        WebViewClient web_view_client = new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(android.webkit.WebView view, String url) {
+                return false;
+            }
+
+            @Override
+            public void onPageFinished(android.webkit.WebView view, String url) {
+                view.loadUrl("javascript:HtmlViewer.showHTML" +
+                        "(document.getElementsByTagName('body')[0].innerHTML);");
+            }
+
+
+        };
+
+
+        android.webkit.WebView web_browser = JFactory.getWebBrowser();
+        web_browser.getSettings().setJavaScriptEnabled(true);
+        web_browser.getSettings().setSupportZoom(true);
+        web_browser.getSettings().setBuiltInZoomControls(true);
+        web_browser.setWebViewClient(web_view_client);
+
+
+        web_browser.clearHistory();
+        web_browser.clearFormData();
+        web_browser.clearCache(true);
+        String link_post="get_page_config_app=1&ignoreMessages=true&format=json&os=android";
+        System.out.println("-------host---------");
+        System.out.println(link);
+        System.out.println("link_post:"+link_post+"&base64=0");
+        System.out.println("-------host---------");
+        byte[] post = EncodingUtils.getBytes(link_post, "BASE64");
+        web_browser.postUrl(link,post);
+        web_browser.addJavascriptInterface(new CallBackJavaScriptInterfaceWebsite(), "HtmlViewer");
     }
 
     public void go_to_page(String html){
+
         app.getProgressDialog().dismiss();
         byte[] data= Base64.decode(html, Base64.DEFAULT);
         // create alert dialog
@@ -170,6 +214,37 @@ public class WebView {
                 editor.commit();
             }
             go_to_page(html);
+
+        }
+
+    }
+    private class CallBackJavaScriptInterfaceWebsite {
+
+        public CallBackJavaScriptInterfaceWebsite() {
+        }
+
+        @JavascriptInterface
+        public void showHTML(String html) {
+            Timber.d("html response: %s",html);
+            if(vtv_config.getCaching()==1) {
+                SharedPreferences.Editor editor = sharedpreferences.edit();
+                editor.putString(link, html);
+                editor.commit();
+            }
+            try {
+                Method method = current_class.getClass().getMethod("showLong", String.class);
+                method.invoke(html);
+            } catch (SecurityException e) {
+            }
+            catch (NoSuchMethodException e) {
+
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+
+
         }
 
     }

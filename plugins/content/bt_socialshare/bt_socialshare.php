@@ -423,7 +423,7 @@ class plgContentBt_socialshare extends BtPlugin {
         if ($buttonType) {
             $html[] = '<fb:share-button href="' . $link_article . '" type="' . $buttonType . '"></fb:share-button>';
         } else {
-            $html[] = '<img class="fb-share" src="' . JURI::root() . '/plugins/content/bt_socialshare/assets/share.png" onClick="window.open(\'http://www.facebook.com/sharer.php?u=\'+encodeURIComponent(\'' . $link_article . '\')+\'&t=\'+encodeURIComponent(\'' . $title . '\'),\'sharer\',\'toolbar=0,status=0,left=\'+((screen.width/2)-300)+\',top=\'+((screen.height/2)-200)+\',width=600,height=360\');" href="javascript: void(0)" />';
+            $html[] = '<img class="fb-share" src="' . JURI::root() . '/plugins/content/bt_socialshare/assets/share.png" onClick="window.open(\'http://www.facebook.com/sharer.php?u=\'+encodeURIComponent(\'' . $link_article . '\')+\'&t=\'+encodeURIComponent(\'' . $title . '\'),\'sharer\',\'toolbar=0,status=0,left=\'+((screen.width/2)-300)+\',top=\'+((screen.height/2)-200)+\',width=600,height=360\');"  />';
         }
         $html[] = '</div>';
 

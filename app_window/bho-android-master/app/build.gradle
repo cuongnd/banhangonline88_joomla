@@ -131,6 +131,7 @@ dependencies {
     androidTestCompile 'com.android.support.test:rules:0.5'
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
     androidTestCompile 'com.android.support.test.espresso:espresso-intents:2.2.2'
+    compile 'org.ow2.asm:asm-commons:5.0.1'
 }
 
 apply plugin: 'com.google.gms.google-services'

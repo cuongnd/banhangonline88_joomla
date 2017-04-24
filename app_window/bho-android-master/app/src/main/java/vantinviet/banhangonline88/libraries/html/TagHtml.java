@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import timber.log.Timber;
+import vantinviet.banhangonline88.R;
 import vantinviet.banhangonline88.VTVConfig;
 import vantinviet.banhangonline88.entities.template.bootstrap.Column;
 import vantinviet.banhangonline88.libraries.joomla.JFactory;
@@ -192,7 +193,7 @@ public class TagHtml {
     }
 
     private static ArrayList<StyleSheet> get_stylesheet_apply(TagHtml tag, String class_path, Map<String, StyleSheet> list_style_sheet) {
-        ArrayList<StyleSheet> list_stylesheet = null;
+        ArrayList<StyleSheet> list_stylesheet = new ArrayList<StyleSheet>();
         String class_name=tag.getClass_name();
         class_name=class_name.toLowerCase();
         String current_class_tag = get_current_class_tag(tag);
@@ -202,7 +203,7 @@ public class TagHtml {
             Timber.d("style_key %s",style_key);
             Timber.d("class_path %s",class_path);
             Timber.d("current_class_tag %s",class_path);
-            list_stylesheet.add(style);
+            //list_stylesheet.add(style);
             //Timber.d("current_class_tag %s",current_class_tag);
             // do what you have to do here
             // In your case, an other loop.
@@ -373,10 +374,10 @@ public class TagHtml {
         }
 
     }
-    private static View render_tag_h4(TagHtml tag, int screen_size_width, int screen_size_height, String class_path,Map<String, StyleSheet> list_style_sheet) {
+    private static LinearLayout render_tag_h4(TagHtml tag, int screen_size_width, int screen_size_height, String class_path,Map<String, StyleSheet> list_style_sheet) {
         JApplication app = JFactory.getApplication();
         LinearLayout new_h4_linear_layout = new LinearLayout(app.getCurrentActivity());
-        set_style(tag,new_h4_linear_layout,class_path,list_style_sheet);
+        //set_style(tag,new_h4_linear_layout,class_path,list_style_sheet);
         boolean debug = VTVConfig.getDebug();
         LinearLayout.LayoutParams layout_params;
         layout_params = new LinearLayout.LayoutParams(WRAP_CONTENT, MATCH_PARENT);
@@ -397,6 +398,7 @@ public class TagHtml {
 
         JApplication app = JFactory.getApplication();
         LinearLayout new_icon_linear_layout = new LinearLayout(app.getCurrentActivity());
+
         boolean debug = VTVConfig.getDebug();
         LinearLayout.LayoutParams layout_params;
         layout_params = new LinearLayout.LayoutParams(WRAP_CONTENT, MATCH_PARENT);
@@ -415,12 +417,12 @@ public class TagHtml {
     private static LinearLayout render_tag_button_icon(TagHtml tag, int screen_size_width, int screen_size_height,String class_path,Map<String, StyleSheet> list_style_sheet) {
 
         JApplication app = JFactory.getApplication();
-        LinearLayout new_icon_linear_layout = new LinearLayout(app.getCurrentActivity());
+        LinearLayout new_button_icon_linear_layout = new LinearLayout(app.getCurrentActivity());
         boolean debug = VTVConfig.getDebug();
         LinearLayout.LayoutParams layout_params;
         layout_params = new LinearLayout.LayoutParams(WRAP_CONTENT, MATCH_PARENT);
 
-        new_icon_linear_layout.setLayoutParams(layout_params);
+        new_button_icon_linear_layout.setLayoutParams(layout_params);
         String icon_name = tag.get_Icon_name(tag);
         ImageButton image_button_icon = new ImageButton(app.getCurrentActivity());
         Timber.d("PackageName %s",app.getCurrentActivity().getPackageName());
@@ -428,17 +430,32 @@ public class TagHtml {
         int resID = app.getCurrentActivity().getResources().getIdentifier(icon_name , "drawable", "vantinviet.banhangonline88");
         image_button_icon.setImageResource(resID);
         set_style(tag,image_button_icon,class_path,list_style_sheet);
-        new_icon_linear_layout.addView(image_button_icon);
-        return new_icon_linear_layout;
+        new_button_icon_linear_layout.addView(image_button_icon);
+        return new_button_icon_linear_layout;
     }
     private static LinearLayout render_tag_div(TagHtml tag, int screen_size_width, int screen_size_height, String class_path,Map<String, StyleSheet> list_style_sheet) {
         JApplication app = JFactory.getApplication();
         LinearLayout.LayoutParams layout_params;
-        layout_params = new LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT);
-        LinearLayout new_div_linear_layout = new LinearLayout(app.getCurrentActivity());
-        new_div_linear_layout.setLayoutParams(layout_params);
-        set_style(tag,new_div_linear_layout,class_path,list_style_sheet);
-        return new_div_linear_layout;
+        layout_params = new LinearLayout.LayoutParams(screen_size_width, screen_size_height);
+        layout_params.setMargins(0, 10, 0, 10);
+        LinearLayout new_row_linear_layout = new LinearLayout(app.getCurrentActivity());
+        new_row_linear_layout.setLayoutParams(layout_params);
+        new_row_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
+
+        LinearLayout new_column_linear_layout = new LinearLayout(app.getCurrentActivity());
+        new_column_linear_layout.setLayoutParams(layout_params);
+        new_column_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
+        LinearLayout.LayoutParams new_vertical_wrapper_of_column_linear_layout_params = new LinearLayout.LayoutParams(screen_size_width, MATCH_PARENT);
+        LinearLayout new_wrapper_of_column_linear_layout = new LinearLayout(app.getCurrentActivity());
+        new_wrapper_of_column_linear_layout.setLayoutParams(new_vertical_wrapper_of_column_linear_layout_params);
+        new_wrapper_of_column_linear_layout.setOrientation(LinearLayout.VERTICAL);
+        new_column_linear_layout.addView(new_wrapper_of_column_linear_layout);
+        new_row_linear_layout.addView(new_column_linear_layout);
+
+
+
+        set_style(tag,new_row_linear_layout,class_path,list_style_sheet);
+        return new_row_linear_layout;
     }
 
     private static LinearLayout render_tag_img(TagHtml tag, int screen_size_width, int screen_size_height,String class_path,Map<String, StyleSheet> list_style_sheet) {
@@ -465,10 +482,10 @@ public class TagHtml {
 
         new_img_linear_layout.setLayoutParams(layout_params);
         new_img_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
-        ImageButton image_view = new ImageButton(app.getCurrentActivity());
+        ImageButton image_button = new ImageButton(app.getCurrentActivity());
         String src = html.getSrc();
-        Picasso.with(app.getCurrentActivity()).load(src).into(image_view);
-        new_img_linear_layout.addView(image_view);
+        Picasso.with(app.getCurrentActivity()).load(src).into(image_button);
+        new_img_linear_layout.addView(image_button);
         return new_img_linear_layout;
     }
 

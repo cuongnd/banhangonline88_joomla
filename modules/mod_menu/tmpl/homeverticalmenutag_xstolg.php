@@ -35,7 +35,7 @@ if (trim($jv_selection)!='') {
             <?php $menu_image = $a_menu_item->params->get('menu_image', ''); ?>
             <li class="tags master" data-group_menu_id="<?php echo $a_menu_item->id ?>"
                 data-menu_id="<?php echo $a_menu_item->id ?>"><a
-                    href="<?php echo $a_menu_item->flink ?>"><?php echo $menu_image ? '<img class="icon icon-level-2" data-src="' . JUri::root() . $menu_image . '">' : '' ?><?php echo $a_menu_item->title ?></a>
+                    href="<?php echo $a_menu_item->flink ?>"><?php echo $menu_image ? '<img class="icon icon-level-2" src="" data-src="' . JUri::root() . $menu_image . '">' : '' ?><?php echo $a_menu_item->title ?></a>
             </li>
             <?php
             $list_sub_menu_level_3 = $children_menu_item[$a_menu_item->id];

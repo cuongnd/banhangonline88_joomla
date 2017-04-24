@@ -221,10 +221,7 @@ public class MainActivity extends AppCompatActivity implements MenuDrawerFragmen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //check_user();
-
         mInstance = this;
-
-
         init(mInstance);
 
 

@@ -55,7 +55,7 @@ class SBFrontEndController extends JControllerLegacy
 	public function sync() {
 		// Add component language file
 		JFactory::getLanguage()->load( 'com_socialbacklinks', JPATH_ADMINISTRATOR );
-		
+		require_once JPATH_ROOT.DS.'administrator/components/com_socialbacklinks/helpers/requirements.php';
 		// Check requirements for correct component work
 		$helper = new SBHelpersRequirements( );
 		if ( !$helper->check( ) ) {

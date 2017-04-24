@@ -459,5 +459,5 @@ if ($memLimit >= 0 and $memLimit < 134217728) {
     ini_set('memory_limit', '128M');
 }
 
-require_once 'CRM/Core/ClassLoader.php';
+require_once JPATH_ROOT.DS.'administrator/components/com_civicrm/civicrm/CRM/Core/ClassLoader.php';
 CRM_Core_ClassLoader::singleton()->register();

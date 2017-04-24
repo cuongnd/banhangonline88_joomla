@@ -15,6 +15,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.Callable;
 
 import vantinviet.banhangonline88.VTVConfig;
 import vantinviet.banhangonline88.entities.Page;
@@ -22,12 +23,13 @@ import vantinviet.banhangonline88.entities.module.Module;
 import vantinviet.banhangonline88.entities.template.Template;
 import vantinviet.banhangonline88.libraries.android.http.JSONParser;
 import vantinviet.banhangonline88.libraries.cms.application.JApplicationSite;
+import vantinviet.banhangonline88.libraries.cms.application.WebView;
 import vantinviet.banhangonline88.libraries.cms.menu.JMenu;
 import vantinviet.banhangonline88.libraries.joomla.JFactory;
 import vantinviet.banhangonline88.libraries.joomla.application.JApplicationBase;
 import vantinviet.banhangonline88.libraries.joomla.input.JInput;
 import vantinviet.banhangonline88.ux.MainActivity;
-
+import vantinviet.banhangonline88.ux.SplashActivity;
 
 
 /**
@@ -37,6 +39,7 @@ public class JApplication extends JApplicationBase {
     private static final String CURRENT_LINK = "current_link";
     private static final String VTV_PREFERENCES = "vtv_preferences";
     public static JApplication instance;
+    private static String link;
     public AppCompatActivity context;
     private String redirect;
     public VTVConfig vtvConfig=VTVConfig.getInstance();
@@ -78,30 +81,26 @@ public class JApplication extends JApplicationBase {
         return modules;
     }
 
-    private static String call_json_get_content_website(String link) {
-        String return_json="";
-        int responseCode = 0;
-        try {
-            // instantiate our json parser
-            JSONParser jParser = new JSONParser();
-            JApplication app=JFactory.getApplication();
+    public void get_content_by_url(String link, Class<?> a_class) {
 
+        config_screen_size();
+        SharedPreferences sharedpreferences;
+        VTVConfig vtv_config = JFactory.getVTVConfig();
+        int caching = vtv_config.getCaching();
+        WebView webview=WebView.getInstance();
+        if (caching == 1) {
+            sharedpreferences = getSharedPreferences(LIST_DATA_RESPONSE_BY_URL, getCurrentActivity().MODE_PRIVATE);
+            String response_data = sharedpreferences.getString(link, "");
+            if (response_data.equals("")) {
+                webview.create_browser_call_back(link,a_class);
 
-            JSONObject json_data = jParser.getJSONFromUrl(link);
-            System.out.println("json_data:"+json_data.toString());
-            if(json_data.has("link_redirect"))
-            {
-                String link_redirect=json_data.getString("link_redirect");
-                app.setRedirect(link_redirect);
-                return "";
+            } else {
+                webview.go_to_page(response_data);
             }
-            System.out.println(json_data.toString());
-            return_json = json_data.toString();
-
-        } catch (Throwable t) {
-            t.printStackTrace();
+        } else {
+            webview.create_browser_call_back(link,a_class);
         }
-        return return_json;
+
 
     }
     public String get_session() {
@@ -209,4 +208,5 @@ public class JApplication extends JApplicationBase {
     public ScrollView getMain_scroll_view() {
         return main_scroll_view;
     }
+
 }

@@ -31,23 +31,43 @@ public class JApplicationBase extends Application {
     public Document document;
     public ArrayList<Module> modules=new ArrayList<Module>();
     public JInput input;
-    public AppCompatActivity currentActivity;
+    public static AppCompatActivity currentActivity;
     private String link;
     public static final String LIST_DATA_RESPONSE_BY_URL = "list_data_response_by_url";
     private ProgressDialog progressDialog;
 
     public void doExecute() {
+        config_screen_size();
+        SharedPreferences sharedpreferences;
+        VTVConfig vtv_config = JFactory.getVTVConfig();
+        int caching = vtv_config.getCaching();
+        String link = getLink();
+        WebView webview=WebView.getInstance();
+        if (caching == 1) {
+            sharedpreferences = getSharedPreferences(LIST_DATA_RESPONSE_BY_URL, getCurrentActivity().MODE_PRIVATE);
+            String response_data = sharedpreferences.getString(link, "");
+            if (response_data.equals("")) {
+                webview.create_browser(link);
+
+            } else {
+                webview.go_to_page(response_data);
+            }
+        } else {
+            webview.create_browser(link);
+        }
+    }
+
+    public static void config_screen_size() {
         //set screen size
         DisplayMetrics metrics = new DisplayMetrics();
-        currentActivity = getCurrentActivity();
-        currentActivity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        getCurrentActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);
         int screenDensity = (int) metrics.density;
         int screenDensityDPI = metrics.densityDpi;
         float screenscaledDensity = metrics.scaledDensity;
-        WebView webview=WebView.getInstance();
+
         int width = metrics.widthPixels;
         int height = metrics.heightPixels;
-        SharedPreferences sharedpreferences;
+
         System.out.println("Screen Density=" + screenDensity + "\n"
                 + "Screen DensityDPI=" + screenDensityDPI + "\n"
                 + "Screen Scaled DensityDPI=" + screenscaledDensity + "\n"
@@ -68,28 +88,13 @@ public class JApplicationBase extends Application {
         VTVConfig.getInstance().setScreen_size_width(screen_size_width);
         VTVConfig.getInstance().setScreen_size_height(screen_size_height);
         VTVConfig.getInstance().setScreenDensity(screenDensity);
-
-        int caching = vtv_config.getCaching();
-        String link = getLink();
-
-        if (caching == 1) {
-            sharedpreferences = getSharedPreferences(LIST_DATA_RESPONSE_BY_URL, getCurrentActivity().MODE_PRIVATE);
-            String response_data = sharedpreferences.getString(link, "");
-            if (response_data.equals("")) {
-                webview.create_browser(link);
-
-            } else {
-                webview.go_to_page(response_data);
-            }
-        } else {
-            webview.create_browser(link);
-        }
     }
+
     public void setCurrentActivity(AppCompatActivity currentActivity) {
         this.currentActivity = currentActivity;
     }
-    public AppCompatActivity getCurrentActivity() {
-        return  this.currentActivity;
+    public static AppCompatActivity getCurrentActivity() {
+        return  currentActivity;
     }
 
     public void setLink(String link) {

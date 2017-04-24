@@ -58,7 +58,6 @@ public class JUtilities {
 
         return sb.toString();
     }
-
     private static Set<Class> getClassesInPackage(String packageName) {
         Set<Class> classes = new HashSet<Class>();
         String packageNameSlashed = "/" + packageName.replace(".", "/");

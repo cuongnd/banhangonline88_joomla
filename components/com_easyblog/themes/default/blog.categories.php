@@ -107,7 +107,7 @@ $mainframe	= JFactory::getApplication();
 											<div class="pts pbs">
 												<a href="<?php echo $member->getProfileLink(); ?>" title="<?php echo $member->getName(); ?>" class="avatar">
 												<?php if ( $system->config->get('layout_avatar') ) { ?>
-													<img <?php if ($i <= $initialLimit) { ?> src="<?php echo $member->getAvatar(); ?>" <?php } else { ?> data-src="<?php echo $member->getAvatar(); ?>" <?php } ?> alt="<?php echo $member->getName(); ?>" width="40" height="40" class="avatar float-l mrm" style="overflow: hidden;"/>
+													<img <?php if ($i <= $initialLimit) { ?> src="<?php echo $member->getAvatar(); ?>" <?php } else { ?> src="" data-src="<?php echo $member->getAvatar(); ?>" <?php } ?> alt="<?php echo $member->getName(); ?>" width="40" height="40" class="avatar float-l mrm" style="overflow: hidden;"/>
 													<?php echo EasyBlogTooltipHelper::getBloggerHTML( $member->id, array('my'=>'left bottom','at'=>'left top','of'=>array('traverseUsing'=>'parent')) ); ?>
 												<?php } ?>
 													<?php echo $member->getName(); ?>

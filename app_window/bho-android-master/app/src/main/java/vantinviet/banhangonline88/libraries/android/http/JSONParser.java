@@ -43,11 +43,11 @@ public class JSONParser {
             HttpPost httpPost = new HttpPost(url);
             List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
             JSession $session= JFactory.getSession();
-            String android_ses_id=$session.getId();
+           /* String android_ses_id=$session.getId();
             if(android_ses_id!=null)
             {
                 //nameValuePairs.add(new BasicNameValuePair("android_ses_id", android_ses_id));
-            }
+            }*/
             httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
             HttpResponse httpResponse = httpClient.execute(httpPost);
 

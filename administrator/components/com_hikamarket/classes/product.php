@@ -2027,6 +2027,10 @@ class hikamarketProductClass extends hikamarketClass {
 			if(empty($view->element->extraData->topEnd))
 				$view->element->extraData->topEnd = array();
 
+			if(!empty($vendor->vendor_image)){
+				$image_helper = hikashop_get('helper.image');
+				$vendor->vendor_image = $image_helper->getThumbnail($vendor->vendor_image, array(500, 500), array('default' => true), true);
+			}
 			$slot = 'vendor';
 			if($doc_type=="json"){
 				if($show_sold_by && ($vendor->vendor_id > 1 || $show_sold_by_me)) {

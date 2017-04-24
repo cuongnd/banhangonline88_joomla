@@ -40,7 +40,7 @@ class JConfig {
 	public $smtphost = 'localhost';
 	public $smtpsecure = 'none';
 	public $smtpport = '25';
-	public $caching = '2';
+	public $caching = '0';
 	public $cache_handler = 'file';
 	public $cachetime = '30';
 	public $cache_platformprefix = '1';

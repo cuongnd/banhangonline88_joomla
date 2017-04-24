@@ -40,7 +40,7 @@ class plgSystemHikashopsocial extends JPlugin
         if ($buttonType) {
             $html[] = '<fb:share-button href="' . $link_article . '" type="' . $buttonType . '"></fb:share-button>';
         } else {
-            $html[] = '<img class="fb-share" src="' . JURI::root() . '/plugins/content/bt_socialshare/assets/share.png" onClick="window.open(\'http://www.facebook.com/sharer.php?u=\'+encodeURIComponent(\'' . $link_article . '\')+\'&t=\'+encodeURIComponent(\'' . $title . '\'),\'sharer\',\'toolbar=0,status=0,left=\'+((screen.width/2)-300)+\',top=\'+((screen.height/2)-200)+\',width=600,height=360\');" href="javascript: void(0)" />';
+            $html[] = '<img class="fb-share" src="' . JURI::root() . '/plugins/content/bt_socialshare/assets/share.png" onClick="window.open(\'http://www.facebook.com/sharer.php?u=\'+encodeURIComponent(\'' . $link_article . '\')+\'&t=\'+encodeURIComponent(\'' . $title . '\'),\'sharer\',\'toolbar=0,status=0,left=\'+((screen.width/2)-300)+\',top=\'+((screen.height/2)-200)+\',width=600,height=360\');"  />';
         }
         $html[] = '</div>';
         return implode($html);
@@ -90,7 +90,7 @@ class plgSystemHikashopsocial extends JPlugin
             else
                 $styles .= 'width:100%';
         }
-        $item = '<div id="hikashop_social" style="' . $styles . '">' . implode('', $html) . '</div>';
+        $item = '<div  style="' . $styles . '">' . implode('', $html) . '</div>';
         if($this->added_script==false) {
             $this->add_script($plugin);
             $this->added_script=true;
@@ -179,7 +179,7 @@ class plgSystemHikashopsocial extends JPlugin
                 else
                     $styles .= 'width:100%';
             }
-            $item = '<div id="hikashop_social" style="' . $styles . '">' . implode('', $html) . '</div>';
+            $item = '<div  style="' . $styles . '">' . implode('', $html) . '</div>';
         }
         $body = str_replace($matches, $matches_replate, $body);
         $app->setBody($body);

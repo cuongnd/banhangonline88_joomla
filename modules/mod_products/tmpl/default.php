@@ -35,7 +35,7 @@ $mainCurr = $currencyHelper->mainCurrency();
                             <div class="title"><a title="<?php echo $product->product_name ?>"
                                                   href="<?php echo $link ?>"><?php echo $product->product_name ?></a>
                             </div>
-                            <img class="image img-responsive"
+                            <img class="image img-responsive" src=""
                                  data-src="<?php echo JUri::root() ?>images/com_hikashop/upload/<?php echo $fist_image ?>">
                             <div
                                 class="price"><?php echo $currencyHelper->format($product->price_value, $mainCurr); ?></div>

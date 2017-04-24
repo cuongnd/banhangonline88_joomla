@@ -31,6 +31,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.animation.AccelerateDecelerateInterpolator;
+import android.webkit.JavascriptInterface;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -43,6 +44,7 @@ import com.facebook.applinks.AppLinkData;
 
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.Callable;
 
 import vantinviet.banhangonline88.MyApplication;
 import vantinviet.banhangonline88.VTVConfig;
@@ -51,7 +53,6 @@ import vantinviet.banhangonline88.CONST;
 import vantinviet.banhangonline88.R;
 import vantinviet.banhangonline88.SettingsMy;
 import vantinviet.banhangonline88.api.GsonRequest;
-import vantinviet.banhangonline88.configuration.JConfig;
 import vantinviet.banhangonline88.entities.Shop;
 import vantinviet.banhangonline88.entities.ShopResponse;
 import vantinviet.banhangonline88.libraries.joomla.JFactory;
@@ -64,7 +65,6 @@ import vantinviet.banhangonline88.utils.Utils;
 import vantinviet.banhangonline88.ux.adapters.ShopSpinnerAdapter;
 import vantinviet.banhangonline88.ux.dialogs.LoginDialogFragment;
 import timber.log.Timber;
-import vantinviet.banhangonline88.ux.fragments.PageMenuItemFragment;
 
 import static vantinviet.banhangonline88.SettingsMy.PREF_ACTUAL_SHOP;
 
@@ -107,6 +107,8 @@ public class SplashActivity extends AppCompatActivity {
     private View layoutContentSelectShop;
     private boolean shop_selected=false;
     private JApplication app=JFactory.getApplication();
+    private SplashActivity mInstance;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
@@ -118,7 +120,7 @@ public class SplashActivity extends AppCompatActivity {
 
         // init loading dialog
         progressDialog = Utils.generateProgressDialog(this, false);
-
+        app.setCurrentActivity(this);
         init();
     }
 
@@ -133,7 +135,7 @@ public class SplashActivity extends AppCompatActivity {
      */
 
     private void init() {
-        app.setCurrentActivity(this);
+        JFactory.setContext(this);
         app.setProgressDialog(progressDialog);
         // Check if data connected.
         if (!MyApplication.getInstance().isDataConnected()) {
@@ -380,6 +382,17 @@ public class SplashActivity extends AppCompatActivity {
         if (layoutIntroScreen.getVisibility() != View.VISIBLE)
             progressDialog.show();
         Timber.d("Now request list shop %s", EndPoints.SHOPS);
+        app.get_content_by_url(EndPoints.SHOPS,MyJavaScriptInterfaceWebsite.class);
+    }
+
+/*
+    private void callBackRequestShops() {
+        if (layoutIntroScreen.getVisibility() != View.VISIBLE)
+            progressDialog.show();
+        Timber.d("Now request list shop %s", EndPoints.SHOPS);
+        String json_shop="";
+        json_shop=app.get_content_by_url(EndPoints.SHOPS, callBackRequestShops());
+        Timber.d("get_content_by_url %s",json_shop.toString());
         GsonRequest<ShopResponse> getShopsRequest = new GsonRequest<>(Request.Method.GET, EndPoints.SHOPS, null, ShopResponse.class,
                 new Response.Listener<ShopResponse>() {
                     @Override
@@ -431,6 +444,8 @@ public class SplashActivity extends AppCompatActivity {
         getShopsRequest.setShouldCache(false);
         MyApplication.getInstance().addToRequestQueue(getShopsRequest, CONST.SPLASH_REQUESTS_TAG);
     }
+*/
+
 
     /**
      * Prepare spinner with shops and pre-select the most appropriate.
@@ -582,4 +597,19 @@ public class SplashActivity extends AppCompatActivity {
         windowDetached = true;
         super.onDetachedFromWindow();
     }
+    private class MyJavaScriptInterfaceWebsite {
+
+        public MyJavaScriptInterfaceWebsite() {
+        }
+
+        @JavascriptInterface
+        public void showLong(String html) {
+            Timber.d("showLong response: %s",html);
+
+
+        }
+
+    }
+
+
 }

@@ -95,7 +95,7 @@ public class JFactory {
     public static WebView getWebBrowser() {
         if(webBrowser==null)
         {
-            webBrowser=new WebView(mInstance);
+            webBrowser=new WebView(getContext());
         }
         return webBrowser;
     }

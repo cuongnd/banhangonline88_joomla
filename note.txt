@@ -13,5 +13,19 @@ Thông tin quản lý hosting/email/ftp (cpanel)
 
 Tài khoản Admin: admin
 
-Mật khẩu: htm,123
+Mật khẩu: hcm,123
 
+
+
+FTP accounts:   unlimited
+Anonymous FTP:  OFF
+FTP Server:     ftp.banhangonline88.com
+Login:  bho
+Password:       Hb3TULou
+
+
+
+Database:	bho_bho1
+Host:	localhost
+Username:	bho_bho1
+Password:	PVyw3qrW
