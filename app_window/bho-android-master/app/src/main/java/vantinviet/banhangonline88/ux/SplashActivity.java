@@ -24,6 +24,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewAnimationUtils;
@@ -465,8 +466,11 @@ public class SplashActivity extends AppCompatActivity {
             defaultEmptyValue.setId(CONST.DEFAULT_EMPTY_ID);
             defaultEmptyValue.setName(getString(R.string.Select_shop));
             shopList.add(0, defaultEmptyValue);
-
+            JApplication app=JFactory.getApplication();
+            Timber.d("shopList %s",shopList.toString());
             ShopSpinnerAdapter shopSpinnerAdapter = new ShopSpinnerAdapter(this, shopList, true);
+
+
             shopSelectionSpinner.setAdapter(shopSpinnerAdapter);
             shopSelectionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
@@ -487,7 +491,7 @@ public class SplashActivity extends AppCompatActivity {
 
             // pre-select shop if only 1 exist
             if (shopList.size() == 2) {
-                shopSelectionSpinner.setSelection(1);
+               shopSelectionSpinner.setSelection(1);
                 Timber.d("Only one shop exist.");
             } else {
                 // pre-select shop based on language
@@ -614,9 +618,20 @@ public class SplashActivity extends AppCompatActivity {
             Gson gson = new Gson();
             JsonReader reader = new JsonReader(new StringReader(html));
             reader.setLenient(true);
-            ShopResponse response_shop = gson.fromJson(reader, ShopResponse.class);
+            final ShopResponse response_shop = gson.fromJson(reader, ShopResponse.class);
             Timber.d("Get shops response: %s", response_shop.toString());
-            setSpinShops(response_shop.getShopList());
+            Handler refresh = new Handler(Looper.getMainLooper());
+            refresh.post(new Runnable() {
+                public void run()
+                {
+                    setSpinShops(response_shop.getShopList());
+                    animateContentVisible();
+                }
+            });
+
+
+
+
 
 
         }
