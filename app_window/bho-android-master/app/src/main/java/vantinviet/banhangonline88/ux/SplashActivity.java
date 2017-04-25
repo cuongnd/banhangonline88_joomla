@@ -17,16 +17,13 @@ package vantinviet.banhangonline88.ux;
 
 import android.animation.Animator;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewAnimationUtils;
@@ -41,10 +38,14 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.facebook.appevents.AppEventsLogger;
 import com.facebook.applinks.AppLinkData;
+import com.google.gson.Gson;
+import com.google.gson.stream.JsonReader;
 
+import org.apache.http.util.EncodingUtils;
+
+import java.io.StringReader;
 import java.util.List;
 import java.util.Locale;
-import java.util.concurrent.Callable;
 
 import vantinviet.banhangonline88.MyApplication;
 import vantinviet.banhangonline88.VTVConfig;
@@ -53,11 +54,11 @@ import vantinviet.banhangonline88.CONST;
 import vantinviet.banhangonline88.R;
 import vantinviet.banhangonline88.SettingsMy;
 import vantinviet.banhangonline88.api.GsonRequest;
+import vantinviet.banhangonline88.components.com_hikamarket.views.category.tmpl.listing;
 import vantinviet.banhangonline88.entities.Shop;
 import vantinviet.banhangonline88.entities.ShopResponse;
 import vantinviet.banhangonline88.libraries.joomla.JFactory;
 import vantinviet.banhangonline88.libraries.legacy.application.JApplication;
-import vantinviet.banhangonline88.libraries.utilities.FileUtils;
 import vantinviet.banhangonline88.testing.EspressoIdlingResource;
 import vantinviet.banhangonline88.utils.Analytics;
 import vantinviet.banhangonline88.utils.MsgUtils;
@@ -382,7 +383,12 @@ public class SplashActivity extends AppCompatActivity {
         if (layoutIntroScreen.getVisibility() != View.VISIBLE)
             progressDialog.show();
         Timber.d("Now request list shop %s", EndPoints.SHOPS);
-        app.get_content_by_url(EndPoints.SHOPS,MyJavaScriptInterfaceWebsite.class);
+        app.getProgressDialog().show();
+        android.webkit.WebView web_browser = JFactory.getWebBrowser();
+        web_browser.postUrl(EndPoints.SHOPS,app.getSetPostBrowser());
+        app.getProgressDialog().dismiss();
+        web_browser.addJavascriptInterface(new SplashActivityJavaScriptInterfaceWebsite(), "HtmlViewer");
+
     }
 
 /*
@@ -597,19 +603,27 @@ public class SplashActivity extends AppCompatActivity {
         windowDetached = true;
         super.onDetachedFromWindow();
     }
-    private class MyJavaScriptInterfaceWebsite {
+    private class SplashActivityJavaScriptInterfaceWebsite {
 
-        public MyJavaScriptInterfaceWebsite() {
+        public SplashActivityJavaScriptInterfaceWebsite() {
         }
 
         @JavascriptInterface
-        public void showLong(String html) {
-            Timber.d("showLong response: %s",html);
+        public void showHTML(String html) {
+            Timber.d("html response: %s",html);
+            Gson gson = new Gson();
+            JsonReader reader = new JsonReader(new StringReader(html));
+            reader.setLenient(true);
+            ShopResponse response_shop = gson.fromJson(reader, ShopResponse.class);
+            Timber.d("Get shops response: %s", response_shop.toString());
+            setSpinShops(response_shop.getShopList());
 
 
         }
 
     }
+
+
 
 
 }

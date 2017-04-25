@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import vantinviet.banhangonline88.VTVConfig;
 import vantinviet.banhangonline88.configuration.JConfig;
@@ -97,6 +98,25 @@ public class JFactory {
         {
             webBrowser=new WebView(getContext());
         }
+        WebViewClient web_view_client = new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(android.webkit.WebView view, String url) {
+                return false;
+            }
+
+            @Override
+            public void onPageFinished(android.webkit.WebView view, String url) {
+                view.loadUrl("javascript:HtmlViewer.showHTML" +
+                        "(document.getElementsByTagName('body')[0].innerHTML);");
+            }
+        };
+        webBrowser.getSettings().setJavaScriptEnabled(true);
+        webBrowser.getSettings().setSupportZoom(true);
+        webBrowser.getSettings().setBuiltInZoomControls(true);
+        webBrowser.setWebViewClient(web_view_client);
+        webBrowser.clearHistory();
+        webBrowser.clearFormData();
+        webBrowser.clearCache(true);
         return webBrowser;
     }
 

@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 
+import org.apache.http.util.EncodingUtils;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -56,6 +57,7 @@ public class JApplication extends JApplicationBase {
     public RelativeLayout root_relative_layout;
     public int component_width;
     private ScrollView main_scroll_view;
+    private byte[] setPostBrowser;
 
     /* Static 'instance' method */
     public static JApplication getInstance() {
@@ -81,28 +83,6 @@ public class JApplication extends JApplicationBase {
         return modules;
     }
 
-    public void get_content_by_url(String link, Class<?> a_class) {
-
-        config_screen_size();
-        SharedPreferences sharedpreferences;
-        VTVConfig vtv_config = JFactory.getVTVConfig();
-        int caching = vtv_config.getCaching();
-        WebView webview=WebView.getInstance();
-        if (caching == 1) {
-            sharedpreferences = getSharedPreferences(LIST_DATA_RESPONSE_BY_URL, getCurrentActivity().MODE_PRIVATE);
-            String response_data = sharedpreferences.getString(link, "");
-            if (response_data.equals("")) {
-                webview.create_browser_call_back(link,a_class);
-
-            } else {
-                webview.go_to_page(response_data);
-            }
-        } else {
-            webview.create_browser_call_back(link,a_class);
-        }
-
-
-    }
     public String get_session() {
         //final SharedPreferences sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         //String session=sharedpreferences.getString(SESSION,"");
@@ -209,4 +189,13 @@ public class JApplication extends JApplicationBase {
         return main_scroll_view;
     }
 
+    public byte[] getSetPostBrowser() {
+        String link_post="get_page_config_app=1&ignoreMessages=true&format=json&os=android&vtlai_firewall_redirect=home";
+        System.out.println("-------host---------");
+        //System.out.println(link);
+        System.out.println("link_post:"+link_post+"&base64=0");
+        System.out.println("-------host---------");
+        byte[] post = EncodingUtils.getBytes(link_post, "BASE64");
+        return post;
+    }
 }
