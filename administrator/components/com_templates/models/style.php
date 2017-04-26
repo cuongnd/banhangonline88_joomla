@@ -441,7 +441,7 @@ class TemplatesModelStyle extends JModelAdmin
                     $function_get_sub_layout_and_parent_layout($function_get_sub_layout_and_parent_layout, $node, $sub_layout);
                 }
             }else{
-                $sub_layout=JArrayHelper::toObject($array_layout);
+                $sub_layout=$array_layout;
             }
             $data['params'][$current_key_layout] = $sub_layout;
             $table_parent_template = $this->getTable();

@@ -12,6 +12,10 @@ public class Params {
     int layout_width;
     String layout_type;
     ArrayList<Row> android_layout =new ArrayList<Row>();
+    ArrayList<Row> android_navigation_view_left_layout =new ArrayList<Row>();
+    ArrayList<Row> android_navigation_view_top_layout =new ArrayList<Row>();
+    ArrayList<Row> android_navigation_view_bottom_layout =new ArrayList<Row>();
+    ArrayList<Row> android_navigation_view_right_layout =new ArrayList<Row>();
     @Override
     public String toString() {
         return "Params{" +

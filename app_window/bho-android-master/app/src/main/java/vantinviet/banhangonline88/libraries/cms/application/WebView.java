@@ -83,7 +83,7 @@ public class WebView {
 
             return;
         }
-        //Timber.d("html response: %s",html);
+        Timber.d("html response: %s",html);
         Gson gson = new Gson();
         JsonReader reader = new JsonReader(new StringReader(html));
         reader.setLenient(true);
@@ -92,7 +92,7 @@ public class WebView {
             page = gson.fromJson(reader, Page.class);
         }
         catch (JsonParseException e) {
-            //Timber.d("JsonParseException error : %s",e.toString());
+            Timber.d("JsonParseException error : %s",e.toString());
 
             JUtilities.show_alert_dialog(app.getLink());
             return;
