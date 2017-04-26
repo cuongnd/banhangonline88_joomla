@@ -50,6 +50,7 @@ class TemplatesViewStyle extends JViewLegacy
         $this->item = $this->get('Item');
         $this->state = $this->get('State');
         $this->form = $this->get('Form');
+
         $this->canDo = JHelperContent::getActions('com_templates');
         // Check for errors.
         if (count($errors = $this->get('Errors'))) {

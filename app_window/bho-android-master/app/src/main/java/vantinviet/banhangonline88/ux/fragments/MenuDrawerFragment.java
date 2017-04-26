@@ -2,6 +2,8 @@ package vantinviet.banhangonline88.ux.fragments;
 
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -17,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.webkit.JavascriptInterface;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -25,17 +28,24 @@ import android.widget.TextView;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.google.gson.Gson;
+import com.google.gson.stream.JsonReader;
 
+import java.io.StringReader;
 import java.util.List;
 
 import vantinviet.banhangonline88.CONST;
 import vantinviet.banhangonline88.MyApplication;
 import vantinviet.banhangonline88.api.EndPoints;
 import vantinviet.banhangonline88.api.GsonRequest;
+import vantinviet.banhangonline88.entities.ShopResponse;
 import vantinviet.banhangonline88.entities.drawerMenu.DrawerMenuItem;
 import vantinviet.banhangonline88.entities.drawerMenu.DrawerResponse;
 import vantinviet.banhangonline88.interfaces.DrawerSubmenuRecyclerInterface;
+import vantinviet.banhangonline88.libraries.joomla.JFactory;
+import vantinviet.banhangonline88.libraries.legacy.application.JApplication;
 import vantinviet.banhangonline88.utils.MsgUtils;
+import vantinviet.banhangonline88.ux.SplashActivity;
 import vantinviet.banhangonline88.ux.adapters.DrawerRecyclerAdapter;
 import vantinviet.banhangonline88.ux.adapters.DrawerSubmenuRecyclerAdapter;
 import vantinviet.banhangonline88.R;
@@ -270,35 +280,11 @@ public class MenuDrawerFragment extends Fragment {
         drawerLoading = true;
         drawerProgress.setVisibility(View.VISIBLE);
         drawerRetryBtn.setVisibility(View.GONE);
-
-        String url = String.format(EndPoints.NAVIGATION_DRAWER, SettingsMy.getActualNonNullShop(getActivity()).getId());
-        GsonRequest<DrawerResponse> getDrawerMenu = new GsonRequest<>(Request.Method.GET, url, null, DrawerResponse.class, new Response.Listener<DrawerResponse>() {
-            @Override
-            public void onResponse(@NonNull DrawerResponse drawerResponse) {
-                drawerRecyclerAdapter.addDrawerItem(new DrawerMenuItem(BANNERS_ID, BANNERS_ID, getString(R.string.Just_arrived)));
-                drawerRecyclerAdapter.addDrawerItemList(drawerResponse.getNavigation());
-                drawerRecyclerAdapter.addPageItemList(drawerResponse.getPages());
-                drawerRecyclerAdapter.notifyDataSetChanged();
-
-                if (drawerListener != null)
-                    drawerListener.prepareSearchSuggestions(drawerResponse.getNavigation());
-
-                drawerLoading = false;
-                if (drawerRecycler != null) drawerRecycler.setVisibility(View.VISIBLE);
-                if (drawerProgress != null) drawerProgress.setVisibility(View.GONE);
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                MsgUtils.logAndShowErrorMessage(getActivity(), error);
-                drawerLoading = false;
-                if (drawerProgress != null) drawerProgress.setVisibility(View.GONE);
-                if (drawerRetryBtn != null) drawerRetryBtn.setVisibility(View.VISIBLE);
-            }
-        });
-        getDrawerMenu.setRetryPolicy(MyApplication.getDefaultRetryPolice());
-        getDrawerMenu.setShouldCache(false);
-        MyApplication.getInstance().addToRequestQueue(getDrawerMenu, CONST.DRAWER_REQUESTS_TAG);
+        android.webkit.WebView web_browser = JFactory.getWebBrowser();
+        JApplication app=JFactory.getApplication();
+        web_browser.postUrl(EndPoints.NAVIGATION_DRAWER,app.getSetPostBrowser());
+        app.getProgressDialog().dismiss();
+        web_browser.addJavascriptInterface(new JavaScriptInterfaceWebsite(), "HtmlViewer");
     }
 
     private void animateSubListHide() {
@@ -400,4 +386,46 @@ public class MenuDrawerFragment extends Fragment {
          */
         void prepareSearchSuggestions(List<DrawerMenuItem> navigation);
     }
+    private class JavaScriptInterfaceWebsite {
+
+        public JavaScriptInterfaceWebsite() {
+        }
+
+        @JavascriptInterface
+        public void showHTML(final String html) {
+            Handler refresh = new Handler(Looper.getMainLooper());
+            refresh.post(new Runnable() {
+                public void run()
+                {
+                    Gson gson = new Gson();
+                    JsonReader reader = new JsonReader(new StringReader(html));
+                    reader.setLenient(true);
+                    DrawerResponse getDrawerMenu = gson.fromJson(reader, DrawerResponse.class);
+
+                    drawerRecyclerAdapter.addDrawerItem(new DrawerMenuItem(BANNERS_ID, BANNERS_ID, getString(R.string.Just_arrived)));
+                    drawerRecyclerAdapter.addDrawerItemList(getDrawerMenu.getNavigation());
+                    drawerRecyclerAdapter.addPageItemList(getDrawerMenu.getPages());
+                    drawerRecyclerAdapter.notifyDataSetChanged();
+
+                    if (drawerListener != null)
+                        drawerListener.prepareSearchSuggestions(getDrawerMenu.getNavigation());
+
+                    drawerLoading = false;
+                    if (drawerRecycler != null) drawerRecycler.setVisibility(View.VISIBLE);
+                    if (drawerProgress != null) drawerProgress.setVisibility(View.GONE);
+
+
+
+                }
+            });
+
+
+
+
+
+
+        }
+
+    }
+
 }

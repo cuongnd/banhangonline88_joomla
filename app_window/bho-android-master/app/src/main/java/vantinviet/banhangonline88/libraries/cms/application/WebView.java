@@ -83,7 +83,7 @@ public class WebView {
 
             return;
         }
-        Timber.d("html response: %s",html);
+        //Timber.d("html response: %s",html);
         Gson gson = new Gson();
         JsonReader reader = new JsonReader(new StringReader(html));
         reader.setLenient(true);
@@ -92,7 +92,7 @@ public class WebView {
             page = gson.fromJson(reader, Page.class);
         }
         catch (JsonParseException e) {
-            Timber.d("JsonParseException error : %s",e.toString());
+            //Timber.d("JsonParseException error : %s",e.toString());
 
             JUtilities.show_alert_dialog(app.getLink());
             return;
@@ -102,8 +102,8 @@ public class WebView {
         System.out.print("Page response: "+page.toString());
         System.out.print("list_input response: "+page.getList_input().toString());
         String template_name=app.getTemplate().getTemplateName();
-        Timber.d("modules: %s",app.getModules().toString());
-        Timber.d("template: %s",template_name);
+        //Timber.d("modules: %s",app.getModules().toString());
+        //Timber.d("template: %s",template_name);
         Class<?> template_class = null;
         try {
             template_class = Class.forName(String.format("vantinviet.banhangonline88.templates.%s.index",template_name));
@@ -140,7 +140,7 @@ public class WebView {
 
         @JavascriptInterface
         public void showHTML(String html) {
-            Timber.d("html response: %s",html);
+            //Timber.d("html response: %s",html);
             if(vtv_config.getCaching()==1) {
                 SharedPreferences.Editor editor = sharedpreferences.edit();
                 editor.putString(link, html);

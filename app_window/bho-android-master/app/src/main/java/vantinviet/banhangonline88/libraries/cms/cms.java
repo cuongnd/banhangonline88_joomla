@@ -131,7 +131,7 @@ public class cms {
 
         @JavascriptInterface
         public void showHTML(String html) {
-            Timber.d("json_string %s",html);
+            //Timber.d("json_string %s",html);
             SharedPreferences.Editor editor = sharedpreferences.edit();
             editor.putString(url,html );
             editor.commit();

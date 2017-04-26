@@ -19,7 +19,6 @@ $return	          = ModLoginHelper::getReturnUrl($params, $type);
 $twofactormethods = ModLoginHelper::getTwoFactorMethods();
 $user	          = JFactory::getUser();
 $layout           = $params->get('layout', 'default');
-
 // Logged users must load the logout sublayout
 if (!$user->guest)
 {

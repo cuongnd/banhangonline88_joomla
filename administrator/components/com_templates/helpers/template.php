@@ -30,6 +30,89 @@ abstract class TemplateHelper
 		// Get file extension
 		return strtolower(substr($fileName, strrpos($fileName, '.') + 1));
 	}
+	public static function is_main_body($device_editing){
+		$list_layout=TemplateHelper::get_list_layout();
+		foreach($list_layout as $layout){
+			foreach($layout as $key=> $item){
+				if($device_editing==$key){
+					return $item->is_main;
+				}
+			}
+		}
+		return false;
+	}
+	public static function get_list_layout(){
+		$list_layout=array(
+			browser=>array(
+				browser=>array(
+					is_main=>1,
+					title=>JText::_('browser body')
+				),
+				browser_navigation_view_top=>array(
+					is_main=>0,
+					title=>JText::_('browser Navigation view top')
+				),
+				browser_navigation_view_bottom=>array(
+					is_main=>0,
+					title=>JText::_('browser Navigation view bottom')
+				),
+				browser_navigation_view_left=>array(
+					is_main=>0,
+					title=>JText::_('browser Navigation view left')
+				),
+				browser_navigation_view_right=>array(
+					is_main=>0,
+					title=>JText::_('browser Navigation view right')
+				)
+			),
+			android=>array(
+				android=>array(
+					is_main=>1,
+					title=>JText::_('Android body')
+				),
+				android_navigation_view_top=>array(
+					is_main=>0,
+					title=>JText::_('Android Navigation view top')
+				),
+				android_navigation_view_bottom=>array(
+					is_main=>0,
+					title=>JText::_('Android Navigation view bottom')
+				),
+				android_navigation_view_left=>array(
+					is_main=>0,
+					title=>JText::_('Android Navigation view left')
+				),
+				android_navigation_view_right=>array(
+					is_main=>0,
+					title=>JText::_('Android Navigation view right')
+				)
+			),
+			ios=>array(
+				ios=>array(
+					is_main=>1,
+					title=>JText::_('ios body')
+				),
+				ios_navigation_view_top=>array(
+					is_main=>0,
+					title=>JText::_('ios Navigation view top')
+				),
+				ios_navigation_view_bottom=>array(
+					is_main=>0,
+					title=>JText::_('ios Navigation view bottom')
+				),
+				ios_navigation_view_left=>array(
+					is_main=>0,
+					title=>JText::_('ios Navigation view left')
+				),
+				ios_navigation_view_right=>array(
+					is_main=>0,
+					title=>JText::_('ios Navigation view right')
+				)
+			)
+		);
+		$list_layout=JArrayHelper::toObject($list_layout);
+		return $list_layout;
+	}
 
 	/**
 	 * Checks if the file can be uploaded

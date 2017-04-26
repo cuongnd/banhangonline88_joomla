@@ -90,6 +90,7 @@ import vantinviet.banhangonline88.ux.fragments.MenuDrawerFragment;
 import vantinviet.banhangonline88.ux.fragments.OrderCreateFragment;
 import vantinviet.banhangonline88.ux.fragments.OrderFragment;
 import vantinviet.banhangonline88.ux.fragments.OrdersHistoryFragment;
+import vantinviet.banhangonline88.ux.fragments.PageMenuItemFragment;
 import vantinviet.banhangonline88.ux.fragments.ProductFragment;
 import vantinviet.banhangonline88.ux.fragments.SettingsFragment;
 import vantinviet.banhangonline88.ux.fragments.WishlistFragment;
@@ -240,7 +241,7 @@ public class MainActivity extends AppCompatActivity implements MenuDrawerFragmen
         // init loading dialog
         progressDialog = Utils.generateProgressDialog(this, false);
         app.setProgressDialog(progressDialog);
-        app.execute();
+
         // Set app specific language localization by selected shop.
         String lang = SettingsMy.getActualNonNullShop(this).getLanguage();
         if(lang==null){
@@ -285,6 +286,7 @@ public class MainActivity extends AppCompatActivity implements MenuDrawerFragmen
         // end of GCM registration //
 
         addInitialFragment();
+        app.execute();
 
     }
 
@@ -525,8 +527,8 @@ public class MainActivity extends AppCompatActivity implements MenuDrawerFragmen
         }
         link=app.get_page_config_app(link);
         app.setRedirect(link);
-        //Fragment fragment = PageMenuItemFragment.newInstance(drawerMenuItem);
-        //replaceFragment(fragment, PageMenuItemFragment.class.getSimpleName());
+        Fragment fragment = PageMenuItemFragment.newInstance(drawerMenuItem);
+        replaceFragment(fragment, PageMenuItemFragment.class.getSimpleName());
     }
 
 
