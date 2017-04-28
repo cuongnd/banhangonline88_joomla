@@ -112,6 +112,7 @@ if($debug) {
     echo "<pre>";
     print_r($style, false);
     echo "</pre>";
+    die;
 }
 $html=JUtility::html_to_obj($html,$style);
 if($debug) {

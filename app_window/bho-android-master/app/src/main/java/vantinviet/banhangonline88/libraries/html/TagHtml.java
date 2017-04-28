@@ -40,6 +40,7 @@ public class TagHtml {
     String class_name = "";
     String src = "";
     private ArrayList<TagHtml> children;
+    private ArrayList<String> apply_class;
     private static ArrayList<String> _list_allow_tag;
 
 
@@ -106,7 +107,12 @@ public class TagHtml {
     }
 
     public static void set_style(TagHtml tag, LinearLayout linear_layout, String class_path,Map<String, StyleSheet> list_style_sheet) {
-        ArrayList<StyleSheet> stylesheet = get_stylesheet_apply(tag,class_path,list_style_sheet);
+        ArrayList<StyleSheet> list_stylesheet = get_stylesheet_apply(tag,class_path,list_style_sheet);
+        for (StyleSheet item_stylesheet: list_stylesheet) {
+            Timber.d("tag %s",tag.getTagName());
+            Timber.d("item_stylesheet %s",item_stylesheet.toString());
+        }
+
 
 
         /*String[] splited_class_name = class_name.split("\\s+");
@@ -136,8 +142,12 @@ public class TagHtml {
 
     }
     public static void set_style(TagHtml tag, ImageView image_view, String class_path,Map<String, StyleSheet> list_style_sheet) {
-        ArrayList<StyleSheet> stylesheet = get_stylesheet_apply(tag,class_path,list_style_sheet);
-
+        ArrayList<StyleSheet> list_stylesheet = get_stylesheet_apply(tag,class_path,list_style_sheet);
+        for (StyleSheet item_stylesheet: list_stylesheet) {
+            Timber.d("tag %s",tag.getTagName());
+            Timber.d("class_path %s",class_path);
+            Timber.d("item_stylesheet %s",item_stylesheet.toString());
+        }
 
         /*String[] splited_class_name = class_name.split("\\s+");
         String[] list_styles = Style.get_list_styles();
@@ -166,9 +176,12 @@ public class TagHtml {
 
     }
     public static void set_style(TagHtml tag, ImageButton image_button, String class_path,Map<String, StyleSheet> list_style_sheet) {
-        ArrayList<StyleSheet> stylesheet = get_stylesheet_apply(tag,class_path,list_style_sheet);
+        ArrayList<StyleSheet> list_stylesheet = get_stylesheet_apply(tag,class_path,list_style_sheet);
 
-
+        for (StyleSheet item_stylesheet: list_stylesheet) {
+            Timber.d("tag %s",tag.getTagName());
+            Timber.d("item_stylesheet %s",item_stylesheet.toString());
+        }
         /*String[] splited_class_name = class_name.split("\\s+");
         String[] list_styles = Style.get_list_styles();
         if (splited_class_name != null) for (String item_class : splited_class_name) {
@@ -200,58 +213,20 @@ public class TagHtml {
 
         return splited_class_path;
     }
+
     private static ArrayList<StyleSheet> get_stylesheet_apply(TagHtml tag, String class_path, Map<String, StyleSheet> list_style_sheet) {
         ArrayList<StyleSheet> list_stylesheet = new ArrayList<StyleSheet>();
-        String class_name=tag.getClass_name();
-        class_name=class_name.toLowerCase();
+        String class_name = tag.getClass_name();
+        class_name = class_name.toLowerCase();
         String current_class_tag = get_current_class_tag(tag);
-
-        /*String[] splited_class_path = class_path.split("\\s+");
-
-        for( int i = 0; i <= splited_class_path.length - 1; i++)
-        {
-            String item_class=splited_class_path[i];
-            Timber.d("item_class %s",item_class.toString());
-            String[] splited_item_class = item_class.split("\\.");
-            for( int k = 0; k <= splited_item_class.length - 1; k++)
-            {
-                Timber.d("item %s",splited_item_class[k]);
-                for( int j = i; j <= splited_class_path.length - 1; j++)
-                {
-                    String sub_item_class=splited_class_path[j];
-                    String[] splited_sub_item_class= sub_item_class.split("\\.");
-                    for( int m = 0; m <= splited_sub_item_class.length - 1; m++)
-                    {
-                        Timber.d("path %s %s",splited_item_class[k],splited_sub_item_class[m]);
-                    }
-                }
-            }
-
-
-
-        }*/
-
-
-/*
-        for(Map.Entry<String, StyleSheet> entry : list_style_sheet.entrySet()) {
-            String style_key = entry.getKey();
-            String[] splited_style_key = style_key.split("\\s+");
-            if(check_apply_css(class_path,splited_style_key)){
-
-            }
-
-
-            StyleSheet style = entry.getValue();
-            Timber.d("style_key %s",style_key);
-            Timber.d("class_path %s",class_path);
-            Timber.d("current_class_tag %s",current_class_tag);
-            //list_stylesheet.add(style);
-            //Timber.d("current_class_tag %s",current_class_tag);
-            // do what you have to do here
-            // In your case, an other loop.
+        ArrayList<String> list_apply_class = new ArrayList<String>();
+        list_apply_class = tag.getApply_class();
+        for (String item_apply_class: list_apply_class) {
+            StyleSheet item_style_sheet =  list_style_sheet.get(item_apply_class.toString());
+            item_style_sheet.setClass_path(item_apply_class.toString());
+            list_stylesheet.add(item_style_sheet);
         }
-*/
-        return  list_stylesheet;
+        return list_stylesheet;
 
     }
 
@@ -576,5 +551,9 @@ public class TagHtml {
         }
         icon_class_name=icon_class_name.substring(5);
         return icon_class_name;
+    }
+
+    public ArrayList<String> getApply_class() {
+        return apply_class;
     }
 }

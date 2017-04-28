@@ -16,6 +16,7 @@ import timber.log.Timber;
  */
 
     public class StyleSheet {
+    String class_path;
     String border;
     String color;
 
@@ -39,5 +40,17 @@ import timber.log.Timber;
             e.printStackTrace();
         }
         return list_style_sheet;
+    }
+    @Override
+    public String toString() {
+        return "StyleSheet{" +
+                "class_path=" + class_path +
+                ",border=" + border +
+                ", color='" + color +
+                '}';
+    }
+
+    public void setClass_path(String class_path) {
+        this.class_path = class_path;
     }
 }
