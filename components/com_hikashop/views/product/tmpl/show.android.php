@@ -108,14 +108,18 @@ div.col-md-6.text-center{
 $style=ob_get_clean();
 $style=JUtility::remove_string_style_sheet($style);
 $style=JUtility::less_to_obj($style);
+if($debug) {
+    echo "<pre>";
+    print_r($style, false);
+    echo "</pre>";
+}
 $html=JUtility::html_to_obj($html,$style);
 if($debug) {
     echo "<pre>";
     print_r($html, false);
     echo "</pre>";
-    die;
 }
-die;
+
 $product_response->product->html_product=json_encode($html);
 $product_response->product->style_product=json_encode($style);
 echo json_encode($product_response);

@@ -341,7 +341,7 @@ public class TagHtml {
         String class_name=tag.getClass_name();
         String[] splited_class_name = class_name.split("\\s+");
         String tag_name=tag.getTagName();
-        String current_class_tag=tag_name;
+            String current_class_tag=tag_name;
         if (splited_class_name != null) for (String item_class : splited_class_name) {
             if(!item_class.equals(""))
             {
