@@ -1,5 +1,6 @@
 package vantinviet.banhangonline88.libraries.html;
 
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageButton;
@@ -9,10 +10,13 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.lang.reflect.Array;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import timber.log.Timber;
@@ -191,26 +195,66 @@ public class TagHtml {
 
 
     }
+    private String[] get_list_style_item(String class_path){
+        String[] splited_class_path= new String[] {};
 
+        return splited_class_path;
+    }
     private static ArrayList<StyleSheet> get_stylesheet_apply(TagHtml tag, String class_path, Map<String, StyleSheet> list_style_sheet) {
         ArrayList<StyleSheet> list_stylesheet = new ArrayList<StyleSheet>();
         String class_name=tag.getClass_name();
         class_name=class_name.toLowerCase();
         String current_class_tag = get_current_class_tag(tag);
+
+        /*String[] splited_class_path = class_path.split("\\s+");
+
+        for( int i = 0; i <= splited_class_path.length - 1; i++)
+        {
+            String item_class=splited_class_path[i];
+            Timber.d("item_class %s",item_class.toString());
+            String[] splited_item_class = item_class.split("\\.");
+            for( int k = 0; k <= splited_item_class.length - 1; k++)
+            {
+                Timber.d("item %s",splited_item_class[k]);
+                for( int j = i; j <= splited_class_path.length - 1; j++)
+                {
+                    String sub_item_class=splited_class_path[j];
+                    String[] splited_sub_item_class= sub_item_class.split("\\.");
+                    for( int m = 0; m <= splited_sub_item_class.length - 1; m++)
+                    {
+                        Timber.d("path %s %s",splited_item_class[k],splited_sub_item_class[m]);
+                    }
+                }
+            }
+
+
+
+        }*/
+
+
+/*
         for(Map.Entry<String, StyleSheet> entry : list_style_sheet.entrySet()) {
             String style_key = entry.getKey();
+            String[] splited_style_key = style_key.split("\\s+");
+            if(check_apply_css(class_path,splited_style_key)){
+
+            }
+
+
             StyleSheet style = entry.getValue();
             Timber.d("style_key %s",style_key);
             Timber.d("class_path %s",class_path);
-            Timber.d("current_class_tag %s",class_path);
+            Timber.d("current_class_tag %s",current_class_tag);
             //list_stylesheet.add(style);
             //Timber.d("current_class_tag %s",current_class_tag);
             // do what you have to do here
             // In your case, an other loop.
         }
+*/
         return  list_stylesheet;
 
     }
+
 
     @Override
     public String toString() {
@@ -243,6 +287,7 @@ public class TagHtml {
             LinearLayout new_row_linear_layout = new LinearLayout(app.getCurrentActivity());
             new_row_linear_layout.setLayoutParams(layout_params);
             new_row_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
+            new_row_linear_layout.setId(R.id.row);
             current_class_tag = get_current_class_tag(tag);
             class_path+=" "+current_class_tag;
             //set_style(tag,new_row_linear_layout, "",list_style_sheet);
@@ -258,6 +303,7 @@ public class TagHtml {
                     LinearLayout new_column_linear_layout = new LinearLayout(app.getCurrentActivity());
                     new_column_linear_layout.setLayoutParams(layout_params);
                     new_column_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
+                    new_column_linear_layout.setId(R.id.column);
                     LinearLayout.LayoutParams new_vertical_wrapper_of_column_linear_layout_params = new LinearLayout.LayoutParams(column_width, MATCH_PARENT);
                     LinearLayout new_wrapper_of_column_linear_layout = new LinearLayout(app.getCurrentActivity());
                     new_wrapper_of_column_linear_layout.setLayoutParams(new_vertical_wrapper_of_column_linear_layout_params);
@@ -328,9 +374,14 @@ public class TagHtml {
     private static LinearLayout render_layout_by_tag(TagHtml tag, int screen_size_width, int screen_size_height, String class_path, Map<String, StyleSheet> list_style_sheet) {
         //Timber.d("class_path: %s ",class_path);
         String class_name = tag.getClass_name();
+        String tag_name = tag.getTagName().toLowerCase();
         JApplication app = JFactory.getApplication();
         ArrayList<String> list_allow_tag = get_list_allow_tag();
-        class_name = (class_name.equals("") || class_name == null) ? tag.getTagName() : class_name;
+        if(Arrays.asList(new String[] {"div","img"}).contains(tag_name)){
+            class_name = (class_name.equals("") || class_name == null) ? tag.getTagName() : class_name;
+        }else{
+            class_name = (class_name.equals("") || class_name == null) ? tag.getTagName() : TextUtils.join(" ", new String[]{tag.getTagName(), class_name});
+        }
         if (list_allow_tag != null) for (String tag_item : list_allow_tag) {
             if (check_has_tag(class_name, tag_item)) {
                 tag_item = "render_tag_" + tag_item;
@@ -436,12 +487,13 @@ public class TagHtml {
     private static LinearLayout render_tag_div(TagHtml tag, int screen_size_width, int screen_size_height, String class_path,Map<String, StyleSheet> list_style_sheet) {
         JApplication app = JFactory.getApplication();
         LinearLayout.LayoutParams layout_params;
-        layout_params = new LinearLayout.LayoutParams(screen_size_width, screen_size_height);
+        layout_params = new LinearLayout.LayoutParams(screen_size_width, MATCH_PARENT);
         layout_params.setMargins(0, 10, 0, 10);
-        LinearLayout new_row_linear_layout = new LinearLayout(app.getCurrentActivity());
-        new_row_linear_layout.setLayoutParams(layout_params);
-        new_row_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
-
+        LinearLayout new_div_linear_layout = new LinearLayout(app.getCurrentActivity());
+        new_div_linear_layout.setLayoutParams(layout_params);
+        new_div_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
+        set_style(tag,new_div_linear_layout,class_path,list_style_sheet);
+/*
         LinearLayout new_column_linear_layout = new LinearLayout(app.getCurrentActivity());
         new_column_linear_layout.setLayoutParams(layout_params);
         new_column_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
@@ -451,11 +503,8 @@ public class TagHtml {
         new_wrapper_of_column_linear_layout.setOrientation(LinearLayout.VERTICAL);
         new_column_linear_layout.addView(new_wrapper_of_column_linear_layout);
         new_row_linear_layout.addView(new_column_linear_layout);
-
-
-
-        set_style(tag,new_row_linear_layout,class_path,list_style_sheet);
-        return new_row_linear_layout;
+        set_style(tag,new_row_linear_layout,class_path,list_style_sheet);*/
+        return new_div_linear_layout;
     }
 
     private static LinearLayout render_tag_img(TagHtml tag, int screen_size_width, int screen_size_height,String class_path,Map<String, StyleSheet> list_style_sheet) {
@@ -498,7 +547,7 @@ public class TagHtml {
     }
 
     public String getClass_name() {
-        return class_name;
+        return class_name.trim();
     }
 
     public String get_Html_content() {

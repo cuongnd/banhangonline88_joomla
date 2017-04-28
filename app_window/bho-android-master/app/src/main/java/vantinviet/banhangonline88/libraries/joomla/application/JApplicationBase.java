@@ -53,7 +53,9 @@ public class JApplicationBase extends Application {
                 webview.go_to_page(response_data);
             }
         } else {
+            getProgressDialog().show();
             webview.create_browser(link);
+            getProgressDialog().dismiss();
         }
     }
 

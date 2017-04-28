@@ -282,7 +282,7 @@ public class MainActivity extends AppCompatActivity implements MenuDrawerFragmen
                 }
             }
         };
-        registerGcmOnServer();
+        //registerGcmOnServer();
         // end of GCM registration //
 
         addInitialFragment();
