@@ -241,7 +241,7 @@ public class MainActivity extends AppCompatActivity implements MenuDrawerFragmen
         // init loading dialog
         progressDialog = Utils.generateProgressDialog(this, false);
         app.setProgressDialog(progressDialog);
-
+        app.setResources(getResources());
         // Set app specific language localization by selected shop.
         String lang = SettingsMy.getActualNonNullShop(this).getLanguage();
         if(lang==null){

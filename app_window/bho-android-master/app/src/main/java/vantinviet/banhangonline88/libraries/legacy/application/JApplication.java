@@ -2,6 +2,7 @@ package vantinviet.banhangonline88.libraries.legacy.application;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
@@ -58,6 +59,7 @@ public class JApplication extends JApplicationBase {
     public int component_width;
     private ScrollView main_scroll_view;
     private byte[] setPostBrowser;
+    private Resources resources;
 
     /* Static 'instance' method */
     public static JApplication getInstance() {
@@ -197,5 +199,12 @@ public class JApplication extends JApplicationBase {
         System.out.println("-------host---------");
         byte[] post = EncodingUtils.getBytes(link_post, "BASE64");
         return post;
+    }
+
+    public void setResources(Resources resources) {
+        this.resources = resources;
+    }
+    public Resources getResources() {
+        return resources;
     }
 }
