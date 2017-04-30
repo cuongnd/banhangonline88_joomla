@@ -105,4 +105,11 @@ class style
         $style[1]?$list_style->border_style= $style[1]:"";
         $style[2]?$list_style->border_color=$style[2]:"";
     }
+    public static function border_bottom(&$list_style,$style)
+    {
+        $style = preg_split('/\s+/', trim($style));
+        $list_style->border_bottom_width = $style[0];
+        $style[1]?$list_style->border_bottom_style= $style[1]:"";
+        $style[2]?$list_style->border_bottom_color=$style[2]:"";
+    }
 }

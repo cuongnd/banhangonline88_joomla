@@ -327,6 +327,7 @@ public class TagHtml {
                 tag_item = "render_tag_" + tag_item;
                 try {
                     Class<?> c = tag.getClass();
+
                     Method tag_method = c.getDeclaredMethod(tag_item, TagHtml.class, int.class, int.class,String.class,Map.class);
                     return (LinearLayout) tag_method.invoke(tag, tag, screen_size_width, screen_size_height,class_path,list_style_sheet);
 
@@ -371,7 +372,7 @@ public class TagHtml {
 
         boolean debug = VTVConfig.getDebug();
         LinearLayout.LayoutParams layout_params;
-        layout_params = new LinearLayout.LayoutParams(WRAP_CONTENT, MATCH_PARENT);
+        layout_params = new LinearLayout.LayoutParams(MATCH_PARENT, MATCH_PARENT);
 
         new_h4_linear_layout.setLayoutParams(layout_params);
         String html_content = tag.get_Html_content();
@@ -385,6 +386,27 @@ public class TagHtml {
         new_h4_linear_layout.addView(text_view_h4);
         set_style(tag,text_view_h4,new_h4_linear_layout,class_path,list_style_sheet);
         return new_h4_linear_layout;
+    }
+    private static LinearLayout render_tag_h2(TagHtml tag, int screen_size_width, int screen_size_height, String class_path,Map<String, StyleSheet> list_style_sheet) {
+        JApplication app = JFactory.getApplication();
+        LinearLayout new_h2_linear_layout = new LinearLayout(app.getCurrentActivity());
+
+        boolean debug = VTVConfig.getDebug();
+        LinearLayout.LayoutParams layout_params;
+        layout_params = new LinearLayout.LayoutParams(WRAP_CONTENT, MATCH_PARENT);
+
+        new_h2_linear_layout.setLayoutParams(layout_params);
+        String html_content = tag.get_Html_content();
+        TextView text_view_h2 = new TextView(app.getCurrentActivity());
+        text_view_h2.setText(html_content);
+
+        LinearLayout.LayoutParams layout_params_text_view_h4;
+        layout_params_text_view_h4 = new LinearLayout.LayoutParams(WRAP_CONTENT, MATCH_PARENT);
+        text_view_h2.setLayoutParams(layout_params_text_view_h4);
+        text_view_h2.setGravity(Gravity.CENTER_VERTICAL);
+        new_h2_linear_layout.addView(text_view_h2);
+        set_style(tag,text_view_h2,new_h2_linear_layout,class_path,list_style_sheet);
+        return new_h2_linear_layout;
     }
     private static LinearLayout render_tag_icon(TagHtml tag, int screen_size_width, int screen_size_height,String class_path,Map<String, StyleSheet> list_style_sheet) {
 
@@ -435,22 +457,24 @@ public class TagHtml {
         JApplication app = JFactory.getApplication();
         LinearLayout.LayoutParams layout_params;
         layout_params = new LinearLayout.LayoutParams(screen_size_width, MATCH_PARENT);
-        layout_params.setMargins(0, 10, 0, 10);
         LinearLayout new_div_linear_layout = new LinearLayout(app.getCurrentActivity());
         new_div_linear_layout.setLayoutParams(layout_params);
         new_div_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
+        String html_content = tag.get_Html_content();
+        TextView text_view_content = new TextView(app.getCurrentActivity());
+        text_view_content.setText(html_content);
+        new_div_linear_layout.addView(text_view_content);
         set_style(tag,new_div_linear_layout,class_path,list_style_sheet);
-/*
-        LinearLayout new_column_linear_layout = new LinearLayout(app.getCurrentActivity());
+       /* LinearLayout new_column_linear_layout = new LinearLayout(app.getCurrentActivity());
         new_column_linear_layout.setLayoutParams(layout_params);
-        new_column_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
+        new_column_linear_layout.setOrientation(LinearLayout.VERTICAL);
         LinearLayout.LayoutParams new_vertical_wrapper_of_column_linear_layout_params = new LinearLayout.LayoutParams(screen_size_width, MATCH_PARENT);
         LinearLayout new_wrapper_of_column_linear_layout = new LinearLayout(app.getCurrentActivity());
         new_wrapper_of_column_linear_layout.setLayoutParams(new_vertical_wrapper_of_column_linear_layout_params);
         new_wrapper_of_column_linear_layout.setOrientation(LinearLayout.VERTICAL);
         new_column_linear_layout.addView(new_wrapper_of_column_linear_layout);
-        new_row_linear_layout.addView(new_column_linear_layout);
-        set_style(tag,new_row_linear_layout,class_path,list_style_sheet);*/
+        new_div_linear_layout.addView(new_column_linear_layout);
+        set_style(tag,new_div_linear_layout,class_path,list_style_sheet);*/
         return new_div_linear_layout;
     }
 

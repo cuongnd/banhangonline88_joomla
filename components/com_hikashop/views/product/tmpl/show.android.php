@@ -50,21 +50,21 @@ ob_start();
                     <span class="button_icon span-total-buy icon-ic_emoji_flower"></span>
                     <h4><?php echo JText::_('11904') ?></h4>
                 </div>
-                <h4 class="title-total-buy"><?php echo JText::_('LUOT_MUA') ?></h4>
+                <h4 class="title-total-buy"><?php echo JText::_('HIKA_LUOT_MUA') ?></h4>
             </div>
             <div class="col-md-4">
                 <div class="total-buy">
                     <span class="button_icon span-total-buy icon-ic_emoji_flower"></span>
                     <h4><?php echo JText::_('11904') ?></h4>
                 </div>
-                <h4 class="title-total-buy"><?php echo JText::_('LUOT_MUA') ?></h4>
+                <h4 class="title-total-buy"><?php echo JText::_('HIKA_DON_HANG_TOT') ?></h4>
             </div>
             <div class="col-md-4">
                 <div class="total-buy">
                     <span class="button_icon span-total-buy icon-ic_emoji_flower"></span>
                     <h4><?php echo JText::_('11904') ?></h4>
                 </div>
-                <h4 class="title-total-buy"><?php echo JText::_('LUOT_MUA') ?></h4>
+                <h4 class="title-total-buy"><?php echo JText::_('HIKA_SU_LY_DON_HANG') ?></h4>
             </div>
         </div>
     </div>
@@ -115,6 +115,7 @@ ob_start();
                 font-size: 20px;
                 height: 160px;
                 color: #CCCCCC;
+                text-align: left;
                 width: 160px;
             }
 
@@ -134,7 +135,7 @@ ob_start();
         .toolbar {
 
             .total-buy {
-
+                text-align: center;
                 .span-total-buy {
                     border-radius: 35px;
                     padding: 20px;

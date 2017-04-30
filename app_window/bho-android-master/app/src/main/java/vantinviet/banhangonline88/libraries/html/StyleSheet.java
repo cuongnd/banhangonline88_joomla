@@ -53,6 +53,9 @@ import static android.R.attr.numberPickerStyle;
     private String border_left="0px";
     private String border_width="0px";
     private String border_color="0px";
+    private String border_bottom_width="0px";
+    private String border_bottom_style="solid";
+    private String border_bottom_color="solid";
     private String background_color="#FFFFFF";
     private String padding_left="0px";
     private String padding_top="0px";
@@ -106,7 +109,7 @@ import static android.R.attr.numberPickerStyle;
         String border_right = this.getBorder_left();
         String background_color = this.getBackground_color();
         //image_view.getLayoutParams().height = 300;
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(height, width);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(width,height );
 
         if (color != null && !color.equals("")) {
             image_view.setColorFilter(Color.parseColor(color));
@@ -151,7 +154,10 @@ import static android.R.attr.numberPickerStyle;
         String border_right = this.getBorder_left();
         String background_color = this.getBackground_color();
         //image_view.getLayoutParams().height = 300;
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(height, width);
+        if(height==1){
+            height=2;
+        }
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, height);
 
         GradientDrawable shape = new GradientDrawable();
 
@@ -168,8 +174,8 @@ import static android.R.attr.numberPickerStyle;
             String border_color = this.getBorder_color();
             shape.setStroke(border_width, Color.parseColor(border_color));
         }
-        linear_layout.setBackgroundDrawable(shape);
-
+        //linear_layout.setBackgroundDrawable(shape);
+        linear_layout.setBackgroundColor(Color.parseColor("#CCCCCC"));
         int padding_left = this.getPadding_left();
         int padding_top = this.getPadding_top();
         int padding_right = this.getPadding_right();
@@ -197,11 +203,15 @@ import static android.R.attr.numberPickerStyle;
         {
             text_view.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
         }
+        if(text_align.equals("left"))
+        {
+            text_view.setGravity(Gravity.LEFT);
+        }
         String border_left_top = this.getBorder_left();
         String border_right = this.getBorder_left();
         String background_color = this.getBackground_color();
         //image_view.getLayoutParams().height = 300;
-        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) text_view.getLayoutParams();
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         if (color != null && !color.equals("")) {
             text_view.setTextColor(Color.parseColor(color));
         }
@@ -235,6 +245,7 @@ import static android.R.attr.numberPickerStyle;
         int margin_bottom = this.getMargin_bottom();
         layoutParams.setMargins(margin_left, margin_top, margin_right, margin_bottom);
         text_view.setLayoutParams(layoutParams);
+        text_view.setGravity(Gravity.CENTER);
         //image_view.setLayoutParams(new ViewGroup.LayoutParams));
     }
 
