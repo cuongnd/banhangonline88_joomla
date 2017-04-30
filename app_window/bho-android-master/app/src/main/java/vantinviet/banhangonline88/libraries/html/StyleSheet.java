@@ -199,19 +199,25 @@ import static android.R.attr.numberPickerStyle;
         int width = this.getWidth();
         String color = this.getColor();
         String text_align = this.getText_align();
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         if(text_align.equals("center"))
         {
-            text_view.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
+            text_view.setGravity(Gravity.CENTER);
         }
         if(text_align.equals("left"))
         {
             text_view.setGravity(Gravity.LEFT);
+            layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        }
+        if(text_align.equals("right"))
+        {
+            text_view.setGravity(Gravity.RIGHT);
+            layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         }
         String border_left_top = this.getBorder_left();
         String border_right = this.getBorder_left();
         String background_color = this.getBackground_color();
         //image_view.getLayoutParams().height = 300;
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         if (color != null && !color.equals("")) {
             text_view.setTextColor(Color.parseColor(color));
         }
@@ -245,7 +251,6 @@ import static android.R.attr.numberPickerStyle;
         int margin_bottom = this.getMargin_bottom();
         layoutParams.setMargins(margin_left, margin_top, margin_right, margin_bottom);
         text_view.setLayoutParams(layoutParams);
-        text_view.setGravity(Gravity.CENTER);
         //image_view.setLayoutParams(new ViewGroup.LayoutParams));
     }
 

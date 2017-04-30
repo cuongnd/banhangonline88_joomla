@@ -22,21 +22,25 @@ foreach ($images as &$image) {
 $debug = JUtility::get_debug();
 ob_start();
 ?>
+    <div class="div">
+        <h2><?php echo JText::_('HIKA_THONG_TIN_GIAN_HANG') ?></h2>
+    </div>
+    <div class="div line"></div>
     <div class="vendor">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <div class="vendor_image">
                     <img
                         src="<?php echo JUri::root() ?><?php echo $product_response->product->vendor->vendor_image->url ?>"/>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-8">
                 <div class="vendor-info">
                     <h4 class="vendor-name"><?php echo $product_response->product->vendor->vendor_name ?></h4>
                     <span class="icon icon-ic_bookmark_black_24dp"></span>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <div class="vendor-call">
                     <span class="button_icon icon-ic_call_black_24dp call"/>
                 </div>
@@ -47,119 +51,51 @@ ob_start();
         <div class="row">
             <div class="col-md-4">
                 <div class="total-buy">
-                    <span class="button_icon span-total-buy icon-ic_emoji_flower"></span>
+                    <span class="button_icon span-total-buy icon-ic_shopping_basket_black_24dp"></span>
                     <h4><?php echo JText::_('11904') ?></h4>
                 </div>
                 <h4 class="title-total-buy"><?php echo JText::_('HIKA_LUOT_MUA') ?></h4>
             </div>
             <div class="col-md-4">
-                <div class="total-buy">
-                    <span class="button_icon span-total-buy icon-ic_emoji_flower"></span>
+                <div class="don-hang-tot">
+                    <span class="button_icon span-total-buy icon-ic_shopping_basket_black_24dp"></span>
                     <h4><?php echo JText::_('11904') ?></h4>
                 </div>
                 <h4 class="title-total-buy"><?php echo JText::_('HIKA_DON_HANG_TOT') ?></h4>
             </div>
             <div class="col-md-4">
-                <div class="total-buy">
-                    <span class="button_icon span-total-buy icon-ic_emoji_flower"></span>
+                <div class="su-ly-don-hang">
+                    <span class="button_icon span-total-buy icon-ic_alarm_black_24dp"></span>
                     <h4><?php echo JText::_('11904') ?></h4>
                 </div>
                 <h4 class="title-total-buy"><?php echo JText::_('HIKA_SU_LY_DON_HANG') ?></h4>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="total-buy">
-                <span class="button_icon span-total-buy icon-ic_emoji_flower"></span>
-                <h4><?php echo JText::_('11904') ?></h4>
+    <div class="div line"></div>
+    <div class="theo-doi-va-vao-gian-hang">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="total-buy">
+                    <span class="button_icon span-total-buy icon-ic_add_circle_outline_black_24dp"></span>
+                    <h4><?php echo JText::_('HIKA_THEO_DOI') ?></h4>
+                </div>
             </div>
-            <h4 class="title-total-buy"><?php echo JText::_('LUOT_MUA') ?></h4>
-        </div>
-        <div class="col-md-6">
-            <div class="total-buy">
-                <span class="button_icon span-total-buy icon-ic_emoji_flower"></span>
-                <h4><?php echo JText::_('11904') ?></h4>
+            <div class="col-md-6">
+                <div class="total-buy">
+                    <span class="button_icon span-total-buy icon-ic_visibility_black_24dp"></span>
+                    <h4><?php echo JText::_('HIKA_VAO_GIAN_HANG') ?></h4>
+                </div>
             </div>
-            <h4 class="title-total-buy"><?php echo JText::_('LUOT_MUA') ?></h4>
         </div>
     </div>
+    <div class="div bottom-line"></div>
 
 
 <?php
 $html = ob_get_clean();
 
-
-ob_start();
-?>
-    <style type="text/css">
-        div.vendor {
-
-            .vendor_image {
-                border-radius: 80px;
-                padding: 20px;
-                margin: 10px;
-                background-color: #FFFFFF;
-                border: 1px solid #FFFFFF;
-                font-size: 200px;
-                height: 160px;
-                width: 160px;
-            }
-
-            .vendor-name {
-                border-radius: 80px;
-                padding: 20px;
-                margin: 10px;
-                background-color: #FFFFFF;
-                border: 1px solid #FFFFFF;
-                font-size: 20px;
-                height: 160px;
-                color: #CCCCCC;
-                text-align: left;
-                width: 160px;
-            }
-
-            .vendor-call {
-                border-radius: 80px;
-                padding: 20px;
-                margin: 10px;
-                background-color: #FFFFFF;
-                border: 1px solid #CCCCCC;
-                color: #CCCCCC;
-                font-size: 200px;
-                height: 160px;
-                width: 160px;
-            }
-
-        }
-        .toolbar {
-
-            .total-buy {
-                text-align: center;
-                .span-total-buy {
-                    border-radius: 35px;
-                    padding: 20px;
-                    margin: 10px;
-                    background-color: #FFFFFF;
-                    border: 0px solid #FFFFFF;
-                    color: #CCCCCC;
-                    font-size: 200px;
-                    height: 100px;
-                    width: 100px;
-                }
-
-            }
-            .title-total-buy
-            {
-               text-align: center;
-            }
-        }
-        div.col-md-6.text-center {
-        }
-    </style>
-<?php
-$style = ob_get_clean();
-$style = JUtility::remove_string_style_sheet($style);
+$style =JFile::read(JPATH_ROOT.DS.'components/com_hikashop/assets/less/view_product_show.android.less');
 $style = JUtility::less_to_obj($style);
 if ($debug) {
     echo "<pre>";
