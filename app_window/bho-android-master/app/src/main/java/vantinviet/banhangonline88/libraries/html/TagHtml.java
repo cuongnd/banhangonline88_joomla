@@ -400,9 +400,9 @@ public class TagHtml {
         TextView text_view_h2 = new TextView(app.getCurrentActivity());
         text_view_h2.setText(html_content);
 
-        LinearLayout.LayoutParams layout_params_text_view_h4;
-        layout_params_text_view_h4 = new LinearLayout.LayoutParams(WRAP_CONTENT, MATCH_PARENT);
-        text_view_h2.setLayoutParams(layout_params_text_view_h4);
+        LinearLayout.LayoutParams layout_params_text_view_h2;
+        layout_params_text_view_h2 = new LinearLayout.LayoutParams(WRAP_CONTENT, MATCH_PARENT);
+        text_view_h2.setLayoutParams(layout_params_text_view_h2);
         text_view_h2.setGravity(Gravity.CENTER_VERTICAL);
         new_h2_linear_layout.addView(text_view_h2);
         set_style(tag,text_view_h2,new_h2_linear_layout,class_path,list_style_sheet);

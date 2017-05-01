@@ -23,7 +23,7 @@ $debug = JUtility::get_debug();
 ob_start();
 ?>
     <div class="div">
-        <h2><?php echo JText::_('HIKA_THONG_TIN_GIAN_HANG') ?></h2>
+        <h2 class="thong-tin-gian-hang"><?php echo JText::_('HIKA_THONG_TIN_GIAN_HANG') ?></h2>
     </div>
     <div class="div line"></div>
     <div class="vendor">
@@ -58,17 +58,17 @@ ob_start();
             </div>
             <div class="col-md-4">
                 <div class="don-hang-tot">
-                    <span class="button_icon span-total-buy icon-ic_shopping_basket_black_24dp"></span>
+                    <span class="button_icon span-don-hang-tot icon-ic_shopping_basket_black_24dp"></span>
                     <h4><?php echo JText::_('11904') ?></h4>
                 </div>
-                <h4 class="title-total-buy"><?php echo JText::_('HIKA_DON_HANG_TOT') ?></h4>
+                <h4 class="title-don-hang-tot"><?php echo JText::_('HIKA_DON_HANG_TOT') ?></h4>
             </div>
             <div class="col-md-4">
                 <div class="su-ly-don-hang">
-                    <span class="button_icon span-total-buy icon-ic_alarm_black_24dp"></span>
+                    <span class="button_icon span-su-ly-don-hang icon-ic_alarm_black_24dp"></span>
                     <h4><?php echo JText::_('11904') ?></h4>
                 </div>
-                <h4 class="title-total-buy"><?php echo JText::_('HIKA_SU_LY_DON_HANG') ?></h4>
+                <h4 class="title-su-ly-don-hang"><?php echo JText::_('HIKA_SU_LY_DON_HANG') ?></h4>
             </div>
         </div>
     </div>
@@ -76,13 +76,13 @@ ob_start();
     <div class="theo-doi-va-vao-gian-hang">
         <div class="row">
             <div class="col-md-6">
-                <div class="total-buy">
+                <div class="theo-doi">
                     <span class="button_icon span-total-buy icon-ic_add_circle_outline_black_24dp"></span>
                     <h4><?php echo JText::_('HIKA_THEO_DOI') ?></h4>
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="total-buy">
+                <div class="go-to-shop">
                     <span class="button_icon span-total-buy icon-ic_visibility_black_24dp"></span>
                     <h4><?php echo JText::_('HIKA_VAO_GIAN_HANG') ?></h4>
                 </div>
