@@ -101,7 +101,7 @@ if ($debug) {
     echo "<pre>";
     print_r($style, false);
     echo "</pre>";
-    die;
+
 }
 $html = JUtility::html_to_obj($html, $style);
 if ($debug) {
@@ -109,7 +109,9 @@ if ($debug) {
     print_r($html, false);
     echo "</pre>";
 }
-
+if($debug){
+    die();
+}
 $product_response->product->html_product = json_encode($html);
 $product_response->product->style_product = json_encode($style);
 echo json_encode($product_response);

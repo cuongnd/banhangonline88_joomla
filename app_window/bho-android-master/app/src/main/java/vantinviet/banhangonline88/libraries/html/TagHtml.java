@@ -186,6 +186,9 @@ public class TagHtml {
         String current_class_tag = get_current_class_tag(tag);
         ArrayList<String> list_apply_class = new ArrayList<String>();
         list_apply_class = tag.getApply_class();
+
+        
+
         for (String item_apply_class: list_apply_class) {
             StyleSheet item_style_sheet =  list_style_sheet.get(item_apply_class.toString());
             item_style_sheet.setClass_path(item_apply_class.toString());
