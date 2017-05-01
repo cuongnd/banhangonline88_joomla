@@ -8,6 +8,8 @@ import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -32,6 +34,7 @@ import vantinviet.banhangonline88.libraries.joomla.JFactory;
 import vantinviet.banhangonline88.libraries.legacy.application.JApplication;
 import vantinviet.banhangonline88.libraries.utilities.ImageConverter;
 
+import static android.view.Gravity.CENTER;
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
@@ -122,6 +125,15 @@ public class TagHtml {
         }
 
     }
+    public static void set_style_button_icon(TagHtml tag, Button button, LinearLayout parent_linear_layout, String class_path, Map<String, StyleSheet> list_style_sheet) {
+        ArrayList<StyleSheet> list_stylesheet = get_stylesheet_apply(tag,class_path,list_style_sheet);
+        for (StyleSheet item_stylesheet: list_stylesheet) {
+            Timber.d("tag %s",tag.getTagName());
+            Timber.d("class_path %s",class_path);
+            Timber.d("item_stylesheet %s",item_stylesheet.toString());
+            item_stylesheet.apply_style_button_icon(button,parent_linear_layout);
+        }
+    }
     public static void set_style(TagHtml tag, ImageView image_view,LinearLayout parent_linear_layout, String class_path,Map<String, StyleSheet> list_style_sheet) {
         ArrayList<StyleSheet> list_stylesheet = get_stylesheet_apply(tag,class_path,list_style_sheet);
         for (StyleSheet item_stylesheet: list_stylesheet) {
@@ -187,7 +199,7 @@ public class TagHtml {
         ArrayList<String> list_apply_class = new ArrayList<String>();
         list_apply_class = tag.getApply_class();
 
-        
+
 
         for (String item_apply_class: list_apply_class) {
             StyleSheet item_style_sheet =  list_style_sheet.get(item_apply_class.toString());
@@ -315,7 +327,7 @@ public class TagHtml {
     }
 
     private static LinearLayout render_layout_by_tag(TagHtml tag, int screen_size_width, int screen_size_height, String class_path, Map<String, StyleSheet> list_style_sheet) {
-        //Timber.d("class_path: %s ",class_path);
+        Timber.d("class_path: %s ",class_path);
         String class_name = tag.getClass_name();
         String tag_name = tag.getTagName().toLowerCase();
         JApplication app = JFactory.getApplication();
@@ -352,6 +364,7 @@ public class TagHtml {
 
     private static boolean check_has_tag(String class_name, String tag) {
         class_name = class_name.toLowerCase();
+        String[] splited_class_name = class_name.split("\\s+");
         tag = tag.toLowerCase();
         if (tag == "column") {
             ArrayList<Column> list_default_class_column_width = Column.get_list_default_class_column_width();
@@ -361,7 +374,7 @@ public class TagHtml {
                 }
             }
             return false;
-        } else if (class_name.indexOf(tag) != -1) {
+        } else if (Arrays.asList(splited_class_name).contains(tag)) {
             //Timber.d("class_name: %s,tag: %s ",class_name,tag);
             return true;
         } else {
@@ -443,17 +456,20 @@ public class TagHtml {
         LinearLayout new_button_icon_linear_layout = new LinearLayout(app.getCurrentActivity());
         boolean debug = VTVConfig.getDebug();
         LinearLayout.LayoutParams layout_params;
-        layout_params = new LinearLayout.LayoutParams(WRAP_CONTENT, MATCH_PARENT);
+        layout_params = new LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT);
 
         new_button_icon_linear_layout.setLayoutParams(layout_params);
+        new_button_icon_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
         String icon_name = tag.get_Icon_name(tag);
-        ImageButton image_button_icon = new ImageButton(app.getCurrentActivity());
-        Timber.d("PackageName %s",app.getCurrentActivity().getPackageName());
-        Timber.d("button_icon %s",icon_name);
+        Button image_button_icon = new Button(app.getCurrentActivity());
         int resID = app.getCurrentActivity().getResources().getIdentifier(icon_name , "drawable", "vantinviet.banhangonline88");
-        image_button_icon.setImageResource(resID);
-        set_style(tag,image_button_icon,new_button_icon_linear_layout,class_path,list_style_sheet);
+        image_button_icon.setCompoundDrawablesWithIntrinsicBounds(resID,0,0,0);
+        image_button_icon.setGravity(CENTER);
+        image_button_icon.setBackgroundColor(0);
         new_button_icon_linear_layout.addView(image_button_icon);
+        String content=tag.get_Html_content();
+        image_button_icon.setText(content);
+        set_style_button_icon(tag,image_button_icon,new_button_icon_linear_layout,class_path,list_style_sheet);
         return new_button_icon_linear_layout;
     }
     private static LinearLayout render_tag_div(TagHtml tag, int screen_size_width, int screen_size_height, String class_path,Map<String, StyleSheet> list_style_sheet) {

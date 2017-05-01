@@ -10,6 +10,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -124,6 +125,69 @@ import static android.view.Gravity.CENTER;
             //image_view.setColorFilter(Color.parseColor(color));
         }else if (color != null && !color.equals("")) {
             image_view.setColorFilter(Color.parseColor(color));
+        }
+        GradientDrawable shape = new GradientDrawable();
+
+        int border_top_left_radius = this.getBorder_top_left_radius();
+        int border_top_right_radius = this.getBorder_top_right_radius();
+        int border_bottom_right_radius = this.getBorder_bottom_right_radius();
+        int border_bottom_left_radius = this.getBorder_bottom_left_radius();
+        int border_width = this.getBorder_width();
+        //shape.setCornerRadius(border_top_left_radius);
+        shape.setShape(GradientDrawable.RECTANGLE);
+        shape.setCornerRadii(new float[]{border_top_left_radius, border_top_right_radius, border_bottom_right_radius, border_bottom_left_radius, border_top_left_radius, border_top_right_radius, border_bottom_right_radius, border_bottom_left_radius});
+        shape.setColor(Color.parseColor(background_color));
+        if (border_width > 0) {
+            String border_color = this.getBorder_color();
+            shape.setStroke(border_width, Color.parseColor(border_color));
+        }
+        image_view.setBackgroundDrawable(shape);
+
+        int padding_left = this.getPadding_left();
+        int padding_top = this.getPadding_top();
+        int padding_right = this.getPadding_right();
+        int padding_bottom = this.getPadding_bottom();
+
+        image_view.setPadding(padding_left,padding_top,padding_right,padding_bottom);
+
+        String margin_left = this.getMargin_left();
+        String margin_top = this.getMargin_top();
+        String margin_right = this.getMargin_right();
+        String margin_bottom = this.getMargin_bottom();
+        if(margin_left=="auto"&&margin_right=="auto")
+        {
+            parent_linear_layout.setGravity(CENTER);
+            parent_layout_params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            parent_linear_layout.setLayoutParams(parent_layout_params);
+        }else{
+
+        }
+        image_view.setLayoutParams(parent_layout_params);
+        //image_view.setLayoutParams(new ViewGroup.LayoutParams));
+    }
+    public void apply_style_button_icon(Button image_view, LinearLayout parent_linear_layout) {
+        int font_size = this.getFont_size();
+        String height = this.getHeight();
+        int width = this.getWidth();
+        String color = this.getColor();
+        String border_left_top = this.getBorder_left();
+        String border_right = this.getBorder_left();
+        String background_color = this.getBackground_color();
+        //image_view.getLayoutParams().height = 300;
+        LinearLayout.LayoutParams parent_layout_params = new LinearLayout.LayoutParams(width, ViewGroup.LayoutParams.WRAP_CONTENT );
+        if(this.is_numeric(height,null) && this.getIntHeight()==1){
+            parent_layout_params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 2);
+        }else if(this.is_numeric(height,null) && this.getIntHeight()>1){
+            parent_layout_params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, this.getIntHeight());
+        } else if(height.equals("auto")){
+            parent_layout_params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        }
+
+
+        if (color != null && color.equals("transparent")) {
+            //image_view.setColorFilter(Color.parseColor(color));
+        }else if (color != null && !color.equals("")) {
+            //image_view.setColorFilter(Color.parseColor(color));
         }
         GradientDrawable shape = new GradientDrawable();
 
