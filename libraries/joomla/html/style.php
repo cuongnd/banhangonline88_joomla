@@ -147,6 +147,22 @@ class style
     public static function border(&$list_style,$style)
     {
         $style = preg_split('/\s+/', trim($style));
+        $list_style->border_top_width = $style[0];
+        $style[1]?$list_style->border_top_style= $style[1]:"";
+        $style[2]?$list_style->border_top_color=$style[2]:"";
+
+        $list_style->border_right_width = $style[0];
+        $style[1]?$list_style->border_right_style= $style[1]:"";
+        $style[2]?$list_style->border_right_color=$style[2]:"";
+
+        $list_style->border_bottom_width = $style[0];
+        $style[1]?$list_style->border_bottom_style= $style[1]:"";
+        $style[2]?$list_style->border_bottom_color=$style[2]:"";
+
+        $list_style->border_left_width = $style[0];
+        $style[1]?$list_style->border_left_style= $style[1]:"";
+        $style[2]?$list_style->border_left_color=$style[2]:"";
+
         $list_style->border_width = $style[0];
         $style[1]?$list_style->border_style= $style[1]:"";
         $style[2]?$list_style->border_color=$style[2]:"";

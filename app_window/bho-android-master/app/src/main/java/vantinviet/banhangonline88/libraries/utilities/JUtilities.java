@@ -16,6 +16,7 @@ import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -202,6 +203,15 @@ public class JUtilities {
 
         // show it
         alertDialog.show();
+    }
+
+    public static boolean in_array(ArrayList<String> var_array, String need_var) {
+        for (String item: var_array) {
+            if(item.equals(need_var)){
+                return  true;
+            }
+        }
+        return  false;
     }
 }
 

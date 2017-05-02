@@ -7,31 +7,20 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/LinearLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/button5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:drawableLeft="@drawable/apptheme_scrubber_control_pressed_holo"
-                android:gravity="center"
                 android:text="Button" />
-
-            <EditText
-                android:id="@+id/editText"
-                android:layout_width="26dp"
-                android:layout_height="match_parent"
-                android:ems="10"
-                android:gravity="center"
-                android:inputType="textEmailAddress"
-                android:text="hello232343" />
 
         </LinearLayout>
     </LinearLayout>

@@ -33,6 +33,7 @@ import vantinviet.banhangonline88.entities.template.bootstrap.Column;
 import vantinviet.banhangonline88.libraries.joomla.JFactory;
 import vantinviet.banhangonline88.libraries.legacy.application.JApplication;
 import vantinviet.banhangonline88.libraries.utilities.ImageConverter;
+import vantinviet.banhangonline88.libraries.utilities.JUtilities;
 
 import static android.view.Gravity.CENTER;
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
@@ -50,6 +51,7 @@ public class TagHtml {
     String src = "";
     private ArrayList<TagHtml> children;
     private ArrayList<String> apply_class;
+    private ArrayList<String> apply_direct_class_path;
     private static ArrayList<String> _list_allow_tag;
 
 
@@ -117,39 +119,84 @@ public class TagHtml {
 
     public static void set_style(TagHtml tag, LinearLayout linear_layout, String class_path,Map<String, StyleSheet> list_style_sheet) {
         ArrayList<StyleSheet> list_stylesheet = get_stylesheet_apply(tag,class_path,list_style_sheet);
+        ArrayList<String> list_apply_direct_class_path = tag.getApply_direct_class_path();
+
         for (StyleSheet item_stylesheet: list_stylesheet) {
             Timber.d("tag %s",tag.getTagName());
             Timber.d("class_path %s",class_path);
             Timber.d("item_stylesheet %s",item_stylesheet.toString());
-            item_stylesheet.apply_style(linear_layout);
+            String current_class_path=item_stylesheet.getClass_path().trim();
+            Timber.d("list_apply_direct_class_path %s",list_apply_direct_class_path.toString());
+            Timber.d("current_class_path item_stylesheet \"%s\"",current_class_path);
+            if(JUtilities.in_array(list_apply_direct_class_path,current_class_path)){
+                Timber.d("apply_direct_class_path true");
+                item_stylesheet.apply_style(linear_layout,true);
+            }else {
+                item_stylesheet.apply_style(linear_layout,false);
+                Timber.d("apply_direct_class_path false");
+            }
+
         }
 
     }
     public static void set_style_button_icon(TagHtml tag, Button button, LinearLayout parent_linear_layout, String class_path, Map<String, StyleSheet> list_style_sheet) {
         ArrayList<StyleSheet> list_stylesheet = get_stylesheet_apply(tag,class_path,list_style_sheet);
+        ArrayList<String> list_apply_direct_class_path = tag.getApply_direct_class_path();
         for (StyleSheet item_stylesheet: list_stylesheet) {
             Timber.d("tag %s",tag.getTagName());
             Timber.d("class_path %s",class_path);
             Timber.d("item_stylesheet %s",item_stylesheet.toString());
-            item_stylesheet.apply_style_button_icon(button,parent_linear_layout);
+            String current_class_path=item_stylesheet.getClass_path().trim();
+            Timber.d("list_apply_direct_class_path %s",list_apply_direct_class_path.toString());
+            Timber.d("current_class_path item_stylesheet \"%s\"",current_class_path);
+            if(JUtilities.in_array(list_apply_direct_class_path,item_stylesheet.getClass_path())){
+                item_stylesheet.apply_style_button_icon(button,parent_linear_layout,true);
+                Timber.d("apply_direct_class_path true");
+            }else {
+                item_stylesheet.apply_style_button_icon(button,parent_linear_layout,false);
+                Timber.d("apply_direct_class_path false");
+            }
+
         }
     }
     public static void set_style(TagHtml tag, ImageView image_view,LinearLayout parent_linear_layout, String class_path,Map<String, StyleSheet> list_style_sheet) {
         ArrayList<StyleSheet> list_stylesheet = get_stylesheet_apply(tag,class_path,list_style_sheet);
+        ArrayList<String> list_apply_direct_class_path = tag.getApply_direct_class_path();
         for (StyleSheet item_stylesheet: list_stylesheet) {
             Timber.d("tag %s",tag.getTagName());
             Timber.d("class_path %s",class_path);
             Timber.d("item_stylesheet %s",item_stylesheet.toString());
-            item_stylesheet.apply_style(image_view,parent_linear_layout);
+            String current_class_path=item_stylesheet.getClass_path().trim();
+            Timber.d("list_apply_direct_class_path %s",list_apply_direct_class_path.toString());
+            Timber.d("current_class_path item_stylesheet \"%s\"",current_class_path);
+            if(JUtilities.in_array(list_apply_direct_class_path,item_stylesheet.getClass_path())){
+                Timber.d("apply_direct_class_path true");
+                item_stylesheet.apply_style(image_view,parent_linear_layout,true);
+            }else {
+                Timber.d("apply_direct_class_path false");
+                item_stylesheet.apply_style(image_view,parent_linear_layout,false);
+
+            }
         }
     }
     public static void set_style(TagHtml tag, TextView text_view,LinearLayout parent_linear_layout, String class_path,Map<String, StyleSheet> list_style_sheet) {
         ArrayList<StyleSheet> list_stylesheet = get_stylesheet_apply(tag,class_path,list_style_sheet);
+        ArrayList<String> list_apply_direct_class_path = tag.getApply_direct_class_path();
         for (StyleSheet item_stylesheet: list_stylesheet) {
             Timber.d("tag %s",tag.getTagName());
             Timber.d("class_path %s",class_path);
             Timber.d("item_stylesheet %s",item_stylesheet.toString());
-            item_stylesheet.apply_style(text_view,parent_linear_layout);
+            String current_class_path=item_stylesheet.getClass_path().trim();
+            Timber.d("list_apply_direct_class_path %s",list_apply_direct_class_path.toString());
+            Timber.d("current_class_path item_stylesheet \"%s\"",current_class_path);
+            if(JUtilities.in_array(list_apply_direct_class_path,item_stylesheet.getClass_path())){
+                Timber.d("apply_direct_class_path true");
+                item_stylesheet.apply_style(text_view,parent_linear_layout,true);
+            }else {
+                Timber.d("apply_direct_class_path false");
+                item_stylesheet.apply_style(text_view,parent_linear_layout,false);
+            }
+
         }
     }
     public static void set_style(TagHtml tag, ImageButton image_button, String class_path,Map<String, StyleSheet> list_style_sheet) {
@@ -338,7 +385,7 @@ public class TagHtml {
             class_name = (class_name.equals("") || class_name == null) ? tag.getTagName() : TextUtils.join(" ", new String[]{tag.getTagName(), class_name});
         }
         if (list_allow_tag != null) for (String tag_item : list_allow_tag) {
-            if (check_has_tag(class_name, tag_item)) {
+            if (check_has_tag(tag,class_name, tag_item)) {
                 tag_item = "render_tag_" + tag_item;
                 try {
                     Class<?> c = tag.getClass();
@@ -362,7 +409,7 @@ public class TagHtml {
         return new LinearLayout(app.getCurrentActivity());
     }
 
-    private static boolean check_has_tag(String class_name, String tag) {
+    private static boolean check_has_tag(TagHtml tagHtml, String class_name, String tag) {
         class_name = class_name.toLowerCase();
         String[] splited_class_name = class_name.split("\\s+");
         tag = tag.toLowerCase();
@@ -377,7 +424,9 @@ public class TagHtml {
         } else if (Arrays.asList(splited_class_name).contains(tag)) {
             //Timber.d("class_name: %s,tag: %s ",class_name,tag);
             return true;
-        } else {
+        } else if(tagHtml.getTagName().equals("div")) {
+            return false;
+        }else{
             return false;
         }
 
@@ -475,14 +524,16 @@ public class TagHtml {
     private static LinearLayout render_tag_div(TagHtml tag, int screen_size_width, int screen_size_height, String class_path,Map<String, StyleSheet> list_style_sheet) {
         JApplication app = JFactory.getApplication();
         LinearLayout.LayoutParams layout_params;
-        layout_params = new LinearLayout.LayoutParams(screen_size_width, MATCH_PARENT);
+        layout_params = new LinearLayout.LayoutParams(MATCH_PARENT, MATCH_PARENT);
         LinearLayout new_div_linear_layout = new LinearLayout(app.getCurrentActivity());
         new_div_linear_layout.setLayoutParams(layout_params);
         new_div_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
         String html_content = tag.get_Html_content();
-        TextView text_view_content = new TextView(app.getCurrentActivity());
-        text_view_content.setText(html_content);
-        new_div_linear_layout.addView(text_view_content);
+        if(!html_content.equals("")) {
+            TextView text_view_content = new TextView(app.getCurrentActivity());
+            text_view_content.setText(html_content);
+            new_div_linear_layout.addView(text_view_content);
+        }
         set_style(tag,new_div_linear_layout,class_path,list_style_sheet);
        /* LinearLayout new_column_linear_layout = new LinearLayout(app.getCurrentActivity());
         new_column_linear_layout.setLayoutParams(layout_params);
@@ -570,5 +621,8 @@ public class TagHtml {
 
     public ArrayList<String> getApply_class() {
         return apply_class;
+    }
+    public ArrayList<String> getApply_direct_class_path() {
+        return apply_direct_class_path;
     }
 }

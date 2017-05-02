@@ -25,7 +25,7 @@ ob_start();
     <div class="div">
         <h2 class="thong-tin-gian-hang"><?php echo JText::_('HIKA_THONG_TIN_GIAN_HANG') ?></h2>
     </div>
-    <div class="div line"></div>
+    <div class="line"></div>
     <div class="vendor">
         <div class="row">
             <div class="col-md-2">
@@ -50,10 +50,10 @@ ob_start();
     <div class="toolbar">
         <div class="row">
             <div class="col-md-4">
-                <div class="total-buy">
+                <div class="luot-mua">
                     <button class="button_icon span-total-buy icon-ic_shopping_basket_black_24dp"><?php echo JText::_('11904') ?></button>
                 </div>
-                <h4 class="title-total-buy"><?php echo JText::_('HIKA_LUOT_MUA') ?></h4>
+                <h4 class="title-luot-mua"><?php echo JText::_('HIKA_LUOT_MUA') ?></h4>
             </div>
             <div class="col-md-4">
                 <div class="don-hang-tot">
@@ -62,14 +62,14 @@ ob_start();
                 <h4 class="title-don-hang-tot"><?php echo JText::_('HIKA_DON_HANG_TOT') ?></h4>
             </div>
             <div class="col-md-4">
-                <div class="su-ly-don-hang">
+                <div class=" su-ly-don-hang">
                     <button class="button_icon span-su-ly-don-hang icon-ic_alarm_black_24dp"><?php echo JText::_('11904') ?></button>
                 </div>
                 <h4 class="title-su-ly-don-hang"><?php echo JText::_('HIKA_SU_LY_DON_HANG') ?></h4>
             </div>
         </div>
     </div>
-    <div class="div line"></div>
+    <div class="line"></div>
     <div class="theo-doi-va-vao-gian-hang">
         <div class="row">
             <div class="col-md-6">
@@ -84,7 +84,7 @@ ob_start();
             </div>
         </div>
     </div>
-    <div class="div bottom-line"></div>
+    <div class="bottom-line"></div>
 
 
 <?php
