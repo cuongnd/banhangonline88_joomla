@@ -201,7 +201,7 @@ public class StyleSheet {
                 button_layout_params_width = WRAP_CONTENT;
             }
             LinearLayout.LayoutParams button_layout_params = new LinearLayout.LayoutParams(button_layout_params_width, button_layout_params_height);
-            button.setLayoutParams(button_layout_params);
+           // button.setLayoutParams(button_layout_params);
             String button_color = this.getColor();
             if (button_color != null && !button_color.isEmpty()) {
                 button.setTextColor(JUtilities.getColor(button_color));

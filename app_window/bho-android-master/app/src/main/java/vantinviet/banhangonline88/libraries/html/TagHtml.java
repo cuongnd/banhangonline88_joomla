@@ -323,8 +323,10 @@ public class TagHtml {
                     new_wrapper_of_column_linear_layout.setOrientation(LinearLayout.VERTICAL);
                     new_column_linear_layout.addView(new_wrapper_of_column_linear_layout);
                     new_row_linear_layout.addView(new_column_linear_layout);
+
                     current_class_tag = get_current_class_tag(column_tag);
                     class_path+=" "+current_class_tag;
+                    set_style(tag,new_wrapper_of_column_linear_layout,class_path,list_style_sheet);
                     //set_style(column_tag,new_wrapper_of_column_linear_layout,class_path,list_style_sheet);
                     ArrayList<TagHtml> list_sub_tag = column_tag.getChildren();
 
@@ -472,9 +474,8 @@ public class TagHtml {
         TextView text_view_h4 = new TextView(app.getCurrentActivity());
         text_view_h4.setText(html_content);
         LinearLayout.LayoutParams layout_params_text_view_h4;
-        layout_params_text_view_h4 = new LinearLayout.LayoutParams(WRAP_CONTENT, MATCH_PARENT);
+        layout_params_text_view_h4 = new LinearLayout.LayoutParams(MATCH_PARENT, MATCH_PARENT);
         text_view_h4.setLayoutParams(layout_params_text_view_h4);
-        text_view_h4.setGravity(Gravity.CENTER_VERTICAL);
         set_style(tag,text_view_h4,class_path,list_style_sheet);
         return text_view_h4;
     }
@@ -488,9 +489,8 @@ public class TagHtml {
         text_view_h2.setText(html_content);
 
         LinearLayout.LayoutParams layout_params_text_view_h2;
-        layout_params_text_view_h2 = new LinearLayout.LayoutParams(WRAP_CONTENT, MATCH_PARENT);
+        layout_params_text_view_h2 = new LinearLayout.LayoutParams(MATCH_PARENT, MATCH_PARENT);
         text_view_h2.setLayoutParams(layout_params_text_view_h2);
-        text_view_h2.setGravity(Gravity.CENTER_VERTICAL);
         set_style(tag,text_view_h2,class_path,list_style_sheet);
         return text_view_h2;
     }
@@ -519,8 +519,8 @@ public class TagHtml {
 
         JApplication app = JFactory.getApplication();
         boolean debug = VTVConfig.getDebug();
-        LinearLayout.LayoutParams layout_params;
-        layout_params = new LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT);
+        LinearLayout.LayoutParams button_layout_params;
+        button_layout_params = new LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT);
         String icon_name = tag.get_Icon_name(tag);
         Button image_button_icon = new Button(app.getCurrentActivity());
         int resID = app.getCurrentActivity().getResources().getIdentifier(icon_name , "drawable", "vantinviet.banhangonline88");
@@ -529,6 +529,7 @@ public class TagHtml {
         image_button_icon.setBackgroundColor(0);
         String content=tag.get_Html_content();
         image_button_icon.setText(content);
+        image_button_icon.setLayoutParams(button_layout_params);
         set_style_button_icon(tag,image_button_icon,class_path,list_style_sheet);
         return image_button_icon;
     }
