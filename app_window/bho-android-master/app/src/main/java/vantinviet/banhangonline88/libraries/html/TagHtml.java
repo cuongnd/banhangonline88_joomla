@@ -53,6 +53,7 @@ public class TagHtml {
     private ArrayList<String> apply_class;
     private ArrayList<String> apply_direct_class_path;
     private static ArrayList<String> _list_allow_tag;
+    private String class_path;
 
 
     public static ArrayList<String> get_list_allow_tag() {
@@ -130,9 +131,9 @@ public class TagHtml {
             Timber.d("current_class_path item_stylesheet \"%s\"",current_class_path);
             if(JUtilities.in_array(list_apply_direct_class_path,current_class_path)){
                 Timber.d("apply_direct_class_path true");
-                item_stylesheet.apply_style(linear_layout,true);
+                item_stylesheet.apply_style(linear_layout,true,tag);
             }else {
-                item_stylesheet.apply_style(linear_layout,false);
+                item_stylesheet.apply_style(linear_layout,false,tag);
                 Timber.d("apply_direct_class_path false");
             }
 
@@ -150,10 +151,10 @@ public class TagHtml {
             Timber.d("list_apply_direct_class_path %s",list_apply_direct_class_path.toString());
             Timber.d("current_class_path item_stylesheet \"%s\"",current_class_path);
             if(JUtilities.in_array(list_apply_direct_class_path,item_stylesheet.getClass_path())){
-                item_stylesheet.apply_style_button_icon(button,parent_linear_layout,true);
+                item_stylesheet.apply_style_button_icon(button,parent_linear_layout,true,tag);
                 Timber.d("apply_direct_class_path true");
             }else {
-                item_stylesheet.apply_style_button_icon(button,parent_linear_layout,false);
+                item_stylesheet.apply_style_button_icon(button,parent_linear_layout,false,tag);
                 Timber.d("apply_direct_class_path false");
             }
 
@@ -171,10 +172,10 @@ public class TagHtml {
             Timber.d("current_class_path item_stylesheet \"%s\"",current_class_path);
             if(JUtilities.in_array(list_apply_direct_class_path,item_stylesheet.getClass_path())){
                 Timber.d("apply_direct_class_path true");
-                item_stylesheet.apply_style(image_view,parent_linear_layout,true);
+                item_stylesheet.apply_style(image_view,parent_linear_layout,true,tag);
             }else {
                 Timber.d("apply_direct_class_path false");
-                item_stylesheet.apply_style(image_view,parent_linear_layout,false);
+                item_stylesheet.apply_style(image_view,parent_linear_layout,false,tag);
 
             }
         }
@@ -191,10 +192,10 @@ public class TagHtml {
             Timber.d("current_class_path item_stylesheet \"%s\"",current_class_path);
             if(JUtilities.in_array(list_apply_direct_class_path,item_stylesheet.getClass_path())){
                 Timber.d("apply_direct_class_path true");
-                item_stylesheet.apply_style(text_view,parent_linear_layout,true);
+                item_stylesheet.apply_style(text_view,parent_linear_layout,true,tag);
             }else {
                 Timber.d("apply_direct_class_path false");
-                item_stylesheet.apply_style(text_view,parent_linear_layout,false);
+                item_stylesheet.apply_style(text_view,parent_linear_layout,false,tag);
             }
 
         }
@@ -374,24 +375,25 @@ public class TagHtml {
     }
 
     private static LinearLayout render_layout_by_tag(TagHtml tag, int screen_size_width, int screen_size_height, String class_path, Map<String, StyleSheet> list_style_sheet) {
-        Timber.d("class_path: %s ",class_path);
+        Timber.d("class_path: %s ", class_path);
+        tag.setClass_path(class_path);
         String class_name = tag.getClass_name();
         String tag_name = tag.getTagName().toLowerCase();
         JApplication app = JFactory.getApplication();
         ArrayList<String> list_allow_tag = get_list_allow_tag();
-        if(Arrays.asList(new String[] {"div","img"}).contains(tag_name)){
+        if (Arrays.asList(new String[]{"div", "img"}).contains(tag_name)) {
             class_name = (class_name.equals("") || class_name == null) ? tag.getTagName() : class_name;
-        }else{
+        } else {
             class_name = (class_name.equals("") || class_name == null) ? tag.getTagName() : TextUtils.join(" ", new String[]{tag.getTagName(), class_name});
         }
         if (list_allow_tag != null) for (String tag_item : list_allow_tag) {
-            if (check_has_tag(tag,class_name, tag_item)) {
+            if (check_has_tag(tag, class_name, tag_item)) {
                 tag_item = "render_tag_" + tag_item;
                 try {
                     Class<?> c = tag.getClass();
 
-                    Method tag_method = c.getDeclaredMethod(tag_item, TagHtml.class, int.class, int.class,String.class,Map.class);
-                    return (LinearLayout) tag_method.invoke(tag, tag, screen_size_width, screen_size_height,class_path,list_style_sheet);
+                    Method tag_method = c.getDeclaredMethod(tag_item, TagHtml.class, int.class, int.class, String.class, Map.class);
+                    return (LinearLayout) tag_method.invoke(tag, tag, screen_size_width, screen_size_height, class_path, list_style_sheet);
 
                     // production code should handle these exceptions more gracefully
                 } catch (InvocationTargetException x) {
@@ -433,6 +435,7 @@ public class TagHtml {
     }
     private static LinearLayout render_tag_h4(TagHtml tag, int screen_size_width, int screen_size_height, String class_path,Map<String, StyleSheet> list_style_sheet) {
         JApplication app = JFactory.getApplication();
+
         LinearLayout new_h4_linear_layout = new LinearLayout(app.getCurrentActivity());
 
         boolean debug = VTVConfig.getDebug();
@@ -449,6 +452,7 @@ public class TagHtml {
         text_view_h4.setLayoutParams(layout_params_text_view_h4);
         text_view_h4.setGravity(Gravity.CENTER_VERTICAL);
         new_h4_linear_layout.addView(text_view_h4);
+
         set_style(tag,text_view_h4,new_h4_linear_layout,class_path,list_style_sheet);
         return new_h4_linear_layout;
     }
@@ -624,5 +628,13 @@ public class TagHtml {
     }
     public ArrayList<String> getApply_direct_class_path() {
         return apply_direct_class_path;
+    }
+
+    public void setClass_path(String class_path) {
+        this.class_path = class_path;
+    }
+
+    public String getClass_path() {
+        return class_path;
     }
 }

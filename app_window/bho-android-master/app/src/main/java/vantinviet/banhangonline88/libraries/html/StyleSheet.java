@@ -30,6 +30,7 @@ import vantinviet.banhangonline88.R;
 import vantinviet.banhangonline88.libraries.joomla.JFactory;
 import vantinviet.banhangonline88.libraries.legacy.application.JApplication;
 import vantinviet.banhangonline88.libraries.utilities.ImageConverter;
+import vantinviet.banhangonline88.libraries.utilities.JUtilities;
 
 import static android.R.attr.bitmap;
 import static android.R.attr.numberPickerStyle;
@@ -58,7 +59,7 @@ public class StyleSheet {
     private String height = "100px";
     private String width = "100px";
     private String border_left = "0px";
-    private String border_width = "";
+    private String border_width = "0px";
     private String border_color = "";
 
     private String border_bottom_style = "solid";
@@ -112,16 +113,16 @@ public class StyleSheet {
         this.class_path = class_path;
     }
 
-    public void apply_style(ImageView image_view, LinearLayout parent_linear_layout, boolean apply_direct_class_path) {
+    public void apply_style(ImageView image_view, LinearLayout parent_linear_layout, boolean apply_direct_class_path,TagHtml tag) {
         if(apply_direct_class_path) {
-            apply_style_image_view(image_view,apply_direct_class_path);
-            apply_style_linear_layout(parent_linear_layout,apply_direct_class_path);
+            apply_style_image_view(image_view,apply_direct_class_path,tag);
+            apply_style_linear_layout(parent_linear_layout,apply_direct_class_path,tag);
         }else {
 
         }
     }
 
-    public void apply_style_button_icon(Button current_button, LinearLayout parent_linear_layout, boolean apply_direct_class_path) {
+    public void apply_style_button_icon(Button current_button, LinearLayout parent_linear_layout, boolean apply_direct_class_path,TagHtml tag) {
         if (apply_direct_class_path) {
             int font_size = this.getFont_size();
             String height = this.getHeight();
@@ -148,7 +149,7 @@ public class StyleSheet {
             current_button.setBackgroundColor(0);
             if (color != null && color.equals("transparent")) {
 
-            } else if (color != null && !color.equals("")) {
+            } else if (color != null && !color.isEmpty()) {
                 //image_view.setColorFilter(Color.parseColor(color));
             }
             GradientDrawable shape = new GradientDrawable();
@@ -161,10 +162,10 @@ public class StyleSheet {
             //shape.setCornerRadius(border_top_left_radius);
             shape.setShape(GradientDrawable.RECTANGLE);
             shape.setCornerRadii(new float[]{border_top_left_radius, border_top_right_radius, border_bottom_right_radius, border_bottom_left_radius, border_top_left_radius, border_top_right_radius, border_bottom_right_radius, border_bottom_left_radius});
-            shape.setColor(Color.parseColor(background_color));
+            shape.setColor(JUtilities.getColor(background_color));
             if (border_width > 0) {
                 String border_color = this.getBorder_color();
-                shape.setStroke(border_width, Color.parseColor(border_color));
+                shape.setStroke(border_width, JUtilities.getColor(border_color));
             }
             //current_button.setBackgroundDrawable(shape);
 
@@ -193,26 +194,31 @@ public class StyleSheet {
         //image_view.setLayoutParams(new ViewGroup.LayoutParams));
     }
 
-    public void apply_style(LinearLayout linear_layout, boolean apply_direct_class_path) {
+    public void apply_style(LinearLayout linear_layout, boolean apply_direct_class_path,TagHtml tag) {
         if (apply_direct_class_path) {
-            apply_style_linear_layout(linear_layout,apply_direct_class_path);
+            apply_style_linear_layout(linear_layout,apply_direct_class_path,tag);
         }else{
 
         }
     }
 
-    public void apply_style(TextView text_view, LinearLayout parent_linear_layout, boolean apply_direct_class_path) {
+    public void apply_style(TextView text_view, LinearLayout parent_linear_layout, boolean apply_direct_class_path,TagHtml tag) {
+        Timber.d("getClass_path1 \"%s\"",tag.getClass_path());
+        if(tag.getClass_path().equals(" div.div h2.thong-tin-gian-hang")){
+            Timber.d("hello");
+        }
         if(apply_direct_class_path) {
-            apply_style_text_view(text_view,apply_direct_class_path);
-            apply_style_linear_layout(parent_linear_layout,apply_direct_class_path);
+            apply_style_text_view(text_view,apply_direct_class_path,tag);
+            apply_style_linear_layout(parent_linear_layout,apply_direct_class_path,tag);
         }else{
 
         }
 
     }
-    public void apply_style_text_view(TextView text_view, boolean apply_direct_class_path) {
+    public void apply_style_text_view(TextView text_view, boolean apply_direct_class_path,TagHtml tag) {
         if(apply_direct_class_path) {
             //set for textview
+
             int text_view_font_size = this.getFont_size();
             int text_view_layout_params_width = WRAP_CONTENT;
             int text_view_layout_params_height = WRAP_CONTENT;
@@ -237,13 +243,14 @@ public class StyleSheet {
             LinearLayout.LayoutParams text_view_layout_params = new LinearLayout.LayoutParams(text_view_layout_params_width, text_view_layout_params_height);
             text_view.setLayoutParams(text_view_layout_params);
             String text_view_color = this.getColor();
-            if (text_view_color != null && !text_view_color.equals("")) {
-                text_view.setTextColor(Color.parseColor(text_view_color));
+            if (text_view_color != null && !text_view_color.isEmpty()) {
+                text_view.setTextColor(JUtilities.getColor(text_view_color));
             }
         }
 
     }
-    public void apply_style_image_view(ImageView image_view, boolean apply_direct_class_path) {
+    public void apply_style_image_view(ImageView image_view, boolean apply_direct_class_path,TagHtml tag) {
+
         if(apply_direct_class_path) {
             //set for textview
             int image_view_layout_params_width = WRAP_CONTENT;
@@ -269,7 +276,7 @@ public class StyleSheet {
         }
 
     }
-    public void apply_style_linear_layout(LinearLayout linear_layout, boolean apply_direct_class_path) {
+    public void apply_style_linear_layout(LinearLayout linear_layout, boolean apply_direct_class_path,TagHtml tag) {
         if(apply_direct_class_path) {
             String linear_width = this.getWidth();
             int linear_layout_params_width = MATCH_PARENT;
@@ -308,13 +315,14 @@ public class StyleSheet {
             int linear_border_top_right_radius = this.getBorder_top_right_radius();
             int linear_border_bottom_right_radius = this.getBorder_bottom_right_radius();
             int linear_border_bottom_left_radius = this.getBorder_bottom_left_radius();
+
             int linear_border_width = this.getBorder_width();
             linear_shape.setShape(GradientDrawable.RECTANGLE);
             linear_shape.setCornerRadii(new float[]{int_linear_border_top_width, int_linear_border_right_width, int_linear_border_bottom_width, int_linear_border_left_width, linear_border_top_left_radius, linear_border_top_right_radius, linear_border_bottom_right_radius, linear_border_bottom_left_radius});
             String linear_border_color = this.getBorder_color();
-            if(linear_border_color!=null&&!linear_border_color.equals("")) {
-                linear_shape.setColor(Color.parseColor(linear_border_color));
-                linear_shape.setStroke(linear_border_width, Color.parseColor(linear_border_color));
+            if(linear_border_color!=null&&!linear_border_color.isEmpty()) {
+                linear_shape.setColor(JUtilities.getColor(linear_border_color));
+                linear_shape.setStroke(linear_border_width,JUtilities.getColor(linear_border_color));
             }
             linear_layout.setBackgroundDrawable(linear_shape);
 
@@ -351,9 +359,9 @@ public class StyleSheet {
             }
             layout_params = new LinearLayout.LayoutParams(linear_layout_params_width, linear_layout_params_height);
             String linear_background_color = this.getBackground_color();
-            if(linear_background_color!=null&&!linear_background_color.equals(""))
+            if(linear_background_color!=null&&!linear_background_color.isEmpty())
             {
-                linear_layout.setBackgroundColor(Color.parseColor(linear_background_color));
+                linear_layout.setBackgroundColor(JUtilities.getColor(linear_background_color));
             }
             linear_layout.setGravity(linear_gravity);
             linear_layout.setLayoutParams(layout_params);

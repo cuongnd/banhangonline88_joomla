@@ -2,6 +2,7 @@ package vantinviet.banhangonline88.libraries.utilities;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.graphics.Color;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,6 +23,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import vantinviet.banhangonline88.libraries.joomla.JFactory;
 import vantinviet.banhangonline88.libraries.legacy.application.JApplication;
@@ -212,6 +215,23 @@ public class JUtilities {
             }
         }
         return  false;
+    }
+    public static boolean is_hex_color_code(final String hexColorCode) {
+        String HEX_PATTERN = "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$";
+        Pattern pattern = Pattern.compile(HEX_PATTERN);
+        Matcher matcher = pattern.matcher(hexColorCode);
+        return matcher.matches();
+
+    }
+
+    public static int getColor(String hexColorCode) {
+        if(is_hex_color_code(hexColorCode)){
+            return Color.parseColor(hexColorCode);
+        }else{
+            return 0;
+        }
+
+
     }
 }
 
