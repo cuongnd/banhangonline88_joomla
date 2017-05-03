@@ -49,11 +49,14 @@ public class TagHtml {
     String html = "";
     String class_name = "";
     String src = "";
+    String type = "";
     private ArrayList<TagHtml> children;
     private ArrayList<String> apply_class;
     private ArrayList<String> apply_direct_class_path;
     private static ArrayList<String> _list_allow_tag;
     private String class_path;
+    private int tag_width;
+    private int tag_height;
 
 
     public static ArrayList<String> get_list_allow_tag() {
@@ -160,6 +163,9 @@ public class TagHtml {
 
         }
     }
+    public String getType(){
+        return type;
+    }
     public static void set_style(TagHtml tag, ImageView image_view,LinearLayout parent_linear_layout, String class_path,Map<String, StyleSheet> list_style_sheet) {
         ArrayList<StyleSheet> list_stylesheet = get_stylesheet_apply(tag,class_path,list_style_sheet);
         ArrayList<String> list_apply_direct_class_path = tag.getApply_direct_class_path();
@@ -263,6 +269,8 @@ public class TagHtml {
     public String toString() {
         return "TagHtml{" +
                 "tag=" + tag +
+                ", class_name='" + class_name + '\'' +
+                ", class_path='" + class_path + '\'' +
                 ", lang='" + lang + '\'' +
                 ", html='" + html + '\'' +
                 '}';
@@ -353,65 +361,49 @@ public class TagHtml {
         }
         return current_class_tag;
     }
-
-    private static boolean is_column(TagHtml tag) {
-        String class_name = tag.getClass_name();
-        class_name=class_name.toLowerCase();
-        String[] splited_class_name = class_name.split("\\s+");
-        ArrayList<Column> list_class_column_width = Column.get_list_default_class_column_width();
-        boolean is_column=false;
-        if (splited_class_name != null) for (String item_class : splited_class_name) {
-            if (list_class_column_width != null) for (Column column : list_class_column_width) {
-                if (item_class.equals(column.getDefault_class_column_width())) {
-                    is_column=true;
-                    break;
-                }
-            }
-            if(is_column){
-                break;
-            }
-        }
-        return is_column;
+    public static boolean is_column(TagHtml tag) {
+        String class_name=tag.getType();
+        return class_name.indexOf("column") != -1;
     }
 
-    private static LinearLayout render_layout_by_tag(TagHtml tag, int screen_size_width, int screen_size_height, String class_path, Map<String, StyleSheet> list_style_sheet) {
+
+
+    private static LinearLayout render_layout_by_tag(TagHtml tag, int tag_width, int tag_height, String class_path, Map<String, StyleSheet> list_style_sheet) {
         Timber.d("class_path: %s ", class_path);
         tag.setClass_path(class_path);
+        tag.setTag_width(tag_width);
+        tag.setTag_height(tag_height);
         String class_name = tag.getClass_name();
         String tag_name = tag.getTagName().toLowerCase();
         JApplication app = JFactory.getApplication();
         ArrayList<String> list_allow_tag = get_list_allow_tag();
-        if (Arrays.asList(new String[]{"div", "img"}).contains(tag_name)) {
-            class_name = (class_name.equals("") || class_name == null) ? tag.getTagName() : class_name;
-        } else {
-            class_name = (class_name.equals("") || class_name == null) ? tag.getTagName() : TextUtils.join(" ", new String[]{tag.getTagName(), class_name});
-        }
-        if (list_allow_tag != null) for (String tag_item : list_allow_tag) {
-            if (check_has_tag(tag, class_name, tag_item)) {
-                tag_item = "render_tag_" + tag_item;
-                try {
-                    Class<?> c = tag.getClass();
+        boolean allow_tag=false;
+        String element_type=tag.getType().toLowerCase().trim();
+        if(list_allow_tag.contains(element_type)){
+            element_type = "render_tag_" + element_type;
+            try {
+                Class<?> c = tag.getClass();
 
-                    Method tag_method = c.getDeclaredMethod(tag_item, TagHtml.class, int.class, int.class, String.class, Map.class);
-                    return (LinearLayout) tag_method.invoke(tag, tag, screen_size_width, screen_size_height, class_path, list_style_sheet);
+                Method tag_method = c.getDeclaredMethod(element_type, TagHtml.class, int.class, int.class, String.class, Map.class);
+                return (LinearLayout) tag_method.invoke(tag, tag, tag_width, tag_height, class_path, list_style_sheet);
 
-                    // production code should handle these exceptions more gracefully
-                } catch (InvocationTargetException x) {
-                    Throwable cause = x.getCause();
-                    System.err.format("%s() failed: %s%n", tag_item, cause.getMessage());
-                } catch (Exception x) {
-                    x.printStackTrace();
-                }
-                //method = TagHtml.class.getDeclaredMethod(tag,TagHtml.class, LinearLayout.class,int.class,int.class);
-                //return (LinearLayout)method.invoke(TagHtml.class, html,root_linear_layout,screen_size_width,screen_size_height);
-
-                break;
+                // production code should handle these exceptions more gracefully
+            } catch (InvocationTargetException x) {
+                Throwable cause = x.getCause();
+                System.err.format("%s() failed: %s%n", element_type, cause.getMessage());
+            } catch (Exception x) {
+                x.printStackTrace();
             }
+            //method = TagHtml.class.getDeclaredMethod(tag,TagHtml.class, LinearLayout.class,int.class,int.class);
+            //return (LinearLayout)method.invoke(TagHtml.class, html,root_linear_layout,screen_size_width,screen_size_height);
+            allow_tag=true;
+        }else{
+            Timber.d("tag %s type %s class_path %s don't render",tag.getTagName(),tag.getType(),tag.getClass_path());
         }
         return new LinearLayout(app.getCurrentActivity());
     }
 
-    private static boolean check_has_tag(TagHtml tagHtml, String class_name, String tag) {
+    private static boolean check_has_tag(TagHtml current_tag, String class_name, String tag) {
         class_name = class_name.toLowerCase();
         String[] splited_class_name = class_name.split("\\s+");
         tag = tag.toLowerCase();
@@ -426,8 +418,8 @@ public class TagHtml {
         } else if (Arrays.asList(splited_class_name).contains(tag)) {
             //Timber.d("class_name: %s,tag: %s ",class_name,tag);
             return true;
-        } else if(tagHtml.getTagName().equals("div")) {
-            return false;
+        } else if(!current_tag.getClass_name().contains("row") && current_tag.getTagName().equals("div")) {
+            return true;
         }else{
             return false;
         }
@@ -599,8 +591,8 @@ public class TagHtml {
         return html;
     }
 
-    public static boolean is_row(TagHtml html) {
-        String class_name=html.getClass_name();
+    public static boolean is_row(TagHtml tag) {
+        String class_name=tag.getType();
         return class_name.indexOf("row") != -1;
     }
 
@@ -636,5 +628,17 @@ public class TagHtml {
 
     public String getClass_path() {
         return class_path;
+    }
+
+    public void setTag_width(int tag_width) {
+        this.tag_width = tag_width;
+    }
+
+    public void setTag_height(int tag_height) {
+        this.tag_height = tag_height;
+    }
+
+    public int getTag_width() {
+        return tag_width;
     }
 }

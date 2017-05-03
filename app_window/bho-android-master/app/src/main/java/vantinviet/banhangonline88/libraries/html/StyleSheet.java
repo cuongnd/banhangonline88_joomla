@@ -56,8 +56,8 @@ public class StyleSheet {
     String test_style;
     String font_size = "12px";
     String color = "";
-    private String height = "100px";
-    private String width = "100px";
+    private String height = "0px";
+    private String width = "0px";
     private String border_left = "0px";
     private String border_width = "0px";
     private String border_color = "";
@@ -123,75 +123,12 @@ public class StyleSheet {
     }
 
     public void apply_style_button_icon(Button current_button, LinearLayout parent_linear_layout, boolean apply_direct_class_path,TagHtml tag) {
-        if (apply_direct_class_path) {
-            int font_size = this.getFont_size();
-            String height = this.getHeight();
-            String width = this.getWidth();
-            String color = this.getColor();
-            String background_color = this.getBackground_color();
-            //image_view.getLayoutParams().height = 300;
-            LinearLayout.LayoutParams parent_layout_params;
-            if(is_numeric(width,"%"))
-            {
-                parent_layout_params = new LinearLayout.LayoutParams(this.getIntWidth("%")/100, WRAP_CONTENT);
-            }else if(is_numeric(width,"px")){
-                parent_layout_params = new LinearLayout.LayoutParams(this.getIntWidth("px"), WRAP_CONTENT);
-            }
+        if(apply_direct_class_path) {
+            apply_style_button(current_button,apply_direct_class_path,tag);
+            apply_style_linear_layout(parent_linear_layout,apply_direct_class_path,tag);
+        }else {
 
-            if (this.is_numeric(height, null) && this.getIntHeight() == 1) {
-                parent_layout_params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 2);
-            } else if (this.is_numeric(height, null) && this.getIntHeight() > 1) {
-                parent_layout_params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, this.getIntHeight());
-            } else if (height.equals("auto")) {
-                parent_layout_params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, WRAP_CONTENT);
-            }
-
-            current_button.setBackgroundColor(0);
-            if (color != null && color.equals("transparent")) {
-
-            } else if (color != null && !color.isEmpty()) {
-                //image_view.setColorFilter(Color.parseColor(color));
-            }
-            GradientDrawable shape = new GradientDrawable();
-
-            int border_top_left_radius = this.getBorder_top_left_radius();
-            int border_top_right_radius = this.getBorder_top_right_radius();
-            int border_bottom_right_radius = this.getBorder_bottom_right_radius();
-            int border_bottom_left_radius = this.getBorder_bottom_left_radius();
-            int border_width = this.getBorder_width();
-            //shape.setCornerRadius(border_top_left_radius);
-            shape.setShape(GradientDrawable.RECTANGLE);
-            shape.setCornerRadii(new float[]{border_top_left_radius, border_top_right_radius, border_bottom_right_radius, border_bottom_left_radius, border_top_left_radius, border_top_right_radius, border_bottom_right_radius, border_bottom_left_radius});
-            shape.setColor(JUtilities.getColor(background_color));
-            if (border_width > 0) {
-                String border_color = this.getBorder_color();
-                shape.setStroke(border_width, JUtilities.getColor(border_color));
-            }
-            //current_button.setBackgroundDrawable(shape);
-
-            int padding_left = this.getPadding_left();
-            int padding_top = this.getPadding_top();
-            int padding_right = this.getPadding_right();
-            int padding_bottom = this.getPadding_bottom();
-
-            current_button.setPadding(padding_left, padding_top, padding_right, padding_bottom);
-
-            String margin_left = this.getMargin_left();
-            String margin_top = this.getMargin_top();
-            String margin_right = this.getMargin_right();
-            String margin_bottom = this.getMargin_bottom();
-            if (margin_left.equals("auto") && margin_right.equals("auto")) {
-                parent_linear_layout.setGravity(CENTER);
-                parent_layout_params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, WRAP_CONTENT);
-                parent_linear_layout.setLayoutParams(parent_layout_params);
-                current_button.setLayoutParams(new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-            } else {
-
-            }
-            //current_button.setLayoutParams(parent_layout_params);
         }
-        //image_view.setLayoutParams(new ViewGroup.LayoutParams));
     }
 
     public void apply_style(LinearLayout linear_layout, boolean apply_direct_class_path,TagHtml tag) {
@@ -203,10 +140,7 @@ public class StyleSheet {
     }
 
     public void apply_style(TextView text_view, LinearLayout parent_linear_layout, boolean apply_direct_class_path,TagHtml tag) {
-        Timber.d("getClass_path1 \"%s\"",tag.getClass_path());
-        if(tag.getClass_path().equals(" div.div h2.thong-tin-gian-hang")){
-            Timber.d("hello");
-        }
+
         if(apply_direct_class_path) {
             apply_style_text_view(text_view,apply_direct_class_path,tag);
             apply_style_linear_layout(parent_linear_layout,apply_direct_class_path,tag);
@@ -249,6 +183,40 @@ public class StyleSheet {
         }
 
     }
+    public void apply_style_button(Button button, boolean apply_direct_class_path,TagHtml tag) {
+        if(apply_direct_class_path) {
+            //set for textview
+
+            int button_font_size = this.getFont_size();
+            int button_layout_params_width = WRAP_CONTENT;
+            int button_layout_params_height = WRAP_CONTENT;
+            int button_gravity = LEFT;
+            //set font size button
+            button.setTextSize(button_font_size);
+            //set text align button
+            String button_text_align = this.getText_align();
+            if (button_text_align.equals("center")) {
+                button_gravity = Gravity.CENTER;
+                button_layout_params_width = MATCH_PARENT;
+            }
+            if (button_text_align.equals("left")) {
+                button_gravity = Gravity.LEFT;
+                button_layout_params_width = WRAP_CONTENT;
+            }
+            if (button_text_align.equals("right")) {
+                button_gravity = Gravity.RIGHT;
+                button_layout_params_width = WRAP_CONTENT;
+            }
+            button.setGravity(button_gravity);
+            LinearLayout.LayoutParams button_layout_params = new LinearLayout.LayoutParams(button_layout_params_width, button_layout_params_height);
+            button.setLayoutParams(button_layout_params);
+            String button_color = this.getColor();
+            if (button_color != null && !button_color.isEmpty()) {
+                button.setTextColor(JUtilities.getColor(button_color));
+            }
+        }
+
+    }
     public void apply_style_image_view(ImageView image_view, boolean apply_direct_class_path,TagHtml tag) {
 
         if(apply_direct_class_path) {
@@ -280,9 +248,9 @@ public class StyleSheet {
         if(apply_direct_class_path) {
             String linear_width = this.getWidth();
             int linear_layout_params_width = MATCH_PARENT;
-            int linear_layout_params_height = MATCH_PARENT;
+            int linear_layout_params_height = WRAP_CONTENT;
             int linear_gravity = LEFT;
-            LinearLayout.LayoutParams layout_params = new LinearLayout.LayoutParams(linear_layout_params_width, linear_layout_params_height);
+            LinearLayout.LayoutParams layout_params;
             String linear_border_top_width = this.getBorder_top_width();
             String linear_border_right_width = this.getBorder_right_width();
             String linear_border_bottom_width = this.getBorder_bottom_width();
@@ -318,10 +286,15 @@ public class StyleSheet {
 
             int linear_border_width = this.getBorder_width();
             linear_shape.setShape(GradientDrawable.RECTANGLE);
-            linear_shape.setCornerRadii(new float[]{int_linear_border_top_width, int_linear_border_right_width, int_linear_border_bottom_width, int_linear_border_left_width, linear_border_top_left_radius, linear_border_top_right_radius, linear_border_bottom_right_radius, linear_border_bottom_left_radius});
+            linear_shape.setCornerRadii(new float[]{linear_border_top_left_radius,linear_border_top_left_radius,linear_border_top_right_radius,linear_border_top_right_radius,linear_border_bottom_right_radius,linear_border_bottom_right_radius,linear_border_bottom_left_radius,linear_border_bottom_left_radius});
+            String linear_background_color = this.getBackground_color();
+            if(linear_background_color!=null&&!linear_background_color.isEmpty())
+            {
+                linear_shape.setColor(JUtilities.getColor(linear_background_color));
+            }
             String linear_border_color = this.getBorder_color();
             if(linear_border_color!=null&&!linear_border_color.isEmpty()) {
-                linear_shape.setColor(JUtilities.getColor(linear_border_color));
+
                 linear_shape.setStroke(linear_border_width,JUtilities.getColor(linear_border_color));
             }
             linear_layout.setBackgroundDrawable(linear_shape);
@@ -335,8 +308,6 @@ public class StyleSheet {
             } else if (linear_layout_height.equals("auto")) {
                 linear_layout_params_height = WRAP_CONTENT;
             }
-
-
             int linear_padding_left = this.getPadding_left();
             int linear_padding_top = this.getPadding_top();
             int linear_padding_right = this.getPadding_right();
@@ -347,22 +318,25 @@ public class StyleSheet {
             String linear_layout_margin_top = this.getMargin_top();
             String linear_layout_margin_right = this.getMargin_right();
             String linear_layout_margin_bottom = this.getMargin_bottom();
+
+            if (is_numeric(linear_width, "%")&&!linear_width.equals("100%")) {
+                linear_layout_params_width = (tag.getTag_width()*this.getIntWidth("%")) / 100;
+            }else if(linear_width.equals("100%")){
+                linear_layout_params_width=MATCH_PARENT;
+            }
+            else if (is_numeric(linear_width, "px")&&!linear_width.equals("0px")) {
+                linear_layout_params_width = this.getIntWidth("px");
+            }else if(linear_width.equals("0px")){
+                linear_layout_params_width=MATCH_PARENT;
+            }
+            layout_params = new LinearLayout.LayoutParams(linear_layout_params_width, linear_layout_params_height);
+
             if (linear_layout_margin_left.equals("auto") && linear_layout_margin_right.equals("auto")) {
                 linear_gravity=CENTER;
             } else if(is_numeric(linear_layout_margin_top,"px")&&is_numeric(linear_layout_margin_right,"px")&&is_numeric(linear_layout_margin_bottom,"px")&&is_numeric(linear_layout_margin_right,"px")) {
                 layout_params.setMargins(getInt(linear_layout_margin_left,"px"),getInt(linear_layout_margin_top,"px"),getInt(linear_layout_margin_right,"px"),getInt(linear_layout_margin_bottom,"px"));
             }
-            if (is_numeric(linear_width, "%")) {
-                linear_layout_params_width = this.getIntWidth("%") / 100;
-            } else if (is_numeric(linear_width, "px")) {
-                linear_layout_params_width = this.getIntWidth("px") / 100;
-            }
-            layout_params = new LinearLayout.LayoutParams(linear_layout_params_width, linear_layout_params_height);
-            String linear_background_color = this.getBackground_color();
-            if(linear_background_color!=null&&!linear_background_color.isEmpty())
-            {
-                linear_layout.setBackgroundColor(JUtilities.getColor(linear_background_color));
-            }
+
             linear_layout.setGravity(linear_gravity);
             linear_layout.setLayoutParams(layout_params);
         }else{
@@ -396,7 +370,7 @@ public class StyleSheet {
     }
 
     public String getHeight() {
-        return height;
+        return height.trim();
     }
 
     public int getIntHeight() {
@@ -411,7 +385,7 @@ public class StyleSheet {
     }
 
     public String getWidth() {
-        return width;
+        return width.trim();
     }
     public int getIntWidth(String type) {
         if(type==null)
@@ -448,11 +422,11 @@ public class StyleSheet {
     }
 
     public String getBorder_color() {
-        return border_color;
+        return border_color.trim();
     }
 
     public String getBackground_color() {
-        return background_color;
+        return background_color.trim();
     }
 
     public int getPadding_left() {

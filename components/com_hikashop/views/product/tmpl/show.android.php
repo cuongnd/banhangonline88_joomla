@@ -22,69 +22,69 @@ foreach ($images as &$image) {
 $debug = JUtility::get_debug();
 ob_start();
 ?>
-    <div class="div">
-        <h2 class="thong-tin-gian-hang"><?php echo JText::_('HIKA_THONG_TIN_GIAN_HANG') ?></h2>
+    <div type="div">
+        <h2 type="h2" class="thong-tin-gian-hang"><?php echo JText::_('HIKA_THONG_TIN_GIAN_HANG') ?></h2>
     </div>
-    <div class="line"></div>
-    <div class="vendor">
-        <div class="row">
-            <div class="col-md-2">
-                <div class="vendor_image">
-                    <img
+    <div type="div" class="line"></div>
+    <div type="div" class="vendor">
+        <div type="row" class="row">
+            <div type="column" class="col-md-2">
+                <div type="div"  class="vendor_image">
+                    <img type="img"
                         src="<?php echo JUri::root() ?><?php echo $product_response->product->vendor->vendor_image->url ?>"/>
                 </div>
             </div>
-            <div class="col-md-8">
-                <div class="vendor-info">
-                    <h4 class="vendor-name"><?php echo $product_response->product->vendor->vendor_name ?></h4>
-                    <span class="icon icon-ic_bookmark_black_24dp"></span>
+            <div type="column" class="col-md-8">
+                <div type="div" class="vendor-info">
+                    <h4 type="h4" class="vendor-name"><?php echo $product_response->product->vendor->vendor_name ?></h4>
+                    <span type="icon" class="icon icon-ic_bookmark_black_24dp"></span>
                 </div>
             </div>
-            <div class="col-md-2">
-                <div class="vendor-call">
-                    <span class="button_icon icon-ic_call_black_24dp call"/>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="toolbar">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="luot-mua">
-                    <button class="button_icon span-total-buy icon-ic_shopping_basket_black_24dp"><?php echo JText::_('11904') ?></button>
-                </div>
-                <h4 class="title-luot-mua"><?php echo JText::_('HIKA_LUOT_MUA') ?></h4>
-            </div>
-            <div class="col-md-4">
-                <div class="don-hang-tot">
-                    <button class="button_icon span-don-hang-tot icon-ic_shopping_basket_black_24dp"><?php echo JText::_('11904') ?></button>
-                </div>
-                <h4 class="title-don-hang-tot"><?php echo JText::_('HIKA_DON_HANG_TOT') ?></h4>
-            </div>
-            <div class="col-md-4">
-                <div class=" su-ly-don-hang">
-                    <button class="button_icon span-su-ly-don-hang icon-ic_alarm_black_24dp"><?php echo JText::_('11904') ?></button>
-                </div>
-                <h4 class="title-su-ly-don-hang"><?php echo JText::_('HIKA_SU_LY_DON_HANG') ?></h4>
-            </div>
-        </div>
-    </div>
-    <div class="line"></div>
-    <div class="theo-doi-va-vao-gian-hang">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="theo-doi">
-                    <button class="button_icon span-theo-doi icon-ic_add_circle_outline_black_24dp"><?php echo JText::_('HIKA_THEO_DOI') ?></button>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="go-to-shop">
-                    <button class="button_icon span-go-to-shop icon-ic_visibility_black_24dp"><?php echo JText::_('HIKA_VAO_GIAN_HANG') ?></button>
+            <div type="column" class="col-md-2">
+                <div type="div" class="vendor-call">
+                    <span type="button_icon" class="button_icon icon-ic_call_black_24dp call"/>
                 </div>
             </div>
         </div>
     </div>
-    <div class="bottom-line"></div>
+    <div type="div" class="toolbar">
+        <div type="row" class="row">
+            <div type="column" class="col-md-4">
+                <div type="div" class="luot-mua">
+                    <button type="button_icon" class="button_icon span-total-buy icon-ic_shopping_basket_black_24dp"><?php echo JText::_('11904') ?></button>
+                </div>
+                <h4 type="h4" class="title-luot-mua"><?php echo JText::_('HIKA_LUOT_MUA') ?></h4>
+            </div>
+            <div type="column" class="col-md-4">
+                <div type="div" class="don-hang-tot">
+                    <button type="button_icon" class="button_icon span-don-hang-tot icon-ic_shopping_basket_black_24dp"><?php echo JText::_('11904') ?></button>
+                </div>
+                <h4 type="h4" class="title-don-hang-tot"><?php echo JText::_('HIKA_DON_HANG_TOT') ?></h4>
+            </div>
+            <div type="column" class="col-md-4">
+                <div type="div" class=" su-ly-don-hang">
+                    <button type="button_icon" class="button_icon span-su-ly-don-hang icon-ic_alarm_black_24dp"><?php echo JText::_('11904') ?></button>
+                </div>
+                <h4 type="h4" class="title-su-ly-don-hang"><?php echo JText::_('HIKA_SU_LY_DON_HANG') ?></h4>
+            </div>
+        </div>
+    </div>
+    <div type="div" class="line"></div>
+    <div type="div" class="theo-doi-va-vao-gian-hang">
+        <div type="row" class="row">
+            <div type="column" class="col-md-6">
+                <div type="div" class="theo-doi">
+                    <button type="button_icon" class="button_icon span-theo-doi icon-ic_add_circle_outline_black_24dp"><?php echo JText::_('HIKA_THEO_DOI') ?></button>
+                </div>
+            </div>
+            <div type="column" class="col-md-6">
+                <div type="div" class="go-to-shop">
+                    <button type="button_icon" class="button_icon span-go-to-shop icon-ic_visibility_black_24dp"><?php echo JText::_('HIKA_VAO_GIAN_HANG') ?></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div type="div" class="bottom-line"></div>
 
 
 <?php
