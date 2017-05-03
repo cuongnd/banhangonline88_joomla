@@ -113,19 +113,17 @@ public class StyleSheet {
         this.class_path = class_path;
     }
 
-    public void apply_style(ImageView image_view, LinearLayout parent_linear_layout, boolean apply_direct_class_path,TagHtml tag) {
+    public void apply_style(ImageView image_view,  boolean apply_direct_class_path,TagHtml tag) {
         if(apply_direct_class_path) {
             apply_style_image_view(image_view,apply_direct_class_path,tag);
-            apply_style_linear_layout(parent_linear_layout,apply_direct_class_path,tag);
         }else {
 
         }
     }
 
-    public void apply_style_button_icon(Button current_button, LinearLayout parent_linear_layout, boolean apply_direct_class_path,TagHtml tag) {
+    public void apply_style_button_icon(Button current_button,  boolean apply_direct_class_path,TagHtml tag) {
         if(apply_direct_class_path) {
             apply_style_button(current_button,apply_direct_class_path,tag);
-            apply_style_linear_layout(parent_linear_layout,apply_direct_class_path,tag);
         }else {
 
         }
@@ -139,11 +137,10 @@ public class StyleSheet {
         }
     }
 
-    public void apply_style(TextView text_view, LinearLayout parent_linear_layout, boolean apply_direct_class_path,TagHtml tag) {
+    public void apply_style(TextView text_view,boolean apply_direct_class_path,TagHtml tag) {
 
         if(apply_direct_class_path) {
             apply_style_text_view(text_view,apply_direct_class_path,tag);
-            apply_style_linear_layout(parent_linear_layout,apply_direct_class_path,tag);
         }else{
 
         }
@@ -190,24 +187,19 @@ public class StyleSheet {
             int button_font_size = this.getFont_size();
             int button_layout_params_width = WRAP_CONTENT;
             int button_layout_params_height = WRAP_CONTENT;
-            int button_gravity = LEFT;
             //set font size button
             button.setTextSize(button_font_size);
             //set text align button
             String button_text_align = this.getText_align();
             if (button_text_align.equals("center")) {
-                button_gravity = Gravity.CENTER;
                 button_layout_params_width = MATCH_PARENT;
             }
             if (button_text_align.equals("left")) {
-                button_gravity = Gravity.LEFT;
                 button_layout_params_width = WRAP_CONTENT;
             }
             if (button_text_align.equals("right")) {
-                button_gravity = Gravity.RIGHT;
                 button_layout_params_width = WRAP_CONTENT;
             }
-            button.setGravity(button_gravity);
             LinearLayout.LayoutParams button_layout_params = new LinearLayout.LayoutParams(button_layout_params_width, button_layout_params_height);
             button.setLayoutParams(button_layout_params);
             String button_color = this.getColor();

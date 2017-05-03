@@ -29,21 +29,15 @@ ob_start();
     <div type="div" class="vendor">
         <div type="row" class="row">
             <div type="column" class="col-md-2">
-                <div type="div"  class="vendor_image">
-                    <img type="img"
-                        src="<?php echo JUri::root() ?><?php echo $product_response->product->vendor->vendor_image->url ?>"/>
-                </div>
+                <img type="img"
+                     src="<?php echo JUri::root() ?><?php echo $product_response->product->vendor->vendor_image->url ?>"/>
             </div>
             <div type="column" class="col-md-8">
-                <div type="div" class="vendor-info">
-                    <h4 type="h4" class="vendor-name"><?php echo $product_response->product->vendor->vendor_name ?></h4>
-                    <span type="icon" class="icon icon-ic_bookmark_black_24dp"></span>
-                </div>
+                <h4 type="h4" class="vendor-name"><?php echo $product_response->product->vendor->vendor_name ?></h4>
+                <span type="icon" class="icon icon-ic_bookmark_black_24dp"></span>>
             </div>
             <div type="column" class="col-md-2">
-                <div type="div" class="vendor-call">
-                    <span type="button_icon" class="button_icon icon-ic_call_black_24dp call"/>
-                </div>
+                <span type="button_icon" class="button_icon icon-ic_call_black_24dp call"/>
             </div>
         </div>
     </div>
