@@ -115,7 +115,7 @@ public class StyleSheet {
 
     public void apply_style(ImageView image_view, LinearLayout parent_linear_layout, boolean apply_direct_class_path,TagHtml tag) {
         if(apply_direct_class_path) {
-            apply_style_image_view(image_view,apply_direct_class_path,tag);
+            //apply_style_image_view(image_view,apply_direct_class_path,tag);
             apply_style_linear_layout(parent_linear_layout,apply_direct_class_path,tag);
         }else {
 

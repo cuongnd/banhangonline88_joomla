@@ -549,7 +549,7 @@ public class TagHtml {
         LinearLayout new_img_linear_layout = new LinearLayout(app.getCurrentActivity());
         boolean debug = VTVConfig.getDebug();
         LinearLayout.LayoutParams layout_params;
-        layout_params = new LinearLayout.LayoutParams(WRAP_CONTENT, MATCH_PARENT);
+        layout_params = new LinearLayout.LayoutParams(MATCH_PARENT, MATCH_PARENT);
 
         new_img_linear_layout.setLayoutParams(layout_params);
         ImageView image_view = new ImageView(app.getCurrentActivity());
