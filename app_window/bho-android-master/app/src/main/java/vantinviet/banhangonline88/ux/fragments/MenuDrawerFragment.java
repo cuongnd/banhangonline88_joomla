@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.SystemClock;
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -25,9 +24,6 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 
@@ -37,20 +33,14 @@ import java.util.List;
 import vantinviet.banhangonline88.CONST;
 import vantinviet.banhangonline88.MyApplication;
 import vantinviet.banhangonline88.api.EndPoints;
-import vantinviet.banhangonline88.api.GsonRequest;
-import vantinviet.banhangonline88.entities.ShopResponse;
 import vantinviet.banhangonline88.entities.drawerMenu.DrawerMenuItem;
 import vantinviet.banhangonline88.entities.drawerMenu.DrawerResponse;
 import vantinviet.banhangonline88.interfaces.DrawerSubmenuRecyclerInterface;
 import vantinviet.banhangonline88.libraries.joomla.JFactory;
 import vantinviet.banhangonline88.libraries.legacy.application.JApplication;
-import vantinviet.banhangonline88.utils.MsgUtils;
-import vantinviet.banhangonline88.ux.SplashActivity;
 import vantinviet.banhangonline88.ux.adapters.DrawerRecyclerAdapter;
 import vantinviet.banhangonline88.ux.adapters.DrawerSubmenuRecyclerAdapter;
 import vantinviet.banhangonline88.R;
-import vantinviet.banhangonline88.SettingsMy;
-import vantinviet.banhangonline88.entities.drawerMenu.DrawerItemPage;
 import vantinviet.banhangonline88.interfaces.DrawerRecyclerInterface;
 import timber.log.Timber;
 
@@ -282,7 +272,7 @@ public class MenuDrawerFragment extends Fragment {
         drawerRetryBtn.setVisibility(View.GONE);
         android.webkit.WebView web_browser = JFactory.getWebBrowser();
         JApplication app=JFactory.getApplication();
-        web_browser.postUrl(EndPoints.NAVIGATION_DRAWER,app.getSetPostBrowser());
+        web_browser.postUrl(EndPoints.NAVIGATION_DRAWER,app.getPostBrowser());
         app.getProgressDialog().dismiss();
         web_browser.addJavascriptInterface(new JavaScriptInterfaceWebsite(), "HtmlViewer");
     }

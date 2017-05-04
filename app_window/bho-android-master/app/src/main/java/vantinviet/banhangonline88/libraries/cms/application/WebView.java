@@ -1,36 +1,24 @@
 package vantinviet.banhangonline88.libraries.cms.application;
 
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Base64;
 import android.webkit.JavascriptInterface;
-import android.webkit.WebViewClient;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
 import com.google.gson.stream.JsonReader;
 
-import org.apache.http.util.EncodingUtils;
-
 import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Collection;
-import java.util.Map;
-import java.util.concurrent.Callable;
 
 import timber.log.Timber;
-import vantinviet.banhangonline88.MyApplication;
 import vantinviet.banhangonline88.R;
 import vantinviet.banhangonline88.VTVConfig;
-import vantinviet.banhangonline88.api.EndPoints;
 import vantinviet.banhangonline88.configuration.JConfig;
 import vantinviet.banhangonline88.entities.Page;
 import vantinviet.banhangonline88.entities.drawerMenu.DrawerMenuItem;
@@ -63,7 +51,7 @@ public class WebView {
         app.getProgressDialog().show();
         android.webkit.WebView web_browser = JFactory.getWebBrowser();
         Timber.d("link: %s", link);
-        web_browser.postUrl(link,app.getSetPostBrowser());
+        web_browser.postUrl(link,app.getPostBrowser());
         app.getProgressDialog().dismiss();
         web_browser.addJavascriptInterface(new MyJavaScriptInterfaceWebsite(), "HtmlViewer");
 

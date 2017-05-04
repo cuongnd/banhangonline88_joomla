@@ -560,6 +560,8 @@ public class TagHtml {
 
         ImageView image_view = new ImageView(app.getCurrentActivity());
         String src = tag.getSrc();
+        image_view.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        image_view.setMaxHeight(400);
         Picasso.with(app.getCurrentActivity()).load(src).into(image_view);
         set_style(tag,image_view,class_path,list_style_sheet);
         return image_view;

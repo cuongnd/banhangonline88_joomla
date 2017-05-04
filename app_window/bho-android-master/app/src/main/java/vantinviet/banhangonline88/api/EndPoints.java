@@ -56,6 +56,7 @@ public class EndPoints {
     public static final String LINK_NOTIFICATION = VTVConfig.rootUrl.concat("/index.php?format=json&os=android&tmpl=component&ignoreMessages=true&option=com_jchat");;
     public static final String MESSENGERS = VTVConfig.rootUrl.concat("/index.php?format=json&os=android&tmpl=component&ignoreMessages=true&option=com_jchat&initialize=1");
     public static final String SAVEENTITY = VTVConfig.rootUrl.concat("/index.php?format=json&os=android&tmpl=component&ignoreMessages=true&option=com_jchat");
+    public static final String ADD_TO_CART = VTVConfig.rootUrl.concat("/index.php?option=com_hikashop&ctrl=product&task=updatecart");
 
     private EndPoints() {}
 }

@@ -42,8 +42,6 @@ import com.facebook.applinks.AppLinkData;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 
-import org.apache.http.util.EncodingUtils;
-
 import java.io.StringReader;
 import java.util.List;
 import java.util.Locale;
@@ -55,7 +53,6 @@ import vantinviet.banhangonline88.CONST;
 import vantinviet.banhangonline88.R;
 import vantinviet.banhangonline88.SettingsMy;
 import vantinviet.banhangonline88.api.GsonRequest;
-import vantinviet.banhangonline88.components.com_hikamarket.views.category.tmpl.listing;
 import vantinviet.banhangonline88.entities.Shop;
 import vantinviet.banhangonline88.entities.ShopResponse;
 import vantinviet.banhangonline88.libraries.joomla.JFactory;
@@ -386,7 +383,7 @@ public class SplashActivity extends AppCompatActivity {
         Timber.d("Now request list shop %s", EndPoints.SHOPS);
         app.getProgressDialog().show();
         android.webkit.WebView web_browser = JFactory.getWebBrowser();
-        web_browser.postUrl(EndPoints.SHOPS,app.getSetPostBrowser());
+        web_browser.postUrl(EndPoints.SHOPS,app.getPostBrowser());
         app.getProgressDialog().dismiss();
         web_browser.addJavascriptInterface(new SplashActivityJavaScriptInterfaceWebsite(), "HtmlViewer");
 

@@ -84,10 +84,10 @@ class style
                 $list_style->margin_bottom=$pat_array[2];
                 break;
             case 4:
-                $list_style->margin_left=$pat_array[0];
-                $list_style->margin_top=$pat_array[1];
+                $list_style->margin_top=$pat_array[0];
+                $list_style->margin_right=$pat_array[1];
                 $list_style->margin_bottom=$pat_array[2];
-                $list_style->margin_right=$pat_array[3];
+                $list_style->margin_left=$pat_array[3];
                 break;
         }
     }

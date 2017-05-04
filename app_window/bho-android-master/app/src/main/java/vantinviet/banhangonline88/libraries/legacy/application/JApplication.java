@@ -254,7 +254,7 @@ public class JApplication extends JApplicationBase {
         return main_scroll_view;
     }
 
-    public byte[] getSetPostBrowser() {
+    public byte[] getPostBrowser() {
         String link_post="get_page_config_app=1&ignoreMessages=true&format=json&os=android&vtlai_firewall_redirect=home";
         System.out.println("-------host---------");
         //System.out.println(link);
