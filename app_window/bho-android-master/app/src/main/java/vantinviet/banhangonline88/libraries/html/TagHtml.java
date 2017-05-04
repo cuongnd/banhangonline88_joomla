@@ -3,6 +3,8 @@ package vantinviet.banhangonline88.libraries.html;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.text.TextUtils;
@@ -135,16 +137,16 @@ public class TagHtml {
             Timber.d("current_class_path item_stylesheet \"%s\"",current_class_path);
             if(JUtilities.in_array(list_apply_direct_class_path,current_class_path)){
                 Timber.d("apply_direct_class_path true");
-                item_stylesheet.apply_style(linear_layout,true,tag);
+                item_stylesheet.apply_style_linear_layout(linear_layout,true,tag);
             }else {
-                item_stylesheet.apply_style(linear_layout,false,tag);
+                item_stylesheet.apply_style_linear_layout(linear_layout,false,tag);
                 Timber.d("apply_direct_class_path false");
             }
 
         }
 
     }
-    public static void set_style_button_icon(TagHtml tag, Button button,  String class_path, Map<String, StyleSheet> list_style_sheet) {
+    public static void set_style_button_icon(TagHtml tag, Button button, Drawable drawable, String class_path, Map<String, StyleSheet> list_style_sheet) {
         ArrayList<StyleSheet> list_stylesheet = get_stylesheet_apply(tag,class_path,list_style_sheet);
         ArrayList<String> list_apply_direct_class_path = tag.getApply_direct_class_path();
         for (StyleSheet item_stylesheet: list_stylesheet) {
@@ -155,10 +157,10 @@ public class TagHtml {
             Timber.d("list_apply_direct_class_path %s",list_apply_direct_class_path.toString());
             Timber.d("current_class_path item_stylesheet \"%s\"",current_class_path);
             if(JUtilities.in_array(list_apply_direct_class_path,item_stylesheet.getClass_path())){
-                item_stylesheet.apply_style_button_icon(button,true,tag);
+                item_stylesheet.apply_style_button_icon(button,drawable,true,tag);
                 Timber.d("apply_direct_class_path true");
             }else {
-                item_stylesheet.apply_style_button_icon(button,false,tag);
+                item_stylesheet.apply_style_button_icon(button,drawable,false,tag);
                 Timber.d("apply_direct_class_path false");
             }
 
@@ -182,10 +184,10 @@ public class TagHtml {
             Timber.d("current_class_path item_stylesheet \"%s\"",current_class_path);
             if(JUtilities.in_array(list_apply_direct_class_path,item_stylesheet.getClass_path())){
                 Timber.d("apply_direct_class_path true");
-                item_stylesheet.apply_style(image_view,true,tag);
+                item_stylesheet.apply_style_image_view(image_view,true,tag);
             }else {
                 Timber.d("apply_direct_class_path false");
-                item_stylesheet.apply_style(image_view,false,tag);
+                item_stylesheet.apply_style_image_view(image_view,false,tag);
 
             }
         }
@@ -202,10 +204,10 @@ public class TagHtml {
             Timber.d("current_class_path item_stylesheet \"%s\"",current_class_path);
             if(JUtilities.in_array(list_apply_direct_class_path,item_stylesheet.getClass_path())){
                 Timber.d("apply_direct_class_path true");
-                item_stylesheet.apply_style(text_view,true,tag);
+                item_stylesheet.apply_style_text_view(text_view,true,tag);
             }else {
                 Timber.d("apply_direct_class_path false");
-                item_stylesheet.apply_style(text_view,false,tag);
+                item_stylesheet.apply_style_text_view(text_view,false,tag);
             }
 
         }
@@ -222,10 +224,10 @@ public class TagHtml {
             Timber.d("current_class_path item_stylesheet \"%s\"",current_class_path);
             if(JUtilities.in_array(list_apply_direct_class_path,item_stylesheet.getClass_path())){
                 Timber.d("apply_direct_class_path true");
-                item_stylesheet.apply_style(image_button,true,tag);
+                item_stylesheet.apply_style_image_button(image_button,true,tag);
             }else {
                 Timber.d("apply_direct_class_path false");
-                item_stylesheet.apply_style(image_button,false,tag);
+                item_stylesheet.apply_style_image_button(image_button,false,tag);
             }
 
         }
@@ -486,7 +488,7 @@ public class TagHtml {
 
         boolean debug = VTVConfig.getDebug();
         LinearLayout.LayoutParams layout_params;
-        String icon_name = tag.get_Icon_name(tag);
+        String icon_name = tag.get_Icon_name();
         ImageView image_view_icon = new ImageView(app.getCurrentActivity());
         Timber.d("PackageName %s",app.getCurrentActivity().getPackageName());
         Timber.d("icon_name %s",icon_name);
@@ -507,16 +509,20 @@ public class TagHtml {
         boolean debug = VTVConfig.getDebug();
         LinearLayout.LayoutParams button_layout_params;
         button_layout_params = new LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT);
-        String icon_name = tag.get_Icon_name(tag);
+
         Button image_button_icon = new Button(app.getCurrentActivity());
-        int resID = app.getCurrentActivity().getResources().getIdentifier(icon_name , "drawable", "vantinviet.banhangonline88");
-        image_button_icon.setCompoundDrawablesWithIntrinsicBounds(resID,0,0,0);
         image_button_icon.setGravity(CENTER);
         image_button_icon.setBackgroundColor(0);
         String content=tag.get_Html_content();
         image_button_icon.setText(content);
         image_button_icon.setLayoutParams(button_layout_params);
-        set_style_button_icon(tag,image_button_icon,class_path,list_style_sheet);
+
+        String icon_name = tag.get_Icon_name();
+
+        int resID = app.getCurrentActivity().getResources().getIdentifier(icon_name , "drawable", "vantinviet.banhangonline88");
+        Drawable drawable =  app.getCurrentActivity().getResources().getDrawable(resID);
+        image_button_icon.setCompoundDrawablesWithIntrinsicBounds(drawable,null,null,null);
+        set_style_button_icon(tag,image_button_icon,drawable,class_path,list_style_sheet);
         return image_button_icon;
     }
     private static LinearLayout render_tag_div(TagHtml tag, int screen_size_width, int screen_size_height, String class_path,Map<String, StyleSheet> list_style_sheet) {
@@ -562,7 +568,7 @@ public class TagHtml {
         JApplication app = JFactory.getApplication();
         boolean debug = VTVConfig.getDebug();
         ImageButton image_button = new ImageButton(app.getCurrentActivity());
-        String icon_name = tag.get_Icon_name(tag);
+        String icon_name = tag.get_Icon_name();
         int resID = app.getCurrentActivity().getResources().getIdentifier(icon_name , "drawable", "vantinviet.banhangonline88");
         image_button.setImageResource(resID);
         image_button.setBackgroundDrawable(null);
@@ -595,8 +601,8 @@ public class TagHtml {
         return src;
     }
 
-    public String get_Icon_name(TagHtml tag) {
-        String class_name = tag.getClass_name();
+    public String get_Icon_name() {
+        String class_name = this.getClass_name();
         class_name=class_name.toLowerCase();
         String[] splited_class_name = class_name.split("\\s+");
         String icon_class_name="";

@@ -22,11 +22,11 @@ foreach ($images as &$image) {
 $debug = JUtility::get_debug();
 ob_start();
 ?>
-    <div type="div">
+    <div >
         <h2 type="h2" class="thong-tin-gian-hang"><?php echo JText::_('HIKA_THONG_TIN_GIAN_HANG') ?></h2>
     </div>
-    <div type="div" class="line"></div>
-    <div type="div" class="vendor">
+    <div  class="line"></div>
+    <div  class="vendor">
         <div type="row" class="row">
             <div type="column" class="col-md-2 vendor_image">
                 <img type="img"
@@ -43,7 +43,7 @@ ob_start();
             </div>
         </div>
     </div>
-    <div type="div" class="toolbar">
+    <div  class="toolbar">
         <div type="row" class="row">
             <div type="column" class="col-md-4 ">
                 <div class="luot-mua">
@@ -65,8 +65,8 @@ ob_start();
             </div>
         </div>
     </div>
-    <div type="div" class="line"></div>
-    <div type="div" class="theo-doi-va-vao-gian-hang">
+    <div  class="line"></div>
+    <div  class="theo-doi-va-vao-gian-hang">
         <div type="row" class="row">
             <div type="column" class="col-md-6 ">
                 <div class="theo-doi">
@@ -80,7 +80,7 @@ ob_start();
             </div>
         </div>
     </div>
-    <div type="div" class="bottom-line"></div>
+    <div  class="bottom-line"></div>
 
 
 <?php
