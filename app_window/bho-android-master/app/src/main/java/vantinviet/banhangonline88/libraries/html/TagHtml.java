@@ -212,33 +212,23 @@ public class TagHtml {
     }
     public static void set_style(TagHtml tag, ImageButton image_button, String class_path,Map<String, StyleSheet> list_style_sheet) {
         ArrayList<StyleSheet> list_stylesheet = get_stylesheet_apply(tag,class_path,list_style_sheet);
-
+        ArrayList<String> list_apply_direct_class_path = tag.getApply_direct_class_path();
         for (StyleSheet item_stylesheet: list_stylesheet) {
             Timber.d("tag %s",tag.getTagName());
+            Timber.d("class_path %s",class_path);
             Timber.d("item_stylesheet %s",item_stylesheet.toString());
-        }
-        /*String[] splited_class_name = class_name.split("\\s+");
-        String[] list_styles = Style.get_list_styles();
-        if (splited_class_name != null) for (String item_class : splited_class_name) {
-            if (list_styles != null) for (String style : list_styles) {
-                if (item_class.equals(style)) {
-                    style = style.replaceAll("-", "_");
-                    style = "style_" + style;
-                    try {
-                        Style cls = new Style();
-                        Class c = cls.getClass();
-                        Method style_method = c.getDeclaredMethod(style, TagHtml.class, LinearLayout.class);
-                        style_method.invoke(cls, tag, linear_layout);
-                        // production code should handle these exceptions more gracefully
-                    } catch (InvocationTargetException x) {
-                        Throwable cause = x.getCause();
-                        System.err.format("%s() failed: %s%n", style, cause.getMessage());
-                    } catch (Exception x) {
-                        x.printStackTrace();
-                    }
-                }
+            String current_class_path=item_stylesheet.getClass_path().trim();
+            Timber.d("list_apply_direct_class_path %s",list_apply_direct_class_path.toString());
+            Timber.d("current_class_path item_stylesheet \"%s\"",current_class_path);
+            if(JUtilities.in_array(list_apply_direct_class_path,item_stylesheet.getClass_path())){
+                Timber.d("apply_direct_class_path true");
+                item_stylesheet.apply_style(image_button,true,tag);
+            }else {
+                Timber.d("apply_direct_class_path false");
+                item_stylesheet.apply_style(image_button,false,tag);
             }
-        }*/
+
+        }
 
 
 
@@ -568,12 +558,15 @@ public class TagHtml {
         set_style(tag,image_view,class_path,list_style_sheet);
         return image_view;
     }
-    private static View render_tag_image_button(TagHtml html, int screen_size_width, int screen_size_height,String class_path,Map<String, StyleSheet> list_style_sheet) {
+    private static View render_tag_image_button(TagHtml tag, int screen_size_width, int screen_size_height,String class_path,Map<String, StyleSheet> list_style_sheet) {
         JApplication app = JFactory.getApplication();
         boolean debug = VTVConfig.getDebug();
         ImageButton image_button = new ImageButton(app.getCurrentActivity());
-        String src = html.getSrc();
-        Picasso.with(app.getCurrentActivity()).load(src).into(image_button);
+        String icon_name = tag.get_Icon_name(tag);
+        int resID = app.getCurrentActivity().getResources().getIdentifier(icon_name , "drawable", "vantinviet.banhangonline88");
+        image_button.setImageResource(resID);
+        image_button.setBackgroundDrawable(null);
+        set_style(tag,image_button,class_path,list_style_sheet);
         return image_button;
     }
 

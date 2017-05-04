@@ -38,7 +38,7 @@ ob_start();
             </div>
             <div type="column" class="col-md-2">
                 <div class="vendor-call">
-                    <button type="button_icon" class="button_icon span-go-to-shop icon-ic_visibility_black_24dp"></button>
+                    <button type="image_button" class="icon-ic_call_black_24dp"></button>
                 </div>
             </div>
         </div>

@@ -12,6 +12,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -147,6 +148,13 @@ public class StyleSheet {
 
         }
     }
+    public void apply_style(ImageButton image_button, boolean apply_direct_class_path, TagHtml tag) {
+        if(apply_direct_class_path) {
+            apply_style_image_button(image_button,apply_direct_class_path,tag);
+        }else {
+
+        }
+    }
 
     public void apply_style_button_icon(Button current_button,  boolean apply_direct_class_path,TagHtml tag) {
         if(apply_direct_class_path) {
@@ -259,6 +267,35 @@ public class StyleSheet {
             }
             LinearLayout.LayoutParams image_view_layout_params = new LinearLayout.LayoutParams(image_view_layout_params_width, image_view_layout_params_height);
             image_view.setLayoutParams(image_view_layout_params);
+
+        }
+
+    }
+    public void apply_style_image_button(ImageButton image_button, boolean apply_direct_class_path,TagHtml tag) {
+
+        if(apply_direct_class_path) {
+            //set for textview
+            String color=this.getColor();
+            image_button.setColorFilter(JUtilities.getColor(color));
+            int image_button_layout_params_width = WRAP_CONTENT;
+            int image_button_layout_params_height = WRAP_CONTENT;
+            int image_button_gravity = LEFT;
+            //set text align image_button
+            String image_button_text_align = this.getText_align();
+            if (image_button_text_align.equals("center")) {
+                image_button_gravity = Gravity.CENTER;
+                image_button_layout_params_width = MATCH_PARENT;
+            }
+            if (image_button_text_align.equals("left")) {
+                image_button_gravity = Gravity.LEFT;
+                image_button_layout_params_width = WRAP_CONTENT;
+            }
+            if (image_button_text_align.equals("right")) {
+                image_button_gravity = Gravity.RIGHT;
+                image_button_layout_params_width = WRAP_CONTENT;
+            }
+            LinearLayout.LayoutParams image_button_layout_params = new LinearLayout.LayoutParams(image_button_layout_params_width, image_button_layout_params_height);
+            image_button.setLayoutParams(image_button_layout_params);
 
         }
 
