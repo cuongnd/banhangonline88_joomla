@@ -315,23 +315,16 @@ public class TagHtml {
                     layout_params.setMargins(column_offset, 0, 0, 0);
                     LinearLayout new_column_linear_layout = new LinearLayout(app.getCurrentActivity());
                     new_column_linear_layout.setLayoutParams(layout_params);
-                    new_column_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
-                    new_column_linear_layout.setId(R.id.column);
-                    LinearLayout.LayoutParams new_vertical_wrapper_of_column_linear_layout_params = new LinearLayout.LayoutParams(column_width, MATCH_PARENT);
-                    LinearLayout new_wrapper_of_column_linear_layout = new LinearLayout(app.getCurrentActivity());
-                    new_wrapper_of_column_linear_layout.setLayoutParams(new_vertical_wrapper_of_column_linear_layout_params);
-                    new_wrapper_of_column_linear_layout.setOrientation(LinearLayout.VERTICAL);
-                    new_column_linear_layout.addView(new_wrapper_of_column_linear_layout);
+                    new_column_linear_layout.setOrientation(LinearLayout.VERTICAL);
                     new_row_linear_layout.addView(new_column_linear_layout);
 
                     current_class_tag = get_current_class_tag(column_tag);
                     class_path+=" "+current_class_tag;
-                    set_style(tag,new_wrapper_of_column_linear_layout,class_path,list_style_sheet);
+                    //set_style(column_tag,new_column_linear_layout,class_path,list_style_sheet);
                     //set_style(column_tag,new_wrapper_of_column_linear_layout,class_path,list_style_sheet);
                     ArrayList<TagHtml> list_sub_tag = column_tag.getChildren();
-
                     if (list_sub_tag != null) for (TagHtml item_sub_tag : list_sub_tag) {
-                        render_layout(item_sub_tag, new_wrapper_of_column_linear_layout, column_width, screen_size_height,class_path,list_style_sheet);
+                        render_layout(item_sub_tag, new_column_linear_layout, column_width, screen_size_height,class_path,list_style_sheet);
                     }
                 }else {
                     //sai cau truc bootstrap
@@ -542,9 +535,9 @@ public class TagHtml {
         new_div_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
         String html_content = tag.get_Html_content();
         if(!html_content.equals("")) {
-            TextView text_view_content = new TextView(app.getCurrentActivity());
-            text_view_content.setText(html_content);
-            new_div_linear_layout.addView(text_view_content);
+            //TextView text_view_content = new TextView(app.getCurrentActivity());
+            //text_view_content.setText(html_content);
+            //new_div_linear_layout.addView(text_view_content);
         }
         set_style(tag,new_div_linear_layout,class_path,list_style_sheet);
        /* LinearLayout new_column_linear_layout = new LinearLayout(app.getCurrentActivity());
