@@ -36,23 +36,31 @@ ob_start();
                 <h4 type="h4" class="vendor-name"><?php echo $product_response->product->vendor->vendor_name ?></h4>
                 <span type="icon" class="icon icon-ic_bookmark_black_24dp"></span>>
             </div>
-            <div type="column" class="col-md-2 vendor-call">
-                <span type="button_icon" class="button_icon icon-ic_call_black_24dp call"/>
+            <div type="column" class="col-md-2">
+                <div class="vendor-call">
+                    <button type="button_icon" class="button_icon span-go-to-shop icon-ic_visibility_black_24dp"></button>
+                </div>
             </div>
         </div>
     </div>
     <div type="div" class="toolbar">
         <div type="row" class="row">
-            <div type="column" class="col-md-4 luot-mua">
-                <button type="button_icon" class="button_icon span-total-buy icon-ic_shopping_basket_black_24dp"><?php echo JText::_('11904') ?></button>
+            <div type="column" class="col-md-4 ">
+                <div class="luot-mua">
+                    <button type="button_icon" class="button_icon span-total-buy icon-ic_shopping_basket_black_24dp"><?php echo JText::_('11904') ?></button>
+                </div>
                 <h4 type="h4" class="title-luot-mua"><?php echo JText::_('HIKA_LUOT_MUA') ?></h4>
             </div>
-            <div type="column" class="col-md-4 don-hang-tot">
-                <button type="button_icon" class="button_icon span-don-hang-tot icon-ic_shopping_basket_black_24dp"><?php echo JText::_('11904') ?></button>
+            <div type="column" class="col-md-4">
+                <div class="don-hang-tot">
+                    <button type="button_icon" class="button_icon span-don-hang-tot icon-ic_shopping_basket_black_24dp"><?php echo JText::_('11904') ?></button>
+                </div>
                 <h4 type="h4" class="title-don-hang-tot"><?php echo JText::_('HIKA_DON_HANG_TOT') ?></h4>
             </div>
-            <div type="column" class="col-md-4 su-ly-don-hang">
-                <button type="button_icon" class="button_icon span-su-ly-don-hang icon-ic_alarm_black_24dp"><?php echo JText::_('11904') ?></button>
+            <div type="column" class="col-md-4">
+                <div class="su-ly-don-hang">
+                    <button type="button_icon" class="button_icon span-su-ly-don-hang icon-ic_alarm_black_24dp"><?php echo JText::_('11904') ?></button>
+                </div>
                 <h4 type="h4" class="title-su-ly-don-hang"><?php echo JText::_('HIKA_SU_LY_DON_HANG') ?></h4>
             </div>
         </div>
@@ -60,11 +68,15 @@ ob_start();
     <div type="div" class="line"></div>
     <div type="div" class="theo-doi-va-vao-gian-hang">
         <div type="row" class="row">
-            <div type="column" class="col-md-6 theo-doi">
-                <button type="button_icon" class="button_icon span-theo-doi icon-ic_add_circle_outline_black_24dp"><?php echo JText::_('HIKA_THEO_DOI') ?></button>
+            <div type="column" class="col-md-6 ">
+                <div class="theo-doi">
+                    <button type="button_icon" class="button_icon span-theo-doi icon-ic_add_circle_outline_black_24dp"><?php echo JText::_('HIKA_THEO_DOI') ?></button>
+                </div>
             </div>
-            <div type="column" class="col-md-6 go-to-shop">
-                <button type="button_icon" class="button_icon span-go-to-shop icon-ic_visibility_black_24dp"><?php echo JText::_('HIKA_VAO_GIAN_HANG') ?></button>
+            <div type="column" class="col-md-6">
+                <div class="go-to-shop">
+                    <button type="button_icon" class="button_icon span-go-to-shop icon-ic_visibility_black_24dp"><?php echo JText::_('HIKA_VAO_GIAN_HANG') ?></button>
+                </div>
             </div>
         </div>
     </div>

@@ -165,6 +165,9 @@ public class TagHtml {
         }
     }
     public String getType(){
+        if(type.equals("")){
+            type=this.getTagName();
+        }
         return type;
     }
     public static void set_style(TagHtml tag, ImageView image_view,String class_path,Map<String, StyleSheet> list_style_sheet) {

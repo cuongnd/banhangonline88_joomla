@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Shader;
 import android.graphics.drawable.GradientDrawable;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,9 +22,13 @@ import com.google.gson.Gson;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import timber.log.Timber;
 import vantinviet.banhangonline88.R;
@@ -35,6 +40,7 @@ import vantinviet.banhangonline88.libraries.utilities.JUtilities;
 import static android.R.attr.bitmap;
 import static android.R.attr.numberPickerStyle;
 import static android.R.attr.theme;
+import static android.R.id.list;
 import static android.view.Gravity.CENTER;
 import static android.view.Gravity.LEFT;
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
@@ -102,11 +108,32 @@ public class StyleSheet {
 
     @Override
     public String toString() {
-        return "StyleSheet{" +
-                "class_path=" + class_path +
-                ",border=" + border +
-                ", color=" + color +
-                '}';
+        StringBuilder result = new StringBuilder();
+        String newLine = System.getProperty("line.separator");
+
+        result.append( this.getClass().getName() );
+        result.append( " StyleSheet {" );
+        result.append(newLine);
+
+        //determine fields declared in this class only (no fields of superclass)
+        Field[] fields = this.getClass().getDeclaredFields();
+
+        //print field names paired with their values
+        for ( Field field : fields  ) {
+            result.append("  ");
+            try {
+                result.append( field.getName() );
+                result.append(": ");
+                //requires access to private field:
+                result.append( field.get(this) );
+            } catch ( IllegalAccessException ex ) {
+                System.out.println(ex);
+            }
+            result.append(newLine);
+        }
+        result.append("}");
+
+        return result.toString();
     }
 
     public void setClass_path(String class_path) {
