@@ -25,6 +25,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewAnimationUtils;
@@ -43,8 +44,10 @@ import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 
 import java.io.StringReader;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import vantinviet.banhangonline88.MyApplication;
 import vantinviet.banhangonline88.VTVConfig;
@@ -53,8 +56,10 @@ import vantinviet.banhangonline88.CONST;
 import vantinviet.banhangonline88.R;
 import vantinviet.banhangonline88.SettingsMy;
 import vantinviet.banhangonline88.api.GsonRequest;
+import vantinviet.banhangonline88.components.com_hikashop.views.product.tmpl.show;
 import vantinviet.banhangonline88.entities.Shop;
 import vantinviet.banhangonline88.entities.ShopResponse;
+import vantinviet.banhangonline88.libraries.cms.application.vtv_WebView;
 import vantinviet.banhangonline88.libraries.joomla.JFactory;
 import vantinviet.banhangonline88.libraries.legacy.application.JApplication;
 import vantinviet.banhangonline88.testing.EspressoIdlingResource;
@@ -377,16 +382,19 @@ public class SplashActivity extends AppCompatActivity {
     /**
      * Load available shops from server.
      */
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     private void requestShops() {
         if (layoutIntroScreen.getVisibility() != View.VISIBLE)
             progressDialog.show();
-        Timber.d("Now request list shop %s", EndPoints.SHOPS);
-        app.getProgressDialog().show();
-        android.webkit.WebView web_browser = JFactory.getWebBrowser();
-        web_browser.postUrl(EndPoints.SHOPS,app.getPostBrowser());
+        vtv_WebView web_browser = JFactory.getWebBrowser();
+        Map<String, String> post = new HashMap<String, String>();
+        post.put("option", "com_hikashop");
+        post.put("ctrl", "country");
+        post.put("task", "ajax_get_list_country");
+        post.put("get_page_config_app", "0");
+        web_browser.vtv_postUrl(VTVConfig.rootUrl,post);
         app.getProgressDialog().dismiss();
         web_browser.addJavascriptInterface(new SplashActivityJavaScriptInterfaceWebsite(), "HtmlViewer");
-
     }
 
 /*

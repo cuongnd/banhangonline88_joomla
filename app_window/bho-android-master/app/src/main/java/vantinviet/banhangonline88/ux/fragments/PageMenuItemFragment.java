@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -68,6 +69,7 @@ import vantinviet.banhangonline88.configuration.JConfig;
 import vantinviet.banhangonline88.entities.Page;
 import vantinviet.banhangonline88.entities.drawerMenu.DrawerMenuItem;
 import vantinviet.banhangonline88.libraries.cms.application.AsyncJsonElementViewLoader;
+import vantinviet.banhangonline88.libraries.cms.application.vtv_WebView;
 import vantinviet.banhangonline88.libraries.joomla.JFactory;
 import vantinviet.banhangonline88.libraries.legacy.application.JApplication;
 import vantinviet.banhangonline88.utils.MsgUtils;
@@ -180,6 +182,7 @@ public class PageMenuItemFragment extends Fragment  {
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     private void create_browser(String host) {
         WebViewClient web_view_client = new WebViewClient() {
             @Override
@@ -197,20 +200,7 @@ public class PageMenuItemFragment extends Fragment  {
         };
 
 
-        WebView web_browser = JFactory.getWebBrowser();
-        web_browser.getSettings().setJavaScriptEnabled(true);
-        web_browser.getSettings().setSupportZoom(true);
-        web_browser.getSettings().setBuiltInZoomControls(true);
-        web_browser.setWebViewClient(web_view_client);
-
-
-        web_browser.clearHistory();
-        web_browser.clearFormData();
-        web_browser.clearCache(true);
-
-        System.out.println("-------host---------");
-        System.out.println(host);
-        System.out.println("-------host---------");
+        vtv_WebView web_browser = JFactory.getWebBrowser();
         web_browser.loadUrl(host);
         web_browser.addJavascriptInterface(new MyJavaScriptInterfaceWebsite(), "HtmlViewer");
     }

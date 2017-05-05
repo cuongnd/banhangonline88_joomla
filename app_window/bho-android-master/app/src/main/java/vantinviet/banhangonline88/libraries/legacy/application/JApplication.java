@@ -7,6 +7,7 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -31,6 +32,7 @@ import vantinviet.banhangonline88.libraries.cms.menu.JMenu;
 import vantinviet.banhangonline88.libraries.joomla.JFactory;
 import vantinviet.banhangonline88.libraries.joomla.application.JApplicationBase;
 import vantinviet.banhangonline88.libraries.joomla.input.JInput;
+import vantinviet.banhangonline88.libraries.utilities.JUtilities;
 import vantinviet.banhangonline88.ux.MainActivity;
 import vantinviet.banhangonline88.ux.SplashActivity;
 
@@ -254,15 +256,6 @@ public class JApplication extends JApplicationBase {
         return main_scroll_view;
     }
 
-    public byte[] getPostBrowser() {
-        String link_post="get_page_config_app=1&ignoreMessages=true&format=json&os=android&vtlai_firewall_redirect=home";
-        System.out.println("-------host---------");
-        //System.out.println(link);
-        System.out.println("link_post:"+link_post+"&base64=0");
-        System.out.println("-------host---------");
-        byte[] post = EncodingUtils.getBytes(link_post, "BASE64");
-        return post;
-    }
 
     public void setResources(Resources resources) {
         this.resources = resources;

@@ -267,14 +267,7 @@ public class MenuDrawerFragment extends Fragment {
     }
 
     private void getDrawerItems() {
-        drawerLoading = true;
-        drawerProgress.setVisibility(View.VISIBLE);
-        drawerRetryBtn.setVisibility(View.GONE);
-        android.webkit.WebView web_browser = JFactory.getWebBrowser();
-        JApplication app=JFactory.getApplication();
-        web_browser.postUrl(EndPoints.NAVIGATION_DRAWER,app.getPostBrowser());
-        app.getProgressDialog().dismiss();
-        web_browser.addJavascriptInterface(new JavaScriptInterfaceWebsite(), "HtmlViewer");
+
     }
 
     private void animateSubListHide() {

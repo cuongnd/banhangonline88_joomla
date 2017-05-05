@@ -3,6 +3,7 @@ package vantinviet.banhangonline88.libraries.utilities;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.util.Base64;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -232,6 +233,52 @@ public class JUtilities {
         }
 
 
+    }
+    public static <T> T[] concatAll(T[] first, T[]... rest) {
+        int totalLength = first.length;
+        for (T[] array : rest) {
+            totalLength += array.length;
+        }
+        T[] result = Arrays.copyOf(first, totalLength);
+        int offset = first.length;
+        for (T[] array : rest) {
+            System.arraycopy(array, 0, result, offset, array.length);
+            offset += array.length;
+        }
+        return result;
+    }
+    public static <T> Map<String, String> concatAllMap(Map<String, String> ... list_map) {
+        Map<String, String> result_map = new HashMap<String, String>();;
+        // create list
+        List<String> map_key = new ArrayList<String>();
+
+        for (Map<String, String> current_map : list_map) {
+            for (Map.Entry<String, String> entry : current_map.entrySet())
+            {
+                String key=entry.getKey();
+                String value=entry.getValue();
+                if(!map_key.contains(key))
+                {
+                    result_map.put(key,value);
+                }
+            }
+        }
+
+        return result_map;
+    }
+    public static String get_string_by_string_base64(String a_string) {
+
+        byte[] data= Base64.decode(a_string, Base64.DEFAULT);
+        // create alert dialog
+        try {
+
+            a_string=new String(data, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+
+            return "";
+        }
+        return a_string;
     }
 }
 

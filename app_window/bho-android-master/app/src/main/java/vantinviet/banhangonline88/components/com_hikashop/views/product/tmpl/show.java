@@ -1,5 +1,7 @@
 package vantinviet.banhangonline88.components.com_hikashop.views.product.tmpl;
 
+import android.annotation.TargetApi;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.design.widget.BottomNavigationView;
@@ -14,16 +16,21 @@ import com.google.gson.stream.JsonReader;
 
 import java.io.StringReader;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import timber.log.Timber;
 import vantinviet.banhangonline88.R;
+import vantinviet.banhangonline88.VTVConfig;
 import vantinviet.banhangonline88.administrator.components.com_hikashop.classes.Category;
 import vantinviet.banhangonline88.administrator.components.com_hikashop.classes.Product;
 import vantinviet.banhangonline88.api.EndPoints;
 import vantinviet.banhangonline88.entities.ShopResponse;
+import vantinviet.banhangonline88.libraries.cms.application.vtv_WebView;
 import vantinviet.banhangonline88.libraries.joomla.JFactory;
 import vantinviet.banhangonline88.libraries.joomla.language.JText;
 import vantinviet.banhangonline88.libraries.legacy.application.JApplication;
+import vantinviet.banhangonline88.libraries.utilities.JUtilities;
 
 /**
  * Created by cuongnd on 02/04/2017.
@@ -77,11 +84,22 @@ public class show {
         linear_layout.addView(show_content);
     }
 
+    @TargetApi(Build.VERSION_CODES.KITKAT)
     private void ajax_add_to_cart() {
-        Timber.d("Now request add to cart %s", EndPoints.ADD_TO_CART);
         app.getProgressDialog().show();
-        android.webkit.WebView web_browser = JFactory.getWebBrowser();
-        web_browser.postUrl(EndPoints.ADD_TO_CART,app.getPostBrowser());
+        vtv_WebView web_browser = JFactory.getWebBrowser();
+        Map<String, String> post = new HashMap<String, String>();
+        post.put("option", "com_hikashop");
+        post.put("ctrl", "product");
+        post.put("task", "updatecart");
+        post.put("add", "1");
+        post.put("cart_type", "cart");
+        post.put("from", "module");
+        post.put("hikashop_ajax", "1");
+        post.put("product_id", "14");
+        post.put("quantity", "1");
+        post.put("return_url", "aHR0cDovL2JhbmhhbmdvbmxpbmU4OC5jb20vaW5kZXgucGhwL2NvbXBvbmVudC9oaWthc2hvcC9wcm9kdWN0L2NpZC04Lmh0bWw=");
+        web_browser.vtv_postUrl(VTVConfig.rootUrl,post);
         app.getProgressDialog().dismiss();
         web_browser.addJavascriptInterface(new response_ajax_add_to_cart(), "HtmlViewer");
     }
@@ -106,20 +124,12 @@ public class show {
 
         @JavascriptInterface
         public void showHTML(String html) {
+            html= JUtilities.get_string_by_string_base64(html);
             Timber.d("html response: %s",html);
             Gson gson = new Gson();
             JsonReader reader = new JsonReader(new StringReader(html));
             reader.setLenient(true);
-            final ShopResponse response_shop = gson.fromJson(reader, ShopResponse.class);
-            Timber.d("Get shops response: %s", response_shop.toString());
-            Handler refresh = new Handler(Looper.getMainLooper());
-            refresh.post(new Runnable() {
-                public void run()
-                {
-                    //setSpinShops(response_shop.getShopList());
-                    //animateContentVisible();
-                }
-            });
+
 
 
 

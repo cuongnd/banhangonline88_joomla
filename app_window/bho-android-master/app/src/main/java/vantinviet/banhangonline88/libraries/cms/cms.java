@@ -2,6 +2,8 @@ package vantinviet.banhangonline88.libraries.cms;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -27,6 +29,7 @@ import vantinviet.banhangonline88.api.EndPoints;
 import vantinviet.banhangonline88.configuration.JConfig;
 import vantinviet.banhangonline88.entities.Page;
 import vantinviet.banhangonline88.entities.drawerMenu.DrawerMenuItem;
+import vantinviet.banhangonline88.libraries.cms.application.vtv_WebView;
 import vantinviet.banhangonline88.libraries.joomla.JFactory;
 import vantinviet.banhangonline88.ux.fragments.PageMenuItemFragment;
 
@@ -43,6 +46,7 @@ public class cms {
     final DrawerMenuItem finalDrawerMenuItem = drawerMenuItem;
     SharedPreferences sharedpreferences;
     String url;
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     private void create_browser(String host) {
         WebViewClient web_view_client = new WebViewClient() {
             @Override
@@ -60,20 +64,7 @@ public class cms {
         };
 
 
-        WebView web_browser = JFactory.getWebBrowser();
-        web_browser.getSettings().setJavaScriptEnabled(true);
-        web_browser.getSettings().setSupportZoom(true);
-        web_browser.getSettings().setBuiltInZoomControls(true);
-        web_browser.setWebViewClient(web_view_client);
-
-
-        web_browser.clearHistory();
-        web_browser.clearFormData();
-        web_browser.clearCache(true);
-
-        System.out.println("-------host---------");
-        System.out.println(host);
-        System.out.println("-------host---------");
+        vtv_WebView web_browser = JFactory.getWebBrowser();
         web_browser.loadUrl(host);
         web_browser.addJavascriptInterface(new MyJavaScriptInterfaceWebsite(), "HtmlViewer");
     }

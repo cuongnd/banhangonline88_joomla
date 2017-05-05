@@ -3,18 +3,25 @@ package vantinviet.banhangonline88.libraries.joomla;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
+import android.text.TextUtils;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import org.apache.http.util.EncodingUtils;
 
 import vantinviet.banhangonline88.VTVConfig;
 import vantinviet.banhangonline88.configuration.JConfig;
 import vantinviet.banhangonline88.configuration.JConfig_countdown;
 import vantinviet.banhangonline88.libraries.cms.application.JApplicationSite;
+import vantinviet.banhangonline88.libraries.cms.application.vtv_WebView;
 import vantinviet.banhangonline88.libraries.cms.menu.JMenu;
 import vantinviet.banhangonline88.libraries.joomla.session.JSession;
 import vantinviet.banhangonline88.libraries.joomla.uri.JUri;
 import vantinviet.banhangonline88.libraries.joomla.user.JUser;
 import vantinviet.banhangonline88.libraries.legacy.application.JApplication;
+import vantinviet.banhangonline88.libraries.utilities.JUtilities;
 
 import static vantinviet.banhangonline88.ux.MainActivity.mInstance;
 
@@ -29,7 +36,7 @@ public class JFactory {
     private static JApplication application;
     private static JUser user;
     public static String language;
-    private static WebView webBrowser=null;
+    private static vtv_WebView webBrowser=null;
     private static VTVConfig vtv_config;
 
     public static JMenu getMenu() {
@@ -93,10 +100,14 @@ public class JFactory {
         return JUser.getInstance(id);
     }
 
-    public static WebView getWebBrowser() {
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public static vtv_WebView getWebBrowser() {
         if(webBrowser==null)
         {
-            webBrowser=new WebView(getContext());
+            webBrowser = new vtv_WebView(getContext());
+
+
+
         }
         WebViewClient web_view_client = new WebViewClient() {
             @Override
@@ -127,4 +138,5 @@ public class JFactory {
         }
         return vtv_config;
     }
+
 }

@@ -1,6 +1,8 @@
 package vantinviet.banhangonline88.libraries.cms.application;
 
 import android.content.SharedPreferences;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -47,11 +49,11 @@ public class WebView {
         }
         return ourInstance;
     }
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void create_browser(String link) {
         app.getProgressDialog().show();
-        android.webkit.WebView web_browser = JFactory.getWebBrowser();
-        Timber.d("link: %s", link);
-        web_browser.postUrl(link,app.getPostBrowser());
+        vtv_WebView web_browser = JFactory.getWebBrowser();
+        web_browser.vtv_postUrl(link);
         app.getProgressDialog().dismiss();
         web_browser.addJavascriptInterface(new MyJavaScriptInterfaceWebsite(), "HtmlViewer");
 
