@@ -1,1 +1,1 @@
-include ':app', ':tableview', ':chatting', ':MaterialTabsModule', ':apptest', ':apptestscroll', ':liboverscroll', ':hoconline', ':core'
+include ':app', ':tableview', ':chatting', ':MaterialTabsModule', ':apptest', ':apptestscroll', ':liboverscroll', ':core'
