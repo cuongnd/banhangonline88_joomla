@@ -57,7 +57,11 @@ public class mod_tab_products extends ActionBarActivity implements MaterialTabLi
         this.module=module;
         this.linear_layout=linear_layout;
         String content=this.module.getContent();
-        //Timber.d("module content %s",content.toString());
+        if(content.isEmpty()){
+            Timber.d("content module %s(%d) is empty",module.getModuleName(),module.getId());
+            return;
+        }
+        Timber.d("module content %s",content.toString());
         Type listType = new TypeToken<ArrayList<Mod_tab_product_helper.List_category_product>>() {}.getType();
         list_main_category_product = JUtilities.getGsonParser().fromJson(content, listType);
         //Timber.d("list_main_category_product %s", list_main_category_product.toString());

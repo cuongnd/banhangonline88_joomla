@@ -32,7 +32,6 @@ import vantinviet.core.libraries.legacy.application.JApplication;
 
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 import static android.widget.ListPopupWindow.MATCH_PARENT;
-import static de.codecrafters.tableview.R.id.container;
 
 
 /**
@@ -66,7 +65,7 @@ public class index extends LinearLayout {
         }
         return instance;
     }
-    public static LinearLayout getLayout() {
+    public static void buildLayout(LinearLayout root_linear_layout) {
         JApplication app= JFactory.getApplication();
         int screen_size_width;
         int screen_size_height;
@@ -74,6 +73,7 @@ public class index extends LinearLayout {
         layout= app.getTemplate().getParams().getAndroid_layout();
         Timber.d("page layout %s", layout.toString());
         DisplayMetrics metrics = new DisplayMetrics();
+        app.getCurrentActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);
         int screenDensity = (int) metrics.density;
         int screenDensityDPI = metrics.densityDpi;
         float screenscaledDensity = metrics.scaledDensity;
@@ -94,9 +94,7 @@ public class index extends LinearLayout {
         }
         String screenSize = Integer.toString(width / screenDensity) + "x" + Integer.toString(height);
         System.out.println(width / screenDensity);
-        LinearLayout template_linear_layout=new LinearLayout(app.getContext());
-        render_layout(layout,template_linear_layout,screen_size_width, WRAP_CONTENT);
-        return template_linear_layout;
+        render_layout(layout,root_linear_layout,screen_size_width, WRAP_CONTENT);
     }
 
     private static void render_layout(ArrayList<Row> layout, LinearLayout rootLinearLayout, int screen_size_width, int screen_size_heght) {

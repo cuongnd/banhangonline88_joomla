@@ -32,6 +32,9 @@ import vantinviet.core.libraries.joomla.JFactory;
 import vantinviet.core.libraries.legacy.application.JApplication;
 import vantinviet.core.libraries.utilities.JUtilities;
 
+import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
+import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
+
 
 /**
  * Created by cuongnd on 12/17/2015.
@@ -76,7 +79,7 @@ public class WebView {
 
                     return;
                 }
-                Timber.d("html response: %s", html1[0]);
+                //Timber.d("html response: %s", html1[0]);
                 Gson gson = new Gson();
                 JsonReader reader = new JsonReader(new StringReader(html1[0]));
                 reader.setLenient(true);
@@ -92,18 +95,18 @@ public class WebView {
                 }
 
                 app.setAplication(page);
-                System.out.print("Page response: "+page.toString());
-                System.out.print("list_input response: "+page.getList_input().toString());
+
+                //System.out.print("Page -------------response: "+page.toString());
+               // System.out.print("list_input response: "+page.getList_input().toString());
+
                 String template_name=app.getTemplate().getTemplateName();
                 //Timber.d("modules: %s",app.getModules().toString());
                 //Timber.d("template: %s",template_name);
                 Class<?> template_class = null;
                 try {
                     template_class = Class.forName(String.format("vantinviet.core.templates.%s.index",template_name));
-                    //app.getRoot_linear_layout().removeAllViews();
-                    Method method = template_class.getDeclaredMethod("getLayout");
-                    LinearLayout template=(LinearLayout)method.invoke(template_class);
-                    app.getRoot_linear_layout().addView(template);
+                    Method method = template_class.getDeclaredMethod("buildLayout",LinearLayout.class);
+                    method.invoke(template_class,app.getRoot_linear_layout());
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();
                 } catch (IllegalAccessException e) {

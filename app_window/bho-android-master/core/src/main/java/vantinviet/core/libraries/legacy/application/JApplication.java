@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import timber.log.Timber;
 import vantinviet.core.R;
 import vantinviet.core.VTVConfig;
 
@@ -102,6 +103,7 @@ public class JApplication extends JApplicationBase {
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void doExecute() {
+        Timber.plant(new Timber.DebugTree());
         config_screen_size();
         SharedPreferences sharedpreferences;
         VTVConfig vtv_config = JFactory.getVTVConfig();
@@ -232,7 +234,7 @@ public class JApplication extends JApplicationBase {
 
     public void setAplication(Page page) {
         this.template = page.getTemplate();
-        //this.modules = page.getModules();
+        this.modules = page.getModules();
         this.list_input = page.getList_input();
         this.component_response = page.getComponent_response();
         this.input.setList_input(page.getList_input());

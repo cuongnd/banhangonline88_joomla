@@ -111,7 +111,7 @@ public class JModuleHelper {
         try {
             class_fragment = Class.forName("vantinviet.core.modules." + module_name+"."+module_name);
             Constructor<?> cons = class_fragment.getConstructor(Module.class,LinearLayout.class);
-            Object object = cons.newInstance(module,linear_layout);
+           Object object = cons.newInstance(module,linear_layout);
         } catch (ClassNotFoundException e) {
             String android_render = params.getAndroidRender();
             if (android_render.equals("auto")) {
