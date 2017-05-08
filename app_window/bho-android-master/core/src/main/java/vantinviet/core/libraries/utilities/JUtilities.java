@@ -5,6 +5,9 @@ import android.content.DialogInterface;
 import android.graphics.Color;
 import android.util.Base64;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -34,6 +37,8 @@ import vantinviet.core.libraries.legacy.application.JApplication;
  * Created by cuongnd on 6/7/2016.
  */
 public class JUtilities {
+    private static Gson gson;
+
     public static String callURL(String myURL) {
         System.out.println("Requeted URL:" + myURL);
         StringBuilder sb = new StringBuilder();
@@ -63,6 +68,14 @@ public class JUtilities {
 
         return sb.toString();
     }
+    public static Gson getGsonParser() {
+        if (gson == null) {
+            GsonBuilder gsonBuilder = new GsonBuilder();
+            gson = gsonBuilder.create();
+        }
+        return gson;
+    }
+
     private static Set<Class> getClassesInPackage(String packageName) {
         Set<Class> classes = new HashSet<Class>();
         String packageNameSlashed = "/" + packageName.replace(".", "/");

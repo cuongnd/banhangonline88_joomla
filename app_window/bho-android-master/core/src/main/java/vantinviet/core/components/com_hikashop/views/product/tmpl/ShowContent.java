@@ -43,7 +43,7 @@ import vantinviet.core.libraries.html.TagHtml;
 import vantinviet.core.libraries.joomla.JFactory;
 import vantinviet.core.libraries.legacy.application.JApplication;
 
-import static vantinviet.core.ux.MainActivity.mInstance;
+
 
 /**
  * TODO: document your custom view class.
@@ -67,7 +67,7 @@ public class ShowContent extends LinearLayout {
         Product product=product_response.getProduct();
         ArrayList<Image> images=product.getImages();
         if(images!=null)for (Image image: images) {
-            TextSliderView textSliderView = new TextSliderView(mInstance);
+            TextSliderView textSliderView = new TextSliderView(app.getBaseContext());
             // initialize a SliderLayout
             textSliderView
                     .image(VTVConfig.rootUrl.concat(image.getUrl()))

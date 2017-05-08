@@ -9,26 +9,27 @@ import android.util.DisplayMetrics;
 
 import java.util.ArrayList;
 
-import vantinviet.core.MyApplication;
+
 import vantinviet.core.VTVConfig;
 import vantinviet.core.configuration.JConfig;
-import vantinviet.core.entities.Document;
-import vantinviet.core.entities.module.Module;
-import vantinviet.core.entities.template.Template;
+
+
+
 import vantinviet.core.libraries.cms.application.WebView;
+import vantinviet.core.libraries.html.bootstrap.Template;
+import vantinviet.core.libraries.html.module.Module;
 import vantinviet.core.libraries.joomla.JFactory;
 import vantinviet.core.libraries.joomla.input.JInput;
-import vantinviet.core.ux.MainActivity;
+
 
 import static vantinviet.core.libraries.cms.application.JApplicationSite.initialiseApp;
-import static vantinviet.core.ux.MainActivity.MyPREFERENCES;
+
 
 /**
  * Created by cuongnd on 6/18/2016.
  */
 public class JApplicationBase extends Application {
     public Template template;
-    public Document document;
     public ArrayList<Module> modules=new ArrayList<Module>();
     public JInput input;
     public static AppCompatActivity currentActivity;

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import vantinviet.core.libraries.html.bootstrap.Template;
+import vantinviet.core.libraries.html.module.Module;
 
 /**
  * Created by cuong on 5/8/2017.
@@ -15,7 +16,6 @@ public class Page {
     public String text;
     public String component_response;
     public Template template;
-    public Document document;
     ArrayList<Module> modules=new ArrayList<Module>();
     private Map<String, String> list_input;
 

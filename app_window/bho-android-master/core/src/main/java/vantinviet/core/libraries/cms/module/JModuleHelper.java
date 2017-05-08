@@ -32,8 +32,10 @@ import de.codecrafters.tableview.toolkit.TableDataRowColorizers;
 import timber.log.Timber;
 import vantinviet.core.R;
 import vantinviet.core.configuration.JConfig;
-import vantinviet.core.entities.module.Module;
-import vantinviet.core.entities.module.Params;
+
+
+import vantinviet.core.libraries.html.module.Module;
+import vantinviet.core.libraries.html.module.Params;
 import vantinviet.core.libraries.joomla.JFactory;
 import vantinviet.core.libraries.joomla.cache.cache;
 import vantinviet.core.libraries.joomla.form.JFormField;

@@ -21,16 +21,18 @@ import it.neokree.materialtabs.MaterialTab;
 import it.neokree.materialtabs.MaterialTabHost;
 import it.neokree.materialtabs.MaterialTabListener;
 import timber.log.Timber;
-import vantinviet.core.MyApplication;
+
 import vantinviet.core.R;
 import vantinviet.core.administrator.components.com_hikashop.classes.Category;
-import vantinviet.core.entities.module.Module;
+import vantinviet.core.libraries.html.module.Module;
+import vantinviet.core.libraries.joomla.JFactory;
+import vantinviet.core.libraries.legacy.application.JApplication;
+import vantinviet.core.libraries.utilities.JUtilities;
 
-import vantinviet.core.utils.Utils;
 
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 import static android.widget.ListPopupWindow.MATCH_PARENT;
-import static vantinviet.core.ux.MainActivity.mInstance;
+
 
 
 /**
@@ -42,9 +44,9 @@ public class mod_tab_products extends ActionBarActivity implements MaterialTabLi
     private final Module module;
     private final LinearLayout linear_layout;
     private static final String KEY_DEMO = "demo";
-    private MyApplication app;
     LinearLayout tab_content;
     MaterialTabHost tabHost;
+    JApplication app= JFactory.getApplication();
     Module_tab_product_tmpl_default object_tab_product_tmpl_default;
     ArrayList<Mod_tab_product_helper.List_category_product> list_main_category_product;
     ArrayList<Module_tab_product_tmpl_default_tab_content> list_module_tab_product_tmpl_default_tab_content;
@@ -57,18 +59,18 @@ public class mod_tab_products extends ActionBarActivity implements MaterialTabLi
         String content=this.module.getContent();
         //Timber.d("module content %s",content.toString());
         Type listType = new TypeToken<ArrayList<Mod_tab_product_helper.List_category_product>>() {}.getType();
-        list_main_category_product = Utils.getGsonParser().fromJson(content, listType);
+        list_main_category_product = JUtilities.getGsonParser().fromJson(content, listType);
         //Timber.d("list_main_category_product %s", list_main_category_product.toString());
         init();
     }
 
     private void init() {
-        object_tab_product_tmpl_default =new Module_tab_product_tmpl_default(mInstance,this.module);
+        object_tab_product_tmpl_default =new Module_tab_product_tmpl_default(app.getBaseContext(),this.module);
         tabHost = (MaterialTabHost) object_tab_product_tmpl_default.findViewById(R.id.tabHost);
         pager = (ViewPager) object_tab_product_tmpl_default.findViewById(R.id.pager );
         pager.setId(module.getId());
         // init view pager
-        FragmentManager fragManager = mInstance.getSupportFragmentManager();
+        FragmentManager fragManager = getSupportFragmentManager();
         adapter = new ViewPagerAdapter(fragManager);
         pager.setAdapter(adapter);
         pager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
@@ -96,10 +98,10 @@ public class mod_tab_products extends ActionBarActivity implements MaterialTabLi
         module_title.setLayoutParams(module_title_params);
         TextView title=(TextView) module_title.findViewById(R.id.title);
         title.setText(module.getTitle());
-        title.setTextAppearance(mInstance, R.style.module_title_text);
+        title.setTextAppearance(app.getBaseContext(), R.style.module_title_text);
 
         LinearLayout.LayoutParams new_vertical_wrapper_of_module_linear_layout_params = new LinearLayout.LayoutParams(MATCH_PARENT,WRAP_CONTENT  );
-        LinearLayout new_wrapper_of_module_content_linear_layout=new LinearLayout(mInstance);
+        LinearLayout new_wrapper_of_module_content_linear_layout=new LinearLayout(app.getBaseContext());
         new_wrapper_of_module_content_linear_layout.setLayoutParams(new_vertical_wrapper_of_module_linear_layout_params);
         new_wrapper_of_module_content_linear_layout.setOrientation(LinearLayout.VERTICAL);
 

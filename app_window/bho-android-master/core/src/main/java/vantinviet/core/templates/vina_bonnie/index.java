@@ -18,21 +18,22 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import timber.log.Timber;
-import vantinviet.core.CONST;
+
 import vantinviet.core.R;
-import vantinviet.core.entities.drawerMenu.DrawerMenuItem;
-import vantinviet.core.entities.module.Module;
-import vantinviet.core.entities.template.bootstrap.Column;
-import vantinviet.core.entities.template.bootstrap.Row;
+
+
 import vantinviet.core.libraries.cms.component.JComponentHelper;
 import vantinviet.core.libraries.cms.module.JModuleHelper;
+import vantinviet.core.libraries.html.bootstrap.Column;
+import vantinviet.core.libraries.html.bootstrap.Row;
+import vantinviet.core.libraries.html.module.Module;
 import vantinviet.core.libraries.joomla.JFactory;
 import vantinviet.core.libraries.legacy.application.JApplication;
-import vantinviet.core.ux.MainActivity;
+
 
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 import static android.widget.ListPopupWindow.MATCH_PARENT;
-import static vantinviet.core.ux.MainActivity.mInstance;
+
 
 /**
  * Fragment shows a detail of the product.
@@ -40,7 +41,6 @@ import static vantinviet.core.ux.MainActivity.mInstance;
 @SuppressLint("ValidFragment")
 public class index extends Fragment {
 
-    private final DrawerMenuItem drawerMenuItem;
 
     private ProgressBar progressView;
 
@@ -55,15 +55,10 @@ public class index extends Fragment {
     private int screen_size_width;
     private int screen_size_height;
 
-    @SuppressLint("ValidFragment")
-    public index(DrawerMenuItem drawerMenuItem) {
-        this.drawerMenuItem=drawerMenuItem;
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Timber.d("%s - onCreateView", this.getClass().getSimpleName());
-        MainActivity.setActionBarTitle(app.getTitle());
 
         layout= app.getTemplate().getParams().getAndroid_layout();
         Timber.d("page layout %s", layout.toString());
@@ -71,7 +66,6 @@ public class index extends Fragment {
         app.setMain_scroll_view((ScrollView) view.findViewById(R.id.main_scroll_view));
         LinearLayout rootLinearLayout=(LinearLayout)view.findViewById(R.id.root_layout);
         DisplayMetrics metrics = new DisplayMetrics();
-        mInstance.getWindowManager().getDefaultDisplay().getMetrics(metrics);
         int screenDensity = (int) metrics.density;
         int screenDensityDPI = metrics.densityDpi;
         float screenscaledDensity = metrics.scaledDensity;
@@ -190,9 +184,7 @@ public class index extends Fragment {
         new_item_text_view.setText(text);
         view_linear_layout.addView(new_item_text_view);
     }
-    private void setContentVisible(CONST.VISIBLE visible) {
 
-    }
 
     @Override
     public void onResume() {

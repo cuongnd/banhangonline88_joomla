@@ -13,7 +13,6 @@ import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.beardedhen.androidbootstrap.BootstrapButtonGroup;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapBrand;
 import com.beardedhen.androidbootstrap.api.defaults.DefaultBootstrapSize;
-import vantinviet.core.ux.MainActivity;
 import vantinviet.core.R;
 import vantinviet.core.libraries.android.registry.JRegistry;
 import vantinviet.core.libraries.cms.menu.JMenu;

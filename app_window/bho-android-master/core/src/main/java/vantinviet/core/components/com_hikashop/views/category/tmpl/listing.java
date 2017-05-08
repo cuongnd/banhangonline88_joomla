@@ -11,13 +11,10 @@ import java.util.ArrayList;
 
 import vantinviet.core.administrator.components.com_hikashop.classes.Category;
 import vantinviet.core.administrator.components.com_hikashop.classes.Product;
-import vantinviet.core.entities.Page;
-import vantinviet.core.entities.module.Module;
 import vantinviet.core.libraries.joomla.JFactory;
 import vantinviet.core.libraries.legacy.application.JApplication;
 import vantinviet.core.modules.mod_tab_products.Module_tab_product_tmpl_default;
 
-import static vantinviet.core.ux.MainActivity.mInstance;
 
 /**
  * Created by cuongnd on 02/04/2017.

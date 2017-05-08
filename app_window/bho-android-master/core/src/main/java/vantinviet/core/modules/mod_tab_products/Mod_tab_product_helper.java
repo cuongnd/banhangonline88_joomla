@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import vantinviet.core.administrator.components.com_hikashop.classes.Category;
 import vantinviet.core.administrator.components.com_hikashop.classes.Product;
-import vantinviet.core.entities.module.Module;
+
 
 /**
  * Created by cuongnd on 30/03/2017.

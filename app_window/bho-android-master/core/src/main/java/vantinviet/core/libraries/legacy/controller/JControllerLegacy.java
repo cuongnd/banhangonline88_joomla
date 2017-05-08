@@ -9,7 +9,7 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
 
-import vantinviet.core.entities.drawerMenu.DrawerMenuItem;
+
 import vantinviet.core.libraries.joomla.JFactory;
 import vantinviet.core.libraries.joomla.input.JInput;
 import vantinviet.core.libraries.legacy.application.JApplication;

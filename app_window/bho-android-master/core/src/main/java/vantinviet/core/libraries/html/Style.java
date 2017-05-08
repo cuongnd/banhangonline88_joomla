@@ -7,7 +7,6 @@ import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 
-import vantinviet.core.entities.template.bootstrap.Column;
 
 /**
  * Created by cuongnd on 14/04/2017.

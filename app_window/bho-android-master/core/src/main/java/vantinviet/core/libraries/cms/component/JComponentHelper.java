@@ -32,8 +32,6 @@ import timber.log.Timber;
 import vantinviet.core.R;
 import vantinviet.core.VTVConfig;
 import vantinviet.core.configuration.JConfig;
-import vantinviet.core.entities.module.Module;
-import vantinviet.core.entities.module.Params;
 import vantinviet.core.libraries.android.registry.JRegistry;
 import vantinviet.core.libraries.cms.menu.JMenu;
 import vantinviet.core.libraries.joomla.JFactory;

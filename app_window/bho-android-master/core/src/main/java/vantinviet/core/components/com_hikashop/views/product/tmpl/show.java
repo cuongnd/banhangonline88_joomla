@@ -24,8 +24,8 @@ import vantinviet.core.R;
 import vantinviet.core.VTVConfig;
 import vantinviet.core.administrator.components.com_hikashop.classes.Category;
 import vantinviet.core.administrator.components.com_hikashop.classes.Product;
-import vantinviet.core.api.EndPoints;
-import vantinviet.core.entities.ShopResponse;
+
+
 import vantinviet.core.libraries.cms.application.vtv_WebView;
 import vantinviet.core.libraries.joomla.JFactory;
 import vantinviet.core.libraries.joomla.language.JText;

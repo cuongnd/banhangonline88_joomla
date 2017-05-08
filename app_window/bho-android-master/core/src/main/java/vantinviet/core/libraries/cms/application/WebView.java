@@ -22,8 +22,8 @@ import timber.log.Timber;
 import vantinviet.core.R;
 import vantinviet.core.VTVConfig;
 import vantinviet.core.configuration.JConfig;
-import vantinviet.core.entities.Page;
-import vantinviet.core.entities.drawerMenu.DrawerMenuItem;
+
+
 import vantinviet.core.libraries.joomla.JFactory;
 import vantinviet.core.libraries.legacy.application.JApplication;
 import vantinviet.core.libraries.utilities.JUtilities;
@@ -35,10 +35,8 @@ import vantinviet.core.libraries.utilities.JUtilities;
 public class WebView {
     private static JApplication app=JFactory.getApplication();
     private static WebView ourInstance;
-    DrawerMenuItem drawerMenuItem =new DrawerMenuItem();
     private  Fragment fragment=new Fragment();
     private Class<?> current_class;
-    final DrawerMenuItem finalDrawerMenuItem = drawerMenuItem;
     SharedPreferences sharedpreferences;
     String link;
     private static VTVConfig vtv_config=VTVConfig.getInstance();
@@ -62,7 +60,7 @@ public class WebView {
 
     public void go_to_page(String html){
 
-        app.getProgressDialog().dismiss();
+       /* app.getProgressDialog().dismiss();
         byte[] data= Base64.decode(html, Base64.DEFAULT);
         // create alert dialog
         try {
@@ -120,7 +118,7 @@ public class WebView {
         } else {
             Timber.e(new RuntimeException(), "Replace fragments with null newFragment parameter.");
         }
-
+*/
 
     }
     private class MyJavaScriptInterfaceWebsite {

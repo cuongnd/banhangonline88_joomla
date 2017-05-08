@@ -6,8 +6,8 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import timber.log.Timber;
-import vantinviet.core.entities.module.Module;
 import vantinviet.core.libraries.android.registry.JRegistry;
+import vantinviet.core.libraries.html.module.Module;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,8 +18,8 @@ import org.json.JSONObject;
 public class mod_menu {
 
     public static  Context main_context;
-    private final Module module;
     private final LinearLayout linear_layout;
+    private final Module module;
 
     @SuppressLint("ValidFragment")
     public mod_menu(Module module, LinearLayout linear_layout) {

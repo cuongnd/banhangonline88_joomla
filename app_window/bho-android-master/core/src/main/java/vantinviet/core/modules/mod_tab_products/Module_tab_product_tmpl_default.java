@@ -8,7 +8,8 @@ import android.widget.RelativeLayout;
 import com.google.gson.JsonElement;
 
 import vantinviet.core.R;
-import vantinviet.core.entities.module.Module;
+import vantinviet.core.libraries.html.module.Module;
+
 
 /**
  * TODO: document your custom view class.

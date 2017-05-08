@@ -31,8 +31,7 @@ import java.util.Map;
 import timber.log.Timber;
 import vantinviet.core.R;
 import vantinviet.core.VTVConfig;
-import vantinviet.core.components.com_users.views.profile.view;
-import vantinviet.core.entities.template.bootstrap.Column;
+import vantinviet.core.libraries.html.bootstrap.Column;
 import vantinviet.core.libraries.joomla.JFactory;
 import vantinviet.core.libraries.legacy.application.JApplication;
 import vantinviet.core.libraries.utilities.ImageConverter;
@@ -295,7 +294,6 @@ public class TagHtml {
             LinearLayout new_row_linear_layout = new LinearLayout(app.getCurrentActivity());
             new_row_linear_layout.setLayoutParams(layout_params);
             new_row_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
-            new_row_linear_layout.setId(R.id.row);
             current_class_tag = get_current_class_tag(tag);
             class_path+=" "+current_class_tag;
             //set_style(tag,new_row_linear_layout, "",list_style_sheet);

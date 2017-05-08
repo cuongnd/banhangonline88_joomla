@@ -22,19 +22,22 @@ import java.util.Map;
 import java.util.concurrent.Callable;
 
 import vantinviet.core.VTVConfig;
-import vantinviet.core.entities.Page;
-import vantinviet.core.entities.module.Module;
-import vantinviet.core.entities.template.Template;
+
+
+
 import vantinviet.core.libraries.android.http.JSONParser;
 import vantinviet.core.libraries.cms.application.JApplicationSite;
+import vantinviet.core.libraries.cms.application.Page;
 import vantinviet.core.libraries.cms.application.WebView;
 import vantinviet.core.libraries.cms.menu.JMenu;
+import vantinviet.core.libraries.html.bootstrap.Template;
+import vantinviet.core.libraries.html.module.Module;
 import vantinviet.core.libraries.joomla.JFactory;
 import vantinviet.core.libraries.joomla.application.JApplicationBase;
 import vantinviet.core.libraries.joomla.input.JInput;
 import vantinviet.core.libraries.utilities.JUtilities;
-import vantinviet.core.ux.MainActivity;
-import vantinviet.core.ux.SplashActivity;
+
+
 
 
 /**
@@ -49,7 +52,7 @@ public class JApplication extends JApplicationBase {
     private String redirect;
     public VTVConfig vtvConfig=VTVConfig.getInstance();
     Map<String, String> list_input = new HashMap<String, String>();
-    private MainActivity mainActivity;
+
     private String title;
     public JInput input;
     private String component_response;
@@ -117,14 +120,14 @@ public class JApplication extends JApplicationBase {
             sharedpreferences = getSharedPreferences(LIST_DATA_RESPONSE_BY_URL, getCurrentActivity().MODE_PRIVATE);
             String response_data = sharedpreferences.getString(link, "");
             if (response_data.equals("")) {
-                webview.create_browser(link);
+                //webview.create_browser(link);
 
             } else {
                 webview.go_to_page(response_data);
             }
         } else {
             getProgressDialog().show();
-            webview.create_browser(link);
+            //webview.create_browser(link);
             getProgressDialog().dismiss();
         }
     }
@@ -183,9 +186,9 @@ public class JApplication extends JApplicationBase {
         }*/
         setLink(link);
         saveCurrentLink(link);
-        Intent myIntent = new Intent(getCurrentActivity(), MainActivity.class);
+        //Intent myIntent = new Intent(getCurrentActivity(), MainActivity.class);
         //myIntent.putExtra("key", value); //Optional parameters
-        getCurrentActivity().startActivity(myIntent);
+        //getCurrentActivity().startActivity(myIntent);
 
     }
 
@@ -225,7 +228,7 @@ public class JApplication extends JApplicationBase {
 
     public void setAplication(Page page) {
         this.template = page.getTemplate();
-        this.modules = page.getModules();
+        //this.modules = page.getModules();
         this.list_input = page.getList_input();
         this.component_response = page.getComponent_response();
         this.input.setList_input(page.getList_input());

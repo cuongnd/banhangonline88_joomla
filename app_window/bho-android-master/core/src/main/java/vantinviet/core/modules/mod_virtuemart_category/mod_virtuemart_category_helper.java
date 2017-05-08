@@ -20,7 +20,7 @@ import vantinviet.core.VTVConfig;
 import vantinviet.core.libraries.cms.application.JApplicationSite;
 import vantinviet.core.libraries.joomla.JFactory;
 import vantinviet.core.libraries.legacy.application.JApplication;
-import vantinviet.core.ux.MainActivity;
+
 
 /**
  * Created by cuongnd on 12/17/2015.
@@ -70,7 +70,6 @@ public class mod_virtuemart_category_helper {
                 title = menu_item.getString("title");
                 bootstrap_button.setId(id);
                 bootstrap_button.setText(title);
-                bootstrap_button.setOnClickListener(getOnClickDoSomething(bootstrap_button,menu_item));
                 Resources resource = context.getResources();
                 bootstrap_button_group.addView(bootstrap_button);
             }
@@ -89,30 +88,6 @@ public class mod_virtuemart_category_helper {
             ((LinearLayout) parent_object).addView(bootstrap_button_group);
         }
 
-    }
-    static View.OnClickListener getOnClickDoSomething(final BootstrapButton button, final JSONObject menu_item)  {
-        JApplication app= JFactory.getApplication();
-        return new View.OnClickListener() {
-            public void onClick(View v) {
-                try {
-                    String screenSize = Integer.toString(VTVConfig.screen_size_width/ VTVConfig.screenDensity) + "x" + Integer.toString( VTVConfig.screen_size_height);
-                    String local_version= VTVConfig.get_version();
-                    String link=menu_item.getString("link");
-                    String id=menu_item.getString("id");
-                    String title=menu_item.getString("title");
-                    link=link+"&Itemid="+id+"&os=android&screenSize="+ screenSize+"&version="+local_version;
-                    JApplicationSite.host=link;
-                    Intent i = new Intent(v.getContext(), MainActivity.class);
-                    v.getContext().startActivity(i);
-
-
-                    //(new AsyncJsonElementViewLoader()).execute(link);
-                    System.out.println(link);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        };
     }
 
 }

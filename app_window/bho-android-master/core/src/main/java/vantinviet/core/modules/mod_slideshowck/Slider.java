@@ -1,7 +1,6 @@
 package vantinviet.core.modules.mod_slideshowck;
 
 import vantinviet.core.VTVConfig;
-import vantinviet.core.api.EndPoints;
 
 /**
  * Created by cuongnd on 27/03/2017.

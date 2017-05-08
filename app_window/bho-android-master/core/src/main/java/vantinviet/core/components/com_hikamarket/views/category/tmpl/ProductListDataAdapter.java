@@ -26,7 +26,6 @@ import vantinviet.core.R;
 import vantinviet.core.VTVConfig;
 import vantinviet.core.administrator.components.com_hikashop.classes.Image;
 import vantinviet.core.administrator.components.com_hikashop.classes.Product;
-import vantinviet.core.api.EndPoints;
 import vantinviet.core.libraries.joomla.JFactory;
 import vantinviet.core.libraries.legacy.application.JApplication;
 

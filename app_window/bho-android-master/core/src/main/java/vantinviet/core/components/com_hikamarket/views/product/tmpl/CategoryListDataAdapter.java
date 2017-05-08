@@ -25,7 +25,6 @@ import vantinviet.core.R;
 import vantinviet.core.VTVConfig;
 import vantinviet.core.administrator.components.com_hikashop.classes.Category;
 import vantinviet.core.administrator.components.com_hikashop.classes.Image;
-import vantinviet.core.api.EndPoints;
 
 public class CategoryListDataAdapter extends RecyclerView.Adapter<CategoryListDataAdapter.SingleCategoryRowHolder> {
 
