@@ -1,18 +1,9 @@
 package vantinviet.hoconline;
 
 import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+import android.support.annotation.RequiresApi;
 
 import java.util.ArrayList;
 
