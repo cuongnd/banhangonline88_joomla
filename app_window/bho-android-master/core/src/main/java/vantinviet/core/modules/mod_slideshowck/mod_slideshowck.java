@@ -44,10 +44,10 @@ public class mod_slideshowck {
         Type listType = new TypeToken<ArrayList<Slider>>() {}.getType();
         ArrayList<Slider> list_slide = JUtilities.getGsonParser().fromJson(response, listType);
         Timber.d("mod_slideshowck list_slide %s",list_slide.toString());
-        SliderLayout mDemoSlider =new SliderLayout(app.getBaseContext());
+        SliderLayout mDemoSlider =new SliderLayout(app.getContext());
         mDemoSlider.setLayoutParams(new LinearLayout.LayoutParams(MATCH_PARENT, 400));
         if(list_slide!=null)for (Slider item: list_slide) {
-            TextSliderView textSliderView = new TextSliderView(app.getBaseContext());
+            TextSliderView textSliderView = new TextSliderView(app.getContext());
             // initialize a SliderLayout
             textSliderView
                     .description(item.getTitle())

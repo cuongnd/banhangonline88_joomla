@@ -49,10 +49,8 @@ public class WebView {
     }
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void create_browser(String link) {
-        app.getProgressDialog().show();
         vtv_WebView web_browser = JFactory.getWebBrowser();
         web_browser.vtv_postUrl(link);
-        app.getProgressDialog().dismiss();
         web_browser.addJavascriptInterface(new MyJavaScriptInterfaceWebsite(), "HtmlViewer");
 
 

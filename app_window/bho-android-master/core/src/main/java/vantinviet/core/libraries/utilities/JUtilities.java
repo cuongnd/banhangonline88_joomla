@@ -1,6 +1,8 @@
 package vantinviet.core.libraries.utilities;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.util.Base64;
@@ -30,6 +32,7 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import vantinviet.core.R;
 import vantinviet.core.libraries.joomla.JFactory;
 import vantinviet.core.libraries.legacy.application.JApplication;
 
@@ -293,5 +296,18 @@ public class JUtilities {
         }
         return a_string;
     }
-}
+
+    /**
+     * Generate top layer progress indicator.
+     *
+     * @param context    activity context
+     * @param cancelable can be progress layer canceled
+     * @return dialog
+     */
+    public static ProgressDialog generateProgressDialog(Context context, boolean cancelable) {
+        ProgressDialog progressDialog = new ProgressDialog(context);
+        progressDialog.setMessage(context.getString(R.string.Loading));
+        progressDialog.setCancelable(cancelable);
+        return progressDialog;
+    }}
 

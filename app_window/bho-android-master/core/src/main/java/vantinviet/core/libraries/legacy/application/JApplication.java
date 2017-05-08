@@ -1,9 +1,12 @@
 package vantinviet.core.libraries.legacy.application;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.os.Build;
 import android.preference.PreferenceManager;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -66,6 +69,7 @@ public class JApplication extends JApplicationBase {
     private ScrollView main_scroll_view;
     private byte[] setPostBrowser;
     private Resources resources;
+    private Context baseContext;
 
     /* Static 'instance' method */
     public static JApplication getInstance() {
@@ -109,13 +113,17 @@ public class JApplication extends JApplicationBase {
         return url;
 
     }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void doExecute() {
         config_screen_size();
         SharedPreferences sharedpreferences;
         VTVConfig vtv_config = JFactory.getVTVConfig();
         int caching = vtv_config.getCaching();
         String link = getLink();
-        WebView webview=WebView.getInstance();
+        setProgressDialog(JUtilities.generateProgressDialog(getContext(), false));
+
+        WebView webview = WebView.getInstance();
         if (caching == 1) {
             sharedpreferences = getSharedPreferences(LIST_DATA_RESPONSE_BY_URL, getCurrentActivity().MODE_PRIVATE);
             String response_data = sharedpreferences.getString(link, "");
@@ -126,10 +134,14 @@ public class JApplication extends JApplicationBase {
                 webview.go_to_page(response_data);
             }
         } else {
-            getProgressDialog().show();
-            //webview.create_browser(link);
-            getProgressDialog().dismiss();
+            //getProgressDialog().show();
+            webview.create_browser(link);
+            //getProgressDialog().dismiss();
         }
+    }
+
+    private SharedPreferences getSharedPreferences(String listDataResponseByUrl, int modePrivate) {
+        return null;
     }
 
     public static void config_screen_size() {
@@ -221,6 +233,7 @@ public class JApplication extends JApplicationBase {
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void execute() {
         doExecute();
     }
@@ -266,4 +279,6 @@ public class JApplication extends JApplicationBase {
     public Resources getResources() {
         return resources;
     }
+
+
 }

@@ -28,7 +28,7 @@ import static vantinviet.core.libraries.cms.application.JApplicationSite.initial
 /**
  * Created by cuongnd on 6/18/2016.
  */
-public class JApplicationBase extends Application {
+public class JApplicationBase {
     public Template template;
     public ArrayList<Module> modules=new ArrayList<Module>();
     public JInput input;
@@ -36,8 +36,7 @@ public class JApplicationBase extends Application {
     private String link;
     public static final String LIST_DATA_RESPONSE_BY_URL = "list_data_response_by_url";
     private ProgressDialog progressDialog;
-
-
+    private Context context;
 
 
     public void setLink(String link) {
@@ -54,5 +53,13 @@ public class JApplicationBase extends Application {
 
     public ProgressDialog getProgressDialog() {
         return progressDialog;
+    }
+
+    public Context getContext() {
+        return context;
+    }
+
+    public void setContext(Context context) {
+        this.context = context;
     }
 }

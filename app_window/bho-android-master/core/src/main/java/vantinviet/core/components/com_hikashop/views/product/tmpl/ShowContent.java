@@ -67,7 +67,7 @@ public class ShowContent extends LinearLayout {
         Product product=product_response.getProduct();
         ArrayList<Image> images=product.getImages();
         if(images!=null)for (Image image: images) {
-            TextSliderView textSliderView = new TextSliderView(app.getBaseContext());
+            TextSliderView textSliderView = new TextSliderView(app.getContext());
             // initialize a SliderLayout
             textSliderView
                     .image(VTVConfig.rootUrl.concat(image.getUrl()))

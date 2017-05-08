@@ -65,7 +65,7 @@ public class mod_tab_products extends ActionBarActivity implements MaterialTabLi
     }
 
     private void init() {
-        object_tab_product_tmpl_default =new Module_tab_product_tmpl_default(app.getBaseContext(),this.module);
+        object_tab_product_tmpl_default =new Module_tab_product_tmpl_default(app.getContext(),this.module);
         tabHost = (MaterialTabHost) object_tab_product_tmpl_default.findViewById(R.id.tabHost);
         pager = (ViewPager) object_tab_product_tmpl_default.findViewById(R.id.pager );
         pager.setId(module.getId());
@@ -98,10 +98,10 @@ public class mod_tab_products extends ActionBarActivity implements MaterialTabLi
         module_title.setLayoutParams(module_title_params);
         TextView title=(TextView) module_title.findViewById(R.id.title);
         title.setText(module.getTitle());
-        title.setTextAppearance(app.getBaseContext(), R.style.module_title_text);
+        title.setTextAppearance(app.getContext(), R.style.module_title_text);
 
         LinearLayout.LayoutParams new_vertical_wrapper_of_module_linear_layout_params = new LinearLayout.LayoutParams(MATCH_PARENT,WRAP_CONTENT  );
-        LinearLayout new_wrapper_of_module_content_linear_layout=new LinearLayout(app.getBaseContext());
+        LinearLayout new_wrapper_of_module_content_linear_layout=new LinearLayout(app.getContext());
         new_wrapper_of_module_content_linear_layout.setLayoutParams(new_vertical_wrapper_of_module_linear_layout_params);
         new_wrapper_of_module_content_linear_layout.setOrientation(LinearLayout.VERTICAL);
 

@@ -23,6 +23,7 @@ import vantinviet.core.libraries.joomla.user.JUser;
 import vantinviet.core.libraries.legacy.application.JApplication;
 import vantinviet.core.libraries.utilities.JUtilities;
 
+import static vantinviet.core.libraries.legacy.controller.JControllerLegacy.app;
 
 
 /**
@@ -48,7 +49,8 @@ public class JFactory {
     }
 
     public static JConfig getConfig() {
-        Context context= JFactory.getContext();
+        JApplication app=JFactory.getApplication();
+        Context context= app.getContext();
         String app_name= JFactory.getAppLable(context);
         JConfig config;
         switch (app_name) {
@@ -62,13 +64,8 @@ public class JFactory {
         return config;
     }
 
-    public static void setContext(Context context) {
-        JFactory.context = context;
-    }
 
-    public static Context getContext() {
-        return JFactory.context;
-    }
+
 
     public static String getAppLable(Context context) {
         PackageManager packageManager = context.getPackageManager();
@@ -103,7 +100,7 @@ public class JFactory {
     public static vtv_WebView getWebBrowser() {
         if(webBrowser==null)
         {
-            webBrowser = new vtv_WebView(getContext());
+            webBrowser = new vtv_WebView(app.getContext());
 
 
 

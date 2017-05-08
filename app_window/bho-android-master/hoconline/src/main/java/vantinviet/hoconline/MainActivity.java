@@ -32,10 +32,12 @@ public class MainActivity extends AppCompatActivity {
     private void init(MainActivity mInstance) {
         Timber.d("%s onCreate", MainActivity.class.getSimpleName());
         app.setCurrentActivity(mInstance);
+        app.setContext(getBaseContext());
+        app.setResources(getResources());
 
 
-        app.main_linear_layout =(LinearLayout) findViewById(R.id.main_linear_layout);
-        app.root_relative_layout =(RelativeLayout) findViewById(R.id.root_relative_layout);
+        //app.main_linear_layout =(LinearLayout) findViewById(R.id.main_linear_layout);
+        //app.root_relative_layout =(RelativeLayout) findViewById(R.id.root_relative_layout);
         app.execute();
 
     }
