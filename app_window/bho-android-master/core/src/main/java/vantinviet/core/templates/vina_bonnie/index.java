@@ -1,15 +1,14 @@
 package vantinviet.core.templates.vina_bonnie;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
@@ -33,13 +32,14 @@ import vantinviet.core.libraries.legacy.application.JApplication;
 
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 import static android.widget.ListPopupWindow.MATCH_PARENT;
+import static de.codecrafters.tableview.R.id.container;
 
 
 /**
  * Fragment shows a detail of the product.
  */
 @SuppressLint("ValidFragment")
-public class index extends Fragment {
+public class index extends LinearLayout {
 
 
     private ProgressBar progressView;
@@ -48,23 +48,31 @@ public class index extends Fragment {
     private View layoutEmpty;
     private RelativeLayout productContainer;
     private ScrollView contentScrollLayout;
-    public JApplication app= JFactory.getApplication();
 
-    ArrayList<Row> layout;
+    public static LinearLayout instance;
+
     private ViewTreeObserver.OnScrollChangedListener scrollViewListener;
-    private int screen_size_width;
-    private int screen_size_height;
 
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Timber.d("%s - onCreateView", this.getClass().getSimpleName());
+    public  index(Context context) {
+        super(context);
 
+    }
+
+    public static LinearLayout getInstance() {
+        JApplication app=JFactory.getApplication();
+        if (instance == null) {
+            instance = new index(app.getContext());
+        }
+        return instance;
+    }
+    public static LinearLayout getLayout() {
+        JApplication app= JFactory.getApplication();
+        int screen_size_width;
+        int screen_size_height;
+        ArrayList<Row> layout;
         layout= app.getTemplate().getParams().getAndroid_layout();
         Timber.d("page layout %s", layout.toString());
-        View view = inflater.inflate(R.layout.fragment_template_vina_bonnie, container, false);
-        app.setMain_scroll_view((ScrollView) view.findViewById(R.id.main_scroll_view));
-        LinearLayout rootLinearLayout=(LinearLayout)view.findViewById(R.id.root_layout);
         DisplayMetrics metrics = new DisplayMetrics();
         int screenDensity = (int) metrics.density;
         int screenDensityDPI = metrics.densityDpi;
@@ -86,23 +94,23 @@ public class index extends Fragment {
         }
         String screenSize = Integer.toString(width / screenDensity) + "x" + Integer.toString(height);
         System.out.println(width / screenDensity);
-        app.rootLinearLayout=rootLinearLayout;
-        this.render_layout(layout,rootLinearLayout,screen_size_width, WRAP_CONTENT);
-        return view;
+        LinearLayout template_linear_layout=new LinearLayout(app.getContext());
+        render_layout(layout,template_linear_layout,screen_size_width, WRAP_CONTENT);
+        return template_linear_layout;
     }
 
-    private void render_layout(ArrayList<Row> layout, LinearLayout rootLinearLayout,int screen_size_width,int screen_size_heght) {
-
+    private static void render_layout(ArrayList<Row> layout, LinearLayout rootLinearLayout, int screen_size_width, int screen_size_heght) {
+        JApplication app= JFactory.getApplication();
         LayoutParams layout_params;
         if(layout!=null)for (Row row: layout) {
             layout_params = new LayoutParams(screen_size_width,screen_size_heght  );
             layout_params.setMargins(0,10,0,10);
-            LinearLayout new_row_linear_layout=new LinearLayout(getContext());
+            LinearLayout new_row_linear_layout=new LinearLayout(app.getContext());
             new_row_linear_layout.setLayoutParams(layout_params);
             new_row_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
 
             layout_params = new LayoutParams(screen_size_width,screen_size_heght );
-            LinearLayout new_wrapper_of_row_linear_layout=new LinearLayout(getContext());
+            LinearLayout new_wrapper_of_row_linear_layout=new LinearLayout(app.getContext());
             new_wrapper_of_row_linear_layout.setLayoutParams(layout_params);
             new_wrapper_of_row_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
             Timber.d("row name(%s)",row.getName());
@@ -114,12 +122,12 @@ public class index extends Fragment {
                 int column_offset=Integer.parseInt(column.getOffset().equals("")?"0":column.getOffset());
                 column_offset=screen_size_width*column_offset/12;
                 layout_params.setMargins(column_offset, 0, 0, 0);
-                LinearLayout new_column_linear_layout=new LinearLayout(getContext());
+                LinearLayout new_column_linear_layout=new LinearLayout(app.getContext());
                 new_column_linear_layout.setLayoutParams(layout_params);
                 new_column_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
 
                 LayoutParams new_vertical_wrapper_of_column_linear_layout_params = new LayoutParams(column_width,WRAP_CONTENT  );
-                LinearLayout new_wrapper_of_column_linear_layout=new LinearLayout(getContext());
+                LinearLayout new_wrapper_of_column_linear_layout=new LinearLayout(app.getContext());
                 new_wrapper_of_column_linear_layout.setLayoutParams(new_vertical_wrapper_of_column_linear_layout_params);
                 new_wrapper_of_column_linear_layout.setOrientation(LinearLayout.VERTICAL);
 
@@ -136,11 +144,11 @@ public class index extends Fragment {
                     {
                         if(module.getPosition().equals(position)){
                             LayoutParams module_layout_params = new LayoutParams(MATCH_PARENT,WRAP_CONTENT  );
-                            LinearLayout new_module_linear_layout=new LinearLayout(getContext());
+                            LinearLayout new_module_linear_layout=new LinearLayout(app.getContext());
                             new_module_linear_layout.setLayoutParams(module_layout_params);
                             new_module_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
                             //add_text_view_test(new_column_linear_layout,position);
-                            JModuleHelper.renderModule(getContext(),module, new_module_linear_layout);
+                            JModuleHelper.renderModule(app.getContext(),module, new_module_linear_layout);
                             new_wrapper_of_column_linear_layout.addView(new_module_linear_layout);
                         }
                     }
@@ -149,13 +157,13 @@ public class index extends Fragment {
                 if(type.equals("component")){
 
                     LayoutParams component_layout_params = new LayoutParams(MATCH_PARENT,WRAP_CONTENT  );
-                    LinearLayout component_linear_layout=new LinearLayout(getContext());
+                    LinearLayout component_linear_layout=new LinearLayout(app.getContext());
                     component_linear_layout.setLayoutParams(component_layout_params);
                     component_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
                     //add_text_view_test(new_column_linear_layout,position);
                     app.input.set_component_linear_layout(component_linear_layout);
                     app.component_width=column_width;
-                    JComponentHelper.renderComponent(getContext(), component_linear_layout,column_width);
+                    JComponentHelper.renderComponent(app.getContext(), component_linear_layout,column_width);
                     new_wrapper_of_column_linear_layout.addView(component_linear_layout);
 
                 }
@@ -173,31 +181,5 @@ public class index extends Fragment {
             rootLinearLayout.addView(new_row_linear_layout);
 
         }
-
-
-
-
-
-    }
-    private void add_text_view_test(LinearLayout view_linear_layout,String text) {
-        TextView new_item_text_view=new TextView(getContext());
-        new_item_text_view.setText(text);
-        view_linear_layout.addView(new_item_text_view);
-    }
-
-
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
     }
 }

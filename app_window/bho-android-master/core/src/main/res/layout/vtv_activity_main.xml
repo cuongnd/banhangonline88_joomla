@@ -10,37 +10,27 @@
         android:id="@+id/main_drawer_layout"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/main_linear_layout"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <include
-                android:id="@+id/main_toolbar"
-                layout="@layout/toolbar_layout">
-            </include>
-
-            <FrameLayout
-                android:id="@+id/main_content_frame"
+            <ScrollView
+                android:id="@+id/main_scroll_view"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="match_parent">
 
-                <android.support.design.widget.TextInputLayout
+                <LinearLayout
+                    android:id="@+id/root_linear_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                </android.support.design.widget.TextInputLayout>
-
-
-            </FrameLayout>
-
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+            </ScrollView>
         </LinearLayout>
 
         <!-- android:layout_gravity="start" tells DrawerLayout to treat

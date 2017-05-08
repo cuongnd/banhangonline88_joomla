@@ -49,7 +49,7 @@ public class show {
         PageShowProduct product_response = gson.fromJson(reader, PageShowProduct.class);
         show_content = new ShowContent(app.getCurrentActivity(), product_response);
 
-        product_show_footer = (BottomNavigationView)app.root_relative_layout.findViewById(R.id.bottom_navigation);
+        product_show_footer = (BottomNavigationView)app.getCurrentActivity().findViewById(R.id.bottom_navigation);
         Menu menu= product_show_footer.getMenu();
         menu.clear();
         final String chatting=JText._("Chatting");

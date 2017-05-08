@@ -1,5 +1,6 @@
 package vantinviet.core.libraries.joomla.application;
 
+import android.app.Activity;
 import android.app.Application;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -32,7 +33,7 @@ public class JApplicationBase {
     public Template template;
     public ArrayList<Module> modules=new ArrayList<Module>();
     public JInput input;
-    public static AppCompatActivity currentActivity;
+    public static Activity currentActivity;
     private String link;
     public static final String LIST_DATA_RESPONSE_BY_URL = "list_data_response_by_url";
     private ProgressDialog progressDialog;

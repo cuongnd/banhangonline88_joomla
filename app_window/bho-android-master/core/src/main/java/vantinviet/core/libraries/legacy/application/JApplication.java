@@ -1,34 +1,25 @@
 package vantinviet.core.libraries.legacy.application;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Build;
 import android.preference.PreferenceManager;
 import android.support.annotation.RequiresApi;
-import android.support.v4.app.Fragment;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.ScrollView;
-
-import org.apache.http.util.EncodingUtils;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.Callable;
 
+import vantinviet.core.R;
 import vantinviet.core.VTVConfig;
 
 
-
-import vantinviet.core.libraries.android.http.JSONParser;
 import vantinviet.core.libraries.cms.application.JApplicationSite;
 import vantinviet.core.libraries.cms.application.Page;
 import vantinviet.core.libraries.cms.application.WebView;
@@ -60,16 +51,11 @@ public class JApplication extends JApplicationBase {
     public JInput input;
     private String component_response;
     SharedPreferences shared_preferences;
-    public LinearLayout rootLinearLayout;
-    public DrawerLayout maindrawerlayout;
-    public Fragment main_navigation_drawer_fragment;
-    public LinearLayout main_linear_layout;
-    public RelativeLayout root_relative_layout;
+    public LinearLayout root_linear_layout;
     public int component_width;
     private ScrollView main_scroll_view;
     private byte[] setPostBrowser;
     private Resources resources;
-    private Context baseContext;
 
     /* Static 'instance' method */
     public static JApplication getInstance() {
@@ -121,7 +107,12 @@ public class JApplication extends JApplicationBase {
         VTVConfig vtv_config = JFactory.getVTVConfig();
         int caching = vtv_config.getCaching();
         String link = getLink();
+        if (link == null) {
+            link = vtvConfig.getRootUrl();
+        }
         setProgressDialog(JUtilities.generateProgressDialog(getContext(), false));
+        setRoot_linear_layout((LinearLayout) getCurrentActivity().findViewById(R.id.root_linear_layout));
+        setMain_scroll_view((ScrollView) getCurrentActivity().findViewById(R.id.main_scroll_view));
 
         WebView webview = WebView.getInstance();
         if (caching == 1) {
@@ -178,10 +169,10 @@ public class JApplication extends JApplicationBase {
     }
 
 
-    public void setCurrentActivity(AppCompatActivity currentActivity) {
+    public void setCurrentActivity(Activity currentActivity) {
         this.currentActivity = currentActivity;
     }
-    public static AppCompatActivity getCurrentActivity() {
+    public static Activity getCurrentActivity() {
         return  currentActivity;
     }
     public void setRedirect(String link) {
@@ -281,4 +272,16 @@ public class JApplication extends JApplicationBase {
     }
 
 
+    public int get_layout_activity_main() {
+        return R.layout.vtv_activity_main;
+    }
+
+
+    public void setRoot_linear_layout(LinearLayout root_linear_layout) {
+        this.root_linear_layout = root_linear_layout;
+    }
+
+    public LinearLayout getRoot_linear_layout() {
+        return root_linear_layout;
+    }
 }

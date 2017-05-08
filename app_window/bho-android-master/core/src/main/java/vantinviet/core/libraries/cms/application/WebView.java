@@ -2,12 +2,15 @@ package vantinviet.core.libraries.cms.application;
 
 import android.content.SharedPreferences;
 import android.os.Build;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Base64;
 import android.webkit.JavascriptInterface;
+import android.widget.LinearLayout;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
@@ -17,6 +20,7 @@ import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 import timber.log.Timber;
 import vantinviet.core.R;
@@ -57,66 +61,61 @@ public class WebView {
     }
 
     public void go_to_page(String html){
+        final String[] html1 = {html};
+        Handler refresh = new Handler(Looper.getMainLooper());
+        refresh.post(new Runnable() {
+            public void run()
+            {
+                byte[] data= Base64.decode(html1[0], Base64.DEFAULT);
+                // create alert dialog
+                try {
 
-       /* app.getProgressDialog().dismiss();
-        byte[] data= Base64.decode(html, Base64.DEFAULT);
-        // create alert dialog
-        try {
+                    html1[0] =new String(data, "UTF-8");
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
 
-            html=new String(data, "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
+                    return;
+                }
+                Timber.d("html response: %s", html1[0]);
+                Gson gson = new Gson();
+                JsonReader reader = new JsonReader(new StringReader(html1[0]));
+                reader.setLenient(true);
+                Page page=null;
+                try {
+                    page = gson.fromJson(reader, Page.class);
+                }
+                catch (JsonParseException e) {
+                    Timber.d("JsonParseException error : %s",e.toString());
 
-            return;
-        }
-        Timber.d("html response: %s",html);
-        Gson gson = new Gson();
-        JsonReader reader = new JsonReader(new StringReader(html));
-        reader.setLenient(true);
-        Page page=null;
-        try {
-            page = gson.fromJson(reader, Page.class);
-        }
-        catch (JsonParseException e) {
-            Timber.d("JsonParseException error : %s",e.toString());
+                    JUtilities.show_alert_dialog(app.getLink());
+                    return;
+                }
 
-            JUtilities.show_alert_dialog(app.getLink());
-            return;
-        }
+                app.setAplication(page);
+                System.out.print("Page response: "+page.toString());
+                System.out.print("list_input response: "+page.getList_input().toString());
+                String template_name=app.getTemplate().getTemplateName();
+                //Timber.d("modules: %s",app.getModules().toString());
+                //Timber.d("template: %s",template_name);
+                Class<?> template_class = null;
+                try {
+                    template_class = Class.forName(String.format("vantinviet.core.templates.%s.index",template_name));
+                    //app.getRoot_linear_layout().removeAllViews();
+                    Method method = template_class.getDeclaredMethod("getLayout");
+                    LinearLayout template=(LinearLayout)method.invoke(template_class);
+                    app.getRoot_linear_layout().addView(template);
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (NoSuchMethodException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
-        app.setAplication(page);
-        System.out.print("Page response: "+page.toString());
-        System.out.print("list_input response: "+page.getList_input().toString());
-        String template_name=app.getTemplate().getTemplateName();
-        //Timber.d("modules: %s",app.getModules().toString());
-        //Timber.d("template: %s",template_name);
-        Class<?> template_class = null;
-        try {
-            template_class = Class.forName(String.format("vantinviet.core.templates.%s.index",template_name));
-            Constructor<?> cons = template_class.getConstructor(DrawerMenuItem.class);
-            Object object = cons.newInstance(finalDrawerMenuItem);
-            fragment=(Fragment)object;
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        }
-        if (fragment != null) {
-            FragmentManager frgManager = app.getCurrentActivity().getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = frgManager.beginTransaction();
-            fragmentTransaction.setAllowOptimization(false);
-            fragmentTransaction.addToBackStack("hello");
-            fragmentTransaction.replace(R.id.main_content_frame, fragment).commit();
-        } else {
-            Timber.e(new RuntimeException(), "Replace fragments with null newFragment parameter.");
-        }
-*/
 
     }
     private class MyJavaScriptInterfaceWebsite {
@@ -126,7 +125,7 @@ public class WebView {
 
         @JavascriptInterface
         public void showHTML(String html) {
-            //Timber.d("html response: %s",html);
+            Timber.d("html response: %s",html);
             if(vtv_config.getCaching()==1) {
                 SharedPreferences.Editor editor = sharedpreferences.edit();
                 editor.putString(link, html);
