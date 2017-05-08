@@ -22,28 +22,20 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
 import timber.log.Timber;
-import vantinviet.core.MyApplication;
 import vantinviet.core.R;
 import vantinviet.core.VTVConfig;
-import vantinviet.core.api.EndPoints;
 import vantinviet.core.configuration.JConfig;
-import vantinviet.core.entities.Page;
-import vantinviet.core.entities.drawerMenu.DrawerMenuItem;
+import vantinviet.core.libraries.cms.application.Page;
 import vantinviet.core.libraries.cms.application.vtv_WebView;
 import vantinviet.core.libraries.joomla.JFactory;
-import vantinviet.core.ux.fragments.PageMenuItemFragment;
+import vantinviet.core.libraries.legacy.application.JApplication;
 
-import static vantinviet.core.ux.MainActivity.mInstance;
-import static vantinviet.core.ux.fragments.PageMenuItemFragment.LIST_DATA_RESPONSE_BY_URL;
 
 /**
  * Created by cuongnd on 12/17/2015.
  */
 public class cms {
-    private static MyApplication app;
-    DrawerMenuItem drawerMenuItem =new DrawerMenuItem();
     private  Fragment fragment=new Fragment();
-    final DrawerMenuItem finalDrawerMenuItem = drawerMenuItem;
     SharedPreferences sharedpreferences;
     String url;
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -70,7 +62,7 @@ public class cms {
     }
 
     public void go_to_page(String html){
-        byte[] data= Base64.decode(html, Base64.DEFAULT);
+       /* byte[] data= Base64.decode(html, Base64.DEFAULT);
         try {
             html=new String(data, "UTF-8");
         } catch (UnsupportedEncodingException e) {
@@ -113,7 +105,7 @@ public class cms {
         } else {
             Timber.e(new RuntimeException(), "Replace fragments with null newFragment parameter.");
         }
-
+*/
     }
     private class MyJavaScriptInterfaceWebsite {
 
@@ -126,12 +118,13 @@ public class cms {
             SharedPreferences.Editor editor = sharedpreferences.edit();
             editor.putString(url,html );
             editor.commit();
-            go_to_page(html);
+            //go_to_page(html);
         }
 
     }
     public void start_remote(String host){
-        sharedpreferences = MyApplication.getInstance().getSharedPreferences(LIST_DATA_RESPONSE_BY_URL, Context.MODE_PRIVATE);
+      /*
+        sharedpreferences = getSharedPreferences(LIST_DATA_RESPONSE_BY_URL, Context.MODE_PRIVATE);
 
 
         int caching= JConfig.getInstance().caching;
@@ -145,13 +138,13 @@ public class cms {
             }
         }else{
             create_browser(host);
-        }
+        }*/
 
 
     }
 
     public void load_page(final String json_page)  {
-        Gson gson = new Gson();
+        /*Gson gson = new Gson();
         DrawerMenuItem drawerMenuItem =new DrawerMenuItem();
 
         if(json_page==null)
@@ -170,7 +163,7 @@ public class cms {
         url=app.get_page_config_app(url);
         start_remote(url);
 
-       /* final DrawerMenuItem finalDrawerMenuItem = drawerMenuItem;
+       *//* final DrawerMenuItem finalDrawerMenuItem = drawerMenuItem;
         GsonRequest<Page> getPage = new GsonRequest<>(Request.Method.GET, url, null, Page.class,
                 new Response.Listener<Page>() {
                     @Override

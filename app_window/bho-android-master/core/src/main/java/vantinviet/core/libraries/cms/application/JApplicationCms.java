@@ -7,9 +7,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import vantinviet.core.configuration.JConfig;
-import vantinviet.core.entities.Document;
-import vantinviet.core.entities.module.Module;
-import vantinviet.core.entities.template.Template;
 import vantinviet.core.libraries.cms.component.JComponentHelper;
 import vantinviet.core.libraries.cms.menu.JMenu;
 import vantinviet.core.libraries.joomla.JFactory;
