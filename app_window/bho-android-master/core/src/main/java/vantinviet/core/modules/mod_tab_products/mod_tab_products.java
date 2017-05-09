@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
+import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 
 import com.google.gson.reflect.TypeToken;
 
+import java.lang.ref.WeakReference;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
@@ -57,6 +59,7 @@ public class mod_tab_products extends FragmentActivity implements MaterialTabLis
     private ViewPager pager;
     private PagerAdapter pager_adapter;
     ScreenSlidePagerAdapter adapterViewPager;
+    ViewPager vpPager;
 
     public mod_tab_products(Module module, LinearLayout linear_layout) {
         this.module=module;
@@ -76,7 +79,7 @@ public class mod_tab_products extends FragmentActivity implements MaterialTabLis
     private void init() {
         object_tab_product_tmpl_default =new Module_tab_product_tmpl_default(app.getContext(),this.module);
         tabHost = (MaterialTabHost) object_tab_product_tmpl_default.findViewById(R.id.tabHost);
-        ViewPager vpPager = (ViewPager) object_tab_product_tmpl_default.findViewById(R.id.pager);
+        vpPager= (ViewPager) object_tab_product_tmpl_default.findViewById(R.id.pager);
 
         adapterViewPager = new ScreenSlidePagerAdapter(app.getSupportFragmentManager());
         vpPager.setAdapter(adapterViewPager);
@@ -90,14 +93,14 @@ public class mod_tab_products extends FragmentActivity implements MaterialTabLis
 
         pager_adapter = new ViewPagerAdapter(fragmentManager);
         pager.setAdapter(pager_adapter);*/
-        /*vpPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+        vpPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
                 // when user do a swipe the selected tab change
                 tabHost.setSelectedNavigationItem(position);
 
             }
-        });*/
+        });
 
         // insert all tabs from pagerAdapter data
         for (int i = 0; i < adapterViewPager.getCount(); i++) {
@@ -129,7 +132,8 @@ public class mod_tab_products extends FragmentActivity implements MaterialTabLis
     }
     @Override
     public void onTabSelected(MaterialTab tab) {
-        //pager.setCurrentItem(tab.getPosition());
+        Timber.d("hello onTabSelected id %d",tab.getPosition());
+        vpPager.setCurrentItem(tab.getPosition());
     }
 
     @Override
@@ -145,7 +149,7 @@ public class mod_tab_products extends FragmentActivity implements MaterialTabLis
 
     private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
         private static final int NUM_PAGES = 3;
-
+        private SparseArray<WeakReference<Fragment>> currentFragments = new SparseArray<WeakReference<Fragment>>();
         public ScreenSlidePagerAdapter(FragmentManager fm) {
             super(fm);
         }
@@ -153,6 +157,7 @@ public class mod_tab_products extends FragmentActivity implements MaterialTabLis
 
         @Override
         public Fragment getItem(int position) {
+            Timber.d("hello getItem");
             switch (position) {
                 case 0: // Fragment # 0 - This will show FirstFragment
                     return FirstFragment.newInstance(0, "Page # 1");
@@ -168,6 +173,20 @@ public class mod_tab_products extends FragmentActivity implements MaterialTabLis
         public int getCount() {
             return NUM_PAGES;
         }
+        @Override
+        public Object instantiateItem(ViewGroup container, int position) {
+            Object item = super.instantiateItem(container, position);
+            currentFragments.append(position, new WeakReference<Fragment>(
+                    (Fragment) item));
+            return item;
+        }
+
+        @Override
+        public void destroyItem(ViewGroup container, int position, Object object) {
+            currentFragments.put(position, null);
+            super.destroyItem(container, position, object);
+        }
+
     }
 /*
     private void init() {
