@@ -230,7 +230,14 @@ public class JApplication extends JApplicationBase {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public void execute() {
+    public void execute(AppCompatActivity mainActivity, String root_url) {
+        vtvConfig.setRootUrl(root_url);
+        mainActivity.setContentView(get_layout_activity_main());
+        setFragmentManager(mainActivity.getFragmentManager());
+        setSupportFragmentManager(mainActivity.getSupportFragmentManager());
+        setCurrentActivity(mainActivity);
+        setContext(mainActivity.getBaseContext());
+        setResources(getResources());
         doExecute();
     }
 

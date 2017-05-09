@@ -148,7 +148,6 @@ public class mod_tab_products extends FragmentActivity implements MaterialTabLis
 
     private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
         private static final int NUM_PAGES = 3;
-        private SparseArray<WeakReference<Fragment>> currentFragments = new SparseArray<WeakReference<Fragment>>();
         public ScreenSlidePagerAdapter(FragmentManager fm) {
             super(fm);
         }
@@ -170,19 +169,7 @@ public class mod_tab_products extends FragmentActivity implements MaterialTabLis
             Category category=list_main_category_product.get(position).getDetail();
             return category.getName();
         }
-        @Override
-        public Object instantiateItem(ViewGroup container, int position) {
-            Object item = super.instantiateItem(container, position);
-            currentFragments.append(position, new WeakReference<Fragment>(
-                    (Fragment) item));
-            return item;
-        }
 
-        @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
-            currentFragments.put(position, null);
-            super.destroyItem(container, position, object);
-        }
 
     }
 /*
