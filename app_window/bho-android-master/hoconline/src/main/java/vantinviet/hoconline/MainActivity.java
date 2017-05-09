@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        JFactory.getApplication().execute(this,"http://banhangonline88.com");
+        JFactory.getApplication().execute(this,"http://hoctructuyen88.com");
     }
 
     @Override
