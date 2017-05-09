@@ -106,7 +106,7 @@ public class mod_tab_products extends FragmentActivity implements MaterialTabLis
         for (int i = 0; i < adapterViewPager.getCount(); i++) {
             tabHost.addTab(
                     tabHost.newTab()
-                            .setText("sdfsdfd")
+                            .setText(adapterViewPager.getPageTitle(i))
                             .setTabListener(this)
             );
 
@@ -132,7 +132,6 @@ public class mod_tab_products extends FragmentActivity implements MaterialTabLis
     }
     @Override
     public void onTabSelected(MaterialTab tab) {
-        Timber.d("hello onTabSelected id %d",tab.getPosition());
         vpPager.setCurrentItem(tab.getPosition());
     }
 
@@ -157,21 +156,19 @@ public class mod_tab_products extends FragmentActivity implements MaterialTabLis
 
         @Override
         public Fragment getItem(int position) {
-            Timber.d("hello getItem");
-            switch (position) {
-                case 0: // Fragment # 0 - This will show FirstFragment
-                    return FirstFragment.newInstance(0, "Page # 1");
-                case 1: // Fragment # 0 - This will show FirstFragment different title
-                    return FirstFragment.newInstance(1, "Page # 2");
-                case 2: // Fragment # 1 - This will show SecondFragment
-                    return FirstFragment.newInstance(2, "Page # 3");
-                default:
-                    return null;
-            }
+            Mod_tab_product_helper.List_category_product list_category_product=list_main_category_product!=null?list_main_category_product.get(position):null;
+            Module_tab_product_tmpl_default_tab_content module_tab_product_tmpl_default_tab_content = new Module_tab_product_tmpl_default_tab_content();
+            module_tab_product_tmpl_default_tab_content.list_category_product=list_category_product;
+            return module_tab_product_tmpl_default_tab_content;
         }
         @Override
         public int getCount() {
-            return NUM_PAGES;
+            return list_main_category_product.size();
+        }
+        @Override
+        public CharSequence getPageTitle(int position) {
+            Category category=list_main_category_product.get(position).getDetail();
+            return category.getName();
         }
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
