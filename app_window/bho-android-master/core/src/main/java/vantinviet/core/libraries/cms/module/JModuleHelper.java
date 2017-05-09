@@ -106,7 +106,7 @@ public class JModuleHelper {
 
         Params params=module.getParams();
         String module_name=module.getModuleName();
-        Timber.d("module: %s",module_name);
+        //Timber.d("module content: %s",module.getContent());
         Class<?> class_fragment = null;
         try {
             class_fragment = Class.forName("vantinviet.core.modules." + module_name+"."+module_name);

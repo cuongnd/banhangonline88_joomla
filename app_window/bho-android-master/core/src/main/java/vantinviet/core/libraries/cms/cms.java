@@ -4,28 +4,10 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.util.Base64;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.gson.Gson;
-import com.google.gson.stream.JsonReader;
-
-import java.io.StringReader;
-import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-
-import timber.log.Timber;
-import vantinviet.core.R;
-import vantinviet.core.VTVConfig;
-import vantinviet.core.configuration.JConfig;
-import vantinviet.core.libraries.cms.application.Page;
 import vantinviet.core.libraries.cms.application.vtv_WebView;
 import vantinviet.core.libraries.joomla.JFactory;
 import vantinviet.core.libraries.legacy.application.JApplication;
@@ -35,7 +17,6 @@ import vantinviet.core.libraries.legacy.application.JApplication;
  * Created by cuongnd on 12/17/2015.
  */
 public class cms {
-    private  Fragment fragment=new Fragment();
     SharedPreferences sharedpreferences;
     String url;
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)

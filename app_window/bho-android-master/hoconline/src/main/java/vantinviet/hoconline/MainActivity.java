@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
+import android.support.v7.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
@@ -12,7 +13,7 @@ import vantinviet.core.VTVConfig;
 import vantinviet.core.libraries.joomla.JFactory;
 import vantinviet.core.libraries.legacy.application.JApplication;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
     public static MainActivity mInstance = null;
     public static VTVConfig vtvconfig= VTVConfig.getInstance();
     private JApplication app= JFactory.getApplication();
@@ -26,6 +27,8 @@ public class MainActivity extends Activity {
     }
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     private void init(MainActivity mInstance) {
+        app.setFragmentManager(getFragmentManager());
+        app.setSupportFragmentManager(getSupportFragmentManager());
         Timber.d("%s onCreate", MainActivity.class.getSimpleName());
         app.setCurrentActivity(mInstance);
         app.setContext(getBaseContext());
@@ -38,4 +41,8 @@ public class MainActivity extends Activity {
 
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
 }

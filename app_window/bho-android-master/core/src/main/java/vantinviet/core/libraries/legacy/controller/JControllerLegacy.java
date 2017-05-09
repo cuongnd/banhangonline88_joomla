@@ -1,6 +1,5 @@
 package vantinviet.core.libraries.legacy.controller;
 
-import android.support.v4.app.Fragment;
 import android.widget.LinearLayout;
 
 import java.lang.reflect.Constructor;

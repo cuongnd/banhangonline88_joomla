@@ -5,9 +5,6 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.RequiresApi;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.util.Base64;
 import android.webkit.JavascriptInterface;
 import android.widget.LinearLayout;
@@ -23,7 +20,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import timber.log.Timber;
-import vantinviet.core.R;
 import vantinviet.core.VTVConfig;
 import vantinviet.core.configuration.JConfig;
 
@@ -32,9 +28,6 @@ import vantinviet.core.libraries.joomla.JFactory;
 import vantinviet.core.libraries.legacy.application.JApplication;
 import vantinviet.core.libraries.utilities.JUtilities;
 
-import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
-import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
-
 
 /**
  * Created by cuongnd on 12/17/2015.
@@ -42,7 +35,6 @@ import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 public class WebView {
     private static JApplication app=JFactory.getApplication();
     private static WebView ourInstance;
-    private  Fragment fragment=new Fragment();
     private Class<?> current_class;
     SharedPreferences sharedpreferences;
     String link;
@@ -65,8 +57,8 @@ public class WebView {
 
     public void go_to_page(String html){
         final String[] html1 = {html};
-        Handler refresh = new Handler(Looper.getMainLooper());
-        refresh.post(new Runnable() {
+        Handler refresh2 = new Handler(Looper.getMainLooper());
+        refresh2.post(new Runnable() {
             public void run()
             {
                 byte[] data= Base64.decode(html1[0], Base64.DEFAULT);
@@ -128,7 +120,7 @@ public class WebView {
 
         @JavascriptInterface
         public void showHTML(String html) {
-            Timber.d("html response: %s",html);
+            //Timber.d("html response: %s",html);
             if(vtv_config.getCaching()==1) {
                 SharedPreferences.Editor editor = sharedpreferences.edit();
                 editor.putString(link, html);

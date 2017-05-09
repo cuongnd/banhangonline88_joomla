@@ -1,6 +1,7 @@
 package vantinviet.core.libraries.legacy.application;
 
 import android.app.Activity;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
@@ -57,6 +58,8 @@ public class JApplication extends JApplicationBase {
     private ScrollView main_scroll_view;
     private byte[] setPostBrowser;
     private Resources resources;
+    private FragmentManager fragmentManager;
+    private android.support.v4.app.FragmentManager supportFragmentManager;
 
     /* Static 'instance' method */
     public static JApplication getInstance() {
@@ -285,5 +288,20 @@ public class JApplication extends JApplicationBase {
 
     public LinearLayout getRoot_linear_layout() {
         return root_linear_layout;
+    }
+
+    public void setFragmentManager(FragmentManager fragmentManager) {
+        this.fragmentManager = fragmentManager;
+    }
+    public FragmentManager getFragmentManager() {
+        return fragmentManager;
+    }
+
+    public void setSupportFragmentManager(android.support.v4.app.FragmentManager supportFragmentManager) {
+        this.supportFragmentManager = supportFragmentManager;
+    }
+
+    public android.support.v4.app.FragmentManager getSupportFragmentManager() {
+        return supportFragmentManager;
     }
 }

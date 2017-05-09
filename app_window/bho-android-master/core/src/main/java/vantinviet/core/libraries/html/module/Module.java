@@ -38,6 +38,7 @@ public class Module {
                 ", position='" + position + '\'' +
                 ", response='" + response + '\'' +
                 ", params='" + params + '\'' +
+                ", content='" + content + '\'' +
                 '}';
     }
 

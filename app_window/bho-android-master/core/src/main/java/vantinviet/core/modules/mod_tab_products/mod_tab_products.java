@@ -1,14 +1,18 @@
 package vantinviet.core.modules.mod_tab_products;
 
+import android.app.Activity;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -38,7 +42,7 @@ import static android.widget.ListPopupWindow.MATCH_PARENT;
 /**
  * Fragment provides the account screen with options such as logging, editing and more.
  */
-public class mod_tab_products extends ActionBarActivity implements MaterialTabListener {
+public class mod_tab_products extends FragmentActivity implements MaterialTabListener {
 
 
     private final Module module;
@@ -51,7 +55,8 @@ public class mod_tab_products extends ActionBarActivity implements MaterialTabLi
     ArrayList<Mod_tab_product_helper.List_category_product> list_main_category_product;
     ArrayList<Module_tab_product_tmpl_default_tab_content> list_module_tab_product_tmpl_default_tab_content;
     private ViewPager pager;
-    private PagerAdapter adapter;
+    private PagerAdapter pager_adapter;
+    ScreenSlidePagerAdapter adapterViewPager;
 
     public mod_tab_products(Module module, LinearLayout linear_layout) {
         this.module=module;
@@ -71,26 +76,34 @@ public class mod_tab_products extends ActionBarActivity implements MaterialTabLi
     private void init() {
         object_tab_product_tmpl_default =new Module_tab_product_tmpl_default(app.getContext(),this.module);
         tabHost = (MaterialTabHost) object_tab_product_tmpl_default.findViewById(R.id.tabHost);
-        pager = (ViewPager) object_tab_product_tmpl_default.findViewById(R.id.pager );
+        ViewPager vpPager = (ViewPager) object_tab_product_tmpl_default.findViewById(R.id.pager);
+
+        adapterViewPager = new ScreenSlidePagerAdapter(app.getSupportFragmentManager());
+        vpPager.setAdapter(adapterViewPager);
+        vpPager.setId(module.getId());
+
+       /* pager = (ViewPager) object_tab_product_tmpl_default.findViewById(R.id.pager );
         pager.setId(module.getId());
         // init view pager
-        FragmentManager fragManager = getSupportFragmentManager();
-        adapter = new ViewPagerAdapter(fragManager);
-        pager.setAdapter(adapter);
-        pager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
+        pager_adapter = new ViewPagerAdapter(fragmentManager);
+        pager.setAdapter(pager_adapter);*/
+        /*vpPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
                 // when user do a swipe the selected tab change
                 tabHost.setSelectedNavigationItem(position);
 
             }
-        });
+        });*/
 
         // insert all tabs from pagerAdapter data
-        for (int i = 0; i < adapter.getCount(); i++) {
+        for (int i = 0; i < adapterViewPager.getCount(); i++) {
             tabHost.addTab(
                     tabHost.newTab()
-                            .setText(adapter.getPageTitle(i))
+                            .setText("sdfsdfd")
                             .setTabListener(this)
             );
 
@@ -116,7 +129,7 @@ public class mod_tab_products extends ActionBarActivity implements MaterialTabLi
     }
     @Override
     public void onTabSelected(MaterialTab tab) {
-        pager.setCurrentItem(tab.getPosition());
+        //pager.setCurrentItem(tab.getPosition());
     }
 
     @Override
@@ -129,44 +142,33 @@ public class mod_tab_products extends ActionBarActivity implements MaterialTabLi
 
     }
 
-    private class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
+    private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
+        private static final int NUM_PAGES = 3;
 
-        public ViewPagerAdapter(FragmentManager fm) {
+        public ScreenSlidePagerAdapter(FragmentManager fm) {
             super(fm);
         }
 
-        public Fragment getItem(int num) {
-            Mod_tab_product_helper.List_category_product list_category_product=list_main_category_product!=null?list_main_category_product.get(num):null;
-            Module_tab_product_tmpl_default_tab_content module_tab_product_tmpl_default_tab_content = new Module_tab_product_tmpl_default_tab_content();
-            module_tab_product_tmpl_default_tab_content.list_category_product=list_category_product;
-            return module_tab_product_tmpl_default_tab_content;
-        }
 
         @Override
-        public int getCount() {
-            return list_main_category_product.size();
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            Category category=list_main_category_product.get(position).getDetail();
-            return category.getName();
-        }
-
-        @Override
-        public void destroyItem(View container, int position, Object object) {
-            super.destroyItem(container, position, object);
-
-            if (position <= getCount()) {
-                FragmentManager manager = ((Fragment) object).getFragmentManager();
-                FragmentTransaction trans = manager.beginTransaction();
-                trans.remove((Fragment) object);
-                trans.commit();
+        public Fragment getItem(int position) {
+            switch (position) {
+                case 0: // Fragment # 0 - This will show FirstFragment
+                    return FirstFragment.newInstance(0, "Page # 1");
+                case 1: // Fragment # 0 - This will show FirstFragment different title
+                    return FirstFragment.newInstance(1, "Page # 2");
+                case 2: // Fragment # 1 - This will show SecondFragment
+                    return FirstFragment.newInstance(2, "Page # 3");
+                default:
+                    return null;
             }
         }
+        @Override
+        public int getCount() {
+            return NUM_PAGES;
+        }
     }
-
 /*
     private void init() {
         app= MyApplication.getInstance();
@@ -192,8 +194,8 @@ public class mod_tab_products extends ActionBarActivity implements MaterialTabLi
 
 
         // init view pager
-        adapter = new ViewPagerAdapter( (getSupportFragmentManager()));
-        pager.setAdapter(adapter);
+        pager_adapter = new ViewPagerAdapter( (getSupportFragmentManager()));
+        pager.setAdapter(pager_adapter);
         pager.setOnPageChangeListener(new MyViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
@@ -205,10 +207,10 @@ public class mod_tab_products extends ActionBarActivity implements MaterialTabLi
 
 
 
-        for (int i = 0; i < adapter.getCount(); i++) {
+        for (int i = 0; i < pager_adapter.getCount(); i++) {
             main_category_tab_host.addTab(
                     main_category_tab_host.newTab()
-                            .setText(adapter.getPageTitle(i))
+                            .setText(pager_adapter.getPageTitle(i))
                             .setTabListener(this)
             );
 

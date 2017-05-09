@@ -70,6 +70,10 @@ public class ProductListDataAdapter extends RecyclerView.Adapter<ProductListData
         return (null != list_product ? list_product.size() : 0);
     }
 
+    public CharSequence getPageTitle(int i) {
+        return "sdfsdfds";
+    }
+
     public class SingleProductRowHolder extends RecyclerView.ViewHolder {
         protected TextView productName;
         protected TextView html_price;

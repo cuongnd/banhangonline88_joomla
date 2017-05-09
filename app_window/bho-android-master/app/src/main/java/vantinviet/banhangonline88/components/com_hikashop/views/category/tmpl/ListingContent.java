@@ -29,6 +29,7 @@ public class ListingContent extends LinearLayout {
 
     private void init(AttributeSet attrs, int defStyle) {
         View view =inflate(getContext(), R.layout.components_com_hikashop_views_category_tmpl_listing_content, this);
+
         RecyclerView cagory_recycler_view = (RecyclerView) view.findViewById(R.id.category_recycler_view);
         CategoryListDataAdapter category_adapter = new CategoryListDataAdapter(getContext(), listingresponse.getCategories());
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2, GridLayoutManager.HORIZONTAL, false);
