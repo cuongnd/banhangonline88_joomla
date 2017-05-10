@@ -7,6 +7,7 @@ import android.os.Looper;
 import android.support.annotation.RequiresApi;
 import android.util.Base64;
 import android.webkit.JavascriptInterface;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.google.gson.Gson;
@@ -20,7 +21,9 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import timber.log.Timber;
+import vantinviet.core.R;
 import vantinviet.core.VTVConfig;
+import vantinviet.core.administrator.components.com_hikamarket.classes.Image;
 import vantinviet.core.configuration.JConfig;
 
 
@@ -99,6 +102,7 @@ public class WebView {
                     template_class = Class.forName(String.format("vantinviet.core.templates.%s.index",template_name));
                     Method method = template_class.getDeclaredMethod("buildLayout",LinearLayout.class);
                     method.invoke(template_class,app.getRoot_linear_layout());
+                    bg.setVisibility(LinearLayout.GONE);
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();
                 } catch (IllegalAccessException e) {

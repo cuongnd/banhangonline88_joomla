@@ -18,6 +18,7 @@ import org.json.JSONObject;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -238,7 +239,28 @@ public class JModuleHelper {
 
     }
 
-
+    public static void render_layout(Module module, LinearLayout linear_layout, String layout) {
+        JApplication app=JFactory.getApplication();
+        layout=layout.replaceAll("_:","");
+        layout=layout.equals("default")?"m_default":layout;
+        Class<?> layout_class = null;
+        try {
+            layout_class= Class.forName(String.format("vantinviet.core.modules.%s.tmpl.%s",module.getModuleName(),layout));
+            Constructor<?> ctor = layout_class.getConstructor(Context.class);
+            Object object_linear_layout = ctor.newInstance(app.getContext());
+            linear_layout.addView((LinearLayout)object_linear_layout);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        }
+    }
 
 
     private static class TableClickListener implements TableDataClickListener {

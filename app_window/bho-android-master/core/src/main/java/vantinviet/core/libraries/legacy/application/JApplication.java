@@ -8,8 +8,11 @@ import android.content.res.Resources;
 import android.os.Build;
 import android.preference.PreferenceManager;
 import android.support.annotation.RequiresApi;
+import android.support.design.widget.NavigationView;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
+import android.view.Menu;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
@@ -232,6 +235,8 @@ public class JApplication extends JApplicationBase {
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void execute(AppCompatActivity mainActivity, String root_url) {
         vtvConfig.setRootUrl(root_url);
+        ActionBar actionBar = mainActivity.getSupportActionBar();
+        actionBar.hide();
         mainActivity.setContentView(get_layout_activity_main());
         setFragmentManager(mainActivity.getFragmentManager());
         setSupportFragmentManager(mainActivity.getSupportFragmentManager());

@@ -40,4 +40,8 @@ public class Params {
     public String get_android_render_form_type() {
         return _android_render_form_type;
     }
+
+    public String getLayout() {
+        return layout;
+    }
 }
