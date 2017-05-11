@@ -16,7 +16,7 @@ import vantinviet.core.libraries.legacy.application.JApplication;
 
 public class hompagetoprightmenu extends LinearLayout {
 
-    public hompagetoprightmenu(Context context) {
+    public hompagetoprightmenu(Context context,Module module) {
         super(context);
         View view=inflate(getContext(), R.layout.modules_mod_menu_tmpl_hompagetoprightmenu, this);
 

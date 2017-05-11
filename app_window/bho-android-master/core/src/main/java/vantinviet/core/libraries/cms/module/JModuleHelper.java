@@ -246,8 +246,8 @@ public class JModuleHelper {
         Class<?> layout_class = null;
         try {
             layout_class= Class.forName(String.format("vantinviet.core.modules.%s.tmpl.%s",module.getModuleName(),layout));
-            Constructor<?> ctor = layout_class.getConstructor(Context.class);
-            Object object_linear_layout = ctor.newInstance(app.getContext());
+            Constructor<?> ctor = layout_class.getConstructor(Context.class,Module.class);
+            Object object_linear_layout = ctor.newInstance(app.getContext(),module);
             linear_layout.addView((LinearLayout)object_linear_layout);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
