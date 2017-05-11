@@ -41,7 +41,7 @@ public abstract class JFormField {
 
     public JFormField(){
         JApplication app= JFactory.getApplication();
-        this.context=app.context;
+        this.context=app.getCurrentActivity();
     }
     private static String getStanderFieldName(String fieldName) {
         String[] listField=new String[]{
@@ -128,6 +128,7 @@ public abstract class JFormField {
             form_field.setName(name);
             form_field.setGroup(group);
             form_field.setValue(value);
+
             map_form_field.put(key, form_field);
 
         }

@@ -17,12 +17,15 @@ public class MainActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         JFactory.getApplication().execute(this,"http://hoctructuyen88.com");
+        super.onCreate(savedInstanceState);
+
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
-    protected void onStop() {
-        super.onStop();
+    protected void onStart() {
+        super.onStart();
+
     }
 }

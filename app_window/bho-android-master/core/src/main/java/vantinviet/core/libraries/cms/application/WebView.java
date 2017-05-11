@@ -1,6 +1,7 @@
 package vantinviet.core.libraries.cms.application;
 
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
@@ -102,6 +103,8 @@ public class WebView {
                     template_class = Class.forName(String.format("vantinviet.core.templates.%s.index",template_name));
                     Method method = template_class.getDeclaredMethod("buildLayout",LinearLayout.class);
                     method.invoke(template_class,app.getRoot_linear_layout());
+                    ImageView bg=(ImageView)app.getCurrentActivity().findViewById(R.id.bg);
+                    app.getRoot_linear_layout().setBackgroundColor(Color.parseColor("#FFFFFF"));
                     bg.setVisibility(LinearLayout.GONE);
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();
@@ -126,7 +129,8 @@ public class WebView {
         public void showHTML(String html) {
             //Timber.d("html response: %s",html);
             if(vtv_config.getCaching()==1) {
-                SharedPreferences.Editor editor = sharedpreferences.edit();
+                SharedPreferences.Editor editor = app.getWebcache_sharedpreferences().edit();
+                link=app.getLink();
                 editor.putString(link, html);
                 editor.commit();
             }

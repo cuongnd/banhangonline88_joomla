@@ -101,7 +101,7 @@ public class JFormFieldRangeOfIntegers extends JFormField{
 
     public String getValue(){
         JApplication app= JFactory.getApplication();
-        BootstrapEditText output_box = (BootstrapEditText) app.context.findViewById(this.key_id);
+        BootstrapEditText output_box = (BootstrapEditText) app.getCurrentActivity().findViewById(this.key_id);
         return output_box.getText().toString();
     }
 

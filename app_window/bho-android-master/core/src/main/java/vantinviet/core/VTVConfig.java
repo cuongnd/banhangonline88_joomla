@@ -26,7 +26,7 @@ public class VTVConfig {
     public static String rootUrl="http://banhangonline88.com";
     private static boolean debug=true;
     private String local_version="2.5";
-    private int caching=0;
+    private int caching=1;
 
     /* Static 'instance' method */
     public static VTVConfig getInstance() {
@@ -94,7 +94,6 @@ public class VTVConfig {
 
     public void setRootUrl(String rootUrl) {
         this.rootUrl =rootUrl;
-        System.out.println("this.rootUrl:"+this.rootUrl);
     }
     public String getRootUrl() {
         return rootUrl;

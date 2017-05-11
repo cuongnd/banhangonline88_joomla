@@ -2,18 +2,20 @@ package vantinviet.core.libraries.legacy.application;
 
 import android.app.Activity;
 import android.app.FragmentManager;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Build;
 import android.preference.PreferenceManager;
 import android.support.annotation.RequiresApi;
-import android.support.design.widget.NavigationView;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
-import android.view.Menu;
+import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 
 import java.util.ArrayList;
@@ -32,7 +34,6 @@ import vantinviet.core.libraries.cms.menu.JMenu;
 import vantinviet.core.libraries.html.bootstrap.Template;
 import vantinviet.core.libraries.html.module.Module;
 import vantinviet.core.libraries.joomla.JFactory;
-import vantinviet.core.libraries.joomla.application.JApplicationBase;
 import vantinviet.core.libraries.joomla.input.JInput;
 import vantinviet.core.libraries.utilities.JUtilities;
 
@@ -42,18 +43,15 @@ import vantinviet.core.libraries.utilities.JUtilities;
 /**
  * Created by cuongnd on 6/7/2016.
  */
-public class JApplication extends JApplicationBase {
+public class JApplication {
     private static final String CURRENT_LINK = "current_link";
     private static final String VTV_PREFERENCES = "vtv_preferences";
     public static JApplication instance;
-    private static String link;
-    public AppCompatActivity context;
     private String redirect;
     public VTVConfig vtvConfig=VTVConfig.getInstance();
     Map<String, String> list_input = new HashMap<String, String>();
 
     private String title;
-    public JInput input;
     private String component_response;
     SharedPreferences shared_preferences;
     public LinearLayout root_linear_layout;
@@ -63,7 +61,16 @@ public class JApplication extends JApplicationBase {
     private Resources resources;
     private FragmentManager fragmentManager;
     private android.support.v4.app.FragmentManager supportFragmentManager;
-
+    private RelativeLayout main_relative_layout;
+    private SharedPreferences webcache_sharedpreferences;
+    public Template template;
+    public ArrayList<Module> modules=new ArrayList<Module>();
+    public JInput input;
+    public static AppCompatActivity currentActivity;
+    private String link;
+    public static final String LIST_DATA_RESPONSE_BY_URL = "list_data_response_by_url";
+    private ProgressDialog progressDialog;
+    private Context context;
     /* Static 'instance' method */
     public static JApplication getInstance() {
 
@@ -106,42 +113,66 @@ public class JApplication extends JApplicationBase {
         return url;
 
     }
+    public void setLink(String link) {
+        this.link = link;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setProgressDialog(ProgressDialog progressDialog) {
+        this.progressDialog = progressDialog;
+    }
+
+    public ProgressDialog getProgressDialog() {
+        return progressDialog;
+    }
+
+    public Context getContext() {
+        return context;
+    }
+
+    public void setContext(Context context) {
+        this.context = context;
+    }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void doExecute() {
+        SharedPreferences webcache_sharedpreferences = getCurrentActivity().getSharedPreferences(LIST_DATA_RESPONSE_BY_URL, getCurrentActivity().MODE_PRIVATE);
+        setWebcache_sharedpreferences(webcache_sharedpreferences);
         Timber.plant(new Timber.DebugTree());
         config_screen_size();
-        SharedPreferences sharedpreferences;
         VTVConfig vtv_config = JFactory.getVTVConfig();
         int caching = vtv_config.getCaching();
         String link = getLink();
         if (link == null) {
             link = vtvConfig.getRootUrl();
         }
-        setProgressDialog(JUtilities.generateProgressDialog(getContext(), false));
+
         setRoot_linear_layout((LinearLayout) getCurrentActivity().findViewById(R.id.root_linear_layout));
         setMain_scroll_view((ScrollView) getCurrentActivity().findViewById(R.id.main_scroll_view));
-
+        setLink(link);
         WebView webview = WebView.getInstance();
+        getProgressDialog().show();
         if (caching == 1) {
-            sharedpreferences = getSharedPreferences(LIST_DATA_RESPONSE_BY_URL, getCurrentActivity().MODE_PRIVATE);
-            String response_data = sharedpreferences.getString(link, "");
+            webcache_sharedpreferences = getWebcache_sharedpreferences();// getCurrentActivity().getSharedPreferences(LIST_DATA_RESPONSE_BY_URL, getCurrentActivity().MODE_PRIVATE);
+            String response_data = (String) webcache_sharedpreferences.getString(link, "");
+            Timber.d(" webcache_sharedpreferences response_data %s",response_data);
             if (response_data.equals("")) {
-                //webview.create_browser(link);
+                webview.create_browser(link);
 
             } else {
                 webview.go_to_page(response_data);
             }
         } else {
-            //getProgressDialog().show();
+
             webview.create_browser(link);
-            //getProgressDialog().dismiss();
+
         }
+        getProgressDialog().dismiss();
     }
 
-    private SharedPreferences getSharedPreferences(String listDataResponseByUrl, int modePrivate) {
-        return null;
-    }
 
     public static void config_screen_size() {
         //set screen size
@@ -177,10 +208,10 @@ public class JApplication extends JApplicationBase {
     }
 
 
-    public void setCurrentActivity(Activity currentActivity) {
+    public void setCurrentActivity(AppCompatActivity currentActivity) {
         this.currentActivity = currentActivity;
     }
-    public static Activity getCurrentActivity() {
+    public static AppCompatActivity getCurrentActivity() {
         return  currentActivity;
     }
     public void setRedirect(String link) {
@@ -197,9 +228,9 @@ public class JApplication extends JApplicationBase {
         }*/
         setLink(link);
         saveCurrentLink(link);
-        //Intent myIntent = new Intent(getCurrentActivity(), MainActivity.class);
+        Intent myIntent = new Intent(getCurrentActivity(), getCurrentActivity().getClass());
         //myIntent.putExtra("key", value); //Optional parameters
-        //getCurrentActivity().startActivity(myIntent);
+        getCurrentActivity().startActivity(myIntent);
 
     }
 
@@ -227,7 +258,7 @@ public class JApplication extends JApplicationBase {
         link=link+"&os=android&screenSize="+ screenSize+"&version="+local_version;
         System.out.println("link:"+link);
         JApplicationSite.host=link;
-        Intent i = new Intent(this.context, app.context.getClass());
+        Intent i = new Intent(this.context, app.getCurrentActivity().getClass());
         this.context.startActivity(i);
 
     }
@@ -238,11 +269,14 @@ public class JApplication extends JApplicationBase {
         ActionBar actionBar = mainActivity.getSupportActionBar();
         actionBar.hide();
         mainActivity.setContentView(get_layout_activity_main());
+
         setFragmentManager(mainActivity.getFragmentManager());
         setSupportFragmentManager(mainActivity.getSupportFragmentManager());
         setCurrentActivity(mainActivity);
         setContext(mainActivity.getBaseContext());
         setResources(getResources());
+        setMain_relative_layout((RelativeLayout) mainActivity.findViewById(R.id.main_relative_layout));
+        setProgressDialog(JUtilities.generateProgressDialog(mainActivity, false));
         doExecute();
     }
 
@@ -315,5 +349,21 @@ public class JApplication extends JApplicationBase {
 
     public android.support.v4.app.FragmentManager getSupportFragmentManager() {
         return supportFragmentManager;
+    }
+
+    public RelativeLayout getMain_relative_layout() {
+        return main_relative_layout;
+    }
+
+    public void setMain_relative_layout(RelativeLayout main_relative_layout) {
+        this.main_relative_layout = main_relative_layout;
+    }
+
+    public SharedPreferences getWebcache_sharedpreferences() {
+        return webcache_sharedpreferences;
+    }
+
+    public void setWebcache_sharedpreferences(SharedPreferences webcache_sharedpreferences) {
+        this.webcache_sharedpreferences = webcache_sharedpreferences;
     }
 }

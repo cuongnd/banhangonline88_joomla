@@ -248,4 +248,5 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="row">row</string>
+    <string name="button">Button</string>
 </resources>
