@@ -52,13 +52,14 @@ public class homeverticalmenutag extends LinearLayout {
         String module_content=module.getContent();
         Type listType = new TypeToken<ArrayList<JMenu>>() {}.getType();
         ArrayList<JMenu> list_menu = JUtilities.getGsonParser().fromJson(module_content, listType);
-        Timber.d("menu list_menu %s",list_menu);
         root = TreeNode.root();
-
         for (JMenu menu_item: list_menu) {
+            menu_item.setLevel(0);
             TreeNode node = new TreeNode(menu_item).setViewHolder(new IconTreeItemHolder(app.getContext()));
             root.addChild(node);
-            tree_recurse_menu(menu_item.getChildren(),node);
+            ArrayList<JMenu> children=menu_item.getChildren();
+            menu_item.setTotalChildren(children.size());
+            tree_recurse_menu(children,node,0);
         }
         AndroidTreeView tView = new AndroidTreeView(app.getCurrentActivity(), root);
 
@@ -84,12 +85,20 @@ public class homeverticalmenutag extends LinearLayout {
 
 
     }
-    public void tree_recurse_menu(ArrayList<JMenu> list_menu, TreeNode root){
-        for (JMenu menu_item: list_menu) {
-            TreeNode node = new TreeNode(menu_item.getTitle());
-            root.addChildren(node);
+
+
+    public void tree_recurse_menu(ArrayList<JMenu> list_menu, TreeNode root,int level){
+        if(list_menu!=null)for (JMenu menu_item: list_menu) {
             ArrayList<JMenu> children=menu_item.getChildren();
-            tree_recurse_menu(children,node);
+            menu_item.setLevel(level+1);
+            menu_item.setTotalChildren(children.size());
+            TreeNode node = new TreeNode(menu_item).setViewHolder(new IconTreeItemHolder(app.getContext()));
+            root.addChildren(node);
+
+            tree_recurse_menu(children,node,level+1);
+        }
+        else{
+
         }
 
     }

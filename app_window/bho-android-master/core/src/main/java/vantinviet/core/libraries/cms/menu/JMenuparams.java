@@ -7,4 +7,15 @@ public class JMenuparams {
 
     String menu_image;
     String jv_selection;
+    @Override
+    public String toString() {
+        return "JMenuparams{" +
+                "menu_image=" + menu_image +
+                ", jv_selection='" + jv_selection + '\'' +
+                '}';
+    }
+
+    public String getMenu_image() {
+        return menu_image;
+    }
 }

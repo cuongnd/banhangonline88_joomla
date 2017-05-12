@@ -53,7 +53,7 @@ public class CategoryListDataAdapter extends RecyclerView.Adapter<CategoryListDa
         holder.link=category.getLink();
         Image medium_image=category.getMedium_image();
         String url=medium_image.getUrl();
-        if(!url.equals(""))
+        if(url!=null && !url.equals(""))
         {
             Picasso.with(mContext).load(VTVConfig.rootUrl.concat(url)).into((ImageView) holder.categoryImage);
         }

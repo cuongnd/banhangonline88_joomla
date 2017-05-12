@@ -85,6 +85,12 @@
         <item name="android:textAllCaps">true</item>
         <item name="android:gravity">center</item>
     </style>
+    <style name="go_to_page" parent="@style/Widget.AppCompat.Button.Borderless">
+        <item name="android:background">@drawable/button_primary_action_ripple</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/textIconColorPrimary</item>
+        <item name="android:gravity">center</item>
+    </style>
 
     <!-- -->
     <style name="buttonSecondaryStyle" parent="@style/Widget.AppCompat.Button.Borderless">

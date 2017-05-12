@@ -95,7 +95,7 @@ public class VTVConfig {
     public void setRootUrl(String rootUrl) {
         this.rootUrl =rootUrl;
     }
-    public String getRootUrl() {
+    public static String getRootUrl() {
         return rootUrl;
     }
 

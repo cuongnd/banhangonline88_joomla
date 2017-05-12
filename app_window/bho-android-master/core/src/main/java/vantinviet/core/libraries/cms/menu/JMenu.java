@@ -23,6 +23,8 @@ public class JMenu {
     private static JMenu instance;
     public ArrayList<JMenu> children=new ArrayList<JMenu>();
     private JSONObject menuActive;
+    protected int level=0;
+    protected int totalChildren=0;
 
     /* Static 'instance' method */
     public static JMenu getInstance() {
@@ -45,7 +47,9 @@ public class JMenu {
         return "JMenu{" +
                 "id=" + id +
                 ", parent_id='" + parent_id + '\'' +
+                ", level='" + level + '\'' +
                 ", title='" + title + '\'' +
+                ", totalChildren='" + totalChildren + '\'' +
                 ", link='" + link + '\'' +
                 ", flink='" + flink + '\'' +
                 ", params='" + params.toString() + '\'' +
@@ -59,5 +63,28 @@ public class JMenu {
 
     public ArrayList<JMenu> getChildren() {
         return children;
+    }
+
+    public JMenuparams getParams() {
+        return params;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+    public int getTotalChildren() {
+        return totalChildren;
+    }
+
+    public void setTotalChildren(int totalChildren) {
+        this.totalChildren = totalChildren;
+    }
+
+    public String getLink() {
+        return link;
     }
 }
