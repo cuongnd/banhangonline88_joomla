@@ -17,14 +17,13 @@ import com.google.gson.stream.JsonReader;
 
 import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.Map;
 
 import timber.log.Timber;
 import vantinviet.core.R;
 import vantinviet.core.VTVConfig;
-import vantinviet.core.administrator.components.com_hikamarket.classes.Image;
 import vantinviet.core.configuration.JConfig;
 
 
@@ -51,9 +50,14 @@ public class WebView {
         return ourInstance;
     }
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public void create_browser(String link) {
+    public void create_browser(String link, Map<String, String> data_post) {
         vtv_WebView web_browser = JFactory.getWebBrowser();
-        web_browser.vtv_postUrl(link);
+        if(data_post!=null){
+            web_browser.vtv_postUrl(link,data_post);
+        }else {
+            web_browser.vtv_postUrl(link);
+        }
+
         web_browser.addJavascriptInterface(new MyJavaScriptInterfaceWebsite(), "HtmlViewer");
 
 
@@ -86,7 +90,7 @@ public class WebView {
                 catch (JsonParseException e) {
                     Timber.d("JsonParseException error : %s",e.toString());
 
-                    JUtilities.show_alert_dialog(app.getLink());
+                    JUtilities.show_alert_dialog(app.getLink_redirect());
                     return;
                 }
 
@@ -105,7 +109,7 @@ public class WebView {
                     method.invoke(template_class,app.getRoot_linear_layout());
                     ImageView bg=(ImageView)app.getCurrentActivity().findViewById(R.id.bg);
                     app.getRoot_linear_layout().setBackgroundColor(Color.parseColor("#FFFFFF"));
-                    bg.setVisibility(LinearLayout.GONE);
+                    //bg.setVisibility(LinearLayout.GONE);
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();
                 } catch (IllegalAccessException e) {
@@ -115,6 +119,7 @@ public class WebView {
                 } catch (InvocationTargetException e) {
                     e.printStackTrace();
                 }
+                app.getProgressDialog().dismiss();
             }
         });
 
@@ -130,7 +135,7 @@ public class WebView {
             //Timber.d("html response: %s",html);
             if(vtv_config.getCaching()==1) {
                 SharedPreferences.Editor editor = app.getWebcache_sharedpreferences().edit();
-                link=app.getLink();
+                link=app.getLink_redirect();
                 editor.putString(link, html);
                 editor.commit();
             }

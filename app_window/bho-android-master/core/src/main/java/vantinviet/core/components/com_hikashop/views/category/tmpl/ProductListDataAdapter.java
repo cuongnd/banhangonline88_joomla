@@ -9,6 +9,8 @@ package vantinviet.core.components.com_hikashop.views.category.tmpl;
  */
 
 import android.content.Context;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.view.Gravity;
@@ -60,8 +62,10 @@ public class ProductListDataAdapter extends RecyclerView.Adapter<ProductListData
         if(images!=null && images.size()>0) {
             Image first_image = images.get(0);
             String url = first_image.getUrl();
-
-            Picasso.with(mContext).load(VTVConfig.rootUrl.concat(url)).into((ImageView) holder.ProductImage);
+            if(url!=null&&!url.equals(""))
+            {
+                Picasso.with(mContext).load(VTVConfig.rootUrl.concat(url)).into((ImageView) holder.ProductImage);
+            }
         }
         holder.productName.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
     }
@@ -89,10 +93,11 @@ public class ProductListDataAdapter extends RecyclerView.Adapter<ProductListData
                     return link;
                 }
 
+                @RequiresApi(api = Build.VERSION_CODES.KITKAT)
                 @Override
                 public void onClick(View v) {
                     //Toast.makeText(v.getContext(), productName.getText(), Toast.LENGTH_SHORT).show();
-                    //Toast.makeText(v.getContext(), this.getLink(), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(v.getContext(), this.getLink_redirect(), Toast.LENGTH_SHORT).show();
                     app.setRedirect(this.getLink());
                 }
             });

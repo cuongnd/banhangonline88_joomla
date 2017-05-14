@@ -76,7 +76,7 @@ public class CategoryListDataAdapter extends RecyclerView.Adapter<CategoryListDa
                 }
                 @Override
                 public void onClick(View v) {
-                    //Toast.makeText(v.getContext(), this.getLink(), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(v.getContext(), this.getLink_redirect(), Toast.LENGTH_SHORT).show();
                     app.setRedirect(this.getLink());
                 }
             });

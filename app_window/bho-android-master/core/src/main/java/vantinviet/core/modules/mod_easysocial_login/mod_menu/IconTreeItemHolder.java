@@ -1,12 +1,10 @@
-package vantinviet.core.modules.mod_menu;
+package vantinviet.core.modules.mod_easysocial_login.mod_menu;
 
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -21,7 +19,6 @@ import java.util.Map;
 import timber.log.Timber;
 import vantinviet.core.R;
 import vantinviet.core.VTVConfig;
-import vantinviet.core.libraries.cms.application.vtv_WebView;
 import vantinviet.core.libraries.cms.menu.JMenu;
 import vantinviet.core.libraries.cms.menu.JMenuparams;
 import vantinviet.core.libraries.joomla.JFactory;

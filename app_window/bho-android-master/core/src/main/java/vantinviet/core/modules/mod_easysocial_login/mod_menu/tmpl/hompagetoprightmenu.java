@@ -1,49 +1,38 @@
-package vantinviet.core.modules.mod_menu.tmpl;
+package vantinviet.core.modules.mod_easysocial_login.mod_menu.tmpl;
 
 import android.content.Context;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 
-import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.google.gson.stream.JsonReader;
 import com.unnamed.b.atv.model.TreeNode;
 import com.unnamed.b.atv.view.AndroidTreeView;
 
-import java.io.StringReader;
 import java.lang.reflect.Type;
-import java.sql.Time;
 import java.util.ArrayList;
 
-import timber.log.Timber;
 import vantinviet.core.R;
-import vantinviet.core.administrator.components.com_hikashop.classes.Category;
-import vantinviet.core.components.com_hikashop.views.category.tmpl.listing;
 import vantinviet.core.libraries.cms.menu.JMenu;
-import vantinviet.core.libraries.html.bootstrap.Row;
 import vantinviet.core.libraries.html.module.Module;
 import vantinviet.core.libraries.joomla.JFactory;
 import vantinviet.core.libraries.legacy.application.JApplication;
 import vantinviet.core.libraries.utilities.JUtilities;
-import vantinviet.core.modules.mod_menu.IconTreeItemHolder;
-import vantinviet.core.modules.mod_slideshowck.Slider;
+import vantinviet.core.modules.mod_easysocial_login.mod_menu.IconTreeItemHolder;
 
 import static android.widget.ListPopupWindow.MATCH_PARENT;
-import static android.widget.ListPopupWindow.WRAP_CONTENT;
 
 /**
  * Created by cuong on 5/10/2017.
  */
 
-public class homeverticalmenutag extends LinearLayout {
+public class hompagetoprightmenu extends LinearLayout {
     LinearLayout linear_layout_wrapper_menu;
     boolean show =true;
     JApplication app= JFactory.getApplication();
     TreeNode root;
     LayoutParams wrapper_menu_params = new LayoutParams(MATCH_PARENT,MATCH_PARENT );
-    public homeverticalmenutag(Context context, Module module) {
+    public hompagetoprightmenu(Context context, Module module) {
         super(context);
         inflate(getContext(), R.layout.modules_mod_menu_tmpl_homeverticalmenutag, this);
         this.setLayoutParams( new LayoutParams(MATCH_PARENT,MATCH_PARENT ));

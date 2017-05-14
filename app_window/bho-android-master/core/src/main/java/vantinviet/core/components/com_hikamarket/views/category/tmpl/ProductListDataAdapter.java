@@ -89,7 +89,7 @@ public class ProductListDataAdapter extends RecyclerView.Adapter<ProductListData
                 @Override
                 public void onClick(View v) {
                     //Toast.makeText(v.getContext(), productName.getText(), Toast.LENGTH_SHORT).show();
-                    //Toast.makeText(v.getContext(), this.getLink(), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(v.getContext(), this.getLink_redirect(), Toast.LENGTH_SHORT).show();
                     app.setRedirect(this.getLink());
                 }
             });

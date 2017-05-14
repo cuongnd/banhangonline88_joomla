@@ -16,7 +16,7 @@ public class Mod_tab_product_helper {
     public class List_category_product {
         ArrayList<Category> list_sub_category_detail=new ArrayList<Category>();
         ArrayList<Integer> list_category=new ArrayList<Integer>();
-        Category detail;
+        Category detail=new Category();
         ArrayList<Product> list=new ArrayList<Product>(0);
         ArrayList<Product> list_small_product=new ArrayList<Product>();
         @Override

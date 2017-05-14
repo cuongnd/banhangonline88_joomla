@@ -1,6 +1,5 @@
 package vantinviet.core.libraries.legacy.application;
 
-import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -13,7 +12,6 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
-import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
@@ -27,7 +25,6 @@ import vantinviet.core.R;
 import vantinviet.core.VTVConfig;
 
 
-import vantinviet.core.libraries.cms.application.JApplicationSite;
 import vantinviet.core.libraries.cms.application.Page;
 import vantinviet.core.libraries.cms.application.WebView;
 import vantinviet.core.libraries.cms.menu.JMenu;
@@ -67,10 +64,12 @@ public class JApplication {
     public ArrayList<Module> modules=new ArrayList<Module>();
     public JInput input;
     public static AppCompatActivity currentActivity;
-    private String link;
+    private String link_redirect;
     public static final String LIST_DATA_RESPONSE_BY_URL = "list_data_response_by_url";
     private ProgressDialog progressDialog;
     private Context context;
+    private Map<String, String> data_post;
+
     /* Static 'instance' method */
     public static JApplication getInstance() {
 
@@ -113,12 +112,12 @@ public class JApplication {
         return url;
 
     }
-    public void setLink(String link) {
-        this.link = link;
+    public void setLink_redirect(String link_redirect) {
+        this.link_redirect = link_redirect;
     }
 
-    public String getLink() {
-        return link;
+    public String getLink_redirect() {
+        return link_redirect;
     }
 
     public void setProgressDialog(ProgressDialog progressDialog) {
@@ -145,32 +144,33 @@ public class JApplication {
         config_screen_size();
         VTVConfig vtv_config = JFactory.getVTVConfig();
         int caching = vtv_config.getCaching();
-        String link = getLink();
+        String link = getLink_redirect();
+        Map<String, String> data_post = getData_post();
         if (link == null) {
             link = vtvConfig.getRootUrl();
         }
 
         setRoot_linear_layout((LinearLayout) getCurrentActivity().findViewById(R.id.root_linear_layout));
         setMain_scroll_view((ScrollView) getCurrentActivity().findViewById(R.id.main_scroll_view));
-        setLink(link);
+        setLink_redirect(link);
         WebView webview = WebView.getInstance();
         getProgressDialog().show();
         if (caching == 1) {
             webcache_sharedpreferences = getWebcache_sharedpreferences();// getCurrentActivity().getSharedPreferences(LIST_DATA_RESPONSE_BY_URL, getCurrentActivity().MODE_PRIVATE);
             String response_data = (String) webcache_sharedpreferences.getString(link, "");
-            Timber.d(" webcache_sharedpreferences response_data %s",response_data);
+            Timber.d(" webcache_sharedpreferences response_data %s", response_data);
             if (response_data.equals("")) {
-                webview.create_browser(link);
+                webview.create_browser(link,data_post);
 
             } else {
                 webview.go_to_page(response_data);
             }
         } else {
 
-            webview.create_browser(link);
+            webview.create_browser(link,data_post);
 
         }
-        getProgressDialog().dismiss();
+        //getProgressDialog().dismiss();
     }
 
 
@@ -214,23 +214,24 @@ public class JApplication {
     public static AppCompatActivity getCurrentActivity() {
         return  currentActivity;
     }
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void setRedirect(String link) {
         /*String test_page = "&Itemid=433";
         test_page = "";
-        if (link.equals("")) {
-            link =  vtvConfig.getRootUrl()+ "/index.php?os=android&screenSize=" + vtvConfig.getScreen_size_width() + "&version=" +vtvConfig.getLocal_version() + test_page+"&format=json&get_page_config_app=1";
-        } else if (!link.contains( vtvConfig.getRootUrl())) {
-            link =  vtvConfig.getRootUrl() + "/" + link;
-        }else if(link.equals(vtvConfig.getRootUrl())){
-            link =  vtvConfig.getRootUrl()+ "/index.php?os=android&screenSize=" + vtvConfig.getScreen_size_width() + "&version=" +vtvConfig.getLocal_version() + test_page+"&format=json&get_page_config_app=1";
-        }else if (link.contains( vtvConfig.getRootUrl())) {
-            link =  link+ "&os=android&screenSize=" + vtvConfig.getScreen_size_width() + "&version=" +vtvConfig.getLocal_version() + test_page+"&format=json&get_page_config_app=1";
+        if (link_redirect.equals("")) {
+            link_redirect =  vtvConfig.getRootUrl()+ "/index.php?os=android&screenSize=" + vtvConfig.getScreen_size_width() + "&version=" +vtvConfig.getLocal_version() + test_page+"&format=json&get_page_config_app=1";
+        } else if (!link_redirect.contains( vtvConfig.getRootUrl())) {
+            link_redirect =  vtvConfig.getRootUrl() + "/" + link_redirect;
+        }else if(link_redirect.equals(vtvConfig.getRootUrl())){
+            link_redirect =  vtvConfig.getRootUrl()+ "/index.php?os=android&screenSize=" + vtvConfig.getScreen_size_width() + "&version=" +vtvConfig.getLocal_version() + test_page+"&format=json&get_page_config_app=1";
+        }else if (link_redirect.contains( vtvConfig.getRootUrl())) {
+            link_redirect =  link_redirect+ "&os=android&screenSize=" + vtvConfig.getScreen_size_width() + "&version=" +vtvConfig.getLocal_version() + test_page+"&format=json&get_page_config_app=1";
         }*/
-        setLink(link);
+        setData_post(null);
+        setLink_redirect(link);
         saveCurrentLink(link);
-        Intent myIntent = new Intent(getCurrentActivity(), getCurrentActivity().getClass());
-        //myIntent.putExtra("key", value); //Optional parameters
-        getCurrentActivity().startActivity(myIntent);
+        doExecute();
+
 
     }
 
@@ -250,16 +251,18 @@ public class JApplication {
         return  current_link;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void setRedirect(String link, Map<String, String> data_post) {
-        JApplication app=JFactory.getApplication();
-        String screenSize = Integer.toString(VTVConfig.screen_size_width/ VTVConfig.screenDensity) + "x" + Integer.toString( VTVConfig.screen_size_height);
-        String local_version= VTVConfig.get_version();
+        JApplication app = JFactory.getApplication();
+        String screenSize = Integer.toString(VTVConfig.screen_size_width / VTVConfig.screenDensity) + "x" + Integer.toString(VTVConfig.screen_size_height);
+        String local_version = VTVConfig.get_version();
 
-        link=link+"&os=android&screenSize="+ screenSize+"&version="+local_version;
-        System.out.println("link:"+link);
-        JApplicationSite.host=link;
-        Intent i = new Intent(this.context, app.getCurrentActivity().getClass());
-        this.context.startActivity(i);
+        link = link + "&os=android&screenSize=" + screenSize + "&version=" + local_version;
+        System.out.println("link_redirect:" + link);
+        setLink_redirect(link);
+        setData_post(data_post);
+
+        doExecute();
 
     }
 
@@ -365,5 +368,13 @@ public class JApplication {
 
     public void setWebcache_sharedpreferences(SharedPreferences webcache_sharedpreferences) {
         this.webcache_sharedpreferences = webcache_sharedpreferences;
+    }
+
+    public void setData_post(Map<String,String> data_post) {
+        this.data_post = data_post;
+    }
+
+    public Map<String,String> getData_post() {
+        return data_post;
     }
 }

@@ -2,8 +2,6 @@ package vantinviet.core.components.com_hikashop.views.product.tmpl;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -18,19 +16,12 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.stream.JsonReader;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import timber.log.Timber;
@@ -140,7 +131,7 @@ public class ShowContent extends LinearLayout {
                     // DO SOMETHING WITH THE SCROLL COORDINATES
                     Timber.d("scrollY %d scrollX %d",scrollY,scrollX);
                     if(reload==true){
-                        String link=app.getLink();
+                        String link=app.getLink_redirect();
                         app.setRedirect(link);
                         Log.i("Touche", "ScrollView ACTION_DOWN");
                     }

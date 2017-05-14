@@ -8,11 +8,15 @@ android {
         applicationId "vantinviet.banhangonline88"
         minSdkVersion 15
         targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
-
+        versionCode 19
+        versionName "2.0"
+        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
+    }
+    dexOptions {
+        javaMaxHeapSize "3g"
+        jumboMode = true
     }
     buildTypes {
         release {

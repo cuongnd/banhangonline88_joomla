@@ -87,4 +87,8 @@ public class JMenu {
     public String getLink() {
         return link;
     }
+
+    public int getId() {
+        return id;
+    }
 }

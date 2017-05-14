@@ -65,7 +65,12 @@ public class Module_tab_product_tmpl_default_tab_content extends Fragment {
         ArrayList<Product> list_product;
         public Show_product_recycler_view(Mod_tab_product_helper.List_category_product list_category_product) {
             this.list_category_product=list_category_product;
-            category=list_category_product.getDetail();
+            try{
+                category =list_category_product.getDetail();
+            }catch (Exception ex){
+                Timber.d("ex %s",ex.toString());
+            }
+
             list_product=list_category_product.getList();
 
         }

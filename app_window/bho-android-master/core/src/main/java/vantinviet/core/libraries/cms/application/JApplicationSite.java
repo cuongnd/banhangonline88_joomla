@@ -66,7 +66,7 @@ public class JApplicationSite extends JApplicationCms {
     public  String client="";
     public static int screen_size_width;
     public static int screen_size_height;
-    public static String host="";
+    public static String link_redirect ="";
     public static boolean debug=true;
     public static String component_content;
     public static JApplicationSite getInstance(String client) {

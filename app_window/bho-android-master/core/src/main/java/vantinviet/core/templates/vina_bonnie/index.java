@@ -66,6 +66,7 @@ public class index extends LinearLayout {
         return instance;
     }
     public static void buildLayout(LinearLayout root_linear_layout) {
+        root_linear_layout.removeAllViews();
         JApplication app= JFactory.getApplication();
         int screen_size_width;
         int screen_size_height;
@@ -114,9 +115,10 @@ public class index extends LinearLayout {
             Timber.d("row name(%s)",row.getName());
             ArrayList<Column> list_column=row.getColumns();
             if(list_column!=null)for (Column column: list_column) {
+
                 int column_width=Integer.parseInt(column.getDefault_span());
                 column_width=screen_size_width*column_width/12;
-                layout_params = new LayoutParams(screen_size_width,screen_size_heght  );
+                layout_params = new LayoutParams(column_width,screen_size_heght  );
                 int column_offset=Integer.parseInt(column.getOffset().equals("")?"0":column.getOffset());
                 column_offset=screen_size_width*column_offset/12;
                 layout_params.setMargins(column_offset, 0, 0, 0);

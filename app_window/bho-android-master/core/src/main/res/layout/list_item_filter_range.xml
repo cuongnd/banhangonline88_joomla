@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <!-- Programmatically added {@link RangeSeekBar} -->
+        <!-- Programmatically added {@link_redirect RangeSeekBar} -->
     </LinearLayout>
 
     <TextView

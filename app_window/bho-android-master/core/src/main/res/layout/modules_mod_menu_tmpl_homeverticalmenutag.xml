@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableRight="@drawable/ic_list_black_24dp"
-            android:text="Danh muc san pham"
+            android:text="Danh mục sản phẩm"
             tools:layout_width="match_parent" />
 
     </LinearLayout>

@@ -110,15 +110,15 @@ public class cms {
 
         int caching= JConfig.getInstance().caching;
         if(caching==1){
-            String response_data=sharedpreferences.getString(host,"");
+            String response_data=sharedpreferences.getString(link_redirect,"");
             if(response_data.equals("")) {
-                create_browser(host);
+                create_browser(link_redirect);
 
             }else{
                 go_to_page(response_data);
             }
         }else{
-            create_browser(host);
+            create_browser(link_redirect);
         }*/
 
 
@@ -134,7 +134,7 @@ public class cms {
         }else{
             drawerMenuItem =  gson.fromJson(json_page, DrawerMenuItem.class);
             Timber.d("drawerMenuItem %s",drawerMenuItem.toString());
-            url=drawerMenuItem.getLink();
+            url=drawerMenuItem.getLink_redirect();
             if(url==null || url.equals("")){
                 url=VTVConfig.rootUrl+"?";
             }

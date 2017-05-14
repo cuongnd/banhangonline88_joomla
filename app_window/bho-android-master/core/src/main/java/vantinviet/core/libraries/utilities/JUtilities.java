@@ -5,6 +5,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.util.Base64;
 
 import com.google.gson.Gson;
@@ -35,6 +37,8 @@ import java.util.regex.Pattern;
 import vantinviet.core.R;
 import vantinviet.core.libraries.joomla.JFactory;
 import vantinviet.core.libraries.legacy.application.JApplication;
+
+import static vantinviet.core.libraries.legacy.application.JApplication.getCurrentActivity;
 
 /**
  * Created by cuongnd on 6/7/2016.
@@ -197,7 +201,7 @@ public class JUtilities {
     public static void show_alert_dialog(final String url) {
         final JApplication app= JFactory.getApplication();
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-                app.getCurrentActivity());
+                getCurrentActivity());
 
         alertDialogBuilder.setTitle("Error load page");
 
@@ -205,7 +209,8 @@ public class JUtilities {
                 .setMessage("Are you sure want to trying load page?")
                 .setCancelable(false)
                 .setPositiveButton("Yes",new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog,int id) {
+                    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+                    public void onClick(DialogInterface dialog, int id) {
                         app.setRedirect(url);
                         // if this button is clicked, close
                         // current activity
@@ -305,9 +310,9 @@ public class JUtilities {
      * @return dialog
      */
     public static ProgressDialog generateProgressDialog(Context context, boolean cancelable) {
-        ProgressDialog progressDialog = new ProgressDialog(context);
-        progressDialog.setMessage(context.getString(R.string.Loading));
-        progressDialog.setCancelable(cancelable);
-        return progressDialog;
+        JApplication app = JFactory.getApplication();
+        ProgressDialog dialog =  ProgressDialog.show(app.getCurrentActivity(), "",
+                context.getString(R.string.Loading), cancelable);
+        return dialog;
     }}
 
