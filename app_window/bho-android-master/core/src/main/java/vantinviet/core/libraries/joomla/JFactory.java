@@ -21,6 +21,7 @@ import vantinviet.core.libraries.joomla.session.JSession;
 import vantinviet.core.libraries.joomla.uri.JUri;
 import vantinviet.core.libraries.joomla.user.JUser;
 import vantinviet.core.libraries.legacy.application.JApplication;
+import vantinviet.core.libraries.legacy.database.mysqli;
 import vantinviet.core.libraries.utilities.JUtilities;
 
 import static vantinviet.core.libraries.legacy.controller.JControllerLegacy.app;
@@ -135,4 +136,7 @@ public class JFactory {
         return vtv_config;
     }
 
+    public static mysqli getDBO() {
+        return mysqli.getInstance();
+    }
 }

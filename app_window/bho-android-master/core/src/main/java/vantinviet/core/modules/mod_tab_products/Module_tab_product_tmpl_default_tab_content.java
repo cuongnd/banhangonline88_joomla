@@ -21,6 +21,7 @@ import timber.log.Timber;
 import vantinviet.core.R;
 import vantinviet.core.administrator.components.com_hikashop.classes.Category;
 import vantinviet.core.administrator.components.com_hikashop.classes.Product;
+import vantinviet.core.libraries.cms.menu.JMenu;
 
 /**
  * Created by neokree on 16/12/14.
@@ -48,10 +49,15 @@ public class Module_tab_product_tmpl_default_tab_content extends Fragment {
 
         RecyclerView cagory_recycler_view = (RecyclerView) view.findViewById(R.id.category_recycler_view);
         cagory_recycler_view.setHasFixedSize(true);
-        CategoryListDataAdapter category_adapter = new CategoryListDataAdapter(getContext(), list_category_product.getList_sub_category_detail());
+        ArrayList<Category> list_category= new ArrayList<Category>();;
+        try{
+            list_category = list_category_product.getList_sub_category_detail();
+        }catch (Exception ex){
+            Timber.d("ex %s",ex.toString());
+        }
+        CategoryListDataAdapter category_adapter = new CategoryListDataAdapter(getContext(), list_category);
         cagory_recycler_view.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         cagory_recycler_view.setAdapter(category_adapter);
-        Timber.d("module list_category_product %s",list_category_product.toString());
 
 
 
@@ -70,8 +76,12 @@ public class Module_tab_product_tmpl_default_tab_content extends Fragment {
             }catch (Exception ex){
                 Timber.d("ex %s",ex.toString());
             }
+            try{
+                list_product=list_category_product.getList();
+            }catch (Exception ex){
+                Timber.d("ex %s",ex.toString());
+            }
 
-            list_product=list_category_product.getList();
 
         }
 

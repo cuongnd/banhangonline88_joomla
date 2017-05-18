@@ -52,30 +52,4 @@ public class mod_menu {
         //init();
     }
 
-    private void init() {
-        String response=this.module.getResponse();
-        Type listType = new TypeToken<ArrayList<Slider>>() {}.getType();
-        ArrayList<Slider> list_slide = JUtilities.getGsonParser().fromJson(response, listType);
-        Timber.d("mod_slideshowck list_slide %s",list_slide.toString());
-        SliderLayout mDemoSlider =new SliderLayout(app.getContext());
-        mDemoSlider.setLayoutParams(new LinearLayout.LayoutParams(MATCH_PARENT, 400));
-        if(list_slide!=null)for (Slider item: list_slide) {
-            TextSliderView textSliderView = new TextSliderView(app.getContext());
-            // initialize a SliderLayout
-            textSliderView
-                    .description(item.getTitle())
-                    .image(item.getSource())
-                    .setScaleType(BaseSliderView.ScaleType.Fit)
-            ;
-
-            //add your extra information
-            textSliderView.bundle(new Bundle());
-            textSliderView.getBundle()
-                    .putString("extra","");
-
-            mDemoSlider.addSlider(textSliderView);
-
-        }
-        linear_layout.addView(mDemoSlider);
-    }
 }

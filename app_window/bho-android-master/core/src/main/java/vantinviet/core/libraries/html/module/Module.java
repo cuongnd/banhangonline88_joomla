@@ -6,7 +6,9 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import vantinviet.core.libraries.joomla.JFactory;
 import vantinviet.core.libraries.joomla.form.JFormField;
+import vantinviet.core.libraries.legacy.database.mysqli;
 
 /**
  * Created by cuongnd on 25/03/2017.
@@ -74,6 +76,7 @@ public class Module {
     }
 
     public String getContent() {
+        mysqli db= JFactory.getDBO();
         return content;
     }
 

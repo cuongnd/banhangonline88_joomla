@@ -40,7 +40,7 @@ public class mod_slideshowck {
     }
 
     private void init() {
-        String response=this.module.getResponse();
+        String response=this.module.getContent();
         Type listType = new TypeToken<ArrayList<Slider>>() {}.getType();
         ArrayList<Slider> list_slide = JUtilities.getGsonParser().fromJson(response, listType);
         Timber.d("mod_slideshowck list_slide %s",list_slide.toString());

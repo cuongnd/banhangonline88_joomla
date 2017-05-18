@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.preference.PreferenceManager;
@@ -278,8 +279,13 @@ public class JApplication {
         setCurrentActivity(mainActivity);
         setContext(mainActivity.getBaseContext());
         setResources(getResources());
+        Configuration configuration=new Configuration();
+        configuration.orientation=Configuration.ORIENTATION_LANDSCAPE;
+        configuration.keyboardHidden=Configuration.KEYBOARDHIDDEN_YES;
+        mainActivity.onConfigurationChanged(configuration);
         setMain_relative_layout((RelativeLayout) mainActivity.findViewById(R.id.main_relative_layout));
         setProgressDialog(JUtilities.generateProgressDialog(mainActivity, false));
+
         doExecute();
     }
 
