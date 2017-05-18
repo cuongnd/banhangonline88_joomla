@@ -73,9 +73,9 @@ class JDocumentRendererJsonModule extends JDocumentRenderer
             $cacheparams->class = 'JModuleHelper';
             $cacheparams->method = 'renderModule';
             $cacheparams->methodparams = array($module, $attribs);
-            $module->response = JModuleHelper::ModuleCache($module, $params, $cacheparams);
+            $module->content = JModuleHelper::ModuleCache($module, $params, $cacheparams);
         } else {
-            $module->response = JModuleHelper::renderModule($module, $attribs);
+            $module->content = JModuleHelper::renderModule($module, $attribs);
         }
         $func_check_module_in_array = function ($module_id, $modules) {
             foreach ($modules as $module) {
@@ -86,7 +86,7 @@ class JDocumentRendererJsonModule extends JDocumentRenderer
             }
         };
 
-        preg_match_all('/src="(.+?)"/', $module->response, $matches);
+        preg_match_all('/src="(.+?)"/', $module->content, $matches);
 
         if(count($matches[1])) {
 
@@ -104,7 +104,7 @@ class JDocumentRendererJsonModule extends JDocumentRenderer
 
             }
 
-            $module->response=str_replace($matches[0],$matches[1],$module->response);
+            $module->content=str_replace($matches[0],$matches[1],$module->content);
 
         }
         preg_match_all('/src="(.+?)"/', $module->content, $matches);
@@ -147,6 +147,6 @@ class JDocumentRendererJsonModule extends JDocumentRenderer
             $module->strparams = $params->toString();
             array_push($app->modules, $module);
         }
-        return $module->response;
+        return $module->content;
     }
 }
