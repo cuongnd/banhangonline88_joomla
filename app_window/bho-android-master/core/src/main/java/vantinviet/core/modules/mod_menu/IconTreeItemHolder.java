@@ -1,6 +1,8 @@
 package vantinviet.core.modules.mod_menu;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
@@ -13,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.facebook.FacebookSdk;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
@@ -40,6 +43,7 @@ import vantinviet.core.libraries.utilities.JUtilities;
 import vantinviet.core.modules.mod_menu.tmpl.homeverticalmenutag;
 
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
+import static com.facebook.FacebookSdk.getApplicationContext;
 
 
 /**
@@ -162,12 +166,28 @@ import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
             public response_ajax_show_sub_menu() {
             }
 
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @JavascriptInterface
             public void showHTML(String html) {
                 html= JUtilities.get_string_by_string_base64(html);
                 Timber.d("html response: %s",html);
                 Page page = JUtilities.getGsonParser().fromJson(html, Page.class);
                 String component_content=page.getComponent_response();
+                AlertDialog.Builder builder = new AlertDialog.Builder(app.getCurrentActivity());
+
+                Pouphomeverticalmenutag pouphomeverticalmenutag=new Pouphomeverticalmenutag(app.getContext(),component_content);
+                builder.setView(pouphomeverticalmenutag);
+                builder.setNeutralButton("Done", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //dialog.dismiss();
+                    }
+                });
+                AlertDialog alert = builder.create();
+                alert.show();
+
+
+
                 Type listType = new TypeToken<ArrayList<JCustomMenu>>() {}.getType();
                 ArrayList<JCustomMenu> list_menu = JUtilities.getGsonParser().fromJson(component_content, listType);
                 for (JCustomMenu menu_item: list_menu) {
