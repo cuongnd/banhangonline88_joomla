@@ -49,7 +49,7 @@ import static com.facebook.FacebookSdk.getApplicationContext;
 /**
  * Created by Bogdan Melnychuk on 2/12/15.
  */
-    public class IconTreeItemHolder extends TreeNode.BaseNodeViewHolder<JCustomMenu> {
+    public class IconTreeItemHolder extends TreeNode.BaseNodeViewHolder<JMenu> {
 
     TreeNode node;
     private JMenu redirectMenu;
@@ -59,7 +59,7 @@ import static com.facebook.FacebookSdk.getApplicationContext;
     }
 
     @Override
-    public View createNodeView(TreeNode node, JCustomMenu menu) {
+    public View createNodeView(TreeNode node, JMenu menu) {
         JApplication app = JFactory.getApplication();
         this.node = node;
         MenuLinearLayout menu_linear_layout = new MenuLinearLayout(app.getContext());
@@ -76,7 +76,7 @@ import static com.facebook.FacebookSdk.getApplicationContext;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public void setRedirectMenu(JCustomMenu redirectMenu) {
+    public void setRedirectMenu(JMenu redirectMenu) {
         JApplication app=JFactory.getApplication();
         String link = redirectMenu.getLink();
         Timber.d("menu item %s", redirectMenu.toString());
@@ -88,7 +88,7 @@ import static com.facebook.FacebookSdk.getApplicationContext;
     private class MenuLinearLayout  extends LinearLayout{
 
         public TreeNode node;
-        public JCustomMenu menu;
+        public JMenu menu;
         public JApplication app=JFactory.getApplication();
         public MenuLinearLayout(Context context) {
             super(context);
@@ -121,7 +121,7 @@ import static com.facebook.FacebookSdk.getApplicationContext;
                 });
 
             }else{
-                txt_menu_item.setOnClickListener(OnClickLoadSubMenu());
+                this.setOnClickListener(OnClickLoadSubMenu());
                 btn_go_to_page.setOnClickListener(OnClickGoToPageListener());
             }
         }
@@ -158,7 +158,7 @@ import static com.facebook.FacebookSdk.getApplicationContext;
             this.node = node;
         }
 
-        public void setMenu(JCustomMenu menu) {
+        public void setMenu(JMenu menu) {
             this.menu = menu;
         }
 
@@ -170,27 +170,23 @@ import static com.facebook.FacebookSdk.getApplicationContext;
             @JavascriptInterface
             public void showHTML(String html) {
                 html= JUtilities.get_string_by_string_base64(html);
-                Timber.d("html response: %s",html);
                 Page page = JUtilities.getGsonParser().fromJson(html, Page.class);
                 String component_content=page.getComponent_response();
-                AlertDialog.Builder builder = new AlertDialog.Builder(app.getCurrentActivity());
-
                 Pouphomeverticalmenutag pouphomeverticalmenutag=new Pouphomeverticalmenutag(app.getContext(),component_content);
-                builder.setView(pouphomeverticalmenutag);
-                builder.setNeutralButton("Done", new DialogInterface.OnClickListener() {
+                app.getAlertDialog().setView(pouphomeverticalmenutag);
+                app.getAlertDialog().setButton("Done", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //dialog.dismiss();
                     }
                 });
-                AlertDialog alert = builder.create();
-                alert.show();
+                app.getAlertDialog().show();
 
 
 
-                Type listType = new TypeToken<ArrayList<JCustomMenu>>() {}.getType();
-                ArrayList<JCustomMenu> list_menu = JUtilities.getGsonParser().fromJson(component_content, listType);
-                for (JCustomMenu menu_item: list_menu) {
+                Type listType = new TypeToken<ArrayList<JMenu>>() {}.getType();
+                ArrayList<JMenu> list_menu = JUtilities.getGsonParser().fromJson(component_content, listType);
+                for (JMenu menu_item: list_menu) {
                     menu_item.setLevel(menu.getLevel());
                     TreeNode sub_node = new TreeNode(menu_item).setViewHolder(new IconTreeItemHolder(app.getContext()));
                     node.addChildren(sub_node);

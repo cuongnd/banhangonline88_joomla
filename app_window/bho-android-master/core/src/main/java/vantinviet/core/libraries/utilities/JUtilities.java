@@ -314,5 +314,17 @@ public class JUtilities {
         ProgressDialog dialog =  ProgressDialog.show(app.getCurrentActivity(), "",
                 context.getString(R.string.Loading), cancelable);
         return dialog;
+    }
+    /**
+     * Generate top layer progress indicator.
+     *
+     * @param context    activity context
+     * @param cancelable can be progress layer canceled
+     * @return dialog
+     */
+    public static AlertDialog generateProgressAlertDialog(Context context, boolean cancelable) {
+        JApplication app = JFactory.getApplication();
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(app.getCurrentActivity());
+        return alertDialog.create();
     }}
 

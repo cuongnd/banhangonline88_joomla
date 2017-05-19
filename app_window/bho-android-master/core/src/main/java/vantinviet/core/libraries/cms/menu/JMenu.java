@@ -1,5 +1,7 @@
 package vantinviet.core.libraries.cms.menu;
 
+import com.google.gson.annotations.SerializedName;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -21,6 +23,7 @@ public class JMenu {
     JMenuparams params;
     private ArrayList<Image> images;
     private static JMenu instance;
+    @SerializedName("children")
     public ArrayList<JMenu> children=new ArrayList<JMenu>();
     private JSONObject menuActive;
     protected int level=0;

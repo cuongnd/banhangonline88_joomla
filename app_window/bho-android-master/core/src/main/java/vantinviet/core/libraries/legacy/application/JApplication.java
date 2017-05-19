@@ -1,9 +1,9 @@
 package vantinviet.core.libraries.legacy.application;
 
+import android.app.AlertDialog;
 import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -70,6 +70,7 @@ public class JApplication {
     private ProgressDialog progressDialog;
     private Context context;
     private Map<String, String> data_post;
+    private AlertDialog AlertDialog;
 
     /* Static 'instance' method */
     public static JApplication getInstance() {
@@ -123,6 +124,12 @@ public class JApplication {
 
     public void setProgressDialog(ProgressDialog progressDialog) {
         this.progressDialog = progressDialog;
+    }
+    public void setAlertDialog(AlertDialog AlertDialog) {
+        this.AlertDialog = AlertDialog;
+    }
+    public AlertDialog getAlertDialog() {
+        return  AlertDialog;
     }
 
     public ProgressDialog getProgressDialog() {
@@ -284,7 +291,9 @@ public class JApplication {
         configuration.keyboardHidden=Configuration.KEYBOARDHIDDEN_YES;
         mainActivity.onConfigurationChanged(configuration);
         setMain_relative_layout((RelativeLayout) mainActivity.findViewById(R.id.main_relative_layout));
+
         setProgressDialog(JUtilities.generateProgressDialog(mainActivity, false));
+        setAlertDialog(JUtilities.generateProgressAlertDialog(mainActivity, false));
 
         doExecute();
     }

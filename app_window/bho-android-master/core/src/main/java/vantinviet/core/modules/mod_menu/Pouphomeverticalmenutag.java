@@ -27,12 +27,12 @@ import java.util.ArrayList;
 import timber.log.Timber;
 import vantinviet.core.R;
 import vantinviet.core.libraries.cms.application.Page;
+import vantinviet.core.libraries.cms.menu.JMenu;
 import vantinviet.core.libraries.html.module.Module;
 import vantinviet.core.libraries.joomla.JFactory;
 import vantinviet.core.libraries.legacy.application.JApplication;
 import vantinviet.core.libraries.utilities.JUtilities;
 import vantinviet.core.modules.mod_menu.IconTreeItemHolder;
-import vantinviet.core.modules.mod_menu.JCustomMenu;
 
 import static android.widget.ListPopupWindow.MATCH_PARENT;
 
@@ -51,20 +51,20 @@ public class Pouphomeverticalmenutag extends LinearLayout {
         this.setLayoutParams( new LayoutParams(MATCH_PARENT,MATCH_PARENT ));
         final Button button=(Button)this.findViewById(R.id.show_menu);
         linear_layout_wrapper_menu =(LinearLayout)this.findViewById(R.id.wrapper_menu);
-        Type listType = new TypeToken<ArrayList<JCustomMenu>>() {}.getType();
-        ArrayList<JCustomMenu> list_menu = JUtilities.getGsonParser().fromJson(json_menu, listType);
+        Type listType = new TypeToken<ArrayList<JMenu>>() {}.getType();
+        ArrayList<JMenu> list_menu = JUtilities.getGsonParser().fromJson(json_menu, listType);
+        Timber.d("list_menu %s",list_menu.toString());
         root = TreeNode.root();
 
 
-        for (JCustomMenu menu_item: list_menu) {
+        for (JMenu menu_item: list_menu) {
             menu_item.setLevel(0);
             TreeNode node = new TreeNode(menu_item).setViewHolder(new IconTreeItemHolderPopup(app.getContext()));
             root.addChild(node);
-            ArrayList<JCustomMenu> children=menu_item.getChildrenCustomMenu();
-            menu_item.setTotalChildren(children.size());
+            ArrayList<JMenu> children=menu_item.getChildren();
             tree_recurse_menu(children,node,0);
         }
-        final AndroidTreeView tView = new AndroidTreeView(app.getCurrentActivity(), root);
+        final AndroidTreeView tView = new AndroidTreeView(app.getContext(), root);
         linear_layout_wrapper_menu.addView(tView.getView());
 
 
@@ -74,13 +74,11 @@ public class Pouphomeverticalmenutag extends LinearLayout {
     }
 
 
-    public static void tree_recurse_menu(ArrayList<JCustomMenu> list_menu, TreeNode root, int level){
-        if(list_menu!=null)for (JCustomMenu menu_item: list_menu) {
-            ArrayList<JCustomMenu> children=menu_item.getChildrenCustomMenu();
+    public static void tree_recurse_menu(ArrayList<JMenu> list_menu, TreeNode root, int level){
+        if(list_menu!=null)for (JMenu menu_item: list_menu) {
+            ArrayList<JMenu> children=menu_item.getChildren();
             menu_item.setLevel(level+1);
-            menu_item.setTotalChildren(children.size());
-            TreeNode node = new TreeNode(menu_item).setViewHolder(new IconTreeItemHolder(app.getContext()));
-
+            TreeNode node = new TreeNode(menu_item).setViewHolder(new IconTreeItemHolderPopup(app.getContext()));
             root.addChildren(node);
 
             tree_recurse_menu(children,node,level+1);

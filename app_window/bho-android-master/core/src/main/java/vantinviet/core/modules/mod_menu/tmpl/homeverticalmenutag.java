@@ -28,7 +28,7 @@ import vantinviet.core.libraries.joomla.JFactory;
 import vantinviet.core.libraries.legacy.application.JApplication;
 import vantinviet.core.libraries.utilities.JUtilities;
 import vantinviet.core.modules.mod_menu.IconTreeItemHolder;
-import vantinviet.core.modules.mod_menu.JCustomMenu;
+
 import vantinviet.core.modules.mod_slideshowck.Slider;
 
 import static android.widget.ListPopupWindow.MATCH_PARENT;
@@ -51,16 +51,13 @@ public class homeverticalmenutag extends LinearLayout {
         Button button=(Button)this.findViewById(R.id.show_menu);
         linear_layout_wrapper_menu =(LinearLayout)this.findViewById(R.id.wrapper_menu);
         String module_content=module.getContent();
-        Type listType = new TypeToken<ArrayList<JCustomMenu>>() {}.getType();
-        ArrayList<JCustomMenu> list_menu = JUtilities.getGsonParser().fromJson(module_content, listType);
+        Type listType = new TypeToken<ArrayList<JMenu>>() {}.getType();
+        ArrayList<JMenu> list_menu = JUtilities.getGsonParser().fromJson(module_content, listType);
         root = TreeNode.root();
-        for (JCustomMenu menu_item: list_menu) {
+        for (JMenu menu_item: list_menu) {
             menu_item.setLevel(0);
             TreeNode node = new TreeNode(menu_item).setViewHolder(new IconTreeItemHolder(app.getContext()));
             root.addChild(node);
-            ArrayList<JCustomMenu> children=menu_item.getChildrenCustomMenu();
-            menu_item.setTotalChildren(children.size());
-            tree_recurse_menu(children,node,0);
         }
         AndroidTreeView tView = new AndroidTreeView(app.getCurrentActivity(), root);
 
@@ -88,22 +85,6 @@ public class homeverticalmenutag extends LinearLayout {
     }
 
 
-    public static void tree_recurse_menu(ArrayList<JCustomMenu> list_menu, TreeNode root, int level){
-        if(list_menu!=null)for (JCustomMenu menu_item: list_menu) {
-            ArrayList<JCustomMenu> children=menu_item.getChildrenCustomMenu();
-            menu_item.setLevel(level+1);
-            menu_item.setTotalChildren(children.size());
-            TreeNode node = new TreeNode(menu_item).setViewHolder(new IconTreeItemHolder(app.getContext()));
-
-            root.addChildren(node);
-
-            tree_recurse_menu(children,node,level+1);
-        }
-        else{
-
-        }
-
-    }
 
 
 }

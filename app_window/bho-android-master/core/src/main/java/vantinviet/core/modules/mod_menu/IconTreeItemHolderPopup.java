@@ -3,11 +3,15 @@ package vantinviet.core.modules.mod_menu;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.RequiresApi;
+import android.util.Log;
 import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.widget.Button;
@@ -19,6 +23,7 @@ import com.google.gson.reflect.TypeToken;
 import com.squareup.picasso.Picasso;
 import com.unnamed.b.atv.model.TreeNode;
 
+import java.io.InputStream;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -41,7 +46,7 @@ import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 /**
  * Created by Bogdan Melnychuk on 2/12/15.
  */
-    public class IconTreeItemHolderPopup extends TreeNode.BaseNodeViewHolder<JCustomMenu> {
+    public class IconTreeItemHolderPopup extends TreeNode.BaseNodeViewHolder<JMenu> {
 
     TreeNode node;
     private JMenu redirectMenu;
@@ -51,46 +56,62 @@ import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
     }
 
     @Override
-    public View createNodeView(TreeNode node, JCustomMenu menu) {
+    public View createNodeView(TreeNode node, JMenu menu) {
         final JApplication app = JFactory.getApplication();
         this.node = node;
-        MenuLinearLayout menu_linear_layout = new MenuLinearLayout(app.getContext());
+        MenuLinearLayoutPopup menu_linear_layout = new MenuLinearLayoutPopup(app.getContext());
         menu_linear_layout.setNode(node);
         menu_linear_layout.setMenu(menu);
         menu_linear_layout.init();
-        TextView menu_title = (TextView) menu_linear_layout.findViewById(R.id.txt_menu_item);
-        final ImageView menu_icon = (ImageView) menu_linear_layout.findViewById(R.id.menu_icon);
+        TextView menu_title = (TextView) menu_linear_layout.findViewById(R.id.popup_txt_menu_item);
+        final ImageView menu_icon = (ImageView) menu_linear_layout.findViewById(R.id.popup_menu_icon);
         JMenuparams params = menu.getParams();
-        final String menu_image_path = "/" + params.getMenu_image();
-        Handler refresh2 = new Handler(Looper.getMainLooper());
-        refresh2.post(new Runnable() {
-            public void run()
-            {
-                //Picasso.with(app.getContext()).load(VTVConfig.rootUrl.concat(menu_image_path)).into(menu_icon);
-            }});
+        String menu_image_path="";
+        try{
+            menu_image_path = "/" + params.getMenu_image();
+        }catch (Exception ex){
+
+        }
+
+        //show The Image in a ImageView
+        if(menu_image_path!=null&&!menu_image_path.isEmpty())
+        {
+            try{
+                //new DownloadImageTask(menu_icon).execute(VTVConfig.rootUrl.concat(menu_image_path));
+            }catch (Exception ex){
+
+            }
+
+        }
+
+
+
 
         menu_title.setText(menu.getTitle());
         return menu_linear_layout;
     }
 
+
+
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public void setRedirectMenu(JCustomMenu redirectMenu) {
+    public void setRedirectMenu(JMenu redirectMenu) {
         JApplication app=JFactory.getApplication();
         String link = redirectMenu.getLink();
         Timber.d("menu item %s", redirectMenu.toString());
         Map<String, String> post = new HashMap<String, String>();
         post.put("Itemid", String.valueOf(redirectMenu.getId()));
+        app.getAlertDialog().dismiss();
         app.setRedirect(VTVConfig.getRootUrl().concat("/" + link), post);
     }
 
-    private class MenuLinearLayout  extends LinearLayout{
+    private class MenuLinearLayoutPopup  extends LinearLayout{
 
         public TreeNode node;
-        public JCustomMenu menu;
+        public JMenu menu;
         public JApplication app=JFactory.getApplication();
-        public MenuLinearLayout(Context context) {
+        public MenuLinearLayoutPopup(Context context) {
             super(context);
-            inflate(getContext(), R.layout.modules_mod_menu_tmpl_homeverticalmenutag_menu_item, this);
+            inflate(getContext(), R.layout.modules_mod_menu_tmpl_homeverticalmenutag_menu_item_popup, this);
 
         }
         public void init(){
@@ -104,33 +125,61 @@ import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
             layoutparams.setMargins(level*30,0,0,20);
             this.setLayoutParams(layoutparams);
             this.setBackgroundColor(Color.parseColor("#039BE5"));
-            final Button btn_go_to_page = (Button) this.findViewById(R.id.btn_go_to_page);
-            final TextView txt_menu_item = (TextView) this.findViewById(R.id.txt_menu_item);
+            final Button btn_go_to_page = (Button) this.findViewById(R.id.popup_btn_go_to_page);
+            final TextView txt_menu_item = (TextView) this.findViewById(R.id.popup_txt_menu_item);
             if(menu.getTotalChildren()==0) {
                 btn_go_to_page.setVisibility(INVISIBLE);
                 this.setOnClickListener(new OnClickListener() {
                     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
                     @Override
                     public void onClick(View view) {
-                        //setRedirectMenu(menu);
+                        setRedirectMenu(menu);
 
 
                     }
                 });
 
-            }else{
             }
         }
-
 
 
         public void setNode(TreeNode node) {
             this.node = node;
         }
 
-        public void setMenu(JCustomMenu menu) {
+        public void setMenu(JMenu menu) {
             this.menu = menu;
         }
 
+    }
+    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+        ImageView bmImage;
+
+        public DownloadImageTask(ImageView bmImage) {
+            this.bmImage = bmImage;
+        }
+
+        protected Bitmap doInBackground(String... urls) {
+            String urldisplay = urls[0];
+            Bitmap mIcon11 = null;
+            try {
+                InputStream in = new java.net.URL(urldisplay).openStream();
+                mIcon11 = BitmapFactory.decodeStream(in);
+            } catch (Exception e) {
+                Log.e("Error", e.getMessage());
+                e.printStackTrace();
+            }
+            return mIcon11;
+        }
+
+        protected void onPostExecute(Bitmap result) {
+            try {
+                bmImage.setImageBitmap(result);
+            } catch (Exception e) {
+                Log.e("Error", e.getMessage());
+                e.printStackTrace();
+            }
+
+        }
     }
 }
