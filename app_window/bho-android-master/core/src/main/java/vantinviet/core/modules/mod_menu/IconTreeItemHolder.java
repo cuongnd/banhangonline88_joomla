@@ -1,19 +1,24 @@
 package vantinviet.core.modules.mod_menu;
 
 import android.app.AlertDialog;
+import android.app.FragmentManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
+import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.webkit.JavascriptInterface;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.FacebookSdk;
 import com.google.gson.Gson;
@@ -172,26 +177,30 @@ import static com.facebook.FacebookSdk.getApplicationContext;
                 html= JUtilities.get_string_by_string_base64(html);
                 Page page = JUtilities.getGsonParser().fromJson(html, Page.class);
                 String component_content=page.getComponent_response();
-                Pouphomeverticalmenutag pouphomeverticalmenutag=new Pouphomeverticalmenutag(app.getContext(),component_content);
-                app.getAlertDialog().setView(pouphomeverticalmenutag);
-                app.getAlertDialog().setButton("Done", new DialogInterface.OnClickListener() {
+               /* Pouphomeverticalmenutag pouphomeverticalmenutag=new Pouphomeverticalmenutag(app.getContext(),component_content);
+                app.getAlertBuilderDialog().setNeutralButton("Done", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //dialog.dismiss();
                     }
                 });
+
+                app.getAlertBuilderDialog().setView(pouphomeverticalmenutag);
+                app.rebuildAlertDialog();
+                app.getAlertDialog().setTitle("select menu");
+
+
+
                 app.getAlertDialog().show();
-
-
-
+*/
                 Type listType = new TypeToken<ArrayList<JMenu>>() {}.getType();
                 ArrayList<JMenu> list_menu = JUtilities.getGsonParser().fromJson(component_content, listType);
-                for (JMenu menu_item: list_menu) {
-                    menu_item.setLevel(menu.getLevel());
-                    TreeNode sub_node = new TreeNode(menu_item).setViewHolder(new IconTreeItemHolder(app.getContext()));
-                    node.addChildren(sub_node);
-                }
-                node.setExpanded(true);
+
+                FireMissilesDialogFragment newFragment = new FireMissilesDialogFragment(list_menu);
+                //newFragment.setList_menu(list_menu);
+                //newFragment.init();
+                newFragment.show(app.getSupportFragmentManager(), "missiles");
+
 
 
 

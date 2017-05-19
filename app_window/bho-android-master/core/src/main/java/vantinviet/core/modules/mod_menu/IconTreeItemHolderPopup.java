@@ -10,6 +10,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.Message;
 import android.support.annotation.RequiresApi;
 import android.util.Log;
 import android.view.View;
@@ -23,6 +24,7 @@ import com.google.gson.reflect.TypeToken;
 import com.squareup.picasso.Picasso;
 import com.unnamed.b.atv.model.TreeNode;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -49,7 +51,7 @@ import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
     public class IconTreeItemHolderPopup extends TreeNode.BaseNodeViewHolder<JMenu> {
 
     TreeNode node;
-    private JMenu redirectMenu;
+    public JMenu redirectMenu;
 
     public IconTreeItemHolderPopup(Context context) {
         super(context);
@@ -64,28 +66,6 @@ import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
         menu_linear_layout.setMenu(menu);
         menu_linear_layout.init();
         TextView menu_title = (TextView) menu_linear_layout.findViewById(R.id.popup_txt_menu_item);
-        final ImageView menu_icon = (ImageView) menu_linear_layout.findViewById(R.id.popup_menu_icon);
-        JMenuparams params = menu.getParams();
-        String menu_image_path="";
-        try{
-            menu_image_path = "/" + params.getMenu_image();
-        }catch (Exception ex){
-
-        }
-
-        //show The Image in a ImageView
-        if(menu_image_path!=null&&!menu_image_path.isEmpty())
-        {
-            try{
-                //new DownloadImageTask(menu_icon).execute(VTVConfig.rootUrl.concat(menu_image_path));
-            }catch (Exception ex){
-
-            }
-
-        }
-
-
-
 
         menu_title.setText(menu.getTitle());
         return menu_linear_layout;
@@ -129,17 +109,36 @@ import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
             final TextView txt_menu_item = (TextView) this.findViewById(R.id.popup_txt_menu_item);
             if(menu.getTotalChildren()==0) {
                 btn_go_to_page.setVisibility(INVISIBLE);
-                this.setOnClickListener(new OnClickListener() {
-                    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-                    @Override
-                    public void onClick(View view) {
-                        setRedirectMenu(menu);
+                //this.setOnClickListener(OnClickGoToPageListener());
 
+            }else {
+                btn_go_to_page.setOnClickListener(OnClickGoToPageListener());
+            }
 
-                    }
-                });
+            final ImageView menu_icon = (ImageView) this.findViewById(R.id.popup_menu_icon);
+            JMenuparams params = menu.getParams();
+            String  menu_image_path="";
+            try{
+                menu_image_path = "/" + params.getMenu_image();
+            }catch (Exception ex){
 
             }
+            final String finalMenu_image_path = menu_image_path;
+            if(finalMenu_image_path !=null&&!finalMenu_image_path.equals(""))
+            {
+                Picasso.with(app.getContext()).load(VTVConfig.rootUrl.concat(finalMenu_image_path)).into(menu_icon);
+            }
+
+
+        }
+        private OnClickListener OnClickGoToPageListener() {
+            return new OnClickListener() {
+                @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+                @Override
+                public void onClick(View view) {
+                    setRedirectMenu(menu);
+                }
+            };
         }
 
 
@@ -154,7 +153,7 @@ import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
     }
     private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
         ImageView bmImage;
-
+        JApplication app=JFactory.getApplication();
         public DownloadImageTask(ImageView bmImage) {
             this.bmImage = bmImage;
         }
@@ -172,14 +171,29 @@ import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
             return mIcon11;
         }
 
-        protected void onPostExecute(Bitmap result) {
-            try {
-                bmImage.setImageBitmap(result);
-            } catch (Exception e) {
-                Log.e("Error", e.getMessage());
-                e.printStackTrace();
-            }
+        protected void onPostExecute(final Bitmap result) {
+            Thread thread = new Thread() {
+                @Override
+                public void run() {
+                    try {
+                        synchronized (app.getCurrentActivity()) {
+                            wait(5000);
+                            app.getCurrentActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    bmImage.setImageBitmap(result);
+                                }
+                            });
 
+                        }
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                ;
+            };
+            thread.start();
         }
     }
 }

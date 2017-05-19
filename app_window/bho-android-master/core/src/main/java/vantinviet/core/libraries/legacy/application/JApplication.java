@@ -71,6 +71,7 @@ public class JApplication {
     private Context context;
     private Map<String, String> data_post;
     private AlertDialog AlertDialog;
+    private AlertDialog.Builder alertBuilderDialog;
 
     /* Static 'instance' method */
     public static JApplication getInstance() {
@@ -391,5 +392,17 @@ public class JApplication {
 
     public Map<String,String> getData_post() {
         return data_post;
+    }
+
+    public void setAlertBuilderDialog(android.app.AlertDialog.Builder alertBuilderDialog) {
+        this.alertBuilderDialog = alertBuilderDialog;
+    }
+
+    public android.app.AlertDialog.Builder getAlertBuilderDialog() {
+        return alertBuilderDialog;
+    }
+
+    public void rebuildAlertDialog() {
+        setAlertDialog(getAlertBuilderDialog().create());
     }
 }

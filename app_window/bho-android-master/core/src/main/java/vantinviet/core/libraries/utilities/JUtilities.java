@@ -324,7 +324,8 @@ public class JUtilities {
      */
     public static AlertDialog generateProgressAlertDialog(Context context, boolean cancelable) {
         JApplication app = JFactory.getApplication();
-        AlertDialog.Builder alertDialog = new AlertDialog.Builder(app.getCurrentActivity());
-        return alertDialog.create();
+        AlertDialog.Builder alertBuilderDialog = new AlertDialog.Builder(app.getCurrentActivity());
+        app.setAlertBuilderDialog(alertBuilderDialog);
+        return alertBuilderDialog.create();
     }}
 

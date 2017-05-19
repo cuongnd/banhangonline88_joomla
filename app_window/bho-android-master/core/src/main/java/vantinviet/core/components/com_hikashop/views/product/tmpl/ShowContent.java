@@ -1,7 +1,9 @@
 package vantinviet.core.components.com_hikashop.views.product.tmpl;
 
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.text.Html;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -123,6 +125,7 @@ public class ShowContent extends LinearLayout {
 
         main_scroll_view.setOnTouchListener(new OnTouchListener() {
             boolean reload=false;
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction() == MotionEvent.ACTION_UP) {
