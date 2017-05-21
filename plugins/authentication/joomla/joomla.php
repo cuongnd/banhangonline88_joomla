@@ -28,6 +28,7 @@ class PlgAuthenticationJoomla extends JPlugin
      */
     public function onUserAuthenticate($credentials, $options, &$response)
     {
+
         $response->type = 'Joomla';
         // Joomla does not like blank passwords
         if (empty($credentials['password'])) {

@@ -25,16 +25,17 @@ class UsersControllerUser extends UsersController
      */
     public function ajax_login()
     {
-
-
         $app = JFactory::getApplication();
         $input = $app->input;
          $post=json_decode(file_get_contents('php://input'));
+         if(!$post){
+            $post=(object)$input->getArray();
+         }
         $method = $input->getMethod();
         // Populate the data array:
         $data = array();
         $data['return'] = base64_decode($app->input->post->get('return', '', 'BASE64'));
-        $data['username'] = $post->email;
+        $data['username'] = $post->email?$post->email:$post->username;
         $data['password'] = $post->password;
         $data['secretkey'] = $input->getString('token');
 
@@ -107,6 +108,12 @@ class UsersControllerUser extends UsersController
      *
      * @since   1.6
      */
+    public function ajax_logout(){
+        $app = JFactory::getApplication();
+        $app->logout();
+        $user=JFactory::getUser();
+        echo json_encode($user);
+    }
     public function logout()
     {
         JSession::checkToken('request') or jexit(JText::_('JINVALID_TOKEN'));

@@ -49,4 +49,8 @@ public class Category {
     public Image getMedium_image() {
         return medium_image;
     }
+
+    public int getCategory_id() {
+        return category_id;
+    }
 }

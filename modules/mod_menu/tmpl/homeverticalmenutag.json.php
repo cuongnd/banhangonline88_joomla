@@ -69,7 +69,7 @@ $treerecurse =function ($function_call_back,$id, $indent, &$list, &$children, $m
             }
             $item_store=$v;
             $item_store->treename = $indent . $txt;
-            $item_store->total_sub_menu = count($children[$id]);
+            $item_store->totalChildren = count($children[$id]);
             $item_store->children = array();
             $function_call_back($function_call_back,$id, $indent . $spacer, $item_store->children, $children, $maxlevel, $level + 1, $type);
             $list[]=$item_store;

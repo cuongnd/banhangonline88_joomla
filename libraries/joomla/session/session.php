@@ -105,7 +105,7 @@ class JSession implements IteratorAggregate
 	 *
 	 * @var  \Joomla\Registry\Registry
 	 */
-	protected $data;
+	public $data;
 
 	/**
 	 * Constructor
