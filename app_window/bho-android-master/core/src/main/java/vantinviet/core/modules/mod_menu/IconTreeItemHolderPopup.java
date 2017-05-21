@@ -12,6 +12,8 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.support.annotation.RequiresApi;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.View;
 import android.webkit.JavascriptInterface;
@@ -80,7 +82,11 @@ import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
         Timber.d("menu item %s", redirectMenu.toString());
         Map<String, String> post = new HashMap<String, String>();
         post.put("Itemid", String.valueOf(redirectMenu.getId()));
-        app.getAlertDialog().dismiss();
+        Fragment prev = app.getSupportFragmentManager().findFragmentByTag("DialogFragmentSubMenu");
+        if (prev != null) {
+            DialogFragment df = (DialogFragment) prev;
+            df.dismiss();
+        }
         app.setRedirect(VTVConfig.getRootUrl().concat("/" + link), post);
     }
 

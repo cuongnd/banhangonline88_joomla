@@ -685,5 +685,25 @@
     <string name="ic_whatshot">&#xe1ae;</string>
     <string name="ic_wifi_tethering">&#xe1af;</string>
     <string name="ic_work">&#xe1b0;</string>
+    <string name="close">Đóng</string>
+    <string name="str_profile">Thông tin cá nhân</string>
+    <string name="str_login">Đăng nhập</string>
+    <string name="ERROR">Lỗi</string>
+    <string name="username_requirement">Vui lòng nhập tên đăng nhập</string>
+    <string name="password_requirement">Vui lòng nhập mật khẩu</string>
+    <string name="str_close">Đóng</string>
+    <string name="str_logout">Đăng xuất</string>
+    <string name="INFO">Thông báo</string>
+    <string name="str_logout_successful">Đăng xuất thành công</string>
+    <string name="hello_guest">Xin chào khách hàng</string>
+    <string name="hello_user">Xin chào %1$s</string>
+    <string name="str_login_false">Không thể đăng nhập vui lòng kiểm tra lại thông tin đăng nhập</string>
+    <string name="str_logout_false">Đăng xuất bị lỗi</string>
+    <string name="str_login_successful">Đăng nhập thành công</string>
+    <string name="str_yes">Đồng ý</string>
+    <string name="str_cancel">Hủy</string>
+    <string name="str_logout_confirm">Bạn có chắc chắn muốn đăng xuất khỏi tài khoản ?</string>
+    <string name="str_logout_processing">Đang đăng xuất...</string>
+    <string name="str_login_processing">Đang đăng nhập...</string>
 
 </resources>

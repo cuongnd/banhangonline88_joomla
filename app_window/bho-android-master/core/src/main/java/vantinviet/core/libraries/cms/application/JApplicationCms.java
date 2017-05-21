@@ -7,7 +7,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import vantinviet.core.configuration.JConfig;
-import vantinviet.core.libraries.cms.component.JComponentHelper;
 import vantinviet.core.libraries.cms.menu.JMenu;
 import vantinviet.core.libraries.joomla.JFactory;
 import vantinviet.core.libraries.joomla.language.JLanguage;
@@ -15,8 +14,6 @@ import vantinviet.core.libraries.legacy.exception.exception;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
 
 
 /**
@@ -37,13 +34,13 @@ public class JApplicationCms {
             return;
         }
         JMenu JMenu = JFactory.getMenu();
-        JSONObject menu_active= JMenu.getMenuActive();
+        JMenu menu_active= JMenu.getMenuactive();
         System.out.println("menu_active");
         System.out.println(menu_active);
         System.out.println("end menu_active");
         String mobile_response_type="";
-        if(menu_active!=null && menu_active.has("mobile_response_type")) {
-            mobile_response_type =menu_active.getString("mobile_response_type");
+        if(menu_active!=null && !menu_active.getMobile_response_type().isEmpty()) {
+            mobile_response_type =menu_active.getMobile_response_type();
         }else
         {
             mobile_response_type="html";

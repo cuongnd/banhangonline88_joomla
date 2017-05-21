@@ -2,20 +2,16 @@ package vantinviet.core.libraries.cms.menu;
 
 import com.google.gson.annotations.SerializedName;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
 
 import vantinviet.core.administrator.components.com_hikashop.classes.Image;
-import vantinviet.core.libraries.legacy.application.JApplication;
 
 /**
  * Created by cuongnd on 6/7/2016.
  */
 public class JMenu {
 
-    int id;
+    int id=0;
     int parent_id;
     String title;
     String link;
@@ -25,9 +21,10 @@ public class JMenu {
     private static JMenu instance;
     @SerializedName("children")
     public ArrayList<JMenu> children=new ArrayList<JMenu>();
-    private JSONObject menuActive;
+    private JMenu menuactive;
     protected int level=0;
     protected int totalChildren=0;
+    private String mobile_response_type;
 
     /* Static 'instance' method */
     public static JMenu getInstance() {
@@ -38,12 +35,12 @@ public class JMenu {
         return instance;
     }
 
-    public JSONObject getMenuActive() {
-        return menuActive;
+    public JMenu getMenuactive() {
+        return menuactive;
     }
 
-    public void setMenuActive(JSONObject menuActive) {
-        this.menuActive = menuActive;
+    public void setMenuactive(JMenu menuactive) {
+        this.menuactive = menuactive;
     }
     @Override
     public String toString() {
@@ -93,5 +90,17 @@ public class JMenu {
 
     public int getId() {
         return id;
+    }
+
+    public int getInt() {
+        return id;
+    }
+
+    public String getMobile_response_type() {
+        return mobile_response_type;
+    }
+
+    public static JMenu getItem(int id) {
+        return null;
     }
 }

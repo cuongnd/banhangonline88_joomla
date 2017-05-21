@@ -1,33 +1,22 @@
 package vantinviet.core.modules.mod_menu;
 
-import android.app.AlertDialog;
-import android.app.FragmentManager;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Build;
+import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.RequiresApi;
-import android.support.v4.app.DialogFragment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.webkit.JavascriptInterface;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.facebook.FacebookSdk;
-import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.google.gson.stream.JsonReader;
 import com.squareup.picasso.Picasso;
 import com.unnamed.b.atv.model.TreeNode;
 
-import java.io.StringReader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,8 +25,6 @@ import java.util.Map;
 import timber.log.Timber;
 import vantinviet.core.R;
 import vantinviet.core.VTVConfig;
-import vantinviet.core.components.com_hikashop.views.product.tmpl.ShowContent;
-import vantinviet.core.components.com_hikashop.views.product.tmpl.show;
 import vantinviet.core.libraries.cms.application.Page;
 import vantinviet.core.libraries.cms.application.vtv_WebView;
 import vantinviet.core.libraries.cms.menu.JMenu;
@@ -45,10 +32,8 @@ import vantinviet.core.libraries.cms.menu.JMenuparams;
 import vantinviet.core.libraries.joomla.JFactory;
 import vantinviet.core.libraries.legacy.application.JApplication;
 import vantinviet.core.libraries.utilities.JUtilities;
-import vantinviet.core.modules.mod_menu.tmpl.homeverticalmenutag;
 
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
-import static com.facebook.FacebookSdk.getApplicationContext;
 
 
 /**
@@ -153,7 +138,7 @@ import static com.facebook.FacebookSdk.getApplicationContext;
                     post.put("parent_id",String.valueOf(menu.getId()));
                     post.put("tmpl","component");
                     web_browser.vtv_postUrl(VTVConfig.rootUrl,post);
-                    app.getProgressDialog().dismiss();
+                    app.getProgressDialog().show();
                     web_browser.addJavascriptInterface(new response_ajax_show_sub_menu(), "HtmlViewer");
                 }
             };
@@ -193,14 +178,16 @@ import static com.facebook.FacebookSdk.getApplicationContext;
 
                 app.getAlertDialog().show();
 */
-                Type listType = new TypeToken<ArrayList<JMenu>>() {}.getType();
-                ArrayList<JMenu> list_menu = JUtilities.getGsonParser().fromJson(component_content, listType);
 
-                FireMissilesDialogFragment newFragment = new FireMissilesDialogFragment(list_menu);
+                DialogFragmentSubMenu newFragment = new DialogFragmentSubMenu();
+                Bundle args = new Bundle();
+                args.putString("component_content",component_content);
+                newFragment.setArguments(args);
+
                 //newFragment.setList_menu(list_menu);
                 //newFragment.init();
-                newFragment.show(app.getSupportFragmentManager(), "missiles");
-
+                newFragment.show(app.getSupportFragmentManager(), "DialogFragmentSubMenu");
+                app.getProgressDialog().dismiss();
 
 
 

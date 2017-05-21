@@ -241,6 +241,9 @@ public class JModuleHelper {
 
     public static void render_layout(Module module, LinearLayout linear_layout, String layout) {
         JApplication app=JFactory.getApplication();
+        if(layout==null){
+            layout="default";
+        }
         layout=layout.replaceAll("_:","");
         layout=layout.equals("default")?"m_default":layout;
         Class<?> layout_class = null;

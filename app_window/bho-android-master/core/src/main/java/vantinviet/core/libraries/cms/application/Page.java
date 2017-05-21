@@ -3,8 +3,11 @@ package vantinviet.core.libraries.cms.application;
 import java.util.ArrayList;
 import java.util.Map;
 
+import vantinviet.core.libraries.cms.menu.JMenu;
 import vantinviet.core.libraries.html.bootstrap.Template;
 import vantinviet.core.libraries.html.module.Module;
+import vantinviet.core.libraries.joomla.session.JSession;
+import vantinviet.core.libraries.joomla.user.JUser;
 
 /**
  * Created by cuong on 5/8/2017.
@@ -15,11 +18,18 @@ public class Page {
     public String title;
     public String text;
     public String component_response;
+    public  JMenu menuactive;
+    public JUser activeuser;
     public Template template;
     ArrayList<Module> modules=new ArrayList<Module>();
     private Map<String, String> list_input;
+    private JSession session;
 
     public Page() {
+    }
+
+    public JMenu getMenuActive() {
+        return menuactive;
     }
 
     public long getId() {
@@ -93,5 +103,13 @@ public class Page {
 
     public String getComponent_response() {
         return component_response;
+    }
+
+    public JSession getSession() {
+        return session;
+    }
+
+    public JUser getActiveUser() {
+        return activeuser;
     }
 }

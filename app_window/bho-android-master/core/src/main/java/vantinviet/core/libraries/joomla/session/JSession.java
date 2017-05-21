@@ -11,6 +11,9 @@ import vantinviet.core.libraries.joomla.filesystem.JFile;
 public  class JSession {
     private static JSession instance;
     public String android_ses_id =null;
+    private static String formToken="";
+    public Data data;
+
     public static JSession getInstance() {
         if(instance==null)
         {
@@ -18,6 +21,11 @@ public  class JSession {
         }
        return instance;
     }
+
+    public String getFormToken() {
+        return getData().getDataDefault().getSession().getToken();
+    }
+
     public  void setId(String android_ses_id) {
         this.android_ses_id = android_ses_id;
         JConfig config= JFactory.getConfig();
@@ -34,6 +42,35 @@ public  class JSession {
             android_ses_id=config.get("android_ses_id","");
         }
         return android_ses_id;
+    }
+
+    public  Data getData() {
+        return data;
+    }
+
+    private class Data {
+        public DataDefault __default;
+
+        public DataDefault getDataDefault() {
+            return __default;
+        }
+
+        private class DataDefault {
+            public Session session;
+
+            public Session getSession() {
+                return session;
+            }
+
+            private class Session {
+                int counter;
+                String token="";
+
+                public String getToken() {
+                    return token;
+                }
+            }
+        }
     }
 
 

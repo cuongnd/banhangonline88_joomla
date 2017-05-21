@@ -229,6 +229,25 @@ public class JUtilities {
         // show it
         alertDialog.show();
     }
+    public static void alert(int MessageType, int message) {
+        final JApplication app= JFactory.getApplication();
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                getCurrentActivity());
+        alertDialogBuilder
+                .setTitle(MessageType)
+                .setMessage(message)
+                .setCancelable(false)
+                .setPositiveButton(R.string.str_close,new DialogInterface.OnClickListener() {
+                    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+                    public void onClick(DialogInterface dialog, int id) {
+
+                    }
+                });
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // show it
+        alertDialog.show();
+    }
 
     public static boolean in_array(ArrayList<String> var_array, String need_var) {
         for (String item: var_array) {

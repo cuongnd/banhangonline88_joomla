@@ -2,6 +2,8 @@ package vantinviet.core.modules.mod_menu;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -155,9 +157,9 @@ public class horizontal_menu {
             }
             for (int i=0;i<list_menu_item.length();i++) {
                 BootstrapButton bootstrap_button = new BootstrapButton(context);
-                JSONObject menu_item=list_menu_item.getJSONObject(i);
-                id = menu_item.getInt("id");
-                title = menu_item.getString("title");
+                JMenu menu_item = new JMenu();
+                id = menu_item.getId();
+                title = menu_item.getTitle();
                 bootstrap_button.setId(id);
                 bootstrap_button.setText(title);
                 bootstrap_button.setBootstrapSize(DefaultBootstrapSize.LG);
@@ -192,24 +194,21 @@ public class horizontal_menu {
 
 
     }
-    static View.OnClickListener getOnClickDoSomething(final BootstrapButton button, final JSONObject menu_item)  {
+    static View.OnClickListener getOnClickDoSomething(final BootstrapButton button, final JMenu menu_item)  {
         return new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             public void onClick(View v) {
-                try {
 
-                    String link=menu_item.getString("link");
-                    String id=menu_item.getString("id");
-                    String title=menu_item.getString("title");
-                    link=link+"&Itemid="+id;
-                    JApplication app=JFactory.getApplication();
-                    app.setRedirect(link);
-                    JMenu JMenu = JFactory.getMenu();
-                    JMenu.setMenuActive(menu_item);
-                    //(new AsyncJsonElementViewLoader()).execute(link);
-                    System.out.println(link);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                String link=menu_item.getLink();
+                int id=menu_item.getId();
+                String title=menu_item.getTitle();
+                link=link+"&Itemid="+id;
+                JApplication app=JFactory.getApplication();
+                app.setRedirect(link);
+                JMenu JMenu = JFactory.getMenu();
+                JMenu.setMenuactive(menu_item);
+                //(new AsyncJsonElementViewLoader()).execute(link);
+                System.out.println(link);
             }
         };
     }

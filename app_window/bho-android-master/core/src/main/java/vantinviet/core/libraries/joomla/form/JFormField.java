@@ -3,9 +3,6 @@ package vantinviet.core.libraries.joomla.form;
 import android.content.Context;
 import android.view.View;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.File;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -109,13 +106,9 @@ public abstract class JFormField {
         label = field.getLabel();
         value_default = field.getDefault();
         JMenu menu = JFactory.getMenu();
-        JSONObject menuActive = menu.getMenuActive();
-        String active_menu_item_id = "";
-        try {
-            active_menu_item_id = menuActive.getString("id");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        JMenu menuActive = menu.getMenuactive();
+        int active_menu_item_id = 0;
+        active_menu_item_id = menuActive.getId();
         System.out.println("active_menu_item_id:" + active_menu_item_id);
         String key = type + name + active_menu_item_id + value_default + label + group;
         key = md5.encryptMD5(key);

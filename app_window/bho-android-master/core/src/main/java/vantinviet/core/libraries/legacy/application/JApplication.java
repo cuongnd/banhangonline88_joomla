@@ -33,6 +33,8 @@ import vantinviet.core.libraries.html.bootstrap.Template;
 import vantinviet.core.libraries.html.module.Module;
 import vantinviet.core.libraries.joomla.JFactory;
 import vantinviet.core.libraries.joomla.input.JInput;
+import vantinviet.core.libraries.joomla.session.JSession;
+import vantinviet.core.libraries.joomla.user.JUser;
 import vantinviet.core.libraries.utilities.JUtilities;
 
 
@@ -72,6 +74,7 @@ public class JApplication {
     private Map<String, String> data_post;
     private AlertDialog AlertDialog;
     private AlertDialog.Builder alertBuilderDialog;
+    private JSession session;
 
     /* Static 'instance' method */
     public static JApplication getInstance() {
@@ -134,6 +137,14 @@ public class JApplication {
     }
 
     public ProgressDialog getProgressDialog() {
+        if(!progressDialog.isShowing())
+        {
+            progressDialog.setMessage(getContext().getString(R.string.Loading));
+        }
+        return progressDialog;
+    }
+    public ProgressDialog getProgressDialog(String messenger) {
+        progressDialog.setMessage(messenger);
         return progressDialog;
     }
 
@@ -303,10 +314,16 @@ public class JApplication {
     public void setAplication(Page page) {
         this.template = page.getTemplate();
         this.modules = page.getModules();
+        this.session = JSession.getInstance();
+        setSession(page.getSession());
+
         this.list_input = page.getList_input();
         this.component_response = page.getComponent_response();
         this.input.setList_input(page.getList_input());
-        this.input=JInput.getInstance();
+        this.input = JInput.getInstance();
+        this.getMenu().setMenuactive(page.getMenuActive());
+        JUser user=JUser.getInstance();
+        user.setActiveUser(page.getActiveUser());
     }
 
     public String getTitle() {
@@ -404,5 +421,13 @@ public class JApplication {
 
     public void rebuildAlertDialog() {
         setAlertDialog(getAlertBuilderDialog().create());
+    }
+
+    public void setSession(JSession session) {
+        this.session = session;
+    }
+
+    public JSession getSession() {
+        return session;
     }
 }

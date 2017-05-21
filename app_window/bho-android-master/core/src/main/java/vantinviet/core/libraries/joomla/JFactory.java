@@ -91,7 +91,8 @@ public class JFactory {
 
 
     public static JUser getUser() {
-        return JUser.getInstance();
+        JUser user= JUser.getInstance();
+        return user.getActiveUser();
     }
     public static JUser getUser(int id) {
         return JUser.getInstance(id);
