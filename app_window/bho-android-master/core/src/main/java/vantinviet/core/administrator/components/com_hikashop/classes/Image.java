@@ -7,8 +7,8 @@ package vantinviet.core.administrator.components.com_hikashop.classes;
 public class Image {
     String path;
     String filename;
-    String url;
-    String origin_url;
+    String url="";
+    String origin_url="";
     public String toString() {
         return "Image{" +
                 "path=" + path +

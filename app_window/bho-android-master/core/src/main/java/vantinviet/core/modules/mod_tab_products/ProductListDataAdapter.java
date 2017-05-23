@@ -9,6 +9,8 @@ package vantinviet.core.modules.mod_tab_products;
  */
 
 import android.content.Context;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.view.Gravity;
@@ -59,8 +61,10 @@ public class ProductListDataAdapter extends RecyclerView.Adapter<ProductListData
         if(list_image!=null && list_image.size()>0) {
             Image first_image = list_image.get(0);
             String url = first_image.getUrl();
-
-            Picasso.with(mContext).load(VTVConfig.rootUrl.concat(url)).into((ImageView) holder.ProductImage);
+            if(!url.isEmpty())
+            {
+                Picasso.with(mContext).load(VTVConfig.rootUrl.concat(url)).into((ImageView) holder.ProductImage);
+            }
         }
         holder.productName.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
     }
@@ -86,6 +90,7 @@ public class ProductListDataAdapter extends RecyclerView.Adapter<ProductListData
                 public String getLink() {
                     return link;
                 }
+                @RequiresApi(api = Build.VERSION_CODES.KITKAT)
                 @Override
                 public void onClick(View v) {
 

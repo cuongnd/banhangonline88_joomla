@@ -17,6 +17,7 @@ public class Mod_tab_product_helper {
         ArrayList<Category> list_sub_category_detail=new ArrayList<Category>();
         ArrayList<Integer> list_category=new ArrayList<Integer>();
         Category detail=new Category();
+        int is_loaded =1;
         ArrayList<Product> list=new ArrayList<Product>(0);
         ArrayList<Product> list_small_product=new ArrayList<Product>();
         @Override
@@ -24,6 +25,7 @@ public class Mod_tab_product_helper {
             return "List_category_product{" +
                     "list_sub_category_detail=" + list_sub_category_detail +
                     ", list_category='" + list_category + '\'' +
+                    ", is_loaded='" + is_loaded + '\'' +
                     ", detail='" + detail + '\'' +
                     ", list='" + list + '\'' +
                     ", list_small_product='" + list_small_product + '\'' +
@@ -45,6 +47,18 @@ public class Mod_tab_product_helper {
         }
         public ArrayList<Product> getList() {
             return list;
+        }
+
+        public void setDetail(Category detail) {
+            this.detail = detail;
+        }
+
+        public int getIs_loaded() {
+            return is_loaded;
+        }
+
+        public void setIs_loaded(int is_loaded) {
+            this.is_loaded = is_loaded;
         }
     }
 }

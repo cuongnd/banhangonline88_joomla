@@ -1,21 +1,14 @@
 package vantinviet.core.modules.mod_tab_products;
 
-import android.app.Activity;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBarActivity;
-import android.util.SparseArray;
-import android.view.View;
-import android.view.ViewGroup;
 import android.webkit.JavascriptInterface;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -23,12 +16,8 @@ import android.widget.TextView;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
-import org.json.JSONObject;
-
-import java.lang.ref.WeakReference;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -47,12 +36,8 @@ import vantinviet.core.libraries.cms.application.vtv_WebView;
 import vantinviet.core.libraries.cms.menu.JMenu;
 import vantinviet.core.libraries.html.module.Module;
 import vantinviet.core.libraries.joomla.JFactory;
-import vantinviet.core.libraries.joomla.user.JUser;
 import vantinviet.core.libraries.legacy.application.JApplication;
 import vantinviet.core.libraries.utilities.JUtilities;
-import vantinviet.core.libraries.utilities.MessageType;
-import vantinviet.core.modules.mod_easysocial_login.tmpl.class_default.DialogFragmentLogin;
-import vantinviet.core.modules.mod_easysocial_login.tmpl.m_default_logout;
 
 
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
@@ -66,7 +51,7 @@ import static android.widget.ListPopupWindow.MATCH_PARENT;
 public class mod_tab_products extends FragmentActivity implements MaterialTabListener {
 
 
-    private final Module module;
+    public final Module module;
     private final LinearLayout linear_layout;
     private static final String KEY_DEMO = "demo";
     LinearLayout tab_content;
@@ -79,6 +64,8 @@ public class mod_tab_products extends FragmentActivity implements MaterialTabLis
     private PagerAdapter pager_adapter;
     ScreenSlidePagerAdapter adapterViewPager;
     ViewPager vpPager;
+    int sum_load=0;
+
 
     public mod_tab_products(Module module, LinearLayout linear_layout) {
         this.module=module;
@@ -99,19 +86,9 @@ public class mod_tab_products extends FragmentActivity implements MaterialTabLis
         object_tab_product_tmpl_default =new Module_tab_product_tmpl_default(app.getContext(),this.module);
         tabHost = (MaterialTabHost) object_tab_product_tmpl_default.findViewById(R.id.tabHost);
         vpPager= (ViewPager) object_tab_product_tmpl_default.findViewById(R.id.pager);
-
         adapterViewPager = new ScreenSlidePagerAdapter(app.getSupportFragmentManager());
         vpPager.setAdapter(adapterViewPager);
         vpPager.setId(module.getId());
-
-       /* pager = (ViewPager) object_tab_product_tmpl_default.findViewById(R.id.pager );
-        pager.setId(module.getId());
-        // init view pager
-
-        FragmentManager fragmentManager = getSupportFragmentManager();
-
-        pager_adapter = new ViewPagerAdapter(fragmentManager);
-        pager.setAdapter(pager_adapter);*/
         vpPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             class ajax_list_category_product_PageSelected {
                 int position;
@@ -123,24 +100,15 @@ public class mod_tab_products extends FragmentActivity implements MaterialTabLis
                     html_data= JUtilities.get_string_by_string_base64(html_data);
                     Page page = JUtilities.getGsonParser().fromJson(html_data, Page.class);
                     String component_content=page.getComponent_response();
-                    Timber.d("html response ajax_get_list_category_product %s",component_content);
-                    app.getCurrentActivity().runOnUiThread(new Runnable()
-                    {
-                        public void run()
-                        {
-                            // when user do a swipe the selected tab change
-                            tabHost.setSelectedNavigationItem(position);
-                        }
 
-                    });
-                    app.getProgressDialog().dismiss();
-                }
-                @JavascriptInterface
-                public void HtmlViewer(String html) {
-                    html= JUtilities.get_string_by_string_base64(html);
-                    Page page = JUtilities.getGsonParser().fromJson(html, Page.class);
-                    String component_content=page.getComponent_response();
-                    Timber.d("html response ajax_get_list_category_product %s",component_content);
+
+                    ArrayList<Mod_tab_product_helper.List_category_product> list_main_category_product_current_tab;
+                    Type listType = new TypeToken<ArrayList<Mod_tab_product_helper.List_category_product>>() {}.getType();
+                    list_main_category_product_current_tab = JUtilities.getGsonParser().fromJson(component_content, listType);
+                    Category category_detail = list_main_category_product.get(position).getDetail();
+                    list_main_category_product.set(position,list_main_category_product_current_tab.get(0));
+                    list_main_category_product.get(position).setDetail(category_detail);
+
                     app.getCurrentActivity().runOnUiThread(new Runnable()
                     {
                         public void run()
@@ -158,19 +126,14 @@ public class mod_tab_products extends FragmentActivity implements MaterialTabLis
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onPageSelected(int position) {
+                tabHost.setSelectedNavigationItem(position);
+
+/*
                 vtv_WebView web_browser = JFactory.getWebBrowser();
-                Map<String, String> post = new HashMap<String, String>();
-                JMenu menu = JFactory.getMenu();
-                int active_menu_item_id = menu.getMenuactive().getId();
-                post.put("option", "com_modules");
-                post.put("task", "module.app_ajax_render_module");
-                post.put("module_id",String.valueOf(module.getId()));
-                post.put(app.getSession().getFormToken(), "1");
-                post.put("tmpl", "component");
-                post.put("Itemid", String.valueOf(active_menu_item_id));
-                web_browser.vtv_postUrl(VTVConfig.rootUrl, post);
+                web_browser_setup(web_browser,position);
                 app.getProgressDialog().show();
                 web_browser.addJavascriptInterface(new ajax_list_category_product_PageSelected(position), "HtmlViewer");
+*/
 
 
 
@@ -206,12 +169,70 @@ public class mod_tab_products extends FragmentActivity implements MaterialTabLis
         linear_layout.addView(new_wrapper_of_module_content_linear_layout);
 
     }
+    private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
+        private boolean is_first=true;
+        public ScreenSlidePagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+
+        @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+        @Override
+        public Fragment getItem(int position) {
+            Mod_tab_product_helper.List_category_product list_category_product = list_main_category_product != null ? list_main_category_product.get(position) : null;
+            Module_tab_product_tmpl_default_tab_content module_tab_product_tmpl_default_tab_content = new Module_tab_product_tmpl_default_tab_content();
+
+            module_tab_product_tmpl_default_tab_content.list_category_product = list_category_product;
+            module_tab_product_tmpl_default_tab_content.module = module;
+            Timber.d("hello Request_ajax");
+            Timber.d("mdule_id %s ,list_category_product %s", module.getId(), list_category_product.toString());
+            if (list_category_product.getIs_loaded() == 1) {
+
+            } else {
+
+                //vtv_WebView web_browser = JFactory.getWebBrowser();
+                //web_browser_setup(web_browser);
+                //app.getProgressDialog().show();
+                //web_browser.addJavascriptInterface(new ajax_list_category_product(), "HtmlViewer");
+            }
+
+            if (list_category_product.getIs_loaded() != 1) {
+                //list_main_category_product.get(position).setIs_loaded(true);
+            }
+            return module_tab_product_tmpl_default_tab_content;
+        }
+        @Override
+        public int getCount() {
+            return list_main_category_product.size();
+        }
+        @Override
+        public CharSequence getPageTitle(int position) {
+            Category category=list_main_category_product.get(position).getDetail();
+            return category.getName();
+        }
+
+
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public void onTabSelected(MaterialTab tab) {
         int position=tab.getPosition();
-        Category category=list_main_category_product.get(position).getDetail();
+        vpPager.setCurrentItem(tab.getPosition());
+
+/*
         vtv_WebView web_browser = JFactory.getWebBrowser();
+        web_browser_setup(web_browser,position);
+        app.getProgressDialog().show();
+        web_browser.addJavascriptInterface(new mod_tab_products.ajax_list_category_product(tab), "HtmlViewer");
+*/
+
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    private void web_browser_setup(vtv_WebView web_browser, int position) {
+        Category category=list_main_category_product.get(position).getDetail();
         Map<String, String> post = new HashMap<String, String>();
         JMenu menu = JFactory.getMenu();
         int active_menu_item_id = menu.getMenuactive().getId();
@@ -232,10 +253,6 @@ public class mod_tab_products extends FragmentActivity implements MaterialTabLis
         post.put("tmpl", "component");
         post.put("Itemid", String.valueOf(active_menu_item_id));
         web_browser.vtv_postUrl(VTVConfig.rootUrl, post);
-        app.getProgressDialog().show();
-        web_browser.addJavascriptInterface(new mod_tab_products.ajax_list_category_product(tab), "HtmlViewer");
-
-
     }
 
     @Override
@@ -243,40 +260,13 @@ public class mod_tab_products extends FragmentActivity implements MaterialTabLis
 
     }
 
+
     @Override
     public void onTabUnselected(MaterialTab tab) {
 
     }
 
 
-    private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
-        public ScreenSlidePagerAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-
-        @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-        @Override
-        public Fragment getItem(int position) {
-
-
-            Mod_tab_product_helper.List_category_product list_category_product=list_main_category_product!=null?list_main_category_product.get(position):null;
-            Module_tab_product_tmpl_default_tab_content module_tab_product_tmpl_default_tab_content = new Module_tab_product_tmpl_default_tab_content();
-            module_tab_product_tmpl_default_tab_content.list_category_product=list_category_product;
-            return module_tab_product_tmpl_default_tab_content;
-        }
-        @Override
-        public int getCount() {
-            return list_main_category_product.size();
-        }
-        @Override
-        public CharSequence getPageTitle(int position) {
-            Category category=list_main_category_product.get(position).getDetail();
-            return category.getName();
-        }
-
-
-    }
     private class ajax_list_category_product {
         private  MaterialTab tab;
         public ajax_list_category_product(MaterialTab tab) {
@@ -289,7 +279,16 @@ public class mod_tab_products extends FragmentActivity implements MaterialTabLis
             html= JUtilities.get_string_by_string_base64(html);
             Page page = JUtilities.getGsonParser().fromJson(html, Page.class);
             String component_content=page.getComponent_response();
-            Timber.d("html response ajax_get_list_category_product %s",component_content);
+
+            ArrayList<Mod_tab_product_helper.List_category_product> list_main_category_product_current_tab;
+            Type listType = new TypeToken<ArrayList<Mod_tab_product_helper.List_category_product>>() {}.getType();
+            list_main_category_product_current_tab = JUtilities.getGsonParser().fromJson(component_content, listType);
+            int Position=tab.getPosition();
+            Category category_detail = list_main_category_product.get(Position).getDetail();
+            list_main_category_product.set(Position,list_main_category_product_current_tab.get(0));
+            list_main_category_product.get(Position).setDetail(category_detail);
+            //Timber.d("html response ajax_get_list_category_product %s",list_main_category_product_current_tab.toString());
+
             app.getCurrentActivity().runOnUiThread(new Runnable()
             {
                 public void run()
@@ -303,8 +302,8 @@ public class mod_tab_products extends FragmentActivity implements MaterialTabLis
 
     }
 
-    private class Params {
-        String layout="_:products";
+    public class Params {
+        String layout="_:products.app";
         ClassParent parent=new ClassParent();
 
         private class ClassParent {
