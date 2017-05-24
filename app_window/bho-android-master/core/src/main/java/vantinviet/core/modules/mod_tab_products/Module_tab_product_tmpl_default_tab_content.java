@@ -53,9 +53,9 @@ public class Module_tab_product_tmpl_default_tab_content extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         this.view = inflater.inflate(R.layout.modules_mod_tab_products_tmpl_default_tab_content, container, false);
-
-        if(list_category_product.getIs_loaded()==1) {
-            build_layout();
+        build_layout(view);
+       /* if(list_category_product.getIs_loaded()==1) {
+            build_layout(view);
         }else {
             Timber.d("hello Request_ajax");
             Timber.d("list_category_product %s",list_category_product.toString());
@@ -63,12 +63,13 @@ public class Module_tab_product_tmpl_default_tab_content extends Fragment {
             web_browser_setup(web_browser);
             app.getProgressDialog().show();
             web_browser.addJavascriptInterface(new ajax_list_category_product(), "HtmlViewer");
-        }
+        }*/
 
         return view;
     }
 
-    private void build_layout() {
+
+    private void build_layout(View view) {
         Show_product_recycler_view show_product_recycler_view=new Show_product_recycler_view(list_category_product);
         RecyclerView product_recycler_view = (RecyclerView) view.findViewById(R.id.product_recycler_view);
         product_recycler_view.setHasFixedSize(true);
@@ -102,6 +103,7 @@ public class Module_tab_product_tmpl_default_tab_content extends Fragment {
         post.put("option", "com_modules");
         post.put("task", "module.app_ajax_render_module");
         post.put("module_id",String.valueOf(module.getId()));
+        Timber.d("tab category name %s",category.getName());
         post.put("category_id",String.valueOf(category.getCategory_id()));
         Params params=new Params();
         ObjectMapper mapper = new ObjectMapper();
@@ -116,6 +118,14 @@ public class Module_tab_product_tmpl_default_tab_content extends Fragment {
         post.put("tmpl", "component");
         post.put("Itemid", String.valueOf(active_menu_item_id));
         web_browser.vtv_postUrl(VTVConfig.rootUrl, post);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public void getAjax_load_data() {
+        vtv_WebView web_browser = JFactory.getWebBrowser();
+        web_browser_setup(web_browser);
+        app.getProgressDialog().show();
+        web_browser.addJavascriptInterface(new ajax_list_category_product(), "HtmlViewer");
     }
 
     private class Params {
@@ -179,7 +189,7 @@ public class Module_tab_product_tmpl_default_tab_content extends Fragment {
             {
                 public void run()
                 {
-                    build_layout();
+                    build_layout(view);
 
                 }
 
