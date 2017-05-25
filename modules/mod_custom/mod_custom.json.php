@@ -12,4 +12,4 @@ if ($params->get('prepare_content', 1)) {
     $module->content = JHtml::_('content.prepare', $module->content, '', 'mod_custom.content');
 }
 $moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'), ENT_COMPAT, 'UTF-8');
-require JModuleHelper::getLayoutPath('mod_custom', $params->get('layout', 'default'));
+require JModuleHelper::getLayoutPath('mod_custom', $params->get('layout', 'default').".json");

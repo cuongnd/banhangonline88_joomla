@@ -90,7 +90,10 @@ public class mod_tab_products extends FragmentActivity implements MaterialTabLis
                 tabHost.setSelectedNavigationItem(position);
 
                 Module_tab_product_tmpl_default_tab_content module_tab_product_tmpl_default_tab_content=(Module_tab_product_tmpl_default_tab_content)adapterViewPager.getItem(position);
-                module_tab_product_tmpl_default_tab_content.getAjax_load_data();
+                if(!module_tab_product_tmpl_default_tab_content.is_loaded)
+                {
+                    module_tab_product_tmpl_default_tab_content.getAjax_load_data();
+                }
 
             }
         });

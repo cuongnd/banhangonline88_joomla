@@ -135,6 +135,7 @@
     <string name="SHIPPING_AND_PAYMENT">Vận chuyển và thanh toán</string>
     <string name="Please_select_a_size">Vui lòng lựa chọn kích thước.</string>
     <string name="added_to_cart">Thêm vào giỏ hàng</string>
+    <string name="adding_to_cart">Đang thêm vào giỏ hàng</string>
     <string name="Go_to_cart">Đi đến giỏ hàng</string>
     <string name="Delete">Xóa</string>
     <string name="Edit">Sửa</string>
@@ -705,5 +706,9 @@
     <string name="str_logout_confirm">Bạn có chắc chắn muốn đăng xuất khỏi tài khoản ?</string>
     <string name="str_logout_processing">Đang đăng xuất...</string>
     <string name="str_login_processing">Đang đăng nhập...</string>
+    <string name="str_trying">Thử lại</string>
+    <string name="string_added_to_cart">Đã thêm sản phẩm của bạn vào giỏ hàng</string>
+    <string name="str_pay_order">Thanh toán đơn hàng</string>
+    <string name="str_continue_shopping">Tiếp tục mua sắm</string>
 
 </resources>

@@ -30,6 +30,7 @@ public class Module {
     private ArrayList<JFormField> columnFields=new ArrayList<JFormField>();
     private ArrayList<String> items=new ArrayList<String>();
     private String content ="";
+    private String style_module="";
 
     @Override
     public String toString() {
@@ -98,5 +99,9 @@ public class Module {
 
     public String getModuleTtitle() {
         return title;
+    }
+
+    public String getStyle_module() {
+        return style_module;
     }
 }

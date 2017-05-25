@@ -88,6 +88,9 @@ public class StyleSheet {
 
     public static Map<String, StyleSheet> get_list_style_sheet(String style) {
         Map<String, StyleSheet> list_style_sheet = new HashMap<String, StyleSheet>();
+        if(style.equals("")){
+            return list_style_sheet;
+        }
         //Timber.d("style_product object %s",style.toString());
         try {
             JSONObject jsonObject = new JSONObject(style);

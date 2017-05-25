@@ -1,5 +1,6 @@
 package vantinviet.core.modules.mod_tab_products;
 
+import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,9 +12,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.JavascriptInterface;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.deser.std.StringArrayDeserializer;
+import com.fasterxml.jackson.databind.exc.InvalidDefinitionException;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
@@ -33,6 +40,7 @@ import vantinviet.core.libraries.html.module.Module;
 import vantinviet.core.libraries.joomla.JFactory;
 import vantinviet.core.libraries.legacy.application.JApplication;
 import vantinviet.core.libraries.utilities.JUtilities;
+import vantinviet.core.modules.mod_easysocial_login.tmpl.m_default_logout;
 
 /**
  * Created by neokree on 16/12/14.
@@ -44,40 +52,55 @@ import vantinviet.core.libraries.utilities.JUtilities;
 public class Module_tab_product_tmpl_default_tab_content extends Fragment {
     public Mod_tab_product_helper.List_category_product list_category_product;
     private ArrayList<Product> list_product=new ArrayList<Product>();
-    public  View view;
+    public  LinearLayout view;
     public boolean is_loaded=false;
     private JApplication app=JFactory.getApplication();
     public Module module;
+    public RecyclerViewDataAdapter adapter;
+    public CategoryListDataAdapter category_adapter;
+    public Show_product_recycler_view show_product_recycler_view;
+    public RecyclerView cagory_recycler_view;;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        this.view = inflater.inflate(R.layout.modules_mod_tab_products_tmpl_default_tab_content, container, false);
-        build_layout(view);
-       /* if(list_category_product.getIs_loaded()==1) {
-            build_layout(view);
+        this.view = (LinearLayout)inflater.inflate(R.layout.modules_mod_tab_products_tmpl_default_tab_content_wrapper, container, false);
+
+
+        if(list_category_product.getIs_loaded()==1) {
+            re_layout();
         }else {
-            Timber.d("hello Request_ajax");
+            LinearLayoutLoading loading=new LinearLayoutLoading(app.getContext());
+            this.view.addView(loading);
+            /*Timber.d("hello Request_ajax");
             Timber.d("list_category_product %s",list_category_product.toString());
             vtv_WebView web_browser = JFactory.getWebBrowser();
             web_browser_setup(web_browser);
             app.getProgressDialog().show();
-            web_browser.addJavascriptInterface(new ajax_list_category_product(), "HtmlViewer");
-        }*/
+            web_browser.addJavascriptInterface(new ajax_list_category_product(), "HtmlViewer");*/
+        }
 
         return view;
     }
 
 
-    private void build_layout(View view) {
-        Show_product_recycler_view show_product_recycler_view=new Show_product_recycler_view(list_category_product);
-        RecyclerView product_recycler_view = (RecyclerView) view.findViewById(R.id.product_recycler_view);
+    private void build_layout() {
+
+    }
+    private void re_layout() {
+        this.view.removeAllViews();
+        LinearLayoutContent view_content=new LinearLayoutContent(app.getContext());
+        this.view.addView(view_content);
+        show_product_recycler_view = new Show_product_recycler_view(list_category_product);
+        RecyclerView product_recycler_view = (RecyclerView) view_content.findViewById(R.id.product_recycler_view);
         product_recycler_view.setHasFixedSize(true);
-        RecyclerViewDataAdapter adapter = new RecyclerViewDataAdapter(getContext(), show_product_recycler_view);
+
+        adapter = new RecyclerViewDataAdapter(getContext(), show_product_recycler_view);
         product_recycler_view.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         product_recycler_view.setAdapter(adapter);
 
-        RecyclerView cagory_recycler_view = (RecyclerView) view.findViewById(R.id.category_recycler_view);
+
+        cagory_recycler_view = (RecyclerView) view_content.findViewById(R.id.category_recycler_view);
         cagory_recycler_view.setHasFixedSize(true);
         ArrayList<Category> list_category= new ArrayList<Category>();;
         try{
@@ -85,7 +108,8 @@ public class Module_tab_product_tmpl_default_tab_content extends Fragment {
         }catch (Exception ex){
             Timber.d("ex %s",ex.toString());
         }
-        CategoryListDataAdapter category_adapter = new CategoryListDataAdapter(getContext(), list_category);
+
+        category_adapter = new CategoryListDataAdapter(getContext(), list_category);
         cagory_recycler_view.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         cagory_recycler_view.setAdapter(category_adapter);
     }
@@ -106,13 +130,10 @@ public class Module_tab_product_tmpl_default_tab_content extends Fragment {
         Timber.d("tab category name %s",category.getName());
         post.put("category_id",String.valueOf(category.getCategory_id()));
         Params params=new Params();
-        ObjectMapper mapper = new ObjectMapper();
-        String paramsjsonInString="";
-        try {
-            paramsjsonInString = mapper.writeValueAsString(params);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
+        String paramsjsonInString = JUtilities.getGsonParser().toJson(params);
+
+        Timber.d("paramsjsonInString %s",paramsjsonInString);
+
         post.put("params",paramsjsonInString);
         post.put(app.getSession().getFormToken(), "1");
         post.put("tmpl", "component");
@@ -124,13 +145,12 @@ public class Module_tab_product_tmpl_default_tab_content extends Fragment {
     public void getAjax_load_data() {
         vtv_WebView web_browser = JFactory.getWebBrowser();
         web_browser_setup(web_browser);
-        app.getProgressDialog().show();
         web_browser.addJavascriptInterface(new ajax_list_category_product(), "HtmlViewer");
     }
 
     private class Params {
-        String layout="_:products.app";
-        ClassParent parent=new ClassParent();
+        public String layout="_:products.app";
+        public ClassParent parent=new ClassParent();
 
         private class ClassParent {
             String sub1="sub1";
@@ -185,18 +205,36 @@ public class Module_tab_product_tmpl_default_tab_content extends Fragment {
             //list_main_category_product.get(Position).setDetail(category_detail);
             //Timber.d("html response ajax_get_list_category_product %s",list_main_category_product_current_tab.toString());
             list_category_product=list_main_category_product_current_tab.get(0);
+            is_loaded=true;
             app.getCurrentActivity().runOnUiThread(new Runnable()
             {
                 public void run()
                 {
-                    build_layout(view);
+                    re_layout();
 
                 }
 
             });
-            app.getProgressDialog().dismiss();
         }
 
     }
 
+    private class LinearLayoutLoading extends LinearLayout {
+
+        private final View view_loading;
+
+        public LinearLayoutLoading(Context context) {
+            super(context);
+            view_loading=inflate(getContext(), R.layout.modules_mod_tab_products_tmpl_default_tab_content_loading, this);
+        }
+    }
+
+    private class LinearLayoutContent extends LinearLayout {
+        private final View view_content;
+
+        public LinearLayoutContent(Context context) {
+            super(context);
+            view_content=inflate(getContext(), R.layout.modules_mod_tab_products_tmpl_default_tab_content_layout, this);
+        }
+    }
 }

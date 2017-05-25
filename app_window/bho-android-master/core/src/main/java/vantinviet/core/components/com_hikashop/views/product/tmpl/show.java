@@ -1,9 +1,10 @@
 package vantinviet.core.components.com_hikashop.views.product.tmpl;
 
 import android.annotation.TargetApi;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Build;
-import android.os.Handler;
-import android.os.Looper;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.BottomNavigationView;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -31,6 +32,9 @@ import vantinviet.core.libraries.joomla.JFactory;
 import vantinviet.core.libraries.joomla.language.JText;
 import vantinviet.core.libraries.legacy.application.JApplication;
 import vantinviet.core.libraries.utilities.JUtilities;
+import vantinviet.core.libraries.utilities.MessageType;
+
+import static vantinviet.core.libraries.legacy.application.JApplication.getCurrentActivity;
 
 /**
  * Created by cuongnd on 02/04/2017.
@@ -65,6 +69,7 @@ public class show {
         menu.add(add_to_cart).setIcon(R.drawable.cart_add).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
+                app.getProgressDialog(R.string.adding_to_cart).show();
                 ajax_add_to_cart();
                 return false;
             }
@@ -86,7 +91,7 @@ public class show {
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
     private void ajax_add_to_cart() {
-        app.getProgressDialog().show();
+
         vtv_WebView web_browser = JFactory.getWebBrowser();
         Map<String, String> post = new HashMap<String, String>();
         post.put("option", "com_hikashop");
@@ -100,7 +105,7 @@ public class show {
         post.put("quantity", "1");
         post.put("return_url", "aHR0cDovL2JhbmhhbmdvbmxpbmU4OC5jb20vaW5kZXgucGhwL2NvbXBvbmVudC9oaWthc2hvcC9wcm9kdWN0L2NpZC04Lmh0bWw=");
         web_browser.vtv_postUrl(VTVConfig.rootUrl,post);
-        app.getProgressDialog().dismiss();
+
         web_browser.addJavascriptInterface(new response_ajax_add_to_cart(), "HtmlViewer");
     }
 
@@ -124,6 +129,31 @@ public class show {
 
         @JavascriptInterface
         public void showHTML(String html) {
+            app.getProgressDialog().dismiss();
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                    getCurrentActivity());
+            alertDialogBuilder
+                    .setTitle(MessageType.INFO)
+                    .setMessage(R.string.string_added_to_cart)
+                    .setCancelable(false)
+                    .setNegativeButton(R.string.str_continue_shopping,new DialogInterface.OnClickListener() {
+                        @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+                        public void onClick(DialogInterface dialog, int id) {
+
+                        }
+                    })
+                    .setPositiveButton(R.string.str_pay_order,new DialogInterface.OnClickListener() {
+                        @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+                        public void onClick(DialogInterface dialog, int id) {
+                            go_to_pay_now();
+                        }
+                    })
+            ;
+            AlertDialog alertDialog = alertDialogBuilder.create();
+
+            // show it
+            alertDialog.show();
+
             html= JUtilities.get_string_by_string_base64(html);
             Timber.d("html response: %s",html);
             Gson gson = new Gson();
@@ -136,6 +166,15 @@ public class show {
 
 
 
+        }
+
+        @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+        private void go_to_pay_now() {
+            Map<String, String> post = new HashMap<String, String>();
+            post.put("option", "com_hikashop");
+            post.put("ctrl", "cart");
+            post.put("task", "showcarts");
+            app.setRedirect(VTVConfig.getRootUrl()+"/",post);
         }
 
     }

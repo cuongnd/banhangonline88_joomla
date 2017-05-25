@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.RequiresApi;
 import android.util.Base64;
+import android.view.ViewGroup;
 import android.webkit.JavascriptInterface;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -21,6 +22,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Map;
 
+import pl.droidsonroids.gif.GifImageView;
 import timber.log.Timber;
 import vantinviet.core.R;
 import vantinviet.core.VTVConfig;
@@ -30,6 +32,8 @@ import vantinviet.core.configuration.JConfig;
 import vantinviet.core.libraries.joomla.JFactory;
 import vantinviet.core.libraries.legacy.application.JApplication;
 import vantinviet.core.libraries.utilities.JUtilities;
+
+import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 
 
 /**
@@ -107,7 +111,8 @@ public class WebView {
                     template_class = Class.forName(String.format("vantinviet.core.templates.%s.index",template_name));
                     Method method = template_class.getDeclaredMethod("buildLayout",LinearLayout.class);
                     method.invoke(template_class,app.getRoot_linear_layout());
-                    ImageView bg=(ImageView)app.getCurrentActivity().findViewById(R.id.bg);
+                    //GifImageView gif_image_view=(GifImageView)app.getCurrentActivity().findViewById(R.id.bg);
+
                     app.getRoot_linear_layout().setBackgroundColor(Color.parseColor("#FFFFFF"));
                     //bg.setVisibility(LinearLayout.GONE);
                 } catch (ClassNotFoundException e) {

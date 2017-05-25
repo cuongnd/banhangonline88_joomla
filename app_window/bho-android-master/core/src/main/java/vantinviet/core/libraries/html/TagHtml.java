@@ -11,6 +11,7 @@ import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.URLUtil;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -52,6 +53,7 @@ public class TagHtml {
     String class_name = "";
     String src = "";
     String type = "";
+    String link = "";
     private ArrayList<TagHtml> children;
     private ArrayList<String> apply_class;
     private ArrayList<String> apply_direct_class_path;
@@ -72,8 +74,10 @@ public class TagHtml {
         list_allow_tag.add("h5");
         list_allow_tag.add("h6");
         list_allow_tag.add("img");
+        list_allow_tag.add("p");
         list_allow_tag.add("image_button");
         list_allow_tag.add("div");
+        list_allow_tag.add("a");
         list_allow_tag.add("icon");
         list_allow_tag.add("button_icon");
         return list_allow_tag;
@@ -265,9 +269,13 @@ public class TagHtml {
         return "TagHtml{" +
                 "tag=" + tag +
                 ", class_name='" + class_name + '\'' +
+                ", type='" + getType()+ '\'' +
                 ", class_path='" + class_path + '\'' +
                 ", lang='" + lang + '\'' +
                 ", html='" + html + '\'' +
+                ", src='" + src + '\'' +
+                ", link='" + link + '\'' +
+                ", children='" + children + '\'' +
                 '}';
     }
 
@@ -435,7 +443,7 @@ public class TagHtml {
         class_name = class_name.toLowerCase();
         String[] splited_class_name = class_name.split("\\s+");
         tag = tag.toLowerCase();
-        if (tag == "column") {
+        if (tag.equals("column")) {
             ArrayList<Column> list_default_class_column_width = Column.get_list_default_class_column_width();
             if (list_default_class_column_width != null) for (Column column : list_default_class_column_width) {
                 if (class_name.toLowerCase().contains(column.getDefault_class_column_width())) {
@@ -464,6 +472,30 @@ public class TagHtml {
         text_view_h4.setLayoutParams(layout_params_text_view_h4);
         set_style(tag,text_view_h4,class_path,list_style_sheet);
         return text_view_h4;
+    }
+    private static View render_tag_h3(TagHtml tag, int screen_size_width, int screen_size_height, String class_path,Map<String, StyleSheet> list_style_sheet) {
+        JApplication app = JFactory.getApplication();
+        boolean debug = VTVConfig.getDebug();
+        String html_content = tag.get_Html_content();
+        TextView text_view_h3 = new TextView(app.getCurrentActivity());
+        text_view_h3.setText(html_content);
+        LinearLayout.LayoutParams layout_params_text_view_h3;
+        layout_params_text_view_h3 = new LinearLayout.LayoutParams(MATCH_PARENT, MATCH_PARENT);
+        text_view_h3.setLayoutParams(layout_params_text_view_h3);
+        set_style(tag,text_view_h3,class_path,list_style_sheet);
+        return text_view_h3;
+    }
+    private static View render_tag_a(TagHtml tag, int screen_size_width, int screen_size_height, String class_path,Map<String, StyleSheet> list_style_sheet) {
+        JApplication app = JFactory.getApplication();
+        boolean debug = VTVConfig.getDebug();
+        String html_content = tag.get_Html_content();
+        TextView text_view_a = new TextView(app.getCurrentActivity());
+        text_view_a.setText(html_content);
+        LinearLayout.LayoutParams layout_params_text_view_a;
+        layout_params_text_view_a = new LinearLayout.LayoutParams(MATCH_PARENT, MATCH_PARENT);
+        text_view_a.setLayoutParams(layout_params_text_view_a);
+        set_style(tag,text_view_a,class_path,list_style_sheet);
+        return text_view_a;
     }
     private static View render_tag_h2(TagHtml tag, int screen_size_width, int screen_size_height, String class_path,Map<String, StyleSheet> list_style_sheet) {
         JApplication app = JFactory.getApplication();
@@ -549,6 +581,22 @@ public class TagHtml {
         set_style(tag,new_div_linear_layout,class_path,list_style_sheet);*/
         return new_div_linear_layout;
     }
+    private static LinearLayout render_tag_p(TagHtml tag, int screen_size_width, int screen_size_height, String class_path,Map<String, StyleSheet> list_style_sheet) {
+        JApplication app = JFactory.getApplication();
+        LinearLayout.LayoutParams layout_params;
+        layout_params = new LinearLayout.LayoutParams(MATCH_PARENT, MATCH_PARENT);
+        LinearLayout new_p_linear_layout = new LinearLayout(app.getCurrentActivity());
+        new_p_linear_layout.setLayoutParams(layout_params);
+        new_p_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
+        String html_content = tag.get_Html_content();
+        if(!html_content.equals("")) {
+            //TextView text_view_content = new TextView(app.getCurrentActivity());
+            //text_view_content.setText(html_content);
+            //new_div_linear_layout.addView(text_view_content);
+        }
+        set_style(tag,new_p_linear_layout,class_path,list_style_sheet);
+        return new_p_linear_layout;
+    }
 
     private static View render_tag_img(TagHtml tag, int screen_size_width, int screen_size_height,String class_path,Map<String, StyleSheet> list_style_sheet) {
         JApplication app = JFactory.getApplication();
@@ -558,8 +606,12 @@ public class TagHtml {
 
         ImageView image_view = new ImageView(app.getCurrentActivity());
         String src = tag.getSrc();
+        if(!URLUtil.isValidUrl(src)){
+            src=VTVConfig.getRootUrl().concat("/"+src);
+        }
         image_view.setScaleType(ImageView.ScaleType.CENTER_CROP);
         image_view.setMaxHeight(400);
+
         Picasso.with(app.getCurrentActivity()).load(src).into(image_view);
         set_style(tag,image_view,class_path,list_style_sheet);
         return image_view;

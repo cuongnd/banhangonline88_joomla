@@ -4,9 +4,12 @@ import android.app.AlertDialog;
 import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.preference.PreferenceManager;
 import android.support.annotation.RequiresApi;
@@ -21,6 +24,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import pl.droidsonroids.gif.GifImageView;
 import timber.log.Timber;
 import vantinviet.core.R;
 import vantinviet.core.VTVConfig;
@@ -36,8 +40,7 @@ import vantinviet.core.libraries.joomla.input.JInput;
 import vantinviet.core.libraries.joomla.session.JSession;
 import vantinviet.core.libraries.joomla.user.JUser;
 import vantinviet.core.libraries.utilities.JUtilities;
-
-
+import vantinviet.core.libraries.utilities.MessageType;
 
 
 /**
@@ -145,6 +148,11 @@ public class JApplication {
     }
     public ProgressDialog getProgressDialog(String messenger) {
         progressDialog.setMessage(messenger);
+        return progressDialog;
+    }
+
+    public ProgressDialog getProgressDialog(int messenger) {
+        progressDialog.setMessage(getContext().getString(messenger));
         return progressDialog;
     }
 
@@ -306,7 +314,33 @@ public class JApplication {
 
         setProgressDialog(JUtilities.generateProgressDialog(mainActivity, false));
         setAlertDialog(JUtilities.generateProgressAlertDialog(mainActivity, false));
+        //GifImageView gif_image_view=(GifImageView)getCurrentActivity().findViewById(R.id.bg);
+        
+        check_connection();
 
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    private void check_connection() {
+        if(!isOnline()){
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                    getCurrentActivity());
+            alertDialogBuilder
+                    .setTitle(MessageType.ERROR)
+                    .setMessage(R.string.Internal_error)
+                    .setCancelable(false)
+                    .setPositiveButton(R.string.str_trying,new DialogInterface.OnClickListener() {
+                        @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+                        public void onClick(DialogInterface dialog, int id) {
+                            check_connection();
+                        }
+                    });
+            AlertDialog alertDialog = alertDialogBuilder.create();
+
+            // show it
+            alertDialog.show();
+            return;
+        }
         doExecute();
     }
 
@@ -371,7 +405,12 @@ public class JApplication {
     public LinearLayout getRoot_linear_layout() {
         return root_linear_layout;
     }
-
+    public boolean isOnline() {
+        ConnectivityManager cm =
+                (ConnectivityManager) getCurrentActivity().getSystemService(getContext().CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        return netInfo != null && netInfo.isConnectedOrConnecting();
+    }
     public void setFragmentManager(FragmentManager fragmentManager) {
         this.fragmentManager = fragmentManager;
     }

@@ -135,7 +135,7 @@ public class ShowContent extends LinearLayout {
                     Timber.d("scrollY %d scrollX %d",scrollY,scrollX);
                     if(reload==true){
                         String link=app.getLink_redirect();
-                        app.setRedirect(link);
+                        //app.setRedirect(link);
                         Log.i("Touche", "ScrollView ACTION_DOWN");
                     }
                     if(scrollY==0){

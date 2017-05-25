@@ -100,6 +100,7 @@ public class JFactory {
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public static vtv_WebView getWebBrowser() {
+        final JApplication app=getApplication();
         if(webBrowser==null)
         {
             webBrowser = new vtv_WebView(app.getContext());
@@ -107,7 +108,7 @@ public class JFactory {
 
 
         }
-        WebViewClient web_view_client = new WebViewClient() {
+        final WebViewClient web_view_client = new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 return false;
@@ -119,13 +120,21 @@ public class JFactory {
                         "(document.getElementsByTagName('body')[0].innerHTML);");
             }
         };
-        webBrowser.getSettings().setJavaScriptEnabled(true);
-        webBrowser.getSettings().setSupportZoom(true);
-        webBrowser.getSettings().setBuiltInZoomControls(true);
-        webBrowser.setWebViewClient(web_view_client);
-        webBrowser.clearHistory();
-        webBrowser.clearFormData();
-        webBrowser.clearCache(true);
+        app.getCurrentActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+
+                webBrowser.getSettings().setJavaScriptEnabled(true);
+                webBrowser.getSettings().setSupportZoom(true);
+                webBrowser.getSettings().setBuiltInZoomControls(true);
+                webBrowser.setWebViewClient(web_view_client);
+                webBrowser.clearHistory();
+                webBrowser.clearFormData();
+                webBrowser.clearCache(true);
+            }
+        });
+
+
         return webBrowser;
     }
 
