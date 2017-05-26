@@ -172,8 +172,7 @@ public class show {
         private void go_to_pay_now() {
             Map<String, String> post = new HashMap<String, String>();
             post.put("option", "com_hikashop");
-            post.put("ctrl", "cart");
-            post.put("task", "showcarts");
+            post.put("ctrl", "checkout");
             app.setRedirect(VTVConfig.getRootUrl()+"/",post);
         }
 
