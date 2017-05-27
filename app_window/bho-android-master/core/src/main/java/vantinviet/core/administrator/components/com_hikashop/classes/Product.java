@@ -73,4 +73,8 @@ public class Product {
     public String getStyle_product() {
         return style_product;
     }
+
+    public int getProduct_id() {
+        return product_id;
+    }
 }

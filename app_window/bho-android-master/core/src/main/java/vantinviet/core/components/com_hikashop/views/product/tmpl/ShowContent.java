@@ -61,7 +61,7 @@ public class ShowContent extends LinearLayout {
         View layout_product =inflate(getContext(), R.layout.components_com_hikashop_views_product_tmpl_show_content, this);
 
         SliderLayout product_slider =(SliderLayout) layout_product.findViewById(R.id.product_slider);
-        Product product=viewProduct.getProduct();
+        final Product product=viewProduct.getProduct();
         ArrayList<Image> images=product.getImages();
         if(images!=null)for (Image image: images) {
             TextSliderView textSliderView = new TextSliderView(app.getContext());
@@ -83,7 +83,7 @@ public class ShowContent extends LinearLayout {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View v) {
-                show.ajax_add_to_cart();
+                show.ajax_add_to_cart(product);
         }
         });
         TextView productName= (TextView) layout_product.findViewById(R.id.productName);

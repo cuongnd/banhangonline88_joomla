@@ -7,14 +7,17 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.DialogFragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 
 import com.unnamed.b.atv.model.TreeNode;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import timber.log.Timber;
@@ -30,10 +33,8 @@ import vantinviet.core.libraries.utilities.JUtilities;
 
 public class DialogFragmentCart extends DialogFragment {
 
-    private ArrayList<JMenu> list_menu;
-    private TreeNode root;
     static JApplication app= JFactory.getApplication();
-
+    private List<ItemCartProduct> listData = new ArrayList<ItemCartProduct>();
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -44,11 +45,30 @@ public class DialogFragmentCart extends DialogFragment {
         String module_content=getArguments().getString("module_content");
 
         ModCartView mod_cart_view = JUtilities.getGsonParser().fromJson(module_content, ModCartView.class);
-        ArrayList<ModCartView.ItemProductCart> list_item_product_cart=mod_cart_view.getList_item_product_cart();
+        ArrayList<ItemCartProduct> list_item_product_cart=mod_cart_view.getList_item_cart_product();
         Timber.d("list_item_product_cart %s",list_item_product_cart.toString());
-        CartListDataAdapter cart_adapter = new CartListDataAdapter(getActivity(), list_item_product_cart);
+        /*CartListDataAdapter cart_adapter = new CartListDataAdapter(getActivity(), list_item_product_cart);
         RecyclerView recycler_view_cart = (RecyclerView) cart_popup_default.findViewById(R.id.recycler_view_cart);
-        recycler_view_cart.setAdapter(cart_adapter);
+        recycler_view_cart.setHasFixedSize(true);
+        recycler_view_cart.setAdapter(cart_adapter);*/
+        RecyclerView recyclerView = (RecyclerView) cart_popup_default.findViewById(R.id.recycler_view_cart);
+
+        // If the size of views will not change as the data changes.
+        recyclerView.setHasFixedSize(true);
+
+        // Setting the LayoutManager.
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layoutManager);
+
+        // Setting the adapter.
+        final CartListDataAdapter adapter = new CartListDataAdapter(listData);
+        for(int i=0;i<list_item_product_cart.size();i++){
+            ItemCartProduct item_cart_product =list_item_product_cart.get(i);
+
+            // Update adapter.
+            adapter.addItem(listData.size(), item_cart_product);
+        }
+        recyclerView.setAdapter(adapter);
         builder.setView(cart_popup_default);
         builder
                 .setTitle(R.string.str_your_cart)
@@ -67,9 +87,6 @@ public class DialogFragmentCart extends DialogFragment {
         ;
         // Create the AlertDialog object and return it
         return builder.create();
-    }
-    public void setList_menu(ArrayList<JMenu> list_menu){
-        this.list_menu=list_menu;
     }
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public static void go_to_pay_now() {

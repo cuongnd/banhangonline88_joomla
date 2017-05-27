@@ -2,7 +2,6 @@ package vantinviet.core.components.com_hikashop.views.product.tmpl;
 
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
@@ -12,24 +11,22 @@ import android.view.MenuItem;
 import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 
 import java.io.StringReader;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 import timber.log.Timber;
 import vantinviet.core.R;
 import vantinviet.core.VTVConfig;
-import vantinviet.core.administrator.components.com_hikashop.classes.Category;
 import vantinviet.core.administrator.components.com_hikashop.classes.Product;
 
 
 import vantinviet.core.components.com_hikashop.views.product.HikashopViewProduct;
+import vantinviet.core.libraries.cms.application.Page;
 import vantinviet.core.libraries.cms.application.vtv_WebView;
 import vantinviet.core.libraries.joomla.JFactory;
 import vantinviet.core.libraries.joomla.language.JText;
@@ -56,7 +53,7 @@ public class show {
         reader.setLenient(true);
 
         view_product = gson.fromJson(reader, HikashopViewProduct.class);
-        HikashopViewProduct.PageShowProduct product_response = view_product.getProduct_response();
+        final HikashopViewProduct.PageShowProduct product_response = view_product.getProduct_response();
         show_content = new ShowContent(app.getCurrentActivity(), view_product);
 
         product_show_footer = (BottomNavigationView)app.getCurrentActivity().findViewById(R.id.bottom_navigation);
@@ -76,7 +73,7 @@ public class show {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
                 app.getProgressDialog(R.string.adding_to_cart).show();
-                ajax_add_to_cart();
+                ajax_add_to_cart((Product) product_response);
                 return false;
             }
         });
@@ -118,7 +115,7 @@ public class show {
     }
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
-    public static void ajax_add_to_cart() {
+    public static void ajax_add_to_cart(Product product) {
 
         vtv_WebView web_browser = JFactory.getWebBrowser();
         Map<String, String> post = new HashMap<String, String>();
@@ -129,9 +126,9 @@ public class show {
         post.put("cart_type", "cart");
         post.put("from", "module");
         post.put("hikashop_ajax", "1");
-        post.put("product_id", "14");
+        post.put("product_id",  String.valueOf(product.getProduct_id()));
         post.put("quantity", "1");
-        post.put("return_url", "aHR0cDovL2JhbmhhbmdvbmxpbmU4OC5jb20vaW5kZXgucGhwL2NvbXBvbmVudC9oaWthc2hvcC9wcm9kdWN0L2NpZC04Lmh0bWw=");
+        post.put("return_url", "");
         web_browser.vtv_postUrl(VTVConfig.rootUrl,post);
 
         web_browser.addJavascriptInterface(new response_ajax_add_to_cart(), "HtmlViewer");
@@ -156,10 +153,9 @@ public class show {
 
 
             html= JUtilities.get_string_by_string_base64(html);
-            Timber.d("html response: %s",html);
-            Gson gson = new Gson();
-            JsonReader reader = new JsonReader(new StringReader(html));
-            reader.setLenient(true);
+            Page page = JUtilities.getGsonParser().fromJson(html, Page.class);
+            String component_content=page.getComponent_response();
+            Timber.d("html response %s",component_content);
         }
 
 

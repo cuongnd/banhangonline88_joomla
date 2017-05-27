@@ -1,5 +1,9 @@
 package vantinviet.core.components.com_hikashop.views.checkout;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import vantinviet.core.administrator.components.com_hikashop.classes.Config;
 import vantinviet.core.libraries.legacy.view.JViewLegacy;
 
 /**
@@ -7,4 +11,14 @@ import vantinviet.core.libraries.legacy.view.JViewLegacy;
  */
 
 public class HikashopViewCheckout extends JViewLegacy {
+    private ArrayList<String> steps;
+    private Config config;
+
+    public ArrayList<String> getSteps() {
+        return steps;
+    }
+
+    public Config getConfig() {
+        return config;
+    }
 }

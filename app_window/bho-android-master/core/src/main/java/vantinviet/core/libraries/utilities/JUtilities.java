@@ -307,7 +307,9 @@ public class JUtilities {
         return result_map;
     }
     public static String get_string_by_string_base64(String a_string) {
-
+        if(a_string.equals("")){
+            return "";
+        }
         byte[] data= Base64.decode(a_string, Base64.DEFAULT);
         // create alert dialog
         try {

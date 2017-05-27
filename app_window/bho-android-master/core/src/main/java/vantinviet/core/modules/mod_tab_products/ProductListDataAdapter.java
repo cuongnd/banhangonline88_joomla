@@ -17,6 +17,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -75,6 +76,7 @@ public class ProductListDataAdapter extends RecyclerView.Adapter<ProductListData
     }
 
     public class SingleProductRowHolder extends RecyclerView.ViewHolder {
+        private Button btn_add_to_cart;
         protected TextView productName;
         protected TextView html_price;
         protected ImageView ProductImage;
@@ -86,6 +88,7 @@ public class ProductListDataAdapter extends RecyclerView.Adapter<ProductListData
             this.productName = (TextView) view.findViewById(R.id.productName);
             this.ProductImage = (ImageView) view.findViewById(R.id.productImage);
             this.html_price = (TextView) view.findViewById(R.id.html_price);
+            this.btn_add_to_cart = (Button) view.findViewById(R.id.btn_add_to_cart);
             view.setOnClickListener(new View.OnClickListener() {
                 public String getLink() {
                     return link;
@@ -96,6 +99,12 @@ public class ProductListDataAdapter extends RecyclerView.Adapter<ProductListData
 
                     //Toast.makeText(v.getContext(), this.getLink_redirect(), Toast.LENGTH_SHORT).show();
                     app.setRedirect(this.getLink());
+                }
+            });
+            this.btn_add_to_cart.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
                 }
             });
 
