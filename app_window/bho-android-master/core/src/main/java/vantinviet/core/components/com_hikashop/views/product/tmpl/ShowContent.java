@@ -4,12 +4,14 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -31,6 +33,7 @@ import vantinviet.core.R;
 import vantinviet.core.VTVConfig;
 import vantinviet.core.administrator.components.com_hikashop.classes.Image;
 import vantinviet.core.administrator.components.com_hikashop.classes.Product;
+import vantinviet.core.components.com_hikashop.views.product.HikashopViewProduct;
 import vantinviet.core.libraries.html.StyleSheet;
 import vantinviet.core.libraries.html.TagHtml;
 import vantinviet.core.libraries.joomla.JFactory;
@@ -44,20 +47,21 @@ import vantinviet.core.libraries.legacy.application.JApplication;
 public class ShowContent extends LinearLayout {
 
 
-    private show.PageShowProduct product_response;
+    private HikashopViewProduct viewProduct;
     private JsonElement response;
     private JApplication app= JFactory.getApplication();
-    public ShowContent(Context context, show.PageShowProduct product_response) {
+    public ShowContent(Context context, HikashopViewProduct viewProduct) {
         super(context);
-        this.product_response =product_response;
+        this.viewProduct =viewProduct;
         init(null, 0);
     }
 
-    private void init(AttributeSet attrs, int defStyle) {
-        View view =inflate(getContext(), R.layout.components_com_hikashop_views_product_tmpl_show_content, this);
 
-        SliderLayout product_slider =(SliderLayout) view.findViewById(R.id.product_slider);
-        Product product=product_response.getProduct();
+    private void init(AttributeSet attrs, int defStyle) {
+        View layout_product =inflate(getContext(), R.layout.components_com_hikashop_views_product_tmpl_show_content, this);
+
+        SliderLayout product_slider =(SliderLayout) layout_product.findViewById(R.id.product_slider);
+        Product product=viewProduct.getProduct();
         ArrayList<Image> images=product.getImages();
         if(images!=null)for (Image image: images) {
             TextSliderView textSliderView = new TextSliderView(app.getContext());
@@ -74,10 +78,18 @@ public class ShowContent extends LinearLayout {
             product_slider.addSlider(textSliderView);
 
         }
-        TextView productName= (TextView) view.findViewById(R.id.productName);
+        Button btn_add_to_cart= (Button) layout_product.findViewById(R.id.btn_add_to_cart);
+        btn_add_to_cart.setOnClickListener(new OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+            @Override
+            public void onClick(View v) {
+                show.ajax_add_to_cart();
+        }
+        });
+        TextView productName= (TextView) layout_product.findViewById(R.id.productName);
         productName.setText(product.getName());
 
-        TextView html_price= (TextView) view.findViewById(R.id.html_price);
+        TextView html_price= (TextView) layout_product.findViewById(R.id.html_price);
         html_price.setText(Html.fromHtml(product.getHtml_price()));
 
 
@@ -93,11 +105,11 @@ public class ShowContent extends LinearLayout {
         String style_product=product.getStyle_product();
         list_style_sheet=StyleSheet.get_list_style_sheet(style_product);
 
-        LinearLayout html_product_linear_layout= (LinearLayout) view.findViewById(R.id.html_product);
+        LinearLayout html_product_linear_layout= (LinearLayout) layout_product.findViewById(R.id.html_product);
         TagHtml.get_html_linear_layout(html,html_product_linear_layout,list_style_sheet);
 
 
-        LinearLayout product_description= (LinearLayout) view.findViewById(R.id.product_description);
+        LinearLayout product_description= (LinearLayout) layout_product.findViewById(R.id.product_description);
 
 
         String content=product.getProduct_description();

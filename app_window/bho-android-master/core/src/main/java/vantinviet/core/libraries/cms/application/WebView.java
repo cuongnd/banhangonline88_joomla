@@ -106,8 +106,8 @@ public class WebView {
                 String template_name=app.getTemplate().getTemplateName();
                 //Timber.d("modules: %s",app.getModules().toString());
                 //Timber.d("template: %s",template_name);
-                Class<?> template_class = null;
                 try {
+                    Class<?> template_class = null;
                     template_class = Class.forName(String.format("vantinviet.core.templates.%s.index",template_name));
                     Method method = template_class.getDeclaredMethod("buildLayout",LinearLayout.class);
                     method.invoke(template_class,app.getRoot_linear_layout());
@@ -124,7 +124,17 @@ public class WebView {
                 } catch (InvocationTargetException e) {
                     e.printStackTrace();
                 }
-                app.getProgressDialog().dismiss();
+                app.getCurrentActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        app.getProgressDialog().dismiss();
+                    }
+                });
+
+
+
+
             }
         });
 

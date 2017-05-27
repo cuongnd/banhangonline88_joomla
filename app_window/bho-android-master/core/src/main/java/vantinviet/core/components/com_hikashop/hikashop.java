@@ -18,7 +18,7 @@ import vantinviet.core.libraries.legacy.controller.JControllerLegacy;
 public class hikashop {
     JApplication app= JFactory.getApplication();
     public  hikashop(LinearLayout linear_layout,int component_width){
-        JControllerLegacy controller = JControllerLegacy.getInstance(hikashop.class.getSimpleName());
+        JControllerLegacy controller =  JControllerLegacy.getInstance(this.getClass().getSimpleName());
         String task=app.input.getString("task");
         controller.execute(task);
         controller.redirect();

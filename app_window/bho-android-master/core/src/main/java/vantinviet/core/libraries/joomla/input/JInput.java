@@ -29,8 +29,8 @@ public class JInput {
     }
     public String getString(String key, String var_default) {
         Timber.d("list_input %s", list_input.toString());
-        String value= list_input.get(key).toString();
-        if(value==null){
+        String value= list_input.get(key)!=null?list_input.get(key).toString():"";
+        if(value.equals("")){
             return var_default;
         }
         return value;

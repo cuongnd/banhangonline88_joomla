@@ -8,4 +8,5 @@ import vantinviet.core.libraries.legacy.controller.JControllerLegacy;
 
 public class HikashopController extends JControllerLegacy {
 
+
 }

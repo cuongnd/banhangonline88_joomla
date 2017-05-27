@@ -710,5 +710,6 @@
     <string name="string_added_to_cart">Đã thêm sản phẩm của bạn vào giỏ hàng</string>
     <string name="str_pay_order">Thanh toán đơn hàng</string>
     <string name="str_continue_shopping">Tiếp tục mua sắm</string>
+    <string name="str_your_cart">Giỏ hàng của bạn</string>
 
 </resources>

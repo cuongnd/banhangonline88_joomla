@@ -3,19 +3,18 @@ $app = JFactory::getApplication();
 
 $image_helper = hikashop_get('helper.image');
 $debug = JUtility::get_debug();
-$product_response = new stdClass();
-$product_response->categories = array();
-foreach ($product_response->categories as &$category) {
+$this->categories = array();
+foreach ($this->categories as &$category) {
     $category->medium_image = $image_helper->getThumbnail($category->category_medium_image_file_path, array(500, 500), array('default' => true), true);
 }
-$product_response->product = $this->element;
-$this->row = $product_response->product;
+$this->product = $this->element;
+$this->row = $this->product;
 $this->setLayout('listing_price');
 ob_start();
 echo $this->loadTemplate();
 $html_price = ob_get_clean();
-$product_response->product->html_price = $html_price;
-$images =& $product_response->product->images;
+$this->product->html_price = $html_price;
+$images =& $this->product->images;
 foreach ($images as &$image) {
     $image = $image_helper->getThumbnail($image->file_path, array(500, 500), array('default' => true), true);
 }
@@ -30,10 +29,10 @@ ob_start();
         <div type="row" class="row">
             <div type="column" class="col-md-2 vendor_image">
                 <img type="img"
-                     src="<?php echo JUri::root() ?><?php echo $product_response->product->vendor->vendor_image->url ?>"/>
+                     src="<?php echo JUri::root() ?><?php echo $this->product->vendor->vendor_image->url ?>"/>
             </div>
             <div type="column" class="col-md-8">
-                <h4 type="h4" class="vendor-name"><?php echo $product_response->product->vendor->vendor_name ?></h4>
+                <h4 type="h4" class="vendor-name"><?php echo $this->product->vendor->vendor_name ?></h4>
                 <span type="icon" class="icon icon-ic_bookmark_black_24dp"></span>>
             </div>
             <div type="column" class="col-md-2">
@@ -103,6 +102,6 @@ if ($debug) {
 if($debug){
     die();
 }
-$product_response->product->html_product = json_encode($html);
-$product_response->product->style_product = json_encode($style);
-echo json_encode($product_response);
+$this->product->html_product = json_encode($html);
+$this->product->style_product = json_encode($style);
+echo json_encode($this);

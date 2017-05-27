@@ -22,12 +22,8 @@ public class JControllerLegacy {
     private static JInput input;
     public static JApplication app= JFactory.getApplication();
     private String task;
-
-    public JControllerLegacy(){
-
-    }
-    /* Static 'instance' method */
-    public static JControllerLegacy getInstance(String option) {
+    private static Class<?> control_class = null;
+    public static JControllerLegacy getInstance(String option){
         String controller="";
         String task="display";
         input=app.input;
@@ -37,26 +33,33 @@ public class JControllerLegacy {
             controller=items[0];
             task=items[1];
         }else{
-
+            controller=input.getString("controller","");
+            if(controller.equals("")){
+                controller=input.getString("ctrl","");
+            }
+            task=input.getString("task","");
         }
         input.setString("task",task);
-        Class<?> control_class = null;
+
         try {
-            control_class = Class.forName(String.format("vantinviet.core.components.com_%s.%sController",option,controller));
+            control_class = Class.forName(String.format("vantinviet.core.components.com_%s.controllers.%sController",option,controller));
             Constructor<?> cons = control_class.getConstructor();
             Object object = cons.newInstance();
             instance=(JControllerLegacy)object;
+            return instance;
         } catch (ClassNotFoundException e) {
-            instance=new JControllerLegacy();
-        } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
         } catch (InstantiationException e) {
             e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
         }
+
+        instance=new JControllerLegacy();
         return instance;
     }
 
@@ -64,15 +67,20 @@ public class JControllerLegacy {
         this.task=task;
         //no paramater
         Class noparams[] = {};
+        String params="";
         Method method = null;
         try {
-            method = this.instance.getClass().getDeclaredMethod(task,noparams);
-            method.invoke(this.instance,null);
+            Constructor<?> cons = control_class.getConstructor();
+            Object object = cons.newInstance();
+            method = object.getClass().getDeclaredMethod(task,noparams);
+            method.invoke(object);
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
             e.printStackTrace();
         }
     }
@@ -83,7 +91,7 @@ public class JControllerLegacy {
     public void display() {
         String option=input.getString("option");
         String view=input.getString("view");
-        String layout=input.getString("layout");
+        String layout=input.getString("layout","c_default");
         LinearLayout component_linear_layout=input.get_component_linear_layout();
         Class<?> control_class = null;
         try {

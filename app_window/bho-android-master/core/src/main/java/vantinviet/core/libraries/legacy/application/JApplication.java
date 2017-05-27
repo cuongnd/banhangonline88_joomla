@@ -173,7 +173,7 @@ public class JApplication {
         VTVConfig vtv_config = JFactory.getVTVConfig();
         int caching = vtv_config.getCaching();
         String link = getLink_redirect();
-        Map<String, String> data_post = getData_post();
+        final Map<String, String> data_post = getData_post();
         if (link == null) {
             link = vtvConfig.getRootUrl();
         }
@@ -181,7 +181,7 @@ public class JApplication {
         setRoot_linear_layout((LinearLayout) getCurrentActivity().findViewById(R.id.root_linear_layout));
         setMain_scroll_view((ScrollView) getCurrentActivity().findViewById(R.id.main_scroll_view));
         setLink_redirect(link);
-        WebView webview = WebView.getInstance();
+        final WebView webview = WebView.getInstance();
         getProgressDialog().show();
         if (caching == 1) {
             webcache_sharedpreferences = getWebcache_sharedpreferences();// getCurrentActivity().getSharedPreferences(LIST_DATA_RESPONSE_BY_URL, getCurrentActivity().MODE_PRIVATE);
@@ -194,11 +194,16 @@ public class JApplication {
                 webview.go_to_page(response_data);
             }
         } else {
+            final String finalLink = link;
+            getCurrentActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    webview.create_browser(finalLink,data_post);
+                }
+            });
 
-            webview.create_browser(link,data_post);
 
         }
-        //getProgressDialog().dismiss();
     }
 
 

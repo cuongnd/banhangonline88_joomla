@@ -58,6 +58,9 @@ public class vtv_WebView extends android.webkit.WebView {
         String link_post= TextUtils.join("&", list_post);
         System.out.println("postUrl :" +url+"?"+link_post+"&base64=0");
         byte[] post = EncodingUtils.getBytes(link_post, "BASE64");
+
+
+
         super.postUrl(url, post);
     }
     public void  vtv_postUrl(String  url)

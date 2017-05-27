@@ -2,6 +2,7 @@ package vantinviet.core.components.com_hikashop.views.product.tmpl;
 
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
@@ -11,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
@@ -27,6 +29,7 @@ import vantinviet.core.administrator.components.com_hikashop.classes.Category;
 import vantinviet.core.administrator.components.com_hikashop.classes.Product;
 
 
+import vantinviet.core.components.com_hikashop.views.product.HikashopViewProduct;
 import vantinviet.core.libraries.cms.application.vtv_WebView;
 import vantinviet.core.libraries.joomla.JFactory;
 import vantinviet.core.libraries.joomla.language.JText;
@@ -43,15 +46,18 @@ import static vantinviet.core.libraries.legacy.application.JApplication.getCurre
 public class show {
     private final ShowContent show_content;
     BottomNavigationView product_show_footer;
-    JApplication app = JFactory.getApplication();
-
+    static JApplication app = JFactory.getApplication();
+    public static HikashopViewProduct view_product;
+    public static AlertDialog alertDialog;;
     public show(LinearLayout linear_layout) {
         String component_response = app.getComponent_response();
         Gson gson = new Gson();
         JsonReader reader = new JsonReader(new StringReader(component_response));
         reader.setLenient(true);
-        PageShowProduct product_response = gson.fromJson(reader, PageShowProduct.class);
-        show_content = new ShowContent(app.getCurrentActivity(), product_response);
+
+        view_product = gson.fromJson(reader, HikashopViewProduct.class);
+        HikashopViewProduct.PageShowProduct product_response = view_product.getProduct_response();
+        show_content = new ShowContent(app.getCurrentActivity(), view_product);
 
         product_show_footer = (BottomNavigationView)app.getCurrentActivity().findViewById(R.id.bottom_navigation);
         Menu menu= product_show_footer.getMenu();
@@ -82,6 +88,28 @@ public class show {
             }
         });
         product_show_footer.setVisibility(View.VISIBLE);
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                getCurrentActivity());
+        alertDialogBuilder
+                .setTitle(MessageType.INFO)
+                .setMessage(R.string.string_added_to_cart)
+                .setCancelable(false)
+                .setPositiveButton(R.string.str_continue_shopping,new DialogInterface.OnClickListener() {
+                    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+                    public void onClick(DialogInterface dialog, int id) {
+
+                    }
+                })
+                .setNegativeButton(R.string.str_pay_order,new DialogInterface.OnClickListener() {
+                    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+                    public void onClick(DialogInterface dialog, int id) {
+                        go_to_pay_now();
+                    }
+                })
+        ;
+
+        alertDialog = alertDialogBuilder.create();
+
 
 
 
@@ -90,7 +118,7 @@ public class show {
     }
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
-    private void ajax_add_to_cart() {
+    public static void ajax_add_to_cart() {
 
         vtv_WebView web_browser = JFactory.getWebBrowser();
         Map<String, String> post = new HashMap<String, String>();
@@ -109,73 +137,41 @@ public class show {
         web_browser.addJavascriptInterface(new response_ajax_add_to_cart(), "HtmlViewer");
     }
 
-    public class PageShowProduct {
-        public ArrayList<Category> categories = new ArrayList<Category>();
-
-        public Product product;
-
-        public ArrayList<Category> getCategories() {
-            return categories;
-        }
-
-        public Product getProduct() {
-            return product;
-        }
-    }
-    private class response_ajax_add_to_cart {
-
+    private static class response_ajax_add_to_cart {
+        JApplication app=JFactory.getApplication();
         public response_ajax_add_to_cart() {
         }
 
         @JavascriptInterface
         public void showHTML(String html) {
             app.getProgressDialog().dismiss();
-            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-                    getCurrentActivity());
-            alertDialogBuilder
-                    .setTitle(MessageType.INFO)
-                    .setMessage(R.string.string_added_to_cart)
-                    .setCancelable(false)
-                    .setNegativeButton(R.string.str_continue_shopping,new DialogInterface.OnClickListener() {
-                        @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-                        public void onClick(DialogInterface dialog, int id) {
-
-                        }
-                    })
-                    .setPositiveButton(R.string.str_pay_order,new DialogInterface.OnClickListener() {
-                        @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-                        public void onClick(DialogInterface dialog, int id) {
-                            go_to_pay_now();
-                        }
-                    })
-            ;
-            AlertDialog alertDialog = alertDialogBuilder.create();
+            app.getCurrentActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    alertDialog.show();
+                }
+            });
 
             // show it
-            alertDialog.show();
+
 
             html= JUtilities.get_string_by_string_base64(html);
             Timber.d("html response: %s",html);
             Gson gson = new Gson();
             JsonReader reader = new JsonReader(new StringReader(html));
             reader.setLenient(true);
-
-
-
-
-
-
-
         }
 
-        @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-        private void go_to_pay_now() {
-            Map<String, String> post = new HashMap<String, String>();
-            post.put("option", "com_hikashop");
-            post.put("ctrl", "checkout");
-            app.setRedirect(VTVConfig.getRootUrl()+"/",post);
-        }
+
 
     }
-
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public static void go_to_pay_now() {
+        Map<String, String> post = new HashMap<String, String>();
+        post.put("option", "com_hikashop");
+        post.put("ctrl", "checkout");
+        post.put("task", "step");
+        String url_checkout=view_product.getUrl_checkout();
+        app.setRedirect(url_checkout,post);
+    }
 }
