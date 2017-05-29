@@ -278,6 +278,10 @@ public class JApplication {
         setData_post(null);
         setLink_redirect(link);
         saveCurrentLink(link);
+        CacheLinkAndDataPost cache_link_and_data_post=getCacheLinkAndDataPostInstance();
+        cache_link_and_data_post.setLink(link);
+        cache_link_and_data_post.setData_post(null);
+        cache_link_and_data_post.save();
         doExecute();
 
 
