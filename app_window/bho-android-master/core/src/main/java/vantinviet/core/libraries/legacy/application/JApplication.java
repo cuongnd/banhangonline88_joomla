@@ -312,6 +312,7 @@ public class JApplication {
         CacheLinkAndDataPost cache_link_and_data_post=getCacheLinkAndDataPostInstance();
         cache_link_and_data_post.setLink(link);
         cache_link_and_data_post.setData_post(data_post);
+        cache_link_and_data_post.save();
         doExecute();
 
     }
@@ -494,14 +495,13 @@ public class JApplication {
 
     /* Static 'instance' method */
     public static CacheLinkAndDataPost getCacheLinkAndDataPostInstance() {
-        if (cachelinkanddatapost == null) {
-            SharedPreferences cache_link_and_data = getCurrentActivity().getSharedPreferences("cache_link_and_data", getCurrentActivity().MODE_PRIVATE);
-            String str_cache_link_and_data = (String) cache_link_and_data.getString("cache_link_and_data", "");
-            cachelinkanddatapost = JUtilities.getGsonParser().fromJson(str_cache_link_and_data, CacheLinkAndDataPost.class);
-            if(cachelinkanddatapost==null){
-                cachelinkanddatapost=new CacheLinkAndDataPost();
-            }
+        SharedPreferences cache_link_and_data = getCurrentActivity().getSharedPreferences("cache_link_and_data", getCurrentActivity().MODE_PRIVATE);
+        String str_cache_link_and_data = (String) cache_link_and_data.getString("cache_link_and_data", "");
+        cachelinkanddatapost = JUtilities.getGsonParser().fromJson(str_cache_link_and_data, CacheLinkAndDataPost.class);
+        if(cachelinkanddatapost==null){
+            cachelinkanddatapost=new CacheLinkAndDataPost();
         }
+
         return cachelinkanddatapost;
     }
 }
