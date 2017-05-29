@@ -35,7 +35,7 @@ public class DialogFragmentCart extends DialogFragment {
 
     static JApplication app= JFactory.getApplication();
     private List<ItemCartProduct> listData = new ArrayList<ItemCartProduct>();
-
+    public static ModCartView mod_cart_view;
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Use the Builder class for convenient dialog construction
@@ -44,9 +44,10 @@ public class DialogFragmentCart extends DialogFragment {
         View cart_popup_default=inflater.inflate(R.layout.modules_mod_cart_tmpl_popup_default, null);
         String module_content=getArguments().getString("module_content");
 
-        ModCartView mod_cart_view = JUtilities.getGsonParser().fromJson(module_content, ModCartView.class);
+
+        mod_cart_view = JUtilities.getGsonParser().fromJson(module_content, ModCartView.class);
         ArrayList<ItemCartProduct> list_item_product_cart=mod_cart_view.getList_item_cart_product();
-        Timber.d("list_item_product_cart %s",list_item_product_cart.toString());
+        //Timber.d("list_item_product_cart %s",list_item_product_cart.toString());
         /*CartListDataAdapter cart_adapter = new CartListDataAdapter(getActivity(), list_item_product_cart);
         RecyclerView recycler_view_cart = (RecyclerView) cart_popup_default.findViewById(R.id.recycler_view_cart);
         recycler_view_cart.setHasFixedSize(true);
@@ -94,7 +95,7 @@ public class DialogFragmentCart extends DialogFragment {
         post.put("option", "com_hikashop");
         post.put("ctrl", "checkout");
         post.put("task", "step");
-        String url_checkout="";
+        String url_checkout=mod_cart_view.getUrl_checkout();
         app.setRedirect(url_checkout,post);
     }
     public void init() {

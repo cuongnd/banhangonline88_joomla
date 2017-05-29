@@ -224,12 +224,13 @@
     <string name="title_activity_main3">Main3Activity</string>
     <string name="title_activity_login">Sign in</string>
 
-    <!-- Strings related to login -->
+    <!-- Strings related to register -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="error_invalid_email">This email address is invalid</string>
+    <string name="str_error_invalid_email">Email không đúng định dạng</string>
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
@@ -711,5 +712,17 @@
     <string name="str_pay_order">Thanh toán đơn hàng</string>
     <string name="str_continue_shopping">Tiếp tục mua sắm</string>
     <string name="str_your_cart">Giỏ hàng của bạn</string>
+    <string name="str_page_login">page login</string>
+    <string name="str_username">Tên đăng nhập</string>
+    <string name="str_email">Email</string>
+    <string name="str_retype_password">Nhập lại mật khẩu</string>
+    <string name="str_remember_me">Duy trì trạng thái đăng nhập</string>
+    <string name="str_register">Đăng ký</string>
+    <string name="str_you_are_logged_in">Bạn đã đăng nhập</string>
+    <string name="str_email_requirement">Vui lòng nhập email</string>
+    <string name="str_retype_password_requirement">Vui lòng điền lại mật khẩu</string>
+    <string name="str_password_incorrect">Mật khẩu không khớp, vui lòng kiểm tra lại</string>
+    <string name="str_register_processing">Đang đăng ký tài khoản, vui lòng đợi một lát !</string>
+    <string name="str_register_successfull">Quá trình đăng ký thành công</string>
 
 </resources>

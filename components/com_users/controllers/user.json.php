@@ -23,6 +23,49 @@ class UsersControllerUser extends UsersController
      *
      * @since   1.6
      */
+     public function ajax_register(){
+    $app = JFactory::getApplication();
+        $input = $app->input;
+         $post=json_decode(file_get_contents('php://input'));
+         if(!$post){
+            $post=(object)$input->getArray();
+         }
+        $method = $input->getMethod();
+        // Populate the data array:
+        $data = array();
+        $data['return'] = base64_decode($app->input->post->get('return', '', 'BASE64'));
+        $data['email'] = $post->email;
+        $data['username'] = $post->username;
+        $data['password'] = $post->password;
+        $data['secretkey'] = $input->getString('token');
+        $model = $this->getModel('Registration', 'UsersModel');
+         $response=new stdClass();
+        // Finish the registration.
+        $return = $model->register($data);
+        // Check for errors.
+        if ($return === false) {
+            $response->error=1;
+            // Save the data in the session.
+            $app->setUserState('users.registration.form.data', $data);
+            // Redirect back to the registration form.
+            $message = JText::sprintf('COM_USERS_REGISTRATION_SAVE_FAILED', $model->getError());
+            $this->setRedirect('index.php?com_easysocial&view=registration', $message, 'error');
+            return false;
+        }else{
+            $response->error=0;
+        }
+        $user=JFactory::getUser();
+
+        $response->id=$user->id;
+        $response->errorMessenger=$model->getError();
+        $response->name=$user->name;
+        $response->email=$user->email;
+        $response->street="new street";
+        $response->city="new city";
+        $response->accessToken=JFactory::getSession()->getToken();
+        $response->token=JFactory::getSession()->getToken();
+        echo json_encode($response);
+    }
     public function ajax_login()
     {
         $app = JFactory::getApplication();

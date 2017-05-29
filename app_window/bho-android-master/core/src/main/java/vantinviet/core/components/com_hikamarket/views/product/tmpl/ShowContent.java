@@ -64,7 +64,7 @@ public class ShowContent extends LinearLayout {
 
         }
         TextView productName= (TextView) view.findViewById(R.id.productName);
-        productName.setText(product.getName());
+        productName.setText(product.getProduct_name());
 
         TextView html_price= (TextView) view.findViewById(R.id.html_price);
         html_price.setText(Html.fromHtml(product.getHtml_price()));

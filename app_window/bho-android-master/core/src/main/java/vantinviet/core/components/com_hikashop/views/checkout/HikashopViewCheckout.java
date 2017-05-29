@@ -12,6 +12,8 @@ import vantinviet.core.libraries.legacy.view.JViewLegacy;
 
 public class HikashopViewCheckout extends JViewLegacy {
     private ArrayList<String> steps;
+    private ArrayList<String> layouts;
+    int step=1;
     private Config config;
 
     public ArrayList<String> getSteps() {
@@ -20,5 +22,9 @@ public class HikashopViewCheckout extends JViewLegacy {
 
     public Config getConfig() {
         return config;
+    }
+
+    public ArrayList<String> getLayouts() {
+        return layouts;
     }
 }

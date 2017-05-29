@@ -12,7 +12,6 @@ import android.content.Context;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
-import android.text.Html;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +19,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -55,16 +53,21 @@ public class ProductListDataAdapter extends RecyclerView.Adapter<ProductListData
     public void onBindViewHolder(SingleProductRowHolder holder, int i) {
 
         Product product = list_product.get(i);
-        holder.productName.setText(product.getName());
+        holder.productName.setText(product.getProduct_name());
         holder.link=product.getLink();
-        holder.html_price.setText(Html.fromHtml(product.getHtml_price()));
+
+        holder.price_value.setText(String.valueOf(product.getPrice_value()));
         ArrayList<Image> list_image=product.getList_image();
         if(list_image!=null && list_image.size()>0) {
             Image first_image = list_image.get(0);
             String url = first_image.getUrl();
             if(!url.isEmpty())
             {
-                Picasso.with(mContext).load(VTVConfig.rootUrl.concat(url)).into((ImageView) holder.ProductImage);
+                Picasso
+                        .with(mContext)
+                        .load(VTVConfig.rootUrl.concat(url))
+                        .resize(400,400)
+                        .into((ImageView) holder.ProductImage);
             }
         }
         holder.productName.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
@@ -78,7 +81,7 @@ public class ProductListDataAdapter extends RecyclerView.Adapter<ProductListData
     public class SingleProductRowHolder extends RecyclerView.ViewHolder {
         private Button btn_add_to_cart;
         protected TextView productName;
-        protected TextView html_price;
+        protected TextView price_value;
         protected ImageView ProductImage;
         public String link;
         private JApplication app= JFactory.getApplication();
@@ -87,7 +90,7 @@ public class ProductListDataAdapter extends RecyclerView.Adapter<ProductListData
 
             this.productName = (TextView) view.findViewById(R.id.productName);
             this.ProductImage = (ImageView) view.findViewById(R.id.productImage);
-            this.html_price = (TextView) view.findViewById(R.id.html_price);
+            this.price_value = (TextView) view.findViewById(R.id.price_value);
             this.btn_add_to_cart = (Button) view.findViewById(R.id.btn_add_to_cart);
             view.setOnClickListener(new View.OnClickListener() {
                 public String getLink() {

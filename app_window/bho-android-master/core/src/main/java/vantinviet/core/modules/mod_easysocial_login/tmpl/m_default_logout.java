@@ -22,6 +22,7 @@ import vantinviet.core.libraries.cms.menu.JMenu;
 import vantinviet.core.libraries.joomla.JFactory;
 import vantinviet.core.libraries.joomla.user.JUser;
 import vantinviet.core.libraries.legacy.application.JApplication;
+import vantinviet.core.libraries.utilities.JAlert;
 import vantinviet.core.libraries.utilities.JUtilities;
 import vantinviet.core.libraries.utilities.MessageType;
 import vantinviet.core.modules.mod_easysocial_login.tmpl.class_default.DialogFragmentLogout;
@@ -35,15 +36,16 @@ import static android.widget.ListPopupWindow.MATCH_PARENT;
 public class m_default_logout extends LinearLayout {
     private JUser user;
     private View view;
-    JApplication app= JFactory.getApplication();
-    LayoutParams wrapper_menu_params = new LayoutParams(MATCH_PARENT,MATCH_PARENT );
+    JApplication app = JFactory.getApplication();
+    LayoutParams wrapper_menu_params = new LayoutParams(MATCH_PARENT, MATCH_PARENT);
+
     public m_default_logout(Context context) {
         super(context);
         user = JFactory.getUser();
-        view=inflate(getContext(), R.layout.modules_mod_easysocial_login_tmpl_m_default_logout, this);
-        this.setLayoutParams( new LayoutParams(MATCH_PARENT,MATCH_PARENT ));
-        Button btn_show_profile=(Button)view.findViewById(R.id.btn_show_profile);
-        btn_show_profile.setText(app.getContext().getString(R.string.hello_user,user.getUsername()));
+        view = inflate(getContext(), R.layout.modules_mod_easysocial_login_tmpl_m_default_logout, this);
+        this.setLayoutParams(new LayoutParams(MATCH_PARENT, MATCH_PARENT));
+        Button btn_show_profile = (Button) view.findViewById(R.id.btn_show_profile);
+        btn_show_profile.setText(app.getContext().getString(R.string.hello_user, user.getUsername()));
         btn_show_profile.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,7 +53,7 @@ public class m_default_logout extends LinearLayout {
                 newFragmentLeft.show(app.getSupportFragmentManager(), "DialogFragmentLogout");
             }
         });
-        Button btn_logout=(Button)view.findViewById(R.id.btn_logout);
+        Button btn_logout = (Button) view.findViewById(R.id.btn_logout);
 
         btn_logout.setOnClickListener(new OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -100,33 +102,35 @@ public class m_default_logout extends LinearLayout {
         @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
         @JavascriptInterface
         public void showHTML(String html) {
-            html= JUtilities.get_string_by_string_base64(html);
+            html = JUtilities.get_string_by_string_base64(html);
             Page page = JUtilities.getGsonParser().fromJson(html, Page.class);
-            String component_content=page.getComponent_response();
-            Timber.d("html response %s",component_content);
+            String component_content = page.getComponent_response();
+            Timber.d("html response %s", component_content);
             JUser user = JUtilities.getGsonParser().fromJson(component_content, JUser.class);
             app.getProgressDialog().dismiss();
-            if(user.getId()>0){
-                JUtilities.alert(MessageType.ERROR,R.string.str_logout_false);
-            }else{
-                final m_default_login login_view=new m_default_login(app.getContext());
-                final LinearLayout wrapper_content=(LinearLayout)app.getMain_relative_layout().findViewById(R.id.mod_easysocial_login_wrapper_content);
-                app.getCurrentActivity().runOnUiThread(new Runnable()
-                {
-                    public void run()
-                    {
+            if (user.getId() > 0) {
+                JUtilities.alert(MessageType.ERROR, R.string.str_logout_false);
+            } else {
+                final m_default_login login_view = new m_default_login(app.getContext());
+                final LinearLayout wrapper_content = (LinearLayout) app.getMain_relative_layout().findViewById(R.id.mod_easysocial_login_wrapper_content);
+                app.getCurrentActivity().runOnUiThread(new Runnable() {
+                    public void run() {
                         wrapper_content.removeAllViews();
                         wrapper_content.addView(login_view);
 
                     }
 
                 });
-                JUtilities.alert(MessageType.INFO,R.string.str_logout_successful);
+                app.getCurrentActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                    JAlert.show(MessageType.INFO, R.string.str_logout_successful, app, "refresh_page");
+                    }
+                });
             }
         }
 
     }
-
 
 
 }

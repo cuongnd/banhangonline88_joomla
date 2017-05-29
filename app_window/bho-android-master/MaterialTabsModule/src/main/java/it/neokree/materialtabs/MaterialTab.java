@@ -94,9 +94,8 @@ public class MaterialTab implements View.OnTouchListener {
 		textColor = Color.WHITE; // default white text 
 		iconColor = Color.WHITE; // and icon
 	}
-	
-	
-	public void setAccentColor(int color) {
+
+    public void setAccentColor(int color) {
 		this.accentColor = color;
         this.textColor = color;
         this.iconColor = color;

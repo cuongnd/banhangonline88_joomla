@@ -93,10 +93,10 @@ public class JControllerLegacy {
         String view=input.getString("view");
         String layout=input.getString("layout","c_default");
         LinearLayout component_linear_layout=input.get_component_linear_layout();
-        Class<?> control_class = null;
+        Class<?> layout_class = null;
         try {
-            control_class = Class.forName(String.format("vantinviet.core.components.%s.views.%s.tmpl.%s",option,view,layout));
-            Constructor<?> cons = control_class.getConstructor(LinearLayout.class);
+            layout_class = Class.forName(String.format("vantinviet.core.components.%s.views.%s.tmpl.%s",option,view,layout));
+            Constructor<?> cons = layout_class.getConstructor(LinearLayout.class);
             Object object = cons.newInstance(component_linear_layout);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
@@ -105,7 +105,7 @@ public class JControllerLegacy {
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {
-            e.printStackTrace();
+            e.getCause().printStackTrace();
         } catch (InstantiationException e) {
             e.printStackTrace();
         }

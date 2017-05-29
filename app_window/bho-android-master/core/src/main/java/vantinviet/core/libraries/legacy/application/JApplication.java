@@ -22,6 +22,7 @@ import android.widget.ScrollView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import pl.droidsonroids.gif.GifImageView;
@@ -30,6 +31,7 @@ import vantinviet.core.R;
 import vantinviet.core.VTVConfig;
 
 
+import vantinviet.core.components.com_hikashop.views.checkout.tmpl.login;
 import vantinviet.core.libraries.cms.application.Page;
 import vantinviet.core.libraries.cms.application.WebView;
 import vantinviet.core.libraries.cms.menu.JMenu;
@@ -50,6 +52,7 @@ public class JApplication {
     private static final String CURRENT_LINK = "current_link";
     private static final String VTV_PREFERENCES = "vtv_preferences";
     public static JApplication instance;
+    private static CacheLinkAndDataPost cachelinkanddatapost;
     private String redirect;
     public VTVConfig vtvConfig=VTVConfig.getInstance();
     Map<String, String> list_input = new HashMap<String, String>();
@@ -163,21 +166,32 @@ public class JApplication {
     public void setContext(Context context) {
         this.context = context;
     }
-
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public void refresh_page() {
+        doExecute();
+    }
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void doExecute() {
+        Timber.plant(new Timber.DebugTree());
         SharedPreferences webcache_sharedpreferences = getCurrentActivity().getSharedPreferences(LIST_DATA_RESPONSE_BY_URL, getCurrentActivity().MODE_PRIVATE);
         setWebcache_sharedpreferences(webcache_sharedpreferences);
-        Timber.plant(new Timber.DebugTree());
+
         config_screen_size();
         VTVConfig vtv_config = JFactory.getVTVConfig();
         int caching = vtv_config.getCaching();
-        String link = getLink_redirect();
-        final Map<String, String> data_post = getData_post();
-        if (link == null) {
-            link = vtvConfig.getRootUrl();
+        CacheLinkAndDataPost cache_link_and_data_post=getCacheLinkAndDataPostInstance();
+        String link=cache_link_and_data_post.getLink();
+        Map<String, String> data_post=cache_link_and_data_post.getData_post();
+        if(link.isEmpty()) {
+            data_post=getData_post();
+            link=getLink_redirect();
+            if(link==null || link.isEmpty()){
+                link=VTVConfig.getRootUrl();
+            }
         }
-
+        cache_link_and_data_post.setLink(link);
+        cache_link_and_data_post.setData_post(data_post);
+        cache_link_and_data_post.save();
         setRoot_linear_layout((LinearLayout) getCurrentActivity().findViewById(R.id.root_linear_layout));
         setMain_scroll_view((ScrollView) getCurrentActivity().findViewById(R.id.main_scroll_view));
         setLink_redirect(link);
@@ -195,10 +209,11 @@ public class JApplication {
             }
         } else {
             final String finalLink = link;
+            final Map<String, String> final_Data_post = data_post;
             getCurrentActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    webview.create_browser(finalLink,data_post);
+                    webview.create_browser(finalLink, final_Data_post);
                 }
             });
 
@@ -294,7 +309,9 @@ public class JApplication {
         System.out.println("link_redirect:" + link);
         setLink_redirect(link);
         setData_post(data_post);
-
+        CacheLinkAndDataPost cache_link_and_data_post=getCacheLinkAndDataPostInstance();
+        cache_link_and_data_post.setLink(link);
+        cache_link_and_data_post.setData_post(data_post);
         doExecute();
 
     }
@@ -473,5 +490,18 @@ public class JApplication {
 
     public JSession getSession() {
         return session;
+    }
+
+    /* Static 'instance' method */
+    public static CacheLinkAndDataPost getCacheLinkAndDataPostInstance() {
+        if (cachelinkanddatapost == null) {
+            SharedPreferences cache_link_and_data = getCurrentActivity().getSharedPreferences("cache_link_and_data", getCurrentActivity().MODE_PRIVATE);
+            String str_cache_link_and_data = (String) cache_link_and_data.getString("cache_link_and_data", "");
+            cachelinkanddatapost = JUtilities.getGsonParser().fromJson(str_cache_link_and_data, CacheLinkAndDataPost.class);
+            if(cachelinkanddatapost==null){
+                cachelinkanddatapost=new CacheLinkAndDataPost();
+            }
+        }
+        return cachelinkanddatapost;
     }
 }

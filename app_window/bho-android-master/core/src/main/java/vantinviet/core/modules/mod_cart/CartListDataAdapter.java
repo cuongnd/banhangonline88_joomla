@@ -41,7 +41,7 @@ public class CartListDataAdapter extends RecyclerView.Adapter<RecyclerViewHolder
 
     @Override
     public void onBindViewHolder(RecyclerViewHolder viewHolder, int position) {
-        viewHolder.product_name.setText(listData.get(position).getName());
+        viewHolder.product_name.setText(listData.get(position).getProduct_name());
     }
 
     public void addItem(int position, ItemCartProduct data) {

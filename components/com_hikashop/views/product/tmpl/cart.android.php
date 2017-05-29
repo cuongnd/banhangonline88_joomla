@@ -10,6 +10,8 @@ defined('_JEXEC') or die('Restricted access');
 ?><?php
 $response=new stdClass();
 $response->list_item_cart_product=array_values($this->rows);
+$response->url_checkout=$this->url_checkout;
+$response->total=$this->total;
 echo json_encode($response);
 return;
 if ($this->cart_type == 'cart') {

@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 
 import com.unnamed.b.atv.model.TreeNode;
 
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,6 +29,7 @@ import vantinviet.core.libraries.cms.menu.JMenu;
 import vantinviet.core.libraries.joomla.JFactory;
 import vantinviet.core.libraries.joomla.user.JUser;
 import vantinviet.core.libraries.legacy.application.JApplication;
+import vantinviet.core.libraries.utilities.JAlert;
 import vantinviet.core.libraries.utilities.JUtilities;
 import vantinviet.core.libraries.utilities.MessageType;
 import vantinviet.core.modules.mod_easysocial_login.tmpl.m_default_logout;
@@ -175,7 +177,14 @@ public class DialogFragmentLogin extends DialogFragment {
                 });
                 JFactory.getUser().setActiveUser(user);
                 mAlertDialog.dismiss();
-                JUtilities.alert(MessageType.INFO,R.string.str_login_successful);
+                app.getCurrentActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        JAlert.show(MessageType.INFO,R.string.str_login_successful,app,"refresh_page");
+                    }
+                });
+
 
             }else{
                 JUtilities.alert(MessageType.ERROR,R.string.str_login_false);

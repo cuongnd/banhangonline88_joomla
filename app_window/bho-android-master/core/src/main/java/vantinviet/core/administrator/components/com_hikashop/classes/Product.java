@@ -22,7 +22,7 @@ public class Product {
     String html_product="";
     String style_product="";
     private ArrayList<Image> list_image;
-    int price_value=0;
+    float price_value=0;
     String link="";
     Vendor vendor;
     private ArrayList<Image> images;
@@ -40,7 +40,7 @@ public class Product {
                 '}';
     }
 
-    public String getName() {
+    public String getProduct_name() {
         return product_name;
     }
 
@@ -76,5 +76,9 @@ public class Product {
 
     public int getProduct_id() {
         return product_id;
+    }
+
+    public float getPrice_value() {
+        return price_value;
     }
 }

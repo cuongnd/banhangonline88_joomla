@@ -5,4 +5,6 @@ package vantinviet.core.administrator.components.com_hikashop.classes;
  */
 
 public class Config {
+    int display_login=1;
+    int simplified_registration=1;
 }

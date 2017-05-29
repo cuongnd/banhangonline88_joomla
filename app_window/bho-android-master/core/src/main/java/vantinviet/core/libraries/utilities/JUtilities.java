@@ -45,7 +45,13 @@ import static vantinviet.core.libraries.legacy.application.JApplication.getCurre
  */
 public class JUtilities {
     private static Gson gson;
-
+    public final static boolean isValidEmail(CharSequence target) {
+        if (target == null) {
+            return false;
+        } else {
+            return android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
+        }
+    }
     public static String callURL(String myURL) {
         System.out.println("Requeted URL:" + myURL);
         StringBuilder sb = new StringBuilder();

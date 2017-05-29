@@ -72,7 +72,6 @@ public class index extends LinearLayout {
         int screen_size_height;
         ArrayList<Row> layout;
         layout= app.getTemplate().getParams().getAndroid_layout();
-        Timber.d("page layout %s", layout.toString());
         DisplayMetrics metrics = new DisplayMetrics();
         app.getCurrentActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);
         int screenDensity = (int) metrics.density;
@@ -175,7 +174,7 @@ public class index extends LinearLayout {
 
             }
 
-            //add_text_view_test(new_row_linear_layout,row.getName());
+            //add_text_view_test(new_row_linear_layout,row.getProduct_name());
 
             new_row_linear_layout.addView(new_wrapper_of_row_linear_layout);
             rootLinearLayout.addView(new_row_linear_layout);

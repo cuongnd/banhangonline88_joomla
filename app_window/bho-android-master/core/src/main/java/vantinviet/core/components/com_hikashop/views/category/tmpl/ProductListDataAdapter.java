@@ -19,18 +19,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.jar.JarEntry;
 
 import vantinviet.core.R;
 import vantinviet.core.VTVConfig;
 import vantinviet.core.administrator.components.com_hikashop.classes.Image;
 import vantinviet.core.administrator.components.com_hikashop.classes.Product;
-import vantinviet.core.libraries.cms.application.WebView;
 import vantinviet.core.libraries.joomla.JFactory;
 import vantinviet.core.libraries.legacy.application.JApplication;
 
@@ -55,7 +52,7 @@ public class ProductListDataAdapter extends RecyclerView.Adapter<ProductListData
     public void onBindViewHolder(SingleProductRowHolder holder, int i) {
 
         Product product = list_product.get(i);
-        holder.productName.setText(product.getName());
+        holder.productName.setText(product.getProduct_name());
         holder.link=product.getLink();
         holder.html_price.setText(Html.fromHtml(product.getHtml_price()));
         ArrayList<Image> images=product.getImages();

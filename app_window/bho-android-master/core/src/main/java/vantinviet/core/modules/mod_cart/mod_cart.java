@@ -3,6 +3,7 @@ package vantinviet.core.modules.mod_cart;
 import android.widget.LinearLayout;
 
 import timber.log.Timber;
+import vantinviet.core.VTVConfig;
 import vantinviet.core.libraries.cms.module.JModuleHelper;
 import vantinviet.core.libraries.html.module.Module;
 import vantinviet.core.libraries.html.module.Params;
@@ -19,6 +20,8 @@ public class mod_cart {
     private final Module module;
     private final LinearLayout linear_layout;
     JApplication app= JFactory.getApplication();
+
+
     public mod_cart(Module module, LinearLayout linear_layout) {
         this.module=module;
         this.linear_layout=linear_layout;
@@ -38,5 +41,6 @@ public class mod_cart {
         //Timber.d("list_main_category_product %s", list_main_category_product.toString());
         //init();
     }
+
 
 }

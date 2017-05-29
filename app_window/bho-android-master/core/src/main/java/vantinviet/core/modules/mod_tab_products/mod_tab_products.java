@@ -68,7 +68,6 @@ public class mod_tab_products extends FragmentActivity implements MaterialTabLis
             Timber.d("content module %s(%d) is empty",module.getModuleName(),module.getId());
             return;
         }
-        Timber.d("module content %s",content.toString());
         Type listType = new TypeToken<ArrayList<Mod_tab_product_helper.List_category_product>>() {}.getType();
         list_main_category_product = JUtilities.getGsonParser().fromJson(content, listType);
         //Timber.d("list_main_category_product %s", list_main_category_product.toString());
@@ -78,7 +77,7 @@ public class mod_tab_products extends FragmentActivity implements MaterialTabLis
     private void init() {
         object_tab_product_tmpl_default =new Module_tab_product_tmpl_default(app.getContext(),this.module);
         tabHost = (MaterialTabHost) object_tab_product_tmpl_default.findViewById(R.id.tabHost);
-        vpPager= (ViewPager) object_tab_product_tmpl_default.findViewById(R.id.pager);
+        vpPager= (ViewPager) object_tab_product_tmpl_default.findViewById(R.id.tab_content);
         adapterViewPager = new ScreenSlidePagerAdapter(app.getSupportFragmentManager());
         vpPager.setAdapter(adapterViewPager);
         vpPager.setId(module.getId());

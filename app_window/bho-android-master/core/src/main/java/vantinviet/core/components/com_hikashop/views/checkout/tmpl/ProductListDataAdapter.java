@@ -52,7 +52,7 @@ public class ProductListDataAdapter extends RecyclerView.Adapter<ProductListData
     public void onBindViewHolder(SingleProductRowHolder holder, int i) {
 
         Product product = list_product.get(i);
-        holder.productName.setText(product.getName());
+        holder.productName.setText(product.getProduct_name());
         holder.link=product.getLink();
         holder.html_price.setText(Html.fromHtml(product.getHtml_price()));
         ArrayList<Image> images=product.getImages();

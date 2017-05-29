@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
-import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -19,14 +18,9 @@ import android.widget.TextView;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
-import com.google.gson.Gson;
 import com.google.gson.JsonElement;
-import com.google.gson.stream.JsonReader;
 
-import java.io.StringReader;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import timber.log.Timber;
 import vantinviet.core.R;
@@ -34,8 +28,6 @@ import vantinviet.core.VTVConfig;
 import vantinviet.core.administrator.components.com_hikashop.classes.Image;
 import vantinviet.core.administrator.components.com_hikashop.classes.Product;
 import vantinviet.core.components.com_hikashop.views.product.HikashopViewProduct;
-import vantinviet.core.libraries.html.StyleSheet;
-import vantinviet.core.libraries.html.TagHtml;
 import vantinviet.core.libraries.joomla.JFactory;
 import vantinviet.core.libraries.legacy.application.JApplication;
 
@@ -87,26 +79,12 @@ public class ShowContent extends LinearLayout {
         }
         });
         TextView productName= (TextView) layout_product.findViewById(R.id.productName);
-        productName.setText(product.getName());
+        productName.setText(product.getProduct_name());
 
         TextView html_price= (TextView) layout_product.findViewById(R.id.html_price);
         html_price.setText(Html.fromHtml(product.getHtml_price()));
 
 
-
-        String html_product=product.getHtml_product();
-        Timber.d("html_product %s",html_product.toString());
-        Gson gson = new Gson();
-        JsonReader reader = new JsonReader(new StringReader(html_product));
-        reader.setLenient(true);
-        TagHtml html= gson.fromJson(reader, TagHtml.class);
-
-        Map<String, StyleSheet> list_style_sheet = new HashMap<String, StyleSheet>();
-        String style_product=product.getStyle_product();
-        list_style_sheet=StyleSheet.get_list_style_sheet(style_product);
-
-        LinearLayout html_product_linear_layout= (LinearLayout) layout_product.findViewById(R.id.html_product);
-        TagHtml.get_html_linear_layout(html,html_product_linear_layout,list_style_sheet);
 
 
         LinearLayout product_description= (LinearLayout) layout_product.findViewById(R.id.product_description);
