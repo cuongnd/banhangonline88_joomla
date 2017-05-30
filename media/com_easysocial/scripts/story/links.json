@@ -1,8 +1,0 @@
-[
-    {
-        "view": [
-            "apps/user/links/story/attachment.item"
-        ],
-        "adapter": "EasySocial"
-    }
-]

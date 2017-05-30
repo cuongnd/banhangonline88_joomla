@@ -1,9 +1,0 @@
-[
-    {
-        "library": [
-            "dialog",
-            "popbox"
-        ],
-        "adapter": "EasySocial"
-    }
-]

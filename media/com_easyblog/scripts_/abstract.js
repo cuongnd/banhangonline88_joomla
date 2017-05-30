@@ -1,1 +1,0 @@
-window.EasyBlog = abstractComponent();

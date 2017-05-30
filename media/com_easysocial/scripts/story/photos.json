@@ -1,8 +1,0 @@
-[
-    {
-        "script": [
-            "albums/uploader"
-        ],
-        "adapter": "EasySocial"
-    }
-]

@@ -1,5 +1,0 @@
-{
-	"extends": "fields/user/boolean",
-	"privacy": false,
-	"visible_display": false
-}

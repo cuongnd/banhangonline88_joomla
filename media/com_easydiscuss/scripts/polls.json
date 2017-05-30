@@ -1,8 +1,0 @@
-[
-    {
-        "view": [
-            "field.form.polls.answer"
-        ],
-        "adapter": "EasyDiscuss"
-    }
-]

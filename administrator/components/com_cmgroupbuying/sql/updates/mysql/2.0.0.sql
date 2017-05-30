@@ -1,1 +1,0 @@
-ALTER TABLE  `#__cmgroupbuying_configuration` ADD  `tos` INT NOT NULL;

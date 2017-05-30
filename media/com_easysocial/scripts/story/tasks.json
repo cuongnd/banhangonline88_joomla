@@ -1,8 +1,0 @@
-[
-    {
-        "view": [
-            "apps/group/tasks/story/attachment.item"
-        ],
-        "adapter": "EasySocial"
-    }
-]

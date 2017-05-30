@@ -1,8 +1,0 @@
-[
-    {
-        "script": [
-            "progress/progress"
-        ],
-        "adapter": "EasySocial"
-    }
-]

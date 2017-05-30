@@ -1,8 +1,0 @@
-[
-    {
-        "library": [
-            "plupload"
-        ],
-        "adapter": "EasyBlog"
-    }
-]

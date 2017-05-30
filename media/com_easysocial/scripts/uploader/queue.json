@@ -1,8 +1,0 @@
-[
-    {
-        "view": [
-            "site/uploader/queue.item"
-        ],
-        "adapter": "EasySocial"
-    }
-]

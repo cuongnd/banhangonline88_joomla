@@ -1,9 +1,0 @@
-[
-    {
-        "script": [
-            "admin/grid/sort",
-            "admin/grid/publishing"
-        ],
-        "adapter": "EasySocial"
-    }
-]

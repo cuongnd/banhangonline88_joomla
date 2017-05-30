@@ -1,9 +1,0 @@
-.view-explorer .category-explorer ul {
-  list-style: none;
-}
-.view-explorer .category-explorer ul .item {
-  cursor: pointer;
-}
-.view-explorer .category-explorer ul li.item-category.selected > a {
-  background: #ccc;
-}

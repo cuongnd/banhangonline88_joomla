@@ -1,8 +1,0 @@
-[
-    {
-        "script": [
-            "site/search/map"
-        ],
-        "adapter": "EasySocial"
-    }
-]

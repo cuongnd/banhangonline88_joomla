@@ -1,9 +1,0 @@
-[
-    {
-        "script": [
-            "albums/editor/sortable",
-            "albums/editor/uploader"
-        ],
-        "adapter": "EasySocial"
-    }
-]

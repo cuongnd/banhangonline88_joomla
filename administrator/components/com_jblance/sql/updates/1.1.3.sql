@@ -1,1 +1,0 @@
-ALTER TABLE `#__jblance_usergroup` ADD (`skipPlan` tinyint(1) NOT NULL DEFAULT '0');

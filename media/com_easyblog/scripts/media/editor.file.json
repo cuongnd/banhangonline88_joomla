@@ -1,9 +1,0 @@
-[
-    {
-        "view": [
-            "media/editor.file",
-            "media/editor.file.preview"
-        ],
-        "adapter": "EasyBlog"
-    }
-]

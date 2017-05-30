@@ -1,7 +1,0 @@
-[
-    {
-        "element"   : "stream",
-        "rule"      : "tagged",
-        "core"      : true
-    }
-]

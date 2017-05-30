@@ -1,4 +1,0 @@
-#Wed Mar 15 14:12:14 ICT 2017
-base.0=C\:\\Users\\cuongnd\\Downloads\\android-ActiveNotifications-master\\android-ActiveNotifications-master\\Application\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_9
-renamed.0=classes.dex
-file.0=C\:\\Users\\cuongnd\\Downloads\\android-ActiveNotifications-master\\android-ActiveNotifications-master\\Application\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_9\\classes.dex

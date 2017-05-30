@@ -1,7 +1,0 @@
-{
-    "extends": "fields/user/address",
-
-    "use_maps": {
-        "default": true
-    }
-}
