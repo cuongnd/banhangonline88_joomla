@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metafile version="3.5" client="site">
+	<name>Turkmen (Turkmenistan)</name>
+	<version>3.5.0</version>
+	<creationDate>November 2015</creationDate>
+	<author>Shohrat Permanov</author>
+	<authorEmail>sohrat@gmail.com</authorEmail>
+	<authorUrl>plus.google.com/+ShohratPermanov</authorUrl>
+	<copyright>Copyright (C) 2005 - 2016 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<description>tk-TM site language</description>
+	<metadata>
+		<name>Turkmen (Turkmenistan)</name>
+		<tag>tk-TM</tag>
+		<rtl>0</rtl>
+		<locale>tk_TK.utf8, tk_TK.UTF-8, tk_TK, tuk_TM, tk, Turkmen, turkmen-tm, tm</locale>
+		<firstDay>1</firstDay>
+		<weekEnd>0,6</weekEnd>
+	</metadata>
+	<params />
+</metafile>

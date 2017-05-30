@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="package" version="3.6" method="upgrade">
+  <name>Nederlands (België) taalpakket</name>
+  <packagename>nl-BE</packagename>
+  <version>3.6.2.1</version>
+  <creationDate>05 augustus 2016</creationDate>
+  <author>Dutch (BE) translation team</author>
+  <authorEmail>admin@joomla.org</authorEmail>
+  <authorUrl>http://community.joomla.org/translations/joomla-3-translations.html#nl-be</authorUrl>
+  <description>
+		<div style="text-align:left;">
+			<h3>Joomla! 3.6.2 Full Dutch (Belgium) Language Package - Version 3.6.2v1</h3>
+			<h3>Volledig Nederlands (België) taalpakket voor Joomla! 3.6.2 - Versie 3.6.2v1</h3>
+		</div>
+		</description>
+  <files>
+    <folder type="language" client="site" id="nl-BE">site_nl-BE</folder>
+    <folder type="language" client="administrator" id="nl-BE">admin_nl-BE</folder>
+  </files>
+  <updateservers>
+    <server type="collection" priority="1" name="Accredited Joomla! Translations">https://update.joomla.org/language/translationlist_3.xml</server>
+  </updateservers>
+</extension>

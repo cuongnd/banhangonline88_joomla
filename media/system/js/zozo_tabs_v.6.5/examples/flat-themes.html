@@ -1,0 +1,284 @@
+﻿<!doctype html>
+<html class="z-white2 z-flat z-flat-dark z-width1200">
+<head>
+    <title>Flat Themes and Styling</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width = device-width, initial-scale = 1.0" />
+
+    <!-- Examples CSS (Not needed) -->
+    <link href="../css/zozo.examples.min.css" rel="stylesheet" />
+
+    <!-- Zozo Tabs css -->
+    <link href="../css/zozo.tabs.min.css" rel="stylesheet" />
+
+     <!-- Zozo Tabs Flat Themes css -->
+    <link href="../css/zozo.tabs.flat.min.css" rel="stylesheet" />
+    
+    <!-- Zozo Tabs js -->
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/zozo.tabs.min.js"></script>
+
+     <!-- Examples CSS (Not needed) -->
+        <style>
+.z-flat #config-wrapper {width: auto;}
+
+.z-flat.medium.switcher-box .styleswitch, .large.switcher-box .styleswitch {padding: 0; margin:2px;}
+
+.z-flat.medium.switcher-box .styleswitch span {width: 54px;height: 54px;}
+
+
+            .z-flat.medium.switcher-box .styleswitch span:hover,.z-flat .large.switcher-box .styleswitch span:hover
+            {
+                -moz-box-shadow: none;
+                -webkit-box-shadow: none;
+                box-shadow: none;
+            }
+   
+.switcher-box .styleswitch.flat-turquoise span {background: #1ABC9C;}
+.switcher-box .styleswitch.flat-emerald span      {background: #2ECC71;}
+.switcher-box .styleswitch.flat-peter-river span   {background: #3498DB;}
+.switcher-box .styleswitch.flat-amethyst span {background: #9B59B6;}
+.switcher-box .styleswitch.flat-wet-asphalt‎ span      {background: #34495E;}
+        
+.switcher-box .styleswitch.flat-green-sea span    {background: #16A085;}        
+.switcher-box .styleswitch.flat-nephritis span {background: #27AE60;}
+.switcher-box .styleswitch.flat-belize-hole span {background: #2980B9;}
+.switcher-box .styleswitch.flat-wisteria span    {background: #8E44AD;}
+.switcher-box .styleswitch.flat-midnight-blue span   {background: #2C3E50;}  
+                                                     
+.switcher-box .styleswitch.flat-sun-flower span   {background: #F1C40F;}
+.switcher-box .styleswitch.flat-carrot span      {background: #E67E22;}
+.switcher-box .styleswitch.flat-alizarin span    {background: #E74C3C;}        
+.switcher-box .styleswitch.flat-graphite span{background:#454545;}
+.switcher-box .styleswitch.flat-concrete span    {background: #95A5A6;} 
+        
+.switcher-box .styleswitch.flat-orange span   {background: #F39C12;}  
+.switcher-box .styleswitch.flat-pumpkin span   {background: #D35400;}  
+.switcher-box .styleswitch.flat-pomegranate span      {background: #C0392B;}                                
+.switcher-box .styleswitch.flat-silver span{background:#BDC3C7;}  
+.switcher-box .styleswitch.flat-asbestos span    {background:#7F8C8D;}
+
+
+
+
+            .z-flat a.color
+            {
+                position: relative;
+            }
+
+            .z-flat a.active:after
+            {
+                content: "\2713 ";
+                position: absolute;
+                top: 50%;
+                margin-top: -14px;
+                left: 22px;
+                color: #FFF;
+                font-size: 16px;
+                opacity: .5;
+            }
+    </style>
+</head>
+<body>
+    <div id="ribbon"></div>
+    <div id="page">
+        <a class="z-btn z-back" href="index.html">Back</a>
+        <div class="z-row">
+
+            <div class="col8">
+                <!-- Start First Tabs-->
+                <div id="tabbed-nav">
+
+                    <!-- Tab Navigation Menu -->
+                    <ul>
+                        <li><a>Overview</a></li>
+                        <li><a>Features</a></li>
+                        <li><a>Docs</a></li>
+                        <li><a>Themes</a></li>
+                        <li><a>Purchase</a></li>
+                    </ul>
+
+                    <!-- Content container -->
+                    <div>
+
+                        <!-- Overview -->
+                        <div>
+                            <h4>Overview</h4>
+                            <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer</p>
+                        </div>
+
+                        <!-- Features -->
+                        <div>
+                            <h4>Features</h4>
+                            <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer</p>
+                        </div>
+
+                        <!-- Docs -->
+                        <div>
+                            <h4>Docs</h4>
+                            <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer</p>
+                        </div>
+
+                        <!-- Themes -->
+                        <div>
+                            <h4>Themes</h4>
+                            <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer</p>
+                        </div>
+
+                        <!-- Purchase -->
+                        <div>
+                            <h4>Purchase</h4>
+                            <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer</p>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- End First Tabs-->
+            </div>
+
+            <div class="col4">
+                <div id="config-wrapper">
+                    <div id="config" class="switcher" style="display: block;">
+                        <div class="config-title">Flat Themes and Styling</div>
+                        <div class="content">
+                            <div class="box-title">Flat Styling</div>
+                            <ul class="options">
+                                <li>
+                                    <input id="contained" name="animation" class="styles" type="radio" />
+                                    <label for="contained">Contained</label>
+                                </li>
+                                <li>
+                                    <input id="clean" name="animation" class="styles" type="radio" checked="checked" />
+                                    <label for="clean">Clean</label>
+                                </li>
+                                <li>
+                                    <input id="pills" name="animation" class="styles" type="radio" />
+                                    <label for="pills">Pills</label>
+                                </li>
+                            </ul>
+                           
+
+
+                            <div class="box-title">Flat Themes</div>
+                            <div class="switcher-box theme z-flat medium" data-option="theme">
+                                <a data-value="flat-turquoise" class="styleswitch color flat-turquoise"><span></span></a>
+                                <a data-value="flat-emerald" class="styleswitch color flat-emerald"><span></span></a>
+                                <a data-value="flat-peter-river" class="styleswitch color flat-peter-river "><span></span></a>
+                                <a data-value="flat-amethyst" class="styleswitch color flat-amethyst"><span></span></a>
+                                <a data-value="flat-wet-asphalt" class="styleswitch color flat-wet-asphalt‎"><span></span></a>
+                                
+                                <a data-value="flat-green-sea" class="styleswitch color flat-green-sea"><span></span></a>
+                                <a data-value="flat-nephritis" class="styleswitch color flat-nephritis"><span></span></a>
+                                <a data-value="flat-belize-hole" class="styleswitch color flat-belize-hole"><span></span></a>                                
+                                <a data-value="flat-wisteria" class="styleswitch color flat-wisteria"><span></span></a>
+                                <a data-value="flat-midnight-blue" class="styleswitch color flat-midnight-blue"><span></span></a>
+
+                                <a data-value="flat-sun-flower" class="styleswitch color flat-sun-flower"><span></span></a>
+                                <a data-value="flat-carrot" class="styleswitch color flat-carrot"><span></span></a>
+                                <a data-value="flat-alizarin" class="styleswitch color flat-alizarin active"><span></span></a>                                
+                                <a data-value="flat-graphite" class="styleswitch color flat-graphite"><span></span></a>     
+                                <a data-value="flat-concrete" class="styleswitch color flat-concrete"><span></span></a>
+  
+                                <a data-value="flat-orange" class="styleswitch color flat-orange"><span></span></a>
+                                <a data-value="flat-pumpkin" class="styleswitch color flat-pumpkin"><span></span></a>
+                                <a data-value="flat-pomegranate" class="styleswitch color flat-pomegranate"><span></span></a>                                
+                                <a data-value="flat-silver" class="styleswitch color flat-silver" ><span></span></a>
+                                <a data-value="flat-asbestos" class="styleswitch color flat-asbestos"><span></span></a>
+
+                                
+                            </div>
+
+                            <ul class="options">
+                                <li>
+                                    <input id="bordered" type="checkbox" checked="checked" />
+                                    <label for="bordered">Bordered</label>
+                                </li>
+                                <li>
+                                    <input id="dark" type="checkbox"  checked="checked"/>
+                                    <label for="dark">dark</label>
+                                </li>
+
+                                <li>
+                                    <input id="rounded" type="checkbox" checked="checked"/>
+                                    <label for="rounded">Rounded</label>
+                                </li>
+                                <li>
+                                    <input id="spaced" type="checkbox" checked="checked" />
+                                    <label for="spaced">Spaced</label>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        jQuery(document).ready(function ($) {
+            /* jQuery activation and setting options for the tabs*/
+            var tabbedNav = $("#tabbed-nav").zozoTabs({
+                position: "top-left",
+                style: "clean",
+                theme: "flat-alizarin",
+                rounded: true,                
+                spaced: true,
+                dark: true,
+                bordered: true,
+                size: "medium",
+                animation: {
+                    easing: "easeInOutExpo",
+                    duration: 400,
+                    effects: "slideH"
+                },
+                defaultTab: "tab3"
+            });
+
+            /* Changing styles*/
+            $("#config input.styles").change(function () {
+                var style = $('input[type=radio]:checked').attr("id");
+                tabbedNav.data("zozoTabs").setOptions({ "style": style });
+            });
+
+
+
+            $(".switcher-box a").bind("click", function (e) {
+                e.preventDefault();
+                
+                var _theme = $(this).data("value");
+                $(this).addClass("active").parent().find("a").not($(this)).removeClass("active");
+                tabbedNav.data('zozoTabs').setOptions({ "theme": _theme });
+            });
+
+            $("#dark").change(function () {
+                var dark = $(this).is(':checked');
+                if (dark) {
+                    $("html").removeClass("z-white").addClass("z-flat-dark");
+                } else {
+                    $("html").addClass("z-white").removeClass("z-flat-dark");
+                }
+                tabbedNav.data('zozoTabs').setOptions({ "dark": dark });
+            });
+
+
+            $("#bordered").change(function () {
+                var bordered = $(this).is(':checked');
+                tabbedNav.data('zozoTabs').setOptions({ "bordered": bordered });
+            });
+
+            $("#spaced").change(function () {
+                var spaced = $(this).is(':checked');
+                tabbedNav.data('zozoTabs').setOptions({ "spaced": spaced });
+            });
+
+            $("#rounded").change(function () {
+                var rouned = $(this).is(':checked');
+                tabbedNav.data('zozoTabs').setOptions({ "rounded": rouned });
+            });
+        });
+    </script>
+</body>
+</html>

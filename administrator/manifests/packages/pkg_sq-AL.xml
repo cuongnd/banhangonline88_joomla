@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="package" version="3.1">
+	<name>Albanian Language Pack</name>
+	<packagename>sq-AL</packagename>
+	<version>3.1.1.1</version>
+	<creationDate>29/04/2013</creationDate>
+	<author>Albanian translation team:Besiana Bici </author>
+	<authorEmail>besianabici@gmail.com</authorEmail>
+	<authorUrl> </authorUrl>
+	<copyright>Copyright (C) 2005 - 2013 joomla.al e Open Source Matters. Te Drejta Te Rezervuara</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<url></url>
+	<packager>Joomla! Albania</packager>
+	<packagerurl> </packagerurl> 
+	<description>Joomla! 3.1 Full Albanian (sq-AL) Language Package - Version 3.1.1v1</description>
+	<files>
+        <file type="language" client="site" id="sq-AL">site_sq-AL.zip</file>
+        <file type="language" client="administrator" id="sq-AL">admin_sq-AL.zip</file>		
+	</files>
+	<updateservers>
+        <server type="collection" priority="1" name="Accredited Joomla! Translations">http://update.joomla.org/language/translationlist_3.xml</server>
+    </updateservers>
+</extension>

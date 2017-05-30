@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension version="3.3" client="site" type="language" method="upgrade">
+	<name>Sinhala language pack</name>
+	<tag>si-LK</tag>
+	<version>3.3.1.1</version>
+	<creationDate>28/07/2014</creationDate>
+	<author>Denuwan Wijewardena (Sri Lanka)</author>
+	<authorEmail>denuwan@gmail.com</authorEmail>
+	<authorUrl>http://www.denuwan.org</authorUrl>
+	<copyright>Translation Copyright (C) 2013 - 2014 Denuwan Wijewardena</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<description>si-LKsite language</description>
+	<files>
+		<filename>si-LK.ini</filename>
+		<filename>si-LK.com_ajax.ini</filename>
+		<filename>si-LK.com_config.ini</filename>
+		<filename>si-LK.com_contact.ini</filename>
+		<filename>si-LK.com_content.ini</filename>
+		<filename>si-LK.com_finder.ini</filename>
+		<filename>si-LK.com_mailto.ini</filename>
+		<filename>si-LK.com_media.ini</filename>
+		<filename>si-LK.com_messages.ini</filename>
+		<filename>si-LK.com_newsfeeds.ini</filename>
+		<filename>si-LK.com_search.ini</filename>
+		<filename>si-LK.com_tags.ini</filename>
+		<filename>si-LK.com_users.ini</filename>
+		<filename>si-LK.com_weblinks.ini</filename>
+		<filename>si-LK.com_wrapper.ini</filename>
+		<filename>si-LK.files_joomla.sys.ini</filename>
+		<filename>si-LK.finder_cli.ini</filename>
+		<filename>si-LK.lib_fof.sys.ini</filename>
+		<filename>si-LK.lib_idna_convert.sys.ini</filename>
+		<filename>si-LK.lib_joomla.ini</filename>
+		<filename>si-LK.lib_joomla.sys.ini</filename>
+		<filename>si-LK.lib_phpass.sys.ini</filename>
+		<filename>si-LK.lib_phpmailer.sys.ini</filename>
+		<filename>si-LK.lib_phputf8.sys.ini</filename>
+		<filename>si-LK.lib_simplepie.sys.ini</filename>
+		<filename>si-LK.mod_articles_archive.ini</filename>
+		<filename>si-LK.mod_articles_archive.sys.ini</filename>
+		<filename>si-LK.mod_articles_categories.ini</filename>
+		<filename>si-LK.mod_articles_categories.sys.ini</filename>
+		<filename>si-LK.mod_articles_category.ini</filename>
+		<filename>si-LK.mod_articles_category.sys.ini</filename>
+		<filename>si-LK.mod_articles_latest.ini</filename>
+		<filename>si-LK.mod_articles_latest.sys.ini</filename>
+		<filename>si-LK.mod_articles_news.ini</filename>
+		<filename>si-LK.mod_articles_news.sys.ini</filename>
+		<filename>si-LK.mod_articles_popular.ini</filename>
+		<filename>si-LK.mod_articles_popular.sys.ini</filename>
+		<filename>si-LK.mod_banners.ini</filename>
+		<filename>si-LK.mod_banners.sys.ini</filename>
+		<filename>si-LK.mod_breadcrumbs.ini</filename>
+		<filename>si-LK.mod_breadcrumbs.sys.ini</filename>
+		<filename>si-LK.mod_custom.ini</filename>
+		<filename>si-LK.mod_custom.sys.ini</filename>
+		<filename>si-LK.mod_feed.ini</filename>
+		<filename>si-LK.mod_feed.sys.ini</filename>
+		<filename>si-LK.mod_finder.ini</filename>
+		<filename>si-LK.mod_finder.sys.ini</filename>
+		<filename>si-LK.mod_footer.ini</filename>
+		<filename>si-LK.mod_footer.sys.ini</filename>
+		<filename>si-LK.mod_languages.ini</filename>
+		<filename>si-LK.mod_languages.sys.ini</filename>
+		<filename>si-LK.mod_login.ini</filename>
+		<filename>si-LK.mod_login.sys.ini</filename>
+		<filename>si-LK.mod_menu.ini</filename>
+		<filename>si-LK.mod_menu.sys.ini</filename>
+		<filename>si-LK.mod_random_image.ini</filename>
+		<filename>si-LK.mod_random_image.sys.ini</filename>
+		<filename>si-LK.mod_related_items.ini</filename>
+		<filename>si-LK.mod_related_items.sys.ini</filename>
+		<filename>si-LK.mod_search.ini</filename>
+		<filename>si-LK.mod_search.sys.ini</filename>
+		<filename>si-LK.mod_stats.ini</filename>
+		<filename>si-LK.mod_stats.sys.ini</filename>
+		<filename>si-LK.mod_syndicate.ini</filename>
+		<filename>si-LK.mod_syndicate.sys.ini</filename>
+		<filename>si-LK.mod_tags_popular.ini</filename>
+		<filename>si-LK.mod_tags_popular.sys.ini</filename>
+		<filename>si-LK.mod_tags_similar.ini</filename>
+		<filename>si-LK.mod_tags_similar.sys.ini</filename>
+		<filename>si-LK.mod_users_latest.ini</filename>
+		<filename>si-LK.mod_users_latest.sys.ini</filename>
+		<filename>si-LK.mod_weblinks.ini</filename>
+		<filename>si-LK.mod_weblinks.sys.ini</filename>
+		<filename>si-LK.mod_whosonline.ini</filename>
+		<filename>si-LK.mod_whosonline.sys.ini</filename>
+		<filename>si-LK.mod_wrapper.ini</filename>
+		<filename>si-LK.mod_wrapper.sys.ini</filename>
+		<filename>si-LK.tpl_beez3.ini</filename>
+		<filename>si-LK.tpl_beez3.sys.ini</filename>
+		<filename>si-LK.tpl_protostar.ini</filename>
+		<filename>si-LK.tpl_protostar.sys.ini</filename>
+		<filename>si-LK.localise.php</filename>
+		<filename file="meta">install.xml</filename>
+		<filename file="meta">si-LK.xml</filename>
+		<filename>index.html</filename>
+	</files>
+	<params />
+	</extension>

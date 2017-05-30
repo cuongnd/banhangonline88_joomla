@@ -1,0 +1,23 @@
+[
+	"dashboard",
+	"settings",
+	"themes",
+	"languages",
+	"profiles",
+	"users",
+	"groups",
+	"events",
+	"regions",
+	"albums",
+	"apps",
+	"points",
+	"badges",
+	"alerts",
+	"privacy",
+	"emails",
+	"reports",
+	"migrators",
+	"access",
+	"stream",
+	"maintenance"
+]

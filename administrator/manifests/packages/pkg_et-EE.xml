@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="package" version="3.6" method="upgrade">
+   <name>Estonian Language Pack</name>
+   <packagename>et-EE</packagename>
+   <version>3.6.0.1</version>
+   <creationDate>07.07.2016</creationDate>
+   <author>Rivo Zängov and team</author>
+   <authorEmail>eraser@eraser.ee</authorEmail>
+   <authorUrl>www.eraser.ee</authorUrl>
+    <copyright>Copyright (C) 2005 - 2016 www.eraser.ee Open Source Matters.</copyright>
+   <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+   <url></url>
+   <packager>Joomla! Estonian</packager>
+   <packagerurl>www.eraser.ee</packagerurl>
+   <description>Eestikeele pakk Joomla! et-EE versioon 3.6.0</description>
+   <files>
+      <file type="language" client="site" id="et-EE">site_et-EE.zip</file>
+      <file type="language" client="administrator" id="et-EE">admin_et-EE.zip</file>
+   </files>
+    <updateservers>
+        <server type="collection" priority="1" name="Accredited Joomla! Translations">http://update.joomla.org/language/translationlist_3.xml</server>
+    </updateservers>
+</extension>

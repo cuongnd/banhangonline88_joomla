@@ -1,0 +1,181 @@
+/**
+ * @package JLive! Chat
+ * @version 4.3.3
+ * @copyright (C) Copyright 2008-2010 CMS Fruit, CMSFruit.com. All rights reserved.
+ * @license GNU/LGPL http://www.gnu.org/licenses/lgpl-3.0.txt
+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU Lesser General Public License as published by
+ the Free Software Foundation; either version 3 of the License, or (at your
+ option) any later version.
+
+ This program is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+ or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public
+ License for more details.
+
+ You should have received a copy of the GNU Lesser General Public License
+ along with this program.  If not, see http://www.gnu.org/licenses/.
+ */
+ 
+@CHARSET "UTF-8";
+
+.icon-16-livechat,
+.icon-16-jlivechat {
+    background: url(../images/icons/joomla_live_chat-16.png) no-repeat left top;
+}
+
+.icon-32-livechat,
+.icon-32-jlivechat {
+    background: url(../images/icons/joomla_live_chat-32.png) no-repeat left top;
+}
+
+.icon-48-livechat,
+.icon-48-jlivechat {
+    background: url(../images/icons/joomla_live_chat-48.png) no-repeat left top;
+}
+
+hr {
+    background-color: #EAEAEA;
+    color: #EAEAEA;
+}
+
+h3 {
+    margin: 0 0 5px 0 !important;
+    padding: 0 0 5px 0 !important;
+    display: block;
+    clear: both;
+    float: none;
+    color: #7F7E3C;
+    border-bottom: 1px dotted #82813D;
+    font-size: 18px !important;
+}
+
+form[name=adminForm] {
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+    font-size: 13px;
+}
+
+form[name=adminForm] table {
+    width: 100%;
+}
+
+form[name=adminForm] input[type=text] {
+    font-size: 12px;
+    padding: 4px 0 4px 5px;
+}
+
+.hide {
+    display: none !important;
+}
+
+.yui-button-label {
+    font-style: normal;
+}
+
+li.yui-button-selectedmenuitem {
+    background: url(../images/yui/checkbox.png) left center no-repeat;
+}
+
+table td.label {
+    text-align: right;
+}
+
+.yui-content .label2 {
+    font-size: 15px;
+    color: #2A2A2A;
+    font-weight: bold;
+}
+
+textarea {
+    white-space: pre;
+    font-size: 12px !important;
+}
+
+.yui-link-button a:hover {
+    text-decoration: none !important;
+}
+
+.green {
+    color: #5B7000;
+}
+
+a.green {
+    color: #5B7000 !important;
+}
+
+.red {
+    color: #700014;
+}
+
+a.red {
+    color: #700014 !important;
+}
+
+.smaller {
+    font-size: 0.9em;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.yui-skin-sam .yui-dt-paginator {
+    font-size: 0.97em;
+}
+
+#yui-dt0-paginator0 {
+    display: none;
+}
+
+div.yui-dt {
+    color: #2B2B2B;
+}
+
+.yui-dt-selected a {
+    color: white !important;
+}
+
+.yui-dt-selected .yui-button a {
+    color: #000000 !important;
+}
+
+.yui-dt-col-options {
+    text-align: center !important;
+}
+
+.yui-dt-col-options .yui-button {
+    width: 100%;
+}
+
+.yui-dt-col-sort_order {
+    text-align: center !important;
+}
+
+form[name=adminForm] select {
+    font-size: 13px;
+    padding: 3px 0 3px 3px;
+}
+
+.jlc-left {
+    float: left;
+}
+
+.jlc-right {
+    float: right;
+}
+
+.label {
+	background-color: transparent !important;
+	color: black !important;
+	text-shadow: none !important;
+	font-size: 1.025em !important;
+	line-height: 1.9em !important;
+	font-weight: normal !important;
+}
+
+textarea {
+	width: 98% !important;
+}

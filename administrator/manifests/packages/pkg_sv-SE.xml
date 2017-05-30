@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="package" version="3.6" method="upgrade">
+	<name>sv-SE_joomla_lang_full_3.6.2v1</name>
+	<packagename>sv-SE</packagename>
+	<version>3.6.2.1</version>
+	<creationDate>05/08/2016</creationDate>
+	<author>Svensk Joomla - Stefan Gagner</author>
+	<authorEmail>svenskjoomla@mei-ya.se</authorEmail>
+	<authorUrl>http://www.svenskjoomla.se</authorUrl>
+	<copyright>Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<url></url>
+	<packager></packager>
+	<packagerurl></packagerurl>
+	<description><![CDATA[Svensk översättning för Joomla! 3.6.2 ver1 <br />Översatt av SvenskJoomla.]]></description>
+	<files>
+		<file type="language" client="site" id="sv-SE">site_sv-SE.zip</file>
+		<file type="language" client="administrator" id="sv-SE">admin_sv-SE.zip</file>
+	</files>
+	<updateservers>
+		<server type="collection" priority="1" name="Accredited Joomla! Translations">http://update.joomla.org/language/translationlist_3.xml</server>
+	</updateservers>
+</extension>

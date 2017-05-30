@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_JCHAT_FORM_VIEW_DEFAULT_TITLE">
+		<message>
+			<![CDATA[COM_JCHAT_FORM_ACTIVATION]]>
+		</message>
+	</layout>
+	<state>
+		<name>COM_JCHAT_FORM_ACTIVATION</name>
+	</state>
+
+	<!-- Add parameters for form fields available -->
+	<fields name="params">
+		<fieldset name="aspect" label="COM_JCHAT_FIELDS_PARAM" addfieldpath="/administrator/components/com_jchat/framework/html">
+			<field name="show_email" type="radio" class="btn-group" default="1" label="COM_JCHAT_SHOW_EMAIL" description="COM_JCHAT_SHOW_EMAIL_DESC">
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+			<field name="show_description" type="radio" class="btn-group" default="1" label="COM_JCHAT_SHOW_DESCRIPTION" description="COM_JCHAT_SHOW_DESCRIPTION_DESC">
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+			<field name="show_skypeid" type="radio" class="btn-group" default="0" label="COM_JCHAT_SHOW_SKYPEID" description="COM_JCHAT_SHOW_SKYPEID_DESC">
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+			<field name="show_antispam" type="radio" class="btn-group" default="0" label="COM_JCHAT_SHOW_ANTISPAM" description="COM_JCHAT_SHOW_ANTISPAM_DESC">
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+		</fieldset>
+	</fields>
+	
+	<!-- Add parameters for validation fields -->
+	<fields name="params">
+		<fieldset name="basic" label="COM_JCHAT_VALIDATION_PARAM" addfieldpath="/administrator/components/com_jchat/framework/html">
+			<field name="validate_email" type="radio" default="0" class="btn-group" label="COM_JCHAT_VALIDATE_EMAIL" description="COM_JCHAT_VALIDATE_EMAIL_DESC">
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+			<field name="validate_description" type="radio" default="0" class="btn-group" label="COM_JCHAT_VALIDATE_DESCRIPTION" description="COM_JCHAT_VALIDATE_DESCRIPTION_DESC">
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+			<field name="validate_skypeid" type="radio" default="0" class="btn-group" label="COM_JCHAT_VALIDATE_SKYPEID" description="COM_JCHAT_VALIDATE_SKYPEID_DESC">
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+		</fieldset>
+	</fields>
+	
+</metadata>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="2.5" method="upgrade">
+	<name>HikaAuction</name>
+	<creationDate>juillet 2016</creationDate>
+	<version>1.2.0</version>
+	<author>hikashop.com</author>
+	<authorEmail>dev@hikashop.com</authorEmail>
+	<authorUrl>http://www.hikashop.com</authorUrl>
+	<copyright>(C) 2010-2016 HIKARI SOFTWARE. All rights reserved.</copyright>
+	<description>HikaShop Auction manager</description>
+	<license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html</license>
+	<languages folder="language">
+		<language tag="en-GB">en-GB.com_hikaauction.ini</language>
+		<language tag="fr-FR">fr-FR.com_hikaauction.ini</language>
+	</languages>
+	<install>
+		<sql>
+			<file driver="mysql">_database/install.sql</file>
+			<file driver="mysql" charset="utf8">_database/install.sql</file>
+			<file driver="mysqli">_database/install.sql</file>
+			<file driver="mysqli" charset="utf8">_database/install.sql</file>
+		</sql>
+	</install>
+	<scriptfile>install.hikaauction.php</scriptfile>
+	<files folder="front">
+		<folder>controllers</folder>
+		<folder>views</folder>
+		<filename>hikaauction.php</filename>
+		<filename>index.html</filename>
+	</files>
+	<media folder="media" destination="com_hikaauction">
+		<folder>css</folder>
+		<folder>images</folder>
+		<folder>js</folder>
+		<folder>mail</folder>
+		<filename>index.html</filename>
+	</media>
+	<administration>
+		<files folder="back">
+			<folder>_database</folder>
+			<folder>buttons</folder>
+			<folder>classes</folder>
+			<folder>compat</folder>
+			<folder>controllers</folder>
+			<folder>extensions</folder>
+			<folder>helpers</folder>
+			<folder>inc</folder>
+			<folder>types</folder>
+			<folder>views</folder>
+			<filename>hikaauction.php</filename>
+			<filename>config.xml</filename>
+			<filename>index.html</filename>
+		</files>
+		<menu img="../media/com_hikaauction/images/icon-16/hikaauction_logo.png" link="option=com_hikaauction">HikaAuction</menu>
+		<submenu>
+			<menu link="option=com_hikaauction&amp;ctrl=config" img="../media/com_hikaauction/images/icon-16/hikamenu-config.png">Configuration</menu>
+			<menu link="option=com_hikaauction&amp;ctrl=auctions" img="../media/com_hikaauction/images/icon-16/hikamenu-auctions.png">Auctions</menu>
+			<menu link="option=com_hikaauction&amp;ctrl=update" img="../media/com_hikaauction/images/icon-16/hikamenu-info.png">Update_About</menu>
+		</submenu>
+	</administration>
+</extension>

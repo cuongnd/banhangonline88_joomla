@@ -1,0 +1,32 @@
+/**
+ * @package     CMGroupBuying component
+ * @copyright   Copyright (C) 2012-2014 CMExtension Team http://www.cmext.vn/
+ * @license     http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL
+ */
+
+.tag .tag_background,
+.tag .tag_background_repeat {
+	height: 80px;
+	float: right
+}
+
+.tag .tag_background {
+	background-image: url("../images/tag_right.png");
+	width: 28px;
+	right: -28px;
+	left: 0;
+}
+
+.price_container .price_label {
+	padding-right: 0;
+	padding-left: 0.5em;
+}
+
+.discount_info_block {
+	float: right;
+}
+
+.deal_list .deal_price,
+.deal_list .deal_original_price {
+	float: left;
+}

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="package" version="3.3">
+   <name>Montenegrin Language Pack</name>
+   <packagename>srp-ME</packagename>
+   <version>3.3.1.1</version>
+   <creationDate>2014</creationDate>
+   <author>Tolja</author>
+   <authorEmail>toljadj@gmail.com</authorEmail>
+   <authorUrl>http://www.timhosting.me</authorUrl>
+    <copyright>Copyright (C) 2005 - 2014 Open Source Matters.</copyright>
+   <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+   <url></url>
+   <packager>Joomla! Montenegrin</packager>
+   <packagerurl>www.timhosting.me</packagerurl>
+   	<description>
+		<![CDATA[
+		<div style="text-align:left;">
+		<h3>Joomla! 3.3.1.1 Full Montenegrin (srp-ME) Language Package - Version 3.3.1.1</h3>
+		<h3>Jezički paket za Joomla! 3.3.1.1 Crnogorski (srp-ME) Jezički paket - Version 3.3.1.1</h3>
+		</div>
+		]]>
+	</description>
+   <files>
+	<file type="language" client="site" id="srp-ME">site_srp-ME.zip</file>
+	<file type="language" client="administrator" id="srp-ME">admin_srp-ME.zip</file>
+   </files>
+    <updateservers>
+        <server type="collection" priority="1" name="Accredited Joomla! Translations">http://update.joomla.org/language/translationlist_3.xml</server>
+    </updateservers>
+</extension>

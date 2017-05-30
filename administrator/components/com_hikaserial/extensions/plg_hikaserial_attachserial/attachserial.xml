@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install SYSTEM "http://dev.joomla.org/xml/1.5/plugin-install.dtd">
+<extension type="plugin" version="2.5" method="upgrade" group="hikaserial">
+	<name>AttachSerial - HikaSerial plugin</name>
+	<creationDate>{__MONTH__} {__YEAR__}</creationDate>
+	<version>{__VERSION__}</version>
+	<author>Obsidev</author>
+	<authorEmail>contact@obsidev.com</authorEmail>
+	<authorUrl>http://www.obsidev.com</authorUrl>
+	<copyright>Copyright (C) 2012-{__YEAR__} OBSIDEV SARL - All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<description>This plugin allow to attach serials into HikaShop emails and orders</description>
+	<files>
+		<filename plugin="attachserial">attachserial.php</filename>
+		<filename>attachserial_configuration.php</filename>
+	</files>
+	<params addpath="/components/com_hikaserial/params">
+		<param name="image_name_format" type="text" default="" label="Image filename format" description="Format which will use for the filename. {data} will be replaced by the serial data and {id} by a unique identifier" />
+		<param name="use_mime" type="radio" default="1" label="Add attachment with mime type" description=""><option value="0">No</option><option value="1">Yes</option></param>
+		<param name="virtual_file" type="radio" default="1" label="Attach a virtual file" description=""><option value="0">No</option><option value="1">Yes</option></param>
+		<param name="force_download" type="radio" default="0" label="Force download of the image" description="By default the image is seen as an image and won't be download by the browser"><option value="0">No</option><option value="1">Yes</option></param>
+		<param name="force_download_filename" type="text" default="" label="Force download filename" description="Leave that field blank to use the serial as filename ; otherwise it will use the specified value as the filename" />
+	</params>
+	<config>
+		<fields name="params" addfieldpath="/components/com_hikaserial/fields">
+			<fieldset name="basic">
+				<field name="image_name_format" type="text" default="" label="Image filename format" description="Format which will use for the filename. {data} will be replaced by the serial data and {id} by a unique identifier" />
+				<field name="use_mime" type="radio" default="1" label="Add attachment with mime type" description=""><option value="0">No</option><option value="1">Yes</option></field>
+				<field name="virtual_file" type="radio" default="1" label="Attach a virtual file" description=""><option value="0">No</option><option value="1">Yes</option></field>
+				<field name="force_download" type="radio" default="0" label="Force download of the image" description="By default the image is seen as an image and won't be download by the browser"><option value="0">No</option><option value="1">Yes</option></field>
+				<field name="force_download_filename" type="text" default="" label="Force download filename" description="Leave that field blank to use the serial as filename ; otherwise it will use the specified value as the filename" />
+			</fieldset>
+		</fields>
+	</config>
+</extension>

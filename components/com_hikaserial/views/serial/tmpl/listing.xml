@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<state>
+		<name>Serial listing</name>
+		<description>Serial listing page</description>
+	</state>
+	<layout title="Serial listing">
+		<message></message>
+	</layout>
+</metadata>

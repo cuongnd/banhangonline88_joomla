@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="1.5.0" method="upgrade">
+	<name>HikaSerial Consume module</name>
+	<creationDate>{__MONTH__} {__YEAR__}</creationDate>
+	<version>{__VERSION__}</version>
+	<author>Obsidev</author>
+	<authorEmail>contact@obsidev.com</authorEmail>
+	<authorUrl>http://www.obsidev.com</authorUrl>
+	<copyright>Copyright (C) 2012-{__YEAR__} OBSIDEV SARL - All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<description>Consume display for HikaSerial</description>
+	<files>
+		<filename module="mod_hikaserial_consume">mod_hikaserial_consume.php</filename>
+		<filename>index.html</filename>
+	</files>
+	<params addpath="/components/com_hikaserial/params">
+		<param name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="PARAMMODULECLASSSUFFIX" />
+	</params>
+	<config>
+		<fields name="params" addfieldpath="/components/com_hikaserial/fields">
+			<fieldset name="basic">
+				<field
+					name="moduleclass_sfx"
+					type="text"
+					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+					description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+			</fieldset>
+		</fields>
+	</config>
+</extension>

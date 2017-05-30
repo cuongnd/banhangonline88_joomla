@@ -1,0 +1,61 @@
+/*------------------------------------*\
+	$tree.less
+\*------------------------------------*/
+// .es-tree>.tree-control>label.checkbox>input+div.tree-title>span.gi+b
+.es-tree {
+	position: relative;
+	&:before {
+		background: #e1e1e1;
+		content: "";
+		display: block;
+		left: 40px;
+		position: absolute;
+		top: 12px;
+		bottom: 5px;
+		width: 1px;
+	}
+	.tree-control {
+		.tree-title {
+			display: inline-block;
+			margin: 0 0 0 3px;
+		}
+		.gi {
+			width: 20px;
+			height: 3px;
+			display: inline-block;
+			position: relative;
+			z-index: 2;
+			&:before,
+			&:after {
+				content: "";
+				display: block;
+				position: absolute;
+			}
+			&:before {
+				background: #555;
+				left: 0px;
+				top: 1px;
+				width: 3px;
+				height: 3px;
+				border-radius: 1px;
+			}
+			&:after {
+				background: #e1e1e1;
+				left: 3px;
+				top: 2px;
+				width: 17px;
+				height: 1px;
+			}
+		}
+		b {
+			padding: 0 0 0 6px;
+			font-weight: normal;
+			position: relative;
+			top: 2px;
+		}
+		label {
+			line-height: 20px;
+		}
+	}
+}
+

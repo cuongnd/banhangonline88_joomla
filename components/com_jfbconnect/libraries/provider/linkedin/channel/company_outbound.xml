@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="attribs">
+        <fieldset name="attribs">
+            <field name="user_id"
+                   type="user"
+                   label="COM_JFBCONNECT_CHANNEL_USER_ID_LABEL"
+                   description="COM_JFBCONNECT_CHANNEL_USER_ID_DESCRIPTION"
+                   default=""
+                   labelclass="config_setting"
+                    />
+            <field name="company_id"
+                   type="linkedincompanylist"
+                   label="COM_JFBCONNECT_CHANNEL_LINKEDIN_COMPANY_ID_LABEL"
+                   description="COM_JFBCONNECT_CHANNEL_LINKEDIN_COMPANY_ID_DESCRIPTION"
+                   default=""
+                   labelclass="config_setting"
+                    />
+        </fieldset>
+    </fields>
+</form>

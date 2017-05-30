@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5" type="plugin" group="search">
+    <name>Search - MaQma Helpdesk Discussions</name>
+    <author>iMaQma</author>
+    <creationDate>August 2011</creationDate>
+    <copyright>(C) 2006-2011 Components Lab. All rights reserved.</copyright>
+    <license>GNU/GPL</license>
+    <authorEmail>support@imaqma.com</authorEmail>
+    <authorUrl>www.imaqma.com</authorUrl>
+    <version>1.0.0</version>
+    <description>Allows searching of public discussions from the MaQma Helpdesk Component.</description>
+    <files>
+        <filename plugin="discussions">discussions.php</filename>
+    </files>
+    <params/>
+</extension>

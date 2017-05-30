@@ -1,0 +1,56 @@
+.fsj
+{	
+	@import "fsj.admin.j25.j3_imp.less";
+
+	div.CodeMirror 
+    {
+    	font-size: 13px;
+    }
+
+	div.toolbar-list li {
+		height: inherit;
+	}
+
+	fieldset label, fieldset span.faux-label {
+		float: none;
+		clear: none;
+	}
+
+	th.order 
+    {
+    	white-space: nowrap !important;
+
+		a.saveorder
+        {
+        	float: right !important;
+        }
+    }
+
+	/* Fix the menu list hr styles */
+	#submenu_j25 li hr 
+    {
+		margin: 3px;
+    }
+
+	/* Shrink the page count dropdown */
+	.pagination div.limit select#limit {
+		width: 60px;
+	}
+
+	/* Hide duplicate page count dropdown at top of pages */
+	.js-stools-container-list select#limit 
+    {
+    	display: none;
+    }
+}
+
+.fsj_inline
+{
+	div.js-stools select {
+		margin-bottom: 0px;
+		padding-bottom: 0px;
+	}
+	.js-stools-container-filters {
+		margin-bottom: 0px;
+	}
+}

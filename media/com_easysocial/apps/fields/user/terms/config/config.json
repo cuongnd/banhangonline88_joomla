@@ -1,0 +1,36 @@
+{
+	"message":
+	{
+		"label"		: "PLG_FIELDS_TERMS_CONFIG_CONDITION_MESSAGE",
+		"tooltip"	: "PLG_FIELDS_TERMS_CONFIG_CONDITION_MESSAGE_DESC",
+		"type"		: "textarea",
+		"default"	: "PLG_FIELDS_TERMS_CONFIG_CONDITION_MESSAGE_TEXT"
+	},
+
+	"dialog": {
+		"label": "PLG_FIELDS_TERMS_CONFIG_DISPLAY_IN_DIALOG",
+		"tooltip": "PLG_FIELDS_TERMS_CONFIG_DISPLAY_IN_DIALOG_DESC",
+		"type": "boolean",
+		"default": false
+	},
+	
+	"required"		: {
+		"default": true
+	},
+
+	"searchable"	: false,
+
+	"default"		: false,
+
+	"privacy"		: false,
+
+	"visible_display": false,
+
+	"title"			: false,
+
+	"display_title"	: false,
+
+	"description"	: false,
+
+	"display_description": false
+}

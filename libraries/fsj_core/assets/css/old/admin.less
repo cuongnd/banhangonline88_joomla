@@ -1,0 +1,339 @@
+/* DEPRECIATED - DO NOT USE ANY MORE */
+
+.fsj 
+{
+	/* Highlight the fact we are in a fsj area */
+	/*border: 1px dashed blue;*/
+
+	.clear {
+		clear: both;
+	}
+
+	/* Fix crap joomla tabs, and make em round */
+	dl.tabs {
+		dt {
+			border-top-left-radius: 7px;
+			border-top-right-radius: 7px;
+		}
+	}
+
+	/* Overview admin block */
+	.overview_block {
+		float:left; 
+		margin-right:16px;
+		margin-bottom:16px;
+		padding:1px;
+		border-radius: 5px;
+		background-image: -ms-linear-gradient(top, #CCCCCC 0%, #CCCCCC 30px, #F4F4F4 70%, #F4F4F4 100%);
+		background-image: -moz-linear-gradient(top, #CCCCCC 0%, #CCCCCC 30px, #F4F4F4 70%, #F4F4F4 100%);
+		background-image: -o-linear-gradient(top, #CCCCCC 0%, #CCCCCC 30px, #F4F4F4 70%, #F4F4F4 100%);
+		background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #CCCCCC), color-stop(1, #F4F4F4));
+		background-image: -webkit-linear-gradient(top, #CCCCCC 0%, #CCCCCC 30px, #F4F4F4 70%, #F4F4F4 100%);
+		background-image: linear-gradient(to bottom, #CCCCCC 0%, #CCCCCC 30px, #F4F4F4 70%, #F4F4F4 100%);
+
+		/* inner border */
+		.inner {
+			border-radius: 4px;
+			background-color:rgb(244, 244, 244);
+			padding: 4px;
+			position: relative;
+			padding-top: 24px;
+		}
+
+		/* image */
+		.icon {
+			margin:6px;
+			float:left;
+			text-align:center;
+			padding: 4px;
+			min-width:90px;
+			font-size: 12px;
+		}
+
+		/* header block */
+		h3 {
+			background-color: white;
+			border-bottom: 1px solid #ccc;
+			padding: 4px;
+			position: absolute;
+			left: 0;
+			top: 0;
+			right: 0;
+			border-top-left-radius: 5px;
+			border-top-right-radius: 5px;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			margin: 0px;
+		}
+	}
+
+	/* Settings panel block */
+	.settings_block {
+		clear: both;
+		margin-bottom:10px;
+		border-top: 1px solid #ccc;
+		border-left: 1px solid #ccc;
+		border-right: 1px solid #ccc;
+		border-bottom: 1px solid #ccc;
+		border-top-left-radius: 5px;
+		border-top-right-radius: 5px;
+		background-color: White;
+
+		h3 {
+			font-size: 1.182em;
+			background-color: #fafafa;
+			padding: 6px;
+			border-top-left-radius: 5px;
+			border-top-right-radius: 5px;
+			border-bottom: 1px solid #CCCCCC;
+			margin:0px;
+			color: #025A8D;
+		}
+
+		td {
+			border-bottom: 1px solid #eee;
+			padding: 3px 3px 3px 8px;
+		}
+
+		fieldset.radio {
+			margin-bottom: 0px;
+		}
+	}
+
+	/* Generic button background */
+	.btn_back {
+		border: 1px solid #bbb;
+		border-bottom-color: #a2a2a2;
+		border-radius: 7px;
+		padding: 3px;
+		color: #333;
+		text-shadow: 0 1px 1px rgba(255,255,255,0.75);
+		background-color: #f5f5f5;
+		background-image: -moz-linear-gradient(top,#fff,#e6e6e6);
+		background-image: -webkit-gradient(linear,0 0,0 100%,from(#fff),to(#e6e6e6));
+		background-image: -webkit-linear-gradient(top,#fff,#e6e6e6);
+		background-image: -o-linear-gradient(top,#fff,#e6e6e6);
+		background-image: linear-gradient(to bottom,#fff,#e6e6e6);
+		background-repeat: repeat-x;
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe5e5e5', GradientType=0);
+		border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+		border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+		filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+		display: inline-block;
+		cursor: pointer;
+
+		&:hover {
+			color: #333;
+			text-decoration: none;
+			background-color: #e6e6e6;
+			background-position: 0 -50px;
+			box-shadow: 0px 0px 5px rgba(128,128,128,0.3);
+			-webkit-transition: background-position .3s linear, box-shadow .3s linear;
+			-moz-transition: background-position .3s linear, box-shadow .3s linear;
+			-o-transition: background-position .3s linear, box-shadow .3s linear;
+			transition: background-position .3s linear, box-shadow .3s linear; 
+		}
+	}
+
+	/* Add support for img and span on a button being aligned properly */
+	.btn_icon {
+		text-align: left !important;
+		img {
+			position: relative;
+			top: 2px;
+			padding-right: 3px;
+			margin: 0px;
+			float: none;
+			width: 16px;
+			height: 16px;
+		}
+
+		span {
+			position: relative;
+			top: -1px;
+		}
+	}
+
+	/* div containing draggable items */
+	.dragsort {
+		/* placeholder item when dragging */
+		.sortable-placeholder {
+			border: 1px dashed #CCC;
+			background: none;
+			height: 20px;
+			margin-bottom: 2px;
+			border-radius: 7px;
+		}
+
+		img {
+			margin: 0px;
+		}
+
+		/* actual item being dragged */
+		.item {
+			clear:both;
+			border: 1px solid #ccc;
+			margin-bottom: 3px;
+			position:relative;
+			padding: 5px 5px 5px 19px;
+			border-radius: 7px;
+			position: relative;
+
+			/* remove item icon */
+			.icon_topright {
+				position: absolute;
+				top: 0px;
+				right: 0px;
+				margin: 0px;
+				border-right: none;
+				border-bottom-right-radius: 0px;
+				border-top: none;
+				border-top-left-radius: 0px;
+			}
+
+			.icon_right {
+				position: absolute;
+				top: 0px;
+				right: 0px;
+				bottom: 0px;
+				margin: 0px;
+				border-right: none;
+				border-top: none;
+				border-bottom: none;
+				border-bottom-left-radius: 0px;
+				border-top-left-radius: 0px;
+
+				img {
+					position: relative;
+					top:1px;
+				}
+			}
+
+			/* drag icon */
+			.handle {
+				position: absolute;
+				left: 0px;
+				top: 0px;
+				bottom: 0px;
+				width: 14px;
+				background-image: url(../../../libraries/fsj_core/assets/images/sort/sorthandle.png);
+				background-position: center;
+				background-repeat: no-repeat;
+				cursor: move;
+					margin: 0px;
+				padding: 0px;
+				border-top-right-radius: 0px;
+				border-bottom-right-radius: 0px;
+				border-width: 0px;
+				border-right-width: 1px;
+
+				&:hover {
+					-webkit-transition: box-shadow .3s linear;
+					-moz-transition: box-shadow .3s linear;
+					-o-transition: box-shadow .3s linear;
+					transition: box-shadow .3s linear; 
+					background-image: url(../../../libraries/fsj_core/assets/images/sort/sorthandle.png);
+					background-position: center;
+					background-repeat: no-repeat;
+				}
+			}
+		}
+	}
+
+	/*.alert {
+		padding: 8px 35px 8px 14px;
+		margin-bottom: inherit;
+		text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+		background-color: #fcf8e3;
+		border: 1px solid #fbeed5;
+		-webkit-border-radius: 4px;
+		-moz-border-radius: 4px;
+		border-radius: 4px;
+	}
+
+	.alert-info {
+	  background-color: #d9edf7;
+	  border-color: #bce8f1;
+	  color: #3a87ad;
+	}*/
+
+	.form_popup {
+
+		div.toolbar-list { 
+			a {
+				padding: 9px 5px 0px 5px; 
+				span {
+					float: left;
+					width: 24px;
+					height: 24px;
+					background-size: 100%;
+					display: inline-block;
+					position: relative;
+					margin-right: 4px;
+					top: -5px;
+				}
+
+			}
+			li {
+				height: 32px;
+			}
+		}
+		
+		fieldset#filter-bar {
+			margin-bottom: 0px;
+			border: none;
+		}
+
+		div.btn-toolbar 
+		{
+			float: right; 
+		}
+	}
+
+	.panelform {
+		padding-bottom: 0px;
+	}
+
+	ul.adminformlist {
+		li {
+			clear: both;
+		}
+	}
+
+
+	.fsj_admin_rating_container {
+		float: left;position: relative;top: 3px;
+	}
+}
+
+.adminform li {
+	clear:both;
+}
+
+/* This is a bit iffy, as its only used on the data includes at the moment, but will also be used for templates later on */
+.fsj_help {
+	float: right;
+	width: 38% !important;
+	font-size: 12px;
+	/*margin-top: 6px;*/
+	margin-left: 8px;
+
+	
+}	
+
+div.fsj_template_help 
+{
+	dd 
+	{
+		margin-left: 16px !important;
+	}
+}
+
+/* Tabs - container */
+.fsj_admin_tab_container {
+	padding: 4px;
+	div.fsj_admin_tab_content {
+		padding: 12px !important;
+	}
+}

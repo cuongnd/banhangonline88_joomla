@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="params">
+        <fields name="widget_settings">
+            <fieldset name="widget_settings" addfieldpath="/administrator/components/com_jfbconnect/models/fields/">
+                <field name="text" type="text" label="COM_JFBCONNECT_WIDGET_FACEBOOK_LOGIN_TEXT_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_LOGIN_TEXT_DESCRIPTION" default=""/>
+                <field name="providers" type="text" label="COM_JFBCONNECT_WIDGET_LOGIN_PROVIDER_LABEL" description="COM_JFBCONNECT_WIDGET_LOGIN_PROVIDER_DESCRIPTION" default="" />
+                <field name="image" type="hidden" label="COM_JFBCONNECT_WIDGET_LOGIN_PROVIDER_SUFFIX_LABEL" description="COM_JFBCONNECT_WIDGET_LOGIN_PROVIDER_SUFFIX_DESC" default="" />
+                <field name="loginbuttonstype"
+                       type="buttonstype"
+                       default="default"
+                       label="COM_JFBCONNECT_WIDGET_LOGIN_BUTTON_TYPE_LABEL"
+                       description="COM_JFBCONNECT_WIDGET_LOGIN_BUTTON_TYPE_DESC"
+                       jfbcExamplesHide="1"
+                    />
+                <field name="loginbuttons"
+                       type="socialbuttons"
+                       label="COM_JFBCONNECT_WIDGET_IMAGE_STYLE_LABEL"
+                       description="COM_JFBCONNECT_WIDGET_IMAGE_STYLE_DESC"
+                       jfbcExamplesHide="1"
+                        />
+                <field name="logout" type="radio" label="COM_JFBCONNECT_WIDGET_LOGIN_SHOW_LOGOUT_LABEL" description="COM_JFBCONNECT_WIDGET_LOGIN_SHOW_LOGOUT_DESCRIPTION" default="1" >
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field name="logout_url" type="text" label="COM_JFBCONNECT_WIDGET_LOGIN_LOGOUTURL_LABEL" description="COM_JFBCONNECT_WIDGET_LOGIN_LOGOUTURL_DESCRIPTION" default="" />
+            </fieldset>
+        </fields>
+    </fields>
+</form>

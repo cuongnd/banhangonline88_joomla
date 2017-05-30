@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jomsocial>
+	<license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL</license>
+	<component>com_cmgroupbuying</component>
+	<rules>
+		<rule>
+			<name>Referral bonus</name>
+			<description>Reward referrer when his/her shared deal is bought.</description>
+			<action_string>com_cmgroupbuying.referral.add</action_string>
+			<publish>true</publish>
+			<points>1</points>
+			<access_level>1</access_level>
+		</rule>
+		<rule>
+			<name>Purchase bonus</name>
+			<description>Reward buyer when his/her buys a deal.</description>
+			<action_string>com_cmgroupbuying.bonus.add</action_string>
+			<publish>true</publish>
+			<points>1</points>
+			<access_level>1</access_level>
+		</rule>
+	</rules>
+</jomsocial>

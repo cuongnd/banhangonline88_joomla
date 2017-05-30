@@ -1,0 +1,514 @@
+/* Messages */
+* html .gritter-close {
+    left: 7px;
+}
+
+#gritter-notice-wrapper {
+    left: 20px;
+}
+
+#gritter-notice-wrapper span, #gritter-notice-wrapper p {
+    text-align: right;
+}
+
+.gritter-top {
+    background: url(../../../images/growl/gritter.png) no-repeat right -30px;
+}
+
+.hover .gritter-top {
+    background-position: left -30px;
+}
+
+.gritter-bottom {
+    background: url(../../../images/growl/gritter.png) no-repeat right bottom;
+}
+
+.hover .gritter-bottom {
+    background-position: bottom left;
+}
+
+.gritter-item {
+    display: block;
+    background: url(../../../images/growl/gritter.png) no-repeat right -40px;
+}
+
+.hover .gritter-item {
+    background-position: left -40px;
+}
+
+.gritter-close {
+    left: 3px;
+    background: url(../../../images/growl/gritter.png) no-repeat right top;
+}
+
+.gritter-image {
+    float: right;
+}
+
+.gritter-with-image {
+    float: left;
+}
+
+/* Ajax Rating */
+#rating .star-rating, .star-rating a:hover, .star-rating a:active, .star-rating a:focus, .star-rating .current-rating {
+    background: url(../../../images/rating/star.gif) right -1000px repeat-x;
+}
+
+#rating .star-rating {
+    background-position: right top;
+}
+
+.star-rating a, .star-rating .current-rating {
+    right: 0;
+}
+
+.star-rating a:hover, .star-rating a:active, .star-rating a:focus {
+    background-position: right bottom;
+}
+
+.star-rating .current-rating {
+    background-position: right center;
+}
+
+/* Dashboard */
+#dashboard .section {
+    float: right;
+    border-left: 1px solid #B0B0B0;
+}
+
+/* Glossary */
+.ln-letters a {
+    float: right;
+    border-left: none;
+}
+
+.ln-letters a.ln-last {
+    border-left: 1px solid silver;
+}
+
+/* Subtitle with line */
+h4 span {
+    float: right;
+    padding-left: 6px;
+}
+
+/* Forms */
+.form .note {
+    padding-right: 15px;
+}
+
+.form .field label.allfield, .form .field span.label.allfield {
+    float: right;
+    padding-left: 20px;
+    text-align: left;
+}
+
+.form .fieldtip {
+    margin-right: 145px;
+}
+
+.controlset .controlset-pad {
+    float: right;
+}
+
+.controlset {
+    float: right;
+}
+
+.buttonsbox {
+    text-align: left;
+}
+
+#editor-xtd-buttons {
+    margin-right: 140px;
+}
+
+#mqmbuttonsbox {
+    text-align: left;
+}
+
+/* KB */
+ul.kbbullet li a {
+    padding-right: 1.5em;
+}
+
+/* Ticket Messages */
+div.tktmessage .arrow {
+    background: url("../../../images/message_arrow.png") no-repeat;
+    margin-right: 15px;
+}
+
+div.tktmessage .attach {
+    background: url("../../../images/16px/attach.png") 100% 50% no-repeat #fff;
+    padding-right: 20px;
+}
+
+/* Ticket Notes */
+div.tktnote .arrow {
+    margin-right: 15px;
+}
+
+/* Tabs */
+dl.tabs {
+    float: right;
+}
+
+dl.tabs dt {
+    float: right;
+    border-right: 1px solid #ccc;
+    margin-right: 3px;
+}
+
+/* Tables */
+.contenttable th {
+    text-align: right;
+}
+
+#tableoptions {
+    text-align: left;
+}
+
+/* Workgroup list / Workgroup options / Download Categories / Download Products List - TO REMOVE/CHANGE */
+div.icon {
+    text-align: right;
+    margin-left: 5px;
+    float: right;
+}
+
+div.icon img.logo {
+    float: right;
+}
+
+div.icon div.flag {
+    margin-right: -2px;
+}
+
+/* Ticket details */
+.ticket_message {
+    padding-right: 25px;
+}
+
+.ticket_options {
+    text-align: left;
+}
+
+/* Announcements */
+#announcements .announce_left {
+    float: right;
+    margin-left: 14px;
+}
+
+#announcements .announce_right {
+    float: right;
+}
+
+/* Submenus */
+#mqmsubmenu {
+    border-bottom-right-radius: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    -webkit-border-radius-bottomleft: 5px;
+}
+
+#mqmsubmenu .onright {
+    border-top-left-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -webkit-border-radius-topleft: 5px;
+}
+
+#mqmsubmenu .onleft {
+    border-top-right-radius: 5px;
+    -moz-border-radius-topright: 5px;
+    -webkit-border-radius-topright: 5px;
+}
+
+.submenuheader {
+    border-top-right-radius: 5px;
+    -moz-border-radius-topright: 5px;
+    -webkit-border-radius-topright: 5px;
+}
+
+/* Dropdown */
+.customStyleSelectBoxInner {
+    background: url("../../../images/dropdown/arrow_rtl.png") no-repeat 1% 0%;
+    padding-right: 5px;
+}
+
+/* Auto complete */
+.ac_results {
+    z-index: 99999;
+}
+
+.ac_results li {
+    text-align: right;
+}
+
+.ac_loading {
+    background: url('../../../images/indicator.gif') left center no-repeat;
+}
+
+/* CC and BCC */
+#cc_emails, #bcc_emails {
+    margin-right: 150px;
+}
+
+#cc_emails div, #bcc_emails div {
+    float: right;
+    margin-left: 4px;
+}
+
+#cc_emails div a, #bcc_emails div a {
+    background: url("../../../images/close.gif") no-repeat top right;
+    float: left;
+}
+
+/* Discussions */
+#discussions .discussion_left {
+    float: right;
+    margin-left: 14px;
+}
+
+#discussions .discussion_right {
+    float: right;
+}
+
+#discussions .details {
+    margin-right: 12%;
+}
+
+#discussions .details div {
+    float: right;
+}
+
+#discussions .details .tags span {
+    margin-left: 5px;
+}
+
+#discussions .date {
+    text-align: left;
+}
+
+#discussions_search {
+    float: right;
+}
+
+#discussions_search #searchinput {
+    text-align: right;
+    padding-right: 10px;
+}
+
+/* Detail */
+#discussion .details {
+    margin-right: 12%;
+}
+
+#discussion .details div {
+    float: right;
+}
+
+#discussion .details .tags span {
+    margin-left: 5px;
+}
+
+#discussion .discussion_left {
+    float: right;
+    margin-left: 14px;
+}
+
+#discussion .discussion_right {
+    float: right;
+}
+
+#discussion .date {
+    text-align: left;
+}
+
+.unpublished {
+    margin-right: 5px;
+}
+
+/* DataTable */
+.dataTables_processing {
+    right: 50%;
+    margin-right: -125px;
+}
+
+.dataTables_length {
+    float: right;
+}
+
+.dataTables_paginate {
+    text-align: left;
+}
+
+.dataTables_paginate .first {
+    border-right: 1px solid #bbb;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.dataTables_paginate .last {
+    border-left: 1px solid #bbb;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    margin-left: 5px;
+}
+
+.paging_full_numbers a.paginate_button {
+    background: -webkit-gradient(linear, right top, right bottom, from(#F9F9F9), to(#E3E3E3));
+}
+
+.sorting_ASC {
+    background: url('../../../images/datatable/sort_asc.png') no-repeat center left;
+    cursor: pointer;
+}
+
+.sorting_DESC {
+    background: url('../../../images/datatable/sort_desc.png') no-repeat center left;
+    cursor: pointer;
+}
+
+.sorting {
+    background: url('../../../images/datatable/sort_both.png') no-repeat center left;
+    cursor: pointer;
+}
+
+.sorting_asc_disabled {
+    background: url('../../../images/datatable/sort_asc_disabled.png') no-repeat center left;
+}
+
+.sorting_desc_disabled {
+    background: url('../../../images/datatable/sort_desc_disabled.png') no-repeat center left;
+}
+
+/* kb_frontpage.php */
+#kbsearch {
+    width: 65%;
+    float: right;
+    padding: 10px 10px;
+}
+
+.artbycat {
+    float: right;
+    width: 50%;
+    padding-bottom: 20px;
+}
+
+#exact_phrase {
+    width: 75%;
+    text-align: right;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-right: 10px;
+    height: 22px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+#kbrecent {
+    width: 30%;
+    float: right;
+    padding: 3px;
+}
+
+/* KB section in the Workgroup list and workgroup options - TO REMOVE/CHANGE */
+#kb_featured {
+    padding-right: 5px;
+}
+
+#kb_viewed {
+    padding-right: 5px;
+}
+
+/* KB All Categories Dropdown - TO REMOVE/CHANGE */
+#category_title {
+    float: right;
+}
+
+#category_back {
+    text-align: left;
+    float: left;
+}
+
+#allcategories {
+    text-align: right;
+}
+
+/* Forms - TO REMOVE/CHANGE */
+div.fieldsetform div label {
+    float: right;
+}
+
+.submit_buttons {
+    text-align: left;
+}
+
+.form_options {
+    float: right;
+    padding-right: 5px;
+    margin-right: 15px;
+    text-align: center;
+}
+
+.form_options_left {
+    float: right;
+    padding-left: 5px;
+    margin-left: 15px;
+    text-align: right;
+}
+
+/* KB sub categories - TO REMOVE/CHANGE */
+.subcategory {
+    float: right;
+}
+
+/* KB Details - TO REMOVE/CHANGE */
+#kbtools {
+    text-align: left;
+    float: left;
+}
+
+#kbrating {
+    text-align: left;
+    float: right;
+    margin-right: 5px;
+}
+
+#rating {
+    float: right;
+}
+
+#kbother div {
+    float: right;
+}
+
+#comments div div {
+    float: right;
+}
+
+.kbrelated_link {
+    margin-left: 20px;
+    float: right;
+}
+
+/* Tickets - TO REMOVE/CHANGE */
+#tickettools {
+    text-align: left;
+    float: left;
+}
+
+#ticket_history div div {
+    float: right;
+}
+
+/* New additions extracted from hardcode CSS - by Rajeh A. AlHarithi */
+/* File edited workgroup_options_anonymous.php */
+#mqmMessage {
+    width: 95%;
+    border: 1px solid #c2beb1;
+    padding: 10px;
+    text-align: right;
+    background-color: #fffcd3;
+    color: #8d6574;
+    cursor: pointer;
+    margin-bottom: 20px;
+}

@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="1.6.0" method="upgrade">
+	<name>com_jlivechat</name>
+	<creationDate>April 2013</creationDate>
+	<author>CMS Fruit</author>
+	<authorEmail>info@cmsfruit.com</authorEmail>
+	<authorUrl>http://www.CMSFruit.com</authorUrl>
+	<copyright>(C) Copyright 2008-2013, All rights reserved.</copyright>
+	<license>GNU/LGPL http://www.gnu.org/licenses/lgpl-3.0.txt</license>
+	<version>4.3.3</version>
+	<description><![CDATA[<p>The JLive! Chat component has been installed successfully!<br /><br />If you plan on using JLive! Chat in hosted mode, then please specify your <i>Hosted Mode API Key</i> from within <a href="index.php?option=com_jlivechat&view=settings">your settings page</a>.<br /><br />Now you should <a href="index.php?option=com_jlivechat&view=operators">create an operator record</a> if you have not done so already.</p>]]></description>
+	
+	<installfile>install.jlivechat.php</installfile>
+	<scriptfile>jlivechat.script.php</scriptfile>
+
+	<!-- Site Main File Copy Section-->
+	<files folder="site">
+		<filename>assets/images/buttons/green.gif</filename>
+		<filename>assets/images/yui/menubaritem_submenuindicator.png</filename>
+		<filename>assets/images/yui/menuitem_submenuindicator.png</filename>
+		<filename>assets/images/yui/split-button-arrow-disabled.png</filename>
+		<filename>assets/images/yui/dt-arrow-dn.png</filename>
+		<filename>assets/images/yui/checkbox.png</filename>
+		<filename>assets/images/yui/split-button-arrow-focus.png</filename>
+		<filename>assets/images/yui/split-button-arrow-active.png</filename>
+		<filename>assets/images/yui/menu-button-arrow-disabled.png</filename>
+		<filename>assets/images/yui/split-button-arrow-hover.png</filename>
+		<filename>assets/images/yui/menuitem_checkbox_disabled.png</filename>
+		<filename>assets/images/yui/menuitem_submenuindicator_disabled.png</filename>
+		<filename>assets/images/yui/split-button-arrow.png</filename>
+		<filename>assets/images/yui/dt-arrow-up.png</filename>
+		<filename>assets/images/yui/menu-button-arrow.png</filename>
+		<filename>assets/images/yui/menubaritem_submenuindicator_disabled.png</filename>
+		<filename>assets/images/yui/menuitem_checkbox.png</filename>
+		<filename>assets/images/yui/sprite.png</filename>
+		<filename>assets/images/autopopup/cloud.gif</filename>
+		<filename>assets/images/autopopup/close.gif</filename>
+		<filename>assets/images/icons/close.gif</filename>
+		<filename>assets/images/icons/smiley.gif</filename>
+		<filename>assets/images/icons/alert.gif</filename>
+		<filename>assets/images/icons/typing.gif</filename>
+		<filename>assets/images/icons/silver_bullet.gif</filename>
+		<filename>assets/images/icons/minimize.gif</filename>
+		<filename>assets/images/icons/ajax-loader.gif</filename>
+		<filename>assets/images/icons/right_arrow.gif</filename>
+		<filename>assets/images/icons/unmute.gif</filename>
+		<filename>assets/images/icons/mute.gif</filename>
+		<filename>assets/images/backgrounds/auto_popup.gif</filename>
+		<filename>assets/images/backgrounds/popup.gif</filename>
+		<filename>assets/images/smilies_set1/001_rolleyes.gif</filename>
+		<filename>assets/images/smilies_set1/sad.gif</filename>
+		<filename>assets/images/smilies_set1/001_smile.gif</filename>
+		<filename>assets/images/smilies_set1/laugh.gif</filename>
+		<filename>assets/images/smilies_set1/thumbup.gif</filename>
+		<filename>assets/images/smilies_set1/confused1.gif</filename>
+		<filename>assets/images/smilies_set1/huh.gif</filename>
+		<filename>assets/images/smilies_set1/w00t.gif</filename>
+		<filename>assets/images/smilies_set1/closedeyes.gif</filename>
+		<filename>assets/images/smilies_set1/sleep.gif</filename>
+		<filename>assets/images/smilies_set1/drool.gif</filename>
+		<filename>assets/images/smilies_set1/thumbup1.gif</filename>
+		<filename>assets/images/smilies_set1/001_tt1.gif</filename>
+		<filename>assets/images/smilies_set1/lol.gif</filename>
+		<filename>assets/images/smilies_set1/001_tongue.gif</filename>
+		<filename>assets/images/smilies_set1/ohmy.gif</filename>
+		<filename>assets/images/smilies_set1/thumbdown.gif</filename>
+		<filename>assets/images/smilies_set1/sneaky2.gif</filename>
+		<filename>assets/images/smilies_set1/cursing.gif</filename>
+		<filename>assets/images/smilies_set1/crying.gif</filename>
+		<filename>assets/images/smilies_set1/001_wub.gif</filename>
+		<filename>assets/images/smilies_set1/tongue_smilie.gif</filename>
+		<filename>assets/images/smilies_set1/001_tt2.gif</filename>
+		<filename>assets/images/smilies_set1/blushing.gif</filename>
+		<filename>assets/images/smilies_set1/blink.gif</filename>
+		<filename>assets/images/smilies_set1/glare.gif</filename>
+		<filename>assets/images/smilies_set1/angry.gif</filename>
+		<filename>assets/images/smilies_set1/bored.gif</filename>
+		<filename>assets/images/smilies_set1/wink.gif</filename>
+		<filename>assets/images/smilies_set1/scared.gif</filename>
+		<filename>assets/images/smilies_set1/blush.gif</filename>
+		<filename>assets/images/smilies_set1/mellow.gif</filename>
+		<filename>assets/images/smilies_set1/001_cool.gif</filename>
+		<filename>assets/images/smilies_set1/001_huh.gif</filename>
+		<filename>assets/images/smilies_set1/001_unsure.gif</filename>
+		<filename>assets/images/smilies_set1/cool.gif</filename>
+		<filename>assets/images/smilies_set1/mad.gif</filename>
+		<filename>assets/images/smilies_set1/biggrin.gif</filename>
+		<filename>assets/css/paginator.css</filename>
+		<filename>assets/css/menu.css</filename>
+		<filename>assets/css/custom.css</filename>
+		<filename>assets/css/popup.css</filename>
+		<filename>assets/css/fonts-min.css</filename>
+		<filename>assets/css/datatable.css</filename>
+		<filename>assets/css/jlivechat.css</filename>
+		<filename>assets/css/jlivechat.min.css</filename>
+		<filename>assets/css/button.css</filename>
+		<filename>assets/css/tabview.css</filename>
+		<filename>assets/css/autocomplete.css</filename>
+		<filename>assets/sounds/Sound_1.mp3</filename>
+		<filename>assets/sounds/Sound_2.mp3</filename>
+		<filename>models/server.php</filename>
+		<filename>models/popup.php</filename>
+		<filename>models/response.php</filename>
+		<filename>models/message.php</filename>
+		<filename>models/jlcdate.php</filename>
+		<filename>models/sync.php</filename>
+		<filename>models/routing.php</filename>
+		<filename>models/ipblocker.php</filename>
+		<filename>models/operator.php</filename>
+		<filename>models/visitor.php</filename>
+		<filename>models/setting.php</filename>
+		<filename>models/misc.php</filename>
+		<filename>models/pushclient.php</filename>
+		<filename>jlivechat.cron.php</filename>
+		<filename>js/autocomplete-min.js</filename>
+		<filename>js/yahoo-dom-event.js</filename>
+		<filename>js/jlivechat.js</filename>
+		<filename>js/jlivechat.min.js</filename>
+		<filename>js/button-min.js</filename>
+		<filename>js/datasource-min.js</filename>
+		<filename>js/element-min.js</filename>
+		<filename>js/json-min.js</filename>
+		<filename>js/tabview-min.js</filename>
+		<filename>js/datatable-min.js</filename>
+		<filename>js/lazyload-min.js</filename>
+		<filename>js/paginator-min.js</filename>
+		<filename>js/container_core-min.js</filename>
+		<filename>js/connection-min.js</filename>
+		<filename>js/menu-min.js</filename>
+		<filename>js/animation-min.js</filename>
+		<filename>js/jquery-1.6.4.min.js</filename>
+		<filename>js/jquery-1.7.2.min.js</filename>
+		<filename>js/soundmanager2-nodebug-jsmin.js</filename>
+		<filename>js/soundmanager2.js</filename>
+		<filename>js/soundmanager2-jsmin.js</filename>
+		<filename>js/soundmanager2-nodebug.js</filename>
+		<filename>assets/swf/soundmanager2_flash9_debug.swf</filename>
+		<filename>assets/swf/soundmanager2_flash_xdomain.zip</filename>
+		<filename>assets/swf/soundmanager2.swf</filename>
+		<filename>assets/swf/soundmanager2_debug.swf</filename>
+		<filename>assets/swf/soundmanager2_flash9.swf</filename>
+		<filename>jlivechat.php</filename>
+		<filename>controllers/popup.php</filename>
+		<filename>controllers/api.php</filename>
+		<filename>language/it-IT.com_jlivechat.ini</filename>
+		<filename>language/is-IS.com_jlivechat.ini</filename>
+		<filename>language/el-GR.com_jlivechat.ini</filename>
+		<filename>language/en-GB.com_jlivechat.ini</filename>
+		<filename>language/vi-VN.com_jlivechat.ini</filename>
+		<filename>language/th-TH.com_jlivechat.ini</filename>
+		<filename>language/hu-HU.com_jlivechat.ini</filename>
+		<filename>language/fi-FI.com_jlivechat.ini</filename>
+		<filename>language/ur-PK.com_jlivechat.ini</filename>
+		<filename>language/ar-DZ.com_jlivechat.ini</filename>
+		<filename>language/id-ID.com_jlivechat.ini</filename>
+		<filename>language/af-ZA.com_jlivechat.ini</filename>
+		<filename>language/ja-JP.com_jlivechat.ini</filename>
+		<filename>language/mk-MK.com_jlivechat.ini</filename>
+		<filename>language/nl-NL.com_jlivechat.ini</filename>
+		<filename>language/zh-TW.com_jlivechat.ini</filename>
+		<filename>language/pt-PT.com_jlivechat.ini</filename>
+		<filename>language/es-ES.com_jlivechat.ini</filename>
+		<filename>language/sl-SI.com_jlivechat.ini</filename>
+		<filename>language/nn-NO.com_jlivechat.ini</filename>
+		<filename>language/pl-PL.com_jlivechat.ini</filename>
+		<filename>language/ro-RO.com_jlivechat.ini</filename>
+		<filename>language/ms-MY.com_jlivechat.ini</filename>
+		<filename>language/hi-IN.com_jlivechat.ini</filename>
+		<filename>language/uk-UA.com_jlivechat.ini</filename>
+		<filename>language/ar-MA.com_jlivechat.ini</filename>
+		<filename>language/mn-MN.com_jlivechat.ini</filename>
+		<filename>language/nb-NO.com_jlivechat.ini</filename>
+		<filename>language/bm-MY.com_jlivechat.ini</filename>
+		<filename>language/ru-RU.com_jlivechat.ini</filename>
+		<filename>language/pt-BR.com_jlivechat.ini</filename>
+		<filename>language/tr-TR.com_jlivechat.ini</filename>
+		<filename>language/zh-CN.com_jlivechat.ini</filename>
+		<filename>language/fr-FR.com_jlivechat.ini</filename>
+		<filename>language/en-US.com_jlivechat.ini</filename>
+		<filename>language/sk-SK.com_jlivechat.ini</filename>
+		<filename>language/fa-IR.com_jlivechat.ini</filename>
+		<filename>language/da-DK.com_jlivechat.ini</filename>
+		<filename>language/sv-SE.com_jlivechat.ini</filename>
+		<filename>language/de-DE.com_jlivechat.ini</filename>
+		<filename>language/in-ID.com_jlivechat.ini</filename>
+		<filename>language/cs-CZ.com_jlivechat.ini</filename>
+		<filename>views/popup/view.html.php</filename>
+		<filename>views/popup/tmpl/default.php</filename>
+		<filename>views/popup/tmpl/default.xml</filename>
+		<filename>views/popup/metadata.xml</filename>
+	</files>
+
+	<languages folder="site">
+		<language tag="th-TH">language/th-TH.com_jlivechat.ini</language>
+		<language tag="pt-PT">language/pt-PT.com_jlivechat.ini</language>
+		<language tag="fr-FR">language/fr-FR.com_jlivechat.ini</language>
+		<language tag="sk-SK">language/sk-SK.com_jlivechat.ini</language>
+		<language tag="zh-CN">language/zh-CN.com_jlivechat.ini</language>
+		<language tag="en-GB">language/en-GB.com_jlivechat.ini</language>
+		<language tag="ar-DZ">language/ar-DZ.com_jlivechat.ini</language>
+		<language tag="es-ES">language/es-ES.com_jlivechat.ini</language>
+		<language tag="ar-MA">language/ar-MA.com_jlivechat.ini</language>
+		<language tag="is-IS">language/is-IS.com_jlivechat.ini</language>
+		<language tag="tr-TR">language/tr-TR.com_jlivechat.ini</language>
+		<language tag="fa-IR">language/fa-IR.com_jlivechat.ini</language>
+		<language tag="vi-VN">language/vi-VN.com_jlivechat.ini</language>
+		<language tag="pt-BR">language/pt-BR.com_jlivechat.ini</language>
+		<language tag="bm-MY">language/bm-MY.com_jlivechat.ini</language>
+		<language tag="sv-SE">language/sv-SE.com_jlivechat.ini</language>
+		<language tag="it-IT">language/it-IT.com_jlivechat.ini</language>
+		<language tag="zh-TW">language/zh-TW.com_jlivechat.ini</language>
+		<language tag="hu-HU">language/hu-HU.com_jlivechat.ini</language>
+		<language tag="fi-FI">language/fi-FI.com_jlivechat.ini</language>
+		<language tag="cs-CZ">language/cs-CZ.com_jlivechat.ini</language>
+		<language tag="af-ZA">language/af-ZA.com_jlivechat.ini</language>
+		<language tag="ms-MY">language/ms-MY.com_jlivechat.ini</language>
+		<language tag="nl-NL">language/nl-NL.com_jlivechat.ini</language>
+		<language tag="ja-JP">language/ja-JP.com_jlivechat.ini</language>
+		<language tag="id-ID">language/id-ID.com_jlivechat.ini</language>
+		<language tag="uk-UA">language/uk-UA.com_jlivechat.ini</language>
+		<language tag="nn-NO">language/nn-NO.com_jlivechat.ini</language>
+		<language tag="ru-RU">language/ru-RU.com_jlivechat.ini</language>
+		<language tag="hi-IN">language/hi-IN.com_jlivechat.ini</language>
+		<language tag="da-DK">language/da-DK.com_jlivechat.ini</language>
+		<language tag="mn-MN">language/mn-MN.com_jlivechat.ini</language>
+		<language tag="mk-MK">language/mk-MK.com_jlivechat.ini</language>
+		<language tag="nb-NO">language/nb-NO.com_jlivechat.ini</language>
+		<language tag="ro-RO">language/ro-RO.com_jlivechat.ini</language>
+		<language tag="pl-PL">language/pl-PL.com_jlivechat.ini</language>
+		<language tag="en-US">language/en-US.com_jlivechat.ini</language>
+		<language tag="in-ID">language/in-ID.com_jlivechat.ini</language>
+		<language tag="de-DE">language/de-DE.com_jlivechat.ini</language>
+		<language tag="el-GR">language/el-GR.com_jlivechat.ini</language>
+		<language tag="sl-SI">language/sl-SI.com_jlivechat.ini</language>
+		<language tag="ur-PK">language/ur-PK.com_jlivechat.ini</language>
+	</languages>
+
+	<administration>
+		<!-- Administration Menu Section -->
+		<menu img="components/com_jlivechat/assets/images/icons/joomla_live_chat-16.png">com_jlivechat</menu>
+		<submenu>
+			<menu link="option=com_jlivechat&amp;view=operators" img="components/com_jlivechat/assets/images/icons/operators_16.png">Operators</menu>
+			<menu link="option=com_jlivechat&amp;view=routing" img="components/com_jlivechat/assets/images/icons/routing_16.png">Routing</menu>
+			<menu link="option=com_jlivechat&amp;view=responses" img="components/com_jlivechat/assets/images/icons/responses_16.png">Responses</menu>
+			<menu link="option=com_jlivechat&amp;view=history" img="components/com_jlivechat/assets/images/icons/history_16.png">History</menu>
+			<menu link="option=com_jlivechat&amp;view=settings" img="components/com_jlivechat/assets/images/icons/settings_16.png">Settings</menu>
+			<menu link="option=com_jlivechat&amp;view=troubleshoot" img="components/com_jlivechat/assets/images/icons/troubleshoot_16.png">Troubleshoot</menu>
+		</submenu>
+		
+		<!-- Administration Main File Copy Section -->
+		<!-- Note the folder attribute: This attribute describes the folder
+				to copy FROM in the package to install therefore files copied
+				in this section are copied from /admin/ in the package -->
+		<files folder="admin">
+			<filename>assets/images/yui/menubaritem_submenuindicator.png</filename>
+			<filename>assets/images/yui/menuitem_submenuindicator.png</filename>
+			<filename>assets/images/yui/split-button-arrow-disabled.png</filename>
+			<filename>assets/images/yui/dt-arrow-dn.png</filename>
+			<filename>assets/images/yui/checkbox.png</filename>
+			<filename>assets/images/yui/split-button-arrow-focus.png</filename>
+			<filename>assets/images/yui/split-button-arrow-active.png</filename>
+			<filename>assets/images/yui/menu-button-arrow-disabled.png</filename>
+			<filename>assets/images/yui/split-button-arrow-hover.png</filename>
+			<filename>assets/images/yui/menuitem_checkbox_disabled.png</filename>
+			<filename>assets/images/yui/menuitem_submenuindicator_disabled.png</filename>
+			<filename>assets/images/yui/split-button-arrow.png</filename>
+			<filename>assets/images/yui/dt-arrow-up.png</filename>
+			<filename>assets/images/yui/menu-button-arrow.png</filename>
+			<filename>assets/images/yui/menubaritem_submenuindicator_disabled.png</filename>
+			<filename>assets/images/yui/menuitem_checkbox.png</filename>
+			<filename>assets/images/yui/sprite.png</filename>
+			<filename>assets/images/arrows/down.gif</filename>
+			<filename>assets/images/arrows/up.gif</filename>
+			<filename>assets/images/arrows/left_arrow.gif</filename>
+			<filename>assets/images/arrows/right_arrow.gif</filename>
+			<filename>assets/images/icons/joomla_live_chat-32.png</filename>
+			<filename>assets/images/icons/joomla_live_chat-48.png</filename>
+			<filename>assets/images/icons/responses_48.png</filename>
+			<filename>assets/images/icons/responses_32.png</filename>
+			<filename>assets/images/icons/save.gif</filename>
+			<filename>assets/images/icons/troubleshoot_48.png</filename>
+			<filename>assets/images/icons/settings_48.png</filename>
+			<filename>assets/images/icons/responses_16.png</filename>
+			<filename>assets/images/icons/settings_32.png</filename>
+			<filename>assets/images/icons/troubleshoot_32.png</filename>
+			<filename>assets/images/icons/troubleshoot_16.png</filename>
+			<filename>assets/images/icons/joomla_live_chat-16.png</filename>
+			<filename>assets/images/icons/operators_32.png</filename>
+			<filename>assets/images/icons/history_32.png</filename>
+			<filename>assets/images/icons/routing_16.png</filename>
+			<filename>assets/images/icons/history_16.png</filename>
+			<filename>assets/images/icons/operators_16.png</filename>
+			<filename>assets/images/icons/settings_16.png</filename>
+			<filename>assets/images/icons/history_48.png</filename>
+			<filename>assets/images/icons/routing_48.png</filename>
+			<filename>assets/images/icons/operators_48.png</filename>
+			<filename>assets/images/icons/routing_32.png</filename>
+			<filename>assets/css/paginator.css</filename>
+			<filename>assets/css/menu.css</filename>
+			<filename>assets/css/settings.css</filename>
+			<filename>assets/css/troubleshoot.css</filename>
+			<filename>assets/css/responses.css</filename>
+			<filename>assets/css/fonts-min.css</filename>
+			<filename>assets/css/routing.css</filename>
+			<filename>assets/css/history.css</filename>
+			<filename>assets/css/datatable.css</filename>
+			<filename>assets/css/operators.css</filename>
+			<filename>assets/css/button.css</filename>
+			<filename>assets/css/styles.css</filename>
+			<filename>assets/css/tabview.css</filename>
+			<filename>assets/css/autocomplete.css</filename>
+			<filename>models/responseadmin.php</filename>
+			<filename>models/popupadmin.php</filename>
+			<filename>models/operatoradmin.php</filename>
+			<filename>models/settingadmin.php</filename>
+			<filename>models/hostedmodeadmin.php</filename>
+			<filename>models/syncadmin.php</filename>
+			<filename>models/jlcdateadmin.php</filename>
+			<filename>models/historyadmin.php</filename>
+			<filename>models/routingadmin.php</filename>
+			<filename>toolbar.jlivechat.php</filename>
+			<filename>admin.jlivechat.php</filename>
+			<filename>jlivechat.php</filename>
+			<filename>toolbar.jlivechat.html.php</filename>
+			<filename>js/settings.js</filename>
+			<filename>js/autocomplete-min.js</filename>
+			<filename>js/yahoo-dom-event.js</filename>
+			<filename>js/jlivechat.js</filename>
+			<filename>js/routing.js</filename>
+			<filename>js/troubleshoot.js</filename>
+			<filename>js/button-min.js</filename>
+			<filename>js/operators.js</filename>
+			<filename>js/datasource-min.js</filename>
+			<filename>js/element-min.js</filename>
+			<filename>js/routing_new.js</filename>
+			<filename>js/json-min.js</filename>
+			<filename>js/responses.js</filename>
+			<filename>js/tabview-min.js</filename>
+			<filename>js/datatable-min.js</filename>
+			<filename>js/paginator-min.js</filename>
+			<filename>js/history.js</filename>
+			<filename>js/container_core-min.js</filename>
+			<filename>js/connection-min.js</filename>
+			<filename>js/menu-min.js</filename>
+			<filename>js/animation-min.js</filename>
+			<filename>controllers/responses.php</filename>
+			<filename>controllers/routing.php</filename>
+			<filename>controllers/troubleshoot.php</filename>
+			<filename>controllers/history.php</filename>
+			<filename>controllers/settings.php</filename>
+			<filename>controllers/operators.php</filename>
+			<filename>language/hi-IN.com_jlivechat.sys.ini</filename>
+			<filename>language/ro-RO.com_jlivechat.sys.ini</filename>
+			<filename>language/it-IT.com_jlivechat.ini</filename>
+			<filename>language/is-IS.com_jlivechat.ini</filename>
+			<filename>language/ja-JP.com_jlivechat.sys.ini</filename>
+			<filename>language/el-GR.com_jlivechat.ini</filename>
+			<filename>language/de-DE.com_jlivechat.sys.ini</filename>
+			<filename>language/sv-SE.com_jlivechat.sys.ini</filename>
+			<filename>language/en-GB.com_jlivechat.ini</filename>
+			<filename>language/vi-VN.com_jlivechat.ini</filename>
+			<filename>language/th-TH.com_jlivechat.ini</filename>
+			<filename>language/hu-HU.com_jlivechat.ini</filename>
+			<filename>language/zh-TW.com_jlivechat.sys.ini</filename>
+			<filename>language/ru-RU.com_jlivechat.sys.ini</filename>
+			<filename>language/ur-PK.com_jlivechat.sys.ini</filename>
+			<filename>language/fi-FI.com_jlivechat.ini</filename>
+			<filename>language/ur-PK.com_jlivechat.ini</filename>
+			<filename>language/ar-DZ.com_jlivechat.ini</filename>
+			<filename>language/id-ID.com_jlivechat.ini</filename>
+			<filename>language/en-GB.com_jlivechat.sys.ini</filename>
+			<filename>language/ar-MA.com_jlivechat.sys.ini</filename>
+			<filename>language/af-ZA.com_jlivechat.ini</filename>
+			<filename>language/ja-JP.com_jlivechat.ini</filename>
+			<filename>language/mk-MK.com_jlivechat.ini</filename>
+			<filename>language/nl-NL.com_jlivechat.ini</filename>
+			<filename>language/in-ID.com_jlivechat.sys.ini</filename>
+			<filename>language/zh-TW.com_jlivechat.ini</filename>
+			<filename>language/fr-FR.com_jlivechat.sys.ini</filename>
+			<filename>language/vi-VN.com_jlivechat.sys.ini</filename>
+			<filename>language/it-IT.com_jlivechat.sys.ini</filename>
+			<filename>language/fa-IR.com_jlivechat.sys.ini</filename>
+			<filename>language/pt-PT.com_jlivechat.ini</filename>
+			<filename>language/es-ES.com_jlivechat.ini</filename>
+			<filename>language/id-ID.com_jlivechat.sys.ini</filename>
+			<filename>language/sl-SI.com_jlivechat.ini</filename>
+			<filename>language/sk-SK.com_jlivechat.sys.ini</filename>
+			<filename>language/af-ZA.com_jlivechat.sys.ini</filename>
+			<filename>language/pt-BR.com_jlivechat.sys.ini</filename>
+			<filename>language/uk-UA.com_jlivechat.sys.ini</filename>
+			<filename>language/ar-DZ.com_jlivechat.sys.ini</filename>
+			<filename>language/nn-NO.com_jlivechat.ini</filename>
+			<filename>language/pl-PL.com_jlivechat.ini</filename>
+			<filename>language/ro-RO.com_jlivechat.ini</filename>
+			<filename>language/ms-MY.com_jlivechat.ini</filename>
+			<filename>language/hi-IN.com_jlivechat.ini</filename>
+			<filename>language/nb-NO.com_jlivechat.sys.ini</filename>
+			<filename>language/hu-HU.com_jlivechat.sys.ini</filename>
+			<filename>language/uk-UA.com_jlivechat.ini</filename>
+			<filename>language/sl-SI.com_jlivechat.sys.ini</filename>
+			<filename>language/zh-CN.com_jlivechat.sys.ini</filename>
+			<filename>language/th-TH.com_jlivechat.sys.ini</filename>
+			<filename>language/en-US.com_jlivechat.sys.ini</filename>
+			<filename>language/bm-MY.com_jlivechat.sys.ini</filename>
+			<filename>language/cs-CZ.com_jlivechat.sys.ini</filename>
+			<filename>language/ar-MA.com_jlivechat.ini</filename>
+			<filename>language/mn-MN.com_jlivechat.ini</filename>
+			<filename>language/tr-TR.com_jlivechat.sys.ini</filename>
+			<filename>language/is-IS.com_jlivechat.sys.ini</filename>
+			<filename>language/ms-MY.com_jlivechat.sys.ini</filename>
+			<filename>language/el-GR.com_jlivechat.sys.ini</filename>
+			<filename>language/nb-NO.com_jlivechat.ini</filename>
+			<filename>language/bm-MY.com_jlivechat.ini</filename>
+			<filename>language/ru-RU.com_jlivechat.ini</filename>
+			<filename>language/mn-MN.com_jlivechat.sys.ini</filename>
+			<filename>language/pt-BR.com_jlivechat.ini</filename>
+			<filename>language/nl-NL.com_jlivechat.sys.ini</filename>
+			<filename>language/tr-TR.com_jlivechat.ini</filename>
+			<filename>language/zh-CN.com_jlivechat.ini</filename>
+			<filename>language/fr-FR.com_jlivechat.ini</filename>
+			<filename>language/pl-PL.com_jlivechat.sys.ini</filename>
+			<filename>language/en-US.com_jlivechat.ini</filename>
+			<filename>language/sk-SK.com_jlivechat.ini</filename>
+			<filename>language/fa-IR.com_jlivechat.ini</filename>
+			<filename>language/mk-MK.com_jlivechat.sys.ini</filename>
+			<filename>language/da-DK.com_jlivechat.ini</filename>
+			<filename>language/pt-PT.com_jlivechat.sys.ini</filename>
+			<filename>language/sv-SE.com_jlivechat.ini</filename>
+			<filename>language/de-DE.com_jlivechat.ini</filename>
+			<filename>language/es-ES.com_jlivechat.sys.ini</filename>
+			<filename>language/da-DK.com_jlivechat.sys.ini</filename>
+			<filename>language/in-ID.com_jlivechat.ini</filename>
+			<filename>language/cs-CZ.com_jlivechat.ini</filename>
+			<filename>language/fi-FI.com_jlivechat.sys.ini</filename>
+			<filename>language/nn-NO.com_jlivechat.sys.ini</filename>
+			<filename>views/routing/view.html.php</filename>
+			<filename>views/routing/tmpl/default_edit.php</filename>
+			<filename>views/routing/tmpl/default.php</filename>
+			<filename>views/routing/tmpl/default_new.php</filename>
+			<filename>views/settings/view.html.php</filename>
+			<filename>views/settings/tmpl/default.php</filename>
+			<filename>views/operators/view.html.php</filename>
+			<filename>views/operators/tmpl/default_edit.php</filename>
+			<filename>views/operators/tmpl/default.php</filename>
+			<filename>views/operators/tmpl/default_new.php</filename>
+			<filename>views/troubleshoot/view.html.php</filename>
+			<filename>views/troubleshoot/tmpl/default.php</filename>
+			<filename>views/responses/view.html.php</filename>
+			<filename>views/responses/tmpl/default_edit.php</filename>
+			<filename>views/responses/tmpl/default.php</filename>
+			<filename>views/responses/tmpl/default_new.php</filename>
+			<filename>views/history/view.html.php</filename>
+			<filename>views/history/tmpl/default_session_contents.php</filename>
+			<filename>views/history/tmpl/default.php</filename>
+			<filename>views/history/view.raw.php</filename>
+		</files>
+	
+		<languages folder="admin">
+			<language tag="th-TH">language/th-TH.com_jlivechat.ini</language>
+			<language tag="pt-PT">language/pt-PT.com_jlivechat.ini</language>
+			<language tag="fr-FR">language/fr-FR.com_jlivechat.ini</language>
+			<language tag="ru-RU">language/ru-RU.com_jlivechat.sys.ini</language>
+			<language tag="sk-SK">language/sk-SK.com_jlivechat.ini</language>
+			<language tag="zh-CN">language/zh-CN.com_jlivechat.ini</language>
+			<language tag="en-GB">language/en-GB.com_jlivechat.ini</language>
+			<language tag="ar-DZ">language/ar-DZ.com_jlivechat.ini</language>
+			<language tag="es-ES">language/es-ES.com_jlivechat.ini</language>
+			<language tag="zh-TW">language/zh-TW.com_jlivechat.sys.ini</language>
+			<language tag="bm-MY">language/bm-MY.com_jlivechat.sys.ini</language>
+			<language tag="ro-RO">language/ro-RO.com_jlivechat.sys.ini</language>
+			<language tag="ar-MA">language/ar-MA.com_jlivechat.ini</language>
+			<language tag="ar-MA">language/ar-MA.com_jlivechat.sys.ini</language>
+			<language tag="vi-VN">language/vi-VN.com_jlivechat.sys.ini</language>
+			<language tag="is-IS">language/is-IS.com_jlivechat.ini</language>
+			<language tag="tr-TR">language/tr-TR.com_jlivechat.ini</language>
+			<language tag="fa-IR">language/fa-IR.com_jlivechat.ini</language>
+			<language tag="vi-VN">language/vi-VN.com_jlivechat.ini</language>
+			<language tag="it-IT">language/it-IT.com_jlivechat.sys.ini</language>
+			<language tag="pt-BR">language/pt-BR.com_jlivechat.ini</language>
+			<language tag="ja-JP">language/ja-JP.com_jlivechat.sys.ini</language>
+			<language tag="bm-MY">language/bm-MY.com_jlivechat.ini</language>
+			<language tag="en-GB">language/en-GB.com_jlivechat.sys.ini</language>
+			<language tag="nb-NO">language/nb-NO.com_jlivechat.sys.ini</language>
+			<language tag="ms-MY">language/ms-MY.com_jlivechat.sys.ini</language>
+			<language tag="sv-SE">language/sv-SE.com_jlivechat.ini</language>
+			<language tag="pt-BR">language/pt-BR.com_jlivechat.sys.ini</language>
+			<language tag="uk-UA">language/uk-UA.com_jlivechat.sys.ini</language>
+			<language tag="mk-MK">language/mk-MK.com_jlivechat.sys.ini</language>
+			<language tag="mn-MN">language/mn-MN.com_jlivechat.sys.ini</language>
+			<language tag="it-IT">language/it-IT.com_jlivechat.ini</language>
+			<language tag="tr-TR">language/tr-TR.com_jlivechat.sys.ini</language>
+			<language tag="th-TH">language/th-TH.com_jlivechat.sys.ini</language>
+			<language tag="zh-TW">language/zh-TW.com_jlivechat.ini</language>
+			<language tag="hu-HU">language/hu-HU.com_jlivechat.ini</language>
+			<language tag="fi-FI">language/fi-FI.com_jlivechat.ini</language>
+			<language tag="id-ID">language/id-ID.com_jlivechat.sys.ini</language>
+			<language tag="cs-CZ">language/cs-CZ.com_jlivechat.ini</language>
+			<language tag="zh-CN">language/zh-CN.com_jlivechat.sys.ini</language>
+			<language tag="af-ZA">language/af-ZA.com_jlivechat.ini</language>
+			<language tag="pt-PT">language/pt-PT.com_jlivechat.sys.ini</language>
+			<language tag="fa-IR">language/fa-IR.com_jlivechat.sys.ini</language>
+			<language tag="ms-MY">language/ms-MY.com_jlivechat.ini</language>
+			<language tag="nn-NO">language/nn-NO.com_jlivechat.sys.ini</language>
+			<language tag="nl-NL">language/nl-NL.com_jlivechat.ini</language>
+			<language tag="ja-JP">language/ja-JP.com_jlivechat.ini</language>
+			<language tag="id-ID">language/id-ID.com_jlivechat.ini</language>
+			<language tag="ar-DZ">language/ar-DZ.com_jlivechat.sys.ini</language>
+			<language tag="es-ES">language/es-ES.com_jlivechat.sys.ini</language>
+			<language tag="cs-CZ">language/cs-CZ.com_jlivechat.sys.ini</language>
+			<language tag="uk-UA">language/uk-UA.com_jlivechat.ini</language>
+			<language tag="da-DK">language/da-DK.com_jlivechat.sys.ini</language>
+			<language tag="nn-NO">language/nn-NO.com_jlivechat.ini</language>
+			<language tag="ru-RU">language/ru-RU.com_jlivechat.ini</language>
+			<language tag="hi-IN">language/hi-IN.com_jlivechat.ini</language>
+			<language tag="da-DK">language/da-DK.com_jlivechat.ini</language>
+			<language tag="mn-MN">language/mn-MN.com_jlivechat.ini</language>
+			<language tag="is-IS">language/is-IS.com_jlivechat.sys.ini</language>
+			<language tag="mk-MK">language/mk-MK.com_jlivechat.ini</language>
+			<language tag="nb-NO">language/nb-NO.com_jlivechat.ini</language>
+			<language tag="in-ID">language/in-ID.com_jlivechat.sys.ini</language>
+			<language tag="ro-RO">language/ro-RO.com_jlivechat.ini</language>
+			<language tag="pl-PL">language/pl-PL.com_jlivechat.sys.ini</language>
+			<language tag="pl-PL">language/pl-PL.com_jlivechat.ini</language>
+			<language tag="af-ZA">language/af-ZA.com_jlivechat.sys.ini</language>
+			<language tag="hi-IN">language/hi-IN.com_jlivechat.sys.ini</language>
+			<language tag="en-US">language/en-US.com_jlivechat.sys.ini</language>
+			<language tag="nl-NL">language/nl-NL.com_jlivechat.sys.ini</language>
+			<language tag="en-US">language/en-US.com_jlivechat.ini</language>
+			<language tag="fi-FI">language/fi-FI.com_jlivechat.sys.ini</language>
+			<language tag="fr-FR">language/fr-FR.com_jlivechat.sys.ini</language>
+			<language tag="hu-HU">language/hu-HU.com_jlivechat.sys.ini</language>
+			<language tag="sv-SE">language/sv-SE.com_jlivechat.sys.ini</language>
+			<language tag="sk-SK">language/sk-SK.com_jlivechat.sys.ini</language>
+			<language tag="in-ID">language/in-ID.com_jlivechat.ini</language>
+			<language tag="de-DE">language/de-DE.com_jlivechat.sys.ini</language>
+			<language tag="de-DE">language/de-DE.com_jlivechat.ini</language>
+			<language tag="el-GR">language/el-GR.com_jlivechat.sys.ini</language>
+			<language tag="el-GR">language/el-GR.com_jlivechat.ini</language>
+			<language tag="sl-SI">language/sl-SI.com_jlivechat.sys.ini</language>
+			<language tag="sl-SI">language/sl-SI.com_jlivechat.ini</language>
+			<language tag="ur-PK">language/ur-PK.com_jlivechat.ini</language>
+			<language tag="ur-PK">language/ur-PK.com_jlivechat.sys.ini</language>
+		</languages>
+	</administration>
+</extension>

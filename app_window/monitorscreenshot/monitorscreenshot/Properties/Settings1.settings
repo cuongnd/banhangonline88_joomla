@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsFile CurrentProfile="(Default)" GeneratedClassNamespace="monitorscreenshot.Properties" GeneratedClassName="Settings1" xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings>
+    <Setting Name="INPUT_PASSWORD" Type="System.String" Scope="User" Roaming="false">
+      <Value Profile="(Default)">Vui lòng nhập mật khẩu</Value>
+    </Setting>
+    <Setting Name="INPUT_USERNAME" Type="System.String" Scope="User" Roaming="false">
+      <Value Profile="(Default)">vui lòng nhập username</Value>
+    </Setting>
+    <Setting Name="pass" Type="System.String" Scope="User" Roaming="false">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="user" Type="System.String" Scope="User" Roaming="false">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="USERNAME_OR_PASSWORD_INCORECT" Type="System.String" Scope="User" Roaming="false">
+      <Value Profile="(Default)">Thông tin đăng nhập chưa đúng, vui lòng kiểm tra lại username hoặc mật khẩu</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

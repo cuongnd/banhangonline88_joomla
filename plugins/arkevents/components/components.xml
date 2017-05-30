@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.2" type="plugin" group="arkevents" method="upgrade">
+	<name>ArkEvents - ArkEditor Load Component Toolbar</name>
+	<author>WebxSolution Ltd</author>
+	<creationDate>March 2014</creationDate>
+	<copyright>>Copyright (C) 2014- 2015 All rights reserved</copyright>
+	<license>GNU General Public License version 2</license>
+	<authorEmail>info@arkextensions.com</authorEmail>
+	<authorUrl>http://www.arkextensions.com</authorUrl>
+	<version>1.0</version>
+	<description>This plugins is responsible for loading in a component specific toolbar</description>
+	<files>
+		<filename plugin="components">components.php</filename>
+		<filename>index.html</filename>
+	</files>
+</extension>

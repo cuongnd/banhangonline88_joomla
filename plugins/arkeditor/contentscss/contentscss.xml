@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.2" type="plugin" group="arkeditor" method="upgrade">
+	<name>ArkEditor - Content CSS</name>
+	<author>Webx Solution Ltd</author>
+	<creationDate>Jan 2015</creationDate>
+	<copyright>>Copyright (C) 2014- 2015 All rights reserved</copyright>
+	<license>GNU General Public License version 2</license>
+	<authorEmail>support@arkextensions.com</authorEmail>
+	<authorUrl>www.arkextensions.com</authorUrl>
+	<version>1.0</version>
+	<description>This plugins manages the CSS loaded into the editor.</description>
+	<files>
+		<filename plugin="contentscss">index.html</filename>		<folder>contentscss</folder>	</files>
+</extension>

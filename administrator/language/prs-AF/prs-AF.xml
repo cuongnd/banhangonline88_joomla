@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metafile version="3.4" client="administrator">
+	<tag>prs-AF</tag>
+	<name>Dari (prs-AF)</name>
+	<version>3.4.4</version>
+	<creationDate>2015-09-22</creationDate>
+	<author>Dari Translation Team - Joomla.af</author>
+	<authorEmail>dari@joomla.af</authorEmail>
+	<authorUrl>http://www.joomla.af</authorUrl>
+	<copyright>Copyright (C) 2013-2015 joomla.af . All rights reserved. حقوق مادی و معنوی اثر محفوظ است</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<description>Dari admin language for Joomla 3</description>
+	<metadata>
+		<name>Dari (prs-AF)</name>
+		<tag>prs-AF</tag>
+		<rtl>1</rtl>
+		<locale>prs-AF.utf8, prs-AF.UTF-8, prs_AF.utf8, prs_AF.UTF-8, fa_AF.utf8, fa_AF.UTF-8, fa_AF, prs_AF, fa-AF.utf8, fa-AF.UTF-8, fa-AF, prs-AF, fa, prs, af, afghanistan, dari</locale>
+		<firstDay>6</firstDay>
+		<weekEnd>5</weekEnd>
+	</metadata>
+	<params />
+</metafile>

@@ -1,0 +1,41 @@
+{
+	"title"	: "COM_EASYSOCIAL_MENU_GROUP_USER_POINTS",
+	"link"	: "index.php?option=com_easysocial&view=points",
+	"class"	: "ies-starburst",
+	"access": "easysocial.access.points",
+	"view"	: "points",
+	"active": "layout",
+	"childs":
+	[
+		{
+			"title"	: "COM_EASYSOCIAL_MENU_ITEM_POINTS_INSTALL",
+			"class"	: "ies-upload",
+			"url"	:
+			{
+				"view"	: "points",
+				"layout": "install"
+			},
+			"childs": []
+		},
+		{
+			"title"	: "COM_EASYSOCIAL_MENU_ITEM_POINTS_DISCOVER",
+			"class"	: "ies-upload-2",
+			"url"	:
+			{
+				"view"	: "points",
+				"layout": "discover"
+			},
+			"childs": []
+		},
+		{
+			"title"	: "COM_EASYSOCIAL_MENU_ITEM_MASS_USER_ASSIGN",
+			"class"	: "ies-list-2",
+			"url"	:
+			{
+				"view"	: "points",
+				"layout": "csv"
+			},
+			"childs": []
+		}
+	]
+}

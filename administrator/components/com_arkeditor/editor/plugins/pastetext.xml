@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<install version="1.5" type="plugin" plugin="pastetext" method="upgrade">
+	<version>0.1</version>
+	<creationDate>Feb 2012</creationDate>
+	<author>WebxSolution Ltd</author>
+	<authorUrl>http://www.arkextensions.com</authorUrl>
+	<license>GNU/GPLv2</license>
+	<description>PLG_ARKEDITOR_DESC</description>
+	<languages>
+	</languages>
+	<params>
+		<param name="dialogtitle_switcher" type="jsradio" default="0" label="PLG_ARKEDITOR_DIALOG_TITLESHWN" description="PLG_ARKEDITOR_DIALOG_TITLESHWN_DESC">
+			<option value="0">Default</option>
+			<option value="1">Enter new title</option>
+		</param>
+		<param name="dialogtitle" type="text" default="Default" label="PLG_ARKEDITOR_DIALOG_TITLEENT" description="PLG_ARKEDITOR_DIALOG_TITLEENT_DESC" />
+		<param name="height" type="text" default="240" label="PLG_ARKEDITOR_DIALOG_HEIGHT" description="TPLG_ARKEDITOR_DIALOG_HEIGHT_DESC" />
+		<param name="width" type="text" default="350" label="PLG_ARKEDITOR_DIALOG_WIDTH" description="PLG_ARKEDITOR_DIALOG_WIDTH_DESC"/>
+	</params>	
+	<params group="options">
+		<param name="forcePasteAsPlainText" type="radio" default="0" label="PLG_ARKEDITOR_FORCE_PASTE_PLAIN_TEXT" description="PLG_ARKEDITOR_FORCE_PASTE_PLAIN_TEXT_DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+	</params>
+</install>

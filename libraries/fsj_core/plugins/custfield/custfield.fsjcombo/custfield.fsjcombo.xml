@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<plugin>
+  <authorEmail>support@freestyle-joomla.com</authorEmail>
+  <author>Freestyle Joomla</author>
+  <copyright>(C) 2013 Freestyle Joomla. All rights reserved.</copyright>
+  <license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html </license>
+  <authorUrl>http://www.freestyle-joomla.com</authorUrl>
+
+  <name>FSJ_CF_FSJCOMBO</name>
+  <description></description>
+  
+  <params>
+    <type>fsjcombo</type>
+    <group>builtin</group>
+    <order>40</order>
+    <xml>code</xml>
+  </params>
+  
+  <edit_form>
+    <form>
+      <fields>
+        <field name="display" type="fsjtext" label="FSJ_CF_FSJCOMBO_OPTIONS" desc="" rows="10">
+        </field>
+      </fields>
+    </form>
+  </edit_form>
+</plugin>

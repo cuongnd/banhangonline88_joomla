@@ -1,0 +1,356 @@
+(~"@{MediaManager}") {
+
+    .browserItemField {
+
+        position: relative;
+        text-align: left;
+        overflow: hidden;
+        height: 100%;
+        margin-left: 181px;
+
+
+        &.searching {
+
+            .browserItemGroup {
+                display: none !important;
+            }
+
+            .browserItemGroup.search-mode {
+                display: block !important;
+            }
+        }
+
+        // Hints: Start;
+        .hints {
+
+            background: #fff;
+
+            .hint {
+                display: none;
+            }
+        }
+
+        &.ready {
+
+            .hints {
+                display: none;
+            }
+
+            overflow-y: scroll;
+        }
+
+        &.loading {
+
+            .hint.hint-loading {
+
+                margin-top: (42px / 2) * -1;
+                display: block;
+
+                i {
+                    width: 220px;
+                    height: 19px;
+                    background: url(loader.bar.gif) no-repeat;
+                    display: inline-block;
+                }
+            }
+        }
+
+        &.empty {
+
+            .hint.hint-empty {
+
+                display: block;
+
+                .uploaderButton {
+                    display: none;
+                }
+            }
+
+            &.canUpload {
+
+                .hint.hint-empty {
+
+                    margin-top: -29px;
+
+                    .uploaderButton {
+                        display: inline-block;
+                        height: 32px;
+                        padding-left: 28px;
+                        margin-top: 4px;
+
+                        i {
+                            .icon-media(7, 2);
+                            display: block;
+                            height: 16px;
+                            left: 7px;
+                            position: absolute;
+                            top: 6px;
+                            width: 16px;
+                        }
+                    }
+                }
+            }
+        }
+
+        &.emptySearch {
+
+            .hint.hint-emptySearch {
+                display: block;
+            }
+        }
+
+        &.error {
+
+            .hint.hint-error {
+                display: block;
+            }
+        }
+
+        &.selectAlbum {
+
+            .hint.hint-selectAlbum {
+                display: block;
+            }
+        }
+
+        &.flickr {
+
+            .hint.hint-flickr {
+
+                margin-top: (82px / 2) * -1;
+                display: block;
+
+                .hint-content {
+                    height: auto;
+                    padding: 0 100px 10px;
+                }
+            }
+        }
+        // Hints: End;
+
+        .browserItemGroup {
+
+            position: relative;
+            width: 100%;
+            display: none;
+            border-bottom: 1px solid #fff; /* Fixes flickering */
+            .clearfix();
+            .unselectable();
+
+            &.active {
+                display: block;
+            }
+        }
+
+        .browserItem {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+
+            i.loading {
+                background: url(loader.gif) center center no-repeat;
+                width: 16px;
+                height: 16px;
+                display: none;
+            }
+
+            &.loading-icon {
+                i.loading {
+                    display: block;
+                }
+            }
+
+            .itemTitle {
+                font-size: 12px;
+                .unselectable();
+            }
+
+            &.loading-icon {
+                .itemIcon {
+                    .opacity(0);
+                }
+            }
+
+            // Folder start
+            &.item-type-folder {
+
+                padding: 0;
+                display: none;
+
+                // Prevent width/height overriding by tile view
+                width: auto !important;
+                height: auto !important;
+
+                &.active,
+                &.focus {
+                    display: block;
+                }
+            }
+            // Folder end
+        }
+
+        &.view-tile {
+
+            .browserItem {
+
+                .item-type-general() {
+
+                    float: left;
+                    .rounded(5px);
+
+                    // It is perfectly fine to increase tile height
+                    // as it won't affect the filling of available
+                    // horizontal space.
+                    padding-top: 10px;
+                    padding-bottom: 28px;
+
+                    i.loading {
+                        .absolute-center(-16px);
+                        margin-left: -10px;
+                    }
+
+                    .item-wrap {
+
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                        overflow: hidden;
+
+                        .item-wrap-outer {
+                            // Sets the boundary of the tile
+                            display: table;
+                            width: 100%;
+                            height: 100%;
+                        }
+
+                        // Sets the content boundary of the tile
+                        .item-wrap-inner {
+                            display: table-cell;
+                            padding: 0 10px;
+                            text-align: center; // Allow horizontal centering on child elements that are inline
+                            vertical-align: middle; // Allow vertical centering
+                        }
+                    }
+
+                    .itemIcon {
+                        display: inline; // So it can be centered horizontally
+                        z-index: 1; // Ensure this is above loading indicator
+                        // max-height: 100%;
+                        max-width: 100%;
+
+                        &.orientation-tall {
+                            width: 100%;
+                            // height: 100%;
+                        }
+
+                        &.orientation-wide {
+                            width: 100%;
+                        }
+
+                        &.orientation-square {
+                            width: 100%;
+                        }
+                    }
+
+                    .itemTitle {
+                        display: inline;
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 18px;
+                        margin-bottom: 10px;
+
+                        span {
+                            display: block;
+                            margin: 0 10px;
+                            line-height: 24px; // 18px + 6px cosmetic
+                            .text-overflow();
+                            white-space: nowrap;
+                            overflow: hidden;
+                        }
+                    }
+
+                    &.active {
+                        .activeItemColorScheme();
+                    }
+                }
+
+                &.item-type-file,
+                &.item-type-image,
+                &.item-type-audio,
+                &.item-type-video {
+                    .item-type-general();
+                }
+
+                &.item-type-image {
+
+                    .itemIcon {
+                        // .box-shadow(0px 0px 3px 0 rgba(0, 0, 0, 0.5));
+                    }
+                }
+
+                &.item-type-folder {
+                    .clearfix();
+                }
+            }
+        }
+
+        &.view-list {
+
+            .browserItem {
+
+                line-height: 32px;
+                border-top: 1px solid #ddd;
+
+                .item-wrap {
+                    position: relative;
+                }
+
+                i.loading {
+                    position: absolute;
+                    top: 8px;
+                    left: 6px;
+                }
+
+                .folderItemGroup {
+                    width: auto;
+                }
+
+                .item-type-general() {
+
+                    height: 32px;
+                    padding: 4px 8px;
+
+                    &.active {
+                        .activeItemColorScheme();
+                    }
+
+                    .itemIcon {
+                        max-width: 32px;
+                        max-height: 32px;
+                        display: inline-block;
+                        position: absolute;
+                        z-index: 1;
+                    }
+
+                    .itemTitle {
+                        display: block;
+                        text-align: left;
+                        position: relative;
+                        z-index: 2;
+                        padding: 0 0 0 37px;
+                    }
+                }
+
+                &.item-type-file,
+                &.item-type-image,
+                &.item-type-audio,
+                &.item-type-video,
+                &.item-type-upload {
+                    .item-type-general();
+                }
+            }
+        }
+    }
+}

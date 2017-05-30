@@ -1,0 +1,32 @@
+div#zt-module {
+  font-size: 13px;
+}
+div#zt-module ul.zt-tabs,
+div#zt-module ul.nav,
+div#zt-module ul.nav-tabs {
+  margin-right: 5px;
+}
+div#zt-module ul.zt-tabs li,
+div#zt-module ul.nav li,
+div#zt-module ul.nav-tabs li {
+  text-align: center;
+}
+div#zt-module ul.zt-tabs li:last-child a,
+div#zt-module ul.nav li:last-child a,
+div#zt-module ul.nav-tabs li:last-child a {
+  margin-right: 0px;
+}
+div#zt-module div.tab-content {
+  border-top: none;
+  margin-right: 5px;
+  padding-left: 15px;
+  padding-top: 15px;
+  padding-right: 15px;
+  min-height: 50px;
+  min-width: 50px;
+  display: flex;
+}
+div#zt-module div.tab-content div.tab-pane,
+div#zt-module div.tab-content div.active {
+  margin-bottom: 0px;
+}

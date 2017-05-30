@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="1.6" type="plugin" group="opengraph" method="upgrade" client="site">
+    <name>Open Graph - Custom Object</name>
+    <version>6.0.0</version>
+    <creationDate>2014/10/03</creationDate>
+    <author>SourceCoast | www.sourcecoast.com</author>
+    <authorEmail>support@sourcecoast.com</authorEmail>
+    <authorUrl>http://www.sourcecoast.com</authorUrl>
+    <copyright>Copyright (C) 2010-2014 SourceCoast. All rights reserved.</copyright>
+    <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+    <description>Open Graph object plugin for custom pages on your site. Set the URL parameters and define the object type for any page.</description>
+    <files>
+        <filename plugin="custom">custom.php</filename>
+        <filename>objects/custom.xml</filename>
+    </files>
+</extension>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" group="editors-xtd" version="2.5.0" method="upgrade">
+    <name>Button - MaQma Helpdesk Pre-Defined Replies</name>
+    <creationDate>December 2010</creationDate>
+    <author>iMaQma</author>
+    <authorEmail>support@imaqma.com</authorEmail>
+    <authorUrl>www.imaqma.com</authorUrl>
+    <copyright>(c) 2006-2012 Components lab, Lda. All rights reserved.</copyright>
+    <license>GPL</license>
+    <version>1.0.0</version>
+    <description>This is an Editor Button to allow the insertion of MaQma Helpdesk Pre-Defined Replies</description>
+    <files>
+        <filename plugin="helpdesk_replies">helpdesk_replies.php</filename>
+    </files>
+</extension>

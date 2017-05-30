@@ -1,0 +1,68 @@
+<?php
+/**
+ * @package		EasyBlog
+ * @copyright	Copyright (C) 2010 Stack Ideas Private Limited. All rights reserved.
+ * @license		GNU/GPL, see LICENSE.php
+ *
+ * EasyBlog is free software. This version may have been modified pursuant
+ * to the GNU General Public License, and as distributed it includes or
+ * is derivative of works licensed under the GNU General Public License or
+ * other free or open source software licenses.
+ * See COPYRIGHT.php for copyright notices and details.
+ */
+defined('_JEXEC') or die('Restricted access');
+?>
+
+<div class="modalHeader">
+	<div class="modalTitle"><?php echo JText::_( 'COM_EASYBLOG_MM_UPLOAD_MEDIA' ); ?></div>
+	<div class="modalButtons">
+		<button class="dashboardButton modalButton"><i></i></button>
+		<button class="browserButton modalButton"><i></i><?php echo JText::_( 'COM_EASYBLOG_MM_BROWSE_MEDIA' ); ?></button>
+	</div>
+</div>
+
+<div class="modalToolbar">
+	<div class="navigation">
+		<div class="navigationInfo"><?php echo JText::_( 'COM_EASYBLOG_MM_UPLOADING_TO_THIS_FOLDER' ); ?>:</div>
+		<div class="navigationPathway uploadNavigation"></div>
+	</div>
+
+	<div class="topActions">
+		<button class="uploadButton button green-button">
+			<i></i><?php echo JText::_('COM_EASYBLOG_MM_ADD_MEDIA');?>
+		</button>
+		<button class="changeUploadFolderButton button"><i></i><?php echo JText::_( 'COM_EASYBLOG_MM_CHANGE_UPLOAD_FOLDER' ); ?></button>
+		<div class="uploadInstructions button-tooltip">
+			<i></i>
+			<span><?php echo JText::_('COM_EASYBLOG_MM_CAN_UPLOAD_TO'); ?> <span class="uploadSize">[%= uploadSize %]</span><?php echo JText::_('COM_EASYBLOG_MM_CAN_UPLOAD_PER_FILE'); ?>
+			<span class="uploadExtensions"><?php echo JText::_('COM_EASYBLOG_MM_UPLOAD_SUPPORTS');?><span class="uploadExtensionList">[%= uploadExtensionList %]</span>.</span></span>
+		</div>
+	</div>
+</div>
+
+<div class="modalContent">
+	<div class="uploadItemGroup empty"></div>
+	<div class="uploadDropHint hints"><div class="hint hint-dropUpload"><i></i><span class="hint-label"><?php echo JText::_( 'COM_EASYBLOG_MM_DROP_FILE_TO_UPLOAD' ); ?></span></div></div>
+</div>
+
+<div class="modalFooter">
+	<div class="footerActions left-actions">
+		<button class="clearListButton button"><i></i><?php echo JText::_( 'COM_EASYBLOG_MM_CLEAR_LIST_BUTTON' ); ?></button>
+	</div>
+</div>
+
+<div class="modalPrompt">
+	<div class="modalPromptDialogs">
+		<div class="modalPromptDialog changeUploadFolderPrompt">
+			<div class="promptTitle"><?php echo JText::_( 'COM_EASYBLOG_MM_CHANGE_UPLOAD_FOLDER' ); ?></div>
+			<div class="promptContent">
+				<div class="browserTreeItemField">
+				</div>
+			</div>
+			<div class="promptActions">
+				<button class="button promptCancelButton"><i></i><?php echo JText::_( 'COM_EASYBLOG_MM_CANCEL_BUTTON' ); ?></button>
+				<button class="button green-button selectFolderButton"><i></i><?php echo JText::_( 'COM_EASYBLOG_MM_SELECT_FOLDER_BUTTON' ); ?></button>
+			</div>
+		</div>
+	</div>
+</div>

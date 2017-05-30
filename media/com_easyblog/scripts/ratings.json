@@ -1,0 +1,11 @@
+[
+    {
+        "library": [
+            "ui/stars"
+        ],
+        "script": [
+            "legacy"
+        ],
+        "adapter": "EasyBlog"
+    }
+]

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<metafile version="3.4" client="site">
+	<name>Syriac (sy-IQ)</name>
+	<version>3.4.5.1</version>
+	<creationDate>2015-12-06</creationDate>
+	<author>East Syriac translation team</author>
+	<authorEmail>pauls@nohadra.com</authorEmail>
+	<authorUrl>http://syriac.nohadra.com</authorUrl>
+	<copyright>Copyright (C) 2005 - 2015 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<description>sy-IQ site language</description>
+	<metadata>
+		<name>Syriac (sy-IQ)</name>
+		<tag>sy-IQ</tag>
+		<rtl>1</rtl>
+		<locale>sy_IQ.utf8, sy_IQ.UTF-8, sy_IQ.UTF-8, East Syriac, syriac, sy_IQ, syr_IQ, sy</locale>
+		<firstDay>0</firstDay>
+		<weekEnd>0,6</weekEnd>
+	</metadata>
+	<params />
+</metafile>

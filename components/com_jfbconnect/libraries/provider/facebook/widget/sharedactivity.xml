@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="params">
+        <fields name="widget_settings">
+        <fieldset name="widget_settings">
+                <field name="width" type="text" label="COM_JFBCONNECT_WIDGET_FACEBOOK_WIDTH_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_WIDTH_DESCRIPTION" default="300" />
+                <field name="height" type="text" label="COM_JFBCONNECT_WIDGET_FACEBOOK_HEIGHT_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_HEIGHT_DESCRIPTION" default="300" />
+                <field name="font" type="list" label="COM_JFBCONNECT_WIDGET_FACEBOOK_SHAREDACTIVITY_FONT_LABEL" description="COM_JFBCONNECT_WIDGET_FACEBOOK_SHAREDACTIVITY_FONT_DESCRIPTION" default="arial">
+                    <option value="arial">COM_JFBCONNECT_WIDGET_FACEBOOK_SHAREDACTIVITY_FONT1</option>
+                    <option value="lucida grande">COM_JFBCONNECT_WIDGET_FACEBOOK_SHAREDACTIVITY_FONT2</option>
+                    <option value="segoe ui">COM_JFBCONNECT_WIDGET_FACEBOOK_SHAREDACTIVITY_FONT3</option>
+                    <option value="tahoma">COM_JFBCONNECT_WIDGET_FACEBOOK_SHAREDACTIVITY_FONT4</option>
+                    <option value="trebuchet ms">COM_JFBCONNECT_WIDGET_FACEBOOK_SHAREDACTIVITY_FONT5</option>
+                    <option value="verdana">COM_JFBCONNECT_WIDGET_FACEBOOK_SHAREDACTIVITY_FONT6</option>
+                </field>
+            </fieldset>
+        </fields>
+    </fields>
+</form>

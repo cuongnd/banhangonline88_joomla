@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5" type="plugin" group="system" method="upgrade">
+<name>System - AntiCopy</name>
+<author>Galaa</author>
+<creationDate>2011-05-17</creationDate>
+<copyright>Copyright (C) 2011-2013 Galaa</copyright>
+<license>This extension in released under the GNU/GPL License - http://www.gnu.org/copyleft/gpl.html</license>
+<authorEmail>contact@galaa.mn</authorEmail>
+<authorUrl>http://galaa.mn</authorUrl>
+<version>1.8.2</version>
+<description>This plugin restricts framing whole site, printing web page, and copying site contents by disabling the right click, highlight and copy functions using javascript. Copyright (C) 2011-2013 Galaa (http://galaa.mn/)</description>
+<files>
+	<filename plugin="anticopy">anticopy.php</filename>
+	<filename plugin="anticopy">debug.php</filename>
+	<filename>index.html</filename>
+</files>
+<languages folder="language">
+	<language tag="en-GB">en-GB/en-GB.plg_system_anticopy.ini</language>
+</languages>
+<config>
+	<fields name="params">
+	<fieldset name="basic">
+		<field name="disallow_framing" type="list" default="1" label="FRAMING_LABEL" description="FRAMING_DESC">
+			<option value="0">OPTION_ALLOW</option>
+			<option value="1">OPTION_DISALLOW</option>
+		</field>
+		<field name="restrict_groups" type="usergroup" multiple="true" label="USER_GROUP_LABEL" description="USER_GROUP_DESC" />
+		<field name="disallow_print" type="list" default="1" label="PRINT_LABEL" description="PRINT_DESC">
+			<option value="0">OPTION_ALLOW</option>
+			<option value="1">OPTION_DISALLOW</option>
+		</field>
+		<field name="disallow_printscreen" type="list" default="0" label="PRINT_SCREEN_LABEL" description="PRINT_SCREEN_DESC">
+			<option value="0">OPTION_ALLOW</option>
+			<option value="1">OPTION_DISALLOW</option>
+		</field>
+		<field name="disallow_r_click" type="list" default="1" label="RIGHT_CLICK_LABEL" description="RIGHT_CLICK_DESC">
+			<option value="0">OPTION_ALLOW</option>
+			<option value="1">OPTION_DISALLOW</option>
+			<option value="2">OPTION_DISALLOW_FOR_IMAGES</option>
+		</field>
+		<field name="disallow_copy" type="list" default="2" label="SELECT_COPY_LABEL" description="SELECT_COPY_DESC">
+			<option value="0">OPTION_ALLOW</option>
+			<option value="1">OPTION_DISALLOW</option>
+			<option value="2">OPTION_DISALLOW_EXCEPT_OPERA</option>
+		</field>
+		<field name="show_message" type="list" default="0" label="SHOW_MSG_LABEL" description="SHOW_MSG_DESC">
+			<option value="1">OPTION_YES</option>
+			<option value="0">OPTION_NO</option>
+		</field>
+		<field name="message" type="text" size="50" default="Stop copying the copyrighted material!" label="MSG_LABEL" description="MSG_DESC" />
+	</fieldset>
+	</fields>
+</config>
+</extension>

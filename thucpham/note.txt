@@ -1,0 +1,14 @@
+IP: 103.45.230.203
+ Tai khoan ftp bho
+ Username:	manh@banhangonline88.com
+ Password:	WLOcPtEp
+
+
+Database:	bho_thucpham
+Host:	localhost
+Username:	bho_thucpham
+Password:	FXCFsqIJ
+
+User and password administrator
+ admin/dffhsfsfh
+

@@ -1,0 +1,462 @@
+/**
+ * @package JLive! Chat
+ * @version 4.3.3
+ * @copyright (C) Copyright 2008-2010 CMS Fruit, CMSFruit.com. All rights reserved.
+ * @license GNU/LGPL http://www.gnu.org/licenses/lgpl-3.0.txt
+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU Lesser General Public License as published by
+ the Free Software Foundation; either version 3 of the License, or (at your
+ option) any later version.
+
+ This program is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+ or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public
+ License for more details.
+
+ You should have received a copy of the GNU Lesser General Public License
+ along with this program.  If not, see http://www.gnu.org/licenses/.
+ */
+ 
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: white !important;
+	overflow-x: hidden !important;
+	overflow-y: hidden !important;
+}
+
+#all, #main {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+#main {
+    min-height: 400px !important;
+}
+
+body div,
+body p {
+    color: white;
+    font-family: 'HelveticaNeue-Light','Helvetica Neue Light','Helvetica Neue',Arial,Helvetica,sans-serif;
+    font-size: 14px;
+    text-align: left;
+    line-height: 1.2em;
+}
+
+body button {
+    color: black;
+    font-family: 'HelveticaNeue-Light','Helvetica Neue Light','Helvetica Neue',Arial,Helvetica,sans-serif;
+    font-size: 1em !important;
+}
+
+#livechat_container {
+    width: 500px;
+    height: 400px;
+    overflow: hidden;
+    background: url(../images/backgrounds/popup.gif) no-repeat left top;
+}
+
+#livechat_container .livechat_inner {
+    width: auto;
+    margin: 7px 10px;
+}
+
+#livechat_container span.jlc-popup-title {
+    display: block !important;
+    float: none !important;
+    width: 100% !important;
+    padding: 0 0 3px 0 !important;
+    margin: 0 !important;
+    font-size: 22px !important;
+    line-height: 28px !important;
+    font-weight: normal !important;
+    border-bottom: 1px solid white !important;
+    font-family: 'HelveticaNeue-Light','Helvetica Neue Light','Helvetica Neue',Arial,Helvetica,sans-serif !important;
+    background: url(../images/icons/smiley.gif) no-repeat left top !important;
+    color: white !important;
+}
+
+#livechat_container span.jlc-popup-title span.jlc-text {
+    margin: 0 0 0 32px;
+    float: left;
+}
+
+#livechat_container span.jlc-popup-title span.jlc-wnd-btns {
+    float: right;
+    white-space: nowrap;
+}
+
+#livechat_container .intro_wrapper,
+#livechat_container .offline_msg_wrapper,
+#jlc_offline_container .offline_msg_wrapper_long {
+    display: block;
+    clear: both;
+    float: none;
+    width: 100%;
+    height: 200px;
+    font-size: 12px;
+    font-family: Arial,Helvetica,sans-serif;
+    overflow: hidden;
+}
+
+#livechat_container p {
+    margin: 0;
+    padding: 1px 0;
+}
+
+#livechat_container .livechat_toolbar {
+    display: block;
+    clear: both;
+    float: none;
+    width: 100%;
+    height: 10px;
+    line-height: 10px;
+    font-size: 10px;
+    margin: 1px 0;
+    text-align: right;
+    overflow: hidden;
+}
+
+.livechat_toolbar_active {
+    height: 20px !important;
+    line-height: 20px !important;
+    font-size: 20px !important;
+}
+
+#livechat_container .livechat_toolbar span {
+    display: none;
+    padding-right: 2px;
+}
+
+#mute_icon {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    overflow: hidden;
+    text-decoration: none !important;
+}
+
+#mute_icon:hover {
+    text-decoration: none !important;
+}
+
+.unmute_sound_icon,
+.unmute_sound_icon:link,
+.unmute_sound_icon:hover,
+.unmute_sound_icon:active,
+.unmute_sound_icon:focus {
+    background: url(../images/icons/unmute.gif) no-repeat center center !important;
+}
+
+.mute_sound_icon,
+.mute_sound_icon:link,
+.mute_sound_icon:hover,
+.mute_sound_icon:active,
+.mute_sound_icon:focus {
+    background: url(../images/icons/mute.gif) no-repeat center center !important;
+}
+
+.close-wnd-icn,
+.minimize-wnd-icn {
+    width: 14px;
+    height: 14px;
+    line-height: 14px;
+    font-size: 14px;
+    display: inline-block;
+    border: 0;
+    text-decoration: none;
+    margin: 2px 0 0 5px;
+    background-color: transparent;
+}
+
+.close-wnd-icn,
+.close-wnd-icn:link,
+.close-wnd-icn:hover,
+.close-wnd-icn:active,
+.close-wnd-icn:focus {
+    text-decoration: none;
+    background-color: transparent;
+    background: url(../images/icons/close.gif) no-repeat left top !important;
+}
+
+.minimize-wnd-icn,
+.minimize-wnd-icn:link,
+.minimize-wnd-icn:hover,
+.minimize-wnd-icn:active,
+.minimize-wnd-icn:focus {
+    text-decoration: none;
+    background-color: transparent;
+    background: url(../images/icons/minimize.gif) no-repeat left top !important;
+}
+
+.yui-button-label {
+    font-style: normal;
+}
+
+#route-filter-menubutton,
+#route-filter-menubutton button,
+#yui-gen0,
+#jlc_prechat_container input[type=text] {
+    width: 470px !important;
+}
+
+#jlc_prechat_container input[type=text],
+#jlc_offline_container input[type=text],
+#jlc_offline_container textarea {
+    border: 1px solid #888888;
+    font-size: 15px;
+    padding: 4px 0 4px 0;
+    margin: 2px 0 0 0;
+    color: black;
+}
+
+#jlc_offline_container input[type=text] {
+    padding: 3px 0 3px 3px;
+}
+
+#jlc_offline_container textarea {
+    padding: 1px;
+    width: 98.3%;
+    height: 40px;
+}
+
+.jlc-name-wrapper {
+    margin: 0 0 0 2px;
+    display: block;
+}
+
+form {
+    padding: 0;
+    margin: 0;
+}
+
+.jlc-margbot5 {
+    margin: 0 0 5px 0;
+}
+
+.jlc-margbot4 {
+    margin: 0 0 4px 0;
+}
+
+#livechat_container .start-btn-wrapper {
+    margin: 0 4px 0 0;
+}
+
+#livechat_container .msg-wrapper {
+    
+}
+
+#livechat_container #connecting_layer,
+#livechat_container #error_layer {
+    background: url(../images/icons/ajax-loader.gif) no-repeat left top;
+    height: 32px;
+    line-height: 32px;
+    padding: 0 0 0 38px;
+    font-weight: bold;
+    color: #EED106;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 15px;
+    display: none;
+}
+
+#livechat_container #error_layer {
+    background: url(../images/icons/alert.gif) no-repeat left top;
+}
+
+#jlc_offline_container,
+#jlc_inchat_container {
+    display: none;
+}
+
+#jlc_offline_container .offline_msg_wrapper {
+    height: 80px;
+}
+
+#jlc_offline_container .offline_msg_wrapper_long {
+    height: 275px;
+}
+
+#jlc_offline_container .message-header {
+    background: url(../images/icons/silver_bullet.gif) no-repeat left center;
+    padding-left: 16px;
+    padding-bottom: 4px;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: 'HelveticaNeue-Light','Helvetica Neue Light','Helvetica Neue',Arial,Helvetica,sans-serif;
+    color: #FDFDFD;
+}
+
+.jlc-green {
+    color: #137700;
+}
+
+.jlc-red {
+    color: #6C0008;
+}
+
+#jlc_offline_container table {
+    margin: 0 auto;
+    border: 0;
+}
+
+#jlc_offline_container table tr {
+    border: 0;
+}
+
+#jlc_offline_container table td {
+    font-size: 0.95em;
+    font-family: 'HelveticaNeue-Light','Helvetica Neue Light','Helvetica Neue',Arial,Helvetica,sans-serif;
+    color: white;
+    border: 0;
+    padding: 2px;
+}
+
+.close-wnd-btn-space {
+    margin-bottom: 5px;
+}
+
+.close-wnd-btn-space-long {
+    margin-bottom: 30px;
+}
+
+#jlc_inchat_container div#session-content-display {
+    width: 99.5%;
+    height: 210px;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 16px;
+    background-color: white;
+    color: #313528;
+    display: block;
+    clear: both;
+    float: none;
+    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    border: 1px solid #725742;
+    margin: 3px 0 0 0;
+    padding: 0;
+}
+
+#jlc_inchat_container div#session-content-display #session-content-display-inner {
+    margin: 2px 3px 0 3px;
+    width: auto;
+    display: block;
+}
+
+#jlc_inchat_container #status-display,
+#jlc_inchat_container #status-display-outer {
+    width: 99.5%;
+    height: 23px;
+    font-family: arial, helvetica, sans;
+    font-size: 11px;
+    line-height: 20px;
+    color: white;
+    display: block;
+    clear: both;
+    float: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    text-align: right;
+}
+
+#jlc_inchat_container #status-display {
+    height: auto;
+    margin: 1px 0;
+    display: none;
+}
+
+#jlc_inchat_container #status-display * {
+    vertical-align: middle;
+}
+
+#jlc_inchat_container #status-display img {
+    margin: 0 2px 0 0;
+}
+
+#jlc_inchat_container .send-msg-btn-wrapper {
+    display: block;
+    clear: both;
+    float: none;
+    padding: 2px 0 0 0;
+}
+
+#jlc_inchat_container .send-msg-btn-wrapper * {
+    width: 100%;
+    font-weight: bold;
+    color: #442A49;
+}
+
+#jlc_inchat_container .send-msg-btn-wrapper .yui-button {
+    margin: 0 0 0 1px !important;
+    width: 99.5%;
+    font-size: 17px;
+}
+
+
+/**
+    Start Chat Content Styles
+**/
+.jlc-system-msg,
+.jlc-system-notes {
+    color: rgb(107, 59, 53);
+    font-weight: bold;
+}
+
+.jlc-system-notes {
+    color: #5F5F5F;
+    font-weight: normal;
+}
+
+.operator-msg,
+.visitor-msg {
+    display: block;
+    float: none;
+    clear: both;
+    color: black;
+}
+
+.operator-name {
+    color: #07457E;
+    font-weight: bold;
+}
+
+.operator-msg {
+    padding: 0;
+}
+
+.visitor-name {
+    color: #125500;
+    font-weight: bold;
+}
+
+.visitor-msg {
+    color: #322400;
+}
+
+.visitor-msg,
+.operator-msg {
+    margin: 0 5px 17px 20px;
+    padding: 0;
+}
+
+.operator-msg .timestamp,
+.visitor-msg .timestamp,
+.jlc-system-msg .timestamp,
+.jlc-system-notes .timestamp {
+    font-size: 12px;
+    color: #696969;
+    font-weight: normal;
+}
+
+
+#jlc_offline_container .yui-skin-sam .yui-button .first-child {
+    margin: 0 !important;
+}
+
+#jlc_offline_container .yui-skin-sam .yui-button {
+    margin: 0 1px 0 0 !important;
+}
+
+.rt-block { padding: 0 !important; }

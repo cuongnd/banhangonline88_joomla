@@ -1,0 +1,1 @@
+ALTER TABLE  `#__affiliate_tracker_accounts` ADD `ref_word` varchar(255) NOT NULL ;

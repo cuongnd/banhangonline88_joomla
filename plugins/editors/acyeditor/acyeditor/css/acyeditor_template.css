@@ -1,0 +1,15 @@
+.acyeditor_delete{
+	outline: 1px dashed #fac337;
+}
+
+.acyeditor_text{
+	outline: 1px solid #9daf07;
+}
+
+.acyeditor_picture{
+	outline: 1px solid #37b6cc;
+}
+
+.acyeditor_delete{
+	outline-style:dashed;
+}

@@ -1,0 +1,96 @@
+<!doctype html>
+<html class="z-width960">
+<head>
+    <title>Deep-linking and External Linking</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width = device-width, initial-scale = 1.0" />
+
+    <!-- Examples CSS (Not needed) -->
+    <link href="../css/zozo.examples.min.css" rel="stylesheet" />
+
+    <!-- Zozo Tabs css -->
+    <link href="../css/zozo.tabs.min.css" rel="stylesheet" />
+
+    <!-- Zozo Tabs js -->
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/zozo.tabs.min.js"></script>
+</head>
+
+<body>
+    <div id="ribbon"></div>
+    <div id="page">
+        <a class="z-btn z-back" href="index.html">Back</a>
+
+        <div id="external-linking">
+            <h4>Go to a tab by clicking the external-links: </h4>
+            <p>
+                <a href="#tabbed-nav=overview" class="z-link">Tab 1</a>
+                <a href="#tabbed-nav=features" class="z-link">Tab 2</a>
+                <a href="#tabbed-nav=docs" class="z-link">Tab 3</a>
+                <a href="#tabbed-nav=themes" class="z-link">Tab 4</a>
+            </p>
+        </div>
+
+        <!-- Zozo Tabs Start-->
+        <div id="tabbed-nav">
+
+            <!-- Tab Navigation Menu, to have seo friendly hashtags, add data-link attribute to each li tag and give it a unique id to apear in the url-->
+            <ul>
+                <li data-link="overview"><a>Overview</a></li>
+                <li data-link="features"><a>Features</a></li>
+                <li data-link="docs"><a>Documentation</a></li>
+                <li data-link="themes"><a>Themes</a></li>
+                <li data-link="purchase"><a href="http://codecanyon.net/item/zozo-tabs/3327836?ref=ZozoUI" target="_blank">Purchase</a></li>
+            </ul>
+
+            <!-- Content container -->
+            <div>
+
+                <!-- Overview -->
+                <div>
+                    <h4>Overview</h4>
+                </div>
+
+                <!-- Features -->
+                <div>
+                    <h4>Features</h4>
+                </div>
+
+                <!-- Docs -->
+                <div>
+                    <h4>Docs</h4>
+                </div>
+
+                <!-- Themes -->
+                <div>
+                    <h4>Themes</h4>
+                </div>
+
+                <!-- Purchase -->
+                <div>
+                    <!-- this empty div is necessary for external linking, no need for content here -->
+                </div>
+            </div>
+        </div>
+        <!-- Zozo Tabs End-->
+
+    </div>
+
+
+    <script>
+        jQuery(document).ready(function ($) {
+            /* jQuery activation and setting options for the tabs, also setting the the following: 
+            - deeplinking: for deep-linking             
+            - defaultTab: change it to one the new tab id*/
+            $("#tabbed-nav").zozoTabs({
+                theme: "silver",
+                position: "top-left",
+                orientation: "horizontal",
+                deeplinking: true,
+                defaultTab: "docs"
+            });
+        });
+    </script>
+
+</body>
+</html>

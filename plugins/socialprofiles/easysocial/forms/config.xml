@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset name="PROFILE_IMPORT">
+        <field name="import_always"
+               type="radio"
+               label="COM_JFBCONNECT_EASYSOCIAL_PROFILE_IMPORT_ALWAYS_LABEL"
+               description="COM_JFBCONNECT_EASYSOCIAL_PROFILE_IMPORT_ALWAYS_DESC"
+               default="0"
+               labelclass="config_setting"
+               class="btn-group">
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+        <field name="import_avatar"
+               type="radio"
+               label="COM_JFBCONNECT_EASYSOCIAL_PROFILE_IMPORT_AVATAR_LABEL"
+               description="COM_JFBCONNECT_EASYSOCIAL_PROFILE_IMPORT_AVATAR_DESC"
+               default="0"
+               labelclass="config_setting"
+               class="btn-group">
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+        <field name="import_cover_photo"
+               type="radio"
+               label="COM_JFBCONNECT_EASYSOCIAL_PROFILE_IMPORT_COVER_PHOTO_LABEL"
+               description="COM_JFBCONNECT_EASYSOCIAL_PROFILE_IMPORT_COVER_PHOTO_DESC"
+               default="0"
+               labelclass="config_setting"
+               class="btn-group">
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+        <field name="import_status"
+               type="radio"
+               label="COM_JFBCONNECT_EASYSOCIAL_STATUS_UPDATES_IMPORT_ENABLE_LABEL"
+               description="COM_JFBCONNECT_EASYSOCIAL_STATUS_UPDATES_IMPORT_ENABLE_DESC"
+               default="1"
+               labelclass="config_setting"
+               class="btn-group">
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+        <field name="profiletype_default"
+               type="socialprofileseasysocialprofiletypes"
+               label="COM_JFBCONNECT_EASYSOCIAL_PROFILE_TYPES_DEFAULT_LABEL"
+               description="COM_JFBCONNECT_EASYSOCIAL_PROFILE_TYPES_DEFAULT_DESC"
+               default="0"
+               labelclass="config_setting"
+                >
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+    </fieldset>
+    <fieldset name="REGISTRATION_FLOW">
+        <field name="generate_username"
+               type="list"
+               label="COM_JFBCONNECT_EASYSOCIAL_REGISTRATION_FLOW_GENERATE_USERNAME_LABEL"
+               description="COM_JFBCONNECT_EASYSOCIAL_REGISTRATION_FLOW_GENERATE_USERNAME_DESC"
+               default="1"
+               labelclass="config_setting"
+                >
+            <option value="0">JNO</option>
+            <option value="1">COM_JFBCONNECT_EASYSOCIAL_REGISTRATION_FLOW_GENERATE_USERNAME_OPTION_YES_HIDE</option>
+            <option value="2">COM_JFBCONNECT_EASYSOCIAL_REGISTRATION_FLOW_GENERATE_USERNAME_OPTION_YES_SHOW</option>
+        </field>
+        <!--        <field name="generate_password"
+                       type="radio"
+                       label="COM_JFBCONNECT_EASYSOCIAL_REGISTRATION_FLOW_GENERATE_PASSWORD_LABEL"
+                       description="COM_JFBCONNECT_EASYSOCIAL_REGISTRATION_FLOW_GENERATE_PASSWORD_DESC"
+                       default="1"
+                       labelclass="config_setting"
+                       class="btn-group"
+                        >
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>-->
+        <field name="show_email"
+               type="radio"
+               label="COM_JFBCONNECT_EASYSOCIAL_REGISTRATION_FLOW_SHOW_EMAIL_LABEL"
+               description="COM_JFBCONNECT_EASYSOCIAL_REGISTRATION_FLOW_SHOW_EMAIL_DESC"
+               default="1"
+               labelclass="config_setting"
+               class="btn-group">
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+        <!--<field name="registration_show_fields"
+               type="radio"
+               label="COM_JFBCONNECT_EASYSOCIAL_NORMAL_REGISTRATION_SHOW_PROFILE_FIELDS_LABEL"
+               description="COM_JFBCONNECT_EASYSOCIAL_NORMAL_REGISTRATION_SHOW_PROFILE_FIELDS_DESC"
+               default="0"
+               labelclass="config_setting"
+               class="btn-group">
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>-->
+
+        <field name="imported_show_fields"
+               type="radio"
+               label="COM_JFBCONNECT_EASYSOCIAL_NORMAL_REGISTRATION_SHOW_IMPORTED_FIELDS_LABEL"
+               description="COM_JFBCONNECT_EASYSOCIAL_NORMAL_REGISTRATION_SHOW_IMPORTED_FIELDS_DESC"
+               default="1"
+               labelclass="config_setting"
+               class="btn-group">
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+    </fieldset>
+    <!--<fieldset name="PROFILE_TYPES">
+        <field name="profiletype_visible"
+               type="radio"
+               label="COM_JFBCONNECT_EASYSOCIAL_PROFILE_TYPES_VISIBLE_LABEL"
+               description="COM_JFBCONNECT_EASYSOCIAL_PROFILE_TYPES_VISIBLE_DESC"
+               default="0"
+               labelclass="config_setting"
+               class="btn-group">
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+    </fieldset>-->
+</form>

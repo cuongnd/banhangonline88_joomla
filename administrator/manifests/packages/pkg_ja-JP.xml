@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="package" version="3.6" method="upgrade">
+<name>Japanese (ja-JP) Language Pack</name>
+<packagename>ja-JP</packagename>
+<version>3.6.2.1</version>
+<creationDate>August 2016</creationDate>
+<author>JOOMLA.JP</author>
+<authorEmail>project@joomla.jp</authorEmail>
+<authorUrl>http://joomla.jp</authorUrl>
+<url></url>
+<packager>Joomla!じゃぱん</packager>
+<packagerurl>www.joomla.jp</packagerurl>
+<description>Joomla! 3.x 用の日本語ランゲージパックです。</description>
+<files>
+	<file type="language" client="site" id="ja-JP">site_ja-JP.zip</file>
+    <file type="language" client="administrator" id="ja-JP">admin_ja-JP.zip</file>
+</files>
+<updateservers>
+    <server type="collection" priority="1" name="Accredited Joomla! Translations">http://update.joomla.org/language/translationlist_3.xml</server>
+</updateservers>
+</extension>

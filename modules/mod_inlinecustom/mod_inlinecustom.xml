@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.1" client="site" method="upgrade">
+	<name>Custom Inline HTML</name>
+	<author>WebxSolution Ltd</author>
+	<creationDate>July 2014</creationDate>
+	<copyright>Copyright (C) 2014- 2015 All rights reserved</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>info@arkextensions.com</authorEmail>
+	<authorUrl>http://www.arkextensions.com</authorUrl>
+	<version>1.0</version>
+	<description>This is a custom HTML Module used by the inline editor to enable editing for custom modules</description>
+	<files>
+		<filename module="mod_inlinecustom">mod_inlinecustom.php</filename>
+		<filename>index.html</filename>
+	</files>
+</extension>

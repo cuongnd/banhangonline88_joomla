@@ -1,0 +1,8 @@
+<resources>
+    <declare-styleable name="Module_tab_product_tmpl_default">
+        <attr name="exampleString" format="string" />
+        <attr name="exampleDimension" format="dimension" />
+        <attr name="exampleColor" format="color" />
+        <attr name="exampleDrawable" format="color|reference" />
+    </declare-styleable>
+</resources>

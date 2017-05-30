@@ -1,0 +1,101 @@
+body div#fd.es .es-videos .es-sidebar {
+  width: 160px;
+}
+body div#fd.es .es-videos .es-content {
+  padding: 0 0 15px 15px;
+}
+body div#fd.es .es-video-group-title {
+  font-size: 18px;
+  margin: 0 0 10px;
+}
+body div#fd.es .es-video-item-group {
+  display: table;
+  width: 100%;
+}
+body div#fd.es .es-video-item {
+  overflow: hidden;
+  width: 33%;
+  float: left;
+  padding: 5px 15px 15px 0;
+  display: table-cell;
+  vertical-align: top;
+}
+body div#fd.es .es-video-thumbnail {
+  position: relative;
+  margin-bottom: 10px;
+}
+body div#fd.es .es-video-thumbnail .es-video-time {
+  font-size: 10px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  color: #fff;
+  background-color: rgba(0,0,0,0.5);
+  padding: 0 3px;
+  z-index: 3;
+}
+body div#fd.es .es-video-cover {
+  float: none;
+}
+body div#fd.es .es-video-cover .es-cover-container {
+  padding-top: 50%;
+}
+body div#fd.es .es-video-cover em {
+  opacity: 1;
+}
+body div#fd.es .es-video-title > a {
+  max-height: 36px;
+  font-weight: bold;
+  display: block;
+  overflow: hidden;
+  position: relative;
+  text-overflow: ellipsis;
+  white-space: normal;
+  word-wrap: break-word;
+}
+body div#fd.es .es-video-meta > div {
+  display: inline-block;
+  font-size: 10px;
+  color: #858585;
+}
+body div#fd.es .es-video-stats {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+body div#fd.es .es-video-views {
+  font-size: 16px;
+}
+body div#fd.es .es-video-content-body {
+  background-color: #F8F9FB;
+  border: 1px solid #d7d7d7;
+}
+body div#fd.es .es-video-body-meta {
+  position: relative;
+}
+body div#fd.es .es-video-body-meta > div {
+  display: block;
+}
+body div#fd.es .es-video-content-body-inner {
+  padding: 10px;
+}
+body div#fd.es .es-video-content-body-inner .es-video-title {
+  margin: 0 0 10px;
+  font-size: 22px;
+}
+body div#fd.es .es-video-tab-content,
+body div#fd.es .es-video-content-sub-info {
+  padding-top: 20px;
+}
+body div#fd.es .es-video-content-footer-tabs > li > a,
+body div#fd.es .es-video-content-footer-tabs > li > a:hover,
+body div#fd.es .es-video-content-footer-tabs > li > a:focus {
+  border-color: transparent transparent #ddd;
+  outline: none !important;
+  background: transparent;
+}
+body div#fd.es .es-video-content-footer-tabs > li > a::-moz-focus-inner,
+body div#fd.es .es-video-content-footer-tabs > li > a:hover::-moz-focus-inner,
+body div#fd.es .es-video-content-footer-tabs > li > a:focus::-moz-focus-inner {
+  border: 0 !important;
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="1.6" type="plugin" group="user" method="upgrade" client="site">
+	<name>User - JFBConnect Social Integration</name>
+	<version>6.1.0</version>
+    <creationDate>2014/10/03</creationDate>
+	<author>SourceCoast | www.sourcecoast.com</author>
+	<authorEmail>support@sourcecoast.com</authorEmail>
+	<authorUrl>http://www.sourcecoast.com</authorUrl>
+	<copyright>2010-2014 SourceCoast. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<description>Social Network user plugin to be used with JFBConnect. This should be set before any other user plugins which may redirect the user. If unsure, set the ordering so that this is the first plugin to fire.</description>
+	<files>
+		<filename plugin="jfbconnectuser">jfbconnectuser.php</filename>
+	</files>
+</extension>

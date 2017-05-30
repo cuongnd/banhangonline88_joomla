@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="package" version="3.6" method="upgrade">
+	<name>Polish Language Pack</name>
+	<packagename>pl-PL</packagename>
+	<version>3.6.2.1</version>
+	<creationDate>05-08-2016</creationDate>
+	<author>Polskie Centrum Joomla!</author>
+	<authorEmail>zwiastun@joomla.pl</authorEmail>
+	<authorUrl>http://www.joomla.pl</authorUrl>
+	<copyright>(C) 2005 - 2016 Open Source Matters. All right reserved.</copyright>
+	<copyright>(C) 2005 - 2016 Fundacja PCJ Otwarte Źródła. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<url></url>
+	<packager></packager>
+	<packagerurl></packagerurl>	
+	<description>
+	<![CDATA[
+		<h3>3.6.2 Joomla - pakiet języka polskiego</h3>
+		
+		<p><span style="font-weight: normal">Polskie Centrum Joomla zapewnia społeczności kompletne tłumaczenia Joomla!.<br />
+		Ich przygotowanie kosztuje wiele czasu i pracy.</span></p>
+		
+		<h2>Wspieramy Cię, więc wesprzyj nas<br /><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZL442C5WE8FT2">Przekaż darowiznę przez PayPal</a></h2>	
+		<p>&nbsp;</p>
+		<h3 style="margin:0;">Nie korzystasz z PayPal?<br /><a href="http://fundacja.joomla.pl/pomagaj?id=62">Zobacz tutaj</a></h3>
+		<p>jak możesz wesprzeć Fundację PCJ Otwarte Źródła</p>
+		<p>&nbsp;</p><p>&nbsp;</p>
+	]]>
+	</description>
+	<files>
+		<file type="language" client="site" id="pl-PL">site_pl-PL.zip</file>
+		<file type="language" client="administrator" id="pl-PL">admin_pl-PL.zip</file>
+	</files>
+	<updateservers>
+		<server type="collection" priority="1" name="Accredited Joomla! Translations">http://update.joomla.org/language/translationlist_3.xml</server>
+	</updateservers>
+</extension>
+
+
+

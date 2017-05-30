@@ -1,0 +1,11 @@
+[class^="ckh_icon_"], [class*=" ckh_icon_"] {
+  font-family: 'ckhicons';
+  font-style: normal;
+  font-weight: normal;
+ 
+  /* fix buttons height */
+  line-height: 1em;
+ 
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+}

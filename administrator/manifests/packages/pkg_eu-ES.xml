@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<extension type="package" version="3.5" method="upgrade">
+	<name>Basque (eu-ES) Language Pack</name>
+	<packagename>eu-ES</packagename>
+	<version>3.6.2.1</version>
+	<creationDate>August 2016</creationDate>
+	<author>Joomla! Basque translation team</author>
+	<authorEmail>joomlaeuskaraz@gmail.com</authorEmail>
+	<copyright>Copyright (C) 2016 Open Source Matters, Inc. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<url></url>
+	<description><![CDATA[<div style="text-align:left;">
+<h3>Joomla! 3.6.2 Full Basque (eu-ES) Language Package - Version 3.6.2.1</h3>
+<h3>Joomla! 3.6.2 Euskarazko hizkuntza-paketea – Bertsioa 3.6.2.1</h3>
+</div>]]></description>
+	<files>
+		<file type="language" client="site" id="eu-ES">site_eu-ES.zip</file>
+		<file type="language" client="administrator" id="eu-ES">admin_eu-ES.zip</file>
+	</files>
+	<updateservers>
+		<server type="collection" priority="1" name="Accredited Joomla! Translations">https://update.joomla.org/language/translationlist_3.xml</server>
+	</updateservers>
+</extension>

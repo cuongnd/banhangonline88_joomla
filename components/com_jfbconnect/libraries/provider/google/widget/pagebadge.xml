@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="params">
+        <fields name="widget_settings">
+            <fieldset name="widget_settings">
+                <field name="href" type="text" label="COM_JFBCONNECT_WIDGET_GOOGLE_PAGEBADGE_HREF_LABEL" description="COM_JFBCONNECT_WIDGET_GOOGLE_PAGEBADGE_HREF_DESCRIPTION" />
+                <field name="layout" type="list" default="portrait" label="COM_JFBCONNECT_WIDGET_GOOGLE_BADGE_LAYOUT_LABEL" description="COM_JFBCONNECT_WIDGET_GOOGLE_BADGE_LAYOUT_DESCRIPTION">
+                    <option value="landscape">COM_JFBCONNECT_WIDGET_GOOGLE_BADGE_LAYOUT_OPTION_LANDSCAPE</option>
+                    <option value="portrait">COM_JFBCONNECT_WIDGET_GOOGLE_BADGE_LAYOUT_OPTION_PORTRAIT</option>
+                </field>
+                <field name="theme" type="list" default="light" label="COM_JFBCONNECT_WIDGET_GOOGLE_BADGE_THEME_LABEL" description="COM_JFBCONNECT_WIDGET_GOOGLE_BADGE_THEME_DESCRIPTION">
+                    <option value="light">COM_JFBCONNECT_WIDGET_GOOGLE_BADGE_THEME_OPTION_LIGHT</option>
+                    <option value="dark">COM_JFBCONNECT_WIDGET_GOOGLE_BADGE_THEME_OPTION_DARK</option>
+                </field>
+                <field name="showcoverphoto" default="1" type="radio" label="COM_JFBCONNECT_WIDGET_GOOGLE_BADGE_SHOWCOVERPHOTO_LABEL" description="COM_JFBCONNECT_WIDGET_GOOGLE_BADGE_SHOWCOVERPHOTO_DESCRIPTION">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field name="showtagline" type="radio" default="1" label="COM_JFBCONNECT_WIDGET_GOOGLE_BADGE_SHOWTAGLINE_LABEL" description="COM_JFBCONNECT_WIDGET_GOOGLE_BADGE_SHOWTAGLINE_DESCRIPTION">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field name="width" type="text" label="COM_JFBCONNECT_WIDGET_GOOGLE_BADGE_WIDTH_LABEL" default="300"
+                       description="COM_JFBCONNECT_WIDGET_GOOGLE_BADGE_WIDTH_DESCRIPTION" />
+            </fieldset>
+        </fields>
+    </fields>
+</form>

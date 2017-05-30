@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="params">
+        <fields name="widget_settings">
+            <fieldset name="widget_settings">
+                <field name="url" type="text" label="COM_JFBCONNECT_WIDGET_OEMBED_URL_LABEL" description="COM_JFBCONNECT_WIDGET_OEMBED_URL_DESCRIPTION"/>
+                <field name="maxwidth" default="308" type="text" label="COM_JFBCONNECT_WIDGET_OEMBED_WIDTH_LABEL" description="COM_JFBCONNECT_WIDGET_OEMBED_WIDTH_DESCRIPTION" />
+            </fieldset>
+        </fields>
+    </fields>
+</form>

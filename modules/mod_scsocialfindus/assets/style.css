@@ -1,0 +1,45 @@
+.scsocialfindus .scsocialfindus-btn {
+    background-color: transparent;
+    display: block;
+    float: left;
+    line-height: 32px;
+    margin: 0;
+    padding: 0;
+    outline: medium none;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    text-indent: -9999em;
+    transition: width 0.15s ease-in-out 0s;
+    width: 32px;
+    z-index: 100030;
+}
+.scsocialfindus .scsocialfindus-btn span {
+    height: 32px !important;
+    line-height: 32px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 32px !important;
+    display: block;
+}
+.scsocialfindus .scsocialfindus-btn span {
+    background: url("widget.png") no-repeat scroll left top rgba(0, 0, 0, 0) !important;
+}
+.scsocialfindus .scsocialfindus-google-btn span {
+    background-position: 0 0 !important;
+}
+.scsocialfindus .scsocialfindus-facebook-btn span {
+    background-position: 0 -32px !important;
+}
+.scsocialfindus .scsocialfindus-linkedin-btn span {
+    background-position: 0 -64px !important;
+}
+.scsocialfindus .scsocialfindus-twitter-btn span {
+    background-position: 0 -96px !important;
+}
+.scsocialfindus .scsocialfindus-pinterest-btn span {
+    background-position: 0 -128px !important;
+}
+.scsocialfindus .scsocialfindus-rss-btn span {
+    background-position: 0 -160px !important;
+}

@@ -1,0 +1,207 @@
+#je-login { margin:0 0 10px 0; position:relative;}
+#je-login .clr { clear:both}
+#je-login .well {min-height: 20px; padding: 19px; margin-top:5px; margin-bottom: 5px; background-color: #f5f5f5; border: 1px solid #e3e3e3; -webkit-border-radius: 4px;  -moz-border-radius: 4px; border-radius: 4px; -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05); -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);}
+#je-login .well-small {padding: 9px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;}
+#je-login .control-group { margin:0;}
+#je-login label {display: block; margin-bottom: 5px;}
+#je-login label, #je-login input {font-size: 14px; font-weight: normal; line-height: 20px;}
+#je-login .input-append input[class*="span"],
+#je-login .input-prepend input[class*="span"]{display: inline-block;}
+#je-login .input-append, #je-login .input-prepend { font-size: 0;margin-bottom: 5px; white-space: nowrap;}
+#je-login .input-append,
+#je-login .input-prepend {margin-bottom: 5px; font-size: 0; white-space: nowrap;}
+#je-login .input-append input,
+#je-login .input-prepend input,
+#je-login .input-append select,
+#je-login .input-prepend select{ position: relative;margin-bottom: 0;*margin-left: 0;font-size: 14px;vertical-align: top;-webkit-border-radius: 0 3px 3px 0;-moz-border-radius: 0 3px 3px 0; border-radius: 0 3px 3px 0;}
+#je-login .input-append input:focus,
+#je-login .input-prepend input:focus,
+#je-login .input-append select:focus,
+#je-login .input-prepend select:focus{z-index: 2;}
+#je-login .input-append .add-on,
+#je-login .input-prepend .add-on {
+  display: inline-block;
+  width: auto;
+  height: 20px;
+  min-width: 16px;
+  padding: 4px 5px;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
+  text-align: center;
+  text-shadow: 0 1px 0 #ffffff;
+  background-color: #eeeeee;
+  border: 1px solid #ccc;}
+#je-login fieldset { border:none; margin:0; padding:0;}  
+#je-login .input-ws { position:absolute; top:-999em; left:-999em}
+#je-login .input-lk { display:none;}
+#je-login .input-tx { text-indent:-999em;}
+#je-login .input-append .add-on,
+#je-login .input-prepend .add-on{ vertical-align: top; -webkit-border-radius: 0; -moz-border-radius: 0; border-radius: 0;}
+#je-login .input-append .active,
+#je-login .input-prepend .active { background-color: #a9dba9; border-color: #46a546;}
+#je-login .input-prepend .add-on,
+#je-login .input-prepend .btn { margin-right: -1px;}
+#je-login .span2 { width:170px}
+#je-login .input-prepend .add-on:first-child,
+#je-login .input-prepend .btn:first-child {-webkit-border-radius: 3px 0 0 3px; -moz-border-radius: 3px 0 0 3px; border-radius: 3px 0 0 3px;}
+#je-login .input-append input,#je-login .input-append select{ -webkit-border-radius: 3px 0 0 3px;  -moz-border-radius: 3px 0 0 3px;  border-radius: 3px 0 0 3px;}
+#je-login .input-append .add-on,
+#je-login .input-append .btn { margin-left: -1px;}
+#je-login .input-prepend.input-append input{ -webkit-border-radius: 0; -moz-border-radius: 0;  border-radius: 0;}
+#je-login .input-prepend.input-append .add-on:first-child,
+#je-login .input-prepend.input-append .btn:first-child { margin-right: -1px; -webkit-border-radius: 3px 0 0 3px;-moz-border-radius: 3px 0 0 3px;  border-radius: 3px 0 0 3px;}
+#je-login .input-prepend.input-append .add-on:last-child,
+#je-login .input-prepend.input-append .btn:last-child { margin-left: -1px; -webkit-border-radius: 0 3px 3px 0;  -moz-border-radius: 0 3px 3px 0;  border-radius: 0 3px 3px 0;}
+
+#je-login [class^="icon-"],
+#je-login [class*=" icon-"] {display: inline-block;width: 14px; height: 14px; margin-top: 1px; *margin-right: .3em; line-height: 14px; vertical-align: text-top; background-image: url("../img/glyphicons-halflings.png");background-position: 14px 14px; background-repeat: no-repeat;}
+
+#je-login .icon-user { background-position: -168px 0;}
+#je-login .icon-lock { background-position: -287px -24px;}
+#je-login .icon-question-sign { background-position: -96px -96px;}
+#je-login .icon-check { background-position: -144px -72px;}
+#je-login .checkbox { min-height: 18px; padding-left: 18px;}
+#je-login .checkbox input[type="checkbox"] { float: left; margin-left: -18px;}
+
+#je-login input[type="text"],
+#je-login input[type="password"]{
+  display: inline-block;
+  height: 20px;
+  padding: 4px 6px;
+  margin-bottom: 9px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #999999;
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+}
+
+#je-login input[type="text"],
+#je-login input[type="password"]{
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+     -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+       -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+          transition: border linear 0.2s, box-shadow linear 0.2s;
+}
+
+
+#je-login input[type="text"]:focus,
+#je-login input[type="password"]:focus{
+  border-color: rgba(82, 168, 236, 0.8);
+  outline: 0;
+  outline: thin dotted \9;
+  /* IE6-9 */
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);}
+
+
+#je-login .nav { margin-bottom: 20px; margin-left: 0; list-style: none;}
+#je-login .nav > span > a {display: block; font-weight: normal; line-height: 20px; font-size:14px}
+#je-login .nav > span > a:hover { text-decoration: none; background: none;}
+#je-login .nav-list { padding-right: 3px; padding-left: 3px; margin-bottom: 0;}
+#je-login .nav-list > span > a{text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);}
+#je-login .nav-list > span > a { padding:0; margin:0 0 5px 0;}
+#je-login .nav-list > .active > a,
+#je-login .nav-list > .active > a:hover { color: #ffffff; text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);  background-color: #0088cc;}
+#je-login .nav-list [class^="icon-"] { margin-right: 2px;}
+
+#je-login .btn{
+  display: inline-block;
+  *display: inline;
+  padding: 4px 14px;
+  margin-bottom: 0;
+  *margin-left: .3em;
+  font-size: 14px;
+  line-height: 20px;
+  *line-height: 20px;
+  color: #333333;
+  text-align: center;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  vertical-align: middle;
+  cursor: pointer;
+  background-color: #f5f5f5;
+  *background-color: #e6e6e6;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
+  background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+  background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
+  background-repeat: repeat-x;
+  border: 1px solid #bbbbbb;
+  *border: 0;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+  border-bottom-color: #a2a2a2;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+  *zoom: 1;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+     -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+#je-login .btn:hover,
+#je-login .btn:active,
+#je-login .btn.active,
+#je-login .btn.disabled,
+#je-login .btn[disabled] { color: #333333; background-color: #e6e6e6; *background-color: #d9d9d9;}
+#je-login .btn:active,
+#je-login .btn.active { background-color: #cccccc \9;}
+#je-login .btn:first-child { *margin-left: 0;}
+
+#je-login .btn:hover {
+  color: #333333;
+  text-decoration: none;
+  background-color: #e6e6e6;
+  *background-color: #d9d9d9;
+  /* Buttons in IE7 don't get borders, so darken on hover */
+  background-position: 0 -15px;
+  -webkit-transition: background-position 0.1s linear;
+     -moz-transition: background-position 0.1s linear;
+       -o-transition: background-position 0.1s linear;
+          transition: background-position 0.1s linear;}
+#je-login .btn:focus { outline: thin dotted #333; outline: 5px auto -webkit-focus-ring-color; outline-offset: -2px;}
+#je-login .btn.active,
+#je-login .btn:active {
+  background-color: #e6e6e6;
+  background-color: #d9d9d9 \9;
+  background-image: none;
+  outline: 0;
+  -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+     -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+          box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);}
+
+#je-login .btn-primary {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #006dcc;
+  *background-color: #0044cc;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0044cc));
+  background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
+  background-image: -o-linear-gradient(top, #0088cc, #0044cc);
+  background-image: linear-gradient(to bottom, #0088cc, #0044cc);
+  background-image: -moz-linear-gradient(top, #0088cc, #0044cc);
+  background-repeat: repeat-x;
+  border-color: #0044cc #0044cc #002a80;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);}
+#je-login .btn-primary:hover,
+#je-login .btn-primary:active,
+#je-login .btn-primary.active,
+#je-login .btn-primary.disabled,
+#je-login .btn-primary[disabled] { color: #ffffff; background-color: #0044cc; *background-color: #003bb3;}
+
+#je-login .btn-primary:active,
+#je-login .btn-primary.active { background-color: #003399 \9;}

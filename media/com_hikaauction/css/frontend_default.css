@@ -1,0 +1,266 @@
+/**
+ * @package    HikaAuction for Joomla!
+ * @version    1.2.0
+ * @author     Obsidev S.A.R.L.
+ * @copyright  (C) 2011-2016 OBSIDEV. All rights reserved.
+ * @license    GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
+ */
+
+
+p.time_counter {
+	width:100%;
+	text-align:center;
+	padding-top:10px;
+}
+p.time_counter span.counter_value {
+	font-size:2em;
+	display:inline-block;
+	padding:0px 6px;
+}
+p.time_counter span.counter_value span.sub {
+	font-size:0.5em;
+	display:block;
+}
+p.time_counter span.sep {
+	vertical-align:top;
+	font-size:1.4em;
+}
+
+span.hikadeal_deal_price {
+	font-size:1.6em;
+}
+span.hikadeal_deal_price span.hikashop_product_price_before_discount {
+	font-size: 0.8em;
+	margin-right:0.5em;
+}
+form[name="hikaauction_product_form"] #hikashop_product_bottom_part #hikashop_product_description_main {
+		border: none;
+}
+
+div.hikadeal_deal_discount {
+	padding-bottom:5px;
+}
+div.hikadeal_deal_discount div.hikadeal_clear {
+	clear:left;
+}
+div.hikadeal_deal_discount > span {
+	float:left;
+	display:inline-block;
+	width:50%;
+	text-align:center;
+}
+div.hikadeal_deal_discount span.hikadeal_discount_title {
+	font-size: 0.9em;
+}
+div.hikadeal_deal_discount span.hikadeal_discount_value {
+	display:block;
+	font-size: 1.4em;
+}
+
+.deal_progress {
+	border:1px solid #f7f7f7;
+	margin-top: 10px;
+	height: 16px;
+	margin-bottom: 0px;
+	overflow: hidden;
+	background-color: #ffffff;
+	background-image: -moz-linear-gradient(top, #f9f9f9, #ffffff);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f9f9f9), to(#ffffff));
+	background-image: -webkit-linear-gradient(top, #f9f9f9, #ffffff);
+	background-image: -o-linear-gradient(top, #f9f9f9, #ffffff);
+	background-image: linear-gradient(to bottom, #f9f9f9, #ffffff);
+	background-repeat: repeat-x;
+	-webkit-border-radius: 4px;
+		 -moz-border-radius: 4px;
+			border-radius: 4px;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff9f9f9', endColorstr='#ffffffff', GradientType=0);
+	-webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+		 -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+			box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.deal_progress_bar {
+	float: left;
+	width: 0;
+	height: 100%;
+	font-size: 12px;
+	color: #ffffff;
+	text-align: center;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	background-color: #5eb95e;
+	background-image: -moz-linear-gradient(top, #62c462, #57a957);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#62c462), to(#57a957));
+	background-image: -webkit-linear-gradient(top, #62c462, #57a957);
+	background-image: -o-linear-gradient(top, #62c462, #57a957);
+	background-image: linear-gradient(to bottom, #62c462, #57a957);
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff62c462', endColorstr='#ff57a957', GradientType=0);
+	-webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+		 -moz-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+			box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+	-webkit-box-sizing: border-box;
+		 -moz-box-sizing: border-box;
+			box-sizing: border-box;
+	-webkit-transition: width 0.6s ease;
+		 -moz-transition: width 0.6s ease;
+			 -o-transition: width 0.6s ease;
+			transition: width 0.6s ease;
+	-webkit-border-radius: 4px;
+		 -moz-border-radius: 4px;
+			border-radius: 4px;
+	-webkit-box-shadow: inset 1px 0 0 rgba(0, 0, 0, 0.15), inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+		 -moz-box-shadow: inset 1px 0 0 rgba(0, 0, 0, 0.15), inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+			box-shadow: inset 1px 0 0 rgba(0, 0, 0, 0.15), inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+}
+
+.deal_progress_bar.active {
+	background-color: #0e90d2;
+	background-image: -moz-linear-gradient(top, #149bdf, #0480be);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#149bdf), to(#0480be));
+	background-image: -webkit-linear-gradient(top, #149bdf, #0480be);
+	background-image: -o-linear-gradient(top, #149bdf, #0480be);
+	background-image: linear-gradient(to bottom, #149bdf, #0480be);
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff149bdf', endColorstr='#ff0480be', GradientType=0);
+}
+.deal_progress_bar.finish {
+	background-color: #5eb95e;
+	background-image: -moz-linear-gradient(top, #62c462, #57a957);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#62c462), to(#57a957));
+	background-image: -webkit-linear-gradient(top, #62c462, #57a957);
+	background-image: -o-linear-gradient(top, #62c462, #57a957);
+	background-image: linear-gradient(to bottom, #62c462, #57a957);
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff62c462', endColorstr='#ff57a957', GradientType=0);
+}
+.deal_progress_bar.error {
+	background-color: #dd514c;
+	background-image: -moz-linear-gradient(top, #ee5f5b, #c43c35);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ee5f5b), to(#c43c35));
+	background-image: -webkit-linear-gradient(top, #ee5f5b, #c43c35);
+	background-image: -o-linear-gradient(top, #ee5f5b, #c43c35);
+	background-image: linear-gradient(to bottom, #ee5f5b, #c43c35);
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffee5f5b', endColorstr='#ffc43c35', GradientType=0);
+}
+
+@-webkit-keyframes deal_progress_bar-stripes {
+	from { background-position:0 0 }
+	to { background-position:80px 0 }
+}
+@-moz-keyframes deal_progress_bar-stripes {
+	from { background-position:0 0 }
+	to { background-position:80px 0 }
+}
+@-ms-keyframes deal_progress_bar-stripes {
+	from { background-position:0 0 }
+	to { background-position:80px 0 }
+}
+@-o-keyframes deal_progress_bar-stripes {
+	from { background-position:0 0 }
+	to { background-position:80px 0 }
+}
+@keyframes deal_progress_bar-stripes {
+	from { background-position:0 0 }
+	to { background-position:80px 0 }
+}
+.deal_progress_bar.dynamic {
+	background-color: #149bdf;
+	background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
+	background-image: -webkit-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+	background-image: -moz-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+	background-image: -o-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+	background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+	-webkit-background-size: 40px 40px;
+		-moz-background-size: 40px 40px;
+		-o-background-size: 40px 40px;
+			background-size: 40px 40px;
+	-webkit-animation: deal_progress_bar-stripes 2s linear infinite;
+		-moz-animation: deal_progress_bar-stripes 2s linear infinite;
+		 -ms-animation: deal_progress_bar-stripes 2s linear infinite;
+		-o-animation: deal_progress_bar-stripes 2s linear infinite;
+			animation: deal_progress_bar-stripes 2s linear infinite;
+}
+
+
+
+.auction_details {
+	color: #737373;
+	font-weight: 300;
+	font-size: 15px;
+	text-align: center;
+}
+
+#hikaauction_bidder_amount{
+	margin-top: 10px;
+	height: 30px;
+}
+
+#hikaauction_bidder_amount #bid_amount{
+	float: left;
+	width: 60%;
+	border: 1px solid #CCC;
+	border-radius: 3px;
+	display: inline-block;
+	margin-bottom: 9px;
+	padding: 4px;
+}
+#hikaauction_bidder_amount .hikaauction_bid_button{
+	float: right;
+	width: 35%;
+	background-color: #DDD;
+	background-repeat: repeat-x;
+	background-image: linear-gradient(#FFF, #DDD);
+	text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.49);
+	box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.2) inset, 0px 1px 2px rgba(0, 0, 0, 0.05);
+	color: #095197;
+	border: 1px solid #DDD;
+}
+.auction_history_table .title, .auction_history_table td.auction_details{
+	text-align: center;
+}
+.auction_payment_block{
+	float:left;
+	width:50%;
+	height:200px;
+}
+.auction_decline_block{
+	float:left;
+	width:50%;
+	height:200px;
+}
+.auction_payment, .auction_cancel {
+	text-align:center;
+}
+.auction_history_table, .auction_details_table{
+		width: 100%;
+		max-width: 100%;
+		margin-bottom: 1.5em;
+		border-collapse: collapse;
+		border-spacing: 0px;
+		background-color: transparent;
+		font-size: 1em;
+}
+
+.auction_details_table td{
+	padding: 8px;
+	vertical-align: top;
+	border-top: 1px solid #DDD;
+	line-height: 1.5em;
+	text-align: left;
+}
+.auction_details_table tr{
+	margin: 0px;
+	padding: 0px;
+	border: 0px none;
+	outline: 0px none;
+	vertical-align: baseline;
+	background: transparent none repeat scroll 0% 0%;
+}
+.auction_history_table th {
+		background-color: #0074CC;
+		color: #FFF;
+		background-image: -moz-linear-gradient(center top , #095197, #1B6BA5);
+		background-repeat: repeat-x;
+		border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+}

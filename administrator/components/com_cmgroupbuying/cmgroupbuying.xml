@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<extension type="component" version="2.5" method="upgrade">
+	<name>COM_CMGROUPBUYING</name>
+	<version>2.8.0</version>
+	<creationDate>February 2014</creationDate>
+	<copyright>(C) 2012-2014 CMExtension Team</copyright>
+	<author>CMExtension Team</author>
+	<authorEmail>cmext.vn@gmail.com</authorEmail>
+	<authorUrl>www.cmext.vn</authorUrl>
+	<license>GNU General Public License version 3</license>
+	<description>COM_CMGROUPBUYING_XML_DESCRIPTION</description>
+	<scriptfile>script.php</scriptfile>
+	<install>
+		<sql>
+			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+		</sql>
+	</install>
+	<uninstall>
+		<sql>
+			<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+		</sql>
+	</uninstall>
+	<update>
+		<schemas>
+			<schemapath type="mysql">sql/updates/mysql</schemapath>
+		</schemas>
+	</update>
+	<files folder="site">
+		<folder>assets</folder>
+		<folder>controllers</folder>
+		<folder>helpers</folder>
+		<folder>language</folder>
+		<folder>layouts</folder>
+		<folder>libraries</folder>
+		<folder>models</folder>
+		<folder>views</folder>
+		<folder>sef_ext</folder>
+		<filename>controller.php</filename>
+		<filename>index.html</filename>
+		<filename>cmgroupbuying.php</filename>
+		<filename>router.php</filename>
+		<filename>jomsocial_rule.xml</filename>
+	</files>
+
+	<administration>
+		<menu img="components/com_cmgroupbuying/assets/images/icons/icon-16-cmgroupbuying.png">COM_CMGROUPBUYING_MENU</menu>
+		<submenu>
+			<menu link="option=com_cmgroupbuying&amp;view=configuration" img="components/com_cmgroupbuying/assets/images/icons/icon-16-configuration.png">COM_CMGROUPBUYING_DASHBOARD_CONFIGURATION</menu>
+			<menu link="option=com_cmgroupbuying&amp;view=profile" img="components/com_cmgroupbuying/assets/images/icons/icon-16-profile.png">COM_CMGROUPBUYING_DASHBOARD_USER_PROFILE</menu>
+			<menu link="option=com_cmgroupbuying&amp;view=management" img="components/com_cmgroupbuying/assets/images/icons/icon-16-management.png">COM_CMGROUPBUYING_DASHBOARD_MANAGEMENT_PERMISSIONS</menu>
+			<menu link="option=com_cmgroupbuying&amp;view=categories" img="components/com_cmgroupbuying/assets/images/icons/icon-16-category.png">COM_CMGROUPBUYING_DASHBOARD_CATEGORIES</menu>
+			<menu link="option=com_cmgroupbuying&amp;view=locations" img="components/com_cmgroupbuying/assets/images/icons/icon-16-location.png">COM_CMGROUPBUYING_DASHBOARD_LOCATIONS</menu>
+			<menu link="option=com_cmgroupbuying&amp;view=partners" img="components/com_cmgroupbuying/assets/images/icons/icon-16-partner.png">COM_CMGROUPBUYING_DASHBOARD_PARTNERS</menu>
+			<menu link="option=com_cmgroupbuying&amp;view=products" img="components/com_cmgroupbuying/assets/images/icons/icon-16-product.png">COM_CMGROUPBUYING_DASHBOARD_PRODUCTS</menu>
+			<menu link="option=com_cmgroupbuying&amp;view=deals" img="components/com_cmgroupbuying/assets/images/icons/icon-16-deal.png">COM_CMGROUPBUYING_DASHBOARD_DEALS</menu>
+			<menu link="option=com_cmgroupbuying&amp;view=freecoupons" img="components/com_cmgroupbuying/assets/images/icons/icon-16-free-coupon.png">COM_CMGROUPBUYING_DASHBOARD_FREE_COUPONS</menu>
+			<menu link="option=com_cmgroupbuying&amp;view=orders" img="components/com_cmgroupbuying/assets/images/icons/icon-16-order.png">COM_CMGROUPBUYING_DASHBOARD_ORDERS</menu>
+			<menu link="option=com_cmgroupbuying&amp;view=coupons" img="components/com_cmgroupbuying/assets/images/icons/icon-16-coupon.png">COM_CMGROUPBUYING_DASHBOARD_COUPONS</menu>
+			<menu link="option=com_cmgroupbuying&amp;view=mailtemplates" img="components/com_cmgroupbuying/assets/images/icons/icon-16-mail_template.png">COM_CMGROUPBUYING_DASHBOARD_MAIL_TEMPLATES</menu>
+			<menu link="option=com_cmgroupbuying&amp;view=aggregatorsites" img="components/com_cmgroupbuying/assets/images/icons/icon-16-aggregator_site.png">COM_CMGROUPBUYING_DASHBOARD_AGGREGATOR_SITES</menu>
+			<menu link="option=com_cmgroupbuying&amp;view=aggregationlinks" img="components/com_cmgroupbuying/assets/images/icons/icon-16-aggregation_link.png">COM_CMGROUPBUYING_DASHBOARD_AGGREGATION_LINKS</menu>
+			<menu link="option=com_cmgroupbuying&amp;view=reports" img="components/com_cmgroupbuying/assets/images/icons/icon-16-report.png">COM_CMGROUPBUYING_DASHBOARD_REPORTS</menu>
+		</submenu>
+		<files folder="admin">
+			<folder>assets</folder>
+			<folder>controllers</folder>
+			<folder>helpers</folder>
+			<folder>language</folder>
+			<folder>models</folder>
+			<folder>tables</folder>
+			<folder>views</folder>
+			<folder>sql</folder>
+			<filename>access.xml</filename>
+			<filename>config.xml</filename>
+			<filename>index.html</filename>
+			<filename>controller.php</filename>
+			<filename>cmgroupbuying.php</filename>
+		</files>
+	</administration>
+</extension>

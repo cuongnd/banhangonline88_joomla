@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension version="3.3" client="administrator" type="language" method="upgrade">
+	<name>Sinhala language pack</name>
+	<tag>si-LK</tag>
+	<version>3.3.1.1</version>
+	<creationDate>28/07/2014</creationDate>
+	<author>Denuwan Wijewardena (Sri Lanka)</author>
+	<authorEmail>denuwan@gmail.com</authorEmail>
+	<authorUrl>http://www.denuwan.org</authorUrl>
+	<copyright>Translation Copyright (C) 2013 - 2014 Denuwan Wijewardena</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<description>si-LKsite language</description>
+	<files>
+		<filename>si-LK.plg_captcha_recaptcha.ini</filename>
+		<filename>si-LK.plg_content_pagebreak.ini</filename>
+		<filename>si-LK.plg_content_vote.ini</filename>
+		<filename>si-LK.plg_editors-xtd_article.ini</filename>
+		<filename>si-LK.plg_editors-xtd_image.ini</filename>
+		<filename>si-LK.plg_editors-xtd_pagebreak.ini</filename>
+		<filename>si-LK.plg_editors-xtd_readmore.ini</filename>
+		<filename>si-LK.plg_finder_categories.ini</filename>
+		<filename>si-LK.plg_finder_contacts.ini</filename>
+		<filename>si-LK.plg_finder_content.ini</filename>
+		<filename>si-LK.plg_finder_newsfeeds.ini</filename>
+		<filename>si-LK.plg_finder_tags.ini</filename>
+		<filename>si-LK.plg_finder_weblinks.ini</filename>
+		<filename>si-LK.plg_quickicon_extensionupdate.ini</filename>
+		<filename>si-LK.plg_quickicon_joomlaupdate.ini</filename>
+		<filename>si-LK.plg_search_categories.ini</filename>
+		<filename>si-LK.plg_search_contacts.ini</filename>
+		<filename>si-LK.plg_search_content.ini</filename>
+		<filename>si-LK.plg_search_newsfeeds.ini</filename>
+		<filename>si-LK.plg_search_tags.ini</filename>
+		<filename>si-LK.plg_search_weblinks.ini</filename>
+		<filename>si-LK.plg_user_profile.ini</filename>
+		<filename>si-LK.localise.php</filename>
+		<filename file="meta">install.xml</filename>
+		<filename file="meta">si-LK.xml</filename>
+		<filename>index.html</filename>
+	</files>
+	<params />
+	</extension>

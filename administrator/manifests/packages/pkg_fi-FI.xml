@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="package" version="3.6" method="upgrade">
+<name>Finnish Language Pack</name>
+<packagename>fi-FI</packagename>
+<version>3.6.2.1</version>
+<creationDate>2016-08-26</creationDate>
+<author>Finnish translation team : Joomla.fi</author>
+<authorEmail>mortti@joomla.fi</authorEmail>
+<authorUrl>http://www.joomla.fi</authorUrl>
+<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+<description>
+	<![CDATA[
+		<div style="text-align:left;">
+		<h3>Joomla! 3.6.2 Full Finnish (fi-FI) Language Package - Version 3.6.2v1</h3>
+		<h3>Joomla! 3.6.2 kielitiedostopaketti sivuston ja ylläpidon puolelle suomeksi - Versio 3.6.2v1</h3>
+		</div>
+		]]>
+</description>
+  <files>
+        <file type="language" client="site" id="fi-FI">site_fi-FI.zip</file>
+        <file type="language" client="administrator" id="fi-FI">admin_fi-FI.zip</file>
+  </files>
+  <updateservers>
+        <server type="collection" priority="1" name="Accredited Joomla! Translations">http://update.joomla.org/language/translationlist_3.xml</server>
+  </updateservers>
+</extension>

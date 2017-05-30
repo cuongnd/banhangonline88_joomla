@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<plugin>
+  <authorEmail>support@freestyle-joomla.com</authorEmail>
+  <author>Freestyle Joomla</author>
+  <copyright>(C) 2013 Freestyle Joomla. All rights reserved.</copyright>
+  <license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html </license>
+  <authorUrl>http://www.freestyle-joomla.com</authorUrl>
+
+  <name>Article</name>
+  <description></description>
+  
+  <table>
+    <sql>
+      SELECT a.id, a.title, a.state, a.created, c.title as cattitle, v.title as access, coalesce(l.title, 'All') as language
+      FROM #__content as a
+      LEFT JOIN #__categories as c ON a.catid = c.id
+      LEFT JOIN #__viewlevels as v ON a.access = v.id
+      LEFT JOIN #__languages as l ON a.language = l.lang_code
+    </sql>
+    <!-- list of where commands for the sql -->
+    <!--<where>a.published = 1</where>-->
+
+    <addbtntext>Select Article</addbtntext>
+    <!-- 
+    we need to display all articles that are visable to the user normally
+    if user is unreg, then only published
+    if user is author then can display their own
+    if user is edtiro then all etc
+    dont forget the access level things
+  -->
+    <use_auth published="a.state" access="a.access" author="a.author" />
+
+    <!-- default ordering field -->
+    <ordering>a.created</ordering>
+
+    <!-- field that is the id -->
+    <keyfield>id</keyfield>
+    <displayfield>title</displayfield>
+    
+    <!-- filters at the top of the page -->
+    <filters>
+      <!-- what fields to search on -->
+      <search>
+        <field>title</field>
+      </search>
+      <!-- published filter -->
+      <filter type="published" />
+      <filter type="cattitle" />
+      <filter type="access" />
+      <filter type="language" />
+    </filters>
+
+    <!-- what fields to display -->
+    <displayfields>
+      <field link="1" name="title" id="JGLOBAL_TITLE" type="string" sort="a.title" />
+      <field name="cattitle" id="Category" type="string" sort="c.title" />
+      <field name="access" id="Access" type="string" sort="v.title" />
+      <field name="language" id="Language" type="string" sort="a.language" />
+      <field name="created" id="JGLOBAL_CREATED" type="string" sort="a.created" />
+    </displayfields>
+  </table>
+
+</plugin>

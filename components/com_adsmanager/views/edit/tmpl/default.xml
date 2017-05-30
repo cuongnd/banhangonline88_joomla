@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+   <layout title="Write Ad">
+      <message>
+         <![CDATA[Write Ad]]>
+      </message>
+   </layout>
+   <state>
+      <name>Write Ad</name>
+      <description></description>
+      <url addpath="/administrator/components/com_adsmanager/elements">
+         <param name="rootid" type="AdsmanagerCategory" section="com_adsmanager" default="0" label="Root Category" description="" />
+      </url>
+      <params>
+      </params>
+   </state>
+   <!-- Add fields to the request variables for the layout. -->
+   <fields name="request">
+           <fieldset name="request"
+                   addfieldpath="/administrator/components/com_adsmanager/models/fields">
+                   <field name="catid" type="adscategory"  
+                           default="0" label="Category" description="" required="false"
+                   />
+                   <field name="rootid" type="adscategory"  
+                           default="0" label="Root Category" description="" required="false"
+                   />
+           </fieldset>
+   </fields>
+</metadata>

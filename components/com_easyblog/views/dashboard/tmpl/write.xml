@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_EASYBLOG_MENU_DASHBOARD_WRITE_LAYOUT">
+		<message>
+			<![CDATA[COM_EASYBLOG_MENU_DASHBOARD_WRITE_LAYOUT_DESC]]>
+		</message>
+		<view>dashboard</view>
+	</layout>
+	<state>
+		<name><![CDATA[COM_EASYBLOG_MENU_DASHBOARD_WRITE_LAYOUT]]></name>
+		<description><![CDATA[COM_EASYBLOG_MENU_DASHBOARD_WRITE_LAYOUT_DESC]]></description>
+		<url addpath="/administrator/components/com_easyblog/elements">
+			<param name="categoryId" type="categories" label="Category Id" default="0" description="Choose a category..." />
+		</url>
+	</state>
+
+	<config>
+		<fields name="params" addfieldpath="/administrator/components/com_easyblog/elements/fields">
+			<fieldset name="request">
+				<field name="categoryId" type="modal_categories" label="Default Category" default="0" description="Choose a category..." />
+			</fieldset>
+		</fields>
+	</config>
+</metadata>

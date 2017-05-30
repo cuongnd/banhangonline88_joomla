@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.1" type="file" method="upgrade">
+	<name>files_inlinelayouts</name>
+	<author>WebxSolution Ltd</author>
+	<creationDate>March 2014</creationDate>
+	<copyright>>Copyright (C) 2013- 2014 All rights reserved</copyright>
+	<license>GNU General Public License version 2</license>
+	<authorEmail>info@arkextensions.com</authorEmail>
+	<authorUrl>http://www.arkextensions.com</authorUrl>
+	<version>1.0.2b</version>
+	<description>This plugin provides the layouts for inline front-end edting</description>
+	<fileset>
+		<files target="layouts/joomla/arkeditor">
+			<file>editable.php</file>
+			<file>inline.php</file>
+			<file>nav.php</file>
+			<file>sidebar.php</file>
+			<folder>images</folder>
+		</files>
+	</fileset>
+</extension>

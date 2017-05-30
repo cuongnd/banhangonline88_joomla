@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="1.6" type="module" method="upgrade" client="site">
+    <name>SCSocial Widget</name>
+    <version>6.2.0</version>
+    <creationDate>2014/10/03</creationDate>
+    <author>SourceCoast | www.sourcecoast.com</author>
+    <authorEmail>support@sourcecoast.com</authorEmail>
+    <authorUrl>http://www.sourcecoast.com</authorUrl>
+    <copyright>Copyright (C) 2011-2014 SourceCoast. All rights reserved.</copyright>
+    <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+    <description>This is the Social Widget module that goes with the JFBConnect, which lets users add and configure the available widgets from each social network provider.</description>
+    <files>
+        <filename module="mod_scsocialwidget">mod_scsocialwidget.php</filename>
+        <filename>mod_scsocialwidget.xml</filename>
+        <filename>fields/providerlist.php</filename>
+        <filename>fields/widgetlist.php</filename>
+        <filename>fields/widgetsettings.php</filename>
+        <filename>tmpl/default.php</filename>
+    </files>
+    <config>
+        <fields name="params">
+            <fieldset name="basic" label="COM_MODULES_BASIC_FIELDSET_LABEL" addfieldpath="/modules/mod_scsocialwidget/fields/">
+                <field name="provider_type" type="ProviderList" label="Provider" description="Select your social network provider" onchange="jfbcAdmin.scsocialwidget.fetchWidgets(this.value);"/>
+                <field name="widget_type" type="WidgetList" label="Widget" description="Select your social widget" onchange="jfbcAdmin.scsocialwidget.fetchSettings(this.value);"/>
+                <field name="widget_settings" type="WidgetSettings" label="Settings" description="Settings for Widgets" />
+            </fieldset>
+            <fieldset name="advanced">
+                <field name="moduleclass_sfx" type="text" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+                       description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" default=""/>
+                <field name="user_intro"
+                       type="textarea"
+                       rows="5"
+                       cols="40"
+                       label="Intro Text"
+                       description="This is the text or HTML that is displayed above the social content."
+                       default=""
+                       filter="safehtml"/>
+                <field name="showPoweredByLink" type="radio" label="Show Powered By Link"
+                       description="Show 'Powered By' link" default="2">
+                    <option value="2">Use Global</option>
+                    <option value="0">Hide</option>
+                    <option value="1">Show</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

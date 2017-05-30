@@ -1,0 +1,71 @@
+{
+  "name": "cassandra-map",
+  "version": "0.1.7",
+  "description": "A modern JSON implementation compatible with nearly all JavaScript platforms.",
+  "homepage": "https://github.com/jcoc611/cassandraMAP",
+  "main": "./index",
+  "keywords": ["cassandra", "map", "json", "parser", "stringify"],
+  "licenses": [{
+    "type": "MIT",
+    "url": "http://kit.mit-license.org/"
+  }],
+  "author": {
+    "name": "Juan Camilo Osorio",
+    "email": "jcoc611@gmail.com",
+    "web": "http://github.com/jcoc611"
+  },
+  "maintainers": [{
+    "name": "Juan Camilo Osorio",
+    "email": "jcoc611@gmail.com",
+    "web": "http://github.com/jcoc611"
+  }],
+  "contributors": [{
+    "name": "Mangled Deutz",
+    "email": "olivier@webitup.fr",
+    "web": "http://tech.roxee.tv/"
+  }, {
+    "name": "Øyvind Sean Kinsey",
+    "email": "oyvind@kinsey.no",
+    "web": "http://fb.me/ok"
+  }, {
+    "name": "Oskar Schöldström",
+    "email": "public@oxy.fi",
+    "web": "http://oxy.fi/"
+  }, {
+    "name": "Kiryl Yermakou",
+    "email": "rma4ok@gmail.com",
+    "web": "https://github.com/rma4ok"
+  },{
+    "name": "Juan Camilo Osorio",
+    "email": "jcoc611@gmail.com",
+    "web": "http://kitcambridge.be/"
+  }],
+  "bugs": {
+    "url": "https://github.com/jcoc611/cassandraMAP/issues"
+  },
+  "scripts": {
+    "test": "node test/test_*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jcoc611/cassandraMAP.git"
+  },
+  "files": ["README.md", "LICENSE", "index.js", "lib/"],
+  "jam": {
+    "main": "./index",
+    "includes": ["README.md", "LICENSE", "lib/cassandraMAP.js", "lib/cassandraMAP.min.js"]
+  },
+  "volo": {
+    "type": "directory",
+    "ignore": [
+      ".*",
+      "build.js",
+      "index.html",
+      "component.json",
+      "bower.json",
+      "page",
+      "test",
+      "vendor"
+    ]
+  }
+}

@@ -1,0 +1,143 @@
+/**
+ * Styles using during install/uninstall 
+ * 
+ * We developed this code with our hearts and passion.
+ * We hope you found it useful, easy to understand and change.
+ * Otherwise, please feel free to contact us at contact@joomunited.com
+ *
+ * @package 	Social Backlinks
+ * @copyright 	Copyright (C) 2012 JoomUnited (http://www.joomunited.com). All rights reserved.
+ * @license 	GNU General Public License version 2 or later; http://www.gnu.org/licenses/gpl-2.0.html
+ */
+
+.success,
+.fail
+	{
+	height: 18px;
+	padding: 5px 0 0 25px;
+	display:-moz-inline-stack;
+	display:inline-block;
+	zoom:1;
+	*display:inline;
+	background: url(../images/status-middle.png) no-repeat 0 0;
+	}
+.fail
+	{
+	background-position: 0 -26px;
+	}
+.uninstall-table .success,
+.uninstall-table .fail
+	{
+	background-image: none;
+	padding-left: 0;
+	}
+
+.install-result 
+	{
+	font-size: 12px;
+	padding: 10px;
+	width: 865px;
+	}
+	.install-result ul 
+		{
+		padding: 0 0 0 20px;
+		line-height: 1.8em;
+		}
+		.install-result ul .link-wrapper
+			{
+			display: inline-block; 
+			position: relative; 
+			width: 47px; 
+			height: 1px;
+			}
+			.install-result ul .link-wrapper a
+				{
+				display: block;
+				height: 21px;
+				position: absolute;
+				top: -13px;
+				width: 47px;
+				}
+.install-result .redirect-block
+	{
+	margin: 20px 0 10px 20px;
+	height: 32px;
+	}
+	.redirect-block .ajax-loader
+		{
+		background-image: url(../images/redirect-loader.gif);
+		background-repeat: no-repeat;
+		width: 32px;
+		height: 32px;
+		z-index: 99999;
+		float: left;
+		}
+	.redirect-block .redirect-msg
+		{
+		padding: 8px 0 0 40px;
+		}
+
+.install-result .header-text
+		{
+		font-size: 1.4em;
+		font-weight: bold;
+		margin: 5px 0 20px 20px;
+		}
+	.install-result a:link, .install-result a:hover,
+	.install-result a:active, .install-result a:visited
+		{
+		text-decoration: underline;
+		}
+.install-result .adminlist
+	{
+	clear: both;
+	background: none;
+	border-collapse: collapse;
+	border-spacing: 0;
+	border: none;
+	width: 500px;
+	margin: 20px;
+	}
+	.install-result .adminlist thead tr
+		{
+		background: none;
+		}
+		.install-result .adminlist thead tr th
+			{
+			height: 37px;
+			padding: 0 4px;
+			background: none;
+			background: url(../images/table-bg.png) repeat-x 0 -144px;
+			font-size: 1.3em;
+			font-weight: bolder;
+			color: #FFF;
+			border: none;
+			/*border-bottom: 1px solid #053C8D;*/
+			}
+		.install-result .adminlist thead tr th.first
+			{
+			background-position: 0 0;
+			}
+		.install-result .adminlist thead tr th.last
+			{
+			background-position: 100% -72px;
+			}
+		.install-result .adminlist.uninstall-table thead tr th
+			{
+			background-image: none;
+			}
+			.install-result .adminlist thead tr th a
+				{
+				display: block;
+				color: #FFF;
+				}
+			.install-result .adminlist thead tr th input
+				{
+				border: none;
+				}
+		.install-result .adminlist td
+			{
+			height: 36px;
+			border: 1px solid #E6E6E6;
+			border-top: none;
+			}

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_CMGROUPBUYING_FREE_COUPONS_TITLE" option="COM_CMGROUPBUYING_FREE_COUPONS_OPTION">
+		<message>
+			<![CDATA[COM_CMGROUPBUYING_FREE_COUPONS_DESC]]>
+		</message>
+	</layout>
+	<fields name="params">
+		<fieldset name="layout_settings"
+			addfieldpath="/administrator/components/com_cmgroupbuying/models/fields">
+			<field name="coupon_image_width"
+				type="text"
+				label="COM_CMGROUPBUYING_FREE_COUPON_LIST_DEAL_IMAGE_WIDTH_LABEL"
+				description="COM_CMGROUPBUYING_FREE_COUPON_LIST_DEAL_IMAGE_WIDTH_DESC"
+				class="inputbox"
+				size="10"
+			/>
+			<field name="coupon_image_height"
+				type="text"
+				label="COM_CMGROUPBUYING_FREE_COUPON_LIST_DEAL_IMAGE_HEIGHT_LABEL"
+				description="COM_CMGROUPBUYING_FREE_COUPON_LIST_DEAL_IMAGE_HEIGHT_DESC"
+				class="inputbox"
+				size="10"
+			/>
+			<field name="number_of_columns"
+				type="text"
+				label="COM_CMGROUPBUYING_FREE_COUPON_LIST_NUMBER_OF_COLUMNS_LABEL"
+				description="COM_CMGROUPBUYING_FREE_COUPON_LIST_NUMBER_OF_COLUMNS_DESC"
+				class="inputbox"
+				size="10"
+			/>
+			<field name="row_space"
+				type="text"
+				label="COM_CMGROUPBUYING_FREE_COUPON_LIST_ROW_SPACE_LABEL"
+				description="COM_CMGROUPBUYING_FREE_COUPON_LIST_ROW_SPACE_DESC"
+				class="inputbox"
+				size="10"
+			/>
+			<field name="column_space"
+				type="text"
+				label="COM_CMGROUPBUYING_FREE_COUPON_LIST_COLUMN_SPACE_LABEL"
+				description="COM_CMGROUPBUYING_FREE_COUPON_LIST_COLUMN_SPACE_DESC"
+				class="inputbox"
+				size="10"
+			/>
+		</fieldset>
+
+		<fieldset name="basic">
+			<field name="location_id" type="modal_location"
+				label="COM_CMGROUPBUYING_LOCATION_SELECT_LOCATION_LABEL"
+				description="COM_CMGROUPBUYING_LOCATION_SELECT_LOCATION_DESC"
+			/>
+		</fieldset>
+	</fields>
+</metadata>

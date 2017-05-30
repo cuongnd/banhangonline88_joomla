@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="params">
+        <fields name="widget_settings">
+            <fieldset name="widget_settings">
+                <field name="height" default="280" type="text" label="COM_JFBCONNECT_WIDGET_MEETUP_HEIGHT_LABEL" description="COM_JFBCONNECT_WIDGET_MEETUP_HEIGHT_DESCRIPTION" />
+                <field name="width" default="660" type="text" label="COM_JFBCONNECT_WIDGET_MEETUP_WIDTH_LABEL" description="COM_JFBCONNECT_WIDGET_MEETUP_WIDTH_DESCRIPTION" />
+                <field name="campaign" required="true" type="text" label="COM_JFBCONNECT_WIDGET_MEETUP_SPONSORED_GROUPS_CAMPAIGN_LABEL" description="COM_JFBCONNECT_WIDGET_MEETUP_SPONSORED_GROUPS_CAMPAIGN_DESCRIPTION" />
+                <field name="image_url" label="COM_JFBCONNECT_WIDGET_MEETUP_SPONSORED_GROUPS_IMG_URL_LABEL" description="COM_JFBCONNECT_WIDGET_MEETUP_SPONSORED_GROUPS_IMG_URL_DESCRIPTION" type="media" directory="" />
+            </fieldset>
+        </fields>
+    </fields>
+</form>

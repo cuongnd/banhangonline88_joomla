@@ -1,0 +1,57 @@
+<?php
+/**
+* @package		EasyBlog
+* @copyright	Copyright (C) 2010 Stack Ideas Private Limited. All rights reserved.
+* @license		GNU/GPL, see LICENSE.php
+* EasyBlog is free software. This version may have been modified pursuant
+* to the GNU General Public License, and as distributed it includes or
+* is derivative of works licensed under the GNU General Public License or
+* other free or open source software licenses.
+* See COPYRIGHT.php for copyright notices and details.
+*/
+
+// Check to ensure this file is included in Joomla!
+defined('_JEXEC') or die( 'Restricted access' );
+?>
+
+<div class="panelSection infoPanel active">
+	<div class="panelSectionContent">
+
+		<div class="itemInfo">
+			<i></i>
+			<span class="itemFilename">[%= meta.title %]</span>
+			<span class="itemFilesize">[%= meta.filesize %]</span>
+			<span class="itemCreationDate">[%= meta.creationDate %]</span>
+		</div>
+
+		<div class="itemExtraInfo">
+			<span class="itemUrl">[%= meta.url %]</span>
+		</div>
+	</div>
+</div>
+
+<div class="panelSection insertOptionsPanel active">
+	<div class="panelSectionHeader">
+		<div class="panelSectionTitle"><i></i><?php echo JText::_( 'COM_EASYBLOG_MM_INSERT_OPTIONS' );?></div>
+	</div>
+
+	<div class="panelSectionContent">
+		<ul class="reset-ul list-form">
+			<li>
+				<label><?php echo JText::_( 'COM_EASYBLOG_MM_WIDTH' );?>:</label>
+				<input type="text" style="width:250px" value="[%= insertWidth %]" class="insertWidth" />
+			</li>
+			<li>
+				<label><?php echo JText::_( 'COM_EASYBLOG_MM_HEIGHT' );?>:</label>
+				<input type="text" style="width:250px" value="[%= insertHeight %]" class="insertHeight" />
+			</li>
+			<li>
+				<label><?php echo JText::_( 'COM_EASYBLOG_IMAGE_MANAGER_AUTOPLAY' );?>:</label>
+				<select name="autoplay" class="autoplay">
+					<option value="1"><?php echo JText::_( 'COM_EASYBLOG_YES' );?></option>
+					<option value="0"><?php echo JText::_( 'COM_EASYBLOG_NO' );?></option>
+				</select>
+			</li>
+		</ul>
+	</div>
+</div>

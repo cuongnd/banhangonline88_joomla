@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+
+	<fieldset addfieldpath="/administrator/components/com_cmgroupbuying/models/fields">
+
+		<field name="id"
+			type="text"
+			label="JGLOBAL_FIELD_ID_LABEL"
+			description="JGLOBAL_FIELD_ID_DESC"
+			size="10"
+			default="0"
+			readonly="true"
+			class="readonly"
+		/>
+
+		<field name="name"
+			type="text"
+			label="COM_CMGROUPBUYING_FREE_COUPON_FIELD_NAME_LABEL"
+			description="COM_CMGROUPBUYING_FREE_COUPON_FIELD_NAME_DESC"
+			class="inputbox"
+			size="40"
+			required="true"
+		/>
+
+		<field name="alias" type="text" class="inputbox" size="40"
+			label="JFIELD_ALIAS_LABEL" description="JFIELD_ALIAS_DESC" hint="JFIELD_ALIAS_PLACEHOLDER" />
+
+		<field name="short_description"
+			type="textarea"
+			label="COM_CMGROUPBUYING_FREE_COUPON_FIELD_SHORT_DESCRIPTION_LABEL"
+			description="COM_CMGROUPBUYING_FREE_COUPON_FIELD_SHORT_DESCRIPTION_DESC"
+			class="inputbox"
+			rows="3"
+			cols="50"
+		/>
+
+		<field
+			name="description"
+			type="editor"
+			label="COM_CMGROUPBUYING_FREE_COUPON_FIELD_DESCRIPTION_LABEL"
+			description="COM_CMGROUPBUYING_FREE_COUPON_FIELD_DESCRIPTION_DESC"
+			class="inputbox"
+			filter="JComponentHelper::filterText"
+			buttons="true"
+			hide="readmore,pagebreak,raffle,article"
+		/>
+
+		<field
+			name="mobile_description"
+			type="editor"
+			label="COM_CMGROUPBUYING_FREE_COUPON_FIELD_MOBILE_DESCRIPTION_LABEL"
+			description="COM_CMGROUPBUYING_FREE_COUPON_FIELD_MOBILE_DESCRIPTION_DESC"
+			class="inputbox"
+			filter="JComponentHelper::filterText"
+			buttons="true"
+			hide="readmore,pagebreak,raffle,article"
+		/>
+
+		<field
+			name="start_date"
+			type="calendar"
+			label="COM_CMGROUPBUYING_FREE_COUPON_FIELD_START_DATE_LABEL"
+			description="COM_CMGROUPBUYING_FREE_COUPON_FIELD_START_DATE_DESC"
+			class="inputbox"
+			size="22"
+			format="%Y-%m-%d %H:%M:%S"
+			required="true"
+		/>
+
+		<field
+			name="end_date"
+			type="calendar"
+			label="COM_CMGROUPBUYING_FREE_COUPON_FIELD_END_DATE_LABEL"
+			description="COM_CMGROUPBUYING_FREE_COUPON_FIELD_END_DATE_DESC"
+			class="inputbox"
+			size="22"
+			format="%Y-%m-%d %H:%M:%S"
+			required="true"
+		/>
+
+		<fieldset name="image_path">
+			<field name="image_path_1" type="media" directory=""
+				hide_none="1" label="COM_CMGROUPBUYING_FREE_COUPON_FIELD_IMAGE_PATH_1_LABEL"
+				size="30"
+				description="COM_CMGROUPBUYING_FREE_COUPON_FIELD_IMAGE_PATH_DESC" />
+
+			<field name="image_path_2" type="media" directory=""
+				hide_none="1" label="COM_CMGROUPBUYING_FREE_COUPON_FIELD_IMAGE_PATH_2_LABEL"
+				size="30"
+				description="COM_CMGROUPBUYING_FREE_COUPON_FIELD_IMAGE_PATH_DESC" />
+
+			<field name="image_path_3" type="media" directory=""
+				hide_none="1" label="COM_CMGROUPBUYING_FREE_COUPON_FIELD_IMAGE_PATH_3_LABEL"
+				size="30"
+				description="COM_CMGROUPBUYING_FREE_COUPON_FIELD_IMAGE_PATH_DESC" />
+
+			<field name="image_path_4" type="media" directory=""
+				hide_none="1" label="COM_CMGROUPBUYING_FREE_COUPON_FIELD_IMAGE_PATH_4_LABEL"
+				size="30"
+				description="COM_CMGROUPBUYING_FREE_COUPON_FIELD_IMAGE_PATH_DESC" />
+
+			<field name="image_path_5" type="media" directory=""
+				hide_none="1" label="COM_CMGROUPBUYING_FREE_COUPON_FIELD_IMAGE_PATH_5_LABEL"
+				size="30"
+				description="COM_CMGROUPBUYING_FREE_COUPON_FIELD_IMAGE_PATH_DESC" />
+
+			<field name="mobile_image_path" type="media" directory=""
+				hide_none="1" label="COM_CMGROUPBUYING_FREE_COUPON_FIELD_MOBILE_IMAGE_PATH_LABEL"
+				size="30"
+				description="COM_CMGROUPBUYING_FREE_COUPON_FIELD_MOBILE_IMAGE_PATH_DESC" />
+		</fieldset>
+
+		<field name="background_image" type="media" directory="cmgroupbuying/deal/background"
+			hide_none="1" label="COM_CMGROUPBUYING_FREE_COUPON_FIELD_BACKGROUND_IMAGE_LABEL"
+			size="30"
+			description="COM_CMGROUPBUYING_FREE_COUPON_FIELD_BACKGROUND_IMAGE_DESC" />
+
+		<field name="partner_id"
+			type="cmgbpartner"
+			label="COM_CMGROUPBUYING_FREE_COUPON_FIELD_PARTNER_ID_LABEL"
+			description="COM_CMGROUPBUYING_FREE_COUPON_FIELD_PARTNER_ID_DESC"
+			class="inputbox"
+			required="true"
+		/>
+
+		<field name="location_id"
+			type="cmgbcouponlocation"
+			label="COM_CMGROUPBUYING_FREE_COUPON_FIELD_LOCATION_ID_LABEL"
+			description="COM_CMGROUPBUYING_FREE_COUPON_FIELD_LOCATION_ID_DESC"
+			class="inputbox"
+			multiple="true"
+			required="true"
+		/>
+
+		<field name="category_id"
+			type="cmgbcategory"
+			label="COM_CMGROUPBUYING_FREE_COUPON_FIELD_CATEGORY_ID_LABEL"
+			description="COM_CMGROUPBUYING_FREE_COUPON_FIELD_CATEGORY_ID_DESC"
+			class="inputbox"
+			required="true"
+		/>
+
+		<field name="coupon_path" type="media" directory=""
+			hide_none="1" label="COM_CMGROUPBUYING_FREE_COUPON_FIELD_COUPON_PATH_LABEL"
+			size="30"
+			description="COM_CMGROUPBUYING_FREE_COUPON_FIELD_COUPON_PATH_DESC" />
+
+		<field name="coupon_code"
+			type="text"
+			label="COM_CMGROUPBUYING_FREE_COUPON_FIELD_COUPON_CODE_LABEL"
+			description="COM_CMGROUPBUYING_FREE_COUPON_FIELD_COUPON_CODE_DESC"
+			class="inputbox"
+			size="20"
+		/>
+
+		<field name="discount"
+			type="text"
+			label="COM_CMGROUPBUYING_FREE_COUPON_FIELD_DISCOUNT_LABEL"
+			description="COM_CMGROUPBUYING_FREE_COUPON_FIELD_DISCOUNT_DESC"
+			class="inputbox"
+			size="20"
+		/>
+
+		<field name="type"
+			type="list"
+			label="COM_CMGROUPBUYING_FREE_COUPON_FIELD_TYPE_LABEL"
+			description="COM_CMGROUPBUYING_FREE_COUPON_FIELD_TYPE_DESC"
+			default="printable"
+		>
+			<option value="printable">COM_CMGROUPBUYING_FREE_COUPON_TYPE_PRINTABLE</option>
+			<option value="code">COM_CMGROUPBUYING_FREE_COUPON_TYPE_CODE</option>
+		</field>
+
+		<field name="metakey" type="textarea" class="inputbox" rows="3" cols="30"
+			label="JFIELD_META_KEYWORDS_LABEL" description="JFIELD_META_KEYWORDS_DESC" />
+
+		<field name="metadesc" type="textarea" class="inputbox" rows="3" cols="30"
+			label="JFIELD_META_DESCRIPTION_LABEL" description="JFIELD_META_DESCRIPTION_DESC" />
+
+		<field name="featured"
+			type="list"
+			label="JFEATURED"
+			description="COM_CMGROUPBUYING_FREE_COUPON_FIELD_FEATURED_DESC"
+			default="0"
+		>
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+
+		<field id="approved"
+			name="approved"
+			type="list"
+			label="COM_CMGROUPBUYING_FREE_COUPON_FIELD_APPROVED_LABEL"
+			description="COM_CMGROUPBUYING_FREE_COUPON_FIELD_APPROVED_DESC"
+			class="inputbox"
+			size="1"
+			default="1"
+		>
+			<option value="1">COM_CMGROUPBUYING_APPROVED</option>
+			<option value="0">COM_CMGROUPBUYING_PENDING</option>
+		</field>
+
+		<field id="published"
+			name="published"
+			type="list"
+			label="JSTATUS"
+			description="JFIELD_PUBLISHED_DESC"
+			class="inputbox"
+			size="1"
+			default="1"
+		>
+			<option value="1">JPUBLISHED</option>
+			<option value="0">JUNPUBLISHED</option>
+		</field>
+
+		<field name="ordering"
+			type="cmordering"
+			class="inputbox"
+			label="JFIELD_ORDERING_LABEL"
+			description="JFIELD_ORDERING_DESC"
+		/>
+
+	</fieldset>
+
+</form>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.6" client="site" type="language" method="upgrade">
+  <name>Estonian (et)</name>
+  <tag>et-EE</tag>
+  <version>3.6.0.1</version>
+  <creationDate>07.07.2016</creationDate>
+  <author>Rivo Zängov and team</author>
+  <authorEmail>eraser@eraser.ee</authorEmail>
+  <authorUrl>www.eraser.ee</authorUrl>
+  <copyright>Copyright (C) 2005 - 2016 eraser.ee and Open Source Matters. Kõik õigused kaitstud.</copyright>
+  <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+  <description>Estonian language pack for Joomla! 3.6.0</description>
+  <files>
+		<filename>et-EE.com_ajax.ini</filename>
+		<filename>et-EE.com_config.ini</filename>
+		<filename>et-EE.com_contact.ini</filename>
+		<filename>et-EE.com_content.ini</filename>
+		<filename>et-EE.com_finder.ini</filename>
+		<filename>et-EE.com_mailto.ini</filename>
+		<filename>et-EE.com_media.ini</filename>
+		<filename>et-EE.com_messages.ini</filename>
+		<filename>et-EE.com_newsfeeds.ini</filename>
+		<filename>et-EE.com_search.ini</filename>
+		<filename>et-EE.com_tags.ini</filename>
+		<filename>et-EE.com_users.ini</filename>
+		<filename>et-EE.com_weblinks.ini</filename>
+		<filename>et-EE.com_wrapper.ini</filename>
+		<filename>et-EE.files_joomla.sys.ini</filename>
+		<filename>et-EE.finder_cli.ini</filename>
+		<filename>et-EE.ini</filename>
+		<filename>et-EE.lib_fof.ini</filename>
+		<filename>et-EE.lib_fof.sys.ini</filename>
+		<filename>et-EE.lib_idna_convert.sys.ini</filename>
+		<filename>et-EE.lib_joomla.ini</filename>
+		<filename>et-EE.lib_joomla.sys.ini</filename>
+		<filename>et-EE.lib_phpass.sys.ini</filename>
+		<filename>et-EE.lib_phputf8.sys.ini</filename>
+		<filename>et-EE.lib_simplepie.sys.ini</filename>
+		<filename>et-EE.localise.php</filename>
+		<filename>et-EE.mod_articles_archive.ini</filename>
+		<filename>et-EE.mod_articles_archive.sys.ini</filename>
+		<filename>et-EE.mod_articles_categories.ini</filename>
+		<filename>et-EE.mod_articles_categories.sys.ini</filename>
+		<filename>et-EE.mod_articles_category.ini</filename>
+		<filename>et-EE.mod_articles_category.sys.ini</filename>
+		<filename>et-EE.mod_articles_latest.ini</filename>
+		<filename>et-EE.mod_articles_latest.sys.ini</filename>
+		<filename>et-EE.mod_articles_news.ini</filename>
+		<filename>et-EE.mod_articles_news.sys.ini</filename>
+		<filename>et-EE.mod_articles_popular.ini</filename>
+		<filename>et-EE.mod_articles_popular.sys.ini</filename>
+		<filename>et-EE.mod_banners.ini</filename>
+		<filename>et-EE.mod_banners.sys.ini</filename>
+		<filename>et-EE.mod_breadcrumbs.ini</filename>
+		<filename>et-EE.mod_breadcrumbs.sys.ini</filename>
+		<filename>et-EE.mod_custom.ini</filename>
+		<filename>et-EE.mod_custom.sys.ini</filename>
+		<filename>et-EE.mod_feed.ini</filename>
+		<filename>et-EE.mod_feed.sys.ini</filename>
+		<filename>et-EE.mod_finder.ini</filename>
+		<filename>et-EE.mod_finder.sys.ini</filename>
+		<filename>et-EE.mod_footer.ini</filename>
+		<filename>et-EE.mod_footer.sys.ini</filename>
+		<filename>et-EE.mod_languages.ini</filename>
+		<filename>et-EE.mod_languages.sys.ini</filename>
+		<filename>et-EE.mod_login.ini</filename>
+		<filename>et-EE.mod_login.sys.ini</filename>
+		<filename>et-EE.mod_menu.ini</filename>
+		<filename>et-EE.mod_menu.sys.ini</filename>
+		<filename>et-EE.mod_random_image.ini</filename>
+		<filename>et-EE.mod_random_image.sys.ini</filename>
+		<filename>et-EE.mod_related_items.ini</filename>
+		<filename>et-EE.mod_related_items.sys.ini</filename>
+		<filename>et-EE.mod_search.ini</filename>
+		<filename>et-EE.mod_search.sys.ini</filename>
+		<filename>et-EE.mod_stats.ini</filename>
+		<filename>et-EE.mod_stats.sys.ini</filename>
+		<filename>et-EE.mod_syndicate.ini</filename>
+		<filename>et-EE.mod_syndicate.sys.ini</filename>
+		<filename>et-EE.mod_tags_popular.ini</filename>
+		<filename>et-EE.mod_tags_popular.sys.ini</filename>
+		<filename>et-EE.mod_tags_similar.ini</filename>
+		<filename>et-EE.mod_tags_similar.sys.ini</filename>
+		<filename>et-EE.mod_users_latest.ini</filename>
+		<filename>et-EE.mod_users_latest.sys.ini</filename>
+		<filename>et-EE.mod_weblinks.ini</filename>
+		<filename>et-EE.mod_weblinks.sys.ini</filename>
+		<filename>et-EE.mod_whosonline.ini</filename>
+		<filename>et-EE.mod_whosonline.sys.ini</filename>
+		<filename>et-EE.mod_wrapper.ini</filename>
+		<filename>et-EE.mod_wrapper.sys.ini</filename>
+		<filename>et-EE.tpl_beez3.ini</filename>
+		<filename>et-EE.tpl_beez3.sys.ini</filename>
+		<filename>et-EE.tpl_protostar.ini</filename>
+		<filename>et-EE.tpl_protostar.sys.ini</filename>
+    <filename>install.xml</filename>
+    <filename>et-EE.localise.php</filename>
+		<filename file="meta">install.xml</filename>
+    <filename file="meta">et-EE.xml</filename>
+  </files>
+	<params />
+</extension>

@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<form>
+
+	<fieldset addfieldpath="/administrator/components/com_content/models/fields">
+
+		<field name="id" type="text" label="JGLOBAL_FIELD_ID_LABEL"
+			description="JGLOBAL_FIELD_ID_DESC" size="10" default="0"
+			readonly="true" class="readonly" />
+
+		<field name="jquery_loading" type="text" class="inputbox" size="20"
+			label="COM_CMGROUPBUYING_CONFIGURATION_JQUERY_LOADING_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_JQUERY_LOADING_DESC" />
+
+		<field name="partner_folder" type="text" class="inputbox" size="20"
+			label="COM_CMGROUPBUYING_CONFIGURATION_PARTNER_FOLDER_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_PARTNER_FOLDER_DESC" />
+
+		<field name="buy_as_guest" type="radio" class="inputbox" default="0"
+			label="COM_CMGROUPBUYING_CONFIGURATION_BUY_AS_GUEST_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_BUY_AS_GUEST_DESC">
+			<option value="1">JENABLED</option>
+			<option value="0">JDISABLED</option>
+		</field>
+
+		<field name="admin_email" type="text" class="inputbox" size="20"
+			label="COM_CMGROUPBUYING_CONFIGURATION_ADMIN_EMAIL_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_ADMIN_EMAIL_DESC" />
+
+		<field name="currency_prefix" type="text" class="inputbox" size="20"
+			label="COM_CMGROUPBUYING_CONFIGURATION_CURRENCY_PREFIX_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_CURRENCY_PREFIX_DESC" />
+
+		<field name="currency_postfix" type="text" class="inputbox" size="20"
+			label="COM_CMGROUPBUYING_CONFIGURATION_CURRENCY_POSTFIX_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_CURRENCY_POSTFIX_DESC" />
+
+		<field name="currency_code" type="text" class="inputbox" size="20"
+			label="COM_CMGROUPBUYING_CONFIGURATION_CURRENCY_CODE_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_CURRENCY_CODE_DESC" />
+
+		<field name="currency_dec_point" type="text" class="inputbox" size="20"
+			label="COM_CMGROUPBUYING_CONFIGURATION_CURRENCY_DEC_POINT_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_CURRENCY_DEC_POINT_DESC" />
+
+		<field name="currency_thousands_sep" type="text" class="inputbox" size="20"
+			label="COM_CMGROUPBUYING_CONFIGURATION_CURRENCY_THOUSANDS_SEP_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_CURRENCY_THOUSANDS_SEP_DESC" />
+
+		<field name="currency_decimals" type="text" class="inputbox" size="20"
+			label="COM_CMGROUPBUYING_CONFIGURATION_CURRENCY_DECIMALS_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_CURRENCY_DECIMALS_DESC" />
+
+		<field name="layout" type="cmgblayout"
+			label="COM_CMGROUPBUYING_CONFIGURATION_LAYOUT_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_LAYOUT_DESC" />
+
+		<field name="mobile_template" type="cmgbtemplate"
+			label="COM_CMGROUPBUYING_CONFIGURATION_MOBILE_TEMPLATE_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_MOBILE_TEMPLATE_DESC" />
+
+		<field name="background_override" type="radio" class="inputbox" default="0"
+			label="COM_CMGROUPBUYING_CONFIGURATION_BACKGROUND_OVERRIDE_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_BACKGROUND_OVERRIDE_DESC">
+			<option value="1">JENABLED</option>
+			<option value="0">JDISABLED</option>
+		</field>
+
+		<field name="slideshow_switch_time" type="text" class="inputbox" size="20"
+			label="COM_CMGROUPBUYING_CONFIGURATION_SLIDESHOW_SWITCH_TIME_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_SLIDESHOW_SWITCH_TIME_DESC" />
+
+		<field name="slideshow_fade_time" type="text" class="inputbox" size="20"
+			label="COM_CMGROUPBUYING_CONFIGURATION_SLIDESHOW_FADE_TIME_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_SLIDESHOW_FADE_TIME_DESC" />
+
+		<field name="deal_map_width" type="text" class="inputbox" size="20"
+			label="COM_CMGROUPBUYING_CONFIGURATION_DEAL_MAP_WIDTH_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_DEAL_MAP_WIDTH_DESC" />
+
+		<field name="deal_map_height" type="text" class="inputbox" size="20"
+			label="COM_CMGROUPBUYING_CONFIGURATION_DEAL_MAP_HEIGHT_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_DEAL_MAP_HEIGHT_DESC" />
+
+		<field name="deal_map_zoom" type="text" class="inputbox" size="20"
+			label="COM_CMGROUPBUYING_CONFIGURATION_DEAL_MAP_ZOOM_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_DEAL_MAP_ZOOM_DESC" />
+
+		<field name="deal_map_latitude" type="text" class="inputbox" size="20"
+			label="COM_CMGROUPBUYING_CONFIGURATION_DEAL_MAP_LATITUDE_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_DEAL_MAP_LATITUDE_DESC" />
+
+		<field name="deal_map_longitude" type="text" class="inputbox" size="20"
+			label="COM_CMGROUPBUYING_CONFIGURATION_DEAL_MAP_LONGITUDE_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_DEAL_MAP_LONGITUDE_DESC" />
+
+		<field name="pagination_limit" type="cmgbpagination"
+			label="COM_CMGROUPBUYING_CONFIGURATION_PAGINATION_LIMIT_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_PAGINATION_LIMIT_DESC" />
+
+		<field name="deal_list_effect" type="list" class="inputbox" default="none"
+			label="COM_CMGROUPBUYING_CONFIGURATION_DEAL_LIST_EFFECT_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_DEAL_LIST_EFFECT_DESC">
+			<option value="none">COM_CMGROUPBUYING_CONFIGURATION_DEAL_LIST_EFFECT_NONE_OPTION</option>
+			<option value="show_short_desc">COM_CMGROUPBUYING_CONFIGURATION_DEAL_LIST_EFFECT_SHORT_DESC_OPTION</option>
+			<option value="slideshow">COM_CMGROUPBUYING_CONFIGURATION_DEAL_LIST_EFFECT_SLIDESHOW_OPTION</option>
+		</field>
+
+		<field name="deal_list_slideshow_timing" type="text" class="inputbox" size="20"
+			label="COM_CMGROUPBUYING_CONFIGURATION_DEAL_LIST_SLIDESHOW_TIMING_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_DEAL_LIST_SLIDESHOW_TIMING_DESC" />
+
+		<field name="max_displayed_quantity" type="text" class="inputbox" size="20"
+			label="COM_CMGROUPBUYING_CONFIGURATION_MAX_DISPLAYED_QUANTITY_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_MAX_DISPLAYED_QUANTITY_DESC" />
+
+		<field name="mail_pay_buyer" type="radio" class="inputbox" default="0"
+			label="COM_CMGROUPBUYING_CONFIGURATION_EMAIL_NOTIFICATION_PAY_BUYER_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_EMAIL_NOTIFICATION_PAY_BUYER_DESC">
+			<option value="1">JENABLED</option>
+			<option value="0">JDISABLED</option>
+		</field>
+
+		<field name="mail_pay_partner" type="radio" class="inputbox" default="0"
+			label="COM_CMGROUPBUYING_CONFIGURATION_EMAIL_NOTIFICATION_PAY_PARTNER_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_EMAIL_NOTIFICATION_PAY_PARTNER_DESC">
+			<option value="1">JENABLED</option>
+			<option value="0">JDISABLED</option>
+		</field>
+
+		<field name="mail_tip_partner" type="radio" class="inputbox" default="0"
+			label="COM_CMGROUPBUYING_CONFIGURATION_EMAIL_NOTIFICATION_TIP_PARTNER_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_EMAIL_NOTIFICATION_TIP_PARTNER_DESC">
+			<option value="1">JENABLED</option>
+			<option value="0">JDISABLED</option>
+		</field>
+
+		<field name="mail_void_buyer" type="radio" class="inputbox" default="0"
+			label="COM_CMGROUPBUYING_CONFIGURATION_EMAIL_NOTIFICATION_VOID_BUYER_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_EMAIL_NOTIFICATION_VOID_BUYER_DESC">
+			<option value="1">JENABLED</option>
+			<option value="0">JDISABLED</option>
+		</field>
+
+		<field name="mail_void_partner" type="radio" class="inputbox" default="0"
+			label="COM_CMGROUPBUYING_CONFIGURATION_EMAIL_NOTIFICATION_VOID_PARTNER_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_EMAIL_NOTIFICATION_VOID_PARTNER_DESC">
+			<option value="1">JENABLED</option>
+			<option value="0">JDISABLED</option>
+		</field>
+
+		<field name="mail_cash_buyer" type="radio" class="inputbox" default="0"
+			label="COM_CMGROUPBUYING_CONFIGURATION_EMAIL_NOTIFICATION_CASH_BUYER_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_EMAIL_NOTIFICATION_CASH_BUYER_DESC">
+			<option value="1">JENABLED</option>
+			<option value="0">JDISABLED</option>
+		</field>
+
+		<field name="mail_cash_admin" type="radio" class="inputbox" default="0"
+			label="COM_CMGROUPBUYING_CONFIGURATION_EMAIL_NOTIFICATION_CASH_ADMIN_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_EMAIL_NOTIFICATION_CASH_ADMIN_DESC">
+			<option value="1">JENABLED</option>
+			<option value="0">JDISABLED</option>
+		</field>
+
+		<field name="mail_approve_partner" type="radio" class="inputbox" default="0"
+			label="COM_CMGROUPBUYING_CONFIGURATION_EMAIL_NOTIFICATION_APPROVE_PARTNER_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_EMAIL_NOTIFICATION_APPROVE_PARTNER_DESC">
+			<option value="1">JENABLED</option>
+			<option value="0">JDISABLED</option>
+		</field>
+
+		<field name="mail_pending_admin" type="radio" class="inputbox" default="0"
+			label="COM_CMGROUPBUYING_CONFIGURATION_EMAIL_NOTIFICATION_PENDING_ADMIN_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_EMAIL_NOTIFICATION_PENDING_ADMIN_DESC">
+			<option value="1">JENABLED</option>
+			<option value="0">JDISABLED</option>
+		</field>
+
+		<field name="mail_approve_coupon_partner" type="radio" class="inputbox" default="0"
+			label="COM_CMGROUPBUYING_CONFIGURATION_EMAIL_NOTIFICATION_APPROVE_COUPON_PARTNER_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_EMAIL_NOTIFICATION_APPROVE_COUPON_PARTNER_DESC">
+			<option value="1">JENABLED</option>
+			<option value="0">JDISABLED</option>
+		</field>
+
+		<field name="mail_pending_coupon_admin" type="radio" class="inputbox" default="0"
+			label="COM_CMGROUPBUYING_CONFIGURATION_EMAIL_NOTIFICATION_PENDING_COUPON_ADMIN_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_EMAIL_NOTIFICATION_PENDING_COUPON_ADMIN_DESC">
+			<option value="1">JENABLED</option>
+			<option value="0">JDISABLED</option>
+		</field>
+
+		<field name="facebook_comment" type="radio" class="inputbox" default="none"
+			label="COM_CMGROUPBUYING_CONFIGURATION_FACEBOOK_COMMENT_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_FACEBOOK_COMMENT_DESC">
+			<option value="1">JENABLED</option>
+			<option value="0">JDISABLED</option>
+		</field>
+
+		<field name="facebook_admin_user_id" type="text" class="inputbox" size="20"
+			label="COM_CMGROUPBUYING_CONFIGURATION_FACEBOOK_COMMENT_ADMIN_USER_ID_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_FACEBOOK_COMMENT_ADMIN_USER_ID_DESC" />
+
+		<field name="facebook_app_id" type="text" class="inputbox" size="20"
+			label="COM_CMGROUPBUYING_CONFIGURATION_FACEBOOK_COMMENT_APP_ID_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_FACEBOOK_COMMENT_APP_ID_DESC" />
+
+		<field name="facebook_comment_num_posts" type="text" class="inputbox" size="20"
+			label="COM_CMGROUPBUYING_CONFIGURATION_FACEBOOK_COMMENT_NUM_POSTS_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_FACEBOOK_COMMENT_NUM_POSTS_DESC" />
+
+		<field name="facebook_comment_width" type="text" class="inputbox" size="20"
+			label="COM_CMGROUPBUYING_CONFIGURATION_FACEBOOK_COMMENT_WIDTH_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_FACEBOOK_COMMENT_WIDTH_DESC" />
+
+		<field name="disqus_comment" type="radio" class="inputbox" default="none"
+			label="COM_CMGROUPBUYING_CONFIGURATION_DISQUS_COMMENT_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_DISQUS_COMMENT_DESC">
+			<option value="1">JENABLED</option>
+			<option value="0">JDISABLED</option>
+		</field>
+
+		<field name="disqus_shortname" type="text" class="inputbox" size="20"
+			label="COM_CMGROUPBUYING_CONFIGURATION_DISQUS_SHORTNAME_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_DISQUS_SHORTNAME_DESC" />
+
+		<field name="disqus_multilanguage" type="radio" class="inputbox" default="none"
+			label="COM_CMGROUPBUYING_CONFIGURATION_DISQUS_MULTILANGUAGE_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_DISQUS_MULTILANGUAGE_DESC">
+			<option value="1">JENABLED</option>
+			<option value="0">JDISABLED</option>
+		</field>
+
+		<field name="plg_cmdealarticle_template" type="editor" class="inputbox" filter="safehtml" buttons="true"
+			label="COM_CMGROUPBUYING_CONFIGURATION_PLG_CMDEALARTICLE_TEMPLATE_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_PLG_CMDEALARTICLE_TEMPLATE_DESC" />
+
+		<field name="cmgbvariable" type="cmgbvariable"
+			label="COM_CMGROUPBUYING_VARIABLE_NAMES"
+			description="COM_CMGROUPBUYING_VARIABLE_NAMES" />
+
+		<field name="subscription_redirect" type="list" class="inputbox" default="todaydeal"
+			label="COM_CMGROUPBUYING_CONFIGURATION_SUBSCRIPTION_REDIRECT_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_SUBSCRIPTION_REDIRECT_DESC">
+			<option value="todaydeal">COM_CMGROUPBUYING_CONFIGURATION_SUBSCRIPTION_REDIRECT_TODAY_DEAL</option>
+			<option value="alldeals">COM_CMGROUPBUYING_CONFIGURATION_SUBSCRIPTION_REDIRECT_ALL_DEALS</option>
+			<option value="activedeals">COM_CMGROUPBUYING_CONFIGURATION_SUBSCRIPTION_REDIRECT_ACTIVE_DEALS</option>
+		</field>
+
+		<field name="subscription_cookie_lifetime" type="text" class="inputbox" size="20"
+			label="COM_CMGROUPBUYING_CONFIGURATION_SUBSCRIPTION_COOKIE_LIFETIME_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_SUBSCRIPTION_COOKIE_LIFETIME_DESC" />
+
+		<field name="point_system" type="list" class="inputbox" default="off"
+			label="COM_CMGROUPBUYING_CONFIGURATION_POINT_SYSTEM_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_POINT_SYSTEM_DESC">
+			<option value="off">JDISABLED</option>
+			<option value="aup">COM_CMGROUPBUYING_CONFIGURATION_POINT_SYSTEM_AUP_OPTION</option>
+			<option value="jomsocial">COM_CMGROUPBUYING_CONFIGURATION_POINT_SYSTEM_JOMSOCIAL_OPTION</option>
+		</field>
+
+		<field name="point_system" type="list" class="inputbox" default="off"
+			label="COM_CMGROUPBUYING_CONFIGURATION_POINT_SYSTEM_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_POINT_SYSTEM_DESC">
+			<option value="off">JDISABLED</option>
+			<option value="aup">COM_CMGROUPBUYING_CONFIGURATION_POINT_SYSTEM_AUP_OPTION</option>
+			<option value="jomsocial">COM_CMGROUPBUYING_CONFIGURATION_POINT_SYSTEM_JOMSOCIAL_OPTION</option>
+		</field>
+
+		<field name="purchase_bonus" type="radio" class="inputbox" default="0"
+			label="COM_CMGROUPBUYING_CONFIGURATION_PURCHASE_BONUS_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_PURCHASE_BONUS_DESC">
+			<option value="1">JENABLED</option>
+			<option value="0">JDISABLED</option>
+		</field>
+
+		<field name="deal_referral" type="radio" class="inputbox" default="0"
+			label="COM_CMGROUPBUYING_CONFIGURATION_DEAL_REFERRAL_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_DEAL_REFERRAL_DESC">
+			<option value="1">JENABLED</option>
+			<option value="0">JDISABLED</option>
+		</field>
+
+		<field name="pay_with_point" type="radio" class="inputbox" default="0"
+			label="COM_CMGROUPBUYING_CONFIGURATION_PAY_WITH_POINT_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_PAY_WITH_POINT_DESC">
+			<option value="1">JENABLED</option>
+			<option value="0">JDISABLED</option>
+		</field>
+
+		<field name="exchange_rate" type="text" class="inputbox" size="20"
+			label="COM_CMGROUPBUYING_CONFIGURATION_EXCHANGE_RATE_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_EXCHANGE_RATE_DESC" />
+
+		<field name="point_cookie_lifetime" type="text" class="inputbox" size="20"
+			label="COM_CMGROUPBUYING_CONFIGURATION_COOKIE_LIFETIME_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_COOKIE_LIFETIME_DESC" />
+
+		<field name="jomsocial_activity" type="radio" class="inputbox" default="0"
+			label="COM_CMGROUPBUYING_CONFIGURATION_JOMSOCIAL_ACTIVITY_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_JOMSOCIAL_ACTIVITY_DESC">
+			<option value="1">JENABLED</option>
+			<option value="0">JDISABLED</option>
+		</field>
+
+		<field name="jomsocial_activity_title" type="text" class="inputbox" size="20"
+			label="COM_CMGROUPBUYING_CONFIGURATION_JOMSOCIAL_ACTIVITY_TITLE_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_JOMSOCIAL_ACTIVITY_TITLE_DESC" />
+
+		<field name="sh404sef_deal_alias" type="text" class="inputbox" size="20"
+			label="COM_CMGROUPBUYING_CONFIGURATION_SH404SEF_DEAL_ALIAS_LABEL"
+			description="JFIELD_ALIAS_DESC" />
+
+		<field name="sh404sef_category_alias" type="text" class="inputbox" size="20"
+			label="COM_CMGROUPBUYING_CONFIGURATION_SH404SEF_CATEGORY_ALIAS_LABEL"
+			description="JFIELD_ALIAS_DESC" />
+
+		<field name="sh404sef_partner_alias" type="text" class="inputbox" size="20"
+			label="COM_CMGROUPBUYING_CONFIGURATION_SH404SEF_PARTNER_ALIAS_LABEL"
+			description="JFIELD_ALIAS_DESC" />
+
+		<field name="sh404sef_free_coupon_alias" type="text" class="inputbox" size="20"
+			label="COM_CMGROUPBUYING_CONFIGURATION_SH404SEF_FREE_COUPON_ALIAS_LABEL"
+			description="JFIELD_ALIAS_DESC" />
+
+		<field name="geotargeting" type="list" class="inputbox" default="0"
+			label="COM_CMGROUPBUYING_CONFIGURATION_GEOTARGETING_GEOTARGETING_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_GEOTARGETING_GEOTARGETING_DESC">
+			<option value="off">JDISABLED</option>
+			<option value="maxmind">maxmind.com</option>
+			<option value="ipinfodb">ipinfodb.com</option>
+		</field>
+
+		<field name="maxmind_path" type="text" class="inputbox" size="20"
+			label="COM_CMGROUPBUYING_CONFIGURATION_GEOTARGETING_MAXMIND_PATH_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_GEOTARGETING_MAXMIND_PATH_DESC" />
+
+		<field name="ipinfodb_key" type="text" class="inputbox" size="20"
+			label="COM_CMGROUPBUYING_CONFIGURATION_GEOTARGETING_IPINFODB_KEY_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_GEOTARGETING_IPINFODB_KEY_DESC" />
+
+		<field name="geotargeting_cookie_lifetime" type="text" class="inputbox" size="20"
+			label="COM_CMGROUPBUYING_CONFIGURATION_GEOTARGETING_COOKIE_LIFETIME_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_GEOTARGETING_COOKIE_LIFETIME_DESC" />
+
+		<field name="tos" type="menuitem"
+			label="COM_CMGROUPBUYING_CONFIGURATION_TOS_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_TOS_DESC" />
+
+		<field name="datetime_format" type="text" class="inputbox" size="20"
+			label="COM_CMGROUPBUYING_CONFIGURATION_DATETIME_FORMAT_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_DATETIME_FORMAT_DESC" />
+
+		<field name="coupon_format" type="radio" class="inputbox" default="HTML"
+			label="COM_CMGROUPBUYING_CONFIGURATION_COUPON_FORMAT_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_COUPON_FORMAT_DESC">
+			<option value="html">HTML</option>
+			<option value="pdf">PDF</option>
+		</field>
+
+		<field name="qr_code_generator" type="radio" class="inputbox" default="php_qr_code"
+			label="COM_CMGROUPBUYING_CONFIGURATION_QR_CODE_GENERATOR_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_QR_CODE_GENERATOR_DESC">
+			<option value="php_qr_code">PHP QR Code library</option>
+			<option value="google_chart">Google Chart (deprecated, is available at least until April 20, 2015)</option>
+		</field>
+
+		<field name="coupon_background" type="media" hide_none="1" size="30"
+			label="COM_CMGROUPBUYING_CONFIGURATION_COUPON_BACKGROUND_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_COUPON_BACKGROUND_DESC" />
+
+		<field name="coupon_elements" type="text" class="inputbox" size="30"
+			label="COM_CMGROUPBUYING_CONFIGURATION_COUPON_ELEMENTS_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_COUPON_ELEMENTS_DESC" />
+
+		<field name="payment_method_type" type="list" class="inputbox" default="hosted"
+			label="COM_CMGROUPBUYING_CONFIGURATION_PAYMENT_METHOD_TYPE_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_PAYMENT_METHOD_TYPE_DESC">
+			<option value="hosted">COM_CMGROUPBUYING_CONFIGURATION_PAYMENT_METHOD_TYPE_HOSTED</option>
+			<option value="direct">COM_CMGROUPBUYING_CONFIGURATION_PAYMENT_METHOD_TYPE_DIRECT</option>
+		</field>
+
+		<field name="direct_payment_method" type="cmgbdirectpm"
+			label="COM_CMGROUPBUYING_CONFIGURATION_PAYMENT_DIRECT_PAYMENT_METHOD_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_PAYMENT_DIRECT_PAYMENT_METHOD_DESC" />
+
+		<field name="payment_method_pretext" type="editor" class="inputbox" filter="safehtml" buttons="true"
+			label="COM_CMGROUPBUYING_CONFIGURATION_PAYMENT_METHOD_PRETEXT_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_PAYMENT_METHOD_PRETEXT_DESC" />
+
+		<field name="payment_method_posttext" type="editor" class="inputbox" filter="safehtml" buttons="true"
+			label="COM_CMGROUPBUYING_CONFIGURATION_PAYMENT_METHOD_POSTTEXT_LABEL"
+			description="COM_CMGROUPBUYING_CONFIGURATION_PAYMENT_METHOD_POSTTEXT_DESC" />
+	</fieldset>
+
+</form>

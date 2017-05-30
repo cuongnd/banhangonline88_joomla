@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="package" version="3.4" method="upgrade">
+  <name>Norwegian Nynorsk Language Pack</name>
+  <packagename>nn-NO</packagename>
+  <version>3.4.2.1</version>
+  <creationDate>2015-06-30</creationDate>
+  <author>Norsk Joomla and Skolelinux</author>
+  <authorEmail>oversettelser@norskjoomla.no</authorEmail>
+  <authorUrl>http://www.norskjoomla.no</authorUrl>
+  <description>
+    <![CDATA[
+      <div style="text-align:left;">
+      <h2>Nynorsk for Joomla ble installert.</h2>
+      <p>Du kan endre innstillinger for tekstbehandleren TinyMCE gjennom følgende steg:</p>
+      <p></p>
+      <ol>
+      <li>Utvidelser</li>
+      <li>Programtillegg</li>
+      <li><a href="index.php?option=com_plugins&view=plugins&filter_search=TinyMCE">TinyMCE</a></li>
+      <li>Parametre - Programtillegg</li>
+      <li>Funksjonalitet :: Utvidet (Valgfritt! Om du vil aktivere alle funksjoner i TinyMCE)</li>
+      </ol>
+      <p></p>
+      <p>Vær grei å melde eventuelle feil eller problemer med oversettelsene i det <a href="http://forum.joomla.org/viewforum.php?f=210" target="_blank" title="Det offisielle norske brukerforumet for Joomla-oversettelser">Norske Joomla!-forumet</a>, eller i <a href="https://github.com/norskjoomla/norwegiancore/issues" target="_blank" title="Issues på GitHub">Issues på GitHub</a>. Dersom du har forbedringsforslag hører vi gjerne om dette også.</p>
+      </div>
+    ]]>
+  </description>
+  <files>
+    <folder type="language" client="site" id="nn-NO">site_nn-NO</folder>
+    <folder type="language" client="administrator" id="nn-NO">admin_nn-NO</folder>
+  </files>
+  <updateservers>
+    <server type="collection" priority="1" name="Accredited Joomla! Translations">http://update.joomla.org/language/translationlist_3.xml</server>
+  </updateservers>
+</extension>

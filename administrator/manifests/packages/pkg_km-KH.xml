@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="package" version="3.4" method="upgrade">
+	<name>Khmer Language Pack</name>
+	<packagename>km-KH</packagename>
+	<version>3.4.5.1</version>
+	<creationDate>2015-10-23</creationDate>
+	<author>Khmer Translation Team</author>
+	<authorEmail>info@km-KH.org</authorEmail>
+	<authorUrl>www.km-KH.org</authorUrl>
+	<copyright>Copyright (C) 2005 - 2015 Open Source Matters &amp; km-KH.org. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<url></url>
+	<packager>Joomla! Khmer</packager>
+	<packagerurl>www.km-KH.org</packagerurl>
+	<description><![CDATA[
+		<style type="text/css" media="screen">
+			@import url(http://fonts.googleapis.com/css?family=Odor+Mean+Chey);
+			.km-KH{
+			font-family: 'Odor Mean Chey', 'Khmer OS Content', cursive;
+			line-height: 30px;
+			font-size: 1.2em; 
+			font-weight: normal;
+			}
+			.en-GB{
+			font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+			}
+		</style>
+		<div align="center" class="km-KH">
+		<table border="0" width="100%">
+		<tr>
+			<td width="100%" colspan="2">
+				<div class="alert alert-success center" align="center">
+					<h3 class="alert-heading"><span class='km-KH'>កញ្ចប់​ភាសា​ជុំឡា <span class="en-GB">3.4</span> ដោយ​ក្រុម​បកប្រែ​ភាសា​ខ្មែរ<br />ក្រោម​ការ​គ្រប់គ្រង​ដោយ</span> <span class="en-GB">km-KH.org</span><br /><br /><span class="en-GB">Joomla 3.4 Khmer Language Pack by km-KH Team <br />under km-KH.org<br /></span></h3>
+  		      </div>
+  		      <hr />
+  		    </td>
+  	    </tr>
+  	    <tr>
+  		    <td width="40%"><strong>រួម​មាន ៖</strong></td>
+  		    <td width="60%">កញ្ចប់​ភាសា​ខ្មែរ​សម្រាប់​កម្មវិធី​គ្រប់គ្រង (ឆាក​ខាងក្រោយ)<br />កញ្ចប់​ភាសា​ខ្មែរ​សម្រាប់​ស្ថាន​បណ្ដាញ (ឆាក​ខាងមុខ)</td>
+  	    </tr>
+  	    <tr>
+  		    <td width="40%"><strong>កំណែ​ជុំឡា ៖</strong></td>
+  		    <td width="60%" class="en-GB">3.4</td>
+  	    </tr>
+  	    <tr>
+  		    <td width="40%"><strong>កំណែ​ឯកសារ​ភាសា ៖</strong></td>
+  		    <td width="60%" class="en-GB">3.4.5v1</td>
+  	    </tr>
+  	    <td width="100%" colspan="2"><hr /></td>
+  	    <tr>
+  		    <td width="40%"><strong>ភាសា​ខ្មែរ​មូលដ្ឋានីយកម្ម ៖</strong></td>
+  		    <td width="60%"><a href="http://www.km-kh.org" target="_blank" class="en-GB">http://www.km-KH.org</a></td>
+  		 </tr>
+  		 <tr>   
+   		    <td width="40%"><strong>ជុំឡា​ភាសា​ខ្មែរ ៖</strong></td>
+  		    <td width="60%"><a href="http://joomla.km-kh.org" target="_blank" class="en-GB">http://joomla.km-KH.org</a></td>
+  	    </tr>
+  	    <tr>
+  		    <td width="100%" colspan="2">
+  		      <strong><font color="#FF9900">អ្នក​អាច​តាមដាន​ព័ត៌មាន កំណែ​ថ្មី គន្លឹះ​ផ្សេងៗ​ពី​គេហទំព័រ​ខាង​លើ</font></strong>
+          </td>
+  	    </tr>
+      </table>
+    </div>]]>
+    </description>
+	<files>
+		<file type="language" client="site" id="km-KH">site_km-KH.zip</file>
+		<file type="language" client="administrator" id="km-KH">admin_km-KH.zip</file>
+	</files>
+    <updateservers>
+		<server type="collection" priority="1" name="Accredited Joomla! Translations">http://update.joomla.org/language/translationlist_3.xml</server>
+    </updateservers>
+</extension>

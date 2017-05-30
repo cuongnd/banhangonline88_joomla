@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<form>
+
+	<fieldset>
+
+		<field name="id"
+			type="text"
+			label="JGLOBAL_FIELD_ID_LABEL"
+			description="JGLOBAL_FIELD_ID_DESC"
+			size="10"
+			default="0"
+			readonly="true"
+			class="readonly"
+		/>
+
+		<field name="subject"
+			type="text"
+			label="COM_CMGROUPBUYING_MAIL_TEMPLATE_SUBJECT_LABEL"
+			description="COM_CMGROUPBUYING_MAIL_TEMPLATE_SUBJECT_DESC"
+			class="inputbox"
+			size="80"
+			required="true"
+		 />
+
+		 <field
+			name="body"
+			type="editor"
+			label="COM_CMGROUPBUYING_MAIL_TEMPLATE_BODY_LABEL"
+			description="COM_CMGROUPBUYING_MAIL_TEMPLATE_BODY_DESC"
+			class="inputbox"
+			filter="safehtml"
+			buttons="true"
+			hide="readmore,pagebreak,raffle,article"
+			height="500"
+		/> 
+
+	</fieldset>
+
+</form>

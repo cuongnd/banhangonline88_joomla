@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<form>
+
+	<fieldset addfieldpath="/administrator/components/com_cmgroupbuying/models/fields">
+
+		<field name="id"
+			type="text"
+			label="JGLOBAL_FIELD_ID_LABEL"
+			description="JGLOBAL_FIELD_ID_DESC"
+			size="10"
+			default="0"
+			readonly="true"
+			class="readonly"
+		/>
+
+		<field name="ref"
+			type="text"
+			label="COM_CMGROUPBUYING_AGG_SITE_FIELD_REF_LABEL"
+			description="COM_CMGROUPBUYING_AGG_SITE_FIELD_REF_DESC"
+			size="10"
+			default=""
+			readonly="true"
+			class="readonly"
+		/>
+
+		<field name="name"
+			type="text"
+			label="COM_CMGROUPBUYING_AGG_SITE_FIELD_NAME_LABEL"
+			description="COM_CMGROUPBUYING_AGG_SITE_FIELD_NAME_DESC"
+			class="inputbox"
+			size="30"
+			required="true"
+		 />
+
+		<field name="url"
+			type="text"
+			label="COM_CMGROUPBUYING_AGG_SITE_FIELD_URL_LABEL"
+			description="COM_CMGROUPBUYING_AGG_SITE_FIELD_URL_DESC"
+			class="inputbox"
+			size="30"
+			required="true"
+		 />
+
+		<field name="description"
+			type="textarea"
+			label="COM_CMGROUPBUYING_AGG_SITE_FIELD_DESCRIPTION_LABEL"
+			description="COM_CMGROUPBUYING_AGG_SITE_FIELD_DESCRIPTION_DESC"
+			class="inputbox"
+			rows="3"
+			cols="30"
+			filter="raw"
+		/>
+
+		<field name="xml_tree_header"
+			type="textarea"
+			label="COM_CMGROUPBUYING_AGG_SITE_FIELD_XML_TREE_HEADER_LABEL"
+			description="COM_CMGROUPBUYING_AGG_SITE_FIELD_XML_TREE_HEADER_DESC"
+			class="inputbox"
+			rows="20"
+			cols="40"
+			filter="raw"
+		/>
+
+		<field name="xml_tree_deals"
+			type="textarea"
+			label="COM_CMGROUPBUYING_AGG_SITE_FIELD_XML_TREE_DEALS_LABEL"
+			description="COM_CMGROUPBUYING_AGG_SITE_FIELD_XML_TREE_DEALS_DESC"
+			class="inputbox"
+			rows="20"
+			cols="40"
+			filter="raw"
+		/>
+
+		<field name="xml_tree_footer"
+			type="textarea"
+			label="COM_CMGROUPBUYING_AGG_SITE_FIELD_XML_TREE_FOOTER_LABEL"
+			description="COM_CMGROUPBUYING_AGG_SITE_FIELD_XML_TREE_FOOTER_DESC"
+			class="inputbox"
+			rows="20"
+			cols="40"
+			filter="raw"
+		/>
+
+		<field id="published"
+			name="published"
+			type="list"
+			label="JSTATUS"
+			description="JFIELD_PUBLISHED_DESC"
+			class="inputbox"
+			size="1"
+			default="1"
+		>
+			<option value="1">
+				JPUBLISHED</option>
+			<option value="0">
+				JUNPUBLISHED</option>
+		</field>
+
+		<field name="ordering"
+			type="cmordering"
+			class="inputbox"
+			label="JFIELD_ORDERING_LABEL"
+			description="JFIELD_ORDERING_DESC"
+		/>
+
+	</fieldset>
+	
+</form>

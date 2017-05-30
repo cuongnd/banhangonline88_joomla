@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="package" version="3.5" method="upgrade">
+	<name>Irish (ga-IE) Language Pack</name>
+	<packagename>ga-IE</packagename>
+	<version>3.6.0.1</version>
+	<creationDate>2016-06-21</creationDate>
+	<author>Irish translation team</author>
+	<authorEmail>kscanne@gmail.com</authorEmail>
+	<authorUrl>http://borel.slu.edu/</authorUrl>
+	<copyright>Copyright (C) 2015 - 2016 Open Source Matters, Inc. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<url></url>
+	<packager></packager>
+	<packagerurl></packagerurl>
+	<description><![CDATA[<div style="text-align:left;">
+<h3>Joomla! 3.6.0 Full Irish (ga-IE) Language Package - Version 3.6.0.1</h3>
+<h3>Pacáiste Gaeilge (ga-IE) le haghaidh Joomla! 3.6.0 - Leagan 3.6.0.1</h3>
+</div>]]></description>
+	<files>
+		<file type="language" client="site" id="ga-IE">site_ga-IE.zip</file>
+		<file type="language" client="administrator" id="ga-IE">admin_ga-IE.zip</file>
+	</files>
+	<updateservers>
+		<server type="collection" priority="1" name="Accredited Joomla! Translations">http://update.joomla.org/language/translationlist_3.xml</server>
+	</updateservers>
+</extension>

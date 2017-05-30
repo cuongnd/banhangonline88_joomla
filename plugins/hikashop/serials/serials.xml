@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" version="2.5" method="upgrade" group="hikashop">
+	<name>HikaSerials - HikaShop Integration plugin</name>
+	<hikainstall ordering="0" enable="1" report="0"/>
+	<creationDate>{__MONTH__} {__YEAR__}</creationDate>
+	<version>{__VERSION__}</version>
+	<author>Obsidev</author>
+	<authorEmail>contact@obsidev.com</authorEmail>
+	<authorUrl>http://www.obsidev.com</authorUrl>
+	<copyright>Copyright (C) 2012-{__YEAR__} OBSIDEV SARL - All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<description>This plugin make the integration between HikaShop and HikaSerials</description>
+	<files>
+		<filename plugin="serials">serials.php</filename>
+	</files>
+	<params/>
+	<config/>
+</extension>

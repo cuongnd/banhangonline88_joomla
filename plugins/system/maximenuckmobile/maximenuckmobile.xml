@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.0" type="plugin" group="system" method="upgrade">
+	<name>System - Maximenu CK Mobile</name>
+	<author>Cédric KEIFLIN</author>
+	<creationDate>Octobre 2012</creationDate>
+	<copyright>Cédric KEIFLIN</copyright>
+	<license>http://www.gnu.org/licenses/gpl.html</license>
+	<authorEmail>ced1870@gmail.com</authorEmail>
+	<authorUrl>http://www.joomlack.fr</authorUrl>
+	<version>1.2.4</version>
+	<description>PLG_MAXIMENUCK_MOBILE_DESC</description>
+	<files>
+		<filename plugin="maximenuckmobile">maximenuckmobile.php</filename>
+		<filename>index.html</filename>
+		<filename>Mobile_Detect.php</filename>
+		<folder>assets</folder>
+		<folder>language</folder>
+		<folder>params</folder>
+		<folder>themes</folder>
+	</files>
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.plg_system_maximenuckmobile.sys.ini</language>
+		<language tag="en-GB">en-GB/en-GB.plg_system_maximenuckmobile.ini</language>
+		<language tag="fr-FR">fr-FR/fr-FR.plg_system_maximenuckmobile.sys.ini</language>
+		<language tag="fr-FR">fr-FR/fr-FR.plg_system_maximenuckmobile.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic" addfieldpath="/modules/mod_maximenuck/elements">
+				<field
+					name="maximenumobile_detectiontype"
+					type="cklist"
+					default="resolution"
+					label="PLG_MAXIMENUCK_DETECTIONTYPE_LABEL"
+					description="PLG_MAXIMENUCK_DETECTIONTYPE_DESC"
+					icon="application_form_magnify.png"
+				>
+					<option value="resolution">PLG_MAXIMENUCK_RESOLUTION</option>
+					<option value="tablet">PLG_MAXIMENUCK_TABLET</option>
+					<option value="phone">PLG_MAXIMENUCK_PHONE</option>
+				</field>
+				<field
+					name="maximenumobile_resolution"
+					type="cktext"
+					label="PLG_MAXIMENUCK_MOBILERESOLUTION_LABEL"
+					description="PLG_MAXIMENUCK_MOBILERESOLUTION_DESC"
+					icon="width.png"
+					suffix="px"
+					default="640" 
+				/>
+				<field
+					name="maximenumobile_theme"
+					type="ckfolderlist"
+					directory="plugins/system/maximenuckmobile/themes"
+					hide_none="true"
+					hide_default="true"
+					default="default"
+					label="PLG_MAXIMENUCK_MOBILETHEME_LABEL"
+					description="PLG_MAXIMENUCK_MOBILETHEME_DESC"
+					icon="palette.png" 
+				/>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<extension version="2.5" type="plugin" group="system" method="upgrade">
+  <name>Freestyle Joomla Installer</name>
+  <author>Freestyle Joomla</author>
+  <creationDate>May 21, 2013</creationDate>
+  <copyright>(C) 2013 Freestyle Joomla. All rights reserved.</copyright>
+  <license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html </license>
+  <authorUrl>http://www.freestyle-joomla.com</authorUrl>
+  <version>1.0</version>
+  <description>Freestyle Joomla Component Installer</description>
+  <scriptfile>install.script.php</scriptfile>
+  <files>
+    <filename plugin="a_fsj_install">a_fsj_install.php</filename>
+  </files>
+  <packages><package id="lib_fsj_core" xml="fsj_core.xml"/><package id="com_fsj_main" xml="fsj_main.xml"/><package id="com_fsj_transman_pro" xml="fsj_transman.xml"/></packages>
+</extension>

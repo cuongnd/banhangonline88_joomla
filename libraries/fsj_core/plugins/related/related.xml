@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<plugin method="upgrade" type="fsj_plugin_type" version="1.6">
+  <authorEmail>support@freestyle-joomla.com</authorEmail>
+  <author>Freestyle Joomla</author>
+  <copyright>(C) 2013 Freestyle Joomla. All rights reserved.</copyright>
+  <license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html </license>
+  <authorUrl>http://www.freestyle-joomla.com</authorUrl>
+
+  <name>Related Items</name>
+  <description>Allows related items to be added to content</description>
+  
+  <component>fsj_core</component>
+
+  <params>
+    <settings>
+      <type>
+        <image>fsj/plugins/related/related.png</image>
+      </type>
+    </settings>
+    <!--<pluginsettings>
+      <plugin>
+        <image>fsj/plugins/related/related.png</image>
+      </plugin>
+    </pluginsettings>-->
+  </params>
+  
+  <!-- These settings apply to the plugin type -->
+  <type_settings>
+    <fields display="FSJ_PT_SETTINGS" name="type">
+      <field name="image" type="fsjimage" label="FSJ_RELATED_DEFAULT_IMAGE" description="FSJ_RELATED_IMAGE_DESC">
+        <fsjimage folder="plugins/related" filter="(.jpg$|.png$)" listtype="thumbnail" thumbtext="0" thumbwidth="32" thumbheight="32" lightbox="0"
+      editthumb="1" editdropdown="1" editpick="1" editwidth="64" editheight="64" />
+      </field>
+    </fields>
+   </type_settings>
+
+  <!-- These settings apply to all plugins for this type -->
+  <plugin_settings>
+    <fields display="FSJ_PT_SETTINGS" name="plugin">
+      <field name="image" type="fsjimage" label="FSJ_RELATED_IMAGE" description="FSJ_RELATED_IMAGE_DESC">
+        <fsjimage folder="plugins/related" filter="(.jpg$|.png$)" listtype="thumbnail" thumbtext="0" thumbwidth="32" thumbheight="32" lightbox="0"
+      editthumb="1" editdropdown="1" editpick="1" editwidth="64" editheight="64" />
+      </field>
+    </fields>
+  </plugin_settings>
+
+  <template name="related" com="main">
+    <path>libraries/fsj_core/plugins/related/smart_tpl/related.tmpltype.xml</path>
+    <templates>libraries/fsj_core/plugins/related/smart_tpl/related/</templates>
+  </template>
+</plugin>

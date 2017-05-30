@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="params">
+        <fields name="widget_settings">
+            <fieldset name="widget_account_settings">
+                <field name="region" type="list" default="US" label="COM_JFBCONNECT_WIDGET_AMAZON_REGION_LABEL" description="COM_JFBCONNECT_WIDGET_AMAZON_REGION_DESCRIPTION">
+                    <option value="US">COM_JFBCONNECT_WIDGET_AMAZON_REGION_OPTION_US</option>
+                    <option value="GB">COM_JFBCONNECT_WIDGET_AMAZON_REGION_OPTION_UK</option>
+                    <option value="DE">COM_JFBCONNECT_WIDGET_AMAZON_REGION_OPTION_DE</option>
+                    <option value="FR">COM_JFBCONNECT_WIDGET_AMAZON_REGION_OPTION_FR</option>
+                    <option value="JP">COM_JFBCONNECT_WIDGET_AMAZON_REGION_OPTION_JP</option>
+                    <option value="CA">COM_JFBCONNECT_WIDGET_AMAZON_REGION_OPTION_CA</option>
+                    <!--<option value="IT">COM_JFBCONNECT_WIDGET_AMAZON_REGION_OPTION_IT</option>-->
+                </field>
+            </fieldset>
+            <fieldset name="widget_carousel_settings" addfieldpath="/components/com_jfbconnect/libraries/provider/amazon/fields/">
+                <field name="title" type="text" label="COM_JFBCONNECT_WIDGET_AMAZON_TITLE_LABEL" description="COM_JFBCONNECT_WIDGET_AMAZON_TITLE_DESCRIPTION" />
+                <field name="size" type="groupedlist" default="600x200" label="COM_JFBCONNECT_WIDGET_AMAZON_SIZE_LABEL" description="COM_JFBCONNECT_WIDGET_AMAZON_SIZE_DESCRIPTION">
+                    <group label="COM_JFBCONNECT_WIDGET_AMAZON_CAROUSEL_SIZE_OPTION_GROUP_ORIENTATION_FERRIS_WHEEL">
+                        <option value="120x500">120 x 500</option>
+                        <option value="160x600">160 x 600</option>
+                    </group>
+                    <group label="COM_JFBCONNECT_WIDGET_AMAZON_CAROUSEL_SIZE_OPTION_GROUP_ORIENTATION_CAROUSEL">
+                        <option value="400x150">400 x 150</option>
+                        <option value="500x175">500 x 175</option>
+                        <option value="600x200">600 x 200</option>
+                    </group>
+                </field>
+                <field name="widget_type" type="list" default="Bestsellers" label="COM_JFBCONNECT_WIDGET_AMAZON_WIDGET_TYPE_LABEL" description="COM_JFBCONNECT_WIDGET_AMAZON_CAROUSEL_WIDGET_TYPE_DESCRIPTION" >
+                    <option value="Bestsellers">COM_JFBCONNECT_WIDGET_AMAZON_WIDGET_TYPE_OPTION_BEST_SELLERS</option>
+                    <option value="MostWishedFor">COM_JFBCONNECT_WIDGET_AMAZON_WIDGET_TYPE_OPTION_MOST_WISH_FOR_PRODUCTS</option>
+                    <option value="MostGifted">COM_JFBCONNECT_WIDGET_AMAZON_WIDGET_TYPE_OPTION_MOST_GIFTED_PRODUCTS</option>
+                    <option value="NewReleases">COM_JFBCONNECT_WIDGET_AMAZON_WIDGET_TYPE_OPTION_NEW_RELEASES</option>
+                    <option value="SearchAndAdd">COM_JFBCONNECT_WIDGET_AMAZON_WIDGET_TYPE_OPTION_SEARCH_AND_ADD_PRODUCTS</option>
+                    <option value="ASINList">COM_JFBCONNECT_WIDGET_AMAZON_WIDGET_TYPE_OPTION_ASIN_LIST</option>
+                </field>
+                <field name="search_index" type="amazoncategory" label="COM_JFBCONNECT_WIDGET_AMAZON_CATEGORY_LABEL" description="COM_JFBCONNECT_WIDGET_AMAZON_CATEGORY_DESCRIPTION" />
+                <field name="browse_node" type="text" label="COM_JFBCONNECT_WIDGET_AMAZON_BROWSE_NODE_LABEL" description="COM_JFBCONNECT_WIDGET_AMAZON_BROWSE_NODE_DESCRIPTION" />
+                <field name="asin" type="text" label="COM_JFBCONNECT_WIDGET_AMAZON_ASIN_LABEL" description="COM_JFBCONNECT_WIDGET_AMAZON_ASIN_DESCRIPTION" />
+                <field name="keywords" type="text" label="COM_JFBCONNECT_WIDGET_AMAZON_KEYWORDS_LABEL" description="COM_JFBCONNECT_WIDGET_AMAZON_KEYWORDS_DESCRIPTION" />
+                <field name="shuffle_products" type="radio" default="1" size="1" label="COM_JFBCONNECT_WIDGET_AMAZON_SHUFFLE_PRODUCTS_LABEL" description="COM_JFBCONNECT_WIDGET_AMAZON_SHUFFLE_PRODUCTS_DESCRIPTION">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field name="show_border" default="0" type="radio" size="1" label="COM_JFBCONNECT_WIDGET_AMAZON_CAROUSEL_SHOW_BORDER_LABEL" description="COM_JFBCONNECT_WIDGET_AMAZON_CAROUSEL_SHOW_BORDER_DESCRIPTION">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field name="tracking_id" type="text" label="COM_JFBCONNECT_WIDGET_AMAZON_TRACKING_ID_LABEL" description="COM_JFBCONNECT_WIDGET_AMAZON_TRACKING_ID_DESCRIPTION" />
+            </fieldset>
+        </fields>
+    </fields>
+</form>

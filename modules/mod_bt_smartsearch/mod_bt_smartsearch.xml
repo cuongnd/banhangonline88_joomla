@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension 	type="module" version="2.5"	client="site" method="upgrade">
+	<name>BT Smart Search</name>
+    <author>BowThemes</author>
+	<creationDate>December 2012</creationDate>
+	<copyright>Copyright (C) 2012 Bowthemes. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>support@bowthemes.com</authorEmail>
+	<authorUrl>http://www.bowthemes.com</authorUrl>
+	<version>1.0.2</version>
+	<description>
+	<![CDATA[
+		<div class="bt_description">
+			<h3>BT Smart Search Module Version 1.0.2</h3>				
+			<p><img src="../modules/mod_bt_smartsearch/admin/images/smartsearch.jpg" width="50" height="50"><br/>BT Smart Search Module</p>
+			<br clear="both" />
+			<h3>Features</h3>
+			<ul class="list-style">
+				<li> Support for Smart Search component</li>
+				<li> One Click to enable all Finder Plugin and Indexing Data right on the module's backend
+				<li> Advanced Search with search filter (author ,category,country,language,region,type...)</li>
+				<li> Easy to change search button's position</li>
+				<li> Support responsive website</li>
+				<li> Compatibility with Joomla 2.5 and 3.x </li>				
+						
+			</ul>
+			<h3>Upgrade versions</h3>
+			<p>
+				Your current versions is 1.0.2 <a target="_blank" href="http://bowthemes.com/bt-smartseach.html">Find our latest versions now</a>
+			</p>
+			<h3>Userful links</h3>
+			<ul>
+				<li><a target="_blank" href="http://bowthemes.com/bt-smartseach.html">Video tutorials</a></li>
+				<li><a target="_blank" href="http://bowthemes.com/bt-smartseach/">Report bug</a></li>
+				<li><a target="_blank" href="http://bowthemes.com/bt-smartseach/">Forum support</a></li>
+			</ul>
+			<h3>About bow themes & copyright</h3>	
+			<p>
+				Bow Themes is Professional Joomla template provider. We are focused on creating unique, attractive and clean templates without loosing flexibility and simplicity of customization
+			</p>
+			Copyright (C) 2012 BowThemes	
+
+		</div>
+		<style>
+			.bt_description{
+				text-align:left;
+			}
+			.bt_description h3{
+				text-transform: uppercase;
+				margin: 20px 0px 10px 0px;
+			}
+			.bt_description img{
+				float:left;
+				margin:5px 10px 5px 0px;
+			}
+			.bt_description p,.bt_description li{
+				padding: 5px 5px 5px 30px;	
+				list-style: none outside none;
+			}
+			
+			.bt_description ul.list-style li{
+				background:url(../modules/mod_bt_smartsearch/admin/images/tick.png) 0px 6px no-repeat;
+				padding-left:30px;
+				line-height:15px;
+			}
+		</style>
+	]]>	
+	</description>
+	<files>
+		<filename module="mod_bt_smartsearch">mod_bt_smartsearch.php</filename>
+		<folder>admin</folder>
+		<folder>tmpl</folder>
+		<filename>helper.php</filename>
+		<filename>index.html</filename>
+	</files>
+	<languages>
+		<language tag="en-GB">en-GB.mod_bt_smartsearch.ini</language>		
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset  name="Config" label="MOD_BT_SMARTSEARCH_CONFIG_OPTION" addfieldpath="/modules/mod_bt_smartsearch/admin/formfield">
+				<field name="filter_plugin" type="tabs" label="MOD_BT_SMARTSEARCH_FILTER_PLUGIN_LABEL" description="MOD_BT_SMARTSEARCH_FILTER_PLUGIN_DESC"/> 
+			</fieldset>
+			<fieldset name="basic">
+				<field name="searchfilter"	type="searchfilter"	default="" label="MOD_BT_SAMRTSEARCH_SEARCHFILTER_LABEL"	description="MOD_BT_SAMRTSEARCH_SEARCHFILTER_DESC" />
+				<field name="show_autosuggest"	type="radio" class="btn-group" default="1"	label="MOD_BT_SAMRTSEARCH_SHOW_AUTOSUGGEST_LABEL" description="MOD_BT_SAMRTSEARCH_SHOW_AUTOSUGGEST_DESC">
+					<option	value="0">JNO</option>
+					<option	value="1">JYES</option>	
+				</field>
+				<field	name="show_advanced" type="list" default="1"	label="MOD_BT_SAMRTSEARCH_SHOW_ADVANCED_LABEL"	description="MOD_BT_SAMRTSEARCHSHOW_ADVANCED_DESC">
+					<option	value="2">MOD_BT_SAMRTSEARCH_SHOW_ADVANCED_OPTION_LINK</option>
+					<option	value="1">MOD_BT_SAMRTSEARCH_SHOW</option>
+					<option	value="0">MOD_BT_SAMRTSEARCH_HIDE</option>
+				</field>
+			</fieldset>
+			<fieldset name="advanced">
+				<field	name="moduleclass_sfx"	type="text"	default=""	label="MOD_BT_SAMRTSEARCH_MODULECLASS_SFX_LABEL"	description="MOD_BT_SAMRTSEARCH_MODULECLASS_SFX_DESC" />
+				<field	name="layout" type="modulelayout" label="MOD_BT_SAMRTSEARCH_LAYOUT_LABEL" description="MOD_BT_SAMRTSEARCH_LAYOUT_DESC"/>				
+				<field	name="show_button"	type="radio" class="btn-group" default="1" label="MOD_BT_SAMRTSEARCH_SHOW_BUTTON_LABEL"	description="MOD_BT_SAMRTSEARCH_SHOW_BUTTON_DESC">
+					<option	value="0">JNO</option>
+					<option	value="1">JYES</option>					
+				</field>
+				<field
+					name="button_pos" type="list" default="right" label="MOD_BT_SAMRTSEARCH_BUTTON_POS_LABEL"	description="MOD_BT_SAMRTSEARCH_BUTTON_POS_DESC">
+					<option	value="right">MOD_BT_SAMRTSEARCH_JGLOBAL_RIGHT</option>
+					<option	value="left">MOD_BT_SAMRTSEARCH_JGLOBAL_LEFT</option>
+					<option	value="top">MOD_BT_SAMRTSEARCH_TOP</option>
+					<option	value="bottom">MOD_BT_SAMRTSEARCH_BOTTOM</option>
+				</field>
+				<field	name="opensearch" type="radio" class="btn-group bt_control" label="MOD_BT_SAMRTSEARCH_OPENSEARCH_LABEL" description="MOD_BT_SAMRTSEARCH_OPENSEARCH_DESC" default="1">
+					<option	value="0">JNO</option>
+					<option	value="1">JYES</option>
+				</field>
+				<field	name="opensearch_title" class="opensearch_1" type="text" default="Smart search..."	label="MOD_BT_SAMRTSEARCH_OPENSEARCH_TEXT_LABEL"	description="MOD_BT_SAMRTSEARCH_OPENSEARCH_TEXT_DESC" />
+				<field type="asset" name="asset" addfieldpath="/modules/mod_bt_smartsearch/admin/formfield"  path="modules/mod_bt_smartsearch/admin/" />
+			</fieldset>
+		</fields>
+	</config>
+</extension>

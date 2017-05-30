@@ -1,0 +1,154 @@
+/**
+* @package 		EasySocial
+* @copyright	Copyright (C) 2010 - 2014 Stack Ideas Sdn Bhd. All rights reserved.
+* @license 		Proprietary Use License http://stackideas.com/licensing.html
+* @author 		Stack Ideas Sdn Bhd
+**/
+
+/* = ELEMEENTS
+--------------------------------------------------------------- */
+
+ol,ul
+{
+	margin-left: 20px;
+}
+
+.list-unstyled
+{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+
+
+/* = BUTTONS ISSUE FOR JOOMLA 2.5
+--------------------------------------------------------------- */
+#element-box
+{ // this ID only for 2.5
+    .btn
+    {
+    	height: 34px;
+    }
+    .btn-sm
+    {
+    	height: 30px;
+    }
+}
+
+
+/* = SMALL
+--------------------------------------------------------------- */
+
+.small
+{
+	font-size: 11px;
+}
+
+/* = FORM GROUP
+--------------------------------------------------------------- */
+
+.form-group
+{
+	overflow: visible;
+	margin-top: 15px;
+
+	&:before,
+	&:after
+	{
+		content: " ";
+		display: table;
+	}
+
+	&:after
+	{
+		clear: both;
+	}
+
+	>label
+	{
+		padding: 6px;
+		text-align: right;
+
+		.icon-es-help.pull-right
+		{
+			margin-left: 5px;
+		}
+	}
+}
+
+.form-inline
+{
+	.form-group
+	{
+		margin-top: 0;
+	}
+}
+
+
+
+/* = FORM CONTROL
+--------------------------------------------------------------- */
+
+.form-control
+{
+	margin-bottom: 0;
+
+	&.input-short,
+	&.input-mini
+	{
+		width: 50px;
+		display: inline-block;
+
+		+strong
+		{
+			display: inline-block;
+			vertical-align: top;
+			line-height: 30px;
+			margin: 0 0 0 5px;
+		}
+	}
+
+	&.input-medium
+	{
+		width: 200px;
+		min-width: 50%;
+	}
+}
+
+
+
+/* = YES/NO BUTTON
+--------------------------------------------------------------- */
+
+.btn-group-yesno
+{
+	min-width: 120px;
+
+	>.btn
+	{
+		font-size: 12px !important;
+		line-height: 24px !important;
+		height: 24px !important;
+	}
+}
+
+
+
+/* = POPBOX
+--------------------------------------------------------------- */
+
+.popbox-content
+{
+	padding: 15px;
+}
+
+
+
+/* = JOOMLA 2.5: DASHBOARD HOME
+--------------------------------------------------------------- */
+
+.es-stat .es-stat-items .es-stat-item > a span i
+{
+	line-height: 52px;
+}

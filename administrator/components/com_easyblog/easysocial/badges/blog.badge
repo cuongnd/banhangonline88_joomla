@@ -1,0 +1,72 @@
+[
+	{
+		// The title of the badge.
+		"title" 		: "Bloggerholic",
+
+		// The description of the badge
+		"description"	: "Loves creating blog post on the site.",
+
+		// The steps needed to unlock this badge.
+		"howto"			: "To unlock this badge, you need to create more than 20 blog posts on the site.",
+
+		// The alias of the badge.
+		"alias"			: "bloggerholic",
+
+		// The extension for this badge.
+		"extension"		: "com_easyblog",
+
+		// The badge command.
+		"command"		: "blog.create",
+
+		// The default avatar for this rule. Relative to the site URL.
+		"avatar"		: "components/com_easyblog/assets/images/badges/bloggerholic.png",
+
+		// When user creates a new discussion for 15 times.
+		"frequency"		: 20
+	},
+	{
+		// The title of the badge.
+		"title" 		: "Reviewer",
+
+		// The description of the badge
+		"description"	: "Reviews blog posts that is created on the site.",
+
+		// The steps needed to unlock this badge.
+		"howto"			: "To unlock this badge, you need to rate more than 25 blog posts from the site.",
+
+		// The alias of the badge.
+		"alias"			: "reviewer",
+
+		// The extension for this badge.
+		"extension"		: "com_easyblog",
+
+		// The badge command.
+		"command"		: "blog.rate",
+
+		// The default avatar for this rule. Relative to the site URL.
+		"avatar"		: "components/com_easyblog/assets/images/badges/reviewer.png",
+
+		// When user creates a new discussion for 15 times.
+		"frequency"		: 25
+	},
+	{
+		"title" 		: "Bookworm",
+		"alias"			: "bookworm",
+		"description"	: "Someone who loves to read through blog posts.",
+		"howto"			: "To unlock this badge, read more than 30 blog posts on the site",
+		"command"		: "blog.read",
+		"extension"		: "com_easyblog",
+		"avatar"		: "components/com_easyblog/assets/images/badges/bookworm.png",
+		"frequency"		: 30
+	},
+	{
+		"title" 		: "Blog Police",
+		"alias"			: "blog-police",
+		"description"	: "Helps moderate blog posts on the site by being a responsible user.",
+		"howto"			: "To unlock this badge, report invalid or spam blog post for more than 10 times.",
+		"command"		: "blog.report",
+		"extension"		: "com_easyblog",
+		"avatar"		: "components/com_easyblog/assets/images/badges/blog-police.png",
+		"frequency"		: 10
+	}
+]

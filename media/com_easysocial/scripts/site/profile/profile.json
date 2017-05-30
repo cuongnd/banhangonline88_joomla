@@ -1,0 +1,11 @@
+[
+    {
+        "script": [
+            "site/profile/header"
+        ],
+        "library": [
+            "history"
+        ],
+        "adapter": "EasySocial"
+    }
+]

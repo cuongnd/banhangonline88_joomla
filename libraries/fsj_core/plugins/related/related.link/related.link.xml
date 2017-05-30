@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<plugin>
+  <authorEmail>support@freestyle-joomla.com</authorEmail>
+  <author>Freestyle Joomla</author>
+  <copyright>(C) 2013 Freestyle Joomla. All rights reserved.</copyright>
+  <license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html </license>
+  <authorUrl>http://www.freestyle-joomla.com</authorUrl>
+
+  <name>Link</name>
+  <description>Link to a URL</description>
+  
+  <params>
+    <settings>
+      <plugin>
+        <image>fsj/plugins/related/related_article.png</image>
+      </plugin>
+    </settings>
+    
+    <pick>
+      <type>form</type>
+      <!-- no reference, so look for pick_form in this file-->
+    </pick>
+
+    <display>
+      <type>params</type>
+      <data>
+        <title>{title} ({url})</title>
+        <link>{url}</link>
+      </data>
+    </display>
+
+    <output>
+      <type>params</type>
+      <data>
+        <title>{title}</title>
+        <link>{url}</link>
+        <target>{target}</target>
+      </data>
+    </output>   
+  </params>
+
+  <pick_form>
+    <form>
+      <fieldset>
+        <field name="url" type="text" label="URL" />
+        <field name="title" type="text" label="JGLOBAL_TITLE" />
+        <field name="target" type="list" label="Target" description="">
+          <option value="">FSJ_ATTACH_WEB_TARGET_NOTSET</option>
+          <option value="_self">FSJ_ATTACH_WEB_TARGET_SELF</option>
+          <option value="_blank">FSJ_ATTACH_WEB_TARGET_BLANK</option>
+          <option value="_parent">FSJ_ATTACH_WEB_TARGET_PARENT</option>
+          <option value="_top">FSJ_ATTACH_WEB_TARGET_TOP</option>
+        </field>
+      </fieldset>
+    </form>
+  </pick_form>
+  
+</plugin>

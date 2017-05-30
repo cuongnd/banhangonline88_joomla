@@ -1,0 +1,133 @@
+/*
+* Pixel Point Creative - Cinch Menu Module
+* License: GNU General Public License version
+* See: http://www.gnu.org/copyleft/gpl.html
+* Copyright (c) Pixel Point Creative LLC.
+* More info at http://www.pixelpointcreative.com
+* Last Updated: 5/13/14
+* Additional improvemnets by Paul @ Protopia.co.uk
+*/
+
+ul.accordion-menu > li.separator  > .item-wrapper > .menu-link > a {cursor:text!important}
+
+
+ul.accordion-menu li li {text-indent: 5px;}
+ul.accordion-menu li li li {text-indent: 10px;}
+ul.accordion-menu li li li li {text-indent: 15px;}
+
+ul.accordion-menu {
+	border:1px solid #1a1a1a;
+	margin:0px;
+	padding:0px;
+	overflow:hidden;
+	line-height:16px;
+	list-style:none !important;
+	font-size:12px;
+}
+ul.accordion-menu-left {
+	text-align:left;
+}
+ul.accordion-menu-right {
+	text-align:right;
+}
+ul.accordion-menu li {
+	border-top:1px solid #1a1a1a;
+}
+ul.accordion-menu > li.first,
+ul.accordion-menu > li:first-child {
+	border-top:0px;
+}
+
+ul.accordion-menu a,
+ul.accordion-menu a:hover,
+ul.accordion-menu a:visited,
+ul.accordion-menu a:active,
+ul.accordion-menu a:focus {
+	font-family:Arial;
+	background:none;
+}
+ul.accordion-menu.button-left li > .item-wrapper > .menu-button,
+ul.accordion-menu.button-right li > .item-wrapper > .menu-button {
+	padding:12px 0px;
+	line-height:10px;
+}
+ul.accordion-menu.button-left li > .item-wrapper > .menu-button {
+	float:left;
+}
+ul.accordion-menu.button-right li > .item-wrapper > .menu-button {
+	float:right;
+}
+ul.accordion-menu.button-left li > .item-wrapper > .menu-button > img {
+	padding-left:10px;
+}
+ul.accordion-menu.button-right li > .item-wrapper > .menu-button > img {
+	padding-right:10px;
+	cursor:pointer;
+}
+ul.accordion-menu li  > .item-wrapper > .menu-link {
+	min-height:35px;
+	overflow-y:hidden;
+}
+ul.accordion-menu li > .item-wrapper > .menu-link > a {
+	display:inline-block;
+	text-decoration:none;
+	background:none;
+	padding:10px 10px 9px 10px;
+	vertical-align:middle;
+	}
+ul.accordion-menu li > .item-wrapper > .menu-link > a > img {
+	vertical-align:middle;
+	border:0 none;
+	height:auto;
+	max-width:100%;
+	padding:0 5px 0 0;
+}
+ul.accordion-menu-left li > .item-wrapper > .menu-link > a {
+	float:left;
+}
+ul.accordion-menu-right li > .item-wrapper > .menu-link > a {
+	float:right;
+}
+ul.accordion-menu > li > .item-wrapper > .menu-link > a {
+	font-weight:bold;
+}
+/* ul.accordion-menu li > .item-wrapper:after {
+	content:".";
+	visibility: hidden;
+	display:block;
+	height: 0;
+	clear: both;
+} */
+
+ul.accordion-menu li > .ul-wrapper {
+	display:none;
+}
+ul.accordion-menu li ul {
+	margin:0px;
+	padding:0px;
+}
+ul.accordion-menu-left li li > .item-wrapper > .menu-link > a {
+	padding-left:20px;
+}
+ul.accordion-menu-right li li > .item-wrapper > .menu-link > a {
+	padding-right:20px;
+}
+ul.accordion-menu-left li li li > .item-wrapper > .menu-link > a {
+	padding-left:30px;
+}
+ul.accordion-menu-right li li li > .item-wrapper > .menu-link > a {
+	padding-right:30px;
+}
+ul.accordion-menu-left li li li li > .item-wrapper > .menu-link > a {
+	padding-left:40px;
+}
+ul.accordion-menu-right li li li li > .item-wrapper > .menu-link > a {
+	padding-right:40px;
+}
+ul.accordion-menu-left li li li li li > .item-wrapper > .menu-link > a {
+	padding-left:50px;
+}
+ul.accordion-menu-right li li li li li > .item-wrapper > .menu-link > a {
+	padding-right:50px;
+}
+

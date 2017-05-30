@@ -1,0 +1,100 @@
+/**
+* @package 		EasySocial
+* @copyright	Copyright (C) 2010 - 2014 Stack Ideas Sdn Bhd. All rights reserved.
+* @license 		Proprietary Use License http://stackideas.com/licensing.html
+* @author 		Stack Ideas Sdn Bhd
+**/
+/*------------------------------------*\
+	search-result.less
+\*------------------------------------*/
+
+.search-input-wrap {
+	display: table;
+	width: 100%;
+	// background: #F3FBFE;
+	.search-input-left,
+	.search-input-right {
+		display: table-cell;
+		vertical-align: top;
+	}
+	.input-search {
+		margin: 0;
+		width: 100%;
+		border-radius: 3px 0 0 3px;
+	}
+	.btn-search {
+		// border-left: none;
+		// width: 100%;
+		// border-radius: 0 3px 3px 0;
+	}
+}
+
+.es-search-result {
+	.es-item-grid {
+		.es-item {
+			border: none;
+			border-bottom: 1px solid @hrBorder;
+			border-radius: 0;
+			margin-left: 10px;
+		}
+	}
+	.item-meta{
+		margin-top: 3px;
+		color: #aaa;
+		font-size: 11px;
+	}
+	.search-result-group + .search-result-group {
+		margin-top: 30px;
+	}
+}
+
+
+.search-blk {
+	.search-blk-hd {
+		font-weight: bold;
+		padding: 10px 16px;
+		border-bottom: 1px solid @esSearchItemBorder;
+	}
+	.search-blk-bd {
+		.es-avatar {
+			margin: 0 5px 0 0;
+			display: block;
+			overflow: hidden;
+			padding: 0;
+			float: left;
+			.square(16px);
+			img {
+				width: 16px;
+				height: 16px;
+				line-height: 16px;
+			}
+		}
+
+	}
+	.search-result-list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		a {
+			.clearfix();
+			padding: 6px 15px 6px 20px;
+			display: block;
+		}
+		li + li {
+			border-top: 1px solid @esSearchItemBorder;
+		}
+	}
+	+ .search-blk {
+		border-top: 1px solid @esSearchItemBorder;
+	}
+}//search-blk
+.search-footer {
+	border-top: 1px solid @esSearchItemBorder;
+	padding: 14px 10px;
+	background: @esSearchFooterBackground;
+}
+.search-empty {
+	padding: 20px;
+	text-align: center;
+	color: #888;
+}

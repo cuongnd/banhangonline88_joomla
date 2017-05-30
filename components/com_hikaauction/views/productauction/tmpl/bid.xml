@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<state>
+		<name>Auction bid</name>
+		<params addpath="/components/com_hikaauction/params">
+			<param name="options" type="selectoptions" default="module" label="options" description="HikaAuction options" />
+		</params>
+	</state>
+	<layout title="COM_HIKAAUCTION_PRODUCT_BID">
+		<message></message>
+	</layout>
+	<fields name="params" addfieldpath="/components/com_hikaauction/fields">
+		<fieldset name="basic" label="HikaAuction Options">
+			<field id="options" name="options" type="selectoptions" label="options" description="HikaAuction options" />
+		</fieldset>
+	</fields>
+</metadata>

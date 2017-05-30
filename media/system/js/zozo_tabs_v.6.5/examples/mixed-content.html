@@ -1,0 +1,155 @@
+<!doctype html>
+<html class=" z-width1200">
+<head>
+    <title>AJAX Content</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width = device-width, initial-scale = 1.0" />
+
+    <!-- Examples CSS (Not needed) -->
+    <link href="../css/zozo.examples.min.css" rel="stylesheet" />
+
+    <!-- Zozo Tabs css -->
+    <link href="../css/zozo.tabs.min.css" rel="stylesheet" />
+
+    <!-- Zozo Tabs js -->
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/zozo.tabs.js"></script>
+</head>
+
+<body>
+    <div id="ribbon"></div>
+    <div id="page">
+        <a class="z-btn z-back" href="index.html">Back</a>
+
+         <!-- Zozo Tabs Start-->
+        <div id="tabbed-nav">
+
+            <!-- Tab titles, extra titles added between spans for multiline tabs -->
+            <ul>
+                <li><a>Video<span>Youtube and Vimeo</span></a></li>
+                <li><a>Apple<span>iFrame Content</span></a></li>
+                <li><a>Mixed<span>Video and Text</span></a></li>
+                <li><a>Maps<span>Google Maps</span></a></li>
+                <li><a>AJAX<span>AJAX Content</span></a></li>
+                <li><a>Dynamic<span>Add Dynamic Content</span></a></li>
+            </ul>
+
+            <!-- Content container -->
+            <div>
+
+                <!-- Content for the first tab-->
+                <div class="z-row">
+                    <div class="col6">
+                        <div class="z-video">
+                            <iframe width="800" height="450" src="http://www.youtube.com/embed/MOiyD26cJ2A" frameborder="0"></iframe>
+                        </div>
+
+
+                    </div>
+                    <div class="col6">
+                        <div class="z-video">
+                            <iframe src="http://player.vimeo.com/video/39792837" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="z-nopadding">
+                    <div class="z-video">
+                        <iframe src="http://www.apple.com/" frameborder="0" width="800" height="500" scrolling="auto"></iframe>
+                    </div>
+                </div>
+
+                <!-- Content for the second tab, also using help col6 form included fluid grid. z-row is automatically added to each tab content -->
+                <div class="z-row">
+                    <div class="col6">
+                        <p>
+                            ZoZo UI Tabs is a fabulous tool!                            
+                                        The support was quick and the developer stayed with my correspondence until I completed the project. Fabulous tech support and a great developer!                                   
+                                        Thanks again ZoZo!
+                        </p>
+                    </div>
+                    <div class="col6">
+                        <div class="z-video">
+                            <iframe src="http://player.vimeo.com/video/39792837" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content for the third tab, also using help class z-video for embiding any content such as maps/video/iframe-->
+                <div class="z-nopadding">
+                    <div class="z-video">
+                        <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.uk/maps?q=is+london+a+city&amp;ie=UTF8&amp;hl=en&amp;hq=&amp;hnear=London,+United+Kingdom&amp;t=m&amp;z=10&amp;ll=51.511214,-0.119824&amp;output=embed"></iframe>
+                    </div>
+                </div>
+
+                <!-- Content for the fourth tab, only added the url for content to load it via ajax-->
+                <div data-content-url="ajax-content/content2.html">
+                </div>
+
+                <!-- Content for the fifth tab,  also using help class z-video for embiding any content such as maps/video/iframe for responsive design-->
+                <div>
+                    <a href='#' class='add-content'>Add Dynamic Content</a>
+                    <div id="div-test"></div>
+                </div>
+
+            </div>
+        </div>
+        <!-- Zozo Tabs End-->
+
+    </div>
+
+    <script>
+        jQuery(document).ready(function ($) {
+            /* jQuery activation and setting options for the tabs*/
+            $("#tabbed-nav").zozoTabs({
+                defaultTab: "tab5",
+                rounded: true,
+                multiline: true,
+                autoContentHeight: true,
+                theme: "white",
+                position: "top-compact",
+                size: "medium",
+                delayAjax: 500,
+                shadows: true,
+                rounded: false,
+                animation: {
+                    easing: "easeInOutExpo",
+                    duration: 600,
+                    effects: "slideH"
+                }
+            });
+
+            $(".add-content").on("click", function (e) {
+                e.preventDefault();
+
+                /* change the content of one the tabs*/
+                $("#div-test").html('<div class="z-video"><iframe width="560" height="315" src="http://www.youtube.com/embed/f4BiCOIWNC8" frameborder="0" allowfullscreen></iframe></div>');
+
+                /* Calling public method to refresh tabs height and responsiveness*/
+                $("#tabbed-nav").data('zozoTabs').refresh();
+            });
+        });
+    </script>
+
+    <script>
+        jQuery(document).ready(function ($) {
+            /*your tabs*/
+            $("#tabbed-nav").zozoTabs({
+                theme: "silver",
+                animation: {
+                    duration: 800,
+                    effects: "slideH"
+                }
+            });
+
+            /*your lightbox*/
+            $(".ajax").colorbox({
+                onComplete: function () {
+                    $("#tabbed-nav").data('zozoTabs').refresh();
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<form>
+  <authorEmail>support@freestyle-joomla.com</authorEmail>
+  <author>Freestyle Joomla</author>
+  <copyright>(C) 2013 Freestyle Joomla. All rights reserved.</copyright>
+  <license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html </license>
+  <authorUrl>http://www.freestyle-joomla.com</authorUrl>
+  <tab id="general" name="FSJ_MAIN_GLOBAL_TAB_GENERAL"/>
+  <tab id="page" name="FSJ_MAIN_GLOBAL_TAB_PAGE"/>
+  <fields display="FSJ_MAIN_GLOBAL_SET_GENERAL" name="general" tab="general">
+    <field name="hide_powered" type="fsjyesno" default="" label="FSJ_MAIN_GLOBAL_GENERAL_HIDE_POWERED" description="FSJ_MAIN_GLOBAL_GENERAL_HIDE_POWERED_DESC"/>
+  </fields>
+  <fields display="FSJ_MAIN_GLOBAL_SET_COMMENTS" name="comments" tab="general">
+    <field name="provider" type="fsjcombo" default="" label="FSJ_MAIN_GLOBAL_COMMENTS_PROVIDER" description="FSJ_MAIN_GLOBAL_COMMENTS_PROVIDER_DESC">
+      <option value="none">FSJ_MAIN_GLOBAL_COMMENTS_PROVIDER_OPT_NONE</option>
+      <option value="jcomments">FSJ_MAIN_GLOBAL_COMMENTS_PROVIDER_OPT_JCOMMENTS</option>
+      <option value="disqus">FSJ_MAIN_GLOBAL_COMMENTS_PROVIDER_OPT_DISQUS</option>
+      <!--<option value="facebook">Facebook</option>-->
+      <option value="komento">FSJ_MAIN_GLOBAL_COMMENTS_PROVIDER_OPT_KOMENTO</option>
+    </field>
+  </fields>
+  <fields display="FSJ_MAIN_GLOBAL_SET_SEARCH" name="search" tab="general">
+    <field name="type" type="fsjcombo" default="" label="FSJ_MAIN_GLOBAL_SEARCH_TYPE" description="FSJ_MAIN_GLOBAL_SEARCH_TYPE_DESC">
+      <option value="default">FSJ_MAIN_GLOBAL_SEARCH_TYPE_OPT_DEFAULT</option>
+      <option value="fulltext">FSJ_MAIN_GLOBAL_SEARCH_TYPE_OPT_FULLTEXT</option>
+      <option value="like">FSJ_MAIN_GLOBAL_SEARCH_TYPE_OPT_LIKE</option>
+    </field>
+  </fields>
+  <fields display="FSJ_MAIN_GLOBAL_SET_CSS_SETTINGS" name="css_settings" tab="general">
+    <field name="cache_bypass" type="fsjyesno" default="" label="FSJ_MAIN_GLOBAL_CSS_SETTINGS_CACHE_BYPASS" description="FSJ_MAIN_GLOBAL_CSS_SETTINGS_CACHE_BYPASS_DESC"/>
+  </fields>
+  <fields display="FSJ_MAIN_GLOBAL_SET_CORE_PAGEINCLUDE" name="core_pageinclude" tab="page">
+    <!-- jQuery inclusion -->
+    <field name="inc_jquery" type="fsjcombo" default="" label="FSJ_MAIN_GLOBAL_CORE_PAGEINCLUDE_INC_JQUERY" description="FSJ_MAIN_GLOBAL_CORE_PAGEINCLUDE_INC_JQUERY_DESC">
+      <option value="auto">FSJ_MAIN_GLOBAL_CORE_PAGEINCLUDE_INC_JQUERY_OPT_AUTO</option>
+      <option value="yes">FSJ_MAIN_GLOBAL_CORE_PAGEINCLUDE_INC_JQUERY_OPT_YES</option>
+      <option value="yesnonc">FSJ_MAIN_GLOBAL_CORE_PAGEINCLUDE_INC_JQUERY_OPT_YESNONC</option>
+      <option value="no">FSJ_MAIN_GLOBAL_CORE_PAGEINCLUDE_INC_JQUERY_OPT_NO</option>
+    </field>
+    <field name="inc_bootstrapjs" type="fsjcombo" default="" label="FSJ_MAIN_GLOBAL_CORE_PAGEINCLUDE_INC_BOOTSTRAPJS" description="FSJ_MAIN_GLOBAL_CORE_PAGEINCLUDE_INC_BOOTSTRAPJS_DESC">
+      <option value="auto">FSJ_MAIN_GLOBAL_CORE_PAGEINCLUDE_INC_BOOTSTRAPJS_OPT_AUTO</option>
+      <option value="yes">FSJ_MAIN_GLOBAL_CORE_PAGEINCLUDE_INC_BOOTSTRAPJS_OPT_YES</option>
+      <option value="no">FSJ_MAIN_GLOBAL_CORE_PAGEINCLUDE_INC_BOOTSTRAPJS_OPT_NO</option>
+    </field>
+    <!-- Bootstrap inclusion -->
+    <field name="inc_bootstrap" type="fsjcombo" default="" label="FSJ_MAIN_GLOBAL_CORE_PAGEINCLUDE_INC_BOOTSTRAP" description="FSJ_MAIN_GLOBAL_CORE_PAGEINCLUDE_INC_BOOTSTRAP_DESC">
+      <option value="yes">FSJ_MAIN_GLOBAL_CORE_PAGEINCLUDE_INC_BOOTSTRAP_OPT_YES</option>
+      <option value="fsj">FSJ_MAIN_GLOBAL_CORE_PAGEINCLUDE_INC_BOOTSTRAP_OPT_FSJ</option>
+      <option value="partial">FSJ_MAIN_GLOBAL_CORE_PAGEINCLUDE_INC_BOOTSTRAP_OPT_PARTIAL</option>
+      <option value="no">FSJ_MAIN_GLOBAL_CORE_PAGEINCLUDE_INC_BOOTSTRAP_OPT_NO</option>
+    </field>
+    <field name="artisteerfixes" type="fsjyesno" default="" label="FSJ_MAIN_GLOBAL_CORE_PAGEINCLUDE_ARTISTEERFIXES" description="FSJ_MAIN_GLOBAL_CORE_PAGEINCLUDE_ARTISTEERFIXES_DESC"/>
+  </fields>
+  <fields display="FSJ_MAIN_GLOBAL_SET_CORE_BOOTSTRAP" name="core_bootstrap" tab="page">
+    <field name="textcolor" type="fsjyesno" default="" label="FSJ_MAIN_GLOBAL_CORE_BOOTSTRAP_TEXTCOLOR" description="FSJ_MAIN_GLOBAL_CORE_BOOTSTRAP_TEXTCOLOR_DESC"/>
+    <field name="modal" type="fsjyesno" default="" label="FSJ_MAIN_GLOBAL_CORE_BOOTSTRAP_MODAL" description="FSJ_MAIN_GLOBAL_CORE_BOOTSTRAP_MODAL_DESC"/>
+    <field name="icomoon" type="fsjyesno" default="" label="FSJ_MAIN_GLOBAL_CORE_BOOTSTRAP_ICOMOON" description="FSJ_MAIN_GLOBAL_CORE_BOOTSTRAP_ICOMOON_DESC"/>
+  </fields>
+  <fields display="FSJ_MAIN_GLOBAL_SET_CORE_TEMPLATE" name="core_template" tab="page">
+    <field name="template" type="fsjlookup" default="" load_lang="com_fsj_main" lu_sql="SELECT name as value, title as text FROM #__fsj_tpl_template WHERE component = 'main' AND type = 'page'" label="FSJ_MAIN_GLOBAL_CORE_TEMPLATE_TEMPLATE" description="FSJ_MAIN_GLOBAL_CORE_TEMPLATE_TEMPLATE_DESC"/>
+  </fields>
+  <fields display="FSJ_MAIN_GLOBAL_SET_CORE_TITLE" name="core_title" tab="page">
+    <field name="use_joomla" type="fsjyesno" default="" label="FSJ_MAIN_GLOBAL_CORE_TITLE_USE_JOOMLA" description="FSJ_MAIN_GLOBAL_CORE_TITLE_USE_JOOMLA_DESC"/>
+    <field name="title_format" type="fsjcombo" default="" label="FSJ_MAIN_GLOBAL_CORE_TITLE_TITLE_FORMAT" description="FSJ_MAIN_GLOBAL_CORE_TITLE_TITLE_FORMAT_DESC">
+      <option value="1">FSJ_MAIN_GLOBAL_CORE_TITLE_TITLE_FORMAT_OPT_1</option>
+      <option value="2">FSJ_MAIN_GLOBAL_CORE_TITLE_TITLE_FORMAT_OPT_2</option>
+      <option value="3">FSJ_MAIN_GLOBAL_CORE_TITLE_TITLE_FORMAT_OPT_3</option>
+      <option value="4">FSJ_MAIN_GLOBAL_CORE_TITLE_TITLE_FORMAT_OPT_4</option>
+      <option value="5">FSJ_MAIN_GLOBAL_CORE_TITLE_TITLE_FORMAT_OPT_5</option>
+      <option value="6">FSJ_MAIN_GLOBAL_CORE_TITLE_TITLE_FORMAT_OPT_6</option>
+      <option value="7">FSJ_MAIN_GLOBAL_CORE_TITLE_TITLE_FORMAT_OPT_7</option>
+      <option value="99">FSJ_MAIN_GLOBAL_CORE_TITLE_TITLE_FORMAT_OPT_99</option>
+    </field>
+    <field name="browser_title_format" type="fsjcombo" default="" label="FSJ_MAIN_GLOBAL_CORE_TITLE_BROWSER_TITLE_FORMAT" description="FSJ_MAIN_GLOBAL_CORE_TITLE_BROWSER_TITLE_FORMAT_DESC">
+      <option value="100">FSJ_MAIN_GLOBAL_CORE_TITLE_BROWSER_TITLE_FORMAT_OPT_100</option>
+      <option value="1">FSJ_MAIN_GLOBAL_CORE_TITLE_BROWSER_TITLE_FORMAT_OPT_1</option>
+      <option value="2">FSJ_MAIN_GLOBAL_CORE_TITLE_BROWSER_TITLE_FORMAT_OPT_2</option>
+      <option value="3">FSJ_MAIN_GLOBAL_CORE_TITLE_BROWSER_TITLE_FORMAT_OPT_3</option>
+      <option value="4">FSJ_MAIN_GLOBAL_CORE_TITLE_BROWSER_TITLE_FORMAT_OPT_4</option>
+      <option value="5">FSJ_MAIN_GLOBAL_CORE_TITLE_BROWSER_TITLE_FORMAT_OPT_5</option>
+      <option value="6">FSJ_MAIN_GLOBAL_CORE_TITLE_BROWSER_TITLE_FORMAT_OPT_6</option>
+      <option value="7">FSJ_MAIN_GLOBAL_CORE_TITLE_BROWSER_TITLE_FORMAT_OPT_7</option>
+      <option value="99">FSJ_MAIN_GLOBAL_CORE_TITLE_BROWSER_TITLE_FORMAT_OPT_99</option>
+    </field>
+  </fields>
+  <fields display="FSJ_MAIN_GLOBAL_SET_CORE_MODAL" name="core_modal" tab="page">
+    <field name="css" type="fsjtext" default="" wide="1" fsjtext_style="width:100%; height:80px;" label="FSJ_MAIN_GLOBAL_CORE_MODAL_CSS" description="FSJ_MAIN_GLOBAL_CORE_MODAL_CSS_DESC"/>
+    <field name="js" type="fsjtext" default="" wide="1" fsjtext_style="width:100%; height:80px;" label="FSJ_MAIN_GLOBAL_CORE_MODAL_JS" description="FSJ_MAIN_GLOBAL_CORE_MODAL_JS_DESC"/>
+  </fields>
+  <fields display="FSJ_MAIN_GLOBAL_SET_CORE_CSS" name="core_css" tab="page">
+    <field name="overrides" type="fsjeditor" fsjeditor_mode="code" fsjeditor_codetype="text/css" default="" wide="1" fsjtext_style="width:100%; height:80px;" label="FSJ_MAIN_GLOBAL_CORE_CSS_OVERRIDES" description="FSJ_MAIN_GLOBAL_CORE_CSS_OVERRIDES_DESC"/>
+    <field name="scripts" type="fsjeditor" fsjeditor_mode="code" fsjeditor_codetype="text/css" default="" wide="1" fsjtext_style="width:100%; height:80px;" label="FSJ_MAIN_GLOBAL_CORE_CSS_SCRIPTS" description="FSJ_MAIN_GLOBAL_CORE_CSS_SCRIPTS_DESC"/>
+  </fields>
+</form>

@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "H:\\project\\banhangonline88_joomla\\app_window\\bho-android-master\\core\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media.xml",
+        "source": "C:\\Users\\cuong\\.android\\build-cache\\b4b341231115787af30f230a3303df93a85c0a10\\output\\res\\layout-v11\\notification_template_big_media.xml"
+    },
+    {
+        "merged": "H:\\project\\banhangonline88_joomla\\app_window\\bho-android-master\\core\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media_narrow.xml",
+        "source": "C:\\Users\\cuong\\.android\\build-cache\\b4b341231115787af30f230a3303df93a85c0a10\\output\\res\\layout-v11\\notification_template_big_media_narrow.xml"
+    },
+    {
+        "merged": "H:\\project\\banhangonline88_joomla\\app_window\\bho-android-master\\core\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media_narrow_custom.xml",
+        "source": "C:\\Users\\cuong\\.android\\build-cache\\b4b341231115787af30f230a3303df93a85c0a10\\output\\res\\layout-v11\\notification_template_big_media_narrow_custom.xml"
+    },
+    {
+        "merged": "H:\\project\\banhangonline88_joomla\\app_window\\bho-android-master\\core\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_media_action.xml",
+        "source": "C:\\Users\\cuong\\.android\\build-cache\\b4b341231115787af30f230a3303df93a85c0a10\\output\\res\\layout-v11\\notification_media_action.xml"
+    },
+    {
+        "merged": "H:\\project\\banhangonline88_joomla\\app_window\\bho-android-master\\core\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_media_cancel_action.xml",
+        "source": "C:\\Users\\cuong\\.android\\build-cache\\b4b341231115787af30f230a3303df93a85c0a10\\output\\res\\layout-v11\\notification_media_cancel_action.xml"
+    },
+    {
+        "merged": "H:\\project\\banhangonline88_joomla\\app_window\\bho-android-master\\core\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media_custom.xml",
+        "source": "C:\\Users\\cuong\\.android\\build-cache\\b4b341231115787af30f230a3303df93a85c0a10\\output\\res\\layout-v11\\notification_template_big_media_custom.xml"
+    }
+]

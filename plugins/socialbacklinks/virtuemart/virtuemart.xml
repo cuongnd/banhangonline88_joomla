@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="1.7" type="plugin" group="socialbacklinks" method="upgrade">
+	<name>PLG_SOCIALBACKLINKS_VIRTUEMART</name>
+	<creationDate>October 2012</creationDate>
+	<author>JoomUnited</author>
+	<authorEmail>contact@joomunited.com</authorEmail>
+	<authorUrl>http://www.joomunited.com</authorUrl>
+	<copyright>(c) 2012 JoomUnited (http://www.joomunited.com). All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; http://www.gnu.org/licenses/gpl-2.0.html</license>
+	<version>1.8.0</version>
+	<description>PLG_SB_VIRTUEMART_XML_DESCRIPTION</description>
+	
+	<files>
+		<filename plugin="virtuemart">virtuemart.php</filename>
+		<filename>index.html</filename>
+		<folder>content</folder>
+	</files>
+	<languages>
+		<language tag="en-GB">en-GB.plg_socialbacklinks_virtuemart.ini</language>
+		<language tag="en-GB">en-GB.plg_socialbacklinks_virtuemart.sys.ini</language>
+		<language tag="fr-FR">fr-FR.plg_socialbacklinks_virtuemart.ini</language>
+		<language tag="fr-FR">fr-FR.plg_socialbacklinks_virtuemart.sys.ini</language>
+	</languages>
+</extension>

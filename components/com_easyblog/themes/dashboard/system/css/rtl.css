@@ -1,0 +1,354 @@
+/**
+ * @package		EasyBlog
+ * @copyright	Copyright (C) 2010 Stack Ideas Private Limited. All rights reserved.
+ * @license		GNU/GPL, see LICENSE.php
+ *
+ * EasyBlog is free software. This version may have been modified pursuant
+ * to the GNU General Public License, and as distributed it includes or
+ * is derivative of works licensed under the GNU General Public License or
+ * other free or open source software licenses.
+ * See COPYRIGHT.php for copyright notices and details.
+ */
+
+#eblog-wrapper .float-l,
+#eblog-wrapper .alignleft{
+	float:right;
+}
+#eblog-dialog .mls, #eblog-wrapper .mls{
+	margin-right:5px;
+	margin-left:0;
+}
+#eblog-dialog .mrs, #eblog-wrapper .mrs{
+	margin-right:auto;
+	margin-left:5px;
+}
+#eblog-dialog .mrm, #eblog-wrapper .mrm{
+	margin-right:0;
+	margin-left:10px;
+}
+#eblog-dialog .mrl, #eblog-wrapper .mrl{
+	margin-right:0;
+	margin-left:15px;
+}
+#ezblog-dashboard .input.radio, 
+#ezblog-dashboard .input.radio + label{
+	float:right;
+}
+
+
+
+
+
+/*TOOLBAR*/
+#ezblog-dashboard .ui-toolbar li{
+	float:right;
+	border-right:0;
+	border-left:1px solid #292F3A;
+}
+#ezblog-dashboard .ui-toolbar li.float-r{
+	float:left!important;
+	border-left:0;
+	border-right:1px solid #292F3A;
+}
+#ezblog-dashboard .ui-toolbar li > a > i{
+	float:right;
+}
+#ezblog-dashboard .ui-toolbar li > a > b{
+	float:right;
+	margin:9px 5px 0 -3px !important;
+}
+#ezblog-dashboard .ui-toolbar li.active > a > b{
+	margin:9px 5px 0 -3px !important;
+}
+#ezblog-dashboard .ui-toolbar li > div{
+	left:auto;
+	right:3px;
+}
+#ezblog-dashboard .ui-toolbar li > div i{
+	left:auto;
+	right:12px;
+}
+#ezblog-dashboard .ui-toolbar li.float-r > div{
+	right:auto;
+	left:3px;
+}
+#ezblog-dashboard .ui-toolbar li.float-r > div i{
+	left:12px;
+	right:auto;
+}
+#ezblog-dashboard .ui-toolbar li > div div{
+	text-align:right;
+}
+
+
+
+
+
+/*DASHBOARD HEADER*/
+#ezblog-dashboard .dashboard-avatar{
+	float:right;
+	margin:0 0 0 15px!important;
+}
+#ezblog-dashboard .user-brief > span, 
+#ezblog-dashboard .user-brief > span a{
+	float:right;
+}
+#ezblog-dashboard .user-brief > span + span{
+	background:url(../images/rtl-breadcrumb.png) right center no-repeat;
+	padding:0 16px 0 0;
+	margin:0 10px 0 0;	
+}
+#ezblog-dashboard .dashboard-head .head-option .buttons{
+	float:right;
+}
+
+
+
+
+
+/*OVERVIEW PAGE: STAT INFO*/
+#ezblog-dashboard .ui-statinfo li span,
+#ezblog-dashboard .ui-statinfo li span a{
+	float:right;
+}
+#ezblog-dashboard .ui-statinfo li span.stat-info{
+	margin:0 0 0 8px;
+}
+#ezblog-dashboard .ui-stream li{
+	padding:10px 25px 10px 10px;
+	background-position:right 10px !important;
+}
+#ezblog-dashboard .ui-stream li > span.small{
+	float:left;
+	margin:0 10px 0 -10px;
+}
+#ezblog-dashboard .ui-stream .stream-comment{
+	margin:10px 0 5px 35px;
+}
+
+
+
+
+/*UI-MOD*/
+#ezblog-dashboard .ui-modhead .ui-tog{
+	background-position:10px top !important;
+}
+#ezblog-dashboard .ui-modhead.ui-togbox .ui-tog{
+	background-position:10px bottom !important;
+}
+#ezblog-dashboard .ui-modfoot .buttons.float-r{
+	float:left!important;
+}
+
+
+
+
+/*STANDARD ITEM LISTING FOR POST, DRAFT, COMMENTS, CATEGORIES*/
+#ezblog-dashboard .ui-entries-filter{
+	float:left !important;
+}
+#ezblog-dashboard .ui-entries-filter li,
+#ezblog-dashboard .entries-select,
+#ezblog-dashboard .entries-select input[type="checkbox"],
+#ezblog-dashboard .item_list .ui-avatar{
+	float:right;
+}
+#ezblog-dashboard .entries-select input[type="checkbox"]{
+	margin-right:5px;
+}
+#ezblog-dashboard .entries-select input[type="checkbox"] + label{
+	margin-right:10px;
+}
+#ezblog-dashboard .item_list .ui-list-select{
+	left:auto;
+	right:0;
+	border-left:1px solid #ccc;
+	border-right:0;
+}
+#ezblog-dashboard .item_list > li{
+	padding:10px 45px 10px 10px;
+}
+#ezblog-dashboard .item_list.no-cbox > li{
+	padding-right:10px;
+}
+#ezblog-dashboard .ui-avatar + .ui-content{
+	margin-left:auto;
+	margin-right:50px;
+}
+#ezblog-dashboard .item_title{
+	margin:0 0 10px 70px;
+}
+#ezblog-dashboard .ui-clock.float-r{float:right!important;}
+
+
+
+
+/*LIST FORM*/
+#eblog-wrapper .list-form li > label, 
+#eblog-dialog .list-form li > label{
+	float:right;
+	text-align:left;
+}
+#eblog-wrapper .list-form li > label + div,
+#eblog-dialog .list-form li > label + div{
+	margin:0 155px 0 15px !important;
+}
+#ezblog-dashboard .list-form li > div{
+	margin-left:14px;
+	margin-right:0!important;
+}
+
+
+
+
+/*WRITE NEW POST PAGE*/
+#ezblog-dashboard .blogImage + .blogTitle{
+	margin-left:13px;
+}
+#ezblog-dashboard .dashboard-option .float-r{
+	float:left !important;
+}
+#ezblog-dashboard .dashboard-option .float-r .sibling-l{
+	border-radius:0 2px 2px 0;
+	-moz-border-radius:0 2px 2px 0;
+	-webkit-border-radius:0 2px 2px 0;
+}
+#ezblog-dashboard .dashboard-option .float-r .sibling-r{
+	border-radius:2px 0 0 2px;
+	-moz-border-radius:2px 0 0 2px;
+	-webkit-border-radius:2px 0 0 2px;
+}
+body #ezblog-dashboard .buttons.sibling-l{
+	border-radius:0 2px 2px 0;
+	-moz-border-radius:0 2px 2px 0;
+	-webkit-border-radius:0 2px 2px 0;
+}
+body #ezblog-dashboard .buttons.sibling-r{
+	border-radius:2px 0 0 2px;
+	-moz-border-radius:2px 0 0 2px;
+	-webkit-border-radius:2px 0 0 2px;
+}
+body #ezblog-dashboard .ui-button-option .buttons.sibling-l{
+	border-radius:2px 0 0 2px;
+	-moz-border-radius:2px 0 0 2px;
+	-webkit-border-radius:2px 0 0 2px;
+}
+body #ezblog-dashboard .ui-button-option .buttons.sibling-r,
+body #ezblog-dashboard .ui-button-option .buttons.sibling-r.close{
+	border-radius:0 2px 2px 0;
+	-moz-border-radius:0 2px 2px 0;
+	-webkit-border-radius:0 2px 2px 0;
+	border-left:0;
+	border-right:1px solid #aaa;
+}
+body #ezblog-dashboard .buttons.sibling-m.border-l{
+	border-right:1px solid #aaa;
+}
+body #ezblog-dashboard .buttons.sibling-r.close,
+body #ezblog-dashboard .buttons.sibling-l + .buttons.sibling-r{
+	border-left:1px solid #aaa;
+	border-right:0;
+}
+#ezblog-dashboard .has-tooltip div.tip-item{
+	left:auto;
+	right:3px;
+}
+#ezblog-dashboard .write-postinfo .width-half > div{
+	margin-right:0;
+	margin-left:16px !important;
+}
+#ezblog-dashboard .write-postinfo .width-half + .width-half > div{
+	margin-right:5px;
+}
+#ezblog-dashboard .ui-togmenugroup .float-r{
+	float:left!important;
+}
+#ezblog-dashboard .ui-medialink .ui-togmenugroup > a + i{
+	float:right;
+}
+#ezblog-dashboard .ui-medialink .ui-togmenugroup > a{
+	padding:4px 30px 4px 5px;
+	background-position:95% 50%!important;
+}
+#ezblog-dashboard .ui-medialink .ui-togmenugroup > a .ui-toolnote{
+	right:-5px;
+	left:auto;
+}
+#ezblog-dashboard .ui-toolnote > i{
+	left:auto;
+	right:10px;
+}
+#ezblog-dashboard .blogImageNote{
+	text-align:right;
+}
+
+
+
+
+/* DOCKED DASHBOARD'S OPTION AFTER SCROLL DOWN */
+#ezblog-dashboard .dashboard-option.docked{
+	margin-left:0;
+	margin-right:-11px;
+}
+
+
+
+
+
+/* TAGS */
+#ezblog-dashboard .tag-list.creation li,
+#ezblog-dashboard .tag-list.selection li{
+	float:right;
+	margin:5px 0 5px 5px;
+}
+#ezblog-dashboard .tag-list.selection li{
+	background-position:95% center;
+	padding:7px 22px 7px 8px;	
+}
+
+
+
+
+/* QUICKPOST PAGE */
+#ezblog-dashboard ul.ui-quickpost-tab li{
+	float:right;
+}
+#ezblog-dashboard ul.ui-quickpost-tab li + li a{
+	border-left:0;
+	border-right:1px solid #bbb;
+}
+#ezblog-dashboard .list-form li.columns-2 .input, 
+#ezblog-dashboard .list-form li.columns-2 .inputbox{
+	padding-left:6px;
+	padding-right:25px;
+}
+#ezblog-dashboard .list-form li.columns-2 > div{
+	margin:0!important;
+}
+#ezblog-dashboard .list-form li.columns-2 > div > div{
+	margin-right:0!important;
+	margin-left:34px!important;
+}
+#ezblog-dashboard #quick-post-wrap #param-category i,
+#ezblog-dashboard #quick-post-wrap #param-privacy i{
+	left:auto;
+	right:8px;
+}
+
+
+
+
+
+/*MINI MEDIA MANAGER*/
+#ezblog-dashboard .miniManager .headerButtons{
+	right:auto;
+	left:10px;
+}
+
+
+
+
+
+#ezblog-dashboard .blogImageNote{
+	text-align:right;
+}

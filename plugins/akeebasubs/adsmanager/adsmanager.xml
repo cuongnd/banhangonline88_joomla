@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5.0" type="plugin" group="akeebasubs" method="upgrade">
+	<name>Akeeba Subscriptions - AdsMAnager - Publish or unpublish ads following the subscriptions</name>
+	<author>Juloa</author>
+	<authorEmail>webmaster@Juloa.com</authorEmail>
+	<authorUrl>http://www.Juloa.com</authorUrl>
+	<copyright>Copyright (c)2012-2014 Juloa</copyright>
+	<license>GNU General Public License version 3, or later</license>
+	<creationDate>April 2014</creationDate>
+	<version>1.0</version>
+	<description>PLG_AKEEBASUBS_ADSMANAGER_DESCRIPTION</description>
+	<files>
+		<filename plugin="adsmanager">adsmanager.php</filename>
+	</files>
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.plg_akeebasubs_adsmanager.ini</language>
+		<language tag="en-GB">en-GB/en-GB.plg_akeebasubs_adsmanager.sys.ini</language>
+        <language tag="fr-FR">fr-FR/fr-FR.plg_akeebasubs_adsmanager.ini</language>
+		<language tag="fr-FR">fr-FR/fr-FR.plg_akeebasubs_adsmanager.sys.ini</language>
+	</languages>
+</extension>

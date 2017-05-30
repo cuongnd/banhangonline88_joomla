@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<install version="1.5" type="plugin"  plugin="imagedragndrop" method="upgrade">
+	<version>0.1</version>
+	<creationDate>DEC 2011</creationDate>
+	<author>WebxSolution Ltd</author>
+	<authorUrl>http://www.arkextensions.com</authorUrl>
+	<copyright>Copyright (C) 2011 - 2012 WebxSolution Ltd</copyright>
+	<license>GNU/GPLv2</license>
+	<description>PLG_ARKEDITOR_DESC</description>
+	<languages>
+	</languages>
+	<files>
+	<file>plugin.js</file>
+    </files>
+</install>

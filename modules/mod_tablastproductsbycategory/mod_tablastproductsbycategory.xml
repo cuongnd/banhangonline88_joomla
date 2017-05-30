@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="2.5">
+  <name>tablastproductsbycategory</name>
+  <creationDate>28-Aug-2016</creationDate>
+  <author/>
+  <authorEmail/>
+  <authorUrl/>
+  <copyright/>
+  <license/>
+  <version>1.0</version>
+  <description>A plain frontend module.</description>
+  <files folder="site">
+    <filename>CHANGELOG.php</filename>
+    <filename module="mod_tablastproductsbycategory">mod_tablastproductsbycategory.php</filename>
+  </files>
+</extension>

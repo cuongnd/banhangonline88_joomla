@@ -1,0 +1,8 @@
+[
+    {
+        "view": [
+            "dashboard/dashboard.tags.item"
+        ],
+        "adapter": "EasyBlog"
+    }
+]

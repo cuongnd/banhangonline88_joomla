@@ -1,0 +1,148 @@
+<div class="modalHeader">
+	<div class="modalTitle">
+		<span class="modalTitleSnippet title-browse"><?php echo JText::_( 'COM_EASYBLOG_MM_BROWSE_MEDIA' ); ?></span>
+		<span class="modalTitleSnippet title-blogimage"><?php echo JText::_( 'COM_EASYBLOG_MM_SELECT_BLOG_IMAGE' ); ?></span>
+	</div>
+	<div class="modalButtons">
+		<button class="dashboardButton modalButton"><i></i></button>
+		[% if (canUpload) { %]
+		<button class="uploaderButton modalButton"><i></i><?php echo JText::_( 'COM_EASYBLOG_MM_UPLOAD_MEDIA' ); ?></button>
+		[% } %]
+	</div>
+	<div class="browserSearch">
+		<i class="cancelSearchButton"></i>
+		<input type="text" class="searchInput" />
+	</div>
+</div>
+
+<div class="modalToolbar browserHeader">
+	<div class="navigation">
+		<div class="navigationInfo"><?php echo JText::_( 'COM_EASYBLOG_MM_YOU_ARE_SELECTING_THIS_ITEM' ); ?>:</div>
+		<div class="navigationPathway browserNavigation"></div>
+	</div>
+	<div class="topActions browserItemActions">
+		<span class="browserItemActionSet type-folder">
+			<button class="insertAsGalleryButton button green-button"><i></i><?php echo JText::_( 'COM_EASYBLOG_MM_INSERT_GALLERY_BUTTON' ); ?></button>
+			<button class="removeItemButton button"><i></i><?php echo JText::_( 'COM_EASYBLOG_MM_DELETE_BUTTON' ); ?></button>
+		</span>
+		<span class="browserItemActionSet type-item">
+			<button class="insertBlogImageButton button green-button"><i></i><?php echo JText::_( 'COM_EASYBLOG_MM_USE_AS_BLOG_IMAGE_BUTTON' ); ?></button>
+			<button class="insertItemButton button green-button"><i></i><?php echo JText::_( 'COM_EASYBLOG_MM_INSERT_BUTTON' ); ?></button>
+			<button class="customizeItemButton button"><i></i><?php echo JText::_( 'COM_EASYBLOG_MM_CUSTOMIZE_BUTTON' ); ?></button>
+			<button class="removeItemButton button"><i></i><?php echo JText::_( 'COM_EASYBLOG_MM_DELETE_BUTTON' ); ?></button>
+		</span>
+	</div>
+</div>
+
+<div class="modalContent browserContent">
+	<div class="browserTreeItemField">
+	</div>
+	<div class="browserItemField">
+		<div class="hints">
+			<div class="hint hint-loading">
+				<i></i>
+				<span class="hint-content"><?php echo JText::_( 'COM_EASYBLOG_MM_GETTING_FILE_LIST_FROM_SERVER' ); ?></span>
+			</div>
+			<div class="hint hint-error">
+				<i></i>
+				<span class="hint-content"><?php echo JText::_( 'COM_EASYBLOG_MM_UNABLE_TO_GET_FILE_LIST_FROM_SERVER' ); ?></span>
+				<button class="retryPopulateButton button"><?php echo JText::_( 'COM_EASYBLOG_MM_TRY_AGAIN_BUTTON' ); ?></button>
+			</div>
+			<div class="hint hint-empty">
+				<span class="hint-content"><?php echo JText::_( 'COM_EASYBLOG_MM_EMPTY_FOLDER' );?></span>
+				[% if (canUpload) { %]
+				<button class="uploaderButton button"><i></i><?php echo JText::_( 'COM_EASYBLOG_MM_UPLOAD_TO_FOLDER' ); ?></button>
+				[% } %]
+			</div>
+			<div class="hint hint-emptySearch">
+				<span class="hint-content"><?php echo JText::_( 'COM_EASYBLOG_IMAGE_UPLOADER_SEARCH_NO_RESULTS' );?></span>
+				<button class="cancelSearchButton button"><i></i><?php echo JText::_( 'COM_EASYBLOG_BACK_BUTTON' ); ?></button>
+			</div>
+			<div class="hint hint-flickr">
+				<span class="hint-content"><?php echo JText::_( 'COM_EASYBLOG_MEDIA_FLICKR_ACCESS'); ?></span>
+				<button class="button green-button flickrLoginButton"
+					data-callback="[%= flickrCallback %]"
+					data-login="[%= flickrLogin %]"><i></i><?php echo JText::_( 'COM_EASYBLOG_MM_SIGN_IN_TO_FLICKR' ); ?></button>
+			</div>			
+		</div>
+	</div>
+</div>
+
+<div class="modalFooter browserFooter">
+	<div class="browserTreeItemFooter">
+		<div class="footerActions left-actions">
+			<button class="createFolderButton button"><i></i><?php echo JText::_( 'COM_EASYBLOG_MM_CREATE_FOLDER_BUTTON' ); ?></button>
+		</div>
+	</div>
+	<div class="browserItemFooter">
+		<div class="footerActions left-actions browserViewButtons">
+			<button class="browserListViewButton button"><i></i></button>
+			<button class="browserTileViewButton button active"><i></i></button>
+		</div>
+		<div class="footerActions right-actions browserPagination">
+			<button class="nextPageButton button"><i></i></button>
+			<label class="pageNumber"><ul class="pageSelection"><li class="paginationPage page1 selected" data-page="1"><?php echo JText::_( 'COM_EASYBLOG_MM_PAGINATION_PAGE' ); ?> 1</li></ul><span class="pageBreakdown"><span class="currentPage"></span>/<span class="totalPage"></span></span></label>
+			<button class="prevPageButton button"><i></i></button>
+		</div>
+	</div>
+</div>
+
+<div class="modalPrompt">
+	<div class="modalPromptDialogs">
+		<div class="modalPromptDialog createFolderPrompt">
+			<div class="promptState state-default">
+				<div class="promptTitle"><?php echo JText::_( 'COM_EASYBLOG_MM_CREATE_FOLDER_BUTTON' ); ?></div>
+				<span class="promptText"><?php echo JText::_( 'COM_EASYBLOG_MM_YOU_ARE_CREATING_A_FOLDER_INSIDE' ); ?> <span class="folderPath"></span>.</span>
+				<div class="promptForm"><label><?php echo JText::_( 'COM_EASYBLOG_MM_NEW_FOLDER_NAME' ); ?> <input type="text" class="folderInput text" val="" /></label></div>
+				<div class="promptActions">
+					<button class="button promptCancelButton"><i></i><?php echo JText::_( 'COM_EASYBLOG_MM_CANCEL_BUTTON' ); ?></button>
+					<button class="button green-button confirmCreateFolderButton"><i></i><?php echo JText::_( 'COM_EASYBLOG_MM_CREATE_FOLDER_BUTTON' ); ?></button>
+				</div>
+			</div>
+			<div class="promptState state-progress">
+				<div class="promptTitle"><?php echo JText::_( 'COM_EASYBLOG_MM_CREATING_FOLDER' ); ?></div>
+				<span class="promptText"><?php echo JText::sprintf( 'COM_EASYBLOG_MM_WAIT_CREATING_FOLDER', '<span class="folderCreationPath"></span>' ); ?></span>
+				<div class="promptActions">
+					<button class="button promptCancelButton"><i></i><?php echo JText::_( 'COM_EASYBLOG_MM_CANCEL_BUTTON' ); ?></button>
+				</div>
+				<div class="promptLoader"></div>
+			</div>
+			<div class="promptState state-fail">
+				<div class="promptTitle"><?php echo JText::_( 'COM_EASYBLOG_MM_CREATE_FOLDER_FAILED' ); ?></div>
+				<span class="promptText"><?php echo JText::_( 'COM_EASYBLOG_MM_UNABLE_TO_CREATE_FOLDER' ); ?> <span class="folderCreationPath"></span>. <span class="folderCreationFailedReason"></span></span>
+				<div class="promptActions">
+					<button class="button promptCancelButton"><i></i><?php echo JText::_( 'COM_EASYBLOG_MM_CANCEL_BUTTON' ); ?></button>
+					<button class="button green-button createFolderButton"><i></i><?php echo JText::_( 'COM_EASYBLOG_MM_TRY_AGAIN_BUTTON' ); ?></button>
+				</div>
+			</div>
+		</div>
+		<div class="modalPromptDialog removeItemPrompt">
+			<div class="promptState state-default">
+				<div class="promptTitle"><?php echo JText::_( 'COM_EASYBLOG_MM_DELETE_ITEM' ); ?></div>
+				<span class="promptText"><?php echo JText::_( 'COM_EASYBLOG_MM_DO_YOU_WANT_TO_DELETE_THE_ITEM' ); ?> <span class="removeItemFilename"></span>?<br/><br/><?php echo JText::_( 'COM_EASYBLOG_MM_DELETE_ITEM_WARNING' ); ?></small></span>
+				<div class="promptActions">
+					<button class="button promptCancelButton"><i></i><?php echo JText::_( 'COM_EASYBLOG_MM_CANCEL_BUTTON' ); ?></button>
+					<button class="button green-button confirmRemoveItemButton"><i></i><?php echo JText::_( 'COM_EASYBLOG_MM_DELETE_BUTTON' ); ?></button>
+				</div>
+			</div>
+			<div class="promptState state-progress">
+				<div class="promptTitle"><?php echo JText::_( 'COM_EASYBLOG_MM_DELETING_ITEM' ); ?></div>
+				<span class="promptText"><?php echo JText::sprintf( 'COM_EASYBLOG_MM_WAIT_DELETING_ITEM', '<span class="removeItemFilename"></span>' ); ?></span>
+				<span class="promptText"></span>
+				<div class="promptActions">
+					<button class="button promptCancelButton"><i></i><?php echo JText::_( 'COM_EASYBLOG_MM_CANCEL_BUTTON' ); ?></button>
+				</div>
+				<div class="promptLoader"></div>
+			</div>
+			<div class="promptState state-fail">
+				<div class="promptTitle"><?php echo JText::_( 'COM_EASYBLOG_MM_DELETE_ITEM_FAILED' ); ?></div>
+				<span class="promptText"><?php echo JText::_( 'COM_EASYBLOG_MM_UNABLE_TO_DELETE_ITEM', '<span class="removeItemFilename"></span>' ); ?> <span class="removeItemFailedReason"></span></span>
+				<div class="promptActions">
+					<button class="button promptCancelButton"><i></i><?php echo JText::_( 'COM_EASYBLOG_MM_CANCEL_BUTTON' ); ?></button>
+					<button class="button green-button confirmRemoveItemButton"><i></i><?php echo JText::_( 'COM_EASYBLOG_MM_TRY_AGAIN_BUTTON' ); ?></button>
+				</div>
+			</div>
+		</div>
+		<div class="overlay"></div>
+	</div>
+</div>

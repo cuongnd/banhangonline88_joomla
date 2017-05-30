@@ -1,0 +1,33 @@
+{
+    "name": "joomla/image",
+    "type": "joomla-package",
+    "description": "Joomla Image Package",
+    "keywords": ["joomla", "framework", "image"],
+    "homepage": "https://github.com/joomla-framework/image",
+    "license": "GPL-2.0+",
+    "require": {
+        "php": "^5.3.10|~7.0",
+        "ext-gd": "*",
+        "psr/log": "~1.0"
+    },
+    "require-dev": {
+        "joomla/test": "~1.0",
+        "phpunit/phpunit": "~4.8|~5.0",
+        "squizlabs/php_codesniffer": "1.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Joomla\\Image\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Joomla\\Image\\Tests\\": "Tests/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        }
+    }
+}

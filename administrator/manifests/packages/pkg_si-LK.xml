@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="package" version="3.3">
+	<name>Sinhala language pack</name>
+	<packagename>si-LK</packagename>
+	<version>3.3.1.1</version>
+	<creationDate>28/07/2014</creationDate>
+	<author>Denuwan Wijewardena (Sri Lanka)</author>
+	<authorEmail>denuwan@gmail.com</authorEmail>
+	<authorUrl>http://www.denuwan.org</authorUrl>
+	<copyright>Translation Copyright (C) 2013 - 2014 Denuwan Wijewardena</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<url></url>
+	<packager></packager>
+	<packagerurl></packagerurl>
+	<description><![CDATA[Sinhala ]]></description>
+	<files>
+		<file type="language" client="site" id="si-LK">site_si-LK.zip</file>
+		<file type="language" client="administrator" id="si-LK">admin_si-LK.zip</file>
+	</files>
+	<updateservers>
+		<server type="collection" priority="1" name="Accredited Joomla! Translations">http://update.joomla.org/language/translationlist_3.xml</server>
+	</updateservers>
+</extension>

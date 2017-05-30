@@ -1,0 +1,13 @@
+[
+    {
+        "library": [
+            "image",
+            "easing",
+            "scrollTo"
+        ],
+        "script": [
+            "media/browser.item"
+        ],
+        "adapter": "EasyBlog"
+    }
+]

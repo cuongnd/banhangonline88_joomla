@@ -1,0 +1,54 @@
+apply plugin: 'com.android.library'
+
+def final tableViewLibraryVersion = '0.9.5'
+
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'SortableTableView'
+
+    publishedGroupId = 'de.codecrafters.tableview'
+    libraryName = 'TableView'
+    artifact = 'tableview'
+
+    libraryDescription = 'An Android library containing a simple TableView and an advanced ' +
+            'SortableTableView providing a lot of customisation possibilities to fit all needs.'
+
+    siteUrl = 'https://github.com/ISchwarz23/SortableTableView'
+    gitUrl = 'https://github.com/ISchwarz23/SortableTableView.git'
+
+    libraryVersion = tableViewLibraryVersion
+
+    developerId = 'ischwarz'
+    developerName = 'Ingo Schwarz'
+    developerEmail = 'schwarz-ingo@web.de'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion '25.0.0'
+
+    defaultConfig {
+        minSdkVersion 11
+        targetSdkVersion 22
+        versionCode 2
+        versionName tableViewLibraryVersion
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:22.2.1'
+
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.mockito:mockito-core:1.9.5'
+}

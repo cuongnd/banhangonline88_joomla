@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset>
+		<field
+				name="category_id"
+				type="text"
+				class="readonly"
+				label="JGLOBAL_FIELD_ID_LABEL"
+				description="JGLOBAL_FIELD_ID_DESC"
+				default="0"
+				filter="int"
+				readonly="true"/>
+
+		<field
+				name="icon"
+				type="media"
+				label="icon"
+				description="icon"
+				/>
+
+
+	</fieldset>
+
+	<fields name="params">
+	</fields>
+</form>

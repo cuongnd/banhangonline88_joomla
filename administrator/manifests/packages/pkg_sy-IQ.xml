@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="package" version="3.4" method="upgrade">
+	<name>Syriac_sy-IQ</name>
+	<packagename>sy-IQ</packagename>
+	<version>3.4.5.1</version>
+	<creationDate>2015-12-06</creationDate>
+	<author>East Syriac Translation Team:joomla.sy</author>
+	<authorEmail>pauls@nohadra.com</authorEmail>
+	<authorUrl>http://syriac.nohadra.com</authorUrl>
+	<copyright>Copyright (C) 2005 - 2015 Syriacjoomla! and Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<url></url>
+	<packager>Joomla! East Syriac</packager>
+	<packagerurl>http://syriac.nohadra.com</packagerurl>
+	<description>East Syriac Language Pack</description>
+	<files>
+        <file type="language" client="site" id="sy-IQ">site_sy-IQ.zip</file>
+        <file type="language" client="administrator" id="sy-IQ">admin_sy-IQ.zip</file>
+	</files>
+	<updateservers>
+        <server type="collection" priority="1" name="Accredited Joomla! Translations">http://update.joomla.org/language/translationlist_3.xml</server>
+    </updateservers>
+</extension>

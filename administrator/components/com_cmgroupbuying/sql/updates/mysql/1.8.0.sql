@@ -1,0 +1,2 @@
+ALTER TABLE  `#__cmgroupbuying_configuration` ADD  `buy_as_guest` TINYINT( 1 ) NOT NULL DEFAULT  '0';
+ALTER TABLE  `#__cmgroupbuying_configuration` ADD  `max_displayed_quantity` TINYINT NOT NULL DEFAULT  '10';

@@ -1,0 +1,68 @@
+/**
+ * @package SJ Ajax Tabs for HikaShop
+ * @version 1.0.0
+ * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @copyright (c) 2014 YouTech Company. All Rights Reserved.
+ * @author YouTech Company http://www.smartaddons.com
+ *
+ */
+
+.sj-ajax-tabs .tabs-container ul.tabs li .tab {
+	font-size: 12px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.sj-ajax-tabs .tabs-content {
+	border-color: #3366CC;
+	background-color: #FFFFFF;
+}
+
+.sj-ajax-tabs .tabs-container ul.tabs li .tab {
+	background: #87A7E6;
+	color: #FFFFFF;
+}
+
+.sj-ajax-tabs .tabs-container ul.tabs li .tab:hover {
+}
+
+.sj-ajax-tabs .tabs-container ul.tabs li.selected .tab,
+.sj-ajax-tabs .tabs-container ul.tabs li:hover .tab {
+	background: #3366CC;
+}
+
+.sj-ajax-tabs .pager-container ul.pages li .page {
+	border-color: #3366CC;
+	font-weight: bold;
+	color: #3366CC
+}
+
+.sj-ajax-tabs .pager-container ul.pages li .page.sel {
+	background-color: #3366CC;
+	color: #FFFFFF;
+}
+
+.sj-ajax-tabs .item-wrap .item-title,
+.sj-ajax-tabs .item-wrap .item-title a {
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.sj-ajax-tabs .item-wrap .item-description {
+	font-size: 12px;
+	font-weight: normal;
+}
+
+.sj-ajax-tabs .item-wrap .item-detail a {
+	font-size: 12px;
+	font-weight: normal;
+}
+
+.sj-ajax-tabs .item-wrap .item-prices {
+	margin-bottom: 5px;
+}
+
+.sj-ajax-tabs .item-wrap .item-price {
+	font-weight: bold;
+	color: #FF0033;
+}

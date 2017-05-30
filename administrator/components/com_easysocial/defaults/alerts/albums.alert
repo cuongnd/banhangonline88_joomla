@@ -1,0 +1,12 @@
+[
+    {
+        "element"   : "albums",
+        "rule"      : "comment.add",
+        "core"      : true,
+        "value"     :
+        {
+            "email"     : true,
+            "system"    : true
+        }
+    }
+]

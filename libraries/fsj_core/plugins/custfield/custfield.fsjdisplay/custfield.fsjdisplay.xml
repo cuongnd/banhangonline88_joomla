@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<plugin>
+  <authorEmail>support@freestyle-joomla.com</authorEmail>
+  <author>Freestyle Joomla</author>
+  <copyright>(C) 2013 Freestyle Joomla. All rights reserved.</copyright>
+  <license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html </license>
+  <authorUrl>http://www.freestyle-joomla.com</authorUrl>
+  
+  <name>Display</name>
+  <description>Display HTML</description>
+  
+  <params>
+    <type>fsjdisplay</type>
+    <group>builtin</group>
+    <order>30</order>
+    <xml>code</xml>
+  </params>
+  
+  <edit_form>
+    <form>
+      <fields>
+        <field name="inputtmpl" type="fsjeditor" label="HTML" />
+        <field name="hide_label" type="fsjyesno" label="Hide Label" default="1" />
+      </fields>
+    </form>
+  </edit_form>
+</plugin>

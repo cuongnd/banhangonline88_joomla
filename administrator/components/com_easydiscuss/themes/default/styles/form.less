@@ -1,0 +1,361 @@
+/*------------------------------------*\
+    $discuss-form.less
+\*------------------------------------*/
+
+input[type="text"],
+select,
+textarea {
+	.no-focus-outline();
+	&.input-full {
+		width: 96%;
+	}
+	&.input-medium {
+		width: 50%;
+	}
+	&.input-large {
+		width: 65%;
+	}
+	&.input-xlarge {
+		width: 75%;
+	}
+	&.input-xxlarge {
+		width: 85%;
+	}
+	&.full-width {
+		// width:96%;
+	}
+}
+
+input[type="file"] {
+	height: auto;
+	font-size: 12px;
+	+ input[type="file"] {
+		margin-top: 5px;
+	}
+}
+
+#adminForm input[type="file"] {
+	display: block;
+}
+
+.si-form-row {
+	.clearfix();
+	border-top: 1px solid white;
+	padding: 16px 16px;
+	strong {
+		word-wrap: break-word;
+	}
+	&.line {
+		border-bottom: 1px solid #ddd;
+	}
+	[class*="span"] > label {
+		float: left;
+		display: block;
+		padding-top: 1px;
+		line-height: 20px;
+	}
+	.form-row-label {
+		position: relative;
+		label {
+			float: none;
+			text-align: left;
+			position: relative;
+			&::after {
+				content: " :";
+			}
+		}
+	}
+	.small {
+		position: relative;
+		color: #666;
+	}
+	.icon-question-sign {
+		position: absolute;
+		right:0;
+		top:0;
+		font-size:14px;
+	}
+	.calendar {
+		float: left;
+		margin-right: 4px;
+	}
+	.user-badges {
+		li {
+			margin-bottom:10px;
+		}
+	}
+}//si-form-row
+
+input,
+.input,
+.inputbox {
+	border-top-color: #bbb;
+}
+textarea {
+	height: auto;
+}
+label {
+	font-size: 12px !important;
+}
+input:focus,
+textarea:focus {
+	border: 1px solid rgba(82, 168, 236, 0.9);
+	background: #fff;
+}
+div.selector { //uniform
+	background: #fcfcfc;
+	#gradient > .vertical(#fcfcfc, #f1f1f1);
+	border: 1px solid #D2D2D2;
+	line-height: 30px;
+	height: 30px;
+	.box-sizing(content-box);
+	border-radius:2px;
+	// .box-shadow(~"0 1px 0 #fff inset","0 1px 0px #eeeeee");
+
+	display: -moz-inline-box;
+	display: inline-block;
+	vertical-align: middle;
+	zoom: 1;
+	margin: 0;
+	padding: 0 0 0 8px;
+	cursor: pointer;
+	width: auto;
+	max-width: 280px;
+	font-size: 12px;
+	position: relative;
+	overflow: hidden;
+	span {
+		display: block;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		color: #808080;
+		text-shadow: 0 1px #f5f5f5;
+		padding: 0px 60px 0px 2px;
+		background: url(../images/selectArrow.png) no-repeat 100%;
+		cursor: pointer;
+		font-size: 11px;
+		height: 27px;
+		line-height: 27px;
+		border:none;
+	}
+	select {
+		position: absolute;
+		opacity: 0;
+		// filter: alpha(opacity:0);
+		height: 28px;
+		border: none;
+		background: none;
+		// font-family: Arial, Helvetica, sans-serif;
+		font-size: 12px;
+		border: solid 1px white;
+		width: 100%;
+		top: 0px;
+		left: 0px;
+	}
+}//selector
+
+// Checkboxes
+// ----------------
+div.checker {
+	width: 16px;
+	height: 16px;
+	position: relative;
+	display: -moz-inline-box;
+	display: block;
+	vertical-align: middle;
+	zoom: 1;
+	float: left;
+	margin-top: 2px;
+	margin-right: 10px;
+	.box-shadow(0 1px 0 #fff);
+	input {
+		width: 16px;
+		height: 16px;
+		opacity: 0;
+		display: inline-block;
+		background: none;
+	}
+	span {
+		background: url(../images/checkboxes.png) no-repeat 0 0;
+		height: 16px; width: 16px;
+		display: -moz-inline-box;
+		display: inline-block;
+		text-align: center;
+		&.checked {
+			background-position: 0 -17px;
+		}
+	}
+}//checker
+
+// Radio buttons
+// ----------------
+div.radio {
+	width: 16px;
+	height: 17px;
+	position: relative;
+	display: -moz-inline-box;
+	display: block;
+	vertical-align: middle;
+	zoom: 1;
+	float: left;
+	// margin-top: 2px;
+	margin-right: 10px;
+	padding-left: 0px;
+	input {
+		width: 16px;
+		height: 17px;
+		opacity:0;
+		display: inline-block;
+		background: none;
+	}
+	span {
+		background: url(../images/radios.png) no-repeat 0 0;
+		height: 17px;
+		width: 16px;
+		display: -moz-inline-box;
+		display: inline-block;
+		text-align: center;
+		&.checked {
+			background-position: 0 -18px;
+		}
+	}
+}//radio buttons
+
+
+// =form-tabs
+// ----------------
+// .form-tab{background:#f5f5f5;border:1px solid #ccc;display:inline-block;width:auto}
+// .form-tab > li {display:block;float:left}
+// .form-tab li+li{border-left:1px solid #ccc;}
+// .form-tab li a{padding:0 10px;display:block;font:11px/30px Arial,sans-serif;color:#999;text-decoration:none!important;background:#f5f5f5!important;
+// 	box-shadow:0 1px 0 rgba(255,255,255,0.5) inset;-moz-box-shadow:0 1px 0 rgba(255,255,255,0.5) inset;-webkit-box-shadow:0 1px 0 rgba(255,255,255,0.5) inset;}
+// .form-tab li a:hover{color:#777;}
+// .form-tab li.active a{background:#fff!important;border-bottom:1px solid #fff;margin:0 0 -1px;color:#555!important;cursor:default;}
+// .form-tab-item{background:#fff;border:1px solid #ccc;padding:15px 10px;margin-top:-1px;}
+// .form-tab-item.discuss-author > div{width:48%;}
+// .form-tab-item.discuss-author label{height:27px;line-height:27px;}
+// .form-tab-item {
+// 	.input-append {
+// 		.btn {
+// 			height: 20px;
+// 		}
+// 		.icon-remove {
+// 			line-height: 20px;
+// 		}
+// 	}
+// }
+
+// =plugin (form yes no button)
+// ----------------
+.yes_no label {display: inline-block}
+.ibutton-container {
+	position: relative;
+	width: 89px;
+	height: 26px;
+	cursor: pointer;
+	overflow: hidden;
+	-khtml-user-select: none;
+	-o-user-select: none; -moz-user-select: none;
+	-moz-user-focus: ignore;
+	-moz-user-input: disabled;
+	input {
+		position: absolute; top: 0;
+		left: 0;
+		.opacity(0);
+		-moz-user-input: enabled  !important;
+	}
+	.ibutton-handle {
+		display: block;
+		padding-left: 3px;
+		width: 33px;
+		height: 25px;
+		cursor: inherit;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 0;
+		background: transparent url(../images/ibutton-slider-default.png) no-repeat scroll 0 -26px;
+		z-index: 3;
+	}
+	.ibutton-handle-right {
+		height: 100%;
+		width: 100%;
+		padding-right: 3px;
+		background: transparent url(../images/ibutton-slider-default.png) no-repeat scroll 100% -26px;
+		z-index: 3;
+	}
+	.ibutton-handle-middle {
+		height: 100%;
+		width: 100%;
+		background: transparent url(../images/ibutton-slider-default.png) no-repeat scroll 50% -26px;
+		z-index: 3;
+	}
+	div.ibutton-label-on,
+	div.ibutton-label-off {
+
+	}
+	div.ibutton-label-on,
+	div.ibutton-label-off {
+		white-space: nowrap;
+		font-size: 11px;
+		line-height: 18px;
+		font-weight: bold;
+		text-transform: uppercase;
+		cursor: inherit;
+		display: block;
+		height: 26px;
+		position: absolute;
+		width: auto;
+		top: 0;
+		padding-top: 4px;
+		overflow: hidden;
+		text-align: center;
+		background: transparent url(../images/ibutton-slider-default.png) no-repeat scroll 0 0;
+	}
+
+	div.ibutton-label-on {
+		color: #5c9c14;
+		left: 0;
+		z-index: 1;
+		span {
+			padding-left: 0px;
+		}
+	}
+
+	div.ibutton-label-off {
+		color: #c4132f;
+		background-position: 100% 0;
+		text-align: right;
+		right: 0;
+		width: 95%;
+		span label {
+			padding-right: 10px !important;
+			margin-left: -2px
+		}
+	}
+
+	.ibutton-padding-left { left: 0; }
+	.ibutton-padding-right { right: 0; }
+	.ibutton-disabled {
+		cursor: not-allowed !important;
+		.opacity(6);
+	}
+}//ibutton-container
+
+
+.radio input[type="radio"],
+.checkbox input[type="checkbox"] {
+	float: none;
+	margin-left:0;
+	padding-left:0;
+}
+
+
+
+//post edit view
+#publishoptions .span4,
+#publishoptions .span8 {
+	float: none;
+	width: auto;
+}

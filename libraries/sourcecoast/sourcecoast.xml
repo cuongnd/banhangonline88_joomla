@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="library" version="1.6" method="upgrade">
+    <name>SourceCoast Extensions Library</name>
+    <libraryname>sourcecoast</libraryname>
+    <version>3.2.2</version>
+    <creationDate>2014/10/03</creationDate>
+    <author>SourceCoast | www.sourcecoast.com</author>
+    <authorEmail>support@sourcecoast.com</authorEmail>
+    <authorUrl>http://www.sourcecoast.com</authorUrl>
+    <copyright>Copyright (C) 2012-2014 SourceCoast. All rights reserved.</copyright>
+    <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+    <description>This library provides common functionality to the SourceCoast Social Extensions (JFBConnect, JLinked, etc)</description>
+    <files>
+        <filename>adminHelper.php</filename>
+        <filename>articleContent.php</filename>
+        <filename>easyTags.php</filename>
+        <filename>openGraph.php</filename>
+        <filename>openGraphPlugin.php</filename>
+        <filename>profile.php</filename>
+        <filename>utilities.php</filename>
+        <filename>sourcecoast.xml</filename>
+        <filename>plugins/socialprofile.php</filename>
+    </files>
+</extension>

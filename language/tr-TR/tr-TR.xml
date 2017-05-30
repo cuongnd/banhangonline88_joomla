@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<metafile version="3.6"  client="site">
+    <name>Türkçe (Türkiye)</name>
+	<version>3.6.2.1</version>
+	<creationDate>July 2016</creationDate>
+	<author>Ümit Kenan Gönüllü</author>
+	<authorEmail>bilgi@jt.gen.tr</authorEmail>
+	<authorUrl>www.jt.gen.tr</authorUrl>
+	<copyright>Copyright (C) 2005 - 2016 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<description>tr-TR site language</description>
+	<metadata>
+		<name>Türkçe (Türkiye)</name>
+		<tag>tr-TR</tag>
+		<rtl>0</rtl>
+		<locale>tr_TR.utf8, tr, tr_TR, turkish, Turkish_Standard, Tur_TR,  tr_TR.UTF-8, tr_TR.ISO8859-9, tr_TR.iso88599, tr_TR.UTF-8@euro</locale>
+		<firstDay>1</firstDay>
+		<weekEnd>0,6</weekEnd>
+	</metadata>
+	<params />
+</metafile>

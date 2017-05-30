@@ -1,0 +1,110 @@
+/*------------------------------------*\
+  ui.less
+\*------------------------------------*/
+
+// =ui-autocomplete
+// ----------------
+// autocomplete styling
+.ui-autocomplete {
+	&.location-suggestion {
+		width: 250px;
+		padding: 3px;
+		border-top: 0;
+		max-height: 120px;
+		overflow-y: scroll;
+		z-index: 9999 !important;
+		border-radius: 0 0 2px 2px;
+		-moz-border-radius: 0 0 2px 2px;
+		-webkit-border-radius: 0 0 2px 2px;
+		.ui-menu-item {
+			a {
+				font-family: sans-serif;
+				font-size: 12px;
+				text-align: left;
+				padding: 5px 8px;
+				border-radius: 2px;
+				-moz-border-radius: 2px;
+				-webkit-border-radius: 2px;
+			}
+			.ui-state-focus, a:hover {
+				color: white;
+				background-color: #3875D7;
+				#gradient > .vertical(#3875D7, #2A62BC);
+			}
+		}
+	}
+}
+
+
+// chosen form
+// ----------------
+.chzn-container {
+	width: 100% !important;
+}
+.chzn-container .chzn-drop {
+	width: 100% !important;
+	.box-sizing(border-box);
+}
+
+
+// tooltip
+// ----------------
+div.tooltip.tooltip-ed {
+	background: none;
+	border: none;
+	padding: 5px;
+	max-width: auto;
+	width: auto;
+	line-height: 12px;
+}
+
+// avatar cropper
+// ----------------
+
+.avatarCropper {
+
+	.avatarContainer {
+		float: left;
+		position: relative;
+	}
+
+	.avatarPreview {
+		display: none;
+		border: 1px solid #ccc;
+	}
+
+	.cropActions {
+		display: inline-block;
+	}
+
+	.stopCropButton,
+	.saveCropButton {
+		display: none !important;
+	}
+
+	&.cropping {
+
+		.startCropButton {
+			display: none !important;
+		}
+
+		.stopCropButton,
+		.saveCropButton {
+			display: inline-block !important;
+		}
+	}
+}
+
+
+// dropdown
+// ----------------
+.dropdown_ {
+	position: relative;
+}
+
+
+// similar questions
+// ----------------
+#dc_similar-questions .popover {
+	display: block;
+}

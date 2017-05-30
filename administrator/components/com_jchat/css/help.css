@@ -1,0 +1,23 @@
+div.slidercontents {
+	background-color: #FFF;
+	min-height: 150px;
+	padding: 20px;
+}
+
+div.slidercontents div {
+	font-size: 14px;
+	color: #333;
+}
+
+div.slidercontents img.floatleft {
+	float: left;
+	margin-right: 10px;
+}
+
+#jchat_accordion_help {
+	font-size: 14px;
+}
+
+.bold {
+	font-weight: bold;
+}

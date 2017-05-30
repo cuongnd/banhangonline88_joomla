@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<plugin>
+  <authorEmail>support@freestyle-joomla.com</authorEmail>
+  <author>Freestyle Joomla</author>
+  <copyright>(C) 2013 Freestyle Joomla. All rights reserved.</copyright>
+  <license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html </license>
+  <authorUrl>http://www.freestyle-joomla.com</authorUrl>
+
+  <name>Disqus</name>
+  <description>Plugin for providing Disqus comment integration</description>
+  
+  <plugin_settings>
+    <fields display="Disqus Settings" name="plugin">
+      <field name="shortname" type="text" label="Site Shortname" description="Enter your disqus site shortname">
+      </field>
+    </fields>
+  </plugin_settings>
+  
+</plugin>

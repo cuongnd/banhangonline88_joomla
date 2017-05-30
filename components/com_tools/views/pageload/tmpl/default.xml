@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+    <layout title="pageload" option="pageload">
+        <help
+                key="pageload"
+        />
+        <message>
+            <![CDATA[pageload]]>
+        </message>
+    </layout>
+
+
+    <!-- Add fields to the parameters object for the layout. -->
+    <fields name="params">
+
+    </fields>
+</metadata>

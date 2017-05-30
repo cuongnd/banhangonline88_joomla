@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5" type="plugin" group="content" method="upgrade">
+    <name>Content - MaQma Helpdesk Glossary</name>
+    <author>iMaQma</author>
+    <creationDate>February 2012</creationDate>
+    <copyright>(C) 2006-2012 Components Lab. All rights reserved.</copyright>
+    <license>GNU/GPL</license>
+    <authorEmail>support@imaqma.com</authorEmail>
+    <authorUrl>www.imaqma.com</authorUrl>
+    <version>1.2.0</version>
+    <description>Allows you to use the Glossary terms from the MaQma Helpdesk Component</description>
+    <files>
+        <filename plugin="maqmahelpdeskglossary">maqmahelpdeskglossary.php</filename>
+    </files>
+    <params/>
+</extension>

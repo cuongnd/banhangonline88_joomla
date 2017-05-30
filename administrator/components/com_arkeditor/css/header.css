@@ -1,0 +1,153 @@
+/*------------------------------------------------------------------------
+# Copyright (C) 2005-2012 WebxSolution Ltd. All Rights Reserved.
+# @license - GPLv2.0
+# Author: WebxSolution Ltd
+# Websites:  http://webx.solutions
+# Terms of Use: An extension that is derived from the Ark Editor will only be allowed under the following conditions: http://arkextensions.com/terms-of-use
+# ------------------------------------------------------------------------*/ 
+
+/* TOOLBAR ICON */
+.header .page-title .icon-arkeditor
+{
+	width					: 24px;
+	height					: 24px;
+	margin-right			: 5px;
+
+	background				: url( '../icons/ark-editor-logo-sm.png' ) 0px 0px no-repeat transparent;
+}
+
+.header .icon-arkeditor:before
+{
+	display					: none;
+}
+
+/* SUBMENU BUTTONS */
+#sidebar #submenu a:focus
+{
+	outline					: 0px none;
+}
+
+#sidebar #submenu a:before
+{
+	margin-right			: 10px;
+	font-family				: 'IcoMoon';
+}
+
+#sidebar #submenu a[href*='com_arkeditor&view=cpanel']:before
+{
+	content					: "7 ";
+}
+
+#sidebar #submenu a[href*='com_arkeditor&view=list']:before
+{
+	content					: "4 ";
+}
+
+#sidebar #submenu a[href*='com_installer']:before
+{
+	content					: "3 ";
+}
+
+#sidebar #submenu a[href*='com_installer&view=manage']:before
+{
+	content					: "L ";
+}
+
+#sidebar #submenu a[href*='com_arkeditor&view=toolbars']:before
+{
+	content					: "1 ";
+}
+
+#sidebar #submenu a[href*='com_arkeditor&view=import']:before
+{
+	content					: "l ";
+}
+
+#sidebar #submenu a[href*='com_arkeditor&view=cpanel&task=cpanel.editor']:before
+{
+	content					: "2 ";
+}
+
+#sidebar #submenu a[href*='com_arkeditor&view=cpanel&taskbtn=system']:before
+{
+	content					: "j ";
+}
+
+#sidebar #submenu a[href*='com_arkeditor&view=cpanel&taskbtn=export']:before
+{
+	content					: "R ";
+}
+
+#sidebar #submenu a[href*='com_arkeditor&view=cpanel&taskbtn=sync']:before
+{
+	content					: "f ";
+}
+
+#sidebar #submenu a[href='#']:before
+{
+	content					: "\e225 "; /* or "\e224" */
+}
+
+#sidebar #submenu a[href='#']
+{
+	color					: #C09853;
+	background-color		: #FCF8E3;
+	border					: 1px solid #FBEED5;
+}
+
+/* J3.0 STYLE FIXES */
+.nav-tabs a:focus
+{
+	outline					: 0px none;
+}
+
+.sidebar-nav .nav-list a.nolink,
+.sidebar-nav .nav-list a.nolink:hover,
+.sidebar-nav .nav-list li.active a.nolink,
+.sidebar-nav .nav-list li.active a.nolink:hover
+{
+	color					: #888888;
+	background-color		: transparent;
+	text-shadow				: none;
+}
+
+/* MOBILE STYLE FIXES */
+#filter-bar .btn-group > .btn
+{
+	max-width				: 50%;
+}
+
+/* ACCESSIBILITY TMPL FIXES */
+/* installer */
+body#minwidth-body .nav-tabs > li
+{
+	float					: left;
+	list-style				: none outside none;
+}
+
+body#minwidth-body #main-container > div
+{
+	padding					: 20px;
+	clear					: both;
+}
+
+body#minwidth-body #jform_selections_chzn
+{
+	min-width				: 200px;
+}
+
+/* installer tabs fix */
+body#minwidth-body #main-container .nav li
+{
+	margin					: 3px 5px;
+	padding					: 5px;
+
+	border					: 1px solid #C7C8B2;
+	background-color		: #F9FADE;
+}
+
+/* Hathor - root tabs fix */
+body#minwidth-body #submenu
+{
+	padding-bottom			: 26px;
+}

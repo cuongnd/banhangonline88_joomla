@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="package" version="3.5" method="upgrade">
+	<name>Turkmen (Turkmenistan)</name>
+	<packagename>tk-TM</packagename>
+	<version>3.5.0</version>
+	<creationDate>March 2016</creationDate>
+	<author>Shohrat Permanov</author>
+	<authorEmail>sohrat@gmail.com</authorEmail>
+	<authorUrl>plus.google.com/+ShohratPermanov</authorUrl>
+	<copyright>Copyright (C) 2005 - 2016 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<description>3.5.0 Joomla! Turkmen (Turkmenistan) Language Package</description>
+	<files>
+        <file type="language" client="administrator" id="tk-TM">admin_tk-TM.zip</file>
+        <file type="language" client="site" id="tk-TM">site_tk-TM.zip</file>
+	</files>
+	<updateservers>
+		<server type="collection" priority="1" name="Accredited Joomla! Translations">http://update.joomla.org/language/translationlist_3.xml</server>
+	</updateservers>
+</extension>

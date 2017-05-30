@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="package" version="3.4" method="upgrade">
+  <name>French Canadian Language Pack</name>
+	<packagename>fr-CA</packagename>
+	<version>3.5.1.2</version>
+	<creationDate>2016-05-15</creationDate>
+	<author>Martin Lamothe</author>
+	<authorEmail>admin@wiserweb.com</authorEmail>
+	<authorUrl>www.wiserweb.com</authorUrl>
+    <copyright>Copyright (C) 2005-2016 joomla.fr et Open Source Matters. Tous droits réservés</copyright>
+    <copyright>Copyright (C) 2014-2016 Martin Lamothe. Tous droits réservés</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<url/>
+	<packager>Joomla! French Canadian</packager>
+	<packagerurl>www.wiserweb.com</packagerurl>
+	<description>
+		<![CDATA[
+		<div style="text-align:left;">
+		<h3>Joomla! Full French Canadian (fr-CA) Language Package </h3>
+		<h3>Paquet de langue Joomla! français canadien (fr-CA) complet </h3>
+		</div>
+		]]>
+	</description>
+	<files>
+		<file type="language" client="site" id="fr-CA">site_fr-CA.zip</file>
+		<file type="language" client="administrator" id="fr-CA">admin_fr-CA.zip</file>
+	</files>
+	<updateservers>
+		<server type="collection" priority="1" name="Accredited Joomla! Translations">http://update.joomla.org/language/translationlist_3.xml</server>
+	</updateservers>
+</extension>

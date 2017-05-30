@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<install version="1.5" type="plugin" plugin="dialog" method="upgrade">
+	<version>0.1</version>
+	<creationDate>Feb 2012</creationDate>
+	<author>WebxSolution Ltd</author>
+	<authorUrl>http://www.arkextensions.com</authorUrl>
+	<license>GNU/GPLv2</license>
+	<description>PLG_ARKEDITOR_DESC</description>
+	<languages>
+	</languages>
+<params group="options">
+		<param name="baseFloatZIndex" type="text" default="10000" label="PLG_ARKEDITOR_DIALOG_FLOAT_INDEX" description="PLG_ARKEDITOR_DIALOG_FLOAT_INDEX_DESC"/>
+		<param name="dialog_backgroundCoverColor" type="jscolor" default="#FFFFFF" label="PLG_ARKEDITOR_DIALOG_BACKGROUND_COVER_COLOR" description="PLG_ARKEDITOR_DIALOG_BACKGROUND_COVER_COLOR_DESC"/>
+		<param name="indentOffset" type="list" default="0.7" label="PLG_ARKEDITOR_DIALOG_INDENT_OFFSET" description="PLG_ARKEDITOR_DIALOG_INDENT_OFFSET_DESC">
+			<option value="0.1">0.1</option>
+			<option value="0.2">0.2</option>
+			<option value="0.3">0.3</option>
+			<option value="0.4">0.4</option>
+			<option value="0.5">0.5</option>
+			<option value="0.6">0.6</option>
+			<option value="0.7">0.7</option>
+			<option value="0.8">0.8</option>
+			<option value="0.9">0.9</option>
+			<option value="1.0">1.0</option>
+		</param>
+		<param name="dialog_buttonsOrder" type="list" default="OS" label="PLG_ARKEDITOR_DIALOG_BUTTON_ORDER" description="PLG_ARKEDITOR_DIALOG_BUTTON_ORDER_DESC">
+			<option value="OS">Operating System</option>
+			<option value="ltr">Left to Right</option>
+			<option value="rtl">Right to Left</option>
+		</param>
+		<param name="dialog_startupFocusTab" type="radio" default="0" label="PLG_ARKEDITOR_DIALOG_STARTUP_FOCUS _TAB" description="PLG_ARKEDITOR_DIALOG_STARTUP_FOCUS _TAB_DESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+</params>
+</install>

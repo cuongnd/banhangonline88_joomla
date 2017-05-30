@@ -1,0 +1,158 @@
+(~"@{MediaManager}") {
+
+    .editor {
+
+        background: #fff;
+
+        .modalToolbar {
+
+            .insertItemButton {
+                > i {
+                    .icon-media(7, 4);
+                }
+            }
+
+            .cancelEditingButton {
+                > i {
+                    .icon-media(6, 4);
+                }
+            }
+        }
+
+        .modalContent {
+
+            .clearfix();
+
+            .editorViewport,
+            .editorLoading {
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                position: absolute;
+            }
+
+            .editorViewport {
+
+                top: 99999px;
+                left: 99999px;
+                z-index: 2;
+
+                &.active {
+                    top: 0;
+                    left: 0;
+                    z-index: 3;
+                }
+
+                .editorPreview {
+                    height: 100%;
+                    margin-right: 300px;
+                    background: url("editor.preview.png");
+                    overflow: hidden;
+                    position: relative;
+
+                    .previewContainer {
+                        position: absolute;
+                        z-index: 2;
+                        // cursor: move;
+                        // .box-shadow(0 12px 24px rgba(0, 0, 0, 0.4));
+
+                        object {
+                            .no-focus-outline();
+                        }
+
+                        &.imageCaptionBorder {
+                            padding: 5px;
+                            border: 1px solid #ddd;
+                            background: #f5f5f5;
+                        }
+
+                        .imageCaptionText {
+                            background: #f5f5f5;
+                            padding: 5px 0;
+                        }
+                    }
+
+                    .previewDialogGroup {
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        z-index: 1;
+
+                        &.alwaysOnTop {
+                            z-index: 3;
+                        }
+
+                        &.show-dialog-loading {
+
+                            .previewDialog {
+
+                                &.dialog-loading {
+                                    display: block;
+                                }
+                            }
+                        }
+
+                        .previewDialog {
+                            display: none;
+
+                            &.dialog-loading {
+                                .absolute-center();
+                                background: url("loader.gif") no-repeat center center;
+                                width: 16px;
+                                height: 16px;
+                                margin: 0 auto;
+                                position: relative;
+                                z-index: 9999;
+                            }
+                        }
+                    }
+                }
+
+                .editorPanel {
+                    width: 300px;
+                    height: 100%;
+                    float: right;
+                    background: #F5F5F5;
+                    border-left: 1px solid #CCCCCC;
+                    overflow-y: scroll;
+                    overflow-x: hidden;
+                }
+            }
+
+            .editorLoading {
+                z-index: 1;
+                top: 0;
+                left: 0;
+                text-align: center;
+                width: 100%;
+                height: 100%;
+                background: #f6f6f6;
+
+                .loadingHint {
+
+                    position: absolute;
+                    top: 50%;
+                    width: 100%;
+                    margin-top: 19px / 2 * -1;
+
+                    i {
+                        background: url("loader.bar.gif");
+                        width: 220px;
+                        height: 19px;
+                        display: inline-block;
+                    }
+
+                    .loadingText {
+                        font-size: 22px;
+                        line-height: 22px;
+                        padding: 12px;
+                        display: block;
+                        color: #bbb;
+                        .text-shadow(1px, 1px, 0px, #fff);
+                    }
+                }
+            }
+        }
+    }
+
+}

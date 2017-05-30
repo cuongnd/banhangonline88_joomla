@@ -1,0 +1,164 @@
+﻿<!doctype html>
+<html class="z-white z-width1200">
+<head>
+    <title>Flat Contained Tabs</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width = device-width, initial-scale = 1.0" />
+
+    <!-- Examples CSS (Not needed) -->
+    <link href="../css/zozo.examples.min.css" rel="stylesheet" />
+
+    <!-- Zozo Tabs css -->
+    <link href="../css/zozo.tabs.min.css" rel="stylesheet" />
+
+     <!-- Zozo Tabs Flat Themes css -->
+    <link href="../css/zozo.tabs.flat.min.css" rel="stylesheet" />
+    
+    <!-- Zozo Tabs js -->
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/zozo.tabs.min.js"></script>
+</head>
+
+<body>
+    <div id="ribbon"></div>
+    <div id="page">
+        <a class="z-btn z-back" href="index.html">Back</a>
+        <!-- Zozo Tabs Start-->
+        <div id="tabbed-nav">
+
+            <!-- Tab Navigation Menu -->
+            <ul>
+                <li><a>Overview<span>New Features in Zozo Tab</span></a></li>
+                <li><a>Subscribe<span>New Releases and Updates</span></a></li>
+                <li><a>Themes<span>10 Preset themes</span></a></li>
+                <li><a>Support<span>Step-by-step Guide</span></a></li>
+                <li><a>Purchase<span>Get Zozo Tabs Now!</span></a></li>
+            </ul>
+
+            <!-- Content container -->
+            <div>
+
+                <!-- Overview -->
+                <div>
+                    <h4>Overview</h4>
+                    <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer</p>
+                </div>
+
+                <!-- Subscribe -->
+                <div>
+                    <h4>Subscribe</h4>
+                    <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer</p>
+                </div>
+
+                <!-- Themes -->
+                <div>
+                    <h4>Themes</h4>
+                    <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer</p>
+                </div>
+
+                <!-- Support -->
+                <div>
+                    <h4>Support</h4>
+                    <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer</p>
+                </div>
+
+                <!-- Purchase -->
+                <div>
+                    <h4>Purchase</h4>
+                    <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer</p>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- Zozo Tabs End-->
+
+        <!-- Zozo Tabs Start-->
+        <div id="tabbed-nav2">
+
+            <!-- Tab Navigation Menu -->
+            <ul>
+                <li><a>Overview<span>New Features in Zozo Tab</span></a></li>
+                <li><a>Subscribe<span>New Releases and Updates</span></a></li>
+                <li><a>Themes<span>10 Preset themes</span></a></li>
+                <li><a>Support<span>Step-by-step Guide</span></a></li>
+                <li><a>Purchase<span>Get Zozo Tabs Now!</span></a></li>
+            </ul>
+
+            <!-- Content container -->
+            <div>
+
+                <!-- Overview -->
+                <div>
+                    <h4>Overview</h4>
+                    <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer</p>
+                </div>
+
+                <!-- Subscribe -->
+                <div>
+                    <h4>Subscribe</h4>
+                    <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer</p>
+                </div>
+
+                <!-- Themes -->
+                <div>
+                    <h4>Themes</h4>
+                    <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer</p>
+                </div>
+
+                <!-- Support -->
+                <div>
+                    <h4>Support</h4>
+                    <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer</p>
+                </div>
+
+                <!-- Purchase -->
+                <div>
+                    <h4>Purchase</h4>
+                    <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer</p>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- Zozo Tabs End-->
+    </div>
+
+
+    <script>
+        jQuery(document).ready(function ($) {
+            /* jQuery activation and setting options for first tabs*/
+            $("#tabbed-nav").zozoTabs({
+                position: "top-right",
+                multiline: true,
+                style: "contained",
+                theme: "flat-peter-river flat",
+                spaced: true,
+                rounded: false,
+                bordered: false,
+                animation: {
+                    easing: "easeInOutExpo",
+                    duration: 600,
+                    effects: "slideH"
+                }
+            });
+
+            /* jQuery activation and setting options for second tabs*/
+            $("#tabbed-nav2").zozoTabs({
+                position: "top-left",
+                orientation: "vertical",
+                multiline: true,
+                style: "contained",
+                theme: "flat-peter-river flat",
+                spaced: true,
+                rounded: false,
+                animation: {
+                    easing: "easeInOutExpo",
+                    duration: 450,
+                    effects: "slideH"
+                }
+            });
+        });
+    </script>
+</body>
+</html>

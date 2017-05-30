@@ -1,0 +1,57 @@
+/**
+ * @package  EasyBlog
+ * @copyright Copyright (C) 2010 Stack Ideas Private Limited. All rights reserved.
+ * @license  GNU/GPL, see LICENSE.php
+ * EasyBlog is free software. This version may have been modified pursuant
+ * to the GNU General Public License, and as distributed it includes or
+ * is derivative of works licensed under the GNU General Public License or
+ * other free or open source software licenses.
+ * See COPYRIGHT.php for copyright notices and details.
+ */
+
+/* Dashboard : Toolbar */
+#ezblog-dashboard .ui-toolbar {
+    background:-moz-linear-gradient(top, #638fbc 0%, #2c5188 100%);
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#638fbc), color-stop(100%,#2c5188));
+    background: -o-linear-gradient(top, #638fbc 0%, #2c5188 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#638fbc', endColorstr='#2c5188',GradientType=0 );
+}
+#ezblog-dashboard .ui-toolbar,
+#ezblog-dashboard .ui-toolbar li,
+#ezblog-dashboard .ui-toolbar li.float-r{
+    border-color:#1e4478;
+}
+#ezblog-dashboard .ui-toolbar li:hover{
+    background:-moz-linear-gradient(top, #6f99c0 0%, #355c95 100%);
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#6f99c0), color-stop(100%,#355c95));
+    background: -o-linear-gradient(top, #6f99c0 0%, #355c95 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6f99c0', endColorstr='#355c95',GradientType=0 );
+}
+#ezblog-dashboard .ui-toolbar li.active{
+    background:#375a8d;
+    box-shadow:0 0 5px rgba(0,0,0,0.3) inset;
+    -moz-box-shadow:0 0 5px rgba(0,0,0,0.3) inset;
+    -webkit-box-shadow:0 0 5px rgba(0,0,0,0.3) inset;
+}
+
+/* Dashboard : Widget */
+#ezblog-dashboard .ui-modhead {
+    border-bottom:1px solid #bbb;
+    background: -moz-linear-gradient(top, #ffffff 0%, #f0f0f0 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#f0f0f0));
+    background: -o-linear-gradient(top, #ffffff 0%, #f0f0f0 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f0f0f0',GradientType=0 );
+}
+#ezblog-dashboard .ui-modhead .ui-modtitle{
+    font-weight:700;
+    color:#555;
+    border-bottom:0;
+    color:;
+    text-shadow:
+}
+#ezblog-dashboard .ui-modbody{
+    background:#fcfcfc
+}
+#eblog-wrapper .ui-inputbutton{
+    background:#f5f5f5
+}

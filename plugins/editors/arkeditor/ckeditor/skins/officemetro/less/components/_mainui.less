@@ -1,0 +1,542 @@
+/*
+Copyright (c) 2003-2014, CKSource - Frederico Knabben. All rights reserved.
+For licensing, see LICENSE.md or http://ckeditor.com/license
+*/
+
+/*
+mainui.css (part of editor.css)
+=================================
+
+This file styles the basic structure of the CKEditor user interface - the box
+that holds everything.
+
+CKEditor offers two main editing modes. The main UI blocks that compose these
+modes are:
+
+    For "Theme UI" mode, the one most generally used:
+
+    +-- .cke_chrome ----------------------+
+    |+-- .cke_inner ---------------------+|
+    || +-- .cke_top -------------------+ ||
+    || |                               | ||
+    || +-------------------------------+ ||
+    || +-- .cke_contents --------------+ ||
+    || |                               | ||
+    || +-------------------------------+ ||
+    || +-- .cke_bottom ----------------+ ||
+    || |                               | ||
+    || +-------------------------------+ ||
+    |+-----------------------------------+|
+    +-------------------------------------+
+
+    For "Inline Editing" mode:
+
+    +-- .cke_chrome .cke_float -----------+
+    |+-- .cke_inner ---------------------+|
+    || +-- .cke_top -------------------+ ||
+    || |                               | ||
+    || +-------------------------------+ ||
+    |+-----------------------------------+|
+    +-------------------------------------+
+
+    Inner Header:
+
+    +-- .cke_top -------------------------+
+    |+-- #cke_top_outer -----------------+|
+    ||+-- #inner -----------------------+||
+    || +-- .cke_icons -----------------+ ||
+    || |                               | ||
+    || +-------------------------------+ ||
+    || +-- .cke_buttons ---------------+ ||
+    || |                               | ||
+    || +-------------------------------+ ||
+    |+----------------------------------+||
+    +-------------------------------------+
+
+Special outer level classes used in this file:
+
+    .cke_hc: Available when the editor is rendered on "High Contrast".
+
+*/
+
+/* Header Gutter Width */
+@cke-icons-gutter			: 7px;
+@cke-icons-disabled			: 0.3;
+@cke-icons-disabled-focus	: 0.5;
+
+@cke-outline-offset			: 5px;
+
+/* The outer boundary of the interface. */
+.cke_chrome
+{
+    /* This is <span>, so transform it into a block.*/
+    display: block;
+
+    background				: transparent;
+}
+
+/* The inner boundary of the interface. */
+.cke_inner {
+    /* This is <span>, so transform it into a block.*/
+    display: block;
+
+    -webkit-touch-callout: none;
+
+    background: transparent;
+    padding: 0;
+}
+/* define body mixins */
+.toolbox_mixins() {
+	border-top		: 0px none;
+	span
+	{
+		font-size: 12px;	
+	}	
+	
+	.cke_arrow
+	{
+		font-size: 0px;
+	}	
+	
+	.cke_combo_text
+	{
+		line-height: 26px !important; /*added by AW */	
+	}	
+			
+	display				: block;
+	padding				: 5px 5px 3px;
+	overflow			: hidden;
+
+	white-space			: normal; /* Webkit Massive Editor Width Fix */
+	border-left			: 1px solid @chrome-border;
+	border-right		: 1px solid @chrome-border;
+	-webkit-box-shadow	: 0px -1px 0px @primary-dark;
+	box-shadow			: 0px -1px 0px @primary-dark;
+	
+	background: rgb(255,255,255); /*PF - added */
+	background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(237,237,237,1) 100%);  /*PF - added */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(237,237,237,1)));  /*PF - added */
+	background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(237,237,237,1) 100%);  /*PF - added */
+	background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(237,237,237,1) 100%);  /*PF - added */
+	background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(237,237,237,1) 100%);  /*PF - added */
+	background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(237,237,237,1) 100%);  /*PF - added */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed',GradientType=0 );  /*PF - added */
+
+	/* Toolbar Collapser */
+	.cke_toolbox_collapser
+	{
+		width			: 15px;
+		height			: 14px;
+		margin-top		: 16px;
+
+		border			: 0px none;
+		border-radius 	: @button-radius;
+		background-color: transparent;
+
+		&:hover
+		{
+			cursor		: pointer;
+			background-color: @grey-light;
+		}
+
+		&.cke_toolbox_collapser_min
+		{
+			margin		: 0px;
+
+			.cke_arrow
+			{
+				border-width: 4px 4px 0px 4px;
+			}
+		}
+
+		.cke_arrow
+		{
+			margin-top	: 5px;
+			border-width: 0px 4px 4px 4px;
+
+			&:hover
+			{
+				cursor	: pointer;
+			}
+		}
+	}
+}
+
+
+/* Added to the outer boundary of the UI when in inline editing,
+   when the UI is floating. */
+.cke_float {
+	/* Adjust Editor to Compensate for Outline Offset on Content */
+	margin-left				: @cke-outline-offset - @cke-outline-offset - 7;
+	padding-bottom			: @cke-outline-offset - 3;
+
+    /* Make white the space between the outer and the inner borders. */
+    border: none;
+
+    .cke_inner {
+        /* As we don't have blocks following top (toolbar) we suppress the padding
+           as the toolbar defines its own margin. */
+        padding-bottom: 0;
+    }
+
+	.cke_toolbox
+	{
+		border-bottom		: 1px solid @chrome-border;
+    }
+
+	.cke_top
+	{
+		/* Adjust Header Icons Bar */
+		.cke_icons
+		{
+			padding-bottom	: @cke-icons-gutter;
+			
+			.ckh_left,
+			.ckh_right
+			{
+				&:hover .label
+				{
+					left	: 45%;
+					right	: inherit;
+					bottom	: @cke-icons-gutter;
+				}
+			}
+		}
+
+		/* Hide Header Tab Bar */
+		.cke_buttons
+		{
+			display			: none;	
+		}
+	}
+}
+
+/* Make the main spaces enlarge to hold potentially floated content. */
+.cke_top, .cke_contents, .cke_bottom {
+    /* These are <span>s, so transform them into blocks.*/
+    display: block;
+
+    /* Ideally this should be "auto", but it shows scrollbars in IE7. */
+    overflow: hidden;
+}
+
+.cke_top, .cke_bottom
+{
+	background				: @chrome-bg;
+}
+
+.cke_top
+{
+    /* Allow breaking toolbars when in a narrow editor. (#9947) */
+    white-space: normal;
+
+	/* Top Row */
+	
+	#inner
+	{
+	
+		.cke_icons
+		{
+			padding				: @cke-icons-gutter @cke-icons-gutter 0px;
+			position			: relative;
+			left				: 0px;
+			top					: 0px;
+
+			.cke_show			{ display : inline; }
+			.cke_hide			{ display : none; }
+
+			/* Icons */
+			.ckh_left,
+			.ckh_right
+			{
+				&:hover
+				{
+					text-decoration : none;
+
+					.label
+					{
+						display	: inline;
+						position: absolute;
+						bottom	: unit( -( unit( @cke-icons-gutter ) * 3 ), px );
+					}
+				}
+
+				/* Active Items */
+				&.cke_active,
+				&:active,
+				&:focus
+				{
+					outline		: 0px none;
+				}
+
+				&.ckh_disabled
+				{
+					opacity 	: @cke-icons-disabled;
+
+					&.cke_active,
+					&:active,
+					&:focus
+					{
+						opacity	: @cke-icons-disabled-focus;
+					}
+				}
+			}
+
+			/* Left Icons */
+			.ckh_left
+			{
+				float 			: left;
+				margin-right	: @cke-icons-gutter;
+
+				&:hover .label
+				{
+					left		: @cke-icons-gutter;
+				}
+			}
+
+			/* Right Icons */
+			.ckh_right
+			{
+				float 			: right;
+				margin-left		: @cke-icons-gutter;
+
+				&:hover .label
+				{
+					right		: @cke-icons-gutter;
+				}
+			}
+
+			/* Icon - Icon */
+			.ckh_icon
+			{
+				cursor			: pointer;
+				color			: #FFFFFF;
+				font-size		: 22px;  /* PF - change fomr 18px to 22px */
+			}
+
+			/* Icon - Label */
+			.label
+			{
+				display			: none;
+				color			: #FFFFFF;
+				text-shadow		: none;
+			}
+		}
+
+		/* Bottom Header Row */
+		.cke_buttons
+		{
+			text-align			: center;
+
+			button
+			{
+				float			: none; /* Hathor Fix */
+				margin			: 0px 2px;
+				padding:7px 12px; /*PF - changed to: 4px 7px 3px  */
+				color			: #FFFFFF;
+				/* text-transform:uppercase; / PF - removed */
+				font-size: 14px; /*PF - newly added*/
+				text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25); /*PF - newly added*/
+				background: transparent none; /* AW added */
+
+				&:hover
+				{
+					cursor		: pointer;
+					background	: none; /* Fallback */
+					background	: rgba( red( @chrome-bg ), green( @chrome-bg ), blue( @chrome-bg ), 0.1 );
+				}
+
+				/* Active Items */
+				&.cke_active,
+				{
+					color		: @grey-darkest; /*PF - changed = @primary to  @grey-darkest */
+					background	: @white; /*PF - changed = @chrome-bg to  @white */
+					-webkit-box-shadow	: -1px -1px 0px @primary-dark, 1px -1px 0px @primary-dark;
+					box-shadow	: -1px -1px 0px @primary-dark, 1px -1px 0px @primary-dark;
+					text-shadow: 0 1px 0 #fff; /*PF - added */
+
+					&:active,
+					&:focus
+					{
+						background : @chrome-bg;
+					}
+				}
+
+				&:active,
+				&:focus
+				{
+					outline		: 0px none;
+					background	: rgba( red( @chrome-bg ), green( @chrome-bg ), blue( @chrome-bg ), 0.3 );
+				}
+
+				/* Tab Style Item */
+				&.ckh_tab
+				{
+					padding-bottom	: 6px;
+					border			: 0px none; 
+					border-radius	: @border-radius @border-radius 0px 0px;
+				}
+
+				/* Button Style Item */
+				&.ckh_button
+				{
+					margin-bottom : 3px;
+					border-radius : @border-radius;				
+				}
+
+				/* Disabled Items */
+				&.ckh_disabled
+				{
+					opacity 	: @cke-icons-disabled;
+
+					&.cke_active,
+					&:active,
+					&:focus
+					{
+						opacity : @cke-icons-disabled-focus;
+						color	: #FFFFFF;
+						background : transparent;
+					}
+				}
+			}
+
+			.cke_show			{ display : inline; }
+			.cke_hide			{ display : none; }
+		}
+	
+	}
+	
+	[id^='cke_']
+	{
+		~ .cke_toolbox
+		{
+			.toolbox_mixins;
+			 border-top	: 1px solid @chrome-border; /* If Header is Disabled Show Top Border for Full Encapsulation */
+		}	
+	}
+	
+	#cke_top_outer
+	{
+		background-color 	: @primary;
+
+		~ .cke_toolbox
+		{
+			.toolbox_mixins;
+		}	
+	}
+}
+
+/* BE Content Version */
+.cke_contents
+{
+    background-color: #fff;
+	border					: 1px solid @chrome-border;
+}
+
+/* FE Content Version */
+.cke_editable.cke_editable_inline.cke_focus
+{
+	outline 				: 3px dashed darken( @chrome-border, 5% );
+	outline-offset			: @cke-outline-offset;
+	cursor					: text;
+
+	/*border					: 1px solid @chrome-border;
+	-webkit-box-shadow		: 0px 0px 20px 3px @chrome-shadow inset;
+	box-shadow				: 0px 0px 20px 3px @chrome-shadow inset;*/
+}
+
+/* Footer Bar */
+.cke_bottom
+{
+	padding					: 3px 0px 3px 3px;
+    position: relative;
+
+	border-left				: 1px solid @chrome-border;
+	border-bottom			: 1px solid @chrome-border;
+	border-right			: 1px solid @chrome-border;
+}
+
+/* On iOS we need to manually enable scrolling in the contents block. (#9945) */
+.cke_browser_ios .cke_contents {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* The resizer is the small UI element that is rendered at the bottom right
+   part of the editor. It makes is possible to resize the editor UI. */
+.cke_resizer {
+    /* To avoid using images for the resizer, we create a small triangle,
+       using some CSS magic. */
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    border-width: 10px 10px 0 0;
+    border-color: transparent @grey-dark transparent transparent;
+    border-style: dashed solid dashed dashed;
+
+    font-size: 0;
+    vertical-align: bottom;
+
+    margin-top: 6px;
+
+    /*  A margin in case of no other element in the same container
+        to keep a distance to the bottom edge. */
+    margin-bottom: 2px;
+}
+
+.cke_hc .cke_resizer {
+    font-size: 15px;
+    width: auto;
+    height: auto;
+    border-width: 0;
+}
+
+.cke_resizer
+{
+	margin-top				: 7px;
+
+	border-width			: 6px 6px 0px 0px;	
+}
+
+.cke_resizer_ltr
+{
+    cursor: se-resize;
+
+    float: right;
+	margin-right			: 8px;
+}
+
+/* This class is added in RTL mode. This is a special case for the resizer
+   (usually the .cke_rtl class is used), because it may not necessarily be in
+   RTL mode if the main UI is RTL. It depends instead on the context where the
+   editor is inserted on. */
+.cke_resizer_rtl
+{
+	border-width			: 6px 0px 0px 6px;
+    border-color: transparent transparent transparent @grey;
+    border-style: dashed dashed dashed solid;
+
+    cursor: sw-resize;
+
+    float: left;
+    margin-left: -4px;
+    right: auto;
+}
+
+/* The editing area (where users type) can be rendered as an editable <div>
+   element (e.g. divarea plugin). In that case, this is the class applied to
+   that element. */
+.cke_wysiwyg_div {
+    display: block;
+    height: 100%;
+    overflow: auto;
+    padding: 0 8px;
+    outline-style: none;
+
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}

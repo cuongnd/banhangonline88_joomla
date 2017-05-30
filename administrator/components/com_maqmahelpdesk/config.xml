@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<config>
+    <fieldset name="component"
+              label="COM_MAQMAHELPDESK_LICENSE"
+              description="">
+        <field
+                name="license_id"
+                type="text"
+                label="COM_MAQMAHELPDESK_LICENSE_ID"
+                description="COM_MAQMAHELPDESK_LICENSE_ID_DESC" />
+    </fieldset>
+    <fieldset
+            name="permissions"
+            label="JCONFIG_PERMISSIONS_LABEL"
+            description="JCONFIG_PERMISSIONS_DESC">
+        <field
+                name="rules"
+                type="rules"
+                label="JCONFIG_PERMISSIONS_LABEL"
+                class="inputbox"
+                filter="rules"
+                component="com_maqmahelpdesk"
+                section="component" />
+    </fieldset>
+</config>

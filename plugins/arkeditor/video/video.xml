@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.2" type="plugin" group="arkeditor" method="upgrade">
+	<name>ArkEditor -  HTML5 Video</name>
+	<author>Webx Solution Ltd</author>
+	<creationDate>Jan 2015</creationDate>
+	<copyright>>Copyright (C) 2014- 2015 All rights reserved</copyright>
+	<license>GNU General Public License version 2</license>
+	<authorEmail>support@arkextensions.com</authorEmail>
+	<authorUrl>www.arkextensions.com</authorUrl>
+	<version>1.0</version>
+	<description>Allows you to insert and play HTML5 videos in your articles.</description>
+	<files>
+		<filename plugin="video">video.php</filename>		<filename>index.html</filename>		<folder>video</folder>
+	</files>
+</extension>

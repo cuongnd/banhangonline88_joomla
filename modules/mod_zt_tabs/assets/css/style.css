@@ -1,0 +1,94 @@
+#zt-module-tabs {
+  margin-bottom: 20px;
+}
+#zt-module-tabs .zt-center {
+  text-align: center;
+}
+#zt-module-tabs .zt-center li {
+  float: none;
+  display: inline-block;
+}
+#zt-module-tabs .zt-left {
+  text-align: left;
+}
+#zt-module-tabs .zt-left li {
+  float: none;
+  display: inline-block;
+}
+#zt-module-tabs .zt-right {
+  text-align: right;
+}
+#zt-module-tabs .zt-right li {
+  float: none;
+  display: inline-block;
+}
+#zt-module-tabs .zt-justify {
+  text-align: justify;
+  display: table;
+  margin: 0 auto !important;
+}
+#zt-module-tabs .zt-justify li {
+  float: none;
+  display: inline-block;
+}
+#zt-module-tabs ul.nav,
+#zt-module-tabs ul.zt-tabs {
+  margin-bottom: 0px;
+}
+#zt-module-tabs div.tab-content {
+  margin-bottom: 0px;
+}
+#zt-module-tabs div.tab-content div.tab-pane {
+  margin-bottom: 30px;
+}
+#zt-module-tabs div.tab-content div.tab-pane,
+#zt-module-tabs div.tab-content div.active {
+  margin-bottom: 0px;
+}
+#zt-module-tabs div.tab-content div.zt-article {
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 30px 0;
+  border-bottom: 1px solid #e5e5e5;
+  float: left;
+  width: 100%;
+}
+#zt-module-tabs div.tab-content div.zt-article:first-child {
+  padding-top: 0px;
+}
+#zt-module-tabs div.tab-content div.zt-article div.zt-intro-img {
+  float: left;
+  display: block;
+  overflow: hidden;
+  margin-right: 10px;
+}
+#zt-module-tabs div.tab-content div.zt-article div.zt-container {
+  float: left;
+}
+#zt-module-tabs div.tab-content div.zt-article div.zt-container div.zt-title h4 {
+  margin-top: 0px ;
+  font-size: 20px;
+}
+#zt-module-tabs div.tab-content div.zt-article div.zt-container div.zt-title h4 a,
+#zt-module-tabs div.tab-content div.zt-article div.zt-container div.zt-title h4 a:active,
+#zt-module-tabs div.tab-content div.zt-article div.zt-container div.zt-title h4 a:visited {
+  color: #000000;
+  text-decoration: none;
+}
+#zt-module-tabs div.tab-content div.zt-article div.zt-container div.zt-title h4 a:hover,
+#zt-module-tabs div.tab-content div.zt-article div.zt-container div.zt-title h4 a:active {
+  color: #D82731;
+  text-decoration: none;
+}
+#zt-module-tabs div.tab-content div.zt-article div.zt-container div.zt-intro-text p {
+  line-height: 1.5;
+  margin-bottom: 0px;
+  font-size: 14px;
+}
+#zt-module-tabs div.tab-content div.zt-article div.zt-container div.zt-create {
+  padding-top: 15px;
+  color: #999;
+  font-size: 11px;
+}
+#zt-module-tabs div.tab-content div.zt-article div.zt-container div.zt-create i {
+  padding: 0px 5px 0px 15px;
+}

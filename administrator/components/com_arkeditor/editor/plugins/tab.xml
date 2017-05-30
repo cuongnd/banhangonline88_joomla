@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<install version="1.5" type="plugin" plugin="tab" method="upgrade">
+	<version>0.1</version>
+	<creationDate>Feb 2012</creationDate>
+	<author>WebxSolution Ltd</author>
+	<authorUrl>http://www.arkextensions.com</authorUrl>
+	<license>GNU/GPLv2</license>
+	<description>PLG_ARKEDITOR_DESC</description>
+	<languages>
+	</languages>
+	<params group="options">
+		<param name="tabSpaces" type="list" default="4" label="PLG_ARKEDITOR_TAB_SPACES" description="PLG_ARKEDITOR_TAB_SPACES_DESC">
+			<option value="0">0</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+		</param>
+	</params>
+</install>

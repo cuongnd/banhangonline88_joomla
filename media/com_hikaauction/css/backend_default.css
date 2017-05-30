@@ -1,0 +1,484 @@
+/**
+ * @package    HikaAuction for Joomla!
+ * @version    1.2.0
+ * @author     Obsidev S.A.R.L.
+ * @copyright  (C) 2011-2016 OBSIDEV. All rights reserved.
+ * @license    GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
+ */
+table.pad5 th, table.pad5 td {
+	padding:5px;
+}
+
+div#iframedoc {
+	border:1px solid black;
+	background-color: white;
+	height:300px;
+	display:none;
+}
+
+th.titlebox, th.titleid, th.titlenum {
+	width:30px;
+	white-space: nowrap;
+}
+
+th.titletoggle {
+	width:65px;
+	white-space: nowrap;
+}
+
+th.titlenum {
+	width:65px;
+	white-space: nowrap;
+}
+
+table.adminlist td.empty_list {
+	text-align:center;
+	font-size:1.2em;
+	font-style:italic;
+}
+
+#hikaauction_menu {
+	font-size:11px;
+	line-height:20px;
+	font-weight:normal;
+	height:20px;
+}
+#hikaauction_menu a:link {
+	color:#377D9F;
+}
+#hikaauction_menu ul {
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+#hikaauction_menu > ul > li {
+	float:left;
+}
+#hikaauction_menu li a {
+	display:block;
+	line-height:20px;
+	padding:0px 6px;
+	text-decoration:none;
+	background-repeat:no-repeat;
+	width:auto;
+	height:auto;
+}
+#hikaauction_menu li:hover ul a {
+	color:#069;
+}
+#hikaauction_menu > ul > li:hover, #hikaauction_menu > ul > li.sel {
+	background-color:#377D9F;
+	-webkit-border-radius:5px;
+		 -moz-border-radius:5px;
+			border-radius:5px;
+}
+#hikaauction_menu > ul > li.parentmenu:hover {
+	-webkit-border-bottom-left-radius:0px;
+		 -moz-border-bottom-left-radius:0px;
+			border-bottom-left-radius:0px;
+	-webkit-border-bottom-right-radius:0px;
+		 -moz-border-bottom-right-radius:0px;
+			border-bottom-right-radius:0px;
+}
+#hikaauction_menu > ul > li > a:focus {
+	color:#FFC050;
+}
+#hikaauction_menu > ul > li:hover > a, #hikaauction_menu > ul > li.sel > a {
+	color:#ffffff;
+}
+#hikaauction_menu li ul {
+	background:#377D9F;
+	display:none;
+	height:auto;
+	position:absolute;
+	z-index:200;
+	padding:1px;
+}
+#hikaauction_menu li:hover ul {
+	display:block;
+}
+#hikaauction_menu li li {
+	display:block;
+	float:none;
+}
+#hikaauction_menu li ul a {
+	display:block;
+	font-style:normal;
+	font-weight:normal;
+	text-align:left;
+	background-color:#F8F8F8;
+	background-position:5px 50%;
+	border-bottom:1px dotted #AAC6D4;
+	padding-left:25px;
+	padding-right:15px;
+	min-width:85px;
+}
+#hikaauction_menu li ul li.sep {
+	display:block;
+	font-style:normal;
+	font-weight:normal;
+	text-align:center;
+	color:white;
+	min-height:5px;
+}
+#hikaauction_menu li ul li.sel a {
+	background-color:#BFE3F5;
+}
+#hikaauction_menu li ul a.last {
+	border-bottom:0px;
+}
+#hikaauction_menu li ul a:hover, #hikaauction_menu li ul li.sel a:hover {
+	background-color:#6FB7DB;
+	color:#ffffff;
+}
+#hikaauction_menu .e1 {
+	padding-left:25px;
+	padding-bottom:2px;
+	background-position: 5px 3px;
+}
+#hikaauction_menu .l1 {
+	padding-right:0px;
+	margin-right:2px;
+}
+#hikaauction_menu .singlemenu a {
+	padding-right:0px;
+}
+#hikaauction_menu .parentmenu {
+	padding-right:10px;
+	background:url(../images/arrow_menu.png) no-repeat;
+	background-position:right 8px;
+}
+#hikaauction_menu .parentmenu:hover, #hikaauction_menu li.sel {
+	background-position:right -7px;
+}
+#hikaauction_menu.hikaauction_menu_top {
+	margin-bottom: 10px;
+}
+
+#hikaauction_menu_j3 > li.sel {
+	background-color:#BFE3F5;
+}
+#hikaauction_menu_j3 .dropdown-menu li.sel {
+	background-color:#6FB7DB;
+	color:#ffffff;
+}
+#hikaauction_menu_j3 i {
+	width:16px;
+	height:16px;
+	vertical-align:-3px;
+}
+#hikaauction_main_content .navbar,
+#hikaauction_main_content #hikaauction_menu {
+	padding-bottom: 7px;
+}
+
+#hikaauction_main_content input,
+#hikaauction_main_content textarea,
+#hikaauction_main_content select,
+#hikaauction_main_content fieldset input,
+#hikaauction_main_content fieldset textarea,
+#hikaauction_main_content fieldset select,
+#hikaauction_main_content fieldset img,
+#hikaauction_main_content fieldset button {
+	float:none;
+}
+#hikaauction_main_content label {
+	float:none;
+	display:inline;
+}
+#hikaauction_main_content fieldset {
+	border:1px solid #CCCCCC;
+	background-color:#FFFFFF;
+}
+#hikaauction_main_content fieldset td.action {
+	text-align:center;
+}
+#hikaauction_main_content fieldset td.action img {
+	margin: 0px;
+}
+#hikaauction_main_content table.admintable td.key,
+#hikaauction_main_content table.admintable td.paramlist_key {
+	background-color:#F6F6F6;
+	border-bottom:1px solid #E9E9E9;
+	border-right:1px solid #E9E9E9;
+	color:#666666;
+	font-weight:bold;
+	text-align:right;
+	width:140px;
+}
+#hikaauction_main_content div.row-fluid table.admintable td.key,
+#hikaauction_main_content div.row-fluid table.admintable td.paramlist_key {
+	white-space:normal;
+}
+
+fieldset .hika_edit {
+	float:right;
+	margin-top:-25px;
+	margin-bottom:8px;
+}
+fieldset .hika_edit img {
+
+}
+fieldset .hika_edit span {
+	display:none;
+}
+fieldset .hika_edit a,
+fieldset .hika_edit a:hover {
+	text-decoration:none;
+	background-color:transparent !important;
+	color:black !important;
+}
+
+div.toggle_loading {
+	width:16px;
+	height:16px;
+	display:inline-block;
+}
+div.toggle_onload {
+	width:16px;
+	height:16px;
+	display:inline-block;
+	background-image:url('../images/spinner.gif');
+}
+div.toggle_onload a {
+	display:none;
+}
+div.toggle_loading a.unpublish,
+span.toggle_display.unpublish {
+	width:16px;
+	height:16px;
+	display:inline-block;
+	background-image:url('../images/icon-16/unpublish.png');
+}
+div.toggle_loading a.publish,
+span.toggle_display.publish {
+	width:16px;
+	height:16px;
+	display:inline-block;
+	background-image:url('../images/icon-16/publish.png');
+}
+
+span.auction-progress-icon {
+	display:inline-block;
+	height:16px;
+	width:16px;
+	margin:0 auto;
+	background-position:50% 50%;
+	background-repeat:no-repeat;
+}
+span.auction-progress-icon {
+	background-image:url('../images/icon-16/notset.png');
+}
+span.auction-progress-icon.progress-current {
+	background-image:url('../images/icon-16/progress.png');
+}
+span.auction-progress-icon.progress-finish {
+	background-image:url('../images/icon-16/publish.png');
+}
+span.auction-progress-icon.progress-error {
+	background-image:url('../images/icon-16/unpublish.png');
+}
+
+.icon-16-hikaauction {background-image:url(../images/icon-16/logo.png);}
+.icon-32-hikaauction {background-image:url(../images/icon-32/logo.png);}
+.icon-48-hikaauction {background-image:url(../images/icon-48/logo.png);}
+
+.icon-16-settings {background-image:url(../images/icon-16/config.png);}
+.icon-16-trigger {background-image:url(../images/icon-16/trigger.png);}
+.icon-16-triggers {background-image:url(../images/icon-16/trigger.png);}
+.icon-16-update {background-image:url(../images/icon-16/update.png);}
+.icon-16-info {background-image:url(../images/icon-16/help.png);}
+.icon-16-help { background-image: url(../images/icon-16/help.png); }
+.icon-16-mail {background-image:url(../images/icon-16/mail.png);}
+
+.icon-32-user {background-image:url(../images/icon-32/user.png);}
+.icon-32-category {background-image:url(../images/icon-32/category.png);}
+
+.icon-48-config {background-image:url(../images/icon-48/config.png);}
+.icon-48-config {background-image:url(../images/icon-48/config.png);}
+.icon-48-trigger {background-image:url(../images/icon-48/trigger.png);}
+.icon-48-triggers {background-image:url(../images/icon-48/trigger.png);}
+.icon-48-rules {background-image:url(../images/icon-48/trigger.png);}
+.icon-48-user {background-image:url(../images/icon-48/user.png);}
+.icon-48-category {background-image:url(../images/icon-48/category.png);}
+.icon-48-categories {background-image:url(../images/icon-48/category.png);}
+.icon-48-help {background-image:url(../images/icon-48/help.png);}
+
+#sbox-content .sbox-header {
+	font-size: 1.4em;
+	padding-bottom:4px;
+	margin-bottom:2px;
+	border-bottom: 1px solid #d0d0d0;
+}
+#sbox-content .sbox-footer {
+	text-align: right;
+	padding-top:4px;
+	margin-top:2px;
+	border-top: 1px solid #d0d0d0;
+}
+#sbox-content .sbox-footer button {
+	margin-left:6px;
+	padding:2px;
+}
+#sbox-content .sbox-footer button.btn-primary {
+	color: #fff;
+	text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+	background-color: #1d6cb0;
+	background-image: -moz-linear-gradient(top,#2384d3,#15497c);
+	background-image: -webkit-gradient(linear,0 0,0 100%,from(#2384d3),to(#15497c));
+	background-image: -webkit-linear-gradient(top,#2384d3,#15497c);
+	background-image: -o-linear-gradient(top,#2384d3,#15497c);
+	background-image: linear-gradient(to bottom,#2384d3,#15497c);
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff2384d3', endColorstr='#ff15497c', GradientType=0);
+	border-color: #15497c #15497c #0a223b;
+	border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+	*background-color: #15497c;
+	filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+#sbox-content .sbox-footer button.btn-primary:hover {
+	color: #fff;
+	text-decoration: none;
+	background-position: 0 -15px;
+	background-color: #15497c;
+	*background-color: #113c66;
+}
+
+a.infinityButton {
+	display:inline-block;
+	width:13px;
+	height:9px;
+	background:url('../images/infinity.png') transparent 0px 0px !important;
+	position:relative;
+	left:-18px;
+	top:0px;
+}
+
+body.com_hikaauction a.infinityButton {
+	left:-19px;
+	top:-4px;
+}
+a.infinityButton:hover, a.infinityButton:focus {
+	background-position:13px !important;
+}
+a.infinityButton span {
+	display:none !important;
+}
+input.infinityButton {
+	margin-right:0px;
+	padding-right: 13px;
+}
+
+body.com_hikaauction h1.page-title a { color:white; }
+body.com_hikaauction h1.page-title span.icon-hikaauction {
+	background-image:url(../images/icon-32/logo.png);
+	width:32px; height: 32px;
+	vertical-align:middle;
+}
+.btn-small .icon-hikaauction {
+	background-image:url(../images/icon-14-logo.png);
+	vertical-align:middle;
+}
+
+#hikaauction_main_content #cpanel .icon-wrapper {
+	width:auto;
+	height:auto;
+	display:block;
+}
+
+#hikaauction_main_content #cpanel div.icon {
+	text-align: center;
+	margin-right: 15px;
+	float: left;
+	margin-bottom: 15px;
+
+}
+
+#hikaauction_main_content #cpanel div.icon a {
+	background-color: #fff;
+	background-position: -30px;
+	display: block;
+	float: left;
+	height: 97px;
+	width: 108px;
+	color: #565656;
+	vertical-align: middle;
+	text-decoration: none;
+	border: 1px solid #CCC;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-transition-property: background-position, -webkit-border-bottom-left-radius, -webkit-box-shadow;
+	-moz-transition-property: background-position, -moz-border-radius-bottomleft, -moz-box-shadow;
+	-webkit-transition-duration: 0.8s;
+	-moz-transition-duration: 0.8s;
+}
+
+#hikaauction_main_content #cpanel div.icon a:hover,
+#hikaauction_main_content #cpanel div.icon a:focus,
+#hikaauction_main_content #cpanel div.icon a:active {
+	background-position: 0px center;
+
+	background-color: #fafafa;
+	box-shadow: -5px 10px 15px rgba(0, 0, 0, 0.25);
+	position: relative;
+	z-index: 10;
+}
+
+#hikaauction_main_content #cpanel div.icon a span {
+	width:auto;
+}
+#hikaauction_main_content fieldset.radio {
+	border: 0;
+	margin-bottom: 5px;
+}
+#hikaauction_main_content #cpanel span {
+	display: block;
+	text-align: center;
+}
+
+#hikaauction_main_content fieldset.adminform {
+	padding: 5px 17px 17px;
+}
+#hikaauction_main_content fieldset.adminform legend {
+	margin: 0px;
+	padding: 0px 3px;
+	border: 0px solid;
+	width: auto;
+}
+body.com_hikaauction #hikaauction_main_content fieldset.noj3border {
+	border:0px;
+}
+#hikaauction_main_content table td.order input {
+	width:20px;
+}
+#hikaauction_main_content button.btn {
+	margin-bottom: 9px;
+}
+body.com_hikaauction div.modal-body iframe {
+	border:0px;
+}
+#hikaauction_main_content #hikaauction_edit_view .CodeMirror-wrapping {
+	height: 500px !important;
+}
+#modal-preview {
+	z-index:1100;
+}
+#hikaauction_main_content .modal-body{
+	max-height: none !important;
+}
+.noborder{ border-top : 0px !important; }
+@media only screen and (max-width: 1280px) { div.modal.fade.in{ width: 960px !important; margin-left: -480px !important; top : 50% !important; left: 50% !important; } }
+@media only screen and (max-width: 960px) { div.modal.fade.in{ width: 800px !important; margin-left: -400px !important; top : 50% !important; left: 50% !important; } }
+@media only screen and (max-width: 800px) { div.modal.fade.in{ width: 640px !important; margin-left: -320px !important; top : 50% !important; left: 50% !important; } }
+@media only screen and (max-width: 640px) { div.modal.fade.in{ width: 480px !important; margin-left: -240px !important; top : 10% !important; left: 50% !important; } }
+@media only screen and (max-width: 480px) { div.modal.fade.in{ width: 320px !important; margin-left: -160px !important; top : 10% !important; left: 50% !important; } }
+@media only screen and (max-height: 480px) { div.modal.fade.in{ height: 380px !important; } }
+@media only screen and (max-height: 420px) { div.modal.fade.in{ height: 320px !important; top:0% !important; } }
+
+.auction_details {
+color: #737373;
+font-weight: 300;
+font-size: 15px;
+text-align: center;
+}

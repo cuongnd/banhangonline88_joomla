@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension version="3.6" client="site" type="language" method="upgrade">
+	<name>Czech Language Pack_3.6.2</name>
+	<tag>cs-CZ</tag>
+	<version>3.6.2.1</version>
+	<creationDate>05/08/2016</creationDate>
+	<author>Czech Joomla Translation Team</author>
+	<authorEmail>admin@joomla.cz</authorEmail>
+	<authorUrl>http://www.joomlaportal.cz</authorUrl>
+	<copyright></copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<description>cs-CZ - Site language</description>
+	<files>
+		<filename>cs-CZ.ini</filename>
+		<filename>cs-CZ.com_ajax.ini</filename>
+		<filename>cs-CZ.com_config.ini</filename>
+		<filename>cs-CZ.com_contact.ini</filename>
+		<filename>cs-CZ.com_content.ini</filename>
+		<filename>cs-CZ.com_finder.ini</filename>
+		<filename>cs-CZ.com_mailto.ini</filename>
+		<filename>cs-CZ.com_media.ini</filename>
+		<filename>cs-CZ.com_messages.ini</filename>
+		<filename>cs-CZ.com_newsfeeds.ini</filename>
+		<filename>cs-CZ.com_search.ini</filename>
+		<filename>cs-CZ.com_tags.ini</filename>
+		<filename>cs-CZ.com_users.ini</filename>
+		<filename>cs-CZ.com_weblinks.ini</filename>
+		<filename>cs-CZ.com_wrapper.ini</filename>
+		<filename>cs-CZ.files_joomla.sys.ini</filename>
+		<filename>cs-CZ.finder_cli.ini</filename>
+		<filename>cs-CZ.lib_fof.ini</filename>
+		<filename>cs-CZ.lib_fof.sys.ini</filename>
+		<filename>cs-CZ.lib_idna_convert.sys.ini</filename>
+		<filename>cs-CZ.lib_joomla.ini</filename>
+		<filename>cs-CZ.lib_joomla.sys.ini</filename>
+		<filename>cs-CZ.lib_phpass.sys.ini</filename>
+		<filename>cs-CZ.lib_phputf8.sys.ini</filename>
+		<filename>cs-CZ.lib_simplepie.sys.ini</filename>
+		<filename>cs-CZ.mod_articles_archive.ini</filename>
+		<filename>cs-CZ.mod_articles_archive.sys.ini</filename>
+		<filename>cs-CZ.mod_articles_categories.ini</filename>
+		<filename>cs-CZ.mod_articles_categories.sys.ini</filename>
+		<filename>cs-CZ.mod_articles_category.ini</filename>
+		<filename>cs-CZ.mod_articles_category.sys.ini</filename>
+		<filename>cs-CZ.mod_articles_latest.ini</filename>
+		<filename>cs-CZ.mod_articles_latest.sys.ini</filename>
+		<filename>cs-CZ.mod_articles_news.ini</filename>
+		<filename>cs-CZ.mod_articles_news.sys.ini</filename>
+		<filename>cs-CZ.mod_articles_popular.ini</filename>
+		<filename>cs-CZ.mod_articles_popular.sys.ini</filename>
+		<filename>cs-CZ.mod_banners.ini</filename>
+		<filename>cs-CZ.mod_banners.sys.ini</filename>
+		<filename>cs-CZ.mod_breadcrumbs.ini</filename>
+		<filename>cs-CZ.mod_breadcrumbs.sys.ini</filename>
+		<filename>cs-CZ.mod_custom.ini</filename>
+		<filename>cs-CZ.mod_custom.sys.ini</filename>
+		<filename>cs-CZ.mod_feed.ini</filename>
+		<filename>cs-CZ.mod_feed.sys.ini</filename>
+		<filename>cs-CZ.mod_finder.ini</filename>
+		<filename>cs-CZ.mod_finder.sys.ini</filename>
+		<filename>cs-CZ.mod_footer.ini</filename>
+		<filename>cs-CZ.mod_footer.sys.ini</filename>
+		<filename>cs-CZ.mod_languages.ini</filename>
+		<filename>cs-CZ.mod_languages.sys.ini</filename>
+		<filename>cs-CZ.mod_login.ini</filename>
+		<filename>cs-CZ.mod_login.sys.ini</filename>
+		<filename>cs-CZ.mod_menu.ini</filename>
+		<filename>cs-CZ.mod_menu.sys.ini</filename>
+		<filename>cs-CZ.mod_random_image.ini</filename>
+		<filename>cs-CZ.mod_random_image.sys.ini</filename>
+		<filename>cs-CZ.mod_related_items.ini</filename>
+		<filename>cs-CZ.mod_related_items.sys.ini</filename>
+		<filename>cs-CZ.mod_search.ini</filename>
+		<filename>cs-CZ.mod_search.sys.ini</filename>
+		<filename>cs-CZ.mod_stats.ini</filename>
+		<filename>cs-CZ.mod_stats.sys.ini</filename>
+		<filename>cs-CZ.mod_syndicate.ini</filename>
+		<filename>cs-CZ.mod_syndicate.sys.ini</filename>
+		<filename>cs-CZ.mod_tags_popular.ini</filename>
+		<filename>cs-CZ.mod_tags_popular.sys.ini</filename>
+		<filename>cs-CZ.mod_tags_similar.ini</filename>
+		<filename>cs-CZ.mod_tags_similar.sys.ini</filename>
+		<filename>cs-CZ.mod_users_latest.ini</filename>
+		<filename>cs-CZ.mod_users_latest.sys.ini</filename>
+		<filename>cs-CZ.mod_weblinks.ini</filename>
+		<filename>cs-CZ.mod_weblinks.sys.ini</filename>
+		<filename>cs-CZ.mod_whosonline.ini</filename>
+		<filename>cs-CZ.mod_whosonline.sys.ini</filename>
+		<filename>cs-CZ.mod_wrapper.ini</filename>
+		<filename>cs-CZ.mod_wrapper.sys.ini</filename>
+		<filename>cs-CZ.tpl_beez3.ini</filename>
+		<filename>cs-CZ.tpl_beez3.sys.ini</filename>
+		<filename>cs-CZ.tpl_protostar.ini</filename>
+		<filename>cs-CZ.tpl_protostar.sys.ini</filename>
+		<filename>cs-CZ.localise.php</filename>
+		<filename file="meta">install.xml</filename>
+		<filename file="meta">cs-CZ.xml</filename>
+		<filename>index.html</filename>
+	</files>
+	<params />
+</extension>

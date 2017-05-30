@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metafile version="3.6" client="administrator" method="upgrade">
+	<name>Thai (ภาษาไทย)</name>
+	<version>3.6.2.1</version>
+	<creationDate>August 2016</creationDate>
+	<author>Thai Translation Team</author>
+	<authorEmail>tt@joomlacorner.com</authorEmail>
+	<authorUrl>www.joomlacorner.com</authorUrl>
+	<copyright>Copyright (C) 2005 - 2016 Open Source Matters &amp; JoomlaCorner.com. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<description>Thai (ภาษาไทย) ด้านหน้าผู้ดูแล สำหรับ Joomla! 3.6 โดยทีมลายไทย JoomlaCorner.com ภายใต้การสนับสนุนโดย บริษัท มาร์เวลิค เอ็นจิ้น จำกัด</description>
+	<metadata>
+		<name>Thai (ภาษาไทย)</name>
+		<tag>th-TH</tag>
+		<rtl>0</rtl>
+		<locale>th_TH.utf8, th_TH.UTF-8, th_TH, tha_TH, th, thai</locale>
+		<firstDay>0</firstDay>
+        <weekEnd>0,6</weekEnd>
+	</metadata>
+	<params />
+</metafile>

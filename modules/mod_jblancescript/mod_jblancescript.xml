@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.1" client="site" method="upgrade">
+	<name>mod_jblancescript</name>
+	<creationDate>30 September 2014</creationDate>
+	<author>JoomBri Team</author>
+	<copyright>Copyright (C) 2012 - 2015 BriTech Solutions. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>support@joombri.in</authorEmail>
+	<authorUrl>www.joombri.in</authorUrl>
+	<version>1.0</version>
+	<description>MOD_JBLANCE_DESC_SCRIPT_MODULE</description>
+
+	<files>
+		<filename module="mod_jblancescript">mod_jblancescript.php</filename>
+		<filename>index.html</filename>
+		<filename>tmpl/default.php</filename>
+		<filename>tmpl/index.html</filename>
+	</files>
+	
+	<languages>
+		<language tag="en-GB">language/en-GB/en-GB.mod_jblancescript.ini</language>
+		<language tag="en-GB">language/en-GB/en-GB.mod_jblancescript.sys.ini</language>
+	</languages>
+
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="code" type="textarea" rows="10" cols="100" default="" label="Code" description="Paste PHP and/or HTML codes here" filter="raw" class="input-xxlarge" />
+			</fieldset>
+			<fieldset name="advanced">
+				<field name="moduleclass_sfx" type="text" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+				<field name="prepare_content" type="radio" class="btn-group btn-group-yesno" label="Prepare Content" default="1">
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

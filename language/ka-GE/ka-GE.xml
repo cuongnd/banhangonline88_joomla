@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metafile version="3.6" client="site">
+    <name>Georgian (ka-GE)</name>
+    <tag>ka-GE</tag>
+    <version>3.6.2.1</version>
+    <creationDate>2016-08-05</creationDate>
+    <author>Georgian Translation Team</author>
+    <authorEmail>z.cherkezishvili@gmail.com</authorEmail>
+    <authorUrl>https://github.com/Zurabch</authorUrl>
+    <copyright>Copyright (C) 2005 - 2016 Open Source Matters. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <description>ka-GE site language</description>
+    <metadata>
+        <name>Georgian</name>
+        <tag>ka-GE</tag>
+        <rtl>0</rtl>
+        <locale>ka-GE.utf8, ka_GE.utf8, ka_GE.UTF-8, ka_GE, ka-GE, ka, georgian, georgian-ge, ge, georgia</locale>
+        <firstDay>1</firstDay>
+        <weekEnd>0,6</weekEnd>
+    </metadata>
+    <params />
+</metafile>

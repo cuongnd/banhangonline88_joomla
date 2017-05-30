@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metafile version="3.6" client="administrator">
+	<name>Swahili (East Africa)</name>
+	<version>3.6.2</version>
+	<creationDate>2016-08-05</creationDate>
+	<author>Hassan Abdalla</author>
+	<authorEmail>hassan@att-center.de</authorEmail>
+	<authorUrl>www.att-center.de</authorUrl>
+	<copyright>;Copyright (C) 2005 - 2016 Open Source Matters &amp; Hassan Abdalla (kwa lugha ya kiswahili). Haki zote zimehifadhiwa.</copyright>
+	<license>Leseni GNU General Public License toleo 2 au linalofuata; angalia LICENSE.txt</license>
+	<description>sw-KE administrator language</description>
+	<metadata>
+		<name>Swahili (East Africa)</name>
+		<tag>sw-KE</tag>
+		<rtl>0</rtl>
+		<locale>sw_KE.utf8, sw_KE.UTF-8, sw_KE, sw_KE, sw, swahili, kiswahili, swahili-ke, ke, ken, kenyan, tanzanian, ugandan, rwanda, ruanda, rwandan, ruandan, burundi, burundian, kenya, tanzania, uganda, rwanda, ruanda, burundi</locale>
+		<firstDay>1</firstDay>
+		<weekEnd>0,6</weekEnd>
+	</metadata>
+	<params />
+</metafile>

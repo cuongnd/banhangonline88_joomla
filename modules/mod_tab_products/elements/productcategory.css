@@ -1,0 +1,25 @@
+.product_category {
+  border: 1px solid #ccc;
+  height: 400px;
+  width: 800px;
+  overflow-y: scroll;
+  overflow-x: scroll;
+}
+.product_category ul {
+  margin: 0px 0px 0px 15px;
+  list-style: none;
+}
+.product_category ul .item {
+  cursor: pointer;
+}
+.product_category ul li .collapse-all,
+.product_category ul li .expand-all {
+  font-size: 10px;
+}
+.product_category ul li .collapse-sub-all,
+.product_category ul li .expand-sub-all {
+  font-size: 9px;
+}
+.product_category ul li .input-checked {
+  margin: -5px 0px 0px 0px;
+}

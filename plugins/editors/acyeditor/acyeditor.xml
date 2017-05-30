@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<extension type="plugin" version="2.5" method="upgrade" group="editors">
+	<name>AcyMailing Editor (beta)</name>
+	<creationDate>décembre 2013</creationDate>
+	<version>4.5.0</version>
+	<author>Acyba</author>
+	<authorEmail>dev@acyba.com</authorEmail>
+	<authorUrl>http://www.acyba.com</authorUrl>
+	<copyright>Copyright (C) 2009-2013 ACYBA SARL - All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL</license>
+	<description>This editor will make your life easier when writing Newsletters with AcyMailing</description>
+	<files>
+		<filename plugin="acyeditor">acyeditor.php</filename>
+		<folder>acyeditor</folder>
+	</files>
+</extension>

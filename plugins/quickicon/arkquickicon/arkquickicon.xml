@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.1" type="plugin" group="quickicon" method="upgrade">
+	<name>Quick Icon - Ark Editor</name>
+	<version>3.0.0</version>
+	<description><![CDATA[ 
+	<p>This Plugin Adds a Quick Link Icon to Joomla's Control Panel Page.</p> 
+	]]></description>
+	<license>GNU/GPLv2</license>
+	<author>WebxSolution Ltd</author>
+	<authorEmail>info@arkextensions.com</authorEmail>
+	<authorUrl>http://www.arkextensions.com</authorUrl>
+	<copyright>2014 WebxSolutions Ltd</copyright>
+	<files>
+		<filename plugin="arkquickicon">arkquickicon.php</filename>
+		<filename>index.html</filename>
+	</files>
+	<config>
+	</config>
+</extension>

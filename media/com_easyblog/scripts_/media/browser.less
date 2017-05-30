@@ -1,0 +1,343 @@
+(~"@{MediaManager}") {
+
+    .browser {
+
+        background: #fff;
+
+        .modalTitle {
+            .modalTitleSnippet { display: none; }
+        }
+
+        &.mode-browse {
+            .title-browse { display: inline; }
+            .title-blogimage { display: none; }
+        }
+
+        &.mode-blogimage {
+
+            .title-browse { display: none; }
+            .title-blogimage { display: inline; }
+
+            .insertItemButton,
+            .customizeItemButton,
+            .insertAsGalleryButton {
+                display: none !important;
+            }
+        }
+
+        &.searching {
+            .browserPagination {
+                display: none !important;
+            }
+        }
+
+        .browserHeader {
+            .browserItemActionSet {
+                display: none;
+
+                &.active {
+                    display: block;
+                }
+
+                .green-button {
+                    margin-right: 0 !important;
+                }
+            }
+
+            .insertItemButton {
+                > i {
+                    .icon-media(7, 4);
+                }
+            }
+
+            .insertBlogImageButton {
+                > i {
+                    .icon-media(7, 4);
+                }
+                display: none;
+            }
+
+            .customizeItemButton {
+                > i {
+                    .icon-media(8, 4);
+                }
+            }
+
+            .insertAsGalleryButton {
+                > i {
+                    .icon-media(9, 4);
+                    width: 20px !important;
+                }
+            }
+
+            .removeItemButton {
+                padding-left: 27px !important;
+                > i {
+                    .icon-media(8, 1);
+                }
+            }
+        }
+
+        .browserContent {
+
+            position: relative;
+            z-index: 2;
+        }
+
+        .browserFooter {
+
+            position: relative;
+            .clearfix();
+
+            .footerButtons() {
+
+                padding-left: 6px + 16px + 4px !important;
+
+                > i {
+                    display: inline-block;
+                    position: absolute;
+                    top: 4px;
+                    left: 6px;
+                    width: 16px;
+                    height: 16px;
+                }
+            }
+
+            .browserTreeItemFooter {
+                width: 180px;
+                height: 36px;
+                border-right: 1px solid #CCCCCC;
+                float: left;
+                position: relative;
+
+                .createFolderButton {
+                    .footerButtons();
+                    > i {
+                        .icon-media(10, 4);
+                    }
+                }
+            }
+
+            .browserItemFooter {
+                height: 36px;
+                margin-left: 181px;
+                border-left: 1px solid #FFFFFF;
+                position: relative;
+            }
+
+            .browserPagination {
+
+                i {
+                    display: block;
+                    width: 16px;
+                    height: 16px;
+                    position: absolute;
+                    top: 5px;
+                    left: 6px;
+                }
+
+                .prevPageButton {
+                    .border-radius(0px, 0px, 3px, 3px);
+                    float: right;
+                    padding-left: 20px;
+
+                    > i {
+                        .icon-media(3, 1);
+                    }
+                }
+
+                .nextPageButton {
+                    .border-radius(3px, 3px, 0px, 0px);
+                    float: right;
+                    padding-left: 20px;
+
+                    > i {
+                        .icon-media(2, 1);
+                    }
+                }
+
+                .pageNumber {
+                    float: right;
+                    height: 27px;
+                    width: 72px + 1;
+                    margin-left: -1px;
+                    position: relative;
+                    .box-shadow(0 1px 0 rgba(255,255,255,0.7));
+                }
+
+                .pageSelection {
+                    margin: 0;
+                    padding: 0;
+                    border-bottom-color: #999999;
+                    border-left: none;
+                    border-right: none;
+                    position: absolute;
+                    bottom: 0;
+                    width: 72px;
+                    height: 25px;
+                    list-style: none;
+                    background: white;
+                    border: 1px solid #aaa;
+                    cursor: pointer;
+                    overflow: none;
+
+                    .paginationPage {
+                        display: none;
+
+                        &.selected {
+                            display: block;
+                        }
+                    }
+
+                    &.expanded {
+                        max-height: 200px;
+                        min-height: 75px;
+                        height: auto;
+                        overflow-y: scroll;
+
+                        .paginationPage {
+
+                            display: block;
+
+                            &.selected {
+                                .activeItemColorScheme();
+                            }
+                        }
+                    }
+                }
+
+                .paginationPage {
+                    height: 25px;
+                    line-height: 25px;
+                    text-align: center;
+                    cursor: pointer;
+
+                    &:hover {
+                        .hoverItemColorScheme();
+                    }
+                }
+
+                .pageBreakdown {
+                    display: none;
+                }
+            }
+        }
+
+        .browserViewButtons {
+
+            position: absolute;
+            top: 4px;
+            right: 4px;
+
+            button.button {
+
+                float: left;
+                padding: 0 14px !important; // (16px + 6px + 6px) / 2
+                position: relative;
+
+                > i {
+                    display: block;
+                    width: 16px;
+                    height: 16px;
+                    position: absolute;
+                    top: 4px;
+                    left: 6px;
+                }
+
+                &.active {
+                    background: #777 !important;
+                    filter: none !important; // Fixes IE not having dark background
+                }
+
+                &.browserListViewButton {
+
+                    .border-radius(0px, 0px, 3px, 3px);
+                    border-right: none;
+
+                    > i {
+                        .icon-media(9, 2);
+                    }
+                }
+
+                &.browserListViewButton.active {
+
+                    > i {
+                        .icon-media(9, 1);
+                    }
+
+                    + .browserTileViewButton {
+
+                        border-left: none;
+                    }
+                }
+
+                &.browserTileViewButton {
+
+                    .border-radius(3px, 3px, 0px, 0px);
+
+                    > i {
+                        .icon-media(10, 2);
+                    }
+                }
+
+                &.browserTileViewButton.active {
+
+                    > i {
+                        .icon-media(10, 1);
+                    }
+                }
+            }
+        }
+
+        .modalPrompt {
+
+            .modalPromptDialog {
+
+                .emphasis() {
+                    font-weight: bold;
+                    color: black;
+                    word-wrap: break-word;
+                }
+
+                &.createFolderPrompt {
+
+                    height: 200px;
+                    margin-top: -100px - 48px;
+
+                    .folderPath {
+                        .emphasis();
+                    }
+
+                    .folderInput {
+                        width: 220px;
+                    }
+
+                    .folderCreationPath {
+                        .emphasis();
+                    }
+                }
+
+                &.removeItemPrompt {
+
+                    height: 220px;
+                    margin-top: -110px - 48px;
+
+                    .removeItemFilename {
+                        .emphasis();
+                    }
+                }
+
+                &.flickrLoginPrompt {
+
+                    .flickrLogin {
+                        margin: 15px;
+                        border: none;
+                        overflow: hidden;
+                        width: 400px;
+                    }
+                }
+            }
+        }
+    }
+
+}

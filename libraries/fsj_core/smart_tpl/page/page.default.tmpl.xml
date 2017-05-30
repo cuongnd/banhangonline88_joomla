@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<template>
+  <install target="page" com="main" name="default">
+    <title>Default Template</title>
+    <description>Default site template</description>
+  </install>
+  <section name="page_header"><![CDATA[<div class='{$page_class}'>
+	{include_title}
+]]></section>
+  <section name="page_footer"><![CDATA[</div>
+]]></section>
+  <section name="page_title"><![CDATA[<div class="page-header">
+  <h2>
+    {$page_title}
+  </h2>
+</div>
+]]></section>
+  <section name="page_subtitle"><![CDATA[<div class="page-header">
+	<h3>
+		{$sub_title}
+	</h3>
+</div>
+]]></section>
+  <!--<section name="popup_header"><![CDATA[]]></section>
+  <section name="popup_footer"><![CDATA[]]></section>-->
+
+</template>

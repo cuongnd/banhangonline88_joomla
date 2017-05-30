@@ -1,0 +1,199 @@
+<!doctype html>
+<html>
+<head>
+    <title>API</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width = device-width, initial-scale = 1.0" />
+
+    <!-- Examples CSS (Not needed) -->
+    <link href="../css/zozo.examples.min.css" rel="stylesheet" />
+
+    <!-- Zozo Tabs css -->
+    <link href="../css/zozo.tabs.min.css" rel="stylesheet" />
+
+    <!-- Zozo Tabs js -->
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/zozo.tabs.min.js"></script>
+</head>
+<body>
+    <div id="ribbon"></div>
+    <div id="page">
+
+        <a class="z-btn z-back" href="index.html">Back</a>
+        <div class="z-row">
+
+            <div class="col8">
+                <div id="tabbed-nav">
+                    <ul>
+                        <!-- to disable a tab add data-disabled="true" li tag -->
+                        <li data-disabled="true"><a>Overview</a></li>
+                        <li><a>Features</a></li>
+                        <li><a>Docs</a></li>
+                        <li><a>Themes</a></li>
+                        <li><a>Purchase</a></li>
+                    </ul>
+
+                    <div>
+                        <div>
+                            <h4>Overview</h4>
+                            <p><strong>Slick Design</strong> and Limitless Customization</p>
+                        </div>
+                        <div>
+                            <h4>Some of it's key features</h4>
+                            <ul class="icons">
+                                <li>10 unique skins in 6 sizes</li>
+                                <li>10 flexible ways to position</li>
+                                <li>Autoplay support & SEO friendly </li>
+                                <li>Horizontal & vertical tabs</li>
+                                <li>Nested tabs</li>
+                                <li>Multiple instances </li>
+                                <li>Free updates & support </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>Documentation</h4>
+                            <p>Fully documented and step-by-step guide provided to help you get up and running with Zozo Tabs.</p>
+                            <p>Documentation can be found on <a href="http://docs.zozoui.com/tabs">docs.zozoui.com/tabs</a>. </p>
+                        </div>
+                        <div>
+                            <h4>10 Preset themes</h4>
+                            <ul class="icons">
+                                <li>White</li>
+                                <li>Crystal</li>
+                                <li>Silver</li>
+                                <li>Gray</li>
+                                <li>Black</li>
+                                <li>Orange</li>
+                                <li>Red</li>
+                                <li>Green</li>
+                                <li>Blue</li>
+                                <li>DeepBlue</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>Purchase</h4>
+                            <p><a href="http://codecanyon.net/item/zozo-tabs/3327836?ref=ZozoUI">Get Zozo Tabs from CodeCanyon.net</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col4">
+                <div id="config-wrapper">
+                    <div id="config" class="switcher" style="display: block;">
+                        <div class="config-title">API Functions</div>
+                        <div class="content">
+                            <ul class="options">
+                                <li>
+                                    <input type="text" value="1" id="tabIndex" class="z-textbox" />
+                                    <button class="selectTab z-btn">Select</button></li>
+                                <li>
+                                    <input type="text" value="New Tab" id="addText" class="z-textbox" />
+                                    <button class="addTab z-btn">Add</button></li>
+                                <li>
+                                    <button class="removeTab z-btn">Remove</button></li>
+                                <li>
+                                    <button class="enableTab z-btn">Enable</button></li>
+                                <li>
+                                    <button class="disableTab z-btn">Disable</button></li>
+                                <li>
+                                    <button class="prevTab z-btn">Prev</button></li>
+                                <li>
+                                    <button class="nextTab z-btn">Next</button></li>
+                                <li>
+                                    <button class="firstTab z-btn">First</button></li>
+                                <li>
+                                    <button class="lastTab z-btn">Last</button></li>
+                                <li>
+                                    <button class="playTab z-btn">Play</button></li>
+                                <li>
+                                    <button class="stopTab z-btn">Stop</button></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /*style for disabled tabs*/
+        .z-tabs > ul.z-tabs-nav > li.z-disabled
+        {
+            filter: alpha(opacity=45);
+            opacity: .45;
+        }
+            /*style for disabled tabs*/
+            .z-tabs > ul.z-tabs-nav > li.z-disabled > a.z-link
+            {
+                cursor: default!important;
+                outline: 0;
+            }
+    </style>
+
+    <script>
+        jQuery(document).ready(function ($) {
+            /* jQuery activation and setting options for the tabs*/
+            var tabbedNav = $("#tabbed-nav").zozoTabs({
+                position: "top-left",
+                theme: "silver",
+                size: "large",
+                defaultTab: "tab2"
+            }),
+            getItem = function () {
+                //uncomment if you want to delete current/active tab
+                //return $(".z-tabs > ul > li.z-active").index()+1;
+                return $("#tabIndex").val();
+            },
+            select = function (e) {
+                tabbedNav.data("zozoTabs").select(getItem());
+            },
+            add = function (e) {
+                tabbedNav.data("zozoTabs").add($("#addText").val(), "New Tab Content ...<br>", "test");
+            },
+            remove = function (e) {
+                tabbedNav.data("zozoTabs").remove(getItem());
+            },
+            disable = function (e) {
+                /*disable tab via geven index*/
+                tabbedNav.data("zozoTabs").disable(getItem());
+            },
+            enable = function (e) {
+                /*enable tab via geven index*/
+                tabbedNav.data("zozoTabs").enable(getItem());
+            },
+            next = function (e) {
+                tabbedNav.data("zozoTabs").next();
+            },
+            prev = function (e) {
+                tabbedNav.data("zozoTabs").prev();
+            },
+            first = function (e) {
+                tabbedNav.data("zozoTabs").first();
+            },
+            last = function (e) {
+                tabbedNav.data("zozoTabs").last();
+            },
+            play = function (e) {
+                tabbedNav.data("zozoTabs").play();
+            },
+            stop = function (e) {
+                tabbedNav.data("zozoTabs").stop();
+            };
+
+            $(".selectTab").click(select);
+            $(".addTab").click(add);
+            $(".removeTab").click(remove);
+            $(".enableTab").click(enable);
+            $(".disableTab").click(disable);
+            $(".prevTab").click(prev);
+            $(".nextTab").click(next);
+            $(".firstTab").click(first);
+            $(".lastTab").click(last);
+            $(".playTab").click(play);
+            $(".stopTab").click(stop);
+        });
+
+    </script>
+</body>
+</html>

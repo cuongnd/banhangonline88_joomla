@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.2" type="plugin" group="system" method="upgrade">
+	<name>System - ARK k2ExtraFields</name>
+	<author>WebxSolution Ltd</author>
+	<creationDate>Jan 2015</creationDate>
+	<copyright>>Copyright (C) 2015- 2016 All rights reserved</copyright>
+	<license>GNU General Public License version 2</license>
+	<authorEmail>info@arkextensions.com</authorEmail>
+	<authorUrl>http://www.arkextensions.com</authorUrl>
+	<version>1.0</version>
+	<description>This plugin enables the arkeditor to work with K2 Extrafields elements</description>
+	<files>
+		<filename plugin="k2extrafields">k2extrafields.php</filename>
+		<filename>index.html</filename>
+	</files>
+</extension>

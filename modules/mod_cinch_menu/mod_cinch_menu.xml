@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.3" client="site"	method="upgrade">
+	<name>Cinch Menu</name>
+     <author>Pixel Point Creative - Cinch Menu Module</author>
+     <creationDate>March 2013</creationDate>
+     <copyright>Copyright (c) Pixel Point Creative LLC.</copyright>
+     <license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+     <authorEmail>info@pixelpointcreative.com</authorEmail>
+     <authorUrl>www.pixelpointcreative.com</authorUrl>
+     <version>1.8</version>
+	<description>Cinch menu is a responsive vertical or horizontal menu with many options.</description>
+
+	<files>
+		<filename module="mod_cinch_menu">mod_cinch_menu.php</filename>
+		<filename>index.html</filename>
+		<folder>tmpl</folder>
+        <folder>core</folder>
+         <folder>elements</folder>
+	</files>
+	<config>
+		<fields name="params" addfieldpath="/modules/mod_cinch_menu/elements">
+            <fieldset name="basic" label = "Menu Options">
+				<field label="Version Check" type="upgradecheck" />
+            	<field name="moduleclass_sfx" type="text" default = "" label="Module class suffix"
+								description="Standard Joomla suffix added to the&lt;br /&gt;containing div's class name."/>
+				<field name="menutype" type="menu" label="Select a Menu"
+					description="Choose a menu for this module to display." />
+				<field name="startlevel" type="list" default="1" label="Start level"
+					description="Set the starting menu level to be shown in this module.
+						&lt;br /&gt;e.g. If you have a top menu which shows the first two menu levels,
+						&lt;br /&gt;then you can have a side menu showing from level-3.">
+					<option value="1">J1</option>
+					<option value="2">J2</option>
+					<option value="3">J3</option>
+					<option value="4">J4</option>
+					<option value="5">J5</option>
+					<option value="6">J6</option>
+					<option value="7">J7</option>
+					<option value="8">J8</option>
+					<option value="9">J9</option>
+					<option value="10">J10</option>
+				</field>
+				<field name="endlevel" type="list" default="all" label="End level"
+					description="Set the ending menu level to be shown in this module.">
+					<option value="1">J1</option>
+					<option value="2">J2</option>
+					<option value="3">J3</option>
+					<option value="4">J4</option>
+					<option value="5">J5</option>
+					<option value="6">J6</option>
+					<option value="7">J7</option>
+					<option value="8">J8</option>
+					<option value="9">J9</option>
+					<option value="10">J10</option>
+					<option value="all">All</option>
+				</field>
+				<field name="type" type="radio" default = "flyout" class="btn-group" label="Menu Type"
+					description="Do you want an Accordion or Flyout menu?">
+					<option value="accordion">Accordion</option>
+					<option value="flyout">Flyout</option>
+				</field>
+				<field name="stype_layout" type="radio" default ="vertical" class="btn-group" label="Style Flyout"
+					description="Horizontal or Vertical?">
+					<option value="horizontal">Horizontal</option>
+					<option value="vertical">Vertical</option>
+				</field>
+				<field name="event" type="radio" default="click" class="btn-group" label="Sub Menu Activation"
+					description="Do you want the menu shown when you
+						&lt;br /&gt;Click the menu plus icon or when you
+						&lt;br /&gt;Hover over the menu item?">
+					<option value="click">Click</option>
+					<option value="mouseover">Hover</option>
+				</field>
+				<field name="duration" type="text" default = "300" label="Animation Duration"
+					description="Sliding duration in ms for both Accordion and Flyout."/>
+
+				<field name="showsub" type="hidden" default="true" class="btn-group" label="Show Sub Level" description="show sub level">
+					<option value="false">No</option>
+					<option value="true">Yes</option>
+				</field>
+
+				<field name="subwidth" type="text" default="200" label="Sub Menu Width"
+					description="For Flyout menus only, the width of sub-menu
+						&lt;br /&gt;lists when they are shown.
+						&lt;br /&gt;Note: On Horizontal Flyouts in IE8 or below,
+						&lt;br /&gt;this is also used for the top-level menu width." />
+				<field name="menu_direction" type="radio" default="left" class="btn-group" label="Sub Menu Direction"
+					description="For Flyout menus, which side do you want flyouts to appear?
+						&lt;br /&gt;Note: For Horizontal flyouts, the first flyout always appears below.">
+					<option value="right">Left</option>
+					<option value="left">Right</option>
+				</field>
+				<field name="mainitemcolor" type="color" default="#FFFFFF" label="Background color"
+					description="The color applied to the background of the menu items."/>
+				<field name="bghovercolor" type="color" default="#000" label="Background hover color"
+					description="The color applied to the background of menu items the mouse is hovering over.
+						&lt;br /&gt;Note: Set this to the same color as above to disable background hover color."/>
+				<field name="textlinkcolor" type="color" default="#A3A3A3" label="Text link color"
+					description="The color applied to the text of the menu items."/>
+				<field name="texthovercolor" type="color" default="#ED8000" label="Text hover color"
+					description="The color applied to the text of the menu items when the mouse is hovering."/>
+				<field name="textalign" type="radio" default="left" class="btn-group" label="Menu text align"
+					description="Align the menu text to the Left or Right?">
+					<option value="left">Left</option>
+					<option value="right">Right</option>
+				</field>
+				<field name="showbullet" type="radio" default="true" class="btn-group" label="Show Plus/Minus"
+					description="Show the Plus/Minus indicator for sub-menus?">
+					<option value="false">No</option>
+					<option value="true">Yes</option>
+				</field>
+				<field name="bulletalign" type="radio" default="right" class="btn-group" label="Plus/Minus align"
+					description="Align the Plus/Minus indicator to the Right or Left?">
+					<option value="left">Left</option>
+					<option value="right">Right</option>
+				</field>
+
+			</fieldset>
+
+			<fieldset name="advanced">
+				<field name="jquery" type="radio" default="1" class="btn-group" label="Include jQuery Library"
+					description="Include the jQuery Library">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+	<updateservers>
+		<server type="extension" priority="1" name="Cinch Menu Auto Updater">http://www.pixelpointcreative.com/autoupdates/cinchmenu.xml</server>
+	</updateservers>
+</extension>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.1" type="plugin" group="system" method="upgrade">
+	<name>System - Inline History</name>
+	<author>WebxSolution Ltd</author>
+	<creationDate>November 2013</creationDate>
+	<copyright>>Copyright (C) 2013- 2014 All rights reserved</copyright>
+	<license>GNU General Public License version 2</license>
+	<authorEmail>info@arkextensions.com</authorEmail>
+	<authorUrl>http://www.arkextensions.com</authorUrl>
+	<version>1.0</version>
+	<description>This plugin enables version control for inline editing of third party components</description>
+	<files>
+		<filename plugin="inlinehistory">inlinehistory.php</filename>
+		<filename>index.html</filename>
+	</files>
+</extension>

@@ -1,0 +1,33 @@
+{
+	"title"	: "COM_EASYSOCIAL_MENU_GROUP_USERS",
+	"link"	: "index.php?option=com_easysocial&view=users",
+	"access": "easysocial.access.users",
+	"class"	: "ies-user",
+	"view"	: "users",
+	"counter"	: "users/getPendingUsersCount",
+	"active": "layout",
+	"childs":
+	[
+		{
+			"title"	: "COM_EASYSOCIAL_MENU_ITEM_USERS_VIEW_PENDING",
+			"class"	: "ies-vcard",
+			"url"	:
+			{
+				"view"	: "users",
+				"layout": "pending"
+			},
+			"counter"	: "users/getPendingUsersCount",
+			"childs": []
+		},
+		{
+			"title"	: "COM_EASYSOCIAL_MENU_ITEM_USERS_EXPORT",
+			"class"	: "ies-download",
+			"url"	:
+			{
+				"view"	: "users",
+				"layout": "export"
+			},
+			"childs": []
+		}
+	]
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Affiliate New account form" hidden="false">
+		<message>
+			Affiliate New account form
+		</message>
+	</layout>
+	<state>
+		<name>Affiliate New account form</name>
+		<description>Affiliate New account form</description>
+		
+		<params>
+		</params>
+	</state>
+</metadata>

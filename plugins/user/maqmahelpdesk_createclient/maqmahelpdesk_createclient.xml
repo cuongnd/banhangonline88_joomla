@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5" type="plugin" group="user" method="upgrade">
+    <name>User - MaQma Helpdesk Create Clients Automatically</name>
+    <author>Components Lab</author>
+    <creationDate>August 2012</creationDate>
+    <copyright>Copyright (C) 2006 - 2012 Components Lab, Lda. All rights reserved.</copyright>
+    <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+    <authorEmail>support@imaqma.com</authorEmail>
+    <authorUrl>www.imaqma.com</authorUrl>
+    <version>1.1.0</version>
+    <description>Plugin that creates a client in MaQma Helpdesk and relates it with the user created.</description>
+    <files>
+        <filename plugin="maqmahelpdesk_createclient">maqmahelpdesk_createclient.php</filename>
+    </files>
+    <config addpath="/administrator/components/com_maqmahelpdesk/elements">
+        <fields name="params">
+            <fieldset name="basic">
+                <field
+                        name="id_group"
+                        type="dlgroup"
+                        default="0"
+                        label="Client group"
+                        description="Set the client group to insert the client into.">
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

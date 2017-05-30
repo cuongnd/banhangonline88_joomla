@@ -1,0 +1,51 @@
+(~"@{MediaManager}") {
+	/*Palm only*/
+	@media (max-width: 480px) {
+		.mediaModalGroup {
+			padding: 0 10px;
+		}
+		.browserTreeItemField {
+			float: none;
+			height: auto;
+			width: 100%;
+		}
+		.browserItemField {
+			margin-left: 0;
+		}
+		.mediaModal {
+			.modalHeader {
+				.modalTitle {
+					position: relative;
+					display: none;
+				}
+				.modalButtons {
+					float: none;
+				}
+				button.modalButton {
+					&.uploaderButton,
+					&.browserButton {
+						float: left;
+					}
+
+				}
+			}//modalHeader
+			.modalToolbar {
+				height: 106px;
+				.topActions {
+					position: relative;
+					right: auto;
+				}
+			}
+		}
+
+		.browser {
+			.browserItemField {
+				&.view-tile {
+					.browserItem {
+					}
+				}
+			}
+		}
+	}//mediaquery
+
+}

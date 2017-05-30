@@ -1,0 +1,249 @@
+.fsj_transman 
+{
+	div.tm_key
+	{
+		float: right;
+		.input_cont
+		{
+			margin-bottom: 0px;
+			display: inline-block;
+			width: 100px;
+			right: inherit;
+			margin-right: 26px;
+		}
+		.form_header_info
+		{
+			display: inline-block;
+			float: inherit;
+			top: 2px;
+			position: relative;
+		}
+	}
+
+    .trans_form table {
+        width: 100%;
+        td {
+            width: 50%;
+        }
+    }
+
+	div.header_bottom_border
+	{
+		border-bottom: 1px solid #ccc;
+	}
+
+	table.form_table
+	{
+		margin-bottom: 24px;
+		tr{
+			border-bottom: 1px solid #ccc;
+		}
+        td{
+            vertical-align: top;
+        }
+	}
+
+	.control-group
+	{
+		margin-bottom: 0px !important;
+	}
+	
+	div.input_cont
+	{
+		position: relative;
+		/*min-height: 34px;*/
+		top: 5px;
+		div.input_hl
+		{
+			display: inline-block;
+			width: 5px;
+			margin: 0px;
+			padding: 0px;
+			position: absolute;
+			top: 6px;
+			bottom: 4px;
+		}
+	}
+
+	div.large 
+	{
+		/*min-height: 90px;*/
+	}
+
+	div.input_div, div.input_cont > div:first-child
+	{
+		/*position: absolute;
+		top: 4px;
+		right: 0px;
+		left: 0px;
+		width: inherit;
+		bottom: 4px;*/
+		width: 90%;
+
+		input, textarea
+		{
+			width:90%;
+			color: rgb(51, 51, 51);
+		}
+		textarea
+		{
+			border-top-left-radius: 0px;
+		}
+		.add-on 
+		{
+			cursor: pointer;
+		}
+	}
+
+	button.add_new_entry_button
+    {
+        float: right;
+		margin-top: 7px;
+    }
+
+	div.additional
+    {
+		input 
+        {
+            position: relative;
+			top: 5px;
+			width: 85%;
+        }
+		.remove_extra 
+        {
+            margin-right: 4px;
+        }
+	}
+		
+	.toggle_set 
+	{
+		margin-right: 4px;
+		color: #88f;
+		cursor: pointer;
+		padding-left: 2px;
+		padding-right: 2px;
+	}
+
+	h4.form_header 
+	{
+			
+		margin: 0 !important;
+		padding: 12px 0;
+		cursor: pointer;
+		display: inline-block;
+	}
+
+	.form_header_info {
+		float: right;
+		font-size: 14px;
+		line-height: 16px;
+		font-family: inherit;
+		font-weight: bold;
+			
+		.alert 
+		{        
+			padding: 4px 10px;
+			display: inline-block;
+			margin-left: 8px;
+			margin-top: 6px;
+			margin-bottom: 0px;
+		}
+	}
+
+	div.remove_extra
+    {
+		float: right;
+		padding-top: 8px;
+    }
+
+	div#notice_saveing, div#notice_savewarning
+	{
+		position: fixed;
+		top: 0px;
+		left: 0px;
+		right: 0px;
+		bottom: 0px;
+		background-color: rgba(0,0,0,0.5);
+		z-index: 10000;
+
+		div.alert
+		{
+			h2, h4
+			{
+				text-align: center;
+			}
+			width: 300px;
+			top: 300px;
+			margin-left: auto;
+			margin-right: auto;
+			box-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+			padding-bottom: 22px;
+			position: relative;
+		}
+	}
+
+	div#notice_savewarning 
+	{
+		text-align: center;
+		div.alert
+		{
+			width: 400px;
+		}
+	}
+		
+	div#notice_saved
+	{
+		position: absolute;
+		top: 16px;
+		right: 16px;
+		width: 250px;
+		z-index: 10000;
+		div.alert
+		{
+			box-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+		}
+	}
+
+    div.orig_phrase {
+        word-break: break-all;
+    }
+}
+
+.fsj 
+{
+	.file_list 
+    {
+    	border-radius: 5px;
+		margin-top: 8px;
+		margin-bottom: 8px;
+		padding: 3px;
+		ul 
+        {
+			margin: 0px;
+			list-style-type: none;
+
+			li
+			{
+				padding: 2px 2px 2px 4px;
+				margin: 2px 1px 1px 32px;
+
+			}
+
+			li.folder {
+				background-image: linear-gradient(rgb(23, 86, 140), rgb(26, 56, 103));
+				margin: 4px 0px 4px 0px;
+				padding: 4px;
+				color: white;
+				text-shadow: 1px 1px 1px rgba(0,0,0,0.8);
+				font-weight: normal;
+				font-size: 120%;
+			}
+
+			li.group {
+				border: none;
+				font-weight: bold;
+				margin-left: 16px;
+			}
+        }
+    }
+}

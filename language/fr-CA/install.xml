@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension version="3.4" client="site" type="language" method="upgrade">
+	<name>French_fr-CA</name>
+	<tag>fr-CA</tag>
+	<version>3.5.1.2</version>
+	<creationDate>2016-05-15</creationDate>
+	<author>Martin Lamothe</author>
+	<authorEmail>admin@wiserweb.com</authorEmail>
+	<authorUrl>www.wiserweb.com</authorUrl>
+    <copyright>Copyright (C) 2005-2016 joomla.fr et Open Source Matters. Tous droits réservés</copyright>
+    <copyright>Copyright (C) 2014-2016 Martin Lamothe. Tous droits réservés</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<description>fr-CAsite language</description>
+	<files>
+		<filename>fr-CA.ini</filename>
+		<filename>fr-CA.com_ajax.ini</filename>
+		<filename>fr-CA.com_config.ini</filename>
+		<filename>fr-CA.com_contact.ini</filename>
+		<filename>fr-CA.com_content.ini</filename>
+		<filename>fr-CA.com_finder.ini</filename>
+		<filename>fr-CA.com_mailto.ini</filename>
+		<filename>fr-CA.com_media.ini</filename>
+		<filename>fr-CA.com_messages.ini</filename>
+		<filename>fr-CA.com_newsfeeds.ini</filename>
+		<filename>fr-CA.com_search.ini</filename>
+		<filename>fr-CA.com_tags.ini</filename>
+		<filename>fr-CA.com_users.ini</filename>
+		<filename>fr-CA.com_weblinks.ini</filename>
+		<filename>fr-CA.com_wrapper.ini</filename>
+		<filename>fr-CA.files_joomla.sys.ini</filename>
+		<filename>fr-CA.finder_cli.ini</filename>
+		<filename>fr-CA.lib_fof.ini</filename>
+		<filename>fr-CA.lib_fof.sys.ini</filename>
+		<filename>fr-CA.lib_idna_convert.sys.ini</filename>
+		<filename>fr-CA.lib_joomla.ini</filename>
+		<filename>fr-CA.lib_joomla.sys.ini</filename>
+		<filename>fr-CA.lib_phpass.sys.ini</filename>
+		<filename>fr-CA.lib_phputf8.sys.ini</filename>
+		<filename>fr-CA.lib_simplepie.sys.ini</filename>
+		<filename>fr-CA.mod_articles_archive.ini</filename>
+		<filename>fr-CA.mod_articles_archive.sys.ini</filename>
+		<filename>fr-CA.mod_articles_categories.ini</filename>
+		<filename>fr-CA.mod_articles_categories.sys.ini</filename>
+		<filename>fr-CA.mod_articles_category.ini</filename>
+		<filename>fr-CA.mod_articles_category.sys.ini</filename>
+		<filename>fr-CA.mod_articles_latest.ini</filename>
+		<filename>fr-CA.mod_articles_latest.sys.ini</filename>
+		<filename>fr-CA.mod_articles_news.ini</filename>
+		<filename>fr-CA.mod_articles_news.sys.ini</filename>
+		<filename>fr-CA.mod_articles_popular.ini</filename>
+		<filename>fr-CA.mod_articles_popular.sys.ini</filename>
+		<filename>fr-CA.mod_banners.ini</filename>
+		<filename>fr-CA.mod_banners.sys.ini</filename>
+		<filename>fr-CA.mod_breadcrumbs.ini</filename>
+		<filename>fr-CA.mod_breadcrumbs.sys.ini</filename>
+		<filename>fr-CA.mod_custom.ini</filename>
+		<filename>fr-CA.mod_custom.sys.ini</filename>
+		<filename>fr-CA.mod_feed.ini</filename>
+		<filename>fr-CA.mod_feed.sys.ini</filename>
+		<filename>fr-CA.mod_finder.ini</filename>
+		<filename>fr-CA.mod_finder.sys.ini</filename>
+		<filename>fr-CA.mod_footer.ini</filename>
+		<filename>fr-CA.mod_footer.sys.ini</filename>
+		<filename>fr-CA.mod_languages.ini</filename>
+		<filename>fr-CA.mod_languages.sys.ini</filename>
+		<filename>fr-CA.mod_login.ini</filename>
+		<filename>fr-CA.mod_login.sys.ini</filename>
+		<filename>fr-CA.mod_menu.ini</filename>
+		<filename>fr-CA.mod_menu.sys.ini</filename>
+		<filename>fr-CA.mod_random_image.ini</filename>
+		<filename>fr-CA.mod_random_image.sys.ini</filename>
+		<filename>fr-CA.mod_related_items.ini</filename>
+		<filename>fr-CA.mod_related_items.sys.ini</filename>
+		<filename>fr-CA.mod_search.ini</filename>
+		<filename>fr-CA.mod_search.sys.ini</filename>
+		<filename>fr-CA.mod_stats.ini</filename>
+		<filename>fr-CA.mod_stats.sys.ini</filename>
+		<filename>fr-CA.mod_syndicate.ini</filename>
+		<filename>fr-CA.mod_syndicate.sys.ini</filename>
+		<filename>fr-CA.mod_tags_popular.ini</filename>
+		<filename>fr-CA.mod_tags_popular.sys.ini</filename>
+		<filename>fr-CA.mod_tags_similar.ini</filename>
+		<filename>fr-CA.mod_tags_similar.sys.ini</filename>
+		<filename>fr-CA.mod_users_latest.ini</filename>
+		<filename>fr-CA.mod_users_latest.sys.ini</filename>
+		<filename>fr-CA.mod_weblinks.ini</filename>
+		<filename>fr-CA.mod_weblinks.sys.ini</filename>
+		<filename>fr-CA.mod_whosonline.ini</filename>
+		<filename>fr-CA.mod_whosonline.sys.ini</filename>
+		<filename>fr-CA.mod_wrapper.ini</filename>
+		<filename>fr-CA.mod_wrapper.sys.ini</filename>
+		<filename>fr-CA.tpl_beez3.ini</filename>
+		<filename>fr-CA.tpl_beez3.sys.ini</filename>
+		<filename>fr-CA.tpl_protostar.ini</filename>
+		<filename>fr-CA.tpl_protostar.sys.ini</filename>
+		<filename>fr-CA.localise.php</filename>
+		<filename file="meta">install.xml</filename>
+		<filename file="meta">fr-CA.xml</filename>
+		<filename>index.html</filename>
+	</files>
+	<params/>
+</extension>

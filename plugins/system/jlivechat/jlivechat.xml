@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="1.6" type="plugin" group="system" method="upgrade">
+    <name>plg_system_jlivechat</name>
+    <author>CMS Fruit</author>
+    <creationDate>April 2013</creationDate>
+    <copyright>(C) Copyright 2008-2013, All rights reserved.</copyright>
+    <license>GNU/LGPL http://www.gnu.org/licenses/lgpl-3.0.txt</license>
+    <authorEmail>info@cmsfruit.com</authorEmail>
+    <authorUrl>http://www.CMSFruit.com</authorUrl>
+    <version>4.3.3</version>
+    <description><![CDATA[The JLive! Chat plugin has been installed successfully, please enable the plugin for proper functionality from within your <a href="index.php?option=com_plugins">Plugin Manager</a>.]]></description>
+    <files>
+        <filename plugin="jlivechat">jlivechat.php</filename>
+    </files>
+</extension>

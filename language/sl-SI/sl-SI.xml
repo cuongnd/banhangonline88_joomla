@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metafile version="3.6" client="site">
+	<name>Slovenian (sl-SI)</name>
+	<version>3.6.2.1</version>
+	<creationDate>Avgust 2016</creationDate>
+	<author>Chico</author>
+	<authorEmail>admin@joomla.org</authorEmail>
+	<authorUrl>www.joomla.org</authorUrl>
+	<copyright>Copyright (C) 2005 - 2016 Open Source Matters. Vse pravice pridržane.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<description>sl-SI jezik ospredja</description>
+	<metadata>
+		<name>Slovenian (sl-SI)</name>
+		<tag>sl-SI</tag>
+		<rtl>0</rtl>
+		<locale>sl_SI.utf8, sl_SI.UTF-8, sl_SI, slo_SI, si, sl, SI, slovenia, slovenian, Slovenia</locale>
+		<firstDay>1</firstDay>
+		<weekEnd>0,6</weekEnd>
+	</metadata>
+	<params />
+</metafile>

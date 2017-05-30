@@ -1,0 +1,113 @@
+<!doctype html>
+<html class="z-width960">
+<head>
+    <title>Callback Events</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width = device-width, initial-scale = 1.0" />
+
+    <!-- Examples CSS (Not needed) -->
+    <link href="../css/zozo.examples.min.css" rel="stylesheet" />
+
+    <!-- Zozo Tabs css -->
+    <link href="../css/zozo.tabs.min.css" rel="stylesheet" />
+
+    <!-- Zozo Tabs js -->
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/zozo.tabs.js"></script>
+</head>
+<body>
+    <div id="ribbon"></div>
+    <div id="page">
+        <a class="z-btn z-back" href="index.html">Back</a>
+
+        <div id="tabbed-nav">
+            <ul>
+                <li><a>Overview</a></li>
+                <li><a>Features</a></li>
+                <li><a>Docs</a></li>
+                <li><a>AJAX Content Loaded</a></li>
+                <li><a>AJAX Error Message</a></li>
+            </ul>
+
+            <div>
+                <div>
+                    <h4>Overview</h4>
+                </div>
+                <div>
+                    <h4>Features</h4>
+                </div>
+                <div>
+                    <h4>Documentation</h4>
+                </div>
+
+                <div data-content-url='ajax-content/content4.html'></div>
+                <div data-content-url='ajax-content/fakefile.html'></div>
+            </div>
+        </div>
+
+        <div id="zozo-console" style="clear: both;"></div>
+    </div>
+
+
+
+
+    <script>
+        jQuery(document).ready(function ($) {
+
+            /*The item object holds main zozoTabs element*/
+            function onRead(e, item) {
+                $.zozo.core.console.log("ready");
+            }
+
+            /*The item object holds tab element, content element and index of tabs*/
+            function onSelect(e, item) {
+                $.zozo.core.console.log("Selected: " + item.tab.text());
+                $(document).attr('title', item.tab.text());
+            }
+
+            /*The item object holds tab element, content element and index of tabs*/
+            function onDeactivate(e, item) {
+                $.zozo.core.console.log("Deactivated: " + item.tab.text());
+            }
+
+            /*This (error) callback event is triggered when AJAX request fails*/
+            function onError (event, item) {
+                console.dir(item.xhr);
+                console.dir(item.xhr.status);
+                console.dir(item.xhr.statusText);
+
+                if (item.xhr.status === 404) {
+                    item.message = "<h4 style='color:red;'>Custom message for content not found.</h4>";
+                }
+               
+                $.zozo.core.console.log("AJAX error: " + item.message);
+            }
+
+            /*This (contentLoad) callback event is triggered when AJAX request finishes and content is loaded*/
+            function onContentLoad (event, item) {
+                $.zozo.core.console.log("AJAX content loaded: " + item.tab.text());
+            }
+
+
+            /*jQuery activation and callback events binding using the options object */
+            demoTabs = $("#tabbed-nav").zozoTabs({
+                theme: "silver",
+                position:"top-right",
+                ready: onRead,
+                select: onSelect,
+                deactivate: onDeactivate,
+                contentLoad: onContentLoad,
+                error: onError
+            });
+
+            /* Binding callback events using bind method*/
+            //demoTabs.bind("select", onSelect);
+            //demoTabs.bind("deactivate", onDeactivate);              
+            //demoTabs.bind("contentLoad", onContentLoad);
+            //demoTabs.bind("error", onError);
+            
+        });
+    </script>
+
+</body>
+</html>

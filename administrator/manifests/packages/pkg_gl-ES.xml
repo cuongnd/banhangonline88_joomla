@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="package" version="3.3">
+	<name>Galician Language Pack (Galego)</name>
+	<packagename>gl-ES</packagename>
+	<version>3.3.1.2</version>
+	<creationDate>2014-07-21</creationDate>
+    <author>Proxecto Trasno: trasno.net</author>
+    <authorEmail>damufo@gmail.com</authorEmail>
+    <authorUrl>trasno.net</authorUrl>
+    <copyright>Copyright (C) 2005 - 2014 trasno.net Open Source Matters. Todos os dereitos reservados</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <url></url>
+	<packager>damufo</packager>
+	<packagerurl>http://www.trasno.net/</packagerurl>
+    <description>
+      <![CDATA[
+      <h3>Paquete de idioma galego completo para Joomla! version 3.3.1v2</h3>
+      <h3>Joomla! Full Galician (gl-ES) Language Package version 3.3.1v2</h3>
+      <br>
+      ]]>
+   </description>
+	<files>
+			<file type="language" client="site" id="gl-ES">site_gl-ES.zip</file>
+			<file type="language" client="administrator" id="gl-ES">admin_gl-ES.zip</file>
+	</files>
+    <updateservers>
+        <server type="collection" priority="1" name="Accredited Joomla! Translations">http://update.joomla.org/language/translationlist.xml</server>
+    </updateservers>
+</extension>

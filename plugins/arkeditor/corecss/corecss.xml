@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="1.0" type="plugin" group="arkeditor" method="upgrade">
+	<name>ArkEditor - Core CSS</name>
+	<author>Webx Solution Ltd</author>
+	<creationDate>Feb 2016</creationDate>
+	<copyright>>Copyright (C) 2015- 2016 All rights reserved</copyright>
+	<license>GNU General Public License version 2</license>
+	<authorEmail>support@arkextensions.com</authorEmail>
+	<authorUrl>www.arkextensions.com</authorUrl>
+	<version>1.0</version>
+	<description>Add Arkeditor core css.</description>
+	<files>		<filename plugin="corecss">corecss.php</filename>						<filename>index.html</filename>		<folder>corecss</folder>
+	</files>
+</extension>

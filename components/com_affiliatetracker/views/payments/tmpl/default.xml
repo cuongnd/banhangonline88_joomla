@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Affiliate Payments" hidden="false">
+		<message>
+			Affiliate Payments
+		</message>
+	</layout>
+	<state>
+		<name>Affiliate Payments</name>
+		<description>Affiliate Payments</description>
+		
+		<params>
+		</params>
+	</state>
+</metadata>

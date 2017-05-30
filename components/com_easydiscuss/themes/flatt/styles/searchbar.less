@@ -1,0 +1,73 @@
+/*------------------------------------*\
+	$searchbar.less
+\*------------------------------------*/
+
+.discuss-searchbar {
+	background: white;
+	padding: 0;
+	border: none;
+	margin-bottom: 10px;
+	.discuss-table {
+		width: 100%;
+	}
+	.discuss-searchbar--left {
+		display: none;
+	}
+	.discuss-searchbar--center {
+		padding-right: 20px;
+	}
+	.input-searchbar {
+		height: 36px;
+		font-size: 18px;
+		width: 100%;
+	}
+	.btn-searchbar {
+		height: 36px;
+		right: 0px;
+		top: 0;
+	}
+	.btn-ask {
+		height: 16px;
+		line-height: 16px;
+		padding: 9px 15px;
+	}
+	&.discuss-categorysearch {
+		.discuss-searchbar--center {
+			padding: 0;
+		}
+		.select-searchbar {
+			height: 36px;
+			padding: 8px;
+			top: 45px;
+		}
+		.btn-searchbar {
+			top: 45px;
+		}
+	}
+	&.narrow {
+		.btn-ask {
+			line-height: 30px;
+		}
+	}
+}//searchbar
+
+&.w600 {
+	.discuss-searchbar.narrow {
+		.discuss-searchbar--left {
+			display:none;
+		}
+		.discuss-searchbar .input-searchbar {
+			height: 52px;
+		}
+	}
+}
+&.w320 {
+	.discuss-searchbar.narrow {
+		.discuss-searchbar--left {
+			display:none;
+		}
+	}
+	.discuss-searchbar .input-searchbar {
+		height: 52px;
+	}
+}

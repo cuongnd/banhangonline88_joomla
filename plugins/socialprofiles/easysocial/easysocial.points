@@ -1,0 +1,92 @@
+[
+    {
+        "title"         : "Social Network Authentication",
+        "alias"         : "social-network-authentication",
+        "description"   : "Earn points when you authenticate and link your account using any support social network.",
+        "command"       : "account.map",
+        "extension"     : "com_jfbconnect",
+        "state"         : true,
+        "points"        : 2
+    },
+    {
+        "title"         : "Facebook Comment New",
+        "alias"         : "facebook-comment-create",
+        "description"   : "Award points to users when leaving Facebook comments on your site.",
+        "command"       : "facebook.comment.create",
+        "extension"     : "com_jfbconnect",
+        "state"         : true,
+        "points"        : 5
+    },
+    {
+        "title"         : "Facebook Comment Delete",
+        "alias"         : "facebook-comment-remove",
+        "description"   : "Remove points from users when deleting their Facebook comments.",
+        "command"       : "facebook.comment.remove",
+        "extension"     : "com_jfbconnect",
+        "state"         : true,
+        "points"        : -5
+    },
+    {
+        "title"         : "Facebook Like New",
+        "alias"         : "facebook-like-create",
+        "description"   : "Award points to users that Like pages on your site.",
+        "command"       : "facebook.like.create",
+        "extension"     : "com_jfbconnect",
+        "state"         : true,
+        "points"        : 5
+    },
+    {
+        "title"         : "Facebook Like Remove",
+        "alias"         : "facebook-like-remove",
+        "description"   : "Remove points to users that Unlike pages on your site.",
+        "command"       : "facebook.like.remove",
+        "extension"     : "com_jfbconnect",
+        "state"         : true,
+        "points"        : -5
+    },
+    {
+        "title"         : "Facebook Friend Request Sent",
+        "alias"         : "facebook-request-create",
+        "description"   : "Award points to users that send Facebook Requests to their friends.",
+        "command"       : "facebook.request.create",
+        "extension"     : "com_jfbconnect",
+        "state"         : true,
+        "points"        : 5
+    },
+    {
+        "title"         : "Google +1 New",
+        "alias"         : "google-plusone-create",
+        "description"   : "Award points to users that use the Google +1 button on your site.",
+        "command"       : "google.plusone.create",
+        "extension"     : "com_jfbconnect",
+        "state"         : true,
+        "points"        : 5
+    },
+    {
+        "title"         : "Google +1 Remove",
+        "alias"         : "google-plusone-remove",
+        "description"   : "Take away points from users that remove a Google +1 from your site.",
+        "command"       : "google.plusone.remove",
+        "extension"     : "com_jfbconnect",
+        "state"         : true,
+        "points"        : -5
+    },
+    {
+        "title"         : "LinkedIn Share Content",
+        "alias"         : "linkedin-share-create",
+        "description"   : "Award points to users that use the LinkedIn Share button on your site.",
+        "command"       : "linkedin.share.create",
+        "extension"     : "com_jfbconnect",
+        "state"         : true,
+        "points"        : 5
+    },
+    {
+        "title"         : "Tweet a page to Twitter",
+        "alias"         : "twitter-tweet-create",
+        "description"   : "Award points to users that use the Tweet button on your site.",
+        "command"       : "twitter.tweet.create",
+        "extension"     : "com_jfbconnect",
+        "state"         : true,
+        "points"        : 5
+    }
+]

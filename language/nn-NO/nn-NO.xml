@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metafile version="3.4" client="site">
+	<name>Nynorsk (nn-NO)</name>
+	<version>3.4.2.1</version>
+	<creationDate>2015-06-30</creationDate>
+	<author>Norsk Joomla og Skolelinux</author>
+	<authorEmail>oversettelser@norskjoomla.no</authorEmail>
+	<authorUrl>http://www.norskjoomla.no</authorUrl>
+	<copyright>Copyright (C) 2005 - 2015 Open Source Matters. All rights reserved.</copyright>
+	<copyright>Copyright (C) Translation 2005 - 2015 Norsk Joomla. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<description>New Norwegian site language for Joomla! 3.x</description>
+	<metadata>
+		<name>Nynorsk (New Norwegian)</name>
+		<tag>nn-NO</tag>
+		<rtl>0</rtl>
+		<locale>nn_NO.utf-8, nn_NO.UTF-8, nn_NO.utf8, no_NO.UTF-8, no_NO.utf-8, no_NO.utf8, nn, non-NO, nn_NO, Norwegian_Nynorsk, nynorsk, no_NO, no, nor, norwegian</locale>
+		<firstDay>1</firstDay>
+		<weekEnd>0,6</weekEnd>
+	</metadata>
+	<params />
+</metafile>

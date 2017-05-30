@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<extension version="1.6" type="plugin" group="system" method="upgrade">
+	<name>System - Nice Google Analytics</name>
+	<author>Michael Babcock</author>
+	<creationDate>February 21, 2013</creationDate>
+	<copyright>Copyright (C) 2012-2013 TriniTronic. All Rights Reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>info@trinitronic.com</authorEmail>
+	<authorUrl>trinitronic.com</authorUrl>
+	<version>1.01</version>
+	<description>Nice Google Analytics provides site wide Google Analytic integration.</description>
+	<files>
+		<filename plugin="nicegoogleanalytics">nicegoogleanalytics.php</filename>
+		<filename plugin="nicegoogleanalytics">index.html</filename>
+		<filename plugin="nicegoogleanalytics">language/index.html</filename>
+		<filename plugin="nicegoogleanalytics">language/en-GB/index.html</filename>
+		<filename plugin="nicegoogleanalytics">language/en-GB/en-GB.plg_system_nicegoogleanalytics.ini</filename>
+		<filename plugin="nicegoogleanalytics">language/en-GB/en-GB.plg_system_nicegoogleanalytics.sys.ini</filename>
+	</files>
+	<languages>
+		<language tag="en-GB">language/en-GB/en-GB.plg_system_nicegoogleanalytics.ini</language>
+		<language tag="en-GB">language/en-GB/en-GB.plg_system_nicegoogleanalytics.sys.ini</language>
+    </languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">	
+				<field name="googletrackingid" type="text" default="" label="PARAM_NICEGOOGLEANALYTICS_TRACKINGID_LABEL" description="PARAM_NICEGOOGLEANALYTICS_TRACKINGID_DESC" />
+				<field name="siteurl" type="text" default="" label="PARAM_NICEGOOGLEANALYTICS_SITEURL_LABEL" description="PARAM_NICEGOOGLEANALYTICS_SITEURL_DESC" />
+        <field name="googletrackingtype" type="list" default="0" label="PARAM_NICEGOOGLEANALYTICS_TRACKINGTYPE_LABEL" description="PARAM_NICEGOOGLEANALYTICS_TRACKINGTYPE_DESC">
+          <option value="0">PARAM_NICEGOOGLEANALYTICS_TRACKINGTYPE_SINGLE</option>
+          <option value="1">PARAM_NICEGOOGLEANALYTICS_TRACKINGTYPE_MULTISUB</option>
+          <option value="2">PARAM_NICEGOOGLEANALYTICS_TRACKINGTYPE_MULTITOP</option>
+        </field>
+			</fieldset>
+			<fieldset name="advanced">	
+			  <field name="googleanalytics_kludge" type="textarea" default="" label="PARAM_NICEGOOGLEANALYTICS_KLUDGE_LABEL" description="PARAM_NICEGOOGLEANALYTICS_KLUDGE_DESC" rows="20" cols="40" />
+			</fieldset>
+		</fields>
+	</config>
+</extension>

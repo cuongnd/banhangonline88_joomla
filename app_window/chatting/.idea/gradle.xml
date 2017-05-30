@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/.." />
+            <option value="$PROJECT_DIR$/../AndEngine-GLES2-Examples" />
+            <option value="$PROJECT_DIR$/../andEngine" />
+            <option value="$PROJECT_DIR$/../andengine-gles2" />
+            <option value="$PROJECT_DIR$/../andengine-gles2-Box2d" />
+            <option value="$PROJECT_DIR$/../andengine-gles2-augmented" />
+            <option value="$PROJECT_DIR$/../andengine-gles2-cocosbuilder" />
+            <option value="$PROJECT_DIR$/../andengine-gles2-modplayer" />
+            <option value="$PROJECT_DIR$/../andengine-gles2-multiplayer" />
+            <option value="$PROJECT_DIR$/../andengine-gles2-svgtexture" />
+            <option value="$PROJECT_DIR$/../andengine-gles2-tmx" />
+            <option value="$PROJECT_DIR$/../androidGamemaster" />
+            <option value="$PROJECT_DIR$/../app" />
+            <option value="$PROJECT_DIR$/../banhangonline" />
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/../comtruavanphong" />
+            <option value="$PROJECT_DIR$/../easydialog" />
+            <option value="$PROJECT_DIR$/../phatthanhnghean" />
+            <option value="$PROJECT_DIR$/../saleonline" />
+            <option value="$PROJECT_DIR$/../sample" />
+            <option value="$PROJECT_DIR$/../sample_video_player" />
+            <option value="$PROJECT_DIR$/../soundplayer" />
+            <option value="$PROJECT_DIR$/../tableview" />
+            <option value="$PROJECT_DIR$/../video_player" />
+          </set>
+        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

@@ -1,0 +1,286 @@
+/**
+* @package      EasySocial
+* @copyright	Copyright (C) 2010 - 2014 Stack Ideas Sdn Bhd. All rights reserved.
+* @license      Proprietary Use License http://stackideas.com/licensing.html
+* @author       Stack Ideas Sdn Bhd
+**/
+/*------------------------------------*\
+    $Comment - comment.less
+\*------------------------------------*/
+
+.es-comments {
+
+    > .es-comment {
+        padding: 5px;
+        color: @esCommentColor;
+        background: @esCommentBackground;
+        margin-bottom: 2px;
+        position: relative;
+        display: block;
+        word-wrap: break-word;
+        position: relative;
+        // z-index: 1;
+        &:hover {
+            // z-index: 2;
+        }
+        .media {
+            overflow: visible;
+        }
+        .media > .pull-left {
+            margin-right: 5px;
+        }
+        .media-body {
+            min-height: 50px; // prevent collapse when swith to edit mode
+        }
+    }
+}
+
+.es-comment-actions {
+    position: absolute;
+    right: 5px;
+    top: 3px;
+    .es-comment-actions-toggle {
+        position: absolute;
+        right: 0;
+        border: 1px solid transparent;
+        // z-index: 4;
+    }
+    .es-comment-actions-nav {
+        position: relative;
+        font-size: 11px;
+        background: @esCommentActionBackground;
+        border: 1px solid @esCommentActionBorder;
+        top: 19px;
+        right: 0;
+        // z-index: 3;
+        padding: 3px 0 0;
+        margin: 0;
+        min-width: 100px;
+
+        > li {
+            font-size: 11px;
+            display: block;
+            padding: 1px 0px;
+
+            // margin-right: 10px;
+            > a {
+                display: block;
+                padding: 2px 14px;
+                &:hover {
+                    color: @esCommentActionColor;
+                    background: @esCommentActionBackground;
+                }
+            }
+        }
+    }//nav
+
+    .es-comment-actions {
+        .es-comment-actions-flyout {
+            // background: #fff;
+        }
+    }
+
+}//actions
+
+
+.btn-comment-remove {
+    font-weight: bold;
+    width: 14px;
+    height: 14px;
+    line-height: 12px;
+    font-family: 'Lucida Grande','Gisha','Lucida Sans Unicode','Lucida Sans',Lucida,Arial,Verdana,sans-serif;
+    font-size: 12px;
+    text-align: center;
+    opacity: 0.4;
+    padding: 0 3px;
+    border-radius: 2px;
+    cursor: pointer;
+    &:hover {
+        background: #333;
+        color: #fff;
+        text-shadow: 0 0 0 @esBackground;
+    }
+}
+
+.btn-comment-edit {
+
+    [class^="ies-"],
+    [class*=" ies-"] {
+        &:before {
+            font-size: 12px;
+            width: 14px;
+            height: 14px;
+            top: -2px;
+        }
+    }
+}
+
+
+.es-comments-form {
+    .clearfix();
+    min-height: 100px;
+    padding: 5px 0px;
+
+    .es-avatar {
+        float: left;
+        border: none;
+        margin-top: 0;
+        width: 30px;
+        height: 30px;
+    }
+
+    .es-form {
+        margin-left: 40px;
+        padding: 4px;
+        min-height: 46px;
+        border: 1px solid @esBorder;
+        border-radius: 3px;
+        font-size: 11px;
+
+        .mentions {
+            font-size: 11px;
+            min-height: 46px;
+
+            textarea {
+                font-size: 11px;
+            }
+        }
+
+    }
+
+    .es-form-footer {
+        margin-left: 40px;
+
+        span {
+            &.label {
+                font-size: 11px;
+            }
+        }
+    }
+}
+
+/*------------------------------------*\
+    temporary reuse comment less on likes
+\*------------------------------------*/
+
+
+// comment load more
+.es-comments-control {
+    position: relative;
+    .es-comments-load {
+        display: block;
+        background: @esCommentLoadBackground;
+        padding: 3px 5px;
+        margin: 2px 0;
+        font-size: 10px;
+    }
+    .link-loadmore {
+        display: block;
+    }
+    .es-comments-stats {
+        position: absolute;
+        top: 2px;
+        right: 4px;
+    }
+}
+
+
+// comment item meta
+.es-comment-item-meta {
+    height: 20px;
+    .es-comment-item-date,
+    .es-comment-item-like,
+    .es-comment-item-reply,
+    .es-comment-item-likecount {
+        display: inline-block;
+    }
+    .es-comment-item-date {
+        color: #888;
+    }
+
+    .es-comment-item-like-wrap {
+        // background: #ccc;
+        // display: block;
+        // left: 180px;
+        // position: absolute;
+        // top: 38px;
+        // width: 100%;
+    }
+    .es-comment-item-like {
+
+    }
+    .es-comment-item-likecount {
+        position: relative;
+        top: -1px;
+        left: 4px;
+        border: 1px solid @esCommentLikeCountBorder;
+        background: @esCommentLikeCountBackground;
+        border-radius: 1px;
+        padding: 0 3px;
+        line-height: 14px;
+        height: 16px;
+        font-size: 9px;
+
+
+        &:before,
+        &:after {
+            content: "";
+            display: inline-block;
+            height: 0;
+            position: absolute;
+            width: 0;
+        }
+        &:before {
+            right: 100%;
+            top: 2px;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            border-right: 5px solid @esCommentLikeCountBorder;
+
+        }
+        &:after {
+            right: 100%;
+            top: 3px;
+            border-top: 4px solid transparent;
+            border-bottom: 4px solid transparent;
+            border-right: 4px solid @esCommentLikeCountBackground;
+        }
+    }
+    .es-comment-item-likehtml {
+        position: absolute;
+        // top: -20px;
+        // background: #555;
+        // color: #fff;
+        // padding: 1px 3px;
+        // display: block;
+        // .arrow(3px, #555, bottom, 10px, auto, 0, rgba(0, 0, 0, 0.2));
+        // min-width: 140px;
+        // width: 140px;
+
+        //reset .es-likes-wrap
+        .es-likes-wrap {
+            background: none repeat scroll 0 0 transparent;
+            margin: 0;
+            padding: 0;
+            top: 0;
+        }
+    }
+}
+
+.es-comment-item-loadreply {
+    padding: 3px 5px;
+    margin: 2px 0;
+    background: #ddd;
+}
+
+
+// Styling for comments listing in dropdown menu
+.dropdown-menu {
+    .es-item-comments {
+        a {
+            padding: 0;
+            clear: none;
+            display: inline;
+        }
+    }
+}

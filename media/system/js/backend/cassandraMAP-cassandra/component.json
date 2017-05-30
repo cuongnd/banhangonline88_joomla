@@ -1,0 +1,9 @@
+{
+  "name": "cassandraMAP",
+  "repo": "jcoc611/cassandraMAP",
+  "version": "0.1.0",
+  "description": "A JavaScript implementation of Cassandra's Map type based on JSON3.",
+  "license": "MIT",
+  "scripts": ["index.js", "lib/cassandraMAP.js", "lib/cassandraMAP.min.js"],
+  "keywords": ["cassandra", "map", "json", "parser", "stringify"]
+}

@@ -1,0 +1,112 @@
+//
+// Alerts
+// --------------------------------------------------
+
+
+// Base styles
+// -------------------------
+
+.alert {
+  padding: 8px 35px 8px 36px;
+  margin-bottom: @baseLineHeight;
+  text-shadow: 0 1px 0 rgba(255,255,255,.5);
+  background-color: @warningEsBackground;
+  border: 1px solid @warningEsBorder;
+  border-radius: @baseBorderRadius;
+  color: @warningEsText;
+  position: relative;
+  min-height: 36px;
+  line-height: 16px;
+  &:before {
+    position: absolute;
+    content: ' ';
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-image: url('@{media_uri}/images/icons/icons-alert.png');
+    background-repeat: no-repeat;
+    top: 8px;
+    left: 10px;
+  }
+  .button.close {
+    padding: 0 2px;
+  }
+}
+
+.alert h4 {
+  margin: 0;
+}
+
+// Adjust close link position
+.alert .close {
+  padding: 0 0 3px;
+  position: relative;
+  top: 2px;
+  right: -21px;
+  color: white;
+  text-shadow: none;
+  font-family: 'Lucida Grande','Gisha','Lucida Sans Unicode','Lucida Sans',Lucida,Arial,Verdana,sans-serif;
+  background: black;
+  line-height: 14px;
+  font-size: 11px;
+  .opacity(.3);
+  border-radius: 50%;
+  .square(15px);
+  &:hover {
+    color: white;
+    .opacity(.4);
+    background: black;
+    text-shadow: none;
+    // border-radius: 2px;
+  }
+}
+
+
+// Alternate styles
+// -------------------------
+
+.alert-success {
+  background-color: @successEsBackground;
+  border-color: @successEsBorder;
+  color: @successEsText;
+  &:before {
+    background-position: -24px 0;
+  }
+}
+.alert-danger,
+.alert-error {
+  background-color: @errorEsBackground;
+  border-color: @errorEsBorder;
+  color: @errorEsText;
+  text-shadow: @btnTextShadowAlt;
+  &:before {
+    background-position: -48px 0;
+  }
+}
+.alert-info {
+  background-color: @infoEsBackground;
+  border-color: @infoEsBorder;
+  color: @infoEsText;
+  &:before {
+    background-position: -72px 0;
+  }
+}
+
+
+// Block alerts
+// -------------------------
+
+.alert-block {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  &:before {
+    top: 14px;
+  }
+}
+.alert-block > p,
+.alert-block > ul {
+  margin-bottom: 0;
+}
+.alert-block p + p {
+  margin-top: 5px;
+}

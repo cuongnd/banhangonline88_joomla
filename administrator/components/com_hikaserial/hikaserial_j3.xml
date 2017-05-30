@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="2.5" method="upgrade">
+	<name>HikaSerial</name>
+	<creationDate>juin 2016</creationDate>
+	<version>1.10.4</version>
+	<author>Obsidev</author>
+	<authorEmail>contact@obsidev.com</authorEmail>
+	<authorUrl>http://www.hikashop.com</authorUrl>
+	<copyright>(C) 2011-2016 OBSIDEV. All rights reserved.</copyright>
+	<description>Serials component for HikaShop</description>
+	<license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html</license>
+	<languages folder="language">
+		<language tag="de-DE">de-DE.com_hikaserial.ini</language>
+		<language tag="en-GB">en-GB.com_hikaserial.ini</language>
+		<language tag="fr-FR">fr-FR.com_hikaserial.ini</language>
+		<language tag="it-IT">it-IT.com_hikaserial.ini</language>
+		<language tag="ja-JP">ja-JP.com_hikaserial.ini</language>
+		<language tag="nl-NL">nl-NL.com_hikaserial.ini</language>
+		<language tag="ru-RU">ru-RU.com_hikaserial.ini</language>
+		<language tag="sv-SE">sv-SE.com_hikaserial.ini</language>
+		<language tag="tr-TR">tr-TR.com_hikaserial.ini</language>
+	</languages>
+	<install>
+		<sql>
+			<file driver="mysql">_database/install.sql</file>
+			<file driver="mysql" charset="utf8">_database/install.sql</file>
+			<file driver="mysqli">_database/install.sql</file>
+			<file driver="mysqli" charset="utf8">_database/install.sql</file>
+		</sql>
+	</install>
+	<scriptfile>install.hikaserial.php</scriptfile>
+	<files folder="front">
+		<folder>views</folder>
+		<folder>controllers</folder>
+		<filename>hikaserial.php</filename>
+		<filename>index.html</filename>
+		<filename>router.php</filename>
+		<filename>sef_ext.php</filename>
+	</files>
+	<media folder="media" destination="com_hikaserial">
+		<folder>css</folder>
+		<folder>images</folder>
+		<folder>js</folder>
+		<folder>mail</folder>
+		<folder>ttf</folder>
+		<filename>index.html</filename>
+	</media>
+	<administration>
+		<files folder="back">
+			<folder>_database</folder>
+			<folder>buttons</folder>
+			<folder>classes</folder>
+			<folder>controllers</folder>
+			<folder>extensions</folder>
+			<folder>helpers</folder>
+			<folder>inc</folder>
+			<folder>translations</folder>
+			<folder>types</folder>
+			<folder>views</folder>
+			<filename>hikaserial.php</filename>
+			<filename>config.xml</filename>
+			<filename>index.html</filename>
+		</files>
+		<menu img="../media/com_hikaserial/images/icon-16/hikaserial.png" link="option=com_hikaserial">HikaSerial</menu>
+	</administration>
+</extension>

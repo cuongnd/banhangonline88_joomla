@@ -1,0 +1,41 @@
+/**
+ * @package  EasyBlog
+ * @copyright Copyright (C) 2010 Stack Ideas Private Limited. All rights reserved.
+ * @license  GNU/GPL, see LICENSE.php
+ * EasyBlog is free software. This version may have been modified pursuant
+ * to the GNU General Public License, and as distributed it includes or
+ * is derivative of works licensed under the GNU General Public License or
+ * other free or open source software licenses.
+ * See COPYRIGHT.php for copyright notices and details.
+ */
+
+#ezblog-dashboard *{color:#444}
+/* Dashboard : Toolbar */
+#ezblog-dashboard .ui-toolbar{background:url(../images/toolbar.png) top repeat-x #9c4857;border:1px solid #003a57;border-bottom:1px solid #222}
+#ezblog-dashboard .ui-toolbar li{border:0 !important;background:none}
+#ezblog-dashboard .ui-toolbar li.float-r{border-left:0}
+#ezblog-dashboard .ui-toolbar li:hover,
+#ezblog-dashboard .ui-toolbar li.active{background:none}
+#ezblog-dashboard .ui-toolbar li > a{padding:0 13px;}
+#ezblog-dashboard .ui-toolbar li > a > b{margin:9px -3px 0 5px;}
+#ezblog-dashboard .ui-toolbar li.active > a{
+    background:url(../images/toolbar-active.png) center repeat-x;
+    border:1px solid #57002b;
+    height: 22px;
+    margin:5px;
+    padding:0 7px;
+    border-radius:2px;
+    -moz-border-radius:2px;
+    -webkit-border-radius:2px
+    }
+#ezblog-dashboard .ui-toolbar li.active > a > b{margin:3px -3px 0 5px;}
+#ezblog-dashboard .ui-toolbar li.active > a > i{height:22px;}
+
+/* Dashboard : Widget */
+#ezblog-dashboard .ui-modhead {
+    background: -moz-linear-gradient(top, #ffffff 0%, #f0f0f0 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#f0f0f0));
+    background: -o-linear-gradient(top, #ffffff 0%, #f0f0f0 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f0f0f0',GradientType=0 );
+}
+#ezblog-dashboard .ui-toolbar li.new-post.active a i{background-position:1px 2px;}

@@ -1,0 +1,15 @@
+[
+    {
+        "library": [
+            "gmaps",
+            "scrollTo"
+        ],
+        "view": [
+            "site/location/story.suggestion"
+        ],
+        "language": [
+            "COM_EASYSOCIAL_AT_LOCATION"
+        ],
+        "adapter": "EasySocial"
+    }
+]

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.2" type="plugin" group="arkeditor" method="upgrade">
+	<name>ArkEditor - Notification</name>
+	<author>Webx Solution Ltd</author>
+	<creationDate>Aug 2015</creationDate>
+	<copyright>>Copyright (C) 2015 - 2016 All rights reserved</copyright>
+	<license>GNU General Public License version 2</license>
+	<authorEmail>support@arkextensions.com</authorEmail>
+	<authorUrl>www.arkextensions.com</authorUrl>
+	<version>1.0</version>
+	<description>Notification plugin</description>
+	<files>		<filename plugin="notification">index.html</filename>		<folder>notification</folder>
+	</files>
+</extension>

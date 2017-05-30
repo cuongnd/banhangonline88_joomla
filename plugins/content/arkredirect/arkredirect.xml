@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.1" type="plugin" group="content" method="upgrade">
+	<name>Content - ARK Redirect Plugin</name>
+	<author>WebxSolution Ltd</author>
+	<creationDate>March 2014</creationDate>
+	<copyright>>Copyright (C) 2014- 2015 All rights reserved</copyright>
+	<license>GNU General Public License version 2</license>
+	<authorEmail>info@arkextensions.com</authorEmail>
+	<authorUrl>http://www.arkextensions.com</authorUrl>
+	<version>1.0</version>
+	<description>This plugin redirects to the JCK plugin Manager when editing an arkeditor plugin so that the user will have the full parameters for that plugin</description>
+	<files>
+		<filename plugin="arkredirect">arkredirect.php</filename>
+		<filename>index.html</filename>
+	</files>
+</extension>

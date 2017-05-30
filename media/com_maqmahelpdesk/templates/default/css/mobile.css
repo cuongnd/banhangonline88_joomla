@@ -1,0 +1,9 @@
+body{
+     font-family: Arial;
+     font-size: 10px;
+ }
+
+div.depicon {
+    width:100%;
+    margin-right:0;
+}

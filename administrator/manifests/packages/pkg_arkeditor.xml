@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="package" version="3.4" method="upgrade">
+	<name>Package Ark Editor</name>
+	<author>WebxSolution Ltd</author>
+	<creationDate>Aug 2016</creationDate>
+	<packagename>arkeditor</packagename>
+	<version type="free">1.9.0</version>
+	<url>http://www.webxsolution.com</url>
+	<packager>Webxsolution</packager>
+	<packagerurl>http://www.webxsolution.com</packagerurl>
+	<description>
+	<![CDATA[
+		<div class="well">
+			<img src="components/com_arkeditor/icons/ark-editor-logo-lg.png" alt="Ark Editor Logo" />
+			<!-- Colour Required [#1199] -->
+			<h1 style="color : #333333;">Welcome to the<br> Ark Editor.</h1>
+			<a class="btn" href="index.php?option=com_config&amp;view=component&amp;component=com_arkeditor"><i class="icon-cog"></i> Config</a>
+			<a class="btn" href="http://arkextensions.com/support/documentation/ark-editor" target="_blank"><i class="icon-book"></i> Docs</a>
+			<a class="btn" href="index.php?option=com_arkeditor&view=cpanel"><i class="icon-wrench text-info"></i> Tweek</a>
+		</div>]]>
+	</description>
+	<license>GNU/GPLv2</license>
+	<languages>
+		<language tag="en-GB">language/en-GB/en-GB.pkg_arkeditor.sys.ini</language>
+	</languages>
+	<files folder="packages">
+		<file type="file" id="inlinelayouts">file/files_inlinelayouts.zip</file>
+		<file type="plugin" id="inlinecontent" group="ajax">ajax/plg_inlinecontent.zip</file>
+		<file type="plugin" id="arktypography" group="system">system/plg_arktypography.zip</file>
+		<file type="plugin" id="arkeditor" group="editors">editors/plg_arkeditor.zip</file>
+		<file type="component" id="com_arkeditor">components/com_arkeditor.zip</file>
+		<file type="plugin" id="arkmedia" group="system">system/plg_arkmedia.zip</file>
+		<file type="plugin" id="inlinecontent" group="system">system/plg_inlinecontent.zip</file>
+		<file type="plugin" id="arkversions" group="system">system/plg_arkversions.zip</file>
+		<file type="plugin" id="modulehistory" group="system">system/plg_modulehistory.zip</file>
+		<file type="plugin" id="sefbase" group="system">system/plg_sefbase.zip</file>
+		<file type="plugin" id="arktreelink" group="ajax">ajax/plg_arktreelink.zip</file>
+		<file type="plugin" id="arktypography" group="ajax">ajax/plg_arktypography.zip</file>
+		<file type="plugin" id="arktemplates" group="ajax">ajax/plg_arktemplates.zip</file>
+		<file type="plugin" id="inlinemodestatelistener" group="ajax">ajax/plg_inlinemodestatelistener.zip</file>
+		<file type="plugin" id="arkbootstrap" group="ajax">ajax/plg_arkbootstrap.zip</file>
+		<file type="plugin" id="coreplugins" group="arkevents">arkevents/plg_coreplugins.zip</file>
+		<file type="plugin" id="extraplugins" group="arkevents">arkevents/plg_extraplugins.zip</file>
+		<file type="plugin" id="configuration" group="arkevents">arkevents/plg_configuration.zip</file>
+		<file type="plugin" id="acl" group="arkevents">arkevents/plg_acl.zip</file>
+		<file type="plugin" id="components" group="arkevents">arkevents/plg_components.zip</file>
+		<file type="plugin" id="mobile" group="arkevents">arkevents/plg_mobile.zip</file>
+		<file type="plugin" id="pastefromword" group="arkevents">arkevents/plg_pastefromword.zip</file>
+		<file type="plugin" id="autostylesheetfilter" group="arkevents">arkevents/plg_autostylesheetfilter.zip</file>
+		<file type="plugin" id="autocssfilter" group="arkevents">arkevents/plg_autocssfilter.zip</file>
+		<file type="plugin" id="arkeditor" group="installer">installer/plg_arkeditor.zip</file>
+		<file type="plugin" id="arkeditor" group="extension">extension/plg_arkeditor.zip</file>
+		<file type="plugin" id="inline" group="extension">extension/plg_inline.zip</file>
+		<file type="plugin" id="link" group="arkeditor">arkeditor/plg_link.zip</file>
+		<file type="plugin" id="xml" group="arkeditor">arkeditor/plg_xml.zip</file>
+		<file type="plugin" id="ajax" group="arkeditor">arkeditor/plg_ajax.zip</file>
+		<file type="plugin" id="stylesoverride" group="arkeditor">arkeditor/plg_stylesoverride.zip</file>
+		<file type="plugin" id="autostylesheetparser" group="arkeditor">arkeditor/plg_autostylesheetparser.zip</file>
+		<file type="plugin" id="imagemanager" group="arkeditor">arkeditor/plg_imagemanager.zip</file>
+		<file type="plugin" id="document" group="arkeditor">arkeditor/plg_document.zip</file>
+		<file type="plugin" id="savecontent" group="arkeditor">arkeditor/plg_savecontent.zip</file>
+		<file type="plugin" id="versions" group="arkeditor">arkeditor/plg_versions.zip</file>
+		<file type="plugin" id="treelink" group="arkeditor">arkeditor/plg_treelink.zip</file>
+		<file type="plugin" id="arkabout" group="arkeditor">arkeditor/plg_arkabout.zip</file>
+		<file type="plugin" id="readmore" group="arkeditor">arkeditor/plg_readmore.zip</file>
+		<file type="plugin" id="pagebreak2" group="arkeditor">arkeditor/plg_pagebreak2.zip</file>
+		<file type="plugin" id="uiheader" group="arkeditor">arkeditor/plg_uiheader.zip</file>
+		<file type="plugin" id="arkmedia" group="arkeditor">arkeditor/plg_arkmedia.zip</file>
+		<file type="plugin" id="autosave" group="arkeditor">arkeditor/plg_autosave.zip</file>
+		<file type="plugin" id="tabledefinition" group="arkeditor">arkeditor/plg_tabledefinition.zip</file>
+		<file type="plugin" id="preloader" group="arkeditor">arkeditor/plg_preloader.zip</file>
+		<file type="plugin" id="styles" group="arkeditor">arkeditor/plg_styles.zip</file>
+		<file type="plugin" id="quicktable" group="arkeditor">arkeditor/plg_quicktable.zip</file>
+		<file type="plugin" id="xmltemplates" group="arkeditor">arkeditor/plg_xmltemplates.zip</file>
+		<file type="plugin" id="toolbarswitcher" group="arkeditor">arkeditor/plg_toolbarswitcher.zip</file>
+		<file type="plugin" id="close" group="arkeditor">arkeditor/plg_close.zip</file>
+		<file type="plugin" id="email" group="arkeditor">arkeditor/plg_email.zip</file>
+		<file type="plugin" id="paragraphdataprocessor" group="arkeditor">arkeditor/plg_paragraphdataprocessor.zip</file>
+		<file type="plugin" id="browsebrowser" group="arkeditor">arkeditor/plg_browsebrowser.zip</file>
+		<file type="plugin" id="browsepopup" group="arkeditor">arkeditor/plg_browsepopup.zip</file>
+		<file type="plugin" id="video" group="arkeditor">arkeditor/plg_video.zip</file>
+		<file type="plugin" id="audio" group="arkeditor">arkeditor/plg_audio.zip</file>
+		<file type="plugin" id="magicline" group="arkeditor">arkeditor/plg_magicline.zip</file>
+		<file type="plugin" id="arkredirect" group="content">content/plg_arkredirect.zip</file>
+		<file type="plugin" id="arkquickicon" group="quickicon">quickicon/plg_arkquickicon.zip</file>
+		<file type="module" id="mod_inlinecustom" client="site">modules/mod_inlinecustom.zip</file>
+		<file type="plugin" id="arkcontent" group="content">content/plg_arkcontent.zip</file>
+		<file type="plugin" id="arkfilter" group="content">content/plg_arkfilter.zip</file>
+		<file type="plugin" id="arkmodal" group="system">system/plg_arkmodal.zip</file>
+		<file type="plugin" id="k2extrafields" group="system">system/plg_k2extrafields.zip</file>
+		<file type="plugin" id="inlinehistory" group="system">system/plg_inlinehistory.zip</file>
+		<file type="plugin" id="arkbootstrap" group="system">system/plg_arkbootstrap.zip</file>
+		<file type="plugin" id="modal" group="arkevents">arkevents/plg_modal.zip</file>
+		<file type="plugin" id="magicline" group="arkevents">arkevents/plg_magicline.zip</file>
+		<file type="plugin" id="env" group="arkevents">arkevents/plg_env.zip</file>
+		<file type="plugin" id="element" group="arkevents">arkevents/plg_element.zip</file>
+		<file type="plugin" id="arkeditor" group="inline">inline/plg_arkeditor.zip</file>
+		<file type="plugin" id="widget" group="arkeditor">arkeditor/plg_widget.zip</file>
+		<file type="plugin" id="lineutils" group="arkeditor">arkeditor/plg_lineutils.zip</file>
+		<file type="plugin" id="contentscss" group="arkeditor">arkeditor/plg_contentscss.zip</file>
+		<file type="plugin" id="notification" group="arkeditor">arkeditor/plg_notification.zip</file>
+		<file type="plugin" id="notificationaggregator" group="arkeditor">arkeditor/plg_notificationaggregator.zip</file>
+		<file type="plugin" id="focusmanager" group="arkeditor">arkeditor/plg_focusmanager.zip</file>
+		<file type="plugin" id="dndhandler" group="arkeditor">arkeditor/plg_dndhandler.zip</file>
+		<file type="plugin" id="arkmediabutton" group="arkeditor">arkeditor/plg_arkmediabutton.zip</file>
+		<file type="plugin" id="sefresourceprocessor" group="arkeditor">arkeditor/plg_sefresourceprocessor.zip</file>
+		<file type="plugin" id="corecss" group="arkeditor">arkeditor/plg_corecss.zip</file>
+		<file type="plugin" id="arkmediaobserver" group="system">system/plg_arkmediaobserver.zip</file>
+	</files>
+	<scriptfile>install.php</scriptfile>
+	<updateservers>
+		<server type="extension" priority="1" name="Ark Editor">http://update.arkextensions.com/arkeditor.xml</server>
+	</updateservers>
+</extension>

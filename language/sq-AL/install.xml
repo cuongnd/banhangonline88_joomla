@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<extension version="3.1" client="site" type="language" method="upgrade">
+    <name>Albanian (sq-AL)</name>
+    <tag>sq-AL</tag>
+    <version>3.1.1.1</version>
+    <creationDate>2013-04-29</creationDate>
+    <author>Albanian Translation Team Besiana Bici</author>
+	<authoremail>besianabici@gmail.com</authoremail>
+	<authorurl> </authorurl>
+    <copyright>Copyright (C) 2005 - 2013 Open Source Matters . All rights reserved</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<description>Albanian site language pack for Joomla! 3.1</description>
+	<files>
+		<filename>sq-AL.com_contact.ini</filename>
+		<filename>sq-AL.com_content.ini</filename>
+		<filename>sq-AL.com_finder.ini</filename>
+		<filename>sq-AL.com_mailto.ini</filename>
+		<filename>sq-AL.com_media.ini</filename>
+		<filename>sq-AL.com_messages.ini</filename>
+		<filename>sq-AL.com_newsfeeds.ini</filename>
+		<filename>sq-AL.com_search.ini</filename>
+		<filename>sq-AL.com_tags.ini</filename>
+		<filename>sq-AL.com_users.ini</filename>
+		<filename>sq-AL.com_weblinks.ini</filename>
+		<filename>sq-AL.com_wrapper.ini</filename>
+		<filename>sq-AL.files_joomla.sys.ini</filename>
+		<filename>sq-AL.finder_cli.ini</filename>
+		<filename>sq-AL.ini</filename>
+		<filename>sq-AL.lib_joomla.ini</filename>
+		<filename>sq-AL.lib_joomla.sys.ini</filename>
+		<filename>sq-AL.lib_phpmailer.sys.ini</filename>
+		<filename>sq-AL.lib_phputf8.sys.ini</filename>
+		<filename>sq-AL.lib_simplepie.sys.ini</filename>
+		<filename>sq-AL.localise.php</filename>
+		<filename>sq-AL.mod_articles_archive.ini</filename>
+		<filename>sq-AL.mod_articles_archive.sys.ini</filename>
+		<filename>sq-AL.mod_articles_categories.ini</filename>
+		<filename>sq-AL.mod_articles_categories.sys.ini</filename>
+		<filename>sq-AL.mod_articles_category.ini</filename>
+		<filename>sq-AL.mod_articles_category.sys.ini</filename>
+		<filename>sq-AL.mod_articles_latest.ini</filename>
+		<filename>sq-AL.mod_articles_latest.sys.ini</filename>
+		<filename>sq-AL.mod_articles_news.ini</filename>
+		<filename>sq-AL.mod_articles_news.sys.ini</filename>
+		<filename>sq-AL.mod_articles_popular.ini</filename>
+		<filename>sq-AL.mod_articles_popular.sys.ini</filename>
+		<filename>sq-AL.mod_banners.ini</filename>
+		<filename>sq-AL.mod_banners.sys.ini</filename>
+		<filename>sq-AL.mod_breadcrumbs.ini</filename>
+		<filename>sq-AL.mod_breadcrumbs.sys.ini</filename>
+		<filename>sq-AL.mod_custom.ini</filename>
+		<filename>sq-AL.mod_custom.sys.ini</filename>
+		<filename>sq-AL.mod_feed.ini</filename>
+		<filename>sq-AL.mod_feed.sys.ini</filename>
+		<filename>sq-AL.mod_finder.ini</filename>
+		<filename>sq-AL.mod_finder.sys.ini</filename>
+		<filename>sq-AL.mod_footer.ini</filename>
+		<filename>sq-AL.mod_footer.sys.ini</filename>
+		<filename>sq-AL.mod_languages.ini</filename>
+		<filename>sq-AL.mod_languages.sys.ini</filename>
+		<filename>sq-AL.mod_login.ini</filename>
+		<filename>sq-AL.mod_login.sys.ini</filename>
+		<filename>sq-AL.mod_menu.ini</filename>
+		<filename>sq-AL.mod_menu.sys.ini</filename>
+		<filename>sq-AL.mod_random_image.ini</filename>
+		<filename>sq-AL.mod_random_image.sys.ini</filename>
+		<filename>sq-AL.mod_related_items.ini</filename>
+		<filename>sq-AL.mod_related_items.sys.ini</filename>
+		<filename>sq-AL.mod_search.ini</filename>
+		<filename>sq-AL.mod_search.sys.ini</filename>
+		<filename>sq-AL.mod_stats.ini</filename>
+		<filename>sq-AL.mod_stats.sys.ini</filename>
+		<filename>sq-AL.mod_syndicate.ini</filename>
+		<filename>sq-AL.mod_syndicate.sys.ini</filename>
+		<filename>sq-AL.mod_tags_popular.ini</filename>
+		<filename>sq-AL.mod_tags_popular.sys.ini</filename>
+		<filename>sq-AL.mod_tags_similar.ini</filename>
+		<filename>sq-AL.mod_tags_similar.sys.ini</filename>
+		<filename>sq-AL.mod_users_latest.ini</filename>
+		<filename>sq-AL.mod_users_latest.sys.ini</filename>
+		<filename>sq-AL.mod_weblinks.ini</filename>
+		<filename>sq-AL.mod_weblinks.sys.ini</filename>
+		<filename>sq-AL.mod_whosonline.ini</filename>
+		<filename>sq-AL.mod_whosonline.sys.ini</filename>
+		<filename>sq-AL.mod_wrapper.ini</filename>
+		<filename>sq-AL.mod_wrapper.sys.ini</filename>
+		<filename>sq-AL.tpl_beez3.ini</filename>
+		<filename>sq-AL.tpl_beez3.sys.ini</filename>
+		<filename>sq-AL.tpl_protostar.ini</filename>
+		<filename>sq-AL.tpl_protostar.sys.ini</filename>
+		<filename>index.html</filename>	
+		<filename file="meta">sq-AL.xml</filename>
+		<filename file="meta">install.xml</filename>
+    </files>
+</extension>

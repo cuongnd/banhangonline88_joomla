@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset name="BASIC_SETTINGS">
+        <field name="import_always"
+               type="radio"
+               label="COM_JFBCONNECT_CUSTOMDB_PROFILE_IMPORT_ALWAYS_LABEL"
+               description="COM_JFBCONNECT_CUSTOMDB_PROFILE_IMPORT_ALWAYS_DESC"
+               default="0"
+               labelclass="config_setting"
+               class="btn-group">
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+        </fieldset>
+    <fieldset name="DATABASE_INFORMATION">
+        <field name="db_name"
+               type="text"
+               label="COM_JFBCONNECT_CUSTOMDB_DATABASE_INFORMATION_DBNAME_LABEL"
+               description="COM_JFBCONNECT_CUSTOMDB_DATABASE_INFORMATION_DBNAME_DESC"
+               default=""
+               labelclass="config_setting"
+               />
+        <field name="db_user"
+               type="text"
+               label="COM_JFBCONNECT_CUSTOMDB_DATABASE_INFORMATION_DBUSER_LABEL"
+               description="COM_JFBCONNECT_CUSTOMDB_DATABASE_INFORMATION_DBUSER_DESC"
+               default=""
+               labelclass="config_setting"
+               />
+        <field name="db_password"
+               type="text"
+               label="COM_JFBCONNECT_CUSTOMDB_DATABASE_INFORMATION_DBPASS_LABEL"
+               description="COM_JFBCONNECT_CUSTOMDB_DATABASE_INFORMATION_DBPASS_DESC"
+               default=""
+               labelclass="config_setting"
+               />
+    </fieldset>
+    <fieldset name="IMPORT_SETTINGS">
+        <field name="db_table"
+               type="text"
+               label="COM_JFBCONNECT_CUSTOMDB_IMPORT_SETTINGS_DBTABLE_LABEL"
+               description="COM_JFBCONNECT_CUSTOMDB_IMPORT_SETTINGS_DBTABLE_DESC"
+               default=""
+               labelclass="config_setting"
+               />
+        <field name="db_key_column"
+               type="text"
+               label="COM_JFBCONNECT_CUSTOMDB_IMPORT_SETTINGS_USERID_COLUMN_LABEL"
+               description="COM_JFBCONNECT_CUSTOMDB_IMPORT_SETTINGS_USERID_COLUMN_DESC"
+               default=""
+               labelclass="config_setting"
+               />
+    </fieldset>
+</form>

@@ -1,0 +1,403 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<form>
+  <authorEmail>support@freestyle-joomla.com</authorEmail>
+  <author>Freestyle Joomla</author>
+  <copyright>(C) 2013 Freestyle Joomla. All rights reserved.</copyright>
+  <license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html </license>
+  <authorUrl>http://www.freestyle-joomla.com</authorUrl>
+
+  <fieldset addfieldpath="/administrator/components/com_fsj_transman/models/fields" />
+  <fieldset addfieldpath="components/com_fsj_transman/models/fields" />
+  <fieldset addfieldpath="/libraries/fsj_core/html/field" />
+
+  <fieldset>
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+			<field name="client_id" type="list"
+			label="FSJ_TRANSMAN_FORM_TRANSMAN_FILE_CLIENT_ID" description="" class="inputbox"
+			default=""
+			>
+			<!-- AG_Field Object
+(
+    [id] => client_id
+    [type] => combo
+    [list] => 0
+    [edit] => 0
+    [title] => FSJ_TRANSMAN_FORM_TRANSMAN_FILE_CLIENT_ID
+    [nowrap] => 
+    [width] => 
+    [listtile] => 
+    [default] => 
+    [link] => 0
+    [sqlfield] => a.client_id
+    [notinsql] => 0
+    [displayonly] => 0
+    [fromjoin] => 
+    [calc] => 0
+    [search] => 0
+    [align] => 
+    [custom] => 0
+    [help_style] => 
+    [exblock] => 
+    [filter_hide] => 0
+    [small] => 1
+    [class] => 
+    [multiple] => 
+    [desc] => 
+    [listtitle] => FSJ_TRANSMAN_FORM_TRANSMAN_FILE_CLIENT_ID
+    [use_set] => 
+    [size] => 
+    [combo] => AG_Combo Object
+        (
+            [default] => 
+            [options] => Array
+                (
+                    [0] => AG_Combo_Option Object
+                        (
+                            [id] => 0
+                            [value] => FSJ_TM_SITE
+                        )
+
+                    [1] => AG_Combo_Option Object
+                        (
+                            [id] => 1
+                            [value] => FSJ_TM_ADMIN
+                        )
+
+                )
+
+        )
+
+)
+ -->
+					<option value="0">FSJ_TM_SITE</option>
+					<option value="1">FSJ_TM_ADMIN</option>
+				
+		</field>
+		
+	
+		
+			<field name="f_state" type="list"
+			label="FSJ_TRANSMAN_FORM_TRANSMAN_FILE_F_STATE" description="" class="inputbox"
+			default=""
+			>
+			<!-- AG_Field Object
+(
+    [id] => f_state
+    [type] => combo
+    [list] => 0
+    [edit] => 0
+    [title] => FSJ_TRANSMAN_FORM_TRANSMAN_FILE_F_STATE
+    [nowrap] => 
+    [width] => 
+    [listtile] => 
+    [default] => 
+    [link] => 0
+    [sqlfield] => a.f_state
+    [notinsql] => 0
+    [displayonly] => 0
+    [fromjoin] => 
+    [calc] => 0
+    [search] => 0
+    [align] => 
+    [custom] => 0
+    [help_style] => 
+    [exblock] => 
+    [filter_hide] => 0
+    [small] => 1
+    [class] => 
+    [multiple] => 
+    [desc] => 
+    [listtitle] => FSJ_TRANSMAN_FORM_TRANSMAN_FILE_F_STATE
+    [use_set] => 
+    [size] => 
+    [combo] => AG_Combo Object
+        (
+            [default] => 
+            [options] => Array
+                (
+                    [0] => AG_Combo_Option Object
+                        (
+                            [id] => 0
+                            [value] => FSJ_TM_STATE_NOT_STARTED
+                        )
+
+                    [1] => AG_Combo_Option Object
+                        (
+                            [id] => 1
+                            [value] => FSJ_TM_STATE_PUB
+                        )
+
+                    [2] => AG_Combo_Option Object
+                        (
+                            [id] => 3
+                            [value] => FSJ_TM_STATE_UNPUB
+                        )
+
+                    [3] => AG_Combo_Option Object
+                        (
+                            [id] => 2
+                            [value] => FSJ_TM_STATE_NOT_IN_BASE
+                        )
+
+                )
+
+        )
+
+)
+ -->
+					<option value="0">FSJ_TM_STATE_NOT_STARTED</option>
+					<option value="1">FSJ_TM_STATE_PUB</option>
+					<option value="3">FSJ_TM_STATE_UNPUB</option>
+					<option value="2">FSJ_TM_STATE_NOT_IN_BASE</option>
+				
+		</field>
+		
+	
+		
+			<field name="f_status" type="list"
+			label="FSJ_TRANSMAN_FORM_TRANSMAN_FILE_F_STATUS" description="" class="inputbox"
+			default=""
+			>
+			<!-- AG_Field Object
+(
+    [id] => f_status
+    [type] => combo
+    [list] => 0
+    [edit] => 0
+    [title] => FSJ_TRANSMAN_FORM_TRANSMAN_FILE_F_STATUS
+    [nowrap] => 
+    [width] => 
+    [listtile] => 
+    [default] => 
+    [link] => 0
+    [sqlfield] => a.f_status
+    [notinsql] => 0
+    [displayonly] => 0
+    [fromjoin] => 
+    [calc] => 0
+    [search] => 0
+    [align] => 
+    [custom] => 0
+    [help_style] => 
+    [exblock] => 
+    [filter_hide] => 0
+    [small] => 1
+    [class] => 
+    [multiple] => 
+    [desc] => 
+    [listtitle] => FSJ_TRANSMAN_FORM_TRANSMAN_FILE_F_STATUS
+    [use_set] => 
+    [size] => 
+    [combo] => AG_Combo Object
+        (
+            [default] => 
+            [options] => Array
+                (
+                    [0] => AG_Combo_Option Object
+                        (
+                            [id] => 0
+                            [value] => FSJ_TM_STATE_NOT_STARTED
+                        )
+
+                    [1] => AG_Combo_Option Object
+                        (
+                            [id] => 1
+                            [value] => FSJ_TM_INPROGRESS
+                        )
+
+                    [2] => AG_Combo_Option Object
+                        (
+                            [id] => 100
+                            [value] => FSJ_TM_COMPLETED
+                        )
+
+                    [3] => AG_Combo_Option Object
+                        (
+                            [id] => 99
+                            [value] => FSJ_TM_INCOMPLETE
+                        )
+
+                )
+
+        )
+
+)
+ -->
+					<option value="0">FSJ_TM_STATE_NOT_STARTED</option>
+					<option value="1">FSJ_TM_INPROGRESS</option>
+					<option value="100">FSJ_TM_COMPLETED</option>
+					<option value="99">FSJ_TM_INCOMPLETE</option>
+				
+		</field>
+		
+	
+		
+			<field
+			name="key"
+			type="fsjlookup"
+			label="FSJ_TRANSMAN_FORM_TRANSMAN_FILE_KEY"
+			description=""
+			lu_table="#__extensions"
+			lu_field="name"
+			lu_display="title"
+			lu_nested="0"
+			lu_sql="SELECT element as value, name as text FROM #__extensions WHERE type = 'language'"
+			use_state="0"
+			state=""
+			use_set=""
+			onchange=""
+			readonly="0"
+		>
+					</field>
+
+	
+		
+			<field
+			name="name"
+			type="fsjtmlangname"
+			label="FSJ_TRANSMAN_FORM_TRANSMAN_FILE_NAME"
+			description=""
+			use_set=""
+			size=""
+			default=""
+									
+						>	
+
+					</field>
+	
+		
+			<field
+			name="filename"
+			type="fsjtmfilename"
+			label="FSJ_TRANSMAN_FORM_TRANSMAN_FILE_FILENAME"
+			description=""
+			use_set=""
+			size=""
+			default=""
+									
+						>	
+
+					</field>
+	
+		
+			<field
+			name="tstate"
+			type="fsjtmstate"
+			label="FSJ_TRANSMAN_FORM_TRANSMAN_FILE_TSTATE"
+			description=""
+			use_set=""
+			size=""
+			default=""
+									
+						>	
+
+					</field>
+	
+		
+			<field
+			name="status"
+			type="fsjtmstatus"
+			label="FSJ_TRANSMAN_FORM_TRANSMAN_FILE_STATUS"
+			description=""
+			use_set=""
+			size=""
+			default=""
+									
+						>	
+
+					</field>
+	
+		
+		<field name="phrases" type="text"
+			label="FSJ_TRANSMAN_FORM_TRANSMAN_FILE_PHRASES" description=""
+			class="inputbox " size="60"
+			default=""
+			/>		
+	
+		
+		<field name="component" type="text"
+			label="FSJ_TRANSMAN_FORM_TRANSMAN_FILE_COMPONENT" description=""
+			class="inputbox " size="60"
+			default=""
+			/>		
+	
+		
+			<field
+			name="category"
+			type="fsjtmcat"
+			label="FSJ_TRANSMAN_FORM_TRANSMAN_FILE_CATEGORY"
+			description=""
+			use_set=""
+			size=""
+			default=""
+									
+						>	
+
+					</field>
+	
+		
+			<field
+			name="xpath"
+			type="fsjtmpath"
+			label="FSJ_TRANSMAN_FORM_TRANSMAN_FILE_XPATH"
+			description=""
+			use_set=""
+			size=""
+			default=""
+									
+						>	
+
+					</field>
+	
+		
+			<field
+			name="description"
+			type="fsjtmdesc"
+			label="FSJ_TRANSMAN_FORM_TRANSMAN_FILE_DESCRIPTION"
+			description=""
+			use_set=""
+			size=""
+			default=""
+									
+						>	
+
+					</field>
+	
+		
+			<field
+			name="download"
+			type="fsjtmdownloadfile"
+			label="FSJ_TRANSMAN_FORM_TRANSMAN_FILE_DOWNLOAD"
+			description=""
+			use_set=""
+			size=""
+			default=""
+									
+						>	
+
+					</field>
+	
+
+  </fieldset>
+
+
+
+</form>

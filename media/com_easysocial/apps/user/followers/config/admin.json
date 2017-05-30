@@ -1,0 +1,44 @@
+[
+	{
+		"title"		: "COM_EASYSOCIAL_APPS_SETTINGS_STREAM",
+		"desc"		: "COM_EASYSOCIAL_APPS_SETTINGS_STREAM_DESC",
+		"fields"	:
+		[
+			{
+				"label"		: "COM_EASYSOCIAL_APPS_SETTINGS_DISPLAY_STREAM_FILTER",
+				"tooltip"		: "COM_EASYSOCIAL_APPS_SETTINGS_DISPLAY_STREAM_FILTER_DESC",
+				"name"		: "stream_filter",
+				"type" 		: "boolean",
+				"default"	: true
+			},
+			{
+				"label"		: "APP_USER_FOLLOWERS_STREAM_FOLLOW",
+				"desc"		: "APP_USER_FOLLOWERS_STREAM_FOLLOW_DESC",
+				"name"		: "stream_follow",
+				"type"		: "boolean",
+				"default"	: true
+			}
+		]
+	},
+	{
+		"title"		: "APP_USER_FOLLOWERS_SETTINGS_WIDGETS",
+		"desc"		: "APP_USER_FOLLOWERS_SETTINGS_WIDGETS_DESC",
+		"fields"	:
+		[
+			{
+				"label"		: "APP_USER_FOLLOWERS_SETTINGS_WIDGETS_FOLLOWERS",
+				"tooltip"	: "APP_USER_FOLLOWERS_SETTINGS_WIDGETS_FOLLOWERS_DESC",
+				"name"		: "widget_followers",
+				"type"		: "boolean",
+				"default"	: true
+			},
+			{
+				"label"		: "APP_USER_FOLLOWERS_SETTINGS_WIDGETS_FOLLOWING",
+				"tooltip"	: "APP_USER_FOLLOWERS_SETTINGS_WIDGETS_FOLLOWING_DESC",
+				"name"		: "widget_following",
+				"type"		: "boolean",
+				"default"	: true
+			}
+		]
+	}
+]

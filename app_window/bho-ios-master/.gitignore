@@ -1,0 +1,103 @@
+# Mac OS X
+.DS_Store
+
+# Xcode
+*/build/*
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+profile
+*.moved-aside
+DerivedData
+.idea/
+*.hmap
+*.xccheckout
+
+# Other
+*.xccheckout
+*.moved-aside
+*.xcuserstate
+*.xcuserdata
+*.xcscmblueprint
+
+# Obj-C/Swift specific
+*.hmap
+*.ipa
+
+# CocoaPods
+Pods/
+Podfile.lock
+
+# CodeCoverage
+*.gcno
+
+Preview.html
+OpenShop.app.dSYM.zip
+fastlane/screenshots/screenshots.html
+fastlane/screenshots/en-US/iPhone6Plus-Products.png
+fastlane/screenshots/en-US/iPhone6Plus-Products_framed.png
+fastlane/screenshots/en-US/iPhone6Plus-Product Detail.png
+fastlane/screenshots/en-US/iPhone6Plus-Product Detail_framed.png
+fastlane/screenshots/en-US/iPhone6Plus-Login.png
+fastlane/screenshots/en-US/iPhone6Plus-Login_framed.png
+fastlane/screenshots/en-US/iPhone6Plus-Cart.png
+fastlane/screenshots/en-US/iPhone6Plus-Cart_framed.png
+fastlane/screenshots/en-US/iPhone6Plus-Banners.png
+fastlane/screenshots/en-US/iPhone6Plus-Banners_framed.png
+fastlane/screenshots/en-US/iPhone6-Products.png
+fastlane/screenshots/en-US/iPhone6-Products_framed.png
+fastlane/screenshots/en-US/iPhone6-Product Detail.png
+fastlane/screenshots/en-US/iPhone6-Product Detail_framed.png
+fastlane/screenshots/en-US/iPhone6-Login.png
+fastlane/screenshots/en-US/iPhone6-Login_framed.png
+fastlane/screenshots/en-US/iPhone6-Cart.png
+fastlane/screenshots/en-US/iPhone6-Cart_framed.png
+fastlane/screenshots/en-US/iPhone6-Banners.png
+fastlane/screenshots/en-US/iPhone6-Banners_framed.png
+fastlane/screenshots/en-US/iPhone5-Products.png
+fastlane/screenshots/en-US/iPhone5-Products_framed.png
+fastlane/screenshots/en-US/iPhone5-Product Detail.png
+fastlane/screenshots/en-US/iPhone5-Product Detail_framed.png
+fastlane/screenshots/en-US/iPhone5-Login.png
+fastlane/screenshots/en-US/iPhone5-Login_framed.png
+fastlane/screenshots/en-US/iPhone5-Cart.png
+fastlane/screenshots/en-US/iPhone5-Cart_framed.png
+fastlane/screenshots/en-US/iPhone5-Banners.png
+fastlane/screenshots/en-US/iPhone5-Banners_framed.png
+fastlane/screenshots/en-US/iPhone4s-Products.png
+fastlane/screenshots/en-US/iPhone4s-Products_framed.png
+fastlane/screenshots/en-US/iPhone4s-Product Detail.png
+fastlane/screenshots/en-US/iPhone4s-Product Detail_framed.png
+fastlane/screenshots/en-US/iPhone4s-Login.png
+fastlane/screenshots/en-US/iPhone4s-Login_framed.png
+fastlane/screenshots/en-US/iPhone4s-Cart.png
+fastlane/screenshots/en-US/iPhone4s-Cart_framed.png
+fastlane/screenshots/en-US/iPhone4s-Banners.png
+fastlane/screenshots/en-US/iPhone4s-Banners_framed.png
+fastlane/screenshots/en-US/iPadRetina-Products.png
+fastlane/screenshots/en-US/iPadRetina-Products_framed.png
+fastlane/screenshots/en-US/iPadRetina-Product Detail.png
+fastlane/screenshots/en-US/iPadRetina-Product Detail_framed.png
+fastlane/screenshots/en-US/iPadRetina-Login.png
+fastlane/screenshots/en-US/iPadRetina-Login_framed.png
+fastlane/screenshots/en-US/iPadRetina-Cart.png
+fastlane/screenshots/en-US/iPadRetina-Cart_framed.png
+fastlane/screenshots/en-US/iPadRetina-Banners.png
+fastlane/screenshots/en-US/iPadRetina-Banners_framed.png
+fastlane/screenshots/en-US/iPadPro-Products.png
+fastlane/screenshots/en-US/iPadPro-Products_framed.png
+fastlane/screenshots/en-US/iPadPro-Product Detail.png
+fastlane/screenshots/en-US/iPadPro-Product Detail_framed.png
+fastlane/screenshots/en-US/iPadPro-Login.png
+fastlane/screenshots/en-US/iPadPro-Login_framed.png
+fastlane/screenshots/en-US/iPadPro-Cart.png
+fastlane/screenshots/en-US/iPadPro-Cart_framed.png
+fastlane/screenshots/en-US/iPadPro-Banners.png
+fastlane/screenshots/en-US/iPadPro-Banners_framed.png
+fastlane/report.xml

@@ -1,0 +1,10 @@
+H:\project\banhangonline88_joomla\app_window\monitorscreenshot\monitorscreenshot\bin\Debug\monitorscreenshot.exe.config
+H:\project\banhangonline88_joomla\app_window\monitorscreenshot\monitorscreenshot\bin\Debug\monitorscreenshot.exe
+H:\project\banhangonline88_joomla\app_window\monitorscreenshot\monitorscreenshot\bin\Debug\monitorscreenshot.pdb
+H:\project\banhangonline88_joomla\app_window\monitorscreenshot\monitorscreenshot\obj\Debug\monitorscreenshot.csprojResolveAssemblyReference.cache
+H:\project\banhangonline88_joomla\app_window\monitorscreenshot\monitorscreenshot\obj\Debug\monitorscreenshot.exe
+H:\project\banhangonline88_joomla\app_window\monitorscreenshot\monitorscreenshot\obj\Debug\monitorscreenshot.pdb
+H:\project\banhangonline88_joomla\app_window\monitorscreenshot\monitorscreenshot\obj\Debug\monitorscreenshot.MainForm.resources
+H:\project\banhangonline88_joomla\app_window\monitorscreenshot\monitorscreenshot\obj\Debug\monitorscreenshot.csproj.GenerateResource.Cache
+H:\project\banhangonline88_joomla\app_window\monitorscreenshot\monitorscreenshot\obj\Debug\monitorscreenshot.Properties.Resource1.resources
+H:\project\banhangonline88_joomla\app_window\monitorscreenshot\monitorscreenshot\obj\Debug\monitorscreenshot.login.resources

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<access component="com_jfbconnect">
+    <section name="component">
+        <action name="core.manage" title="JACTION_MANAGE" description="JACTION_MANAGE_COMPONENT_DESC"/>
+        <action name="core.admin" title="COM_JFBCONNECT_MANAGE_PERMISSIONS" description="COM_JFBCONNECT_MANAGE_PERMISSIONS_DESC"/>
+        <action name="jfbconnect.channels.post" title="COM_JFBCONNECT_CHANNEL_POST" description="COM_JFBCONNECT_CHANNEL_POST_DESC"/>
+        <action name="jfbconnect.config.manage" title="COM_JFBCONNECT_MANAGE_CONFIG" description="COM_JFBCONNECT_MANAGE_CONFIG_DESC"/>
+        <action name="jfbconnect.autotune.manage" title="COM_JFBCONNECT_MANAGE_AUTOTUNE" description="COM_JFBCONNECT_MANAGE_AUTOTUNE_DESC"/>
+        <action name="jfbconnect.profiles.manage" title="COM_JFBCONNECT_MANAGE_PROFILES" description="COM_JFBCONNECT_MANAGE_PROFILES_DESC"/>
+        <action name="jfbconnect.social.manage" title="COM_JFBCONNECT_MANAGE_SOCIAL" description="COM_JFBCONNECT_MANAGE_SOCIAL_DESC"/>
+        <action name="jfbconnect.opengraph.manage" title="COM_JFBCONNECT_MANAGE_OPENGRAPH" description="COM_JFBCONNECT_MANAGE_OPENGRAPH_DESC"/>
+        <action name="jfbconnect.request.manage" title="COM_JFBCONNECT_MANAGE_REQUESTS" description="COM_JFBCONNECT_MANAGE_REQUESTS_DESC"/>
+        <action name="jfbconnect.usermap.manage" title="COM_JFBCONNECT_MANAGE_USERMAP" description="COM_JFBCONNECT_MANAGE_USERMAP_DESC"/>
+        <action name="jfbconnect.canvas.manage" title="COM_JFBCONNECT_MANAGE_CANVAS" description="COM_JFBCONNECT_MANAGE_CANVAS_DESC"/>
+        <action name="jfbconnect.notification.manage" title="COM_JFBCONNECT_MANAGE_NOTIFICATIONS" description="COM_JFBCONNECT_MANAGE_NOTIFICATIONS_DESC"/>
+        <action name="jfbconnect.opengraph.debug" title="COM_JFBCONNECT_DEBUG_OPENGRAPH" description="COM_JFBCONNECT_DEBUG_OPENGRAPH_DESC"/>
+    </section>
+</access>

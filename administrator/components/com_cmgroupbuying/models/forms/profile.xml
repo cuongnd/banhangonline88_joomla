@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<form>
+	<fieldset>
+
+		<field name="id" type="text" label="JGLOBAL_FIELD_ID_LABEL"
+			description="JGLOBAL_FIELD_ID_DESC" size="10" default="0"
+			readonly="true" class="readonly" />
+
+		<field name="profile" type="list" class="inputbox"
+			default="blank" label="COM_CMGROUPBUYING_USER_PROFILE_PROFILE_LABEL"
+			description="COM_CMGROUPBUYING_USER_PROFILE_PROFILE_DESC">
+			<option value="blank">
+				COM_CMGROUPBUYING_USER_PROFILE_BLANK_OPTION</option>
+			<option value="joomla">
+				COM_CMGROUPBUYING_USER_PROFILE_JOOMLA_OPTION</option>
+			<option value="jomsocial">
+				COM_CMGROUPBUYING_USER_PROFILE_JOMSOCIAL_OPTION</option>
+			<option value="cb">
+				COM_CMGROUPBUYING_USER_PROFILE_CB_OPTION</option>
+		</field>
+
+		<field name="profile_name_value" type="text" class="inputbox" size="20"
+			label="COM_CMGROUPBUYING_BUYER_NAME"
+			description="COM_CMGROUPBUYING_USER_PROFILE_NAME_VALUE_DESC" />
+
+		<field name="profile_firstname_value" type="text" class="inputbox" size="20"
+			label="COM_CMGROUPBUYING_BUYER_FIRSTNAME"
+			description="COM_CMGROUPBUYING_USER_PROFILE_FIRSTNAME_VALUE_DESC" />
+
+		<field name="profile_lastname_value" type="text" class="inputbox" size="20"
+			label="COM_CMGROUPBUYING_BUYER_LASTNAME"
+			description="COM_CMGROUPBUYING_USER_PROFILE_LASTNAME_VALUE_DESC" />
+
+		<field name="profile_address_value" type="text" class="inputbox" size="20"
+			label="COM_CMGROUPBUYING_BUYER_ADDRESS"
+			description="COM_CMGROUPBUYING_USER_PROFILE_ADDRESS_VALUE_DESC" />
+
+		<field name="profile_city_value" type="text" class="inputbox" size="20"
+			label="COM_CMGROUPBUYING_BUYER_CITY"
+			description="COM_CMGROUPBUYING_USER_PROFILE_CITY_VALUE_DESC" />
+
+		<field name="profile_state_value" type="text" class="inputbox" size="20"
+			label="COM_CMGROUPBUYING_BUYER_STATE"
+			description="COM_CMGROUPBUYING_USER_PROFILE_STATE_VALUE_DESC" />
+
+		<field name="profile_zip_value" type="text" class="inputbox" size="20"
+			label="COM_CMGROUPBUYING_BUYER_ZIP"
+			description="COM_CMGROUPBUYING_USER_PROFILE_ZIP_VALUE_DESC" />
+
+		<field name="profile_phone_value" type="text" class="inputbox" size="20"
+			label="COM_CMGROUPBUYING_BUYER_PHONE"
+			description="COM_CMGROUPBUYING_USER_PROFILE_PHONE_VALUE_DESC" />
+
+		<field name="profile_name_attribute" type="list" class="inputbox"
+			default="required" label="COM_CMGROUPBUYING_BUYER_NAME"
+			description="COM_CMGROUPBUYING_USER_PROFILE_NAME_ATTRIBUTE_DESC">
+			<option value="hidden">
+				COM_CMGROUPBUYING_USER_PROFILE_HIDDEN_OPTION</option>
+			<option value="optional">
+				COM_CMGROUPBUYING_USER_PROFILE_OPTIONAL_OPTION</option>
+			<option value="required">
+				COM_CMGROUPBUYING_USER_PROFILE_REQUIRED_OPTION</option>
+		</field>
+
+		<field name="profile_firstname_attribute" type="list" class="inputbox"
+			default="required" label="COM_CMGROUPBUYING_BUYER_FIRSTNAME"
+			description="COM_CMGROUPBUYING_USER_PROFILE_FIRSTNAME_ATTRIBUTE_DESC">
+			<option value="hidden">
+				COM_CMGROUPBUYING_USER_PROFILE_HIDDEN_OPTION</option>
+			<option value="optional">
+				COM_CMGROUPBUYING_USER_PROFILE_OPTIONAL_OPTION</option>
+			<option value="required">
+				COM_CMGROUPBUYING_USER_PROFILE_REQUIRED_OPTION</option>
+		</field>
+
+		<field name="profile_lastname_attribute" type="list" class="inputbox"
+			default="required" label="COM_CMGROUPBUYING_BUYER_LASTNAME"
+			description="COM_CMGROUPBUYING_USER_PROFILE_LASTNAME_ATTRIBUTE_DESC">
+			<option value="hidden">
+				COM_CMGROUPBUYING_USER_PROFILE_HIDDEN_OPTION</option>
+			<option value="optional">
+				COM_CMGROUPBUYING_USER_PROFILE_OPTIONAL_OPTION</option>
+			<option value="required">
+				COM_CMGROUPBUYING_USER_PROFILE_REQUIRED_OPTION</option>
+		</field>
+
+		<field name="profile_address_attribute" type="list" class="inputbox"
+			default="required" label="COM_CMGROUPBUYING_BUYER_ADDRESS"
+			description="COM_CMGROUPBUYING_USER_PROFILE_ADDRESS_ATTRIBUTE_DESC">
+			<option value="hidden">
+				COM_CMGROUPBUYING_USER_PROFILE_HIDDEN_OPTION</option>
+			<option value="optional">
+				COM_CMGROUPBUYING_USER_PROFILE_OPTIONAL_OPTION</option>
+			<option value="required">
+				COM_CMGROUPBUYING_USER_PROFILE_REQUIRED_OPTION</option>
+		</field>
+
+		<field name="profile_city_attribute" type="list" class="inputbox"
+			default="required" label="COM_CMGROUPBUYING_BUYER_CITY"
+			description="COM_CMGROUPBUYING_USER_PROFILE_CITY_ATTRIBUTE_DESC">
+			<option value="hidden">
+				COM_CMGROUPBUYING_USER_PROFILE_HIDDEN_OPTION</option>
+			<option value="optional">
+				COM_CMGROUPBUYING_USER_PROFILE_OPTIONAL_OPTION</option>
+			<option value="required">
+				COM_CMGROUPBUYING_USER_PROFILE_REQUIRED_OPTION</option>
+		</field>
+
+		<field name="profile_state_attribute" type="list" class="inputbox"
+			default="required" label="COM_CMGROUPBUYING_BUYER_STATE"
+			description="COM_CMGROUPBUYING_USER_PROFILE_STATE_ATTRIBUTE_DESC">
+			<option value="hidden">
+				COM_CMGROUPBUYING_USER_PROFILE_HIDDEN_OPTION</option>
+			<option value="optional">
+				COM_CMGROUPBUYING_USER_PROFILE_OPTIONAL_OPTION</option>
+			<option value="required">
+				COM_CMGROUPBUYING_USER_PROFILE_REQUIRED_OPTION</option>
+		</field>
+
+		<field name="profile_zip_attribute" type="list" class="inputbox"
+			default="required" label="COM_CMGROUPBUYING_BUYER_ZIP"
+			description="COM_CMGROUPBUYING_USER_PROFILE_ZIP_ATTRIBUTE_DESC">
+			<option value="hidden">
+				COM_CMGROUPBUYING_USER_PROFILE_HIDDEN_OPTION</option>
+			<option value="optional">
+				COM_CMGROUPBUYING_USER_PROFILE_OPTIONAL_OPTION</option>
+			<option value="required">
+				COM_CMGROUPBUYING_USER_PROFILE_REQUIRED_OPTION</option>
+		</field>
+
+		<field name="profile_phone_attribute" type="list" class="inputbox"
+			default="required" label="COM_CMGROUPBUYING_BUYER_PHONE"
+			description="COM_CMGROUPBUYING_USER_PROFILE_PHONE_ATTRIBUTE_DESC">
+			<option value="hidden">
+				COM_CMGROUPBUYING_USER_PROFILE_HIDDEN_OPTION</option>
+			<option value="optional">
+				COM_CMGROUPBUYING_USER_PROFILE_OPTIONAL_OPTION</option>
+			<option value="required">
+				COM_CMGROUPBUYING_USER_PROFILE_REQUIRED_OPTION</option>
+		</field>
+
+		<field name="optional_text" type="text" class="inputbox" size="20"
+			label="COM_CMGROUPBUYING_PROFILE_OPTIONAL_TEXT_LABEL"
+			description="COM_CMGROUPBUYING_PROFILE_OPTIONAL_TEXT_DESC" />
+
+		<field name="required_text" type="text" class="inputbox" size="20"
+			label="COM_CMGROUPBUYING_PROFILE_REQUIRED_TEXT_LABEL"
+			description="COM_CMGROUPBUYING_PROFILE_REQUIRED_TEXT_DESC" />
+	</fieldset>
+</form>

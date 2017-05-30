@@ -1,0 +1,73 @@
+div#zt-module {
+  font-size: 13px;
+}
+div#zt-module ul.zt-tabs,
+div#zt-module ul.nav {
+  margin-right: 5px;
+  border: none;
+}
+div#zt-module ul.zt-tabs li,
+div#zt-module ul.nav li {
+  margin-right: 3px;
+  text-align: center;
+  border-radius: 0 0 4px 4px;
+}
+div#zt-module ul.zt-tabs li a,
+div#zt-module ul.nav li a,
+div#zt-module ul.zt-tabs li a:hover,
+div#zt-module ul.nav li a:hover,
+div#zt-module ul.zt-tabs li a:focus,
+div#zt-module ul.nav li a:focus {
+  border: 1px solid #ddd;
+  border-top: transparent;
+  border-radius: 0 0 4px 4px;
+  margin-right: 0px;
+  background-color: white;
+  color: #444444;
+  background: -webkit-linear-gradient(bottom, #ffffff, #dddddd);
+  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(top, #ffffff, #dddddd);
+  /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(top, #ffffff, #dddddd);
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to top, #ffffff, #dddddd);
+  /* Standard syntax */
+}
+div#zt-module ul.zt-tabs li.active li,
+div#zt-module ul.nav li.active li {
+  border-bottom: none;
+}
+div#zt-module ul.zt-tabs li.active a,
+div#zt-module ul.nav li.active a,
+div#zt-module ul.zt-tabs li.active a:hover,
+div#zt-module ul.nav li.active a:hover,
+div#zt-module ul.zt-tabs li.active a:focus,
+div#zt-module ul.nav li.active a:focus {
+  border: 1px solid #ddd;
+  border-top: transparent;
+  margin-top: -1px;
+  color: #EE9900;
+  background: -webkit-linear-gradient(bottom, #ffffff, #dddddd);
+  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(top, #dddddd, #ffffff);
+  /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(top, #dddddd, #ffffff);
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to top, #dddddd, #ffffff);
+  /* Standard syntax */
+}
+div#zt-module div.tab-content {
+  border: 1px solid #ddd;
+  margin-right: 5px;
+  padding-bottom: 5px;
+  padding-left: 15px;
+  padding-top: 15px;
+  padding-right: 15px;
+  min-height: 50px;
+  min-width: 50px;
+  display: flex;
+}
+div#zt-module div.tab-content div.tab-pane,
+div#zt-module div.tab-content div.active {
+  margin-bottom: 0px;
+}

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="package" version="3.3">
+		<name>Uighur Language Pack</name>
+		<tag>ug-CN</tag>
+		<packagename>ug-CN</packagename>
+	    <version>3.3.0.1</version>
+	    <creationDate>2014-05-08</creationDate>
+	    <author>Joomla! Uyghurs Portal</author>
+	    <authorEmail>joomlauy@yeah.net</authorEmail>
+	    <authorUrl>www.joomlauy.org</authorUrl>
+	    <copyright>Copyright 2011-2014 Open Source Matters or Joomla! Uyghurs Portal. All rights reserved.</copyright>
+	    <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	    <packager>Joomla! Uyghur Portali</packager>
+	    <packagerurl>www.joomlauy.org</packagerurl>
+   <description>
+ 	<![CDATA[
+	<h3 dir="RTL" style="text-align:center; font-family:Alkatip">سىز ھازىر Joomla 3 يادروسىنىڭ ئەڭ يېڭى (3.3.0.1) ئۇيغۇرچە تىل بولىقىنى قاچىلىدىڭىز</br>(ئارقا سۇپا ۋە ئالدى سۇپا تىلىنى ئۆز ئىچىگە ئالىدۇ).</h3>
+	<h2 dir="RTL" style="text-align:center; font-family:Alkatip Basma Tom">Joomla! 3.3.0 نىڭ ئۇيغۇرچە (تولۇق) قاچىلاش بولىقى (1-نەشرى)</h2>  
+	<p dir="RTL" style="text-align:center; font-family:Alkatip"><a href="http://www.joomlauy.org/" target="_blank"><img src="http://www.joomlauy.org/images/aboutjoomlauyghur.jpg" alt="ئۇيغۇرچە جوملا" width="320" height="80" align="center" longdesc="http://www.joomlauy.org"></p>
+	<h2 dir="RTL" style="text-align:center; font-family:Alkatip"><a href='http://www.joomlauy.org' target='_blank'>«جوملا ئۇيغۇر پورتالى»</a> تەرجىمە قىلدى.
+</h3>
+	<h3 dir="RTL" style="text-align:center; font-family:Alkatip">ئەگەر سىز ئىشلىتىش جەريانىدا تەرجىمىسى مۇۋاپىق بولمىغان ئورۇنلارنى بايقىسىڭىز، <a href='http://www.joomlauy.org/forum/' target='_blank'>«ئۇيغۇرچە !Joomla مۇنبىرى»</a> دىكى «!Joomla يادروسىنىڭ تەرجىمىسى» سەھىپىسىدە ئىنكاس قايتۇرۇڭ. رەھمەت!	</h3>
+	]]>
+	</description>
+ <files>
+        <file type="language" client="site" id="ug-CN">site_ug-CN.zip</file>
+        <file type="language" client="administrator" id="ug-CN">admin_ug-CN.zip</file>
+  </files>
+    <updateservers>
+        <server type="collection" priority="1" name="Accredited Joomla! Translations">http://update.joomla.org/language/translationlist_3.xml</server>
+    </updateservers>
+</extension>

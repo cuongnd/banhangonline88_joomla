@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metafile version="3.3" client="site">
+	<tag>ug-CN</tag>
+	<name>ئۇيغۇرچە</name>
+	<version>3.3.0</version>
+	<creationDate>2014-05-08</creationDate>
+	<author>Joomla! Uyghurs Portal</author>
+	<authorEmail>joomlauyghur@gmail.com</authorEmail>
+	<authorUrl>www.joomlauy.org</authorUrl>
+	<copyright>Copyright (C) 2005-2014 Open Source Matters &amp; Joomla! Uyghurs Portal. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<description>Uighur (ug-CN) Site language for Joomla! 3.3</description>
+	<metadata>
+		<name>ئۇيغۇرچە</name>
+		<tag>ug-CN</tag>
+		<rtl>1</rtl>
+		<locale>ug-CN.utf8, ug-CN.UTF-8, ug-CN, uy_CN, uy, ug, uyghur, uighur, uyghur china, uighur china</locale>
+		<firstDay>0</firstDay>
+		<weekEnd>0,6</weekEnd>
+	</metadata>
+	<params />
+</metafile>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jomsocial>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<component>com_maqmahelpdesk</component>
+	<rules>
+		<rule>
+			<name>MaQma Helpdesk - Answer voted</name>
+			<description>Give points when someone votes in the user answer.</description>
+			<action_string>maqma.answer.vote</action_string>
+			<publish>true</publish>
+			<points>1</points>
+			<access_level>1</access_level>
+		</rule>
+		<rule>
+			<name>MaQma Helpdesk - Answer selected</name>
+			<description>Give points when the user answer is selected as the correct on MaQma Helpdesk Public
+				Discussions.
+			</description>
+			<action_string>maqma.answer.selected</action_string>
+			<publish>true</publish>
+			<points>5</points>
+			<access_level>1</access_level>
+		</rule>
+	</rules>
+</jomsocial>

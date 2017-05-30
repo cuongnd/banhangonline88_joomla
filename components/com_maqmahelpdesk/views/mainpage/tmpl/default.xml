@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+    <layout title="Main page">
+        <message><![CDATA[Main page of the component]]></message>
+    </layout>
+    <fields name="params">
+        <fieldset name="basic"
+                  addfieldpath="/administrator/components/com_maqmahelpdesk/elements">
+            <field
+                    name="show_toolbar"
+                    type="radio"
+                    default="1"
+                    description="Set if you want to show the MaQma Helpdesk toolbar on this menu item."
+                    label="Show toolbar">
+                <option value="1">JYes</option>
+                <option value="0">JNo</option>
+            </field>
+            <field
+                    name="id_group"
+                    type="groupj17"
+                    default="0"
+                    label="Group"
+                    description="Set the a specific group if you want to.">
+            </field>
+        </fieldset>
+    </fields>
+</metadata>

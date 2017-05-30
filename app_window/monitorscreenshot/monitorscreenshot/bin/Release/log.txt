@@ -1,0 +1,171 @@
+
+Log Entry : 4:51:02 CH 16 Tháng Mười 2016
+  :
+  :log
+-------------------------------
+
+Log Entry : 4:51:19 CH 16 Tháng Mười 2016
+  :
+  :log
+-------------------------------
+
+Log Entry : 4:53:40 CH 16 Tháng Mười 2016
+  :
+  :log
+-------------------------------
+
+Log Entry : 5:14:22 CH 16 Tháng Mười 2016
+  :
+  :log
+-------------------------------
+
+Log Entry : 5:14:26 CH 16 Tháng Mười 2016
+  :
+  :System.Net.WebException: The remote server returned an error: (553) File name not allowed.
+   at System.Net.FtpWebRequest.CheckError()
+   at System.Net.FtpWebRequest.SyncRequestCallback(Object obj)
+   at System.Net.FtpWebRequest.RequestCallback(Object obj)
+   at System.Net.CommandStream.InvokeRequestCallback(Object obj)
+   at System.Net.CommandStream.Dispose(Boolean disposing)
+   at System.IO.Stream.Close()
+   at System.IO.Stream.Dispose()
+   at System.Net.ConnectionPool.Destroy(PooledStream pooledStream)
+   at System.Net.ConnectionPool.PutConnection(PooledStream pooledStream, Object owningObject, Int32 creationTimeout, Boolean canReuse)
+   at System.Net.ConnectionPool.PutConnection(PooledStream pooledStream, Object owningObject, Int32 creationTimeout)
+   at System.Net.FtpWebRequest.FinishRequestStage(RequestStage stage)
+   at System.Net.FtpWebRequest.GetRequestStream()
+   at monitorscreenshot.ftp.upload(String remoteFile, String localFile)
+-------------------------------
+
+Log Entry : 5:14:48 CH 16 Tháng Mười 2016
+  :
+  :log
+-------------------------------
+
+Log Entry : 5:14:52 CH 16 Tháng Mười 2016
+  :
+  :System.Net.WebException: The remote server returned an error: (553) File name not allowed.
+   at System.Net.FtpWebRequest.CheckError()
+   at System.Net.FtpWebRequest.SyncRequestCallback(Object obj)
+   at System.Net.FtpWebRequest.RequestCallback(Object obj)
+   at System.Net.CommandStream.InvokeRequestCallback(Object obj)
+   at System.Net.CommandStream.Dispose(Boolean disposing)
+   at System.IO.Stream.Close()
+   at System.IO.Stream.Dispose()
+   at System.Net.ConnectionPool.Destroy(PooledStream pooledStream)
+   at System.Net.ConnectionPool.PutConnection(PooledStream pooledStream, Object owningObject, Int32 creationTimeout, Boolean canReuse)
+   at System.Net.ConnectionPool.PutConnection(PooledStream pooledStream, Object owningObject, Int32 creationTimeout)
+   at System.Net.FtpWebRequest.FinishRequestStage(RequestStage stage)
+   at System.Net.FtpWebRequest.GetRequestStream()
+   at monitorscreenshot.ftp.upload(String remoteFile, String localFile)
+-------------------------------
+
+Log Entry : 5:15:16 CH 16 Tháng Mười 2016
+  :
+  :log
+-------------------------------
+
+Log Entry : 5:17:27 CH 16 Tháng Mười 2016
+  :
+  :log
+-------------------------------
+
+Log Entry : 5:18:36 CH 16 Tháng Mười 2016
+  :
+  :log
+-------------------------------
+
+Log Entry : 5:19:08 CH 16 Tháng Mười 2016
+  :
+  :log
+-------------------------------
+
+Log Entry : 5:19:34 CH 16 Tháng Mười 2016
+  :
+  :log
+-------------------------------
+
+Log Entry : 6:07:27 CH 16 Tháng Mười 2016
+  :
+  :log
+-------------------------------
+
+Log Entry : 6:07:55 CH 16 Tháng Mười 2016
+  :
+  :log
+-------------------------------
+
+Log Entry : 6:08:43 CH 16 Tháng Mười 2016
+  :
+  :log
+-------------------------------
+
+Log Entry : 6:09:10 CH 16 Tháng Mười 2016
+  :
+  :log
+-------------------------------
+
+Log Entry : 6:12:13 CH 16 Tháng Mười 2016
+  :
+  :log
+-------------------------------
+
+Log Entry : 6:12:39 CH 16 Tháng Mười 2016
+  :
+  :log
+-------------------------------
+
+Log Entry : 6:15:11 CH 16 Tháng Mười 2016
+  :
+  :log
+-------------------------------
+
+Log Entry : 9:31:37 CH 16 Tháng Mười 2016
+  :
+  :log
+-------------------------------
+
+Log Entry : 9:49:17 CH 16 Tháng Mười 2016
+  :
+  :log
+-------------------------------
+
+Log Entry : 9:51:30 CH 16 Tháng Mười 2016
+  :
+  :log
+-------------------------------
+
+Log Entry : 9:53:38 CH 16 Tháng Mười 2016
+  :
+  :log
+-------------------------------
+
+Log Entry : 9:54:21 CH 16 Tháng Mười 2016
+  :
+  :log
+-------------------------------
+
+Log Entry : 9:56:19 CH 16 Tháng Mười 2016
+  :
+  :log
+-------------------------------
+
+Log Entry : 9:58:46 CH 16 Tháng Mười 2016
+  :
+  :log
+-------------------------------
+
+Log Entry : 10:02:56 CH 16 Tháng Mười 2016
+  :
+  :log
+-------------------------------
+
+Log Entry : 10:17:10 CH 16 Tháng Mười 2016
+  :
+  :log
+-------------------------------
+
+Log Entry : 10:29:15 CH 16 Tháng Mười 2016
+  :
+  :log
+-------------------------------

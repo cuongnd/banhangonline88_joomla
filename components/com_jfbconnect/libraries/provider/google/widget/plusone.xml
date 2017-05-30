@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="params">
+        <fields name="widget_settings">
+            <fieldset name="widget_settings">
+                <field name="href" type="text" label="COM_JFBCONNECT_WIDGET_GOOGLE_PLUSONE_HREF_LABEL" description="COM_JFBCONNECT_WIDGET_GOOGLE_PLUSONE_HREF_DESCRIPTION" />
+                <field name="size" type="list" label="COM_JFBCONNECT_WIDGET_GOOGLE_PLUSONE_SIZE_LABEL" description="COM_JFBCONNECT_WIDGET_GOOGLE_PLUSONE_SIZE_DESCRIPTION">
+                    <option value="small">COM_JFBCONNECT_WIDGET_GOOGLE_PLUSONE_SIZE_OPTION_SMALL</option>
+                    <option value="medium">COM_JFBCONNECT_WIDGET_GOOGLE_PLUSONE_SIZE_OPTION_MEDIUM</option>
+                    <option value="standard">COM_JFBCONNECT_WIDGET_GOOGLE_PLUSONE_SIZE_OPTION_STANDARD</option>
+                    <option value="tall">COM_JFBCONNECT_WIDGET_GOOGLE_PLUSONE_SIZE_OPTION_TALL</option>
+                </field>
+                <field name="annotation" type="list" label="COM_JFBCONNECT_WIDGET_GOOGLE_PLUSONE_ANNOTATION_LABEL" description="COM_JFBCONNECT_WIDGET_GOOGLE_PLUSONE_ANNOTATION_DESCRIPTION">
+                    <option value="none">COM_JFBCONNECT_WIDGET_GOOGLE_PLUSONE_ANNOTATION_OPTION_NONE</option>
+                    <option value="bubble">COM_JFBCONNECT_WIDGET_GOOGLE_PLUSONE_ANNOTATION_OPTION_BUBBLE</option>
+                    <option value="inline">COM_JFBCONNECT_WIDGET_GOOGLE_PLUSONE_ANNOTATION_OPTION_INLINE</option>
+                </field>
+                <field name="width" type="text" label="COM_JFBCONNECT_WIDGET_GOOGLE_PLUSONE_WIDTH_LABEL" default="450"
+                       description="COM_JFBCONNECT_WIDGET_GOOGLE_PLUSONE_WIDTH_DESCRIPTION" />
+                <field name="align" type="list" label="COM_JFBCONNECT_WIDGET_GOOGLE_PLUSONE_ALIGN_LABEL" description="COM_JFBCONNECT_WIDGET_GOOGLE_PLUSONE_ALIGN_DESCRIPTION">
+                    <option value="left">COM_JFBCONNECT_WIDGET_GOOGLE_PLUSONE_ALIGN_OPTION_LEFT</option>
+                    <option value="right">COM_JFBCONNECT_WIDGET_GOOGLE_PLUSONE_ALIGN_OPTION_RIGHT</option>
+                </field>
+                <field name="expandTo" type="text" label="COM_JFBCONNECT_WIDGET_GOOGLE_PLUSONE_EXPAND_TO_LABEL" default=""
+                       description="COM_JFBCONNECT_WIDGET_GOOGLE_PLUSONE_EXPAND_TO_DESCRIPTION"/>
+                <field name="recommendations" type="radio" label="COM_JFBCONNECT_WIDGET_GOOGLE_PLUSONE_RECOMMENDATIONS_LABEL" description="COM_JFBCONNECT_WIDGET_GOOGLE_PLUSONE_RECOMMENDATIONS_DESCRIPTION">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+            </fieldset>
+        </fields>
+    </fields>
+</form>

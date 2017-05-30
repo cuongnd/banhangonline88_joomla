@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+	<data_type>csv</data_type>
+	<csv_separator>;</csv_separator>
+	<digits_after_decimal>0</digits_after_decimal>
+	<colors>
+		#0D8ECF,#FCD202,#DB4C3C,#B0DE09,#FF6600,#FEC514,#92C7E7,#E0C266,#66E084,#66C2E0,#FF0F00,#FF9E01,#FCD202,#F8FF01,#B0DE09,#04D215,#0D8ECF,#0D52D1,#2A0CD0,#8A0CCF,#CD0D74,#754DEB,#DDDDDD,#999999,#333333,#990000
+	</colors>
+
+	<values>
+		<x>
+			<rotate>45</rotate>
+			<color>#999999</color>
+		</x>
+		<y_left>
+			<color>#999999</color>
+		</y_left>
+		<y_right>
+			<color>#999999</color>
+		</y_right>
+	</values>
+
+	<grid>
+		<y_left>
+			<fill_color>#ffffff</fill_color>
+			<fill_alpha>0</fill_alpha>
+		</y_left>
+		<x>
+			<approx_count>15</approx_count>
+		</x>
+	</grid>
+
+	<axes>
+		<y_left>
+			<type>line</type>
+		</y_left>
+		<y_right>
+			<type>line</type>
+		</y_right>
+	</axes>
+
+	<indicator>
+		<color>#999999</color>
+		<selection_color>#000000</selection_color>
+	</indicator>
+
+	<balloon>
+		<show><![CDATA[ {title} ]]></show>
+	</balloon>
+
+	<legend>
+		<text_color>#999999</text_color>
+		<text_color_hover>#000000</text_color_hover>
+	</legend>
+
+	<zoom_out_button>
+		<color>#999999</color>
+		<text_color>#999999</text_color>
+		<text_color_hover>#000000</text_color_hover>
+	</zoom_out_button>
+
+	<error_messages>
+		<color>#E2441D</color>
+	</error_messages>
+</settings>

@@ -1,0 +1,261 @@
+.icon-48-category {
+	background-image: url('../images/icons/icon-48-category.png');
+}
+
+.icon-48-configuration {
+	background-image: url('../images/icons/icon-48-configuration.png');
+}
+
+.icon-48-profile {
+	background-image: url('../images/icons/icon-48-profile.png');
+}
+
+.icon-48-management {
+	background-image: url('../images/icons/icon-48-management.png');
+}
+
+.icon-48-product {
+	background-image: url('../images/icons/icon-48-product.png');
+}
+
+.icon-48-deal {
+	background-image: url('../images/icons/icon-48-deal.png');
+}
+
+.icon-48-location {
+	background-image: url('../images/icons/icon-48-location.png');
+}
+
+.icon-48-mail_template {
+	background-image: url('../images/icons/icon-48-mail_template.png');
+}
+
+.icon-48-aggregator_site {
+	background-image: url('../images/icons/icon-48-aggregator_site.png');
+}
+
+.icon-48-aggregation_link {
+	background-image: url('../images/icons/icon-48-aggregation_link.png');
+}
+
+.icon-48-order {
+	background-image: url('../images/icons/icon-48-order.png');
+}
+
+.icon-48-coupon {
+	background-image: url('../images/icons/icon-48-coupon.png');
+}
+
+.icon-48-free_coupon {
+	background-image: url('../images/icons/icon-48-free-coupon.png');
+}
+
+.icon-48-partner {
+	background-image: url('../images/icons/icon-48-partner.png');
+}
+
+.icon-48-report {
+	background-image: url('../images/icons/icon-48-report.png');
+}
+
+.icon-48-dashboard {
+	background-image: url('../images/icons/icon-48-dashboard.png');
+}
+
+.ui-widget-content {
+	border: 1px solid #AAAAAA;
+}
+
+.cmgroupbuying {
+	font-size: 13px;
+}
+
+.cmgroupbuying .jgrid span.uparrow,
+.cmgroupbuying .jgrid span.downarrow {
+	height: 12px !important;
+	width: 12px !important;
+}
+
+.cmgroupbuying .modelList .input-super-mini {
+	text-align: center;
+	width: 40px;
+}
+
+.cmgroupbuying .cmmodal {
+	width: auto;
+	margin-left: auto;
+	left: 0;
+	border-color: #CCCCCC #CCCCCC #B3B3B3;
+	border-image: none;
+	border-radius: 4px 4px 4px 4px;
+	border-style: solid;
+	border-width: 1px;
+	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);    top: 0;
+	position: relative;
+	z-index: 0;
+}
+
+.cmgroupbuying .btn:hover,
+.cmgroupbuying .btn:focus {
+	background-position: 0 center;
+}
+
+.cmgroupbuying .modelAdmin fieldset label,
+.cmgroupbuying .modelAdmin fieldset span.faux-label {
+	clear: none;
+	float: none;
+}
+
+.cmgroupbuying .pagination {
+	margin: 0;
+}
+.cmgroupbuying .pagination div.limit {
+	float: none;
+}
+
+.cmgroupbuying .pagination select {
+	margin-bottom: 0px;
+}
+
+.cm_error {
+	color: red;
+}
+
+.cm_error_parser {
+	font-weight: bold;
+}
+
+.cm_deal {
+	font-weight: bold;
+}
+
+.cm_loading {
+	background: url("../images/loading.gif") no-repeat top;
+	height: 50px;
+	display: none;
+}
+
+.cmgroupbuying .pagination div.limit select#limit {
+	width: 60px;
+}
+
+.cmgroupbuying .accordion-heading {
+	background-color: #FFF;
+}
+
+.cmgroupbuying #cpanel div.icon {
+	text-align: center;
+}
+.cmgroupbuying #cpanel div.icon-wrapper {
+	margin: 0px 115px 100px 10px;
+}
+
+.cmgroupbuying #cpanel div.icon a {
+	background-color: white;
+	background-position: -30px;
+	display: block;
+	float: left;
+	height: 97px;
+	width: 108px;
+	color: #565656;
+	vertical-align: middle;
+	text-decoration: none;
+	border: 1px solid #CCC;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-transition-property: background-position, -webkit-border-bottom-left-radius, -webkit-box-shadow;
+	-moz-transition-property: background-position, -moz-border-radius-bottomleft, -moz-box-shadow;
+	-webkit-transition-duration: 0.8s;
+	-moz-transition-duration: 0.8s;
+}
+
+.cmgroupbuying #cpanel img, .cpanel img {
+	padding: 10px 0;
+	margin: 0 auto;
+}
+
+.cmgroupbuying #cpanel div.icon a:hover,
+.cmgroupbuying #cpanel div.icon a:focus,
+.cmgroupbuying #cpanel div.icon a:active {
+	background-position: 0;
+	-webkit-border-bottom-left-radius: 50% 20px;
+	-moz-border-radius-bottomleft: 50% 20px;
+	border-bottom-left-radius: 50% 20px;
+	-webkit-box-shadow: -5px 10px 15px rgba(0, 0, 0, 0.25);
+	-moz-box-shadow: -5px 10px 15px rgba(0, 0, 0, 0.25);
+	box-shadow: -5px 10px 15px rgba(0, 0, 0, 0.25);
+	position: relative;
+	z-index: 10;
+}
+
+.cmgroupbuying .btn-micro {
+	padding: 1px 4px;
+	font-size: 10px;
+	line-height: 8px;
+}
+
+.cmgroupbuying fieldset label,
+.cmgroupbuying fieldset span.faux-label {
+	clear: none;
+	float: none;
+}
+
+.cmgroupbuying .button2-left .blank a {
+-moz-border-bottom-colors: none;
+	-moz-border-left-colors: none;
+	-moz-border-right-colors: none;
+	-moz-border-top-colors: none;
+	background-color: #F5F5F5;
+	background-image: linear-gradient(to bottom, #FFFFFF, #E6E6E6);
+	background-repeat: repeat-x;
+	border-color: #CCCCCC #CCCCCC #B3B3B3;
+	border-image: none;
+	border-radius: 4px 4px 4px 4px;
+	border-style: solid;
+	border-width: 1px;
+	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+	color: #333333;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 14px;
+	line-height: 20px;
+	margin-bottom: 0;
+	padding: 4px 12px !important;
+	text-align: center;
+	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+	vertical-align: middle;
+	height: auto;
+}
+
+.cmgroupbuying .button2-left {
+	margin: 0 5px;
+}
+
+.cmgroupbuying .center {
+	text-align: center !important;
+}
+
+.cmgroupbuying textarea {
+	width: 306px;
+}
+
+.cmgroupbuying .modelList table th {
+	text-align: center;
+}
+
+div#toolbar div#toolbar-back button.btn span.icon-back::before {
+	content: "";
+}
+
+div#toolbar div#toolbar-restore button.btn .icon-restore::before {
+	content: "\28";
+}
+
+div#toolbar div#toolbar-stats button.btn .icon-stats::before {
+	content: "\35";
+}
+
+.cmgroupbuying .order_item_option_name {
+	font-weight: bold;
+}

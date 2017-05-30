@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_CMGROUPBUYING_PARTNER_DEALS_TITLE" option="COM_CMGROUPBUYING_PARTNER_DEALS_OPTION">
+		<message>
+			<![CDATA[COM_CMGROUPBUYING_PARTNER_DEALS_DESC]]>
+		</message>
+	</layout>
+
+	<!-- Add fields to the request variables for the layout. -->
+	<fields name="request">
+		<fieldset name="request"
+			addfieldpath="/administrator/components/com_cmgroupbuying/models/fields">
+
+			<field name="id" type="modal_partner"
+				label="COM_CMGROUPBUYING_PARTNER_SELECT_PARTNER_LABEL"
+				required="true"
+				description="COM_CMGROUPBUYING_PARTNER_SELECT_PARTNER_DESC"
+			/>
+		</fieldset>
+	</fields>
+	<fields name="params">
+		<fieldset name="layout_settings"
+			addfieldpath="/administrator/components/com_cmgroupbuying/models/fields">
+			<field name="deal_image_width"
+				type="text"
+				label="COM_CMGROUPBUYING_DEAL_LIST_DEAL_IMAGE_WIDTH_LABEL"
+				description="COM_CMGROUPBUYING_DEAL_LIST_DEAL_IMAGE_WIDTH_DESC"
+				class="inputbox"
+				size="10"
+			/>
+			<field name="deal_image_height"
+				type="text"
+				label="COM_CMGROUPBUYING_DEAL_LIST_DEAL_IMAGE_HEIGHT_LABEL"
+				description="COM_CMGROUPBUYING_DEAL_LIST_DEAL_IMAGE_HEIGHT_DESC"
+				class="inputbox"
+				size="10"
+			/>
+			<field name="number_of_columns"
+				type="text"
+				label="COM_CMGROUPBUYING_DEAL_LIST_NUMBER_OF_COLUMNS_LABEL"
+				description="COM_CMGROUPBUYING_DEAL_LIST_NUMBER_OF_COLUMNS_DESC"
+				class="inputbox"
+				size="10"
+			/>
+			<field name="row_space"
+				type="text"
+				label="COM_CMGROUPBUYING_DEAL_LIST_ROW_SPACE_LABEL"
+				description="COM_CMGROUPBUYING_DEAL_LIST_ROW_SPACE_DESC"
+				class="inputbox"
+				size="10"
+			/>
+			<field name="column_space"
+				type="text"
+				label="COM_CMGROUPBUYING_DEAL_LIST_COLUMN_SPACE_LABEL"
+				description="COM_CMGROUPBUYING_DEAL_LIST_COLUMN_SPACE_DESC"
+				class="inputbox"
+				size="10"
+			/>
+
+			<field name="location_id" type="modal_location"
+				label="COM_CMGROUPBUYING_LOCATION_SELECT_LOCATION_LABEL"
+				description="COM_CMGROUPBUYING_LOCATION_SELECT_LOCATION_DESC"
+			/>
+		</fieldset>
+	</fields>
+</metadata>

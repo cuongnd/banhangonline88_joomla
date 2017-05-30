@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.1" type="plugin" group="system" method="upgrade">
+	<name>System - ShareThisBar</name>
+	<author>Dusanka ilic</author>
+	<creationDate>December 2012</creationDate>
+	<copyright>Copyright (C) 2016 Dusanka Ilic. All rights reserved.</copyright>
+	<license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html</license>
+	<authorEmail>gog27.mail@gmail.com</authorEmail>
+	<authorUrl>www.extensionshub.com</authorUrl>
+	<version>3.7</version>
+	<description>PLG_SHARETHISBAR_XML_DESCRIPTION</description>
+	<files>
+                <folder>images</folder>
+                <folder>js</folder>
+                <folder>models</folder>
+                <folder>language</folder>
+		<filename plugin="sharethisbar">sharethisbar.php</filename>
+                <filename>index.html</filename>	   
+	</files>
+	<config>
+	<fields name="params" addfieldpath="/plugins/system/sharethisbar/models/fields">
+	<fieldset name="basic" label="PLG_SHARETHISBAR_FIELDSET_BASIC_LABEL"> 
+          <field name="stbjscss" filter="raw" type="stbjscss" /> 
+          <field name="spacer1" type="spacer" class="text" label="PLG_SHARETHISBAR_SPACER_STBPOSITION_LABEL" />
+          <field name="spacer11" type="spacer" hr="true" />
+	  <field name="position" type="text" default="" label="PLG_SHARETHISBAR_FIELD_POSITION_LABEL" description="PLG_SHARETHISBAR_FIELD_POSITION_DESC" />
+          <field name="swidth" type="text" default="" label="PLG_SHARETHISBAR_FIELD_BARWIDTH_LABEL" description="PLG_SHARETHISBAR_FIELD_BARWIDTH_DESC" />
+          <field name="sheight" type="text" default="" label="PLG_SHARETHISBAR_FIELD_BARHEIGHT_LABEL" description="PLG_SHARETHISBAR_FIELD_BARHEIGHT_DESC" />
+          <field name="corrtop" type="text" default="" label="PLG_SHARETHISBAR_FIELD_BARTOPPOSITIONCORRECTION_LABEL" description="PLG_SHARETHISBAR_FIELD_BARTOPPOSITIONCORRECTION_DESC" />
+          <field name="corrbottom" type="text" default="" label="PLG_SHARETHISBAR_FIELD_BARBOTTOMPOSITIONCORRECTION_LABEL" description="PLG_SHARETHISBAR_FIELD_BARBOTTOMPOSITIONCORRECTION_DESC" />
+          <field name="corleft" type="text" default="" label="PLG_SHARETHISBAR_FIELD_BARLEFTPOSITIONCORRECTION_LABEL" description="PLG_SHARETHISBAR_FIELD_BARLEFTPOSITIONCORRECTION_DESC" />
+          <field name="corright" type="text" default="" label="PLG_SHARETHISBAR_FIELD_BARRIGHTPOSITIONCORRECTION_LABEL" description="PLG_SHARETHISBAR_FIELD_BARRIGHTPOSITIONCORRECTION_DESC" />
+          <field name="spacer1a" type="spacer" class="text" label="PLG_SHARETHISBAR_SPACER_MINHORIZRESOLUTION_LABEL" />
+          <field name="spacer11a" type="spacer" hr="true" />
+          <field name="minresshow" type="text" default="" label="PLG_SHARETHISBAR_FIELD_MINHORIZRESOLUTION_LABEL" description="PLG_SHARETHISBAR_FIELD_MINHORIZRESOLUTION_DESC" />
+          <field name="spacer2" type="spacer" class="text" label="PLG_SHARETHISBAR_SPACER_DELAYBARSHOWUP_LABEL" />
+          <field name="spacer21" type="spacer" hr="true" />
+          <field name="delaybarshowup" type="text" default="" label="PLG_SHARETHISBAR_FIELD_DELAYBARSHOWUP_LABEL" description="PLG_SHARETHISBAR_FIELD_DELAYBARSHOWUP_DESC" />
+          <field name="spacer3" type="spacer" class="text" label="PLG_SHARETHISBAR_SPACER_BAREFFECTS_LABEL" />
+          <field name="spacer31" type="spacer" hr="true" />
+          <field name="effectson" type="radio" default="1" label="PLG_SHARETHISBAR_FIELD_ALLOWEFFECTS_LABEL" description="PLG_SHARETHISBAR_FIELD_ALLOWEFFECTS_DESC">
+			<option value="0">PLG_SHARETHISBAR_OPTION_NO</option>
+			<option value="1">PLG_SHARETHISBAR_OPTION_YES</option>
+	  </field>
+          <field name="transitioneff" type="list" default="0" label="PLG_SHARETHISBAR_FIELD_TRANSITIONEFFECT_LABEL" description="PLG_SHARETHISBAR_FIELD_TRANSITIONEFFECT_DESC">
+			<option value="0">linear</option>
+			<option value="1">bounce:in</option>
+			<option value="2">bounce:out</option>
+                        <option value="3">elastic:in</option>
+                        <option value="4">elastic:out</option>
+	  </field>
+          <field name="transitiondur" type="text" default="1000" label="PLG_SHARETHISBAR_FIELD_TRANSITIONDURATION_LABEL" description="PLG_SHARETHISBAR_FIELD_TRANSITIONDURATION_DESC" />
+          
+          <field name="spacer4" type="spacer" class="text" label="PLG_SHARETHISBAR_SPACER_SHARETHISBARLINK_LABEL" />
+          <field name="spacer41" type="spacer" hr="true" />
+          <field name="sharethisbarlink" type="radio" default="1" label="PLG_SHARETHISBAR_FIELD_SHARETHISBARLINK_LABEL" description="PLG_SHARETHISBAR_FIELD_SHARETHISBARLINK_DESC">
+			<option value="0">PLG_SHARETHISBAR_OPTION_NO</option>
+			<option value="1">PLG_SHARETHISBAR_OPTION_YES</option>
+	  </field>
+	  <field name="googleanalyt" type="radio" default="0" label="PLG_SHARETHISBAR_FIELD_GOOGLEANALYTICS_LABEL" description="PLG_SHARETHISBAR_FIELD_GOOGLEANALYTICS_DESC">
+			<option value="0">PLG_SHARETHISBAR_OPTION_NO</option>
+			<option value="1">PLG_SHARETHISBAR_OPTION_YES</option>
+	  </field>
+          
+          <field name="spacer4a" type="spacer" class="text" label="PLG_SHARETHISBAR_SPACER_PLUGINMANAGERLANGUAGE_LABEL" />
+          <field name="spacer41a" type="spacer" hr="true" />
+          <field name="langmode" type="radio"
+		default="1"
+		description="PLG_SHARETHISBAR_FIELD_LANGSELECT_DESC"
+		label="PLG_SHARETHISBAR_FIELD_LANGSELECT_LABEL"
+            >
+			<option value="0">PLG_SHARETHISBAR_OPTION_NO</option>
+			<option value="1">PLG_SHARETHISBAR_OPTION_YES</option>
+	  </field>
+          <field name="langcode" type="stblanguage"
+		description="PLG_SHARETHISBAR_FIELD_LANGCODE_DESC"
+		label="PLG_SHARETHISBAR_FIELD_LANGCODE_LABEL"
+		size="4"
+	  />
+	  </fieldset>   <!-- END Basic  -->
+          <fieldset name="btn_selection_sort"  label="PLG_SHARETHISBAR_FIELDSET_BUTTONSELECTIONSORT_LABEL">
+          <!-- Da bi se prikazale slicice na lokalu sam morao da ubacim .. ispred prve crte / -->
+          <field name="btnsort" type="checkboxesimgsort" plugin="sharethisbar" label="PLG_SHARETHISBAR_FIELD_CHKBOXESIMGSORT_LABEL" description="PLG_SHARETHISBAR_FIELD_CHKBOXESIMGSORT_DESC" default="fb">
+             <option value="fb" showlabel="0" simg="../plugins/system/sharethisbar/images/facebook32.gif" simgalt="Facebook" simgtitle="Facebook">Facebook</option>
+             <option value="fb" showlabel="0" simg="../plugins/system/sharethisbar/images/facebook32.gif" simgalt="FacebookShared" simgtitle="FacebookShared">Facebook shared</option>
+             <option value="go" showlabel="0" simg="../plugins/system/sharethisbar/images/googleplus32.gif" simgalt="GooglePlus" simgtitle="GooglePlus">Google +</option>
+             <option value="tw" showlabel="0" simg="../plugins/system/sharethisbar/images/twitter32.gif" simgalt="Twitter" simgtitle="Twitter">Twitter</option>
+             <option value="li" showlabel="0" simg="../plugins/system/sharethisbar/images/linkedin32.gif" simgalt="LinkedIn" simgtitle="LinkedIn">LinkedIn</option>
+             <option value="pi" showlabel="0" simg="../plugins/system/sharethisbar/images/pinterest32.gif" simgalt="Pinterest" simgtitle="Pinterest">Pinterest</option>
+             <option value="su" showlabel="0" simg="../plugins/system/sharethisbar/images/supon32.gif" simgalt="StumbleUpon" simgtitle="StumbleUpon">StumbleUpon</option>
+             <option value="dg" showlabel="0" simg="../plugins/system/sharethisbar/images/digg32.gif" simgalt="Digg" simgtitle="Digg">Digg</option>
+             <option value="rd" showlabel="0" simg="../plugins/system/sharethisbar/images/redd32.gif" simgalt="Reddit" simgtitle="Reddit">Reddit</option>
+             <option value="de" showlabel="0" simg="../plugins/system/sharethisbar/images/deli32.gif" simgalt="Delicious" simgtitle="Delicious">Delicious</option>
+             <option value="bu" showlabel="0" simg="../plugins/system/sharethisbar/images/buff32.gif" simgalt="Buffer" simgtitle="Buffer">Buffer</option>             
+             <option value="tr" showlabel="0" simg="../plugins/system/sharethisbar/images/trat32.gif" simgalt="Technorati" simgtitle="Technorati">Technorati</option>
+             <option value="tu" showlabel="0" simg="../plugins/system/sharethisbar/images/tumb32.gif" simgalt="Tumblr" simgtitle="Tumblr">Tumblr</option>
+             <option value="cb1" showlabel="0" simg="../plugins/system/sharethisbar/images/custombutton32_1.gif" simgalt="Custom button 1" simgtitle="Custom button 1">Custom button 1</option> 
+             <option value="cb2" showlabel="0" simg="../plugins/system/sharethisbar/images/custombutton32_2.gif" simgalt="Custom button 2" simgtitle="Custom button 2">Custom button 2</option> 
+             <option value="cb3" showlabel="0" simg="../plugins/system/sharethisbar/images/custombutton32_3.gif" simgalt="Custom button 3" simgtitle="Custom button 3">Custom button 3</option> 
+          </field>
+         </fieldset>
+         <fieldset name="bar_style"  label="PLG_SHARETHISBAR_FIELDSET_BARSTYLE_LABEL">
+          <field name="spreadword" type="radio" default="0" label="PLG_SHARETHISBAR_FIELD_SHOWSPREADWORD_LABEL" description="PLG_SHARETHISBAR_FIELD_SHOWSPREADWORD_DESC">
+			<option value="0">PLG_SHARETHISBAR_OPTION_NO</option>
+			<option value="1">PLG_SHARETHISBAR_OPTION_YES</option>
+	  </field>
+          <field name="spreadwordpic" 
+			type="stbimagelist" 
+			label="PLG_SHARETHISBAR_FIELD_SPREADWORDPIC_LABEL" 
+			description="PLG_SHARETHISBAR_FIELD_SPREADWORDPIC_DESC" 
+                        directory="plugins/system/sharethisbar/images" 
+                        exclude=""   
+                        hide_none="1"
+                        hide_default="1"
+                        disabled="true"
+
+          />
+          <field name="spacer101a" type="spacer" hr="true" />
+          <field name="stbchoosestyle" type="radio" default="0" label="PLG_SHARETHISBAR_FIELD_CHOOSESTYLE_LABEL" description="PLG_SHARETHISBAR_FIELD_CHOOSESTYLE_DESC">
+			<option  
+                        value=".stbbtnstyle {margin:3px auto!important; text-align:center!important;}  /*Please use suffix !important*/  #socialbar {background-color:#fefefe!important;border:1px solid #cbcbcb!important;box-shadow:1px 1px 3px #dbdbdb!important;border-radius:5px 5px 5px 5px!important;z-index:100000!important;} #stbpi {margin:13px 0 0 0!important}">
+                        <![CDATA[ <div class='btnstyleimg' style='width:30px;'><span style="white-space:nowrap">Default Style</span><img src="../plugins/system/sharethisbar/images/sharethisbar-style-default.png" style='float:none;'></div>]]></option>
+                        <option  
+                        value=".stbbtnstyle {padding:5px 0!important;text-align:center!important; background:url('/plugins/system/sharethisbar/images/razdelna-linija-2x2-siva.png') repeat-x bottom transparent!important; } /*Please use suffix important*/ #socialbar {background-color:#eee!important;border-right: 4px solid #dadada!important;border-left: 2px solid #dadada!important;border-top: 2px solid #f7f7f7!important;border-bottom: 1px solid #b6b6b6!important;z-index:100000!important;} #stbpi {margin:13px 0 0 0!important}">
+                        <![CDATA[ <div class='btnstyleimg' style='width:30px;'><span style="white-space:nowrap">Gray Style</span><img src="../plugins/system/sharethisbar/images/sharethisbar-style-gray.png" style='float:none;'></div>]]></option>             
+                        <option  
+                        value=".stbbtnstyle {padding:5px 0!important;text-align:center!important; background:url('/plugins/system/sharethisbar/images/razdelna-linija-2x2-crna.png') repeat-x bottom transparent!important;opacity:.7!important;} .stbbtnstyle:hover{opacity:1!important} /*Please use suffix important*/ #socialbar {background-color:#303030!important;border-right: 4px solid #616161!important;border-left: 2px solid #4d4d4d!important;border-top: 2px solid #9a9a9a!important;border-bottom: 1px solid #3b3b3b!important;z-index:100000!important;} #stbpi {margin:13px 0 0 0!important}">
+                        <![CDATA[ <div class='btnstyleimg' style='width:30px;'><span style="white-space:nowrap">Black Style</span><img src="../plugins/system/sharethisbar/images/sharethisbar-style-black.png" style='float:none;'></div>]]></option>                       
+                        <option   
+                        value=".stbbtnstyle {margin:3px auto!important; text-align:center!important;}  /*Please use suffix !important*/  #socialbar {background-color:transparent!important;border:1px solid #cbcbcb!important;box-shadow:1px 1px 3px #dbdbdb!important;border-radius:5px 5px 5px 5px!important;z-index:100000!important;} #stbpi {margin:13px 0 0 0!important}">
+                        <![CDATA[ <div class='btnstyleimg' style='width:30px;'><span style="white-space:nowrap">Transparent Style</span><img src="../plugins/system/sharethisbar/images/sharethisbar-style-transparent.png" style='float:none;'></div>]]></option>           
+	  </field>
+          <field name="btnstyle" type="textarea" filter="raw" default=".stbbtnstyle {margin:3px auto!important; text-align:center!important;}  /*Please use suffix !important*/  #socialbar {background-color:#fefefe!important;border:1px solid #cbcbcb!important;box-shadow:1px 1px 3px #dbdbdb!important;border-radius:5px 5px 5px 5px!important;z-index:100000!important;} #stbpi {margin:13px 0 0 0!important}" label="PLG_SHARETHISBAR_FIELD_BTNSTYLE_LABEL" description="PLG_SHARETHISBAR_FIELD_BTNSTYLE_DESC"  cols="60" rows="15" />        
+          </fieldset> 
+          <fieldset name="social_media_btns_parameters"  label="PLG_SHARETHISBAR_FIELDSET_BUTTONPARAMETERS_LABEL">
+            <field name="spacer6" type="spacer" class="text" label="PLG_SHARETHISBAR_SPACER_FACEBOOKPARAMS_LABEL" />
+            <field name="spacer61" type="spacer" hr="true" />
+            <field name="fb_locale" type="text" default="en_US" label="PLG_SHARETHISBAR_FIELD_FACEBOOKLOCALE_LABEL" description="PLG_SHARETHISBAR_FIELD_FACEBOOKLOCALE_DESC" />
+            <field name="fb_appkey" type="text" default="" label="PLG_SHARETHISBAR_FIELD_FACEBOOKAPPKEY_LABEL" description="PLG_SHARETHISBAR_FIELD_FACEBOOKAPPKEY_DESC" /> 
+            <field name="fb_datawidth" type="text" default="" label="PLG_SHARETHISBAR_FIELD_FACEBOOKDATAWIDTH_LABEL" description="PLG_SHARETHISBAR_FIELD_FACEBOOKDATAWIDTH_DESC" />
+            <field name="hreffb" type="text" size="60" default="" label="PLG_SHARETHISBAR_FIELD_FACEBOOKHREF_LABEL" description="PLG_SHARETHISBAR_FIELD_FACEBOOKHREF_DESC" />
+            <field name="fb_xmlns" type="radio" default="0" label="PLG_SHARETHISBAR_FIELD_FACEBOOKXMLNS_LABEL" description="PLG_SHARETHISBAR_FIELD_FACEBOOKXMLNS_LABEL">
+			<option value="0">PLG_SHARETHISBAR_OPTION_NO</option>
+			<option value="1">PLG_SHARETHISBAR_OPTION_YES</option>
+	    </field>
+	    <field name="fb_ogimg" type="text" size="60" default="" label="PLG_SHARETHISBAR_FIELD_FACEBOOKOGIMAGETAG_LABEL" description="PLG_SHARETHISBAR_FIELD_FACEBOOKOGIMAGETAG_DESC" /> 
+            <field name="datasendfb" type="radio" default="0" label="PLG_SHARETHISBAR_FIELD_FACEBOOKDATASEND_LABEL" description="PLG_SHARETHISBAR_FIELD_FACEBOOKDATASEND_DESC">
+			<option value="0">PLG_SHARETHISBAR_OPTION_NO</option>
+			<option value="1">PLG_SHARETHISBAR_OPTION_YES</option>
+            </field>
+            <field name="spacer7" type="spacer" class="text" label="PLG_SHARETHISBAR_SPACER_GOOGLEPARAMS_LABEL" />
+            <field name="spacer71" type="spacer" hr="true" />  
+            <field name="hrefgoogle" type="text" size="60" default="" label="PLG_SHARETHISBAR_FIELD_GOOGLEHREF_LABEL" description="PLG_SHARETHISBAR_FIELD_GOOGLEHREF_DESC" />
+            <field name="google_loc" type="text" default="en-US" label="PLG_SHARETHISBAR_FIELD_GOOGLELOCALE_LABEL" description="PLG_SHARETHISBAR_FIELD_GOOGLELOCALE_LABEL" />
+            <field name="spacer8" type="spacer" class="text" label="PLG_SHARETHISBAR_SPACER_TWITTERPARAMS_LABEL" />
+            <field name="spacer81" type="spacer" hr="true" />
+	    <field name="hreftwitter" type="text" size="60" default="" label="PLG_SHARETHISBAR_FIELD_TWITTERHREF_LABEL" description="PLG_SHARETHISBAR_FIELD_TWITTERHREF_DESC" />  
+            <field name="twitter_locale" type="text" default="en" label="PLG_SHARETHISBAR_FIELD_TWITTERLOCALE_LABEL" description="PLG_SHARETHISBAR_FIELD_TWITTERLOCALE_DESC" />
+            <field name="twitter_datarelated" type="text" default="" label="PLG_SHARETHISBAR_FIELD_TWITTERRELATEDACCOUNTS_LABEL" description="PLG_SHARETHISBAR_FIELD_TWITTERRELATEDACCOUNTS_DESC" />
+            <field name="twitter_text" type="text" default="" label="PLG_SHARETHISBAR_FIELD_TWITTERTEXT_LABEL" description="PLG_SHARETHISBAR_FIELD_TWITTERTEXT_DESC" />      
+            <field name="twitter_via" type="text" default="" label="PLG_SHARETHISBAR_FIELD_TWITTERVIA_LABEL" description="PLG_SHARETHISBAR_FIELD_TWITTERVIA_DESC" />     
+            <field name="twitter_btntype" type="radio" default="0" label="PLG_SHARETHISBAR_FIELD_TWITTERBTNTYPE_LABEL" description="PLG_SHARETHISBAR_FIELD_TWITTERBTNTYPE_DESC">			
+		<option value="0">PLG_SHARETHISBAR_FIELD_TWITTERBTNTYPE_OPTION_JS</option>
+                <option value="1">PLG_SHARETHISBAR_FIELD_TWITTERBTNTYPE_OPTION_IFRAME</option>
+            </field>
+	    <field name="spacer9" type="spacer" class="text" label="PLG_SHARETHISBAR_SPACER_LINKEDINPARAMS_LABEL" /> 
+            <field name="spacer91" type="spacer" hr="true" />
+	    <field name="hreflinkedin" type="text" size="60" default="" label="PLG_SHARETHISBAR_FIELD_LINKEDINHREF_LABEL" description="PLG_SHARETHISBAR_FIELD_LINKEDINHREF_DESC" />  
+            <field name="spacer10" type="spacer" class="text" label="PLG_SHARETHISBAR_SPACER_PINTERESTPARAMS_LABEL" /> 
+            <field name="spacer101" type="spacer" hr="true" />
+	    <field name="hrefpinterest" type="text" size="60" default="" label="PLG_SHARETHISBAR_FIELD_PINTERESTHREF_LABEL" description="PLG_SHARETHISBAR_FIELD_PINTERESTHREF_DESC" />  
+	    <field name="picturepinterest" type="text" size="60" default="" label="PLG_SHARETHISBAR_FIELD_PINTERESTPIC_LABEL" description="PLG_SHARETHISBAR_FIELD_PINTERESTPIC_DESC" />
+	    <field name="descpinterest" type="textarea" cols="60" rows="5" default="" label="PLG_SHARETHISBAR_FIELD_PINTERESTDESC_LABEL" description="PLG_SHARETHISBAR_FIELD_PINTERESTDESC_DESC" />           
+            <field name="spacer102" type="spacer" class="text" label="PLG_SHARETHISBAR_SPACER_BUFFERPARAMS_LABEL" /> 
+            <field name="spacer102b" type="spacer" hr="true" />
+            <field name="bufferhref" type="text" size="60" default="" label="PLG_SHARETHISBAR_FIELD_BUFFERHREF_LABEL" description="PLG_SHARETHISBAR_FIELD_BUFFERHREF_DESC" />  
+            <field name="buffertext" type="text" default="" label="PLG_SHARETHISBAR_FIELD_BUFFERTEXT_LABEL" description="PLG_SHARETHISBAR_FIELD_BUFFERTEXT_DESC" />      
+            <field name="buffervia" type="text" default="" label="PLG_SHARETHISBAR_FIELD_BUFFERVIA_LABEL" description="PLG_SHARETHISBAR_FIELD_BUFFERVIA_DESC" />     
+            <field name="bufferpic" type="text" size="60" default="" label="PLG_SHARETHISBAR_FIELD_BUFFERPIC_LABEL" description="PLG_SHARETHISBAR_FIELD_BUFFERPIC_DESC" />
+         </fieldset>      
+         <fieldset name="add_custom_buttons"  label="PLG_SHARETHISBAR_FIELDSET_ADDCUSTOMBUTTONS_LABEL"> 
+           <field name="spacer12" type="spacer" class="text" label="PLG_SHARETHISBAR_SPACER_ADDCUSTOMBUTTONS_LABEL" />
+           <field name="spacer121" type="spacer" hr="true" />
+           <field name="cb1_code" filter="raw" type="textarea" cols="65" rows="5" default="" label="PLG_SHARETHISBAR_FIELD_CB1CODE_LABEL" description="PLG_SHARETHISBAR_FIELD_CB1CODE_DESC"  />
+           <field name="cb1_script" filter="raw" type="textarea" cols="65" rows="5" default="" label="PLG_SHARETHISBAR_FIELD_CB1SCRIPT_LABEL" description="PLG_SHARETHISBAR_FIELD_CB1SCRIPT_DESC"  />
+           <field name="cb2_code" filter="raw" type="textarea" cols="65" rows="5" default="" label="PLG_SHARETHISBAR_FIELD_CB2CODE_LABEL" description="PLG_SHARETHISBAR_FIELD_CB2CODE_DESC"  />
+           <field name="cb2_script" filter="raw" type="textarea" cols="65" rows="5" default="" label="PLG_SHARETHISBAR_FIELD_CB2SCRIPT_LABEL" description="PLG_SHARETHISBAR_FIELD_CB2SCRIPT_DESC"  />
+           <field name="cb3_code" filter="raw" type="textarea" cols="65" rows="5" default="" label="PLG_SHARETHISBAR_FIELD_CB3CODE_LABEL" description="PLG_SHARETHISBAR_FIELD_CB3CODE_DESC"  />
+           <field name="cb3_script" filter="raw" type="textarea" cols="65" rows="5" default="" label="PLG_SHARETHISBAR_FIELD_CB3SCRIPT_LABEL" description="PLG_SHARETHISBAR_FIELD_CB3SCRIPT_DESC"  />
+        </fieldset>
+        <fieldset name="exclude_menus"  label="PLG_SHARETHISBAR_FIELDSET_EXINSELECTEDMENUS_LABEL"> 
+          <field name="menuexin" type="radio" default="1" label="PLG_SHARETHISBAR_FIELD_MENUEXIN_LABEL" description="PLG_SHARETHISBAR_FIELD_MENUEXIN_DESC">
+			<option value="0">PLG_SHARETHISBAR_OPTION_IN</option>
+			<option value="1">PLG_SHARETHISBAR_OPTION_EX</option>
+          </field>
+          <field name="excl_menu" size="10" type="menuitem" label="PLG_SHARETHISBAR_FIELD_EXMENU_LABEL"  description="PLG_SHARETHISBAR_FIELD_EXMENU_DESC" multiple="multiple" />
+        </fieldset>
+        <fieldset name="exclude_urls"  label="PLG_SHARETHISBAR_FIELDSET_EXINURLS_LABEL"> 
+          <field name="uriexin" type="radio" default="1" label="PLG_SHARETHISBAR_FIELD_URIEXIN_LABEL" description="PLG_SHARETHISBAR_FIELD_URIEXIN_DESC">
+			<option value="0">PLG_SHARETHISBAR_OPTION_IN</option>
+			<option value="1">PLG_SHARETHISBAR_OPTION_EX</option>
+          </field>
+          <field name="excludeurls" label="PLG_SHARETHISBAR_FIELD_EXURLS_LABEL" type="textarea" cols="60" rows="15" description="PLG_SHARETHISBAR_FIELD_EXURLS_DESC" default="" />
+        </fieldset>
+	</fields>
+	</config>
+</extension>

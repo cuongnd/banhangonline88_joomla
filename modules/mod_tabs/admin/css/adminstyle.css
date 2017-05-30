@@ -1,0 +1,57 @@
+#jform_params_asset-lbl {
+  display: none;
+}
+.jv_catagory_info {
+  float: left;
+  text-align: center;
+  cellpadding: 1;
+  cellspacing: 0;
+  border: 0;
+  width: 100%;
+}
+.jv_catagory_info #zt-load {
+  float: left;
+  margin-left: 0px;
+}
+.jv_catagory_info #zt-process,
+.jv_catagory_info #zt-replace,
+.jv_catagory_info #zt-save {
+  float: left;
+  margin-left: 10px;
+}
+.jv_catagory_info #jformparamsjv_selection,
+.jv_catagory_info #jv_selection_selected {
+  height: 160px;
+}
+.jv_catagory_info #zt-process {
+  margin-top: 50px;
+}
+.jv_catagory_info #zt-process #list-selection-add {
+  width: 65px;
+  display: block;
+  margin-bottom: 2px;
+}
+.jv_catagory_info #zt-process #list-selection-remove {
+  width: 65px;
+}
+.jv_catagory_info #zt-replace {
+  margin-top: 50px;
+}
+.jv_catagory_info #zt-replace span {
+  margin-bottom: 15px;
+  cursor: pointer;
+  display: block;
+}
+.jv_catagory_info #zt-replace span:hover {
+  color: green;
+}
+.jv_catagory_info #jformparamsjv_selection_chzn,
+.jv_catagory_info #jv_selection_selected_chzn {
+  display: none;
+}
+#jv_selection_selected,
+#jformparamsjv_selection,
+#jformparamsmoduleID-position,
+#jformparamstype {
+  display: compact;
+}

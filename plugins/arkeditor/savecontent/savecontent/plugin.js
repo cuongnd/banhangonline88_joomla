@@ -1,0 +1,5 @@
+/**
+ * @license Copyright (c) 2003-2013, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md or http://ckeditor.com/license
+ */
+(function(){var t={readOnly:1,exec:function(n){var t=n.editable(),i,r,s;if(n.elementMode==CKEDITOR.ELEMENT_MODE_INLINE){var u=t.getCustomData("itemId"),f=t.getCustomData("type"),e=t.getCustomData("context"),o=t.getCustomData("itemType");CKEDITOR.showSaveAlertReloadMessage=!0;i=t.getData();r={itemId:u,type:f,context:e,itemType:o,content:i,showSuccessMessage:!0};n.fire("saveContent",r,n)}else s=n.config.saveCmd||t.getCustomData("saveCmd"),Joomla.submitbutton(t.getCustomData("saveCmd"))}},n="savecontent";CKEDITOR.plugins.add(n,{lang:"af,ar,bg,bn,bs,ca,cs,cy,da,de,el,en,en-au,en-ca,en-gb,eo,es,et,eu,fa,fi,fo,fr,fr-ca,gl,gu,he,hi,hr,hu,id,is,it,ja,ka,km,ko,ku,lt,lv,mk,mn,ms,nb,nl,no,pl,pt,pt-br,ro,ru,si,sk,sl,sq,sr,sr-latn,sv,th,tr,ug,uk,vi,zh,zh-cn",icons:"savecontent",hidpi:!0,init:function(i){if(i.config.saveContext||i.elementMode!=CKEDITOR.ELEMENT_MODE_REPLACE){var r=i.addCommand(n,t);r.modes={wysiwyg:1};i.ui.addButton&&i.ui.addButton("Savecontent",{label:i.lang.save.toolbar,command:n})}}})})()

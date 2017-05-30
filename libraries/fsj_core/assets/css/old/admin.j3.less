@@ -1,0 +1,343 @@
+/* DEPRECIATED - DO NOT USE ANY MORE */
+
+.fsj
+{
+	legend
+    {
+    	margin-bottom: 0px;
+    }
+
+	.overview_block {
+		background-image: -ms-linear-gradient(top, #CCCCCC 0%, #CCCCCC 30px, white 70%, white 100%);
+		background-image: -moz-linear-gradient(top, #CCCCCC 0%, #CCCCCC 30px, white 70%, white 100%);
+		background-image: -o-linear-gradient(top, #CCCCCC 0%, #CCCCCC 30px, white 70%, white 100%);
+		background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #CCCCCC), color-stop(1, white));
+		background-image: -webkit-linear-gradient(top, #CCCCCC 0%, #CCCCCC 30px, white 70%, white 100%);
+		background-image: linear-gradient(to bottom, #CCCCCC 0%, #CCCCCC 30px, white 70%, white 100%);
+
+		/* inner border */
+		.inner {
+			background-color: white;
+			padding-top: 32px;
+
+			h3 {
+				font-size: 13px;
+			}
+		}
+	}
+
+	.btn img {
+		position: relative;
+		top: -2px;
+		left: -3px;
+	}
+
+	.form_popup {
+		#filter-bar {
+			width: 100%;
+		}
+
+		[class*="span"] {
+			margin-left: 10px;
+			margin-right: 10px;
+		}
+
+		/* Toolbar on inline forms */
+		.btn-toolbar {
+			margin-right: 8px;
+			width: 70%;
+			text-align: right;
+		}
+
+		/* Editor buttons in a form popup */
+		div#editor-xtd-buttons, div.subhead 
+        {
+			.btn-toolbar {
+				width: 100%;
+			}
+        }
+	} 
+
+	iframe {
+		border: none;
+	}
+
+	fieldset.radio {
+		label {
+			float: left;
+			padding-right: 6px;
+		}
+		input {
+			float: left;
+			margin: 3px;
+		}
+	}
+
+	table {
+		span.small {
+			display: block;
+		}
+	}
+
+	img {
+		vertical-align: inherit;
+	}
+
+	div.chzn-container 
+    {
+		margin-bottom: 10px;
+    }
+
+	div.sidebar-nav div.chzn-container 
+    {
+		margin-bottom: 0px;
+    }
+}
+
+/* -- TAB STYLES ----------------------------- */
+dl.tabs {
+	float: left;
+	margin: 10px 0 -1px 0;
+	z-index: 50;
+	
+	dt {
+		float: left;
+		padding: 4px 10px;
+		
+		margin-left: 3px;
+		/*background: #e9e9e9;*/
+		color: #666;
+
+		border-top-left-radius: 4px !important;
+		border-top-right-radius: 4px !important;
+
+		border: 1px solid transparent;
+		h3 {
+			margin: 0;
+			padding: 0;
+			font-size: 1em;
+			font-weight: normal;
+		}
+		
+		a:hover {
+			text-decoration: none;
+		}
+	}
+
+	dt.closed:hover {
+		background: #e9e9e9;
+		
+	}
+	
+	dt.open {
+		border: 1px solid #ccc;
+		/*background: #F9F9F9;*/
+		border-bottom: 1px solid white;
+		z-index: 100;
+		color: #000;
+	}
+}
+
+div.current {
+	clear: both;
+	border-top: 1px solid #ccc;
+	padding: 10px 10px;
+
+	dd {
+		padding: 0;
+		margin: 0;
+	}
+}
+
+
+dl#content-pane.tabs {
+	margin: 1px 0 0 0;
+}
+
+p.tab-description {
+	font-size: 1.091em;
+	margin-left: 0;
+	margin-top: 5px;
+}
+
+td.order {
+	text-align: right !important;
+	span {
+		display: inline-block;
+		min-width: 25px;
+	}
+
+	input.text-area-order {
+		padding: 1px;
+		position: relative;
+		top: 5px;
+		width: 28px;
+		text-align: center !important;
+	}
+
+	a {
+		padding-top: 4px;
+		padding-bottom: 3px;
+	}
+}
+
+div.clr {
+	clear: both;
+}
+div.width-20 {
+	width: 20% !important;
+}
+div.width-40 {
+	width: 40% !important;
+}
+div.width-60 {
+	width: 60% !important;
+}
+div.width-80 {
+	width: 80% !important;
+}
+div.width-100 {
+	width: 100% !important;
+}
+.fltlft {
+	float: left;
+}
+.fltrt {
+	float: right;
+}
+
+
+
+/* -- PANE SLIDER STYLES ----------------------------- */
+.pane-sliders {
+	margin: 18px 0 0 0;
+	position:relative;
+
+	.title {
+		margin: 0;
+		padding: 2px 2px 2px 5px;
+		color: #666;
+		cursor: pointer;
+	}
+	
+	.panel {
+		margin-bottom: 3px;
+		border:solid 1px #ccc;
+		border-radius: 3px;
+
+		h3 {
+			background: #fafafa;
+			color: #666;
+			font-size: 13px;
+			border-radius: 3px;
+		}
+
+		h3.pane-toggler-down
+        {
+        	border-bottom-left-radius: 0px !important;
+			border-bottom-right-radius: 0px !important;
+        }
+	}
+
+	.content {
+		background: #fff;
+		border-bottom-left-radius: 3px !important;
+		border-bottom-right-radius: 3px !important;
+	}
+
+	.adminlist {
+		border: 0 none;
+		font-size: 1em;
+		td {
+			border: 0 none;
+		}
+	}
+}
+
+.pane-toggler span {
+	background: transparent url(../../../libraries/fsj_core/assets/images/j3/j_arrow.png) 5px 50% no-repeat;
+	padding-left: 20px;
+}
+
+.pane-toggler-down span {
+	background: transparent url(../../../libraries/fsj_core/assets/images/j3/j_arrow_down.png) 5px 50% no-repeat;
+	padding-left: 20px;
+}
+
+.pane-toggler-down {
+	border-bottom: 1px solid #ccc;
+}
+
+h3.pane-toggler-down a:hover,
+h3.pane-toggler a:hover {
+	text-decoration: none;
+}
+
+.pane-slider.pane-hide {
+	display: none;
+}
+
+.pane-slider ol li {
+	list-style: none;
+	margin-left: -25px;
+	margin-top: 10px;
+}
+
+div#position-icon.pane-sliders div.pane-down div.icon-wrapper {
+	margin: 5px 0 5px 0;
+}
+
+div#position-icon.pane-sliders div.pane-down .icon-wrapper .icon {
+	padding: 5px 0 5px 10px;
+	margin: 0;
+}
+
+div#position-icon.pane-sliders .icon {
+	background: #fff;
+}
+
+li {
+	list-style-type: none;
+}
+
+fieldset {
+	li {
+		clear: both;
+	}
+	padding: 6px !important;
+	li > label {
+		float: left;
+		min-width: 135px;
+		position: relative;
+		top: 6px;
+		margin-right: 10px;
+	}
+}
+
+ul.adminformlist
+{
+	margin: 0px;
+}
+
+
+.fsj_form_subsection_header
+{
+	label {
+		clear: both;
+		float: none;
+		font-weight: bold;
+		font-size: 100%;   
+		text-align:left;
+	}
+}
+
+.fsj_admin_menu_set {
+	display: block;
+	padding: 3px 15px;
+	font-size: 11px;
+	font-weight: bold;
+	line-height: 18px;
+	color: #999;
+	text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+	text-transform: uppercase;
+}

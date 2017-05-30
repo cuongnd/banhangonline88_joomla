@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" version="2.5" method="upgrade" group="hikashop">
+	<name>HikaSerial Product Add - HikaShop Check plugin</name>
+	<creationDate>{__MONTH__} {__YEAR__}</creationDate>
+	<version>{__VERSION__}</version>
+	<author>Obsidev</author>
+	<authorEmail>contact@obsidev.com</authorEmail>
+	<authorUrl>http://www.obsidev.com</authorUrl>
+	<copyright>Copyright (C) 2012-{__YEAR__} OBSIDEV SARL - All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<description>This plugin allow to check valid products when a product was added to the cart thanks to an HikaSerial serial.</description>
+	<files>
+		<filename plugin="productaddcheck">productaddcheck.php</filename>
+	</files>
+	<params addpath="/components/com_hikaserial/params">
+	</params>
+	<config>
+		<fields name="params" addfieldpath="/components/com_hikaserial/fields">
+		</fields>
+	</config>
+</extension>

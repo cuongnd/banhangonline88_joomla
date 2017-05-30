@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_CMGROUPBUYING_PRODUCTS_TITLE" option="COM_CMGROUPBUYING_PRODUCTS_OPTION">
+		<message>
+			<![CDATA[COM_CMGROUPBUYING_PRODUCTS_DESC]]>
+		</message>
+	</layout>
+
+	<fields name="params">
+		<fieldset name="layout_settings"
+			addfieldpath="/administrator/components/com_cmgroupbuying/models/fields">
+			<field name="image_width" type="text" class="inputbox" size="10" default="250"
+				label="COM_CMGROUPBUYING_PRODUCTS_IMAGE_WIDTH_LABEL"
+				description="COM_CMGROUPBUYING_PRODUCTS_IMAGE_WIDTH_DESC" />
+
+			<field name="image_height" type="text" class="inputbox" size="10"
+				label="COM_CMGROUPBUYING_PRODUCTS_IMAGE_HEIGHT_LABEL"
+				description="COM_CMGROUPBUYING_PRODUCTS_IMAGE_HEIGHT_DESC" />
+		</fieldset>
+
+		<fieldset name="basic">
+			<field name="category_id" type="modal_category"
+				label="COM_CMGROUPBUYING_PRODUCTS_CATEGORY_ID_LABEL"
+				description="COM_CMGROUPBUYING_PRODUCTS_CATEGORY_ID_DESC" />
+		</fieldset>
+	</fields>
+</metadata>

@@ -1,0 +1,8 @@
+
+.ckh_icon_new:before { content: '\e800'; } /* '' */
+.ckh_icon_redo:before { content: '\e801'; } /* '' */
+.ckh_icon_save:before { content: '\e802'; } /* '' */
+.ckh_icon_undo:before { content: '\e803'; } /* '' */
+.ckh_icon_versions:before { content: '\e804'; } /* '' */
+.ckh_icon_close:before { content: '\e805'; } /* '' */
+.ckh_icon_find:before { content: '\e806'; } /* '' */

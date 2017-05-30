@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.6" client="site" type="language" method="upgrade">
+    <name>Thai (ภาษาไทย)</name>
+    <tag>th-TH</tag>
+    <version>3.6.2.1</version>
+    <creationDate>August 2016</creationDate>
+    <author>Thai Translation Team</author>
+	<authorEmail>tt@joomlacorner.com</authorEmail>
+	<authorUrl>www.joomlacorner.com</authorUrl>
+	<copyright>Copyright (C) 2005 - 2016 Open Source Matters &amp; JoomlaCorner.com. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<description><![CDATA[
+    <div align="center">
+      <table border="0" width="100%">
+  	    <tr>
+  		    <td width="100%" colspan="2">
+  		      <div class="alert alert-success center" align="center">
+  		        <h3 class="alert-heading">ภาษาไทยสำหรับ จูมล่า 3.6 จากทีมจูมล่าคอร์เนอร์ <br />ภายใต้การสนับสนุนของ บริษัท มาร์เวลิค เอ็นจิ้น จำกัด</h3>
+  		      </div>
+  		      <hr />
+  		    </td>
+  	    </tr>
+  	    <tr>
+  		    <td width="40%"><u><strong>รายละเอียด :</strong></u></td>
+  		    <td width="60%">ภาษาไทยสำหรับไซต์ (ด้านหน้าเว็บไซต์)</td>
+  	    </tr>
+  	    <tr>
+  		    <td width="40%"><u><strong>เวอร์ชัน จูมล่า :</strong></u></td>
+  		    <td width="60%">3.6</td>
+  	    </tr>
+  	    <tr>
+  		    <td width="40%"><u><strong>เวอร์ชัน ไฟล์ภาษา :</strong></u></td>
+  		    <td width="60%">3.6.2v1</td>
+  	    </tr>
+  	    <td width="100%" colspan="2"><hr /></td>
+  	    <tr>
+  		    <td width="40%"><u><strong>เว็บไซต์ จูมล่าคอร์เนอร์ :</strong></u></td>
+  		    <td width="60%"><a href="http://www.joomlacorner.com" target="_blank">http://www.joomlacorner.com</a></td>
+  		 </tr>
+  		 <tr>
+   		    <td width="40%"><u><strong>เว็บไซต์ บริษัท มาร์เวลิค เอ็นจิ้น จำกัด :</strong></u></td>
+  		    <td width="60%"><a href="http://www.marvelic.co.th" target="_blank">http://www.marvelic.co.th</a></td>
+  	    </tr>
+  	    <tr>
+  		    <td width="100%" colspan="2">
+  		      <strong><font color="#008000">ท่านสามารถติดตามข่าวสารและเวอร์ชันล่าสุด จากเว็บไซต์ของเราข้างต้น</font></strong>
+          </td>
+  	    </tr>
+      </table>
+    </div>]]>
+    </description>
+	<files>
+		<filename>th-TH.com_ajax.ini</filename>
+		<filename>th-TH.com_config.ini</filename>
+		<filename>th-TH.com_contact.ini</filename>
+		<filename>th-TH.com_content.ini</filename>
+		<filename>th-TH.com_finder.ini</filename>
+		<filename>th-TH.com_mailto.ini</filename>
+		<filename>th-TH.com_media.ini</filename>
+		<filename>th-TH.com_messages.ini</filename>
+		<filename>th-TH.com_newsfeeds.ini</filename>
+		<filename>th-TH.com_search.ini</filename>
+		<filename>th-TH.com_tags.ini</filename>
+		<filename>th-TH.com_users.ini</filename>
+		<filename>th-TH.com_weblinks.ini</filename>
+		<filename>th-TH.com_wrapper.ini</filename>
+		<filename>th-TH.files_joomla.sys.ini</filename>
+		<filename>th-TH.finder_cli.ini</filename>
+		<filename>th-TH.ini</filename>
+		<filename>th-TH.lib_fof.ini</filename>
+		<filename>th-TH.lib_fof.sys.ini</filename>
+    <filename>th-TH.lib_idna_convert.sys.ini</filename>
+		<filename>th-TH.lib_joomla.ini</filename>
+		<filename>th-TH.lib_joomla.sys.ini</filename>
+    <filename>th-TH.lib_phpass.sys.ini</filename>
+		<filename>th-TH.lib_phputf8.sys.ini</filename>
+		<filename>th-TH.lib_simplepie.sys.ini</filename>
+		<filename>th-TH.localise.php</filename>
+		<filename>th-TH.mod_articles_archive.ini</filename>
+		<filename>th-TH.mod_articles_archive.sys.ini</filename>
+		<filename>th-TH.mod_articles_categories.ini</filename>
+		<filename>th-TH.mod_articles_categories.sys.ini</filename>
+		<filename>th-TH.mod_articles_category.ini</filename>
+		<filename>th-TH.mod_articles_category.sys.ini</filename>
+		<filename>th-TH.mod_articles_latest.ini</filename>
+		<filename>th-TH.mod_articles_latest.sys.ini</filename>
+		<filename>th-TH.mod_articles_news.ini</filename>
+		<filename>th-TH.mod_articles_news.sys.ini</filename>
+		<filename>th-TH.mod_articles_popular.ini</filename>
+		<filename>th-TH.mod_articles_popular.sys.ini</filename>
+		<filename>th-TH.mod_banners.ini</filename>
+		<filename>th-TH.mod_banners.sys.ini</filename>
+		<filename>th-TH.mod_breadcrumbs.ini</filename>
+		<filename>th-TH.mod_breadcrumbs.sys.ini</filename>
+		<filename>th-TH.mod_custom.ini</filename>
+		<filename>th-TH.mod_custom.sys.ini</filename>
+		<filename>th-TH.mod_feed.ini</filename>
+		<filename>th-TH.mod_feed.sys.ini</filename>
+		<filename>th-TH.mod_finder.ini</filename>
+		<filename>th-TH.mod_finder.sys.ini</filename>
+		<filename>th-TH.mod_footer.ini</filename>
+		<filename>th-TH.mod_footer.sys.ini</filename>
+		<filename>th-TH.mod_languages.ini</filename>
+		<filename>th-TH.mod_languages.sys.ini</filename>
+		<filename>th-TH.mod_login.ini</filename>
+		<filename>th-TH.mod_login.sys.ini</filename>
+		<filename>th-TH.mod_menu.ini</filename>
+		<filename>th-TH.mod_menu.sys.ini</filename>
+		<filename>th-TH.mod_random_image.ini</filename>
+		<filename>th-TH.mod_random_image.sys.ini</filename>
+		<filename>th-TH.mod_related_items.ini</filename>
+		<filename>th-TH.mod_related_items.sys.ini</filename>
+		<filename>th-TH.mod_search.ini</filename>
+		<filename>th-TH.mod_search.sys.ini</filename>
+		<filename>th-TH.mod_stats.ini</filename>
+		<filename>th-TH.mod_stats.sys.ini</filename>
+		<filename>th-TH.mod_syndicate.ini</filename>
+		<filename>th-TH.mod_syndicate.sys.ini</filename>
+		<filename>th-TH.mod_tags_popular.ini</filename>
+		<filename>th-TH.mod_tags_popular.sys.ini</filename>
+		<filename>th-TH.mod_tags_similar.ini</filename>
+		<filename>th-TH.mod_tags_similar.sys.ini</filename>
+		<filename>th-TH.mod_users_latest.ini</filename>
+		<filename>th-TH.mod_users_latest.sys.ini</filename>
+		<filename>th-TH.mod_weblinks.ini</filename>
+		<filename>th-TH.mod_weblinks.sys.ini</filename>
+		<filename>th-TH.mod_whosonline.ini</filename>
+		<filename>th-TH.mod_whosonline.sys.ini</filename>
+		<filename>th-TH.mod_wrapper.ini</filename>
+		<filename>th-TH.mod_wrapper.sys.ini</filename>
+		<filename>th-TH.pkg_joomla.sys.ini</filename>
+		<filename>th-TH.tpl_beez3.ini</filename>
+		<filename>th-TH.tpl_beez3.sys.ini</filename>
+		<filename>th-TH.tpl_protostar.ini</filename>
+		<filename>th-TH.tpl_protostar.sys.ini</filename>
+		<filename>index.html</filename>
+		<filename file="meta">install.xml</filename>
+		<filename file="meta">th-TH.xml</filename>
+	</files>
+	<media destination="th-TH"> <!-- If one needs to add a specific calendar -->
+		<filename>index.html</filename>
+		<filename>js/index.html</filename>
+		<filename>js/calendar-setup.js</filename>
+		<filename>js/calendar.js</filename>
+	</media>
+	<params />
+</extension>

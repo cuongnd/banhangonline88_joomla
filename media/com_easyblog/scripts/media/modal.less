@@ -1,0 +1,387 @@
+(~"@{MediaManager}") {
+
+    .mediaModalGroup {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        width: 100%;
+        height: 100%;
+        padding: 0 80px;
+    }
+
+    .mediaModal {
+        position: absolute;
+        top: 9999px;
+        width: 100%;
+        height: 85%;
+        margin: 0 auto;
+
+        overflow: hidden;
+        .box-shadow(0px 0px 64px rgba(0,0,0,0.8));
+        border: 1px solid #292F3A;
+        z-index: 2;
+        text-align: left;
+
+        &.active {
+            top: 0;
+            position: relative;
+        }
+
+        &.loaderModal {
+            background: url("loader.bar.gif") center center no-repeat #f6f6f6;
+        }
+
+        .modalHeader {
+
+            .normalHeaderColorScheme();
+            // .vertical-gradient(darken(#f5f5f5, 15%), darken(#dfdfdf, 15%));
+
+            .vertical-gradient(#444b55, #343a44);
+
+            height: 48px;
+            border-bottom: 1px solid #ccc;
+            overflow: hidden;
+            position: relative;
+            z-index: 5;
+
+            color: #fff;
+            .text-shadow(1px 1px 0px #343a44);
+
+            .modalTitle {
+                text-align: left;
+                font-size: 18px;
+                line-height: 48px;
+                position: absolute;
+                padding-left: 10px;
+                .text-shadow(1px 1px 0px #343a44);
+                z-index: 1;
+            }
+
+            .modalButtons {
+                border-left: 1px solid #343a44;
+                float: right;
+            }
+
+            button.modalButton {
+
+                display: inline-block;
+
+                background: transparent;
+                margin: 0;
+                padding: 0 8px;
+
+                font-weight: bold;
+                font-family: 'Lucida Grande',Tahoma,sans-serif;
+                font-size: 12px;
+                line-height: 12px;
+                color: #fff !important;
+                text-decoration: none !important;
+                vertical-align: top;
+
+                width: auto;
+                height: 48px;
+                overflow: visible;
+
+                position: relative;
+                z-index: 2;
+                float: right;
+                cursor: pointer;
+
+                border: none;
+                border-right: 1px solid #343a44;
+                border-left: 1px solid #575e6b;
+
+                > i {
+                    width: 16px;
+                    height: 16px;
+                    position: absolute;
+                    top: 16px;
+                    left: 8px;
+                    display: inline-block;
+                }
+
+                &:hover {
+                    .vertical-gradient(#575e6b, #343a44);
+                }
+
+                &.active {
+                    background: #999;
+                    .vertical-gradient(#444b55, #575e6b);
+                }
+
+                + button.modalButton {
+                    // border-right: 1px solid #343a44;
+                }
+
+                &.dashboardButton {
+
+                    i {
+                        .icon-media(1, 1);
+                        position: relative;
+                        top: 0;
+                        left: 0;
+                        width: 20px;
+                        height: 20px;
+                    }
+
+                    &:hover {
+                        i {
+                            .icon-media(1, 2);
+                        }
+                    }
+
+                    // .box-shadow(1px 0px 0 #575e6b);
+                }
+
+                &.browserButton {
+
+                    padding-left: 26px;
+
+                    i {
+                        .icon-media(7, 1);
+                    }
+                }
+
+                &.uploaderButton {
+
+                    padding-left: 26px;
+
+                    i {
+                        .icon-media(7, 2);
+                    }
+                }
+
+            }
+        }
+
+        .modalToolbar {
+            .normalHeaderColorScheme();
+            border-bottom: 1px solid #ccc;
+            height: 56px;
+            width: 100%;
+            position: relative;
+            z-index: 4;
+
+            .navigation {
+                top: 10px;
+                left: 10px;
+                // See navigation.less for more
+            }
+
+            .topActions {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                margin: 0;
+
+                button.button {
+                    float: right;
+                    height: 36px;
+
+                    padding-left: 8px + 16px + 6px !important;
+
+                    > i {
+                        display: inline-block;
+                        position: absolute;
+                        top: 8px;
+                        left: 8px;
+                        width: 16px;
+                        height: 16px;
+                    }
+
+                    + button.button {
+                        margin-right: 6px;
+                    }
+                }
+            }
+        }
+
+        .modalContent {
+            position: relative;
+            z-index: 3;
+            display: block;
+        }
+
+        .modalFooter {
+            .normalHeaderColorScheme();
+            border-top: 1px solid #ccc;
+            height: 36px;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            z-index: 4;
+
+            .footerActions {
+                padding: 4px;
+                position: absolute;
+                top: 0;
+
+                &.right-actions {
+                    right: 0;
+                }
+
+                &.left-actions {
+                    left: 0;
+                }
+
+                button.button {
+                    height: 27px;
+                }
+            }
+        }
+    }
+
+    .modalPrompt {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 5;
+        // margin-top: 48px;
+        top: -99999px;
+        left: -99999px;
+
+        &.active {
+            top: 0;
+            left: 0;
+
+            .overlay {
+                .opacity(0.6);
+                .transition-opacity(0.5);
+                display: none;
+            }
+        }
+
+        .overlay {
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            .opacity(0);
+            position: relative;
+            z-index: 1;
+            .transition-opacity(0.5);
+            display: none;
+        }
+
+        .modalPromptDialogs {
+            width: 100%;
+            height: 100%;
+        }
+
+        .modalPromptDialog {
+            display: block;
+            position: absolute;
+            z-index: 2;
+
+            width: 400px;
+            height: 250px;
+            margin-left: -200px;
+            margin-top: -125px - 24px;
+            background: white;
+            border: 1px solid #aaa;
+            .rounded(12px);
+            .box-shadow(0px 0px 32px 0px rgba(0,0,0,0.6));
+
+            top: -9999px;
+            left: -9999px;
+
+            text-align: left;
+
+            &.active {
+                top: 50%;
+                left: 50%;
+                z-index: 3;
+            }
+        }
+
+        .promptState {
+            display: none;
+
+            &.active {
+                display: block;
+            }
+        }
+
+        .promptTitle {
+            padding: 15px 15px 10px;
+            font-size: 18px;
+            line-height: 18px;
+            font-weight: bold;
+            .text-overflow();
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .promptText {
+            font-size: 12px;
+            line-height: 16px;
+            padding: 0 15px;
+            color: #666;
+            display: block;
+        }
+
+        .promptForm {
+
+            padding: 30px;
+
+            label {
+                height: 24px;
+                line-height: 24px;
+            }
+
+            input.text {
+                border: 1px solid #ccc;
+                padding: 0 3px;
+                height: 24px;
+                line-height: 24px;
+                font-size: 13px;
+                margin: 0 0 0 5px;
+            }
+        }
+
+        .promptActions {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            padding: 0 15px 15px 0;
+        }
+
+        .promptLoader {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 208px;
+            height: 13px;
+            margin: 0 0 22px 15px;
+            background: url(loader.bar.gif) no-repeat -6px -3px;
+        }
+    }
+}
+
+
+//Firefox hack
+/*Defined the icon position for All FF*/
+@-moz-document url-prefix() {
+  #EasyBlogMediaManager .mediaModal { top: -9999px; }
+  #EasyBlogMediaManager .mediaModal .modalToolbar .topActions button.button > i {top: 0;  left: -21px;}
+  #EasyBlogMediaManager .mediaModal .modalHeader button.modalButton.uploaderButton > i {top:0;left: -22px;}
+  #EasyBlogMediaManager .browser .browserFooter .browserTreeItemFooter .createFolderButton > i {top:0;left: -20px;}
+  #EasyBlogMediaManager .browser .browserViewButtons button.button > i {top:-8px; left: -6px;}
+  #EasyBlogMediaManager .imageVariationActions button i {top:-4px; left: -14px;}
+  #EasyBlogMediaManager .mediaModal .modalHeader button.modalButton > i {top:0; left: -21px;}
+  #EasyBlogMediaManager .uploader .modalToolbar .changeUploadFolderButton > i {top:0 !important;}
+  #EasyBlogMediaManager .uploader .uploadItemGroup .uploadItem .uploadActions .locateItemButton > i {top:0; left: -21px;}
+  #EasyBlogMediaManager .uploader .uploadItemGroup .uploadItem .uploadActions button > i {top:0; left: -21px;}
+}
+
+/*Redefined the correct position for FF 4 and above*/
+:-moz-any(x), #EasyBlogMediaManager .mediaModal { top: 9999px; }
+:-moz-any(x), #EasyBlogMediaManager .mediaModal .modalToolbar .topActions button.button i {top: 8px !important;left: 8px !important;}
+:-moz-any(x), #EasyBlogMediaManager .mediaModal .modalHeader button.modalButton.uploaderButton > i {top:16px !important;left: 8px !important;}
+:-moz-any(x), #EasyBlogMediaManager .browser .browserFooter .browserTreeItemFooter .createFolderButton > i {top:4px !important;left: 6px !important;}
+:-moz-any(x), #EasyBlogMediaManager .browser .browserViewButtons button.button > i {top:4px !important; left: 6px !important;}
+:-moz-any(x), #EasyBlogMediaManager .imageVariationActions button i {top:2px !important; left: 6px !important;}
+:-moz-any(x), #EasyBlogMediaManager .mediaModal .modalHeader button.modalButton.browserButton > i {top:16px !important; left: 8px !important;}
+:-moz-any(x), #EasyBlogMediaManager .uploader .uploadItemGroup .uploadItem .uploadActions button > i {top:4px !important; left: 6px !important;}
+:-moz-any(x), #EasyBlogMediaManager .uploader .uploadItemGroup .uploadItem .uploadActions .locateItemButton > i {top:4px !important; left: 6px !important;}
+
+

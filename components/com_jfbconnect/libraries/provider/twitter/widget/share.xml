@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="params">
+        <fields name="widget_settings">
+            <fieldset name="widget_settings">
+                <field name="href" type="text" label="COM_JFBCONNECT_WIDGET_TWITTER_SHARE_HREF_LABEL" description="COM_JFBCONNECT_WIDGET_TWITTER_SHARE_HREF_DESCRIPTION" default=""/>
+                <field name="via" type="text" label="COM_JFBCONNECT_WIDGET_TWITTER_SHARE_VIA_LABEL" description="COM_JFBCONNECT_WIDGET_TWITTER_SHARE_VIA_DESCRIPTION" default=""/>
+                <field name="text" type="text" label="COM_JFBCONNECT_WIDGET_TWITTER_SHARE_TEXT_LABEL" description="COM_JFBCONNECT_WIDGET_TWITTER_SHARE_TEXT_DESCRIPTION" default=""/>
+                <field name="related" type="text" label="COM_JFBCONNECT_WIDGET_TWITTER_SHARE_RELATED_LABEL" description="COM_JFBCONNECT_WIDGET_TWITTER_SHARE_RELATED_DESCRIPTION" default=""/>
+                <field name="data-count" type="list" label="COM_JFBCONNECT_WIDGET_TWITTER_SHARE_DATA_COUNT_LABEL" description="COM_JFBCONNECT_WIDGET_TWITTER_SHARE_DATA_COUNT_DESCRIPTION" default="horizontal">
+                    <option value="none">COM_JFBCONNECT_WIDGET_TWITTER_SHARE_OPTION_NONE</option>
+                    <option value="horizontal">COM_JFBCONNECT_WIDGET_TWITTER_SHARE_OPTION_HORIZONTAL</option>
+                    <option value="vertical">COM_JFBCONNECT_WIDGET_TWITTER_SHARE_OPTION_VERTICAL</option>
+                </field>
+                <field name="lang" type="text" label="COM_JFBCONNECT_WIDGET_TWITTER_SHARE_LANG_LABEL" description="COM_JFBCONNECT_WIDGET_TWITTER_SHARE_LANG_DESCRIPTION" default="" />
+                <field name="counturl" type="text" label="COM_JFBCONNECT_WIDGET_TWITTER_SHARE_COUNTURL_LABEL" description="COM_JFBCONNECT_WIDGET_TWITTER_SHARE_COUNTURL_DESCRIPTION" default=""/>
+                <field name="hashtags" type="text" label="COM_JFBCONNECT_WIDGET_TWITTER_SHARE_HASHTAGS_LABEL" description="COM_JFBCONNECT_WIDGET_TWITTER_SHARE_HASHTAGS_DESCRIPTION" default=""/>
+                <field name="size" type="list" label="COM_JFBCONNECT_WIDGET_TWITTER_SHARE_SIZE_LABEL" description="COM_JFBCONNECT_WIDGET_TWITTER_SHARE_SIZE_DESCRIPTION" default="medium">
+                    <option value="medium">COM_JFBCONNECT_WIDGET_TWITTER_SHARE_OPTION_MEDIUM</option>
+                    <option value="large">COM_JFBCONNECT_WIDGET_TWITTER_SHARE_OPTION_LARGE</option>
+                </field>
+                <field name="dnt" type="radio" label="COM_JFBCONNECT_WIDGET_TWITTER_SHARE_DNT_LABEL" description="COM_JFBCONNECT_WIDGET_TWITTER_SHARE_DNT_DESCRIPTION" default="false">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+            </fieldset>
+        </fields>
+    </fields>
+</form>

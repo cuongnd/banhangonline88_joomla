@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<state>
+		<name>Serial consume</name>
+		<description>Serial consume page</description>
+	</state>
+	<layout title="Serial consume">
+		<message></message>
+	</layout>
+</metadata>

@@ -1,0 +1,31 @@
+{
+	"title"	: "COM_EASYSOCIAL_MENU_GROUP_APPS",
+	"link"	: "index.php?option=com_easysocial&view=apps",
+	"class"	: "ies-box-add",
+	"access": "easysocial.access.apps",
+	"view"	: "apps",
+	"active": "layout",
+	"childs":
+	[
+		{
+			"title"	: "COM_EASYSOCIAL_MENU_ITEM_APPS_INSTALL",
+			"class"	: "ies-upload",
+			"url"	:
+			{
+				"view"	: "apps",
+				"layout": "install"
+			},
+			"childs": []
+		},
+		{
+			"title"	: "COM_EASYSOCIAL_MENU_ITEM_APPS_DISCOVER",
+			"class"	: "ies-upload-2",
+			"url"	:
+			{
+				"view"	: "apps",
+				"layout": "discover"
+			},
+			"childs": []
+		}
+	]
+}

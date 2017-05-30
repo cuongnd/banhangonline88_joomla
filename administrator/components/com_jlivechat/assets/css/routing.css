@@ -1,0 +1,138 @@
+/**
+ * @package JLive! Chat
+ * @version 4.3.3
+ * @copyright (C) Copyright 2008-2010 CMS Fruit, CMSFruit.com. All rights reserved.
+ * @license GNU/LGPL http://www.gnu.org/licenses/lgpl-3.0.txt
+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU Lesser General Public License as published by
+ the Free Software Foundation; either version 3 of the License, or (at your
+ option) any later version.
+
+ This program is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+ or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public
+ License for more details.
+
+ You should have received a copy of the GNU Lesser General Public License
+ along with this program.  If not, see http://www.gnu.org/licenses/.
+ */
+
+@CHARSET "UTF-8";
+
+.icon-16-livechat,
+.icon-16-jlivechat {
+    background: url(../images/icons/routing_16.png) no-repeat left top;
+}
+
+.icon-32-livechat,
+.icon-32-jlivechat {
+    background: url(../images/icons/routing_32.png) no-repeat left top;
+}
+
+.icon-48-livechat,
+.icon-48-jlivechat {
+    background: url(../images/icons/routing_48.png) no-repeat left top;
+}
+
+
+form[name=adminForm] {
+}
+
+table.routing {
+    width: 100%;
+    border-top: 1px solid black;
+    text-align: left;
+    margin: 10px auto;
+}
+
+table.routing thead tr td.left-top {
+    border-left: 1px solid black;
+}
+
+table.routing thead tr td.right-top {
+    border-right: 1px solid black;
+}
+
+table.routing thead tr td {
+    border-bottom: 1px solid black;
+}
+
+table.routing thead tr td {
+    background-color: #EFF6FF;
+    font-size: 1.05em;
+    font-family: sans;
+    font-weight: bold;
+    padding: 3px 0;
+    color: #545454;
+}
+
+table.routing tbody tr td button {
+    padding: 2px 20px;
+}
+
+table.routing tbody tr td {
+    border-bottom: 1px dotted #B7B7B7;
+    padding: 7px 0;
+    font-family: "Helvetica Neue", sans-serif;
+    font-size: 1em;
+}
+
+table.routing tbody tr td.message {
+    color: #2C4C6D;
+    padding: 10px 10px;
+    text-align: center;
+    font-family: arial, sans;
+    font-size: 1.2em;
+    font-style: italic;
+}
+
+table.form {
+    margin: 10px 0 0 30px;
+}
+
+table.form tr td {
+    font-family: "Helvetica Neue", sans-serif;
+    font-size: 1.2em;
+}
+
+
+table.form thead tr td {
+    font-family: "Helvetica Neue", sans-serif;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-bottom: 1px dotted #8BA1C4;
+    color: #4E4E4E;
+}
+
+
+table.form tbody tr td {
+    font-family: "Helvetica Neue", sans-serif;
+    font-size: 1em;
+}
+
+label {
+    font-size: 12px;
+}
+
+td.label {
+    text-align: right;
+}
+
+div.filter-layer {
+    display: inline;
+    margin-left: 10px;
+}
+
+div.filter-layer button {
+    margin-left: 3px;
+}
+
+.filter-layer * {
+    vertical-align: middle;
+}
+
+.yui-dt0-col-route_enabled,
+.yui-dt0-col-route_sort_order {
+    text-align: center !important;
+}

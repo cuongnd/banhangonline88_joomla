@@ -1,0 +1,73 @@
+(~"@{MediaManager}") {
+
+    .editor-type-video .panelSection.infoPanel .itemInfo > i,
+    .editor-type-audio .panelSection.infoPanel .itemInfo > i {
+        .icon-media(10, 5);
+    }
+
+    .editor-type-image .panelSection.infoPanel .itemInfo > i {
+        .icon-media(8, 5);
+    }
+
+    .editor-type-file .panelSection.infoPanel .itemInfo > i {
+        .icon-media(12, 5);
+    }
+
+    .panelSection.infoPanel {
+
+        .panelSectionContent {
+
+            padding: 8px;
+
+            .itemInfo {
+                position: relative;
+                padding-left: 40px;
+                min-height: 32px;
+
+                > i {
+                    // background: url(upload.media.png) no-repeat;
+                    display: block;
+                    position: absolute;
+                    width: 32px;
+                    height: 32px;
+                    top: 0;
+                    left: 0;
+                }
+
+                .itemFilename {
+                    display: block;
+                    font-weight: bold;
+                    line-height: 16px;
+                    .text-overflow();
+                    overflow: hidden;
+                    white-space: nowrap;
+                    padding-right: 64px;
+                }
+
+                .itemFilesize {
+                    line-height: 16px;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                }
+
+                .itemCreationDate {
+                    font-size: 11px;
+                    line-height: 16px;
+                }
+            }
+
+            .itemExtraInfo {
+                background: none repeat scroll 0 0 #FFFFFF;
+                border: 1px solid #DDD;
+                margin-top: 6px;
+                padding: 8px;
+                .word-wrap();
+
+                .itemUrl {
+                    font-size: 10px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,38 @@
+[
+    {
+        "title": "APP_EVENT_FILES_SETTINGS_WIDGET",
+        "desc": "APP_EVENT_FILES_SETTINGS_WIDGET_DESC",
+        "fields":
+        [
+            {
+                "label": "APP_EVENT_FILES_SETTINGS_WIDGET_ENABLE",
+                "tooltip": "APP_EVENT_FILES_SETTINGS_WIDGET_ENABLE_DESC",
+                "name": "widget",
+                "type": "boolean",
+                "default": true
+            },
+            {
+                "label": "APP_EVENT_FILES_SETTINGS_WIDGET_TOTAL_FILES",
+                "tooltip": "APP_EVENT_FILES_SETTINGS_WIDGET_TOTAL_FILES_DESC",
+                "name": "widget_total",
+                "class": "input-mini center",
+                "type": "text",
+                "default": 5
+            }
+        ]
+    },
+    {
+        "title": "APP_EVENT_FILES_SETTINGS_STREAM_VIEW",
+        "desc": "APP_EVENT_FILES_SETTINGS_STREAM_VIEW_DESC",
+        "fields":
+        [
+            {
+                "label": "APP_EVENT_FILES_SETTINGS_STREAM_UPLOADED",
+                "tooltip": "APP_EVENT_FILES_SETTINGS_STREAM_UPLOADED_DESC",
+                "name": "stream_uploaded",
+                "type": "boolean",
+                "default": true
+            }
+        ]
+    }
+]

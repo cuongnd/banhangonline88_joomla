@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.2" type="plugin" group="ajax" method="upgrade">
+	<name>Ajax - Inline Mode State listener</name>
+	<author>WebxSolution Ltd</author>
+	<creationDate>November 2013</creationDate>
+	<copyright>>Copyright (C) 2013- 2014 All rights reserved</copyright>
+	<license>GNU General Public License version 2</license>
+	<authorEmail>info@arkextensions.com</authorEmail>
+	<authorUrl>http://www.arkextensions.com</authorUrl>
+	<version>1.0</version>
+	<description>This plugin preserves state of inline editing Mode</description>
+	<files>
+		<filename plugin="inlinemodestatelistener">inlinemodestatelistener.php</filename>
+		<filename>index.html</filename>
+	</files>
+</extension>

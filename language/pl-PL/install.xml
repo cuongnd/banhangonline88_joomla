@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.5" client="site" type="language" method="upgrade">
+  <name>Polski (PL)</name>
+  <tag>pl-PL</tag>
+  <version>3.6.2.1</version>
+  <creationDate>05-08-2016</creationDate>
+  <author>Polskie Centrum Joomla!</author>
+  <authorEmail>zwiastun@joomla.pl</authorEmail>
+  <authorUrl>http://www.joomla.pl</authorUrl>
+  <copyright>(C) 2005 - 2016 Open Source Matters. All right reserved.</copyright>
+  <copyright>(C) 2005 - 2016 Fundacja PCJ Otwarte Źródła. All rights reserved.</copyright>
+  <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+  <description>Język witryny Joomla 3.6.2 - http://www.joomla.pl</description>
+  <files>
+    <filename file="meta">install.xml</filename>
+    <filename>pl-PL.com_ajax.ini</filename>
+    <filename>pl-PL.com_config.ini</filename>
+    <filename>pl-PL.com_contact.ini</filename>
+    <filename>pl-PL.com_content.ini</filename>
+    <filename>pl-PL.com_finder.ini</filename>
+    <filename>pl-PL.com_mailto.ini</filename>
+    <filename>pl-PL.com_media.ini</filename>
+    <filename>pl-PL.com_messages.ini</filename>
+    <filename>pl-PL.com_newsfeeds.ini</filename>
+    <filename>pl-PL.com_search.ini</filename>
+    <filename>pl-PL.com_tags.ini</filename>
+    <filename>pl-PL.com_users.ini</filename>
+    <filename>pl-PL.com_weblinks.ini</filename>
+    <filename>pl-PL.com_wrapper.ini</filename>
+    <filename>pl-PL.files_joomla.sys.ini</filename>
+    <filename>pl-PL.finder_cli.ini</filename>
+    <filename>pl-PL.ini</filename>
+    <filename>pl-PL.lib_fof.ini</filename>
+    <filename>pl-PL.lib_fof.sys.ini</filename>
+    <filename>pl-PL.lib_idna_convert.sys.ini</filename>
+    <filename>pl-PL.lib_joomla.ini</filename>
+    <filename>pl-PL.lib_joomla.sys.ini</filename>
+    <filename>pl-PL.lib_phpass.sys.ini</filename>
+    <filename>pl-PL.lib_phputf8.sys.ini</filename>
+    <filename>pl-PL.lib_simplepie.sys.ini</filename>
+    <filename>pl-PL.localise.php</filename>
+    <filename>pl-PL.mod_articles_archive.ini</filename>
+    <filename>pl-PL.mod_articles_archive.sys.ini</filename>
+    <filename>pl-PL.mod_articles_categories.ini</filename>
+    <filename>pl-PL.mod_articles_categories.sys.ini</filename>
+    <filename>pl-PL.mod_articles_category.ini</filename>
+    <filename>pl-PL.mod_articles_category.sys.ini</filename>
+    <filename>pl-PL.mod_articles_latest.ini</filename>
+    <filename>pl-PL.mod_articles_latest.sys.ini</filename>
+    <filename>pl-PL.mod_articles_news.ini</filename>
+    <filename>pl-PL.mod_articles_news.sys.ini</filename>
+    <filename>pl-PL.mod_articles_popular.ini</filename>
+    <filename>pl-PL.mod_articles_popular.sys.ini</filename>
+    <filename>pl-PL.mod_banners.ini</filename>
+    <filename>pl-PL.mod_banners.sys.ini</filename>
+    <filename>pl-PL.mod_breadcrumbs.ini</filename>
+    <filename>pl-PL.mod_breadcrumbs.sys.ini</filename>
+    <filename>pl-PL.mod_custom.ini</filename>
+    <filename>pl-PL.mod_custom.sys.ini</filename>
+    <filename>pl-PL.mod_feed.ini</filename>
+    <filename>pl-PL.mod_feed.sys.ini</filename>
+    <filename>pl-PL.mod_finder.ini</filename>
+    <filename>pl-PL.mod_finder.sys.ini</filename>
+    <filename>pl-PL.mod_footer.ini</filename>
+    <filename>pl-PL.mod_footer.sys.ini</filename>
+    <filename>pl-PL.mod_languages.ini</filename>
+    <filename>pl-PL.mod_languages.sys.ini</filename>
+    <filename>pl-PL.mod_login.ini</filename>
+    <filename>pl-PL.mod_login.sys.ini</filename>
+    <filename>pl-PL.mod_menu.ini</filename>
+    <filename>pl-PL.mod_menu.sys.ini</filename>
+    <filename>pl-PL.mod_random_image.ini</filename>
+    <filename>pl-PL.mod_random_image.sys.ini</filename>
+    <filename>pl-PL.mod_related_items.ini</filename>
+    <filename>pl-PL.mod_related_items.sys.ini</filename>
+    <filename>pl-PL.mod_search.ini</filename>
+    <filename>pl-PL.mod_search.sys.ini</filename>
+    <filename>pl-PL.mod_stats.ini</filename>
+    <filename>pl-PL.mod_stats.sys.ini</filename>
+    <filename>pl-PL.mod_syndicate.ini</filename>
+    <filename>pl-PL.mod_syndicate.sys.ini</filename>
+    <filename>pl-PL.mod_tags_popular.ini</filename>
+    <filename>pl-PL.mod_tags_popular.sys.ini</filename>
+    <filename>pl-PL.mod_tags_similar.ini</filename>
+    <filename>pl-PL.mod_tags_similar.sys.ini</filename>
+    <filename>pl-PL.mod_users_latest.ini</filename>
+    <filename>pl-PL.mod_users_latest.sys.ini</filename>
+    <filename>pl-PL.mod_weblinks.ini</filename>
+    <filename>pl-PL.mod_weblinks.sys.ini</filename>
+    <filename>pl-PL.mod_whosonline.ini</filename>
+    <filename>pl-PL.mod_whosonline.sys.ini</filename>
+    <filename>pl-PL.mod_wrapper.ini</filename>
+    <filename>pl-PL.mod_wrapper.sys.ini</filename>
+    <filename>pl-PL.tpl_beez3.ini</filename>
+    <filename>pl-PL.tpl_beez3.sys.ini</filename>
+    <filename>pl-PL.tpl_protostar.ini</filename>
+    <filename>pl-PL.tpl_protostar.sys.ini</filename>
+    <filename file="meta">pl-PL.xml</filename>
+  </files>
+  <params />
+</extension>

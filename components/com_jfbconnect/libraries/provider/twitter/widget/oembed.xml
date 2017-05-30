@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="params">
+        <fields name="widget_settings">
+            <fieldset name="widget_settings">
+                <field name="url" type="text" label="COM_JFBCONNECT_WIDGET_TWITTER_OEMBED_URL_OR_ID_LABEL" description="COM_JFBCONNECT_WIDGET_TWITTER_OEMBED_URL_OR_ID_DESCRIPTION"/>
+                <field name="maxwidth" default="550" type="text" label="COM_JFBCONNECT_WIDGET_OEMBED_WIDTH_LABEL" description="COM_JFBCONNECT_WIDGET_TWITTER_OEMBED_MAX_WIDTH_DESCRIPTION" />
+                <field name="hide_media" type="list" default="false" label="COM_JFBCONNECT_WIDGET_TWITTER_OEMBED_HIDE_MEDIA_LABEL" description="COM_JFBCONNECT_WIDGET_TWITTER_OEMBED_HIDE_MEDIA_DESCRIPTION" >
+                    <option value="true">JYES</option>
+                    <option value="false">JNO</option>
+                </field>
+                <field name="hide_thread" type="list" default="false" label="COM_JFBCONNECT_WIDGET_TWITTER_OEMBED_HIDE_THREAD_LABEL" description="COM_JFBCONNECT_WIDGET_TWITTER_OEMBED_HIDE_THREAD_DESCRIPTION" >
+                    <option value="true">JYES</option>
+                    <option value="false">JNO</option>
+                </field>
+                <field name="align" type="list" default="none" label="COM_JFBCONNECT_WIDGET_TWITTER_OEMBED_ALIGN_LABEL" description="COM_JFBCONNECT_WIDGET_TWITTER_OEMBED_ALIGN_DESCRIPTION" >
+                    <option value="left">COM_JFBCONNECT_WIDGET_TWITTER_OEMBED_ALIGN_OPTION_LEFT</option>
+                    <option value="right">COM_JFBCONNECT_WIDGET_TWITTER_OEMBED_ALIGN_OPTION_RIGHT</option>
+                    <option value="center">COM_JFBCONNECT_WIDGET_TWITTER_OEMBED_ALIGN_OPTION_CENTER</option>
+                    <option value="none">COM_JFBCONNECT_WIDGET_TWITTER_OEMBED_ALIGN_OPTION_NONE</option>
+                </field>
+            </fieldset>
+        </fields>
+    </fields>
+</form>

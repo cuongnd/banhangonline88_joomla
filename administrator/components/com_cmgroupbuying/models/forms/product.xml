@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset addfieldpath="/administrator/components/com_cmgroupbuying/models/fields">
+		<field name="id" type="text" size="10" default="0" readonly="true" class="readonly"
+			label="JGLOBAL_FIELD_ID_LABEL"
+			description="JGLOBAL_FIELD_ID_DESC" />
+
+		<field name="name" type="text" class="inputbox" size="40" required="true"
+			label="COM_CMGROUPBUYING_PRODUCT_FIELD_NAME_LABEL"
+			description="COM_CMGROUPBUYING_PRODUCT_FIELD_NAME_DESC" />
+
+		<field name="alias" type="text" class="inputbox" size="40"
+			label="JFIELD_ALIAS_LABEL" description="JFIELD_ALIAS_DESC" hint="JFIELD_ALIAS_PLACEHOLDER" />
+
+		<field name="short_description" type="textarea" class="inputbox" rows="3" cols="50"
+			label="COM_CMGROUPBUYING_PRODUCT_FIELD_SHORT_DESCRIPTION_LABEL"
+			description="COM_CMGROUPBUYING_PRODUCT_FIELD_SHORT_DESCRIPTION_DESC" />
+
+		<field name="image" type="media" hide_none="1" size="30"
+			label="COM_CMGROUPBUYING_PRODUCT_FIELD_IMAGE_LABEL"
+			description="COM_CMGROUPBUYING_PRODUCT_FIELD_IMAGE_DESC" />
+
+		<field name="category_id" type="cmgbcategory" class="inputbox" required="true"
+			label="COM_CMGROUPBUYING_PRODUCT_FIELD_CATEGORY_ID_LABEL"
+			description="COM_CMGROUPBUYING_PRODUCT_FIELD_CATEGORY_ID_DESC"
+		/>
+
+		<field name="metakey" type="textarea" class="inputbox" rows="3" cols="30"
+			label="JFIELD_META_KEYWORDS_LABEL" description="JFIELD_META_KEYWORDS_DESC" />
+
+		<field name="metadesc" type="textarea" class="inputbox" rows="3" cols="30"
+			label="JFIELD_META_DESCRIPTION_LABEL" description="JFIELD_META_DESCRIPTION_DESC" />
+
+		<field id="published" name="published" type="list" class="inputbox" size="1" default="1"
+			label="JSTATUS"
+			description="JFIELD_PUBLISHED_DESC">
+			<option value="1">JPUBLISHED</option>
+			<option value="0">JUNPUBLISHED</option>
+		</field>
+
+		<field name="ordering" type="cmordering" class="inputbox"
+			label="JFIELD_ORDERING_LABEL"
+			description="JFIELD_ORDERING_DESC" />
+	</fieldset>
+</form>

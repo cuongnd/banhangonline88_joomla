@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "H:\\project\\banhangonline88_joomla\\app_window\\android-ActiveNotifications-master\\Application\\build\\intermediates\\res\\merged\\release\\mipmap-xxxhdpi-v4\\ic_launcher.png",
+        "source": "H:\\project\\banhangonline88_joomla\\app_window\\android-ActiveNotifications-master\\Application\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "H:\\project\\banhangonline88_joomla\\app_window\\android-ActiveNotifications-master\\Application\\build\\intermediates\\res\\merged\\release\\mipmap-xxxhdpi-v4\\ic_notification.png",
+        "source": "H:\\project\\banhangonline88_joomla\\app_window\\android-ActiveNotifications-master\\Application\\src\\main\\res\\mipmap-xxxhdpi\\ic_notification.png"
+    }
+]
