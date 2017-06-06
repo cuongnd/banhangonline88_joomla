@@ -255,32 +255,6 @@
         }
         -->
     </style>
-    <script type="text/javascript">
-        <!--
-        //--Begin Google Analytics Codes
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-8172215-1']);
-        _gaq.push(['_setDomainName', 'sinhvienit.net']);
-        _gaq.push(['_trackPageview']);
-
-        _gaq.push(['b._setAccount', 'UA-8172215-10']);
-        _gaq.push(['b._setDomainName', 'sinhvienit.net']);
-        _gaq.push(['b._trackPageview']);
-
-        (function() {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-        //--End Google Analytics Codes
-        function showLoading(){
-            document.getElementById('btnSubmit1').style.display='none';
-            document.getElementById('btnSubmit2').style.display='inline-block';
-            document.getElementById('loading').style.display='block';
-            return true;
-        }
-        -->
-    </script>
 </head>
 
 <body>
@@ -288,6 +262,7 @@
     <form name="vtlai_firewall" method="POST" action="/index.php" onsubmit="showLoading();">
         <input type="hidden" value="home" name="vtlai_firewall_redirect">
         <input type="hidden" value="" name="vtlai_firewall_postcontent">
+        <input type="hidden" value="<?php if (!empty($_GET['user_return'])) { echo $_GET['user_return'];} ?>" name="user_return">
         <div class="knight"></div>
         <div class="dvbtn">
             <button class="btn btn-red" type="submit" id="btnSubmit1">Click vào đây để tiếp tục</button>
@@ -315,9 +290,6 @@
             </div>
         </div>
     </div>
-</div>
-<div style="display:none">
-    <script type="text/javascript" language="javascript" src="http://xslt.alexa.com/site_stats/js/t/b?url=sinhvienit.net"></script>
 </div>
 <!-- 183.80.226.27 - Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:46.0) Gecko/20100101 Firefox/46.0 -->
 </body>

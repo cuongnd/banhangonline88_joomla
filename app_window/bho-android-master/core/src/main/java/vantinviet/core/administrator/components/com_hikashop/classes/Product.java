@@ -49,7 +49,7 @@ public class Product {
     }
 
     public ArrayList<Image> getImages() {
-        return images;
+        return list_image;
     }
 
     public String getHtml_price() {

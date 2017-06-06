@@ -10,7 +10,7 @@
   content: " ";
 }
 
-@import 'icon';
+
 
 // Core variables and mixins
 .body-innerwrapper {
@@ -414,4 +414,97 @@
     margin-bottom: 10px;
     margin-top: 10px;
   }
+}
+.wrapper-loading {
+  /* :not(:required) hides this rule from IE9 and below */
+  .innerball-loader:not(:required) {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    position: relative;
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background: #4571f2;
+    border-radius: 50%;
+    overflow: hidden;
+    text-indent: -9999px;
+    /* Hides inner circles outsite base circle at safari */
+    -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
+  }
+  .innerball-loader:not(:required):before, .innerball-loader:not(:required):after {
+    content: '';
+    position: absolute;
+    top: 0;
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  }
+  .innerball-loader:not(:required):before {
+    -webkit-animation: spin 3s infinite;
+    animation: spin 3s infinite;
+    -webkit-transform-origin: 0 50%;
+    transform-origin: 0 50%;
+    left: 0;
+    background: #ca8fef;
+  }
+  .innerball-loader:not(:required):after {
+    -webkit-animation: spin 3s .2s reverse infinite;
+    animation: spin 3s .2s reverse infinite;
+    -webkit-transform-origin: 100% 50%;
+    transform-origin: 100% 50%;
+    right: 0;
+    background: #94f59a;
+  }
+
+  @-webkit-keyframes spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    50% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+    100% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+  }
+
+  @keyframes spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    50% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+    100% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+  }
+  .wrap {
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
+}
+
+#mod_menu_156
+{
+  ul.level-0
+  {
+    margin: 0;
+  }
+}
+.es.mod-es-login.style-vertical,.wrapper-cart,.wrapper-wishlist
+{
+  border: 1px solid #ccc;
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
+
 }

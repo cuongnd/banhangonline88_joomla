@@ -104,4 +104,8 @@ public class Module {
     public String getStyle_module() {
         return style_module;
     }
+
+    public String getClassName() {
+        return params.getModuleclass_sfx();
+    }
 }

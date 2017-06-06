@@ -12,7 +12,7 @@ defined ( '_JEXEC' ) or die ( 'Restricted access' );
 
 // Ordering drag'n'drop management
 if ($this->orders['order'] == 's.ordering') {
-	$saveOrderingUrl = 'index.php?option=com_jmap&task=sources.saveOrder&format=json&ajax=1';
+	$saveOrderingUrl = 'index.php?option=com_jmap&task=sources.saveOrder&format=json&tmpl=json&ajax=1';
 	JHtml::_('sortablelist.sortable', 'adminList', 'adminForm', strtolower($this->orders['order_Dir']), $saveOrderingUrl);
 	$this->document->addScript ( JUri::root ( true ) . '/administrator/components/com_jmap/js/sortablelist.js', 'text/javascript', true );
 }

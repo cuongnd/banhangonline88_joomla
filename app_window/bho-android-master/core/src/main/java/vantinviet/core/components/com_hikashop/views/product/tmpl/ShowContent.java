@@ -54,6 +54,8 @@ public class ShowContent extends LinearLayout {
 
         SliderLayout product_slider =(SliderLayout) layout_product.findViewById(R.id.product_slider);
         final Product product=viewProduct.getProduct();
+        Timber.d("product %s",product.toString());
+
         ArrayList<Image> images=product.getImages();
         if(images!=null)for (Image image: images) {
             TextSliderView textSliderView = new TextSliderView(app.getContext());

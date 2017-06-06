@@ -122,7 +122,7 @@ public class WebView {
                 } catch (NoSuchMethodException e) {
                     e.printStackTrace();
                 } catch (InvocationTargetException e) {
-                    e.printStackTrace();
+                    e.getCause().printStackTrace();
                 }
                 app.getCurrentActivity().runOnUiThread(new Runnable() {
                     @Override

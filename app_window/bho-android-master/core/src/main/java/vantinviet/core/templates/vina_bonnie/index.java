@@ -3,27 +3,19 @@ package vantinviet.core.templates.vina_bonnie;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
-import android.os.Bundle;
-import android.util.AttributeSet;
 import android.util.DisplayMetrics;
-import android.util.Xml;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
-import android.widget.TextView;
 
-import org.xmlpull.v1.XmlPullParser;
+import vantinviet.core.libraries.html.Style;
 
 import java.util.ArrayList;
 
 import timber.log.Timber;
-
-import vantinviet.core.R;
 
 
 import vantinviet.core.libraries.cms.component.JComponentHelper;
@@ -107,11 +99,12 @@ public class index extends LinearLayout {
         LayoutParams layout_params;
         if(layout!=null)for (Row row: layout) {
             layout_params = new LayoutParams(screen_size_width,screen_size_heght  );
-            layout_params.setMargins(0,10,0,10);
+            layout_params.setMargins(0,0,0,0);
             LinearLayout new_row_linear_layout=new LinearLayout(app.getContext());
 
             new_row_linear_layout.setLayoutParams(layout_params);
             new_row_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
+            Style.apply_style(new_row_linear_layout,row.getClassName());
             Timber.d("row name(%s)",row.getName());
             ArrayList<Column> list_column=row.getColumns();
             if(list_column!=null)for (Column column: list_column) {
@@ -122,13 +115,16 @@ public class index extends LinearLayout {
                 int column_offset=Integer.parseInt(column.getOffset().equals("")?"0":column.getOffset());
                 column_offset=screen_size_width*column_offset/12;
                 layout_params.setMargins(column_offset, 0, 0, 0);
+/*
                 XmlPullParser parser = app.getContext().getResources().getXml(R.xml.words);
                 AttributeSet attributes = Xml.asAttributeSet(parser);
-                LinearLayout new_column_linear_layout=new LinearLayout(app.getContext(),attributes);
+*/
+
+
+                LinearLayout new_column_linear_layout=new LinearLayout(app.getContext());
                 new_column_linear_layout.setLayoutParams(layout_params);
                 new_column_linear_layout.setOrientation(LinearLayout.VERTICAL);
-                new_column_linear_layout.setBackgroundColor(Color.parseColor("#CCCCCC"));
-
+                Style.apply_style(new_column_linear_layout, column.getClassName());
                 //add_text_view_test(new_column_linear_layout,column.getType());
                 ArrayList<Row> list_row=column.getRows();
                 String type=column.getType();
@@ -140,12 +136,13 @@ public class index extends LinearLayout {
                     for (Module module : modules)
                     {
                         if(module.getPosition().equals(position)){
-                            LayoutParams module_layout_params = new LayoutParams(MATCH_PARENT,WRAP_CONTENT  );
+                            LayoutParams module_layout_params = new LayoutParams(WRAP_CONTENT,WRAP_CONTENT  );
                             LinearLayout new_module_linear_layout=new LinearLayout(app.getContext());
                             new_module_linear_layout.setLayoutParams(module_layout_params);
                             new_module_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
                             //add_text_view_test(new_column_linear_layout,position);
                             JModuleHelper.renderModule(app.getContext(),module, new_module_linear_layout);
+                            Style.apply_style_module(new_module_linear_layout, module.getClassName());
                             new_column_linear_layout.addView(new_module_linear_layout);
                         }
                     }
@@ -153,10 +150,10 @@ public class index extends LinearLayout {
                 }
                 if(type.equals("component")){
 
-                    LayoutParams component_layout_params = new LayoutParams(MATCH_PARENT,WRAP_CONTENT  );
+                    LayoutParams component_layout_params = new LayoutParams(MATCH_PARENT,MATCH_PARENT  );
                     LinearLayout component_linear_layout=new LinearLayout(app.getContext());
                     component_linear_layout.setLayoutParams(component_layout_params);
-                    component_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
+                    component_linear_layout.setOrientation(LinearLayout.VERTICAL);
                     //add_text_view_test(new_column_linear_layout,position);
                     app.input.set_component_linear_layout(component_linear_layout);
                     app.component_width=column_width;

@@ -65,19 +65,12 @@ public class Module_tab_product_tmpl_default_tab_content extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         this.view = (LinearLayout)inflater.inflate(R.layout.modules_mod_tab_products_tmpl_default_tab_content_wrapper, container, false);
-
-
-        if(list_category_product.getIs_loaded()==1) {
+        //Timber.d("category %s Is_loaded %s getIs_loaded %s",list_category_product.getDetail().getName(),list_category_product.is_loaded,list_category_product.getIs_loaded());
+        if(list_category_product!=null &&  list_category_product.getIs_loaded()==1) {
             re_layout();
         }else {
             LinearLayoutLoading loading=new LinearLayoutLoading(app.getContext());
             this.view.addView(loading);
-            /*Timber.d("hello Request_ajax");
-            Timber.d("list_category_product %s",list_category_product.toString());
-            vtv_WebView web_browser = JFactory.getWebBrowser();
-            web_browser_setup(web_browser);
-            app.getProgressDialog().show();
-            web_browser.addJavascriptInterface(new ajax_list_category_product(), "HtmlViewer");*/
         }
 
         return view;
@@ -225,7 +218,7 @@ public class Module_tab_product_tmpl_default_tab_content extends Fragment {
 
         public LinearLayoutLoading(Context context) {
             super(context);
-            view_loading=inflate(getContext(), R.layout.modules_mod_tab_products_tmpl_default_tab_content_loading, this);
+            view_loading=inflate(app.getContext(), R.layout.modules_mod_tab_products_tmpl_default_tab_content_loading, this);
         }
     }
 

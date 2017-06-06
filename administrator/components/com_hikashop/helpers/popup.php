@@ -46,7 +46,6 @@ class hikashopPopupHelper {
 				'dynamicUrl' => $dynamicUrl
 			);
 		}
-
 		switch($popupMode) {
 			case 'bootstrap':
 				return $this->displayBootstrap($text, $title, $url, $id, $params);

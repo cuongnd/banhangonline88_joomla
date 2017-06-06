@@ -5,7 +5,7 @@ class JConfig {
 	public $display_offline_message = '1';
 	public $offline_image = '';
 	public $sitename = 'banhangonline88.com';
-	public $editor = 'redactorjs';
+	public $editor = 'jce';
 	public $captcha = '0';
 	public $list_limit = '200';
 	public $access = '1';
@@ -40,7 +40,7 @@ class JConfig {
 	public $smtphost = 'localhost';
 	public $smtpsecure = 'none';
 	public $smtpport = '25';
-	public $caching = '0';
+	public $caching = '1';
 	public $cache_handler = 'file';
 	public $cachetime = '30';
 	public $cache_platformprefix = '1';
@@ -51,12 +51,12 @@ class JConfig {
 	public $MetaVersion = '0';
 	public $robots = '';
 	public $sef = '1';
-	public $sef_rewrite = '0';
+	public $sef_rewrite = '1';
 	public $sef_suffix = '1';
 	public $unicodeslugs = '1';
 	public $feed_limit = '10';
 	public $feed_email = 'none';
-	public $log_path = '/domains/banhangonline88.com/public_html/logs';
+	public $log_path = '/home/bho/domains/banhangonline88.com/public_html/logs';
 	public $tmp_path = '/home/banhangonl/domains/banhangonline88.com/public_html/tmp';
 	public $lifetime = '1500';
 	public $session_handler = 'database';
@@ -90,4 +90,5 @@ class JConfig {
 	public $cookie_domain = '';
 	public $cookie_path = '';
 	public $asset_id = '1';
+	public $less_compiler_template = '0';
 }

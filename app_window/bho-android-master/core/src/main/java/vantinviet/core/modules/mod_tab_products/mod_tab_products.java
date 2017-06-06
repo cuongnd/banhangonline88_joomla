@@ -65,7 +65,7 @@ public class mod_tab_products extends FragmentActivity implements MaterialTabLis
         this.linear_layout=linear_layout;
         String content=this.module.getContent();
         if(content.isEmpty()){
-            Timber.d("content module %s(%d) is empty",module.getModuleName(),module.getId());
+            //Timber.d("content module %s(%d) is empty",module.getModuleName(),module.getId());
             return;
         }
         Type listType = new TypeToken<ArrayList<Mod_tab_product_helper.List_category_product>>() {}.getType();

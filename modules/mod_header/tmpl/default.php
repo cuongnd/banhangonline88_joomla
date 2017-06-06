@@ -8,6 +8,6 @@
  */
 
 defined('_JEXEC') or die;
+$logo_path=$params->get('logo');
 ?>
-<div class="footer1<?php echo $moduleclass_sfx ?>"><?php echo $lineone; ?></div>
-<div class="footer2<?php echo $moduleclass_sfx ?>"><?php echo JText::_('MOD_FOOTER_LINE2'); ?></div>
+<a href="<?php echo JUri::root() ?>" ><img src="<?php echo JUri::root().$logo_path?>"></a>

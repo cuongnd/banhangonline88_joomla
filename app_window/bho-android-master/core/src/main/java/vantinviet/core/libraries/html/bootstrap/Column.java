@@ -145,5 +145,7 @@ public class Column {
     }
 
 
-
+    public String getClassName() {
+        return customclass;
+    }
 }

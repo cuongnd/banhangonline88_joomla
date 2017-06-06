@@ -24,6 +24,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import timber.log.Timber;
 import vantinviet.core.R;
 import vantinviet.core.VTVConfig;
 import vantinviet.core.administrator.components.com_hikashop.classes.Image;
@@ -63,9 +64,10 @@ public class ProductListDataAdapter extends RecyclerView.Adapter<ProductListData
             String url = first_image.getUrl();
             if(!url.isEmpty())
             {
+                url=VTVConfig.rootUrl.concat(url);
                 Picasso
                         .with(mContext)
-                        .load(VTVConfig.rootUrl.concat(url))
+                        .load(url)
                         .resize(400,400)
                         .into((ImageView) holder.ProductImage);
             }

@@ -13,6 +13,7 @@ public class Params {
     String module_image;
     String module_image_tip;
     String lazyload;
+    String moduleclass_sfx;
     private String androidRender="auto";
     private String _android_render_form_type= JModuleHelper.ANDROID_RENDER_FORM_HTML;
 
@@ -21,6 +22,7 @@ public class Params {
         return "Params{" +
                 ", layout='" + layout + '\'' +
                 ", cache='" + cache + '\'' +
+                ", moduleclass_sfx='" + moduleclass_sfx + '\'' +
                 ", cache_time='" + cache_time + '\'' +
                 ", module_image='" + module_image + '\'' +
                 ", module_image_tip='" + module_image_tip + '\'' +
@@ -43,5 +45,9 @@ public class Params {
 
     public String getLayout() {
         return layout;
+    }
+
+    public String getModuleclass_sfx() {
+        return moduleclass_sfx;
     }
 }

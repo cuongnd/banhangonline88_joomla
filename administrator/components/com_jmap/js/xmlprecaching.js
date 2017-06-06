@@ -489,7 +489,7 @@
 			var dataSourcePromise = $.Deferred(function(defer) {
 				$.ajax({
 					type : "POST",
-					url : "../administrator/index.php?option=com_jmap&task=ajaxserver.display&format=json",
+					url : "../administrator/index.php?option=com_jmap&task=ajaxserver.display&format=json&tmpl=json",
 					dataType : 'json',
 					context : this,
 					data : {
@@ -572,7 +572,7 @@
 			var statusLabelsPromise = $.Deferred(function(defer) {
 				$.ajax({
 					type : "POST",
-					url : "../administrator/index.php?option=com_jmap&task=ajaxserver.display&format=json",
+					url : "../administrator/index.php?option=com_jmap&task=ajaxserver.display&format=json&tmpl=json",
 					dataType : 'json',
 					context : this,
 					data : {
@@ -660,7 +660,7 @@
 			var deleteCachedSitemapPromise = $.Deferred(function(defer) {
 				$.ajax({
 					type : "POST",
-					url : "../administrator/index.php?option=com_jmap&task=ajaxserver.display&format=json",
+					url : "../administrator/index.php?option=com_jmap&task=ajaxserver.display&format=json&tmpl=json",
 					dataType : 'json',
 					context : this,
 					data : {

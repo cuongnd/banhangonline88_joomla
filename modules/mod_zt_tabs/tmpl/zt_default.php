@@ -11,7 +11,6 @@ $uri = JURI::getInstance();
 
 $document->addStyleSheet($uri->root().'modules/mod_zt_tabs/assets/css/tabs.css');
 $document->addStyleSheet($uri->root().'modules/mod_zt_tabs/assets/css/style.css');
-$document->addStyleSheet('//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css');
 
     $tabStyle =  $this->parsedData['tab_style'];
     $titlePosition =   $this->parsedData['title_position'];
@@ -21,14 +20,7 @@ if(isset($tabStyle) &&isset($titlePosition)) {
 
 }
 
-$jversion = new JVersion;
-$current_version = $jversion->getShortVersion();
-if (version_compare($current_version, '3.0.0') <= 0){
-    $document->addScript($uri->root().'modules/mod_zt_tabs/assets/vendor/jquery/jquery-1.9.1.js');
-    $document->addScript($uri->root().'modules/mod_zt_tabs/assets/vendor/jquery/jquery.noConflict.js');
-    $document->addScript($uri->root().'modules/mod_zt_tabs/assets/vendor/bootstrap/js/bootstrap.js');
-    $document->addScript($uri->root().'modules/mod_zt_tabs/assets/vendor/jquery/fixConflict.js');
-}
+
 ?>
 
 <?php
@@ -167,7 +159,7 @@ echo $str;
     jQuery(document).ready(function(){
         jQuery('#zt-tabs a').click(function (e) {
             e.preventDefault();
-            $(this).tab('show');
+            //$(this).tab('show');
         });
     });
 

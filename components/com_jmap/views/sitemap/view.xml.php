@@ -25,6 +25,7 @@ class JMapViewSitemap extends JMapView {
 	 * @return void
 	 */
 	function display($tpl = null) {
+
 		$document = JFactory::getDocument();
 		$document->setMimeEncoding('application/xml');
 		
@@ -37,7 +38,7 @@ class JMapViewSitemap extends JMapView {
 		$this->cparams = $this->getModel()->getState('cparams');
 		$this->application = JFactory::getApplication();
 		$this->xslt = $this->getModel()->getState('xslt');
-		
+
 		$uriInstance = JURI::getInstance();
 		if($this->cparams->get('append_livesite', true)) {
 			$customHttpPort = trim($this->cparams->get('custom_http_port', ''));
@@ -50,10 +51,8 @@ class JMapViewSitemap extends JMapView {
 		} else {
 			$this->liveSite = null;
 		}
-		
 		// Initialize output links buffer with exclusion for links
 		$this->outputtedLinksBuffer = $this->getModel()->getExcludedLinks($this->liveSite);
-		
 		$this->setLayout('default');
 		parent::display($tpl);
 	}

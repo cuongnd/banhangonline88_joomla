@@ -1,5 +1,7 @@
 package vantinviet.core.libraries.html.bootstrap;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 
 /**
@@ -17,6 +19,9 @@ public class Row {
     String margin;
     String padding;
     private ArrayList<Column> children=new ArrayList<Column>();
+    @SerializedName("class")
+    private String className="";
+
     public String toString() {
         return "Row{" +
                 "name=" + name +
@@ -38,5 +43,9 @@ public class Row {
 
     public String getName() {
         return name;
+    }
+
+    public String getClassName() {
+        return className;
     }
 }

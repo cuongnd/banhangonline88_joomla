@@ -238,7 +238,7 @@ jQuery(function($){
 			// Request JSON2JSON
 			$.ajax({
 		        type:"POST",
-		        url: "../administrator/index.php?option=com_jmap&task=ajaxserver.display&format=json",
+		        url: "../administrator/index.php?option=com_jmap&task=ajaxserver.display&format=json&tmpl=json",
 		        dataType: 'json',
 		        context: this,
 		        data: {data : uniqueParam } , 
@@ -299,7 +299,7 @@ jQuery(function($){
 			// Request JSON2JSON
 			$.ajax({
 		        type:"POST",
-		        url: "../administrator/index.php?option=com_jmap&task=ajaxserver.display&format=json",
+		        url: "../administrator/index.php?option=com_jmap&task=ajaxserver.display&format=json&tmpl=json",
 		        dataType: 'json',
 		        context: this,
 		        data: {data : uniqueParam } , 
@@ -387,7 +387,7 @@ jQuery(function($){
 			// Request JSON2JSON
 			$.ajax({
 		        type:"POST",
-		        url: "../administrator/index.php?option=com_jmap&task=ajaxserver.display&format=json",
+		        url: "../administrator/index.php?option=com_jmap&task=ajaxserver.display&format=json&tmpl=json",
 		        dataType: 'json',
 		        context: this,
 		        data: {data : uniqueParam } , 
