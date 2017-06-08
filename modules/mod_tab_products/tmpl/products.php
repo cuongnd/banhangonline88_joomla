@@ -12,6 +12,7 @@ $list_small_product = $category->list_small_product;
 $image = hikashop_get('helper.image');
 $lazyload=false;
 $currencyHelper = hikashop_get('class.currency');
+$cartHelper = hikashop_get('class.cart');
 $style = $params->get('product_style', 'table');
 $class_column_table = $params->get('class_column_table', 'col-lg-4 col-md-3');
 ?>
@@ -29,6 +30,9 @@ $class_column_table = $params->get('class_column_table', 'col-lg-4 col-md-3');
                 class="<?php echo $class_column_table ?>">
                 <div class="item">
                     <?php echo $image->display($first_image, false, "", 'class="image  img-responsive"', '', 200, 300, '', false); ?>
+                    <?php echo $cartHelper->displayButton(JText::_('ADD_TO_CART'), 'add', $this->params, $url, $this->ajax, '', 10, 1);
+
+                    ?>
                     <div class="title"><a title="<?php echo $product->product_name ?>"
                                           href="<?php echo $link ?>"><?php echo $product->product_name ?></a>
                     </div>

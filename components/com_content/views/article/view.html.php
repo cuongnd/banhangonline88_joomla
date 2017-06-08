@@ -172,7 +172,6 @@ class ContentViewArticle extends JViewLegacy
 
 		// Escape strings for HTML output
 		$this->pageclass_sfx = htmlspecialchars($this->item->params->get('pageclass_sfx'));
-
 		$this->_prepareDocument();
 
 		parent::display($tpl);

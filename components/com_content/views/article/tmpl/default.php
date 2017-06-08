@@ -1,4 +1,6 @@
 <?php
+
+
 /**
  * @package     Joomla.Site
  * @subpackage  com_content
@@ -134,7 +136,7 @@ JHtml::_('behavior.caption');
 	<?php // Optional teaser intro text for guests ?>
 	<?php elseif ($params->get('show_noauth') == true && $user->get('guest')) : ?>
 	<?php echo JLayoutHelper::render('joomla.content.intro_image', $this->item); ?>
-	<?php echo JHtml::_('content.prepare', $this->item->introtext); ?>	
+	<?php echo JHtml::_('content.prepare', $this->item->introtext); ?>
 	<?php // Optional link to let them register to see the whole article. ?>
 	<?php if ($params->get('show_readmore') && $this->item->fulltext != null) : ?>
 	<?php $menu = JFactory::getApplication()->getMenu(); ?>
@@ -164,6 +166,7 @@ JHtml::_('behavior.caption');
 	<?php endif; ?>
 	<?php endif; ?>
 	<?php
+
 	if (!empty($this->item->pagination) && $this->item->pagination && $this->item->paginationposition && $this->item->paginationrelative) :
 		echo $this->item->pagination;
 	?>

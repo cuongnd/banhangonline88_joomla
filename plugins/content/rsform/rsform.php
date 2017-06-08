@@ -60,7 +60,9 @@ class plgContentRSForm extends JPlugin
 		}
 		
 		if (isset($article->text))
+		{
 			$this->onPrepareContent($article, $params, $limitstart);
+		}
 	}
 	
 	function onAfterDispatch()
@@ -76,6 +78,7 @@ class plgContentRSForm extends JPlugin
 	
 	function onPrepareContent($article, $params, $limitstart=0)
 	{
+
 		$mainframe = JFactory::getApplication();
 		
 		$option = JRequest::getVar('option');
@@ -85,9 +88,7 @@ class plgContentRSForm extends JPlugin
 		
 		if (strpos($article->text, '{rsform ') === false)
 			return true;
-		
 		if (!$this->canRun()) return true;
-		
 		// expression to search for
 		$pattern = '#\{rsform ([0-9]+)\}#i';
 		if (preg_match_all($pattern, $article->text, $matches))
@@ -117,7 +118,7 @@ class plgContentRSForm extends JPlugin
 				$article->text = str_replace($matches[0][$i], RSFormProHelper::displayForm($formId,true), $article->text);
 			}
 		}
-		
+
 		return true;
 	}
 }

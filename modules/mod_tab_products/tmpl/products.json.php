@@ -1,20 +1,28 @@
 <?php
-$app=JFactory::getApplication();
-$input=$app->input;
-$post=json_decode(file_get_contents('php://input'));
-$category_id= $post->category_id;
-$params->set('categories',array($category_id));
+$app = JFactory::getApplication();
+$input = $app->input;
+$post = json_decode(file_get_contents('php://input'));
+$category_id = $post->category_id;
+$params->set('categories', array($category_id));
 $category = reset($modtab_productshelper->get_list_category_product($params, false));
 $list_product = $category->list;
 $file_path = $category->detail->file_path;
 $list_sub_category_detail = $category->list_sub_category_detail;
 $list_small_product = $category->list_small_product;
 $image = hikashop_get('helper.image');
-$lazyload=false;
+$lazyload = false;
+$cartHelper = hikashop_get('helper.cart');
 $currencyHelper = hikashop_get('class.currency');
 $style = $params->get('product_style', 'table');
 $class_column_table = $params->get('class_column_table', 'col-lg-4 col-md-3');
+$config =& hikashop_config();
+$defaultParams = $config->get('default_params');
+$temp = new \Joomla\Registry\Registry();
+$defaultParams=$temp->loadObject($defaultParams);
+$module_id = 0;
+$url = '';
 ?>
+
 <?php if ($style == 'table') { ?>
     <!--col-lg col-md-->
     <div class="row ">
@@ -29,8 +37,13 @@ $class_column_table = $params->get('class_column_table', 'col-lg-4 col-md-3');
                 class="<?php echo $class_column_table ?>">
                 <div class="item">
                     <?php echo $image->display($first_image, false, "", 'class="image  img-responsive"', '', 200, 300, '', false); ?>
-                    <div class="title"><a title="<?php echo $product->product_name ?>"
-                                          href="<?php echo $link ?>"><?php echo $product->product_name ?></a>
+                    <div class="title">
+                        <?php
+                        $ajax = 'return hikashopModifyQuantity(\'' . $product->product_id . '\',field,1,0,\'cart\',' . $module_id . ')';
+                        echo $cartHelper->displayButton(JText::_('ADD_TO_CART'), 'add', $defaultParams, $url, $ajax, '', 10, 1); ?>
+                        <br/>
+                        <a title="<?php echo $product->product_name ?>"
+                           href="<?php echo $link ?>"><?php echo $product->product_name ?></a>
                     </div>
                     <div
                         class="price"><?php echo $currencyHelper->format($product->price_value, $mainCurr); ?></div>
@@ -87,12 +100,15 @@ $class_column_table = $params->get('class_column_table', 'col-lg-4 col-md-3');
                                 $list_image = $product->list_image;
                                 $list_image = explode(';', $list_image);
                                 $first_image = reset($list_image);
-                                //$link = hikashop_contentLink('product&task=show&cid=' . $product->product_id);
+//$link = hikashop_contentLink('product&task=show&cid=' . $product->product_id);
                                 $link = '';
                                 ?>
                                 <div
                                     class="slide item item-<?php echo $product->product_id ?> col-xs-4 col-sm-4 col-md-4 col-lg-4">
                                     <?php echo $image->display($first_image, false, "", 'class="image  img-responsive"', '', 200, 300, '', false); ?>
+                                    <?php
+                                    $ajax = 'return hikashopModifyQuantity(\'' . $product->product_id . '\',field,1,0,\'cart\',' . $module_id . ')';
+                                    echo $cartHelper->displayButton(JText::_('ADD_TO_CART'), 'add', $defaultParams, $url, $ajax, '', 10, 1); ?>
                                     <div class="product-name"><a
                                             title="<?php echo $product->product_name ?>"
                                             href="<?php echo $link ?>"><?php echo JString::sub_string($product->product_name, 30) ?> </a>
@@ -125,7 +141,8 @@ $class_column_table = $params->get('class_column_table', 'col-lg-4 col-md-3');
                                         $second_image = $list_image[1];
                                         $link = hikashop_contentLink('product&task=show&cid=' . $small_product->product_id);
                                         ?>
-                                        <div class="col-lg-<?php echo $total_column / $column ?> col-md-<?php echo $total_column / $column ?>">
+                                        <div
+                                            class="col-lg-<?php echo $total_column / $column ?> col-md-<?php echo $total_column / $column ?>">
                                             <div
                                                 id="small-product_<?php echo $module->id ?>_<?php echo $small_product->product_id ?>"
                                                 class="small-product ">
@@ -141,6 +158,10 @@ $class_column_table = $params->get('class_column_table', 'col-lg-4 col-md-3');
                                                             href="<?php echo $link ?>"><?php echo $image->display($second_image, false, "", 'class="image  img-responsive "', '', 200, 300, '', false); ?></a>
                                                     </div>
                                                 </div>
+                                                <?php
+                                                $ajax = 'return hikashopModifyQuantity(\'' . $small_product->product_id . '\',field,1,0,\'cart\',' . $module_id . ')';
+                                                echo $cartHelper->displayButton(JText::_('ADD_TO_CART'), 'add', $defaultParams, $url, $ajax, '', 10, 1); ?>
+
                                                 <div class="product-name"><a
                                                         title="<?php echo $small_product->product_name ?>"
                                                         href="<?php echo $link ?>"><?php echo JString::sub_string($small_product->product_name, 25) ?> </a>
@@ -188,6 +209,9 @@ $class_column_table = $params->get('class_column_table', 'col-lg-4 col-md-3');
                                                             href="<?php echo $link ?>"><?php echo $image->display($second_image, false, "", 'class="image  img-responsive "', '', 200, 300, '', false); ?></a>
                                                     </div>
                                                 </div>
+                                                <?php
+                                                $ajax = 'return hikashopModifyQuantity(\'' . $small_product->product_id . '\',field,1,0,\'cart\',' . $module_id . ')';
+                                                echo $cartHelper->displayButton(JText::_('ADD_TO_CART'), 'add', $defaultParams, $url, $ajax, '', 10, 1); ?>
                                                 <div class="product-name"><a
                                                         title="<?php echo $small_product->product_name ?>"
                                                         href="<?php echo $link ?>"><?php echo JString::sub_string($small_product->product_name, 25) ?> </a>

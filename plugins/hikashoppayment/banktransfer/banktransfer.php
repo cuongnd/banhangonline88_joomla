@@ -14,7 +14,7 @@ class plgHikashoppaymentBanktransfer extends hikashopPaymentPlugin {
 	var $pluginConfig = array(
 		'order_status' => array('ORDER_STATUS', 'orderstatus', 'verified'),
 		'status_notif_email' => array('ORDER_STATUS_NOTIFICATION', 'boolean','0'),
-		'information' => array('BANK_ACCOUNT_INFORMATION', 'big-textarea'),
+		'information' => array('BANK_ACCOUNT_INFORMATION', 'editor'),
 		'return_url' => array('RETURN_URL', 'input'),
 	);
 
