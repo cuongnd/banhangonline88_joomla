@@ -346,6 +346,7 @@ abstract class AbstractUri implements UriInterface
 		$this->port     = isset($parts['port']) ? $parts['port'] : null;
 		$this->path     = isset($parts['path']) ? $parts['path'] : null;
 		$this->query    = isset($parts['query']) ? $parts['query'] : null;
+
 		$this->fragment = isset($parts['fragment']) ? $parts['fragment'] : null;
 
 		// Parse the query
@@ -353,7 +354,6 @@ abstract class AbstractUri implements UriInterface
 		{
 			parse_str($parts['query'], $this->vars);
 		}
-
 		return $retval;
 	}
 

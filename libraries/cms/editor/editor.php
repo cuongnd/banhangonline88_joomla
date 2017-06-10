@@ -381,7 +381,6 @@ class JEditor extends JObject
 
 		$args['name'] = $editor;
 		$args['event'] = 'onGetContent';
-
 		$return = '';
 		$results[] = $this->_editor->update($args);
 
@@ -529,7 +528,6 @@ class JEditor extends JObject
 
 		// Get the plugin
 		$plugin = JPluginHelper::getPlugin('editors', $this->_name);
-
 		// If no plugin is published we get an empty array and there not so much to do with it
 		if (empty($plugin))
 		{
