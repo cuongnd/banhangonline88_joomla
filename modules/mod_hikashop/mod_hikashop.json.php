@@ -76,4 +76,4 @@ if($layout_type=='tab'){
 else{
 	$html = trim(hikashop_getLayout($type,'listing',$params,$js));
 }
-require(JModuleHelper::getLayoutPath('mod_hikashop'));
+require JModuleHelper::getLayoutPath('mod_hikashop', $params->get('layout', 'default').".json");

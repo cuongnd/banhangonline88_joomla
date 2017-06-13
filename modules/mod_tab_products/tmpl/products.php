@@ -62,7 +62,7 @@ $class_column_table = $params->get('class_column_table', 'col-lg-4 col-md-3');
                                     break;
                                 }
                                 $sub_category = $list_sub_category_detail[$i];
-                                $icon_file_path = $sub_category->icon_file_path;
+                                $icon_file_path = $sub_category->category_icon_file_path;
                                 ?>
                                 <li><a class="sub-category"
                                        data-category_id="<?php echo $sub_category->category_id ?>"
@@ -309,7 +309,7 @@ $class_column_table = $params->get('class_column_table', 'col-lg-4 col-md-3');
                         <?php for ($i = $total_column_sub_category; $i < count($list_sub_category_detail); $i++) { ?>
                             <?php
                             $sub_category = $list_sub_category_detail[$i];
-                            $icon_file_path = $sub_category->icon_file_path;
+                            $icon_file_path = $sub_category->category_icon_file_path;
                             ?>
                             <li><a class="sub-category"
                                    data-category_id="<?php echo $sub_category->category_id ?>"

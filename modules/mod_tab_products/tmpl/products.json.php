@@ -68,7 +68,7 @@ $url = '';
                             <?php
 
                             $sub_category = $list_sub_category_detail[$i];
-                            $icon_file_path = $sub_category->icon_file_path;
+                            $icon_file_path = $sub_category->category_icon_file_path;
                             ?>
                             <li><a class="sub-category"
                                    data-category_id="<?php echo $sub_category->category_id ?>"

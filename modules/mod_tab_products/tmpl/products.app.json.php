@@ -10,7 +10,7 @@ $category_id= $post->category_id;
 $params->set('categories',array($category_id));
 $current_category = reset($modtab_productshelper->get_list_category_product($params, false));
 $detail=&$current_category->detail;
-$detail->icon=$image_helper->getThumbnail($detail->icon_file_path,array(500,500), array('default' => true), true);
+$detail->icon=$image_helper->getThumbnail($detail->category_icon_file_path,array(500,500), array('default' => true), true);
 foreach($current_category->list as &$product){
     $list_image=&$product->list_image;
     $list_image=explode(';',$list_image);
@@ -34,7 +34,7 @@ foreach($current_category->list_small_product as &$product){
 }
 
 foreach($current_category->list_sub_category_detail as &$category){
-    $category->icon=$image_helper->getThumbnail($category->icon_file_path,array(500,500), array('default' => true), true);
+    $category->icon=$image_helper->getThumbnail($category->category_icon_file_path,array(500,500), array('default' => true), true);
     $category->link=hikashop_contentLink('category&task=listing&cid='.$category->category_id.'&name='.$category->alias,$category->category_id);
 }
 $debug=JUtility::get_debug();

@@ -17,6 +17,12 @@
 				label="icon"
 				description="icon"
 				/>
+		<field
+				name="files"
+				type="media"
+				label="files"
+				description="files"
+				/>
 
 
 	</fieldset>

@@ -193,10 +193,7 @@ if(!empty($this->rows)){
 			if (!empty($row->childs) && array_key_exists($found, $row->childs))
 				$current_parent_category = $row->childs[$found]->category_parent_id;
 		}
-
 		foreach($this->rows as $row){
-			if($only_if_products && $row->number_of_products<1)
-				continue;
 			$class = ($found == $row->category_id) ? ' hikashop_current_category' : '';
 			$class = ($current_parent_category == $row->category_id) ? ' hikashop_current_parent_category' : '';
 
@@ -316,3 +313,11 @@ if(!empty($this->rows)){
 	</form>
 	<?php }
 }
+?>
+<style>
+	.hikashop_subcategories_listing .hikashop_category_image .ch-item{
+		height:<?php echo $this->image->main_thumbnail_y;?>px;
+		text-align:center;
+		clear:both;
+	}
+</style>

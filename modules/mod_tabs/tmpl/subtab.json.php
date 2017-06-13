@@ -12,7 +12,6 @@ if (trim($jv_selection) != '') {
     $jv_selection = explode(',', $jv_selection);
 }
 $session->set(mod_tabs_helper::MOD_TABS_TAB_ACTIVE . $module->id,$tab_index);
-
 $item_element=$jv_selection[$tab_index];
 $item_element = explode('_', $item_element);
 switch ($item_element[0]) {

@@ -236,7 +236,7 @@ class JTableUser extends JTable
 
 		if ($xid && $xid != (int) $this->id)
 		{
-			$this->setError(JText::_('JLIB_DATABASE_ERROR_USERNAME_INUSE'));
+			$this->setError(JText::sprintf('JLIB_DATABASE_ERROR_USERNAME_INUSE',JRoute::_('index.php?option=com_easysocial&view=account&layout=forgetusername')));
 
 			return false;
 		}
