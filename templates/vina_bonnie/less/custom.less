@@ -301,21 +301,23 @@
     margin-top: -50px;
     &.mod_tab_products .tab-product .item
     {
-      height: 200px;
       min-height: inherit;
+      .link-product
+      {
+        height: 40px;
+        display: block;
+        overflow: hidden;
+      }
     }
     &.mod_tab_products .tab-product .item .image
     {
-      min-height: 100px;
-      max-height: 100px;
     }
     &.mod_tab_products .tab-product .item .title
     {
-      font-size: 11px;
     }
     .z-container
     {
-      min-height: 412px !important;
+      min-height: 765px !important;
       .z-content-inner
       {
         >.row-fluid:first-child
@@ -326,13 +328,42 @@
     }
     ul.z-tabs-desktop > li > a
     {
-      padding: 9px 0px;
+      padding: 7.5px 5px;
     }
     ul.z-tabs-desktop > li.z-tab.z-last > a
     {
-      padding: 10px 0px;
+      padding: 8.2px 5px !important;
     }
 
+  }
+  #mod_hikashop_374
+  {
+    .hikashop_product {
+      box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
+      height: 81px;
+      .hikashop_container
+      {
+        padding: 2px;
+      }
+      .hikashop_product_name {
+        a {
+          display: block;
+          height: 40px;
+          overflow: hidden;
+        }
+      }
+      .hikashop_product_listing_image
+      {
+        padding: 2px;
+      }
+    }
+    .hikashop_product:last-child{
+      height: 78px;
+      .hikashop_product_listing_image
+      {
+        height: 75px;
+      }
+    }
   }
   #mod_tab_products_370
   {
@@ -344,8 +375,6 @@
     }
     &.mod_tab_products .tab-product .item .image
     {
-      min-height: 100px;
-      max-height: 100px;
     }
     &.mod_tab_products .tab-product .item .title
     {
@@ -353,7 +382,6 @@
     }
     .z-container
     {
-      min-height: 505px !important;
     }
 
   }
@@ -367,8 +395,6 @@
     }
     &.mod_tab_products .tab-product .item .image
     {
-      min-height: 55px;
-      max-height: 55px;
     }
     &.mod_tab_products .tab-product .item .title
     {
@@ -377,7 +403,6 @@
     .z-container
     {
       min-height: inherit !important;
-      height: 457px;
     }
 
   }
@@ -386,11 +411,12 @@
     >h3.module-title
     {
       text-transform: uppercase;
+      position: absolute;
+      line-height: 50px;
       margin: 0;
     }
     >.tabs
     {
-      margin-top: -39px;
     }
     .z-link img.icon
     {
@@ -512,4 +538,8 @@
   border: 1px solid #ccc;
   box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
 
+}
+#camera_wrap_392.slideshowck.camera_wrap.camera_ash_skin
+{
+  margin-bottom: 0 !important;
 }

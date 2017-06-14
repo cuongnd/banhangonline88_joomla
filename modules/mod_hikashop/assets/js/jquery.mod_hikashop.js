@@ -29,6 +29,7 @@
         // the "constructor" method that gets called when the object is created
         plugin.init = function () {
             plugin.settings = $.extend({}, defaults, options);
+            $element.find('.hikashop_product_name a').dotdotdot();
             //$.set_height($element.find('.hikashop_listing_img_title'));
         }
         plugin.example_function = function () {

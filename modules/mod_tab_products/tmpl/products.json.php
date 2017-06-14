@@ -24,34 +24,38 @@ $module_id = 0;
 $url = '';
 ?>
 
-<?php if ($style == 'table') { ?>
+<?php if ($style == 'table') {
+    $list_list_product=array_chunk($list_product,3);
+    ?>
     <!--col-lg col-md-->
-    <div class="row ">
-        <?php foreach ($list_product AS $product) { ?>
-            <?php
-            $list_image = $product->list_image;
-            $list_image = explode(';', $list_image);
-            $first_image = reset($list_image);
-            $link = hikashop_contentLink('product&task=show&cid=' . $product->product_id);
-            ?>
-            <div
-                class="<?php echo $class_column_table ?>">
-                <div class="item">
-                    <?php echo $image->display($first_image, false, "", 'class="image  img-responsive"', '', 200, 300, '', false); ?>
-                    <div class="title">
-                        <?php
-                        $ajax = 'return hikashopModifyQuantity(\'' . $product->product_id . '\',field,1,0,\'cart\',' . $module_id . ')';
-                        echo $cartHelper->displayButton(JText::_('ADD_TO_CART'), 'add', $defaultParams, $url, $ajax, '', 10, 1); ?>
-                        <br/>
-                        <a title="<?php echo $product->product_name ?>"
-                           href="<?php echo $link ?>"><?php echo $product->product_name ?></a>
+    <?php foreach($list_list_product as $list_product){ ?>
+        <div class="row ">
+            <?php foreach ($list_product AS $product) { ?>
+                <?php
+                $list_image = $product->list_image;
+                $list_image = explode(';', $list_image);
+                $first_image = reset($list_image);
+                $link = hikashop_contentLink('product&task=show&cid=' . $product->product_id);
+                ?>
+                <div
+                    class="<?php echo $class_column_table ?>">
+                    <div class="item">
+                        <?php echo $image->display($first_image, false, "", 'class="image  img-responsive"', '', 200, 300, '', false); ?>
+                        <div class="title">
+                            <?php
+                            $ajax = 'return hikashopModifyQuantity(\'' . $product->product_id . '\',field,1,0,\'cart\',' . $module_id . ')';
+                            echo $cartHelper->displayButton(JText::_('ADD_TO_CART'), 'add', $defaultParams, $url, $ajax, '', 10, 1); ?>
+                            <br/>
+                            <a title="<?php echo $product->product_name ?>" class="link-product"
+                               href="<?php echo $link ?>"><?php echo $product->product_name ?></a>
+                        </div>
+                        <div
+                            class="price"><?php echo $currencyHelper->format($product->price_value, $mainCurr); ?></div>
                     </div>
-                    <div
-                        class="price"><?php echo $currencyHelper->format($product->price_value, $mainCurr); ?></div>
                 </div>
-            </div>
-        <?php } ?>
-    </div>
+            <?php } ?>
+        </div>
+    <?php } ?>
     <!-- end col-lg col-md -->
 <?php } elseif ($style == 'slider') { ?>
     <?php
@@ -62,23 +66,32 @@ $url = '';
 
         <div class="row">
             <div class="col-lg-12">
-                <div class="list-sub-category">
-                    <ul>
-                        <?php for ($i = 0; $i < count($list_sub_category_detail); $i++) { ?>
-                            <?php
 
-                            $sub_category = $list_sub_category_detail[$i];
-                            $icon_file_path = $sub_category->category_icon_file_path;
-                            ?>
-                            <li><a class="sub-category"
-                                   data-category_id="<?php echo $sub_category->category_id ?>"
-                                   href="javascript:void(0)"><?php echo $image->display($icon_file_path, false, "", 'class="icon  img-responsive"', '', 40, 40, '', false); ?>
-                                    <div
-                                        class="category-name"><?php echo JString::sub_string($sub_category->category_name, 20) ?></div>
-                                </a></li>
-                        <?php } ?>
-                    </ul>
+                <div class="list-sub-category">
+                    <div class="row">
+                        <button class="col-lg-1 backward pull-left"><i class="icon-chevron-left"></i></button>
+                        <div class="col-lg-10 slider frame">
+                            <ul class="sub-category-item slidee">
+                                <?php for ($i = 0; $i < count($list_sub_category_detail); $i++) { ?>
+                                    <?php
+
+                                    $sub_category = $list_sub_category_detail[$i];
+                                    $icon_file_path = $sub_category->category_icon_file_path;
+                                    ?>
+                                    <li><a class="sub-category"
+                                           data-category_id="<?php echo $sub_category->category_id ?>"
+                                           href="javascript:void(0)"><?php echo $image->display($icon_file_path, false, "", 'class="icon  img-responsive"', '', 40, 40, '', false); ?>
+                                            <div
+                                                class="category-name"><?php echo JString::sub_string($sub_category->category_name, 20) ?></div>
+                                        </a></li>
+                                <?php } ?>
+                            </ul>
+                        </div>
+                        <button class="forward pull-left col-lg-1"><i class="icon-chevron-right"></i></button>
+                    </div>
+
                 </div>
+
             </div>
         </div>
         <div class="row">
@@ -109,7 +122,7 @@ $url = '';
                                 echo $cartHelper->displayButton(JText::_('ADD_TO_CART'), 'add', $defaultParams, $url, $ajax, '', 10, 1); ?>
                                 <div class="product-name"><a
                                         title="<?php echo $product->product_name ?>"
-                                        href="<?php echo $link ?>"><?php echo JString::sub_string($product->product_name, 30) ?> </a>
+                                        href="<?php echo $link ?>"><?php echo JString::sub_string($product->product_name, 100) ?> </a>
                                 </div>
                                 <div
                                     class="price"><?php echo $currencyHelper->format($product->price_value, $mainCurr); ?></div>
@@ -162,7 +175,7 @@ $url = '';
 
                                             <div class="product-name"><a
                                                     title="<?php echo $small_product->product_name ?>"
-                                                    href="<?php echo $link ?>"><?php echo JString::sub_string($small_product->product_name, 25) ?> </a>
+                                                    href="<?php echo $link ?>"><?php echo JString::sub_string($small_product->product_name, 100) ?> </a>
                                             </div>
                                             <div
                                                 class="price"><?php echo $currencyHelper->format($small_product->price_value, $mainCurr); ?></div>
@@ -212,7 +225,7 @@ $url = '';
                                             echo $cartHelper->displayButton(JText::_('ADD_TO_CART'), 'add', $defaultParams, $url, $ajax, '', 10, 1); ?>
                                             <div class="product-name"><a
                                                     title="<?php echo $small_product->product_name ?>"
-                                                    href="<?php echo $link ?>"><?php echo JString::sub_string($small_product->product_name, 25) ?> </a>
+                                                    href="<?php echo $link ?>"><?php echo JString::sub_string($small_product->product_name, 100) ?> </a>
                                             </div>
                                             <div
                                                 class="price"><?php echo $currencyHelper->format($small_product->price_value, $mainCurr); ?></div>
@@ -258,7 +271,7 @@ $url = '';
                                             </div>
                                             <div class="product-name"><a
                                                     title="<?php echo $small_product->product_name ?>"
-                                                    href="<?php echo $link ?>"><?php echo JString::sub_string($small_product->product_name, 25) ?> </a>
+                                                    href="<?php echo $link ?>"><?php echo JString::sub_string($small_product->product_name, 100) ?> </a>
                                             </div>
                                             <div
                                                 class="price"><?php echo $currencyHelper->format($small_product->price_value, $mainCurr); ?></div>
@@ -305,7 +318,7 @@ $url = '';
                                             </div>
                                             <div class="product-name"><a
                                                     title="<?php echo $small_product->product_name ?>"
-                                                    href="<?php echo $link ?>"><?php echo JString::sub_string($small_product->product_name, 25) ?> </a>
+                                                    href="<?php echo $link ?>"><?php echo JString::sub_string($small_product->product_name, 100) ?> </a>
                                             </div>
                                             <div
                                                 class="price"><?php echo $currencyHelper->format($small_product->price_value, $mainCurr); ?></div>
