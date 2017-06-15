@@ -40,7 +40,7 @@ $url = '';
                 <div
                     class="<?php echo $class_column_table ?>">
                     <div class="item">
-                        <?php echo $image->display($first_image, false, "", 'class="image  img-responsive"', '', 200, 300, '', false); ?>
+                        <?php echo $image->display($first_image, false, "", 'class="image  img-responsive"', '', 200, 300, '', true); ?>
                         <div class="title">
                             <?php
                             $ajax = 'return hikashopModifyQuantity(\'' . $product->product_id . '\',field,1,0,\'cart\',' . $module_id . ')';
@@ -80,7 +80,7 @@ $url = '';
                                     ?>
                                     <li><a class="sub-category"
                                            data-category_id="<?php echo $sub_category->category_id ?>"
-                                           href="javascript:void(0)"><?php echo $image->display($icon_file_path, false, "", 'class="icon  img-responsive"', '', 40, 40, '', false); ?>
+                                           href="javascript:void(0)"><?php echo $image->display($icon_file_path, false, "", 'class="icon  img-responsive"', '', 40, 40, '', true); ?>
                                             <div
                                                 class="category-name"><?php echo JString::sub_string($sub_category->category_name, 20) ?></div>
                                         </a></li>
@@ -97,7 +97,7 @@ $url = '';
         <div class="row">
             <div class="col-lg-12">
                 <div class="banner">
-                    <?php echo $image->display($file_path, false, "", 'class="category_image img-responsive"', '', 980, 250, '', false); ?>
+                    <?php echo $image->display($file_path, false, "", 'class="category_image img-responsive"', '', 980, 250, '', true); ?>
                 </div>
                 <div class="product_slide ">
                     <div class="control pre"><i
@@ -116,7 +116,7 @@ $url = '';
                             ?>
                             <div
                                 class="slide item item-<?php echo $product->product_id ?> col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                <?php echo $image->display($first_image, false, "", 'class="image  img-responsive"', '', 200, 300, '', false); ?>
+                                <?php echo $image->display($first_image, false, "", 'class="image  img-responsive"', '', 200, 300, '', true); ?>
                                 <?php
                                 $ajax = 'return hikashopModifyQuantity(\'' . $product->product_id . '\',field,1,0,\'cart\',' . $module_id . ')';
                                 echo $cartHelper->displayButton(JText::_('ADD_TO_CART'), 'add', $defaultParams, $url, $ajax, '', 10, 1); ?>
@@ -162,11 +162,11 @@ $url = '';
                                                 class="flip-image">
                                                 <div class="front"><a
                                                         title="<?php echo $small_product->product_name ?>"
-                                                        href="<?php echo $link ?>"><?php echo $image->display($first_image, false, "", 'class="image  img-responsive "', '', 200, 300, '', false); ?></a>
+                                                        href="<?php echo $link ?>"><?php echo $image->display($first_image, false, "", 'class="image  img-responsive "', '', 200, 300, '', true); ?></a>
                                                 </div>
                                                 <div class="back"><a
                                                         title="<?php echo $small_product->product_name ?>"
-                                                        href="<?php echo $link ?>"><?php echo $image->display($second_image, false, "", 'class="image  img-responsive "', '', 200, 300, '', false); ?></a>
+                                                        href="<?php echo $link ?>"><?php echo $image->display($second_image, false, "", 'class="image  img-responsive "', '', 200, 300, '', true); ?></a>
                                                 </div>
                                             </div>
                                             <?php
@@ -213,11 +213,11 @@ $url = '';
                                                 class="flip-image">
                                                 <div class="front"><a
                                                         title="<?php echo $small_product->product_name ?>"
-                                                        href="<?php echo $link ?>"><?php echo $image->display($first_image, false, "", 'class="image  img-responsive "', '', 200, 300, '', false); ?></a>
+                                                        href="<?php echo $link ?>"><?php echo $image->display($first_image, false, "", 'class="image  img-responsive "', '', 200, 300, '', true); ?></a>
                                                 </div>
                                                 <div class="back"><a
                                                         title="<?php echo $small_product->product_name ?>"
-                                                        href="<?php echo $link ?>"><?php echo $image->display($second_image, false, "", 'class="image  img-responsive "', '', 200, 300, '', false); ?></a>
+                                                        href="<?php echo $link ?>"><?php echo $image->display($second_image, false, "", 'class="image  img-responsive "', '', 200, 300, '', true); ?></a>
                                                 </div>
                                             </div>
                                             <?php
@@ -262,11 +262,11 @@ $url = '';
                                                 class="flip-image">
                                                 <div class="front"><a
                                                         title="<?php echo $small_product->product_name ?>"
-                                                        href="<?php echo $link ?>"><?php echo $image->display($first_image, false, "", 'class="image  img-responsive "', '', 200, 300, '', false); ?></a>
+                                                        href="<?php echo $link ?>"><?php echo $image->display($first_image, false, "", 'class="image  img-responsive "', '', 200, 300, '', true); ?></a>
                                                 </div>
                                                 <div class="back"><a
                                                         title="<?php echo $small_product->product_name ?>"
-                                                        href="<?php echo $link ?>"><?php echo $image->display($second_image, false, "", 'class="image  img-responsive "', '', 200, 300, '', false); ?></a>
+                                                        href="<?php echo $link ?>"><?php echo $image->display($second_image, false, "", 'class="image  img-responsive "', '', 200, 300, '', true); ?></a>
                                                 </div>
                                             </div>
                                             <div class="product-name"><a
@@ -309,11 +309,11 @@ $url = '';
                                                 class="flip-image">
                                                 <div class="front"><a
                                                         title="<?php echo $small_product->product_name ?>"
-                                                        href="<?php echo $link ?>"><?php echo $image->display($first_image, false, "", 'class="image  img-responsive "', '', 200, 300, '', false); ?></a>
+                                                        href="<?php echo $link ?>"><?php echo $image->display($first_image, false, "", 'class="image  img-responsive "', '', 200, 300, '', true); ?></a>
                                                 </div>
                                                 <div class="back"><a
                                                         title="<?php echo $small_product->product_name ?>"
-                                                        href="<?php echo $link ?>"><?php echo $image->display($second_image, false, "", 'class="image  img-responsive "', '', 200, 300, '', false); ?></a>
+                                                        href="<?php echo $link ?>"><?php echo $image->display($second_image, false, "", 'class="image  img-responsive "', '', 200, 300, '', true); ?></a>
                                                 </div>
                                             </div>
                                             <div class="product-name"><a
