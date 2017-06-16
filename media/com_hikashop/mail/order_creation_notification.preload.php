@@ -59,7 +59,6 @@ $price->price_value_with_tax = $data->cart->order_full_price;
 $data->cart->full_total = new stdClass;
 $data->cart->full_total->prices = array($price);
 $data->cart->coupon->discount_value =& $data->cart->order_discount_price;
-
 if($app->isAdmin()) {
 	$view = 'order';
 } else {
@@ -102,8 +101,12 @@ $texts = array(
 $templates = array();
 
 $products_ids = array();
-foreach($data->cart->products as $item) { $products_ids[] = $item->product_id; }
-$productClass->getProducts($products_ids);
+foreach($data->cart->products as $item) {
+	if($item->product_id)
+		$products_ids[] = $item->product_id;
+}
+if(count($products_ids))
+	$productClass->getProducts($products_ids);
 
 $cartProducts = array();
 $cartFooters = array();

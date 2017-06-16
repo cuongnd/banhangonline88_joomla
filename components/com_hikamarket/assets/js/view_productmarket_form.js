@@ -19,7 +19,8 @@
         // plugin's default options
         var defaults = {
             show_help:true,
-            enable_audio:true
+            enable_audio:true,
+            list_messenger:[]
             //main color scheme for view_productmarket_form
             //be sure to be same as colors on main.css or custom-variables.less
 
@@ -36,14 +37,15 @@
 
         // the "constructor" method that gets called when the object is created
         plugin.set_help = function () {
+            list_messenger=plugin.settings.list_messenger;
             var i = 1;
             var $item_element = $element.find('.btn.cartlink');
 
-            $item_element.attr('data-intro', "Giỏ hàng liên kết");
+            $item_element.attr('data-intro',list_messenger["HIKA_CART_CONNECT"]);
 
             var $item_element = $element.find('.btn.apply');
 
-            $item_element.attr('data-intro', "Trong quá trình cập nhật dữ liệu hãy lưu lại thường xuyên mà không đóng của cửa sổ để tránh mất dữ liệu");
+            $item_element.attr('data-intro',list_messenger["HIKA_NOTE_SAVE"] );
 
             var $item_element = $element.find('.btn.save');
 
@@ -65,9 +67,21 @@
 
             $item_element.attr('data-intro', "Nhấn và giữ, đồng thời di chuyển để sắp sếp vị trí các ảnh theo ý muốn,Muốn xem ảnh, và đồng thời chỉnh sửa mô tả cho ảnh vui lòng nhấn vào đây");
 
-            var $item_element = $element.find('input[name="data[product][product_code]"]');
+            var $item_element = $element.find('input[name="data[product][product_name]"]');
 
             $item_element.attr('data-intro', "Nhập tên sản phẩm ở đây");
+
+             var $item_element = $element.find('input[name="data[product][product_code]"]');
+
+            $item_element.attr('data-intro', "Nhập mã sản phẩm ở đây");
+
+             var $item_element = $element.find('input#data_product__product_quantity');
+
+            $item_element.attr('data-intro', "Tiếp theo bạn vui lòng nhập số lượng sản phẩm ở đây");
+
+             var $item_element = $element.find('div#data_product_categories');
+
+            $item_element.attr('data-intro', "Nhập nhóm sản phẩm");
         };
         plugin.init = function () {
             plugin.settings = $.extend({}, defaults, options);
@@ -75,7 +89,6 @@
             var enable_audio=plugin.settings.enable_audio;
             if(show_help) {
                 plugin.set_help();
-
                 var help_tour = introJs();
                 help_tour.setOption('tooltipPosition', 'auto');
                 help_tour.setOption('teletype', true);

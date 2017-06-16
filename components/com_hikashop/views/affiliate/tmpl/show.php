@@ -68,7 +68,7 @@ if(!empty($this->user->user_id)){
 								</label>
 							</td>
 							<td>
-								<?php echo JHTML::_('hikaselect.booleanlist', "data[user][user_partner_activated]" , '',1,JText::_('HIKASHOP_YES'),	JText::_('HIKASHOP_NO')	); ?>
+								<?php echo JHTML::_('select.booleanlist', "data[user][user_partner_activated]" , '',1,JText::_('HIKASHOP_YES'),	JText::_('HIKASHOP_NO')	); ?>
 							</td>
 						</tr>
 						<tr>
@@ -242,7 +242,7 @@ if(!empty($this->user->user_id)){
 					</label>
 				</td>
 				<td>
-					<?php echo JHTML::_('hikaselect.booleanlist', "data[user][user_partner_activated]" , '',0,JText::_('HIKASHOP_YES'),	JText::_('HIKASHOP_NO')); ?>
+					<?php echo JHTML::_('select.booleanlist', "data[user][user_partner_activated]" , '',0,JText::_('HIKASHOP_YES'),	JText::_('HIKASHOP_NO')); ?>
 				</td>
 			</tr>
 			<tr>

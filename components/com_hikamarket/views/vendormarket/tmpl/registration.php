@@ -145,15 +145,6 @@ if ((empty($this->user) || empty($this->user->user_id)) && $this->form_type == '
                value="<?php echo $this->escape($this->element->vendor_name); ?>" class="inputbox required"
                maxlength="50"/> *
     </dd>
-    <dt class="hikamarket_<?php echo $this->form_type; ?>_vendordomain_line">
-        <label for="<?php echo $this->form_type; ?>_vendordomain"><?php echo JText::_('HIKA_VENDOR_DOMAIN'); ?></label>
-    </dt>
-    <dd class="hikamarket_<?php echo $this->form_type; ?>_vendordomain_line">
-        <input type="text" id="<?php echo $this->form_type; ?>_vendordomain"
-               name="data[<?php echo $this->form_type; ?>][vendor_domain]"
-               value="<?php echo $this->escape($this->element->vendor_domain); ?>" class="inputbox required"
-               maxlength="50"/> *
-    </dd>
 
 <?php if (!empty($this->user->user_id) || $this->form_type != 'vendorregister') { ?>
     <dt class="hikamarket_<?php echo $this->form_type; ?>_email_line">

@@ -9,6 +9,7 @@
 defined('_JEXEC') or die('Restricted access');
 JHtml::_('jQuery.help_step');
 JHtml::_('jQuery.auo_typing_text');
+JHtml::_('jqueryfrontend.uisortable');
 $doc = JFactory::getDocument();
 $doc->addScript( '/components/com_hikamarket/assets/js/view_productmarket_form.js');
 ?>
@@ -627,14 +628,76 @@ $doc->addScript( '/components/com_hikamarket/assets/js/view_productmarket_form.j
     </form>
 </div>
 <?php
+$list_messenger=array();
+$key="HIKA_CART_CONNECT";
+$list_messenger[$key]=JText::_($key);
+
+$key="HIKA_NOTE_APPLY";
+$list_messenger[$key]=JText::_($key);
+
+$key="HIKA_NOTE_SAVE";
+$list_messenger[$key]=JText::_($key);
+
+$key="HIKA_NOTE_LIBRARY";
+$list_messenger[$key]=JText::_($key);
+
+$key="HIKA_NOTE_IMAGE_COMPUTER";
+$list_messenger[$key]=JText::_($key);
+
+$key="HIKA_NOTE_IMAGE_UPLOAD";
+$list_messenger[$key]=JText::_($key);
+
+$key="HIKA_NOTE_ARRANGE_IMAGE";
+$list_messenger[$key]=JText::_($key);
+
+$key="HIKA_NOTE_NAME_PRODUCT";
+$list_messenger[$key]=JText::_($key);
+
+$key="HIKA_NOTE_CODE_PRODUCT";
+$list_messenger[$key]=JText::_($key);
+
+$key="HIKA_NOTE_NUMBER_PRODUCT";
+$list_messenger[$key]=JText::_($key);
+
+$key="HIKA_NOTE_GROUP_PRODUCT";
+$list_messenger[$key]=JText::_($key);
+
+$key="HIKA_NOTE_BLOCK_LIST";
+$list_messenger[$key]=JText::_($key);
+
+$key="HIKA_NOTE_DEPICTION_NOTE";
+$list_messenger[$key]=JText::_($key);
+
+$key="HIKA_NOTE_KEY_WORD";
+$list_messenger[$key]=JText::_($key);
+
+$key="HIKA_NOTE_ALIAS_NOTE";
+$list_messenger[$key]=JText::_($key);
+
+$key="HIKA_NOTE_TAGS";
+$list_messenger[$key]=JText::_($key);
+
+$key="HIKA_NOTE_CHARACTER";
+$list_messenger[$key]=JText::_($key);
+
+$key="HIKA_NOTE_OPTION";
+$list_messenger[$key]=JText::_($key);
+
+$key="HIKA_NOTE_PRICE";
+$list_messenger[$key]=JText::_($key);
+
+$key="HIKA_NOTE_CONDITION_PRODUCT";
+$list_messenger[$key]=JText::_($key);
+
+
 $js_content = '';
 $doc = JFactory::getDocument();
 ob_start();
 ?>
     <script type="text/javascript">
         jQuery(document).ready(function ($) {
-            $("body.productmarket").view_productmarket_form({
-
+            $("body").view_productmarket_form({
+                list_messenger:<?php echo json_encode($list_messenger) ?>
             });
         });
     </script>

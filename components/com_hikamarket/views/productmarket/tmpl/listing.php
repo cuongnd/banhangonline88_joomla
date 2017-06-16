@@ -40,7 +40,9 @@ defined('_JEXEC') or die('Restricted access');
 		echo $this->productType->display('filter_product_type', @$this->pageInfo->filter->filter_product_type);
 
 	if($this->config->get('show_category_explorer', 1))
-		echo $this->childdisplayType->display('filter_type', $this->pageInfo->selectedType, false, false);
+		{
+		    echo $this->childdisplayType->display('filter_type', $this->pageInfo->selectedType, false, true);
+		}
 
 if(!HIKASHOP_RESPONSIVE) { ?>
 			</td>
@@ -73,7 +75,7 @@ if(!empty($this->breadcrumb)) {
 <?php if($this->config->get('show_category_explorer', 1)) { ?>
 	<table id="hikam_product_listing" style="border:0px;width:100%">
 		<tr>
-			<td style="vertical-align:top;width:1%">
+			<td style="vertical-align:top;width:10%">
 				<div id="category_explorer_btn" class="category_explorer_btn_hide">
 					<a href="#" onclick="return category_listing_hideshow(this);"><span><?php echo JText::_('EXPLORER'); ?></span></a>
 				</div>

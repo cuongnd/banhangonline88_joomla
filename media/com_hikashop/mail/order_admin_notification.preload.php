@@ -114,8 +114,14 @@ if(@$data->order_payment_method=='creditcard' && !empty($data->credit_card_info-
 }
 
 $products_ids = array();
-foreach($data->cart->products as $item) { $products_ids[] = $item->product_id; }
-$productClass->getProducts($products_ids);
+foreach($data->cart->products as $item) {
+	if($item->product_id)
+	{
+		$products_ids[] = $item->product_id;
+	}
+}
+if(count($products_ids))
+	$productClass->getProducts($products_ids);
 
 $cartProducts = array();
 $cartFooters = array();

@@ -144,6 +144,7 @@ class UserController extends hikashopController{
 		return parent::display();
 	}
 	function pay_confirm(){
+
 		$user_id = hikashop_getCID('user_id');
 		if(!empty($user_id)){
 			$userClass = hikashop_get('class.user');
