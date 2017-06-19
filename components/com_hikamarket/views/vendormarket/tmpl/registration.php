@@ -8,7 +8,7 @@
  */
 defined('_JEXEC') or die('Restricted access');
 ?>
-    <dl class="hikam_options">
+    <div class="hikam_options">
 <?php
 if ($this->form_type == 'register')
     $this->form_type == 'vendorregister';
@@ -24,74 +24,83 @@ if ((empty($this->user) || empty($this->user->user_id)) && $this->form_type == '
     if (!empty($this->user->email))
         $user_email = $this->user->email;
     ?>
-    <dt class="hikamarket_registration_name_line">
-        <label for="register_name"><?php echo JText::_('HIKA_USER_NAME'); ?></label>
-    </dt>
-    <dd class="hikamarket_registration_name_line">
-        <input type="text" id="register_name" name="data[register][name]"
-               value="<?php echo $this->escape($user_name); ?>" class="inputbox required" maxlength="50"/>
-    </dd>
+    <div class="form-group hikamarket_registration_name_line">
+        <label class="col-lg-2 control-label" for="register_name"><?php echo JText::_('HIKA_USER_NAME'); ?></label>
+        <div class="col-lg-10 hikamarket_registration_name_line">
+            <input type="text" id="register_name" name="data[register][name]"
+                   value="<?php echo $this->escape($user_name); ?>" class="form-control inputbox required"
+                   maxlength="50"/>
+        </div>
+    </div>
+
     <?php if ($this->config->get('registration_email_is_username', 0) == 0) { ?>
-        <dt class="hikamarket_registration_username_line">
-            <label for="register_username"><?php echo JText::_('HIKA_USERNAME'); ?></label>
-        </dt>
-        <dd class="hikamarket_registration_username_line">
-            <input type="text" id="register_username" name="data[register][username]"
-                   value="<?php echo $this->escape($user_username); ?>" class="inputbox required validate-username"
-                   maxlength="25"/>
-        </dd>
+        <div class="form-group hikamarket_registration_username_line">
+            <label class="col-lg-2 control-label"
+                   for="register_username"><?php echo JText::_('HIKA_USERNAME'); ?></label>
+            <div class="col-lg-10 hikamarket_registration_username_line">
+                <input type="text" id="register_username" name="data[register][username]"
+                       value="<?php echo $this->escape($user_username); ?>"
+                       class="form-control inputbox required validate-username" maxlength="25"/>
+            </div>
+        </div>
     <?php } ?>
-    <dt class="hikamarket_registration_email_line">
-        <label for="register_email"><?php echo JText::_('HIKA_EMAIL'); ?></label>
-    </dt>
-    <dd class="hikamarket_registration_email_line">
-        <input type="text" id="register_email" name="data[register][email]"
-               value="<?php echo $this->escape($user_email); ?>" class="inputbox required validate-email"
-               maxlength="100"/>
-    </dd>
+    <div class="form-group hikamarket_registration_email_line">
+        <label class="col-lg-2 control-label" for="register_email"><?php echo JText::_('HIKA_EMAIL'); ?></label>
+        <div class="col-lg-10 hikamarket_registration_email_line">
+            <input type="text" id="register_email" name="data[register][email]"
+                   value="<?php $this->escape($this->user->email); ?>"
+                   class="form-control inputbox required validate-email" maxlength="50"/>
+        </div>
+    </div>
 
     <?php if ($this->config->get('registration_ask_password', 1) == 1) { ?>
-        <dt class="hikamarket_registration_password_line">
-            <label for="register_password"><?php echo JText::_('HIKA_PASSWORD'); ?></label>
-        </dt>
-        <dd class="hikamarket_registration_password_line">
-            <input type="password" id="register_password" name="data[register][password]" value=""
-                   class="inputbox required validate-password"/>
-        </dd>
-        <dt class="hikamarket_registration_password2_line">
-            <label for="register_password2"><?php echo JText::_('HIKA_VERIFY_PASSWORD'); ?></label>
-        </dt>
-        <dd class="hikamarket_registration_password2_line">
-            <input type="password" id="register_password2" name="data[register][password2]" value=""
-                   class="inputbox required validate-passverify"/>
-        </dd>
+        <div class="form-group hikamarket_registration_password_line">
+            <label class="col-lg-2 control-label"
+                   for="register_password"><?php echo JText::_('HIKA_PASSWORD'); ?></label>
+            <div class="col-lg-10 hikamarket_registration_password_line">
+                <input type="password" id="register_password" name="data[register][password]"
+                       value="<?php $this->escape($this->user->password); ?>"
+                       class="form-control inputbox required validate-password" maxlength="50"/>
+            </div>
+        </div>
+
+        <div class="form-group hikamarket_registration_password2_line">
+            <label class="col-lg-2 control-label"
+                   for="register_password2"><?php echo JText::_('HIKA_VERIFY_PASSWORD'); ?></label>
+            <div class="col-lg-10 hikamarket_registration_password2_line">
+                <input type="password" id="register_password2" name="data[register][password2]"
+                       value="<?php $this->escape($this->user->password2); ?>"
+                       class="form-control inputbox required validate-passverify" maxlength="50"/>
+            </div>
+        </div>
+
     <?php } ?>
-    </dl>
+    </div>
     <?php
     foreach ($this->extraFields['user'] as $fieldName => $oneExtraField) {
         ?>
-        <dl id="hikamarket_<?php echo 'user_' . $oneExtraField->field_namekey; ?>"
-            class="hikam_options hikamarket_registration_user_<?php echo $fieldName; ?>_line">
-            <dt><?php
+        <div id="hikamarket_<?php echo 'user_' . $oneExtraField->field_namekey; ?>"
+             class=" form-group hikam_options hikamarket_registration_user_<?php echo $fieldName; ?>_line">
+            <label class="col-lg-2 control-label"><?php
                 echo $this->fieldsClass->getFieldName($oneExtraField);
-                ?></dt>
-            <dd><?php
-                $onWhat = 'onchange';
-                if ($oneExtraField->field_type == 'radio')
-                    $onWhat = 'onclick';
+                ?></label>
+            <?php
+            $onWhat = 'onchange';
+            if ($oneExtraField->field_type == 'radio')
+                $onWhat = 'onclick';
 
-                echo $this->fieldsClass->display(
-                    $oneExtraField,
-                    @$this->user->$fieldName,
-                    'data[user][' . $fieldName . ']',
-                    false,
-                    ' ' . $onWhat . '="hikashopToggleFields(this.value,\'' . $fieldName . '\',\'user\',0);"',
-                    false,
-                    $this->extraFields['user'],
-                    $this->user
-                );
-                ?></dd>
-        </dl>
+            echo $this->fieldsClass->display(
+                $oneExtraField,
+                @$this->user->$fieldName,
+                'data[user][' . $fieldName . ']',
+                false,
+                ' ' . $onWhat . '="hikashopToggleFields(this.value,\'' . $fieldName . '\',\'user\',0);" col-lg-10',
+                false,
+                $this->extraFields['user'],
+                $this->user
+            );
+            ?>
+        </div>
         <?php
     }
 
@@ -132,59 +141,65 @@ if ((empty($this->user) || empty($this->user->user_id)) && $this->form_type == '
     <h3 class="hikashop_registration_vendor_info_title"><?php
         echo JText::_('VENDOR_INFORMATION');
         ?></h3>
-    <dl class="hikam_options">
+    <div class="hikam_options">
     <?php
 }
 ?>
-    <dt class="hikamarket_<?php echo $this->form_type; ?>_vendorname_line">
-        <label for="<?php echo $this->form_type; ?>_vendorname"><?php echo JText::_('HIKA_VENDOR_NAME'); ?></label>
-    </dt>
-    <dd class="hikamarket_<?php echo $this->form_type; ?>_vendorname_line">
-        <input type="text" id="<?php echo $this->form_type; ?>_vendorname"
-               name="data[<?php echo $this->form_type; ?>][vendor_name]"
-               value="<?php echo $this->escape($this->element->vendor_name); ?>" class="inputbox required"
-               maxlength="50"/> *
-    </dd>
+    <div class="form-group hikamarket_<?php echo $this->form_type; ?>_vendorname_line">
+        <label class="col-lg-2 control-label"
+               for="<?php echo $this->form_type; ?>_vendorname"><?php echo JText::_('HIKA_VENDOR_NAME'); ?></label>
+        <div class="col-lg-10 hikamarket_<?php echo $this->form_type; ?>_vendorname_line">
+            <input type="text" id="<?php echo $this->form_type; ?>_vendorname"
+                   name="data[<?php echo $this->form_type; ?>][vendor_name]"
+                   value="<?php echo $this->escape($this->element->vendor_name); ?>"
+                   class="inputbox required form-control"
+                   maxlength="50"/> *
+        </div>
+    </div>
+
 
 <?php if (!empty($this->user->user_id) || $this->form_type != 'vendorregister') { ?>
-    <dt class="hikamarket_<?php echo $this->form_type; ?>_email_line">
-        <label for="<?php echo $this->form_type; ?>_vendoremail"><?php echo JText::_('HIKA_CONTACT_EMAIL'); ?></label>
-    </dt>
-    <dd class="hikamarket_<?php echo $this->form_type; ?>_email_line">
-        <input type="text" id="<?php echo $this->form_type; ?>_vendoremail"
-               name="data[<?php echo $this->form_type; ?>][vendor_email]"
-               value="<?php echo $this->escape($this->element->vendor_email); ?>"
-               class="inputbox required validate-email" maxlength="50"/> *
-    </dd>
+    <div class="form-group hikamarket_<?php echo $this->form_type; ?>_email_line">
+        <label class="col-lg-2 control-label"
+               for="<?php echo $this->form_type; ?>_vendoremail"><?php echo JText::_('HIKA_CONTACT_EMAIL'); ?></label>
+        <div class="col-lg-10 hikamarket_<?php echo $this->form_type; ?>_email_line">
+            <input type="text" id="<?php echo $this->form_type; ?>_vendoremail"
+                   name="data[<?php echo $this->form_type; ?>][vendor_email]"
+                   value="<?php echo $this->escape($this->element->vendor_email); ?>"
+                   class="form-control inputbox required validate-email" maxlength="50"/> *
+        </div>
+    </div>
 <?php }
 
 if ((!empty($this->element->vendor_id) && hikamarket::acl('vendor/edit/image')) || $this->config->get('register_ask_image', 0)) {
     ?>
-    <dt class="hikamarket_<?php echo $this->form_type; ?>_vendorimage_line">
-        <label><?php echo JText::_('HIKAM_VENDOR_IMAGE'); ?></label>
-    </dt>
-    <dd class="hikamarket_<?php echo $this->form_type; ?>_vendorimage_line"><?php
-        $options = array(
-            'upload' => true,
-            'gallery' => true,
-            'text' => JText::_('HIKAM_VENDOR_IMAGE_EMPTY_UPLOAD'),
-            'uploader' => array('plg.market.vendor', 'vendor_image'),
-            'vars' => array('vendor_id' => @$this->vendor->vendor_id)
-        );
+    <div class="form-group hikamarket_<?php echo $this->form_type; ?>_vendorimage_line">
+        <label class="col-lg-2 control-label"><?php echo JText::_('HIKAM_VENDOR_IMAGE'); ?></label>
+        <div class="col-lg-10 hikamarket_<?php echo $this->form_type; ?>_vendorimage_line">
+            <?php
+            $options = array(
+                'upload' => true,
+                'gallery' => true,
+                'text' => JText::_('HIKAM_VENDOR_IMAGE_EMPTY_UPLOAD'),
+                'uploader' => array('plg.market.vendor', 'vendor_image'),
+                'vars' => array('vendor_id' => @$this->vendor->vendor_id)
+            );
 
-        $content = '';
-        if (!empty($this->vendor->vendor_image)) {
-            $params = new stdClass();
-            $params->file_path = @$this->vendor->vendor_image;
-            $params->field_name = 'data[vendor][vendor_image]';
-            $params->uploader_id = 'hikamarket_vendor_image';
-            $params->delete = true;
-            $js = '';
-            $content = hikamarket::getLayout('uploadmarket', 'image_entry', $params, $js);
-        }
+            $content = '';
+            if (!empty($this->vendor->vendor_image)) {
+                $params = new stdClass();
+                $params->file_path = @$this->vendor->vendor_image;
+                $params->field_name = 'data[vendor][vendor_image]';
+                $params->uploader_id = 'hikamarket_vendor_image';
+                $params->delete = true;
+                $js = '';
+                $content = hikamarket::getLayout('uploadmarket', 'image_entry', $params, $js);
+            }
 
-        echo $this->uploaderType->displayImageSingle('hikamarket_vendor_image', $content, $options);
-        ?></dd>
+            echo $this->uploaderType->displayImageSingle('hikamarket_vendor_image', $content, $options);
+            ?>
+        </div>
+    </div>
     <?php
 }
 
@@ -217,75 +232,79 @@ if ((!isset($this->element->vendor_id) || $this->element->vendor_id > 1) && $thi
 
 if (!empty($this->extraFields['vendor'])) {
     ?>
-    </dl>
-    <?php
-    foreach ($this->extraFields['vendor'] as $fieldName => $oneExtraField) {
-        ?>
-        <dl id="hikamarket_<?php echo $this->form_type . '_' . $oneExtraField->field_namekey; ?>"
-            class="hikam_options hikamarket_<?php echo $this->form_type; ?>_<?php echo $fieldName; ?>_line">
-            <dt><?php
-                echo $this->fieldsClass->getFieldName($oneExtraField);
-                ?></dt>
-            <dd><?php
-                $onWhat = 'onchange';
-                if ($oneExtraField->field_type == 'radio')
-                    $onWhat = 'onclick';
-                $oneExtraField->table_name = 'vendor'; //$this->form_type; //'register';
-                if (isset($this->element->$fieldName))
-                    $value = $this->element->$fieldName;
-                else
-                    $value = $this->vendorFields->$fieldName;
-
-                echo $this->fieldsClass->display(
-                    $oneExtraField,
-                    $value,
-                    'data[' . $this->form_type . '][' . $fieldName . ']',
-                    false,
-                    ' ' . $onWhat . '="hikashopToggleFields(this.value,\'' . $fieldName . '\',\'' . $this->form_type . '\',0,\'hikamarket_\');"',
-                    false,
-                    $this->extraFields['vendor'],
-                    @$this->element
-                );
-                ?></dd>
-        </dl>
+    </div>
+    <div id="hikamarket_<?php echo $this->form_type . '_' . $oneExtraField->field_namekey; ?>"
+        class="hikam_options hikamarket_<?php echo $this->form_type; ?>_<?php echo $fieldName; ?>_line">
         <?php
-    }
-    ?>
-    <dl class="hikam_options">
+        foreach ($this->extraFields['vendor'] as $fieldName => $oneExtraField) {
+            ?>
+            <div class="form-group">
+                <label class="col-lg-2 control-label"><?php echo $this->fieldsClass->getFieldName($oneExtraField); ?></label>
+                <div class="col-lg-10 ">
+                    <?php
+                    $onWhat = 'onchange';
+                    if ($oneExtraField->field_type == 'radio')
+                        $onWhat = 'onclick';
+                    $oneExtraField->table_name = 'vendor'; //$this->form_type; //'register';
+                    if (isset($this->element->$fieldName))
+                        $value = $this->element->$fieldName;
+                    else
+                        $value = $this->vendorFields->$fieldName;
+
+                    echo $this->fieldsClass->display(
+                        $oneExtraField,
+                        $value,
+                        'data[' . $this->form_type . '][' . $fieldName . ']',
+                        false,
+                        ' ' . $onWhat . '="hikashopToggleFields(this.value,\'' . $fieldName . '\',\'' . $this->form_type . '\',0,\'hikamarket_\');"',
+                        false,
+                        $this->extraFields['vendor'],
+                        @$this->element
+                    );
+                    ?>
+                </div>
+            </div>
+            <?php
+        }
+        ?>
+    </div>
+    <div class="hikam_options">
     <?php
 }
 
 if ((!isset($this->element->vendor_id) || $this->element->vendor_id > 0) && $this->options['ask_description']) {
     ?>
-    <dt class="hikamarket_<?php echo $this->form_type; ?>_description_line">
-        <label><?php echo JText::_('HIKA_DESCRIPTION'); ?></label>
-    </dt>
-    <dd class="hikamarket_<?php echo $this->form_type; ?>_description_line"><?php
-        $this->editor->content = $this->element->vendor_description;
-        echo $this->editor->display();
-        ?>
-        <div style="clear:both"></div>
-    </dd>
+    <div class="form-group hikamarket_<?php echo $this->form_type; ?>_description_line">
+        <label class="col-lg-2 control-label"><?php echo JText::_('HIKA_DESCRIPTION'); ?></label>
+        <div class="col-lg-10 hikamarket_<?php echo $this->form_type; ?>_description_line">
+            <?php
+            $this->editor->content = $this->element->vendor_description;
+            echo $this->editor->display();
+            ?>
+        </div>
+    </div>
     <?php
 }
 
 if ((!isset($this->element->vendor_id) || $this->element->vendor_id > 1) && $this->options['ask_terms']) {
     $r = ($this->config->get('register_terms_required', 0) != 0);
     ?>
-    <dt class="hikamarket_<?php echo $this->form_type; ?>_terms_line">
-        <label><?php echo JText::_('HIKASHOP_CHECKOUT_TERMS'); ?></label><?php echo $r ? ' *' : ''; ?>
-    </dt>
-    <dd class="hikamarket_<?php echo $this->form_type; ?>_terms_line"><?php
-        $this->editor->content = @$this->element->vendor_terms;
-        $this->editor->name = 'vendor_terms';
-        echo $this->editor->display();
-        ?>
-        <div style="clear:both"></div>
-    </dd>
+    <div class="form-group hikamarket_<?php echo $this->form_type; ?>_terms_line">
+        <label
+            class="col-lg-2 control-label"><?php echo JText::_('HIKASHOP_CHECKOUT_TERMS'); ?></label><?php echo $r ? ' *' : ''; ?>
+        <div class="col-lg-10 hikamarket_<?php echo $this->form_type; ?>_terms_line">
+            <?php
+            $this->editor->id="vendor_terms";
+            $this->editor->content = @$this->element->vendor_terms;
+            $this->editor->name = 'vendor_terms';
+            echo $this->editor->display();
+            ?>
+        </div>
+    </div>
     <?php
 }
 ?>
-    </dl>
+    </div>
 <?php
 echo JHTML::_('form.token');
 
@@ -298,7 +317,6 @@ if (empty($this->user) && $this->form_type == 'vendorregister') { ?>
 if ($this->form_type == 'vendorregister') {
     ?>
     <div class="form-actions">
-        <input class="button hikashop_cart_input_button btn btn-primary" type="submit" class="btn btn-primary"
-               value="<?php echo JText::_('HIKA_REGISTER'); ?>"/>
+        <button  type="button" class="btn btn-register btn-primary"><?php echo JText::_('HIKA_REGISTER'); ?></button>
     </div>
 <?php }

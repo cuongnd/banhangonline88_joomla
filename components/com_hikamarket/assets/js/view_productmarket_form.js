@@ -20,6 +20,7 @@
         var defaults = {
             show_help:true,
             enable_audio:true,
+            user_dont_show_help:true,
             list_messenger:[]
             //main color scheme for view_productmarket_form
             //be sure to be same as colors on main.css or custom-variables.less
@@ -45,57 +46,139 @@
 
             var $item_element = $element.find('.btn.apply');
 
-            $item_element.attr('data-intro',list_messenger["HIKA_NOTE_SAVE"] );
+            $item_element.attr('data-intro',list_messenger["HIKA_NOTE_APPLY"] );
 
             var $item_element = $element.find('.btn.save');
 
-            $item_element.attr('data-intro', "Khi cập nhật dữ liệu hoàn tất vui lòng nhấn vào đây để hoàn thành, đồng thời đóng của sổ");
+            $item_element.attr('data-intro',list_messenger["HIKA_NOTE_SAVE"] );
 
             var $item_element = $element.find('.images-library');
 
-            $item_element.attr('data-intro', "Vui lòng nhập thư viện ảnh sản phẩm vào khu vực này");
+            $item_element.attr('data-intro',list_messenger["HIKA_NOTE_LIBRARY"] );
 
             var $item_element = $element.find('#hikamarket_product_image_uploadpopup');
 
-            $item_element.attr('data-intro', "Nhấn vào đây để nhập ảnh từ máy tính của bạn");
+            $item_element.attr('data-intro',list_messenger["HIKA_NOTE_IMAGE_COMPUTER"] );
 
             var $item_element = $element.find('#hikamarket_product_image_addpopup');
 
-            $item_element.attr('data-intro', "Nhấn vào đây để nhập ảnh từ dữ liệu các ảnh mà trước đây bạn upload");
+            $item_element.attr('data-intro',list_messenger["HIKA_NOTE_IMAGE_UPLOAD"] );
 
             var $item_element = $element.find('.hikamarket_product_main_image_thumb');
 
-            $item_element.attr('data-intro', "Nhấn và giữ, đồng thời di chuyển để sắp sếp vị trí các ảnh theo ý muốn,Muốn xem ảnh, và đồng thời chỉnh sửa mô tả cho ảnh vui lòng nhấn vào đây");
+            $item_element.attr('data-intro',list_messenger["HIKA_NOTE_ARRANGE_IMAGE"] );
 
             var $item_element = $element.find('input[name="data[product][product_name]"]');
 
-            $item_element.attr('data-intro', "Nhập tên sản phẩm ở đây");
+            $item_element.attr('data-intro',list_messenger["HIKA_NOTE_NAME_PRODUCT"] );
 
              var $item_element = $element.find('input[name="data[product][product_code]"]');
 
-            $item_element.attr('data-intro', "Nhập mã sản phẩm ở đây");
+            $item_element.attr('data-intro',list_messenger["HIKA_NOTE_CODE_PRODUCT"] );
 
              var $item_element = $element.find('input#data_product__product_quantity');
 
-            $item_element.attr('data-intro', "Tiếp theo bạn vui lòng nhập số lượng sản phẩm ở đây");
+            $item_element.attr('data-intro',list_messenger["HIKA_NOTE_NUMBER_PRODUCT"] );
 
              var $item_element = $element.find('div#data_product_categories');
 
-            $item_element.attr('data-intro', "Nhập nhóm sản phẩm");
+            $item_element.attr('data-intro',list_messenger["HIKA_NOTE_GROUP_PRODUCT"] );
+
+             var $item_element = $element.find('dd.hikamarket_product_published');
+
+            $item_element.attr('data-intro',list_messenger["HIKA_NOTE_BLOCK_LIST"] );
+
+             var $item_element = $element.find('dd.hikamarket_product_description');
+
+            $item_element.attr('data-intro',list_messenger["HIKA_NOTE_DEPICTION_NOTE"] );
+
+             var $item_element = $element.find('dd.hikamarket_product_keywords');
+
+            $item_element.attr('data-intro',list_messenger["HIKA_NOTE_KEY_WORD"] );
+
+             var $item_element = $element.find('dd.hikamarket_product_alias');
+
+            $item_element.attr('data-intro',list_messenger["HIKA_NOTE_ALIAS_NOTE"] );
+
+             var $item_element = $element.find('dd.hikamarket_product_tags');
+
+            $item_element.attr('data-intro',list_messenger["HIKA_NOTE_TAGS"] );
+
+             var $item_element = $element.find('dd.hikamarket_product_characteristics');
+
+            $item_element.attr('data-intro',list_messenger["HIKA_NOTE_CHARACTER"] );
+
+             var $item_element = $element.find('dd.hikamarket_product_options');
+
+            $item_element.attr('data-intro',list_messenger["HIKA_NOTE_OPTION"] );
+
+             var $item_element = $element.find('h4.hika_production_price');
+
+            $item_element.attr('data-intro',list_messenger["HIKA_NOTE_PRICE"] );
+
+             var $item_element = $element.find('dd.hikamarket_product_tinh_trang_hang_hoa');
+
+            $item_element.attr('data-intro',list_messenger["HIKA_NOTE_CONDITION_PRODUCT"] );
+
         };
+        plugin.close_help_tour = function () {
+            help_tour=plugin.settings.help_tour;
+            help_dont_show_again=help_tour._options.help_dont_show_again;
+            console.log(help_tour);
+            var option_click= {
+                option:"com_hikamarket",
+                ctrl:"product",
+                task: "ajax_change_status_help_dont_show_again",
+                format: 'json',
+                help_dont_show_again: help_dont_show_again,
+                tmpl: 'json',
+                ignoreMessages: true
+            };
+            option_click= $.param(option_click);
+            var data_submit={};
+            var ajax_web_design=$.ajax({
+                contentType: 'application/json',
+                type: "POST",
+                dataType: "json",
+                url: root_ulr+'/index.php?'+option_click,
+                data: JSON.stringify(data_submit),
+                beforeSend: function () {
+                    $('.div-loading').show();
+                },
+                success: function (response) {
+                    $('.div-loading').hide();
+
+
+                }
+            });
+        }
         plugin.init = function () {
             plugin.settings = $.extend({}, defaults, options);
             var show_help=plugin.settings.show_help;
-            var enable_audio=plugin.settings.enable_audio;
-            if(show_help) {
-                plugin.set_help();
-                var help_tour = introJs();
-                help_tour.setOption('tooltipPosition', 'auto');
-                help_tour.setOption('teletype', true);
-                help_tour.setOption('enable_audio', enable_audio);
-                help_tour.setOption('positionPrecedence', ['left', 'right', 'bottom', 'top']);
+            var user_dont_show_help=plugin.settings.user_dont_show_help;
+            var enable_audio = plugin.settings.enable_audio;
+            plugin.set_help();
+            var help_tour = introJs();
+            help_tour.setOption('tooltipPosition', 'auto');
+            help_tour.setOption('teletype', false);
+            help_tour.setOption('help_dont_show_again', user_dont_show_help);
+            help_tour.setOption('auto_play', true);
+            help_tour.setOption('enable_audio', enable_audio);
+            help_tour.setOption('positionPrecedence', ['left', 'right', 'bottom', 'top']);
+            help_tour.onexit(function () {
+                plugin.close_help_tour();
+            });
+            help_tour.oncomplete(function () {
+                plugin.close_help_tour();
+            });
+            plugin.settings.help_tour = help_tour;
+            if(user_dont_show_help==0 && show_help) {
                 help_tour.start();
             }
+            $element.find('div.btn.help').click(function () {
+                help_tour.start();
+
+            });
         }
 
         plugin.example_function = function () {

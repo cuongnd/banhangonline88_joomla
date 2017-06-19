@@ -96,12 +96,12 @@ if(!empty($this->product->prices)) {
 ?>		<tr class="row<?php echo $k;?>" id="hikashop_<?php echo $form_key; ?>_<?php echo $i;?>">
 			<td class="hika_price">
 				<input type="hidden" name="<?php echo $form_key; ?>[<?php echo $i;?>][price_id]" value="<?php echo @$price->price_id;?>" />
-				<?php echo $pre_price; ?><input size="10" type="text" id="hikashop_<?php echo $form_key; ?>_<?php echo $i;?>_price" name="<?php echo $form_key; ?>[<?php echo $i;?>][price_value]" value="<?php if($this->config->get('floating_tax_prices',0)){ echo @$price->price_value_with_tax; }else{ echo @$price->price_value; } ?>" onchange="window.productMgr.updatePrice(<?php echo $i; ?>, false, '<?php echo $form_key; ?>')" /><?php echo $post_price; ?>
+				<?php echo $pre_price; ?><input size="10" class="price" type="text" id="hikashop_<?php echo $form_key; ?>_<?php echo $i;?>_price" name="<?php echo $form_key; ?>[<?php echo $i;?>][price_value]" value="<?php if($this->config->get('floating_tax_prices',0)){ echo @$price->price_value_with_tax; }else{ echo @$price->price_value; } ?>" onchange="window.productMgr.updatePrice(<?php echo $i; ?>, false, '<?php echo $form_key; ?>')" /><?php echo $post_price; ?>
 			</td>
 <?php
 	if($acls['tax']){ ?>
 			<td class="hika_price">
-				<?php echo $pre_price; ?><input size="10" type="text" id="hikashop_<?php echo $form_key; ?>_<?php echo $i;?>_with_tax" name="<?php echo $form_key; ?>_with_tax_<?php echo $i;?>" value="<?php echo @$price->price_value_with_tax; ?>" onchange="window.productMgr.updatePrice(<?php echo $i; ?>, true, '<?php echo $form_key; ?>')"/><?php echo $post_price; ?>
+				<?php echo $pre_price; ?><input size="10" class="numeric" type="text" id="hikashop_<?php echo $form_key; ?>_<?php echo $i;?>_with_tax" name="<?php echo $form_key; ?>_with_tax_<?php echo $i;?>" value="<?php echo @$price->price_value_with_tax; ?>" onchange="window.productMgr.updatePrice(<?php echo $i; ?>, true, '<?php echo $form_key; ?>')"/><?php echo $post_price; ?>
 			</td>
 <?php }
 	if($acls['currency']){ ?>
@@ -111,7 +111,7 @@ if(!empty($this->product->prices)) {
 <?php }
 	if($acls['quantity']){ ?>
 			<td class="hika_qty">
-				<input size="3" type="text" name="<?php echo $form_key; ?>[<?php echo $i;?>][price_min_quantity]" value="<?php echo @$price->price_min_quantity; ?>" />
+				<input size="3" type="text" class="numeric" name="<?php echo $form_key; ?>[<?php echo $i;?>][price_min_quantity]" value="<?php echo @$price->price_min_quantity; ?>" />
 			</td>
 <?php }
 	if(hikashop_level(2) && $acls['acl']){ ?>

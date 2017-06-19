@@ -12,6 +12,11 @@ JHtml::_('jQuery.auo_typing_text');
 JHtml::_('jqueryfrontend.uisortable');
 $doc = JFactory::getDocument();
 $doc->addScript( '/components/com_hikamarket/assets/js/view_productmarket_form.js');
+$user=JFactory::getUser();
+$productClass = hikamarket::get('helper.product');
+$key_user_dont_show_help=$productClass::KEY_DONT_SHOW_HELP;
+$user_params=$user->get('_params','');
+$user_dont_show_help=$user_params->get($key_user_dont_show_help,0);
 ?>
 <script type="text/javascript">
     window.productMgr = {cpt: {}};
@@ -445,9 +450,12 @@ $doc->addScript( '/components/com_hikamarket/assets/js/view_productmarket_form.j
                                 <dt class="hikamarket_product_qtyperorder">
                                     <label><?php echo JText::_('QUANTITY_PER_ORDER'); ?></label></dt>
                                 <dd class="hikamarket_product_qtyperorder">
-                                    <input type="text" name="data[product][product_min_per_order]"
-                                           value="<?php echo (int)@$this->product->product_min_per_order; ?>"/><?php
+                                    <input type="text" class="pull-left" name="data[product][product_min_per_order]"
+                                           value="<?php echo (int)@$this->product->product_min_per_order; ?>"/><div class="pull-left"><?php
                                     echo ' ' . JText::_('HIKA_QTY_RANGE_TO') . ' ';
+                                    ?>
+                                    </div>
+                                        <?php
                                     echo $this->quantityType->display('data[product][product_max_per_order]', @$this->product->product_max_per_order);
                                     ?></dd>
                             <?php }
@@ -457,7 +465,7 @@ $doc->addScript( '/components/com_hikamarket/assets/js/view_productmarket_form.j
                                     <label><?php echo JText::_('PRODUCT_SALE_DATES'); ?></label></dt>
                                 <dd class="hikamarket_product_salestart"><?php
                                     echo JHTML::_('calendar', hikamarket::getDate((@$this->product->product_sale_start ? @$this->product->product_sale_start : ''), '%Y-%m-%d %H:%M'), 'data[product][product_sale_start]', 'product_sale_start', '%Y-%m-%d %H:%M', array('size' => '20'));
-                                    echo ' <span class="calendar-separator">' . JText::_('HIKA_RANGE_TO') . '</span> ';
+                                    echo ' <span class="pull-left calendar-separator">' . JText::_('HIKA_RANGE_TO') . '</span> ';
                                     echo JHTML::_('calendar', hikamarket::getDate((@$this->product->product_sale_end ? @$this->product->product_sale_end : ''), '%Y-%m-%d %H:%M'), 'data[product][product_sale_end]', 'product_sale_end', '%Y-%m-%d %H:%M', array('size' => '20'));
                                     ?></dd>
                             <?php }
@@ -697,7 +705,8 @@ ob_start();
     <script type="text/javascript">
         jQuery(document).ready(function ($) {
             $("body").view_productmarket_form({
-                list_messenger:<?php echo json_encode($list_messenger) ?>
+                list_messenger:<?php echo json_encode($list_messenger) ?>,
+                user_dont_show_help:<?php echo (int)$user_dont_show_help ?>
             });
         });
     </script>

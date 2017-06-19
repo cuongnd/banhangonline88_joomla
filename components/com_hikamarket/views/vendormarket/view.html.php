@@ -653,6 +653,7 @@ class vendormarketViewvendormarket extends HikamarketView {
 
 		$editor = hikamarket::get('shop.helper.editor');
 		$editor->setEditor($config->get('editor', ''));
+		$editor->id="vendor_description";
 		$editor->name = 'vendor_description';
 		$editor->content = '';
 		$editor->height = 250;

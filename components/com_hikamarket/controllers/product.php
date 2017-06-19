@@ -14,7 +14,7 @@ class productMarketController extends hikamarketController {
 			'listing', 'selection', 'useselection',
 			'getprice', 'gettree', 'findtree',
 			'upload', 'image', 'file', 'file_entry', 'galleryimage',
-			'edit_translation', 'cartlink', 'waitingapproval',
+			'edit_translation', 'cartlink', 'waitingapproval','ajax_change_status_help_dont_show_again'
 		),
 		'add' => array('add'),
 		'update' => array('ajax_update_image_product'),
@@ -30,6 +30,16 @@ class productMarketController extends hikamarketController {
 		if(!$skip)
 			$this->registerDefaultTask('listing');
 		$this->config = hikamarket::config();
+	}
+	public function	ajax_change_status_help_dont_show_again(){
+		$input=JFactory::getApplication()->input;
+		$help_dont_show_again=$input->getInt('help_dont_show_again',0);
+		$user=JFactory::getUser();
+		$productClass = hikamarket::get('helper.product');
+		$key_user_dont_show_help=$productClass::KEY_DONT_SHOW_HELP;
+		$user->setParam($key_user_dont_show_help,$help_dont_show_again);
+		$user->save(true);
+		die;
 	}
 	public function	ajax_update_image_product(){
 

@@ -30,6 +30,7 @@
         this._introItems = [];
 
         this._options = {
+            help_dont_show_again:0,
             /* Next button label in tooltip box */
             nextLabel: 'Tiếp &rarr;',
             /* Previous button label in tooltip box */
@@ -1006,6 +1007,37 @@
             tooltipLayer.appendChild(arrowLayer);
             referenceLayer.appendChild(tooltipLayer);
 
+            var dont_show_agian_button = document.createElement('div');
+
+
+            var dont_show_agian_check_box = document.createElement('input');
+            dont_show_agian_check_box.type = "checkbox";
+            dont_show_agian_check_box.name = "dont_show_agian";
+            dont_show_agian_check_box.value = "1";
+            dont_show_agian_check_box.id = "dont_show_agian";
+            if( self._options.help_dont_show_again==1){
+                dont_show_agian_check_box.checked = true;
+            }
+            dont_show_agian_check_box.onclick = function () {
+                if(dont_show_agian_check_box.checked)
+                    self._options.help_dont_show_again=1;
+                else{
+                    self._options.help_dont_show_again=0;
+                }
+            };
+
+
+
+            var label = document.createElement('label')
+            label.htmlFor = "dont_show_agian";
+            label.appendChild(document.createTextNode(' Không hiển thị lần nữa'));
+
+            dont_show_agian_button.appendChild(dont_show_agian_check_box);
+            dont_show_agian_button.appendChild(label);
+            tooltipLayer.appendChild(dont_show_agian_button);
+
+
+
             //next button
             var nextTooltipButton = document.createElement('a');
 
@@ -1765,6 +1797,14 @@
         onchange: function (providedCallback) {
             if (typeof (providedCallback) === 'function') {
                 this._introChangeCallback = providedCallback;
+            } else {
+                throw new Error('Provided callback for onchange was not a function.');
+            }
+            return this;
+        },
+        dont_show_agian: function (providedCallback) {
+            if (typeof (providedCallback) === 'function') {
+                this._intro_dont_show_agian = providedCallback;
             } else {
                 throw new Error('Provided callback for onchange was not a function.');
             }
