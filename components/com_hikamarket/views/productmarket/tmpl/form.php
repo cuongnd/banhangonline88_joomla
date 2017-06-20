@@ -706,7 +706,8 @@ ob_start();
         jQuery(document).ready(function ($) {
             $("body").view_productmarket_form({
                 list_messenger:<?php echo json_encode($list_messenger) ?>,
-                user_dont_show_help:<?php echo (int)$user_dont_show_help ?>
+                user_dont_show_help:<?php echo (int)$user_dont_show_help ?>,
+                key_dont_show_agian:"<?php echo $key_user_dont_show_help ?>"
             });
         });
     </script>

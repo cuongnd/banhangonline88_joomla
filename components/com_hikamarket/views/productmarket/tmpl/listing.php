@@ -7,29 +7,44 @@
  * @license    GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
  */
 defined('_JEXEC') or die('Restricted access');
+JHtml::_('jQuery.help_step');
+JHtml::_('jQuery.auo_typing_text');
+JHtml::_('jqueryfrontend.uisortable');
+$doc = JFactory::getDocument();
+$doc->addScript( '/components/com_hikamarket/assets/js/view_productmarket_listing.js');
+$user=JFactory::getUser();
+$productClass = hikamarket::get('helper.product');
+$key_user_dont_show_help=$productClass::KEY_DONT_SHOW_LISTING_HELP;
+$user_params=$user->get('_params','');
+$user_dont_show_help=$user_params->get($key_user_dont_show_help,0);
+
 ?><div id="hikamarket_product_listing">
 <form action="<?php echo hikamarket::completeLink('product&task=listing'); ?>" method="post" name="adminForm" id="adminForm">
 <?php if(!HIKASHOP_RESPONSIVE) { ?>
 	<table class="hikam_filter">
 		<tr>
 			<td width="100%">
-				<?php echo JText::_('FILTER'); ?>:
-				<input type="text" name="search" id="hikamarket_products_listing_search" value="<?php echo $this->escape($this->pageInfo->search);?>" class="inputbox"/>
-				<button class="btn" onclick="this.form.submit();"><?php echo JText::_('GO'); ?></button>
-				<button class="btn" onclick="document.getElementById('hikamarket_products_listing_search').value='';this.form.submit();"><?php echo JText::_('RESET'); ?></button>
+			    <div class="search-product-area">
+                    <?php echo JText::_('FILTER'); ?>:
+                    <input type="text" name="search" id="hikamarket_products_listing_search" value="<?php echo $this->escape($this->pageInfo->search);?>" class="inputbox"/>
+                    <button class="btn" onclick="this.form.submit();"><?php echo JText::_('GO'); ?></button>
+                    <button class="btn" onclick="document.getElementById('hikamarket_products_listing_search').value='';this.form.submit();"><?php echo JText::_('RESET'); ?></button>
+                </div>
 			</td>
 			<td nowrap="nowrap">
 <?php } else {?>
-	<div class="row-fluid">
-		<div class="span7">
+	<div class="row">
+		<div class="col-lg-7">
 			<div class="input-prepend input-append">
-				<span class="add-on"><i class="icon-filter"></i></span>
-				<input type="text" name="search" id="hikamarket_products_listing_search" value="<?php echo $this->escape($this->pageInfo->search);?>" class="inputbox"/>
-				<button class="btn" onclick="this.form.submit();"><i class="icon-search"></i></button>
-				<button class="btn" onclick="document.getElementById('hikamarket_products_listing_search').value='';this.form.submit();"><i class="icon-remove"></i></button>
+			    <div class="search-product-area">
+                    <span class="add-on"><i class="icon-filter"></i></span>
+                    <input type="text" name="search" id="hikamarket_products_listing_search" value="<?php echo $this->escape($this->pageInfo->search);?>" class="inputbox"/>
+                    <button class="btn" onclick="this.form.submit();"><i class="icon-search"></i></button>
+                    <button class="btn" onclick="document.getElementById('hikamarket_products_listing_search').value='';this.form.submit();"><i class="icon-remove"></i></button>
+				</div>
 			</div>
 		</div>
-		<div class="span5">
+		<div class="col-lg-5">
 			<div class="expand-filters" style="width:auto;float:right">
 <?php }
 
@@ -75,7 +90,7 @@ if(!empty($this->breadcrumb)) {
 <?php if($this->config->get('show_category_explorer', 1)) { ?>
 	<table id="hikam_product_listing" style="border:0px;width:100%">
 		<tr>
-			<td style="vertical-align:top;width:10%">
+			<td class="categories" style="vertical-align:top;width:10%">
 				<div id="category_explorer_btn" class="category_explorer_btn_hide">
 					<a href="#" onclick="return category_listing_hideshow(this);"><span><?php echo JText::_('EXPLORER'); ?></span></a>
 				</div>
@@ -87,7 +102,7 @@ if(!empty($this->breadcrumb)) {
 
 	$show_product_image = $this->config->get('front_show_product_image', 1);
 	$acl_product_code = hikamarket::acl('product/edit/code');
-	$cols = 6;
+	$cols = 7;
 ?>
 	<table class="hikam_listing <?php echo (HIKASHOP_RESPONSIVE)?'table table-striped table-hover':'hikam_table'; ?>" style="width:100%">
 		<thead>
@@ -111,6 +126,9 @@ if(!empty($this->breadcrumb)) {
 				?></th>
 				<th class="hikamarket_product_price_title title"><?php
 					echo JText::_('PRODUCT_PRICE');
+				?></th>
+				<th class="hikamarket_product_categor_title title"><?php
+					echo JText::_('HIKA_CATEGORY');
 				?></th>
 <?php
 		if(!empty($this->fields)) {
@@ -196,6 +214,9 @@ foreach($this->products as $product) {
 			?></td>
 			<td class="hikamarket_product_price_value"><?php
 				echo $this->currencyHelper->displayPrices($product->prices);
+			?></td>
+			<td class="hikamarket_product_category_value"><?php
+				echo $product->category_name;
 			?></td>
 <?php
 		if(!empty($this->fields)) {
@@ -293,3 +314,32 @@ window.localPage.copyProduct = function(id, name) {
 	<?php echo JHTML::_( 'form.token' ); ?>
 </form>
 </div>
+<?php
+$list_messenger=array();
+$key="HIKA_NOTE_BUTTON_ADD_NEW_PRODUCT";
+$list_messenger[$key]=JText::_($key);
+$key="HIKA_NOTE_AREA_SEARCH_PRODUCT";
+$list_messenger[$key]=JText::_($key);
+$key="HIKA_NOTE_FILLTER_BY_CATEGORY";
+$list_messenger[$key]=JText::_($key);
+
+
+
+$js_content = '';
+$doc = JFactory::getDocument();
+ob_start();
+?>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $("body").view_productmarket_listing({
+                list_messenger:<?php echo json_encode($list_messenger) ?>,
+                user_dont_show_help:<?php echo (int)$user_dont_show_help ?>,
+                key_dont_show_agian:"<?php echo $key_user_dont_show_help ?>"
+            });
+        });
+    </script>
+<?php
+$js_content = ob_get_clean();
+$js_content = JUtility::remove_string_javascript($js_content);
+$doc->addScriptDeclaration($js_content);
+?>

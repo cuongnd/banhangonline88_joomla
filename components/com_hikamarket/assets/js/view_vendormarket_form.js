@@ -20,6 +20,7 @@
         var defaults = {
             show_help: true,
             enable_audio: true,
+            key_dont_show_agian: "",
             user_dont_show_help: true,
             list_messenger: []
             //main color scheme for view_vendormarket_form
@@ -45,6 +46,7 @@
         };
         plugin.close_help_tour = function () {
             help_tour = plugin.settings.help_tour;
+            key_dont_show_agian = plugin.settings.key_dont_show_agian;
             help_dont_show_again = help_tour._options.help_dont_show_again;
             var option_click = {
                 option: "com_hikamarket",
@@ -52,6 +54,7 @@
                 task: "ajax_change_status_help_dont_show_again",
                 format: 'json',
                 help_dont_show_again: help_dont_show_again,
+                key_dont_show_agian: key_dont_show_agian,
                 tmpl: 'json',
                 ignoreMessages: true
             };

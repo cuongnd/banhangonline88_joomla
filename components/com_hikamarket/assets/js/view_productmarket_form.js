@@ -123,6 +123,7 @@
         };
         plugin.close_help_tour = function () {
             help_tour=plugin.settings.help_tour;
+            key_dont_show_agian = plugin.settings.key_dont_show_agian;
             help_dont_show_again=help_tour._options.help_dont_show_again;
             console.log(help_tour);
             var option_click= {
@@ -131,6 +132,7 @@
                 task: "ajax_change_status_help_dont_show_again",
                 format: 'json',
                 help_dont_show_again: help_dont_show_again,
+                key_dont_show_agian: key_dont_show_agian,
                 tmpl: 'json',
                 ignoreMessages: true
             };

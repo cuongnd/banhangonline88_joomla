@@ -131,7 +131,8 @@ ob_start();
         jQuery(document).ready(function ($) {
             $("body.site.com_hikamarket.view-vendormarket.layout-form").view_vendormarket_form({
                 list_messenger:<?php echo json_encode($list_messenger) ?>,
-                user_dont_show_help:<?php echo (int)$user_dont_show_help ?>
+                user_dont_show_help:<?php echo (int)$user_dont_show_help ?>,
+                key_user_dont_show_help:"<?php echo $key_user_dont_show_help ?>"
             });
         });
     </script>

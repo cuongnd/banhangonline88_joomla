@@ -24,7 +24,7 @@ class PlgInstallerArkeditor extends JPlugin
 		
 	function onInstallerAfterInstaller ($model, $package, $installer, $result, $msg)
 	{
-	
+
 		$group =  (string) $installer->manifest->attributes()->group;
 		
 	

@@ -19,8 +19,8 @@ defined('_JEXEC') or die('Restricted access');
 			</td>
 			<td nowrap="nowrap">
 <?php } else {?>
-	<div class="row-fluid">
-		<div class="span7">
+	<div class="row">
+		<div class="col-log-7">
 			<div class="input-prepend input-append">
 				<span class="add-on"><i class="icon-filter"></i></span>
 				<input type="text" name="search" id="hikamarket_plugin_listing_search" value="<?php echo $this->escape($this->pageInfo->search);?>" class=""/>
@@ -28,7 +28,7 @@ defined('_JEXEC') or die('Restricted access');
 				<button class="btn" onclick="document.getElementById('hikamarket_plugin_listing_search').value='';this.form.submit();"><i class="icon-remove"></i></button>
 			</div>
 		</div>
-		<div class="span5">
+		<div class="col-log-5">
 			<div class="expand-filters" style="width:auto;float:right">
 <?php }
 

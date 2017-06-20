@@ -36,9 +36,10 @@ class productMarketController extends hikamarketController {
 		$help_dont_show_again=$input->getInt('help_dont_show_again',0);
 		$user=JFactory::getUser();
 		$productClass = hikamarket::get('helper.product');
-		$key_user_dont_show_help=$productClass::KEY_DONT_SHOW_HELP;
+		$key_user_dont_show_help=$input->getString('key_dont_show_agian',"");
 		$user->setParam($key_user_dont_show_help,$help_dont_show_again);
 		$user->save(true);
+		echo 1;
 		die;
 	}
 	public function	ajax_update_image_product(){

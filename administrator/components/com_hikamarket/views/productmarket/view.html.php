@@ -177,7 +177,7 @@ class productmarketViewProductmarket extends hikamarketView {
 
 		$query = 'FROM '.hikamarket::table($cfg['table']).' AS product '.$join.$filters.$order;
 		$db->setQuery('SELECT DISTINCT product.*' . (empty($select)?'':',') . implode(',', $select) . ' ' . $query, (int)$pageInfo->limit->start, (int)$pageInfo->limit->value);
-
+		//echo JUtility::getQuery('SELECT DISTINCT product.*' . (empty($select)?'':',') . implode(',', $select) . ' ' . $query, (int)$pageInfo->limit->start, (int)$pageInfo->limit->value);
 		$rows = $db->loadObjectList();
 
 		$products = array();

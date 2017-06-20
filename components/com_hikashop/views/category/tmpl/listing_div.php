@@ -314,10 +314,4 @@ if(!empty($this->rows)){
 	<?php }
 }
 ?>
-<style>
-	.hikashop_subcategories_listing .hikashop_category_image .ch-item{
-		height:<?php echo $this->image->main_thumbnail_y;?>px;
-		text-align:center;
-		clear:both;
-	}
-</style>
+

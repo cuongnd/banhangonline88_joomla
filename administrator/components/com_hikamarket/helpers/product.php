@@ -11,4 +11,5 @@ defined('_JEXEC') or die('Restricted access');
 class hikamarketProductHelper
 {
 	const KEY_DONT_SHOW_HELP = 'com_hikamarket.view.productmarket.user_dont_show_help';
+	const KEY_DONT_SHOW_LISTING_HELP = 'com_hikamarket.view.productmarket.user_dont_listing_show_help';
 }
