@@ -8,7 +8,6 @@
  */
 
 defined('_JEXEC') or die;
-
 $controller = JControllerLegacy::getInstance('Search');
 $controller->execute(JFactory::getApplication()->input->get('task'));
 $controller->redirect();

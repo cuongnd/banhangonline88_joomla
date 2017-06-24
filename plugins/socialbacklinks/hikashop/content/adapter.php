@@ -180,7 +180,6 @@ class PlgSBHikashopAdapter extends SBPluginsContent
 				. ' ORDER BY `category_ordering`';
 		$db->setQuery ($query);
 		$cats = $db->loadObjectList ();
-		
 		$categories = array();
 		foreach ($cats as $cat)
 		{

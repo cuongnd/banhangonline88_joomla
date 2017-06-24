@@ -78,12 +78,13 @@
         }
         plugin.registion_form_validate = function () {
             var list_messenger=plugin.settings.list_messenger;
-            $form = $element.find('#hikamarket_registration_form');
-            $name = $form.find('input[name="data[register][name]"]');
-            $email = $form.find('input[name="data[register][email]"]');
-            $password = $form.find('input[name="data[register][password]"]');
-            $password2 = $form.find('input[name="data[register][password2]"]');
-            $vendor_name = $form.find('input[name="data[vendorregister][vendor_name]"]');
+            var $form = $element.find('#hikamarket_registration_form');
+            var $name = $form.find('input[name="data[register][name]"]');
+            var $email = $form.find('input[name="data[register][email]"]');
+            var $password = $form.find('input[name="data[register][password]"]');
+            var $password2 = $form.find('input[name="data[register][password2]"]');
+            var $vendor_name = $form.find('input[name="data[vendorregister][vendor_name]"]');
+            var $vendor_terms=$element.find('#vendor_terms');
             if ($name.val().trim() == '') {
                 $.alert_notify(list_messenger['HIKA_NAME_REQUIRED'],'error');
                 $name.focus();
@@ -112,6 +113,10 @@
                 $.alert_notify(list_messenger['HIKA_VENDOR_NAME_REQUIRED'],'error');
                 $vendor_name.focus();
                 return false;
+            }else if($vendor_terms.val().trim()==''){
+                $.alert_notify(list_messenger['HIKAM_ERR_TERMS_EMPTY'],'error');
+                $vendor_terms.focus();
+                return false;
             }
 
             return true;
@@ -128,11 +133,9 @@
             };
             option_click = $.param(option_click);
             var data_submit = $form.serializeObject();
-            var vendor_description=tinymce.get("vendor_description").getContent();
-            data_submit.vendor_description=vendor_description;
-            var vendor_description=tinymce.get("vendor_description").getContent();
+            var vendor_description=$element.find('#vendor_description').val();
             data_submit.data.vendorregister.vendor_description=vendor_description;
-            var vendor_terms=tinymce.get("vendor_terms").getContent();
+            var vendor_terms=$element.find('#vendor_terms').val();
             data_submit.data.vendorregister.vendor_terms=vendor_terms;
             var ajax_web_design = $.ajax({
                 contentType: 'application/json',
@@ -154,7 +157,7 @@
                         $email.focus();
                     }else if(response.e==1&&response.type=="terms_empty"){
                         $.alert_notify(response.m,'error');
-                        tinymce.get("vendor_terms").focus()
+                        $element.find('#vendor_terms').focus()
                     }
                     else {
                         $form.submit();

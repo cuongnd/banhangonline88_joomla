@@ -237,7 +237,6 @@ class SocialProfilePlugin extends JPlugin
         $this->loadSettings($network);
 
         $file = JPATH_SITE . '/plugins/socialprofiles/' . $this->profileName . '/' . $this->profileName . '/tmpl/configuration.php';
-
         if (!JFile::exists($file))
             return "No configuration is required for this profile plugin";
 

@@ -33,7 +33,7 @@ class EasySocialControllerFoundry extends EasySocialController
 
 			$lang->loadSite();
 			$lang->loadAdmin();
-
+			$doc=JFactory::getDocument();
 			foreach ($resources as &$resource) {
 				$resource	= (object) $resource;
 				$result 	= false;

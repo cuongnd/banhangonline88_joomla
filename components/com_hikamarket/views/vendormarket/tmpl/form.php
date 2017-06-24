@@ -122,6 +122,8 @@ $key="HIKA_PASSWORD_RETYPE_INCORRECT";
 $list_messenger[$key]=JText::_($key);
 $key="HIKA_VENDOR_NAME_REQUIRED";
 $list_messenger[$key]=JText::_($key);
+$key="HIKAM_ERR_TERMS_EMPTY";
+$list_messenger[$key]=JText::_($key);
 
 $js_content = '';
 $doc = JFactory::getDocument();

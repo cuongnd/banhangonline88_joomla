@@ -29,6 +29,7 @@ class plgSocialbacklinksHikashop extends JPlugin
 	 */
 	public function onSBPluginRegister( )
 	{
+
 		JLoader::register( 'PlgSBHikashopAdapter', JPATH_ROOT . '/plugins/socialbacklinks/hikashop/content/adapter.php' );
 		SBPlugin::register( new PlgSBHikashopAdapter( $this ) );
 		

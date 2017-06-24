@@ -1,5 +1,6 @@
 @import "../../../../templates/vina_bonnie/bootstrap-3.3.7/less/variables.less";
 @import "../../../../templates/vina_bonnie/bootstrap-3.3.7/less/mixins.less";
+@time_out_hover:              .5s;
 .mod_menu.homeverticalmenutag
 {
 
@@ -50,10 +51,23 @@
         }
 
       }
+
       li.menu-iem.level-1:hover {
+
         .container-home-page {
           display: block;
+          transition: opacity @time_out_hover linear @time_out_hover;
+          -webkit-transition: opacity @time_out_hover linear @time_out_hover;
+          -moz-transition: opacity @time_out_hover linear @time_out_hover;
+          -ms-transition: opacity @time_out_hover linear @time_out_hover;
         }
+      }
+    }
+    li.menu-iem.level-1.menu-iem-3021
+    {
+      .container-home-page
+      {
+
       }
     }
     @total_column: 4;
