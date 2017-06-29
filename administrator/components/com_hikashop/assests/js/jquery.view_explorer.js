@@ -94,10 +94,15 @@
             if(typeof list_cookie_category_store=="" ){
                 list_cookie_category_store=JSON.stringify([]);
             }
-            list_cookie_category_store=JSON.parse(list_cookie_category_store);
-            list_cookie_category_store.forEach(function(category_id) {
-                $element.find('span[data-category_id="'+category_id+'"]').trigger('click');
-            });
+            console.log(list_cookie_category_store);
+            if(typeof list_cookie_category_store!="undefined")
+            {
+                list_cookie_category_store=JSON.parse(list_cookie_category_store);
+                list_cookie_category_store.forEach(function(category_id) {
+                    $element.find('span[data-category_id="'+category_id+'"]').trigger('click');
+                });
+            }
+
             var filter_id=plugin.settings.filter_id;
             console.log(filter_id);
             $element.find('li[data-category_id="'+filter_id+'"]').addClass('selected');

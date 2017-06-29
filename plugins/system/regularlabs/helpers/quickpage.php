@@ -85,8 +85,8 @@ class PlgSystemRegularLabsQuickPageHelper
 
 		header('Content-Type: ' . $format . '; charset=utf-8');
 		JHtml::_('bootstrap.framework');
-		JFactory::getDocument()->addScript(JUri::root(true) . '/administrator/templates/isis/js/template.js');
-		JFactory::getDocument()->addStyleSheet(JUri::root(true) . '/administrator/templates/isis/css/template.css');
+		JFactory::getDocument()->addScript('/administrator/templates/isis/js/template.js');
+		JFactory::getDocument()->addStyleSheet('/administrator/templates/isis/css/template.css');
 
 		RLFunctions::stylesheet('regularlabs/popup.min.css');
 

@@ -12,7 +12,6 @@
 	{
 		var $w = $(window);
 
-		$('*[rel=tooltip]').tooltip();
 
 		// Turn radios into btn-group
 		$('.radio.btn-group label').addClass('btn');

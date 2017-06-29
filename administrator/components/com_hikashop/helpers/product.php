@@ -9,14 +9,14 @@
 defined('_JEXEC') or die('Restricted access');
 ?><?php
 class hikashopProductHelper {
-	function get_code($title){
+	function get_code($title,$length=999){
 		$title = explode(' ', $title);
 		$title = array_slice($title, 0, 2);
 		$title = implode('_', $title);
 		$title = JString::vn_str_filter($title);
 		$title = JString::clean($title);
 		$title = strtolower($title);
-		$title .= '_' . mt_rand(100, 999);
+		$title .= '_' . mt_rand(100, $length);
 		return $title;
 	}
 	function get_alias($title){

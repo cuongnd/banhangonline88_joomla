@@ -152,6 +152,7 @@ class vendormarketViewVendormarket extends hikamarketView {
 		$this->toolbar = array(
 			'pay' => array('name' => 'custom', 'icon' => 'pay', 'alt' => JText::_('PAY_VENDOR'), 'task' => 'pay', 'display' => $manage),
 			'reports' => array('name' => 'custom', 'icon' => 'reports', 'alt' => JText::_('HIKAM_REPORTS'), 'task' => 'reports', 'display' => $manage),
+			'import_vendor_from_vatgia' => array('name' => 'custom','check'=>false, 'icon' => 'import', 'alt' => JText::_('VG vendor import'), 'task' => 'import_vendor_from_vatgia', 'display' => $manage),
 			'|',
 			array('name' => 'publishList', 'display' => $manage),
 			array('name' => 'unpublishList', 'display' => $manage),
@@ -605,6 +606,9 @@ class vendormarketViewVendormarket extends hikamarketView {
 		}
 	}
 
+	public function import_vendor_from_vatgia($tpl = null) {
+
+	}
 	public function pay($tpl = null) {
 		$app = JFactory::getApplication();
 		$db = JFactory::getDBO();

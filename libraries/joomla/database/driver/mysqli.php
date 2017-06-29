@@ -1000,7 +1000,7 @@ class JDatabaseDriverMysqli extends JDatabaseDriver
 		$errorMessage = (string) mysqli_error($this->connection);
 
 		// Replace the Databaseprefix with `#__` if we are not in Debug
-		if (!$this->debug)
+		if ($this->debug)
 		{
 			$errorMessage = str_replace($this->tablePrefix, '#__', $errorMessage);
 			$query        = str_replace($this->tablePrefix, '#__', $query);

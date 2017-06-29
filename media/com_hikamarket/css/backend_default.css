@@ -663,7 +663,7 @@ div.toggle_onload {
   width: 16px;
   height: 16px;
   display: inline-block;
-  background-image: url('http:/com_hikashop/images/spinner.gif');
+  background-image: url('http://com_hikashop/images/spinner.gif');
 }
 div.toggle_onload a {
   display: none;

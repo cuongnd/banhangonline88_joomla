@@ -7,10 +7,20 @@
  */
 JHtml::_('jquery.framework');
 JHtml::_('jquerybackend.base64');
+JHtml::_('jquerybackend.auto_numeric');
+$session=JFactory::getSession();
+$app=JFactory::getApplication();
+$filter_by=$session->get('product_filter_by','hot');
+$filter_page_number=$session->get('filter_page_number',1);
 $doc=JFactory::getDocument();
-
-$doc->addScript(JUri::root().'administrator/components/com_hikashop/assests/js/view_importproductvatgia.js');
+$doc->addScript('/administrator/components/com_hikashop/assests/js/view_importproductvatgia.js');
 $doc->addLessStyleSheet('/administrator/components/com_hikashop/assests/less/view_category_vatgia_add_product.less');
+$list_filter=array(
+    hot=>"Hot",
+    min_price=>"Min->max product",
+    promotion=>"Promotion",
+    top_week=>"Top week"
+);
 ?>
 <div class="view-importproductvatgia">
     <form action="index.php">
@@ -22,16 +32,37 @@ $doc->addLessStyleSheet('/administrator/components/com_hikashop/assests/less/vie
             </tr>
 
         </table>
+        <div class="pull-left">
+            <select name="filter_by" class="filter_by">
+                <?php foreach($list_filter as $key=>$value){ ?>
+                    <option <?php echo $filter_by==$key?' selected ':'' ?>  value="<?php echo $key ?>"><?php echo $value ?></option>
+                <?php } ?>
+            </select>
+            select page number
+            <select name="filter_page_number" class="filter_page_number">
+                <?php for($i=1;$i<=10;$i++){ ?>
+                    <option <?php echo $page_selected==$i?' selected ':'' ?>  value="<?php echo $i ?>"><?php echo $i ?></option>
+                <?php } ?>
+            </select>
+        </div>
+        <label><input type="checkbox" value="1" name="vatgia_deal">is vat gia deal</label>
         <input type="hidden" name="hika_category_id" value="<?php echo $this->category_item->category_id ?>">
         <button class="btn btn-primary get_product"  type="button"><?php echo JText::_('get product') ?></button>
         <button class="btn btn-primary importproductvatgia" type="button"><?php echo JText::_('import product') ?></button>
+        <button class="btn btn-primary cancel_importproductvatgia" type="button"><?php echo JText::_('cancel import product') ?></button>
         <h4 class="link"></h4>
+
         <div class="vatgia-div-loading"></div>
         <div class="vatgia-import-product-div-loading"></div>
         <hr/>
-        <h1 class="detail_product_name"></h1>
+        <h1 class="product_name"></h1>
         <img class="src_image" src="">
-        <div class="product_price"></div>
+        <div>Price<span class="product_price"></span></div>
+        <div>promotion Price<span class="price_promotion"></span></div>
+        <div>promotion Price time<span class="price_promotion_time"></span></div>
+        <div class="">vendor : <span class="vendor_name"></span></div>
+        <div class="">meta description : <span class="meta_description"></span></div>
+        <div class="">product keywords : <span class="product_keywords"></span></div>
         <div class="vatgia-wrapper-product">
 
         </div>

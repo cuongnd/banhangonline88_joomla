@@ -1995,6 +1995,7 @@ abstract class JDatabaseDriver extends JDatabase implements JDatabaseInterface
 			}
 
 			$literal .= str_replace($prefix, $this->tablePrefix, substr($sql, $startPos, $j - $startPos));
+
 			$startPos = $j;
 
 			$j = $startPos + 1;

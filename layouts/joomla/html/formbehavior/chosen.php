@@ -22,8 +22,9 @@ extract($displayData);
 
 // Include jQuery
 JHtml::_('jquery.framework');
-JHtml::_('script', 'jui/chosen.jquery.min.js', false, true, false, false, $debug);
-JHtml::_('stylesheet', 'jui/chosen.css', false, true);
+$doc=JFactory::getDocument();
+$doc->addScript('/media/jui/js/chosen.jquery.min.js');
+$doc->addStyleSheet('/media/jui/css/chosen.css');
 
 // Options array to json options string
 $options_str = json_encode($options, ($debug && defined('JSON_PRETTY_PRINT') ? JSON_PRETTY_PRINT : false));

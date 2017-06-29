@@ -13,11 +13,11 @@ class JConfig {
 	public $debug_lang = '0';
 	public $dbtype = 'mysqli';
 	public $host = 'localhost';
-	public $user = 'banhangonl_bho';
-	public $password = 'w7a8GNPjXb';
-	public $db = 'banhangonl_bho2';
+	public $user = 'root';
+	public $password = '123456';
+	public $db = 'banhangonline88_joomla';
 	public $dbprefix = 'bho2_';
-	public $live_site = '';
+	public $live_site = 'http://localhost/banhangonline88_joomla';
 	public $secret = 'aSqZR4hP8HMNjOG2';
 	public $gzip = '1';
 	public $error_reporting = 'default';
@@ -40,7 +40,7 @@ class JConfig {
 	public $smtphost = 'localhost';
 	public $smtpsecure = 'none';
 	public $smtpport = '25';
-	public $caching = '1';
+	public $caching = '0';
 	public $cache_handler = 'file';
 	public $cachetime = '30';
 	public $cache_platformprefix = '1';
@@ -56,8 +56,8 @@ class JConfig {
 	public $unicodeslugs = '1';
 	public $feed_limit = '10';
 	public $feed_email = 'none';
-	public $log_path = '/home/bho/domains/banhangonline88.com/public_html/logs';
-	public $tmp_path = '/home/banhangonl/domains/banhangonline88.com/public_html/tmp';
+	public $log_path = '/logs';
+	public $tmp_path = '/tmp';
 	public $lifetime = '1500';
 	public $session_handler = 'database';
 	public $memcache_persist = '1';

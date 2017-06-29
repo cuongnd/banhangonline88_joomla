@@ -72,7 +72,7 @@ if ($this->params->get('boldText'))
 }
 
 // Load template javascript
-$doc->addScript($this->baseurl . '/templates/' . $this->template . '/js/template.js', 'text/javascript');
+$doc->addScript('/templates/' . $this->template . '/js/template.js', 'text/javascript');
 
 // Logo file
 if ($this->params->get('logoFile'))

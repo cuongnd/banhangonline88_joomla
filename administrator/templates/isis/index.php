@@ -16,7 +16,7 @@ $this->language  = $doc->language;
 $this->direction = $doc->direction;
 $input           = $app->input;
 $user            = JFactory::getUser();
-
+JHtml::_('bootstrap.framework');
 // Output as HTML5
 $doc->setHtml5(true);
 
@@ -28,10 +28,10 @@ $mainPageUri = $frontEndUri->toString();
 // Add JavaScript Frameworks
 JHtml::_('bootstrap.framework');
 
-$doc->addScriptVersion($this->baseurl . '/templates/' . $this->template . '/js/template.js');
-
+$doc->addScript('/administrator/templates/' . $this->template . '/js/template.js');
+$doc->addStyleSheet( '/administrator/templates/' . $this->template . '/css/template.css');
 // Add Stylesheets
-$doc->addStyleSheetVersion($this->baseurl . '/templates/' . $this->template . '/css/template' . ($this->direction == 'rtl' ? '-rtl' : '') . '.css');
+$doc->addStyleSheet('/administrator/templates/' . $this->template . '/css/template' . ($this->direction == 'rtl' ? '-rtl' : '') . '.css');
 
 // Load specific language related CSS
 $languageCss = 'language/' . $lang->getTag() . '/' . $lang->getTag() . '.css';
@@ -42,7 +42,7 @@ if (file_exists($languageCss) && filesize($languageCss) > 0)
 }
 
 // Load custom.css
-$customCss = 'templates/' . $this->template . '/css/custom.css';
+$customCss = '/administrator/templates/' . $this->template . '/css/custom.css';
 
 if (file_exists($customCss) && filesize($customCss) > 0)
 {

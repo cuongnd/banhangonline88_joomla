@@ -21,10 +21,10 @@ $doc->setHtml5(true);
 // Add JavaScript Frameworks
 JHtml::_('bootstrap.framework');
 
-$doc->addScriptVersion($this->baseurl . '/templates/' . $this->template . '/js/template.js');
+$doc->addScript( '/administrator/templates/' . $this->template . '/js/template.js');
 
 // Add Stylesheets
-$doc->addStyleSheetVersion($this->baseurl . '/templates/' . $this->template . '/css/template.css');
+$doc->addStyleSheet( '/administrator/templates/' . $this->template . '/css/template.css');
 
 // Load optional RTL Bootstrap CSS
 JHtml::_('bootstrap.loadCss', false, $this->direction);

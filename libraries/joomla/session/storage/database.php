@@ -40,9 +40,7 @@ class JSessionStorageDatabase extends JSessionStorage
 			->where($db->quoteName('session_id') . ' = ' . $db->quote($id));
 
 			$db->setQuery($query);
-
 			$result = (string) $db->loadResult();
-
 			$result = str_replace('\0\0\0', chr(0) . '*' . chr(0), $result);
 
 			return $result;
