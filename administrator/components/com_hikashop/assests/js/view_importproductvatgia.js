@@ -48,7 +48,7 @@
             product.src_image=escape($element.find('.src_image').attr('src'));
             var product_description=$element.find('.vatgia-wrapper-product .content').html();
             if(typeof product_description=='undefined' || product_description.trim()==''){
-                product_description="no thing";
+                product_description="";
             }
             product.product_description=$.base64Encode(product_description);
             product.category_id=category_id;

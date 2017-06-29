@@ -25,23 +25,26 @@ $sub_category_item=$this->sub_category_item;
 $sub_category_item_pivot=JArrayHelper::pivot($sub_category_item,'category_id');
 ?>
 <div class="view-importproductvatgia-all">
+
     <form action="index.php">
         <div class="row-fluid">
             <div class="span8">
                 <button class="btn btn-primary" type="button" data-toggle="collapse" aria-expanded="true" data-target="#list_category"><?php echo $this->category_item->category_name ?></button>
                 <div id="list_category" class="collapse open">
-                    <table class="table table-striped table-bordered">
+                    <table class="table table-striped table-bordered list-category-vat-gia-and-category-system">
                         <thead>
-                        <tr>
-                            <td>Select</td>
-                            <td>Category name</td>
-                            <td>Category id</td>
-                            <td>parent Category</td>
-                            <td>VG Category</td>
-                            <td>Page number</td>
-                            <td>filter</td>
-                            <td>Is deal</td>
-                        </tr>
+                            <tr>
+                                <td>Select</td>
+                                <td>Category name</td>
+                                <td>Category id</td>
+                                <td>parent Category</td>
+                                <td>VG Category</td>
+                                <td>Page number</td>
+                                <td>filter</td>
+                                <td>Is deal</td>
+                                <td><?php echo JText::_('Test') ?></td>
+                                <td><?php echo JText::_('State') ?></td>
+                            </tr>
                         </thead>
                         <tbody>
                         <?php foreach($this->sub_category_item as $item_category){ ?>
@@ -50,6 +53,9 @@ $sub_category_item_pivot=JArrayHelper::pivot($sub_category_item,'category_id');
                                 continue;
                             }
                             $parent_category=$sub_category_item_pivot[$item_category->category_parent_id];
+                            if(!$parent_category){
+                                $parent_category=$this->category_item;
+                            }
                             ?>
                             <tr class="item-category">
                                 <td><input type="checkbox" value="1" name="selected[]"></td>
@@ -74,6 +80,8 @@ $sub_category_item_pivot=JArrayHelper::pivot($sub_category_item,'category_id');
 
                                 </td>
                                 <td><input type="checkbox" value="1" name="vatgia_deal[]"></td>
+                                <td><button type="button" class="btn btn-info btn-test-get-content"><?php echo JText::_('Test') ?></button></td>
+                                <td><span class="state"></span></td>
                             </tr>
                         <?php } ?>
                         </tbody>
@@ -85,7 +93,6 @@ $sub_category_item_pivot=JArrayHelper::pivot($sub_category_item,'category_id');
             </div>
             <div class="span4">
                 <input type="hidden" name="hika_category_id" value="<?php echo $this->category_item->category_id ?>">
-                <button class="btn btn-primary get_product"  type="button"><?php echo JText::_('get product') ?></button>
                 <button class="btn btn-primary importproductvatgia" type="button"><?php echo JText::_('import product') ?></button>
                 <button class="btn btn-primary cancel_importproductvatgia" type="button"><?php echo JText::_('cancel import product') ?></button>
 
@@ -109,6 +116,22 @@ $sub_category_item_pivot=JArrayHelper::pivot($sub_category_item,'category_id');
         </div>
         <div class="vatgia-wrapper">
 
+        </div>
+
+        <!-- Modal -->
+        <div id="test_get_content_product_vt" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="test_get_content_product_vt" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="myModalLabel">Modal header</h3>
+            </div>
+            <div class="modal-body">
+                <div class="modal-vatgia-wrapper">
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+            </div>
         </div>
     </form>
 </div>

@@ -20,6 +20,7 @@ class JConfig {
 	public $live_site = 'http://localhost/banhangonline88_joomla';
 	public $secret = 'aSqZR4hP8HMNjOG2';
 	public $gzip = '1';
+	public $is_localhost = '1';
 	public $error_reporting = 'default';
 	public $helpurl = 'https://help.joomla.org/proxy/index.php?keyref=Help{major}{minor}:{keyref}';
 	public $ftp_host = '';
