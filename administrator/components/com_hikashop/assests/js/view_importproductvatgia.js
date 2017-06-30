@@ -94,6 +94,7 @@
             plugin.add_product_to_database();
         }
         plugin.init = function() {
+            plugin.settings = $.extend({}, defaults, options);
             $element.find('button.get_product').prop('disabled',false);
             $element.find('button.importproductvatgia').prop('disabled',false);
             $element.find('input[name="vatgia_category_id"]').autoNumeric('init',{

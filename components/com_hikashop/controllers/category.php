@@ -16,7 +16,7 @@ class categoryController extends hikashopController{
 	public function __construct($config = array(), $skip = false) {
 		parent::__construct($config, $skip);
 		$this->display = array_merge($this->display, array(
-			'test','update_remote_category'
+			'test','update_remote_category','get_sub_category_by_category_id'
 		));
 	}
 
@@ -38,6 +38,14 @@ class categoryController extends hikashopController{
 			->where('category_id='.(int)$category_id)
 		;
 		$db->setQuery($query)->execute();
+		die;
+	}
+	public function get_sub_category_by_category_id(){
+		$app=JFactory::getApplication();
+		$category_id=$app->input->getInt('category_id',0);
+		$class_category = hikashop_get('class.category');
+		$sub_category_item = $class_category->getChilds($category_id, true, array(), '', 0, 300);
+		echo json_encode($sub_category_item);
 		die;
 	}
 }

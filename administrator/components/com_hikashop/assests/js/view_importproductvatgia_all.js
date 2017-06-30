@@ -20,7 +20,6 @@
         var defaults = {
             //main color scheme for view_importproductvatgia_all
             //be sure to be same as colors on main.css or custom-variables.less
-
         }
 
         // current instance of the object
@@ -104,6 +103,7 @@
             plugin.add_product_to_database();
         }
         plugin.init = function() {
+            plugin.settings = $.extend({}, defaults, options);
             $element.find('button.get_product').prop('disabled',false);
             $element.find('button.importproductvatgia').prop('disabled',false);
             $element.find('input[name="vatgia_category_id[]"]').autoNumeric('init',{
@@ -150,6 +150,36 @@
             $element.find('.importproductvatgia:not([disabled])').click(function(){
                 plugin.saveproductsvatgia();
             });
+            $element.find('table.list-category-vat-gia-and-category-system thead .checkbox').click(function(){
+                var $tbody=$element.find('table.list-category-vat-gia-and-category-system tbody');
+                if($(this).is(':checked')){
+                    $tbody.find('.item-category input[name="selected[]"]').prop('checked',true);
+                }else{
+                    $tbody.find('.item-category input[name="selected[]"]').prop('checked',false);
+                }
+            });
+            $element.find('table.list-category-vat-gia-and-category-system tbody .item-category td:first-child').click(function(){
+                var $selected=$(this).find('input[name="selected[]"]');
+                $selected.prop('checked',!$selected.is(':checked')).trigger('click');
+            });
+            $element.find('table.list-category-vat-gia-and-category-system tbody .item-category input[name="selected[]"]').click(function(){
+                var is_checked=true;
+                var $list_tr=$element.find('table.list-category-vat-gia-and-category-system tbody .item-category');
+                for(var i=0;i<$list_tr.length;i++){
+                    var $tr=$($list_tr.get(i));
+                    var $selected=$tr.find('input[name="selected[]"]');
+                    if(!$selected.is(':checked')){
+                        is_checked=false;
+                        break;
+                    }
+                }
+                var $thead_checked=$element.find('table.list-category-vat-gia-and-category-system thead .checkbox');
+                if(is_checked)
+                    $thead_checked.prop('checked',true);
+                else
+                    $thead_checked.prop('checked',false);
+
+            });
         }
 
         plugin.get_detail_product_from_vatgia = function() {
@@ -181,6 +211,7 @@
 
             var category_id=current_system_category_id_and_vatgia_category_id.category_id;
             console.log('link_product: http://vatgia.com'+link_product);
+
             plugin.settings.ajax_get_detail_product_from_vatgia= $.ajax({
                 type: "POST",
                 url: 'index.php?get_detail_product_from_vatgia=1',
@@ -211,16 +242,16 @@
                         console.log('there exist sub product');
                         console.log('response:');
                         console.log(JSON.stringify(response));
-                        var array_list_link_product=plugin.settings.list_link_product;
+                        var list_link_product=plugin.settings.list_link_product;
                         var response_list_link_product=response.list_link_product;
                         for(var i=0;i<response_list_link_product.length;i++){
                             var link=response_list_link_product[i];
                             if(link!="")
                             {
-                                array_list_link_product.push(link);
+                                list_link_product.push(link);
                             }
                         }
-                        plugin.settings.list_link_product=array_list_link_product;
+                        plugin.settings.list_link_product=list_link_product;
                         plugin.get_detail_product_from_vatgia();
                     }else{
                         console.log('show product from response');
@@ -293,74 +324,85 @@
             if(stop==1){
                 return;
             }
+            var func_ajax_getproductsvatgia=function(system_category_id_and_vatgia_category_id) {
+                var tr_index = system_category_id_and_vatgia_category_id.index;
+                $($list_tr_item_category.get(tr_index)).find('td .state').html('processing');
+                var filter_page_number=system_category_id_and_vatgia_category_id.filter_page_number;
+                system_category_id_and_vatgia_category_id.filter_page_number++;
+                plugin.settings.current_system_category_id_and_vatgia_category_id = system_category_id_and_vatgia_category_id;
+                var vatgia_category_id = system_category_id_and_vatgia_category_id.vatgia_category_id;
+                var category_id = system_category_id_and_vatgia_category_id.category_id;
+                var filter_by = system_category_id_and_vatgia_category_id.filter_by;
+                var vatgia_deal = system_category_id_and_vatgia_category_id.vatgia_deal;
+                console.log("http://www.vatgia.com/"+vatgia_category_id+","+filter_by+"/abc.html?&page="+filter_page_number);
+                $.ajax({
+                    type: "POST",
+                    url: 'index.php?getproductsvatgia',
+                    dataType: "json",
+                    data: (function () {
+
+                        dataPost = {
+                            option: 'com_hikashop',
+                            ctrl: "category",
+                            task: 'getproductsvatgia',
+                            filter_page_number: filter_page_number,
+                            filter_by: filter_by,
+                            vatgia_deal: vatgia_deal,
+                            category_id: category_id,
+                            vatgia_category_id: vatgia_category_id
+
+                        };
+                        return dataPost;
+                    })(),
+                    beforeSend: function () {
+                    },
+                    error: function () {
+                    },
+                    success: function (response) {
+                        $element.find('.link').html(response.link);
+                        $element.find('.vatgia-wrapper').html($.base64Decode(response.html));
+                        $element.find('.vatgia-wrapper div.no_picture_thumb').removeAttr('onmouseover');
+
+                        var $wrapper = $element.find('.vatgia-wrapper .wrapper');
+                        var list_link_product = [];
+                        for (var i = 0; i < $wrapper.length; i++) {
+                            var $item = $($wrapper.get(i));
+                            var link = $item.find('.name a').attr('href');
+                            list_link_product.push(link);
+                        }
+                        plugin.settings.list_link_product = list_link_product;
+                        if (list_link_product.length > 0) {
+                            plugin.get_detail_product_from_vatgia();
+                        } else {
+                            plugin.save_products_by_per_category();
+                        }
+
+                    }
+                });
+            }
             var $list_tr_item_category=$element.find('.list-category-vat-gia-and-category-system tbody tr.item-category');
             $list_tr_item_category.find('td .state').empty();
             var list_system_category_id_and_vatgia_category_id=plugin.settings.list_system_category_id_and_vatgia_category_id;
-            if(list_system_category_id_and_vatgia_category_id.length>0){
-                var system_category_id_and_vatgia_category_id=list_system_category_id_and_vatgia_category_id.pop();
-                var tr_index=system_category_id_and_vatgia_category_id.index;
-                $($list_tr_item_category.get(tr_index)).find('td .state').html('processing');
-                plugin.settings.current_system_category_id_and_vatgia_category_id=system_category_id_and_vatgia_category_id;
-                var vatgia_category_id=system_category_id_and_vatgia_category_id.vatgia_category_id;
-                var category_id=system_category_id_and_vatgia_category_id.category_id;
-                var filter_page_number=system_category_id_and_vatgia_category_id.filter_page_number;
-                var filter_by=system_category_id_and_vatgia_category_id.filter_by;
-                var vatgia_deal=system_category_id_and_vatgia_category_id.vatgia_deal;
-                if(vatgia_category_id!=0){
-                    $.ajax({
-                        type: "POST",
-                        url: 'index.php?getproductsvatgia',
-                        dataType: "json",
-                        data: (function () {
-
-                            dataPost = {
-                                option: 'com_hikashop',
-                                ctrl:"category",
-                                task: 'getproductsvatgia',
-                                filter_page_number: filter_page_number,
-                                filter_by: filter_by,
-                                vatgia_deal: vatgia_deal,
-                                category_id: category_id,
-                                vatgia_category_id: vatgia_category_id
-
-                            };
-                            return dataPost;
-                        })(),
-                        beforeSend: function () {
-                        },
-                        error: function(){
-                        },
-                        success: function (response) {
-                            $element.find('.link').html(response.link);
-                            $element.find('.vatgia-wrapper').html($.base64Decode(response.html));
-                            $element.find('.vatgia-wrapper div.no_picture_thumb').removeAttr('onmouseover');
-
-                            var $wrapper=$element.find('.vatgia-wrapper .wrapper');
-                            var list_link_product=[];
-                            for(var i=0;i<$wrapper.length;i++){
-                                var $item=$($wrapper.get(i));
-                                var link=$item.find('.name a').attr('href');
-                                list_link_product.push(link);
-                            }
-                            plugin.settings.list_link_product=list_link_product;
-                            if(list_link_product.length>0)
-                            {
-                                plugin.get_detail_product_from_vatgia();
-                            }else {
-                                plugin.save_products_by_per_category();
-                            }
-
-                        }
-                    });
-
-
-                }else{
-                    plugin.save_products_by_per_category();
-                }
+            if(typeof plugin.settings.current_system_category_id_and_vatgia_category_id !="undefined"){
+                var current_system_category_id_and_vatgia_category_id=plugin.settings.current_system_category_id_and_vatgia_category_id;
+            }else if(list_system_category_id_and_vatgia_category_id.length>0){
+                current_system_category_id_and_vatgia_category_id=list_system_category_id_and_vatgia_category_id.pop();
+                console.log(current_system_category_id_and_vatgia_category_id);
             }else{
                 plugin.settings.stop=1;
                 alert('import completed !');
-
+            }
+            var system_category_id_and_vatgia_category_id={};
+            if(current_system_category_id_and_vatgia_category_id.filter_page_number<=current_system_category_id_and_vatgia_category_id.total_page)
+            {
+                system_category_id_and_vatgia_category_id=current_system_category_id_and_vatgia_category_id;
+                func_ajax_getproductsvatgia(system_category_id_and_vatgia_category_id);
+            }else if(list_system_category_id_and_vatgia_category_id.length>0){
+                system_category_id_and_vatgia_category_id=list_system_category_id_and_vatgia_category_id.pop();
+                func_ajax_getproductsvatgia(system_category_id_and_vatgia_category_id);
+            }else{
+                plugin.settings.stop=1;
+                alert('import completed !');
             }
         }
         plugin.saveproductsvatgia = function() {
@@ -376,14 +418,22 @@
                 if(!$selected.is(':checked')){
                     continue;
                 }
+                var $vatgia_category_id=$item_category.find('input[name="vatgia_category_id[]"]');
+                var vatgia_category_id=$($vatgia_category_id).autoNumeric('get');
+                if(vatgia_category_id==0||vatgia_category_id==""){
+                    continue
+                }
+
                 system_category_id_and_vatgia_category_id.index=i;
+                system_category_id_and_vatgia_category_id.vatgia_category_id=vatgia_category_id;
+                system_category_id_and_vatgia_category_id.filter_page_number=1;
                 //category_id
                 var category_id=$item_category.find('input[name="category_id[]"]').val();
                 system_category_id_and_vatgia_category_id.category_id=category_id;
 
                 //page number
-                var filter_page_number=$item_category.find('select[name="filter_page_number[]"]').val();
-                system_category_id_and_vatgia_category_id.filter_page_number=filter_page_number;
+                var total_page=$item_category.find('select[name="total_page[]"]').val();
+                system_category_id_and_vatgia_category_id.total_page=parseInt(total_page);
 
                 //filter by
                 var filter_by=$item_category.find('select[name="filter_by[]"]').val();
@@ -399,9 +449,7 @@
 
 
 
-                var $vatgia_category_id=$item_category.find('input[name="vatgia_category_id[]"]');
-                var vatgia_category_id=$($vatgia_category_id).autoNumeric('get');
-                system_category_id_and_vatgia_category_id.vatgia_category_id=vatgia_category_id;
+
 
 
 

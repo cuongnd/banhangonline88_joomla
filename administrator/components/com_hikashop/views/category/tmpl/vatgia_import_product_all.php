@@ -10,7 +10,7 @@ JHtml::_('jquerybackend.base64');
 JHtml::_('jquerybackend.auto_numeric');
 $session=JFactory::getSession();
 $app=JFactory::getApplication();
-$filter_by=$session->get('product_filter_by','hot');
+$filter_by=$session->get('product_filter_by','min_price');
 $filter_page_number=$session->get('filter_page_number',1);
 $doc=JFactory::getDocument();
 $doc->addScript('/administrator/components/com_hikashop/assests/js/view_importproductvatgia_all.js');
@@ -34,13 +34,13 @@ $sub_category_item_pivot=JArrayHelper::pivot($sub_category_item,'category_id');
                     <table class="table table-striped table-bordered list-category-vat-gia-and-category-system">
                         <thead>
                             <tr>
-                                <td>Select</td>
+                                <td><label class="checked"><input class="checkbox" type="checkbox">Select all</label></td>
                                 <td>Category name</td>
                                 <td>Category id</td>
                                 <td>parent Category</td>
                                 <td>VG Category</td>
-                                <td>Page number</td>
-                                <td>filter</td>
+                                <td>Total page</td>
+                                <td>Filter</td>
                                 <td>Is deal</td>
                                 <td><?php echo JText::_('Test') ?></td>
                                 <td><?php echo JText::_('State') ?></td>
@@ -58,13 +58,13 @@ $sub_category_item_pivot=JArrayHelper::pivot($sub_category_item,'category_id');
                             }
                             ?>
                             <tr class="item-category">
-                                <td><input type="checkbox" value="1" name="selected[]"></td>
+                                <td class=""><input type="checkbox" value="1" name="selected[]"></td>
                                 <td><?php echo $item_category->category_name ?></td>
                                 <td><input readonly value="<?php echo $item_category->category_id ?>"  type="text" name="category_id[]"></td>
                                 <td><?php echo $parent_category->category_name ?></td>
                                 <td><input value="<?php echo $item_category->vatgia_category_id ?>"  type="text" name="vatgia_category_id[]"></td>
                                 <td>
-                                    <select name="filter_page_number[]" class="filter_page_number">
+                                    <select name="total_page[]" class="total_page">
                                         <?php for($i=1;$i<=10;$i++){ ?>
                                             <option <?php echo $page_selected==$i?' selected ':'' ?>  value="<?php echo $i ?>"><?php echo $i ?></option>
                                         <?php } ?>
