@@ -18,6 +18,8 @@
 
         // plugin's default options
         var defaults = {
+            list_link_product:[],
+            current_ajax: $.ajax()
             //main color scheme for view_importproductvatgia_all
             //be sure to be same as colors on main.css or custom-variables.less
         }
@@ -36,6 +38,10 @@
             var stop=plugin.settings.stop;
             if(stop==1){
                 return;
+            }
+            if(plugin.settings.current_ajax.state()=='pending'){
+                throw  new Error("you can not call(add_product_to_database) this ajax because it running");
+
             }
             var current_system_category_id_and_vatgia_category_id=plugin.settings.current_system_category_id_and_vatgia_category_id;
             var $vatgia_wrapper_product=$element.find('.vatgia-wrapper-product');
@@ -61,7 +67,7 @@
             product.product_description=$.base64Encode(product_description);
             product.category_id=category_id;
 
-            plugin.settings.ajax_add_product_vatgia_to_database=$.ajax({
+            plugin.settings.current_ajax=$.ajax({
                 type: "POST",
                 url: 'index.php?themproduct=1',
                 dataType: "json",
@@ -81,6 +87,7 @@
                 error: function(){
                 },
                 success: function (response) {
+                    
                     console.log(JSON.stringify(response));
                     plugin.get_detail_product_from_vatgia();
                 }
@@ -187,6 +194,10 @@
             if(stop==1){
                 return;
             }
+            if(plugin.settings.current_ajax.state()=='pending'){
+                throw  new Error("you can not call(get_detail_product_from_vatgia) this ajax because it running");
+                plugin.settings.stop=1;
+            }
             $element.find('button.get_product').prop('disabled',true);
             $element.find('button.importproductvatgia').prop('disabled',true);
             var current_system_category_id_and_vatgia_category_id=plugin.settings.current_system_category_id_and_vatgia_category_id;
@@ -196,7 +207,7 @@
 
 
             var list_link_product=plugin.settings.list_link_product;
-
+            console.log(list_link_product);
             if(list_link_product.length==0){
                 $element.find('.vatgia-import-product-div-loading').html('imported product completed');
                 $element.find('button.get_product').prop('disabled',false);
@@ -211,8 +222,10 @@
 
             var category_id=current_system_category_id_and_vatgia_category_id.category_id;
             console.log('link_product: http://vatgia.com'+link_product);
+            // somewhere else...
 
-            plugin.settings.ajax_get_detail_product_from_vatgia= $.ajax({
+
+            plugin.settings.current_ajax=$.ajax({
                 type: "POST",
                 url: 'index.php?get_detail_product_from_vatgia=1',
                 dataType: "json",
@@ -236,8 +249,8 @@
                 error: function(){
                     $element.find('.vatgia-import-product-div-loading').html('<b>error import product</b>');
                 },
-                success: function (response) {
-
+                success: function (response,jqxhr) {
+                    
                     if(response.reload_product==1){
                         console.log('there exist sub product');
                         console.log('response:');
@@ -324,6 +337,11 @@
             if(stop==1){
                 return;
             }
+            if(plugin.settings.current_ajax.state()=='pending'){
+                throw  new Error("you can not call(save_products_by_per_category) this ajax because it running");
+                plugin.settings.stop=1;
+            }
+            
             var func_ajax_getproductsvatgia=function(system_category_id_and_vatgia_category_id) {
                 var tr_index = system_category_id_and_vatgia_category_id.index;
                 $($list_tr_item_category.get(tr_index)).find('td .state').html('processing');
@@ -335,7 +353,8 @@
                 var filter_by = system_category_id_and_vatgia_category_id.filter_by;
                 var vatgia_deal = system_category_id_and_vatgia_category_id.vatgia_deal;
                 console.log("http://www.vatgia.com/"+vatgia_category_id+","+filter_by+"/abc.html?&page="+filter_page_number);
-                $.ajax({
+
+                plugin.settings.current_ajax=$.ajax({
                     type: "POST",
                     url: 'index.php?getproductsvatgia',
                     dataType: "json",
@@ -359,12 +378,13 @@
                     error: function () {
                     },
                     success: function (response) {
+                        
                         $element.find('.link').html(response.link);
                         $element.find('.vatgia-wrapper').html($.base64Decode(response.html));
                         $element.find('.vatgia-wrapper div.no_picture_thumb').removeAttr('onmouseover');
 
                         var $wrapper = $element.find('.vatgia-wrapper .wrapper');
-                        var list_link_product = [];
+                        var list_link_product =  plugin.settings.list_link_product;
                         for (var i = 0; i < $wrapper.length; i++) {
                             var $item = $($wrapper.get(i));
                             var link = $item.find('.name a').attr('href');
