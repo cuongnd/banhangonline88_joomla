@@ -19,7 +19,8 @@
         // plugin's default options
         var defaults = {
             list_link_product:[],
-            current_ajax: $.ajax()
+            current_ajax: $.ajax(),
+            list_vg_product:[]
             //main color scheme for view_importproductvatgia_all
             //be sure to be same as colors on main.css or custom-variables.less
         }
@@ -40,7 +41,8 @@
                 return;
             }
             if(plugin.settings.current_ajax.state()=='pending'){
-                throw  new Error("you can not call(add_product_to_database) this ajax because it running");
+                console.log("you can not call(add_product_to_database) this ajax because it running");
+                return false;
 
             }
             var current_system_category_id_and_vatgia_category_id=plugin.settings.current_system_category_id_and_vatgia_category_id;
@@ -54,6 +56,7 @@
             }
             console.log("product_name:"+product.product_name);
             product.product_price=$element.find('.product_price').html();
+            product.vatgia_product_id=$element.find('.vatgia_product_id').html();
             product.price_promotion=$element.find('.price_promotion').html();
             product.price_promotion_time=$element.find('.price_promotion_time').html();
             product.product_keywords=$element.find('.product_keywords ').html();
@@ -96,6 +99,7 @@
         }
         plugin.show_product = function(response) {
             $element.find('.product_name').html(response.product_name);
+            $element.find('.vatgia_product_id').html(response.vatgia_product_id);
             $element.find('.product_price').html(response.product_price);
             $element.find('.price_promotion').html(response.price_promotion);
             $element.find('.price_promotion_time').html(response.price_promotion_time);
@@ -147,6 +151,11 @@
                 $element.find('button.get_product').prop('disabled',false);
                 $element.find('button.importproductvatgia').prop('disabled',false);
             });
+            $element.find('select.total_page').change(function(){
+                var total_page=$(this).val();
+                var $tbody=$element.find('table.list-category-vat-gia-and-category-system tbody');
+                $tbody.find('select[name="total_page[]"]').val(total_page).trigger("liszt:updated");
+            });
 
             $element.find('.btn-test-get-content').click(function(){
                 /*alert('you cannot import again');
@@ -195,8 +204,8 @@
                 return;
             }
             if(plugin.settings.current_ajax.state()=='pending'){
-                throw  new Error("you can not call(get_detail_product_from_vatgia) this ajax because it running");
-                plugin.settings.stop=1;
+                console.log("you can not call(get_detail_product_from_vatgia) this ajax because it running");
+                return;
             }
             $element.find('button.get_product').prop('disabled',true);
             $element.find('button.importproductvatgia').prop('disabled',true);
@@ -213,15 +222,16 @@
                 $element.find('button.get_product').prop('disabled',false);
                 $element.find('button.importproductvatgia').prop('disabled',false);
                 plugin.save_products_by_per_category();
+                return false;
             }
-            var link_product=list_link_product.pop();
-            if(link_product==null){
-                console.log('danh sach list_link_product there is some link is null');
-                console.log(list_link_product);
+            var item_vg_link_product=list_link_product.pop();
+            if(item_vg_link_product.link==null || item_vg_link_product.link.trim()==""){
+                console.log('link_product is null');
+                return false;
             }
 
             var category_id=current_system_category_id_and_vatgia_category_id.category_id;
-            console.log('link_product: http://vatgia.com'+link_product);
+            console.log('link_product: http://vatgia.com'+item_vg_link_product.link);
             // somewhere else...
 
 
@@ -238,7 +248,8 @@
                         vatgia_deal: vatgia_deal,
                         vatgia_category_id: vatgia_category_id,
                         category_id: category_id,
-                        link_product: link_product,
+                        link_product: item_vg_link_product.link,
+                        vg_product_id: item_vg_link_product.vg_p_id
 
                     };
                     return dataPost;
@@ -256,12 +267,26 @@
                         console.log('response:');
                         console.log(JSON.stringify(response));
                         var list_link_product=plugin.settings.list_link_product;
+                        var list_vg_product=plugin.settings.list_vg_product;
+
                         var response_list_link_product=response.list_link_product;
                         for(var i=0;i<response_list_link_product.length;i++){
-                            var link=response_list_link_product[i];
-                            if(link!="")
+                            var item_vg_link=response_list_link_product[i];
+                            if(item_vg_link.link!="")
                             {
-                                list_link_product.push(link);
+                                var plag_exists=0;
+                                for(var j=0;j<list_vg_product.length;j++){
+                                    var item_vg_product=list_vg_product[j];
+                                    if(item_vg_link.vatgia_product_id==item_vg_product.vg_id){
+                                        console.log('exists product system  link: '+item_vg_product.link);
+                                        plag_exists=1;
+                                        break;
+                                    }
+                                }
+                                if(plag_exists==1){
+                                    continue;
+                                }
+                                list_link_product.push(item_vg_link);
                             }
                         }
                         plugin.settings.list_link_product=list_link_product;
@@ -338,8 +363,8 @@
                 return;
             }
             if(plugin.settings.current_ajax.state()=='pending'){
-                throw  new Error("you can not call(save_products_by_per_category) this ajax because it running");
-                plugin.settings.stop=1;
+               console.log("you can not call(save_products_by_per_category) this ajax because it running");
+                return false;
             }
             
             var func_ajax_getproductsvatgia=function(system_category_id_and_vatgia_category_id) {
@@ -354,6 +379,10 @@
                 var vatgia_deal = system_category_id_and_vatgia_category_id.vatgia_deal;
                 console.log("http://www.vatgia.com/"+vatgia_category_id+","+filter_by+"/abc.html?&page="+filter_page_number);
 
+                if(plugin.settings.current_ajax.state()=='pending'){
+                    console.log("you can not call(func_ajax_getproductsvatgia ) this ajax because it running");
+                    return false;
+                }
                 plugin.settings.current_ajax=$.ajax({
                     type: "POST",
                     url: 'index.php?getproductsvatgia',
@@ -385,10 +414,30 @@
 
                         var $wrapper = $element.find('.vatgia-wrapper .wrapper');
                         var list_link_product =  plugin.settings.list_link_product;
+                        var list_vg_product=plugin.settings.list_vg_product;
                         for (var i = 0; i < $wrapper.length; i++) {
+                            var new_item={};
                             var $item = $($wrapper.get(i));
                             var link = $item.find('.name a').attr('href');
-                            list_link_product.push(link);
+                            var vg_p_id=$item.attr('idata');
+                            vg_p_id=parseInt(vg_p_id);
+                            var plag_exists=0;
+                            for(var j=0;j<list_vg_product.length;j++){
+                                var item_system_vg=list_vg_product[j];
+                                if(item_system_vg.vg_id==vg_p_id){
+                                    console.log('exists product system  link: '+link);
+                                    plag_exists=1;
+                                    break;
+                                }
+                            }
+                            if(plag_exists==1){
+                                continue;
+                            }
+
+
+                            new_item.link=link;
+                            new_item.vg_p_id = vg_p_id;
+                            list_link_product.push(new_item);
                         }
                         plugin.settings.list_link_product = list_link_product;
                         if (list_link_product.length > 0) {

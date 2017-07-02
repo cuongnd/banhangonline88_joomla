@@ -21,6 +21,9 @@ $list_filter=array(
     promotion=>"Promotion",
     top_week=>"Top week"
 );
+$list_vg_product=JUtility::getCurl('http://banhangonline88.com/index.php?option=com_hikashop&ctrl=product&task=get_vat_gia_id_from_system');
+$list_vg_product=(array)json_decode($list_vg_product);
+$total_page=100;
 $sub_category_item=$this->sub_category_item;
 $sub_category_item_pivot=JArrayHelper::pivot($sub_category_item,'category_id');
 ?>
@@ -39,7 +42,14 @@ $sub_category_item_pivot=JArrayHelper::pivot($sub_category_item,'category_id');
                                 <td>Category id</td>
                                 <td>parent Category</td>
                                 <td>VG Category</td>
-                                <td>Total page</td>
+                                <td>Total page
+                                    <select class="total_page">
+                                        <?php for($i=1;$i<=$total_page;$i++){ ?>
+                                            <option <?php echo $page_selected==$i?' selected ':'' ?>  value="<?php echo $i ?>"><?php echo $i ?></option>
+                                        <?php } ?>
+                                    </select>
+
+                                </td>
                                 <td>Filter</td>
                                 <td>Is deal</td>
                                 <td><?php echo JText::_('Test') ?></td>
@@ -65,7 +75,7 @@ $sub_category_item_pivot=JArrayHelper::pivot($sub_category_item,'category_id');
                                 <td><input value="<?php echo $item_category->vatgia_category_id ?>"  type="text" name="vatgia_category_id[]"></td>
                                 <td>
                                     <select name="total_page[]" class="total_page">
-                                        <?php for($i=1;$i<=10;$i++){ ?>
+                                        <?php for($i=1;$i<=$total_page;$i++){ ?>
                                             <option <?php echo $page_selected==$i?' selected ':'' ?>  value="<?php echo $i ?>"><?php echo $i ?></option>
                                         <?php } ?>
                                     </select>
@@ -105,6 +115,7 @@ $sub_category_item_pivot=JArrayHelper::pivot($sub_category_item,'category_id');
         <hr/>
         <h1 class="product_name"></h1>
         <img class="src_image" src="">
+        <div>vatgia_product_id:<span class="vatgia_product_id"></span></div>
         <div>Price<span class="product_price"></span></div>
         <div>promotion Price<span class="price_promotion"></span></div>
         <div>promotion Price time<span class="price_promotion_time"></span></div>
@@ -145,6 +156,7 @@ ob_start();
 <script type="text/javascript">
     jQuery(document).ready(function ($) {
         $(".view-importproductvatgia-all").view_importproductvatgia_all({
+            list_vg_product:<?php echo json_encode($list_vg_product) ?>
         });
     });
 </script>

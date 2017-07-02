@@ -11,7 +11,7 @@ defined('_JEXEC') or die('Restricted access');
 class hikashopProductHelper {
 	function get_code($title,$length=999){
 		$title = explode(' ', $title);
-		$title = array_slice($title, 0, 2);
+		$title = array_slice($title, 0, 5);
 		$title = implode('_', $title);
 		$title = JString::vn_str_filter($title);
 		$title = JString::clean($title);
