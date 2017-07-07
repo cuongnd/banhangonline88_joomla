@@ -30,12 +30,12 @@ class JDocumentRendererHtmlModule extends JDocumentRenderer
     {
         $list_module_abort=array(
             //'mod_menu',
-            'mod_tabs',
+           // 'mod_tabs',
             //'mod_tab_products',
-            'mod_hikashop',
-            'mod_wishlist',
-            'mod_easysocial_login',
-            'mod_cart',
+            //'mod_hikashop',
+            //'mod_wishlist',
+            //'mod_easysocial_login',
+            //'mod_cart',
         );
         if(in_array($module->module,$list_module_abort)){
             return $module->module;

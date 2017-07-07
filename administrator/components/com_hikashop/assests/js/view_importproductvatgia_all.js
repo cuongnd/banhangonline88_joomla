@@ -156,6 +156,11 @@
                 var $tbody=$element.find('table.list-category-vat-gia-and-category-system tbody');
                 $tbody.find('select[name="total_page[]"]').val(total_page).trigger("liszt:updated");
             });
+            $element.find('select.filter_by').change(function(){
+                var filter_by=$(this).val();
+                var $tbody=$element.find('table.list-category-vat-gia-and-category-system tbody');
+                $tbody.find('select[name="filter_by[]"]').val(filter_by).trigger("liszt:updated");
+            });
 
             $element.find('.btn-test-get-content').click(function(){
                 /*alert('you cannot import again');

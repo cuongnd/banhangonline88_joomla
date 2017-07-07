@@ -50,7 +50,14 @@ $sub_category_item_pivot=JArrayHelper::pivot($sub_category_item,'category_id');
                                     </select>
 
                                 </td>
-                                <td>Filter</td>
+                                <td>Filter
+                                    <select  class="filter_by">
+                                        <?php foreach($list_filter as $key=>$value){ ?>
+                                            <option <?php echo $filter_by==$key?' selected ':'' ?>  value="<?php echo $key ?>"><?php echo $value ?></option>
+                                        <?php } ?>
+                                    </select>
+
+                                </td>
                                 <td>Is deal</td>
                                 <td><?php echo JText::_('Test') ?></td>
                                 <td><?php echo JText::_('State') ?></td>
