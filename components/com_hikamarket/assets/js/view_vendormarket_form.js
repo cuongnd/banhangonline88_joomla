@@ -45,9 +45,9 @@
             $item_element.attr('data-intro', "fdgfdgf");
         };
         plugin.close_help_tour = function () {
-            help_tour = plugin.settings.help_tour;
-            key_dont_show_agian = plugin.settings.key_dont_show_agian;
-            help_dont_show_again = help_tour._options.help_dont_show_again;
+            var help_tour = plugin.settings.help_tour;
+            var key_dont_show_agian = plugin.settings.key_dont_show_agian;
+            var help_dont_show_again = help_tour._options.help_dont_show_again;
             var option_click = {
                 option: "com_hikamarket",
                 ctrl: "vendor",

@@ -19,7 +19,7 @@ if (!FD::exists()) {
 	echo JText::_('COM_EASYSOCIAL_FOUNDRY_DEPENDENCY_MISSING');
 	return;
 }
-
+JHtml::_('jqueryfrontend.image');
 // Start collecting page objects.
 FD::page()->start();
 

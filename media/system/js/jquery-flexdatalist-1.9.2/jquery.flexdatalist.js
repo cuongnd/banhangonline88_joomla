@@ -15,7 +15,6 @@
  * https://github.com/sergiodlopes/jquery-flexdatalist/
  *
  */
-$=jQuery;
 jQuery.fn.flexdatalist = function (options, value) {
     'use strict';
     $=jQuery;

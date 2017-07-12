@@ -57,7 +57,7 @@ if (empty($this->form_type))
             <form id="hikamarket_registration_form" name="hikamarket_registration_form" method="post"
                   action="<?php echo hikamarket::completeLink('vendor&task=register' . $this->url_itemid); ?>"
                   enctype="multipart/form-data" class="form-horizontal"
-                  onsubmit="if(window.localPage && window.localPage.checkForm){ return window.localPage.checkForm(this); }">
+                  >
                 <div class="center es-signin-social">
                     <p class="line">
                         <strong><?php echo JText::_('MOD_EASYSOCIAL_LOGIN_SIGN_IN_WITH_SOCIAL_IDENTITY'); ?></strong>

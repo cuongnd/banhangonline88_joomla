@@ -318,15 +318,13 @@ window.localPage.createBox = function(el,href,options) {
 		$html = '';
 		if($content === null)
 			return $html;
-
+		JHtml::_('jqueryfrontend.shadowbox');
 		static $init = false;
 		if($init === false) {
 			$config = hikashop_config();
 			$shadowboxMode = $config->get('image_popup_mode', 'mootools');
 			$doc = JFactory::getDocument();
 			if($shadowboxMode != 'shadowbox-embbeded') {
-				$doc->addStyleSheet('//www.hikashop.com/cdn/shadowbox/shadowbox.css');
-				$doc->addScript('//www.hikashop.com/cdn/shadowbox/shadowbox.js');
 				$doc->addScriptDeclaration("\r\n".'Shadowbox.init();'."\r\n");
 			}
 			$doc->addScriptDeclaration("\r\n".'(function(){ window.Oby.registerAjax("hkContentChanged", function(){ Shadowbox.clearCache(); Shadowbox.setup(); }); })();'."\r\n");

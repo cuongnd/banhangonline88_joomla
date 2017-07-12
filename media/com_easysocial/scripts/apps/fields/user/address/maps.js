@@ -156,7 +156,7 @@ EasySocial.module('apps/fields/user/address/maps', function($) {
                             self.base().addClass("has-location");
                         })
                         .always(function(){
-                            base.removeClass("is-loading");
+                            self.base().removeClass("is-loading");
                         });
                 },
 

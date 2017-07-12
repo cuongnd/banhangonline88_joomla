@@ -170,8 +170,8 @@ class PlgSystemDebug extends JPlugin
             return;
         }
         // User has to be authorised to see the debug information.
-        if (!$this->isAuthorisedDisplayDebug()) {
-            echo "sdfsdfsd";
+        if ($this->isAuthorisedDisplayDebug()) {
+            echo "ddddddddđ";
             die;
             return;
         }
