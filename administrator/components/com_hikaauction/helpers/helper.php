@@ -56,9 +56,9 @@ define('HIKAAUCTION_REDIRECT',HIKAAUCTION_URL.'index.php?option=com_updateme&ctr
 $app = JFactory::getApplication();
 if($app->isAdmin()) {
 	define('HIKAAUCTION_CONTROLLER',HIKAAUCTION_BACK.'controllers'.DS);
-	define('HIKAAUCTION_IMAGES','../media/'.HIKAAUCTION_COMPONENT.'/images/');
-	define('HIKAAUCTION_CSS','../media/'.HIKAAUCTION_COMPONENT.'/css/');
-	define('HIKAAUCTION_JS','../media/'.HIKAAUCTION_COMPONENT.'/js/');
+	define('HIKAAUCTION_IMAGES','/media/'.HIKAAUCTION_COMPONENT.'/images/');
+	define('HIKAAUCTION_CSS','/media/'.HIKAAUCTION_COMPONENT.'/css/');
+	define('HIKAAUCTION_JS','/media/'.HIKAAUCTION_COMPONENT.'/js/');
 	$css_type = 'backend';
 } else {
 	define('HIKAAUCTION_CONTROLLER',HIKAAUCTION_FRONT.'controllers'.DS);

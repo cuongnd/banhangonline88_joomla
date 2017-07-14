@@ -42,9 +42,9 @@ define('HIKASERIAL_REDIRECT',HIKASERIAL_URL.'index.php?option=com_updateme&ctrl=
 $app = JFactory::getApplication();
 if($app->isAdmin()) {
 	define('HIKASERIAL_CONTROLLER',HIKASERIAL_BACK.'controllers'.DS);
-	define('HIKASERIAL_IMAGES','../media/'.HIKASERIAL_COMPONENT.'/images/');
-	define('HIKASERIAL_CSS','../media/'.HIKASERIAL_COMPONENT.'/css/');
-	define('HIKASERIAL_JS','../media/'.HIKASERIAL_COMPONENT.'/js/');
+	define('HIKASERIAL_IMAGES','/media/'.HIKASERIAL_COMPONENT.'/images/');
+	define('HIKASERIAL_CSS','/media/'.HIKASERIAL_COMPONENT.'/css/');
+	define('HIKASERIAL_JS','/media/'.HIKASERIAL_COMPONENT.'/js/');
 	$css_type = 'backend';
 } else {
 	define('HIKASERIAL_CONTROLLER',HIKASERIAL_FRONT.'controllers'.DS);

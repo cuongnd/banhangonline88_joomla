@@ -15,6 +15,7 @@ $currencyHelper = hikashop_get('class.currency');
 $cartHelper = hikashop_get('class.cart');
 $style = $params->get('product_style', 'table');
 $class_column_table = $params->get('class_column_table', 'col-lg-4 col-md-3');
+$mainCurr = $currencyHelper->mainCurrency();
 ?>
 <?php if ($style == 'table') { ?>
     <!--col-lg col-md-->

@@ -19,6 +19,7 @@ use Joomla\Utilities\ArrayHelper;
  */
 class JUser extends JObject
 {
+	const KEY_HISTORY_SEARCH_KEYWORD = 'history_search_search';
 	/**
 	 * A cached switch for if this user has root access rights.
 	 *
@@ -932,6 +933,28 @@ class JUser extends JObject
 			$this->sendEmail = 0;
 			$this->aid = 0;
 			$this->guest = 1;
+		}
+	}
+
+	public function get_list_history_search_keyword()
+	{
+		$list_history_search_keyword=array();
+		if($this->id){
+			$list_history_search_keyword=$this->getParam(self::KEY_HISTORY_SEARCH_KEYWORD,'');
+		}else{
+			$session=JFactory::getSession();
+			$list_history_search_keyword=$session->get(self::KEY_HISTORY_SEARCH_KEYWORD,'');
+		}
+		return $list_history_search_keyword;
+	}
+	public function save_list_history_search_keyword($list_history_keyword)
+	{
+		if($this->id){
+			$this->setParam(self::KEY_HISTORY_SEARCH_KEYWORD,$list_history_keyword);
+			$this->save();
+		}else{
+			$session=JFactory::getSession();
+			$session->set(self::KEY_HISTORY_SEARCH_KEYWORD,$list_history_keyword);
 		}
 	}
 }

@@ -11,6 +11,7 @@ defined('_JEXEC') or die('Restricted access');
 $doc = JFactory::getDocument();
 JHtml::_('jQuery.help_step');
 JHtml::_('jQuery.auo_typing_text');
+JHtml::_('jqueryfrontend.notify');
 JHtml::_('jqueryfrontend.uisortable');
 JHtml::_('jqueryfrontend.serialize_object');
 

@@ -36,15 +36,6 @@ class ToolsViewTool extends JViewLegacy
 	 */
 	public function display($tpl = null)
 	{
-		$this->state = $this->get('State');
-		$this->item  = $this->get('Item');
-		$this->form  = $this->get('Form');
-
-		// Check for errors.
-		if (count($errors = $this->get('Errors')))
-		{
-			throw new Exception(implode("\n", $errors));
-		}
 
 		$this->addToolbar();
 		parent::display($tpl);
@@ -93,20 +84,6 @@ class ToolsViewTool extends JViewLegacy
 		if (!$isNew && $canDo->get('core.create'))
 		{
 			JToolBarHelper::custom('tool.save2copy', 'save-copy.png', 'save-copy_f2.png', 'JTOOLBAR_SAVE_AS_COPY', false);
-		}
-
-		// Button for version control
-		if ($this->state->params->get('save_history', 1) && $user->authorise('core.edit')) {
-			JToolbarHelper::versions('com_tools.tool', $this->item->id);
-		}
-
-		if (empty($this->item->id))
-		{
-			JToolBarHelper::cancel('tool.cancel', 'JTOOLBAR_CANCEL');
-		}
-		else
-		{
-			JToolBarHelper::cancel('tool.cancel', 'JTOOLBAR_CLOSE');
 		}
 	}
 }

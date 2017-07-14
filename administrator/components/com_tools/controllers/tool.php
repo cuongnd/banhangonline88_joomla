@@ -42,6 +42,19 @@ class ToolsControllerTool extends JControllerForm
 		die;
 
 	}
+	public function make_video(){
+		$app=JFactory::getApplication();
+		$post = file_get_contents('php://input');
+		$post = json_decode($post);
+		$title=$post->title;
+		$title = str_replace(' ', '-', $title);
+		$title=JString::vn_str_filter($title);
+		$title=JString::clean($title);
+		$title=strtolower($title);
+		echo $title;
+		die;
+
+	}
 	public function remove_unicode_product_alias(){
 		die("da lam xong roi");
 		$db=JFactory::getDbo();

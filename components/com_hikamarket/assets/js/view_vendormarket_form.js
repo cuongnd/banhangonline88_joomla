@@ -84,7 +84,7 @@
             var $password = $form.find('input[name="data[register][password]"]');
             var $password2 = $form.find('input[name="data[register][password2]"]');
             var $vendor_name = $form.find('input[name="data[vendorregister][vendor_name]"]');
-            var $vendor_terms=$element.find('#vendor_terms');
+            var vendor_terms=tinymce.get("vendor_terms").getContent();
             if ($name.val().trim() == '') {
                 $.alert_notify(list_messenger['HIKA_NAME_REQUIRED'],'error');
                 $name.focus();
@@ -113,7 +113,7 @@
                 $.alert_notify(list_messenger['HIKA_VENDOR_NAME_REQUIRED'],'error');
                 $vendor_name.focus();
                 return false;
-            }else if($vendor_terms.val().trim()==''){
+            }else if(vendor_terms.trim()==''){
                 $.alert_notify(list_messenger['HIKAM_ERR_TERMS_EMPTY'],'error');
                 $vendor_terms.focus();
                 return false;
@@ -135,8 +135,9 @@
             var data_submit = $form.serializeObject();
             var vendor_description=$element.find('#vendor_description').val();
             data_submit.data.vendorregister.vendor_description=vendor_description;
-            var vendor_terms=$element.find('#vendor_terms').val();
+            var vendor_terms=tinymce.get("vendor_terms").getContent();
             data_submit.data.vendorregister.vendor_terms=vendor_terms;
+
             var ajax_web_design = $.ajax({
                 contentType: 'application/json',
                 type: "POST",

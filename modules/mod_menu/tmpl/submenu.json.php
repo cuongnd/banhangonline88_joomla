@@ -76,7 +76,7 @@ if (trim($jv_selection) != '') {
             </li>
             <?php
             $list_sub_menu_level_3 = $children_menu_item[$a_menu_item->id];
-            $list_sub_menu_level_3 = array_slice($list_sub_menu_level_3, 0, 4);
+            $list_sub_menu_level_3 = array_slice($list_sub_menu_level_3, 0, 20);
             ?>
             <?php foreach ($list_sub_menu_level_3 as $a_menu_item_level_3) { ?>
                 <li class="tags sub" data-group_menu_id="<?php echo $a_menu_item->id ?>"

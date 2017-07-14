@@ -92,7 +92,7 @@ class WFModelEditor extends WFModelBase {
     public function buildEditor() {
         // get document
         $document = JFactory::getDocument();
-
+        $doc=JFactory::getDocument();
         // get an editor instance
         $wf = WFEditor::getInstance();
 
@@ -189,26 +189,26 @@ class WFModelEditor extends WFModelBase {
 
         // set compression
         if ($compress['css']) {
-            $this->addStyleSheet(JURI::base(true) . '/index.php?option=com_jce&view=editor&layout=editor&task=pack&type=css&component_id=' . $component_id . '&' . $token . '=1');
+            $doc->addStyleSheet(JURI::base(true) . '/index.php?option=com_jce&view=editor&layout=editor&task=pack&type=css&component_id=' . $component_id . '&' . $token . '=1');
         } else {
             // CSS
-            $this->addStyleSheet($this->getURL(true) . '/libraries/css/editor.css');
+            $doc->addStyleSheet($this->getURL(true) . '/libraries/css/editor.css');
             // get plugin styles
             $this->getPluginStyles($settings);
         }
 
         // set compression
         if ($compress['javascript']) {
-            $this->addScript(JURI::base(true) . '/index.php?option=com_jce&view=editor&layout=editor&task=pack&component_id=' . $component_id . '&' . $token . '=1');
+            $doc->addScript(JURI::base(true) . '/index.php?option=com_jce&view=editor&layout=editor&task=pack&component_id=' . $component_id . '&' . $token . '=1');
         } else {
-            $this->addScript($this->getURL(true) . '/tiny_mce/tiny_mce.js');
+            $doc->addScript('/components/com_jce/editor/tiny_mce/tiny_mce.js');
             // Editor
-            $this->addScript($this->getURL(true) . '/libraries/js/editor.js');
+            $doc->addScript('/components/com_jce/editor/libraries/js/editor.js');
 
-            if (array_key_exists('language_load', $settings)) {
+/*            if (array_key_exists('language_load', $settings)) {
                 // language
-                $this->addScript(JURI::base(true) . '/index.php?option=com_jce&view=editor&layout=editor&task=loadlanguages&lang=' . $this->language . '&component_id=' . $component_id . '&' . $token . '=1');
-            }
+                $doc->addScript(JURI::base(true) . '/index.php?option=com_jce&view=editor&layout=editor&task=loadlanguages&lang=' . $this->language . '&component_id=' . $component_id . '&' . $token . '=1');
+            }*/
         }
 
         // Get all optional plugin configuration options
@@ -289,21 +289,20 @@ class WFModelEditor extends WFModelBase {
         }";
 
         $init[] = $tinymce;
-
-        $this->addScriptDeclaration("\n\t\ttry{WFEditor.init(" . implode(',', $init) . ");}catch(e){console.debug(e);}\n");
+        $doc->addScriptDeclaration("\n\t\ttry{WFEditor.init(" . implode(',', $init) . ");}catch(e){console.debug(e);}\n");
 
         if (is_object($this->profile)) {
             if ($wf->getParam('editor.callback_file')) {
-                $this->addScript(JURI::root(true) . '/' . $wf->getParam('editor.callback_file'));
+                $doc->addScript(JURI::root(true) . '/' . $wf->getParam('editor.callback_file'));
             }
             // add callback file if exists
             if (is_file(JPATH_SITE . '/media/jce/js/editor.js')) {
-                $this->addScript(JURI::root(true) . '/media/jce/js/editor.js');
+                $doc->addScript(JURI::root(true) . '/media/jce/js/editor.js');
             }
 
             // add custom editor.css if exists
             if (is_file(JPATH_SITE . '/media/jce/css/editor.css')) {
-                $this->addStyleSheet(JURI::root(true) . '/media/jce/css/editor.css');
+                $doc->addStyleSheet(JURI::root(true) . '/media/jce/css/editor.css');
             }
         }
 

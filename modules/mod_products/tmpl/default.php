@@ -1,11 +1,11 @@
 <?php
 $doc = JFactory::getDocument();
-JHtml::_('jQuery.lazyload');
+JHtml::_('jqueryfrontend.lazyload');
 $doc->addLessStyleSheet('/modules/mod_products/assets/less/style.less');
 $doc->addLessStyleSheet('/media/system/js/slick-master/slick/slick-theme.less');
 $doc->addStyleSheet(JUri::root() . 'media/system/js/slick-master/slick/slick.css');
 $doc->addScript( '/media/system/js/slick-master/slick/slick.js');
-JHtml::_('jQuery.utility');
+JHtml::_('jqueryfrontend.utility');
 $doc->addScript( '/modules/mod_products/assets/js/mod_products.js');
 defined('_JEXEC') or die;
 require_once JPATH_ROOT . DS . 'administrator/components/com_hikashop/helpers/helper.php';
