@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset='UTF-8' />
+	<style>
+		input, textarea {border:1px solid #CCC;margin:0px;padding:0px}
+
+		#body {max-width:800px;margin:auto}
+		#log {width:100%;height:400px}
+		#message {width:100%;line-height:20px}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="fancywebsocket.js"></script>
+	<script>
+		var Server;
+
+		function log( text ) {
+			$log = $('#log');
+			//Add text to log
+			$log.append(($log.val()?"\n":'')+text);
+			//Autoscroll
+			$log[0].scrollTop = $log[0].scrollHeight - $log[0].clientHeight;
+		}
+
+		function send( text ) {
+			Server.send( 'message', text );
+		}
+
+		$(document).ready(function() {
+			log('Connecting...');
+
+			//Open a WebSocket connection.
+			var wsUri = "ws://banhangonline88.com:53/web_socket/server.php";
+			websocket = new WebSocket(wsUri);
+
+			//Connected to server
+			websocket.onopen = function(ev) {
+				alert('Connected to server ');
+			}
+
+			//Connection close
+			websocket.onclose = function(ev) {
+				alert('Disconnected');
+			};
+
+			//Message Receved
+			websocket.onmessage = function(ev) {
+				alert('Message '+ev.data);
+			};
+
+			//Error
+			websocket.onerror = function(ev) {
+				alert('Error '+ev.data);
+			};
+
+			//Send a Message
+			$('#send').click(function(){
+				var mymessage = 'This is a test message';
+				websocket.send(mymessage);
+			});
+
+		});
+	</script>
+</head>
+
+<body>
+	<div id='body'>
+		<textarea id='log' name='log' readonly='readonly'></textarea><br/>
+		<input type='text' id='message' name='message' />
+	</div>
+</body>
+
+</html>

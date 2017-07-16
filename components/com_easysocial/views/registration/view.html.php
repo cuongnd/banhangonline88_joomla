@@ -215,7 +215,6 @@ class EasySocialViewRegistration extends EasySocialSiteView
 	{
 		$config 	= FD::config();
 
-
 		// If user is already logged in here, they shouldn't be allowed on this page.
 		if (FD::user()->id) {
 			$this->setMessage(JText::_('COM_EASYSOCIAL_OAUTH_YOU_ARE_ALREADY_LOGGED_IN'), SOCIAL_MSG_ERROR);
@@ -230,7 +229,6 @@ class EasySocialViewRegistration extends EasySocialSiteView
 
 		// Get the current client.
 		$oauthClient 	= JRequest::getWord('client');
-
 		if (!in_array($oauthClient, $allowedClients)) {
 			FD::info()->set(false, JText::sprintf('COM_EASYSOCIAL_OAUTH_INVALID_OAUTH_CLIENT_PROVIDED', $oauthClient), SOCIAL_MSG_ERROR);
 
@@ -239,6 +237,7 @@ class EasySocialViewRegistration extends EasySocialSiteView
 
 		// Get the oauth client object.
 		$client 	= FD::oauth($oauthClient);
+
 
 		// Add page title
 		$title 		= JText::sprintf('COM_EASYSOCIAL_OAUTH_PAGE_TITLE', ucfirst($oauthClient));
@@ -267,12 +266,12 @@ class EasySocialViewRegistration extends EasySocialSiteView
 		// Get user's meta
 		try {
 			$meta = $client->getUserMeta();
+
 		} catch (Exception $e) {
 			$app = JFactory::getApplication();
 
 			// Use dashboard here instead of login because api error calls might come from after user have successfully logged in
 			$url = FRoute::dashboard( array(), false );
-
 			$message = (object) array(
 				'message' => JText::sprintf( 'COM_EASYSOCIAL_OAUTH_FACEBOOK_ERROR_MESSAGE', $e->getMessage() ),
 				'type' => SOCIAL_MSG_ERROR
@@ -405,7 +404,6 @@ class EasySocialViewRegistration extends EasySocialSiteView
 
 				// Use dashboard here instead of login because api error calls might come from after user have successfully logged in
 				$url = FRoute::dashboard( array(), false );
-
 				$message = (object) array(
 					'message' => JText::sprintf( 'COM_EASYSOCIAL_OAUTH_FACEBOOK_ERROR_MESSAGE', $e->getMessage() ),
 					'type' => SOCIAL_MSG_ERROR

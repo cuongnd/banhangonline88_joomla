@@ -881,7 +881,6 @@ abstract class SocialBaseFacebook
     } else {
       $domainKey = 'graph';
     }
-
     $result = json_decode($this->_oauthRequest(
       $this->getUrl($domainKey, $path),
       $params
@@ -933,6 +932,7 @@ abstract class SocialBaseFacebook
    * @return string The response text
    */
   protected function makeRequest($url, $params, $ch=null) {
+
     if (!$ch) {
       $ch = curl_init();
     }

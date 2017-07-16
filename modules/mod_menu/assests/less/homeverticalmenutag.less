@@ -55,11 +55,9 @@
       li.menu-iem.level-1:hover {
 
         .container-home-page {
-          display: block;
-          transition: opacity @time_out_hover linear @time_out_hover;
-          -webkit-transition: opacity @time_out_hover linear @time_out_hover;
-          -moz-transition: opacity @time_out_hover linear @time_out_hover;
-          -ms-transition: opacity @time_out_hover linear @time_out_hover;
+          visibility: visible;
+          opacity: 1;
+          transition: visibility 0s linear 0s, opacity 300ms;
         }
       }
     }
@@ -255,11 +253,16 @@
     }
 
     .container-home-page {
+
+
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 0s linear 300ms, opacity 300ms;
+
       position: absolute;
-      width: 1000px;
-      display: none;
-      top: 0px;
       left: 100%;
+      top: 0;
+      width: 1000px;
       z-index: 9999;
       background: #FF5F6D; /* fallback for old browsers */
       background: -webkit-linear-gradient(to left, #FF5F6D, #FFC371); /* Chrome 10-25, Safari 5.1-6 */

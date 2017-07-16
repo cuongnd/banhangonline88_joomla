@@ -540,7 +540,6 @@ class SocialConsumerFacebook extends SocialFacebook implements ISocialOAuth
 
 		// Get the default profile
 		$profile = $this->getDefaultProfile();
-
 		// Assign the profileId first
 		$data[ 'profileId' ] = $profile->id;
 
@@ -551,6 +550,7 @@ class SocialConsumerFacebook extends SocialFacebook implements ISocialOAuth
 		$fields = $profile->getCustomFields();
 		$args = array( &$fbFields, &$this );
 		$fieldsLib = FD::fields();
+
 		$fieldsLib->trigger( 'onOAuthGetMetaFields', SOCIAL_FIELDS_GROUP_USER, $fields, $args );
 
 		// Unique it to prevent multiple same fields request
@@ -558,9 +558,11 @@ class SocialConsumerFacebook extends SocialFacebook implements ISocialOAuth
 
 		// Implode it into a string for request
 		$fbFields = implode( ',', $fbFields );
-
 		// Let's try to query facebook for more details.
+
+
 		$details = $this->api( '/me' , array( 'fields' => $fbFields ) );
+
 
 		// Give fields the ability to decorate user meta as well
 		// This way fields can do extended api calls if the fields need it

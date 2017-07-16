@@ -1,5 +1,24 @@
 .mod_search
 {
+  &.active
+  {
+    .input-group
+    {
+      .btn-group
+      {
+        .btn.btn-default
+        {
+          border-bottom-left-radius:0;
+        }
+      }
+      .input-group-btn:last-child{
+        .btn{
+          border-bottom-right-radius:0;
+        }
+
+      }
+    }
+  }
   .btn-group
   {
     display: block !important;
@@ -19,7 +38,7 @@
       font-size: 17px;
       position: absolute;
       right: 10px;
-      top: 5px;
+      top: 7px;
       z-index: 99;
 
     }
@@ -89,6 +108,7 @@
     width: 100%;
     min-height: 100px;
     padding: 5px;
+    border-top: 0;
     font-size: 12px;
     a.close
     {
