@@ -30,6 +30,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import it.neokree.materialtabs.MaterialTabHost;
 import timber.log.Timber;
 import vantinviet.core.R;
 import vantinviet.core.administrator.components.com_jchat.models.JChatModelMessages;
@@ -63,7 +64,7 @@ public class ShowMessaging extends LinearLayout {
     public ImageButton imageButtonListUserSuportOnline;
     JUser activeUser = JFactory.getUser();
     private ArrayList<Room> listRoomExits=new ArrayList<Room>();
-
+    public MaterialTabHost tabHost;
     public ShowMessaging(Context context, JChatModelMessages messengers) {
         super(context);
         this.messengers = messengers;
@@ -190,6 +191,33 @@ public class ShowMessaging extends LinearLayout {
 
     private void init(AttributeSet attrs, int defStyle) {
         View layout_product = inflate(getContext(), R.layout.components_com_jchat_views_messeging_tmpl_c_default, this);
+
+
+        tabHost = (MaterialTabHost) this.findViewById(R.id.materialTabHost);
+        pager = (ViewPager) this.findViewById(R.id.viewpager);
+
+        // init view pager
+        pagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+        pager.setAdapter(pagerAdapter);
+        pager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+            @Override
+            public void onPageSelected(int position) {
+                // when user do a swipe the selected tab change
+                tabHost.setSelectedNavigationItem(position);
+            }
+        });
+
+        // insert all tabs from pagerAdapter data
+        for (int i = 0; i < pagerAdapter.getCount(); i++) {
+            tabHost.addTab(
+                    tabHost.newTab()
+                            .setIcon(getIcon(i))
+                            .setTabListener(this)
+            );
+        }
+
+
+
         ImageButton btn_send = (ImageButton) layout_product.findViewById(R.id.btn_send);
         Button buttonMainRoom = (Button) layout_product.findViewById(R.id.buttonMainRoom);
         ImageButton imageButtonListUserOnline = (ImageButton) layout_product.findViewById(R.id.imageButtonListUserOnline);
