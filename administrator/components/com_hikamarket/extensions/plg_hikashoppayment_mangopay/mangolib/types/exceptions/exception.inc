@@ -1,5 +1,5 @@
-<?php
-namespace MangoPay;
-
-class Exception extends \Exception {
-}
+<?php
+namespace MangoPay;
+
+class Exception extends \Exception {
+}

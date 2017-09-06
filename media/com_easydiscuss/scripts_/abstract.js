@@ -1,1 +1,1 @@
-window.EasyDiscuss = abstractComponent();
+window.EasyDiscuss = abstractComponent();

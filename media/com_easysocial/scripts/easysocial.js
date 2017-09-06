@@ -1,8 +1,8 @@
-EasySocial.require()
-	.script(
-
-	)
-	.library(
-
-	)
-	.done();
+EasySocial.require()
+	.script(
+
+	)
+	.library(
+
+	)
+	.done();

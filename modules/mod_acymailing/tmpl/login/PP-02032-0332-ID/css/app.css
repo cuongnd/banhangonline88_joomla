@@ -1,0 +1,4513 @@
+/**New images Path once the images are published. Remove the below vairbale and their reference */
+/** method responsible for loading the background image set in CSS **/
+/**  Method for positing the lock symbol in the button **/
+/** Method responsible for loading the 1x and 2x for the image tag */
+@-webkit-keyframes rotation {
+    from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}
+@-moz-keyframes rotation {
+    from {
+        -moz-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -moz-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}
+@-o-keyframes rotation {
+    from {
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -o-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}
+/* Lib */
+/**
+ * @fileOverview account page.
+ * @name paypal.less
+ * @author Perumal Palani & Gurusubramaniam sundararaman
+ * @tested iPhone"s Portrait & Landscape mode [Safari], iPad"s Portrait & Landscape mode [Safari], Safari, Chrome, firefox browsers
+ */
+html {
+    background-color: #ffffff;
+    min-height: 100%;
+}
+body {
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    color: #686159;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 87.5%;
+    /* Base font size is 14px */
+    -webkit-font-smoothing: antialiased;
+    -webkit-backface-visibility: hidden;
+}
+ul,
+ol,
+li {
+    margin: 0;
+    padding: 0;
+}
+p {
+    font-size: 1.14285714em;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #333333;
+}
+h1 {
+    margin: 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 2.85714286em;
+    line-height: 50px;
+    font-weight: 300;
+    color: #333333;
+}
+h2 {
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1.5em;
+    line-height: 21px;
+    font-weight: 300;
+    color: #333333;
+}
+img {
+    border: 0;
+}
+a:link,
+a:visited,
+a:hover,
+a:focus {
+    color: #0666b3;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+.no-js body {
+    display: block !important;
+}
+.nonjsAlert {
+    margin: 0;
+    padding: .5em;
+    border-top: 1px solid #990000;
+    border-bottom: 1px solid #990000;
+    background-color: #ffff99;
+    color: #990000;
+    text-align: center;
+}
+.accessAid {
+    position: absolute !important;
+    clip: rect(1px 1px 1px 1px);
+    /* IE6, IE7 */
+    clip: rect(1px, 1px, 1px, 1px);
+    padding: 0 !important;
+    border: 0 !important;
+    height: 1px !important;
+    width: 1px !important;
+    overflow: hidden;
+}
+.clearfix {
+    zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+    display: table;
+    content: "";
+}
+.clearfix:after {
+    clear: both;
+}
+.hide {
+    display: none;
+}
+.underlay {
+    content: "";
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #999999;
+    opacity: 0.6;
+    z-index: 5;
+}
+/** Style for supressing the X, eye symbol for password field mark in IE 10 and above **/
+input::-ms-clear,
+input::-ms-reveal {
+    display: none;
+    width: 0;
+    height: 0;
+}
+/**
+ * @fileOverview button styling.
+ * @name button.less
+ * @author Perumal Palani
+ * @tested Chrome browsers
+ */
+/* Desktops ---- */
+a.button,
+a.button:link,
+a.button:visited,
+.button,
+button {
+    width: 100%;
+    height: 44px;
+    padding: 10px 15px;
+    border: 0;
+    display: block;
+    background: #009cde;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-webkit-appearance: none;
+    -ms-webkit-appearance: none;
+    -o-webkit-appearance: none;
+    webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    color: #ffffff;
+    font-size: 1.14285714em;
+    text-align: center;
+    font-weight: bold;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-shadow: none;
+}
+a.button:hover,
+a.button:link:hover,
+a.button:visited:hover,
+.button:hover,
+button:hover,
+a.button:focus,
+a.button:link:focus,
+a.button:visited:focus,
+.button:focus,
+button:focus,
+a.button.active,
+a.button:link.active,
+a.button:visited.active,
+.button.active,
+button.active,
+a.button:active,
+a.button:link:active,
+a.button:visited:active,
+.button:active,
+button:active {
+    background: #0a8cc4;
+    text-decoration: none;
+}
+a.button.small,
+a.button:link.small,
+a.button:visited.small,
+.button.small,
+button.small {
+    padding: 8px 15px;
+    height: 35px;
+}
+a.button.secondary,
+a.button:link.secondary,
+a.button:visited.secondary,
+.button.secondary,
+button.secondary {
+    color: #393f44;
+    background: #e1e7eb;
+}
+a.button.secondary:hover,
+a.button:link.secondary:hover,
+a.button:visited.secondary:hover,
+.button.secondary:hover,
+button.secondary:hover,
+a.button.secondary:active,
+a.button:link.secondary:active,
+a.button:visited.secondary:active,
+.button.secondary:active,
+button.secondary:active {
+    text-decoration: none;
+    background: #c9ced1;
+}
+a.button.secondary:disabled,
+a.button:link.secondary:disabled,
+a.button:visited.secondary:disabled,
+.button.secondary:disabled,
+button.secondary:disabled {
+    background: #e7edf0;
+}
+/**
+ * Details: 12 columns / 6.25% columns / 2.083%px gutters / 1.041667% margins
+ */
+.grid12 {
+    margin: 0 1.041667%;
+}
+.grid8 {
+    width: 64.581%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: top;
+}
+.grid9 {
+    width: 64.581%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: top;
+}
+.grid7 {
+    width: 56.248%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: top;
+}
+.grid6 {
+    width: 47.915%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: top;
+}
+.grid5 {
+    width: 39.582%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: top;
+}
+.grid3 {
+    width: 22.916%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: top;
+}
+.gutter-left {
+    margin-left: 2.083%;
+}
+.grid {
+    width: 100%;
+}
+@media all and (min-width: 768px) and (max-width: 1024px) {
+    .grid12 {
+        margin: 0 3.5%;
+    }
+    .grid {
+        width: auto;
+    }
+}
+/* mobile ---- */
+@media all and (max-width: 767px) {
+    .grid12 {
+        margin: 0 3.5%;
+    }
+    .grid {
+        width: auto;
+    }
+}
+/** Ipad portrait specific styles **/
+@media all and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+    .grid6 {
+        width: 65%;
+        display: block;
+    }
+    .grid6.gutter-left {
+        margin-left: 0;
+    }
+    .grid6 header {
+        margin-bottom: 30px;
+    }
+}
+.tab {
+    width: 100%;
+    height: 44px;
+    position: relative;
+}
+.tab ul {
+    list-style: none;
+    height: 44px;
+}
+.tab ul li:nth-child(even) {
+    margin-left: 15px;
+}
+.tab ul li {
+    height: 44px;
+    width: auto;
+    border: 1px solid #dddddd;
+    border-bottom: 0;
+    position: relative;
+    float: left;
+}
+.tab ul li a {
+    padding: 15px 30px;
+    display: inline-block;
+    color: #333333;
+    font-size: 16px;
+    line-height: 16px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+}
+.tab ul li.active {
+    height: 44px;
+    z-index: 3;
+    border: 0;
+    background-color: #f5f5f5;
+}
+.tab ul li.active a {
+    color: #333333;
+}
+.tab ul li.active:before,
+.tab ul li.active:after {
+    width: 3px;
+    height: 3px;
+    position: absolute;
+    top: 40px;
+    z-index: 1;
+    content: "";
+}
+.tab ul li.active:before {
+    border-width: 0 1px 1px 0;
+    left: -4px;
+    box-shadow: 2px 2px 0 #ffffff;
+}
+.tab ul li.active:after {
+    border-width: 0 0 1px 1px;
+    right: -4px;
+    box-shadow: -2px 2px 0 #ffffff;
+}
+/**
+ * @fileOverview Layout styles.
+ * @name layout.less
+ * @author Perumal Palani & Gurusubramaniam sundararaman
+ * @tested iPhone[Safari], iPad[Safari], Safari, Chrome, firefox browsers
+ */
+.fixed {
+    width: 512px;
+    margin: 0 auto;
+}
+#main {
+    width: 960px;
+    margin: 0 auto;
+}
+#main header {
+    width: 95%;
+}
+header.mainHeader {
+    height: 72px;
+    margin: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    background: #ffffff;
+}
+header.mainHeader .headerContainer {
+    width: 960px;
+    margin: 0 auto;
+    border-bottom: 1px solid #ffffff;
+    overflow: auto;
+}
+header.mainHeader .logo {
+    width: 106px;
+    height: 29px;
+    margin: 21px 0;
+    display: block;
+    float: left;
+}
+header.mainHeader .securityLock {
+    background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/sprites_onboarding.png") no-repeat;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2) {
+    header.mainHeader .securityLock {
+        background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/sprites_onboarding_2x.png") no-repeat;
+        background-size: 34px;
+    }
+}
+header.mainHeader .securityLock {
+    padding-left: 20px;
+    padding-top: 2px;
+    background-repeat: no-repeat;
+    background-position: 0 37%;
+    font-size: 1em;
+    color: #666666;
+    background-size: 34px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+header.mainHeader .logoutBtn,
+header.mainHeader .loginBtn {
+    margin-top: 21px;
+    float: right;
+}
+header.mainHeader .logoutBtn span,
+header.mainHeader .loginBtn span {
+    margin: 0 5px;
+}
+.helpNotify {
+    margin: 10px 0;
+    font-size: 1em;
+    line-height: 20px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #666666;
+}
+.centerText {
+    text-align: center;
+}
+.camelCase {
+    text-transform: capitalize;
+}
+header p {
+    margin: 15px 0;
+    line-height: 22px;
+}
+.legalText {
+    font-size: 1em;
+    color: #666666;
+}
+.legalText p {
+    font-size: 1em;
+}
+a.textLink {
+    text-decoration: none;
+    color: #666666;
+    font-weight: normal;
+    text-shadow: none;
+}
+main {
+    margin: 0;
+    padding: 30px 0 50px;
+    position: relative;
+}
+.white {
+    background: #ffffff;
+}
+.boldText {
+    font-weight: bold;
+}
+.container {
+    background: #f5f5f5;
+}
+.container .inner {
+    margin: 0 9.3741667%;
+    padding: 18px 0 30px;
+    position: relative;
+}
+/* ipad & above - grids - responsive */
+@media all and (min-width: 768px) and (max-width: 1024px) {
+    header.mainHeader {
+        width: 100%;
+        margin: 0;
+    }
+    header.mainHeader .headerContainer {
+        width: auto;
+    }
+    section #main {
+        width: 100%;
+    }
+    section #main .grid12 .grid6.valueProp {
+        width: 49.5%;
+    }
+}
+/* IPAD portrait fixes */
+@media all and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+    section #main .grid12 .grid6.valueProp {
+        width: 70%;
+    }
+    section #main .grid12 .grid6.valueProp .imageHolder {
+        display: none;
+        background: none;
+    }
+}
+/* mobile ---- */
+@media all and (max-width: 767px) {
+    * {
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+    }
+    header.mainHeader {
+        width: 100%;
+    }
+    header.mainHeader .headerContainer {
+        width: 100%;
+    }
+    header.mainHeader .loginBtn {
+        margin-top: 15px;
+    }
+    header.mainHeader .loginBtn .securityLock {
+        width: 12px;
+        height: 18px;
+        padding: 0;
+        margin: 12px 0 0 0;
+        display: block;
+        font-size: 0;
+    }
+    main {
+        padding: 0;
+    }
+    main #main {
+        width: 100%;
+        margin: 0 auto;
+    }
+    main #main header {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    main #main header h1 {
+        font-size: 1.57142857em;
+        line-height: 25px;
+    }
+    main #main .grid12 {
+        margin: 0 3.5%;
+    }
+    main #main .grid12 .grid6 {
+        width: 100%;
+    }
+    main #main .grid12 .grid6.valueProp .imageHolder {
+        background: 0;
+        height: 0;
+        margin: 0;
+        padding: 0;
+    }
+    main #main .grid12 .grid6.gutter-left {
+        margin-left: 0;
+    }
+    main #main .valueProp .imageHolder {
+        background: 0;
+        display: none;
+    }
+    main .container .inner {
+        margin: 0 2.3741667%;
+    }
+}
+/**
+ * @fileOverview errors, information, notifications alerts .
+ * @name errors.less
+ * @author Perumal Palani & Gurusubramaniam sundararaman
+ * @tested Chrome browsers
+ */
+@-webkit-keyframes showHide {
+    0% {
+        display: none;
+        max-height: 0;
+    }
+    100% {
+        display: block;
+        max-height: 20em;
+    }
+}
+@-moz-keyframes showHide {
+0 {
+    display: none;
+    opacity: 0;
+    max-height: 0;
+}
+100% {
+    display: block;
+    opacity: 1;
+    max-height: 20em;
+}
+}
+@-o-keyframes showHide {
+0 {
+    display: none;
+    opacity: 0;
+    max-height: 0;
+}
+100% {
+    display: block;
+    opacity: 1;
+    max-height: 20em;
+}
+}
+@keyframes showHide {
+0 {
+    display: none;
+    opacity: 0;
+    max-height: 0;
+}
+100% {
+    display: block;
+    opacity: 1;
+    max-height: 20em;
+}
+}
+/* Default state is closed, we add class "open" to a message when we want to open it */
+.help-information,
+.help-error,
+.help-error:before,
+.help-error:after,
+.help-information:before,
+.help-information:after,
+.page-error,
+.no-js .error-submit {
+    max-height: 0;
+    border: 0 none;
+    padding: 0;
+    margin: 0;
+    z-index: 5;
+    font-size: 0;
+}
+/* information bubble (blue) */
+.help-information.open,
+.no-js .help-information {
+    margin: 7px 0 0;
+    padding: 8px 12px;
+    border: 1px solid #cee0eb;
+    position: absolute;
+    background: #f4f8fb;
+    font-size: 1em;
+    font-family: Helvetica, Arial, sans-serif;
+    color: #666666;
+    text-shadow: 0 1px #ffffff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding-box;
+    background-clip: padding-box;
+    -webkit-animation: showHide 300ms 0 ease;
+    -moz-animation: showHide 300ms 0 ease;
+    -ms-animation: showHide 300ms 0 ease;
+    animation: showHide 300ms 0 ease;
+    max-height: 10em;
+}
+.help-information.open:before,
+.no-js .help-information:before {
+    border-color: transparent transparent #cee0eb;
+    border-style: dashed solid;
+    border-width: 7px;
+    position: absolute;
+    left: 10px;
+    top: -14px;
+    z-index: 1;
+    content: "";
+}
+.help-information.open:after,
+.no-js .help-information:after {
+    border-color: transparent transparent #f4f8fb;
+    border-style: dashed solid;
+    border-width: 7px;
+    position: absolute;
+    left: 10px;
+    top: -12px;
+    z-index: 2;
+    content: "";
+}
+.no-js .help-information {
+    position: relative;
+}
+/* error bubble (red) */
+.hasError .help-error.open,
+.passwordSection .hasError .help-information.open,
+.no-js .hasError .error-submit {
+    margin: 7px 0 0;
+    padding: 8px 12px;
+    border: 1px solid #efcaca;
+    position: absolute;
+    background: #f7ebeb;
+    font-size: 1em;
+    font-family: Helvetica, Arial, sans-serif;
+    color: #666666;
+    text-shadow: 0 1px #ffffff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding-box;
+    background-clip: padding-box;
+    -webkit-animation: showHide 300ms 0 ease;
+    -moz-animation: showHide 300ms 0 ease;
+    -ms-animation: showHide 300ms 0 ease;
+    animation: showHide 300ms 0 ease;
+    max-height: 20em;
+}
+.hasError .help-error.open:before,
+.passwordSection .hasError .help-information.open:before,
+.no-js .hasError .error-submit:before {
+    border-color: transparent transparent #efcaca;
+    border-style: dashed solid;
+    border-width: 7px;
+    position: absolute;
+    left: 10px;
+    top: -14px;
+    z-index: 1;
+    content: "";
+}
+.hasError .help-error.open:after,
+.passwordSection .hasError .help-information.open:after,
+.no-js .hasError .error-submit:after {
+    border-color: transparent transparent #f7ebeb;
+    border-style: dashed solid;
+    border-width: 7px;
+    position: absolute;
+    left: 10px;
+    top: -12px;
+    z-index: 2;
+    content: "";
+}
+/* Hide multiple error messages */
+.hasError .help-error.open ~ .help-error.open,
+.passwordSection .hasError .open ~ .help-error.open,
+.hasError.submitted .help-error.open ~ .help-error.open,
+.passwordSection .hasError.submitted .open ~ .help-error.open {
+    display: none !important;
+}
+/* password bubble interaction  */
+.help-information > ul,
+.help-error > ul {
+    margin: 0;
+}
+.help-information.open > ul li,
+.help-error.open > ul li {
+    margin: 5px 0;
+    list-style: none;
+}
+/* page error styles*/
+.page-error.open {
+    margin: 7px 0 0;
+    padding: 8px 12px;
+    border: 1px solid #efcaca;
+    position: absolute;
+    background: #f7ebeb;
+    font-size: 1em;
+    font-family: Helvetica, Arial, sans-serif;
+    color: #666666;
+    text-shadow: 0 1px #ffffff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding-box;
+    background-clip: padding-box;
+    margin: 0 0 10px;
+    max-height: 500px;
+    display: block;
+}
+/* Message Box for page level errors */
+#messageBox {
+    min-height: 40px;
+    display: none;
+    text-align: center;
+}
+#messageBox.ERROR {
+    display: block;
+    background: #c72f38;
+}
+#messageBox.ERROR span {
+    vertical-align: text-bottom;
+}
+#messageBox.ERROR span.alertIcon {
+    background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/onboarding_form.png") no-repeat;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2) {
+    #messageBox.ERROR span.alertIcon {
+        background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/onboarding_form_2x.png") no-repeat;
+        background-size: 50px;
+    }
+}
+#messageBox.ERROR span.alertIcon {
+    height: 18px;
+    width: 25px;
+    margin-top: 5px;
+    margin-right: 10px;
+    display: inline-block;
+    background-position: 0 99%;
+    background-size: 25px;
+}
+#messageBox.ALERT {
+    display: block;
+    background: #dca500;
+}
+#messageBox.CONFIRMATION,
+#messageBox.NOTIFICATION {
+    display: block;
+    background: #3ea134;
+}
+#messageBox p {
+    margin: 0;
+    padding: 5px 0;
+    line-height: 18px;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1.14285714em;
+    text-shadow: none;
+}
+#messageBox a,
+#messageBox a:link,
+#messageBox a:visited,
+#messageBox a:hover,
+#messageBox a:focus {
+    color: #ffffff;
+}
+/* Error highlighting for input on focus and server error */
+.hasError.textInput input {
+    border: 1px solid #9d2c36;
+    background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/onboarding_form.png") no-repeat;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2) {
+    .hasError.textInput input {
+        background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/onboarding_form_2x.png") no-repeat;
+        background-size: 25px;
+    }
+}
+.hasError.textInput input {
+    background-position: 96% 62%;
+    background-color: #ffffff;
+}
+.hasError.textInput textarea {
+    border: 1px solid #9d2c36;
+}
+.hasError.textInput.small input,
+.hasError.textInput.small input:hover,
+.hasError.textInput.small input:focus {
+    background-position: 91% 62%;
+}
+.hasError.textInput.medium input,
+.hasError.textInput.medium input:hover,
+.hasError.textInput.medium input:focus {
+    background-position: 95% 62%;
+}
+.hasError.textInput.large input,
+.hasError.textInput.large input:hover,
+.hasError.textInput.large input:focus {
+    background-position: 98% 62%;
+}
+/* red border - server side error dropdown*/
+.hasError.selectDropdown,
+.hasError .selectDropdown,
+.hasError.selectDropdown:hover,
+.hasError .selectDropdown:hover,
+.hasError.selectDropdown:focus,
+.hasError .selectDropdown:focus {
+    border: 1px solid #9d2c36;
+    background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/onboarding_form.png") no-repeat;
+    background-color: #ffffff;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2) {
+    .hasError.selectDropdown,
+    .hasError .selectDropdown,
+    .hasError.selectDropdown:hover,
+    .hasError .selectDropdown:hover,
+    .hasError.selectDropdown:focus,
+    .hasError .selectDropdown:focus {
+        background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/onboarding_form_2x.png") no-repeat;
+        background-size: 25px;
+    }
+}
+.hasError.selectDropdown,
+.hasError .selectDropdown,
+.hasError.selectDropdown:hover,
+.hasError .selectDropdown:hover,
+.hasError.selectDropdown:focus,
+.hasError .selectDropdown:focus {
+    background-position: 96% 62%;
+    background-color: #ffffff;
+}
+.selectDropdown.hasError select:focus,
+.selectDropdown.hasError select:hover {
+    -webkit-box-shadow: 0 0 5px transparent, 0 2px 2px transparent inset;
+    -moz-box-shadow: 0 0 5px transparent, 0 2px 2px transparent inset;
+    box-shadow: 0 0 5px transparent, 0 2px 2px transparent inset;
+    border: 1px solid transparent;
+}
+/**Notification stylings**/
+.notification {
+    margin: 10px auto;
+    width: 960px;
+}
+.notification div {
+    min-height: 40px;
+    background-color: #F7FFF7;
+    border: 1px solid #1b9e1b;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+}
+.notification p {
+    padding: 10px 10px;
+    margin: 0;
+    font-size: 1.07142857em;
+}
+.notification p span {
+    vertical-align: middle;
+}
+.notification p .alertIcon {
+    background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/onboarding_form.png") no-repeat;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2) {
+    .notification p .alertIcon {
+        background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/onboarding_form_2x.png") no-repeat;
+        background-size: 25px;
+    }
+}
+.notification p .alertIcon {
+    margin-right: 12px;
+    height: 23px;
+    width: 25px;
+    display: inline-block;
+    background-position: 0% 30.5%;
+    background-size: 25px;
+}
+/* End of styles for DropDown highting and error from server*/
+/* Start of styling of checkbox on error */
+.js .ipad form .checkbox,
+.js .desktop form .checkbox.hasError.submitted input[type=checkbox] + label {
+    background-position: -1.4% 27.6%;
+}
+/*End of styling for checkbos on error */
+/* mobile need to test? -- */
+@media only screen and (max-width: 767px) {
+    #messageBox p {
+        padding: 0;
+        font-size: .750em;
+    }
+    .help-information.open,
+    .passwordSection .hasError .help-information,
+    .passwordSection .hasError.submitted .help-information,
+    .hasErroror .help-error,
+    .hasError.submitted .help-error,
+    .no-js .error-submit,
+    .no-js .help-information {
+        width: auto;
+    }
+    .notification {
+        width: 100%;
+    }
+}
+@media all and (min-width: 768px) and (max-width: 1024px) {
+    .notification {
+        width: 100%;
+    }
+}
+/**
+ * @fileOverview textInput styles.
+ * @name textInput.less
+ * @author Perumal Palani & Gurusubramaniam Sundararaman
+ * @tested? iPhone"s Portrait & Landscape mode [Safari], iPad"s Portrait & Landscape mode [Safari], Safari, Chrome, firefox browsers
+ */
+.textInput {
+    margin: 0 0 10px 0;
+}
+.textInput label {
+    margin: 0;
+    display: block;
+    line-height: 44px;
+    font-weight: normal;
+    font-size: 16px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #898989;
+}
+.textInput input,
+.textInput textarea {
+    height: 44px;
+    width: 100%;
+    padding: 0 24px 0 12px;
+    border: 1px solid #aaaaaa;
+    outline: 0;
+    background: #ffffff;
+    text-overflow: ellipsis;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -khtml-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    color: #000000;
+    font-size: 16px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: normal;
+}
+.textInput input:hover,
+.textInput textarea:hover,
+.textInput input:focus,
+.textInput textarea:focus {
+    border: 1px solid #0079c1;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    background-color: #ffffff;
+}
+.textInput input:disabled,
+.textInput textarea:disabled {
+    border: 1px solid #cbd2d6;
+}
+.textInput textarea {
+    padding-top: 12px;
+    padding-right: 0;
+    height: 100%;
+    overflow: auto;
+}
+.textInput input:not([type=submit]):not([type=radio]):not([type=checkbox]) {
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding-box;
+    background-clip: padding-box;
+    -webkit-transition: border 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    -moz-transition: border 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    -o-transition: border 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    -ms-transition: border 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    transition: border 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+.textInput .tickmark {
+    background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/onboarding_form.png") no-repeat;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2) {
+    .textInput .tickmark {
+        background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/onboarding_form_2x.png") no-repeat;
+        background-size: 25px;
+    }
+}
+.textInput .tickmark {
+    width: 35px;
+    height: 35px;
+    margin-top: 2px;
+    right: 5px;
+    float: right;
+    position: absolute;
+    z-index: 3;
+    text-align: center;
+    cursor: pointer;
+    background-position: 0 69%;
+}
+/* LAP - large */
+.js .lap .textInput,
+.js div.lap.textInput {
+    padding: 0;
+    position: relative;
+}
+.js .lap .textInput label,
+.js div.lap.textInput label {
+    position: absolute;
+    left: 12px;
+    z-index: 1;
+    color: #666666;
+    cursor: text;
+}
+.js .lap .textInput.disabled label,
+.js div.lap.textInput.disabled label {
+    color: #cbd2d6;
+}
+.js .lap .textInput label.focus,
+.js div.lap.textInput label.focus,
+.js div.lap.textInput label.focus span.optional,
+.js .lap .textInput label.focus span.optional {
+    color: #b3b3b3;
+}
+/* LAP - medium */
+.js .lap .textInput.medium,
+.js div.lap.textInput.medium {
+    padding: 0;
+    position: relative;
+}
+.js .lap .textInput.medium label.focus,
+.js .formMedium div.lap.textInput.medium label.focus {
+    color: #b3b3b3;
+}
+.js .lap .textInput.medium label,
+.js div.lap.textInput.medium label {
+    position: absolute;
+    left: 12px;
+    z-index: 1;
+    color: #666666;
+}
+.groupFields {
+    clear: both;
+}
+.groupFields .textInput {
+    width: 48.9%;
+    float: left;
+}
+.groupFields .textInput input {
+    width: 100%;
+}
+.groupFields .left,
+.groupFields .middle {
+    margin-right: 10px;
+}
+.groupFields .multi .left {
+    width: 72.5%;
+    float: left;
+}
+.groupFields .multi .right {
+    width: 25%;
+    float: left;
+}
+.groupFields .multi.equal .left,
+.groupFields .multi.equal .right {
+    width: 48.6%;
+}
+.groupFields .multi.equal .left {
+    margin-right: 0;
+}
+.groupFields .multi.equal .right {
+    float: right;
+}
+.groupFields .reverse .right {
+    width: 72.3%;
+}
+.groupFields .reverse .left {
+    width: 25%;
+}
+.groupFields .multiple .left {
+    width: 48.8%;
+    float: left;
+}
+.groupFields .multiple .right {
+    width: 25%;
+    float: left;
+}
+.groupFields .multiple .middle {
+    width: 21.4%;
+    float: left;
+}
+.groupFields .multiple.equal .left,
+.groupFields .multiple.equal .right,
+.groupFields .multiple.equal .middle {
+    width: 31.8%;
+}
+.groupFields .large {
+    width: 100%;
+}
+.groupFields.joint .left {
+    width: 34.7%;
+    height: 42px;
+    margin-right: 0;
+    border: 1px solid #aaaaaa;
+    border-right: 0;
+    border-bottom-left-radius: 3px;
+    border-top-left-radius: 3px;
+    background-color: #ffffff;
+}
+.groupFields.joint .left label {
+    padding-left: 10px;
+}
+.groupFields.joint .right {
+    width: 65%;
+    float: right;
+}
+.groupFields.joint .right .selectDropdown {
+    -webkit-border-radius: 0 3px 3px 0;
+    -moz-border-radius: 0 3px 3px 0;
+    border-radius: 0 3px 3px 0;
+}
+.groupReatedFields .left {
+    width: 27%;
+    float: left;
+}
+.groupReatedFields .right {
+    width: 73%;
+    float: left;
+}
+.groupReatedFields .selectDropdown {
+    border-right: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.groupReatedFields .textInput input {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+@media all and (max-width: 538px) {
+    .groupFields .textInput,
+    .groupFields .multi .textInput,
+    .groupFields .multiple .textInput,
+    .groupFields .selectDropdown,
+    .groupFields .multi .selectDropdown,
+    .groupFields .multiple .selectDropdown {
+        width: 100%;
+    }
+}
+/* mobile ---- */
+@media all and (max-width: 767px) {
+    .groupFields .multi.equal .left,
+    .groupFields .multi.equal .right {
+        width: 48.2%;
+    }
+}
+@media all and (max-width: 767px) and (orientation: landscape) {
+    .groupFields .multi.equal .left,
+    .groupFields .multi.equal .right {
+        width: 49.2%;
+    }
+}
+/* android bug: default browser shows orange outline */
+.android .textInput input:focus {
+    -webkit-user-modify: read-write-plaintext-only;
+}
+/** From selectDropdwon.less **/
+.selectDropdown {
+    display: block;
+    overflow: hidden;
+    width: 81%;
+    margin: 0;
+    border: 1px solid #aaaaaa;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -khtml-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/onboarding_form.png") no-repeat scroll 96% 46%, -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#ffffff)) 0 0;
+    background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/onboarding_form.png") no-repeat scroll 96% 46%, -webkit-linear-gradient(top, #ffffff, #ffffff) 0 0;
+    background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/onboarding_form.png") no-repeat scroll 96% 46%, -moz-linear-gradient(top, #ffffff, #ffffff) 0 0;
+    background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/onboarding_form.png") no-repeat scroll 96% 46%, -ms-linear-gradient(top, #ffffff, #ffffff) 0 0;
+    background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/onboarding_form.png") no-repeat scroll 96% 46%, -o-linear-gradient(top, #ffffff, #ffffff) 0 0;
+    background-color: #ffffff;
+    /* IE 10 specific */
+}
+.selectDropdown:hover,
+.selectDropdown:focus,
+.selectDropdown.hovered {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border: 1px solid #57a9d9;
+}
+.selectDropdown.progress {
+    font-size: 0;
+    background: #ffffff;
+}
+.selectDropdown.progress::after {
+    content: "";
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 6;
+    margin: -15px auto auto -15px;
+    -webkit-animation: rotation .7s infinite linear;
+    -moz-animation: rotation .7s infinite linear;
+    -o-animation: rotation .7s infinite linear;
+    animation: rotation .7s infinite linear;
+    border-left: 4px solid rgba(0, 0, 0, 0.2);
+    border-right: 4px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 4px solid rgba(0, 0, 0, 0.2);
+    border-top: 4px solid #2180c0;
+    border-radius: 100%;
+    width: 16px;
+    height: 16px;
+}
+.selectDropdown select {
+    width: 110%;
+    /* this value is set to more than 100% to hide native dropdown image in older browsers */
+    border: 0 none;
+    margin: 0;
+    padding: 10px;
+    height: 42px;
+    background: none;
+    position: relative;
+    outline: 0;
+    /* this will hide the native dropdown image for browsers that can read appearance value */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    font-size: 1em;
+    line-height: 1.230769em;
+    z-index: 1;
+}
+.selectDropdown option {
+    background-color: #ffffff;
+    padding: 6px 10px;
+}
+.selectDropdown option:hover,
+.selectDropdown option:focus,
+.selectDropdown option.focus {
+    /* Does this work at all?? Not so sure */
+    background-color: #f5f5f5;
+}
+.selectDropdown select::-ms-expand {
+    display: none;
+}
+form .nativeDropdown {
+    position: relative;
+}
+form .nativeDropdown label {
+    display: block;
+    margin: 0;
+    line-height: 1.76923em;
+    font-weight: normal;
+}
+form .nativeDropdown.small {
+    width: 33%;
+}
+form .nativeDropdown.large {
+    width: 100%;
+}
+form .nativeDropdown.tall {
+    /* red border - client side error */
+}
+form .nativeDropdown.tall .selectDropdown {
+    background: url('https://www.paypalobjects.com/webstatic/i/sprite/sprite_ui.png') no-repeat scroll right -1683px, -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#f2f2f2)) 0 0;
+    background: url('https://www.paypalobjects.com/webstatic/i/sprite/sprite_ui.png') no-repeat scroll right -1683px, -webkit-linear-gradient(top, #ffffff, #f2f2f2) 0 0;
+    background: url('https://www.paypalobjects.com/webstatic/i/sprite/sprite_ui.png') no-repeat scroll right -1683px, -moz-linear-gradient(top, #ffffff, #f2f2f2) 0 0;
+    background: url('https://www.paypalobjects.com/webstatic/i/sprite/sprite_ui.png') no-repeat scroll right -1683px, -ms-linear-gradient(top, #ffffff, #f2f2f2) 0 0;
+    background: url('https://www.paypalobjects.com/webstatic/i/sprite/sprite_ui.png') no-repeat scroll right -1683px, -o-linear-gradient(top, #ffffff, #f2f2f2) 0 0;
+    background-color: #ffffff;
+}
+form .nativeDropdown.tall select {
+    height: 2.95em;
+}
+form .nativeDropdown.tall.hasError .selectDropdown,
+form .nativeDropdown.tall.hasError .selectDropdown:hover,
+form .nativeDropdown.tall.hasError .selectDropdown:focus,
+form .nativeDropdown.tall.hasError .selectDropdown.hovered {
+    border-color: #de746a;
+    -webkit-box-shadow: 0 0 5px rgba(220, 99, 88, 0.6);
+    -moz-box-shadow: 0 0 5px rgba(220, 99, 88, 0.6);
+    box-shadow: 0 0 5px rgba(220, 99, 88, 0.6);
+    background: url('https://www.paypalobjects.com/webstatic/i/sprite/sprite_ui.png') no-repeat scroll 94% -2188px, url('https://www.paypalobjects.com/webstatic/i/sprite/sprite_ui.png') no-repeat scroll right -1683px, -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#f2f2f2)) 0 0;
+    background: url('https://www.paypalobjects.com/webstatic/i/sprite/sprite_ui.png') no-repeat scroll 94% -2188px, url('https://www.paypalobjects.com/webstatic/i/sprite/sprite_ui.png') no-repeat scroll right -1683px, -webkit-linear-gradient(top, #ffffff, #f2f2f2) 0 0;
+    background: url('https://www.paypalobjects.com/webstatic/i/sprite/sprite_ui.png') no-repeat scroll 94% -2188px, url('https://www.paypalobjects.com/webstatic/i/sprite/sprite_ui.png') no-repeat scroll right -1683px, -moz-linear-gradient(top, #ffffff, #f2f2f2) 0 0;
+    background: url('https://www.paypalobjects.com/webstatic/i/sprite/sprite_ui.png') no-repeat scroll 94% -2188px, url('https://www.paypalobjects.com/webstatic/i/sprite/sprite_ui.png') no-repeat scroll right -1683px, -ms-linear-gradient(top, #ffffff, #f2f2f2) 0 0;
+    background: url('https://www.paypalobjects.com/webstatic/i/sprite/sprite_ui.png') no-repeat scroll 94% -2188px, url('https://www.paypalobjects.com/webstatic/i/sprite/sprite_ui.png') no-repeat scroll right -1683px, -o-linear-gradient(top, #ffffff, #f2f2f2) 0 0;
+    background-color: #ffffff;
+}
+.js .nativeDropdown.lap label {
+    position: absolute !important;
+    clip: rect(1px 1px 1px 1px);
+    /* IE6, IE7 */
+    clip: rect(1px, 1px, 1px, 1px);
+    padding: 0 !important;
+    border: 0 !important;
+    height: 1px !important;
+    width: 1px !important;
+    overflow: hidden;
+}
+.js .enhanced .selectDropdown {
+    position: relative;
+}
+.js .enhanced .selectDropdown select {
+    opacity: 0;
+    z-index: 10;
+    padding-left: 0;
+    filter: alpha(opacity=0);
+    width: 100%;
+}
+.js .enhanced .selectDropdown .custom-select {
+    position: absolute;
+    top: 0;
+    left: 0;
+    line-height: 2.61538em;
+    width: 100%;
+    padding-left: 12px;
+    z-index: 1;
+}
+.js .enhanced.tall {
+    /* Override for Tall */
+}
+.js .enhanced.tall .custom-select {
+    line-height: 3.0769em;
+}
+/* mixin for Select element - Dropdowns
+	*
+	* We style native select element on web and it uses native element on other devices
+	* HTML Format to use for select element:
+	* 	<div class="selectDropdown">
+	*			<label for="selectID" class="accessAid" id="forSelectID">Select Label</label>
+	*			<select id="selectID" name="selectID">
+	*				<option value="">Option 1</option>
+	*				<option value="2">Option 2</option>
+	*			</select>
+	*		</div>
+	*
+	* @param width - defines the width of the selectDropdown on form
+	* @param rightPadding - this is so that any long selected text does not bork up the error visual styles.
+	*		                     Ideally this value should be calculated for each dropdown with a different width
+	*		                     than the defualt 210px so that the text entered stops showing right before
+	*		                     the error icons
+*/
+/**
+ * @fileOverview footer styling
+ * @name footer.less
+ * @author Perumal Palani & Gurusubramaniam Sundararaman
+ * @tested Chrome browsers
+ */
+footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+.footer {
+    width: 960px;
+    margin: 0 auto;
+    bottom: 0;
+    font-size: .846em;
+}
+.footer .footerNav {
+    padding-top: 6px;
+    border-top: 1px solid #ffffff;
+}
+.footer .footerNav .copyright {
+    margin: 0;
+    padding: 0 10px 0 0;
+    float: left;
+    clear: both;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 0.92857143em;
+    text-shadow: none;
+    line-height: 1.5em;
+}
+.footer .footerNav .copyright.spacer {
+    margin-top: 10px;
+}
+.footer .footerNav .legal {
+    margin-top: 6px;
+    overflow: auto;
+}
+.footer .footerNav .legal ul {
+    width: auto;
+    float: left;
+    margin: 0 ;
+}
+.footer .footerNav .legal ul li {
+    margin: 0 0 0 7px;
+    padding-left: 9px;
+    display: inline-block;
+}
+.footer .footerNav .legal ul li:first-child {
+    border-left: 0;
+    margin: 0;
+    padding: 0;
+}
+.footer .footerNav .legal ul li a {
+    line-height: 1.5em;
+    color: #666666;
+    text-decoration: none;
+    font-size: 0.92857143em;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    text-shadow: none;
+}
+.footer .footerNav .legal ul li a:hover {
+    text-decoration: underline;
+}
+/* Tablet ---- */
+@media all and (min-width: 768px) and (max-width: 1024px) {
+    .footer {
+        width: auto;
+        margin: 0 auto;
+    }
+    .footer .footerNav .copyright {
+        margin-left: 2%;
+        margin-bottom: 2%;
+    }
+}
+/* Mobile ---- */
+@media all and (max-width: 767px) {
+    .footer {
+        width: auto;
+        margin: 0 auto;
+        padding-bottom: 20px;
+    }
+    .footer .footerNav .legal ul,
+    .footer .footerNav .copyright {
+        float: none;
+        text-align: center;
+    }
+}
+/**
+ * @fileOverview icons for credit cards.
+ * @name icons.less
+ * @author Perumal Palani & Gurusubramaniam Sundararaman
+ * @tested iPhone"s Portrait & Landscape mode [Safari], iPad"s Portrait & Landscape mode [Safari], Safari, Chrome, firefox browsers
+ */
+/*
+ * Review: unused
+ * Pages : account, signup
+ */
+.creditCard,
+.cvv {
+    background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/sprites_cc_global.png") no-repeat;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2) {
+    .creditCard,
+    .cvv {
+        background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/sprites_cc_global_2x.png") no-repeat;
+        background-size: 36px;
+    }
+}
+.hasError .creditCard,
+.hasError .cvv {
+    right: 40px;
+}
+.creditCard,
+.cvv {
+    width: 37px;
+    height: 30px;
+    right: 10px;
+    top: 7px;
+    float: left;
+    position: absolute;
+    background-position: 0 87%;
+    z-index: 11;
+}
+.defaultCvv {
+    background-position: 0 93%;
+}
+.AMEXCvv {
+    background-position: 0 100%;
+}
+.creditCard.visa {
+    background-position: 0 -0.7%;
+}
+.creditCard.amex {
+    background-position: 0 12%;
+}
+.creditCard.master_card {
+    background-position: 0 6%;
+}
+.creditCard.discover {
+    background-position: 0 18%;
+}
+.creditCard.switch {
+    background-position: 0 37%;
+}
+.creditCard.DINER {
+    background-position: 0 24%;
+}
+.creditCard.jcb {
+    background-position: 0 30%;
+}
+.creditCard.maestro {
+    background-position: 0 37%;
+}
+.creditCard.cb_nationale {
+    background-position: 0 49%;
+}
+.creditCard.confinoga {
+    background-position: 0 74%;
+}
+.creditCard.cofidis {
+    background-position: 0 81%;
+}
+.creditCard.cetelem {
+    background-position: 0 56%;
+}
+.IT .creditCard.cetelem {
+    background-position: 0 62%;
+}
+.ES .creditCard.cetelem {
+    background-position: 0 68%;
+}
+.creditCard.iconText {
+    display: none;
+}
+/**
+ * @fileOverview address selector styling.
+ * @name mailingAddress.less
+ * @author Perumal Palani
+ * @tested iPhone"s Portrait & Landscape mode [Safari], iPad"s Portrait & Landscape mode [Safari], Safari, Chrome, firefox browsers
+ */
+.displayContainer {
+    margin-bottom: 10px;
+    padding: 10px 10px 13px;
+    border: 1px solid #aaaaaa;
+    background-color: #ffffff;
+    position: relative;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -khtml-border-radius: 3px;
+    border-radius: 3px;
+}
+.displayContainer .phoneDisplay {
+    margin-top: 20px;
+}
+.displayContainer h5 {
+    padding: 0;
+    margin: 0 0 20px;
+    font-weight: 300;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 16px;
+    color: #333333;
+}
+.displayContainer .display {
+    min-height: 32px;
+}
+.displayContainer .display p {
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    line-height: 16px;
+    color: #898989;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+}
+.displayContainer .display a.editAddress {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-weight: 300;
+}
+/**
+ * @fileOverview checkbox styling.
+ * @name checkbox.less
+ * @author Perumal Palani & Gursubramaniam
+ * @tested Chrome browsers
+ */
+.checkbox input[type=checkbox] {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 24px;
+    margin: 0 -24px -24px -40px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 24px;
+    opacity: .001;
+}
+.checkbox label {
+    margin-left: 40px;
+    display: inline-block;
+    line-height: 16px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    vertical-align: sub;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: #333333;
+}
+.checkbox label .icon {
+    position: absolute;
+    margin-left: -40px;
+    display: inline-block;
+    vertical-align: middle;
+    background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/onboarding_form.png") no-repeat;
+    width: 24px;
+    height: 24px;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2) {
+    .checkbox label .icon {
+        background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/onboarding_form_2x.png") no-repeat;
+        background-size: 24px;
+    }
+}
+.checkbox input[type=checkbox]:hover + .icon,
+.checkbox input[type=checkbox]:focus + .icon {
+    background-position: 0 7.7%;
+}
+.checkbox input[type=checkbox]:checked + .icon {
+    background-position: 0 15.3%;
+}
+.checkbox input[type=checkbox]:checked:hover + label,
+.checkbox input[type=checkbox]:checked:focus + label {
+    background-position: 0 15.3%;
+}
+.checkbox.hasError .icon {
+    background-position: 0 23%;
+}
+.radioBox {
+    height: 24px;
+    margin-bottom: 20px;
+}
+input[type=radio] {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 24px;
+    margin: 0 -24px -24px 0;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 24px;
+    opacity: .001;
+}
+.radioLabel {
+    margin-right: 12px;
+    display: inline-block;
+    line-height: 16px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    vertical-align: sub;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    color: #333333;
+}
+.radioButton {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    width: 32px;
+    height: 24px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+/* Background */
+.radioButton:before {
+    content: "";
+    position: absolute;
+    box-sizing: border-box;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: #ffffff;
+    border: 1px solid #9da3a6;
+    border-radius: 100%;
+    cursor: pointer;
+    -webkit-box-shadow: inset 0 1px #ffffff;
+    box-shadow: inset 0 1px #ffffff;
+}
+/* Checkmark */
+.radioButton:after {
+    opacity: 0;
+    content: "";
+    position: absolute;
+    width: .6rem;
+    height: .6rem;
+    left: .75rem;
+    top: .75rem;
+    -webkit-transform: translate(-50%, -50%);
+    background: #009cde;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 100%;
+    cursor: pointer;
+    box-shadow: 0 1px rgba(255, 255, 255, 0.5);
+}
+input[type=radio]:checked + .radioButton:after {
+    opacity: 1;
+}
+/* Firefox specific Fixes */
+@-moz-document url-prefix() {
+    .radioButton:after {
+        left: .4rem;
+        top: .4rem;
+    }
+}
+/* IE specific */
+@media all and (-ms-high-contrast: none) {
+    .radioButton:after {
+        left: .4rem;
+        top: .4rem;
+    }
+}
+.overPanel {
+    height: 1px;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    position: fixed;
+    z-index: -1;
+    overflow: hidden;
+    background-color: #ffffff;
+    -webkit-transition: height 0.5s, z-index 0.8s;
+    -moz-transition: height 0.5s, z-index 0.8s;
+    -o-transition: height 0.5s, z-index 0.8s;
+    -ms-transition: height 0.5s, z-index 0.8s;
+    transition: height 0.5s, z-index 0.8s;
+}
+.overPanel .panelWrapper {
+    width: 960px;
+    height: 75%;
+    margin: 0 auto;
+}
+.overPanel .panelWrapper .content {
+    width: 47.915%;
+    margin-left: 26.04%;
+    margin-top: 113px;
+    margin-bottom: 74px;
+}
+.overPanel .panelWrapper .content.full {
+    width: 100%;
+    margin-left: auto;
+}
+.overPanel a.close {
+    background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/onboarding_form.png") no-repeat;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2) {
+    .overPanel a.close {
+        background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/onboarding_form_2x.png") no-repeat;
+        background-size: 25px;
+    }
+}
+.overPanel a.close {
+    height: 20px;
+    width: 20px;
+    margin-top: 30px;
+    margin-right: 30px;
+    display: inline-block;
+    float: right;
+    font-size: 0;
+    background-position: 90% 76%;
+}
+.overPanel.in {
+    height: 100%;
+    border-top: 1px solid #aaaaaa;
+    overflow: hidden;
+    z-index: 10000;
+}
+.overPanel .footerLogo {
+    margin-bottom: 30px;
+    background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/icon_PP_monogram.png") no-repeat;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2) {
+    .overPanel .footerLogo {
+        background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/icon_PP_monogram_2x.png") no-repeat;
+        background-size: 21px;
+    }
+}
+.overPanel .footerLogo {
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 21px;
+    height: 25px;
+    text-align: center;
+}
+/* ipad & above - grids - responsive */
+@media all and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+    .overPanel {
+        top: 0;
+        position: absolute;
+    }
+    .overPanel .panelWrapper {
+        width: auto;
+    }
+    .overPanel .panelWrapper .content {
+        width: 60%;
+        margin: 113px auto 74px;
+    }
+}
+/* Mobile */
+@media only screen and (max-width: 767px) {
+    .overPanel.in {
+        overflow: auto;
+    }
+    .overPanel a.close {
+        margin-top: 10px;
+        margin-right: 10px;
+    }
+    .overPanel .panelWrapper {
+        width: auto;
+        height: auto;
+    }
+    .overPanel .panelWrapper .content {
+        width: 90%;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-bottom: 0;
+        margin-top: 40px;
+    }
+    .overPanel .footerLogo {
+        margin-top: 10px;
+    }
+}
+/**
+ * @fileOverview flags for footer country
+ * @name flags.less
+ * @author Perumal Palani
+ * @tested iPhone"s Portrait & Landscape mode [Safari], iPad"s Portrait & Landscape mode [Safari], Safari, Chrome, firefox browsers
+ */
+.flagsIn.in {
+    overflow: auto;
+}
+.flagsIn.in .panelWrapper {
+    height: auto;
+}
+.flagsIn.in .close {
+    top: 30px;
+    right: 30px;
+    position: fixed;
+}
+.flagsIn.in .grid {
+    padding-bottom: 20px;
+    clear: both;
+}
+.flagsIn.in .grid h2 {
+    font-size: 2.85714286em;
+    line-height: 50px;
+}
+.flagPanel .flag {
+    padding-left: 0;
+    margin-top: 8px;
+    list-style: none;
+    float: none;
+    display: block;
+    text-align: left;
+}
+.flagPanel .flag li {
+    float: left;
+    display: inline-block;
+    width: 19.5%;
+}
+.flagPanel .flag li a.country {
+    box-sizing: border-box;
+    color: #777;
+    display: block;
+    font-size: 13px;
+    height: 30px;
+    margin-bottom: 10px;
+    overflow: visible;
+    padding: 0 0 0 42px;
+    text-indent: 0;
+    vertical-align: middle;
+    width: 100%;
+}
+.countryFlag {
+    float: right;
+    text-align: right;
+}
+.flag .country {
+    height: 24px;
+    width: 28px;
+    background: url('https://www.paypalobjects.com/webstatic/mktg/icons/sprite_countries_flag4.png') no-repeat;
+    background-position: 5px 100px;
+    display: inline-block;
+}
+.flag .country.GB {
+    background-position: 5px -4304px;
+}
+.flag .country.US {
+    background-position: 5px -383px;
+}
+.flag .country.ZM {
+    background-position: 5px 1px;
+}
+.flag .country.ZA {
+    background-position: 5px -34px;
+}
+.flag .country.YE {
+    background-position: 5px -69px;
+}
+.flag .country.WS {
+    background-position: 5px -104px;
+}
+.flag .country.VU {
+    background-position: 5px -139px;
+}
+.flag .country.TW {
+    background-position: 5px -524px;
+}
+.flag .country.TR {
+    background-position: 5px -629px;
+}
+.flag .country.TH {
+    background-position: 5px -804px;
+}
+.flag .country.CH {
+    background-position: 5px -944px;
+}
+.flag .country.AR {
+    background-position: 5px -6055px;
+}
+.flag .country.SK {
+    background-position: 5px -1224px;
+}
+.flag .country.SG {
+    background-position: 5px -1294px;
+}
+.flag .country.SE {
+    background-position: 5px -1329px;
+}
+.flag .country.PT {
+    background-position: 5px -1679px;
+}
+.flag .country.PL {
+    background-position: 5px -1714px;
+}
+.flag .country.PH {
+    background-position: 5px -1749px;
+}
+.flag .country.NZ {
+    background-position: 5px -1959px;
+}
+.flag .country.NO {
+    background-position: 5px -2099px;
+}
+.flag .country.NL {
+    background-position: 5px -2134px;
+}
+.flag .country.MY {
+    background-position: 5px -2379px;
+}
+.flag .country.MX {
+    background-position: 5px -2414px;
+}
+.flag .country.MQ {
+    background-position: 5px -2659px;
+}
+.flag .country.LU {
+    background-position: 5px -2904px;
+}
+.flag .country.KR {
+    background-position: 5px -3254px;
+}
+.flag .country.JP {
+    background-position: 5px -3499px;
+}
+.flag .country.JM {
+    background-position: 5px -3569px;
+}
+.flag .country.IT {
+    background-position: 5px -3604px;
+}
+.flag .country.IL {
+    background-position: 5px -3709px;
+}
+.flag .country.IE {
+    background-position: 5px -3744px;
+}
+.flag .country.ID {
+    background-position: 5px -3779px;
+}
+.flag .country.HU {
+    background-position: 5px -3814px;
+}
+.flag .country.HK {
+    background-position: 5px -3919px;
+}
+.flag .country.GR {
+    background-position: 5px -4059px;
+}
+.flag .country.GB {
+    background-position: 5px -4304px;
+}
+.flag .country.FR,
+.flag .country.RE,
+.flag .country.GP {
+    background-position: 5px -4374px;
+}
+.flag .country.GF {
+    background-position: 5px -4374px;
+}
+.flag .country.FI {
+    background-position: 5px -4549px;
+}
+.flag .country.ES {
+    background-position: 5px -4618px;
+}
+.flag .country.EC {
+    background-position: 5px -4724px;
+}
+.flag .country.DZ {
+    background-position: 5px -4759px;
+}
+.flag .country.DK {
+    background-position: 5px -4864px;
+}
+.flag .country.DE {
+    background-position: 5px -4934px;
+}
+.flag .country.EG {
+    background-position: 5px -69px;
+}
+.flag .country.CZ {
+    background-position: 5px -4969px;
+}
+.flag .country.CN,
+.flag .country.C2 {
+    background-position: 5px -5144px;
+}
+.flag .country.CA {
+    background-position: 5px -5319px;
+}
+.flag .country.BW {
+    background-position: 5px -5389px;
+}
+.flag .country.BZ {
+    background-position: 5px -5354px;
+}
+.flag .country.BS {
+    background-position: 5px -5459px;
+}
+.flag .country.BR {
+    background-position: 5px -5494px;
+}
+.flag .country.BM {
+    background-position: 5px -5599px;
+}
+.flag .country.BH {
+    background-position: 5px -5704px;
+}
+.flag .country.BE {
+    background-position: 5px -5809px;
+}
+.flag .country.BB {
+    background-position: 5px -5844px;
+}
+.flag .country.BA {
+    background-position: 5px -5879px;
+}
+.flag .country.BF {
+    background-position: 5px -5773px;
+}
+.flag .country.AU {
+    background-position: 5px -5984px;
+}
+.flag .country.AT {
+    background-position: 5px -6019px;
+}
+.flag .country.AL {
+    background-position: 5px -6194px;
+}
+.flag .country.AG {
+    background-position: 5px -6264px;
+}
+.flag .country.AD {
+    background-position: 5px -6334px;
+}
+.flag .country.BG {
+    background-position: 5px -5739px;
+}
+.flag .country.NG {
+    background-position: 5px -7069px;
+}
+.flag .country.GH {
+    background-position: 5px -7104px;
+}
+.flag .country.CI {
+    background-position: 5px -7139px;
+}
+.flag .country.CM {
+    background-position: 5px -7174px;
+}
+.flag .country.ZW {
+    background-position: 5px -7209px;
+}
+.flag .country.PY {
+    background-position: 5px -7244px;
+}
+.flag .country.KY {
+    background-position: 5px -4479px;
+}
+.flag .country.CO {
+    background-position: 5px -5109px;
+}
+.flag .country.HR {
+    background-position: 5px -3849px;
+}
+.flag .country.CY {
+    background-position: 5px -5004px;
+}
+.flag .country.DM {
+    background-position: 5px -4829px;
+}
+.flag .country.DO {
+    background-position: 5px -4794px;
+}
+.flag .country.SV {
+    background-position: 5px -979px;
+}
+.flag .country.ER {
+    background-position: 5px -4655px;
+}
+.flag .country.EE {
+    background-position: 5px -4689px;
+}
+.flag .country.ET {
+    background-position: 5px -4587px;
+}
+.flag .country.FO {
+    background-position: 5px -4409px;
+}
+.flag .country.FJ {
+    background-position: 5px -4514px;
+}
+.flag .country.PF {
+    background-position: 5px -1819px;
+}
+.flag .country.GI {
+    background-position: 5px -4199px;
+}
+.flag .country.GL {
+    background-position: 5px -4164px;
+}
+.flag .country.GD {
+    background-position: 5px -4269px;
+}
+.flag .country.GT {
+    background-position: 5px -4024px;
+}
+.flag .country.HN {
+    background-position: 5px -3884px;
+}
+.flag .country.IS {
+    background-position: 5px -3639px;
+}
+.flag .country.JO {
+    background-position: 5px -3534px;
+}
+.flag .country.KE {
+    background-position: 5px -3464px;
+}
+.flag .country.KW {
+    background-position: 5px -3219px;
+}
+.flag .country.LV {
+    background-position: 5px -2869px;
+}
+.flag .country.LS {
+    background-position: 5px -2974px;
+}
+.flag .country.LI {
+    background-position: 5px -3044px;
+}
+.flag .country.LT {
+    background-position: 5px -2939px;
+}
+.flag .country.MW {
+    background-position: 5px -2449px;
+}
+.flag .country.MT {
+    background-position: 5px -2554px;
+}
+.flag .country.MN {
+    background-position: 5px -6369px;
+}
+.flag .country.MA {
+    background-position: 5px -2834px;
+}
+.flag .country.MZ {
+    background-position: 5px -2344px;
+}
+.flag .country.NC {
+    background-position: 5px -2274px;
+}
+.flag .country.OM {
+    background-position: 5px -1924px;
+}
+.flag .country.PW {
+    background-position: 5px -1644px;
+}
+.flag .country.PA {
+    background-position: 5px -1889px;
+}
+.flag .country.PH {
+    background-position: 5px -1749px;
+}
+.flag .country.PN {
+    background-position: 5px -6229px;
+}
+.flag .country.QA {
+    background-position: 5px -5704px;
+}
+.flag .country.RO {
+    background-position: 5px -1539px;
+}
+.flag .country.RU {
+    background-position: 5px -1503px;
+}
+.flag .country.RW {
+    background-position: 5px -6439px;
+}
+.flag .country.ST {
+    background-position: 5px -1014px;
+}
+.flag .country.KN {
+    background-position: 5px -3289px;
+}
+.flag .country.SH {
+    background-position: 5px -909px;
+}
+.flag .country.VC {
+    background-position: 5px -278px;
+}
+.flag .country.LC {
+    background-position: 5px -3079px;
+}
+.flag .country.PM {
+    background-position: 5px -6824px;
+}
+.flag .country.SM {
+    background-position: 5px -1154px;
+}
+.flag .country.SA {
+    background-position: 5px -1434px;
+}
+.flag .country.SC {
+    background-position: 5px -1364px;
+}
+.flag .country.SI {
+    background-position: 5px -1259px;
+}
+.flag .country.TJ {
+    background-position: 5px -769px;
+}
+.flag .country.TT {
+    background-position: 5px -594px;
+}
+.flag .country.AE {
+    background-position: 5px -6299px;
+}
+.flag .country.UY {
+    background-position: 5px -351px;
+}
+.flag .country.VE {
+    background-position: 5px -244px;
+}
+.flag .country.IN {
+    background-position: 5px -3674px;
+}
+.flag .country.VN {
+    background-position: 5px -174px;
+}
+.flag .country.AO {
+    background-position: 5px -6089px;
+}
+.flag .country.AI {
+    background-position: 5px -6229px;
+}
+.flag .country.AM {
+    background-position: 5px -6159px;
+}
+.flag .country.AW {
+    background-position: 5px -5949px;
+}
+.flag .country.AZ {
+    background-position: 5px -5914px;
+}
+.flag .country.BJ {
+    background-position: 5px -5634px;
+}
+.flag .country.BT {
+    background-position: 5px -5424px;
+}
+.flag .country.BO {
+    background-position: 5px -5529px;
+}
+.flag .country.BN {
+    background-position: 5px -5564px;
+}
+.flag .country.BI {
+    background-position: 5px -5669px;
+}
+.flag .country.CV {
+    background-position: 5px -5039px;
+}
+.flag .country.TD {
+    background-position: 5px -1539px;
+}
+.flag .country.CL {
+    background-position: 5px -5179px;
+}
+.flag .country.KM {
+    background-position: 5px -3324px;
+}
+.flag .country.CK {
+    background-position: 5px -5214px;
+}
+.flag .country.CR {
+    background-position: 5px -5074px;
+}
+.flag .country.CD {
+    background-position: 5px -5284px;
+}
+.flag .country.DJ {
+    background-position: 5px -4899px;
+}
+.flag .country.FK {
+    background-position: 5px -6229px;
+}
+.flag .country.GA {
+    background-position: 5px -4339px;
+}
+.flag .country.GM {
+    background-position: 5px -4129px;
+}
+.flag .country.GE {
+    background-position: 5px -6652px;
+}
+.flag .country.GN,
+.flag .country.GW {
+    background-position: 5px -3989px;
+}
+.flag .country.GY {
+    background-position: 5px -3954px;
+}
+.flag .country.KZ {
+    background-position: 5px -3149px;
+}
+.flag .country.KI {
+    background-position: 5px -3359px;
+}
+.flag .country.KG {
+    background-position: 5px -3429px;
+}
+.flag .country.LA {
+    background-position: 5px -3114px;
+}
+.flag .country.MG {
+    background-position: 5px -2799px;
+}
+.flag .country.MV {
+    background-position: 5px -2484px;
+}
+.flag .country.ML {
+    background-position: 5px -2729px;
+}
+.flag .country.MH {
+    background-position: 5px -2764px;
+}
+.flag .country.MR {
+    background-position: 5px -2624px;
+}
+.flag .country.MU {
+    background-position: 5px -2519px;
+}
+.flag .country.FM {
+    background-position: 5px -4444px;
+}
+.flag .country.MS {
+    background-position: 5px -2589px;
+}
+.flag .country.YT {
+    background-position: 5px -6544px;
+}
+.flag .country.NA {
+    background-position: 5px -2309px;
+}
+.flag .country.NR {
+    background-position: 5px -2029px;
+}
+.flag .country.NP {
+    background-position: 5px -2064px;
+}
+.flag .country.AN {
+    background-position: 5px -6124px;
+}
+.flag .country.NI {
+    background-position: 5px -2169px;
+}
+.flag .country.NE {
+    background-position: 5px -2239px;
+}
+.flag .country.NU {
+    background-position: 5px -1994px;
+}
+.flag .country.NF {
+    background-position: 5px -2204px;
+}
+.flag .country.PG {
+    background-position: 5px -1784px;
+}
+.flag .country.PE {
+    background-position: 5px -1854px;
+}
+.flag .country.CG {
+    background-position: 5px -5284px;
+}
+.flag .country.SN {
+    background-position: 5px -1119px;
+}
+.flag .country.RS {
+    background-position: 5px -6718px;
+}
+.flag .country.SL {
+    background-position: 5px -1189px;
+}
+.flag .country.SB {
+    background-position: 5px -1399px;
+}
+.flag .country.SO {
+    background-position: 5px -1084px;
+}
+.flag .country.LK {
+    background-position: 5px -3009px;
+}
+.flag .country.SH {
+    background-position: 5px -909px;
+}
+.flag .country.SR {
+    background-position: 5px -1049px;
+}
+.flag .country.SZ {
+    background-position: 5px -6509px;
+}
+.flag .country.SJ {
+    background-position: 5px -2099px;
+}
+.flag .country.TZ {
+    background-position: 5px -489px;
+}
+.flag .country.TG {
+    background-position: 5px -839px;
+}
+.flag .country.TO {
+    background-position: 5px -664px;
+}
+.flag .country.TN {
+    background-position: 5px -699px;
+}
+.flag .country.TM {
+    background-position: 5px -734px;
+}
+.flag .country.TC {
+    background-position: 5px -909px;
+}
+.flag .country.TV {
+    background-position: 5px -559px;
+}
+.flag .country.UG {
+    background-position: 5px -419px;
+}
+.flag .country.UA {
+    background-position: 5px -454px;
+}
+.flag .country.VA {
+    background-position: 5px -314px;
+}
+.flag .country.VG {
+    background-position: 5px -209px;
+}
+.flag .country.WF {
+    background-position: 5px -6792px;
+}
+.flag .country.ME {
+    background-position: 5px -6859px;
+}
+.flag .country.MK {
+    background-position: 5px -6894px;
+}
+.flag .country.MD {
+    background-position: 5px -6929px;
+}
+.flag .country.XK {
+    background-position: 5px -6964px;
+}
+.flag .country.BY {
+    background-position: 5px -6999px;
+}
+.flag .country.MC {
+    background-position: 5px -7034px;
+}
+.flag .country.KH {
+    background-position: 5px -3397px;
+}
+/* Mobile ---- */
+@media all and (max-width: 767px) {
+    .flag {
+        display: none;
+    }
+}
+@media all and (max-width: 600px) {
+    .flagPanel .flag li {
+        width: 49.5%;
+    }
+}
+/* Tablet ---- */
+@media all and (min-width: 601px) and (max-width: 1024px) {
+    .flagPanel .flag li {
+        width: 30.5%;
+    }
+}
+/* page */
+/**
+ * @fileOverview account page.
+ * @name account.less
+ * @author Perumal Palani
+ * @tested iPhone"s Portrait & Landscape mode [Safari], iPad"s Portrait & Landscape mode [Safari], Safari, Chrome, firefox browsers
+ */
+.account {
+    margin-top: 84px;
+    background-color: #ffffff;
+}
+.account .selectDropdown select {
+    width: 105%;
+}
+.account .radioOptions .grid6 {
+    width: 41%;
+}
+.account .radioOptions .grid6:first-child {
+    width: 58.915%;
+}
+.account .radioOptions .socialImg {
+    height: 220px;
+    margin-left: -200px;
+    background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/image_pseudo_social.jpg") no-repeat;
+    background-position: 89% 34px;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2) {
+    .account .radioOptions .socialImg {
+        background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/image_pseudo_social_2x.jpg") no-repeat;
+        background-size: 95%;
+    }
+}
+.account .radioOptions h2 {
+    padding-top: 8px;
+    font-size: 1.5em;
+    font-weight: 400;
+}
+.account .radioOptions .container {
+    min-height: 300px;
+    border-left: 1px solid #D3D3D3;
+    padding-left: 25px;
+    background-color: #ffffff;
+}
+.account .radioOptions .radioGroup p {
+    margin-left: 33px;
+}
+.account .radioOptions a.button {
+    padding-top: 10px;
+}
+.account .radioOptions a.button:hover {
+    text-decoration: none;
+}
+.account .radioOptions .imageContainer h1 {
+    font-size: 2.85714286em;
+}
+.account .radioOptions .btns {
+    margin-top: 10px;
+}
+.account .radioOptions .groupFields {
+    padding-top: 10px;
+}
+/* AU social image */
+.AU .account .radioOptions .socialImg {
+    background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/AU_image_pseudo_social.jpg") no-repeat;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2) {
+    .AU .account .radioOptions .socialImg {
+        background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/AU_image_pseudo_social_2x.jpg") no-repeat;
+        background-size: 95%;
+    }
+}
+.accountSelection .accountPage {
+    background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/bg_onboarding_bike.jpg") no-repeat;
+}
+.accountSelection .accountPage {
+    min-height: 600px;
+    background-position: center -250px;
+}
+.accountSelection .account {
+    margin-top: 0;
+    background-color: transparent;
+}
+.accountSelection .account header h1 {
+    width: 40%;
+    display: inline;
+}
+.accountSelection .account header .businessSignup {
+    padding: 0;
+    margin: 15px 0 0;
+    width: 50%;
+    float: right;
+    text-align: right;
+}
+.accountSelection .account header {
+    margin-bottom: 30px;
+}
+.accountSelection .account .radioOptions,
+.accountSelection .account .personalAccountSignUp {
+    margin-top: 0;
+    padding: 30px 35px;
+    background-color: #ffffff;
+}
+.accountSelection .account .radioOptions .boldText,
+.accountSelection .account .personalAccountSignUp .boldText {
+    margin-top: 0;
+}
+.accountSelection .account .radioOptions h3 {
+    margin-top: 0;
+    font-size: 1.5em;
+    font-weight: 300;
+}
+.accountSelection .account .radioOptions .radioGroup p {
+    margin-top: 0;
+}
+.accountSelection .account .contentContainer {
+    margin-left: 4%;
+    margin-top: 3.5%;
+    width: 34%;
+}
+.accountSelection .account .propList {
+    margin-bottom: 20px;
+}
+.accountSelection .account .propList h3,
+.accountSelection .account .propList p {
+    margin: 0;
+    font-size: 1em;
+}
+.accountSelection .account .propList h3 {
+    margin-bottom: 5px;
+    color: #333333;
+}
+.no-js a.button.personalSignUpForm {
+    display: none;
+}
+/* Mobile */
+@media only screen and (max-width: 767px) {
+    .account {
+        margin-top: 0;
+    }
+    .account .radioOptions .socialImg {
+        display: none;
+        background: none;
+    }
+    .account .radioOptions .container {
+        min-height: 0;
+        margin-right: 0;
+        margin-left: 0;
+        padding: 0;
+        border-left-color: transparent;
+    }
+    .account .radioOptions .imageContainer h1 {
+        font-size: 1.42857143em;
+        line-height: 35px;
+    }
+    .account .radioOptions .imageContainer {
+        min-height: 0;
+        border-bottom: 1px solid lightgray;
+        border-right: none;
+    }
+    .account .radioOptions a.button {
+        margin-bottom: 10px;
+    }
+    .accountSelection .accountPage {
+        background: none;
+        min-height: inherit;
+    }
+    .accountSelection .account header .businessSignup {
+        width: 100%;
+        margin: 15px 0 10px 0;
+        text-align: left;
+    }
+    .accountSelection .account .grid6 .propList {
+        display: none;
+    }
+}
+@media all and (min-width: 768px) and (max-width: 1024px) {
+    .accountSelection .account header {
+        margin-bottom: 20px;
+    }
+}
+/* Ipad Styling */
+@media all and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+    .account {
+        margin-top: 0;
+    }
+    .account .radioOptions .grid6:first-child {
+        width: 100%;
+    }
+    .account .radioOptions .socialImg {
+        margin-left: 0;
+        background-position: 0 0;
+        background-size: 100%;
+    }
+    .account .radioOptions .imageContainer {
+        border-bottom: 1px solid lightgray;
+        border-right: none;
+    }
+    .account .radioOptions .imageContainer h1 {
+        line-height: 40px;
+        margin-bottom: 12px;
+        font-size: 2.5em;
+        font-weight: 300;
+    }
+    .account .radioOptions h2 {
+        padding-top: 8px;
+        font-size: 1.42857143em;
+        font-weight: 400;
+    }
+    .account .radioOptions .container {
+        padding-left: 0;
+        margin-left: 0;
+        border-left-color: transparent;
+    }
+    .accountSelection .account .contentContainer {
+        width: 45%;
+    }
+}
+/**
+ * @fileOverview create page.
+ * @name create
+ * @author Perumal Palani
+ * @tested iPhone[Safari], iPad[Safari], Safari, Chrome, firefox browsers
+ */
+/* -- desktop ---- */
+.create .countryDropdown {
+    margin-bottom: 10px;
+}
+.create .businessSignup {
+    text-align: right;
+}
+.create .zipCityState .right {
+    width: 68%;
+}
+.create .zipCityState .left {
+    width: 29.3%;
+}
+.create .hasCountryCode .countryCode {
+    margin-left: 5px;
+    margin-top: 14px;
+    position: absolute;
+    color: #000000;
+    font-size: 1.14285714em;
+    font-family: Helvetica, Arial, sans-serif;
+}
+.create .hasCountryCode label {
+    padding-left: 30px;
+}
+.create .hasCountryCode input {
+    padding-left: 40px;
+}
+.create .hasCountryCode.tLength3 label {
+    padding-left: 40px;
+}
+.create .hasCountryCode.tLength3 input {
+    padding-left: 50px;
+}
+.create .valueProp .imageHolder {
+    margin-top: 50px;
+    height: 450px;
+    width: 450px;
+}
+.create .valueProp .imageHolder {
+    background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/image_omni_ch.jpg") no-repeat;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2) {
+    .create .valueProp .imageHolder {
+        background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/image_omni_ch_2x.jpg") no-repeat;
+        background-size: 100%;
+    }
+}
+.create .testA.valueProp .imageHolder {
+    background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/image_omni_ch_profile.png") no-repeat;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2) {
+    .create .testA.valueProp .imageHolder {
+        background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/image_omni_ch_profile_2x.png") no-repeat;
+        background-size: 100%;
+    }
+}
+.create .lookup .city,
+.create .lookup .state {
+    display: none;
+}
+.create .agreeTC {
+    position: relative;
+    clear: both;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+.create .agreeTC .helpNotify ul {
+    margin: 1.6em 1em;
+}
+.create .agreeTC .help-error.open {
+    margin-top: 12%;
+}
+.create .agreeTC .help-error.open.GB,
+.create .agreeTC .help-error.open.FR,
+.create .agreeTC .help-error.open.DE {
+    margin-top: 11%;
+}
+.create .agreeTC.marginRU {
+    margin-bottom: 0;
+}
+.create .createAccount p,
+.create .createAccount ul {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1.71428571em;
+    font-weight: 300;
+}
+.create .createAccount ul {
+    margin-top: 15px;
+    margin-left: 5%;
+}
+.create .createAccount ul li {
+    margin-bottom: 15px;
+}
+.create .spanRU {
+    top: 10px;
+}
+/* Ipad Styling */
+@media all and (min-width: 768px) and (max-width: 1024px) {
+    .create .hasCountryCode .countryCode {
+        margin-top: 12px;
+    }
+}
+@media all and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+    .create .groupReatedFields .left {
+        width: 32%;
+    }
+    .create .groupReatedFields .right {
+        width: 68%;
+    }
+    .create .zipCityState .right {
+        width: 67%;
+    }
+    .create .agreeTC .help-error.open {
+        margin-top: 15%;
+    }
+    .create .agreeTC .help-error.open.GB {
+        margin-top: 16%;
+    }
+    .create .agreeTC .help-error.open.DE,
+    .create .agreeTC .help-error.open.FR {
+        margin-top: 14%;
+    }
+}
+/* Mobile */
+@media only screen and (max-width: 767px) {
+    .create .hasCountryCode .countryCode {
+        margin-top: 12px;
+    }
+    .create .businessSignup {
+        padding: 0;
+        margin: 0 0 10px 0;
+        text-align: left;
+    }
+    .create .createAccount {
+        display: none;
+    }
+    .create .zipCityState .right {
+        width: 67%;
+    }
+    .create .agreeTC .help-error.open {
+        margin-top: 15%;
+    }
+    .create .agreeTC .help-error.open.GB {
+        margin-top: 16%;
+    }
+    .create .agreeTC .help-error.open.DE,
+    .create .agreeTC .help-error.open.FR {
+        margin-top: 14%;
+    }
+}
+@media only screen and (max-width: 767px) and (orientation: landscape) {
+    .create .agreeTC .help-error.open {
+        margin-top: 8%;
+    }
+    .create .agreeTC .help-error.open.GB,
+    .create .agreeTC .help-error.open.DE,
+    .create .agreeTC .help-error.open.FR {
+        margin-top: 8%;
+    }
+}
+/**
+ * @fileOverview add bank page.
+ * @name addBank.less
+ * @author Perumal Palani , Gurusubramaniam
+ * @tested iPhone"s Portrait & Landscape mode [Safari], iPad"s Portrait & Landscape mode [Safari], Safari, Chrome, firefox browsers
+ */
+.addBank .container {
+    min-height: 500px;
+}
+.addBank .bankCheck {
+    width: 100%;
+    height: 96px;
+    background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/image_check.jpg") no-repeat;
+    background-size: 100%;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2) {
+    .addBank .bankCheck {
+        background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/image_check_2x.jpg") no-repeat;
+        background-size: 100%;
+    }
+}
+.addBank .bankCheck .highlightRoutingNumber,
+.addBank .bankCheck .highlightAccountNumber {
+    width: 30%;
+    height: 4%;
+    margin-left: 2%;
+    margin-top: 15%;
+    display: inline-block;
+    position: absolute;
+    border: 1px solid #008ccb;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -khtml-border-radius: 3px;
+    border-radius: 3px;
+}
+.addBank .bankCheck .highlightAccountNumber {
+    margin-left: 126px;
+    display: none;
+}
+.addBank .bankCheck.GB {
+    width: 100%;
+    height: 93px;
+    margin-bottom: 20px;
+    background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/image_check_uk_slow.png") no-repeat;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2) {
+    .addBank .bankCheck.GB {
+        background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/image_check_uk_slow_2x.png") no-repeat;
+        background-size: 100%;
+    }
+}
+.addBank .bankCheck.GB .highlightRoutingNumber,
+.addBank .bankCheck.GB .highlightAccountNumber {
+    width: 13%;
+    height: 4%;
+    margin-left: 1%;
+    margin-top: 19.5%;
+    display: inline-block;
+    position: absolute;
+    border: 1px solid #008ccb;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -khtml-border-radius: 3px;
+    border-radius: 3px;
+}
+.addBank .bankCheck.GB .highlightRoutingNumber.second,
+.addBank .bankCheck.GB .highlightAccountNumber.second {
+    margin-left: 56%;
+}
+.addBank .bankCheck.GB .highlightAccountNumber {
+    margin-left: 14%;
+    width: 15%;
+    display: none;
+}
+.addBank .bankCheck.GB .highlightAccountNumber.second {
+    margin-left: 70%;
+}
+.addBank header p,
+.addBank ul {
+    margin-left: 5%;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1.71428571em;
+    font-weight: 300;
+}
+.addBank header p li,
+.addBank ul li {
+    margin-bottom: 15px;
+}
+.addBank .loading::after {
+    content: "";
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 6;
+    margin: -15px auto auto -15px;
+    -webkit-animation: rotation .7s infinite linear;
+    -moz-animation: rotation .7s infinite linear;
+    -o-animation: rotation .7s infinite linear;
+    animation: rotation .7s infinite linear;
+    border-left: 4px solid rgba(0, 0, 0, 0.2);
+    border-right: 4px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 4px solid rgba(0, 0, 0, 0.2);
+    border-top: 4px solid #2180c0;
+    border-radius: 100%;
+}
+.addBank .bankInfo {
+    min-height: 150px;
+}
+.addBank .bankInfo.DE {
+    min-height: 100px;
+}
+.addBank .bankInfo.DE.loading:after {
+    top: 60%;
+}
+.addBank .bankInfo #bankDetails {
+    color: #333333;
+}
+.addBank .bankInfo #bankDetails h3 {
+    font-size: 1.14285714em;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: normal;
+}
+.addBank .bankInfo #bankDetails .bankTerms p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+}
+.addBank .bankInfo #bankDetails .bankTerms .randomDeposit {
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #d2e7fa;
+}
+.addBank .bankInfo #bankDetails .bankTerms .randomDeposit h3 .timer {
+    background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/sprites_onboarding.png") no-repeat;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2) {
+    .addBank .bankInfo #bankDetails .bankTerms .randomDeposit h3 .timer {
+        background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/sprites_onboarding_2x.png") no-repeat;
+        background-size: 45px;
+    }
+}
+.addBank .bankInfo #bankDetails .bankTerms .randomDeposit h3 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+}
+.addBank .bankInfo #bankDetails .bankTerms .randomDeposit h3 .timer {
+    width: 20px;
+    height: 20px;
+    float: left;
+    display: inline-block;
+    background-size: 45px;
+    background-position: 0 24.5%;
+}
+.addBank .skipInfoContent {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #d2e7fa;
+}
+.addBank .skipInfoContent .copy {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+}
+.addBank .skipInfoContent .whiteDivider {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ffffff;
+}
+.addBank .skipInfoContent .rightText {
+    text-align: right;
+}
+.addBank .securityLock {
+    background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/sprites_onboarding.png") no-repeat;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2) {
+    .addBank .securityLock {
+        background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/sprites_onboarding_2x.png") no-repeat;
+        background-size: 50px;
+    }
+}
+.addBank .securityLock {
+    width: 20px;
+    height: 25px;
+    display: block;
+    float: left;
+    background-position: 0, 0;
+}
+.addBank .securityInformation {
+    margin-left: 2%;
+}
+.addBank .blueText {
+    font-size: 1.5em;
+    color: #1586cd;
+}
+.addBank .gutter-left .container .inner .applyBml {
+    margin-bottom: 2px;
+}
+.addBank .gutter-left .container .inner .bmlTerms {
+    margin-top: 0;
+    font-size: 12px;
+}
+.addBank .subTitle {
+    padding-top: 20px;
+    padding-bottom: 30px;
+    line-height: 1.5;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1.5em;
+    font-weight: 300;
+    color: #333333;
+}
+/*  Mobile */
+@media only screen and (max-width: 767px) {
+    .addBank .bankCheck {
+        background: 0;
+    }
+    .addBank .container {
+        min-height: 200px;
+    }
+    .addBank .groupFields .multi.equal .left,
+    .addBank .groupFields .multi.equal .right {
+        width: 100%;
+    }
+    .addBank .securityInformation,
+    .addBank .securityLock,
+    .addBank p.description,
+    .addBank .bankCheck,
+    .addBank ul,
+    .addBank ol,
+    .addBank ul li,
+    .addBank ol li,
+    .addBank .subTitle {
+        display: none;
+    }
+}
+/** Ipad styles **/
+@media all and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+    .addBank {
+        min-height: 400px;
+    }
+    .addBank .subTitle,
+    .addBank ul,
+    .addBank ol,
+    .addBank ul li,
+    .addBank ol li {
+        display: none;
+    }
+    .addBank .bankCheck {
+        width: 100%;
+    }
+    .addBank .bankCheck .highlightRoutingNumber {
+        margin-left: 10px;
+    }
+}
+/**
+ * @fileOverview add bank page.
+ * @name confirmBank.less
+ * @author Perumal Palani
+ * @tested iPhone"s Portrait & Landscape mode [Safari], iPad"s Portrait & Landscape mode [Safari], Safari, Chrome, firefox browsers
+ */
+.confirmBank .bankDetails {
+    overflow: auto;
+}
+.confirmBank .bankDetails p {
+    width: 94%;
+    float: left;
+    font-weight: bold;
+    color: #0666b3;
+}
+.confirmBank .bankDetails .securityLock {
+    background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/sprites_onboarding.png") no-repeat;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2) {
+    .confirmBank .bankDetails .securityLock {
+        background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/sprites_onboarding_2x.png") no-repeat;
+        background-size: 45px;
+    }
+}
+.confirmBank .bankDetails .securityLock {
+    background-position: 2px 36%;
+    width: 20px;
+    height: 26px;
+    display: block;
+    float: right;
+    background-size: 45px;
+    margin: 5px 0 15px 0;
+}
+.confirmBank h2 {
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e5e5e5;
+}
+.confirmBank .or {
+    display: inline-block;
+    width: 2.083%;
+}
+.confirmBank .or .text {
+    width: 57px;
+    height: 57px;
+    margin-top: 37px;
+    margin-left: -17px;
+    position: absolute;
+    background: #ffffff;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -khtml-border-radius: 50%;
+    border-radius: 50%;
+    color: #333333;
+    font-size: 1.5em;
+    line-height: 57px;
+    text-align: center;
+}
+.confirmBank .container {
+    min-height: 500px;
+    margin-top: 20px;
+}
+.confirmBank .titleSmall {
+    margin-top: 11px;
+    color: #333333;
+    font-size: 1.14285714em;
+    font-family: HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.confirmBank ol {
+    margin: 19px 20px;
+}
+.confirmBank ol li {
+    line-height: 16px;
+}
+.confirmBank ol li:first-child {
+    margin-bottom: 10px;
+}
+.confirmBank a.button {
+    padding-top: 12px;
+}
+.confirmBank a.button.secondary {
+    background: #777777;
+    margin-top: 10px;
+    text-decoration: none;
+}
+.confirmBank a.button.secondary:hover {
+    background: #919191;
+}
+.confirmBank a.button.secondary:active {
+    background: #5e5e5e;
+}
+/* Mobile */
+@media only screen and (max-width: 767px) {
+    .confirmBank .bankDetails p {
+        width: 93%;
+    }
+    .confirmBank .container {
+        min-height: 100%;
+    }
+    .confirmBank .or {
+        width: 100%;
+        margin: 0 auto;
+    }
+    .confirmBank .or .text {
+        margin-top: -25px;
+        margin-left: 38%;
+    }
+}
+/**
+ * @fileOverview add card page.
+ * @name addCard.less
+ * @author Perumal Palani
+ * @tested iPhone"s Portrait & Landscape mode [Safari], iPad"s Portrait & Landscape mode [Safari], Safari, Chrome, firefox browsers
+ */
+/* -- desktop ---- */
+.addCard .blueText {
+    color: #1586cd;
+}
+.addCard .container {
+    border-top-left-radius: 0;
+    min-height: 415px;
+}
+.addCard .skipInfoContent {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #d2e7fa;
+}
+.addCard .skipInfoContent .copy {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+}
+.addCard .skipInfoContent .whiteDivider {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ffffff;
+}
+.addCard .skipInfoContent .rightText {
+    text-align: right;
+}
+.addCard .countryDropdown {
+    margin-bottom: 10px;
+}
+.addCard .cardInformation ul {
+    margin-top: 50px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1.71428571em;
+    font-weight: 300;
+}
+.addCard .cardInformation ul li {
+    margin-left: 5%;
+    margin-bottom: 5%;
+}
+.addCard .cardInformation .securityLock {
+    background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/sprites_onboarding.png") no-repeat;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2) {
+    .addCard .cardInformation .securityLock {
+        background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/sprites_onboarding_2x.png") no-repeat;
+        background-size: 50px;
+    }
+}
+.addCard .cardInformation .securityLock {
+    width: 20px;
+    height: 25px;
+    display: block;
+    float: left;
+    background-position: 0, -25px;
+}
+.addCard .cardInformation .securityInformation {
+    margin-left: 2%;
+}
+.addCard .cardInformation .container {
+    margin-bottom: 30px;
+}
+.addCard .gutter-left .container .inner .applyBml {
+    margin-bottom: 2px;
+}
+.addCard .gutter-left .container .inner .bmlTerms {
+    margin-top: 0;
+    font-size: 12px;
+}
+.no-js .mailingAddressDisplay,
+.no-js .creditCard,
+.no-js .cvv {
+    display: none;
+}
+.no-js.textInput.expiryDate label {
+    padding-left: 10px;
+    display: inline;
+}
+.no-js .addressEntry {
+    display: block;
+}
+/** iPhone Styles **/
+@media only screen and (max-width: 767px) {
+    .addCard p.description {
+        display: none;
+    }
+    .addCard .container {
+        min-height: 300px;
+    }
+    .addCard .cardInformation h1 {
+        margin-bottom: 0;
+    }
+    .addCard .cardInformation ul,
+    .addCard .cardInformation ul li,
+    .addCard .cardInformation .securityInformation,
+    .addCard .cardInformation .securityLock {
+        display: none;
+    }
+}
+/** Ipad portrait specific styles **/
+@media all and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+    .addCard .cardInformation ul,
+    .addCard .cardInformation ul li {
+        display: none;
+    }
+    .addCard .cardInformation .securityLock {
+        background-size: 37px;
+        background-position: 0 37%;
+        height: 17px;
+    }
+}
+/**
+ * @fileOverview apply BML page.
+ * @name applyBML.less
+ * @author Gurusubramaniam Sundararaman
+ * @tested iPhone"s Portrait & Landscape mode [Safari], iPad"s Portrait & Landscape mode [Safari], Safari, Chrome, firefox browsers
+ */
+main.applyBmlPage {
+    padding-bottom: 0;
+}
+main.applyBmlPage .smallText {
+    font-size: 1em;
+    color: #666666;
+}
+.applyBml {
+    position: relative;
+}
+.applyBml .countryDropdown {
+    margin-bottom: 10px;
+}
+.applyBml .valueProp .bmlProps {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1.71428571em;
+}
+.applyBml .valueProp .bmlProps p {
+    margin-top: 30px;
+    font-weight: 300;
+    color: #666666;
+    line-height: 1em;
+    font-size: 1em;
+}
+.applyBml .valueProp .bmlProps p a {
+    font-weight: normal;
+}
+.applyBml .valueProp .bmlProps p.lastStep {
+    line-height: 2em;
+}
+.applyBml .valueProp .bmlProps span.smiley {
+    background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/sprites_onboarding.png") no-repeat;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2) {
+    .applyBml .valueProp .bmlProps span.smiley {
+        background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/sprites_onboarding_2x.png") no-repeat;
+        background-size: 40px;
+    }
+}
+.applyBml .valueProp .bmlProps span.smiley {
+    width: 50px;
+    height: 40px;
+    margin-top: 5px;
+    position: absolute;
+    display: inline-block;
+    background-position: 100% 100%;
+    background-size: 40px;
+}
+.applyBml .bmlCondition {
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e5e5e5;
+}
+.applyBml .bmlCondition p {
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    color: #333333;
+}
+.applyBml .userInformation {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.applyBml .userInformation p {
+    margin: 0;
+    padding: 0;
+    color: #999999;
+}
+.applyBml .userInformation p.userName {
+    font-size: 1.71428571em;
+}
+.applyBml .userInformation p.email {
+    font-size: 1.14285714em;
+}
+.applyBml .bmlTerms {
+    width: 600px;
+    min-height: 650px;
+    margin: -300px auto 0 -300px;
+    left: 50%;
+    top: 50%;
+    position: absolute;
+    z-index: 6;
+    overflow: hidden;
+    background: #ffffff;
+}
+.applyBml .bmlTerms p.blueBar {
+    padding: 8px 5px;
+    background-color: #D2E7FA;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    color: #333333;
+}
+.applyBml .bmlTerms p.blueBar .arrowPointer {
+    background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/sprites_onboarding.png") no-repeat;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2) {
+    .applyBml .bmlTerms p.blueBar .arrowPointer {
+        background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/sprites_onboarding_2x.png") no-repeat;
+        background-size: 48px;
+    }
+}
+.applyBml .bmlTerms p.blueBar .arrowPointer {
+    width: 30px;
+    height: 16px;
+    margin-left: 15px;
+    display: inline-block;
+    background-size: 48px;
+    background-position: 0 70%;
+}
+.applyBml .bmlTerms .termsHeader {
+    padding: 0em 2em;
+}
+.applyBml .bmlTerms .termsHeader h3 {
+    margin-bottom: 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1.71428571em;
+    color: #666666;
+    font-weight: 300;
+}
+.applyBml .bmlTerms .termsHeader .bmlPrint {
+    position: absolute;
+    top: 15px;
+    right: 50px;
+}
+.applyBml .bmlTerms .termsFooter {
+    padding: 2em 2em 0 2em;
+}
+.applyBml .bmlTerms .termContainer {
+    padding: 0 2em 0 2em;
+    height: 420px;
+    width: 87%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.applyBml .bmlTerms .termContainer #applyforbml {
+    width: 50%;
+    margin-bottom: 10px;
+}
+.applyBml .bmlTerms .termContainer .agreeTC.checkbox {
+    position: relative;
+}
+.applyBml .bmlTerms .termContainer .agreeTC.checkbox p.help-error.open {
+    display: none;
+}
+.applyBml .bmlTerms .termContainer .agreeTC.checkbox.hasError p.help-error.open {
+    display: block;
+    margin-top: 38px;
+}
+.applyBml .bmlTerms .inner ul li {
+    margin-left: 2em;
+}
+.applyBml .groupFields .multi.equal .left {
+    margin-right: 3px;
+    width: 66%;
+}
+.applyBml .groupFields .multi.equal .right {
+    width: 33%;
+}
+.applyBml .groupFields .multi.equal p.dob,
+.applyBml .groupFields .multi.equal p.ssn {
+    margin: 0;
+    padding: 0;
+}
+.applyBml .groupFields .multi .monthEntry {
+    width: 33%;
+    float: left;
+}
+.applyBml .groupFields .multi .monthEntry .selectDropdown {
+    -webkit-border-radius: 3px 0 0 3px;
+    -moz-border-radius: 3px 0 0 3px;
+    border-radius: 3px 0 0 3px;
+}
+.applyBml .groupFields .multi .dateEntry {
+    width: 33%;
+    float: left;
+}
+.applyBml .groupFields .multi .dateEntry .selectDropdown {
+    -webkit-border-radius: 0 0 0 0;
+    -moz-border-radius: 0 0 0 0;
+    border-radius: 0 0 0 0;
+}
+.applyBml .groupFields .multi .yearEntry {
+    width: 34%;
+    float: left;
+}
+.applyBml .groupFields .multi .yearEntry .selectDropdown {
+    -webkit-border-radius: 0 3px 3px 0;
+    -moz-border-radius: 0 3px 3px 0;
+    border-radius: 0 3px 3px 0;
+}
+.applyBml .open {
+    width: 100%;
+}
+/* ipad */
+@media all and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+    .applyBml .valueProp .bmlProps p.smiley {
+        background-position: 97% 110%;
+    }
+    .applyBml .groupFields .multi .monthEntry {
+        width: 31%;
+    }
+    .applyBml .groupFields .multi .dateEntry {
+        width: 30%;
+    }
+    .applyBml .groupFields .multi .yearEntry {
+        width: 39%;
+    }
+    .applyBml .box {
+        width: 100%;
+    }
+}
+/* mobile */
+@media only screen and (max-width: 767px) {
+    .applyBml {
+        position: relative;
+    }
+    .applyBml .bmlProps {
+        display: none;
+    }
+    .applyBml .groupFields.userInfo .multi.equal .left,
+    .applyBml .groupFields.userInfo .multi.equal .right {
+        width: 100%;
+    }
+    .applyBml .groupFields.userInfo .multi.equal p.ssn,
+    .applyBml .groupFields.userInfo .multi.equal p.dob {
+        float: none;
+    }
+    .applyBml .groupFields.userInfo .multi.equal #date {
+        margin-bottom: 10px;
+    }
+    .applyBml .bmlTerms {
+        width: 100%;
+        left: 0;
+        right: 0;
+        top: 0;
+        margin: 0;
+        position: fixed;
+    }
+    .applyBml .bmlTerms .termsHeader {
+        padding: 0 1em 0 1em;
+    }
+    .applyBml .bmlTerms .termsHeader .bmlPrint {
+        top: 43px;
+    }
+    .applyBml .bmlTerms .termContainer {
+        width: 90%;
+        padding: 0 1em 2em 1em;
+        height: 250px;
+    }
+    .applyBml .bmlTerms .termsFooter {
+        padding: 0 1em 1em 1em;
+    }
+    .applyBml .bmlTerms .inner {
+        overflow-y: scroll;
+        overflow-x: hidden;
+        background: none repeat scroll 0 0 transparent;
+        width: 100%;
+        color: #333333;
+        font: 70% Arial, Helvetica, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    .applyBml .bmlTerms .inner #content {
+        clear: both;
+        margin-top: 0;
+    }
+    .applyBml .bmlTerms .inner .bml_lightbox_inner {
+        padding: 0 10px 10px;
+    }
+    .applyBml .bmlTerms .inner p {
+        margin: 1em 0;
+    }
+    .applyBml .bmlTerms .inner .terms_para {
+        margin: 0 0 15px;
+    }
+    .applyBml .bmlTerms .inner .terms_paracenter {
+        text-align: center;
+    }
+    .applyBml .bmlTerms .inner .terms_pararight {
+        text-align: right;
+    }
+    .applyBml .bmlTerms .inner ul,
+    .applyBml .bmlTerms .inner ol,
+    .applyBml .bmlTerms .inner dl {
+        margin: 1em 0;
+        padding: 0;
+    }
+    .applyBml .bmlTerms .inner li,
+    .applyBml .bmlTerms .inner dd {
+        margin: 0 0 0 1.7em;
+    }
+    .applyBml .bmlTerms .inner ul.disclosure li {
+        margin-bottom: 10px;
+    }
+    .applyBml .bmlTerms .inner .center_table {
+        margin-left: auto;
+        margin-right: auto;
+        border-collapse: collapse;
+    }
+    .applyBml .bmlTerms .inner .bodytext {
+        font-size: 0.85714286em;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .applyBml .bmlTerms .inner .left {
+        text-align: left;
+    }
+    .applyBml .bmlTerms .inner .perboldbodytext {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1.21428571em;
+        font-weight: bold;
+    }
+    .applyBml .bmlTerms .inner .style1 {
+        font-weight: bold;
+    }
+    .applyBml .bmlTerms .inner .italbodytext {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 0.85714286em;
+        font-style: italic;
+    }
+    .applyBml .bmlTerms .inner .boldbodytext {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 0.85714286em;
+        font-weight: bold;
+    }
+    .applyBml .bmlTerms .inner #privacy_body table {
+        border: 1px solid gray;
+        border-collapse: collapse;
+        border-spacing: 0;
+        margin-bottom: 15px;
+    }
+    .applyBml .bmlTerms .inner #privacy_body table tr td {
+        -moz-border-radius: 0 0 0 0;
+        border: 1px solid gray;
+        padding: 5px;
+    }
+    .applyBml .bmlTerms .inner .privacy_leftbox1 {
+        background-color: #a5a5a5;
+        color: #ffffff;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1em;
+        font-weight: bold;
+        vertical-align: top;
+        width: 100px;
+    }
+    .applyBml .bmlTerms .inner .privacy_leftbox_top1 {
+        background-color: #404040;
+        color: #ffffff;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1.28571429em;
+        font-weight: bold;
+        width: 100px;
+    }
+    .applyBml .bmlTerms .inner .privacy_rightbox_top1 {
+        color: #000000;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 0.85714286em;
+        font-weight: bold;
+        padding-bottom: 5px;
+        padding-left: 5px;
+        padding-top: 5px;
+    }
+    .applyBml .bmlTerms .inner .privacy_boxheader1 {
+        background-color: #a5a5a5;
+        color: #ffffff;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 0.85714286em;
+        font-weight: bold;
+    }
+    .applyBml .bmlTerms .inner .pagenumber {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1em;
+        font-weight: bold;
+    }
+    .applyBml .bmlTerms .inner .share_note_style {
+        font-style: italic;
+    }
+    .applyBml .bmlTerms .inner .nospacing {
+        padding: 0;
+        margin: 0;
+    }
+    .applyBml .bmlTerms .inner #privacy_body li {
+        list-style: square;
+    }
+    .applyBml .bmlTerms .inner .ratetextsize {
+        font-size: 1.42857143em;
+    }
+}
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .termContainer {
+        height: 170px;
+    }
+}
+@media all and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+    .bmlProps {
+        display: none;
+    }
+}
+.bmlApproved .valueProp .imageHolder {
+    background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/image_ppcredit.jpg") no-repeat;
+    height: 550px;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2) {
+    .bmlApproved .valueProp .imageHolder {
+        background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/image_ppcredit_2x.jpg") no-repeat;
+        background-size: 100%;
+    }
+}
+.bmlApproved .valueProp .imageHolder .bmlValueProp {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1.14285714em;
+    color: #0079c1;
+    position: relative;
+    text-align: center;
+    width: 29%;
+    padding-top: 309px;
+    margin-left: 125px;
+}
+.bmlApproved .valueProp .imageHolder .bmlValueProp a.smalltext {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.85714286em;
+    font-weight: bold;
+}
+.bmlApproved p,
+.bmlApproved ul {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1.71428571em;
+    font-weight: 300;
+}
+.bmlApproved ul {
+    margin-left: 5%;
+}
+.bmlApproved ul li {
+    margin-bottom: 15px;
+}
+.bmlApproved .separator {
+    border-top: 1px solid #e5e5e5;
+    margin-bottom: 20px;
+}
+.bmlApproved .separator label {
+    padding-top: 15px;
+}
+/* ipad */
+@media all and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+    .bmlApproved .valueProp .imageHolder .bmlValueProp {
+        padding-top: 205px;
+        margin-left: 85px;
+    }
+}
+/* iPad */
+@media all and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    .bmlApproved .valueProp .imageHolder .bmlValueProp {
+        padding-top: 225px;
+        margin-left: 100px;
+    }
+}
+#captcha img {
+    width: 100%;
+}
+#captcha .groupFields {
+    margin-top: 10px;
+}
+#captcha .groupFields .multi .left {
+    width: 70%;
+}
+#captcha .groupFields .multi .right {
+    width: 27%;
+}
+#captcha div.refresh,
+#captcha div.audio {
+    width: 43%;
+    height: 44px;
+    display: inline-block;
+    background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/onboarding_form.png") no-repeat;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2) {
+    #captcha div.refresh,
+    #captcha div.audio {
+        background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/onboarding_form_2x.png") no-repeat;
+        background-size: 25px;
+    }
+}
+#captcha div.refresh {
+    margin-right: 5px;
+    float: left;
+    background-position: 44% 85.8%;
+    background-color: #777;
+}
+#captcha div.audio {
+    float: left;
+    background-position: 48% 93.5%;
+    background-color: #777;
+}
+#bankDirectDebit,
+#sepaMandate {
+    position: relative;
+}
+#bankDirectDebit .ddHeader,
+#sepaMandate .ddHeader {
+    margin-bottom: 10px;
+}
+#bankDirectDebit .ddHeader h1,
+#sepaMandate .ddHeader h1 {
+    display: inline-block;
+}
+#bankDirectDebit .dialog,
+#sepaMandate .dialog {
+    width: 500px;
+    min-height: 400px;
+    padding: 30px;
+    position: absolute;
+    margin: -200px auto 0 -250px;
+    top: 50%;
+    left: 50%;
+    overflow: auto;
+    background: #ffffff;
+    z-index: 6;
+}
+#bankDirectDebit .dialog h1,
+#sepaMandate .dialog h1 {
+    font-size: 2em;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+#bankDirectDebit .button,
+#sepaMandate .button {
+    width: 70%;
+    margin-bottom: 10px;
+}
+.bankDirectDebitView .directDebitInformation {
+    overflow: auto;
+    color: #000000;
+}
+.bankDirectDebitView h2 {
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.bankDirectDebitView p span {
+    display: block;
+}
+.bankDirectDebitView p span:first-child {
+    color: #666666;
+}
+.bankDirectDebitView .directDebitInfo {
+    width: 40%;
+    float: left;
+}
+.bankDirectDebitView .directDebitDetails {
+    width: 40%;
+    float: right;
+}
+.bankDirectDebitView .bankInfo p {
+    padding: 0;
+    margin: 0;
+}
+.bankDirectDebitView .bankAddress {
+    margin-bottom: 20px;
+}
+.bankDirectDebitView .bankAddress p {
+    padding: 0;
+    margin: 0;
+}
+.bankDirectDebitView .DDterms {
+    padding: 1em 5em 2em 5em;
+    margin: 2em;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.bankDirectDebitView .DDterms .titleBar {
+    overflow: auto;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.bankDirectDebitView .DDterms h1 {
+    float: left;
+    font-size: 1.42857143em;
+    font-weight: bold;
+    text-align: center;
+}
+.bankDirectDebitView .DDterms .DirectDebitLogo {
+    background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/dd_logo.png") no-repeat;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2) {
+    .bankDirectDebitView .DDterms .DirectDebitLogo {
+        background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/dd_logo_2x.png") no-repeat;
+        background-size: 100%;
+    }
+}
+.bankDirectDebitView .DDterms .DirectDebitLogo {
+    width: 100px;
+    height: 50px;
+    display: block;
+    float: right;
+    background-position: 100% 80%;
+}
+.bankDirectDebitView .DDterms ul {
+    padding-top: 1em;
+}
+#directDebitPrint {
+    color: #000000;
+}
+#directDebitPrint button.print {
+    width: 50%;
+    background: #cccccc;
+}
+#directDebitPrint .DDHeader {
+    border-bottom: 1px solid #666666;
+    position: relative;
+}
+#directDebitPrint .DDHeader p a {
+    position: absolute;
+    right: 5px;
+}
+#directDebitPrint .bankTerms {
+    font-size: 0.85714286em;
+}
+#directDebitPrint .creditorsName p,
+#directDebitPrint .addDisplay p {
+    margin-bottom: 0;
+}
+#directDebitPrint .creditorsName span,
+#directDebitPrint .addDisplay span {
+    display: block;
+}
+#directDebitPrint .bankingInformation {
+    margin-bottom: 20px;
+}
+#directDebitPrint .CreditorsInformation,
+#directDebitPrint .bankingInformation {
+    overflow: auto;
+}
+#directDebitPrint .CreditorsInformation .creditorInfo,
+#directDebitPrint .bankingInformation .creditorInfo,
+#directDebitPrint .CreditorsInformation .ddInfo,
+#directDebitPrint .bankingInformation .ddInfo,
+#directDebitPrint .CreditorsInformation .bankInfo,
+#directDebitPrint .bankingInformation .bankInfo,
+#directDebitPrint .CreditorsInformation .originatorInfo,
+#directDebitPrint .bankingInformation .originatorInfo {
+    width: 45%;
+}
+#directDebitPrint .CreditorsInformation .creditorInfo,
+#directDebitPrint .bankingInformation .creditorInfo,
+#directDebitPrint .CreditorsInformation .bankInfo,
+#directDebitPrint .bankingInformation .bankInfo {
+    float: left;
+}
+#directDebitPrint .CreditorsInformation .ddInfo,
+#directDebitPrint .bankingInformation .ddInfo,
+#directDebitPrint .CreditorsInformation .originatorInfo,
+#directDebitPrint .bankingInformation .originatorInfo {
+    float: right;
+}
+#directDebitPrint .CreditorsInformation .ddInfo .ddLogo {
+    background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/dd_logo.png") no-repeat;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2) {
+    #directDebitPrint .CreditorsInformation .ddInfo .ddLogo {
+        background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/dd_logo_2x.png") no-repeat;
+        background-size: 110px;
+    }
+}
+#directDebitPrint .CreditorsInformation .ddInfo img {
+    width: 100px;
+    display: none;
+    margin-left: 65%;
+}
+#directDebitPrint .CreditorsInformation .ddInfo .ddLogo {
+    width: 100%;
+    height: 75px;
+    display: block;
+    float: right;
+    background-position: 100% -160%;
+}
+#directDebitPrint .CreditorsInformation .ddInfo p {
+    font-size: 0.92857143em;
+    font-weight: bold;
+}
+#directDebitPrint .boxInfo {
+    margin-top: 10px;
+}
+#directDebitPrint .boxInfo p {
+    padding: 0;
+    margin: 0 0 10px 0;
+    font-weight: bold;
+}
+#directDebitPrint .boxInfo .boxElements span {
+    padding: 3px;
+    border-width: 1px 0 1px 1px;
+    border-style: solid;
+    border-color: #666666;
+}
+#directDebitPrint .boxInfo .boxElements span:first-child {
+    border-left-width: 1px;
+}
+#directDebitPrint .boxInfo .boxElements span:last-child {
+    border-right-width: 1px;
+}
+#directDebitPrint .originatorInfo .terms {
+    padding: 10px;
+    border: 1px solid #666666;
+}
+#directDebitPrint .originatorInfo .signature p {
+    text-align: right;
+    margin-bottom: 5px;
+}
+#directDebitPrint .originatorInfo .signature .box {
+    height: 70px;
+    border: 1px solid #666666;
+    padding: 10px;
+}
+#directDebitPrint .accHolderName p {
+    margin-bottom: 5px;
+}
+#directDebitPrint .accHolderName span {
+    padding: 5px;
+    height: 20px;
+    border: 1px solid #666666;
+    display: block;
+    width: 80%;
+}
+#directDebitPrint .accHolderName span.emptyBox {
+    border-top: 0;
+}
+#directDebitPrint .termsandcondition {
+    padding-left: 25px;
+    margin-bottom: 10px;
+    border: 1px solid #666666;
+}
+#directDebitPrint .termsandcondition .termsHeading {
+    overflow: auto;
+}
+#directDebitPrint .termsandcondition .termsHeading h3 {
+    display: block;
+    width: 50%;
+    float: left;
+    margin: 10px 0;
+}
+#directDebitPrint .termsandcondition .termsHeading .DDlogo {
+    background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/dd_logo.png") no-repeat;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2) {
+    #directDebitPrint .termsandcondition .termsHeading .DDlogo {
+        background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/dd_logo_2x.png") no-repeat;
+        background-size: 100px;
+    }
+}
+#directDebitPrint .termsandcondition .termsHeading .DDlogo {
+    background-position: 95% 80%;
+}
+#directDebitPrint .termsandcondition .termsHeading img {
+    display: none;
+}
+#directDebitPrint .termsandcondition .termsHeading span {
+    width: 48%;
+    float: right;
+    display: block;
+    height: 45px;
+}
+#directDebitPrint .termsandcondition ul {
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+#directDebitPrint .bankName p {
+    margin-bottom: 0;
+}
+#directDebitPrint .bankName span {
+    height: 15px;
+    display: block;
+    width: 60%;
+    padding: 5px;
+    border: 1px solid #666666;
+}
+#sepaMandate .sepaMandate .container {
+    margin-bottom: 20px;
+}
+#sepaMandate .sepaMandate .mandateHeader {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 10px;
+    overflow: auto;
+}
+#sepaMandate .sepaMandate .mandateHeader h2 {
+    display: block;
+    float: left;
+    font-weight: 400;
+}
+#sepaMandate .sepaMandate .mandateHeader a {
+    display: block;
+    float: right;
+}
+#sepaMandate .sepaMandate .userInfo p,
+#sepaMandate .sepaMandate .creditorInfo p {
+    margin-bottom: 0;
+}
+#sepaMandate .sepaMandate .userInfo .addDisplay,
+#sepaMandate .sepaMandate .creditorInfo .addDisplay {
+    overflow: auto;
+}
+#sepaMandate .sepaMandate .userInfo .addDisplay p,
+#sepaMandate .sepaMandate .creditorInfo .addDisplay p {
+    width: 50%;
+    float: right;
+    padding: 0;
+    margin: 0;
+    clear: both;
+}
+#sepaMandate .sepaMandate p.greyText {
+    color: #666666;
+}
+#sepaMandate .sepaMandate p span {
+    display: inline-block;
+    width: 50%;
+}
+#sepaMandate .sepaMandate p span:first-child {
+    color: #666666;
+}
+#sepaMandate .sepaMandate .btns .button {
+    width: 50%;
+}
+@media print {
+    header,
+    footer {
+        display: none;
+    }
+    #sepaMandate .sepaMandate .ddHeader,
+    #sepaMandate .sepaMandate .mandateHeader a,
+    #sepaMandate .sepaMandate form {
+        display: none;
+    }
+    #directDebitPrint button.print {
+        display: none;
+    }
+    #directDebitPrint .DDHeader h1 {
+        font-size: 2em;
+    }
+    #directDebitPrint .DDHeader p {
+        margin: 0;
+    }
+    #directDebitPrint .DDHeader .print {
+        display: none;
+    }
+    #directDebitPrint .CreditorsInformation .ddInfo img {
+        display: block;
+    }
+    #directDebitPrint .termsandcondition .termsHeading img {
+        width: 100px;
+        display: block;
+        float: right;
+        margin: 10px 10px;
+    }
+    #directDebitPrint .termsandcondition .termsHeading span {
+        display: none;
+    }
+}
+@media only screen and (max-width: 767px) {
+    #bankDirectDebit .sepaMandate .userInfo p,
+    #sepaMandate .sepaMandate .userInfo p,
+    #bankDirectDebit .sepaMandate .creditorInfo p,
+    #sepaMandate .sepaMandate .creditorInfo p,
+    #bankDirectDebit .sepaMandate .userInfo .addDisplay p,
+    #sepaMandate .sepaMandate .userInfo .addDisplay p,
+    #bankDirectDebit .sepaMandate .creditorInfo .addDisplay p,
+    #sepaMandate .sepaMandate .creditorInfo .addDisplay p {
+        width: 100%;
+        display: block;
+    }
+    #bankDirectDebit .sepaMandate p span,
+    #sepaMandate .sepaMandate p span {
+        display: block;
+        width: 100%;
+    }
+    #bankDirectDebit .sepaMandate .btns .button,
+    #sepaMandate .sepaMandate .btns .button {
+        width: 100%;
+    }
+    #bankDirectDebit .sepaMandate .mandateHeader,
+    #sepaMandate .sepaMandate .mandateHeader {
+        overflow: auto;
+    }
+    #bankDirectDebit .sepaMandate .mandateHeader a,
+    #sepaMandate .sepaMandate .mandateHeader a {
+        display: block;
+        float: left;
+        clear: both;
+        margin-top: 15px;
+    }
+    #bankDirectDebit .dialog,
+    #sepaMandate .dialog {
+        width: 320px;
+        margin: -150px auto 0 -190px;
+    }
+    .bankDirectDebitView .directDebitInfo,
+    .bankDirectDebitView .directDebitDetails {
+        width: 100%;
+    }
+    .bankDirectDebitView .directDebitDetails {
+        margin-top: 2em;
+    }
+    .bankDirectDebitView .DDterms {
+        padding: 1em 1em 1em 3em;
+        margin: 0;
+    }
+    .bankDirectDebitView .DDterms span.DirectDebitLogo {
+        float: left;
+    }
+    #directDebitPrint .CreditorsInformation .ddInfo .ddLogo {
+        float: left;
+        background-position: 0% -200%;
+    }
+    #directDebitPrint .CreditorsInformation .creditorInfo,
+    #directDebitPrint .bankingInformation .creditorInfo,
+    #directDebitPrint .CreditorsInformation .ddInfo,
+    #directDebitPrint .bankingInformation .ddInfo,
+    #directDebitPrint .CreditorsInformation .bankInfo,
+    #directDebitPrint .bankingInformation .bankInfo,
+    #directDebitPrint .CreditorsInformation .originatorInfo,
+    #directDebitPrint .bankingInformation .originatorInfo {
+        width: 100%;
+    }
+}
+.randomDeposit p {
+    color: #666666;
+    font-size: 1.14285714em;
+}
+.randomDeposit ol li {
+    padding-bottom: 20px;
+    margin-left: 25px;
+    font-size: 1.14285714em;
+}
+.randomDeposit .button {
+    width: 40%;
+}
+@media only screen and (max-width: 767px) {
+    .randomDeposit .button {
+        width: 100%;
+    }
+}
+/**
+ * @fileOverview fasterPayments page for GB.
+ * @name fasterPayments.less
+ * @author Reefath Rajali
+ * @tested iPhone"s Portrait & Landscape mode [Safari], iPad"s Portrait & Landscape mode [Safari], Safari, Chrome, firefox browsers
+ */
+/* -- desktop ---- */
+.fasterPayments .bankCode {
+    width: 374px;
+    height: 70px;
+    margin-bottom: 20px;
+    background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/bankcode_uk.png") no-repeat;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2) {
+    .fasterPayments .bankCode {
+        background: url("https://www.paypalobjects.com/webstatic/i/consumer/onboarding/bankcode_uk_2x.png") no-repeat;
+        background-size: 100%;
+    }
+}
+.fasterPayments .container {
+    min-height: 500px;
+}
+.fasterPayments .subTitles p {
+    font-size: 1.42857143em;
+    color: #948E8E;
+}
+.fasterPayments .fasterPaymentsInfo p {
+    text-align: left;
+    font-size: 0.92857143em;
+}
+.fasterPayments .confirmationCodeButton {
+    margin-top: 30px;
+}
+.fasterPayments .dialog {
+    width: 450px;
+    min-height: 175px;
+    padding: 30px;
+    position: absolute;
+    margin: -288px auto 0 -288px;
+    overflow: auto;
+    background: #ffffff;
+    z-index: 6;
+}
+.fasterPayments .dialog h1 {
+    font-size: 1.35714286em;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.fasterPayments .dialog p {
+    font-size: 0.92857143em;
+}
+.fasterPayments .dialog a.button {
+    width: 70%;
+    padding-top: 7px;
+}
+/** iPhone Styles **/
+@media only screen and (max-width: 767px) {
+    .fasterPayments .container {
+        min-height: 300px;
+    }
+    .fasterPayments .bankCode {
+        display: none;
+    }
+    .fasterPayments .dialog {
+        width: 200px;
+        margin: -250px auto 0 -1px;
+    }
+    .fasterPayments .dialog h1 {
+        font-size: 1.07142857em;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    .fasterPayments .dialog p {
+        font-size: 0.5em;
+    }
+    .fasterPayments .dialog a.button {
+        width: 100%;
+        padding-top: 7px;
+        font-size: 1.07142857em;
+    }
+}
+/** Ipad styles **/
+@media all and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+    .fasterPayments .bankCode {
+        background-size: 75%;
+    }
+}

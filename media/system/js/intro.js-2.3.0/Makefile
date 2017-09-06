@@ -1,6 +1,6 @@
-BASE = .
-
-build:
-	cd BUILD && node BUILD.js
-
+BASE = .
+
+build:
+	cd BUILD && node BUILD.js
+
 .PHONY: build

@@ -1,0 +1,87 @@
+body {font-family: 'Helvetica Neue', Helvetica, 'HN', Arial, sans-serif;}
+.top.home {background: url('../images/background.png') top center no-repeat;}
+.bar {background: url('../images/bg-bar-lq.png') top left repeat-x;}
+.bar .logo {background: url('../images/divider-bar.png') top right no-repeat;}
+.bar .logo a {background: url('../images/logo-whatsapp.png') center center no-repeat;}
+.bar .nav {background: url('../images/divider-bar.png') top left no-repeat;}
+.bar .nav a {background: url('../images/btn-nav-lq.png') center center no-repeat;}
+.bar .nav a:active, .bar .nav a:hover {background: url('../images/btn-nav-active-lq.png') top left no-repeat;}
+.nav.close a, .preloadcloselq {background: url('../images/btn-nav-close-lq.png') top left no-repeat;}
+.nav.close a:active, .nav.close a:hover {background: url('../images/btn-nav-close-active-lq.png') top left no-repeat;}
+.top h1 {font-family: 'Helvetica Neue', Helvetica, 'HN', Arial, sans-serif;}
+.california {background: url('../images/california-lq.png') top left no-repeat;}
+.content h2 {font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, 'HN', Arial, 'Lucida Grande', sans-serif;}
+.btn1 a {background: url('../images/btn-twitter-lq.png') top left no-repeat;}
+.btn2 a {background: url('../images/btn-facebook-lq.png') top left no-repeat;}
+.btn3 a {background: url('../images/btn-googleplus-lq.png') top left no-repeat;}
+.footer {background: url('../images/bg-footer.png') repeat;}
+#btm-menu .home-link {background: url('../images/logo-whatsapp-footer-lq.png') center center no-repeat;}
+#footer .btn1 a {background: url('../images/btn-footer-twitter-lq.png') top left no-repeat;}
+#footer .btn2 a {background: url('../images/btn-footer-facebook-lq.png') top left no-repeat;}
+#footer .btn3 a {background: url('../images/btn-footer-googleplus-lq.png') top left no-repeat;}
+#screens h2 {font-weight: 200;}
+#lang_select .icon {background-image: url('../images/icon-lang-switch-lq.png');}
+#btm_lang_select .icon {background-image: url('../images/icon-lang-switch-btm-lq.png');}
+#lang_select select {font-family: 'Helvetica Neue', Helvetica, 'HN', Arial, sans-serif; border-top: 1px solid #1c2f30; border-left: 1px solid #1c2f30; border-right: 1px solid #1c2f30; border-bottom: 1px solid #567f80;}
+#topbar {background: url('../images/bg-footer.png');}
+#query {font-family: 'Helvetica Neue', Helvetica, 'HN', Arial, sans-serif;}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5) {
+.bar {background-color: #283c3e; background: url('../images/bg-bar-hq.png') top left repeat-x;}
+.bar .logo a  {background-image: url('../images/logo-whatsapp-hq.png');}
+.bar .nav a {background: url('../images/btn-nav.png') top left no-repeat; background-size: contain;}
+.nav a:active, .nav a:hover {background: url('../images/btn-nav-active.png') top left no-repeat!important; background-size: contain;}
+.nav.close a, .preloadclose {background: url('../images/btn-nav-close.png') top left no-repeat; background-size: contain!important;}
+.nav.close a:active, .nav.close a:hover {background: url('../images/btn-nav-close-active.png') top left no-repeat!important; background-size: contain!important;}
+.btn1 a { background: url('../images/btn-twitter.png') top left no-repeat; }
+.btn2 a { background: url('../images/btn-facebook.png') top left no-repeat; }
+.btn3 a { background: url('../images/btn-googleplus.png') top left no-repeat; }
+#btm-menu .home-link {background: url('../images/logo-whatsapp-footer.png') center center no-repeat;}
+#footer .btn1 a { background: url('../images/btn-footer-twitter.png') top left no-repeat; }
+#footer .btn2 a { background: url('../images/btn-footer-facebook.png') top left no-repeat; }
+#footer .btn3 a { background: url('../images/btn-footer-googleplus.png') top left no-repeat; }
+#lang_select .icon {background-image: url('../images/icon-lang-switch.png');}
+#btm_lang_select .icon {background-image: url('../images/icon-lang-switch-btm.png');}
+}
+
+@media only screen and (max-width: 500px) {
+.deskonly {display:none; }
+input {font-size:17px;}
+}
+
+@media only screen and (min-width: 500px) {
+.mobonly {display:none; }
+}
+
+#lang_select select, #btm_lang_select select {color: #3f3f3f;	background-color: #EDEDED; -webkit-border-radius: 5px;	-moz-border-radius: 5px; -ms-border-radius: 5px; border-radius: 5px; vertical-align: middle; font-size: 14px; line-height: 24px; height: 22px;}
+#btm_lang_select select {border-top: 1px solid #35373C; border-left: 1px solid #35373C;	border-right: 1px solid #35373C; border-bottom: 1px solid #808285;}
+.exten {width:33%; border-right:1px solid #c0c0c0; text-align:center;}
+.exten, table label,font {font-size:13px; line-height:21px}
+input, select {padding:3px 3px 3px 5px; border:1px solid #678183; color:#333: font-size:13px; border-radius:2px;}
+.submit {background:url('../images/next.png') repeat-x; background-size:100% 100%; height:30px; border-radius:7px; color:#ffffff; font-weight:bold; cursor:pointer; }
+.tooltip{display: inline; position: relative;}
+
+.tooltip:hover:after{
+background: #333;
+background: rgba(0,0,0,.8);
+border-radius: 5px;
+bottom: 26px;
+color: #fff;
+content: attr(title);
+right: 2%;
+padding: 5px 15px;
+position: absolute;
+z-index: 999999999999;
+width: 220px;
+}
+
+.tooltip:hover:before{
+border: solid;
+border-color: #333 transparent;
+border-width: 6px 6px 0 6px;
+bottom: 20px;
+content: "";
+right: 50%;
+position: absolute;
+z-index: 999999999999;
+}

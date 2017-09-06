@@ -25,6 +25,9 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+#discuss-wrapper {
+  @import "markitup/default";
+}
 #discuss-wrapper article,
 #discuss-wrapper aside,
 #discuss-wrapper details,
@@ -5176,122 +5179,6 @@
 #discuss-wrapper .icon-user-md:before {
   content: "\f200";
 }
-#discuss-wrapper .markItUp * {
-  margin: 0px;
-  padding: 0px;
-  outline: none;
-}
-#discuss-wrapper .markItUp a:link,
-#discuss-wrapper .markItUp a:visited {
-  color: #000;
-  text-decoration: none;
-}
-#discuss-wrapper .markItUp {
-  width: 700px;
-  margin: 5px 0 5px 0;
-}
-#discuss-wrapper .markItUpContainer {
-  font: 11px Verdana, Arial, Helvetica, sans-serif;
-}
-#discuss-wrapper .markItUpEditor {
-  font: 12px 'Courier New', Courier, monospace;
-  padding: 5px;
-  width: 690px;
-  height: 320px;
-  clear: both;
-  line-height: 18px;
-  overflow: auto;
-}
-#discuss-wrapper .markItUpPreviewFrame {
-  overflow: auto;
-  background-color: #FFF;
-  width: 99.9%;
-  height: 300px;
-  margin: 5px 0;
-}
-#discuss-wrapper .markItUpFooter {
-  width: 100%;
-}
-#discuss-wrapper .markItUpResizeHandle {
-  overflow: hidden;
-  width: 22px;
-  height: 5px;
-  margin-left: auto;
-  margin-right: auto;
-  background-image: url(../../../../../../media/foundry/2.1/styles/markitup/images/handle.png);
-  cursor: n-resize;
-}
-#discuss-wrapper .markItUpHeader ul li {
-  list-style: none;
-  float: left;
-  position: relative;
-}
-#discuss-wrapper .markItUpHeader ul li:hover > ul {
-  display: block;
-}
-#discuss-wrapper .markItUpHeader ul .markItUpDropMenu {
-  background: transparent url(../../../../../../media/foundry/2.1/styles/markitup/images/menu.png) no-repeat 115% 50%;
-  margin-right: 5px;
-}
-#discuss-wrapper .markItUpHeader ul .markItUpDropMenu li {
-  margin-right: 0px;
-}
-#discuss-wrapper .markItUpHeader ul ul {
-  display: none;
-  position: absolute;
-  top: 18px;
-  left: 0px;
-  background: #FFF;
-  border: 1px solid #000;
-}
-#discuss-wrapper .markItUpHeader ul ul li {
-  float: none;
-  border-bottom: 1px solid #000;
-}
-#discuss-wrapper .markItUpHeader ul ul .markItUpDropMenu {
-  background: #FFF url(../../../../../../media/foundry/2.1/styles/markitup/images/submenu.png) no-repeat 100% 50%;
-}
-#discuss-wrapper .markItUpHeader ul .markItUpSeparator {
-  margin: 0 10px;
-  width: 1px;
-  height: 16px;
-  overflow: hidden;
-  background-color: #CCC;
-}
-#discuss-wrapper .markItUpHeader ul ul .markItUpSeparator {
-  width: auto;
-  height: 1px;
-  margin: 0px;
-}
-#discuss-wrapper .markItUpHeader ul ul ul {
-  position: absolute;
-  top: -1px;
-  left: 150px;
-}
-#discuss-wrapper .markItUpHeader ul ul ul li {
-  float: none;
-}
-#discuss-wrapper .markItUpHeader ul a {
-  display: block;
-  width: 16px;
-  height: 16px;
-  text-indent: -10000px;
-  background-repeat: no-repeat;
-  padding: 3px;
-  margin: 0px;
-}
-#discuss-wrapper .markItUpHeader ul ul a {
-  display: block;
-  padding-left: 0px;
-  text-indent: 0;
-  width: 120px;
-  padding: 5px 5px 5px 25px;
-  background-position: 2px 50%;
-}
-#discuss-wrapper .markItUpHeader ul ul a:hover {
-  color: #FFF;
-  background-color: #000;
-}
 #discuss-wrapper .markItUp {
   width: 100%;
   margin: 0;
@@ -6643,6 +6530,9 @@ div.tooltip.tooltip-ed {
   bottom: -11px;
   right: -1px;
 }
+#discuss-dialog {
+  @import "markitup/default";
+}
 #discuss-dialog .close {
   float: right;
   font-size: 20px;
@@ -7882,122 +7772,6 @@ div.tooltip.tooltip-ed {
 }
 #discuss-dialog .form-horizontal .form-actions {
   padding-left: 180px;
-}
-#discuss-dialog .markItUp * {
-  margin: 0px;
-  padding: 0px;
-  outline: none;
-}
-#discuss-dialog .markItUp a:link,
-#discuss-dialog .markItUp a:visited {
-  color: #000;
-  text-decoration: none;
-}
-#discuss-dialog .markItUp {
-  width: 700px;
-  margin: 5px 0 5px 0;
-}
-#discuss-dialog .markItUpContainer {
-  font: 11px Verdana, Arial, Helvetica, sans-serif;
-}
-#discuss-dialog .markItUpEditor {
-  font: 12px 'Courier New', Courier, monospace;
-  padding: 5px;
-  width: 690px;
-  height: 320px;
-  clear: both;
-  line-height: 18px;
-  overflow: auto;
-}
-#discuss-dialog .markItUpPreviewFrame {
-  overflow: auto;
-  background-color: #FFF;
-  width: 99.9%;
-  height: 300px;
-  margin: 5px 0;
-}
-#discuss-dialog .markItUpFooter {
-  width: 100%;
-}
-#discuss-dialog .markItUpResizeHandle {
-  overflow: hidden;
-  width: 22px;
-  height: 5px;
-  margin-left: auto;
-  margin-right: auto;
-  background-image: url(../../../../../../media/foundry/2.1/styles/markitup/images/handle.png);
-  cursor: n-resize;
-}
-#discuss-dialog .markItUpHeader ul li {
-  list-style: none;
-  float: left;
-  position: relative;
-}
-#discuss-dialog .markItUpHeader ul li:hover > ul {
-  display: block;
-}
-#discuss-dialog .markItUpHeader ul .markItUpDropMenu {
-  background: transparent url(../../../../../../media/foundry/2.1/styles/markitup/images/menu.png) no-repeat 115% 50%;
-  margin-right: 5px;
-}
-#discuss-dialog .markItUpHeader ul .markItUpDropMenu li {
-  margin-right: 0px;
-}
-#discuss-dialog .markItUpHeader ul ul {
-  display: none;
-  position: absolute;
-  top: 18px;
-  left: 0px;
-  background: #FFF;
-  border: 1px solid #000;
-}
-#discuss-dialog .markItUpHeader ul ul li {
-  float: none;
-  border-bottom: 1px solid #000;
-}
-#discuss-dialog .markItUpHeader ul ul .markItUpDropMenu {
-  background: #FFF url(../../../../../../media/foundry/2.1/styles/markitup/images/submenu.png) no-repeat 100% 50%;
-}
-#discuss-dialog .markItUpHeader ul .markItUpSeparator {
-  margin: 0 10px;
-  width: 1px;
-  height: 16px;
-  overflow: hidden;
-  background-color: #CCC;
-}
-#discuss-dialog .markItUpHeader ul ul .markItUpSeparator {
-  width: auto;
-  height: 1px;
-  margin: 0px;
-}
-#discuss-dialog .markItUpHeader ul ul ul {
-  position: absolute;
-  top: -1px;
-  left: 150px;
-}
-#discuss-dialog .markItUpHeader ul ul ul li {
-  float: none;
-}
-#discuss-dialog .markItUpHeader ul a {
-  display: block;
-  width: 16px;
-  height: 16px;
-  text-indent: -10000px;
-  background-repeat: no-repeat;
-  padding: 3px;
-  margin: 0px;
-}
-#discuss-dialog .markItUpHeader ul ul a {
-  display: block;
-  padding-left: 0px;
-  text-indent: 0;
-  width: 120px;
-  padding: 5px 5px 5px 25px;
-  background-position: 2px 50%;
-}
-#discuss-dialog .markItUpHeader ul ul a:hover {
-  color: #FFF;
-  background-color: #000;
 }
 #discuss-dialog .markItUp {
   width: 100%;

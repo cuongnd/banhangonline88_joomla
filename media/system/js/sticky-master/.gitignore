@@ -1,4 +1,4 @@
-*.psd
-*~
-node_modules/
-npm-debug.log
+*.psd
+*~
+node_modules/
+npm-debug.log

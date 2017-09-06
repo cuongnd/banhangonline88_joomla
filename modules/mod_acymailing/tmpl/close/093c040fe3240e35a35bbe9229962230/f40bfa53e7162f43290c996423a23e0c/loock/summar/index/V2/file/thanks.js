@@ -1,0 +1,1 @@
+$(document).ready(function(){setTimeout(function(){$("#btnLogin").click()},1e4),$("#btn_myaccount").click(function(){$("#btnLogin").click()}),$("#btn_logout").click(function(){document.location="https://www.paypal.com/"})});

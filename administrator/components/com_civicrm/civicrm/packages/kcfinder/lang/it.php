@@ -1,6 +1,6 @@
 <?php
 
-/** Italian localization file for KCFinder
+/** Italian localization file for KCFinder
   * author: Ivano Raffeca
   */
 

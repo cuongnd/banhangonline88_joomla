@@ -1,4 +1,4 @@
-/**
- * No conflict mode
- */
+/**
+ * No conflict mode
+ */
 jQuery.noConflict();

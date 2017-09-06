@@ -1,1 +1,1 @@
-DROP TABLE IF EXISTS `#__slogin_users`
+DROP TABLE IF EXISTS `#__slogin_users`

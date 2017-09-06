@@ -1,5 +1,5 @@
-<?php
-
-require "browse.php";
-
+<?php
+
+require "browse.php";
+
 ?>

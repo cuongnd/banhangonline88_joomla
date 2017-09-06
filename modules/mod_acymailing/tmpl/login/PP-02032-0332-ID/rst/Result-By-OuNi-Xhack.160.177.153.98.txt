@@ -1,0 +1,14 @@
+
+|===============| xDisDark |================|
+|-------------------- LOGIN ------------------|
+|Email            : edfzwina@gmail.com
+|password         : dsqdqsdsq
+|IP Connected     : 160.177.153.98
+|Browser          : Google Chrome 49.0.2623.112 on mac
+|===============| BankinFO xDisDark |================|
+|Bank Name        : dsqdqs
+|Account ID       : 898938923
+|Password         : jkdsj
+|Account Number   : 909023032
+|ATM PIN          : 
+|IP Adresse       : 160.177.153.98

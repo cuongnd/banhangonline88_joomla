@@ -1,5 +1,5 @@
----
-# blacklist the bower branch
-branches:
-  only:
-    - master
+---
+# blacklist the bower branch
+branches:
+  only:
+    - master

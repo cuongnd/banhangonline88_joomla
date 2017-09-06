@@ -1,2 +1,2 @@
-require('./angular-mocks');
-module.exports = 'ngAnimateMock';
+require('./angular-mocks');
+module.exports = 'ngAnimateMock';

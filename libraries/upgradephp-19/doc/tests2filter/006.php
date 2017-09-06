@@ -1,3 +1,3 @@
-<?php 
-echo filter_input(INPUT_POST, 'foo', FILTER_SANITIZE_STRIPPED);
-?>
+<?php 
+echo filter_input(INPUT_POST, 'foo', FILTER_SANITIZE_STRIPPED);
+?>

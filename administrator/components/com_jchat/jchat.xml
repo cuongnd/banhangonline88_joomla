@@ -1,90 +1,90 @@
-<?xml version="1.0" encoding="utf-8"?>
-<extension type="component" version="3.0" method="upgrade">
-	<name>JChat</name>
-	<author>Joomla! Extensions Store</author>
-	<creationDate>September 2016</creationDate>
-	<copyright>Copyright (C) 2015 - Joomla! Extensions Store. All Rights Reserved.</copyright>
-	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
-	<authorEmail>info@storejextensions.org</authorEmail>
-	<authorUrl>http://storejextensions.org</authorUrl>
-	<version>2.11</version>
-	<description>COM_JCHAT_INSTALLATION_MESSAGES</description>
-	
-	<scriptfile>installscript.php</scriptfile>
-	
-	<install> <!-- Runs on install -->
-		<sql>
-			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
-		</sql>
-	</install> 
-	<uninstall> <!-- Runs on uninstall -->
-		<sql>
-			<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
-		</sql>
-	</uninstall>
-	
-	<!-- FRONTEND -->
-	<files folder="site">
-		<filename>jchat.php</filename>
-		<filename>router.php</filename>
-		<filename>index.html</filename>
-		<filename>license.txt</filename>
-		<!-- CACHE -->
-		<folder>cache</folder> 
-		<!-- CONTROLLERS -->
-		<folder>controllers</folder> 
-		<!-- CSS -->
-		<folder>css</folder> 
-		<!-- EMOTICONS -->
-		<folder>emoticons</folder>
-		<!-- IMAGES -->
-		<folder>images</folder>  
-		<!-- JS -->
-		<folder>js</folder>  
-		<!-- MODEL -->
-		<folder>models</folder>
-		<!-- VIEWS -->
-		<folder>views</folder>  
-		<!-- SOUNDS -->
-		<folder>sounds</folder>
-		<!-- LANGUAGE -->
-		<folder>language</folder>
-	</files>
- 
-	<!-- BACKEND -->
-	<administration>
-		<menu link="option=com_jchat" img="components/com_jchat/images/jchat_menu_icon.png">JCHAT</menu>
-		<files folder="admin">
-			<filename>jchat.php</filename> 
-			<filename>config.xml</filename>
-			<filename>index.html</filename>
-			<!-- CONTROLLERS -->
-			<folder>controllers</folder> 
-			<!-- CSS -->
-			<folder>css</folder> 
-			<!-- FRAMEWORK -->
-			<folder>framework</folder> 
-			<!-- IMAGES -->
-			<folder>images</folder>  
-			<!-- JS -->
-			<folder>js</folder>  
-			<!-- MODEL -->
-			<folder>models</folder>
-			<!-- SQL files section -->
-			<folder>sql</folder> 
-			<!-- TABLES -->
-			<folder>tables</folder>
-			<!-- VIEWS -->
-			<folder>views</folder>  
-			<!-- LANGUAGE -->
-			<folder>language</folder>
-			<!-- LAYOUTS -->
-			<folder>layouts</folder>
-		</files>  
-	</administration>
-	
-	<!-- UPDATE SERVERS -->
-	<updateservers>
-		<server type="extension" priority="1" name="JChatSocial Update Server">http://storejextensions.org/updates/jchat_updater.xml</server>
-	</updateservers>
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="3.0" method="upgrade">
+	<name>JChat</name>
+	<author>Joomla! Extensions Store</author>
+	<creationDate>September 2016</creationDate>
+	<copyright>Copyright (C) 2015 - Joomla! Extensions Store. All Rights Reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>info@storejextensions.org</authorEmail>
+	<authorUrl>http://storejextensions.org</authorUrl>
+	<version>2.11</version>
+	<description>COM_JCHAT_INSTALLATION_MESSAGES</description>
+	
+	<scriptfile>installscript.php</scriptfile>
+	
+	<install> <!-- Runs on install -->
+		<sql>
+			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+		</sql>
+	</install> 
+	<uninstall> <!-- Runs on uninstall -->
+		<sql>
+			<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+		</sql>
+	</uninstall>
+	
+	<!-- FRONTEND -->
+	<files folder="site">
+		<filename>jchat.php</filename>
+		<filename>router.php</filename>
+		<filename>index.html</filename>
+		<filename>license.txt</filename>
+		<!-- CACHE -->
+		<folder>cache</folder> 
+		<!-- CONTROLLERS -->
+		<folder>controllers</folder> 
+		<!-- CSS -->
+		<folder>css</folder> 
+		<!-- EMOTICONS -->
+		<folder>emoticons</folder>
+		<!-- IMAGES -->
+		<folder>images</folder>  
+		<!-- JS -->
+		<folder>js</folder>  
+		<!-- MODEL -->
+		<folder>models</folder>
+		<!-- VIEWS -->
+		<folder>views</folder>  
+		<!-- SOUNDS -->
+		<folder>sounds</folder>
+		<!-- LANGUAGE -->
+		<folder>language</folder>
+	</files>
+ 
+	<!-- BACKEND -->
+	<administration>
+		<menu link="option=com_jchat" img="components/com_jchat/images/jchat_menu_icon.png">JCHAT</menu>
+		<files folder="admin">
+			<filename>jchat.php</filename> 
+			<filename>config.xml</filename>
+			<filename>index.html</filename>
+			<!-- CONTROLLERS -->
+			<folder>controllers</folder> 
+			<!-- CSS -->
+			<folder>css</folder> 
+			<!-- FRAMEWORK -->
+			<folder>framework</folder> 
+			<!-- IMAGES -->
+			<folder>images</folder>  
+			<!-- JS -->
+			<folder>js</folder>  
+			<!-- MODEL -->
+			<folder>models</folder>
+			<!-- SQL files section -->
+			<folder>sql</folder> 
+			<!-- TABLES -->
+			<folder>tables</folder>
+			<!-- VIEWS -->
+			<folder>views</folder>  
+			<!-- LANGUAGE -->
+			<folder>language</folder>
+			<!-- LAYOUTS -->
+			<folder>layouts</folder>
+		</files>  
+	</administration>
+	
+	<!-- UPDATE SERVERS -->
+	<updateservers>
+		<server type="extension" priority="1" name="JChatSocial Update Server">http://storejextensions.org/updates/jchat_updater.xml</server>
+	</updateservers>
 </extension>

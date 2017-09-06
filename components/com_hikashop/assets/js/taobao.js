@@ -1,1 +1,1 @@
-alert("hello taobao.js");
+alert("hello taobao.js");

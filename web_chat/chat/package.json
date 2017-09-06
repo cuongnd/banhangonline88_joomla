@@ -1,0 +1,17 @@
+{
+  "name": "simplechat",
+  "author": "Sergio Castaño Arteaga - sergio.castano.arteaga@gmail.com",
+  "description": "SimpleChat",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": "~3.3.8",
+    "jquery": "^3.2.1",
+    "jsdom": "^11.2.0",
+    "redis": "",
+    "socket.io": "~1.3.7",
+    "socket.io-redis": "~0.1.4",
+    "underscore": "",
+    "validator": ""
+  }
+}

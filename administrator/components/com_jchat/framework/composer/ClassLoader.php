@@ -1,13 +1,13 @@
 <?php
 namespace Composer\Autoload;
-/**
- * @package JCHAT::FRAMEWORK::administrator::components::com_jchat
- * @subpackage framework
- * @subpackage composer
- * @author Joomla! Extensions Store
- * @Copyright (C) 2015 - Joomla! Extensions Store
- * @license GNU/GPLv2 http://www.gnu.org/licenses/gpl-2.0.html
- */
+/**
+ * @package JCHAT::FRAMEWORK::administrator::components::com_jchat
+ * @subpackage framework
+ * @subpackage composer
+ * @author Joomla! Extensions Store
+ * @Copyright (C) 2015 - Joomla! Extensions Store
+ * @license GNU/GPLv2 http://www.gnu.org/licenses/gpl-2.0.html
+ */
 defined ( '_JEXEC' ) or die ( 'Restricted access' );
 /**
  * ClassLoader implements a PSR-0 class loader

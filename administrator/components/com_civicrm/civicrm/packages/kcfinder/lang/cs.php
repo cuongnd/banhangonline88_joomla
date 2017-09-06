@@ -1,6 +1,6 @@
 <?php
 
-/** Czech localization file for KCFinder
+/** Czech localization file for KCFinder
   * author: Rostislav Sivak <rsivak@rsivak.com>
   */
 

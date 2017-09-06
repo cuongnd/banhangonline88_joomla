@@ -1,1 +1,1 @@
-{ts}Contribution Invoice{/ts}
+{ts}Contribution Invoice{/ts}

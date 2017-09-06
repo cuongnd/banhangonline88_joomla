@@ -1,3 +1,3 @@
-<div id="report-tab-set-developer" class="civireport-criteria">
-<pre>{$sql}</pre>
-</div>
+<div id="report-tab-set-developer" class="civireport-criteria">
+<pre>{$sql}</pre>
+</div>

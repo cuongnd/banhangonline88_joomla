@@ -40,12 +40,12 @@
 			<th width="10%" class="nowrap center">
 				<?php echo JText::_('COM_JBLANCE_PROJECT_TYPE'); ?>
 			</th>
- 			<th width="1%">
- 				<?php echo JText::_('JPUBLISHED'); ?>
- 			</th>
- 			<th width="1%">
- 				<?php echo JText::_('JGRID_HEADING_ID'); ?>
-			</th>
+ 			<th width="1%">
+ 				<?php echo JText::_('JPUBLISHED'); ?>
+ 			</th>
+ 			<th width="1%">
+ 				<?php echo JText::_('JGRID_HEADING_ID'); ?>
+			</th>
 		</tr>
 	</thead>
 	<tfoot>
@@ -88,17 +88,17 @@
 						echo '/'.JText::_('COM_JBLANCE_HOUR');
 					}
 					?>
-				</a>					
+				</a>					
 			</td>
 			<td align="center">
 				<span class="label label-success"><?php echo JText::_($row->project_type); ?></span>
 			</td>										
- 			<td class="nowrap center">
- 				<?php echo $published; ?>
- 			</td>
- 			<td class="nowrap center">
- 				<?php echo $row->id; ?>
-			</td>										
+ 			<td class="nowrap center">
+ 				<?php echo $published; ?>
+ 			</td>
+ 			<td class="nowrap center">
+ 				<?php echo $row->id; ?>
+			</td>										
 		</tr>
 		<?php
 	}
@@ -110,7 +110,7 @@
 	<input type="hidden" name="view" value="admconfig" />
 	<input type="hidden" name="layout" value="showbudget" />
 	<input type="hidden" name="task" value="" />
-	<input type="hidden" name="ctype" value="budget" />
+	<input type="hidden" name="ctype" value="budget" />
 	<input type="hidden" name="boxchecked" value="0" />
 	<input type="hidden" name="filter_order" value="<?php echo $this->lists['order']; ?>" />
 	<input type="hidden" name="filter_order_Dir" value="<?php echo $this->lists['order_Dir']; ?>" />

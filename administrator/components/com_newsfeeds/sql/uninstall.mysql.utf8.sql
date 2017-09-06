@@ -1,2 +1,2 @@
-DROP TABLE IF EXISTS `#__newsfeeds`;
-
+DROP TABLE IF EXISTS `#__newsfeeds`;
+
