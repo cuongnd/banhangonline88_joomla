@@ -1,0 +1,207 @@
+/**
+* @package      EasySocial
+* @copyright    Copyright (C) 2010 - 2017 Stack Ideas Sdn Bhd. All rights reserved.
+* @license      Proprietary Use License https://stackideas.com/licensing
+**/
+
+//
+// Loading
+// --------------------------------------------------
+
+
+/* Standard Size */
+.o-loader {
+	display: none;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: 0px;
+	text-align: center;
+	z-index: 1000;
+	.transform_(translateX(-50%) translateY(-50%));
+
+	font-size: 1em;
+	
+	/* Static Shape */
+	&:before {
+		position: absolute;
+		content: '';
+		top: 0%;
+		left: 50%;
+		width: 100%;
+		height: 100%;
+		border-radius: 500rem;
+		border: 4px solid @fd-ui-loader-border-color;
+	}
+
+	/* Active Shape */
+	&:after {
+		position: absolute;
+		content: '';
+		top: 0%;
+		left: 50%;
+		width: 100%;
+		height: 100%;
+
+		animation: fd-loader .55s linear;
+		animation-iteration-count: infinite;
+
+		border-radius: 500rem;
+
+		border-color: #999 transparent transparent;
+		border-style: solid;
+		border-width: 4px;
+
+		box-shadow: 0px 0px 0px 1px transparent;
+	}
+}
+
+.o-loader.o-loader--top {
+	top: @fd-base-spacing--lg;
+	// left: 0;
+	.transform_(translateX(-50%) translateY(0%));
+}
+
+
+
+/* Active Animation */
+@keyframes fd-loader {
+	from {
+		.transform_(rotate(0deg));
+	}
+	to {
+		.transform_(rotate(360deg));
+	}
+}
+
+/* Sizes */
+// .o-loader.o-loader--sm,
+.o-loader.o-loader--sm {
+	&:before,
+	&:after {
+		width: 20px;
+		height: 20px;
+		margin: 0 0 0 -10px;    
+	}
+}
+
+// .o-loader,
+.o-loader {
+	&:before,
+	&:after {
+		width: 36px;
+		height: 36px;
+		margin: 0 0 0 -18px;
+	}
+}
+
+
+/*******************************
+						 Types
+*******************************/
+
+
+/*-------------------
+				Text
+--------------------*/
+
+.o-loader.with-text {
+	width: auto !important;
+	height: auto !important;
+	text-align: center;
+	font-style: normal;
+
+	// min-width: 2.28571429rem;
+	// padding-top: 3.07142857rem;
+}
+
+
+/*******************************
+						States
+*******************************/
+
+// .ui.indeterminate.loader:after {
+//   animation-direction: @indeterminateDirection;
+//   animation-duration: @indeterminateSpeed;
+// }
+&.is-loading,
+.is-loading {
+	.no-focus-outline();
+	.o-loader {
+		display: block;
+	}
+}
+
+.o-loader.is-active,
+.o-loader.is-visible {
+	display: block;
+}
+.o-loader.is-disabled,
+.o-loader.is-hidden {
+	display: none;
+}
+
+/*******************************
+						Variations
+*******************************/
+
+
+/*-------------------
+				Sizes
+--------------------*/
+
+.o-loader {
+	width: 36px;
+	height: 36px;
+	font-size: @fd-base-font-size;
+
+	&--sm {
+		width: 20px;
+		height: 20px; 
+	}
+}
+
+.o-loader.with-text {
+	min-width: 36px;
+	padding-top: 36px + 4px;
+}
+
+.o-loader.o-loader--sm.with-text {
+	min-width: 20px;
+	padding-top: 20px + 4px;
+}
+
+
+/*-------------------
+			 Inverted
+--------------------*/
+
+
+
+/*-------------------
+			 Inline
+--------------------*/
+
+.o-loader.o-loader--inline {
+	position: relative;
+	vertical-align: middle;
+	margin: 0;
+	left: 0em;
+	top: 0em;
+	.transform_(none);
+}
+
+.o-loader.o-loader--inline.is-active,
+.o-loader.o-loader--inline.is-visible {
+	display: inline-block;
+}
+
+/* Centered Inline */
+.o-loader.o-loader--inline.is-active.is-centered,
+.o-loader.o-loader--inline.is-visible.is-centered {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+

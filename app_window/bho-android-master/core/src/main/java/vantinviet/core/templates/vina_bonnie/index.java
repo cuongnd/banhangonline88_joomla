@@ -3,6 +3,7 @@ package vantinviet.core.templates.vina_bonnie;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
+import android.support.design.widget.BottomNavigationView;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -11,6 +12,7 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 
+import vantinviet.core.R;
 import vantinviet.core.libraries.html.Style;
 
 import java.util.ArrayList;
@@ -63,7 +65,10 @@ public class index extends LinearLayout {
         return instance;
     }
     public static void buildLayout(LinearLayout root_linear_layout) {
-        root_linear_layout.removeAllViews();
+        if(root_linear_layout!=null)
+        {
+            root_linear_layout.removeAllViews();
+        }
         JApplication app= JFactory.getApplication();
         int screen_size_width;
         int screen_size_height;
@@ -105,7 +110,7 @@ public class index extends LinearLayout {
             new_row_linear_layout.setLayoutParams(layout_params);
             new_row_linear_layout.setOrientation(LinearLayout.HORIZONTAL);
             Style.apply_style(new_row_linear_layout,row.getClassName());
-            Timber.d("row name(%s)",row.getName());
+
             ArrayList<Column> list_column=row.getColumns();
             if(list_column!=null)for (Column column: list_column) {
 
@@ -165,11 +170,23 @@ public class index extends LinearLayout {
                 Timber.d("column position(%s),type(%s) span(%s)",column.getPosition(),column.getType(),column.getDefault_span());
                 render_layout(list_row,new_column_linear_layout,column_width,screen_size_heght);
                 //new_column_linear_layout.addView(new_wrapper_of_column_linear_layout);
+
+
+                Timber.d("----------------------------"+row.toString());
                 new_row_linear_layout.addView(new_column_linear_layout);
 
+
+
+            }
+            String footerFixed =row.getFooterFixed();
+            if(footerFixed!=null && footerFixed.equals("1")){
+                BottomNavigationView   bottomNavigationView = (BottomNavigationView)app.getCurrentActivity().findViewById(R.id.bottom_navigation);
+                bottomNavigationView.removeAllViews();
+                bottomNavigationView.addView(new_row_linear_layout);
+            }else{
+                rootLinearLayout.addView(new_row_linear_layout);
             }
 
-            rootLinearLayout.addView(new_row_linear_layout);
 
         }
     }

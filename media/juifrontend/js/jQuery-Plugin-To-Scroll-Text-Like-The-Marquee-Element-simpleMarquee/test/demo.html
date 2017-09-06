@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<!--[if lte IE 9]><html class="lt-ie10"><![endif]-->
+<!--[if gt IE 9]><!--><html><!--<![endif]-->
+    <head>
+        <title>simplemarquee demo</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width">
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="../lib/jquery.simplemarquee.js"></script>
+    </head>
+    <body>
+        <style>
+        html, body {
+            margin: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .example-left, .example-right,
+        .example-enough-space, .example-options {
+            width: 200px;
+            padding: 5px;
+
+            background: #444;
+            color: #fff;
+        }
+        .example-enough-space.has-enough-space {
+            text-align: center;
+        }
+
+        .example-top, .example-bottom {
+            width: 75px;
+            height: 50px;
+            padding: 5px;
+
+            background: #444;
+            color: #fff;
+        }
+        </style>
+
+        <h3>Left</h3>
+        <div class="example-left">
+            Hi <strong>there</strong>. How are you? I hope you are doing <strong>fine!</strong>
+        </div>
+
+        <h3>Right</h3>
+        <div class="example-right">
+            Hi <strong>there</strong>. How are you? I hope you are doing <strong>fine!</strong>
+        </div>
+
+        <h3>Top</h3>
+        <div class="example-top">
+            Hi <strong>there</strong>. How are you? I hope you are doing <strong>fine!</strong>
+        </div>
+
+        <h3>Bottom</h3>
+        <div class="example-bottom">
+            Hi <strong>there</strong>. How are you? I hope you are doing <strong>fine!</strong>
+        </div>
+
+        <hr>
+
+        <h3>Enough space</h3>
+        <div class="example-enough-space">
+            Hi <strong>there</strong>.
+        </div>
+
+        <h3>With options</h3>
+        <pre>
+        <code>
+        .simplemarquee({
+            speed: 100,
+            cycles: 5,
+            space: 100,
+            delayBetweenCycles: 5000,
+            handleHover: false,
+            handleResize: false
+        });
+        </code>
+        </pre>
+        <div class="example-options">
+            Hi <strong>there</strong>. How are you? I hope you are doing <strong>fine!</strong>
+        </div>
+
+
+        <script>
+        /*jshint strict:false*/
+        /*global $*/
+        $(document).ready(function () {
+            // Left demo
+            $('.example-left').on({
+                'cycle': console.log.bind(console, 'example-left', 'cycle'),
+                'pause': console.log.bind(console, 'example-left', 'pause'),
+                'resume': console.log.bind(console, 'example-left', 'resume'),
+                'finish': console.log.bind(console, 'example-left', 'finish')
+            });
+            $('.example-left').simplemarquee();
+
+            // Right demo
+            $('.example-right').on({
+                'cycle': console.log.bind(console, 'example-right', 'cycle'),
+                'pause': console.log.bind(console, 'example-right', 'pause'),
+                'resume': console.log.bind(console, 'example-right', 'resume'),
+                'finish': console.log.bind(console, 'example-right', 'finish')
+            });
+            $('.example-right').simplemarquee({
+                direction: 'right'
+            });
+
+            // Top demo
+            $('.example-top').on({
+                'cycle': console.log.bind(console, 'example-top', 'cycle'),
+                'pause': console.log.bind(console, 'example-top', 'pause'),
+                'resume': console.log.bind(console, 'example-top', 'resume'),
+                'finish': console.log.bind(console, 'example-top', 'finish')
+            });
+            $('.example-top').simplemarquee({
+                direction: 'top'
+            });
+
+            // Bottom demo
+            $('.example-bottom').on({
+                'cycle': console.log.bind(console, 'example-bottom', 'cycle'),
+                'pause': console.log.bind(console, 'example-bottom', 'pause'),
+                'resume': console.log.bind(console, 'example-bottom', 'resume'),
+                'finish': console.log.bind(console, 'example-bottom', 'finish')
+            });
+            $('.example-bottom').simplemarquee({
+                direction: 'bottom'
+            });
+
+            // Enough space demo
+            $('.example-enough-space').on({
+                'cycle': console.log.bind(console, 'example-enough-space', 'cycle'),
+                'pause': console.log.bind(console, 'example-enough-space', 'pause'),
+                'resume': console.log.bind(console, 'example-enough-space', 'resume'),
+                'finish': console.log.bind(console, 'example-enough-space', 'finish')
+            });
+            $('.example-enough-space').simplemarquee();
+
+            // With options demo
+            $('.example-options').on({
+                'cycle': console.log.bind(console, 'example-options', 'cycle'),
+                'pause': console.log.bind(console, 'example-options', 'pause'),
+                'resume': console.log.bind(console, 'example-options', 'resume'),
+                'finish': console.log.bind(console, 'example-options', 'finish')
+            });
+            $('.example-options').simplemarquee({
+                speed: 100,
+                cycles: 5,
+                space: 100,
+                delayBetweenCycles: 5000,
+                handleHover: false,
+                handleResize: false
+            });
+        });
+        </script>
+    </body>
+</html>

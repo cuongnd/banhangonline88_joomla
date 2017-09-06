@@ -39,10 +39,13 @@ public class JControllerLegacy {
             }
             task=input.getString("task","");
         }
+        if(controller.equals("")){
+            controller=input.getString("view","");
+        }
         input.setString("task",task);
 
         try {
-            control_class = Class.forName(String.format("vantinviet.core.components.com_%s.controllers.%sController",option,controller));
+            control_class = Class.forName(String.format("vantinviet.core.components.com_%s.controllers.%sController%s",option,option.substring(0, 1).toUpperCase()+option.substring(1),controller.substring(0, 1).toUpperCase()+controller.substring(1)));
             Constructor<?> cons = control_class.getConstructor();
             Object object = cons.newInstance();
             instance=(JControllerLegacy)object;
@@ -64,6 +67,9 @@ public class JControllerLegacy {
     }
 
     public void execute(String task) {
+        if(task.equals("")){
+            task="display";
+        }
         this.task=task;
         //no paramater
         Class noparams[] = {};
@@ -75,7 +81,8 @@ public class JControllerLegacy {
             method = object.getClass().getDeclaredMethod(task,noparams);
             method.invoke(object);
         } catch (NoSuchMethodException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            this.display();
         } catch (InvocationTargetException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {

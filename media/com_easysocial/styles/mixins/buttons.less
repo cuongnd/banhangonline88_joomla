@@ -1,0 +1,222 @@
+// Button variants
+//
+// Easily pump out default styles, as well as :hover, :focus, :active,
+// and disabled options for all buttons
+
+// BS3 style
+.button-variant(@color; @background; @border) {
+  color: @color !important;
+  background-color: @background !important;
+  border-color: @border !important;
+
+  &:focus,
+  &.focus {
+    color: @color !important;
+    background-color: darken(@background, 10%) !important;
+        border-color: darken(@border, 25%) !important;
+  }
+  &:hover {
+    color: @color !important;
+    background-color: darken(@background, 10%) !important;
+        border-color: darken(@border, 12%) !important;
+  }
+  &:active,
+  &.active,
+  .open > .dropdown-toggle& {
+    color: @color !important;
+    background-color: darken(@background, 10%) !important;
+        border-color: darken(@border, 12%) !important;
+
+    &:hover,
+    &:focus,
+    &.focus {
+      color: @color !important;
+      background-color: darken(@background, 17%) !important;
+          border-color: darken(@border, 25%) !important;
+    }
+  }
+  &:active,
+  &.active,
+  .open > .dropdown-toggle& {
+    background-image: none !important;
+  }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &,
+    &:hover,
+    &:focus,
+    &.focus,
+    &:active,
+    &.active {
+      background-color: @background !important;
+          border-color: @border !important;
+    }
+  }
+
+  .badge {
+    color: @background !important;
+    background-color: @color !important;
+  }
+}
+
+// ES gradient background with border
+.button-variant-es-gradient(@color, @background-top, @background-bottom, @border, @text-shadow: none) {
+    
+  color: @color !important;
+  // #gradient > .vertical(lighten(@background, 5%), 0%, darken(@background, 5%), 100%);
+  #gradient > .vertical(@background-top, @background-bottom, 20%, 100%) !important;
+  // border-color: darken(@border, 10%);
+  // border-bottom-color: darken(@background, 20%);
+  border: 1px solid @border !important;
+  text-shadow: @text-shadow !important;
+  background-position: 0 !important;
+  // .box-shadow(inset 0 1px 0 rgba(255, 255, 255, .1));
+  
+  &:hover,
+  &:focus,
+  &:active,
+  &.active {
+    // #gradient > .vertical(darken(@background, 0), 0%, darken(@background, 10%), 100%);
+    #gradient > .vertical(@background-top, @background-bottom, 20%, 100%) !important;
+    border-color: darken(@border, 10%) !important;
+    color: @color !important;
+    background-position: 0 !important;
+  }
+  
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &,
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      // background-color: @background;
+      // border-color: darken(@background, 5%);
+    }
+  }
+}
+
+
+// ES without gradient style (no longer use)
+.button-variant-es(@color; @background) {
+  color: @color !important;
+  background-color: @background !important;
+  border-color: transparent !important;
+
+  &:focus,
+  &.focus {
+    color: @color !important;
+    background-color: darken(@background, 10%) !important;
+        // border-color: darken(@border, 25%) !important;
+  }
+  &:hover {
+    color: @color !important;
+    background-color: darken(@background, 10%) !important;
+        // border-color: darken(@border, 12%) !important;
+  }
+  &:active,
+  &.active,
+  .open > .dropdown-toggle& {
+    color: @color !important;
+    background-color: darken(@background, 10%) !important;
+        // border-color: darken(@border, 12%) !important;
+
+    &:hover,
+    &:focus,
+    &.focus {
+      color: @color !important;
+      background-color: darken(@background, 17%) !important;
+          // border-color: darken(@border, 25%) !important;
+    }
+  }
+  &:active,
+  &.active,
+  .open > .dropdown-toggle& {
+    background-image: none !important;
+  }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &,
+    &:hover,
+    &:focus,
+    &.focus,
+    &:active,
+    &.active {
+      background-color: @background !important;
+          // border-color: @border !important;
+    }
+  }
+
+  .badge {
+    color: @background !important;
+    // background-color: @color;
+  }
+}
+
+// ES outline without background color
+.button-variant-es-o(@color) {
+  color: @color !important;
+  background-color: @fd-ui-bg !important;
+  border-color: @fd-ui-border-color !important;
+
+  &:focus,
+  &.focus {
+    color: @color !important;
+    // background-color: darken(@background, 10%) !important;
+        // border-color: darken(@border, 25%) !important;
+  }
+  &:hover {
+    color: @color !important;
+    // background-color: darken(@background, 10%) !important;
+        // border-color: darken(@border, 12%) !important;
+  }
+  &:active,
+  &.active,
+  .open > .dropdown-toggle& {
+    color: @color !important;
+    // background-color: darken(@background, 10%) !important;
+        // border-color: darken(@border, 12%) !important;
+
+    &:hover,
+    &:focus,
+    &.focus {
+      color: @color !important;
+      // background-color: darken(@background, 17%) !important;
+          // border-color: darken(@border, 25%) !important;
+    }
+  }
+  &:active,
+  &.active,
+  .open > .dropdown-toggle& {
+    background-image: none !important;
+  }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &,
+    &:hover,
+    &:focus,
+    &.focus,
+    &:active,
+    &.active {
+      // background-color: @background !important;
+          // border-color: @border !important;
+    }
+  }
+
+  .badge {
+    // color: @background !important;
+    // background-color: @color !important;
+  }
+}
+
+// Button sizes
+.button-size(@padding-vertical; @padding-horizontal; @font-size; @line-height; @border-radius) {
+  padding: @padding-vertical @padding-horizontal;
+  font-size: @font-size;
+  line-height: @line-height;
+  border-radius: @border-radius;
+}

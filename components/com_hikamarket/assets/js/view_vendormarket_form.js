@@ -22,7 +22,12 @@
             enable_audio: true,
             key_dont_show_agian: "",
             user_dont_show_help: true,
-            list_messenger: []
+            list_messenger: [],
+            option_alert:{
+                allow_dismiss:true,
+                timer:30000,
+                z_index:99999
+            }
             //main color scheme for view_vendormarket_form
             //be sure to be same as colors on main.css or custom-variables.less
 
@@ -39,7 +44,8 @@
 
         // the "constructor" method that gets called when the object is created
         plugin.set_help = function () {
-            list_messenger = plugin.settings.list_messenger;
+            var list_messenger = plugin.settings.list_messenger;
+
             var i = 1;
             var $item_element = $element.find('#hikamarket_registration_form .es-signin-social');
             $item_element.attr('data-intro', "fdgfdgf");
@@ -77,6 +83,7 @@
             });
         }
         plugin.registion_form_validate = function () {
+            var option_alert = plugin.settings.option_alert;
             var list_messenger=plugin.settings.list_messenger;
             var $form = $element.find('#hikamarket_registration_form');
             var $name = $form.find('input[name="data[register][name]"]');
@@ -86,35 +93,35 @@
             var $vendor_name = $form.find('input[name="data[vendorregister][vendor_name]"]');
             var vendor_terms=tinymce.get("vendor_terms").getContent();
             if ($name.val().trim() == '') {
-                $.alert_notify(list_messenger['HIKA_NAME_REQUIRED'],'error');
+                $.alert_notify(list_messenger['HIKA_NAME_REQUIRED'],'error',option_alert);
                 $name.focus();
                 return false;
             }else if($email.val().trim()==''){
-                $.alert_notify(list_messenger['HIKA_EMAIL_REQUIRED'],'error');
+                $.alert_notify(list_messenger['HIKA_EMAIL_REQUIRED'],'error',option_alert);
                 $email.focus();
                 return false;
             }else if($password.val().trim()==''){
-                $.alert_notify(list_messenger['HIKA_PASSWORD_REQUIRED'],'error');
+                $.alert_notify(list_messenger['HIKA_PASSWORD_REQUIRED'],'error',option_alert);
                 $password.focus();
                 return false;
             }else if($password2.val().trim()==''){
-                $.alert_notify(list_messenger['HIKA_PASSWORD_RETYPE_REQUIRED'],'error');
+                $.alert_notify(list_messenger['HIKA_PASSWORD_RETYPE_REQUIRED'],'error',option_alert);
                 $password2.focus();
                 return false;
             }else if(!$.is_email($email.val().trim())){
-                $.alert_notify(list_messenger['HIKA_EMAIL_INCORRECT'],'error');
+                $.alert_notify(list_messenger['HIKA_EMAIL_INCORRECT'],'error',option_alert);
                 $email.focus();
                 return false;
             }else if($password.val().trim()!=$password2.val().trim()){
-                $.alert_notify(list_messenger['HIKA_PASSWORD_RETYPE_INCORRECT'],'error');
+                $.alert_notify(list_messenger['HIKA_PASSWORD_RETYPE_INCORRECT'],'error',option_alert);
                 $password2.focus();
                 return false;
             }else if($vendor_name.val().trim()==''){
-                $.alert_notify(list_messenger['HIKA_VENDOR_NAME_REQUIRED'],'error');
+                $.alert_notify(list_messenger['HIKA_VENDOR_NAME_REQUIRED'],'error',option_alert);
                 $vendor_name.focus();
                 return false;
             }else if(vendor_terms.trim()==''){
-                $.alert_notify(list_messenger['HIKAM_ERR_TERMS_EMPTY'],'error');
+                $.alert_notify(list_messenger['HIKAM_ERR_TERMS_EMPTY'],'error',option_alert);
                 $vendor_terms.focus();
                 return false;
             }
@@ -122,7 +129,7 @@
             return true;
         }
         plugin.ajax_registration= function () {
-            $form = $element.find('#hikamarket_registration_form');
+            var $form = $element.find('#hikamarket_registration_form');
             var option_click = {
                 option: "com_hikamarket",
                 ctrl: "vendor",
@@ -153,7 +160,8 @@
                     if(response.e==1&&response.type=="email_exists"){
                         $.alert_notify(response.m,'error',{
                             allow_dismiss:true,
-                            timer:30000
+                            timer:30000,
+                            z_index:99999
                         });
                         $email.focus();
                     }else if(response.e==1&&response.type=="terms_empty"){
@@ -167,6 +175,35 @@
                 }
             });
         }
+        plugin.get_google_plus_login = function () {
+            var option_click = {
+                option: "com_hikamarket",
+                ctrl: "vendor",
+                task: "get_google_plus_login",
+                format: 'json',
+                tmpl: 'json',
+                ignoreMessages: true
+            };
+            var data_submit={};
+            option_click = $.param(option_click);
+
+            var ajax_web_design = $.ajax({
+                contentType: 'application/json',
+                type: "POST",
+                dataType: "json",
+                url: root_ulr + '/index.php?' + option_click,
+                data: JSON.stringify(data_submit),
+                beforeSend: function () {
+                    $('.div-loading').show();
+                },
+                success: function (response) {
+                    $('.div-loading').hide();
+                    var auth_url=response.auth_url;
+                    window.location.href = auth_url;
+
+                }
+            });
+        };
         plugin.init = function () {
             plugin.settings = $.extend({}, defaults, options);
             var show_help = plugin.settings.show_help;
@@ -199,6 +236,28 @@
                     plugin.ajax_registration();
                 }
             });
+            $element.find('a.get-google-plus-login').click(function (e) {
+                plugin.get_google_plus_login();
+            });
+            var $wrapper_register=$element.find('.wrapper-register');
+            $('.lazyYT').lazyYT();
+/*
+            $wrapper_register.dialog({
+                autoOpen: false,
+                show: {
+                    effect: "blind",
+                    duration: 1000
+                },
+                hide: {
+                    effect: "explode",
+                    duration: 1000
+                }
+            });
+
+            $element.find('.btn-registration').on( "click", function() {
+                $wrapper_register.dialog( "open" );
+            });
+*/
 
         }
 

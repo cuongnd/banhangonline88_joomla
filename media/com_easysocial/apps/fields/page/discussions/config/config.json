@@ -1,0 +1,13 @@
+{
+	"title": {
+		"default": "COM_EASYSOCIAL_FIELDS_PAGE_DISCUSSIONS"
+	},
+
+	"description": {
+		"default": "COM_EASYSOCIAL_FIELDS_PAGE_DISCUSSIONS_DESC"
+	},
+	"extends": "fields/user/boolean",
+	"privacy": false,
+    "searchable": false,
+	"visible_display"	: false
+}

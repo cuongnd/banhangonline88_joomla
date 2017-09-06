@@ -1,0 +1,16 @@
+{
+	"privacy": false,
+    "searchable": false,
+	"title": {
+		"default": "PLG_FIELDS_PAGE_PHOTOS_DEFAULT_TITLE"
+	},
+
+	"description": {
+		"default": "PLG_FIELDS_PAGE_PHOTOS_DEFAULT_DESCRIPTION"
+	},
+
+	"default": {
+		"type": "boolean",
+		"default": true
+	}
+}

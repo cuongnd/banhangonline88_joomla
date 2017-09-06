@@ -11,6 +11,8 @@ defined('JPATH_BASE') or die;
 
 // Load bootstrap-tooltip-extended plugin for additional tooltip positions in modal
 JHtml::_('bootstrap.tooltipExtended');
+JHtml::_('jqueryfrontend.framework');
+JHtml::_('bootstrap.modal');
 
 extract($displayData);
 

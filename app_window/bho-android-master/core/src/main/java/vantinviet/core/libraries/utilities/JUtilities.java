@@ -1,13 +1,18 @@
 package vantinviet.core.libraries.utilities;
 
 import android.app.AlertDialog;
+import android.app.NotificationManager;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.RequiresApi;
+import android.support.v4.app.RemoteInput;
 import android.util.Base64;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -36,6 +41,7 @@ import java.util.regex.Pattern;
 
 import vantinviet.core.R;
 import vantinviet.core.libraries.joomla.JFactory;
+import vantinviet.core.libraries.legacy.application.AppConstant;
 import vantinviet.core.libraries.legacy.application.JApplication;
 
 import static vantinviet.core.libraries.legacy.application.JApplication.getCurrentActivity;
@@ -51,6 +57,14 @@ public class JUtilities {
         } else {
             return android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
         }
+    }
+    public static CharSequence getMessageText(Intent intent, String msg_key) {
+        Bundle remoteInput = RemoteInput.getResultsFromIntent(intent);
+        if (remoteInput != null) {
+            CharSequence msg=remoteInput.getCharSequence(msg_key);
+            return msg ;
+        }
+        return null;
     }
     public static String callURL(String myURL) {
         System.out.println("Requeted URL:" + myURL);
@@ -255,6 +269,30 @@ public class JUtilities {
         alertDialog.show();
     }
 
+    public static void alert(Integer  messagetype, String message) {
+        final JApplication app= JFactory.getApplication();
+        if(messagetype==null){
+            messagetype=MessageType.INFO;
+        }
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                getCurrentActivity());
+        alertDialogBuilder
+                .setTitle((int)messagetype)
+                .setMessage(message)
+                .setCancelable(false)
+                .setPositiveButton(R.string.str_close,new DialogInterface.OnClickListener() {
+                    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+                    public void onClick(DialogInterface dialog, int id) {
+
+                    }
+                });
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // show it
+        alertDialog.show();
+    }
+
+
     public static boolean in_array(ArrayList<String> var_array, String need_var) {
         for (String item: var_array) {
             if(item.equals(need_var)){
@@ -354,5 +392,51 @@ public class JUtilities {
         AlertDialog.Builder alertBuilderDialog = new AlertDialog.Builder(app.getCurrentActivity());
         app.setAlertBuilderDialog(alertBuilderDialog);
         return alertBuilderDialog.create();
-    }}
+    }
+
+    public static String renderName() {
+        String name="customer_"+String.valueOf(getRandomInt(10,1000));
+        return name;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public static void send_socket_messenger(Intent intent, String notificationService) {
+        String action = intent.getAction();
+        String msg_key=intent.getStringExtra("msg_key");
+        JApplication app = JFactory.getApplication();
+        if (AppConstant.ROOM_CHAT.equals(action)) {
+            app.setRedirect("index.php?option=com_jchat&view=messaging");
+            return;
+        }
+        else  if (AppConstant.DELETE_MESSENGER.equals(action)) {
+            NotificationManager manager = (NotificationManager) app.getCurrentActivity().getSystemService(notificationService);
+            manager.cancel(0);
+        }else if (AppConstant.QUICK_REPLY.equals(action)){
+            JSONObject message = new JSONObject();
+            try {
+
+                message.put("room","MainRoom");
+                message.put("client_user_id",0);
+                message.put("userName","tesst23232");
+                message.put("msg", JUtilities.getMessageText(intent,msg_key));
+                // mSocket.send(obj);
+                app.mSocket.emit("newMessage", message);
+                Log.d("SEND setNickname",message.toString());
+
+
+            } catch (JSONException e) {
+                Log.d("SEND setNickname","ERROR");
+                e.printStackTrace();
+            }
+            NotificationManager manager = (NotificationManager) app.getCurrentActivity().getSystemService(notificationService);
+            manager.cancel(Integer.parseInt(msg_key));
+        }
+
+
+
+
+    }
+
+
+}
 

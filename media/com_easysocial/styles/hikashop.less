@@ -1,0 +1,58 @@
+/** 
+* @package      EasySocial
+* @copyright    Copyright (C) 2010 - 2017 Stack Ideas Sdn Bhd. All rights reserved.
+* @license      Proprietary Use License https://stackideas.com/licensing
+**/
+
+// Hikashop
+.es-hika-items {
+	.es-hika-item {
+		&:first-child {
+			border-bottom-left-radius: 0;
+			border-bottom-right-radius: 0;
+		}
+		+ .es-hika-item {
+			border-top: none;
+			border-radius: 0;
+		}
+
+		&:last-child {
+			border-bottom-left-radius: @fd-ui-radius;
+			border-bottom-right-radius: @fd-ui-radius;
+		}
+	}
+}
+.es-hika-item {
+	.flex-display(flex);
+	border: 1px solid @fd-ui-border-color;
+	line-height: @fd-ui-line-height--sm;
+	background-color: @fd-ui-bg; 
+	border-radius: @fd-ui-radius;
+	word-break: keep-all; // #245
+
+	&__img {
+		.flex(0 0 120px);
+		width: 120px;
+		height: 120px;
+		background-color: @fd-ui-shade;
+		border-right: 1px solid @fd-ui-border-color;
+
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
+	&__context {
+		padding: @fd-base-spacing @fd-base-spacing--lg;
+	}
+	&__title {
+		font-weight: bold;
+		color: @fd-ui-text-color;
+		margin-bottom: @fd-base-spacing;
+	}
+	&__meta { // Override g-list-inline
+		color: @fd-ui-meta-color;
+		margin-bottom: @fd-base-spacing;
+	}
+	&__desc {
+	}
+
+}

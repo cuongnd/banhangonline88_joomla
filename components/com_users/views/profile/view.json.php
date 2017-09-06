@@ -35,8 +35,8 @@ class UsersViewProfile extends JViewLegacy
 	 */
 	public function display($tpl = null)
 	{
-       $this->setLayout("jsondefault");
-		return parent::display($tpl);
+		$this->setLayout('android.default');
+		parent::display($tpl);
 	}
 
 	/**

@@ -2,11 +2,25 @@ package vantinviet.core.modules.mod_easysocial_login.tmpl;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import timber.log.Timber;
 import vantinviet.core.R;
 import vantinviet.core.libraries.joomla.JFactory;
 import vantinviet.core.libraries.joomla.user.JUser;
@@ -23,10 +37,12 @@ import static android.widget.ListPopupWindow.MATCH_PARENT;
 public class m_default_login extends LinearLayout {
     private JUser user;
     private View view;
+
     JApplication app= JFactory.getApplication();
     LayoutParams wrapper_menu_params = new LayoutParams(MATCH_PARENT,MATCH_PARENT );
     public m_default_login(Context context) {
         super(context);
+        FacebookSdk.sdkInitialize(app.getContext());
         user =JFactory.getUser();
         view=inflate(getContext(), R.layout.modules_mod_easysocial_login_tmpl_m_default_login, this);
         this.setLayoutParams( new LayoutParams(MATCH_PARENT,MATCH_PARENT ));

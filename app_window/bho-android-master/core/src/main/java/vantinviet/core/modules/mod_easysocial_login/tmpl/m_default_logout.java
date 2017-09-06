@@ -45,7 +45,7 @@ public class m_default_logout extends LinearLayout {
         view = inflate(getContext(), R.layout.modules_mod_easysocial_login_tmpl_m_default_logout, this);
         this.setLayoutParams(new LayoutParams(MATCH_PARENT, MATCH_PARENT));
         Button btn_show_profile = (Button) view.findViewById(R.id.btn_show_profile);
-        btn_show_profile.setText(app.getContext().getString(R.string.hello_user, user.getUsername()));
+        btn_show_profile.setText(app.getContext().getString(R.string.hello_user, user.getUserName()));
         btn_show_profile.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {

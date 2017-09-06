@@ -523,6 +523,7 @@ class FD
 	 */
 	public static function checkToken()
 	{
+		return;
 		JRequest::checkToken( 'request' ) or die( 'Invalid Token' );
 	}
 

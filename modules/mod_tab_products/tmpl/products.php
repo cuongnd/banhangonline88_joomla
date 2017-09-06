@@ -14,11 +14,11 @@ $lazyload=false;
 $currencyHelper = hikashop_get('class.currency');
 $cartHelper = hikashop_get('class.cart');
 $style = $params->get('product_style', 'table');
-$class_column_table = $params->get('class_column_table', 'col-lg-4 col-md-3');
+$class_column_table = $params->get('class_column_table', 'col-md-4 col-md-3');
 $mainCurr = $currencyHelper->mainCurrency();
 ?>
 <?php if ($style == 'table') { ?>
-    <!--col-lg col-md-->
+    <!--col-md col-md-->
     <div class="row ">
         <?php foreach ($list_product AS $product) { ?>
             <?php
@@ -43,7 +43,7 @@ $mainCurr = $currencyHelper->mainCurrency();
             </div>
         <?php } ?>
     </div>
-    <!-- end col-lg col-md -->
+    <!-- end col-md col-md -->
 <?php } elseif ($style == 'slider') { ?>
     <?php
     $total_item_on_slide_screen = $params->get('total_item_on_slide_screen', 4);
@@ -54,7 +54,7 @@ $mainCurr = $currencyHelper->mainCurrency();
         <div class="wrapper-content-left pull-left"
              style="width: <?php echo count($list_sub_category_detail) > $total_column_sub_category ? '90%' : '100%' ?> ">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-md-12">
                     <div class="list-sub-category">
                         <ul>
                             <?php for ($i = 0; $i < count($list_sub_category_detail); $i++) { ?>
@@ -77,7 +77,7 @@ $mainCurr = $currencyHelper->mainCurrency();
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-md-12">
                     <div class="banner">
                         <?php echo $image->display($file_path, false, "", 'class="category_image img-responsive"', '', 980, 250, '', false); ?>
                     </div>
@@ -96,7 +96,7 @@ $mainCurr = $currencyHelper->mainCurrency();
                                 $link = '';
                                 ?>
                                 <div
-                                    class="slide item item-<?php echo $product->product_id ?> col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                    class="slide item item-<?php echo $product->product_id ?> col-xs-4 col-sm-4 col-md-4 col-md-4">
                                     <?php echo $image->display($first_image, false, "", 'class="image  img-responsive"', '', 200, 300, '', false); ?>
                                     <div class="product-name"><a
                                             title="<?php echo $product->product_name ?>"
@@ -111,7 +111,7 @@ $mainCurr = $currencyHelper->mainCurrency();
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-md-12">
                     <div class="list-small-product">
                         <?php
                         $total_column = 10;
@@ -130,7 +130,7 @@ $mainCurr = $currencyHelper->mainCurrency();
                                         $second_image = $list_image[1];
                                         $link = hikashop_contentLink('product&task=show&cid=' . $small_product->product_id);
                                         ?>
-                                        <div class="col-lg-<?php echo $total_column / $column ?> col-md-<?php echo $total_column / $column ?>">
+                                        <div class="col-md-<?php echo $total_column / $column ?> col-md-<?php echo $total_column / $column ?>">
                                             <div
                                                 id="small-product_<?php echo $module->id ?>_<?php echo $small_product->product_id ?>"
                                                 class="small-product ">

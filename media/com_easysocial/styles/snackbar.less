@@ -1,0 +1,38 @@
+/** 
+* @package      EasySocial
+* @copyright    Copyright (C) 2010 - 2017 Stack Ideas Sdn Bhd. All rights reserved.
+* @license      Proprietary Use License https://stackideas.com/licensing
+**/
+
+//
+// Snackbar
+// --------------------------------------------------
+.es-snackbar {
+	color: @fd-ui-text-color;
+	background-color: @fd-ui-border-color--l;
+	border-radius: @fd-ui-radius;
+	font-weight: bold;
+	line-height: 1;
+	padding: @fd-base-spacing;
+	margin-bottom: @fd-base-spacing--lg;
+	.flex-display(flex);
+	.flex-wrap(wrap);
+	.align-items(center);
+	
+	&__cell {
+		.flex(1);
+	}
+
+	&__title { // h1~6 tag
+		font-size: @fd-base-font-size;
+		font-weight: bold;
+		margin: 0;
+		line-height: 1;
+	}
+	.dropdown-menu-right {
+		left: auto;
+		right: 0;
+	}
+
+	
+}

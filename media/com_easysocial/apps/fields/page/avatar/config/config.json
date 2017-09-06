@@ -1,0 +1,11 @@
+{
+	"extends"	: "fields/user/avatar",
+    "searchable": false,
+	"title": {
+		"default": "PLG_FIELDS_PAGE_AVATAR_DEFAULT_TITLE"
+	},
+
+	"description": {
+		"default": "PLG_FIELDS_PAGE_AVATAR_DEFAULT_DESCRIPTION"
+	}
+}

@@ -6,6 +6,7 @@
 * @author 		Stack Ideas Sdn Bhd
 */
 defined( '_JEXEC' ) or die( 'Unauthorized Access' );
+
 ?>
 EasySocial
 .require()

@@ -276,7 +276,9 @@ class JUser extends JObject
 			if (!$id = $userHelper->getUserId($identifier))
 			{
 				// If the $identifier doesn't match with any id, just return an empty JUser.
-				return new JUser;
+				$new_user=new JUser;
+				$new_user->name="";
+				return $new_user;
 			}
 		}
 		else

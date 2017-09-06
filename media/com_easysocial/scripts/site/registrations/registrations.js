@@ -1,9 +1,9 @@
 EasySocial.module('site/registrations/registrations', function ($) {
 
     var module = this;
-
+    alert(1);
     EasySocial.require()
-        .script('validate', 'field')
+        .script('validate', 'field','site/layout/dialog')
         .view('site/registration/dialog.error')
         .language('COM_EASYSOCIAL_CLOSE_BUTTON', 'COM_EASYSOCIAL_REGISTRATION_ERROR_DIALOG_TITLE')
         .done(function ($) {

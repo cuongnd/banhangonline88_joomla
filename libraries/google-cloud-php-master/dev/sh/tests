@@ -1,0 +1,35 @@
+#!/bin/bash
+
+set -e
+
+function unit () {
+  echo "Running Unit Test Suite"
+
+  $(dirname $0)/../../vendor/bin/phpunit
+}
+
+function snippets() {
+  echo "Running Snippet Test Suite"
+
+  $(dirname $0)/../../vendor/bin/phpunit -c phpunit-snippets.xml.dist
+}
+
+function composer() {
+  echo "Running Composer Integration Test"
+
+  $(dirname $0)/../../dev/sh/test-composer
+}
+
+function system () {
+  echo "Running System Test Suite"
+
+  $(dirname $0)/../../vendor/bin/phpunit -c phpunit-system.xml.dist
+}
+
+unit
+snippets
+
+if [ "${TRAVIS_EVENT_TYPE}" == "cron" ]; then
+  composer
+  system
+fi

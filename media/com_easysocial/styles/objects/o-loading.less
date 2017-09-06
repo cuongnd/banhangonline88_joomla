@@ -1,0 +1,79 @@
+/**
+* @package      EasySocial
+* @copyright    Copyright (C) 2010 - 2017 Stack Ideas Sdn Bhd. All rights reserved.
+* @license      Proprietary Use License https://stackideas.com/licensing
+**/
+
+//
+// Loading
+// --------------------------------------------------
+/*
+	<div class="main-content is-loading">
+		<div class="o-loading">
+			<div class="o-loading__content">
+				<i class="fa fa-spinner fa-spin"></i>    
+			</div>
+		</div>
+	</div>
+*/
+.o-loading {
+	background-color: red !important;
+	&:before {
+		position: absolute;
+		content: "Updated to use o-loader";
+		top: 0;
+		left: 0;
+		font-weight: bold;
+		font-size: 16px;
+	}
+	// display: inline-block;
+	// text-align: center;
+	// // background-color: @fd-ui-shade;
+	// position: relative;
+	// display: none; // Display none by default.
+	// width: 100%;
+	// height: 100%;
+	// &__content {
+	//     position: absolute;
+	//     top: 50%;
+	//     left: 50%;
+	//     transform: translate(-50%, -50%);
+	// }
+	// &__icon {
+	//     font-size: 40px;
+	//     color: @fd-ui-meta-color;
+	// }
+
+	// // modifier
+	// &--no-height {
+	//     height: auto;
+	// }
+}
+
+// State
+&.is-loading,
+.is-loading {
+	.o-loading {
+		// display: inline-block;
+	}
+}
+
+// Classic loading bar (.es-loader, .loading-indicator ) some elements still rely on it 
+.loading-indicator,
+.es-loading-icon {
+	// &:before {
+		
+		position: relative;
+		content: '' !important;
+		width: 16px !important;
+		height: 11px !important;
+		display: none; // Hide by default
+		background: url("@{media_uri}/images/loading.gif") no-repeat !important;
+	// }
+}
+
+.is-loading {
+	.loading-indicator {
+		display: block;
+	}
+}

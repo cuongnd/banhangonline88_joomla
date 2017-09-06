@@ -55,6 +55,7 @@ jQuery(function ($) {
         $(element).find('>div>.rowpropperties .rownameinput').attr('name', name + '[name]');
         $(element).find('>div>.rowpropperties .rowcustomclassinput').attr('name', name + '[class]');
         $(element).find('>div>.rowpropperties .rowresponsiveinput').attr('name', name + '[responsive]');
+        $(element).find('>div>.rowpropperties .rowfooterfixedinput').attr('name', name + '[footerfixed]');
         $(element).find('>div>.rowpropperties .rowbackgroundcolorinput').attr('name', name + '[backgroundcolor]');
         $(element).find('>div>.rowpropperties .rowtextcolorinput').attr('name', name + '[textcolor]');
         $(element).find('>div>.rowpropperties .rowlinkcolorinput').attr('name', name + '[linkcolor]');
@@ -586,7 +587,9 @@ jQuery(function ($) {
                 $.each(currentResponsive, function (index, item) {
                     $(id).find('#rowresponsiveinputs input[value="' + item + '"]').attr('checked', true);
                 });
-                $("#content,#element-box").delegate(".popover input:checkbox", 'click', function (event) {
+
+
+                $("#content,#element-box").delegate(".popover #rowresponsiveinputs input:checkbox", 'click', function (event) {
                     event.stopImmediatePropagation();
                     var newResponsive = $(this).val();
                     var currentResponsive = $(this).parents('.popover').parent().prev().find('span.rowdocs>.rowresponsiveinput').val();
@@ -601,6 +604,23 @@ jQuery(function ($) {
                         var value = currentResponsive.replace(newResponsive, '');
                     }
                     $(this).parents('.popover').parent().prev().find('span.rowdocs>input.rowresponsiveinput').val($.trim(value));
+                });
+                var footerFixed = $(this).parent().prev().find('>span.rowdocs>.rowfooterfixedinput').val();
+                if(footerFixed==1)
+                {
+                    $(id).find('#rowfooterfixedinput input#footerfixed').attr('checked', true);
+                }
+
+                $("#content,#element-box").delegate(".popover input#footerfixed:checkbox", 'click', function (event) {
+                    event.stopImmediatePropagation();
+                    var footerFixed = $(this).val();
+                    if ($(this).is(':checked')) {
+                        $(this).parents('.popover').parent().prev().find('span.rowdocs>input.rowfooterfixedinput').val(footerFixed);
+
+                    } else {
+                        $(this).parents('.popover').parent().prev().find('span.rowdocs>input.rowfooterfixedinput').val("");
+
+                    }
                 });
                 ///
                 return $(id).html();

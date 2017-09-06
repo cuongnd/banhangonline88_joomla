@@ -1,0 +1,29 @@
+/**
+* @package      EasySocial
+* @copyright    Copyright (C) 2010 - 2017 Stack Ideas Sdn Bhd. All rights reserved.
+* @license      Proprietary Use License https://stackideas.com/licensing
+**/
+
+
+// Box
+// ----------------
+/*
+Markup:
+<div class="o-box">
+	<div class="o-box__row">
+	</div
+</div>
+*/
+
+.o-box {
+	border: 1px solid @fd-ui-border-color;
+	border-radius: @fd-ui-radius;
+	&--border {
+		border-top: 1px solid @fd-ui-border-color;
+	}
+
+	> div { // By right should use .o-box__xx, using html tag just try to reduce html size. CON: hard to extend.
+		padding: @fd-base-spacing @fd-base-spacing--lg;
+		.clearfix();
+	}
+}

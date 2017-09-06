@@ -1,0 +1,102 @@
+/** 
+* @package      EasySocial
+* @copyright    Copyright (C) 2010 - 2017 Stack Ideas Sdn Bhd. All rights reserved.
+* @license      Proprietary Use License https://stackideas.com/licensing
+**/
+
+//
+// Icon sprites
+// --------------------------------------------------
+// mixins
+// ----------------
+// =Icon -add in custom icon (@element)
+@sprite-px: 16px; //icon grid
+.spriteGrid(@x, @y) {
+	background-position: -((@x*@sprite-px)-@sprite-px) -((@y*@sprite-px)-@sprite-px);
+}
+.spriteSize(@size) {
+	width: @size;
+	height: @size;
+	line-height:@size;
+}
+
+[class^="icon-es-"],
+[class*=" icon-es-"] {
+	display: inline-block;
+	width: @sprite-px;
+	height: @sprite-px;
+	line-height: @sprite-px;
+	*margin-right: .3em;
+	// margin-top: 1px;
+	vertical-align: text-top;
+	background-repeat: no-repeat;
+	background-image: url("@{media_uri}/images/icons/icons-sharing.png") !important;
+}
+
+.es-nav [class^="icon-es-"],
+.es-nav [class*=" icon-es-"] {
+  margin-right: 2px;
+}
+
+.icon-es-12 {
+	.spriteSize(12px);
+}
+.icon-es-24 {
+	.spriteSize(24px);
+}
+
+
+/**
+ * sharing
+ */
+.icon-es-email {
+	.spriteGrid(1, 1);
+}
+.icon-es-facebook {
+	.spriteGrid(3, 1);
+}
+.icon-es-twitter {
+	.spriteGrid(5, 1);
+}
+.icon-es-google {
+	.spriteGrid(7, 1);
+}
+.icon-es-live {
+	.spriteGrid(9, 1);
+}
+.icon-es-linkedin {
+	.spriteGrid(11, 1);
+}
+.icon-es-myspace {
+	.spriteGrid(13, 1);
+}
+.icon-es-vk {
+	.spriteGrid(15, 1);
+}
+.icon-es-stumbleupon {
+	.spriteGrid(17, 1);
+}
+.icon-es-digg {
+	.spriteGrid(19, 1);
+}
+.icon-es-tumblr {
+	.spriteGrid(21, 1);
+}
+.icon-es-evernote {
+	.spriteGrid(23, 1);
+}
+.icon-es-reddit {
+	.spriteGrid(25, 1);
+}
+.icon-es-delicious {
+	.spriteGrid(27, 1);
+}
+
+
+.icon-es-video-play {
+	display: inline-block;
+	background-image: url("@{media_uri}/images/icons/icon-es-video-play.png") !important;
+	width: 35px;
+	height: 26px;
+	line-height: 26px;
+}

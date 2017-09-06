@@ -2,6 +2,7 @@ EasySocial.module('apps/fields/user/address/content', function($) {
     var module = this;
 
     EasySocial.require()
+
         .library('gmaps')
         .language(
             'PLG_FIELDS_ADDRESS_PLEASE_ENTER_ADDRESS1',

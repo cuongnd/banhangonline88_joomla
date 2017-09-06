@@ -65,7 +65,6 @@ class SocialScript extends SocialTemplate
 		$this->CDATA		= false;
 
 		$output		= $this->parse();
-
 		FD::page()->addInlineScript($output);
 
 		// Restore current value

@@ -194,7 +194,7 @@ class JDocumentJson extends JDocument
      */
     public function addCustomTag($html)
     {
-        $this->_custom[] = trim($html);
+        //$this->_custom[] = trim($html);
         return $this;
     }
     /**

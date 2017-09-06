@@ -1,11 +1,9 @@
 package vantinviet.core.libraries.joomla.user;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.google.gson.annotations.SerializedName;
 
-import vantinviet.core.libraries.cms.menu.JMenu;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by cuongnd on 6/18/2016.
@@ -15,10 +13,11 @@ public class JUser {
     public int guest;
     Map<Integer, Integer> map = new HashMap<Integer, Integer>();
     protected int id=0;
-    protected String name;
-    protected String username;
-    protected String email;
-    private JUser activeUser;
+    protected String name="";
+    protected String socketId="";
+    protected String userName ="";
+    protected String email="";
+    private JUser activeUser=null;
 
     public static JUser getInstance() {
         return ourInstance;
@@ -40,20 +39,34 @@ public class JUser {
 
     public void setActiveUser(JUser activeUser) {
         this.activeUser = activeUser;
+
     }
     @Override
     public String toString() {
         return "JUser{" +
                 "id=" + id +
+                ",socketId=" + socketId +
                 ", name='" + name + '\'' +
-                ", username='" + username + '\'' +
+                ", userName='" + userName + '\'' +
                 ", email='" + email + '\'' +
                 ", guest='" + guest+ '\'' +
                 //", children='" + children.toString() + '\'' +
                 '}';
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSocketId() {
+        return socketId;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

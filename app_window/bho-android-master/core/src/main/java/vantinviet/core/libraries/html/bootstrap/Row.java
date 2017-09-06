@@ -15,6 +15,9 @@ public class Row {
     String backgroundcolor;
     String textcolor;
     String linkcolor;
+    //footerFixed
+    @SerializedName("footerfixed")
+    String footerFixed;
     String linkhovercolor;
     String margin;
     String padding;
@@ -31,6 +34,7 @@ public class Row {
                 ", textcolor='" + textcolor + '\'' +
                 ", linkcolor='" + linkcolor + '\'' +
                 ", linkhovercolor='" + linkhovercolor + '\'' +
+                ", footerFixed='" + footerFixed + '\'' +
                 ", margin='" + margin + '\'' +
                 ", padding='" + padding + '\'' +
                 ", children='" + children + '\'' +
@@ -47,5 +51,9 @@ public class Row {
 
     public String getClassName() {
         return className;
+    }
+
+    public String getFooterFixed() {
+        return footerFixed;
     }
 }

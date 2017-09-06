@@ -124,7 +124,6 @@ class Minify_JS_ClosureCompiler {
     public function min($js)
     {
         $postBody = $this->buildPostBody($js);
-
         if ($this->maxBytes > 0) {
             $bytes = (function_exists('mb_strlen') && ((int)ini_get('mbstring.func_overload') & 2))
                 ? mb_strlen($postBody, '8bit')
@@ -167,7 +166,6 @@ class Minify_JS_ClosureCompiler {
     protected function getResponse($postBody)
     {
         $allowUrlFopen = preg_match('/1|yes|on|true/i', ini_get('allow_url_fopen'));
-
         if ($allowUrlFopen) {
             $contents = file_get_contents($this->serviceUrl, false, stream_context_create(array(
                 'http' => array(
@@ -179,6 +177,7 @@ class Minify_JS_ClosureCompiler {
                 )
             )));
         } elseif (defined('CURLOPT_POST')) {
+
             $ch = curl_init($this->serviceUrl);
             curl_setopt($ch, CURLOPT_POST, true);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -199,7 +198,6 @@ class Minify_JS_ClosureCompiler {
                "No HTTP response from server"
             );
         }
-
         return trim($contents);
     }
 

@@ -1,0 +1,206 @@
+/**
+* @package      EasySocial
+* @copyright    Copyright (C) 2010 - 2017 Stack Ideas Sdn Bhd. All rights reserved.
+* @license      Proprietary Use License https://stackideas.com/licensing
+**/
+
+/*------------------------------------*\
+		$ui.less
+\*------------------------------------*/
+/*
+DOM
+<div class="o-popover--es top in" id="ed" style="left: 100px; width: 500px; top: 100px; position: absolute; display: block; height: 130px;">
+		<div class="arrow"></div>
+		<div class="">test</div>
+</div>
+*/
+
+
+// Popover
+// ------------------
+// popover reset for ES
+&.o-popover--es {
+		
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: @zindex-popover;
+		display: none;
+		max-width: @popover-max-width;
+		padding: 1px;
+
+		.reset-text();
+		font-size: @font-size-base;
+
+		background-color: @popover-bg;
+		background-clip: padding-box;
+		border: 1px solid @popover-fallback-border-color;
+		border: 1px solid @popover-border-color;
+		border-radius: @border-radius-large;
+		.box-shadow(0 5px 10px rgba(0,0,0,.2));
+
+		z-index: 20001;
+		text-align: left;
+		// Offset the popover to account for the popover arrow
+		&.top     { margin-top: -@popover-arrow-width; }
+		&.right   { margin-left: @popover-arrow-width; }
+		&.bottom  { margin-top: @popover-arrow-width; }
+		&.left    { margin-left: -@popover-arrow-width; }
+
+		&.in {
+				// display: block !important;
+				// height: auto !important;
+		}
+
+		.popover-title {
+				font-family: sans-serif !important;
+				background-color: @fd-ui-shade !important;
+				border-bottom: 1px solid @fd-ui-border-color !important;
+				border-radius: 5px 5px 0 0 !important;
+				font-size: 12px !important;
+				font-weight: bold !important;
+				line-height: 14px !important;
+				margin: 0 !important;
+				padding: 8px 14px !important;
+
+				background: none repeat scroll 0 0 transparent;
+				border: 1px solid transparent !important;
+				font-weight: bold;
+				line-height: 16px !important;
+				// margin-top: 8px !important;
+				// margin-bottom: 10px !important;
+				// padding: 3px 14px 0 !important;
+		}
+		.popover-content {
+				font-family: sans-serif !important;
+				font-size: 11px !important;
+				padding: 2px 14px !important;
+				margin-bottom: 0px !important;
+				p {
+						margin-top:0;
+						line-height: 16px !important;
+				}
+		}
+
+
+		.arrow,
+		.arrow:after {
+				border-color: transparent !important;
+				border-style: solid !important;
+				display: inline-block !important;
+				height: 0 !important;
+				position: absolute !important;
+				width: 0 !important;
+		}
+
+		> .arrow {
+			border-width: @popover-arrow-outer-width !important;
+		}
+		> .arrow:after {
+			border-width: @popover-arrow-width !important;
+			content: "";
+		}
+
+		
+
+
+		&.top > .arrow {
+			left: 50% !important;
+			margin-left: -@popover-arrow-outer-width !important;
+			border-bottom-width: 0 !important;
+			border-top-color: @popover-arrow-outer-fallback-color !important; // IE8 fallback
+			border-top-color: @popover-arrow-outer-color !important;
+			bottom: -@popover-arrow-outer-width !important;
+			&:after {
+				content: " " !important;
+				bottom: 1px !important;
+				margin-left: -@popover-arrow-width !important;
+				border-bottom-width: 0 !important;
+				border-top-color: @popover-arrow-color !important;
+			}
+		}
+		&.right > .arrow {
+			top: 50% !important;
+			left: -@popover-arrow-outer-width !important;
+			margin-top: -@popover-arrow-outer-width !important;
+			border-left-width: 0 !important;
+			border-right-color: @popover-arrow-outer-fallback-color !important; // IE8 fallback
+			border-right-color: @popover-arrow-outer-color !important;
+			&:after {
+				content: " " !important;
+				left: 1px !important;
+				bottom: -@popover-arrow-width !important;
+				border-left-width: 0 !important;
+				border-right-color: @popover-arrow-color !important;
+			}
+		}
+		&.bottom > .arrow {
+			left: 50% !important;
+			margin-left: -@popover-arrow-outer-width !important;
+			border-top-width: 0 !important;
+			border-bottom-color: @popover-arrow-outer-fallback-color !important; // IE8 fallback
+			border-bottom-color: @popover-arrow-outer-color !important;
+			top: -@popover-arrow-outer-width !important;
+			&:after {
+				content: " " !important;
+				top: 1px !important;
+				margin-left: -@popover-arrow-width !important;
+				border-top-width: 0 !important;
+				border-bottom-color: @popover-arrow-color !important;
+			}
+		}
+
+		&.left > .arrow {
+			top: 50% !important;
+			right: -@popover-arrow-outer-width !important;
+			margin-top: -@popover-arrow-outer-width !important;
+			border-right-width: 0 !important;
+			border-left-color: @popover-arrow-outer-fallback-color !important; // IE8 fallback
+			border-left-color: @popover-arrow-outer-color !important;
+			&:after {
+				content: " " !important;
+				right: 1px !important;
+				border-right-width: 0 !important;
+				border-left-color: @popover-arrow-color !important;
+				bottom: -@popover-arrow-width !important;
+			}
+		}
+}
+
+// /*=popover for backend
+// ================================================== */
+// .popover {
+//     border-radius: 6px;
+//     color:#616143;
+//     background-color: #fff;
+//     // #gradient > .vertical(#fffffa, #fffdf0);
+//     &.top .arrow {
+//         border-top-color: #fffdf0;
+//     }
+//     &.right .arrow {
+//         border-right-color: #fffdf0;
+//     }
+//     &.bottom .arrow {
+//         border-bottom-color: #fffdf0;
+//     }
+//     &.left .arrow {
+//         border-left-color: #fffdf0;
+//     }
+//     .popover-title {
+//         background: none;
+//         border-bottom:none;
+//         font-weight: bold;
+//         font-size: 12px;
+//         padding-bottom:0;
+
+//     }
+//     .popover-content {
+//         background: transparent;
+//         p {
+//             margin: 0;
+//         }
+//     }
+
+// }//popover
+
+

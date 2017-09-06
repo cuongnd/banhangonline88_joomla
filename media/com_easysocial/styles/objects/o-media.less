@@ -1,0 +1,45 @@
+/**
+* @package      EasySocial
+* @copyright    Copyright (C) 2010 - 2017 Stack Ideas Sdn Bhd. All rights reserved.
+* @license      Proprietary Use License https://stackideas.com/licensing
+**/
+
+/**
+ * Media object.
+ *
+ * Abstract object styles for building various types of components that feature a left- or right-aligned image alongside textual content.
+ */
+ /* 
+ <div class="o-media">
+	<div class="o-media__image">
+	<div class="o-media__body">
+*/
+.o-media {
+	width: 100%;
+	.flex-display(flex);
+	.align-items(center);
+	
+	// Modifier
+	&--top {
+		.align-items(flex-start);
+	}
+	&--bottom {
+		.align-items(flex-end);
+	}
+	&--rev {
+		.o-media__image {
+			margin-left: @fd-base-spacing;
+			margin-right: 0;
+			.flex-order(2);
+		}
+	}
+	
+	// Elements
+	&__image {
+		margin-right: @fd-base-spacing;
+	}
+	&__body {
+		.flex(0 1 auto);
+		width: 100%;
+	}
+}

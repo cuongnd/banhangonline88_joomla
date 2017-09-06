@@ -5,4 +5,5 @@ package vantinviet.core.libraries.legacy.view;
  */
 
 public class JViewLegacy {
+
 }

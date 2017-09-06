@@ -59,7 +59,6 @@ $lang->load( 'com_easyblog' , JPATH_ROOT , 'en-GB' , true );
 
 // Load site's default language file.
 $lang->load( 'com_easyblog' , JPATH_ROOT , $lang->getDefault() , true );
-
 // Load user's preferred language file.
 $lang->load( 'com_easyblog' , JPATH_ROOT , null , true );
 

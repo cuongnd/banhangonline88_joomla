@@ -1,0 +1,35 @@
+{
+  "name": "tubeplayer",
+  "title": "jQuery TubePlayer - Simplified YouTube Player Management",
+  "description": "Simplified management of embedded YouTube players",
+  "version": "2.1.0",
+  "homepage": "https://github.com/nirvanatikku/jQuery-TubePlayer-Plugin",
+  "bugs": "https://github.com/nirvanatikku/jQuery-TubePlayer-Plugin/issues",
+  "author": {
+    "name": "Nirvana Tikku",
+    "email": "ntikku@gmail.com",
+    "url": "https://tikku.com/"
+  },
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "build": "npm install && grunt",
+    "test": "grunt travis --verbose"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/nirvanatikku/jQuery-TubePlayer-Plugin/blob/master/LICENSE-MIT"
+    }
+  ],
+  "dependencies": {
+    "jQuery": "~1.6.2"
+  },
+  "keywords": [
+    "youtube",
+    "video",
+    "media", 
+    "player"
+  ]
+}

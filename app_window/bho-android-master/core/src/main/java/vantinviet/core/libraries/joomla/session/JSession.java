@@ -13,6 +13,7 @@ public  class JSession {
     public String android_ses_id =null;
     private static String formToken="";
     public Data data;
+    private String token;
 
     public static JSession getInstance() {
         if(instance==null)
@@ -46,6 +47,10 @@ public  class JSession {
 
     public  Data getData() {
         return data;
+    }
+
+    public String getToken() {
+        return this.getData().getDataDefault().getSession().getToken();
     }
 
     private class Data {

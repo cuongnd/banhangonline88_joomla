@@ -7,6 +7,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.DialogFragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.webkit.JavascriptInterface;
@@ -14,7 +15,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.unnamed.b.atv.model.TreeNode;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.lang.reflect.Method;
 import java.util.HashMap;
@@ -49,6 +61,7 @@ public class DialogFragmentLogin extends DialogFragment {
     public AlertDialog mAlertDialog;
     public EditText txt_username;
     public EditText txt_password;
+    private CallbackManager callbackManager;
     public JUser user;
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -83,6 +96,54 @@ public class DialogFragmentLogin extends DialogFragment {
         builder.setView(view);
         mAlertDialog = builder.create();
         // Create the AlertDialog object and return it
+        
+        callbackManager = CallbackManager.Factory.create();
+        LoginButton loginButton = (LoginButton) view.findViewById(R.id.btn_login_facebook);
+        loginButton.setReadPermissions("email");
+        loginButton.setReadPermissions("user_friends");
+        loginButton.setReadPermissions("public_profile");
+        loginButton.setReadPermissions("email");
+        loginButton.setReadPermissions("user_birthday");
+        // If using in a fragment
+        //loginButton.setFragment(this);
+        // If using in a fragment
+        loginButton.registerCallback(callbackManager,
+                new FacebookCallback<LoginResult>() {
+                    @Override
+                    public void onSuccess(LoginResult loginResult) {
+                        // App code
+                        GraphRequest request = GraphRequest.newMeRequest(
+                                loginResult.getAccessToken(),
+                                new GraphRequest.GraphJSONObjectCallback() {
+                                    @Override
+                                    public void onCompleted(JSONObject object, GraphResponse response) {
+                                        Log.v("LoginActivity", response.toString());
+
+                                        // Application code
+                                        try {
+                                            String email = object.getString("email");
+                                            String birthday = object.getString("birthday"); // 01/31/1980 format
+                                            Timber.d("email:"+email);
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
+
+                                    }
+                                });
+                        Timber.d("hello123");
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        // App code
+                    }
+
+                    @Override
+                    public void onError(FacebookException exception) {
+                        // App code
+                    }
+                });
+
 
         return mAlertDialog;
     }
@@ -120,7 +181,7 @@ public class DialogFragmentLogin extends DialogFragment {
                         int active_menu_item_id = menu.getMenuactive().getId();
                         post.put("option", "com_users");
                         post.put("task", "user.ajax_login");
-                        post.put("username", txt_username.getText().toString());
+                        post.put("userName", txt_username.getText().toString());
                         post.put("password", txt_password.getText().toString());
                         post.put(app.getSession().getFormToken(), "1");
                         post.put("tmpl", "component");

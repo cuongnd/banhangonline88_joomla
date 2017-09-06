@@ -1,0 +1,181 @@
+/** 
+* @package      EasySocial
+* @copyright    Copyright (C) 2010 - 2017 Stack Ideas Sdn Bhd. All rights reserved.
+* @license      Proprietary Use License https://stackideas.com/licensing
+**/
+
+//
+// es-register-box
+// --------------------------------------------------
+
+// plugin - Registration requester
+&.es-register-box-dialog { 
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	
+	z-index: 9999;
+
+	.flex-display(flex);
+	.align-items(center);
+	.justify-content(center);
+	.flex-direction(column);
+	
+
+	.es-register-box,
+	.es-register-box-footer {
+		width: 50vw;
+
+	}
+	.es-register-box,
+	.es-register-box-footer {
+		border: 1px solid @fd-ui-border-color;
+	}
+	.es-register-box {
+		border-bottom-left-radius: 0;
+		border-bottom-right-radius: 0;
+	}
+	.es-register-box-footer {
+		border-top: none;
+		background-color: @fd-ui-bg;
+		.flex(0 1 50px);
+	}
+}
+@media (max-width: 980px) {
+	&.es-register-box-dialog { 
+		padding-top: 20px;
+		height: 80vh;
+		left: 20px;
+		top: 0;
+		.align-items(flex-start);
+		.justify-content(flex-start);
+		
+		.es-register-box__left-col {
+			display: none;
+		}
+		.es-register-box,
+		.es-register-box-footer {
+			width: 90vw;
+		}
+		
+	}
+}
+
+// module - Quick registration
+.es-register-box-wrap {
+	background-color: @fd-ui-bg;
+	border: 1px solid @fd-ui-border-color;
+	// box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);	
+}
+.es-register-box {
+	background-color: @fd-ui-shade;
+	// background-image: url('@{media_uri}/images/bg-register.jpg');
+	background-position: center bottom;
+	background-repeat: no-repeat;
+	border-radius: @fd-ui-radius;
+	padding: @fd-base-spacing--lg;
+	background-size: cover;
+	position: relative;
+
+	
+
+	&__close {
+
+		&:focus,
+		&:active,
+		&:hover {
+			background: @fd-ui-meta-color;
+		}
+		position: absolute;
+		top: -15px;
+		right: -15px;
+		border-radius: 50%;
+		width: 24px;
+		height: 24px;
+		background: @fd-ui-meta-color;
+		color: #fff;
+		text-align: center;
+		padding-top: 2px;
+	}
+	&__msg {
+		color: @fd-ui-text-color;
+		padding: @fd-base-spacing--lg;
+		margin: 0 auto;
+	}
+	&__msg-title {
+		font-size: 20px;
+		font-weight: bold;
+		margin-bottom: 20px;
+	}
+	&__msg-desc {
+		font-size: 14px;
+		margin-bottom: 20px;
+	}
+	
+
+	&__social-group {
+		.btn + .btn {
+			margin-top: @fd-base-spacing;
+		}
+	}
+
+	&__divider {
+		position: relative;
+		overflow: hidden;
+		text-align: center;
+		
+		span {
+			display: inline-block;
+			vertical-align: baseline;
+			text-transform: uppercase;
+			color: @fd-ui-meta-color;
+			zoom: 1;
+			*display: inline;
+			*vertical-align: auto;
+			position: relative;
+			padding: 0 @fd-base-spacing;
+
+			&:before, &:after {
+				content: '';
+				display: block;
+				width: 1000px;
+				position: absolute;
+				top: 0.73em;
+				border-top: 1px solid @fd-ui-border-color;
+			}
+
+			&:before { right: 100%; }
+			&:after { left: 100%; }
+		}
+	}
+	
+	&__form-wrap {
+		
+		max-width: 360px;
+		min-width: 240px;
+		margin: @fd-base-spacing--lg;
+
+	}
+	&__form {
+		margin-bottom: @fd-base-spacing--lg;
+	}
+	
+	
+	&__links {
+		text-align: center;
+		color: @fd-ui-text-color;
+		> a {
+			color: @fd-ui-text-color;
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+}
+
+.es-register-box-footer {
+	// border-top: 1px solid @fd-ui-border-color;
+	padding: @fd-base-spacing--lg @fd-base-spacing;
+	text-align: center;
+}

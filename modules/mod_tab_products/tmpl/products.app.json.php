@@ -7,8 +7,7 @@ if(!$post){
     $post=(object)$input->getArray();
 }
 $category_id= $post->category_id;
-$params->set('categories',array($category_id));
-$current_category = reset($modtab_productshelper->get_list_category_product($params, false));
+$category = $modtab_productshelper->get_list_category_product_by_category_id($category_id,$params, false);
 $detail=&$current_category->detail;
 $detail->icon=$image_helper->getThumbnail($detail->category_icon_file_path,array(500,500), array('default' => true), true);
 foreach($current_category->list as &$product){

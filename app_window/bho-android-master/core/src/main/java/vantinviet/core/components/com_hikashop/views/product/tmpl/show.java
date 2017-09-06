@@ -63,9 +63,10 @@ public class show {
         final String add_to_cart=JText._("Add to cart");
         final String buy_now=JText._("buy now");
         menu.add(chatting).setIcon(R.drawable.com_facebook_send_button_icon).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
-                Timber.d("hello %s",chatting);
+                app.setRedirect("index.php?option=com_jchat&view=messaging");
                 return false;
             }
         });

@@ -1,0 +1,349 @@
+/**
+* @package      EasySocial
+* @copyright    Copyright (C) 2010 - 2017 Stack Ideas Sdn Bhd. All rights reserved.
+* @license      Proprietary Use License https://stackideas.com/licensing
+**/
+
+//
+// Tabs
+// --------------------------------------------------
+/*
+DOM:
+<ul class="o-tabs">
+	<li class="o-tabs__item">
+		<a href="#" class="o-tabs__link">Foo</a>
+	</li>
+	<li class="o-tabs__item">
+		<a href="#" class="o-tabs__link">Bar</a>
+	</li>
+	<li class="o-tabs__item">
+		<a href="#" class="o-tabs__link">Baz</a>
+	</li>
+</ul>
+*/
+/**
+ * 1. Reset any residual styles (most likely from lists).
+ * 2. Tables for layout!
+ * 3. Force all `table-cell` children to have equal widths.
+ * 4. Force the object to be the full width of its parent. Combined with [2],
+ *    this makes the object behave in a quasi-`display: block;` manner.
+ */
+.o-tabs {
+	margin:  0; /* [1] */
+	padding: 0; /* [1] */
+	list-style: none; /* [1] */
+	display: table; /* [2] */
+	table-layout: fixed; /* [3] */
+	width: 100%; /* [4] */
+	text-align: center;
+
+	font-size: @fd-base-font-size;
+}
+
+.o-tabs__item {
+	display: table-cell; /* [2] */
+	position: relative;
+
+
+	&:hover {
+		.o-tabs__link-edit {
+			display: inline-block;
+		}
+	}
+}
+// o-tabs__item state
+.o-tabs__item.has-notice {
+	.o-tabs__bubble {
+		display: inline-block;
+	}
+}
+.o-tabs__item.error {
+	.o-tabs__link {
+		border-right: 2px solid @fd-brand-danger;
+	}
+
+}
+.o-tabs__link-edit {
+	display: none; // Hide by default
+}
+
+
+.o-tabs__link {
+	
+	
+	// Codes below will make tabs link into 1 line
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	// width: 90%;
+	color: @fd-ui-meta-color;
+
+	.fd-no-focus-outline();
+}
+
+
+// Place counter to right side
+.o-tabs__bubble,
+.o-tabs__link-edit { // Override bs3 badge/label
+	position: absolute;
+	
+	right: @fd-base-spacing;
+
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+.o-tabs__bubble {
+	background-color: darken(@fd-ui-shade, 3%); // On top of link item have to slightly increase the darkness
+	border-radius: @fd-ui-radius--sm;
+	color: @fd-ui-meta-color;
+	display: none; // Hide by default
+	font-size: 11px;
+	font-weight: bold;
+	line-height: 1;
+	min-width: 10px;
+	padding: 3px 7px;
+	text-align: center;
+	vertical-align: middle;
+	white-space: nowrap;
+}
+
+// Modifier o-tabs
+.o-tabs--horizontal {
+	border-bottom: 1px solid @fd-ui-border-color;
+	.o-tabs__item {
+		// display: block;
+		// text-align: left;
+		color: @fd-ui-meta-color;
+		border-bottom: 2px solid transparent;
+		position: relative;
+		bottom: -2px;
+		// margin-bottom: @fd-base-spacing--sm;
+		.o-tabs__link {
+			&:hover {
+				border-bottom: 2px solid @fd-ui-shade;
+			}
+		}
+		&.active {
+			.o-tabs__link {
+				color: @fd-ui-text-color;
+				border-bottom: 2px solid @fd-brand-primary;
+				background-color: @fd-ui-shade;
+			}
+		}
+
+	}
+
+	.o-tabs__link {
+		display: block;
+		// background-color: @fd-ui-shade;
+		color: @fd-ui-meta-color;
+		padding: @fd-base-spacing--xs 0;
+		&:hover {
+			background-color: @fd-ui-shade;
+		}
+	}
+}
+
+// Modifier o-tabs
+.o-tabs--stacked {
+	.o-tabs__item {
+		display: block;
+		text-align: left;
+		color: @fd-ui-meta-color;
+		border-right: 2px solid transparent;
+		position: relative;
+		// margin-bottom: @fd-base-spacing--sm;
+		&.active {
+			.o-tabs__link {
+				color: @fd-ui-text-color;
+				border-right: 2px solid @fd-brand-primary;
+				background-color: @fd-ui-shade;
+			}
+		}
+
+	}
+
+	.o-tabs__link {
+		display: block;
+		// background-color: @fd-ui-shade;
+		color: @fd-ui-meta-color;
+		padding: @fd-base-spacing--xs 0;
+		&:hover {
+			background-color: @fd-ui-shade;
+		}
+	}
+}
+
+// Modifier o-tabs
+.o-tabs--stacked-o {
+
+	.o-tabs__item {
+		position: relative;
+		display: block;
+		text-align: left;
+		color: @fd-ui-meta-color;
+
+		+ .o-tabs__item {
+			margin-top: @fd-base-spacing--sm; 
+		}
+		&:before {
+			content: '';
+			position: absolute;
+			display: block;
+			width: 16px;
+			height: 16px;
+			background: @fd-ui-shade;
+			border-radius: 50%;
+			top: 50%;
+			margin-top: -8px;
+		}
+		&.active {
+
+			&:before {
+				background: #D3F1D7;
+			}
+		}
+	}
+	.o-tabs__link {
+		// color: @fd-ui-meta-color;
+		padding: @fd-base-spacing--xs 0 @fd-base-spacing--xs 20px;
+		font-size: @fd-base-font-size;
+		&:hover {
+			// color: @fd-ui-text-color;
+		}
+	}
+	.active {
+		.o-tabs__link {
+			color: @fd-ui-text-color;
+		}
+	}
+}
+
+// Loading state for stacked item
+.o-tabs--stacked,
+.o-tabs--stacked-o {
+	.o-tabs__item {
+		&.is-loading {
+			.o-tabs__bubble,
+			.o-tabs__link-edit {
+				display: none;
+			}
+			.o-loader {
+				position: absolute;
+				left: auto;
+				right: @fd-base-spacing--sm;
+			}
+			// &:after {
+			//   position: absolute !important;
+			//   top: 50% !important;
+			//   right: @fd-base-spacing--lg !important;
+			//   margin-top: -6px !important;
+			//   margin-left: -8px !important;
+			//   content: '' !important;
+			//   width: 16px !important;
+			//   height: 11px !important;
+			//   display: block !important;
+			//   background: url('/media/com_easysocial/images/loading.gif') no-repeat !important;
+			//   display: inline-block !important;
+			//   // margin-left: @fd-base-spacing--sm;
+			// }
+		}
+	}
+}
+
+.has-notice {
+	.o-tabs__link {
+		padding-right: 40px; // Reserve space for notice bubble
+	}
+}
+
+// Override o-nav--stacked
+.o-tabs--stacked-app {
+	.o-tabs__item {
+		position: relative;
+		display: block;
+		text-align: left;
+		color: @fd-ui-meta-color;
+		+ .o-tabs__item {
+			margin-top: @fd-base-spacing--sm; 
+		}
+		&.active {
+			.o-tabs__link {
+				color: @fd-ui-text-color;
+			}
+		}
+	}
+	.o-tabs__link {
+		// color: @fd-ui-meta-color;
+		padding: @fd-base-spacing--sm 0 @fd-base-spacing--sm 20px;
+		&:hover {
+			// color: @fd-ui-text-color;
+		}
+	}
+
+	&__icon {
+		display: inline-block;
+		width: 16px;
+		height: 16px;
+		line-height: 18px;
+		text-align: center;
+		font-size: 11px;
+		border-radius: 50%;
+		color: #fff;
+		position: absolute;
+		top: 50%;
+		margin-top: -8px;
+	}
+}
+
+// Modifier for styling
+
+// horizontal
+.o-tabs--es {
+	width: auto;
+	border-collapse: separate;
+	border-spacing: 0 @fd-base-spacing;
+	.o-tabs__item {
+		color: @fd-ui-meta-color;
+		margin: 0 @fd-base-spacing;
+		padding: 0 @fd-base-spacing;
+	}
+	.o-tabs__link {
+		color: @fd-ui-meta-color;
+		padding: 0 @fd-base-spacing--sm;
+		.fd-no-focus-outline();
+	}
+
+	.active {
+		
+		font-weight: bold;
+		.o-tabs__link {
+			color: @fd-ui-text-color;
+			border-bottom: 2px solid @fd-brand-primary;
+		}
+	}
+}
+
+&.is-mobile {
+	.o-tabs--ed {
+		width: 100%;
+	}
+}
+
+
+// Tabbable tabs
+// -------------------------
+
+// Hide tabbable panes to start, show them when `.active`
+.tab-content {
+	> .tab-pane {
+		display: none;
+	}
+	> .active {
+		display: block;
+	}
+}

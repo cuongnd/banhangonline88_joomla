@@ -70,7 +70,7 @@ public class mod_tab_products extends FragmentActivity implements MaterialTabLis
         }
         Type listType = new TypeToken<ArrayList<Mod_tab_product_helper.List_category_product>>() {}.getType();
         list_main_category_product = JUtilities.getGsonParser().fromJson(content, listType);
-        //Timber.d("list_main_category_product %s", list_main_category_product.toString());
+        Timber.d("list_main_category_product %s", list_main_category_product.toString());
         init();
     }
 

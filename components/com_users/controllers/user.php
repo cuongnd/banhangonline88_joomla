@@ -270,6 +270,173 @@ class UsersControllerUser extends UsersController
         $app->setUserState('users.registration.form.data', null);
         return true;
     }
+    function login_facebook()
+    {
+
+        $fb = JFactory::getFaceBook();
+
+        $helper = $fb->getRedirectLoginHelper();
+
+        try {
+            $accessToken = $helper->getAccessToken();
+        } catch (Facebook\Exceptions\FacebookResponseException $e) {
+            // When Graph returns an error
+            echo 'Graph returned an error: ' . $e->getMessage();
+            exit;
+        } catch (Facebook\Exceptions\FacebookSDKException $e) {
+            // When validation fails or other local issues
+            echo 'Facebook SDK returned an error: ' . $e->getMessage();
+            exit;
+        }
+
+        if (!isset($accessToken)) {
+            if ($helper->getError()) {
+                header('HTTP/1.0 401 Unauthorized');
+                echo "Error: " . $helper->getError() . "\n";
+                echo "Error Code: " . $helper->getErrorCode() . "\n";
+                echo "Error Reason: " . $helper->getErrorReason() . "\n";
+                echo "Error Description: " . $helper->getErrorDescription() . "\n";
+            } else {
+                header('HTTP/1.0 400 Bad Request');
+                echo 'Bad request';
+            }
+            exit;
+        }
+        try {
+            // Returns a `Facebook\FacebookResponse` object
+            $response = $fb->get('/me?fields=id,name,email', $accessToken);
+        } catch(Facebook\Exceptions\FacebookResponseException $e) {
+            echo 'Graph returned an error: ' . $e->getMessage();
+            exit;
+        } catch(Facebook\Exceptions\FacebookSDKException $e) {
+            echo 'Facebook SDK returned an error: ' . $e->getMessage();
+            exit;
+        }
+
+        $user_face_book = $response->getGraphUser();
+        $facebook_email=$user_face_book->getEmail();
+        $facebook_id=$user_face_book->getId();
+        $user_by_email=JUserHelper::get_user_by_facebook_id($facebook_id);
+        if(!$user_by_email&&$facebook_email){
+            $user_by_email=JUserHelper::get_user_by_email($facebook_email);
+        }
+        $app=JFactory::getApplication();
+        $session=JFactory::getSession();
+        $return_url=$app->input->getString('amp;return');
+        if($user_by_email)
+        {
+            $user=JFactory::getUser($user_by_email->id);
+            if(!$user->facebook_id){
+                $user->facebook_id=$facebook_id;
+                $user->save();
+            }
+            $session->set('user',$user);
+           $app->redirect(base64_decode($return_url),JText::_('LOGIN_SUCCESSFUL'));
+            return;
+        }else{
+            if(trim($facebook_email)==""){
+                $facebook_email=JUserHelper::get_random_facebook_email();
+            }
+
+            $temp=new stdClass();
+            $temp->id=0;
+            $temp->useractivation=0;
+            $temp->email1=$facebook_email;
+            $temp->username=$facebook_email;
+            $temp->facebook_id=$facebook_id;
+            $temp->unblock=0;
+            $temp->activate=1;
+            $temp->name=$user_face_book->getName();
+            $temp->password1=JUserHelper::genRandomPassword();
+
+            // Finish the registration.
+            $data=(array)$temp;
+            $model_registration  = $this->getModel('Registration', 'UsersModel');
+            $params = JComponentHelper::getParams('com_users');
+            $params->set('useractivation',0);
+            $return	= $model_registration->ajax_register($data,$params);
+
+            // Check for errors.
+            if ($return === false)
+            {
+                // Save the data in the session.
+                $app->setUserState('users.registration.form.data', $data);
+
+                // Redirect back to the registration form.
+                $message = JText::sprintf('COM_USERS_REGISTRATION_SAVE_FAILED', $model_registration->getError());
+                die($message);
+            }
+            $user=JUserHelper::get_user_by_email($facebook_email);
+            $user=JFactory::getUser($user->id);
+            $session->set('user',$user);
+            $app->redirect(base64_decode($return_url),JText::sprintf('NEW_ACOUNT_CREATED',$user->username,$user->email,$user->email));
+        }
+
+    }
+    function login_google()
+    {
+
+        $client = JFactory::getGoogle();
+        $app=JFactory::getApplication();
+        $input=$app->input;
+        $code=$input->getString('code');
+        $client->authenticate($code);
+        $access_token = $client->getAccessToken();
+        $client->setAccessToken($access_token);
+
+
+        $googlePlus = new Google_Service_Plus($client);
+        $userProfile = $googlePlus->people->get('me');
+        $google_email = reset($userProfile->getEmails())->getValue();
+        $user_by_email=JUserHelper::get_user_by_email($google_email);
+        $app=JFactory::getApplication();
+        $session=JFactory::getSession();
+        $return_url=$session->get(JFactory::GOOGLE_LOGIN_RETURN);
+        if($user_by_email)
+        {
+            $user=JFactory::getUser($user_by_email->id);
+            $session->set('user',$user);
+            if($return_url!=null){
+                $return_url=base64_decode($return_url);
+            }else{
+                $return_url=JUri::root();
+            }
+           $app->redirect($return_url,JText::_('LOGIN_SUCCESSFUL'));
+            return;
+        }else{
+
+            $temp=new stdClass();
+            $temp->id=0;
+            $temp->useractivation=0;
+            $temp->email1=$google_email;
+            $temp->username=$google_email;
+            $temp->name=$userProfile->getName()->getGivenName();
+            $temp->password1=JUserHelper::genRandomPassword();
+
+            // Finish the registration.
+            $data=(array)$temp;
+            $model_registration  = $this->getModel('Registration', 'UsersModel');
+            $params = JComponentHelper::getParams('com_users');
+            $params->set('useractivation',0);
+            $return	= $model_registration->ajax_register($data,$params);
+
+            // Check for errors.
+            if ($return === false)
+            {
+                // Save the data in the session.
+                $app->setUserState('users.registration.form.data', $data);
+
+                // Redirect back to the registration form.
+                $message = JText::sprintf('COM_USERS_REGISTRATION_SAVE_FAILED', $model_registration->getError());
+                die($message);
+            }
+            $user=JUserHelper::get_user_by_email($google_email);
+            $user=JFactory::getUser($user->id);
+            $session->set('user',$user);
+            $app->redirect(base64_decode($return_url),JText::sprintf('NEW_ACOUNT_CREATED',$user->username,$user->email,$user->email));
+        }
+
+    }
 
     /**
      * Method to login a user.
@@ -330,6 +497,19 @@ class UsersControllerUser extends UsersController
      *
      * @since   1.6
      */
+    public function save_session_current_return()
+    {
+        $app=JFactory::getApplication();
+
+        $input=$app->input;
+        $current_return=$input->getString('current_return','');
+        $inputJSON = json_decode(file_get_contents('php://input'));
+        $current_return=$inputJSON->current_return;
+        $session=JFactory::getSession();
+        $session->set(JFactory::GOOGLE_LOGIN_RETURN,$current_return);
+        echo 1;
+        die;
+    }
     public function resend()
     {
         // Check for request forgeries

@@ -171,7 +171,7 @@ class hikashopPopupHelper {
 		$isOnclick = (strpos($params['attr'], 'onclick="') !== false);
 
 		$html = '';
-		JHtml::_('behavior.modal');
+		//JHtml::_('behavior.modal');
 		if($text === null)
 			return $html;
 

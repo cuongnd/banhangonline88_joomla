@@ -1,0 +1,83 @@
+/**
+* @package      EasySocial
+* @copyright    Copyright (C) 2010 - 2017 Stack Ideas Sdn Bhd. All rights reserved.
+* @license      Proprietary Use License https://stackideas.com/licensing
+**/
+
+// previously global font-size 11px class
+.t-fs--sm {
+	font-size: @fd-base-font-size--xs !important;
+}
+.t-fs--lg {
+	font-size: @fd-base-font-size--xl !important;
+}
+
+// Alignment
+.t-lg-text--left,
+.t-text--left {
+		text-align: left !important; 
+}
+.t-lg-text--right,
+.t-text--right {
+		text-align: right !important; 
+}
+.t-lg-text--center,
+.t-text--center {
+		text-align: center !important; 
+}
+.t-lg-text--justify,
+.t-text--justify {
+		text-align: justify !important; 
+}
+.t-lg-text--nowrap,
+.t-text--nowrap {
+		white-space: nowrap !important; 
+}
+
+&.w780,
+&.is-mobile {
+		.t-lg-text--right,
+		.t-lg-text--left,
+		.t-lg-text--center {
+				text-align: unset !important;
+		}
+		.t-sm-text--right {
+				text-align: right !important;
+		}
+		.t-sm-text--center {
+				text-align: center !important;
+		}
+
+}
+
+// Transformation
+.t-text--lowercase      { text-transform: lowercase !important; }
+.t-text--uppercase      { text-transform: uppercase !important; }
+.t-text--capitalize     { text-transform: capitalize !important; }
+
+// Contextual colors
+.t-text--muted {
+	color: @fd-ui-meta-color !important;
+}
+
+// Color
+.t-text--primary {
+	.text-emphasis-variant(@brand-primary) !important;
+}
+.t-text--success {
+	.text-emphasis-variant(@state-success-text) !important;
+}
+.t-text--info {
+	.text-emphasis-variant(@state-info-text) !important;
+}
+.t-text--warning {
+	.text-emphasis-variant(@state-warning-text) !important;
+}
+.t-text--danger {
+	.text-emphasis-variant(@state-danger-text) !important;
+}
+
+// Weight
+.t-text--bold {
+		font-weight: bold !important;
+}

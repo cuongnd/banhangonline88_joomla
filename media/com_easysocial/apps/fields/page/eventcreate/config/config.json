@@ -1,0 +1,13 @@
+{
+    "title": {
+        "default": "FIELDS_PAGE_EVENTCREATE_DEFAULT_TITLE"
+    },
+
+    "description": {
+        "default": "FIELDS_PAGE_EVENTCREATE_DEFAULT_DESCRIPTION"
+    },
+
+    "visible_display": false,
+    "searchable": false,
+    "default": false
+}

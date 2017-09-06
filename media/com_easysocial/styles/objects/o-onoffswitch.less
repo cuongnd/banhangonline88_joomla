@@ -1,0 +1,104 @@
+/**
+* @package      EasySocial
+* @copyright    Copyright (C) 2010 - 2017 Stack Ideas Sdn Bhd. All rights reserved.
+* @license      Proprietary Use License https://stackideas.com/licensing
+**/
+
+// Switch
+// ----------------
+/*
+Markup:
+<div class="o-onoffswitch">
+	<input type="checkbox" name="onoffswitch" class="o-onoffswitch__checkbox" id="onoffswitch" checked>
+	<label class="o-onoffswitch__label" for="onoffswitch"></label>
+</div>
+
+*/
+
+// Design 1
+.d1 {
+
+	.o-onoffswitch {
+		position: relative; 
+		width: 40px;
+		-webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+		margin: 12px 0 16px;
+
+		&__checkbox {
+			display: none;
+		}
+		&__label {
+			display: block; overflow: hidden; cursor: pointer;
+			height: 8px; padding: 0; line-height: 8px;
+			border: 0px solid #FFFFFF; border-radius: 20px;
+			background-color: @fd-ui-shade;
+
+			&:before {
+				content: "";
+				display: block; width: 20px; margin: -6px;
+				background: @fd-ui-meta-color;
+				position: absolute; top: 0; bottom: 0;
+				right: 28px;
+				border-radius: 20px;
+				transition: right 0.2s ease-in 0s; 
+			}
+		}
+		+ .o-onoffswitch {
+			margin-top: 20px;
+		}
+	}
+
+	.o-onoffswitch__label .o-onoffswitch__checkbox:checked + .o-onoffswitch__label {
+		background-color: @fd-ui-shade;
+	}
+	.o-onoffswitch__checkbox:checked + .o-onoffswitch__label, .o-onoffswitch__checkbox:checked + .o-onoffswitch__label:before {
+	   border-color: @fd-ui-shade;
+	}
+	.o-onoffswitch__checkbox:checked + .o-onoffswitch__label .o-onoffswitch__inner {
+		margin-left: 0;
+	}
+	.o-onoffswitch__checkbox:checked + .o-onoffswitch__label:before {
+		right: 0px; 
+		background-color: @fd-brand-success;
+		// background-color: @;
+		transition: right 0.2s ease-in 0s;
+	}
+}
+
+// Design 2
+// .d2 {
+	
+	.o-onoffswitch {
+		position: relative; width: 40px;
+		-webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+		margin-top: @fd-base-spacing;
+	}
+	.o-onoffswitch__checkbox {
+		display: none;
+	}
+	.o-onoffswitch__label {
+		display: block; overflow: hidden; cursor: pointer;
+		height: 16px; padding: 0; line-height: 16px;
+		border: 2px solid #CCCCCC; border-radius: 16px;
+		background-color: #E6E6E6;
+		transition: background-color 0.3s ease-in;
+	}
+	.o-onoffswitch__label:before {
+		content: "";
+		display: block; width: 16px; margin: 0px;
+		background: #FFFFFF;
+		position: absolute; top: 0; bottom: 0;
+		right: 24px;
+		border: 2px solid #CCCCCC; border-radius: 16px;
+		transition: all 0.3s ease-in 0s; 
+	}
+	.o-onoffswitch__checkbox:checked + .o-onoffswitch__label {
+		background-color: @fd-brand-success;
+	}
+	.o-onoffswitch__checkbox:checked + .o-onoffswitch__label, .o-onoffswitch__checkbox:checked + .o-onoffswitch__label:before {
+	   border-color: @fd-brand-success;
+	}
+	.o-onoffswitch__checkbox:checked + .o-onoffswitch__label:before {
+		right: 0px; 
+	}
+// }

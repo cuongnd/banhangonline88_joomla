@@ -140,7 +140,7 @@ public class login extends LinearLayout  implements MaterialTabListener{
                 Map<String, String> post = new HashMap<String, String>();
                 post.put("option", "com_users");
                 post.put("task", "user.ajax_login");
-                post.put("username", txt_username.getText().toString().trim());
+                post.put("userName", txt_username.getText().toString().trim());
                 post.put("password", txt_password.getText().toString().trim());
                 web_browser.vtv_postUrl(VTVConfig.rootUrl,post);
                 app.getProgressDialog(R.string.str_login_processing).show();
@@ -261,7 +261,7 @@ public class login extends LinearLayout  implements MaterialTabListener{
                 Map<String, String> post = new HashMap<String, String>();
                 post.put("option", "com_users");
                 post.put("task", "user.ajax_register");
-                post.put("username", str_username);
+                post.put("userName", str_username);
                 post.put("email", str_email);
                 post.put("password", str_password);
                 web_browser.vtv_postUrl(VTVConfig.rootUrl,post);

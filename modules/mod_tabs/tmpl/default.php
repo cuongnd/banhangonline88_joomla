@@ -9,7 +9,7 @@ JHtml::_('jQuery.flip');
 use Joomla\Registry\Registry;
 
 $doc = JFactory::getDocument();
-$doc->addScript( '/modules/mod_tabs/assets/js/jquery.mod_tabs.js');
+$doc->addScript( '/modules/mod_tabs/assets/js/jquery.mod_tabs.min.js');
 $doc->addLessStyleSheet('/modules/mod_tabs/assets/less/mod_tabs.less');
 $params = $module->params;
 jimport('joomla.application.module.helper');

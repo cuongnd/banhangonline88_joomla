@@ -69,6 +69,7 @@ foreach(get_object_vars($module) as $k => $v){
 
 if($moduleClass->restrictedModule($params) === false)
 	return;
+
 $layout_type=$params->get('layout_type','');
 if($layout_type=='tab'){
 	$html = trim(hikashop_getLayout($type,'tab',$params,$js));

@@ -37,7 +37,6 @@ class JChatControllerMessaging extends JChatController {
 		$defaultModel = $this->getModel ();
 		$defaultModel->setState ( 'option', $option );
 	}
-	
 	/**
 	 * Display the side users list of only logged in registered users and the empty messages area
 	 *
@@ -45,12 +44,7 @@ class JChatControllerMessaging extends JChatController {
 	 * @return void
 	 */
 	public function display($cachable = false, $urlparams = false) {
-		// Check if the user is logged in
-		if (! $this->user->id) {
-			$this->app->enqueueMessage ( JText::_ ( 'COM_JCHAT_MUST_BE_LOGGEDIN' ) );
-			return;
-		}
-		
+
 		// Check if the user has access to the chat app based on access level parameter
 		if (! $this->allowDisplay()) {
 			$this->app->enqueueMessage ( JText::_ ( 'COM_JCHAT_NOACCESS' ) );
@@ -81,7 +75,7 @@ class JChatControllerMessaging extends JChatController {
 		
 		// Set model state
 		$this->setModelState ( 'messaging' );
-		
+
 		// Set the layout
 		$view->setLayout ( $viewLayout );
 		$view->display ();

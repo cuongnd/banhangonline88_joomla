@@ -23,6 +23,7 @@ class EasySocialControllerRegistration extends EasySocialController
 	 */
 	public function activate()
 	{
+
 		$my 	= FD::user();
 
 		// Get current view.

@@ -1,10 +1,13 @@
 <resources>
 
     <string name="app_name" translatable="false">core</string>
-    <string name="facebook_app_id" translatable="false">970288516370238</string>
-    <string name="android_key" translatable="false">d97dd7ebef54402a5416a56ed982d943</string>
+    <string name="android_key" translatable="false">970288516370238</string>
+    <string name="facebook_app_id">970288516370238</string>
+    <string name="fb_login_protocol_scheme">fb970288516370238</string>
+
     <!-- General strings-->
     <string name="No_network_connection">Không có kết nối internet</string>
+
     <string name="Internal_error">Lỗi kết nối, Vui lòng thử lại</string>
     <string name="Loading">Đang tải dữ liệu …</string>
     <string name="Retry">Thử lại</string>
@@ -251,7 +254,6 @@
     <string name="title_notifications">Notifications</string>
     <string name="row">row</string>
     <string name="button">Button</string>
-
 
 
     <string name="ic_access_alarms">&#xe000;</string>
@@ -724,5 +726,17 @@
     <string name="str_password_incorrect">Mật khẩu không khớp, vui lòng kiểm tra lại</string>
     <string name="str_register_processing">Đang đăng ký tài khoản, vui lòng đợi một lát !</string>
     <string name="str_register_successfull">Quá trình đăng ký thành công</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="reply_label">Trả lời</string>
+    <string name="test_label">test_label</string>
+    <string name="str_answer">Trả lời</string>
+    <string name="reply_was">reply was</string>
+    <string name="str_new_customer">Khách hàng</string>
+    <string name="strGoToRoom">Phòng chat</string>
+    <string name="str_list_user_online">Thành viên online</string>
+    <string name="strChatWithPerson">Chát với người này</string>
+    <string name="STR_YOUR_NAME">Tên của bạn</string>
 
 </resources>

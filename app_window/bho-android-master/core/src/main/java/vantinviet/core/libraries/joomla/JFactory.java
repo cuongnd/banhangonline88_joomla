@@ -17,6 +17,7 @@ import vantinviet.core.configuration.JConfig_countdown;
 import vantinviet.core.libraries.cms.application.JApplicationSite;
 import vantinviet.core.libraries.cms.application.vtv_WebView;
 import vantinviet.core.libraries.cms.menu.JMenu;
+import vantinviet.core.libraries.joomla.cache.JCache;
 import vantinviet.core.libraries.joomla.session.JSession;
 import vantinviet.core.libraries.joomla.uri.JUri;
 import vantinviet.core.libraries.joomla.user.JUser;
@@ -86,7 +87,7 @@ public class JFactory {
         return JApplicationSite.getInstance(client);
     }
     public static JSession getSession() {
-        return JSession.getInstance();
+        return app.getSession();
     }
 
 
@@ -148,5 +149,9 @@ public class JFactory {
 
     public static mysqli getDBO() {
         return mysqli.getInstance();
+    }
+
+    public static JCache getCache() {
+        return JCache.getInstance();
     }
 }

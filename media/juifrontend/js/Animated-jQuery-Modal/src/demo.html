@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery dreymodal Demo</title>
+  <link rel="stylesheet" href="css/dreymodal.css">
+  <link rel="stylesheet" href="css/dreyanim.css">
+</head>
+<style media="screen">
+  body {
+    font-family: "Segoe UI"
+  }
+</style>
+<body>
+
+  <div style="width:300px; height:300px; margin:auto; background-color:#fff000; margin-top: 30px;" class="testObject">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos id qui incidunt accusamus dicta iusto, suscipit quaerat impedit facere eligendi aperiam! Maiores, officiis. Beatae, minima, sunt pariatur animi soluta sit.
+  <button onclick="javascript:q.open();">Hello world</button></div>
+
+  <div style="width:300px; height:300px; margin:auto; background-color:#fff000; margin-top: 30px;" class="testObjectSec">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos id qui incidunt accusamus dicta iusto, suscipit quaerat impedit facere eligendi aperiam! Maiores, officiis. Beatae, minima, sunt pariatur animi soluta sit and some mores shit.
+  <button onclick="javascript:s.open();">Hello world</button></div>
+<h1>jQuery dreymodal Demo</h1>
+<div class="jquery-script-ads"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-2783044520727903";
+/* jQuery_demo */
+google_ad_slot = "2780937993";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>
+<button style="margin:30px auto; width:150px; height:30px" class="openButton">Open Modal</button>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus et turpis quis est malesuada pharetra et non arcu. Suspendisse congue malesuada rhoncus. Nam finibus eros ex, a rutrum mi rutrum a. Curabitur lorem risus, dictum ut purus a, suscipit efficitur tellus. Fusce elit nisl, maximus id ex eu, luctus volutpat odio. Aliquam dapibus leo vel blandit venenatis. Pellentesque erat elit, aliquet sit amet nulla quis, mattis euismod ligula. Nam pellentesque erat eget sapien iaculis maximus.</p>
+  <p>Nam in tempus nisi. Cras tincidunt tortor sit amet nulla consequat, eget scelerisque magna gravida. Mauris iaculis at felis eu finibus. Nunc fermentum venenatis ligula, vitae blandit ipsum semper quis. Proin eu dui commodo tellus vestibulum aliquet. Nullam condimentum, neque at suscipit placerat, leo elit condimentum urna, vitae sagittis arcu leo eu justo. Nulla molestie turpis ut posuere varius. Maecenas facilisis elementum nulla, quis suscipit purus lobortis eget. Sed vitae justo auctor, cursus justo eget, euismod mi. Duis pellentesque venenatis elementum.</p>
+  <p>Nullam feugiat imperdiet arcu. Proin suscipit lacus et convallis venenatis. Vestibulum ac tempus augue. Suspendisse suscipit aliquam odio nec varius. Curabitur dignissim auctor viverra. Morbi venenatis nibh quis eros porta, ac ultricies nisl ultrices. Curabitur eget convallis elit, vitae ornare nunc. Nulla ut pellentesque neque. Fusce eu molestie lacus. Nunc a dolor sit amet quam gravida placerat vel ac massa. Suspendisse vel risus et mi porttitor molestie. Vestibulum euismod, nibh et lacinia blandit, est mi dictum metus, eget tempus justo dolor vitae ex. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse nec dolor massa. Sed pretium ipsum ut odio eleifend, eu aliquet dui viverra.</p>
+  <p>Proin eget libero eget risus iaculis commodo sed vel erat. Vestibulum porta massa at nulla luctus rhoncus. Etiam lacinia congue quam, eu ullamcorper ipsum scelerisque mattis. Cras pharetra vel leo non tincidunt. Phasellus imperdiet, metus in efficitur blandit, urna arcu tincidunt tellus, ac dignissim orci dolor eget velit. Proin non ultricies sapien. Aenean ac neque eleifend lorem porta egestas a in neque. Nullam sed tellus ut magna lobortis accumsan. Quisque in faucibus tellus. Nulla nec eros nec massa porta porttitor ac id velit. Proin feugiat, diam non imperdiet pellentesque, lacus nunc pulvinar dui, nec tincidunt nibh tellus vel mi. Sed vestibulum vehicula tortor, at pretium turpis rhoncus in. Nullam quis accumsan nisi.</p>
+  <p>Pellentesque diam lectus, porttitor ac gravida et, ornare at massa. In hac habitasse platea dictumst. Pellentesque mattis consectetur diam ut efficitur. Quisque tristique at leo viverra interdum. Duis consequat porttitor dictum. Vivamus a tincidunt ligula. Vestibulum venenatis ipsum non faucibus volutpat. Fusce ultrices risus dui, ut elementum urna pulvinar nec. Phasellus porta et lorem non ultrices. Aenean semper mattis justo, eu ullamcorper est accumsan vel.</p>
+</body>
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+<script src="js/dreyanim.js"></script>
+<script src="js/dreymodal.js"></script>
+<!-- <script>
+  $('.testObject4').dreydo();
+</script> -->
+<script>
+  var elem = document.getElementsByClassName('testObject');
+  var s = new Dreymodal(elem,{});
+  s.open();
+
+  // $('.testObject').dreymodal();
+
+  var q = new Dreymodal(document.getElementsByClassName('testObjectSec'),{
+    minWidth : 300,
+    maxWidth : 700,
+    overlay : true,
+    overlayColor : "#222222",
+    overlayOpacity : 0.9,
+    closeButton : true,
+    inAnimationTime : 600,
+    inAnimationType : "slideInFromLeft",
+    outAnimationTime : 600,
+    outAnimationType : "slideOutToRight",
+    allowEscapeKey : true,
+    title : "Title of this modal goes here",
+    titleBackColor : "#128a4b",
+    overlayBlur : true
+  });
+
+  $('.openButton').click(function(){
+    q.open();
+  })
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</html>

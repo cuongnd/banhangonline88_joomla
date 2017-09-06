@@ -1,0 +1,15 @@
+package vantinviet.core.components.com_jchat.controllers;
+
+
+import vantinviet.core.components.com_jchat.JchatController;
+
+/**
+ * Created by cuong on 5/26/2017.
+ */
+
+public class JchatControllerMessaging extends JchatController {
+    public JchatControllerMessaging(){
+        super();
+    }
+
+}

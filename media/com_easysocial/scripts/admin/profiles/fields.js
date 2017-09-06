@@ -7,9 +7,7 @@ EasySocial.module('admin/profiles/fields', function($) {
 		'ui/sortable',
 		'ui/droppable'
 	)
-	.script(
-		'field'
-	)
+	.script('site/layout/dialog','field')
 	.view(
 		'admin/profiles/form.fields.editorItem',
 		'admin/profiles/form.fields.stepItem',

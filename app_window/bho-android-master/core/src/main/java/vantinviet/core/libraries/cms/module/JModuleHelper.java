@@ -18,7 +18,6 @@ import org.json.JSONObject;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -30,7 +29,6 @@ import de.codecrafters.tableview.listeners.TableDataClickListener;
 import de.codecrafters.tableview.toolkit.SimpleTableHeaderAdapter;
 import de.codecrafters.tableview.toolkit.SortStateViewProviders;
 import de.codecrafters.tableview.toolkit.TableDataRowColorizers;
-import timber.log.Timber;
 import vantinviet.core.R;
 import vantinviet.core.configuration.JConfig;
 
@@ -38,7 +36,7 @@ import vantinviet.core.configuration.JConfig;
 import vantinviet.core.libraries.html.module.Module;
 import vantinviet.core.libraries.html.module.Params;
 import vantinviet.core.libraries.joomla.JFactory;
-import vantinviet.core.libraries.joomla.cache.cache;
+import vantinviet.core.libraries.joomla.cache.JCache;
 import vantinviet.core.libraries.joomla.form.JFormField;
 import vantinviet.core.libraries.joomla.input.JInput;
 import vantinviet.core.libraries.legacy.application.JApplication;
@@ -69,10 +67,10 @@ public class JModuleHelper {
         int caching = config.caching;
         if (caching == 1) {
 
-            content = cache.get_content_component(md5_link);
+            content = JCache.get_content_component(md5_link);
             if (content == null || content.isEmpty()) {
                 content = call_ajax_content_component(link);
-                cache.set_content_component(md5_link, content);
+                JCache.set_content_component(md5_link, content);
             }
             return content;
 

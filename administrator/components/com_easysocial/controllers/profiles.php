@@ -665,7 +665,7 @@ class EasySocialControllerProfiles extends EasySocialController
 	public function getPageConfig()
 	{
 		// Check for request forgeries.
-		FD::checkToken();
+		//FD::checkToken();
 
 		$path		= SOCIAL_CONFIG_DEFAULTS . '/fields.header.json';
 		$raw		= JFile::read( $path );

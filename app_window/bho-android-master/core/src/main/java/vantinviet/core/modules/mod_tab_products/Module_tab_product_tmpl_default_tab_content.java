@@ -15,12 +15,6 @@ import android.webkit.JavascriptInterface;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.deser.std.StringArrayDeserializer;
-import com.fasterxml.jackson.databind.exc.InvalidDefinitionException;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;

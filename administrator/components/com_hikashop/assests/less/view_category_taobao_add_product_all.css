@@ -1,0 +1,36 @@
+.view-importproducttaobao-all table.list-category-tao-bao-and-category-system {
+  margin-bottom: 200px;
+}
+.view-importproducttaobao-all table.list-category-tao-bao-and-category-system input,
+.view-importproducttaobao-all table.list-category-tao-bao-and-category-system select {
+  width: auto;
+}
+.view-importproducttaobao-all table.list-category-tao-bao-and-category-system input[name="taobao_category_id[]"],
+.view-importproducttaobao-all table.list-category-tao-bao-and-category-system input[name="category_id[]"] {
+  width: 100px;
+}
+.view-importproducttaobao-all .wrapper {
+  float: left;
+  height: 500px;
+}
+.view-importproducttaobao-all .wrapper .picture_link {
+  display: block;
+  width: 250px;
+  height: 300px;
+  background-repeat: no-repeat;
+}
+.view-importproducttaobao-all #test_get_content_product_vt .modal-body {
+  max-height: 400px;
+  overflow-y: scroll;
+}
+.view-importproducttaobao-all #test_get_content_product_vt .modal-body .wrapper {
+  float: left;
+  height: 500px;
+  width: 345px;
+}
+.view-importproducttaobao-all #test_get_content_product_vt .modal-body .wrapper .picture_link {
+  display: block;
+  width: 250px;
+  height: 300px;
+  background-repeat: no-repeat;
+}

@@ -28,7 +28,8 @@ class JChatViewMessaging extends JChatView {
 	 * @param string $userData
 	 * @return void
 	 */
-	public function display($userData = null) {
-		echo json_encode($userData);  
+	public function display($tpl = null) {
+		$this->setLayout('android.default');
+		parent::display($tpl);
 	}
 }

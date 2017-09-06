@@ -82,7 +82,7 @@ jQuery.fn.flexdatalist = function (_option, _value) {
     if (this && typeof this[0] !== 'undefined' && typeof this[0].fvalue !== 'undefined') {
         destroy($(this));
     }
-
+    var $=jQuery;
     var _options = $.extend({
         url: null,
         data: [],

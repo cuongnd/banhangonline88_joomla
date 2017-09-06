@@ -196,6 +196,109 @@ class EasySocialControllerUsers extends EasySocialController
 		return $view->call(__FUNCTION__, $users, $profile, $data, $pagination);
 	}
 
+	function get_google_plus_login(){
+		########## Google Settings.Client ID, Client Secret from https://console.developers.google.com #############
+		require_once JPATH_ROOT.DS.'libraries/google-api-php-client-master/src/Google/autoload.php';
+		$client_id = '256006136278-rs9r009iunikdtmcmbifamhdo9b6vei4.apps.googleusercontent.com';
+		$client_secret = 'Tk5gGQyODcU8GDHGjdIYIHJ7';
+
+		###################################################################
+
+		$client = new Google_Client();
+		$client->setClientId($client_id);
+		$client->setClientSecret($client_secret);
+		$client->addScope("email");
+		$client->addScope("profile");
+		$service = new Google_Service_Oauth2($client);
+		$redirectUri=JUri::root().'index.php?option=com_easysocial&ctrl=users&task=create_account_vendor_current_user_login_by_google';
+		$client->setRedirectUri($redirectUri);
+		$auth_url = $client->createAuthUrl();
+		$response=new stdClass();
+		$response->auth_url=$auth_url;
+		echo json_encode($response);
+		die;
+
+	}
+
+	function create_account_vendor_current_user_login_by_google()
+	{
+		echo "sfsdfsd";
+		die;
+		require_once JPATH_ROOT.DS.'libraries/google-api-php-client-master/src/Google/autoload.php';
+		$client_id = '256006136278-rs9r009iunikdtmcmbifamhdo9b6vei4.apps.googleusercontent.com';
+		$client_secret = 'Tk5gGQyODcU8GDHGjdIYIHJ7';
+
+		###################################################################
+
+		$client = new Google_Client();
+		$client->setClientId($client_id);
+		$client->setClientSecret($client_secret);
+		$client->addScope("email");
+		$client->addScope("profile");
+		$service = new Google_Service_Oauth2($client);
+		$redirectUri=JUri::root().'index.php?option=com_hikamarket&ctrl=vendor&task=create_account_vendor_current_user_login_by_google';
+		$client->setRedirectUri($redirectUri);
+
+		$app = JFactory::getApplication();
+		$input = $app->input;
+		$code = $input->getString('code');
+		$client->authenticate($code);
+		$access_token = $client->getAccessToken();
+		$client->setAccessToken($access_token);
+		/*        $message= JText::sprintf('FACEBOOK_GRAPH_RETURNED_AN_ERROR',$e->getMessage());
+                $app->redirect(JUri::root().JRoute::_('index.php?option=com_hikamarket&ctrl=vendor&task=cpanel'),$message);*/
+
+		$googlePlus = new Google_Service_Plus($client);
+		$userProfile = $googlePlus->people->get('me');
+		$google_email = reset($userProfile->getEmails())->getValue();
+		$user_by_email = JUserHelper::get_user_by_email($google_email);
+		$app = JFactory::getApplication();
+		$session = JFactory::getSession();
+		$new_user_system=0;
+		if ($user_by_email) {
+			$user = JFactory::getUser($user_by_email->id);
+		} else {
+
+			$temp = new stdClass();
+			$temp->id = 0;
+			$temp->useractivation = 0;
+			$temp->email1 = $google_email;
+			$temp->username = $google_email;
+			$temp->name = $userProfile->getName()->getGivenName();
+			$temp->password1 = JUserHelper::genRandomPassword();
+			$new_user_system=1;
+			// Finish the registration.
+			$data = (array)$temp;
+			JModelLegacy::addIncludePath(JPATH_ROOT.DS.'components/com_users/models');
+			$model_registration = JModelLegacy::getInstance('Registration', 'UsersModel');
+			$params = JComponentHelper::getParams('com_users');
+			$params->set('useractivation', 0);
+			$return = $model_registration->ajax_register($data, $params);
+
+			// Check for errors.
+			if ($return === false) {
+				// Save the data in the session.
+				$app->setUserState('users.registration.form.data', $data);
+
+				// Redirect back to the registration form.
+				$message = JText::sprintf('COM_USERS_REGISTRATION_SAVE_FAILED', $model_registration->getError());
+				die($message);
+			}
+			$user = JUserHelper::get_user_by_email($google_email);
+			$user = JFactory::getUser($user->id);
+		}
+		$session->set('user', $user);
+		$db = JFactory::getDbo();
+		$query = $db->getQuery(true);
+		$query->clear();
+		$query->select('vendor_id')
+			->from('#__hikamarket_vendor')
+			->where('vendor_email=' . $query->q($user->email));
+		$vendor_id = $db->setQuery($query)->loadResult();
+		self::go_to_cpanel($new_user_system,$vendor_id,$user);
+		return;
+
+	}
 
 	/**
 	 * Retrieves a list of users by sitewide search filter

@@ -1,0 +1,186 @@
+/**
+* @package      EasySocial
+* @copyright    Copyright (C) 2010 - 2017 Stack Ideas Sdn Bhd. All rights reserved.
+* @license      Proprietary Use License https://stackideas.com/licensing
+**/
+
+//
+// Input groups
+// --------------------------------------------------
+
+// Base styles
+// -------------------------
+.o-input-group {
+	position: relative; // For dropdowns
+	.flex-display(flex);
+	border-collapse: separate; // prevent input groups from inheriting border styles from table cells when placed within a table
+
+	// Undo padding and float of grid classes
+	&[class*="col-"] {
+		float: none;
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	.o-form-control {
+		// Ensure that the input is always above the *appended* addon button for
+		// proper border colors.
+		position: relative;
+		z-index: 2;
+
+		// IE9 fubars the placeholder attribute in text inputs and the arrows on
+		// select elements in input groups. To fix it, we float the input. Details:
+		// https://github.com/twbs/bootstrap/issues/11561#issuecomment-28936855
+		float: left;
+
+		width: 100%;
+		margin-bottom: 0;
+
+	}
+}
+
+// Sizing options
+//
+// Remix the default form control sizing classes into new ones for easier
+// manipulation.
+
+.o-input-group-lg > .o-form-control,
+.o-input-group-lg > .o-input-group__addon,
+.o-input-group-lg > .o-input-group__btn > .btn {
+	.input-lg();
+}
+.o-input-group-sm > .o-form-control,
+.o-input-group-sm > .o-input-group__addon,
+.o-input-group-sm > .o-input-group__btn > .btn {
+	.input-sm();
+}
+
+
+// Display as table-cell
+// -------------------------
+.o-input-group__addon,
+.o-input-group__btn,
+.o-input-group__select,
+.o-input-group .o-form-control {
+
+	&:not(:first-child):not(:last-child) {
+		border-radius: 0;
+	}
+}
+// Addon and addon wrapper for buttons
+.o-input-group__addon,
+.o-input-group__btn,
+.o-input-group__select {
+	white-space: nowrap;
+	vertical-align: middle; // Match the inputs
+	.flex(none);
+}
+
+.o-input-group__select {
+	select {
+		width: auto !important;
+	}
+}
+
+// Text input groups
+// -------------------------
+.o-input-group__addon {
+	padding: @padding-base-vertical @padding-base-horizontal;
+	font-size: @fd-base-font-size;
+	font-weight: normal;
+	color: @fd-input-color;
+	text-align: center;
+	background-color: @fd-input-group-addon-bg;
+	border: 1px solid @fd-input-group-addon-border-color;
+	border-radius: @fd-ui-radius;
+
+	// Sizing
+	&.input-sm {
+		padding: @padding-small-vertical @padding-small-horizontal;
+		font-size: @fd-base-font-size--xs;
+		border-radius: @fd-ui-radius--sm;
+	}
+	&.input-lg {
+		padding: @padding-large-vertical @padding-large-horizontal;
+		font-size: @fd-base-font-size--xl;
+		border-radius: @fd-ui-radius--lg;
+	}
+
+	// Nuke default margins from checkboxes and radios to vertically center within.
+	input[type="radio"],
+	input[type="checkbox"] {
+		margin-top: 0;
+	}
+}
+
+// Reset rounded corners
+.o-input-group .o-form-control:first-child,
+.o-input-group__addon:first-child,
+.o-input-group__btn:first-child > .btn,
+.o-input-group__btn:first-child > .btn-group > .btn,
+.o-input-group__btn:first-child > .dropdown-toggle,
+.o-input-group__btn:last-child > .btn:not(:last-child):not(.dropdown-toggle),
+.o-input-group__btn:last-child > .btn-group:not(:last-child) > .btn {
+	.border-right-radius(0);
+}
+.o-input-group__addon:first-child {
+	border-right: 0;
+}
+.o-input-group .o-form-control:last-child,
+.o-input-group__addon:last-child,
+.o-input-group__btn:last-child > .btn,
+.o-input-group__btn:last-child > .btn-group > .btn,
+.o-input-group__btn:last-child > .dropdown-toggle,
+.o-input-group__btn:first-child > .btn:not(:first-child),
+.o-input-group__btn:first-child > .btn-group:not(:first-child) > .btn,
+.o-input-group__select > .o-select-group select {
+	.border-left-radius(0);
+}
+.o-input-group__addon:last-child,
+.o-input-group__select > .o-select-group select {
+	border-left: 0;
+}
+
+// Button input groups
+// -------------------------
+.o-input-group__btn {
+	position: relative;
+	// Jankily prevent input button groups from wrapping with `white-space` and
+	// `font-size` in combination with `inline-block` on buttons.
+	font-size: 0;
+	white-space: nowrap;
+
+	// Negative margin for spacing, position for bringing hovered/focused/actived
+	// element above the siblings.
+	> .btn {
+		position: relative;
+		// padding-top: 0;
+		// padding-bottom: 0;
+		margin: 0;
+		height: @input-height-base;
+		+ .btn {
+			margin-left: -1px;
+		}
+		// Bring the "active" button to the front
+		&:hover,
+		&:focus,
+		&:active {
+			z-index: 2;
+		}
+	}
+
+	// Negative margin to only have a 1px border between the two
+	&:first-child {
+		> .btn,
+		> .btn-group {
+			margin-right: -1px;
+		}
+	}
+	&:last-child {
+		> .btn,
+		> .btn-group {
+			z-index: 2;
+			margin-left: -1px;
+		}
+	}
+}

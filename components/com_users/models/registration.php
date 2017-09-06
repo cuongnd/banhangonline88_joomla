@@ -681,9 +681,12 @@ class UsersModelRegistration extends JModelForm
 			return $user->id;
 		}
 	}
-	public function ajax_register($temp)
+	public function ajax_register($temp,$params)
 	{
-		$params = JComponentHelper::getParams('com_users');
+		if(!$params)
+		{
+			$params = JComponentHelper::getParams('com_users');
+		}
 
 		// Initialise the table with JUser.
 		$user = new JUser;

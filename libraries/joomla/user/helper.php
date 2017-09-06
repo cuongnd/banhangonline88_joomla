@@ -79,6 +79,43 @@ abstract class JUserHelper
 
 		return true;
 	}
+	public static function get_user_by_email($email)
+	{
+		$db=JFactory::getDbo();
+		$query=$db->getQuery(true);
+		$query->select('user.*')
+			->from('#__users AS user')
+			->where('user.email='.$query->q($email))
+		;
+		$user=$db->setQuery($query)->loadObject();
+
+		return $user;
+	}
+	public static function get_user_by_facebook_id($facebook_id)
+	{
+		$db=JFactory::getDbo();
+		$query=$db->getQuery(true);
+		$query->select('user.*')
+			->from('#__users AS user')
+			->where('user.facebook_id='.$query->q($facebook_id))
+		;
+		$user=$db->setQuery($query)->loadObject();
+
+		return $user;
+	}
+	public static function get_user_by_username($username)
+	{
+		$db=JFactory::getDbo();
+		$query=$db->getQuery(true);
+		$query->select('user.*')
+			->from('#__users AS user')
+			->where('user.username='.$query->q($username))
+		;
+		echo $query->dump();
+		$user=$db->setQuery($query)->loadObject();
+
+		return $user;
+	}
 
 	/**
 	 * Method to get a list of groups a user is in.
@@ -810,5 +847,18 @@ abstract class JUserHelper
 		$uaShort = str_replace($browserVersion, 'abcd', $uaString);
 
 		return md5(JUri::base() . $uaShort);
+	}
+
+	public static function render_email()
+	{
+		$ramdom=self::genRandomPassword(6);
+		return "$ramdom";
+	}
+
+	public static function get_random_facebook_email()
+	{
+		$random= rand(100000,999999);
+		$facebook_email="user_$random@facebook.com";
+		return $facebook_email;
 	}
 }

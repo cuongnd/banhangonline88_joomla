@@ -63,13 +63,13 @@ $this->params->set('show_quantity_field', 0);
             ?>
             <div class="hikashop_checkout_cart_print_link">
                 <?php
-                echo $this->popup->display(
+               /* echo $this->popup->display(
                     '<img src="' . HIKASHOP_IMAGES . 'print.png" alt="' . JText::_('HIKA_PRINT') . '" />',
                     'HIKA_PRINT',
                     hikashop_completeLink('checkout&task=printcart', true),
                     'hikashop_print_popup',
                     760, 480, '', '', 'link'
-                );
+                );*/
                 ?>
             </div>
             <?php

@@ -165,17 +165,11 @@ class PlgSystemDebug extends JPlugin
      */
     public function onAfterRespond()
     {
+
         // Do not render if debugging or language debug is not enabled.
         if (!JDEBUG && !$this->debugLang) {
             return;
         }
-        // User has to be authorised to see the debug information.
-        if ($this->isAuthorisedDisplayDebug()) {
-            echo "ddddddddđ";
-            die;
-            return;
-        }
-
 
         // Only render for HTML output.
         if (JFactory::getDocument()->getType() !== 'html') {
@@ -186,6 +180,7 @@ class PlgSystemDebug extends JPlugin
         if ($contents) {
             ob_end_clean();
         }
+
         // No debug for Safari and Chrome redirection.
         if (strstr(strtolower(isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : ""), 'webkit') !== false
             && substr($contents, 0, 50) == '<html><head><meta http-equiv="refresh" content="0;'
@@ -193,6 +188,7 @@ class PlgSystemDebug extends JPlugin
             echo $contents;
             return;
         }
+
         // Load language.
         $this->loadLanguage();
         $html = array();
@@ -235,6 +231,7 @@ class PlgSystemDebug extends JPlugin
             }
         }
         $html[] = '</div>';
+
         echo str_replace('</body>', implode('', $html) . '</body>', $contents);
     }
 

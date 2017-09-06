@@ -1,0 +1,338 @@
+/**
+* @package      EasySocial
+* @copyright    Copyright (C) 2010 - 2017 Stack Ideas Sdn Bhd. All rights reserved.
+* @license      Proprietary Use License https://stackideas.com/licensing
+**/
+
+//
+// Buttons
+// --------------------------------------------------
+
+
+// Base styles
+// --------------------------------------------------
+// Have to use !important for our own to prevent conflict with other templates.
+.btn {
+	display: inline-block;
+	margin: 0; // For input.btn
+	font-weight: @btn-font-weight;
+	text-align: center;
+	vertical-align: middle;
+	touch-action: manipulation;
+	cursor: pointer;
+	background-image: none; // Reset unusual Firefox-on-Android default style ; see https://github.com/necolas/normalize.css/issues/214
+	border: 1px solid transparent;
+	white-space: nowrap;
+	text-shadow: none;
+	box-shadow: none;
+	.button-size(@padding-base-vertical; @padding-base-horizontal; @font-size-base; @line-height-base; @btn-border-radius-base);
+	.user-select(none);
+	.transition(none);
+
+	&,
+	&:active,
+	&.active {
+		&:focus,
+		&.focus {
+			.tab-focus();
+		}
+	}
+
+	&:hover,
+	&:focus,
+	&.focus {
+		color: @btn-default-color;
+		text-decoration: none;
+	}
+
+	&:active,
+	&.active {
+		outline: 0;
+		background-image: none;
+		// .box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+		background-color: @fd-ui-shade !important;
+	}
+
+	&.disabled,
+	&[disabled],
+	fieldset[disabled] & {
+		cursor: @cursor-disabled;
+		.opacity(.65);
+		.box-shadow(none);
+	}
+
+	a& {
+		&.disabled,
+		fieldset[disabled] & {
+			pointer-events: none; // Future-proof disabling of clicks on `<a>` elements
+		}
+	}
+}
+
+
+// Alternate buttons
+// --------------------------------------------------
+
+.btn-default {
+	.button-variant(@btn-default-color; @btn-default-bg; @btn-default-border);
+}
+.btn-primary {
+	.button-variant(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
+}
+// Success appears as green
+.btn-success {
+	.button-variant(@btn-success-color; @btn-success-bg; @btn-success-border);
+}
+// Info appears as blue-green
+.btn-info {
+	.button-variant(@btn-info-color; @btn-info-bg; @btn-info-border);
+}
+// Warning appears as orange
+.btn-warning {
+	.button-variant(@btn-warning-color; @btn-warning-bg; @btn-warning-border);
+}
+// Danger and error appear as red
+.btn-danger {
+	.button-variant(@btn-danger-color; @btn-danger-bg; @btn-danger-border);
+}
+
+// Another set for ES
+.btn-es-default {
+	.button-variant-es-gradient(@btn-es-default-color, @btn-es-default-bg-top, @btn-es-default-bg, @btn-es-default-border-color, none);
+}
+.btn-es-primary {
+	.button-variant-es-gradient(@btn-es-primary-color, @btn-es-primary-bg-top, @btn-es-primary-bg, @btn-es-primary-border-color, none);
+}
+.btn-es-success {
+	.button-variant-es-gradient(@btn-es-success-color, @btn-es-success-bg-top, @btn-es-success-bg, @btn-es-success-border-color, none);
+}
+.btn-es-danger {
+	.button-variant-es-gradient(@btn-es-danger-color, @btn-es-danger-bg-top, @btn-es-danger-bg, @btn-es-danger-border-color, none);
+}
+
+
+// Yew another set for ES action
+.btn-es-default-o {
+	.button-variant-es-o(@btn-default-color);
+}
+.btn-es-primary-o {
+	.button-variant-es-o(@btn-primary-bg);
+}
+.btn-es-success-o {
+	.button-variant-es-o(@btn-success-bg;);
+}
+.btn-es-danger-o {
+	.button-variant-es-o(@btn-danger-bg;);
+}
+
+// Link buttons
+// -------------------------
+
+// Make a button look and behave like a link
+.btn-link {
+	color: @link-color;
+	font-weight: normal;
+	border-radius: 0;
+
+	&,
+	&:active,
+	&.active,
+	&[disabled],
+	fieldset[disabled] & {
+		background-color: transparent;
+		.box-shadow(none);
+	}
+	&,
+	&:hover,
+	&:focus,
+	&:active {
+		border-color: transparent;
+	}
+	&:hover,
+	&:focus {
+		color: @link-hover-color;
+		text-decoration: @link-hover-decoration;
+		background-color: transparent;
+	}
+	&[disabled],
+	fieldset[disabled] & {
+		&:hover,
+		&:focus {
+			color: @btn-link-disabled-color;
+			text-decoration: none;
+		}
+	}
+}
+
+
+// Button Sizes
+// --------------------------------------------------
+
+.btn-lg {
+	// line-height: ensure even-numbered height of button next to large input
+	.button-size(@padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @btn-border-radius-large);
+}
+.btn-sm {
+	// line-height: ensure proper height of button next to small input
+	.button-size(@padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @btn-border-radius-small);
+}
+.btn-xs {
+	.button-size(@padding-xs-vertical; @padding-xs-horizontal; @font-size-small; @line-height-small; @btn-border-radius-small);
+}
+
+
+// Block button
+// --------------------------------------------------
+
+.btn-block {
+	display: block;
+	width: 100%;
+}
+
+// Vertically space out multiple block buttons
+.btn-block + .btn-block {
+	margin-top: 5px;
+}
+
+// Specificity overrides
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+	&.btn-block {
+		width: 100%;
+	}
+}
+
+
+
+
+.btn-group-yesno {
+	width: auto;
+	min-width: 90px;
+	display: inline-block;
+
+	margin: 0 auto;
+	vertical-align: middle;
+	white-space: nowrap;
+
+	.btn {
+
+		float: left !important;
+		color: @btn-yesno-color !important;
+		background: @btn-yesno-bg !important;
+		border: 1px solid @btn-yesno-border-color !important;
+		border-radius: 0 !important;
+		.border-left-radius(3px) !important;
+		text-align: center !important;
+		font-size: 12px !important;
+
+		&:hover {
+
+		}
+
+		+ .btn {
+			border-radius: 0 !important;
+			.border-right-radius(3px) !important;
+		}
+
+		&.is-active,
+		&.active {
+			background: #fff !important;
+			color: #fff !important;
+			text-shadow: 0 -1px 0 rgba(0,0,0,0.25) !important;
+		}
+
+		&.btn--yes.is-active,
+		&.btn--yes.active {
+			background: @brand-primary !important;
+			border-color: darken(@brand-primary, 10%) !important;
+		}
+
+		&.btn--no.is-active,
+		&.btn--no.active {
+			background: @brand-danger !important;
+			border-color: darken(@brand-danger, 10%) !important;
+		}
+	}
+}
+
+
+.btn-file {
+	position: relative;
+	overflow: hidden;
+	padding-left: 24px !important; // Reserve space for icon
+	white-space: normal;
+	&:before {
+		display: inline-block;
+		position: absolute;
+		width: @o-radio-size;
+		height: @o-radio-size;
+		line-height: @o-radio-size;
+		left: 4px;
+		top: 6px;
+		
+		font-size: 10px;
+		color: @gray;
+		cursor: pointer;
+
+		font-family: FontAwesome;
+		font-weight: normal;
+		font-style: normal;
+		display: inline-block;
+		text-decoration: inherit;
+		content: "\f093";
+		// color: #fff;
+	}
+}
+.btn-file input[type=file] {
+	position: absolute;
+	top: 0;
+	right: 0;
+	min-width: 100%;
+	min-height: 100%;
+	font-size: 100px;
+	text-align: right;
+	filter: alpha(opacity=0);
+	opacity: 0;
+	outline: none;
+	background: white;
+	cursor: inherit;
+	display: block;
+}
+
+
+
+// Button with loding modifier
+.btn {
+	&.is-loading {
+		text-indent: -9999em !important;
+		min-width: 30px !important;
+		position: relative !important;
+		outline: none;
+		&:after {
+			position: absolute !important;
+			top: 50% !important;
+			left: 50% !important;
+			margin-top: -6px !important;
+			margin-left: -8px !important;
+			content: '' !important;
+			width: 16px !important;
+			height: 11px !important;
+			display: block !important;
+			
+			display: inline-block !important;
+			// margin-left: @fd-base-spacing--sm;
+		}
+	}
+}
+
+// Social buttons
+.btn-es-facebook {
+	.button-variant(#fff, #516DB6, #2b6cb3);
+}
+.btn-es-twitter {
+	.button-variant(#fff, #339AED, #05b3f4);
+}
+.btn-es-linkedin {
+	.button-variant(#fff, #6cb3d3, #4b97c3);
+}

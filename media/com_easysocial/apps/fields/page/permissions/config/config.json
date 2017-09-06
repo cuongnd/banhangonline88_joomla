@@ -1,0 +1,14 @@
+{
+    "title": {
+        "default": "COM_EASYSOCIAL_APP_PAGE_PERMISSIONS_TITLE"
+    },
+    "description": {
+        "default": "COM_EASYSOCIAL_APP_PAGE_PERMISSIONS_DESC"
+    },
+
+    "visible_display": false,
+
+    "searchable": false,
+
+    "default": false
+}

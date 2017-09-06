@@ -48,7 +48,6 @@ if (!isset($controller_name)) {
 if (!isset($controller_task)) {
 	$controller_task = 'display';
 }
-
 $path = JPATH_COMPONENT . DIRECTORY_SEPARATOR . 'controllers' . DIRECTORY_SEPARATOR . strtolower($controller_name) . '.php';
 if (file_exists($path)) {
 	require_once $path;
@@ -59,11 +58,11 @@ if (file_exists($path)) {
 
 // Create the controller
 $classname = 'JChatController' . ucfirst($controller_name);
+
 if (class_exists($classname)) {
 	$controller = new $classname();
 	// Perform the Request task
 	$controller->execute($controller_task);
-
 	// Redirect if set by the controller
 	$controller->redirect();
 } else {

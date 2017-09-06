@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Banhangonline</string>
+    <string name="facebook_app_id">970288516370238</string>
+    <string name="fb_login_protocol_scheme">fb970288516370238</string>
 </resources>

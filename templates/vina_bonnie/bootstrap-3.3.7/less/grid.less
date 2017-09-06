@@ -80,15 +80,15 @@
 //
 // Columns, offsets, pushes, and pulls for the desktop device range.
 
-@media (min-width: @screen-md-min) and (max-width: @screen-md-max)   {
-  .make-grid(md);
-}
 
 
 // Large grid
 //
 // Columns, offsets, pushes, and pulls for the large desktop device range.
 
-@media (min-width: @screen-lg-min)  {
+@media (min-width: @screen-md-min)  {
+  .make-grid(md);
+}
+@media (min-width: @screen-lg-min) and (max-width: @screen-lg-max)   {
   .make-grid(lg);
 }

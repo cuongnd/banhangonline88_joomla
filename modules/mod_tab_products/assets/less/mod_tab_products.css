@@ -19,37 +19,37 @@
   margin-bottom: 5px;
 }
 @media (min-width: 1200px) {
-  .mod_tab_products .list-small-product .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10 {
+  .mod_tab_products .list-small-product .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10 {
     float: left;
   }
-  .mod_tab_products .list-small-product .col-lg-10 {
+  .mod_tab_products .list-small-product .col-md-10 {
     width: 100%;
   }
-  .mod_tab_products .list-small-product .col-lg-9 {
+  .mod_tab_products .list-small-product .col-md-9 {
     width: 90%;
   }
-  .mod_tab_products .list-small-product .col-lg-8 {
+  .mod_tab_products .list-small-product .col-md-8 {
     width: 80%;
   }
-  .mod_tab_products .list-small-product .col-lg-7 {
+  .mod_tab_products .list-small-product .col-md-7 {
     width: 70%;
   }
-  .mod_tab_products .list-small-product .col-lg-6 {
+  .mod_tab_products .list-small-product .col-md-6 {
     width: 60%;
   }
-  .mod_tab_products .list-small-product .col-lg-5 {
+  .mod_tab_products .list-small-product .col-md-5 {
     width: 50%;
   }
-  .mod_tab_products .list-small-product .col-lg-4 {
+  .mod_tab_products .list-small-product .col-md-4 {
     width: 40%;
   }
-  .mod_tab_products .list-small-product .col-lg-3 {
+  .mod_tab_products .list-small-product .col-md-3 {
     width: 30%;
   }
-  .mod_tab_products .list-small-product .col-lg-2 {
+  .mod_tab_products .list-small-product .col-md-2 {
     width: 20%;
   }
-  .mod_tab_products .list-small-product .col-lg-1 {
+  .mod_tab_products .list-small-product .col-md-1 {
     width: 10%;
   }
 }

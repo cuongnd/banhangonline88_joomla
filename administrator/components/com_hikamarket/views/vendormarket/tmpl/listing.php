@@ -69,11 +69,8 @@ $image=hikashop_get('helper.image');
             <th class="hikamarket_vendor_image_title title"><?php
                 echo JHTML::_('grid.sort', JText::_('HIKA_IMAGE'), 'a.vendor_image', $this->pageInfo->filter->order->dir, $this->pageInfo->filter->order->value);
                 ?></th>
-            <th class="hikamarket_vendor_image_title title"><?php
-                echo JHTML::_('grid.sort', JText::_('HIKA_IMAGE'), 'a.vendor_image', $this->pageInfo->filter->order->dir, $this->pageInfo->filter->order->value);
-                ?></th>
             <th class="hikamarket_vendor_websitetitle title"><?php
-                echo JHTML::_('grid.sort', JText::_('HIKA_IMAGE'), 'a.website', $this->pageInfo->filter->order->dir, $this->pageInfo->filter->order->value);
+                echo JHTML::_('grid.sort', JText::_('Link info'), 'a.website', $this->pageInfo->filter->order->dir, $this->pageInfo->filter->order->value);
                 ?></th>
             <th class="hikamarket_vendor_email_title title"><?php
                 echo JHTML::_('grid.sort', JText::_('HIKA_EMAIL'), 'a.vendor_email', $this->pageInfo->filter->order->dir, $this->pageInfo->filter->order->value);
@@ -95,7 +92,7 @@ $image=hikashop_get('helper.image');
         </thead>
         <tfoot>
         <tr>
-            <td colspan="7">
+            <td colspan="9">
                 <?php echo $this->pagination->getListFooter(); ?>
                 <?php echo $this->pagination->getResultsCounter(); ?>
             </td>
@@ -122,8 +119,8 @@ $image=hikashop_get('helper.image');
                     <?php echo $image->display(@$row->vendor_image, true, "", '', '', 100, 100); ?>
                 </td>
                 <td class="hikamarket_vendor_image_value">
-                    <a href="http://www.vatgia.com<?php echo $row->vatgia_link; ?>"><?php echo  str_replace('/','',$row->vatgia_link); ?></a>,
-                    <a href="<?php echo $row->webiste; ?>"><?php echo $row->webiste; ?></a>
+                    <a href="http://www.vatgia.com<?php echo $row->vatgia_link; ?>"><?php echo  str_replace('/','',$row->vatgia_link); ?></a><?php if($row->webiste){ ?> ,
+                    <a href="<?php echo $row->webiste; ?>"><?php echo $row->webiste; ?></a> <?php } ?>
                 </td>
                 <td class="hikamarket_vendor_email_value"><?php
                     echo $this->escape($row->vendor_email);

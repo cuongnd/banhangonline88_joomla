@@ -71,10 +71,6 @@ class ContentViewCategory extends JViewCategory
 	{
 		parent::commonCategoryDisplay();
 		$app=JFactory::getApplication();
-		echo "<pre>";
-		print_r($app->input->getArray(),false);
-		echo "</pre>";
-		die;
 		// Prepare the data
 		// Get the metrics for the structural page layout.
 		$params     = $this->params;

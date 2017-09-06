@@ -1,0 +1,53 @@
+/** 
+* @package      EasySocial
+* @copyright    Copyright (C) 2010 - 2017 Stack Ideas Sdn Bhd. All rights reserved.
+* @license      Proprietary Use License https://stackideas.com/licensing
+**/
+
+.es-exif-icon {
+	font-size: 48px;
+}
+
+.es-exif-icon:before {
+	content:' ';
+	vertical-align:middle;
+	display: inline-block;
+	background-image: url("@{media_uri}/images/exif-icons/exif-icons.svg");
+	background-repeat: no-repeat;
+	background-size: 1em 5em;
+}
+
+.no-svg .es-exif-icon:before {
+	background-image: url("@{media_uri}/images/exif-icons/exif-icons.png");
+}
+
+.es-exif-icon.es-exif-aperture:before {
+	background-position: 0em 0em;
+	width: 1em;
+	height: 1em;
+}
+
+.es-exif-icon.es-exif-camera-iso:before {
+	background-position: 0em -1em;
+	width: 1em;
+	height: 1em;
+}
+
+.es-exif-icon.es-exif-camera-type:before {
+	background-position: 0em -2em;
+	width: 1em;
+	height: 1em;
+}
+
+.es-exif-icon.es-exif-focal-length:before {
+	background-position: 0em -3em;
+	width: 1em;
+	height: 1em;
+}
+
+.es-exif-icon.es-exif-shutter-speed:before {
+	background-position: 0em -4em;
+	width: 1em;
+	height: 1em;
+}
+

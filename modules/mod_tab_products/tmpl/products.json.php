@@ -1,10 +1,10 @@
 <?php
 $app = JFactory::getApplication();
+
 $input = $app->input;
 $post = json_decode(file_get_contents('php://input'));
 $category_id = $post->category_id;
-$params->set('categories', array($category_id));
-$category = reset($modtab_productshelper->get_list_category_product($params, false));
+$category = $modtab_productshelper->get_list_category_product_by_category_id($category_id,$params, false);
 $list_product = $category->list;
 $debug=JUtility::get_debug();
 $file_path = $category->detail->file_path;
@@ -15,7 +15,7 @@ $lazyload = false;
 $cartHelper = hikashop_get('helper.cart');
 $currencyHelper = hikashop_get('class.currency');
 $style = $params->get('product_style', 'table');
-$class_column_table = $params->get('class_column_table', 'col-lg-4 col-md-3');
+$class_column_table = $params->get('class_column_table', 'col-md-4 col-md-3');
 $config =& hikashop_config();
 $defaultParams = $config->get('default_params');
 $temp = new \Joomla\Registry\Registry();
@@ -27,7 +27,7 @@ $url = '';
 <?php if ($style == 'table') {
     $list_list_product=array_chunk($list_product,3);
     ?>
-    <!--col-lg col-md-->
+    <!--col-md col-md-->
     <?php foreach($list_list_product as $list_product){ ?>
         <div class="row ">
             <?php foreach ($list_product AS $product) { ?>
@@ -56,7 +56,7 @@ $url = '';
             <?php } ?>
         </div>
     <?php } ?>
-    <!-- end col-lg col-md -->
+    <!-- end col-md col-md -->
 <?php } elseif ($style == 'slider') { ?>
     <?php
     $total_item_on_slide_screen = $params->get('total_item_on_slide_screen', 4);
@@ -65,12 +65,12 @@ $url = '';
     <div class="wrapper-content ">
 
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-md-12">
 
                 <div class="list-sub-category">
                     <div class="row">
-                        <button class="col-lg-1 backward pull-left"><i class="icon-chevron-left"></i></button>
-                        <div class="col-lg-10 slider frame">
+                        <button class="col-md-1 backward pull-left"><i class="icon-chevron-left"></i></button>
+                        <div class="col-md-10 slider frame">
                             <ul class="sub-category-item slidee">
                                 <?php for ($i = 0; $i < count($list_sub_category_detail); $i++) { ?>
                                     <?php
@@ -87,7 +87,7 @@ $url = '';
                                 <?php } ?>
                             </ul>
                         </div>
-                        <button class="forward pull-left col-lg-1"><i class="icon-chevron-right"></i></button>
+                        <button class="forward pull-left col-md-1"><i class="icon-chevron-right"></i></button>
                     </div>
 
                 </div>
@@ -95,7 +95,7 @@ $url = '';
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-md-12">
                 <div class="banner">
                     <?php echo $image->display($file_path, false, "", 'class="category_image img-responsive"', '', 980, 250, '', true); ?>
                 </div>
@@ -115,7 +115,7 @@ $url = '';
                             $link = hikashop_contentLink('product&task=show&cid=' . $product->product_id);
                             ?>
                             <div
-                                class="slide item item-<?php echo $product->product_id ?> col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                class="slide item item-<?php echo $product->product_id ?> col-xs-4 col-sm-4 col-md-4 col-md-4">
                                 <?php echo $image->display($first_image, false, "", 'class="image  img-responsive"', '', 200, 300, '', true); ?>
                                 <?php
                                 $ajax = 'return hikashopModifyQuantity(\'' . $product->product_id . '\',field,1,0,\'cart\',' . $module_id . ')';
@@ -133,7 +133,7 @@ $url = '';
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-md-12">
                 <div class="list-small-product">
                     <?php
                     $total_column = 10;
@@ -153,7 +153,7 @@ $url = '';
                                     $link = hikashop_contentLink('product&task=show&cid=' . $small_product->product_id);
                                     ?>
                                     <div
-                                        class="col-lg-<?php echo $total_column / $column ?> col-md-<?php echo $total_column / $column ?>">
+                                        class="col-md-<?php echo $total_column / $column ?> col-md-<?php echo $total_column / $column ?>">
                                         <div
                                             id="small-product_<?php echo $module->id ?>_<?php echo $small_product->product_id ?>"
                                             class="small-product ">

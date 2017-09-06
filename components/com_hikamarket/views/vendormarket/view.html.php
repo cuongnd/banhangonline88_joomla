@@ -375,6 +375,7 @@ class vendormarketViewvendormarket extends HikamarketView {
 			$url_itemid='&Itemid='.$Itemid;
 
 		$vendor = hikamarket::loadVendor(true);
+
 		$this->assignRef('vendor', $vendor);
 
 		$plugin_edition = ($vendor->vendor_id == 0 || $vendor->vendor_id == 1) || ($vendor->vendor_id > 1 && (int)$config->get('plugin_vendor_config', 0) > 0);

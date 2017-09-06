@@ -155,7 +155,6 @@ class SocialTemplate
 		$template				= new stdClass();
 		$template->file 		= FD::resolve($namespace . '.' . $this->extension);
 		$template->script 		= FD::resolve($namespace . '.js');
-
 		return $template;
 	}
 

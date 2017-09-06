@@ -35,7 +35,8 @@ public class m_default extends LinearLayout {
         final String module_content=module.getContent();
 
         m_default_view = (LinearLayout)inflate(getContext(), R.layout.modules_mod_custom_tmpl_m_default, this);
-        TagHtml html= JUtilities.getGsonParser().fromJson(module_content, TagHtml.class);
+        return;
+        /*TagHtml html= JUtilities.getGsonParser().fromJson(module_content, TagHtml.class);
         Timber.d("html module custom %s",module_content);
         Timber.d("html tag module custom %s",html.toString());
         Map<String, StyleSheet> list_style_sheet = new HashMap<String, StyleSheet>();
@@ -44,7 +45,7 @@ public class m_default extends LinearLayout {
         LinearLayout root=new LinearLayout(app.getContext());
         TagHtml.get_html_linear_layout(html,root,list_style_sheet);
         m_default_view.addView(root);
-        this.setLayoutParams(layout_params);
+        this.setLayoutParams(layout_params);*/
     }
 
 
