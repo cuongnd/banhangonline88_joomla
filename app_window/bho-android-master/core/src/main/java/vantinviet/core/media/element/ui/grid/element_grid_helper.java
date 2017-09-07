@@ -99,7 +99,6 @@ public class element_grid_helper {
 
             int rowColorEven = context.getResources().getColor(R.color.table_data_row_even);
             int rowColorOdd = context.getResources().getColor(R.color.table_data_row_odd);
-            table_view.setDataRowColoriser(TableDataRowColorizers.alternatingRows(rowColorEven, rowColorOdd));
             table_view.setHeaderSortStateViewProvider(SortStateViewProviders.brightArrows());
 
             table_view.setColumnWeight(0, 2);

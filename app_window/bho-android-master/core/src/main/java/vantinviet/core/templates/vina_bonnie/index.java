@@ -101,6 +101,7 @@ public class index extends LinearLayout {
 
     private static void render_layout(ArrayList<Row> layout, LinearLayout rootLinearLayout, int screen_size_width, int screen_size_heght) {
         JApplication app= JFactory.getApplication();
+        String tmpl=app.input.getString("tmpl","");
         LayoutParams layout_params;
         if(layout!=null)for (Row row: layout) {
             layout_params = new LayoutParams(screen_size_width,screen_size_heght  );
@@ -179,10 +180,10 @@ public class index extends LinearLayout {
 
             }
             String footerFixed =row.getFooterFixed();
-            if(footerFixed!=null && footerFixed.equals("1")){
-                BottomNavigationView   bottomNavigationView = (BottomNavigationView)app.getCurrentActivity().findViewById(R.id.bottom_navigation);
-                bottomNavigationView.removeAllViews();
-                bottomNavigationView.addView(new_row_linear_layout);
+            if(!tmpl.equals("component")  && footerFixed!=null && footerFixed.equals("1")){
+                LinearLayout   bottom_navigation = (LinearLayout)app.getCurrentActivity().findViewById(R.id.bottom_navigation);
+                bottom_navigation.removeAllViews();
+                bottom_navigation.addView(new_row_linear_layout);
             }else{
                 rootLinearLayout.addView(new_row_linear_layout);
             }

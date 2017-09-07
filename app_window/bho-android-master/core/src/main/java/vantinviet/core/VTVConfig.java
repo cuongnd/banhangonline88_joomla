@@ -85,6 +85,10 @@ public class VTVConfig {
         return content;
     }
 
+    public int getScreen_size_height() {
+        return screen_size_height;
+    }
+
     public void setScreenDensity(int screenDensity) {
         VTVConfig.screenDensity = screenDensity;
     }

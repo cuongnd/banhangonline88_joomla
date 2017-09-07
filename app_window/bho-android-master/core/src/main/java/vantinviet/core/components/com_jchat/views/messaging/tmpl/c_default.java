@@ -25,18 +25,14 @@ import static vantinviet.core.components.com_hikashop.views.product.tmpl.show.vi
 
 public class c_default {
     private ShowMessaging show_messaging = null;
-    JChatModelMessages messengers;
     static JApplication app = JFactory.getApplication();
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public c_default(LinearLayout linear_layout) {
         JUser user=JFactory.getUser();
-
+        JChatModelMessages jChatModelMessages=JChatModelMessages.getInstance();
         String component_response = app.getComponent_response();
         Gson gson = new Gson();
-        JsonReader reader = new JsonReader(new StringReader(component_response));
-        reader.setLenient(true);
-        messengers= gson.fromJson(reader, JChatModelMessages.class);
-        show_messaging = new ShowMessaging(app.getCurrentActivity(), messengers);
+        show_messaging = new ShowMessaging(app.getCurrentActivity());
         linear_layout.addView(show_messaging);
     }
 }

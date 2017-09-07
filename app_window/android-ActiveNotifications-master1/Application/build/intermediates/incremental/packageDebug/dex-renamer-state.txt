@@ -1,7 +1,0 @@
-#Wed Mar 15 14:12:14 ICT 2017
-base.0=C\:\\Users\\cuongnd\\Downloads\\android-ActiveNotifications-master\\android-ActiveNotifications-master\\Application\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_e3c84f6a7f58d404792514f587c460cd1e020b90
-renamed.1=classes.dex
-renamed.0=classes2.dex
-file.1=C\:\\Users\\cuongnd\\Downloads\\android-ActiveNotifications-master\\android-ActiveNotifications-master\\Application\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_475b28c291cd76762d53d0d8334bae48abad5600\\classes.dex
-base.1=C\:\\Users\\cuongnd\\Downloads\\android-ActiveNotifications-master\\android-ActiveNotifications-master\\Application\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_475b28c291cd76762d53d0d8334bae48abad5600
-file.0=C\:\\Users\\cuongnd\\Downloads\\android-ActiveNotifications-master\\android-ActiveNotifications-master\\Application\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_e3c84f6a7f58d404792514f587c460cd1e020b90\\classes.dex

@@ -16,16 +16,14 @@ import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.media.RingtoneManager;
+import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
 import android.os.Build;
 import android.preference.PreferenceManager;
 import android.support.annotation.RequiresApi;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.RemoteInput;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.NotificationCompat;
 import android.text.TextUtils;
 import android.util.Base64;
@@ -68,6 +66,8 @@ import com.github.nkzawa.emitter.Emitter;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import static vantinviet.core.libraries.legacy.controller.JControllerLegacy.app;
+
 
 /**
  * Created by cuongnd on 6/7/2016.
@@ -97,7 +97,7 @@ public class JApplication {
     public Template template;
     public ArrayList<Module> modules=new ArrayList<Module>();
     public JInput input;
-    public static AppCompatActivity currentActivity;
+    public static FragmentActivity currentActivity;
     private String link_redirect;
     public static final String LIST_DATA_RESPONSE_BY_URL = "list_data_response_by_url";
     private ProgressDialog progressDialog;
@@ -266,7 +266,6 @@ public class JApplication {
 
         int width = metrics.widthPixels;
         int height = metrics.heightPixels;
-
         System.out.println("Screen Density=" + screenDensity + "\n"
                 + "Screen DensityDPI=" + screenDensityDPI + "\n"
                 + "Screen Scaled DensityDPI=" + screenscaledDensity + "\n"
@@ -290,10 +289,10 @@ public class JApplication {
     }
 
 
-    public void setCurrentActivity(AppCompatActivity currentActivity) {
+    public void setCurrentActivity(FragmentActivity currentActivity) {
         this.currentActivity = currentActivity;
     }
-    public static AppCompatActivity getCurrentActivity() {
+    public static FragmentActivity getCurrentActivity() {
         return  currentActivity;
     }
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -362,10 +361,9 @@ public class JApplication {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public void execute(AppCompatActivity mainActivity, String root_url) {
+    public void execute(FragmentActivity mainActivity, String root_url) {
         vtvConfig.setRootUrl(root_url);
-        ActionBar actionBar = mainActivity.getSupportActionBar();
-        actionBar.hide();
+
         mainActivity.setContentView(get_layout_activity_main());
 
         setFragmentManager(mainActivity.getFragmentManager());
@@ -382,7 +380,6 @@ public class JApplication {
         setProgressDialog(JUtilities.generateProgressDialog(mainActivity, false));
         setAlertDialog(JUtilities.generateProgressAlertDialog(mainActivity, false));
         //GifImageView gif_image_view=(GifImageView)getCurrentActivity().findViewById(R.id.bg);
-
         this.setup_facebook_login();
         check_connection();
 
@@ -407,7 +404,7 @@ public class JApplication {
         }
     }
 
-    private Emitter.Listener onNewMessage = new Emitter.Listener() {
+    private Emitter.Listener onNewMessageNotification = new Emitter.Listener() {
         @Override
         public void call(final Object... args) {
             getCurrentActivity().runOnUiThread(new Runnable() {
@@ -415,20 +412,24 @@ public class JApplication {
                 @Override
                 public void run() {
                     JSONObject data = (JSONObject) args[0];
-                    String username;
+                    String name;
                     String message;
+                    String socketId;
                     String msg_key;
                     try {
-                        username = data.getString("userName");
+                        name = data.getString("name");
                         message = data.getString("msg");
                         msg_key = data.getString("msg_key");
+                        socketId = data.getString("socketId");
                         Timber.d(message);
                     } catch (JSONException e) {
                         return;
                     }
+                    if(!socketId.equals(getSocketId())){
+                        // add the message to view
+                        addMessage(msg_key,name, message);
+                    }
 
-                    // add the message to view
-                    addMessage(msg_key,username, message);
                 }
             });
 
@@ -439,6 +440,7 @@ public class JApplication {
     public void setSocketId(String socketId) {
         this.socketId = socketId;
     }
+
 
     private Emitter.Listener socketConnected = new Emitter.Listener() {
         @Override
@@ -469,11 +471,10 @@ public class JApplication {
     };
     @TargetApi(Build.VERSION_CODES.KITKAT_WATCH)
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-    private void addMessage(String msg_key,String username, String message) {
-
-        Uri path = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+    private void addMessage(String msg_key,String name, String message) {
 
 
+        Timber.d(app.getCurrentActivity().getPackageName());
         Intent intentQickReply = new Intent(getContext(), getCurrentActivity().getClass());
         intentQickReply.setAction(AppConstant.QUICK_REPLY);
         intentQickReply.putExtra("msg_key",msg_key);
@@ -506,10 +507,14 @@ public class JApplication {
                 .addAction(actionQuickReply)
                 .addAction(R.drawable.facebook_icon, JText._("Room"), pendingIntentRoomChat)
                 .addAction(R.drawable.facebook_icon, JText._("Delete"), pendingIntentDeleteMessenger)
-                .setContentTitle(username)
+                .setContentTitle(name)
                 .setAutoCancel(true)
-                .setSound(path)
                 .build();
+        int resID=R.raw.message;
+
+        MediaPlayer mediaPlayer=MediaPlayer.create(getContext(),resID);
+        mediaPlayer.start();
+
         NotificationManager notificationManager = (NotificationManager)
                 getCurrentActivity().getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(Integer.parseInt(msg_key), notification);
@@ -670,7 +675,7 @@ public class JApplication {
 
             String cookie = CookieManager.getInstance().getCookie(current_root_url);
             mSocket = IO.socket(current_root_url,options);
-            mSocket.on("newMessage", onNewMessage);
+            mSocket.on("newMessage", onNewMessageNotification);
             mSocket.on("connected", socketConnected);
             mSocket.connect();
 
@@ -816,4 +821,5 @@ public class JApplication {
     public String getSocketId() {
         return socketId;
     }
+
 }

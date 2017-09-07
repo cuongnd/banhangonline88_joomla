@@ -8,8 +8,8 @@ android {
         applicationId "vantinviet.banhangonline88"
         minSdkVersion 15
         targetSdkVersion 25
-        versionCode 38
-        versionName "3.5"
+        versionCode 40
+        versionName "3.6"
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 

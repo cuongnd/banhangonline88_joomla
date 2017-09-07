@@ -24,6 +24,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+
 import de.codecrafters.tableview.SortableTableView;
 import de.codecrafters.tableview.listeners.TableDataClickListener;
 import de.codecrafters.tableview.toolkit.SimpleTableHeaderAdapter;
@@ -330,7 +331,6 @@ public class JModuleHelper {
 
         int rowColorEven = context.getResources().getColor(R.color.table_data_row_even);
         int rowColorOdd = context.getResources().getColor(R.color.table_data_row_odd);
-        table_view.setDataRowColoriser(TableDataRowColorizers.alternatingRows(rowColorEven, rowColorOdd));
         table_view.setHeaderSortStateViewProvider(SortStateViewProviders.brightArrows());
 
         table_view.setColumnWeight(0, 2);
