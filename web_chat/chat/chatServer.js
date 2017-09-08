@@ -19,6 +19,7 @@ var conf = {
 var express = require('express'),
     http = require('http'),
     events = require('events'),
+    request = require('request'),
     _ = require('underscore'),
     sanitize = require('validator').sanitize;
 // HTTP Server configuration & launch
@@ -98,6 +99,7 @@ io.sockets.on('connection', function (socket) {
     var system_user_id=socket.handshake.query['system_user_id'];
     var userName=socket.handshake.query['userName'];
     var title=socket.handshake.query['title'];
+    var url=socket.handshake.query['url'];
     var old_socket_id=socket.handshake.query['old_socket_id'];
     var os=socket.handshake.query['os'];
     var token=socket.handshake.query['token'];
@@ -153,6 +155,9 @@ io.sockets.on('connection', function (socket) {
         }
     }
 
+    request('http://ipinfo.io', function(error, res, body) {
+        console.log(JSON.parse(body))
+    });
 
     for (var room in listRoom){
         var listSocket = io.sockets.sockets;
@@ -173,9 +178,11 @@ io.sockets.on('connection', function (socket) {
     // Notify subscription to all users in room
     var data = {'room': conf.mainroom,name:socket.name, 'userName': socket.userName, 'msg': '----- Joined the room -----','socketId':socket.id, 'id': null};
     io.to(conf.mainroom).emit('userJoinsRoom', data);
-
+    if(url!=null && url!=""){
+        var msg='<a href="'+url+'">'+title+'</a>';
+    }
     // Notify subscription to all users in room
-    var data = {'room': conf.mainroom,name:socket.name, 'userName': socket.userName, 'msg': 'viewing page:'+title,'socketId':socket.id, 'id': null};
+    var data = {'room': conf.mainroom,name:socket.name, 'userName': socket.userName, 'msg': 'viewing page:'+msg,url:url,'socketId':socket.id, 'id': null};
     io.to(conf.mainroom).emit('sendDocumentPage', data);
 
     var listMessenger=messengerHistory[conf.mainroom];
@@ -368,7 +375,9 @@ io.sockets.on('connection', function (socket) {
             listMessenger=[];
         }
         if(listMessenger.length>100){
+            listMessenger = listMessenger.reverse();
             listMessenger.pop();
+            listMessenger = listMessenger.reverse();
         }
         var msg_key=create_random_number_key(6);
         var msgItem=data;
@@ -419,8 +428,17 @@ io.sockets.on('connection', function (socket) {
         });*/
     });
     socket.on('getListUserOnline', function (data) {
-        socket.emit('getListUserOnline', clients);
-        logger.emit('newEvent', 'getListUserOnline', clients);
+
+        var listUserOnline={};
+        for (var key in clients){
+            var client=clients[key];
+            var token=client.token;
+            if (typeof listUserOnline[token] =="undefined") {
+                listUserOnline[token]=client;
+            }
+        }
+        socket.emit('getListUserOnline', listUserOnline);
+        logger.emit('newEvent', 'getListUserOnline', listUserOnline);
     });
     socket.on('getListSupportUserOnline', function (data) {
         socket.emit('getListSupportUserOnline', clients);
@@ -490,8 +508,19 @@ function update_user_online(socket,clients,io){
     console.log('list user online');
     console.log(clients);
     var key_emit="update-list-user-online";
-    socket.broadcast.emit(key_emit,clients);
-    io.sockets.emit(key_emit, clients);
+
+    var listUserOnline={};
+    for (var key in clients){
+        var client=clients[key];
+        var token=client.token;
+        if (typeof listUserOnline[token] =="undefined") {
+            listUserOnline[token]=client;
+        }
+    }
+
+
+    socket.broadcast.emit(key_emit,listUserOnline);
+    io.sockets.emit(key_emit, listUserOnline);
 }
 // Automatic message generation (for testing purposes)
 if (conf.debug) {
