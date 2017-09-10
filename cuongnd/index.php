@@ -1,3 +1,8 @@
+<?php
+define('PATH_ROOT', __DIR__);
+defined('DS') or define('DS', DIRECTORY_SEPARATOR);
+require_once PATH_ROOT.DS.'config.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>MyProfile - Bootstrap Resume Template</title>
+    <title >MyProfile - Nguyễn Đình Cường</title>
 
     <!-- favicon -->
     <link href="favicon.png" rel=icon>
@@ -16,6 +21,7 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/jquery-ui.css" rel="stylesheet">
     <link href="css/animate.min.css" rel="stylesheet">
 
     <!-- owl carousal -->
@@ -42,6 +48,39 @@
 
 <header class="header">
     <div class="container">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand"  href="#">Home</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#activity">Hoạt động <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#skills">Kỹ năng</a></li>
+                        <li><a href="#produts">Sản phẩm</a></li>
+                        <li><a href="#contact">Liên hệ</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Language <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/cuongnd/">Vietnamese</a></li>
+                                <li><a href="/cuongnd/en.php">English</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
         <div class="row">
             <div class="col-md-3">
                 <div class="profile-img">
@@ -52,23 +91,42 @@
             <div class="col-md-9">
                 <div class="name-wrapper">
                     <h1 class="name">Nguyễn Đình Cường</h1>
-                    <span>Web Designer</span>
+                    <span>Web programmer</span>
                 </div>
                 <p>
                     Như chúng ta đã biết nghề lập trình không khô khan, nhàn chán như mọi người vẫn nghĩ mà nó là cả một thế giới thu nhỏ mà bạn có thể thỏa sức khám phá. Ở nghề nào cũng vậy để thành công bạn cũng cần phải nỗ lực và dành thời gian cho nó, chăm chút nó như một đứa trẻ vậy. Nhưng với công nghệ thông tin nói chung và nghề lập trình nói riêng lại càng cần hơn. Tại sao vậy ? Đơn giản thôi vì đây là một nghề không hoàn toàn dễ dàng, áp lực rất cao nếu bạn không có một cách nhìn nhận đúng đắn, yêu thích và đam mê sẽ rất khó để theo được nghề này.
                 </p>
-
+                <p class="hide">
+                    Tôi có 7 năm kinh nghiệm trang việc thiết kê website thương mại điện tử Tôi Thành thạo các công cụ thiết kế website và ngôn ngữ lập trình website
+                    hiểu biết rõ ưu nhược điểm của từng hệ thống mã nguồn mở
+                </p>
 
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <div class="personal-details">
                             <strong>07/02/1983</strong>
                             <small>Ngày sinh</small>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
+                        <div class="personal-details">
+                            <strong>7</strong>
+                            <small>Năm kinh nghiệm</small>
+                        </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-2">
+                        <div class="personal-details">
+                            <strong>0966 742 999</strong>
+                            <small>Điện thoại</small>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="personal-details">
+                            <strong>nguyen.dinh.cuong1</strong>
+                            <small>Skype</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
                         <div class="personal-details">
                             <strong>Đọc hiểu Tiếng anh chuyên nghành, giao tiếp cơ bản</strong>
                             <small>Ngoại ngữ</small>
@@ -83,7 +141,7 @@
 <!-- .header-->
 
 
-<section class="expertise-wrapper section-wrapper">
+<section id="activity" class="expertise-wrapper section-wrapper">
     <div class="container">
         <div class="row">
             <div class="col-md-3">
@@ -126,7 +184,7 @@
 
                     <div class="col-md-6 wow bounceInUp">
                         <div class="expertise-item">
-                            <h3>Viêt ứng dụng Android</h3>
+                            <h3>Viết ứng dụng Android</h3>
 
                             <p>
                                 Với thời đại công nghệ mobile thì sử dựng java để viết các ứng dụng Android phục vụ người dùng là một điều bắt buộc đối với một lập trình viên như tôi
@@ -155,6 +213,46 @@
                     </div>
 
                 </div>
+                <div class="row">
+                    <div class="col-md-12 wow bounceInUp">
+                        <div class="expertise-item">
+                            <h3>Tham gia xây dựng các hệ thống opensource khác</h3>
+
+                            <div>
+                                Ngoài joomla tôi còn có thể làm việc được với rất nhiều các hệ thống opensource
+                                <ul class="open-source">
+                                    <li>
+                                        I. Loại hệ thống chuyên về Quản trị nội dung, cổng thông tin (CMS – Content Management System / Portals)
+                                        <br/>
+                                        Drupal,PHP-Fusion, CMS Made Simple,NukeViet,MODx,Mambo,MAXdev,XOOPS,PHP-Nuke
+                                    </li>
+                                    <li>
+                                        II,Loại hệ thống chuyên về Diễn đàn (Forum)
+                                        <br/>
+                                        MyBB,phpBB,,SMF,PunBB,Phorum,AEF,Vanilla,UseBB,miniBB,XMB
+                                    </li>
+                                    <li>
+                                        III. Loại hệ thống chuyên về Blog
+                                        <br/>
+                                        WordPress,Textpattern,Nucleus CMS,LifeType,Serendipity,Dotclear,Zomplog,FlatPress,NibbleBlog,Croogo
+                                    </li>
+                                    <li>
+                                        IV.Loại hệ thống chuyên về thương mại điện tử (eCommerce)
+                                        <br/>
+                                        Magento,Zen Cart,OpenCart,osCommerce,PrestaShop,AlegroCart,Freeway,eclime,osCSS,TomatoCart
+                                    </li>
+                                    <li>
+                                        V. Loại hệ thống chuyên về đào tạo trực tuyến (LCMS – Learning Course Management System)
+                                        <br/>
+                                        Moodle,ATutor,eFront,Dokeos,Docebo,Interact,DrupalEd,ILIAS,Open Conference Systems,Open Journal Systems
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
             </div>
         </div>
         <!-- .row -->
@@ -163,218 +261,7 @@
     </div>
 </section>
 <!-- .expertise-wrapper -->
-
-<section class="section-wrapper skills-wrapper">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <div class="section-title">
-                    <h2>Kỹ năng</h2>
-                </div>
-            </div>
-
-            <div class="col-md-9">
-                <div class="row">
-                    <div class="col-md-4 wow slideInLeft">
-                        <div class="progress-wrapper">
-
-                            <h3>CODING</h3>
-                            <!-- /.skill-progress -->
-
-                            <div class="progress-item">
-                                <span class="progress-title">PHP</span>
-
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0"
-                                         aria-valuemax="100" style="width: 90%;"><span
-                                            class="progress-percent"> 90%</span>
-                                    </div>
-                                </div>
-                                <!-- /.progress -->
-                            </div>
-                            <!-- /.skill-progress -->
-                            <!-- /.skill-progress -->
-
-                            <div class="progress-item">
-                                <span class="progress-title">Joomla</span>
-
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0"
-                                         aria-valuemax="100" style="width: 90%;"><span
-                                            class="progress-percent"> 90%</span>
-                                    </div>
-                                </div>
-                                <!-- /.progress -->
-                            </div>
-                            <!-- /.skill-progress -->
-
-                            <div class="progress-item">
-                                <span class="progress-title">HTML5</span>
-
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="62" aria-valuemin="0"
-                                         aria-valuemax="100" style="width: 62%"><span
-                                            class="progress-percent"> 62%</span>
-                                    </div>
-                                </div>
-                                <!-- .progress -->
-                            </div>
-                            <!-- .skill-progress -->
-
-                            <div class="progress-item">
-                                <span class="progress-title">CSS3</span>
-
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0"
-                                         aria-valuemax="100" style="width: 90%"><span
-                                            class="progress-percent"> 90%</span>
-                                    </div>
-                                </div>
-                                <!-- /.progress -->
-                            </div>
-                            <div class="progress-item">
-                                <span class="progress-title">Java</span>
-
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0"
-                                         aria-valuemax="100" style="width: 60%"><span
-                                            class="progress-percent"> 60%</span>
-                                    </div>
-                                </div>
-                                <!-- /.progress -->
-                            </div>
-
-
-                            <div class="progress-item">
-                                <span class="progress-title">JavaScript</span>
-
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0"
-                                         aria-valuemax="100" style="width: 55%;"><span
-                                            class="progress-percent"> 55%</span>
-                                    </div>
-                                </div>
-                                <!-- /.progress -->
-                            </div>
-                            <div class="progress-item">
-                                <span class="progress-title">Less</span>
-
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0"
-                                         aria-valuemax="100" style="width: 60%;"><span
-                                            class="progress-percent"> 60%</span>
-                                    </div>
-                                </div>
-                                <!-- /.progress -->
-                            </div>
-                            <!-- /.skill-progress -->
-
-
-                        </div>
-                        <!-- /.progress-wrapper -->
-                    </div>
-                    <div class="col-md-4 wow bounceInUp">
-                        <div class="progress-wrapper">
-                            <h3>DESIGN TOOLS</h3>
-
-                            <div class="progress-item">
-                                <span class="progress-title">Photoshop</span>
-
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="62" aria-valuemin="0"
-                                         aria-valuemax="100" style="width: 90%"><span
-                                            class="progress-percent"> 90%</span>
-                                    </div>
-                                </div>
-                                <!-- .progress -->
-                            </div>
-                            <!-- .skill-progress -->
-
-                            <div class="progress-item">
-                                <span class="progress-title">Illustrator</span>
-
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0"
-                                         aria-valuemax="100" style="width: 70%"><span
-                                            class="progress-percent"> 50%</span>
-                                    </div>
-                                </div>
-                                <!-- /.progress -->
-                            </div>
-
-                        </div>
-                        <!-- /.progress-wrapper -->
-                    </div>
-                    <div class="col-md-4 wow slideInRight">
-                        <div class="progress-wrapper">
-
-                            <h3>Các công cụ khác</h3>
-
-                            <div class="progress-item">
-                                <span class="progress-title">Git</span>
-
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="62" aria-valuemin="0"
-                                         aria-valuemax="100" style="width: 62%"><span
-                                            class="progress-percent"> 62%</span>
-                                    </div>
-                                </div>
-                                <!-- .progress -->
-                            </div>
-                            <!-- .skill-progress -->
-
-                            <div class="progress-item">
-                                <span class="progress-title">Svn</span>
-
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"
-                                         aria-valuemax="100" style="width: 70%"><span
-                                            class="progress-percent"> 70%</span>
-                                    </div>
-                                </div>
-                                <!-- /.progress -->
-                            </div>
-                            <!-- /.skill-progress -->
-
-                            <div class="progress-item">
-                                <span class="progress-title">Linux</span>
-
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0"
-                                         aria-valuemax="100" style="width: 40%;"><span
-                                            class="progress-percent"> 40%</span>
-                                    </div>
-                                </div>
-                                <!-- /.progress -->
-                            </div>
-                            <!-- /.skill-progress -->
-
-                            <div class="progress-item">
-                                <span class="progress-title">Windows</span>
-
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0"
-                                         aria-valuemax="100" style="width: 90%;"><span
-                                            class="progress-percent"> 90%</span>
-                                    </div>
-                                </div>
-                                <!-- /.progress -->
-                            </div>
-                            <!-- /.skill-progress -->
-
-
-                        </div>
-                        <!-- /.progress-wrapper -->
-                    </div>
-
-                </div>
-                <!--.row -->
-            </div>
-        </div>
-
-    </div>
-    <!-- .container-fluid -->
-</section>
+    <?php include PATH_ROOT.DS.'skill.php';?>
 <!-- .skills-wrapper -->
 
 <section class="section-wrapper section-experience">
@@ -464,19 +351,20 @@
 
 <!-- .section-profile -->
 
-<section class="section-wrapper portfolio-section">
+<section id="produts" class="section-wrapper portfolio-section">
     <div class="container">
         <div class="row">
             <div class="col-md-3">
                 <div class="section-title">
                     <h2>Một số sản phẩm</h2>
+                    <span>Nhấn vào hình ảnh để xem video giới thiệu</span>
                 </div>
             </div>
 
             <div class="col-md-9">
                 <div class="row">
                     <div class="col-md-4 col-sm-6">
-                        <a class="portfolio-item" href="#">
+                        <a class="portfolio-item youtube" title="About banhangonline88.com" href="http://www.youtube.com/watch?v=3xL24Venor8">
                             <div class="portfolio-thumb">
                                 <img src="img/portfolio-1.jpg" alt="">
                             </div>
@@ -518,7 +406,7 @@
                         <!-- .portfolio-item -->
                     </div>
                     <div class="col-md-4 col-sm-6">
-                        <a class="portfolio-item" href="#">
+                        <a class="portfolio-item youtube" title="Booking manager transfer, hotel, excursion" href="http://www.youtube.com/watch?v=BfzCNHFklSk">
                             <div class="portfolio-thumb">
                                 <img src="img/portfolio-4.jpg" alt="">
                             </div>
@@ -532,7 +420,7 @@
                         <!-- .portfolio-item -->
                     </div>
                     <div class="col-md-4 col-sm-6">
-                        <a class="portfolio-item" href="#">
+                        <a class="portfolio-item youtube" title="Frontend booking tour passenger and build room"  href="http://www.youtube.com/watch?v=DhP8Rsc2SxU">
                             <div class="portfolio-thumb">
                                 <img src="img/portfolio-5.jpg" alt="">
                             </div>
@@ -541,12 +429,14 @@
                                 <h3>frontend tour, transfer,hotel manager</h3>
                                 <small>viethandtravel.com</small>
                             </div>
+                            <!-- Modal -->
                             <!-- portfolio-info -->
                         </a>
+
                         <!-- .portfolio-item -->
                     </div>
                     <div class="col-md-4 col-sm-6">
-                        <a class="portfolio-item" href="#">
+                        <a class="portfolio-item youtube" title="Booking transfer, hotel, excursion" href="http://www.youtube.com/watch?v=4brQaXGsbpo">
                             <div class="portfolio-thumb">
                                 <img src="img/portfolio-6.jpg" alt="">
                             </div>
@@ -569,7 +459,7 @@
 
 
 
-<section class="section-contact section-wrapper">
+<section id="contact" class="section-contact section-wrapper">
     <div class="container">
         <div class="row">
             <div class="col-md-3">
@@ -650,16 +540,7 @@
 
 </div>
 <!-- #main-wrapper -->
+<?php include PATH_ROOT.DS.'js_script.php';?>
 
-<!-- jquery -->
-<script src="js/jquery-2.1.4.min.js"></script>
-<!-- Bootstrap -->
-<script src="js/bootstrap.min.js"></script>
-<!--owl carousal-->
-<script src="js/owl.carousel.min.js"></script>
-<script src="js/wow.min.js"></script>
-<!--theme script-->
-<script src="js/less.min.js"></script>
-<script src="js/scripts.js"></script>
 </body>
 </html>

@@ -9,6 +9,15 @@ jQuery(function ($) {
     (function () {
         $('#preloader').delay(200).fadeOut('slow');
     }());
+    (function () {
+        new WOW().init();
+    }());
+    (function () {
+        $("a.youtube").YouTubePopup({ autoplay: 0, draggable: true });
+    }());
+    (function () {
+        $('html').smoothScroll(500);
+    }());
 
 
     // --------------------------------------------------------------------
@@ -24,6 +33,7 @@ jQuery(function ($) {
 
         });
     }());
-    new WOW().init();
+
+
 
 }); // JQuery end
