@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install version="1.5" type="plugin" group="system">
+	<name>HikaShop Deposit plugin</name>
+	<creationDate>December 2011</creationDate>
+	<version>1.0.0</version>
+	<author>HikaShop</author>
+	<authorEmail>dev@hikashop.com</authorEmail>
+	<authorUrl>http://www.hikashop.com</authorUrl>
+	<copyright>Copyright (C) 2012 HIKASHOP SARL - All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<description>HikaShop Deposit plugin</description>
+	<files>
+		<filename plugin="hikashop_deposit">hikashop_deposit.php</filename>
+	</files>
+	<params addpath="/components/com_hikashop/params">
+	</params>
+</install>

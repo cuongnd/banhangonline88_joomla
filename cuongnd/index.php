@@ -92,6 +92,7 @@ require_once PATH_ROOT.DS.'config.php';
                 <div class="name-wrapper">
                     <h1 class="name">Nguyễn Đình Cường</h1>
                     <span>Web programmer</span>
+                    <h3>http://banhangonline88.com/cuongnd/</h3>
                 </div>
                 <p>
                     Như chúng ta đã biết nghề lập trình không khô khan, nhàn chán như mọi người vẫn nghĩ mà nó là cả một thế giới thu nhỏ mà bạn có thể thỏa sức khám phá. Ở nghề nào cũng vậy để thành công bạn cũng cần phải nỗ lực và dành thời gian cho nó, chăm chút nó như một đứa trẻ vậy. Nhưng với công nghệ thông tin nói chung và nghề lập trình nói riêng lại càng cần hơn. Tại sao vậy ? Đơn giản thôi vì đây là một nghề không hoàn toàn dễ dàng, áp lực rất cao nếu bạn không có một cách nhìn nhận đúng đắn, yêu thích và đam mê sẽ rất khó để theo được nghề này.
@@ -102,7 +103,7 @@ require_once PATH_ROOT.DS.'config.php';
                 </p>
 
                 <div class="row">
-                    <div class="col-md-2">
+                    <div class="col-md-1">
                         <div class="personal-details">
                             <strong>07/02/1983</strong>
                             <small>Ngày sinh</small>
@@ -120,10 +121,10 @@ require_once PATH_ROOT.DS.'config.php';
                             <small>Điện thoại</small>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <div class="personal-details">
-                            <strong>nguyen.dinh.cuong1</strong>
-                            <small>Skype</small>
+                            <span><b>Skype:</b> nguyen.dinh.cuong1</span>
+                            <span><b>Email:</b> nguyendinhcuong@gmail.com</span>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -224,27 +225,22 @@ require_once PATH_ROOT.DS.'config.php';
                                     <li>
                                         I. Loại hệ thống chuyên về Quản trị nội dung, cổng thông tin (CMS – Content Management System / Portals)
                                         <br/>
-                                        Drupal,PHP-Fusion, CMS Made Simple,NukeViet,MODx,Mambo,MAXdev,XOOPS,PHP-Nuke
+                                        Drupal,NukeViet,MODx,Mambo,PHP-Nuke
                                     </li>
                                     <li>
                                         II,Loại hệ thống chuyên về Diễn đàn (Forum)
                                         <br/>
-                                        MyBB,phpBB,,SMF,PunBB,Phorum,AEF,Vanilla,UseBB,miniBB,XMB
+                                        MyBB,phpBB...
                                     </li>
                                     <li>
                                         III. Loại hệ thống chuyên về Blog
                                         <br/>
-                                        WordPress,Textpattern,Nucleus CMS,LifeType,Serendipity,Dotclear,Zomplog,FlatPress,NibbleBlog,Croogo
+                                        WordPress,Nucleus CMS,LifeType,Serendipity,Dotclear
                                     </li>
                                     <li>
                                         IV.Loại hệ thống chuyên về thương mại điện tử (eCommerce)
                                         <br/>
-                                        Magento,Zen Cart,OpenCart,osCommerce,PrestaShop,AlegroCart,Freeway,eclime,osCSS,TomatoCart
-                                    </li>
-                                    <li>
-                                        V. Loại hệ thống chuyên về đào tạo trực tuyến (LCMS – Learning Course Management System)
-                                        <br/>
-                                        Moodle,ATutor,eFront,Dokeos,Docebo,Interact,DrupalEd,ILIAS,Open Conference Systems,Open Journal Systems
+                                        Magento,Zen Cart,OpenCart,osCommerce,PrestaShop,osCSS,TomatoCart
                                     </li>
                                 </ul>
                             </div>
