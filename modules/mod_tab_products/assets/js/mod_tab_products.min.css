@@ -71,7 +71,6 @@
             $content_inner.find('.product_slide').vtvslider({});
         };
         plugin.sub_category_slider = function ($content_inner) {
-
             var $sub_category = $content_inner.find('.list-sub-category');
             var options = {
                 horizontal: 1,
@@ -84,7 +83,6 @@
             };
             $sub_category.find('.slider.frame').sly(options);
 
-
         };
         plugin.flip_image = function ($content_inner) {
             $content_inner.find('.flip-image').flip({
@@ -95,13 +93,11 @@
                 forceWidth: true,
                 autoSize: true
             });
-
         };
         plugin.fix_link_product = function ($content_inner) {
             $content_inner.find('.item .link-product').dotdotdot();
         };
         plugin.init_content_inner = function ($content_inner) {
-
             //$content_inner.find("img").lazyLoadXT({visibleOnly: true, checkDuplicates: true});
         };
         plugin.build_tab = function () {
@@ -109,14 +105,12 @@
             var params = plugin.settings.params;
 /*
             $element.find('#tab_product_' + module_id).zozoTabs({
-
             });
 */
         };
         plugin.set_event_tab_select=function(){
             var module_id = plugin.settings.module_id;
             var params = plugin.settings.params;
-
             $element.find('#tab_product_' + module_id).zozoTabs({
                 theme: params.theme,
                 orientation: params.orientation,
@@ -166,7 +160,6 @@
                         }
                     };
                     data_submit.module_id = module_id;
-
                     var ajax_web_design = $.ajax({
                         contentType: 'application/json',
                         type: "POST",
@@ -181,22 +174,17 @@
                             //$wrapper_content_tab.bho88loading(false);
                             if (response.success == true) {
                                 //z-content-inner
-
                                 var data = response.data;
-
                                 $content_inner.html(data);
-
                             } else if (response.success == false) {
                                 alert(response.message);
                             }
-
                             plugin.flip_image($content_inner);
                             plugin.fix_link_product($content_inner);
                             plugin.set_event_sub_tab($content_inner);
                             plugin.setup_vtvslider($content_inner);
                             plugin.sub_category_slider($content_inner);
                             plugin.init_content_inner($content_inner);
-
                         }
                     });
                 }
@@ -235,24 +223,19 @@
                     }
                 });
             });
-
         }
         plugin.init = function () {
-
             plugin.settings = $.extend({}, defaults, options);
             $.set_height($element.find('.item .title'));
             var style = plugin.settings.style;
             var module_id = plugin.settings.module_id;
             var lazyload = plugin.settings.lazyload;
 
-
-
             if (lazyload) {
                 $element.appear(function () {
                     console.log('25666666666');
                 });
                 $(document.body).on('appear', '#mod_tab_products_' + module_id, function (e, $affected) {
-
                     // this code is executed for each appeared element
                     if (!plugin.settings.showing) {
                         plugin.settings.showing = true;
@@ -269,16 +252,12 @@
                 $element.on('appear', function(event, $all_appeared_elements) {
                     var event_tab_select=$all_appeared_elements.data('event_tab_select');
                     if(event_tab_select==1){
-
                     }else{
                         plugin.set_event_tab_select();
                         $all_appeared_elements.data('event_tab_select',1);
                     }
-
                 });
-
             }
-
             var deconstruction = plugin.settings.deconstruction;
             if (deconstruction) {
                 var params = plugin.settings.params;

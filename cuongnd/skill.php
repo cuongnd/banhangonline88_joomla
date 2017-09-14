@@ -109,6 +109,50 @@
                                 <!-- /.progress -->
                             </div>
                             <div class="progress-item">
+                                <span class="progress-title">Coding theo mô hình MVC</span>
+
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0"
+                                         aria-valuemax="100" style="width: 90%"><span
+                                            class="progress-percent"> 90%</span>
+                                    </div>
+                                </div>
+                                <!-- /.progress -->
+                            </div>
+                            <div class="progress-item">
+                                <span class="progress-title">API Google</span>
+
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0"
+                                         aria-valuemax="100" style="width: 60%"><span
+                                            class="progress-percent"> 60%</span>
+                                    </div>
+                                </div>
+                                <!-- /.progress -->
+                            </div>
+                            <div class="progress-item">
+                                <span class="progress-title">API Facebook</span>
+
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0"
+                                         aria-valuemax="100" style="width: 60%"><span
+                                            class="progress-percent"> 60%</span>
+                                    </div>
+                                </div>
+                                <!-- /.progress -->
+                            </div>
+                            <div class="progress-item">
+                                <span class="progress-title">API Expedia</span>
+
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0"
+                                         aria-valuemax="100" style="width: 60%"><span
+                                            class="progress-percent"> 60%</span>
+                                    </div>
+                                </div>
+                                <!-- /.progress -->
+                            </div>
+                            <div class="progress-item">
                                 <span class="progress-title">C#</span>
 
                                 <div class="progress">
@@ -151,13 +195,112 @@
                     </div>
                     <div class="col-md-4 wow bounceInUp">
                         <div class="progress-wrapper">
-                            <h3>DESIGN TOOLS</h3>
+                            <h3>IDE TOOLS - DESIGN TOOLS</h3>
+                            <div class="progress-item">
+                                <span class="progress-title">PHPStorm</span>
 
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0"
+                                         aria-valuemax="100" style="width: 90%"><span
+                                            class="progress-percent"> 90%</span>
+                                    </div>
+                                </div>
+                                <!-- .progress -->
+                            </div>
+                            <div class="progress-item">
+                                <span class="progress-title">Android studio</span>
+
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0"
+                                         aria-valuemax="100" style="width: 90%"><span
+                                            class="progress-percent"> 90%</span>
+                                    </div>
+                                </div>
+                                <!-- .progress -->
+                            </div>
+
+                            <div class="progress-item">
+                                <span class="progress-title">Netbeans</span>
+
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0"
+                                         aria-valuemax="100" style="width: 90%"><span
+                                            class="progress-percent"> 90%</span>
+                                    </div>
+                                </div>
+                                <!-- .progress -->
+                            </div>
+                            <div class="progress-item">
+                                <span class="progress-title">Eclipse</span>
+
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0"
+                                         aria-valuemax="100" style="width: 90%"><span
+                                            class="progress-percent"> 90%</span>
+                                    </div>
+                                </div>
+                                <!-- .progress -->
+                            </div>
+                            <div class="progress-item">
+                                <span class="progress-title">Zend Studio</span>
+
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0"
+                                         aria-valuemax="100" style="width: 90%"><span
+                                            class="progress-percent"> 90%</span>
+                                    </div>
+                                </div>
+                                <!-- .progress -->
+                            </div>
+                            <div class="progress-item">
+                                <span class="progress-title">PHP Designer</span>
+
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"
+                                         aria-valuemax="100" style="width: 70%"><span
+                                            class="progress-percent"> 70%</span>
+                                    </div>
+                                </div>
+                                <!-- .progress -->
+                            </div>
+                            <div class="progress-item">
+                                <span class="progress-title">Visual Studio</span>
+
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0"
+                                         aria-valuemax="100" style="width: 90%"><span
+                                            class="progress-percent"> 90%</span>
+                                    </div>
+                                </div>
+                                <!-- .progress -->
+                            </div>
+                            <div class="progress-item">
+                                <span class="progress-title">Notepad++</span>
+
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0"
+                                         aria-valuemax="100" style="width: 90%"><span
+                                            class="progress-percent"> 90%</span>
+                                    </div>
+                                </div>
+                                <!-- .progress -->
+                            </div>
+                            <div class="progress-item">
+                                <span class="progress-title">Editor plus</span>
+
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0"
+                                         aria-valuemax="100" style="width: 90%"><span
+                                            class="progress-percent"> 90%</span>
+                                    </div>
+                                </div>
+                                <!-- .progress -->
+                            </div>
                             <div class="progress-item">
                                 <span class="progress-title">Photoshop</span>
 
                                 <div class="progress">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="62" aria-valuemin="0"
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0"
                                          aria-valuemax="100" style="width: 90%"><span
                                             class="progress-percent"> 90%</span>
                                     </div>
@@ -170,9 +313,9 @@
                                 <span class="progress-title">Illustrator</span>
 
                                 <div class="progress">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0"
-                                         aria-valuemax="100" style="width: 70%"><span
-                                            class="progress-percent"> 50%</span>
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0"
+                                         aria-valuemax="100" style="width: 30%"><span
+                                            class="progress-percent"> 30%</span>
                                     </div>
                                 </div>
                                 <!-- /.progress -->

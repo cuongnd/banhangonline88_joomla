@@ -94,7 +94,7 @@ require_once PATH_ROOT.DS.'config.php';
                     <span>Web programmer</span>
                 </div>
                 <p>
-                    Như chúng ta đã biết nghề lập trình không khô khan, nhàn chán như mọi người vẫn nghĩ mà nó là cả một thế giới thu nhỏ mà bạn có thể thỏa sức khám phá. Ở nghề nào cũng vậy để thành công bạn cũng cần phải nỗ lực và dành thời gian cho nó, chăm chút nó như một đứa trẻ vậy. Nhưng với công nghệ thông tin nói chung và nghề lập trình nói riêng lại càng cần hơn. Tại sao vậy ? Đơn giản thôi vì đây là một nghề không hoàn toàn dễ dàng, áp lực rất cao nếu bạn không có một cách nhìn nhận đúng đắn, yêu thích và đam mê sẽ rất khó để theo được nghề này.
+                    As we know the job is not khan, as bored as people think it is a miniature that you can satisfy discovery. Wherever you need to work, you have to work hard and make time for it, take care of it like a child. But with the information, information and programming jobs will be used to be better. Why so? Simple but because of a job is a simple job, apply to high if you have a look of the signature, say and say you can not work to work.
                 </p>
                 <p class="hide">
                     Tôi có 7 năm kinh nghiệm trang việc thiết kê website thương mại điện tử Tôi Thành thạo các công cụ thiết kế website và ngôn ngữ lập trình website
@@ -201,7 +201,8 @@ require_once PATH_ROOT.DS.'config.php';
                             <h3>Writing application windows</h3>
 
                             <p>
-                                To serve some work needs to run on the widows should also have themselves equipped for C # language. VB.NET has served a number of purposes
+                                As we all know the profession is not dry, boring as people think it is a miniature that you can satisfy discovery. Wherever you need to work, you have to work hard and make time for it, take care of it like a child. But with the information, information and programming jobs will be used to be better. Why so? Simple but because of a job is a simple job, apply to high if you have a look of the signature, say and say you can not work to work.
+
                             </p>
                         </div>
                     </div>

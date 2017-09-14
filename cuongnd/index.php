@@ -90,9 +90,9 @@ require_once PATH_ROOT.DS.'config.php';
             </div>
             <div class="col-md-9">
                 <div class="name-wrapper">
-                    <h1 class="name">Nguyễn Đình Cường</h1>
-                    <span>Web programmer</span>
-                    <h3>http://banhangonline88.com/cuongnd/</h3>
+                    <h1 class="name ">Nguyễn Đình Cường</h1>
+                    <div>Web programmer - <a class="" href="/cuongnd/cuongnd_profile.pdf"> Tải về CV của tôi</a></div>
+                    <h3>Link xem CV mới nhất : <a href="http://banhangonline88.com/cuongnd/">http://banhangonline88.com/cuongnd/</a></h3>
                 </div>
                 <p>
                     Như chúng ta đã biết nghề lập trình không khô khan, nhàn chán như mọi người vẫn nghĩ mà nó là cả một thế giới thu nhỏ mà bạn có thể thỏa sức khám phá. Ở nghề nào cũng vậy để thành công bạn cũng cần phải nỗ lực và dành thời gian cho nó, chăm chút nó như một đứa trẻ vậy. Nhưng với công nghệ thông tin nói chung và nghề lập trình nói riêng lại càng cần hơn. Tại sao vậy ? Đơn giản thôi vì đây là một nghề không hoàn toàn dễ dàng, áp lực rất cao nếu bạn không có một cách nhìn nhận đúng đắn, yêu thích và đam mê sẽ rất khó để theo được nghề này.
@@ -196,6 +196,44 @@ require_once PATH_ROOT.DS.'config.php';
                 <div class="row">
                     <div class="col-md-6 wow bounceInUp">
                         <div class="expertise-item">
+                            <h3>Tìm hiểu thêm và Wordpress</h3>
+                            <p>
+                                Wordpress là một hệ thống cms khá mạnh mẽ, hiện nay Wordpress được rất nhiều doanh nghiệp và cá nhân tin dùng bởi tính đơn giản và xây dựng nhanh chóng
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 wow bounceInUp">
+                        <div class="expertise-item">
+                            <h3>Tìm hiểu về các ứng dụng của google như google cloud, API google</h3>
+
+                            <p>Hiện nay Google được đánh giá là công ty có sức sút mạnh mẽ nhất các nhà lập trình vào gồm cá nhân và doanh nghiệp tham gia phát triển môi trường mở thông qua hệ thống cloud API</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-6 wow bounceInUp">
+                        <div class="expertise-item">
+                            <h3>Cập nhật thêm các plugin javascrip Angular,reactjs</h3>
+                            <p>
+                                Cập nhật kiến thức về các plugin này để phục vụ công việc khi cần thiết
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 wow bounceInUp">
+                        <div class="expertise-item">
+                            <h3></h3>
+
+                            <p></p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-6 wow bounceInUp">
+                        <div class="expertise-item">
                             <h3>Viết các ứng dụng windows</h3>
 
                             <p>
@@ -217,10 +255,10 @@ require_once PATH_ROOT.DS.'config.php';
                 <div class="row">
                     <div class="col-md-12 wow bounceInUp">
                         <div class="expertise-item">
-                            <h3>Tham gia xây dựng các hệ thống opensource khác</h3>
+                            <h3>Tìm hiểu thêm về một số hệ thống</h3>
 
                             <div>
-                                Ngoài joomla tôi còn có thể làm việc được với rất nhiều các hệ thống opensource
+                                Ngoài joomla tôi còn biết rất nhiều các hệ thống khác nhưng không chuyên sâu
                                 <ul class="open-source">
                                     <li>
                                         I. Loại hệ thống chuyên về Quản trị nội dung, cổng thông tin (CMS – Content Management System / Portals)
@@ -270,8 +308,8 @@ require_once PATH_ROOT.DS.'config.php';
                 <div class="row">
                     <div class="col-md-6">
                         <div class="content-item">
-                            <small>2013 - Hiện tại</small>
-                            <h3>Lập trình viên</h3>
+                            <small>2015 - Hiện tại</small>
+                            <h3>Web Developer</h3>
                             <h4>Công ty Asianventure</h4>
                             <h4>Chuyên về hệ thống booking tour,hotel,transfer</h4>
 
@@ -282,7 +320,7 @@ require_once PATH_ROOT.DS.'config.php';
                     <div class="col-md-6">
                         <div class="content-item">
                             <small>2013 - 2015</small>
-                            <h3>Lập trình viên</h3>
+                            <h3>Web Developer</h3>
                             <h4>Joombooking.com</h4>
                             <h4>Chuyên về hệ thống booking tour,hotel,transfer</h4>
                         </div>
@@ -293,7 +331,7 @@ require_once PATH_ROOT.DS.'config.php';
 
                     <div class="col-md-6">
                         <div class="content-item">
-                            <small>2009 - 2013</small>
+                            <small>2009 - 2012</small>
                             <h3>Web Developer</h3>
                             <h4>ghiên cứu chuyện sâu về joomla</h4>
 
