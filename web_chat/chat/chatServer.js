@@ -155,9 +155,11 @@ io.sockets.on('connection', function (socket) {
         }
     }
 
+/*
     request('http://ipinfo.io', function(error, res, body) {
         console.log(JSON.parse(body))
     });
+*/
 
     for (var room in listRoom){
         var listSocket = io.sockets.sockets;

@@ -21,10 +21,8 @@
     }
     // add the plugin to the jQuery.fn object
     $.fn.mod_hikashop = function (options) {
-
         // iterate through the DOM elements we are attaching the plugin to
         return this.each(function () {
-
             // if plugin has not already been attached to the element
             if (undefined == $(this).data('mod_hikashop')) {
                 var plugin = new $.mod_hikashop(this, options);
