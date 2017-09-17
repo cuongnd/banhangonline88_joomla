@@ -1,5 +1,6 @@
 <?php
 define('PATH_ROOT', __DIR__);
+define('URL_ROOT','http://banhangonline88.com/cuongnd/');
 defined('DS') or define('DS', DIRECTORY_SEPARATOR);
 require_once PATH_ROOT.DS.'config.php';
 ?>
@@ -409,6 +410,64 @@ require_once PATH_ROOT.DS.'config.php';
                             </div>
                             <!-- portfolio-info -->
                         </a>
+                        <div class="description">Đây là một trang thương mại điện tử do chính tay tôi xây dựng, có đầy chủ các chức năng của một trang thương mại điện tử. ngoài ra nó còn được bổ xung các chức năng mở rộng như,
+                            chát hỗ trợ khách hàng,có ứng dụng android trên google play phục vụ cho mua trên di động, chức năng chat trên di động, chức năng hỏi đáp, chức năng điễn đàn, chức năng mạng xã hôi, chức năng hepldesk, chức năng website riêng cho từng nhà cung cấp, có thể thay đổi chỉnh sửa giao diện một cách dễ dàng, chức năng cộng tác viên dạng anfalife và còn rất nhiều các tính năng khác
+                        </div>
+                        <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#modal_banhangonline_front_end_booking">
+                            gallery project
+                        </button>
+
+                        <div class="modal fade" id="modal_banhangonline_front_end_booking" tabindex="-1" role="dialog" aria-labelledby="bhomyModalLabelfront_end_booking">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="bhomyModalLabelfront_end_booking">banhangonline88.com</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div id="carousel-example-generic-bho" class="carousel slide" data-ride="carousel">
+                                            <!-- Indicators -->
+                                            <?php
+                                            $dir=PATH_ROOT.DS."img/banhangonline88";
+                                            $banhangonline88 = scandir($dir);
+                                            $banhangonline88=array_slice($banhangonline88,2);
+                                            ?>
+                                            <ol class="carousel-indicators">
+                                                <?php for($i=0;$i<count($banhangonline88);$i++){ ?>
+                                                    <li data-target="#carousel-example-generic" data-slide-to="0" class="<?php echo $i==0?'active':'' ?> "></li>
+                                                <?php } ?>
+                                            </ol>
+
+                                            <!-- Wrapper for slides -->
+                                            <div class="carousel-inner" role="listbox">
+                                                <?php for($i=0;$i<count($banhangonline88);$i++){ ?>
+                                                    <?php
+                                                    $file=$banhangonline88[$i];
+                                                    ?>
+                                                    <div class="item <?php echo $i==0?'active':'' ?>">
+                                                        <img src="<?php echo URL_ROOT.'img/banhangonline88/'.$file ?>" alt="<?php echo $file ?>">
+                                                    </div>
+                                                <?php } ?>
+                                            </div>
+
+                                            <!-- Controls -->
+                                            <a class="left carousel-control" href="#carousel-example-generic-bho" role="button" data-slide="prev">
+                                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                            <a class="right carousel-control" href="#carousel-example-generic-bho" role="button" data-slide="next">
+                                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- .portfolio-item -->
                     </div>
                     <div class="col-md-4 col-sm-6">
@@ -439,6 +498,8 @@ require_once PATH_ROOT.DS.'config.php';
                         </a>
                         <!-- .portfolio-item -->
                     </div>
+                </div>
+                <div class="row">
                     <div class="col-md-4 col-sm-6">
                         <a class="portfolio-item youtube" title="Booking manager transfer, hotel, excursion" href="http://www.youtube.com/watch?v=BfzCNHFklSk">
                             <div class="portfolio-thumb">
@@ -451,6 +512,65 @@ require_once PATH_ROOT.DS.'config.php';
                             </div>
                             <!-- portfolio-info -->
                         </a>
+                        <div class="description">
+                            This is a management system for booking tours, management and operation during the tour, calculate the details for each tour participant,uses jquery, javascript,html, css3, bootstrap 3
+                            <!-- Button trigger modal -->
+                        </div>
+                        <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#modal_backend_end_booking">
+                            gallery project
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="modal_backend_end_booking" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabel">Backend booking manger</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div id="carousel-example-generic-back_end_booking" class="carousel slide" data-ride="carousel">
+                                            <!-- Indicators -->
+                                            <?php
+                                            $dir=PATH_ROOT.DS."img/backend_end_booking";
+                                            $back_end_booking = scandir($dir);
+                                            $back_end_booking=array_slice($back_end_booking,2);
+                                            ?>
+                                            <ol class="carousel-indicators">
+                                                <?php for($i=0;$i<count($back_end_booking);$i++){ ?>
+                                                    <li data-target="#carousel-example-generic" data-slide-to="0" class="<?php echo $i==0?'active':'' ?> "></li>
+                                                <?php } ?>
+                                            </ol>
+
+                                            <!-- Wrapper for slides -->
+                                            <div class="carousel-inner" role="listbox">
+                                                <?php for($i=0;$i<count($back_end_booking);$i++){ ?>
+                                                    <?php
+                                                    $file=$back_end_booking[$i];
+                                                    ?>
+                                                    <div class="item <?php echo $i==0?'active':'' ?>">
+                                                        <img src="<?php echo URL_ROOT.'img/backend_end_booking/'.$file ?>" alt="<?php echo $file ?>">
+                                                    </div>
+                                                <?php } ?>
+                                            </div>
+
+                                            <!-- Controls -->
+                                            <a class="left carousel-control" href="#carousel-example-generic-back_end_booking" role="button" data-slide="prev">
+                                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                            <a class="right carousel-control" href="#carousel-example-generic-back_end_booking" role="button" data-slide="next">
+                                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <!-- .portfolio-item -->
                     </div>
                     <div class="col-md-4 col-sm-6">
@@ -466,7 +586,64 @@ require_once PATH_ROOT.DS.'config.php';
                             <!-- Modal -->
                             <!-- portfolio-info -->
                         </a>
+                        <div class="description">
+                            This is website booking tour on front end, calculate the details for each tour participant.uses jquery, javascript,html, css3, bootstrap 3
+                            <!-- Button trigger modal -->
+                        </div>
+                        <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#modal_front_end_booking">
+                            gallery project
+                        </button>
 
+                        <div class="modal fade" id="modal_front_end_booking" tabindex="-1" role="dialog" aria-labelledby="myModalLabelfront_end_booking">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabelfront_end_booking">front booking</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div id="carousel-example-generic-front_end_booking" class="carousel slide" data-ride="carousel">
+                                            <!-- Indicators -->
+                                            <?php
+                                            $dir=PATH_ROOT.DS."img/front_end_booking";
+                                            $front_end_booking = scandir($dir);
+                                            $front_end_booking=array_slice($front_end_booking,2);
+                                            ?>
+                                            <ol class="carousel-indicators">
+                                                <?php for($i=0;$i<count($front_end_booking);$i++){ ?>
+                                                    <li data-target="#carousel-example-generic" data-slide-to="0" class="<?php echo $i==0?'active':'' ?> "></li>
+                                                <?php } ?>
+                                            </ol>
+
+                                            <!-- Wrapper for slides -->
+                                            <div class="carousel-inner" role="listbox">
+                                                <?php for($i=0;$i<count($front_end_booking);$i++){ ?>
+                                                    <?php
+                                                    $file=$front_end_booking[$i];
+                                                    ?>
+                                                    <div class="item <?php echo $i==0?'active':'' ?>">
+                                                        <img src="<?php echo URL_ROOT.'img/front_end_booking/'.$file ?>" alt="<?php echo $file ?>">
+                                                    </div>
+                                                <?php } ?>
+                                            </div>
+
+                                            <!-- Controls -->
+                                            <a class="left carousel-control" href="#carousel-example-generic-front_end_booking" role="button" data-slide="prev">
+                                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                            <a class="right carousel-control" href="#carousel-example-generic-front_end_booking" role="button" data-slide="next">
+                                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <!-- .portfolio-item -->
                     </div>
                     <div class="col-md-4 col-sm-6">
@@ -481,6 +658,14 @@ require_once PATH_ROOT.DS.'config.php';
                             </div>
                             <!-- portfolio-info -->
                         </a>
+                        <div class="description">
+                            This is website booking tour on front end, calculate the details for each tour participant.uses jquery, javascript,html, css3, bootstrap 3
+                            <!-- Button trigger modal -->
+                        </div>
+                        <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#modal_front_end_booking">
+                            gallery project
+                        </button>
+
                         <!-- .portfolio-item -->
                     </div>
                 </div>

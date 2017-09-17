@@ -1,20 +1,16 @@
 //huong dan su dung
 /*
  $('.select_device').select_device();
-
  select_device=$('.select_device').data('select_device');
  console.log(select_device);
  */
-
 // jQuery Plugin for SprFlat admin select_device
 // Control options and basic function of select_device
 // version 1.0, 28.02.2013
 // by SuggeElson www.suggeelson.com
 (function ($) {
-
     // here we go!
     $.select_device = function (element, options) {
-
         // plugin's default options
         var defaults = {
             //main color scheme for select_device
@@ -48,10 +44,8 @@
     }
     // add the plugin to the jQuery.fn object
     $.fn.select_device = function (options) {
-
         // iterate through the DOM elements we are attaching the plugin to
         return this.each(function () {
-
             // if plugin has not already been attached to the element
             if (undefined == $(this).data('select_device')) {
                 var plugin = new $.select_device(this, options);

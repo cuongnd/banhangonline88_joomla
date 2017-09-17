@@ -7,6 +7,7 @@
 <script src="js/jquery.youtubepopup.js"></script>
 <!--owl carousal-->
 <script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery.goup.js"></script>
 <script src="js/wow.min.js"></script>
 <!--theme script-->
 <script src="js/less.min.js"></script>

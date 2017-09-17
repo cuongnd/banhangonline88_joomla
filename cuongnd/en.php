@@ -1,5 +1,6 @@
 <?php
 define('PATH_ROOT', __DIR__);
+define('URL_ROOT','http://banhangonline88.com/cuongnd/');
 defined('DS') or define('DS', DIRECTORY_SEPARATOR);
 require_once PATH_ROOT.DS.'config.php';
 ?>
@@ -91,10 +92,11 @@ require_once PATH_ROOT.DS.'config.php';
             <div class="col-md-9">
                 <div class="name-wrapper">
                     <h1 class="name">Nguyen Dinh Cuong</h1>
-                    <span>Web programmer</span>
+                    <div>Web programmer - <a class="" href="/cuongnd/cuongnd_profile_en.pdf"> Download my CV</a></div>
+                    <h3>Link about me : <a href="http://banhangonline88.com/cuongnd/en.php">http://banhangonline88.com/cuongnd/en.php</a></h3>
                 </div>
                 <p>
-                    As we know the job is not khan, as bored as people think it is a miniature that you can satisfy discovery. Wherever you need to work, you have to work hard and make time for it, take care of it like a child. But with the information, information and programming jobs will be used to be better. Why so? Simple but because of a job is a simple job, apply to high if you have a look of the signature, say and say you can not work to work.
+                    As we all know, programming is not dry, it's as boring as people think it's a miniature world you can explore. In any career to succeed you also need to work hard and take time for it, take care of it like a child. But with the information technology in general and the programming profession in particular, more and more need. Why so ? Simply because this is a job not quite easy, the pressure is very high if you do not have a proper view, love and passion will be difficult to follow this career.
                 </p>
                 <p class="hide">
                     Tôi có 7 năm kinh nghiệm trang việc thiết kê website thương mại điện tử Tôi Thành thạo các công cụ thiết kế website và ngôn ngữ lập trình website
@@ -226,7 +228,9 @@ require_once PATH_ROOT.DS.'config.php';
     </div>
 </section>
 <!-- .expertise-wrapper -->
-
+    <?php
+    $lang="en";
+    ?>
     <?php include PATH_ROOT.DS.'skill.php';?>
 <!-- .skills-wrapper -->
 
@@ -240,21 +244,22 @@ require_once PATH_ROOT.DS.'config.php';
                 <div class="row">
                     <div class="col-md-6">
                         <div class="content-item">
-                            <small>2013 - Hiện tại</small>
-                            <h3>Lập trình viên</h3>
-                            <h4>Công ty Asianventure</h4>
-                            <h4>Chuyên về hệ thống booking tour,hotel,transfer</h4>
+                            <small>2015 - Now</small>
+                            <h3>Web programmer</h3>
+                            <h4>Asianventure company</h4>
+                            <h4>Specialize about system booking tour,hotel,transfer</h4>
 
-                            <p>110 Bà triệu</p>
+                            <p>110 Ba trieu treet</p>
                         </div>
+
                         <!-- .experience-item -->
                     </div>
                     <div class="col-md-6">
                         <div class="content-item">
                             <small>2013 - 2015</small>
-                            <h3>Lập trình viên</h3>
+                            <h3>Web programmer</h3>
                             <h4>Joombooking.com</h4>
-                            <h4>Chuyên về hệ thống booking tour,hotel,transfer</h4>
+                            <h4>Specialize about system booking tour,hotel,transfer</h4>
                         </div>
                         <!-- .experience-item -->
                     </div>
@@ -265,9 +270,8 @@ require_once PATH_ROOT.DS.'config.php';
                         <div class="content-item">
                             <small>2009 - 2013</small>
                             <h3>Web Developer</h3>
-                            <h4>ghiên cứu chuyện sâu về joomla</h4>
 
-                            <p>Học tập và làm việc ở một số nơi trong đó có công ty Joomlart chuyên về template joomla</p>
+                            <p>Study and work in some, places Joomlart company specializing in template joomla</p>
                         </div>
                         <!-- .experience-item -->
                     </div>
@@ -284,14 +288,14 @@ require_once PATH_ROOT.DS.'config.php';
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-                <div class="section-title"><h2>Bằng cấp</h2></div>
+                <div class="section-title"><h2>Degree</h2></div>
             </div>
 
             <div class="col-md-9">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="content-item">
-                            <h3>Học viện công nghệ bưu chính viễn thông</h3>
+                            <h3>Information and Library Center - Posts and Telecommunications Institute of Technology(ILC - PTIT)</h3>
                             <h4>Faculty of Information Technology</h4>
                         </div>
                     </div>
@@ -341,6 +345,64 @@ require_once PATH_ROOT.DS.'config.php';
                             </div>
                             <!-- portfolio-info -->
                         </a>
+                        <div class="description"> This Ecommerce site build on joomla technology,This system was built by myself, including the full functionality of an ecommerce site,
+                            server language is php, client side uses jquery, javascript,html, css3, bootstrap 3
+                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#modal_banhangonline_front_end_booking">
+                                gallery project
+                            </button>
+
+                        </div>
+                        <div class="modal fade" id="modal_banhangonline_front_end_booking" tabindex="-1" role="dialog" aria-labelledby="bhomyModalLabelfront_end_booking">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="bhomyModalLabelfront_end_booking">banhangonline88.com</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div id="carousel-example-generic-bho" class="carousel slide" data-ride="carousel">
+                                            <!-- Indicators -->
+                                            <?php
+                                            $dir=PATH_ROOT.DS."img/banhangonline88";
+                                            $banhangonline88 = scandir($dir);
+                                            $banhangonline88=array_slice($banhangonline88,2);
+                                            ?>
+                                            <ol class="carousel-indicators">
+                                                <?php for($i=0;$i<count($banhangonline88);$i++){ ?>
+                                                    <li data-target="#carousel-example-generic" data-slide-to="0" class="<?php echo $i==0?'active':'' ?> "></li>
+                                                <?php } ?>
+                                            </ol>
+
+                                            <!-- Wrapper for slides -->
+                                            <div class="carousel-inner" role="listbox">
+                                                <?php for($i=0;$i<count($banhangonline88);$i++){ ?>
+                                                    <?php
+                                                    $file=$banhangonline88[$i];
+                                                    ?>
+                                                    <div class="item <?php echo $i==0?'active':'' ?>">
+                                                        <img src="<?php echo URL_ROOT.'img/banhangonline88/'.$file ?>" alt="<?php echo $file ?>">
+                                                    </div>
+                                                <?php } ?>
+                                            </div>
+
+                                            <!-- Controls -->
+                                            <a class="left carousel-control" href="#carousel-example-generic-bho" role="button" data-slide="prev">
+                                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                            <a class="right carousel-control" href="#carousel-example-generic-bho" role="button" data-slide="next">
+                                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- .portfolio-item -->
                     </div>
                     <div class="col-md-4 col-sm-6">
@@ -355,6 +417,9 @@ require_once PATH_ROOT.DS.'config.php';
                             </div>
                             <!-- portfolio-info -->
                         </a>
+                        <div class="description">This website build booking tour,
+                            I am a person who directly analyzes functions, plans, direct assignments. website written in php, jquery, html, css3, bootstrap 3
+                        </div>
                         <!-- .portfolio-item -->
                     </div>
                     <div class="col-md-4 col-sm-6">
@@ -369,8 +434,13 @@ require_once PATH_ROOT.DS.'config.php';
                             </div>
                             <!-- portfolio-info -->
                         </a>
+                        <div class="description">
+                            Previously I studied at joomlart website design company and involved in some small development of sample products for the company.
+                        </div>
                         <!-- .portfolio-item -->
                     </div>
+                </div>
+                <div class="row">
                     <div class="col-md-4 col-sm-6">
                         <a class="portfolio-item youtube" title="Booking manager transfer, hotel, excursion" href="http://www.youtube.com/watch?v=BfzCNHFklSk">
                             <div class="portfolio-thumb">
@@ -383,6 +453,65 @@ require_once PATH_ROOT.DS.'config.php';
                             </div>
                             <!-- portfolio-info -->
                         </a>
+                        <div class="description">
+                            This is a management system for booking tours, management and operation during the tour, calculate the details for each tour participant,uses jquery, javascript,html, css3, bootstrap 3
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#modal_backend_end_booking">
+                                gallery project
+                            </button>
+                        </div>
+                        <!-- Modal -->
+                        <div class="modal fade" id="modal_backend_end_booking" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabel">Backend booking manger</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div id="carousel-example-generic-back_end_booking" class="carousel slide" data-ride="carousel">
+                                            <!-- Indicators -->
+                                            <?php
+                                            $dir=PATH_ROOT.DS."img/backend_end_booking";
+                                            $back_end_booking = scandir($dir);
+                                            $back_end_booking=array_slice($back_end_booking,2);
+                                            ?>
+                                            <ol class="carousel-indicators">
+                                                <?php for($i=0;$i<count($back_end_booking);$i++){ ?>
+                                                 <li data-target="#carousel-example-generic" data-slide-to="0" class="<?php echo $i==0?'active':'' ?> "></li>
+                                                <?php } ?>
+                                            </ol>
+
+                                            <!-- Wrapper for slides -->
+                                            <div class="carousel-inner" role="listbox">
+                                                <?php for($i=0;$i<count($back_end_booking);$i++){ ?>
+                                                    <?php
+                                                    $file=$back_end_booking[$i];
+                                                    ?>
+                                                    <div class="item <?php echo $i==0?'active':'' ?>">
+                                                        <img src="<?php echo URL_ROOT.'img/backend_end_booking/'.$file ?>" alt="<?php echo $file ?>">
+                                                    </div>
+                                                <?php } ?>
+                                            </div>
+
+                                            <!-- Controls -->
+                                            <a class="left carousel-control" href="#carousel-example-generic-back_end_booking" role="button" data-slide="prev">
+                                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                            <a class="right carousel-control" href="#carousel-example-generic-back_end_booking" role="button" data-slide="next">
+                                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- .portfolio-item -->
                     </div>
                     <div class="col-md-4 col-sm-6">
@@ -398,6 +527,63 @@ require_once PATH_ROOT.DS.'config.php';
                             <!-- Modal -->
                             <!-- portfolio-info -->
                         </a>
+                        <div class="description">
+                            This is website booking tour on front end, calculate the details for each tour participant.uses jquery, javascript,html, css3, bootstrap 3
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#modal_front_end_booking">
+                                gallery project
+                            </button>
+                        </div>
+                        <div class="modal fade" id="modal_front_end_booking" tabindex="-1" role="dialog" aria-labelledby="myModalLabelfront_end_booking">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabelfront_end_booking">front booking</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div id="carousel-example-generic-front_end_booking" class="carousel slide" data-ride="carousel">
+                                            <!-- Indicators -->
+                                            <?php
+                                            $dir=PATH_ROOT.DS."img/front_end_booking";
+                                            $front_end_booking = scandir($dir);
+                                            $front_end_booking=array_slice($front_end_booking,2);
+                                            ?>
+                                            <ol class="carousel-indicators">
+                                                <?php for($i=0;$i<count($front_end_booking);$i++){ ?>
+                                                    <li data-target="#carousel-example-generic" data-slide-to="0" class="<?php echo $i==0?'active':'' ?> "></li>
+                                                <?php } ?>
+                                            </ol>
+
+                                            <!-- Wrapper for slides -->
+                                            <div class="carousel-inner" role="listbox">
+                                                <?php for($i=0;$i<count($front_end_booking);$i++){ ?>
+                                                    <?php
+                                                    $file=$front_end_booking[$i];
+                                                    ?>
+                                                    <div class="item <?php echo $i==0?'active':'' ?>">
+                                                        <img src="<?php echo URL_ROOT.'img/front_end_booking/'.$file ?>" alt="<?php echo $file ?>">
+                                                    </div>
+                                                <?php } ?>
+                                            </div>
+
+                                            <!-- Controls -->
+                                            <a class="left carousel-control" href="#carousel-example-generic-front_end_booking" role="button" data-slide="prev">
+                                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                            <a class="right carousel-control" href="#carousel-example-generic-front_end_booking" role="button" data-slide="next">
+                                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                         <!-- .portfolio-item -->
                     </div>
@@ -413,6 +599,14 @@ require_once PATH_ROOT.DS.'config.php';
                             </div>
                             <!-- portfolio-info -->
                         </a>
+                        <div class="description">
+                            This is website booking tour on front end, calculate the details for each tour participant.uses jquery, javascript,html, css3, bootstrap 3
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#modal_front_end_booking">
+                                gallery project
+                            </button>
+                        </div>
+
                         <!-- .portfolio-item -->
                     </div>
                 </div>
@@ -439,8 +633,8 @@ require_once PATH_ROOT.DS.'config.php';
                     <div class="col-md-3">
                         <address>
                             <strong>Address</strong><br>
-                            Hà Nội<br>
-                            Tiên Phương, Chương Mỹ
+                            Hanoi<br>
+                            Tien phuong, Chuong My
 
                         </address>
                     </div>
@@ -467,7 +661,7 @@ require_once PATH_ROOT.DS.'config.php';
                 <!--.row-->
 
                 <div class="feedback-form">
-                    <h3>Liên hệ</h3>
+                    <h3>Contact</h3>
 
                     <form id="contactForm" action="sendemail.php" method="POST">
                         <div class="form-group">

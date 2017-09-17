@@ -31,10 +31,8 @@
     }
     // add the plugin to the jQuery.fn object
     $.fn.select_device = function (options) {
-
         // iterate through the DOM elements we are attaching the plugin to
         return this.each(function () {
-
             // if plugin has not already been attached to the element
             if (undefined == $(this).data('select_device')) {
                 var plugin = new $.select_device(this, options);

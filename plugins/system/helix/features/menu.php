@@ -25,7 +25,8 @@ class HelixFeatureMenu {
 		} elseif($this->helix->megaMenuType()=='split') {
 			$this->helix->addCSS('dropline.css');
 		} else {
-			$this->helix->addJS('menu.js');
+			$doc=JFactory::getDocument();
+			$doc->addScript('/plugins/system/helix/js/menu.js');
 		}
 		
 		$this->helix->addCSS('mobile-menu.css');

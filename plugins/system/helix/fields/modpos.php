@@ -37,9 +37,15 @@
         {
 
             // 
-
+            $website=JFactory::getWebsiteByUserLogin();
             $db = JFactory::getDBO();
-            $query = 'SELECT `position` FROM `#__modules` WHERE  `client_id`=0 AND ( `published` !=-2 AND `published` !=0 ) GROUP BY `position` ORDER BY `position` ASC';
+            $query=$db->getQuery(true);
+            $query->select('position')
+                ->from('#__modules')
+                ->where('client_id=0 AND published!=-2 AND published!=0')
+                ->where('website_id='.(int)$website->id)
+                ->group('position')
+                ;
 
             $db->setQuery($query);
             $dbpositions = (array) $db->loadAssocList();

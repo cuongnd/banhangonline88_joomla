@@ -1,20 +1,16 @@
 //huong dan su dung
 /*
  $('.show_screen_size').show_screen_size();
-
  show_screen_size=$('.show_screen_size').data('show_screen_size');
  console.log(show_screen_size);
  */
-
 // jQuery Plugin for SprFlat admin show_screen_size
 // Control options and basic function of show_screen_size
 // version 1.0, 28.02.2013
 // by SuggeElson www.suggeelson.com
 (function ($) {
-
     // here we go!
     $.show_screen_size = function (element, options) {
-
         // plugin's default options
         var defaults = {
             //main color scheme for show_screen_size
@@ -32,7 +28,6 @@
             $(window).resize(function () {
                 $element.find('.size').html( $(window).width());
             });
-
         }
         plugin.example_function = function () {
         }
@@ -40,10 +35,8 @@
     }
     // add the plugin to the jQuery.fn object
     $.fn.show_screen_size = function (options) {
-
         // iterate through the DOM elements we are attaching the plugin to
         return this.each(function () {
-
             // if plugin has not already been attached to the element
             if (undefined == $(this).data('show_screen_size')) {
                 var plugin = new $.show_screen_size(this, options);

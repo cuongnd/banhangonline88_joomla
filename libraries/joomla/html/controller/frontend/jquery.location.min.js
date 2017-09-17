@@ -13,7 +13,6 @@
         // the "constructor" method that gets called when the object is created
         plugin.init = function () {
             plugin.settings = $.extend({}, defaults, options);
-
             $element.find(".gllpLatlonPicker").each(function () {
                 var $obj = $(document).gMapsLatLonPicker();
                 var draggable=plugin.settings.draggable;

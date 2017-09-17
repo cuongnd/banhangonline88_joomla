@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="section-title">
-                    <h2>Kỹ năng</h2>
+                    <h2><?php echo $lang?"Skill":"Kỹ năng" ?></h2>
                 </div>
             </div>
 
@@ -109,7 +109,18 @@
                                 <!-- /.progress -->
                             </div>
                             <div class="progress-item">
-                                <span class="progress-title">Coding theo mô hình MVC</span>
+                                <span class="progress-title">MVC</span>
+
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0"
+                                         aria-valuemax="100" style="width: 90%"><span
+                                            class="progress-percent"> 90%</span>
+                                    </div>
+                                </div>
+                                <!-- /.progress -->
+                            </div>
+                            <div class="progress-item">
+                                <span class="progress-title">jQuery</span>
 
                                 <div class="progress">
                                     <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0"
@@ -159,6 +170,17 @@
                                     <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0"
                                          aria-valuemax="100" style="width: 40%"><span
                                             class="progress-percent"> 40%</span>
+                                    </div>
+                                </div>
+                                <!-- /.progress -->
+                            </div>
+                            <div class="progress-item">
+                                <span class="progress-title">OPP</span>
+
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0"
+                                         aria-valuemax="100" style="width: 80%"><span
+                                            class="progress-percent"> 80%</span>
                                     </div>
                                 </div>
                                 <!-- /.progress -->
@@ -264,6 +286,17 @@
                                 <!-- .progress -->
                             </div>
                             <div class="progress-item">
+                                <span class="progress-title">Firebug fifox, debug chrome...</span>
+
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0"
+                                         aria-valuemax="100" style="width: 90%"><span
+                                            class="progress-percent"> 90%</span>
+                                    </div>
+                                </div>
+                                <!-- .progress -->
+                            </div>
+                            <div class="progress-item">
                                 <span class="progress-title">Visual Studio</span>
 
                                 <div class="progress">
@@ -327,7 +360,7 @@
                     <div class="col-md-4 wow slideInRight">
                         <div class="progress-wrapper">
 
-                            <h3>Các công cụ khác</h3>
+                            <h3><?php echo $lang?"Other tool":"Các công cụ khác" ?></h3>
 
                             <div class="progress-item">
                                 <span class="progress-title">Git</span>
