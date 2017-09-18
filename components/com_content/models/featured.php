@@ -1,147 +1,1 @@
-<?php
-/**
- * @package     Joomla.Site
- * @subpackage  com_content
- *
- * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
- * @license     GNU General Public License version 2 or later; see LICENSE.txt
- */
-
-defined('_JEXEC') or die;
-
-require_once __DIR__ . '/articles.php';
-
-/**
- * Frontpage Component Model
- *
- * @since  1.5
- */
-class ContentModelFeatured extends ContentModelArticles
-{
-	/**
-	 * Model context string.
-	 *
-	 * @var		string
-	 */
-	public $_context = 'com_content.frontpage';
-
-	/**
-	 * Method to auto-populate the model state.
-	 *
-	 * Note. Calling getState in this method will result in recursion.
-	 *
-	 * @param   string  $ordering   The field to order on.
-	 * @param   string  $direction  The direction to order on.
-	 *
-	 * @return  void.
-	 *
-	 * @since   1.6
-	 */
-	protected function populateState($ordering = null, $direction = null)
-	{
-		parent::populateState($ordering, $direction);
-
-		$input = JFactory::getApplication()->input;
-		$user  = JFactory::getUser();
-
-		// List state information
-		$limitstart = $input->getUInt('limitstart', 0);
-		$this->setState('list.start', $limitstart);
-
-		$params = $this->state->params;
-		$limit = $params->get('num_leading_articles') + $params->get('num_intro_articles') + $params->get('num_links');
-		$this->setState('list.limit', $limit);
-		$this->setState('list.links', $params->get('num_links'));
-
-		$this->setState('filter.frontpage', true);
-
-		if ((!$user->authorise('core.edit.state', 'com_content')) &&  (!$user->authorise('core.edit', 'com_content')))
-		{
-			// Filter on published for those who do not have edit or edit.state rights.
-			$this->setState('filter.published', 1);
-		}
-		else
-		{
-			$this->setState('filter.published', array(0, 1, 2));
-		}
-
-		// Check for category selection
-		if ($params->get('featured_categories') && implode(',', $params->get('featured_categories')) == true)
-		{
-			$featuredCategories = $params->get('featured_categories');
-			$this->setState('filter.frontpage.categories', $featuredCategories);
-		}
-	}
-
-	/**
-	 * Method to get a list of articles.
-	 *
-	 * @return  mixed  An array of objects on success, false on failure.
-	 */
-	public function getItems()
-	{
-		$params = clone $this->getState('params');
-		$limit = $params->get('num_leading_articles') + $params->get('num_intro_articles') + $params->get('num_links');
-
-		if ($limit > 0)
-		{
-			$this->setState('list.limit', $limit);
-
-			return parent::getItems();
-		}
-
-		return array();
-	}
-
-	/**
-	 * Method to get a store id based on model configuration state.
-	 *
-	 * This is necessary because the model is used by the component and
-	 * different modules that might need different sets of data or different
-	 * ordering requirements.
-	 *
-	 * @param   string  $id  A prefix for the store id.
-	 *
-	 * @return  string  A store id.
-	 */
-	protected function getStoreId($id = '')
-	{
-		// Compile the store id.
-		$id .= $this->getState('filter.frontpage');
-
-		return parent::getStoreId($id);
-	}
-
-	/**
-	 * Get the list of items.
-	 *
-	 * @return  JDatabaseQuery
-	 */
-	protected function getListQuery()
-	{
-		// Set the blog ordering
-		$params = $this->state->params;
-		$articleOrderby = $params->get('orderby_sec', 'rdate');
-		$articleOrderDate = $params->get('order_date');
-		$categoryOrderby = $params->def('orderby_pri', '');
-		$secondary = ContentHelperQuery::orderbySecondary($articleOrderby, $articleOrderDate) . ', ';
-		$primary = ContentHelperQuery::orderbyPrimary($categoryOrderby);
-
-		$orderby = $primary . ' ' . $secondary . ' a.created DESC ';
-		$this->setState('list.ordering', $orderby);
-		$this->setState('list.direction', '');
-
-		// Create a new query object.
-		$query = parent::getListQuery();
-
-		// Filter by categories
-		$featuredCategories = $this->getState('filter.frontpage.categories');
-
-		if (is_array($featuredCategories) && !in_array('', $featuredCategories))
-		{
-			$query->where('a.catid IN (' . implode(',', $featuredCategories) . ')');
-		}
-
-		return $query;
-	}
-}
+<?php/** * @package     Joomla.Administrator * @subpackage  com_content * * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved. * @license     GNU General Public License version 2 or later; see LICENSE.txt */defined('_JEXEC') or die;JLoader::register('ContentModelArticles', __DIR__ . '/articles.php');/** * About Page Model * * @since  1.6 */class ContentModelFeatured extends ContentModelArticles{	/**	 * Constructor.	 *	 * @param   array  $config  An optional associative array of configuration settings.	 *	 * @see     JController	 * @since   1.6	 */	public function __construct($config = array())	{		if (empty($config['filter_fields']))		{			$config['filter_fields'] = array(				'id', 'a.id',				'title', 'a.title',				'alias', 'a.alias',				'checked_out', 'a.checked_out',				'checked_out_time', 'a.checked_out_time',				'catid', 'a.catid', 'category_title',				'state', 'a.state',				'access', 'a.access', 'access_level',				'created', 'a.created',				'created_by', 'a.created_by',				'created_by_alias', 'a.created_by_alias',				'ordering', 'a.ordering',				'featured', 'a.featured',				'language', 'a.language',				'hits', 'a.hits',				'publish_up', 'a.publish_up',				'publish_down', 'a.publish_down',				'fp.ordering',				'published', 'a.published',				'author_id',				'category_id',				'level',				'tag'			);		}		parent::__construct($config);	}	/**	 * Build an SQL query to load the list data.	 *	 * @param   boolean  $resolveFKs  True to join selected foreign information	 *	 * @return  string	 *	 * @since   1.6	 */	protected function getListQuery($resolveFKs = true)	{		// Create a new query object.		$db = $this->getDbo();		$query = $db->getQuery(true);		// Select the required fields from the table.		$query->select(			$this->getState(				'list.select',				'a.id, a.title, a.alias, a.checked_out, a.checked_out_time, a.catid, a.state, a.access, a.created, a.hits,' .					'a.featured, a.language, a.created_by_alias, a.publish_up, a.publish_down'			)		);		$query->from('#__content AS a');		// Join over the language		$query->select('l.title AS language_title, l.image AS language_image')			->join('LEFT', $db->quoteName('#__languages') . ' AS l ON l.lang_code = a.language');		// Join over the content table.		$query->select('fp.ordering')			->join('INNER', '#__content_frontpage AS fp ON fp.content_id = a.id');		// Join over the users for the checked out user.		$query->select('uc.name AS editor')			->join('LEFT', '#__users AS uc ON uc.id=a.checked_out');		// Join over the asset groups.		$query->select('ag.title AS access_level')			->join('LEFT', '#__viewlevels AS ag ON ag.id = a.access');		// Join over the categories.		$query->select('c.title AS category_title')			->join('LEFT', '#__categories AS c ON c.id = a.catid');		// Join over the users for the author.		$query->select('ua.name AS author_name')			->join('LEFT', '#__users AS ua ON ua.id = a.created_by');		// Filter by access level.		if ($access = $this->getState('filter.access'))		{			$query->where('a.access = ' . (int) $access);		}		// Filter by published state		$published = $this->getState('filter.published');		if (is_numeric($published))		{			$query->where('a.state = ' . (int) $published);		}		elseif ($published === '')		{			$query->where('(a.state = 0 OR a.state = 1)');		}		// Filter by a single or group of categories.		$baselevel = 1;		$categoryId = $this->getState('filter.category_id');		if (is_numeric($categoryId))		{			$cat_tbl = JTable::getInstance('Category', 'JTable');			$cat_tbl->load($categoryId);			$rgt = $cat_tbl->rgt;			$lft = $cat_tbl->lft;			$baselevel = (int) $cat_tbl->level;			$query->where('c.lft >= ' . (int) $lft)				->where('c.rgt <= ' . (int) $rgt);		}		elseif (is_array($categoryId))		{			JArrayHelper::toInteger($categoryId);			$categoryId = implode(',', $categoryId);			$query->where('a.catid IN (' . $categoryId . ')');		}		// Filter on the level.		if ($level = $this->getState('filter.level'))		{			$query->where('c.level <= ' . ((int) $level + (int) $baselevel - 1));		}		// Filter by author		$authorId = $this->getState('filter.author_id');		if (is_numeric($authorId))		{			$type = $this->getState('filter.author_id.include', true) ? '= ' : '<>';			$query->where('a.created_by ' . $type . (int) $authorId);		}		// Filter by search in title.		$search = $this->getState('filter.search');		if (!empty($search))		{			if (stripos($search, 'id:') === 0)			{				$query->where('a.id = ' . (int) substr($search, 3));			}			elseif (stripos($search, 'author:') === 0)			{				$search = $db->quote('%' . $db->escape(substr($search, 7), true) . '%');				$query->where('(ua.name LIKE ' . $search . ' OR ua.username LIKE ' . $search . ')');			}			else			{				$search = $db->quote('%' . str_replace(' ', '%', $db->escape(trim($search), true) . '%'));				$query->where('a.title LIKE ' . $search . ' OR a.alias LIKE ' . $search);			}		}		// Filter on the language.		if ($language = $this->getState('filter.language'))		{			$query->where('a.language = ' . $db->quote($language));		}		// Filter by a single tag.		$tagId = $this->getState('filter.tag');		if (is_numeric($tagId))		{			$query->where($db->quoteName('tagmap.tag_id') . ' = ' . (int) $tagId)				->join(					'LEFT', $db->quoteName('#__contentitem_tag_map', 'tagmap')					. ' ON ' . $db->quoteName('tagmap.content_item_id') . ' = ' . $db->quoteName('a.id')					. ' AND ' . $db->quoteName('tagmap.type_alias') . ' = ' . $db->quote('com_content.article')				);		}		// Add the list ordering clause.		$query->order($db->escape($this->getState('list.ordering', 'a.title')) . ' ' . $db->escape($this->getState('list.direction', 'ASC')));		return $query;	}	/**	 * Method to auto-populate the model state.	 *	 * Note. Calling getState in this method will result in recursion.	 *	 * @param   string  $ordering   An optional ordering field.	 * @param   string  $direction  An optional direction (asc|desc).	 *	 * @return  void	 *	 * @since   3.5	 */	protected function populateState($ordering = 'a.title', $direction = 'asc')	{		parent::populateState($ordering, $direction);	}}

@@ -179,7 +179,6 @@ class JLanguageHelper
 				}
 			}
 		}
-
 		return $languages[$key];
 	}
 }

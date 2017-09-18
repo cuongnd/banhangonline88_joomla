@@ -10,10 +10,14 @@
 defined('JPATH_PLATFORM') or die;
 
 JFormHelper::loadFieldClass('groupedlist');
-
+$app=JFactory::getApplication();
+$client=$app->getClientId();
+if($client==0){
+	require_once realpath(JPATH_SITE. '/components/com_menus/helpers/menus.php');
+}else {
 // Import the com_menus helper.
-require_once realpath(JPATH_ADMINISTRATOR . '/components/com_menus/helpers/menus.php');
-
+	require_once realpath(JPATH_ADMINISTRATOR . '/components/com_menus/helpers/menus.php');
+}
 /**
  * Supports an HTML grouped select list of menu item grouped by menu
  *

@@ -44,10 +44,11 @@ abstract class JHtmlMenu
 		if (is_null(static::$menus))
 		{
 			$db = JFactory::getDbo();
-
+			$website=JFactory::getWebsiteByUserLogin();
 			$query = $db->getQuery(true)
 				->select($db->qn(array('id', 'menutype', 'title'), array('id', 'value', 'text')))
 				->from($db->quoteName('#__menu_types'))
+				->where('website_id='.(int)$website->id)
 				->order('title');
 
 			static::$menus = $db->setQuery($query)->loadObjectList();
