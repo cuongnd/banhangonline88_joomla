@@ -105,7 +105,6 @@ class JLayoutFile extends JLayoutBase
 
 		// Check possible overrides, and build the full path to layout file
 		$path = $this->getPath();
-
 		if ($this->isDebugEnabled())
 		{
 			echo "<pre>" . $this->renderDebugMessages() . "</pre>";
@@ -138,6 +137,7 @@ class JLayoutFile extends JLayoutBase
 
 		$layoutId     = $this->getLayoutId();
 		$includePaths = $this->getIncludePaths();
+
 		$suffixes     = $this->getSuffixes();
 
 		$this->addDebugMessage('<strong>Layout:</strong> ' . $this->layoutId);
@@ -568,6 +568,9 @@ class JLayoutFile extends JLayoutBase
 	 */
 	public function getDefaultIncludePaths()
 	{
+		$app=JFactory::getApplication();
+		$client=$app->getClientId();
+		$layout=$client==1?'layouts_backend':'layouts_frontend';
 		// Reset includePaths
 		$paths = array();
 
@@ -583,24 +586,24 @@ class JLayoutFile extends JLayoutBase
 		if (!empty($component))
 		{
 			// (2) Component template overrides path
-			$paths[] = JPATH_THEMES . '/' . JFactory::getApplication()->getTemplate() . '/html/layouts/' . $component;
+			$paths[] = JPATH_THEMES . '/' . JFactory::getApplication()->getTemplate() . '/html/'.$layout.'/' . $component;
 
 			// (3) Component path
 			if ($this->options->get('client') == 0)
 			{
-				$paths[] = JPATH_SITE . '/components/' . $component . '/layouts';
+				$paths[] = JPATH_SITE . '/components/' . $component . '/'.$layout;
 			}
 			else
 			{
-				$paths[] = JPATH_ADMINISTRATOR . '/components/' . $component . '/layouts';
+				$paths[] = JPATH_ADMINISTRATOR . '/components/' . $component . '/'.$layout;
 			}
 		}
 
 		// (4) Standard Joomla! layouts overriden
-		$paths[] = JPATH_THEMES . '/' . JFactory::getApplication()->getTemplate() . '/html/layouts';
+		$paths[] = JPATH_THEMES . '/' . JFactory::getApplication()->getTemplate() . '/html/'.$layout;
 
 		// (5 - lower priority) Frontend base layouts
-		$paths[] = JPATH_ROOT . '/layouts';
+		$paths[] = JPATH_ROOT . '/'.$layout;
 
 		return $paths;
 	}

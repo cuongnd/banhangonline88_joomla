@@ -150,7 +150,7 @@ class JLanguageHelper
 			else
 			{
 				$cache = JFactory::getCache('com_languages', '');
-
+				$website=JFactory::getWebsite();
 				if (!$languages = $cache->get('languages'))
 				{
 					$db = JFactory::getDbo();
@@ -158,6 +158,7 @@ class JLanguageHelper
 						->select('*')
 						->from('#__languages')
 						->where('published=1')
+						->where('website_id='.(int)$website->id)
 						->order('ordering ASC');
 					$db->setQuery($query);
 

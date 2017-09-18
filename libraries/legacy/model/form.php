@@ -205,10 +205,10 @@ abstract class JModelForm extends JModelLegacy
 		JForm::addFormPath(JPATH_COMPONENT . '/model/form');
 		JForm::addFieldPath(JPATH_COMPONENT . '/model/field');
 
+
 		try
 		{
 			$form = JForm::getInstance($name, $source, $options, false, $xpath);
-
 			if (isset($options['load_data']) && $options['load_data'])
 			{
 				// Get the data for the form.

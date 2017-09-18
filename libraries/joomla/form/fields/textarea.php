@@ -157,7 +157,6 @@ class JFormFieldTextarea extends JFormField
 		$onclick = $this->onclick ? ' onclick="' . $this->onclick . '"' : '';
 
 		// Including fallback code for HTML5 non supported browsers.
-		JHtml::_('jquery.framework');
 		JHtml::_('script', 'system/html5fallback.js', false, true);
 
 		return '<textarea name="' . $this->name . '" id="' . $this->id . '"' . $columns . $rows . $class
