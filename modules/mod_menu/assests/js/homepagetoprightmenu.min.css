@@ -17,7 +17,6 @@
         var $element = $(element), // reference to the jQuery version of DOM element
             element = element;    // reference to the actual DOM element
         // the "constructor" method that gets called when the object is created
-
         plugin.init = function() {
             plugin.settings = $.extend({}, defaults, options);
             var module_id=plugin.settings.module_id;
@@ -27,7 +26,6 @@
                 displace:false
             });
             //$element.find('#sidr').addClass('hidden-desktop');
-
         }
         plugin.example_function = function() {
         }

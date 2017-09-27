@@ -13,10 +13,10 @@ $doc->addScript( '/components/com_menus/assets/js/view_items_edit.js');
 // Include the component HTML helpers.
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 JHtml::_('jQuery.cookie');
-JHtml::_('behavior.core');
-JHtml::_('behavior.tabstate');
-JHtml::_('behavior.formvalidator');
-JHtml::_('formbehavior.chosen', 'select');
+JHtml::_('behaviorfrontend.core');
+JHtml::_('behaviorfrontend.tabstate');
+JHtml::_('behaviorfrontend.formvalidator');
+JHtml::_('formbehaviorfrontend.chosen', 'select');
 JText::script('ERROR');
 $input=$app->input;
 $task_js=$input->getString('task_js','');
@@ -81,17 +81,17 @@ $input = JFactory::getApplication()->input;
 // Add the script to the document head.
 JFactory::getDocument()->addScriptDeclaration($script);
 $tmpl = $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=component' : '';
-JHtml::_('toolbar.toolbar_menu',true);
 JHtml::_('toolbar.toolbar_control');
+JHtml::_('dashboard.renderDashboard',true);
 ?>
-<div class="grid2">
+<div class="grid2" id="wrapper-edit-menu">
 	<form  action="<?php echo JRoute::_('index.php?option=com_menus&view=item&layout=edit' . $tmpl . '&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="item-form" class="form-validate">
 		<?php echo JLayoutHelper::render('joomla.edit.title_alias', $this); ?>
 		<div class="form-horizontal">
 			<?php echo JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'details')); ?>
 			<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'details', JText::_('COM_MENUS_ITEM_DETAILS')); ?>
-			<div class="row-fluid">
-				<div class="span9">
+			<div class="row">
+				<div class="col-md-8">
 					<?php
 					echo $this->form->getControlGroup('type');
 					if ($this->item->type == 'alias')
@@ -108,7 +108,7 @@ JHtml::_('toolbar.toolbar_control');
 					echo $this->form->getControlGroup('template_style_id');
 					?>
 				</div>
-				<div class="span3">
+				<div class="col-md-4">
 					<?php
 					// Set main fields.
 					$this->fields = array(

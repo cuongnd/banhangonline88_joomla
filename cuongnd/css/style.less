@@ -38,7 +38,7 @@ body {
   font-family: 'Raleway', Arial, sans-serif;
   font-size: 15px;
   line-height: 1.8em;
-  color: #989898;
+  color: #000;
   font-weight: 300;
   background: #f8f8f8;
 }
@@ -190,7 +190,7 @@ button:focus,
  * Section Wrapper
  *-------------------*/
 .section-wrapper {
-  padding: 50px 0;
+  padding: 10px 0;
 }
 
 @media (max-width: 768px) {
@@ -216,7 +216,7 @@ button:focus,
 .section-title h2 {
   font-size: 14px;
   margin-bottom: 5px;
-  color: #bbbbbb;
+  color: #000;
   text-transform: uppercase;
 }
 
@@ -236,7 +236,7 @@ button:focus,
  *-----------------------------*/
 
 .header {
-  padding: 50px 0;
+  padding: 5px 0;
   margin: 0;
   position: relative;
   border-top: 5px solid #ff5722;
@@ -276,11 +276,10 @@ button:focus,
 }
 
 .header .personal-details small {
-  font-size: 12px;
 }
 
 .header .personal-details span {
-  color: #989898;
+  color: #000;
 }
 
 @media (max-width: 768px) {
@@ -313,7 +312,13 @@ button:focus,
   display: inline-block;
   margin: 0 2px;
 }
-
+.navbar-default .navbar-nav>li>a
+{
+  color: #000;
+}
+.description{
+  text-align: justify;
+}
 .social-icon li a {
   display: block;
   font-size: 12px;
@@ -361,7 +366,6 @@ button:focus,
     columns: 2;
     -webkit-columns: 2;
     -moz-columns: 2;
-    font-size: 12px;
   }
 }
 
@@ -464,7 +468,7 @@ button:focus,
   background: -webkit-linear-gradient(
           top,
           transparent 0%,
-          #000 100%
+          #ccc 100%
   );
   transition: all .2s linear;
 }
@@ -475,7 +479,7 @@ button:focus,
 
 .portfolio-item .portfolio-info h3 {
   margin: 0;
-  line-height: 1;
+  
   color: #ffffff;
   font-weight: 500;
   text-transform: uppercase;
@@ -640,6 +644,17 @@ button:focus,
 .profile-item .media-object {
   width: 30px;
 }
+@page {
+  size: A4;
+  margin: 0;
+}
+@media print {
+  html, body {
+    width: 210mm;
+    height: 297mm;
+  }
+  /* ... the rest of the rules ... */
+}
 
 .profile-item a {
   color: #444;
@@ -656,21 +671,23 @@ button:focus,
 .content-item {
   margin-bottom: 40px;
 }
-
+.header .personal-details strong
+{
+  line-height: 25px;
+}
 .content-item h3 {
   margin: 0 0 10px;
-  line-height: 1;
+  
   font-weight: bold;
   text-transform: uppercase;
 }
 
 .content-item h4 {
   margin: 0;
-  line-height: 1;
 }
 
 .content-item small {
-  color: #888888;
+  color: #000;
 }
 
 /*-------------------

@@ -45,7 +45,6 @@
                         $('#mod_menu_'+module_id).html(data);
                         var mod_menu=$('#mod_menu_'+module_id).data('menucategory');
                         mod_menu.rebuild_style(module_id);
-
                     }else if(response.success==false){
                         alert(response.message);
                     }
@@ -55,10 +54,7 @@
         plugin.rebuild_style=function(module_id){
             var menucategory=$('#mod_menu_'+module_id).data('menucategory');
             var $item_element=$('#mod_menu_'+module_id);
-
-
         };
-
         plugin.init = function() {
             plugin.settings = $.extend({}, defaults, options);
             var module_id=plugin.settings.module_id;
@@ -67,14 +63,12 @@
                 $element.appear(function () {
                 });
                 $(document.body).on('appear', '#mod_menu_' + module_id, function (e, $affected) {
-
                     // this code is executed for each appeared element
                     var $menucategory = $affected.data('menucategory');
                     if (!$menucategory.settings.showing) {
                         var lazyload = $menucategory.settings.lazyload;
                         $menucategory.settings.showing = true;
                         $menucategory.load_module($menucategory.settings.module_id);
-
                     }
                 });
             }

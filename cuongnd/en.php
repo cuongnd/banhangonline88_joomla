@@ -85,14 +85,14 @@ require_once PATH_ROOT.DS.'config.php';
         <div class="row">
             <div class="col-md-3">
                 <div class="profile-img">
-                    <img src="img/img-profile.jpg" class="img-responsive" alt=""/>
+                    <img src="img/cuong.jpg" class="img-responsive" alt=""/>
                 </div>
                 <!-- Profile Image -->
             </div>
             <div class="col-md-9">
                 <div class="name-wrapper">
                     <h1 class="name">Nguyen Dinh Cuong</h1>
-                    <div>Web programmer - <a class="" href="/cuongnd/cuongnd_profile_en.pdf"> Download my CV</a></div>
+                    <div>Web programmer - <a class="" href="/cuongnd/cv_en_cuong_nd_stander.pdf"> Download my CV</a></div>
                     <h3>Link about me : <a href="http://banhangonline88.com/cuongnd/en.php">http://banhangonline88.com/cuongnd/en.php</a></h3>
                 </div>
                 <p>
@@ -158,20 +158,20 @@ require_once PATH_ROOT.DS.'config.php';
                         <div class="expertise-item">
                             <h3>Design template joomla template</h3>
 
-                            <p>
+                            <div class="description">
                                 Joomla is my special strength, I can customize and build templates joomla easily.
 
-                            </p>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-6 wow bounceInUp">
                         <div class="expertise-item">
                             <h3>Build module, component joomla</h3>
 
-                            <p>
-                                With more than 7 years of experience in rescuing and learning the joomla system including reading the library code and customizing it helped me partly understand the structure of a large system.                            </p>
+                            <div class="description">
+                                With more than 7 years of experience in rescuing and learning the joomla system including reading the library code and customizing it helped me partly understand the structure of a large system.
 
-                            </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -180,9 +180,9 @@ require_once PATH_ROOT.DS.'config.php';
                         <div class="expertise-item">
                             <h3>Writing plugin jquery</h3>
 
-                            <p>
+                            <div class="description">
                                 Jquery is great, especially with the server language we can build for our customers. The frontend is really friendly and easy.
-                            </p>
+                            </div>
                         </div>
                     </div>
 
@@ -190,9 +190,9 @@ require_once PATH_ROOT.DS.'config.php';
                         <div class="expertise-item">
                             <h3>Write Android application</h3>
 
-                            <p>
+                            <div class="description">
                                 With the age of mobile technology, using java to write Android applications for the user is a must for a programmer like me.
-                            </p>
+                            </div>
                         </div>
                     </div>
 
@@ -202,10 +202,10 @@ require_once PATH_ROOT.DS.'config.php';
                         <div class="expertise-item">
                             <h3>Writing application windows</h3>
 
-                            <p>
+                            <div class="description">
                                 As we all know the profession is not dry, boring as people think it is a miniature that you can satisfy discovery. Wherever you need to work, you have to work hard and make time for it, take care of it like a child. But with the information, information and programming jobs will be used to be better. Why so? Simple but because of a job is a simple job, apply to high if you have a look of the signature, say and say you can not work to work.
 
-                            </p>
+                            </div>
                         </div>
                     </div>
 
@@ -213,9 +213,9 @@ require_once PATH_ROOT.DS.'config.php';
                         <div class="expertise-item">
                             <h3>Equipped with some soft skills</h3>
 
-                            <p>
+                            <div class="description">
                                 In addition to the knowledge to serve the job, the soft skills, such as communication, presentation ... I also often compensate for myself
-                            </p>
+                            </div>
                         </div>
                     </div>
 
@@ -339,12 +339,13 @@ require_once PATH_ROOT.DS.'config.php';
                                 <img src="img/portfolio-1.jpg" alt="">
                             </div>
 
-                            <div class="portfolio-info">
-                                <h3>Ecommerce site</h3>
-                                <small>banhangonline88.com</small>
-                            </div>
                             <!-- portfolio-info -->
                         </a>
+                        <div class="portfolio-info">
+                            <h3>Ecommerce site</h3>
+                            <small>banhangonline88.com</small>
+                        </div>
+
                         <div class="description"> This Ecommerce site build on joomla technology,This system was built by myself, including the full functionality of an ecommerce site,
                             server language is php, client side uses jquery, javascript,html, css3, bootstrap 3
                             <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#modal_banhangonline_front_end_booking">
@@ -360,7 +361,7 @@ require_once PATH_ROOT.DS.'config.php';
                                         <h4 class="modal-title" id="bhomyModalLabelfront_end_booking">banhangonline88.com</h4>
                                     </div>
                                     <div class="modal-body">
-                                        <div id="carousel-example-generic-bho" class="carousel slide" data-ride="carousel">
+                                        <div id="carousel-example-generic-bho" class="carousel slide" >
                                             <!-- Indicators -->
                                             <?php
                                             $dir=PATH_ROOT.DS."img/banhangonline88";
@@ -380,7 +381,7 @@ require_once PATH_ROOT.DS.'config.php';
                                                     $file=$banhangonline88[$i];
                                                     ?>
                                                     <div class="item <?php echo $i==0?'active':'' ?>">
-                                                        <img src="<?php echo URL_ROOT.'img/banhangonline88/'.$file ?>" alt="<?php echo $file ?>">
+                                                        <img <?php echo $i == 0 ? '' : 'lazy-' ?>src="<?php echo URL_ROOT.'img/banhangonline88/'.$file ?>" alt="<?php echo $file ?>">
                                                     </div>
                                                 <?php } ?>
                                             </div>
@@ -411,12 +412,12 @@ require_once PATH_ROOT.DS.'config.php';
                                 <img src="img/portfolio-2.jpg" alt="">
                             </div>
 
-                            <div class="portfolio-info">
-                                <h3>Tour, transfer,hotel</h3>
-                                <small>asianventure.com</small>
-                            </div>
                             <!-- portfolio-info -->
                         </a>
+                        <div class="portfolio-info">
+                            <h3>Tour, transfer,hotel</h3>
+                            <small>asianventure.com</small>
+                        </div>
                         <div class="description">This website build booking tour,
                             I am a person who directly analyzes functions, plans, direct assignments. website written in php, jquery, html, css3, bootstrap 3
                         </div>
@@ -428,12 +429,12 @@ require_once PATH_ROOT.DS.'config.php';
                                 <img src="img/portfolio-3.jpg" alt="">
                             </div>
 
-                            <div class="portfolio-info">
-                                <h3>Joomla template</h3>
-                                <small>joomlart.com</small>
-                            </div>
                             <!-- portfolio-info -->
                         </a>
+                        <div class="portfolio-info">
+                            <h3>Joomla template</h3>
+                            <small>joomlart.com</small>
+                        </div>
                         <div class="description">
                             Previously I studied at joomlart website design company and involved in some small development of sample products for the company.
                         </div>
@@ -447,19 +448,19 @@ require_once PATH_ROOT.DS.'config.php';
                                 <img src="img/portfolio-4.jpg" alt="">
                             </div>
 
-                            <div class="portfolio-info">
-                                <h3>Backend tour, transfer,hotel manager</h3>
-                                <small>viethandtravel.com</small>
-                            </div>
                             <!-- portfolio-info -->
                         </a>
+                        <div class="portfolio-info">
+                            <h3>Backend tour, transfer,hotel manager</h3>
+                            <small>viethandtravel.com</small>
+                        </div>
+
                         <div class="description">
                             This is a management system for booking tours, management and operation during the tour, calculate the details for each tour participant,uses jquery, javascript,html, css3, bootstrap 3
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#modal_backend_end_booking">
-                                gallery project
-                            </button>
                         </div>
+                        <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#modal_backend_end_booking">
+                            gallery project
+                        </button>
                         <!-- Modal -->
                         <div class="modal fade" id="modal_backend_end_booking" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                             <div class="modal-dialog" role="document">
@@ -489,7 +490,7 @@ require_once PATH_ROOT.DS.'config.php';
                                                     $file=$back_end_booking[$i];
                                                     ?>
                                                     <div class="item <?php echo $i==0?'active':'' ?>">
-                                                        <img src="<?php echo URL_ROOT.'img/backend_end_booking/'.$file ?>" alt="<?php echo $file ?>">
+                                                        <img <?php echo $i == 0 ? '' : 'lazy-' ?>src="<?php echo URL_ROOT.'img/backend_end_booking/'.$file ?>" alt="<?php echo $file ?>">
                                                     </div>
                                                 <?php } ?>
                                             </div>
@@ -520,20 +521,21 @@ require_once PATH_ROOT.DS.'config.php';
                                 <img src="img/portfolio-5.jpg" alt="">
                             </div>
 
-                            <div class="portfolio-info">
-                                <h3>frontend tour, transfer,hotel manager</h3>
-                                <small>viethandtravel.com</small>
-                            </div>
                             <!-- Modal -->
                             <!-- portfolio-info -->
                         </a>
+                        <div class="portfolio-info">
+                            <h3>frontend tour, transfer,hotel manager</h3>
+                            <small>viethandtravel.com</small>
+                        </div>
+
                         <div class="description">
                             This is website booking tour on front end, calculate the details for each tour participant.uses jquery, javascript,html, css3, bootstrap 3
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#modal_front_end_booking">
-                                gallery project
-                            </button>
                         </div>
+                        <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#modal_front_end_booking">
+                            gallery project
+                        </button>
+
                         <div class="modal fade" id="modal_front_end_booking" tabindex="-1" role="dialog" aria-labelledby="myModalLabelfront_end_booking">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -542,7 +544,7 @@ require_once PATH_ROOT.DS.'config.php';
                                         <h4 class="modal-title" id="myModalLabelfront_end_booking">front booking</h4>
                                     </div>
                                     <div class="modal-body">
-                                        <div id="carousel-example-generic-front_end_booking" class="carousel slide" data-ride="carousel">
+                                        <div id="carousel-example-generic-front_end_booking" class="carousel slide" >
                                             <!-- Indicators -->
                                             <?php
                                             $dir=PATH_ROOT.DS."img/front_end_booking";
@@ -562,7 +564,7 @@ require_once PATH_ROOT.DS.'config.php';
                                                     $file=$front_end_booking[$i];
                                                     ?>
                                                     <div class="item <?php echo $i==0?'active':'' ?>">
-                                                        <img src="<?php echo URL_ROOT.'img/front_end_booking/'.$file ?>" alt="<?php echo $file ?>">
+                                                        <img <?php echo $i == 0 ? '' : 'lazy-' ?>src="<?php echo URL_ROOT.'img/front_end_booking/'.$file ?>" alt="<?php echo $file ?>">
                                                     </div>
                                                 <?php } ?>
                                             </div>
@@ -593,19 +595,19 @@ require_once PATH_ROOT.DS.'config.php';
                                 <img src="img/portfolio-6.jpg" alt="">
                             </div>
 
-                            <div class="portfolio-info">
-                                <h3>frontend tour, transfer,hotel manager</h3>
-                                <small>viethandtravel.com</small>
-                            </div>
                             <!-- portfolio-info -->
                         </a>
+                        <div class="portfolio-info">
+                            <h3>frontend tour, transfer,hotel manager</h3>
+                            <small>viethandtravel.com</small>
+                        </div>
+
                         <div class="description">
                             This is website booking tour on front end, calculate the details for each tour participant.uses jquery, javascript,html, css3, bootstrap 3
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#modal_front_end_booking">
-                                gallery project
-                            </button>
                         </div>
+                        <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#modal_front_end_booking">
+                            gallery project
+                        </button>
 
                         <!-- .portfolio-item -->
                     </div>

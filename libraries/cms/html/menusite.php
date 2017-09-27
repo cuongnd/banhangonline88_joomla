@@ -37,6 +37,7 @@ abstract class JHtmlMenusite
 	 */
 	public static function menus()
 	{
+		require_once JPATH_ROOT.DS.'components/com_menus/helpers/menus.php';
 		if (is_null(static::$menus))
 		{
 			$db = JFactory::getDbo();
@@ -46,7 +47,11 @@ abstract class JHtmlMenusite
 				->from($db->quoteName('#__menu_types'))
 				->where('website_id='.(int)$website->id)
 				->order('title');
-			static::$menus = $db->setQuery($query)->loadObjectList();
+			$list = $db->setQuery($query)->loadObjectList();
+			foreach($list as &$item){
+				$item->value=MenusHelper::getMenuType($item->value);
+			}
+			static::$menus = $list;
 		}
 		return static::$menus;
 	}

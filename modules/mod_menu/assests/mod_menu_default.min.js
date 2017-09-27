@@ -16,7 +16,6 @@
         var $element = $(element), // reference to the jQuery version of DOM element
             element = element;    // reference to the actual DOM element
         // the "constructor" method that gets called when the object is created
-
         plugin.load_module = function() {
             var option_click= {
                 option: 'com_modules',
@@ -47,21 +46,16 @@
                             $( this ).remove();
                         });
                         $element.html(data);
-
                     }else if(response.success==false){
                         alert(response.message);
                     }
                 }
             });
         };
-
-
-
         plugin.init = function() {
             plugin.settings = $.extend({}, defaults, options);
             var module_id=plugin.settings.module_id;
             var lazyload=plugin.settings.lazyload;
-
             if(lazyload) {
                 console.log(typeof lazyload);
                 console.log(plugin.settings);
@@ -73,12 +67,9 @@
                         var lazyload = plugin.settings.lazyload;
                         plugin.settings.showing = true;
                         plugin.load_module();
-
                     }
                 });
             }
-
-
         }
         plugin.example_function = function() {
         }

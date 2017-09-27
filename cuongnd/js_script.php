@@ -11,6 +11,8 @@
 <script src="js/wow.min.js"></script>
 <!--theme script-->
 <script src="js/less.min.js"></script>
+<script src="js/jqueryui-ruler/js/jquery.ui.ruler.js"></script>
+<script src="js/lazy-bootstrap-carousel-v3.js"></script>
 <script src="js/scripts.js"></script>
 <!-- Start of LiveChat (www.livechatinc.com) code -->
 <script type="text/javascript">

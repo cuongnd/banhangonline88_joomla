@@ -1715,7 +1715,7 @@ html[dir=rtl] .quick-icons .nav-list [class^="icon-"], html[dir=rtl] .quick-icon
 
 .form-horizontal {
   // Float the labels left
-  .control-label {
+  .control-label[class~="col"] {
     width: auto;
     padding-right: 5px;
     text-align: left;
@@ -2007,20 +2007,6 @@ input.input-large-text {
 .editor textarea.mce_editable {
   box-sizing: border-box;
 }
-/* For grid.boolean */
-a.grid_false {
-  display: inline-block;
-  height: 16px;
-  width: 16px;
-  background-image: url('../images/admin/publish_r.png');
-}
-
-a.grid_true {
-  display: inline-block;
-  height: 16px;
-  width: 16px;
-  background-image: url('../images/admin/icon-16-allow.png');
-}
 /* For collapsible sidebar */
 .j-sidebar-container {
   position: absolute;
@@ -2280,7 +2266,7 @@ legend + .control-group {
     .clearfix();
   }
   // Float the labels left
-  .control-label {
+  .control-label[class~="col"] {
     float: left;
     width: @horizontalComponentOffset - 20;
     padding-top: 5px;
@@ -2972,4 +2958,66 @@ div.chzn-container
 .navbar .nav>li
 {
   display: block!important;
+}
+.grid2 select, .grid2 textarea, .grid2 input[type="text"], .grid2 input[type="password"], .grid2 input[type="datetime"], .grid2 input[type="datetime-local"], .grid2 input[type="date"], .grid2 input[type="month"], .grid2 input[type="time"], .grid2 input[type="week"], .grid2 input[type="number"], .grid2 input[type="email"], .grid2 input[type="url"], .grid2 input[type="search"], .grid2 input[type="tel"], .grid2 input[type="color"], .grid2 .uneditable-input
+{
+  height: auto;
+}
+.content-wrapper
+{
+  background: #fff;
+}
+.contentpane .main-header
+{
+  .logo{
+    max-height: none;
+  }
+  .navbar .nav>li>a
+  {
+    padding: 18px;
+  }
+  .dropdown.user.user-menu
+  {
+    a{
+      padding: 15px;
+    }
+  }
+}
+.sidebar-menu .menu-iem .title
+{
+  padding-left: 22px;
+  display: block;
+  padding-right: 23px;
+}
+.treeview-menu>li
+{
+
+}
+.sidebar-menu .menu-iem
+{
+  white-space:normal;
+}
+.sidebar-menu>li>a>.fa, .sidebar-menu>li>a>.glyphicon, .sidebar-menu>li>a>.ion,.treeview-menu>li>a>.fa, .treeview-menu>li>a>.glyphicon, .treeview-menu>li>a>.ion
+{
+  position: absolute;
+  margin-top: -4px;
+  top: 50%;
+}
+.treeview-menu>li>a>.fa, .treeview-menu>li>a>.glyphicon, .treeview-menu>li>a>.ion
+{
+  margin-top: -7px;
+}
+.sidebar-menu li>a>.pull-right-container
+{
+  right: 1px;
+}
+.sidebar-menu>li>a
+{
+  padding: 12px 5px 5px 5px;
+  display: block;
+
+}
+.treeview-menu>li>a
+{
+  padding: 5px 5px 5px 10px;
 }

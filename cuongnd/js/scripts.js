@@ -23,6 +23,9 @@ jQuery(function ($) {
             bottomOffset: 100,
         });
     }());
+    (function () {
+        $('.carousel').carousel({interval:false});
+    }());
 
     (function () {
         // Configure/customize these variables.

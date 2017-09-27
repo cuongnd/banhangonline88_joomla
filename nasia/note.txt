@@ -1,0 +1,2 @@
+https://www.geotab.com/blog/gps-logging-curve-algorithm/
+https://www.codeproject.com/Articles/25237/Bezier-Curves-Made-Simple
