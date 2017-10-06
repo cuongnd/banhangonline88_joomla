@@ -1,17 +1,13 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 var jQuery = $; 
 $.require() 
  .script("ui/effect") 
  .done(function() { 
 var exports = function() { 
-
 /*!
  * jQuery UI Effects Explode 1.9.0pre
  * http://jqueryui.com
@@ -26,26 +22,20 @@ var exports = function() {
  *	jquery.ui.effect.js
  */
 (function( $, undefined ) {
-
 $.effects.effect.explode = function( o, done ) {
-
 	var rows = o.pieces ? Math.round( Math.sqrt( o.pieces ) ) : 3,
 		cells = rows,
 		el = $( this ),
 		mode = $.effects.setMode( el, o.mode || "hide" ),
 		show = mode === "show",
-
 		// show and then visibility:hidden the element before calculating offset
 		offset = el.show().css( "visibility", "hidden" ).offset(),
-
 		// width and height of a piece
 		width = Math.ceil( el.outerWidth() / cells ),
 		height = Math.ceil( el.outerHeight() / rows ),
 		pieces = [],
-
 		// loop
 		i, j, left, top, mx, my;
-
 	// children animate complete:
 	function childComplete() {
 		pieces.push( this );
@@ -53,16 +43,13 @@ $.effects.effect.explode = function( o, done ) {
 			animComplete();
 		}
 	}
-
 	// clone the element for each row and cell.
 	for( i = 0; i < rows ; i++ ) { // ===>
 		top = offset.top + i * height;
 		my = i - ( rows - 1 ) / 2 ;
-
 		for( j = 0; j < cells ; j++ ) { // |||
 			left = offset.left + j * width;
 			mx = j - ( cells - 1 ) / 2 ;
-
 			// Create a clone of the now hidden main element that will be absolute positioned
 			// within a wrapper div off the -left and -top equal to size of our pieces
 			el
@@ -75,7 +62,6 @@ $.effects.effect.explode = function( o, done ) {
 					left: -j * width,
 					top: -i * height
 				})
-
 			// select the wrapper - make it overflow: hidden and absolute positioned based on
 			// where the original was located +left and +top equal to the size of pieces
 				.parent()
@@ -95,7 +81,6 @@ $.effects.effect.explode = function( o, done ) {
 				}, o.duration || 500, o.easing, childComplete );
 		}
 	}
-
 	function animComplete() {
 		el.css({
 			visibility: "visible"
@@ -107,22 +92,15 @@ $.effects.effect.explode = function( o, done ) {
 		done();
 	}
 };
-
 })(jQuery);
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
-}); 
+});
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("ui/effect-explode")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

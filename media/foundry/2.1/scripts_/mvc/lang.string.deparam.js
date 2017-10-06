@@ -1,13 +1,9 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 var exports = function() { 
-
 
 	
 	var digitTest = /^\d+$/,
@@ -78,19 +74,13 @@ var exports = function() {
 		}
 	});
 	
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("mvc/lang.string.deparam")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

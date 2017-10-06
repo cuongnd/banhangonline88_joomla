@@ -1,17 +1,12 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 $.require() 
  .script("mvc/controller","mvc/lang.openajax") 
  .done(function() { 
 var exports = function() { 
-
-
 
 	/**
 	 * @function jQuery.Controller.static.processors.subscribe
@@ -48,7 +43,6 @@ var exports = function() {
 			OpenAjax.hub.unsubscribe(subscription);
 		};
 	};
-
 	/**
 	 * @add jQuery.Controller.prototype
 	 */
@@ -63,20 +57,14 @@ var exports = function() {
 	$.Controller.prototype.publish = function() {
 		OpenAjax.hub.publish.apply(OpenAjax.hub, arguments);
 	};
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
-}); 
+});
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("mvc/controller.subscribe")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

@@ -1,16 +1,12 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 $.require() 
  .script("mvc/event.livehack") 
  .done(function() { 
 var exports = function() { 
-
 
 /**
  * @class jQuery.Hover
@@ -95,7 +91,6 @@ $.extend($.Hover,{
 	distance: 10,
 	leave : 0
 })
-
 /**
  * @Prototype
  */
@@ -182,12 +177,10 @@ var event = $.event,
 				$(enteredEl).unbind("mousemove",mouseenter);
 				$.removeData(delegate,"_hover"+selector)
 			};
-
 		$(enteredEl).bind("mousemove",mouseenter).bind("mouseleave", mouseleave);
 		$.each(event.find(delegate, ["hoverinit"], selector), function(){
 			this.call(enteredEl, ev, hover)
 		})
-
 		timer = setTimeout(function(){
 			//check that we aren't moveing around
 			if(dist < hover._distance && $(enteredEl).queue().length == 0){
@@ -201,9 +194,7 @@ var event = $.event,
 				timer = setTimeout(arguments.callee, hover._delay)
 			}
 		}, hover._delay)
-
 	};
-
 /**
  * @add jQuery.event.special
  */
@@ -260,21 +251,14 @@ event.setupHelper( [
 "hovermove"], "mouseenter", onmouseenter )
 
 
-
-
 }; 
-
-exports(); 
+exports();
 module.resolveWith(exports); 
-
-}); 
+});
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("mvc/event.hover")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

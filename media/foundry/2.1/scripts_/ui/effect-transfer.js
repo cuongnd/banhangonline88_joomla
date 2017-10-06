@@ -1,17 +1,13 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 var jQuery = $; 
 $.require() 
  .script("ui/effect") 
  .done(function() { 
 var exports = function() { 
-
 /*!
  * jQuery UI Effects Transfer 1.9.0pre
  * http://jqueryui.com
@@ -26,7 +22,6 @@ var exports = function() {
  *	jquery.ui.effect.js
  */
 (function( $, undefined ) {
-
 $.effects.effect.transfer = function( o, done ) {
 	var elem = $( this ),
 		target = $( o.to ),
@@ -57,22 +52,15 @@ $.effects.effect.transfer = function( o, done ) {
 				done();
 			});
 };
-
 })(jQuery);
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
-}); 
+});
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("ui/effect-transfer")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

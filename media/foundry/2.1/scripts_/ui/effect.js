@@ -1,14 +1,10 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 var jQuery = $; 
 var exports = function() { 
-
 /*!
  * jQuery UI Effects 1.9.0pre
  * http://jqueryui.com
@@ -20,15 +16,12 @@ var exports = function() {
  * http://api.jqueryui.com/category/effects/
  */
 ;(jQuery.effects || (function($, undefined) {
-
 var backCompat = $.uiBackCompat !== false,
 	// prefix used for storing data on .data()
 	dataSpace = "ui-effects-";
-
 $.effects = {
 	effect: {}
 };
-
 /*!
  * jQuery Color Animations v2.0.0
  * http://jquery.com/
@@ -40,9 +33,7 @@ $.effects = {
  * Date: Mon Aug 13 13:41:02 2012 -0500
  */
 (function( jQuery, undefined ) {
-
 	var stepHooks = "backgroundColor borderBottomColor borderLeftColor borderRightColor borderTopColor color columnRuleColor outlineColor textDecorationColor textEmphasisColor".split(" "),
-
 	// plusequals test for += 100 -= 100
 	rplusequals = /^([\-+])=\s*(\d+\.?\d*)/,
 	// a set of RE's that can match strings and generate color tuples.
@@ -98,7 +89,6 @@ $.effects = {
 				];
 			}
 		}],
-
 	// jQuery.Color( )
 	color = jQuery.Color = function( color, green, blue, alpha ) {
 		return new jQuery.Color.fn.parse( color, green, blue, alpha );
@@ -120,7 +110,6 @@ $.effects = {
 				}
 			}
 		},
-
 		hsla: {
 			props: {
 				hue: {
@@ -152,20 +141,15 @@ $.effects = {
 		}
 	},
 	support = color.support = {},
-
 	// element for support tests
 	supportElem = jQuery( "<p>" )[ 0 ],
-
 	// colors = jQuery.Color.names
 	colors,
-
 	// local aliases of functions called often
 	each = jQuery.each;
-
 // determine rgba support immediately
 supportElem.style.cssText = "background-color:rgba(1,1,1,.5)";
 support.rgba = supportElem.style.backgroundColor.indexOf( "rgba" ) > -1;
-
 // define cache name and alpha properties
 // for rgba and hsla spaces
 each( spaces, function( spaceName, space ) {
@@ -176,61 +160,47 @@ each( spaces, function( spaceName, space ) {
 		def: 1
 	};
 });
-
 function clamp( value, prop, allowEmpty ) {
 	var type = propTypes[ prop.type ] || {};
-
 	if ( value == null ) {
 		return (allowEmpty || !prop.def) ? null : prop.def;
 	}
-
 	// ~~ is an short way of doing floor for positive numbers
 	value = type.floor ? ~~value : parseFloat( value );
-
 	// IE will pass in empty strings as value for alpha,
 	// which will hit this case
 	if ( isNaN( value ) ) {
 		return prop.def;
 	}
-
 	if ( type.mod ) {
 		// we add mod before modding to make sure that negatives values
 		// get converted properly: -10 -> 350
 		return (value + type.mod) % type.mod;
 	}
-
 	// for now all property types without mod have min and max
 	return 0 > value ? 0 : type.max < value ? type.max : value;
 }
-
 function stringParse( string ) {
 	var inst = color(),
 		rgba = inst._rgba = [];
-
 	string = string.toLowerCase();
-
 	each( stringParsers, function( i, parser ) {
 		var parsed,
 			match = parser.re.exec( string ),
 			values = match && parser.parse( match ),
 			spaceName = parser.space || "rgba";
-
 		if ( values ) {
 			parsed = inst[ spaceName ]( values );
-
 			// if this was an rgba parse the assignment might happen twice
 			// oh well....
 			inst[ spaces[ spaceName ].cache ] = parsed[ spaces[ spaceName ].cache ];
 			rgba = inst._rgba = parsed._rgba;
-
 			// exit each( stringParsers ) here because we matched
 			return false;
 		}
 	});
-
 	// Found a stringParser that handled it
 	if ( rgba.length ) {
-
 		// if this came from a parsed string, force "transparent" when alpha is 0
 		// chrome, (and maybe others) return "transparent" as rgba(0,0,0,0)
 		if ( rgba.join() === "0,0,0,0" ) {
@@ -238,11 +208,9 @@ function stringParse( string ) {
 		}
 		return inst;
 	}
-
 	// named colors
 	return colors[ string ];
 }
-
 color.fn = jQuery.extend( color.prototype, {
 	parse: function( red, green, blue, alpha ) {
 		if ( red === undefined ) {
@@ -253,29 +221,24 @@ color.fn = jQuery.extend( color.prototype, {
 			red = jQuery( red ).css( green );
 			green = undefined;
 		}
-
 		var inst = this,
 			type = jQuery.type( red ),
 			rgba = this._rgba = [],
 			source;
-
 		// more than 1 argument specified - assume ( red, green, blue, alpha )
 		if ( green !== undefined ) {
 			red = [ red, green, blue, alpha ];
 			type = "array";
 		}
-
 		if ( type === "string" ) {
 			return this.parse( stringParse( red ) || colors._default );
 		}
-
 		if ( type === "array" ) {
 			each( spaces.rgba.props, function( key, prop ) {
 				rgba[ prop.idx ] = clamp( red[ prop.idx ], prop );
 			});
 			return this;
 		}
-
 		if ( type === "object" ) {
 			if ( red instanceof color ) {
 				each( spaces, function( spaceName, space ) {
@@ -287,10 +250,8 @@ color.fn = jQuery.extend( color.prototype, {
 				each( spaces, function( spaceName, space ) {
 					var cache = space.cache;
 					each( space.props, function( key, prop ) {
-
 						// if the cache doesn't exist, and we know how to convert
 						if ( !inst[ cache ] && space.to ) {
-
 							// if the value was null, we don't need to copy it
 							// if the key was alpha, we don't need to copy it either
 							if ( key === "alpha" || red[ key ] == null ) {
@@ -298,12 +259,10 @@ color.fn = jQuery.extend( color.prototype, {
 							}
 							inst[ cache ] = space.to( inst._rgba );
 						}
-
 						// this is the only case where we allow nulls for ALL properties.
 						// call clamp with alwaysAllowEmpty
 						inst[ cache ][ prop.idx ] = clamp( red[ key ], prop, true );
 					});
-
 					// everything defined but alpha?
 					if ( inst[ cache ] && $.inArray( null, inst[ cache ].slice( 0, 3 ) ) < 0 ) {
 						// use the default of 1
@@ -321,7 +280,6 @@ color.fn = jQuery.extend( color.prototype, {
 		var is = color( compare ),
 			same = true,
 			inst = this;
-
 		each( spaces, function( _, space ) {
 			var localCache,
 				isCache = is[ space.cache ];
@@ -355,14 +313,12 @@ color.fn = jQuery.extend( color.prototype, {
 			startColor = this.alpha() === 0 ? color( "transparent" ) : this,
 			start = startColor[ space.cache ] || space.to( startColor._rgba ),
 			result = start.slice();
-
 		end = end[ space.cache ];
 		each( space.props, function( key, prop ) {
 			var index = prop.idx,
 				startValue = start[ index ],
 				endValue = end[ index ],
 				type = propTypes[ prop.type ] || {};
-
 			// if null, don't override start value
 			if ( endValue === null ) {
 				return;
@@ -388,11 +344,9 @@ color.fn = jQuery.extend( color.prototype, {
 		if ( this._rgba[ 3 ] === 1 ) {
 			return this;
 		}
-
 		var rgb = this._rgba.slice(),
 			a = rgb.pop(),
 			blend = color( opaque )._rgba;
-
 		return color( jQuery.map( rgb, function( v, i ) {
 			return ( 1 - a ) * blend[ i ] + a * v;
 		}));
@@ -402,12 +356,10 @@ color.fn = jQuery.extend( color.prototype, {
 			rgba = jQuery.map( this._rgba, function( v, i ) {
 				return v == null ? ( i > 2 ? 1 : 0 ) : v;
 			});
-
 		if ( rgba[ 3 ] === 1 ) {
 			rgba.pop();
 			prefix = "rgb(";
 		}
-
 		return prefix + rgba.join() + ")";
 	},
 	toHslaString: function() {
@@ -416,14 +368,12 @@ color.fn = jQuery.extend( color.prototype, {
 				if ( v == null ) {
 					v = i > 2 ? 1 : 0;
 				}
-
 				// catch 1 and 2
 				if ( i && i < 3 ) {
 					v = Math.round( v * 100 ) + "%";
 				}
 				return v;
 			});
-
 		if ( hsla[ 3 ] === 1 ) {
 			hsla.pop();
 			prefix = "hsl(";
@@ -433,13 +383,10 @@ color.fn = jQuery.extend( color.prototype, {
 	toHexString: function( includeAlpha ) {
 		var rgba = this._rgba.slice(),
 			alpha = rgba.pop();
-
 		if ( includeAlpha ) {
 			rgba.push( ~~( alpha * 255 ) );
 		}
-
 		return "#" + jQuery.map( rgba, function( v, i ) {
-
 			// default to 0 when nulls exist
 			v = ( v || 0 ).toString( 16 );
 			return v.length === 1 ? "0" + v : v;
@@ -450,10 +397,8 @@ color.fn = jQuery.extend( color.prototype, {
 	}
 });
 color.fn.parse.prototype = color.fn;
-
 // hsla conversions adapted from:
 // https://code.google.com/p/maashaack/source/browse/packages/graphics/trunk/src/graphics/colors/HUE2RGB.as?r=5021
-
 function hue2rgb( p, q, h ) {
 	h = ( h + 1 ) % 1;
 	if ( h * 6 < 1 ) {
@@ -467,7 +412,6 @@ function hue2rgb( p, q, h ) {
 	}
 	return p;
 }
-
 spaces.hsla.to = function ( rgba ) {
 	if ( rgba[ 0 ] == null || rgba[ 1 ] == null || rgba[ 2 ] == null ) {
 		return [ null, null, null, rgba[ 3 ] ];
@@ -482,7 +426,6 @@ spaces.hsla.to = function ( rgba ) {
 		add = max + min,
 		l = add * 0.5,
 		h, s;
-
 	if ( min === max ) {
 		h = 0;
 	} else if ( r === max ) {
@@ -492,7 +435,6 @@ spaces.hsla.to = function ( rgba ) {
 	} else {
 		h = ( 60 * ( r - g ) / diff ) + 240;
 	}
-
 	if ( l === 0 || l === 1 ) {
 		s = l;
 	} else if ( l <= 0.5 ) {
@@ -502,7 +444,6 @@ spaces.hsla.to = function ( rgba ) {
 	}
 	return [ Math.round(h) % 360, s, l, a == null ? 1 : a ];
 };
-
 spaces.hsla.from = function ( hsla ) {
 	if ( hsla[ 0 ] == null || hsla[ 1 ] == null || hsla[ 2 ] == null ) {
 		return [ null, null, null, hsla[ 3 ] ];
@@ -514,7 +455,6 @@ spaces.hsla.from = function ( hsla ) {
 		q = l <= 0.5 ? l * ( 1 + s ) : l + s - l * s,
 		p = 2 * l - q,
 		r, g, b;
-
 	return [
 		Math.round( hue2rgb( p, q, h + ( 1 / 3 ) ) * 255 ),
 		Math.round( hue2rgb( p, q, h ) * 255 ),
@@ -523,16 +463,13 @@ spaces.hsla.from = function ( hsla ) {
 	];
 };
 
-
 each( spaces, function( spaceName, space ) {
 	var props = space.props,
 		cache = space.cache,
 		to = space.to,
 		from = space.from;
-
 	// makes rgba() and hsla()
 	color.fn[ spaceName ] = function( value ) {
-
 		// generate a cache for this space if it doesn't exist
 		if ( to && !this[ cache ] ) {
 			this[ cache ] = to( this._rgba );
@@ -540,12 +477,10 @@ each( spaces, function( spaceName, space ) {
 		if ( value === undefined ) {
 			return this[ cache ].slice();
 		}
-
 		var ret,
 			type = jQuery.type( value ),
 			arr = ( type === "array" || type === "object" ) ? value : arguments,
 			local = this[ cache ].slice();
-
 		each( props, function( key, prop ) {
 			var val = arr[ type === "object" ? key : prop.idx ];
 			if ( val == null ) {
@@ -553,7 +488,6 @@ each( spaces, function( spaceName, space ) {
 			}
 			local[ prop.idx ] = clamp( val, prop );
 		});
-
 		if ( from ) {
 			ret = color( from( local ) );
 			ret[ cache ] = local;
@@ -562,7 +496,6 @@ each( spaces, function( spaceName, space ) {
 			return color( local );
 		}
 	};
-
 	// makes red() green() blue() alpha() hue() saturation() lightness()
 	each( props, function( key, prop ) {
 		// alpha is included in more than one space
@@ -575,11 +508,9 @@ each( spaces, function( spaceName, space ) {
 				local = this[ fn ](),
 				cur = local[ prop.idx ],
 				match;
-
 			if ( vtype === "undefined" ) {
 				return cur;
 			}
-
 			if ( vtype === "function" ) {
 				value = value.call( this, cur );
 				vtype = jQuery.type( value );
@@ -598,14 +529,12 @@ each( spaces, function( spaceName, space ) {
 		};
 	});
 });
-
 // add .fx.step functions
 each( stepHooks, function( i, hook ) {
 	jQuery.cssHooks[ hook ] = {
 		set: function( elem, value ) {
 			var parsed, curElem,
 				backgroundColor = "";
-
 			if ( jQuery.type( value ) !== "string" || ( parsed = stringParse( value ) ) ) {
 				value = color( parsed || value );
 				if ( !support.rgba && value._rgba[ 3 ] !== 1 ) {
@@ -620,12 +549,10 @@ each( stepHooks, function( i, hook ) {
 						} catch ( e ) {
 						}
 					}
-
 					value = value.blend( backgroundColor && backgroundColor !== "transparent" ?
 						backgroundColor :
 						"_default" );
 				}
-
 				value = value.toRgbaString();
 			}
 			try {
@@ -644,18 +571,15 @@ each( stepHooks, function( i, hook ) {
 		jQuery.cssHooks[ hook ].set( fx.elem, fx.start.transition( fx.end, fx.pos ) );
 	};
 });
-
 jQuery.cssHooks.borderColor = {
 	expand: function( value ) {
 		var expanded = {};
-
 		each( [ "Top", "Right", "Bottom", "Left" ], function( i, part ) {
 			expanded[ "border" + part + "Color" ] = value;
 		});
 		return expanded;
 	}
 };
-
 // Basic color names only.
 // Usage of any of the other color names requires adding yourself or including
 // jquery.color.svg-names.js.
@@ -677,22 +601,16 @@ colors = jQuery.Color.names = {
 	teal: "#008080",
 	white: "#ffffff",
 	yellow: "#ffff00",
-
 	// 4.2.3. "transparent" color keyword
 	transparent: [ null, null, null, 0 ],
-
 	_default: "#ffffff"
 };
-
 })( jQuery );
-
-
 
 /******************************************************************************/
 /****************************** CLASS ANIMATIONS ******************************/
 /******************************************************************************/
 (function() {
-
 var classAnimationActions = [ "add", "remove", "toggle" ],
 	shorthandStyles = {
 		border: 1,
@@ -705,7 +623,6 @@ var classAnimationActions = [ "add", "remove", "toggle" ],
 		margin: 1,
 		padding: 1
 	};
-
 $.each([ "borderLeftStyle", "borderRightStyle", "borderBottomStyle", "borderTopStyle" ], function( _, prop ) {
 	$.fx.step[ prop ] = function( fx ) {
 		if ( fx.end !== "none" && !fx.setAttr || fx.pos === 1 && !fx.setAttr ) {
@@ -714,7 +631,6 @@ $.each([ "borderLeftStyle", "borderRightStyle", "borderBottomStyle", "borderTopS
 		}
 	};
 });
-
 function getElementStyles() {
 	var style = this.ownerDocument.defaultView ?
 			this.ownerDocument.defaultView.getComputedStyle( this, null ) :
@@ -723,7 +639,6 @@ function getElementStyles() {
 		key,
 		camelCase,
 		len;
-
 	// webkit enumerates style porperties
 	if ( style && style.length && style[ 0 ] && style[ style[ 0 ] ] ) {
 		len = style.length;
@@ -740,15 +655,12 @@ function getElementStyles() {
 			}
 		}
 	}
-
 	return newStyle;
 }
-
 
 function styleDifference( oldStyle, newStyle ) {
 	var diff = {},
 		name, value;
-
 	for ( name in newStyle ) {
 		value = newStyle[ name ];
 		if ( oldStyle[ name ] !== value ) {
@@ -759,19 +671,15 @@ function styleDifference( oldStyle, newStyle ) {
 			}
 		}
 	}
-
 	return diff;
 }
-
 $.effects.animateClass = function( value, duration, easing, callback ) {
 	var o = $.speed( duration, easing, callback );
-
 	return this.queue( function() {
 		var animated = $( this ),
 			baseClass = animated.attr( "class" ) || "",
 			applyClassChange,
 			allAnimations = o.children ? animated.find( "*" ).andSelf() : animated;
-
 		// map the animated objects to store the original styles.
 		allAnimations = allAnimations.map(function() {
 			var el = $( this );
@@ -780,7 +688,6 @@ $.effects.animateClass = function( value, duration, easing, callback ) {
 				start: getElementStyles.call( this )
 			};
 		});
-
 		// apply class change
 		applyClassChange = function() {
 			$.each( classAnimationActions, function(i, action) {
@@ -790,17 +697,14 @@ $.effects.animateClass = function( value, duration, easing, callback ) {
 			});
 		};
 		applyClassChange();
-
 		// map all animated objects again - calculate new styles and diff
 		allAnimations = allAnimations.map(function() {
 			this.end = getElementStyles.call( this.el[ 0 ] );
 			this.diff = styleDifference( this.start, this.end );
 			return this;
 		});
-
 		// apply original class
 		animated.attr( "class", baseClass );
-
 		// map all animated objects again - this time collecting a promise
 		allAnimations = allAnimations.map(function() {
 			var styleInfo = this,
@@ -811,17 +715,13 @@ $.effects.animateClass = function( value, duration, easing, callback ) {
 						dfd.resolve( styleInfo );
 					}
 				});
-
 			this.el.animate( this.diff, opts );
 			return dfd.promise();
 		});
-
 		// once all animations have completed:
 		$.when.apply( $, allAnimations.get() ).done(function() {
-
 			// set the final class
 			applyClassChange();
-
 			// for each animated element,
 			// clear all css properties that were animated
 			$.each( arguments, function() {
@@ -830,14 +730,12 @@ $.effects.animateClass = function( value, duration, easing, callback ) {
 					el.css( key, '' );
 				});
 			});
-
 			// this is guarnteed to be there if you use jQuery.speed()
 			// it also handles dequeuing the next anim...
 			o.complete.call( animated[ 0 ] );
 		});
 	});
 };
-
 $.fn.extend({
 	_addClass: $.fn.addClass,
 	addClass: function( classNames, speed, easing, callback ) {
@@ -846,7 +744,6 @@ $.fn.extend({
 				{ add: classNames }, speed, easing, callback ) :
 			this._addClass( classNames );
 	},
-
 	_removeClass: $.fn.removeClass,
 	removeClass: function( classNames, speed, easing, callback ) {
 		return speed ?
@@ -854,7 +751,6 @@ $.fn.extend({
 				{ remove: classNames }, speed, easing, callback ) :
 			this._removeClass( classNames );
 	},
-
 	_toggleClass: $.fn.toggleClass,
 	toggleClass: function( classNames, force, speed, easing, callback ) {
 		if ( typeof force === "boolean" || force === undefined ) {
@@ -872,7 +768,6 @@ $.fn.extend({
 				{ toggle: classNames }, force, speed, easing );
 		}
 	},
-
 	switchClass: function( remove, add, speed, easing, callback) {
 		return $.effects.animateClass.call( this, {
 			add: add,
@@ -880,18 +775,13 @@ $.fn.extend({
 		}, speed, easing, callback );
 	}
 });
-
 })();
-
 /******************************************************************************/
 /*********************************** EFFECTS **********************************/
 /******************************************************************************/
-
 (function() {
-
 $.extend( $.effects, {
 	version: "1.9.0pre",
-
 	// Saves a set of properties in a data storage
 	save: function( element, set ) {
 		for( var i=0; i < set.length; i++ ) {
@@ -900,7 +790,6 @@ $.extend( $.effects, {
 			}
 		}
 	},
-
 	// Restores a set of previously saved properties from a data storage
 	restore: function( element, set ) {
 		var val, i;
@@ -919,14 +808,12 @@ $.extend( $.effects, {
 			}
 		}
 	},
-
 	setMode: function( el, mode ) {
 		if (mode === "toggle") {
 			mode = el.is( ":hidden" ) ? "show" : "hide";
 		}
 		return mode;
 	},
-
 	// Translates a [top,left] array into a baseline value
 	// this should be a little more flexible in the future to handle a string & hash
 	getBaseline: function( origin, original ) {
@@ -948,15 +835,12 @@ $.extend( $.effects, {
 			y: y
 		};
 	},
-
 	// Wraps the element around a wrapper that copies position properties
 	createWrapper: function( element ) {
-
 		// if the element is already wrapped, return it
 		if ( element.parent().is( ".ui-effects-wrapper" )) {
 			return element.parent();
 		}
-
 		// wrap the element
 		var props = {
 				width: element.outerWidth(true),
@@ -978,7 +862,6 @@ $.extend( $.effects, {
 				height: element.height()
 			},
 			active = document.activeElement;
-
 		// support: Firefox
 		// Firefox incorrectly exposes anonymous content
 		// https://bugzilla.mozilla.org/show_bug.cgi?id=561664
@@ -987,16 +870,12 @@ $.extend( $.effects, {
 		} catch( e ) {
 			active = document.body;
 		}
-
 		element.wrap( wrapper );
-
 		// Fixes #7595 - Elements lose focus when wrapped.
 		if ( element[ 0 ] === active || $.contains( element[ 0 ], active ) ) {
 			$( active ).focus();
 		}
-
 		wrapper = element.parent(); //Hotfix for jQuery 1.4 since some change in wrap() seems to actually lose the reference to the wrapped element
-
 		// transfer positioning properties to the wrapper
 		if ( element.css( "position" ) === "static" ) {
 			wrapper.css({ position: "relative" });
@@ -1021,26 +900,20 @@ $.extend( $.effects, {
 			});
 		}
 		element.css(size);
-
 		return wrapper.css( props ).show();
 	},
-
 	removeWrapper: function( element ) {
 		var active = document.activeElement;
-
 		if ( element.parent().is( ".ui-effects-wrapper" ) ) {
 			element.parent().replaceWith( element );
-
 			// Fixes #7595 - Elements lose focus when wrapped.
 			if ( element[ 0 ] === active || $.contains( element[ 0 ], active ) ) {
 				$( active ).focus();
 			}
 		}
 
-
 		return element;
 	},
-
 	setTransition: function( element, list, factor, value ) {
 		value = value || {};
 		$.each( list, function( i, x ) {
@@ -1052,66 +925,53 @@ $.extend( $.effects, {
 		return value;
 	}
 });
-
 // return an effect options object for the given parameters:
 function _normalizeArguments( effect, options, speed, callback ) {
-
 	// allow passing all optinos as the first parameter
 	if ( $.isPlainObject( effect ) ) {
 		options = effect;
 		effect = effect.effect;
 	}
-
 	// convert to an object
 	effect = { effect: effect };
-
 	// catch (effect)
 	if ( options === undefined ) {
 		options = {};
 	}
-
 	// catch (effect, callback)
 	if ( $.isFunction( options ) ) {
 		callback = options;
 		speed = null;
 		options = {};
 	}
-
 	// catch (effect, speed, ?)
 	if ( typeof options === "number" || $.fx.speeds[ options ] ) {
 		callback = speed;
 		speed = options;
 		options = {};
 	}
-
 	// catch (effect, options, callback)
 	if ( $.isFunction( speed ) ) {
 		callback = speed;
 		speed = null;
 	}
-
 	// add options to effect
 	if ( options ) {
 		$.extend( effect, options );
 	}
-
 	speed = speed || options.duration;
 	effect.duration = $.fx.off ? 0 :
 		typeof speed === "number" ? speed :
 		speed in $.fx.speeds ? $.fx.speeds[ speed ] :
 		$.fx.speeds._default;
-
 	effect.complete = callback || options.complete;
-
 	return effect;
 }
-
 function standardSpeed( speed ) {
 	// valid standard speeds
 	if ( !speed || typeof speed === "number" || $.fx.speeds[ speed ] ) {
 		return true;
 	}
-
 	// invalid strings - treat as "normal" speed
 	if ( typeof speed === "string" && !$.effects.effect[ speed ] ) {
 		// TODO: remove in 2.0 (#7115)
@@ -1120,20 +980,16 @@ function standardSpeed( speed ) {
 		}
 		return true;
 	}
-
 	return false;
 }
-
 $.fn.extend({
 	effect: function( effect, options, speed, callback ) {
 		var args = _normalizeArguments.apply( this, arguments ),
 			mode = args.mode,
 			queue = args.queue,
 			effectMethod = $.effects.effect[ args.effect ],
-
 			// DEPRECATED: remove in 2.0 (#7115)
 			oldEffectMethod = !effectMethod && backCompat && $.effects[ args.effect ];
-
 		if ( $.fx.off || !( effectMethod || oldEffectMethod ) ) {
 			// delegate to the original method (e.g., .show()) if possible
 			if ( mode ) {
@@ -1146,12 +1002,10 @@ $.fn.extend({
 				});
 			}
 		}
-
 		function run( next ) {
 			var elem = $( this ),
 				complete = args.complete,
 				mode = args.mode;
-
 			function done() {
 				if ( $.isFunction( complete ) ) {
 					complete.call( elem[0] );
@@ -1160,7 +1014,6 @@ $.fn.extend({
 					next();
 				}
 			}
-
 			// if the element is hiddden and mode is hide,
 			// or element is visible and mode is show
 			if ( elem.is( ":hidden" ) ? mode === "hide" : mode === "show" ) {
@@ -1169,7 +1022,6 @@ $.fn.extend({
 				effectMethod.call( elem[0], args, done );
 			}
 		}
-
 		// TODO: remove this check in 2.0, effectMethod will always be true
 		if ( effectMethod ) {
 			return queue === false ? this.each( run ) : this.queue( queue || "fx", run );
@@ -1183,7 +1035,6 @@ $.fn.extend({
 			});
 		}
 	},
-
 	_show: $.fn.show,
 	show: function( speed ) {
 		if ( standardSpeed( speed ) ) {
@@ -1194,7 +1045,6 @@ $.fn.extend({
 			return this.effect.call( this, args );
 		}
 	},
-
 	_hide: $.fn.hide,
 	hide: function( speed ) {
 		if ( standardSpeed( speed ) ) {
@@ -1205,7 +1055,6 @@ $.fn.extend({
 			return this.effect.call( this, args );
 		}
 	},
-
 	// jQuery core overloads toggle and creates _toggle
 	__toggle: $.fn.toggle,
 	toggle: function( speed ) {
@@ -1217,12 +1066,10 @@ $.fn.extend({
 			return this.effect.call( this, args );
 		}
 	},
-
 	// helper functions
 	cssUnit: function(key) {
 		var style = this.css( key ),
 			val = [];
-
 		$.each( [ "em", "px", "%", "pt" ], function( i, unit ) {
 			if ( style.indexOf( unit ) > 0 ) {
 				val = [ parseFloat( style ), unit ];
@@ -1231,25 +1078,18 @@ $.fn.extend({
 		return val;
 	}
 });
-
 })();
-
 /******************************************************************************/
 /*********************************** EASING ***********************************/
 /******************************************************************************/
-
 (function() {
-
 // based on easing equations from Robert Penner (http://www.robertpenner.com/easing)
-
 var baseEasings = {};
-
 $.each( [ "Quad", "Cubic", "Quart", "Quint", "Expo" ], function( i, name ) {
 	baseEasings[ name ] = function( p ) {
 		return Math.pow( p, i + 2 );
 	};
 });
-
 $.extend( baseEasings, {
 	Sine: function ( p ) {
 		return 1 - Math.cos( p * Math.PI / 2 );
@@ -1267,12 +1107,10 @@ $.extend( baseEasings, {
 	Bounce: function ( p ) {
 		var pow2,
 			bounce = 4;
-
 		while ( p < ( ( pow2 = Math.pow( 2, --bounce ) ) - 1 ) / 11 ) {}
 		return 1 / Math.pow( 4, 3 - bounce ) - 7.5625 * Math.pow( ( pow2 * 3 - 2 ) / 22 - p, 2 );
 	}
 });
-
 $.each( baseEasings, function( name, easeIn ) {
 	$.easing[ "easeIn" + name ] = easeIn;
 	$.easing[ "easeOut" + name ] = function( p ) {
@@ -1284,23 +1122,15 @@ $.each( baseEasings, function( name, easeIn ) {
 			1 - easeIn( p * -2 + 2 ) / 2;
 	};
 });
-
 })();
-
 })(jQuery));
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("ui/effect")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

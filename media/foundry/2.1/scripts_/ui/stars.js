@@ -1,18 +1,14 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 var jQuery = $; 
 $.require() 
  .script("ui/core","ui/widget") 
  .stylesheet("ui/stars/style/ui.stars") 
  .done(function() { 
 var exports = function() { 
-
 /*!
  * jQuery UI Stars v2.1.1
  * http://plugins.jquery.com/project/Star_Rating_widget
@@ -30,17 +26,14 @@ var exports = function() {
  *
  */
 (function($) {
-
 $.widget("ui.stars",
 {
   _create: function() {
     var self = this, o = this.options, id = 0;
-
     o.isSelect = o.inputType == "select";
     this.$form = $(this.element).closest("form");
     this.$selec = o.isSelect ? $("select", this.element)  : null;
     this.$rboxs = o.isSelect ? $("option", this.$selec)   : $(":radio", this.element);
-
     /*
      * Map all inputs from $rboxs array to Stars elements
      */
@@ -51,7 +44,6 @@ $.widget("ui.stars",
         title:      (o.isSelect ? this.text : this.title) || this.value,
         isDefault:  (o.isSelect && this.defaultSelected) || this.defaultChecked
       };
-
       if(i==0) {
         o.split = typeof o.split != "number" ? 0 : o.split;
         o.val2id = [];
@@ -60,7 +52,6 @@ $.widget("ui.stars",
         o.name = o.isSelect ? self.$selec.get(0).name : this.name;
         o.disabled = o.disabled || (o.isSelect ? $(self.$selec).attr("disabled") : $(this).attr("disabled"));
       }
-
       /*
        * Consider it as a Cancel button?
        */
@@ -68,20 +59,16 @@ $.widget("ui.stars",
         o.cancelTitle = el.title;
         return null;
       }
-
       o.val2id[el.value] = id;
       o.id2val[id] = el.value;
       o.id2title[id] = el.title;
-
       if(el.isDefault) {
         o.checked = id;
         o.value = o.defaultValue = el.value;
         o.title = el.title;
       }
-
       var $s = $("<div/>").addClass(o.starClass);
       var $a = $('<a/>').attr("title", o.showTitles ? el.title : "").text(el.value);
-
       /*
        * Prepare division settings
        */
@@ -91,21 +78,17 @@ $.widget("ui.stars",
         $s.width(stwidth);
         $a.css("margin-left", "-" + (oddeven * stwidth) + "px");
       }
-
       id++;
       return $s.append($a).get(0);
     });
-
     /*
      * How many Stars?
      */
     o.items = id;
-
     /*
      * Remove old content
      */
     o.isSelect ? this.$selec.remove() : this.$rboxs.remove();
-
     /*
      * Append Stars interface
      */
@@ -113,7 +96,6 @@ $.widget("ui.stars",
     o.cancelShow &= !o.disabled && !o.oneVoteOnly;
     o.cancelShow && this.element.append(this.$cancel);
     this.element.append(this.$stars);
-
     /*
      * Initial selection
      */
@@ -122,26 +104,21 @@ $.widget("ui.stars",
       o.value = o.defaultValue = o.cancelValue;
       o.title = "";
     }
-
     this.$value = $('<input type="hidden" name="'+o.name+'" value="'+o.value+'" />');
     this.element.append(this.$value);
-
 
     /*
      * Attach stars event handler
      */
     this.$stars.bind("click.stars", function(e) {
       if(!o.forceSelect && o.disabled) return false;
-
       var i = self.$stars.index(this);
       o.checked = i;
       o.value = o.id2val[i];
       o.title = o.id2title[i];
       self.$value.attr({disabled: o.disabled ? "disabled" : "", value: o.value});
-
       fillTo(i, false);
       self._disableCancel();
-
       !o.forceSelect && self.callback(e, "star");
     })
     .bind("mouseover.stars", function() {
@@ -154,21 +131,17 @@ $.widget("ui.stars",
       fillTo(self.options.checked, false);
     });
 
-
     /*
      * Attach cancel event handler
      */
     this.$cancel.bind("click.stars", function(e) {
       if(!o.forceSelect && (o.disabled || o.value == o.cancelValue)) return false;
-
       o.checked = -1;
       o.value = o.cancelValue;
       o.title = "";
       self.$value.val(o.value).attr({disabled: "disabled"});
-
       fillNone();
       self._disableCancel();
-
       !o.forceSelect && self.callback(e, "cancel");
     })
     .bind("mouseover.stars", function() {
@@ -183,14 +156,12 @@ $.widget("ui.stars",
       self.$stars.triggerHandler("mouseout.stars");
     });
 
-
     /*
      * Attach onReset event handler to the parent FORM
      */
     this.$form.bind("reset.stars", function(){
       !o.disabled && self.select(o.defaultValue);
     });
-
 
     /*
      * Clean up to avoid memory leaks in certain versions of IE 6
@@ -201,7 +172,6 @@ $.widget("ui.stars",
       self.$form.unbind(".stars");
       self.$selec = self.$rboxs = self.$stars = self.$value = self.$cancel = self.$form = null;
     });
-
 
     /*
      * Star selection helpers
@@ -221,15 +191,12 @@ $.widget("ui.stars",
       self._showCap("");
     };
 
-
     /*
      * Finally, set up the Stars
      */
     this.select(o.value);
     o.disabled && this.disable();
-
   },
-
   /*
    * Private functions
    */
@@ -250,7 +217,6 @@ $.widget("ui.stars",
     var o = this.options;
     if(o.captionEl) o.captionEl.text(s);
   },
-
   /*
    * Public functions
    */
@@ -291,7 +257,6 @@ $.widget("ui.stars",
     o.oneVoteOnly && !o.disabled && this.disable();
   }
 });
-
 $.extend($.ui.stars.prototype, {
   version: "2.1.1",
   options: {
@@ -305,7 +270,6 @@ $.extend($.ui.stars.prototype, {
     showTitles: false,
     captionEl: null,
     callback: null, // function(ui, type, value, event)
-
     /*
      * CSS classes
      */
@@ -319,22 +283,15 @@ $.extend($.ui.stars.prototype, {
     cancelDisabledClass: 'ui-stars-cancel-disabled'
   }
 });
-
 })(jQuery);
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
-}); 
+});
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("ui/stars")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

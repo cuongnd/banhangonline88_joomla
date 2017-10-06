@@ -1,24 +1,18 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 $.require() 
  .script("mvc/event.default") 
  .done(function() { 
 var exports = function() { 
 
 
-
-
 var current,
 	rnamespaces = /\.(.*)$/,
 	returnFalse = function(){return false},
 	returnTrue = function(){return true};
-
 /**
  * @function
  * @parent jquery.event.pause
@@ -110,7 +104,6 @@ var current,
  */
 $.Event.prototype.isPaused = returnFalse
 
-
 $.Event.prototype.pause = function(){
 	// stop the event from continuing temporarily
 	// keep the current state of the event ...
@@ -120,16 +113,12 @@ $.Event.prototype.pause = function(){
 		isPropagationStopped : this.isPropagationStopped() ?
 			returnTrue : returnFalse
 	};
-
 	this.stopImmediatePropagation();
 	this.preventDefault();
 	this.isPaused = returnTrue;
 
 
-
-
 };
-
 $.Event.prototype.resume = function(){
 	// temporarily remove all event handlers of this type
 	var handleObj = this.handleObj,
@@ -137,7 +126,6 @@ $.Event.prototype.resume = function(){
 	// temporarily overwrite special handle
 	var origType = $.event.special[ handleObj.origType ],
 		origHandle = origType && origType.handle;
-
 	if(!origType){
 		$.event.special[ handleObj.origType ] = {};
 	}
@@ -155,44 +143,30 @@ $.Event.prototype.resume = function(){
 	// reset stuff
 	this.isPaused = this.isImmediatePropagationStopped = returnFalse;
 
-
 	// re-run dispatch
 	//$.event.dispatch.call(currentTarget, this)
-
 	// with the events removed, dispatch
-
 	if(!this.isPropagationStopped()){
 		// fire the event again, no events will get fired until
 		// same currentTarget / handler
 		$.event.trigger(this, [], this.target);
 	}
-
 };
-
 /*var oldDispatch = $.event.dispatch;
 $.event.dispatch = function(){
-
 }*/
 // we need to finish handling
-
 // and then trigger on next element ...
 // can we fake the target ?
 
-
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
-}); 
+});
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("mvc/event.pause")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

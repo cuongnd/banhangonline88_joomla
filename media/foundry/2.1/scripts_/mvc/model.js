@@ -1,17 +1,12 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 $.require() 
  .script("mvc/class","mvc/lang.string") 
  .done(function() { 
 var exports = function() { 
-
-
 
 	// Common helper methods taken from jQuery (or other places)
 	// Keep here so someday can be abstracted
@@ -26,7 +21,6 @@ var exports = function() {
 		trigger = function(obj, event, args){
 			$.event.trigger(event, args, obj, true)
 		},
-
 		// used to make an ajax request where
 		// ajaxOb - a bunch of options
 		// data - the attributes or data that will be sent
@@ -36,7 +30,6 @@ var exports = function() {
 		// type - the HTTP request type (defaults to "post")
 		// dataType - how the data should return (defaults to "json")
 		ajax = function(ajaxOb, data, success, error, fixture, type, dataType ) {
-
 
 			// if we get a string, handle it
 			if ( typeof ajaxOb == "string" ) {
@@ -51,15 +44,12 @@ var exports = function() {
 					ajaxOb = {url : ajaxOb}
 				}
 			}
-
 			// if we are a non-array object, copy to a new attrs
 			ajaxOb.data = typeof data == "object" && !isArray(data) ?
 				extend(ajaxOb.data || {}, data) : data;
 
-
 			// get the url with any templated values filled out
 			ajaxOb.url = $String.sub(ajaxOb.url, ajaxOb.data, true);
-
 			return $.ajax(extend({
 				type: type || "post",
 				dataType: dataType ||"json",
@@ -76,7 +66,6 @@ var exports = function() {
 			var u = underscore(model.shortName),
 				// the first place to look for fixtures
 				f = "-" + u + (extra || "");
-
 			// if the fixture exists in $.fixture
 			return $.fixture && $.fixture[f] ?
 			// return the name
@@ -148,21 +137,17 @@ var exports = function() {
 				model = self.constructor,
 				jqXHR,
 				promise = deferred.promise();
-
 			// destroy does not need data
 			if ( type == 'destroy' ) {
 				args.shift();
 			}
-
 			// update and destroy need the id
 			if ( type !== 'create' ) {
 				args.unshift(getId(self))
 			}
-
 			// hook up success and error
 			deferred.then(success);
 			deferred.fail(error);
-
 			// call the model's function and hook up
 			// abort
 			jqXHR = model[type].apply(model, args);
@@ -660,7 +645,6 @@ var exports = function() {
 				return ajax( str || this._shortName+"/{"+this.id+"}", attrs, success, error, fixture(this, "Destroy", "-restDestroy"), "delete")
 			}
 		},
-
 		findAll: function( str ) {
 			/**
 			 * @function findAll
@@ -738,12 +722,8 @@ var exports = function() {
 	};
 
 
-
-
-
 	$.Class($.globalNamespace + ".Model", {
 		setup: function( superClass, stat, proto ) {
-
 			var self = this,
 				fullName = this.fullName;
 			//we do not inherit attributes (or validations)
@@ -752,21 +732,17 @@ var exports = function() {
 					self[name] = {};
 				}
 			})
-
 			//add missing converters and serializes
 			each(["convert", "serialize"], function( i, name ) {
 				if ( superClass[name] != self[name] ) {
 					self[name] = extend({}, superClass[name], self[name]);
 				}
 			});
-
 			this._fullName = underscore(fullName.replace(/\./g, "_"));
 			this._shortName = underscore(this.shortName);
-
 			if ( fullName.indexOf($.globalNamespace) == 0 ) {
 				return;
 			}
-
 			//add this to the collection of models
 			//$.Model.models[this._fullName] = this;
 			if ( this.listType ) {
@@ -779,14 +755,11 @@ var exports = function() {
 					self[name] = method(prop);
 				}
 			});
-
 			//add ajax converters
 			var converters = {},
 				convertName = "* " + this._shortName + ".model";
-
 			converters[convertName + "s"] = this.proxy('models');
 			converters[convertName] = this.proxy('model');
-
 			$.ajaxSetup({
 				converters: converters
 			});
@@ -1017,7 +990,6 @@ var exports = function() {
 				length = raw ? raw.length : null,
 				i = 0;
 
-			
 			for (; i < length; i++ ) {
 				res.push(this.model(raw[i]));
 			}
@@ -1051,7 +1023,6 @@ var exports = function() {
 		 */
 		addAttr: function( property, type ) {
 			var stub, attrs = this.attributes;
-
 			stub = attrs[property] || (attrs[property] = type);
 			return type;
 		},
@@ -1236,11 +1207,9 @@ var exports = function() {
 							}
 							errors[attr].push(res);
 						}
-
 					});
 				},
 				validations = this.constructor.validations;
-
 			// go through each attribute or validation and
 			// add any errors
 			each(attrs || validations || {}, function( attr, funcs ) {
@@ -1255,7 +1224,6 @@ var exports = function() {
 			});
 			// return errors as long as we have one
 			return $.isEmptyObject(errors) ? null : errors;
-
 		},
 		/**
 		 * Gets or sets an attribute on the model using setters and
@@ -1326,7 +1294,6 @@ var exports = function() {
 			// get the getter name getAttrName
 			var cap = classize(attribute),
 				get = "get" + cap;
-
 			// if we are setting the property
 			if ( value !== undefined ) {
 				// the potential setter name
@@ -1341,7 +1308,6 @@ var exports = function() {
 						stub = error && error.call(self, errors);
 						trigger(self, "error." + attribute, errors);
 					};
-
 				// if we have a setter
 				if ( this[setName] &&
 				// call the setter, if returned value is undefined,
@@ -1360,7 +1326,6 @@ var exports = function() {
 			// get the attribute, check if we have a getter, otherwise, just get the data
 			return this[get] ? this[get]() : this[attribute];
 		},
-
 		/**
 		 * @function bind
 		 * Binds to events on this model instance.  Typically
@@ -1432,7 +1397,6 @@ var exports = function() {
 				global = "updated.",
 				args, globalArgs, callback = success,
 				list = Class.list;
-
 			// set the property value
 			// notice that even if there's an error
 			// property values get set
@@ -1443,7 +1407,6 @@ var exports = function() {
 				null :
 				// otherwise, the converters to make it something useful
 				converter.call(Class, value, function() {}, type) );
-
 			//validate (only if not initializing, this is for performance)
 			if (!this._init ) {
 				errors = this.errors(property);
@@ -1452,7 +1415,6 @@ var exports = function() {
 			args = [val];
 			// args triggered on the 'global' event (updated.attr)
 			globalArgs = [property, val, old];
-
 			// if there are errors, change props so we trigger error events
 			if ( errors ) {
 				prefix = global = "error.";
@@ -1466,7 +1428,6 @@ var exports = function() {
 				trigger(this,global + "attr", globalArgs);
 			}
 			callback && callback.apply(this, args);
-
 			//if this class has a global list, add / remove from the list.
 			if ( property === Class.id && val !== null && list ) {
 				// if we didn't have an old id, add ourselves
@@ -1478,9 +1439,7 @@ var exports = function() {
 					list.push(this);
 				}
 			}
-
 		},
-
 		/**
 		 * Removes an attribute from the list existing of attributes.
 		 * Each attribute is set with [$.Model.prototype.attr attr].
@@ -1495,24 +1454,20 @@ var exports = function() {
 			var old = this[attr],
 				deleted = false,
 				attrs = this.constructor.attributes;
-
 			//- pop it off the object
 			if ( this[attr] ) {
 				delete this[attr];
 			}
-
 			//- pop it off the Class attributes collection
 			if ( attrs[attr] ) {
 				delete attrs[attr];
 				deleted = true;
 			}
-
 			//- trigger the update
 			if (!this._init && deleted && old ) {
 				trigger(this,"updated.attr", [attr, null, old]);
 			}
 		},
-
 		/**
 		 * Gets or sets a list of attributes.
 		 * Each attribute is set with [$.Model.prototype.attr attr].
@@ -1550,7 +1505,6 @@ var exports = function() {
 				if ( idName in attributes ) {
 					this.attr(idName, attributes[idName]);
 				}
-
 			}
 			return attributes;
 		},
@@ -1568,9 +1522,7 @@ var exports = function() {
 				attrs = Class.attributes,
 				type, converter, data = {},
 				attr;
-
 			attributes = {};
-
 			for ( attr in attrs ) {
 				if ( attrs.hasOwnProperty(attr) ) {
 					type = attrs[attr];
@@ -1636,7 +1588,6 @@ var exports = function() {
 		save: function( success, error ) {
 			return makeRequest(this, this.isNew() ? 'create' : 'update', success, error);
 		},
-
 		/**
 		 * Destroys the instance by calling
 		 * [$.Model.destroy] with the id of the instance.
@@ -1655,7 +1606,6 @@ var exports = function() {
 		destroy: function( success, error ) {
 			return makeRequest(this, 'destroy', success, error, 'destroyed');
 		},
-
 
 		/**
 		 * Returns a unique identifier for the model instance.  For example:
@@ -1699,7 +1649,6 @@ var exports = function() {
 			if( this.constructor.escapeIdentity ) {
 				id = id.replace(/([ #;&,.+*~\'%:"!^$[\]()=>|\/])/g,'\\$1')
 			}
-
 			return $("." + id, context);
 		},
 		hookup: function( el ) {
@@ -1709,7 +1658,6 @@ var exports = function() {
 			models[shortName] = this;
 		}
 	});
-
 
 	each([
 	/**
@@ -1738,26 +1686,20 @@ var exports = function() {
 	"destroyed"], function( i, funcName ) {
 		$.Model.prototype[funcName] = function( attrs ) {
 			var stub, constructor = this.constructor;
-
 			// remove from the list if instance is destroyed
 			if ( funcName === 'destroyed' && constructor.list ) {
 				constructor.list.remove(getId(this));
 			}
-
 			// update attributes if attributes have been passed
 			stub = attrs && typeof attrs == 'object' && this.attrs(attrs.attrs ? attrs.attrs() : attrs);
-
 			// call event on the instance
 			trigger(this,funcName);
-
-			
 
 			// call event on the instance's Class
 			trigger(constructor,funcName, this);
 			return [this].concat(makeArray(arguments)); // return like this for this.proxy chains
 		};
 	});
-
 	/**
 	 *  @add jQuery.fn
 	 */
@@ -1786,9 +1728,7 @@ var exports = function() {
 				collection.push(instance);
 			});
 		});
-
 		ret = getList(kind);
-
 		ret.push.apply(ret, unique(collection));
 		return ret;
 	};
@@ -1821,22 +1761,15 @@ var exports = function() {
 		} else {
 			return this.models.apply(this, arguments)[0];
 		}
-
 	};
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
-}); 
+});
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("mvc/model")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

@@ -1,15 +1,10 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 var exports = function() { 
-
 /*! Copyright (c) 2011 Peter (Poetro) Galiba (http://poetro.hu/) MIT Licensed */
-
 /**
  * @fileoverview CSS get/set and animate background position values independently.
  * @author Peter (Poetro) Galiba poetro@poetro.hu
@@ -47,19 +42,13 @@ var exports = function() {
       $.style(fx.elem, fx.prop, fx.now);
     };
   });
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("backgroundPosition")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

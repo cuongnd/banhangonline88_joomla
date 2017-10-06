@@ -1,13 +1,9 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 var exports = function() { 
-
 /**
  * jquery.checkList.
  * Multiple checkbox handler.
@@ -29,9 +25,7 @@ var exports = function() {
  *
  */
 
-
 $.fn.checkList = function(options) {
-
 	var defaultOptions = {
 		checkbox: ".checkbox",
 		masterCheckbox: ".master-checkbox",
@@ -39,93 +33,62 @@ $.fn.checkList = function(options) {
 		uncheck: function() {},
 		change: function() {}
 	}
-
 	var options = $.extend({}, defaultOptions, options),
-
 		checkList       = this,
 		checkboxes      = checkList.find(options.checkbox),
 		masterCheckbox  = checkList.find(options.masterCheckbox),
-
 		disableChangeEvent = false;
 
-
 	var change = function() {
-
 		if (!disableChangeEvent) {
-
 			var checked = checkboxes.filter(':checked'),
 				unchecked = checkboxes.not(':checked');
-
 			if (checked.length < 1) {
-
 				masterCheckbox.removeAttr("checked");
 			}
-
 			if (checked.length == checkboxes.length) {
 				masterCheckbox.attr("checked", true);
 			}
-
 			options.change.call(checkList, checked, unchecked);
 		}
 	}
-
 	checkboxes.checked(
-
 		// checked
 		function() {
 			options.check.apply(checkList);
 			change();
 		},
-
 		// unchecked
 		function() {
 			options.uncheck.apply(checkList);
 			change();
 		}
 	);
-
 	masterCheckbox.checked(
-
 		// checked
 		function() {
-
 			disableChangeEvent = true;
-
 			checkboxes.checked(true);
-
 			disableChangeEvent = false;
-
 			change();
 		},
-
 		// unchecked
 		function() {
-
 			disableChangeEvent = true;
-
 			checkboxes.checked(false);
-
 			disableChangeEvent = false;
-
 			change();
 		}
 	);
-
 	return this;
 }
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("checkList")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

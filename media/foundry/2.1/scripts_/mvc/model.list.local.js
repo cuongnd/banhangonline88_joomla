@@ -1,16 +1,12 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 $.require() 
  .script("mvc/dom.cookie","mvc/model.list") 
  .done(function() { 
 var exports = function() { 
-
 
 /**
  * @class jQuery.Model.List.Local
@@ -48,23 +44,16 @@ $.Model.List($.globalNamespace + ".Model.List.Local",
 		};
 		return this;
 	}
-
 });
 
-
 }; 
-
-exports(); 
+exports();
 module.resolveWith(exports); 
-
-}); 
+});
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("mvc/model.list.local")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

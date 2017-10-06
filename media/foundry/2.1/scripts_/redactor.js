@@ -1,17 +1,13 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 var jQuery = $; 
 $.require() 
  .stylesheet("redactor/redactor") 
  .done(function() { 
 var exports = function() { 
-
 /*
 	Redactor v8.0.3
 	Updated: September 3, 2012
@@ -23,15 +19,12 @@ var exports = function() {
 	
 	Usage: $('#content').redactor();
 */
-
 // selection mechanism
 var _0xf6db=["(6(){11 49=24;11 14={50:6(8,10){5 10.58(8)\x2692},57:6(8,10){7(8.58!=12){5 8.58(10)\x2616}46{5 8.57(10)}},55:6(8,18,10,20){7(8===10){5 18\x3C=20}7(14.29(8)\x26\x2614.29(10)){5 14.50(8,10)}7(14.29(8)\x26\x26!14.29(10)){5!14.55(10,20,8,18)}7(!14.57(8,10)){5 14.50(8,10)}7(8.47.85\x3C=18){5 40}7(8.47[18]===10){5 0\x3C=20}5 14.50(8.47[18],10)},29:6(61){5(61!=12?61.93==3:40)},81:6(41){11 62=0;88(41=41.59){62++}5 62}};11 4=49.4=(6(){6 4(2){24.2=2}4.34.31=6(){5 4.31(24.2)};4.34.37=6(){5 4.37(24.2)};4.34.38=6(){5 4.38(24.2)};4.34.45=6(){5 4.45(24.2)};4.34.44=6(){5 4.44(24.2)};4.34.52=6(25,26,23,22){5 4.52(24.2,25,26,23,22)};4.34.51=6(){5 4.51(24.2)};5 4})();7(49.35){4.67=43;4.31=6(2){11 9;5(9=2.35())\x26\x26(9.63!=12)\x26\x26(9.36!=12)};4.37=6(2){11 9;7(!((9=2.35())\x26\x26(9.36!=12))){5 12}5[9.36,9.97]};4.38=6(2){11 9;7(!((9=2.35())\x26\x26(9.63!=12))){5 12}5[9.63,9.91]};4.45=6(2){11 8,10,18,20,27,28;7(!4.31(2)){5 12}27=4.37(2),8=27[0],18=27[1];28=4.38(2),10=28[0],20=28[1];7(14.55(8,18,10,20)){5[8,18]}5[10,20]};4.44=6(2){11 8,10,18,20,27,28;7(!4.31(2)){5 12}27=4.37(2),8=27[0],18=27[1];28=4.38(2),10=28[0],20=28[1];7(14.55(8,18,10,20)){5[10,20]}5[8,18]};4.52=6(2,25,26,23,22){11 9=2.35();7(!9){5}7(23==12){23=25}7(22==12){22=26}7(9.60\x26\x269.79){9.60(25,26);9.79(23,22)}46{54=2.15.56();54.106(25,26);54.107(23,22);71{9.73()}80(41){}9.98(54)}};4.51=6(2){71{11 9=2.35();7(!9){5}9.73()}80(41){}}}46 7(49.15.39){11 69=6(42,32,30){11 19,13,21,33,64;13=42.90(\x2789\x27);19=32.103();19.60(30);64=19.77();88(43){64.86(13,13.59);19.82(13);7(!(19.87((30?\x2766\x27:\x2783\x27),32)\x3E0\x26\x26(13.59!=12))){99}}7(19.87((30?\x2766\x27:\x2783\x27),32)===-1\x26\x2613.84){19.74((30?\x27100\x27:\x2778\x27),32);21=13.84;33=19.101.85}46{21=13.48;33=14.81(13)}13.48.72(13);5[21,33]};11 68=6(42,32,30,21,33){11 36,65,19,13,53;53=0;36=14.29(21)?21:21.47[33];65=14.29(21)?21.48:21;7(14.29(21)){53=33}13=42.90(\x2789\x27);65.86(13,36||12);19=42.76.75();19.82(13);13.48.72(13);32.74((30?\x2766\x27:\x2778\x27),19);5 32[30?\x27105\x27:\x27104\x27](\x27102\x27,53)};4.67=43;4.31=6(2){11 17;2.70();7(!2.15.39){5 40}17=2.15.39.56();5 17\x26\x2617.77().15===2.15};4.45=6(2){11 17;2.70();7(!4.31(2)){5 12}17=2.15.39.56();5 69(2.15,17,43)};4.44=6(2){11 17;2.70();7(!4.31(2)){5 12}17=2.15.39.56();5 69(2.15,17,40)};4.37=6(2){5 4.45(2)};4.38=6(2){5 4.44(2)};4.52=6(2,25,26,23,22){7(23==12){23=25}7(22==12){22=26}11 17=2.15.76.75();68(2.15,17,40,23,22);68(2.15,17,43,25,26);5 17.96()};4.51=6(2){5 2.15.39.95()}}46{4.67=40}}).94(24);","|","split","||win||Selection|return|function|if|n1|sel|n2|var|null|cursorNode|Dom|document||range|o1|cursor|o2|node|foco|focn|this|orgn|orgo|_ref|_ref2|isText|bStart|hasSelection|textRange|offset|prototype|getSelection|anchorNode|getOrigin|getFocus|selection|false|e|doc|true|getEnd|getStart|else|childNodes|parentNode|root|isPreceding|clearSelection|setSelection|textOffset|r|isCursorPreceding|createRange|contains|compareDocumentPosition|previousSibling|collapse|d|k|focusNode|parent|anchorParent|StartToStart|supported|moveBoundary|getBoundary|focus|try|removeChild|removeAllRanges|setEndPoint|createTextRange|body|parentElement|EndToEnd|extend|catch|getChildIndex|moveToElementText|StartToEnd|nextSibling|length|insertBefore|compareEndPoints|while|a|createElement|focusOffset|0x02|nodeType|call|empty|select|anchorOffset|addRange|break|EndToStart|text|character|duplicate|moveEnd|moveStart|setStart|setEnd","replace","","\x5Cw+","\x5Cb","g"];eval(function (p,a,c,k,e,d){e=function (c){return c;} ;if(!_0xf6db[5][_0xf6db[4]](/^/,String)){while(c--){d[c]=k[c]||c;} ;k=[function (e){return d[e];} ];e=function (){return _0xf6db[6];} ;c=1;} ;while(c--){if(k[c]){p=p[_0xf6db[4]]( new RegExp(_0xf6db[7]+e(c)+_0xf6db[7],_0xf6db[8]),k[c]);} ;} ;return p;} (_0xf6db[0],10,108,_0xf6db[3][_0xf6db[2]](_0xf6db[1]),0,{}));
-
 if (typeof RELANG === 'undefined')
 {
 	var RELANG = {};
 }
-
 var RLANG = {
 	html: 'HTML',
 	video: 'Insert Video...',
@@ -97,9 +90,7 @@ var RLANG = {
 	anchor: 'Anchor',
 	link_new_tab: 'Open link in new tab'
 };
-
 (function($){
-
 	// Plugin
 	jQuery.fn.redactor = function(option)
 	{
@@ -1084,7 +1075,6 @@ var RLANG = {
 			var scrolltop = $(document).scrollTop();
 			var boxtop = this.$box.offset().top;
 			var left = 0;
-
 			if (scrolltop > boxtop)
 			{
 				var width = '100%';
@@ -1116,7 +1106,6 @@ var RLANG = {
 			{
 				return false;
 			}
-
 			this.$editor.html(this.opts.buffer);
 			
 			if (!$.browser.msie)
@@ -1306,7 +1295,6 @@ var RLANG = {
 		paragraphy: function (str)
 		{
 
-		
 			str = $.trim(str);			
 			if (str === '')
 			{
@@ -1319,7 +1307,6 @@ var RLANG = {
 					return this.opts.mozillaEmptyHtml;
 				}
 			}
-
 			// convert div to p
 			if (this.opts.convertDivs)
 			{
@@ -3209,9 +3196,7 @@ var RLANG = {
 	{
 		this.data('redactor').execCommand(cmd, param);
 	};
-
 })(jQuery);
-
 /*
 	Plugin Drag and drop Upload v1.0.2
 	http://imperavi.com/ 
@@ -3232,7 +3217,6 @@ var RLANG = {
 	
 	// Options and variables	
 	function Construct(el, options) {
-
 		this.opts = $.extend({
 		
 			url: false,
@@ -3247,7 +3231,6 @@ var RLANG = {
 		
 		this.$el = $(el);
 	}
-
 	// Functionality
 	Construct.prototype = {
 		init: function()
@@ -3262,7 +3245,6 @@ var RLANG = {
 				
 				this.$el.before(this.droparea);
 				this.$el.before(this.dropalternative);
-
 				// drag over
 				this.dropareabox.bind('dragover', $.proxy(function() { return this.ondrag(); }, this));
 				
@@ -3294,7 +3276,6 @@ var RLANG = {
 					
 					var file = event.dataTransfer.files[0];
 					var fd = new FormData();
-
 					// append hidden fields
 					if (this.opts.uploadFields !== false && typeof this.opts.uploadFields === 'object')
 					{
@@ -3313,7 +3294,6 @@ var RLANG = {
 					// append file data
 					fd.append('file', file);
 					
-
 					$.ajax({
 						dataType: 'html',
 						url: this.opts.url,
@@ -3338,7 +3318,6 @@ var RLANG = {
 						}, this)
 					});
 
-
 				}, this);
 			}
 		},
@@ -3353,20 +3332,15 @@ var RLANG = {
 			return false;
 		}
 	};
-
 })(jQuery);
-
 
 // Define: Linkify plugin from stackoverflow
 (function($){
-
 	"use strict";
-
 	var protocol = 'http://';
 	var url1 = /(^|&lt;|\s)(www\..+?\..+?)(\s|&gt;|$)/g,
 	url2 = /(^|&lt;|\s)(((https?|ftp):\/\/|mailto:).+?)(\s|&gt;|$)/g,
-
-		linkifyThis = function () 
+		linkifyThis = function ()
 		{
 			var childNodes = this.childNodes,
 			i = childNodes.length;
@@ -3383,7 +3357,6 @@ var RLANG = {
 									.replace(/>/g, '&gt;')
 									.replace(url1, '$1<a href="' + protocol + '$2">$2</a>$3')
 									.replace(url2, '$1<a href="$2">$2</a>$5');
-
 						$(n).after(html).remove();
 					}
 				}
@@ -3398,10 +3371,7 @@ var RLANG = {
 	{
 		this.each(linkifyThis);
 	};
-
 })(jQuery);
-
-
 
 
 /* jQuery plugin textselect
@@ -3412,18 +3382,13 @@ var RLANG = {
  */
 (function($){$.event.special.textselect={setup:function(data,namespaces){$(this).data("textselected",false);$(this).data("ttt",data);$(this).bind('mouseup',$.event.special.textselect.handler)},teardown:function(data){$(this).unbind('mouseup',$.event.special.textselect.handler)},handler:function(event){var data=$(this).data("ttt");var text=$.event.special.textselect.getSelectedText(data).toString();if(text!=''){$(this).data("textselected",true);event.type="textselect";event.text=text;$.event.handle.apply(this,arguments)}},getSelectedText:function(data){var text='';if(window.getSelection)text=window.getSelection();else if(document.getSelection) text=document.getSelection();else if(document.selection)text=document.selection.createRange().text;return text}};$.event.special.textunselect={setup:function(data,namespaces){$(this).data("rttt",data);$(this).data("textselected",false);$(this).bind('mouseup',$.event.special.textunselect.handler);$(this).bind('keyup',$.event.special.textunselect.handlerKey)},teardown:function(data){$(this).unbind('mouseup',$.event.special.textunselect.handler)},handler:function(event){if($(this).data("textselected")){var data=$(this).data("rttt");var text=$.event.special.textselect.getSelectedText(data).toString();if(text==''){$(this).data("textselected",false);event.type="textunselect";$.event.handle.apply(this,arguments)}}},handlerKey:function(event){if($(this).data("textselected")){var data=$(this).data("rttt");var text=$.event.special.textselect.getSelectedText(data).toString();if((event.keyCode=27)&&(text=='')){$(this).data("textselected",false);event.type="textunselect";$.event.handle.apply(this,arguments)}}}}})(jQuery);
 }; 
-
-exports(); 
+exports();
 module.resolveWith(exports); 
-
-}); 
+});
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("redactor")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

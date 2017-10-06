@@ -1,17 +1,13 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 var jQuery = $; 
 $.require() 
  .script("ui/widget") 
  .done(function() { 
 var exports = function() { 
-
 /*!
  * jQuery UI Mouse 1.9.0pre
  * http://jqueryui.com
@@ -26,12 +22,10 @@ var exports = function() {
  *	jquery.ui.widget.js
  */
 (function( $, undefined ) {
-
 var mouseHandled = false;
 $( document ).mouseup( function( e ) {
 	mouseHandled = false;
 });
-
 $.widget("ui.mouse", {
 	version: "1.9.0pre",
 	options: {
@@ -41,7 +35,6 @@ $.widget("ui.mouse", {
 	},
 	_mouseInit: function() {
 		var that = this;
-
 		this.element
 			.bind('mousedown.'+this.widgetName, function(event) {
 				return that._mouseDown(event);
@@ -53,10 +46,8 @@ $.widget("ui.mouse", {
 					return false;
 				}
 			});
-
 		this.started = false;
 	},
-
 	// TODO: make sure destroying one instance of mouse doesn't mess with
 	// other instances of mouse
 	_mouseDestroy: function() {
@@ -67,16 +58,12 @@ $.widget("ui.mouse", {
 				.unbind('mouseup.'+this.widgetName, this._mouseUpDelegate);
 		}
 	},
-
 	_mouseDown: function(event) {
 		// don't let more than one widget handle mouseStart
 		if( mouseHandled ) { return; }
-
 		// we may have missed mouseup (out of window)
 		(this._mouseStarted && this._mouseUp(event));
-
 		this._mouseDownEvent = event;
-
 		var that = this,
 			btnIsLeft = (event.which === 1),
 			// event.target.nodeName works around a bug in IE 8 with
@@ -85,14 +72,12 @@ $.widget("ui.mouse", {
 		if (!btnIsLeft || elIsCancel || !this._mouseCapture(event)) {
 			return true;
 		}
-
 		this.mouseDelayMet = !this.options.delay;
 		if (!this.mouseDelayMet) {
 			this._mouseDelayTimer = setTimeout(function() {
 				that.mouseDelayMet = true;
 			}, this.options.delay);
 		}
-
 		if (this._mouseDistanceMet(event) && this._mouseDelayMet(event)) {
 			this._mouseStarted = (this._mouseStart(event) !== false);
 			if (!this._mouseStarted) {
@@ -100,12 +85,10 @@ $.widget("ui.mouse", {
 				return true;
 			}
 		}
-
 		// Click event may never have fired (Gecko & Opera)
 		if (true === $.data(event.target, this.widgetName + '.preventClickEvent')) {
 			$.removeData(event.target, this.widgetName + '.preventClickEvent');
 		}
-
 		// these delegates are required to keep context
 		this._mouseMoveDelegate = function(event) {
 			return that._mouseMove(event);
@@ -116,51 +99,40 @@ $.widget("ui.mouse", {
 		$(document)
 			.bind('mousemove.'+this.widgetName, this._mouseMoveDelegate)
 			.bind('mouseup.'+this.widgetName, this._mouseUpDelegate);
-
 		event.preventDefault();
 		
 		mouseHandled = true;
 		return true;
 	},
-
 	_mouseMove: function(event) {
 		// IE mouseup check - mouseup happened when mouse was out of window
 		if ($.browser.msie && !(document.documentMode >= 9) && !event.button) {
 			return this._mouseUp(event);
 		}
-
 		if (this._mouseStarted) {
 			this._mouseDrag(event);
 			return event.preventDefault();
 		}
-
 		if (this._mouseDistanceMet(event) && this._mouseDelayMet(event)) {
 			this._mouseStarted =
 				(this._mouseStart(this._mouseDownEvent, event) !== false);
 			(this._mouseStarted ? this._mouseDrag(event) : this._mouseUp(event));
 		}
-
 		return !this._mouseStarted;
 	},
-
 	_mouseUp: function(event) {
 		$(document)
 			.unbind('mousemove.'+this.widgetName, this._mouseMoveDelegate)
 			.unbind('mouseup.'+this.widgetName, this._mouseUpDelegate);
-
 		if (this._mouseStarted) {
 			this._mouseStarted = false;
-
 			if (event.target === this._mouseDownEvent.target) {
 				$.data(event.target, this.widgetName + '.preventClickEvent', true);
 			}
-
 			this._mouseStop(event);
 		}
-
 		return false;
 	},
-
 	_mouseDistanceMet: function(event) {
 		return (Math.max(
 				Math.abs(this._mouseDownEvent.pageX - event.pageX),
@@ -168,33 +140,24 @@ $.widget("ui.mouse", {
 			) >= this.options.distance
 		);
 	},
-
 	_mouseDelayMet: function(event) {
 		return this.mouseDelayMet;
 	},
-
 	// These are placeholder methods, to be overriden by extending plugin
 	_mouseStart: function(event) {},
 	_mouseDrag: function(event) {},
 	_mouseStop: function(event) {},
 	_mouseCapture: function(event) { return true; }
 });
-
 })(jQuery);
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
-}); 
+});
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("ui/mouse")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

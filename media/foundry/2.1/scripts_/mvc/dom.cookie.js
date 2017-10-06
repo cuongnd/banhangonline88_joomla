@@ -1,16 +1,12 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 $.require() 
  .script("mvc/lang.json") 
  .done(function() { 
 var exports = function() { 
-
 
     // break
     /**
@@ -126,20 +122,14 @@ var exports = function() {
         }
     };
 
-
 }; 
-
-exports(); 
+exports();
 module.resolveWith(exports); 
-
-}); 
+});
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("mvc/dom.cookie")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

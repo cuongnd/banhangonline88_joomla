@@ -1,14 +1,9 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 var exports = function() { 
-
-
 
 	// a path like string into something that's ok for an element ID
 	var toId = function( src ) {
@@ -191,7 +186,6 @@ var exports = function() {
 	 *
 	 *   - jQuery.Tmpl
 	 *     <pre><code>&lt;h2>${message}&lt;/h2></code></pre>
-
 	 *
 	 * The popular <a href='http://awardwinningfjords.com/2010/08/09/mustache-for-javascriptmvc-3.html'>Mustache</a>
 	 * template engine is supported in a 2nd party plugin.
@@ -239,18 +233,14 @@ var exports = function() {
 			callback = helpers;
 			helpers = undefined;
 		}
-
 		// see if we got passed any deferreds
 		var deferreds = getDeferreds(data);
-
 
 		if ( deferreds.length ) { // does data contain any deferreds?
 			// the deferred that resolves into the rendered content ...
 			var deferred = $.Deferred();
-
 			// add the view request to the list of deferreds
 			deferreds.push(get(view, true))
-
 			// wait for the view and all deferreds to finish
 			$.when.apply($, deferreds).then(function( resolved ) {
 				// get all the resolved deferreds
@@ -259,7 +249,6 @@ var exports = function() {
 					renderer = objs.pop()[0],
 					// the result of the template rendering with data
 					result;
-
 				// make data look like the resolved deferreds
 				if ( isDeferred(data) ) {
 					data = usefulPart(resolved);
@@ -275,7 +264,6 @@ var exports = function() {
 				}
 				// get the rendered result
 				result = renderer(data, helpers);
-
 				//resolve with the rendered view
 				deferred.resolve(result);
 				// if there's a callback, call it back with the result
@@ -291,7 +279,6 @@ var exports = function() {
 				async = typeof callback === "function",
 				// get the 'view' type
 				deferred = get(view, async);
-
 			// if we are async,
 			if ( async ) {
 				// return the deferred
@@ -307,7 +294,6 @@ var exports = function() {
 					response = renderer(data, helpers);
 				});
 			}
-
 			return response;
 		}
 	},
@@ -336,7 +322,6 @@ var exports = function() {
 		// this only goes one level deep
 		getDeferreds = function( data ) {
 			var deferreds = [];
-
 			// pull out deferreds
 			if ( isDeferred(data) ) {
 				return [data]
@@ -355,8 +340,6 @@ var exports = function() {
 		usefulPart = function( resolved ) {
 			return $.isArray(resolved) && resolved.length === 3 && resolved[1] === 'success' ? resolved[0] : resolved
 		};
-
-
 
 	// you can request a view renderer (a function you pass data to and get html)
 	// Creates a 'view' transport.  These resolve to a 'view' renderer
@@ -381,7 +364,6 @@ var exports = function() {
 			id,
 			// the AJAX request used to retrieve the template content
 			jqXHR,
-
 			// used to generate the response
 			response = function( text ) {
 				// get the renderer function
@@ -396,22 +378,18 @@ var exports = function() {
 					view: func
 				};
 			};
-
 		// if we have an inline template, derive the suffix from the 'text/???' part
 		// this only supports '<script></script>' tags
 		if ( el = document.getElementById(url) ) {
 			suffix = "."+el.type.match(/\/(x\-)?(.+)/)[2];
 		}
-
 		// if there is no suffix, add one
 		if (!suffix ) {
 			suffix = $view.ext;
 			url = url + $view.ext;
 		}
-
 		// convert to a unique and valid id
 		id = toId(url);
-
 		// if a absolute path, use steal to get it
 		// you should only be using // if you are using steal
 		if ( url.match(/^\/\//) ) {
@@ -420,34 +398,25 @@ var exports = function() {
 				url = "/" + sub :
 				steal.root.mapJoin(sub) +'';
 		}
-
 		//set the template engine type
 		type = $view.types[suffix];
-
 		// !-- FOUNDRY HACK --! //
 		// Retrieve templates stored within $.template
 		var template = $.template()[orig.url];
-
 		// return the ajax transport contract: http://api.jquery.com/extending-ajax/
 		return {
 			send: function( headers, callback ) {
-
 				// !-- FOUNDRY HACK --! //
 				// Retrieve templates stored within $.template
 				if ( template ) {
-
 					type = $view.types["." + template.type];
-
 					return callback(200, "success", response(template.content));
-
 				// if it is cached,
 				} else if ( $view.cached[id] ) {
-
 					// return the catched renderer
 					return callback(200, "success", {
 						view: $view.cached[id]
 					});
-
 				// otherwise if we are getting this from a script elment
 				} else if ( el ) {
 					// resolve immediately with the element's innerHTML
@@ -560,12 +529,10 @@ var exports = function() {
 		 */
 		register: function( info ) {
 			this.types["." + info.suffix] = info;
-
 			if ( window.steal ) {
 				steal.type(info.suffix + " view js", function( options, success, error ) {
 					var type = $view.types["." + options.type],
 						id = toId(options.rootSrc+'');
-
 					options.text = type.script(id, options.text)
 					success();
 				})
@@ -600,37 +567,30 @@ var exports = function() {
 				return renderer.call(data, data, helpers);
 			};
 		}
-
 	});
 	if ( window.steal ) {
 		steal.type("view js", function( options, success, error ) {
 			var type = $view.types["." + options.type],
 				id = toId(options.rootSrc+'');
-
 			options.text = "steal('" + (type.plugin || "jquery/view/" + options.type) + "').then(function($){" + "$.View.preload('" + id + "'," + options.text + ");\n})";
 			success();
 		})
 	}
-
 	//---- ADD jQUERY HELPERS -----
 	//converts jquery functions to use views
 	var convert, modify, isTemplate, isHTML, isDOM, getCallback, hookupView, funcs,
 		// text and val cannot produce an element, so don't run hookups on them
 		noHookup = {'val':true,'text':true};
-
 	convert = function( func_name ) {
 		// save the old jQuery helper
 		var old = $.fn[func_name];
-
 		// replace it wiht our new helper
 		$.fn[func_name] = function() {
-
 			var args = makeArray(arguments),
 				callbackNum,
 				callback,
 				self = this,
 				result;
-
 			// if the first arg is a deferred
 			// wait until it finishes, and call
 			// modify with the result
@@ -642,7 +602,6 @@ var exports = function() {
 			}
 			//check if a template
 			else if ( isTemplate(args) ) {
-
 				// if we should operate async
 				if ((callbackNum = getCallback(args))) {
 					callback = args[callbackNum];
@@ -655,7 +614,6 @@ var exports = function() {
 				}
 				// call view with args (there might be deferreds)
 				result = $view.apply($view, args);
-
 				// if we got a string back
 				if (!isDeferred(result) ) {
 					// we are going to call the old method with that string
@@ -672,17 +630,14 @@ var exports = function() {
 				modify.call(this, args, old);
 		};
 	};
-
 	// modifies the content of the element
 	// but also will run any hookup
 	modify = function( args, old ) {
 		var res, stub, hooks;
-
 		//check if there are new hookups
 		for ( var hasHookups in $view.hookups ) {
 			break;
 		}
-
 		//if there are hookups, get jQuery object
 		if ( hasHookups && args[0] && isHTML(args[0]) ) {
 			hooks = $view.hookups;
@@ -690,7 +645,6 @@ var exports = function() {
 			args[0] = $(args[0]);
 		}
 		res = old.apply(this, args);
-
 		//now hookup the hookups
 		if ( hooks
 		/* && args.length*/
@@ -699,7 +653,6 @@ var exports = function() {
 		}
 		return res;
 	};
-
 	// returns true or false if the args indicate a template is being used
 	// $('#foo').html('/path/to/template.ejs',{data})
 	// in general, we want to make sure the first arg is a string
@@ -707,7 +660,6 @@ var exports = function() {
 	isTemplate = function( args ) {
 		// save the second arg type
 		var secArgType = typeof args[1];
-
 		// the first arg is a string
 		return typeof args[0] == "string" &&
 				// the second arg is an object or function
@@ -733,12 +685,10 @@ var exports = function() {
 			return false;
 		}
 	};
-
 	//returns the callback arg number if there is one (for async view use)
 	getCallback = function( args ) {
 		return typeof args[3] === 'function' ? 3 : typeof args[2] === 'function' && 2;
 	};
-
 	hookupView = function( els, hooks ) {
 		//remove all hookups
 		var hookupEls, len, i = 0,
@@ -758,7 +708,6 @@ var exports = function() {
 		//copy remaining hooks back
 		$.extend($view.hookups, hooks);
 	};
-
 	/**
 	 *  @add jQuery.fn
 	 *  @parent jQuery.View
@@ -777,7 +726,6 @@ var exports = function() {
 		hookupView(this, hooks);
 		return this;
 	};
-
 	/**
 	 *  @add jQuery.fn
 	 */
@@ -898,23 +846,15 @@ var exports = function() {
 	"replaceWith", "val"],function(i, func){
 		convert(func);
 	});
-
 	//go through helper funcs and convert
 
-
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("mvc/view")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

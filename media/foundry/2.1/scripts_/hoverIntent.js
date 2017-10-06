@@ -1,13 +1,9 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 var exports = function() { 
-
 /**
 * hoverIntent is similar to jQuery's built-in "hover" function except that
 * instead of firing the onMouseOver event immediately, hoverIntent checks
@@ -37,7 +33,6 @@ var exports = function() {
 * @param  g  onMouseOut function  || Nothing (use configuration options object)
 * @author    Brian Cherne brian(at)cherne(dot)net
 */
-
 $.fn.hoverIntent = function(f,g) {
 	// default configuration options
 	var cfg = {
@@ -47,18 +42,15 @@ $.fn.hoverIntent = function(f,g) {
 	};
 	// override configuration options with user supplied object
 	cfg = $.extend(cfg, g ? { over: f, out: g } : f );
-
 	// instantiate variables
 	// cX, cY = current X and Y position of mouse, updated by mousemove event
 	// pX, pY = previous X and Y position of mouse, set by mouseover and polling interval
 	var cX, cY, pX, pY;
-
 	// A private function for getting mouse position
 	var track = function(ev) {
 		cX = ev.pageX;
 		cY = ev.pageY;
 	};
-
 	// A private function for comparing current and previous mouse position
 	var compare = function(ev,ob) {
 		ob.hoverIntent_t = clearTimeout(ob.hoverIntent_t);
@@ -75,23 +67,19 @@ $.fn.hoverIntent = function(f,g) {
 			ob.hoverIntent_t = setTimeout( function(){compare(ev, ob);} , cfg.interval );
 		}
 	};
-
 	// A private function for delaying the mouseOut function
 	var delay = function(ev,ob) {
 		ob.hoverIntent_t = clearTimeout(ob.hoverIntent_t);
 		ob.hoverIntent_s = 0;
 		return cfg.out.apply(ob,[ev]);
 	};
-
 	// A private function for handling mouse 'hovering'
 	var handleHover = function(e) {
 		// copy objects to be passed into t (required for event object to be passed in IE)
 		var ev = jQuery.extend({},e);
 		var ob = this;
-
 		// cancel hoverIntent timer if it exists
 		if (ob.hoverIntent_t) { ob.hoverIntent_t = clearTimeout(ob.hoverIntent_t); }
-
 		// if e.type == "mouseenter"
 		if (e.type == "mouseenter") {
 			// set "previous" X and Y position based on initial entry point
@@ -100,7 +88,6 @@ $.fn.hoverIntent = function(f,g) {
 			$(ob).bind("mousemove",track);
 			// start polling interval (self-calling timeout) to compare mouse coordinates over time
 			if (ob.hoverIntent_s != 1) { ob.hoverIntent_t = setTimeout( function(){compare(ev,ob);} , cfg.interval );}
-
 		// else e.type == "mouseleave"
 		} else {
 			// unbind expensive mousemove event
@@ -109,23 +96,16 @@ $.fn.hoverIntent = function(f,g) {
 			if (ob.hoverIntent_s == 1) { ob.hoverIntent_t = setTimeout( function(){delay(ev,ob);} , cfg.timeout );}
 		}
 	};
-
 	// bind the function to the two event listeners
 	return this.bind('mouseenter',handleHover).bind('mouseleave',handleHover);
 };
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("hoverIntent")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

@@ -1,16 +1,12 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 $.require() 
  .script("mvc/event.drag","mvc/dom.within","mvc/dom.compare") 
  .done(function() { 
 var exports = function() { 
-
 
 	var event = $.event;
 	//somehow need to keep track of elements with selectors on them.  When element is removed, somehow we need to know that
@@ -55,8 +51,6 @@ var exports = function() {
 	 * <p>Drop events are covered in more detail in [jQuery.Drop].</p>
 	 */
 	"dropend"];
-
-
 
 	/**
 	 * @class jQuery.Drop
@@ -134,7 +128,6 @@ var exports = function() {
 				}
 			}
 	});
-
 	$.extend($.Drop,{
 		lowerName: "drop",
 		_rootElements: [], //elements that are listening for drops
@@ -237,23 +230,17 @@ var exports = function() {
 				dropResponders,
 				newEls = [],
 				dragging = this.dragging;
-
 			// go to each root element and look for drop elements
 			for(var i=0; i < this._rootElements.length; i++){ //for each element
 				el = this._rootElements[i]
-
 				// gets something like {"": ["dropinit"], ".foo" : ["dropover","dropmove"] }
 				var drops = $.event.findBySelector(el, eventNames)
-
 				// get drop elements by selector
 				for(selector in drops){
 
-
 					dropResponders = selector ? $(selector, el) : [el];
-
 					// for each drop element
 					for(var e= 0; e < dropResponders.length; e++){
-
 						// add the callbacks to the element's Data
 						// there already might be data, so we merge it
 						if( this.addCallbacks(dropResponders[e], drops[selector], dragging) ){
@@ -270,7 +257,6 @@ var exports = function() {
 		// returns true or false if the element is new ...
 		// onlyNew lets only new elements add themselves
 		addCallbacks : function(el, callbacks, onlyNew){
-
 			var origData = $.data(el,"_dropData");
 			if(!origData){
 				$.data(el,"_dropData", new $.Drop(callbacks, el));
@@ -293,7 +279,6 @@ var exports = function() {
 		add: function( newEls, event, drag , dragging) {
 			var i = 0,
 				drop;
-
 			while(i < newEls.length){
 				drop = $.data(newEls[i],"_dropData");
 				drop.callHandlers(this.lowerName+'init', newEls[i], event, drag)
@@ -308,7 +293,6 @@ var exports = function() {
 		show: function( point, moveable, event ) {
 			var element = moveable.element;
 			if(!this._elements.length) return;
-
 			var respondable,
 				affected = [],
 				propagate = true,
@@ -321,11 +305,9 @@ var exports = function() {
 				responders = [],
 				self = this,
 				drag;
-
 			//what's still affected ... we can also move element out here
 			while( i < this._elements.length){
 				drag = $.data(this._elements[i],"_dropData");
-
 				if (!drag) {
 					this._elements.splice(i, 1)
 				}
@@ -337,18 +319,13 @@ var exports = function() {
 				}
 			}
 
-
-
 			affected.sort(this.sortByDeepestChild); //we should only trigger on lowest children
 			event.stopRespondPropagate = function(){
 				propagate = false;
 			}
-
 			toBeActivated = affected.slice();
-
 			// all these will be active
 			this.last_active = affected;
-
 			//deactivate everything in last_active that isn't active
 			for (j = 0; j < oldLastActive.length; j++) {
 				la = oldLastActive[j];
@@ -370,10 +347,8 @@ var exports = function() {
 				if(!propagate) return;
 			}
 			//activate everything in affected that isn't in last_active
-
 			for (i = 0; i < affected.length; i++) {
 				this.move(affected[i], moveable, event);
-
 				if(!propagate) return;
 			}
 		},
@@ -381,7 +356,6 @@ var exports = function() {
 			var responder, la,
 				endName = this.lowerName+'end',
 				dropData;
-
 			// call dropon
 			//go through the actives ... if you are over one, call dropped on it
 			for(var i = 0; i < this.last_active.length; i++){
@@ -395,7 +369,6 @@ var exports = function() {
 				dropData = $.data(this._elements[r],"_dropData");
 				dropData && dropData.callHandlers(endName, null, event, moveable);
 			}
-
 			this.clear();
 		},
 		/**
@@ -412,7 +385,6 @@ var exports = function() {
 		}
 	})
 	$.Drag.responder = $.Drop;
-
 	$.extend($.Drop.prototype,{
 		callHandlers: function( method, el, ev, drag ) {
 			var length = this[method] ? this[method].length : 0
@@ -436,20 +408,14 @@ var exports = function() {
 			this._canceled = true;
 		}
 	} )
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
-}); 
+});
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("mvc/event.drop")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

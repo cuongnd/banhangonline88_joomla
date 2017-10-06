@@ -1,18 +1,14 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 var jQuery = $; 
 $.require() 
  .script("ui/core") 
  .stylesheet("ui/datepicker") 
  .done(function() { 
 var exports = function() { 
-
 /*!
  * jQuery UI Datepicker 1.9.0pre
  * http://jqueryui.com
@@ -27,18 +23,14 @@ var exports = function() {
  *	jquery.ui.core.js
  */
 (function( $, undefined ) {
-
 $.extend($.ui, { datepicker: { version: "1.9.0pre" } });
-
 var PROP_NAME = 'datepicker';
 var dpuuid = new Date().getTime();
 var instActive;
-
 /* Date picker manager.
    Use the singleton instance of this class, $.datepicker, to interact with the date picker.
    Settings for (groups of) date pickers are maintained in an instance object,
    allowing multiple different settings on the same page. */
-
 function Datepicker() {
 	this.debug = false; // Change this to true to start debugging
 	this._curInst = null; // The current instance in use
@@ -127,14 +119,12 @@ function Datepicker() {
 	$.extend(this._defaults, this.regional['']);
 	this.dpDiv = bindHover($('<div id="' + this._mainDivId + '" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div>'));
 }
-
 $.extend(Datepicker.prototype, {
 	/* Class name added to elements to indicate already configured with a date picker. */
 	markerClassName: 'hasDatepicker',
 	
 	//Keep track of the maximum number of rows displayed (see #7043)
 	maxRows: 4,
-
 	/* Debug logging (if enabled). */
 	log: function () {
 		if (this.debug)
@@ -145,7 +135,6 @@ $.extend(Datepicker.prototype, {
 	_widgetDatepicker: function() {
 		return this.dpDiv;
 	},
-
 	/* Override the default settings for all instances of the date picker.
 	   @param  settings  object - the new settings to use as defaults (anonymous object)
 	   @return the manager object */
@@ -153,7 +142,6 @@ $.extend(Datepicker.prototype, {
 		extendRemove(this._defaults, settings || {});
 		return this;
 	},
-
 	/* Attach the date picker to a jQuery selection.
 	   @param  target    element - the target input field or division or span
 	   @param  settings  object - the new settings to use for this date picker instance (anonymous) */
@@ -185,7 +173,6 @@ $.extend(Datepicker.prototype, {
 			this._inlineDatepicker(target, inst);
 		}
 	},
-
 	/* Create a new instance object. */
 	_newInst: function(target, inline) {
 		var id = target[0].id.replace(/([^A-Za-z0-9_-])/g, '\\\\$1'); // escape jQuery meta chars
@@ -196,7 +183,6 @@ $.extend(Datepicker.prototype, {
 			dpDiv: (!inline ? this.dpDiv : // presentation div
 			bindHover($('<div class="' + this._inlineClass + ' ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div>')))};
 	},
-
 	/* Attach the date picker to an input field. */
 	_connectDatepicker: function(target, inst) {
 		var input = $(target);
@@ -219,7 +205,6 @@ $.extend(Datepicker.prototype, {
 			this._disableDatepicker( target );
 		}
 	},
-
 	/* Make attachments based on settings. */
 	_attachments: function(input, inst) {
 		var appendText = this._get(inst, 'appendText');
@@ -258,7 +243,6 @@ $.extend(Datepicker.prototype, {
 			});
 		}
 	},
-
 	/* Apply the maximum length for the date format. */
 	_autoSize: function(inst) {
 		if (this._get(inst, 'autoSize') && !inst.inline) {
@@ -284,7 +268,6 @@ $.extend(Datepicker.prototype, {
 			inst.input.attr('size', this._formatDate(inst, date).length);
 		}
 	},
-
 	/* Attach an inline date picker to a div. */
 	_inlineDatepicker: function(target, inst) {
 		var divSpan = $(target);
@@ -308,7 +291,6 @@ $.extend(Datepicker.prototype, {
 		// http://bugs.jqueryui.com/ticket/7552 - A Datepicker created on a detached div has zero height
 		inst.dpDiv.css( "display", "block" );
 	},
-
 	/* Pop-up the date picker in a "dialog" box.
 	   @param  input     element - ignored
 	   @param  date      string or Date - the initial date to display
@@ -334,7 +316,6 @@ $.extend(Datepicker.prototype, {
 		extendRemove(inst.settings, settings || {});
 		date = (date && date.constructor == Date ? this._formatDate(inst, date) : date);
 		this._dialogInput.val(date);
-
 		this._pos = (pos ? (pos.length ? pos : [pos.pageX, pos.pageY]) : null);
 		if (!this._pos) {
 			var browserWidth = document.documentElement.clientWidth;
@@ -344,7 +325,6 @@ $.extend(Datepicker.prototype, {
 			this._pos = // should use actual width/height below
 				[(browserWidth / 2) - 100 + scrollX, (browserHeight / 2) - 150 + scrollY];
 		}
-
 		// move input on screen for focus, but hidden behind dialog
 		this._dialogInput.css('left', (this._pos[0] + 20) + 'px').css('top', this._pos[1] + 'px');
 		inst.settings.onSelect = onSelect;
@@ -356,7 +336,6 @@ $.extend(Datepicker.prototype, {
 		$.data(this._dialogInput[0], PROP_NAME, inst);
 		return this;
 	},
-
 	/* Detach a datepicker from its control.
 	   @param  target    element - the target input field or division or span */
 	_destroyDatepicker: function(target) {
@@ -378,7 +357,6 @@ $.extend(Datepicker.prototype, {
 		} else if (nodeName == 'div' || nodeName == 'span')
 			$target.removeClass(this.markerClassName).empty();
 	},
-
 	/* Enable the date picker to a jQuery selection.
 	   @param  target    element - the target input field or division or span */
 	_enableDatepicker: function(target) {
@@ -403,7 +381,6 @@ $.extend(Datepicker.prototype, {
 		this._disabledInputs = $.map(this._disabledInputs,
 			function(value) { return (value == target ? null : value); }); // delete entry
 	},
-
 	/* Disable the date picker to a jQuery selection.
 	   @param  target    element - the target input field or division or span */
 	_disableDatepicker: function(target) {
@@ -429,7 +406,6 @@ $.extend(Datepicker.prototype, {
 			function(value) { return (value == target ? null : value); }); // delete entry
 		this._disabledInputs[this._disabledInputs.length] = target;
 	},
-
 	/* Is the first field in a jQuery collection disabled as a datepicker?
 	   @param  target    element - the target input field or division or span
 	   @return boolean - true if disabled, false if enabled */
@@ -443,7 +419,6 @@ $.extend(Datepicker.prototype, {
 		}
 		return false;
 	},
-
 	/* Retrieve the instance data for the target control.
 	   @param  target  element - the target input field or division or span
 	   @return  object - the associated instance data
@@ -456,7 +431,6 @@ $.extend(Datepicker.prototype, {
 			throw 'Missing instance data for this datepicker';
 		}
 	},
-
 	/* Update or retrieve the settings for a date picker attached to an input field or division.
 	   @param  target  element - the target input field or division or span
 	   @param  name    object - the new settings to update or
@@ -497,12 +471,10 @@ $.extend(Datepicker.prototype, {
 			this._updateDatepicker(inst);
 		}
 	},
-
 	// change method deprecated
 	_changeDatepicker: function(target, name, value) {
 		this._optionDatepicker(target, name, value);
 	},
-
 	/* Redraw the date picker attached to an input field or division.
 	   @param  target  element - the target input field or division or span */
 	_refreshDatepicker: function(target) {
@@ -511,7 +483,6 @@ $.extend(Datepicker.prototype, {
 			this._updateDatepicker(inst);
 		}
 	},
-
 	/* Set the dates for a jQuery selection.
 	   @param  target   element - the target input field or division or span
 	   @param  date     Date - the new date */
@@ -523,7 +494,6 @@ $.extend(Datepicker.prototype, {
 			this._updateAlternate(inst);
 		}
 	},
-
 	/* Get the date(s) for the first entry in a jQuery selection.
 	   @param  target     element - the target input field or division or span
 	   @param  noDefault  boolean - true if no default date is to be used
@@ -534,7 +504,6 @@ $.extend(Datepicker.prototype, {
 			this._setDateFromField(inst, noDefault);
 		return (inst ? this._getDate(inst) : null);
 	},
-
 	/* Handle keystrokes. */
 	_doKeyDown: function(event) {
 		var inst = $.datepicker._getInst(event.target);
@@ -553,7 +522,6 @@ $.extend(Datepicker.prototype, {
 							var onSelect = $.datepicker._get(inst, 'onSelect');
 							if (onSelect) {
 								var dateStr = $.datepicker._formatDate(inst);
-
 								// trigger custom callback
 								onSelect.apply((inst.input ? inst.input[0] : null), [dateStr, inst]);
 							}
@@ -611,7 +579,6 @@ $.extend(Datepicker.prototype, {
 			event.stopPropagation();
 		}
 	},
-
 	/* Filter entered characters - based on date format. */
 	_doKeyPress: function(event) {
 		var inst = $.datepicker._getInst(event.target);
@@ -621,7 +588,6 @@ $.extend(Datepicker.prototype, {
 			return event.ctrlKey || event.metaKey || (chr < ' ' || !chars || chars.indexOf(chr) > -1);
 		}
 	},
-
 	/* Synchronise manual entry and field/alternate field. */
 	_doKeyUp: function(event) {
 		var inst = $.datepicker._getInst(event.target);
@@ -642,7 +608,6 @@ $.extend(Datepicker.prototype, {
 		}
 		return true;
 	},
-
 	/* Pop-up the date picker for a given input field.
 	   If false returned from beforeShow event handler do not show. 
 	   @param  input  element - the input field attached to the date picker or
@@ -707,7 +672,6 @@ $.extend(Datepicker.prototype, {
 			};
 			inst.dpDiv.zIndex($(input).zIndex()+1);
 			$.datepicker._datepickerShowing = true;
-
 			// DEPRECATED: after BC for 1.8.x $.effects[ showAnim ] is not needed
 			if ( $.effects && ( $.effects.effect[ showAnim ] || $.effects[ showAnim ] ) )
 				inst.dpDiv.show(showAnim, $.datepicker._get(inst, 'showOptions'), duration, postProcess);
@@ -720,7 +684,6 @@ $.extend(Datepicker.prototype, {
 			$.datepicker._curInst = inst;
 		}
 	},
-
 	/* Generate the date picker content. */
 	_updateDatepicker: function(inst) {
 		this.maxRows = 4; //Reset the max number of rows being displayed (see #7043)
@@ -760,7 +723,6 @@ $.extend(Datepicker.prototype, {
 			}, 0);
 		}
 	},
-
 	/* Retrieve the size of left and top borders for an element.
 	   @param  elem  (jQuery object) the element of interest
 	   @return  (number[2]) the left and top borders */
@@ -771,7 +733,6 @@ $.extend(Datepicker.prototype, {
 		return [parseFloat(convert(elem.css('border-left-width'))),
 			parseFloat(convert(elem.css('border-top-width')))];
 	},
-
 	/* Check positioning to remain on screen. */
 	_checkOffset: function(inst, offset, isFixed) {
 		var dpWidth = inst.dpDiv.outerWidth();
@@ -780,20 +741,16 @@ $.extend(Datepicker.prototype, {
 		var inputHeight = inst.input ? inst.input.outerHeight() : 0;
 		var viewWidth = document.documentElement.clientWidth + (isFixed ? 0 : $(document).scrollLeft());
 		var viewHeight = document.documentElement.clientHeight + (isFixed ? 0 : $(document).scrollTop());
-
 		offset.left -= (this._get(inst, 'isRTL') ? (dpWidth - inputWidth) : 0);
 		offset.left -= (isFixed && offset.left == inst.input.offset().left) ? $(document).scrollLeft() : 0;
 		offset.top -= (isFixed && offset.top == (inst.input.offset().top + inputHeight)) ? $(document).scrollTop() : 0;
-
 		// now check if datepicker is showing outside window viewport - move to a better place if so.
 		offset.left -= Math.min(offset.left, (offset.left + dpWidth > viewWidth && viewWidth > dpWidth) ?
 			Math.abs(offset.left + dpWidth - viewWidth) : 0);
 		offset.top -= Math.min(offset.top, (offset.top + dpHeight > viewHeight && viewHeight > dpHeight) ?
 			Math.abs(dpHeight + inputHeight) : 0);
-
 		return offset;
 	},
-
 	/* Find an object's position on the screen. */
 	_findPos: function(obj) {
 		var inst = this._getInst(obj);
@@ -804,7 +761,6 @@ $.extend(Datepicker.prototype, {
 		var position = $(obj).offset();
 		return [position.left, position.top];
 	},
-
 	/* Hide the date picker from view.
 	   @param  input  element - the input field attached to the date picker */
 	_hideDatepicker: function(input) {
@@ -817,7 +773,6 @@ $.extend(Datepicker.prototype, {
 			var postProcess = function() {
 				$.datepicker._tidyDialog(inst);
 			};
-
 			// DEPRECATED: after BC for 1.8.x $.effects[ showAnim ] is not needed
 			if ( $.effects && ( $.effects.effect[ showAnim ] || $.effects[ showAnim ] ) )
 				inst.dpDiv.hide(showAnim, $.datepicker._get(inst, 'showOptions'), duration, postProcess);
@@ -842,20 +797,16 @@ $.extend(Datepicker.prototype, {
 			this._inDialog = false;
 		}
 	},
-
 	/* Tidy up after a dialog display. */
 	_tidyDialog: function(inst) {
 		inst.dpDiv.removeClass(this._dialogClass).unbind('.ui-datepicker-calendar');
 	},
-
 	/* Close date picker if clicked elsewhere. */
 	_checkExternalClick: function(event) {
 		if (!$.datepicker._curInst)
 			return;
-
 		var $target = $(event.target),
 			inst = $.datepicker._getInst($target[0]);
-
 		if ( ( ( $target[0].id != $.datepicker._mainDivId &&
 				$target.parents('#' + $.datepicker._mainDivId).length == 0 &&
 				!$target.hasClass($.datepicker.markerClassName) &&
@@ -864,7 +815,6 @@ $.extend(Datepicker.prototype, {
 			( $target.hasClass($.datepicker.markerClassName) && $.datepicker._curInst != inst ) )
 			$.datepicker._hideDatepicker();
 	},
-
 	/* Adjust one of the date sub-fields. */
 	_adjustDate: function(id, offset, period) {
 		var target = $(id);
@@ -877,7 +827,6 @@ $.extend(Datepicker.prototype, {
 			period);
 		this._updateDatepicker(inst);
 	},
-
 	/* Action for current link. */
 	_gotoToday: function(id) {
 		var target = $(id);
@@ -896,7 +845,6 @@ $.extend(Datepicker.prototype, {
 		this._notifyChange(inst);
 		this._adjustDate(target);
 	},
-
 	/* Action for selecting a new month/year. */
 	_selectMonthYear: function(id, select, period) {
 		var target = $(id);
@@ -907,7 +855,6 @@ $.extend(Datepicker.prototype, {
 		this._notifyChange(inst);
 		this._adjustDate(target);
 	},
-
 	/* Action for selecting a day. */
 	_selectDay: function(id, month, year, td) {
 		var target = $(id);
@@ -921,14 +868,12 @@ $.extend(Datepicker.prototype, {
 		this._selectDate(id, this._formatDate(inst,
 			inst.currentDay, inst.currentMonth, inst.currentYear));
 	},
-
 	/* Erase the input field and hide the date picker. */
 	_clearDate: function(id) {
 		var target = $(id);
 		var inst = this._getInst(target[0]);
 		this._selectDate(target, '');
 	},
-
 	/* Update the input field with the selected date. */
 	_selectDate: function(id, dateStr) {
 		var target = $(id);
@@ -952,7 +897,6 @@ $.extend(Datepicker.prototype, {
 			this._lastInput = null;
 		}
 	},
-
 	/* Update any alternate field to synchronise with the main field. */
 	_updateAlternate: function(inst) {
 		var altField = this._get(inst, 'altField');
@@ -963,7 +907,6 @@ $.extend(Datepicker.prototype, {
 			$(altField).each(function() { $(this).val(dateStr); });
 		}
 	},
-
 	/* Set as beforeShowDay function to prevent selection of weekends.
 	   @param  date  Date - the date to customise
 	   @return [boolean, string] - is this date selectable?, what is its CSS class? */
@@ -971,7 +914,6 @@ $.extend(Datepicker.prototype, {
 		var day = date.getDay();
 		return [(day > 0 && day < 6), ''];
 	},
-
 	/* Set as calculateWeek to determine the week of the year based on the ISO 8601 definition.
 	   @param  date  Date - the date to get the week for
 	   @return  number - the number of the week within the year that contains this date */
@@ -984,10 +926,8 @@ $.extend(Datepicker.prototype, {
 		checkDate.setDate(1);
 		return Math.floor(Math.round((time - checkDate) / 86400000) / 7) + 1;
 	},
-
 	/* Parse a string value into a date object.
 	   See formatDate below for the possible formats.
-
 	   @param  format    string - the expected format of the date
 	   @param  value     string - the date in the above format
 	   @param  settings  Object - attributes include:
@@ -1137,7 +1077,6 @@ $.extend(Datepicker.prototype, {
 			throw 'Invalid date'; // E.g. 31/02/00
 		return date;
 	},
-
 	/* Standard date formats. */
 	ATOM: 'yy-mm-dd', // RFC 3339 (ISO 8601)
 	COOKIE: 'D, dd M yy',
@@ -1151,10 +1090,8 @@ $.extend(Datepicker.prototype, {
 	TICKS: '!',
 	TIMESTAMP: '@',
 	W3C: 'yy-mm-dd', // ISO 8601
-
 	_ticksTo1970: (((1970 - 1) * 365 + Math.floor(1970 / 4) - Math.floor(1970 / 100) +
 		Math.floor(1970 / 400)) * 24 * 60 * 60 * 10000000),
-
 	/* Format a date object into a string value.
 	   The format can be combinations of the following:
 	   d  - day of month (no leading zero)
@@ -1173,7 +1110,6 @@ $.extend(Datepicker.prototype, {
 	   ! - Windows ticks (100ns since 01/01/0001)
 	   '...' - literal text
 	   '' - single quote
-
 	   @param  format    string - the desired format of the date
 	   @param  date      Date - the date value to format
 	   @param  settings  Object - attributes include:
@@ -1257,7 +1193,6 @@ $.extend(Datepicker.prototype, {
 			}
 		return output;
 	},
-
 	/* Extract all possible characters from the date format. */
 	_possibleChars: function (format) {
 		var chars = '';
@@ -1293,13 +1228,11 @@ $.extend(Datepicker.prototype, {
 				}
 		return chars;
 	},
-
 	/* Get a setting value, defaulting if necessary. */
 	_get: function(inst, name) {
 		return inst.settings[name] !== undefined ?
 			inst.settings[name] : this._defaults[name];
 	},
-
 	/* Parse existing date and initialise date picker. */
 	_setDateFromField: function(inst, noDefault) {
 		if (inst.input.val() == inst.lastVal) {
@@ -1324,13 +1257,11 @@ $.extend(Datepicker.prototype, {
 		inst.currentYear = (dates ? date.getFullYear() : 0);
 		this._adjustInstDate(inst);
 	},
-
 	/* Retrieve the default date shown on opening. */
 	_getDefaultDate: function(inst) {
 		return this._restrictMinMax(inst,
 			this._determineDate(inst, this._get(inst, 'defaultDate'), new Date()));
 	},
-
 	/* A date may be specified as an exact value or a relative one. */
 	_determineDate: function(inst, date, defaultDate) {
 		var offsetNumeric = function(offset) {
@@ -1383,7 +1314,6 @@ $.extend(Datepicker.prototype, {
 		}
 		return this._daylightSavingAdjust(newDate);
 	},
-
 	/* Handle switch to/from daylight saving.
 	   Hours may be non-zero on daylight saving cut-over:
 	   > 12 when midnight changeover, but then cannot generate
@@ -1395,7 +1325,6 @@ $.extend(Datepicker.prototype, {
 		date.setHours(date.getHours() > 12 ? date.getHours() + 2 : 0);
 		return date;
 	},
-
 	/* Set the date(s) directly. */
 	_setDate: function(inst, date, noChange) {
 		var clear = !date;
@@ -1412,7 +1341,6 @@ $.extend(Datepicker.prototype, {
 			inst.input.val(clear ? '' : this._formatDate(inst));
 		}
 	},
-
 	/* Retrieve the date(s) directly. */
 	_getDate: function(inst) {
 		var startDate = (!inst.currentYear || (inst.input && inst.input.val() == '') ? null :
@@ -1420,7 +1348,6 @@ $.extend(Datepicker.prototype, {
 			inst.currentYear, inst.currentMonth, inst.currentDay)));
 			return startDate;
 	},
-
 	/* Attach the onxxx handlers.  These are declared statically so
 	 * they work with static code transformers like Caja.
 	 */
@@ -1625,7 +1552,6 @@ $.extend(Datepicker.prototype, {
 		inst._keyEvent = false;
 		return html;
 	},
-
 	/* Generate the month and year header. */
 	_generateMonthYearHeader: function(inst, drawMonth, drawYear, minDate, maxDate,
 			secondary, monthNames, monthNamesShort) {
@@ -1689,7 +1615,6 @@ $.extend(Datepicker.prototype, {
 		html += '</div>'; // Close datepicker_header
 		return html;
 	},
-
 	/* Adjust one of the date sub-fields. */
 	_adjustInstDate: function(inst, offset, period) {
 		var year = inst.drawYear + (period == 'Y' ? offset : 0);
@@ -1704,7 +1629,6 @@ $.extend(Datepicker.prototype, {
 		if (period == 'M' || period == 'Y')
 			this._notifyChange(inst);
 	},
-
 	/* Ensure a date is within any min/max bounds. */
 	_restrictMinMax: function(inst, date) {
 		var minDate = this._getMinMaxDate(inst, 'min');
@@ -1713,7 +1637,6 @@ $.extend(Datepicker.prototype, {
 		newDate = (maxDate && newDate > maxDate ? maxDate : newDate);
 		return newDate;
 	},
-
 	/* Notify change of month/year. */
 	_notifyChange: function(inst) {
 		var onChange = this._get(inst, 'onChangeMonthYear');
@@ -1721,28 +1644,23 @@ $.extend(Datepicker.prototype, {
 			onChange.apply((inst.input ? inst.input[0] : null),
 				[inst.selectedYear, inst.selectedMonth + 1, inst]);
 	},
-
 	/* Determine the number of months to show. */
 	_getNumberOfMonths: function(inst) {
 		var numMonths = this._get(inst, 'numberOfMonths');
 		return (numMonths == null ? [1, 1] : (typeof numMonths == 'number' ? [1, numMonths] : numMonths));
 	},
-
 	/* Determine the current maximum date - ensure no time components are set. */
 	_getMinMaxDate: function(inst, minMax) {
 		return this._determineDate(inst, this._get(inst, minMax + 'Date'), null);
 	},
-
 	/* Find the number of days in a given month. */
 	_getDaysInMonth: function(year, month) {
 		return 32 - this._daylightSavingAdjust(new Date(year, month, 32)).getDate();
 	},
-
 	/* Find the day of the week of the first of a month. */
 	_getFirstDayOfMonth: function(year, month) {
 		return new Date(year, month, 1).getDay();
 	},
-
 	/* Determines if we should allow a "next/prev" month display change. */
 	_canAdjustMonth: function(inst, offset, curYear, curMonth) {
 		var numMonths = this._getNumberOfMonths(inst);
@@ -1752,7 +1670,6 @@ $.extend(Datepicker.prototype, {
 			date.setDate(this._getDaysInMonth(date.getFullYear(), date.getMonth()));
 		return this._isInRange(inst, date);
 	},
-
 	/* Is the given date in the accepted range? */
 	_isInRange: function(inst, date) {
 		var minDate = this._getMinMaxDate(inst, 'min');
@@ -1760,7 +1677,6 @@ $.extend(Datepicker.prototype, {
 		return ((!minDate || date.getTime() >= minDate.getTime()) &&
 			(!maxDate || date.getTime() <= maxDate.getTime()));
 	},
-
 	/* Provide the configuration settings for formatting/parsing. */
 	_getFormatConfig: function(inst) {
 		var shortYearCutoff = this._get(inst, 'shortYearCutoff');
@@ -1770,7 +1686,6 @@ $.extend(Datepicker.prototype, {
 			dayNamesShort: this._get(inst, 'dayNamesShort'), dayNames: this._get(inst, 'dayNames'),
 			monthNamesShort: this._get(inst, 'monthNamesShort'), monthNames: this._get(inst, 'monthNames')};
 	},
-
 	/* Format the given date for display. */
 	_formatDate: function(inst, day, month, year) {
 		if (!day) {
@@ -1784,7 +1699,6 @@ $.extend(Datepicker.prototype, {
 		return this.formatDate(this._get(inst, 'dateFormat'), date, this._getFormatConfig(inst));
 	}
 });
-
 /*
  * Bind hover events for datepicker elements.
  * Done via delegate so the binding only occurs once in the lifetime of the parent div.
@@ -1806,7 +1720,6 @@ function bindHover(dpDiv) {
 			}
 		});
 }
-
 /* jQuery extend now ignores nulls! */
 function extendRemove(target, props) {
 	$.extend(target, props);
@@ -1815,7 +1728,6 @@ function extendRemove(target, props) {
 			target[name] = props[name];
 	return target;
 };
-
 /* Invoke the datepicker functionality.
    @param  options  string - a command, optionally followed by additional parameters or
 	                Object - settings for attaching new datepicker functionality
@@ -1833,7 +1745,6 @@ $.fn.datepicker = function(options){
 			find(document.body).append($.datepicker.dpDiv);
 		$.datepicker.initialized = true;
 	}
-
 	var otherArgs = Array.prototype.slice.call(arguments, 1);
 	if (typeof options == 'string' && (options == 'isDisabled' || options == 'getDate' || options == 'widget'))
 		return $.datepicker['_' + options + 'Datepicker'].
@@ -1848,22 +1759,18 @@ $.fn.datepicker = function(options){
 			$.datepicker._attachDatepicker(this, options);
 	});
 };
-
 $.datepicker = new Datepicker(); // singleton instance
 $.datepicker.initialized = false;
 $.datepicker.uuid = new Date().getTime();
 $.datepicker.version = "1.9.0pre";
-
 // Workaround for #4055
 // Add another global to avoid noConflict issues with inline event handlers
 window['DP_jQuery_' + dpuuid] = $;
-
 })(jQuery);
 /*! jQuery UI - v1.9.0pre - 2013-02-07
 * http://jqueryui.com
 * Includes: jquery.ui.datepicker-af.js, jquery.ui.datepicker-ar-DZ.js, jquery.ui.datepicker-ar.js, jquery.ui.datepicker-az.js, jquery.ui.datepicker-bg.js, jquery.ui.datepicker-bs.js, jquery.ui.datepicker-ca.js, jquery.ui.datepicker-cs.js, jquery.ui.datepicker-cy-GB.js, jquery.ui.datepicker-da.js, jquery.ui.datepicker-de.js, jquery.ui.datepicker-el.js, jquery.ui.datepicker-en-AU.js, jquery.ui.datepicker-en-GB.js, jquery.ui.datepicker-en-NZ.js, jquery.ui.datepicker-eo.js, jquery.ui.datepicker-es.js, jquery.ui.datepicker-et.js, jquery.ui.datepicker-eu.js, jquery.ui.datepicker-fa.js, jquery.ui.datepicker-fi.js, jquery.ui.datepicker-fo.js, jquery.ui.datepicker-fr-CH.js, jquery.ui.datepicker-fr.js, jquery.ui.datepicker-gl.js, jquery.ui.datepicker-he.js, jquery.ui.datepicker-hi.js, jquery.ui.datepicker-hr.js, jquery.ui.datepicker-hu.js, jquery.ui.datepicker-hy.js, jquery.ui.datepicker-id.js, jquery.ui.datepicker-is.js, jquery.ui.datepicker-it.js, jquery.ui.datepicker-ja.js, jquery.ui.datepicker-ka.js, jquery.ui.datepicker-kk.js, jquery.ui.datepicker-km.js, jquery.ui.datepicker-ko.js, jquery.ui.datepicker-lb.js, jquery.ui.datepicker-lt.js, jquery.ui.datepicker-lv.js, jquery.ui.datepicker-mk.js, jquery.ui.datepicker-ml.js, jquery.ui.datepicker-ms.js, jquery.ui.datepicker-nl-BE.js, jquery.ui.datepicker-nl.js, jquery.ui.datepicker-no.js, jquery.ui.datepicker-pl.js, jquery.ui.datepicker-pt-BR.js, jquery.ui.datepicker-pt.js, jquery.ui.datepicker-rm.js, jquery.ui.datepicker-ro.js, jquery.ui.datepicker-ru.js, jquery.ui.datepicker-sk.js, jquery.ui.datepicker-sl.js, jquery.ui.datepicker-sq.js, jquery.ui.datepicker-sr-SR.js, jquery.ui.datepicker-sr.js, jquery.ui.datepicker-sv.js, jquery.ui.datepicker-ta.js, jquery.ui.datepicker-th.js, jquery.ui.datepicker-tj.js, jquery.ui.datepicker-tr.js, jquery.ui.datepicker-uk.js, jquery.ui.datepicker-vi.js, jquery.ui.datepicker-zh-CN.js, jquery.ui.datepicker-zh-HK.js, jquery.ui.datepicker-zh-TW.js
 * Copyright 2013 jQuery Foundation and other contributors; Licensed MIT */
-
 /* Afrikaans initialisation for the jQuery UI date picker plugin. */
 /* Written by Renier Pretorius. */
 jQuery(function($){
@@ -1887,10 +1794,8 @@ jQuery(function($){
 		yearSuffix: ''};
 	$.datepicker.setDefaults($.datepicker.regional['af']);
 });
-
 /* Algerian Arabic Translation for jQuery UI date picker plugin. (can be used for Tunisia)*/
 /* Mohamed Cherif BOUCHELAGHEM -- cherifbouchelaghem@yahoo.fr */
-
 jQuery(function($){
 	$.datepicker.regional['ar-DZ'] = {
 		closeText: 'إغلاق',
@@ -1911,7 +1816,6 @@ jQuery(function($){
 		yearSuffix: ''};
 	$.datepicker.setDefaults($.datepicker.regional['ar-DZ']);
 });
-
 /* Arabic Translation for jQuery UI date picker plugin. */
 /* Khaled Alhourani -- me@khaledalhourani.com */
 /* NOTE: monthNames are the original months names and they are the Arabic names, not the new months name فبراير - يناير and there isn't any Arabic roots for these months */
@@ -1982,7 +1886,6 @@ jQuery(function($){
 		yearSuffix: ''};
 	$.datepicker.setDefaults($.datepicker.regional['bg']);
 });
-
 /* Bosnian i18n for the jQuery UI date picker plugin. */
 /* Written by Kenan Konjo. */
 jQuery(function($){
@@ -2029,7 +1932,6 @@ jQuery(function($){
 		yearSuffix: ''};
 	$.datepicker.setDefaults($.datepicker.regional['ca']);
 });
-
 /* Czech initialisation for the jQuery UI date picker plugin. */
 /* Written by Tomas Muller (tomas@tomas-muller.net). */
 jQuery(function($){
@@ -2053,7 +1955,6 @@ jQuery(function($){
 		yearSuffix: ''};
 	$.datepicker.setDefaults($.datepicker.regional['cs']);
 });
-
 /* Welsh/UK initialisation for the jQuery UI date picker plugin. */
 /* Written by William Griffiths. */
 jQuery(function($){
@@ -2100,7 +2001,6 @@ jQuery(function($){
 		yearSuffix: ''};
 	$.datepicker.setDefaults($.datepicker.regional['da']);
 });
-
 /* German initialisation for the jQuery UI date picker plugin. */
 /* Written by Milian Wolff (mail@milianw.de). */
 jQuery(function($){
@@ -2124,7 +2024,6 @@ jQuery(function($){
 		yearSuffix: ''};
 	$.datepicker.setDefaults($.datepicker.regional['de']);
 });
-
 /* Greek (el) initialisation for the jQuery UI date picker plugin. */
 /* Written by Alex Cicovic (http://www.alexcicovic.com) */
 jQuery(function($){
@@ -2171,7 +2070,6 @@ jQuery(function($){
 		yearSuffix: ''};
 	$.datepicker.setDefaults($.datepicker.regional['en-AU']);
 });
-
 /* English/UK initialisation for the jQuery UI date picker plugin. */
 /* Written by Stuart. */
 jQuery(function($){
@@ -2195,7 +2093,6 @@ jQuery(function($){
 		yearSuffix: ''};
 	$.datepicker.setDefaults($.datepicker.regional['en-GB']);
 });
-
 /* English/New Zealand initialisation for the jQuery UI date picker plugin. */
 /* Based on the en-GB initialisation. */
 jQuery(function($){
@@ -2219,7 +2116,6 @@ jQuery(function($){
 		yearSuffix: ''};
 	$.datepicker.setDefaults($.datepicker.regional['en-NZ']);
 });
-
 /* Esperanto initialisation for the jQuery UI date picker plugin. */
 /* Written by Olivier M. (olivierweb@ifrance.com). */
 jQuery(function($){
@@ -2243,7 +2139,6 @@ jQuery(function($){
 		yearSuffix: ''};
 	$.datepicker.setDefaults($.datepicker.regional['eo']);
 });
-
 /* Inicialización en español para la extensión 'UI date picker' para jQuery. */
 /* Traducido por Vester (xvester@gmail.com). */
 jQuery(function($){
@@ -2395,7 +2290,6 @@ jQuery(function($){
 		yearSuffix: ''};
 	$.datepicker.setDefaults($.datepicker.regional['fi']);
 });
-
 /* Faroese initialisation for the jQuery UI date picker plugin */
 /* Written by Sverri Mohr Olsen, sverrimo@gmail.com */
 jQuery(function($){
@@ -2419,7 +2313,6 @@ jQuery(function($){
 		yearSuffix: ''};
 	$.datepicker.setDefaults($.datepicker.regional['fo']);
 });
-
 /* Swiss-French initialisation for the jQuery UI date picker plugin. */
 /* Written Martin Voelkle (martin.voelkle@e-tc.ch). */
 jQuery(function($){
@@ -2468,7 +2361,6 @@ jQuery(function($){
 		yearSuffix: ''};
 	$.datepicker.setDefaults($.datepicker.regional['fr']);
 });
-
 /* Galician localization for 'UI date picker' jQuery extension. */
 /* Translated by Jorge Barreiro <yortx.barry@gmail.com>. */
 jQuery(function($){
@@ -2515,7 +2407,6 @@ jQuery(function($){
 		yearSuffix: ''};
 	$.datepicker.setDefaults($.datepicker.regional['he']);
 });
-
 /* Hindi initialisation for the jQuery UI date picker plugin. */
 /* Written by Michael Dawart. */
 jQuery(function($){
@@ -2539,7 +2430,6 @@ jQuery(function($){
 		yearSuffix: ''};
 	$.datepicker.setDefaults($.datepicker.regional['hi']);
 });
-
 /* Croatian i18n for the jQuery UI date picker plugin. */
 /* Written by Vjekoslav Nesek. */
 jQuery(function($){
@@ -2586,7 +2476,6 @@ jQuery(function($){
 		yearSuffix: ''};
 	$.datepicker.setDefaults($.datepicker.regional['hu']);
 });
-
 /* Armenian(UTF-8) initialisation for the jQuery UI date picker plugin. */
 /* Written by Levon Zakaryan (levon.zakaryan@gmail.com)*/
 jQuery(function($){
@@ -2679,7 +2568,6 @@ jQuery(function($){
 		yearSuffix: ''};
 	$.datepicker.setDefaults($.datepicker.regional['it']);
 });
-
 /* Japanese initialisation for the jQuery UI date picker plugin. */
 /* Written by Kentaro SATO (kentaro@ranvis.com). */
 jQuery(function($){
@@ -2724,7 +2612,6 @@ jQuery(function($){
 		yearSuffix: ''};
 	$.datepicker.setDefaults($.datepicker.regional['ka']);
 });
-
 /* Kazakh (UTF-8) initialisation for the jQuery UI date picker plugin. */
 /* Written by Dmitriy Karasyov (dmitriy.karasyov@gmail.com). */
 jQuery(function($){
@@ -2748,7 +2635,6 @@ jQuery(function($){
 		yearSuffix: ''};
 	$.datepicker.setDefaults($.datepicker.regional['kk']);
 });
-
 /* Khmer initialisation for the jQuery calendar extension. */
 /* Written by Chandara Om (chandara.teacher@gmail.com). */
 jQuery(function($){
@@ -2772,7 +2658,6 @@ jQuery(function($){
 		yearSuffix: ''};
 	$.datepicker.setDefaults($.datepicker.regional['km']);
 });
-
 /* Korean initialisation for the jQuery calendar extension. */
 /* Written by DaeKwon Kang (ncrash.dk@gmail.com), Edited by Genie. */
 jQuery(function($){
@@ -2819,7 +2704,6 @@ jQuery(function($){
 		yearSuffix: ''};
 	$.datepicker.setDefaults($.datepicker.regional['lb']);
 });
-
 /* Lithuanian (UTF-8) initialisation for the jQuery UI date picker plugin. */
 /* @author Arturas Paleicikas <arturas@avalon.lt> */
 jQuery(function($){
@@ -2889,7 +2773,6 @@ jQuery(function($){
 		yearSuffix: ''};
 	$.datepicker.setDefaults($.datepicker.regional['mk']);
 });
-
 /* Malayalam (UTF-8) initialisation for the jQuery UI date picker plugin. */
 /* Written by Saji Nediyanchath (saji89@gmail.com). */
 jQuery(function($){
@@ -2913,7 +2796,6 @@ jQuery(function($){
 		yearSuffix: ''};
 	$.datepicker.setDefaults($.datepicker.regional['ml']);
 });
-
 /* Malaysian initialisation for the jQuery UI date picker plugin. */
 /* Written by Mohd Nawawi Mohamad Jamili (nawawi@ronggeng.net). */
 jQuery(function($){
@@ -2960,7 +2842,6 @@ jQuery(function($){
 		yearSuffix: ''};
 	$.datepicker.setDefaults($.datepicker.regional['nl-BE']);
 });
-
 /* Dutch (UTF-8) initialisation for the jQuery UI date picker plugin. */
 /* Written by Mathias Bynens <http://mathiasbynens.be/> */
 jQuery(function($){
@@ -2986,7 +2867,6 @@ jQuery(function($){
 });
 /* Norwegian initialisation for the jQuery UI date picker plugin. */
 /* Written by Naimdjon Takhirov (naimdjon@gmail.com). */
-
 jQuery(function($){
 	$.datepicker.regional['no'] = {
 		closeText: 'Lukk',
@@ -3007,7 +2887,6 @@ jQuery(function($){
 	};
 	$.datepicker.setDefaults($.datepicker.regional['no']);
 });
-
 /* Polish initialisation for the jQuery UI date picker plugin. */
 /* Written by Jacek Wysocki (jacek.wysocki@gmail.com). */
 jQuery(function($){
@@ -3031,7 +2910,6 @@ jQuery(function($){
 		yearSuffix: ''};
 	$.datepicker.setDefaults($.datepicker.regional['pl']);
 });
-
 /* Brazilian initialisation for the jQuery UI date picker plugin. */
 /* Written by Leonildo Costa Silva (leocsilva@gmail.com). */
 jQuery(function($){
@@ -3098,7 +2976,6 @@ jQuery(function($){
 		yearSuffix: ''};
 	$.datepicker.setDefaults($.datepicker.regional['rm']);
 });
-
 /* Romanian initialisation for the jQuery UI date picker plugin.
  *
  * Written by Edmond L. (ll_edmond@walla.com)
@@ -3125,7 +3002,6 @@ jQuery(function($){
 		yearSuffix: ''};
 	$.datepicker.setDefaults($.datepicker.regional['ro']);
 });
-
 /* Russian (UTF-8) initialisation for the jQuery UI date picker plugin. */
 /* Written by Andrew Stromnov (stromnov@gmail.com). */
 jQuery(function($){
@@ -3172,7 +3048,6 @@ jQuery(function($){
 		yearSuffix: ''};
 	$.datepicker.setDefaults($.datepicker.regional['sk']);
 });
-
 /* Slovenian initialisation for the jQuery UI date picker plugin. */
 /* Written by Jaka Jancar (jaka@kubje.org). */
 /* c = č, s = š z = ž C = Č S = Š Z = Ž */
@@ -3197,7 +3072,6 @@ jQuery(function($){
 		yearSuffix: ''};
 	$.datepicker.setDefaults($.datepicker.regional['sl']);
 });
-
 /* Albanian initialisation for the jQuery UI date picker plugin. */
 /* Written by Flakron Bytyqi (flakron@gmail.com). */
 jQuery(function($){
@@ -3221,7 +3095,6 @@ jQuery(function($){
 		yearSuffix: ''};
 	$.datepicker.setDefaults($.datepicker.regional['sq']);
 });
-
 /* Serbian i18n for the jQuery UI date picker plugin. */
 /* Written by Dejan Dimić. */
 jQuery(function($){
@@ -3245,7 +3118,6 @@ jQuery(function($){
 		yearSuffix: ''};
 	$.datepicker.setDefaults($.datepicker.regional['sr-SR']);
 });
-
 /* Serbian i18n for the jQuery UI date picker plugin. */
 /* Written by Dejan Dimić. */
 jQuery(function($){
@@ -3269,7 +3141,6 @@ jQuery(function($){
 		yearSuffix: ''};
 	$.datepicker.setDefaults($.datepicker.regional['sr']);
 });
-
 /* Swedish initialisation for the jQuery UI date picker plugin. */
 /* Written by Anders Ekdahl ( anders@nomadiz.se). */
 jQuery(function($){
@@ -3293,7 +3164,6 @@ jQuery(function($){
 		yearSuffix: ''};
 	$.datepicker.setDefaults($.datepicker.regional['sv']);
 });
-
 /* Tamil (UTF-8) initialisation for the jQuery UI date picker plugin. */
 /* Written by S A Sureshkumar (saskumar@live.com). */
 jQuery(function($){
@@ -3317,7 +3187,6 @@ jQuery(function($){
 		yearSuffix: ''};
 	$.datepicker.setDefaults($.datepicker.regional['ta']);
 });
-
 /* Thai initialisation for the jQuery UI date picker plugin. */
 /* Written by pipo (pipo@sixhead.com). */
 jQuery(function($){
@@ -3434,7 +3303,6 @@ jQuery(function($){
 		yearSuffix: ''};
 	$.datepicker.setDefaults($.datepicker.regional['vi']);
 });
-
 /* Chinese initialisation for the jQuery UI date picker plugin. */
 /* Written by Cloudream (cloudream@gmail.com). */
 jQuery(function($){
@@ -3458,7 +3326,6 @@ jQuery(function($){
 		yearSuffix: '年'};
 	$.datepicker.setDefaults($.datepicker.regional['zh-CN']);
 });
-
 /* Chinese initialisation for the jQuery UI date picker plugin. */
 /* Written by SCCY (samuelcychan@gmail.com). */
 jQuery(function($){
@@ -3482,7 +3349,6 @@ jQuery(function($){
 		yearSuffix: '年'};
 	$.datepicker.setDefaults($.datepicker.regional['zh-HK']);
 });
-
 /* Chinese initialisation for the jQuery UI date picker plugin. */
 /* Written by Ressol (ressol@gmail.com). */
 jQuery(function($){
@@ -3506,20 +3372,14 @@ jQuery(function($){
 		yearSuffix: '年'};
 	$.datepicker.setDefaults($.datepicker.regional['zh-TW']);
 });
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
-}); 
+});
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("ui/datepicker")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

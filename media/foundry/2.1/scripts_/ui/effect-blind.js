@@ -1,17 +1,13 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 var jQuery = $; 
 $.require() 
  .script("ui/effect") 
  .done(function() { 
 var exports = function() { 
-
 /*!
  * jQuery UI Effects Blind 1.9.0pre
  * http://jqueryui.com
@@ -26,10 +22,8 @@ var exports = function() {
  *	jquery.ui.effect.js
  */
 (function( $, undefined ) {
-
 var rvertical = /up|down|vertical/,
 	rpositivemotion = /up|left|vertical|horizontal/;
-
 $.effects.effect.blind = function( o, done ) {
 	// Create element
 	var el = $( this ),
@@ -43,7 +37,6 @@ $.effects.effect.blind = function( o, done ) {
 		animation = {},
 		show = mode === "show",
 		wrapper, distance, margin;
-
 	// if already wrapped, the wrapper's properties are my property. #6245
 	if ( el.parent().is( ".ui-effects-wrapper" ) ) {
 		$.effects.save( el.parent(), props );
@@ -54,20 +47,16 @@ $.effects.effect.blind = function( o, done ) {
 	wrapper = $.effects.createWrapper( el ).css({
 		overflow: "hidden"
 	});
-
 	distance = wrapper[ ref ]();
 	margin = parseFloat( wrapper.css( ref2 ) ) || 0;
-
 	animation[ ref ] = show ? distance : 0;
 	if ( !motion ) {
 		el
 			.css( vertical ? "bottom" : "right", 0 )
 			.css( vertical ? "top" : "left", "auto" )
 			.css({ position: "absolute" });
-
 		animation[ ref2 ] = show ? margin : distance + margin;
 	}
-
 	// start at 0 if we are showing
 	if ( show ) {
 		wrapper.css( ref, 0 );
@@ -75,7 +64,6 @@ $.effects.effect.blind = function( o, done ) {
 			wrapper.css( ref2, margin + distance );
 		}
 	}
-
 	// Animate
 	wrapper.animate( animation, {
 		duration: o.duration,
@@ -90,24 +78,16 @@ $.effects.effect.blind = function( o, done ) {
 			done();
 		}
 	});
-
 };
-
 })(jQuery);
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
-}); 
+});
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("ui/effect-blind")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

@@ -1,14 +1,9 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 var exports = function() { 
-
-
 
 /**
  * @function jQuery.fn.triggerAsync
@@ -42,11 +37,9 @@ $.fn.triggerAsync = function(type, data, success, prevented){
 		success = data;
 		data = undefined;
 	}
-
 	if ( this[0] ) {
 		var event = $.Event( type ),
 			old = event.preventDefault;
-
 		event.preventDefault = function(){
 			old.apply(this, arguments);
 			prevented && prevented(this)
@@ -58,8 +51,6 @@ $.fn.triggerAsync = function(type, data, success, prevented){
 	}
 	return this;
 }
-
-
 
 /**
  * @add jQuery.event.special
@@ -115,19 +106,15 @@ $event.special["default"] = {
 		//save the type
 		types[handleObj.namespace.replace(rnamespaces,"")] = true;
 
-
 	},
 	setup: function() {return true}
 }
-
 // overwrite trigger to allow default types
 var oldTrigger = $event.trigger;
-
 $event.trigger =  function defaultTriggerer( event, data, elem, onlyHandlers){
 	// Event object or event type
 	var type = event.type || event,
 		namespaces = [],
-
 	// Caller can pass in an Event, Object, or just an event type string
 	event = typeof event === "object" ?
 		// jQuery.Event object
@@ -136,11 +123,8 @@ $event.trigger =  function defaultTriggerer( event, data, elem, onlyHandlers){
 		new $.Event( type, event ) :
 		// Just the event type (string)
 		new $.Event( type );
-
     //event._defaultActions = []; //set depth for possibly reused events
-
 	var res = oldTrigger.call($.event, event, data, elem, onlyHandlers);
-
 
 	if(!onlyHandlers && !event.isDefaultPrevented() && event.type.indexOf("default") !== 0){
 		oldTrigger("default."+event.type, data, elem)
@@ -160,21 +144,13 @@ $event.trigger =  function defaultTriggerer( event, data, elem, onlyHandlers){
 };
 
 
-
-
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("mvc/event.default")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

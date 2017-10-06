@@ -1,13 +1,9 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 var exports = function() { 
-
 
    var withinBox = function(x, y, left, top, width, height ){
         return (y >= top &&
@@ -35,25 +31,20 @@ $.fn.within= function(left, top, useOffsetCache) {
     var ret = []
     this.each(function(){
         var q = $(this);
-
         if (this == document.documentElement) {
 			return ret.push(this);
 		}
         var offset = useOffsetCache ?
 						$.data(this,"offsetCache") || $.data(this,"offsetCache", q.offset()) :
 						q.offset();
-
         var res =  withinBox(left, top,  offset.left, offset.top,
                                     this.offsetWidth, this.offsetHeight );
-
         if (res) {
 			ret.push(this);
 		}
     });
-
     return this.pushStack( $.unique( ret ), "within", left+","+top );
 }
-
 
 /**
  * @function withinBox
@@ -69,38 +60,27 @@ $.fn.withinBox = function(left, top, width, height, cache){
   	var ret = []
     this.each(function(){
         var q = $(this);
-
         if(this == document.documentElement) return  this.ret.push(this);
-
         var offset = cache ?
 			$.data(this,"offset") ||
 			$.data(this,"offset", q.offset()) :
 			q.offset();
 
-
         var ew = q.width(), eh = q.height();
-
 		res =  !( (offset.top > top+height) || (offset.top +eh < top) || (offset.left > left+width ) || (offset.left+ew < left));
-
         if(res)
             ret.push(this);
     });
     return this.pushStack( $.unique( ret ), "withinBox", $.makeArray(arguments).join(",") );
 }
 
-
 }; 
-
-exports(); 
+exports();
 module.resolveWith(exports); 
-
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("mvc/dom.within")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

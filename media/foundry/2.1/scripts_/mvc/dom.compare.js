@@ -1,13 +1,9 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 var exports = function() { 
-
 
 /**
  * @function compare
@@ -50,19 +46,16 @@ var exports = function() {
  */
 $.fn.compare = function(element){ //usually
 	//element is usually a relatedTarget, but element/c it is we have to avoid a few FF errors
-
 	try{ //FF3 freaks out with XUL
 		element = element.jquery ? element[0] : element;
 	}catch(e){
 		return null;
 	}
 	if (window.HTMLElement) { //make sure we aren't coming from XUL element
-
 		var s = HTMLElement.prototype.toString.call(element)
 		if (s == '[xpconnect wrapped native prototype]' || s == '[object XULElement]' || s === '[object Window]') {
 			return null;
 		}
-
 	}
 	if(this[0].compareDocumentPosition){
 		return this[0].compareDocumentPosition(element);
@@ -83,25 +76,17 @@ $.fn.compare = function(element){ //usually
 		range.selectNode(this[0]);
 		sourceRange.selectNode(element);
 		compare = range.compareBoundaryPoints(Range.START_TO_START, sourceRange);
-
 	}
-
 	return number;
 }
 
-
 }; 
-
-exports(); 
+exports();
 module.resolveWith(exports); 
-
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("mvc/dom.compare")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

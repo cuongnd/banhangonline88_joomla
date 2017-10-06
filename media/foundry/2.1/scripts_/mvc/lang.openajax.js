@@ -1,13 +1,9 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 var exports = function() { 
-
 
 // prevent re-definition of the OpenAjax object
 if(!window["OpenAjax"]){
@@ -20,7 +16,6 @@ if(!window["OpenAjax"]){
 		var f = false;
 		var g = window;
 		var ooh = "org.openajax.hub.";
-
 		var h = {};
 		this.hub = h;
 		h.implementer = "http://openajax.org";
@@ -29,7 +24,6 @@ if(!window["OpenAjax"]){
 		h.implExtraData = {};
 		var libs = {};
 		h.libraries = libs;
-
 		h.registerLibrary = function(prefix, nsURL, version, extra){
 			libs[prefix] = {
 				prefix: prefix,
@@ -43,12 +37,10 @@ if(!window["OpenAjax"]){
 			this.publish(ooh+"unregisterLibrary", libs[prefix]);
 			delete libs[prefix];
 		}
-
 		h._subscriptions = { c:{}, s:[] };
 		h._cleanup = [];
 		h._subIndex = 0;
 		h._pubDepth = 0;
-
 		h.subscribe = function(name, callback, scope, subscriberData, filter)
 		{
 			if(!scope){
@@ -60,7 +52,6 @@ if(!window["OpenAjax"]){
 	 		this._subscribe(this._subscriptions, path, 0, sub);
 			return handle;
 		}
-
 		h.publish = function(name, message)
 		{
 			var path = name.split(".");
@@ -74,14 +65,12 @@ if(!window["OpenAjax"]){
 				this._cleanup = [];
 			}
 		}
-
 		h.unsubscribe = function(sub)
 		{
 			var path = sub.split(".");
 			var sid = path.pop();
 			this._unsubscribe(this._subscriptions, path, 0, sid);
 		}
-
 		h._subscribe = function(tree, path, index, sub)
 		{
 			var token = path[index];
@@ -98,7 +87,6 @@ if(!window["OpenAjax"]){
 					this._subscribe( tree.c[token], path, index + 1, sub);
 			}
 		}
-
 		h._publish = function(tree, path, index, name, msg, pid) {
 			if(typeof tree != "undefined") {
 				var node;
@@ -134,7 +122,6 @@ if(!window["OpenAjax"]){
 				}
 			}
 		}
-
 		h._unsubscribe = function(tree, path, index, sid) {
 			if(typeof tree != "undefined") {
 				if(index < path.length) {
@@ -171,7 +158,6 @@ if(!window["OpenAjax"]){
 				delete OpenAjax.hub.libraries[lib];
 			}
 			OpenAjax.hub.registerLibrary("OpenAjax", "http://openajax.org/hub", "1.0", {});
-
 			delete OpenAjax._subscriptions;
 			OpenAjax._subscriptions = {c:{},s:[]};
 			delete OpenAjax._cleanup;
@@ -182,22 +168,15 @@ if(!window["OpenAjax"]){
 	};
 	// Register the OpenAjax Hub itself as a library.
 	OpenAjax.hub.registerLibrary("OpenAjax", "http://openajax.org/hub", "1.0", {});
-
 }
 OpenAjax.hub.registerLibrary("JavaScriptMVC", "http://JavaScriptMVC.com", "3.1", {});
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("mvc/lang.openajax")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

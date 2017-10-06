@@ -1,17 +1,12 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 $.require() 
  .script("mvc/model") 
  .done(function() { 
 var exports = function() { 
-
-
 
 	var getArgs = function( args ) {
 		if ( args[0] && ($.isArray(args[0])) ) {
@@ -30,7 +25,6 @@ var exports = function() {
 		expando = $.expando,
 		each = $.each,
 		ajax = $.Model._ajax,
-
 		/**
 		 * @class jQuery.Model.List
 		 * @parent jQuery.Model
@@ -384,7 +378,6 @@ var exports = function() {
 				}
 			}
 		};
-
 	$.Class($.globalNamespace + ".Model.List", {
 		setup: function() {
 			for ( var name in ajaxMethods ) {
@@ -475,7 +468,6 @@ var exports = function() {
 				idName = constructor.id,
 				test = new RegExp(underscored + "_([^ ]+)"),
 				matches, val, args = getArgs(arguments);
-
 			for ( var i = 0; i < args.length; i++ ) {
 				if ( args[i].nodeName && (matches = args[i].className.match(test)) ) {
                 // If this is a dom element
@@ -513,7 +505,6 @@ var exports = function() {
 				test = new RegExp(underscored + "_([^ ]+)"),
 				matches, val;
 			args = getArgs(arguments)
-
 			//for performance, we will go through each and splice it
 			var i = 0;
 			while ( i < this.length ) {
@@ -537,7 +528,6 @@ var exports = function() {
 			if ( ret.length ) {
 				$([this]).trigger("remove", [ret])
 			}
-
 			return ret;
 		},
 		/**
@@ -600,7 +590,6 @@ var exports = function() {
 		destroy: function( success, error ) {
 			var ids = this.map(getIds),
 				items = this.slice(0, this.length);
-
 			if ( ids.length ) {
 				this.constructor.destroy(ids, function() {
 					each(items, function() {
@@ -611,7 +600,6 @@ var exports = function() {
 			} else {
 				success && success(this);
 			}
-
 			return this;
 		},
 		/**
@@ -631,7 +619,6 @@ var exports = function() {
 		update: function( attrs, success, error ) {
 			var ids = this.map(getIds),
 				items = this.slice(0, this.length);
-
 			if ( ids.length ) {
 				this.constructor.update(ids, attrs, function( newAttrs ) {
 					// final attributes to update with
@@ -644,7 +631,6 @@ var exports = function() {
 			} else {
 				success && success(this);
 			}
-
 			return this;
 		},
 		/**
@@ -721,14 +707,12 @@ var exports = function() {
 			if ( this[expando] !== undefined ) {
 				this.bindings(args);
 			}
-
 			this._changed = true;
 			var res = push.apply(this, args)
 			//do this first so we could prevent?
 			if ( this[expando] && args.length ) {
 				$([this]).trigger("add", [args]);
 			}
-
 			return res;
 		},
 		serialize: function() {
@@ -737,10 +721,8 @@ var exports = function() {
 			});
 		}
 	});
-
 	var push = [].push,
 		modifiers = {
-
 			/**
 			 * @function pop
 			 * Removes the last instance of the list, and returns that instance.
@@ -790,14 +772,12 @@ var exports = function() {
 			 */
 			reverse: [].reverse
 		}
-
 		each(modifiers, function( name, func ) {
 			$.Model.List.prototype[name] = function() {
 				this._changed = true;
 				return func.apply(this, arguments);
 			}
 		})
-
 		each([
 		/**
 		 * @function each
@@ -826,21 +806,14 @@ var exports = function() {
 			}
 		})
 
-
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
-}); 
+});
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("mvc/model.list")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

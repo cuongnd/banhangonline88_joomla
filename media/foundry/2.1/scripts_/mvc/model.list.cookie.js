@@ -1,17 +1,12 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 $.require() 
  .script("mvc/dom.cookie","mvc/model.list") 
  .done(function() { 
 var exports = function() { 
-
-
 
 /**
  * @class jQuery.Model.List.Cookie
@@ -92,7 +87,6 @@ $.Model.List("Foundry/2.1.Model.List.Cookie",
 			$.cookie(inst.identity(), $.toJSON(inst.attrs()), { expires: days });
 			ids.push(inst.identity());
 		});
-
 		$.cookie(name, $.toJSON({
 			type: this[0] && this[0].constructor.fullName,
 			ids: ids
@@ -101,20 +95,14 @@ $.Model.List("Foundry/2.1.Model.List.Cookie",
 	}
 })
 
-
 }; 
-
-exports(); 
+exports();
 module.resolveWith(exports); 
-
-}); 
+});
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("mvc/model.list.cookie")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

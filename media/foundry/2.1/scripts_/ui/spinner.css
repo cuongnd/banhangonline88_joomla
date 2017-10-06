@@ -15,7 +15,6 @@
 .ui-spinner .ui-icon { position: absolute; margin-top: -8px; top: 50%; left: 0; } /* vertical centre icon */
 .ui-spinner-up { top: 0; }
 .ui-spinner-down { bottom: 0; }
-
 /* TR overrides */
 span.ui-spinner { background: none; }
 .ui-spinner .ui-icon-triangle-1-s {

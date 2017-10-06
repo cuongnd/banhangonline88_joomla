@@ -1,13 +1,9 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 var exports = function() { 
-
 
 	/**
 	 * @add jQuery.event.special
@@ -19,12 +15,10 @@ var exports = function() {
 		windowWidth = 0,
 		windowHeight = 0,
 		timer;
-
 	$(function() {
 		windowWidth = win.width();
 		windowHeight = win.height();
 	})
-
 	/**
 	 * @attribute resize
 	 * @parent specialevents
@@ -81,7 +75,6 @@ var exports = function() {
 		teardown: function() {
 			// we shouldn't have to sort
 			resizers = resizers.not(this);
-
 			// returns false if the window
 			return this !== window;
 		},
@@ -90,10 +83,8 @@ var exports = function() {
 			//$.data(this, "jquery.dom.resizers", ++$.data(this, "jquery.dom.resizers") );
 			var origHandler = handleObj.handler;
 			handleObj.origHandler = origHandler;
-
 			handleObj.handler = function( ev, data ) {
 				var isWindow = this === window;
-
 				// if we are the window and a real resize has happened
 				// then we check if the dimensions actually changed
 				// if they did, we will wait a brief timeout and
@@ -103,7 +94,6 @@ var exports = function() {
 					var width = win.width(),
 						height = win.height();
 
-
 					if ((width != windowWidth || height != windowHeight)) {
 						//update the new dimensions
 						windowWidth = width;
@@ -112,36 +102,29 @@ var exports = function() {
 						timer = setTimeout(function() {
 							win.trigger("resize");
 						}, 1);
-
 					}
 					return;
 				}
-
 				// if this is the first handler for this event ...
 				if ( resizeCount === 0 ) {
 					// prevent others from doing what we are about to do
 					resizeCount++;
 					var where = data === false ? ev.target : this
-
 					//trigger all this element's handlers
 					$.event.handle.call(where, ev);
 					if ( ev.isPropagationStopped() ) {
 						resizeCount--;
 						return;
 					}
-
 					// get all other elements within this element that listen to resize
 					// and trigger their resize events
 					var index = resizers.index(this),
 						length = resizers.length,
 						child, sub;
-
 					// if index == -1 it's the window
 					while (++index < length && (child = resizers[index]) && (isWindow || $.contains(where, child)) ) {
-
 						// call the event
 						$.event.handle.call(child, ev);
-
 						if ( ev.isPropagationStopped() ) {
 							// move index until the item is not in the current child
 							while (++index < length && (sub = resizers[index]) ) {
@@ -153,7 +136,6 @@ var exports = function() {
 							}
 						}
 					}
-
 					// prevent others from responding
 					ev.stopImmediatePropagation();
 					resizeCount--;
@@ -163,22 +145,15 @@ var exports = function() {
 			}
 		}
 	};
-
 	// automatically bind on these
 	$([document, window]).bind('resize', function() {})
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("mvc/event.resize")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

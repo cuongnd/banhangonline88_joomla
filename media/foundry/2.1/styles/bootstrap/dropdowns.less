@@ -2,7 +2,6 @@
 // Dropdown menus
 // --------------------------------------------------
 
-
 // Use the .menu class on any <li> element within the topbar or ul.tabs and you'll get some superfancy dropdowns
 .dropup,
 .dropdown_ {
@@ -16,7 +15,6 @@
 .open .dropdown-toggle_ {
   outline: 0;
 }
-
 // Dropdown arrow/caret
 // --------------------
 .caret {
@@ -29,13 +27,11 @@
   border-left:  4px solid transparent;
   content: "";
 }
-
 // Place the caret
 .dropdown .caret {
   margin-top: 8px;
   margin-left: 2px;
 }
-
 // The dropdown menu (ul)
 // ----------------------
 .dropdown-menu {
@@ -59,18 +55,15 @@
   -webkit-background-clip: padding-box;
      -moz-background-clip: padding;
           background-clip: padding-box;
-
   // Aligns the dropdown menu to right
   &.pull-right {
     right: 0;
     left: auto;
   }
-
   // Dividers (basically an hr) within the dropdown
   .divider {
     .nav-divider(@dropdownDividerTop, @dropdownDividerBottom);
   }
-
   // Links within the dropdown menu
   li > a {
     display: block;
@@ -82,7 +75,6 @@
     white-space: nowrap;
   }
 }
-
 // Hover state
 // -----------
 .dropdown-menu li > a:hover,
@@ -92,7 +84,6 @@
   color: @dropdownLinkColorHover;
   #gradient > .vertical(@dropdownLinkBackgroundHover, darken(@dropdownLinkBackgroundHover, 5%));
 }
-
 // Active state
 // ------------
 .dropdown-menu .active > a,
@@ -102,7 +93,6 @@
   outline: 0;
   #gradient > .vertical(@dropdownLinkBackgroundActive, darken(@dropdownLinkBackgroundActive, 5%));
 }
-
 // Disabled state
 // --------------
 // Gray out text and ensure the hover state remains gray
@@ -117,26 +107,22 @@
   background-image: none; // Remove CSS gradient
   cursor: default;
 }
-
 // Open state for the dropdown
 // ---------------------------
 .open {
   // IE7's z-index only goes to the nearest positioned ancestor, which would
   // make the menu appear below buttons that appeared later on the page
   *z-index: @zindexDropdown;
-
   & > .dropdown-menu {
     display: block;
   }
 }
-
 // Right aligned dropdowns
 // ---------------------------
 .pull-right > .dropdown-menu {
   right: 0;
   left: auto;
 }
-
 // Allow for dropdowns to go bottom up (aka, dropup-menu)
 // ------------------------------------------------------
 // Just add .dropup after the standard .dropdown class and you're set, bro.
@@ -156,7 +142,6 @@
     margin-bottom: 1px;
   }
 }
-
 // Sub menus
 // ---------------------------
 .dropdown-submenu {
@@ -173,7 +158,6 @@
 .dropdown-submenu:hover > .dropdown-menu {
   display: block;
 }
-
 // Dropups
 .dropup .dropdown-submenu > .dropdown-menu {
   top: auto;
@@ -182,7 +166,6 @@
   margin-bottom: -2px;
   .border-radius(5px 5px 5px 0);
 }
-
 // Caret to indicate there is a submenu
 .dropdown-submenu > a:after {
   display: block;
@@ -200,13 +183,11 @@
 .dropdown-submenu:hover > a:after {
   border-left-color: @dropdownLinkColorHover;
 }
-
 // Left aligned submenus
 .dropdown-submenu.pull-left {
   // Undo the float
   // Yes, this is awkward since .pull-left adds a float, but it sticks to our conventions elsewhere.
   float: none;
-
   // Positioning the submenu
   > .dropdown-menu {
     left: -100%;
@@ -214,7 +195,6 @@
     .border-radius(6px 0 6px 6px);
   }
 }
-
 // Tweak nav headers
 // -----------------
 // Increase padding from 15px to 20px on sides
@@ -222,7 +202,6 @@
   padding-left: 20px;
   padding-right: 20px;
 }
-
 // Typeahead
 // ---------
 .typeahead {

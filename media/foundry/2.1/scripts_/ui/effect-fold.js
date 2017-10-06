@@ -1,17 +1,13 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 var jQuery = $; 
 $.require() 
  .script("ui/effect") 
  .done(function() { 
 var exports = function() { 
-
 /*!
  * jQuery UI Effects Fold 1.9.0pre
  * http://jqueryui.com
@@ -26,9 +22,7 @@ var exports = function() {
  *	jquery.ui.effect.js
  */
 (function( $, undefined ) {
-
 $.effects.effect.fold = function( o, done ) {
-
 	// Create element
 	var el = $( this ),
 		props = [ "position", "top", "bottom", "left", "right", "height", "width" ],
@@ -44,10 +38,8 @@ $.effects.effect.fold = function( o, done ) {
 		wrapper, distance,
 		animation1 = {},
 		animation2 = {};
-
 	$.effects.save( el, props );
 	el.show();
-
 	// Create Wrapper
 	wrapper = $.effects.createWrapper( el ).css({
 		overflow: "hidden"
@@ -55,7 +47,6 @@ $.effects.effect.fold = function( o, done ) {
 	distance = widthFirst ?
 		[ wrapper.width(), wrapper.height() ] :
 		[ wrapper.height(), wrapper.width() ];
-
 	if ( percent ) {
 		size = parseInt( percent[ 1 ], 10 ) / 100 * distance[ hide ? 0 : 1 ];
 	}
@@ -68,11 +59,9 @@ $.effects.effect.fold = function( o, done ) {
 			width: 0
 		});
 	}
-
 	// Animation
 	animation1[ ref[ 0 ] ] = show ? distance[ 0 ] : size;
 	animation2[ ref[ 1 ] ] = show ? distance[ 1 ] : 0;
-
 	// Animate
 	wrapper
 		.animate( animation1, duration, o.easing )
@@ -84,24 +73,16 @@ $.effects.effect.fold = function( o, done ) {
 			$.effects.removeWrapper( el );
 			done();
 		});
-
 };
-
 })(jQuery);
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
-}); 
+});
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("ui/effect-fold")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

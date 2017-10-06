@@ -1,35 +1,26 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 $.require() 
  .script("mvc/controller","mvc/view") 
  .done(function() { 
 var exports = function() { 
 
-
 	var URI = steal.URI || steal.File;
-
 	$.Controller.getFolder = function() {
 		return $.String.underscore(this.fullName.replace(/\./g, "/")).replace("/Controllers", "");
 	};
-
 	$.Controller._calculatePosition = function( Class, view, action_name ) {
-
 		var classParts = Class.fullName.split('.'),
 			classPartsWithoutPrefix = classParts.slice(0);
 			classPartsWithoutPrefix.splice(0, 2); // Remove prefix (usually 2 elements)
-
 		var classPartsWithoutPrefixSlashes = classPartsWithoutPrefix.join('/'),
 			hasControllers = (classParts.length > 2) && classParts[1] == 'Controllers',
 			path = hasControllers? $.String.underscore(classParts[0]): $.String.underscore(classParts.join("/")),
 			controller_name = $.String.underscore(classPartsWithoutPrefix.join('/')).toLowerCase(),
 			suffix = (typeof view == "string" && /\.[\w\d]+$/.test(view)) ? "" : $.View.ext;
-
 		//calculate view
 		if ( typeof view == "string" ) {
 			if ( view.substr(0, 2) == "//" ) { //leave where it is
@@ -74,11 +65,9 @@ var exports = function() {
 		}
 		return helpers;
 	};
-
 	/**
 	 * @add jQuery.Controller.prototype
 	 */
-
 	$.Controller.prototype.
 	/**
 	 * @tag view
@@ -119,32 +108,22 @@ var exports = function() {
 		}
 		//guess from controller name
 		view = $.Controller._calculatePosition(this.Class, view, this.called);
-
 		//calculate data
 		data = data || this;
-
 		//calculate helpers
 		var helpers = calculateHelpers.call(this, myhelpers);
-
 
 		return $.View(view, data, helpers); //what about controllers in other folders?
 	};
 
-
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
-}); 
+});
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("mvc/controller.view")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

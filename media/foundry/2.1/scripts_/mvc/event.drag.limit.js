@@ -1,17 +1,12 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 $.require() 
  .script("mvc/event.drag","mvc/dom.cur_styles") 
  .done(function() { 
 var exports = function() { 
-
-
 
 
 	$.Drag.prototype
@@ -30,7 +25,6 @@ var exports = function() {
 		var styles = container.curStyles('borderTopWidth', 'paddingTop', 'borderLeftWidth', 'paddingLeft'),
 			paddingBorder = new $.Vector(
 			parseInt(styles.borderLeftWidth, 10) + parseInt(styles.paddingLeft, 10) || 0, parseInt(styles.borderTopWidth, 10) + parseInt(styles.paddingTop, 10) || 0);
-
 		this._limit = {
 			offset: container.offsetv().plus(paddingBorder),
 			size: container.dimensionsv(),
@@ -38,7 +32,6 @@ var exports = function() {
 		};
 		return this;
 	};
-
 	var oldPosition = $.Drag.prototype.position;
 	$.Drag.prototype.position = function( offsetPositionv ) {
 		//adjust required_css_position accordingly
@@ -52,7 +45,6 @@ var exports = function() {
 				lof = limit.offset.left(),
 				height = limit.size.height(),
 				width = limit.size.width();
-
 			//check if we are out of bounds ...
 			//above
 			if ( offsetPositionv.top()+halfHeight < lot ) {
@@ -71,24 +63,17 @@ var exports = function() {
 				offsetPositionv.left(lof + width - movingSize.left()+halfWidth);
 			}
 		}
-
 		oldPosition.call(this, offsetPositionv);
 	};
 
-
 }; 
-
-exports(); 
+exports();
 module.resolveWith(exports); 
-
-}); 
+});
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("mvc/event.drag.limit")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

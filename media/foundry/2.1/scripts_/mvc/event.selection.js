@@ -1,17 +1,12 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 $.require() 
  .script("mvc/dom.range","mvc/controller","mvc/event.livehack") 
  .done(function() { 
 var exports = function() { 
-
-
 
 
 	var event = $.event;
@@ -104,20 +99,14 @@ var exports = function() {
 				   .bind('mouseup',mouseup)
 	});
 	
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
-}); 
+});
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("mvc/event.selection")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

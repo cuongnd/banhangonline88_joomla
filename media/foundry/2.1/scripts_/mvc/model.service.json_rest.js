@@ -1,17 +1,12 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 $.require() 
  .script("mvc/model.service") 
  .done(function() { 
 var exports = function() { 
-
-
 
 $.Model.service.jsonRest = $.Model.service({
 	url : "",
@@ -54,8 +49,6 @@ $.Model.service.jsonRest = $.Model.service({
 			plural = this._service.getPluralUrl(this),
 			self = this;
 
-
-
         $.ajax({
             url: singular,
             type: 'put',
@@ -68,7 +61,6 @@ $.Model.service.jsonRest = $.Model.service({
 		        success({})
 			},
             fixture: "-restUpdate"
-
         })
     },
 	destroy : function(id, success, error){
@@ -87,7 +79,6 @@ $.Model.service.jsonRest = $.Model.service({
 			plural = this._service.getPluralUrl(this),
 			self = this,
 			name = this._service.getName(this);
-
 		$.ajax({
 		    url: plural,
 		    type: 'post',
@@ -119,20 +110,14 @@ $.Model.service.jsonRest = $.Model.service({
     }
 });
 
-
 }; 
-
-exports(); 
+exports();
 module.resolveWith(exports); 
-
-}); 
+});
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("mvc/model.service.json_rest")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

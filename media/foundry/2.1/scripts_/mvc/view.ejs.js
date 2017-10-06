@@ -1,17 +1,12 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 $.require() 
  .script("mvc/view","mvc/lang.string.rsplit") 
  .done(function() { 
 var exports = function() { 
-
-
 
 	// HELPER METHODS ==============
 	var myEval = function( script ) {
@@ -50,7 +45,6 @@ var exports = function() {
 		bracketNum = function(content){
 			var lefts = content.match(leftBracket),
 				rights = content.match(rightBracket);
-
 			return (lefts ? lefts.length : 0) -
 				   (rights ? rights.length : 0);
 		},
@@ -229,7 +223,6 @@ var exports = function() {
 	/**
 	 * @Static
 	 */
-
 	extend(EJS, {
 		/**
 		 * Used to convert what's in &lt;%= %> magic tags to a string
@@ -267,11 +260,9 @@ var exports = function() {
 			if ( input === null || input === undefined ) {
 				return '';
 			}
-
 			// if it's an object, and it has a hookup method
 			var hook = (input.hookup &&
 			// make a function call the hookup method
-
 			function( el, id ) {
 				input.hookup.call(input, el, id);
 			}) ||
@@ -338,7 +329,6 @@ var exports = function() {
 		for (; i < source_split.length; i++ ) {
 			scanline(scanner, source_split[i], block);
 		}
-
 	},
 		scanline = function( scanner, line, block ) {
 			scanner.lines++;
@@ -374,7 +364,6 @@ var exports = function() {
 			return scanner;
 		},
 
-
 		// compiles a template where
 		// source - template text
 		// left - the left magic tag
@@ -387,7 +376,6 @@ var exports = function() {
 			source = source.replace(returnReg, "\n").replace(retReg, "\n");
 			// if no left is given, assume <
 			left = left || '<';
-
 			// put and insert cmds are used for adding content to the template
 			// currently they are identical, I am not sure why
 			var put_cmd = "___v1ew.push(",
@@ -418,7 +406,6 @@ var exports = function() {
 				// once we have a <%= %> with a leftBracket
 				// we store how the file should end here (either '))' or ';' )
 				endStack =[];
-
 			// start going token to token
 			scan(makeScanner(left, left === '[' ? ']' : '>'), source || "", function( token, scanner ) {
 				// if we don't have a start pair
@@ -445,7 +432,6 @@ var exports = function() {
 						}
 						empty();
 						break;
-
 					case scanner.dLeft:
 						// replace <%% with <%
 						content += scanner.left;
@@ -463,7 +449,6 @@ var exports = function() {
 						switch ( startTag ) {
 						case scanner.left:
 							// <%
-
 							// get the number of { minus }
 							bn = bracketNum(content);
 							// how are we ending this statement
@@ -474,7 +459,6 @@ var exports = function() {
 								endStack.pop() :
 								// or use the default ending
 								";";
-
 							// if we are ending a returning block
 							// add the finish text which returns the result of the
 							// block
@@ -483,7 +467,6 @@ var exports = function() {
 							}
 							// add the remaining content
 							buff.push(content, last);
-
 							// if we have a block, start counting
 							if(bn === 1 ){
 								endStack.push(";")
@@ -503,7 +486,6 @@ var exports = function() {
 							break;
 						case scanner.eeLeft:
 							// <%== content
-
 							// get the number of { minus }
 							bn = bracketNum(content);
 							// if we have more {, it means there is a block
@@ -511,7 +493,6 @@ var exports = function() {
 								// when we return to the same # of { vs } end wiht a doubleParen
 								endStack.push(doubleParen)
 							}
-
 							buff.push(insert_cmd, $.globalNamespace + ".EJS.text(", content,
 								// if we have a block
 								bn ?
@@ -544,14 +525,11 @@ var exports = function() {
 				};
 			//use eval instead of creating a function, b/c it is easier to debug
 			// myEval.call(out, 'this.fn = (function(_CONTEXT,_VIEW){' + out.out + '});\r\n//@ sourceURL=' + name + ".js");
-
 			// !-- FOUNDRY HACK --! //
 			// Removed //@ sourceURL as it will break with conditional compilation turned on in IE.
 			myEval.call(out, 'this.fn = (function(_CONTEXT,_VIEW){' + out.out + '});');
-
 			return out;
 		};
-
 
 	// A Buffer used to add content to.
 	// This is useful for performance and simplifying the
@@ -594,9 +572,7 @@ var exports = function() {
 			this.script.push(";");
 			return this.script.join("");
 		}
-
 	};
-
 	/**
 	 * @class jQuery.EJS.Helpers
 	 * @parent jQuery.EJS
@@ -663,7 +639,6 @@ var exports = function() {
 			return $View(url, data, helpers); //new EJS(options).render(data, helpers);
 		}
 	};
-
 	// options for steal's build
 	$View.register({
 		suffix: "ejs",
@@ -681,20 +656,14 @@ var exports = function() {
 			});
 		}
 	});
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
-}); 
+});
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("mvc/view.ejs")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

@@ -1,16 +1,12 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 $.require() 
  .script("mvc/model") 
  .done(function() { 
 var exports = function() { 
-
 
 /**
 @page jquery.model.validations Validations
@@ -18,15 +14,11 @@ var exports = function() {
 @download  http://jmvcsite.heroku.com/pluginify?plugins[]=jquery/model/validations/validations.js
 @test jquery/model/validations/qunit.html
 @parent jQuery.Model
-
 In many apps, it's important to validate data before sending it to the server.
 The jquery/model/validations plugin provides validations on models.
-
 ## Example
-
 To use validations, you need to call a validate method on the Model class.
 The best place to do this is in a Class's init function.
-
 @codestart
 $.Model("Contact",{
 	init : function(){
@@ -39,15 +31,11 @@ $.Model("Contact",{
 	}
 },{});
 @codeend
-
 ## Demo
-
 Click a person's name to update their birthday.  If you put the date
 in the future, say the year 2525, it will report back an error.
-
 @demo jquery/model/validations/validations.html
  */
-
 //validations object is by property.  You can have validations that
 //span properties, but this way we know which ones to run.
 //  proc should return true if there's an error or the error message
@@ -58,11 +46,9 @@ var validate = function(attrNames, options, proc) {
 	}
 	options = options || {};
 	attrNames = $.makeArray(attrNames)
-
 	if(options.testIf && !options.testIf.call(this)){
 		return;
 	}
-
 	var self = this;
 	$.each(attrNames, function(i, attrName) {
 		// Call the validate proc function in the instance context
@@ -74,9 +60,7 @@ var validate = function(attrNames, options, proc) {
 			return res === undefined ? undefined : (options.message || res);
 		})
 	});
-
 };
-
 $.extend($.Model, {
    /**
     * @function jQuery.Model.static.validate
@@ -87,7 +71,6 @@ $.extend($.Model, {
     * @param {Object} options (optional) Options for the validations.  Valid options include 'message' and 'testIf'.
     */
    validate: validate,
-
    /**
     * @attribute jQuery.Model.static.validationMessages
     * @parent jquery.model.validations
@@ -120,7 +103,6 @@ $.extend($.Model, {
        presence    : "can't be empty",
        range       : "is out of range"
    },
-
    /**
     * @function jQuery.Model.static.validateFormatOf
     * @parent jquery.model.validations
@@ -140,7 +122,6 @@ $.extend($.Model, {
          }
       });
    },
-
    /**
     * @function jQuery.Model.static.validateInclusionOf
     * @parent jquery.model.validations
@@ -155,12 +136,10 @@ $.extend($.Model, {
       validate.call(this, attrNames, options, function(value) {
          if(typeof value == 'undefined')
             return;
-
          if($.grep(inArray, function(elm) { return (elm == value);}).length == 0)
             return this.Class.validationMessages.inclusion;
       });
    },
-
    /**
     * @function jQuery.Model.static.validateLengthOf
     * @parent jquery.model.validations
@@ -179,7 +158,6 @@ $.extend($.Model, {
             return this.Class.validationMessages.lengthLong + " (max=" + max + ")";
       });
    },
-
    /**
     * @function jQuery.Model.static.validatePresenceOf
     * @parent jquery.model.validations
@@ -194,7 +172,6 @@ $.extend($.Model, {
             return this.Class.validationMessages.presence;
       });
    },
-
    /**
     * @function jQuery.Model.static.validateRangeOf
     * @parent jquery.model.validations
@@ -213,20 +190,14 @@ $.extend($.Model, {
    }
 });
 
-
 }; 
-
-exports(); 
+exports();
 module.resolveWith(exports); 
-
-}); 
+});
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("mvc/model.validations")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

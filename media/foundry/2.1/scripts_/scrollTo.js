@@ -1,14 +1,10 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 var jQuery = $; 
 var exports = function() { 
-
 /*!
  * jQuery.ScrollTo
  * Copyright (c) 2007-2012 Ariel Flesler - aflesler(at)gmail(dot)com | http://flesler.blogspot.com
@@ -62,35 +58,29 @@ var exports = function() {
  * @desc Scroll on both axes, to different values
  * @example $('div').scrollTo( { top: 300, left:'+=200' }, { axis:'xy', offset:-20 } );
  */
-
 ;(function( $ ){
 	
 	var $scrollTo = $.scrollTo = function( target, duration, settings ){
 		$(window).scrollTo( target, duration, settings );
 	};
-
 	$scrollTo.defaults = {
 		axis:'xy',
 		duration: parseFloat($.fn.jquery) >= 1.3 ? 0 : 1,
 		limit:true
 	};
-
 	// Returns the element that needs to be animated to scroll the window.
 	// Kept for backwards compatibility (specially for localScroll & serialScroll)
 	$scrollTo.window = function( scope ){
 		return $(window)._scrollable();
 	};
-
 	// Hack, hack, hack :)
 	// Returns the real elements to scroll (supports window/iframes, documents and regular nodes)
 	$.fn._scrollable = function(){
 		return this.map(function(){
 			var elem = this,
 				isWin = !elem.nodeName || $.inArray( elem.nodeName.toLowerCase(), ['iframe','#document','html','body'] ) != -1;
-
 				if( !isWin )
 					return elem;
-
 			var doc = (elem.contentWindow || elem).document || elem.ownerDocument || elem;
 			
 			return /webkit/i.test(navigator.userAgent) || doc.compatMode == 'BackCompat' ?
@@ -98,7 +88,6 @@ var exports = function() {
 				doc.documentElement;
 		});
 	};
-
 	$.fn.scrollTo = function( target, duration, settings ){
 		if( typeof duration == 'object' ){
 			settings = duration;
@@ -121,16 +110,13 @@ var exports = function() {
 			duration /= 2;
 		settings.offset = both( settings.offset );
 		settings.over = both( settings.over );
-
 		return this._scrollable().each(function(){
 			// Null target yields nothing, just like jQuery does
 			if (target == null) return;
-
 			var elem = this,
 				$elem = $(elem),
 				targ = target, toff, attr = {},
 				win = $elem.is('html,body');
-
 			switch( typeof targ ){
 				// A number will pass the regex
 				case 'number':
@@ -155,10 +141,8 @@ var exports = function() {
 					key = 'scroll' + Pos,
 					old = elem[key],
 					max = $scrollTo.max(elem, axis);
-
 				if( toff ){// jQuery / DOMElement
 					attr[key] = toff[pos] + ( win ? 0 : old - $elem.offset()[pos] );
-
 					// If it's a dom element, reduce the margin
 					if( settings.margin ){
 						attr[key] -= parseInt(targ.css('margin'+Pos)) || 0;
@@ -177,12 +161,10 @@ var exports = function() {
 						parseFloat(val) / 100 * max
 						: val;
 				}
-
 				// Number or 'number'
 				if( settings.limit && /^\d+$/.test(attr[key]) )
 					// Check the limits
 					attr[key] = attr[key] <= 0 ? 0 : Math.min( attr[key], max );
-
 				// Queueing axes
 				if( !i && settings.queue ){
 					// Don't waste time animating, if there's no need.
@@ -193,15 +175,12 @@ var exports = function() {
 					delete attr[key];
 				}
 			});
-
-			animate( settings.onAfter );			
-
+			animate( settings.onAfter );
 			function animate( callback ){
 				$elem.animate( attr, duration, settings.easing, callback && function(){
 					callback.call(this, target, settings);
 				});
 			};
-
 		}).end();
 	};
 	
@@ -217,28 +196,20 @@ var exports = function() {
 		var size = 'client' + Dim,
 			html = elem.ownerDocument.documentElement,
 			body = elem.ownerDocument.body;
-
-		return Math.max( html[scroll], body[scroll] ) 
+		return Math.max( html[scroll], body[scroll] )
 			 - Math.min( html[size]  , body[size]   );
 	};
-
 	function both( val ){
 		return typeof val == 'object' ? val : { top:val, left:val };
 	};
-
 })( jQuery );
 }; 
-
-exports(); 
+exports();
 module.resolveWith(exports); 
-
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("scrollTo")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

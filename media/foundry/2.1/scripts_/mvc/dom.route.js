@@ -1,17 +1,12 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 $.require() 
  .script("mvc/lang.observe","mvc/event.hashchange","mvc/lang.string.deparam") 
  .done(function() { 
 var exports = function() { 
-
-
 
     // Helper methods used for matching routes.
 	var
@@ -58,7 +53,6 @@ var exports = function() {
 		decode = decodeURIComponent,
 		each = $.each,
 		extend = $.extend;
-
 	/**
 	 * @class jQuery.route
 	 * @inherits jQuery.Observe
@@ -227,7 +221,6 @@ var exports = function() {
 				// TODO: I think this should have a +
 				return "([^\\/\\&]*)"  // The '\\' is for string-escaping giving single '\' for regEx escaping
 			});
-
 		// Add route in a form that can be easily figured out
 		$.route.routes[url] = {
             // A regular expression that will match the route when variable values
@@ -245,7 +238,6 @@ var exports = function() {
 		}
 		return $.route;
 	};
-
 	extend($.route, {
 		/**
 		 * Parameterizes the raw JS object representation provided in data.
@@ -264,11 +256,9 @@ var exports = function() {
 				matches = 0,
 				matchCount,
 				routeName = data.route;
-
 			delete data.route;
 			// if we have a route name in our $.route data, use it
 			if(routeName && (route = $.route.routes[routeName])){
-
 			} else {
 				// otherwise find route
 				each($.route.routes, function(name, temp){
@@ -280,7 +270,6 @@ var exports = function() {
 				});
 			}
 			// if this is match
-
 			if ( route ) {
 				var cpy = extend({}, data),
                     // Create the url by replacing the var names with the provided data.
@@ -296,7 +285,6 @@ var exports = function() {
 							delete cpy[name]
 						}
 					})
-
 					// The remaining elements of data are added as
 					// $amp; separated parameters to the url.
 				    after = $.param(cpy);
@@ -332,7 +320,6 @@ var exports = function() {
 					remainder = url.substr(start.length - (parts[parts.length-1] === "&" ? 1 : 0) ),
                     // If there is a remainder and it contains a &amp;key=value list deparam it.
                     obj = (remainder && paramsMatcher.test(remainder)) ? $.String.deparam( remainder.slice(1) ) : {};
-
                 // Add the default values for this route
 				obj = extend(true, {}, route.defaults, obj);
                 // Overwrite each of the default values in obj with those in parts if that part is not empty.
@@ -437,7 +424,6 @@ var exports = function() {
 	$(function() {
 		$.route.ready();
 	});
-
     // The functions in the following list applied to $.route (e.g. $.route.attr('...')) will
     // instead act on the $.route.data Observe.
 	each(['bind','unbind','delegate','undelegate','attr','attrs','serialize','removeAttr'], function(i, name){
@@ -445,7 +431,6 @@ var exports = function() {
 			return $.route.data[name].apply($.route.data, arguments)
 		}
 	})
-
 	var // A throttled function called multiple times will only fire once the
         // timer runs down. Each call resets the timer.
         throttle = function( func ) {
@@ -470,30 +455,22 @@ var exports = function() {
 			curParams = $.route.deparam( hash );
 			$.route.attrs(curParams, true);
 		};
-
 	// If the hash changes, update the $.route.data
 	$(window).bind('hashchange', setState);
-
 	// If the $.route.data changes, update the hash.
     // Using .serialize() retrieves the raw data contained in the observable.
     // This function is throttled so it only updates once even if multiple values changed.
 	$.route.bind("change", throttle(function() {
 		location.hash = "#!" + $.route.param($.route.serialize())
 	}));
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
-}); 
+});
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("mvc/dom.route")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

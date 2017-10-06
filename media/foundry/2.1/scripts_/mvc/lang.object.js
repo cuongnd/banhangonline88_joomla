@@ -1,13 +1,9 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 var exports = function() { 
-
 
 	
 var isArray = $.isArray,
@@ -28,7 +24,6 @@ var isArray = $.isArray,
 		for(var prop in obj) count++;
 		return count;
 	};
-
 /**
  * @class jQuery.Object
  * @parent jquerymx.lang
@@ -61,7 +56,6 @@ var isArray = $.isArray,
  *              //->    [{userId: 20, limit: 30}]
  */
 $.Object = {};
-
 /**
  * @function same
  * Returns if two objects are the same.  It takes an optional compares object that
@@ -172,7 +166,6 @@ var same = $.Object.same = function(a, b, compares, aParent, bParent, deep){
 	} 
 	return false;
 };
-
 /**
  * @function subsets
  * Returns the sets in 'sets' that are a subset of checkSet
@@ -213,14 +206,12 @@ $.Object.subset = function(subset, set, compares){
 		compares = compares || {};
 			
 	for(var prop in set){
-
 		if(! same(subset[prop], set[prop], compares[prop], subset, set )  ){
 			return false;
 		} 
 	}
 	return true;
 }
-
 
 var compareMethods = {
 	"null" : function(){
@@ -232,19 +223,13 @@ var compareMethods = {
 }
 	
 	
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("mvc/lang.object")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

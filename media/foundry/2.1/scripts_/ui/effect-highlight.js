@@ -1,17 +1,13 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 var jQuery = $; 
 $.require() 
  .script("ui/effect") 
  .done(function() { 
 var exports = function() { 
-
 /*!
  * jQuery UI Effects Highlight 1.9.0pre
  * http://jqueryui.com
@@ -26,7 +22,6 @@ var exports = function() {
  *	jquery.ui.effect.js
  */
 (function( $, undefined ) {
-
 $.effects.effect.highlight = function( o, done ) {
 	var elem = $( this ),
 		props = [ "backgroundImage", "backgroundColor", "opacity" ],
@@ -34,11 +29,9 @@ $.effects.effect.highlight = function( o, done ) {
 		animation = {
 			backgroundColor: elem.css( "backgroundColor" )
 		};
-
 	if (mode === "hide") {
 		animation.opacity = 0;
 	}
-
 	$.effects.save( elem, props );
 	
 	elem
@@ -60,22 +53,15 @@ $.effects.effect.highlight = function( o, done ) {
 			}
 		});
 };
-
 })(jQuery);
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
-}); 
+});
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("ui/effect-highlight")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

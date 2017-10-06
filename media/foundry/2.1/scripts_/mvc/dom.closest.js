@@ -1,13 +1,9 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 var exports = function() { 
-
 
 	/**
 	 * @function closest
@@ -22,7 +18,6 @@ var exports = function() {
 	$.fn.closest = function(selectors, context){
 		var rooted = {}, res, result, thing, i, j, selector, rootedIsEmpty = true, selector, selectorsArr = selectors;
 		if(typeof selectors == "string") selectorsArr = [selectors];
-
 		$.each(selectorsArr, function(i, selector){
 		    if(selector.indexOf(">") == 0 ){
 				if(selector.indexOf(" ") != -1){
@@ -33,9 +28,7 @@ var exports = function() {
 				rootedIsEmpty = false;
 			}
 		})
-
 		res = oldClosest.call(this, selectors, context);
-
 		if(rootedIsEmpty) return res;
 		i =0;
 		while(i < res.length){
@@ -52,19 +45,13 @@ var exports = function() {
 		}
 		return res;
 	}
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("mvc/dom.closest")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

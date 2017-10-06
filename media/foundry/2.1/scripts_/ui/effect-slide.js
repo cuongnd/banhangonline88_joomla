@@ -1,17 +1,13 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 var jQuery = $; 
 $.require() 
  .script("ui/effect") 
  .done(function() { 
 var exports = function() { 
-
 /*!
  * jQuery UI Effects Slide 1.9.0pre
  * http://jqueryui.com
@@ -26,9 +22,7 @@ var exports = function() {
  *	jquery.ui.effect.js
  */
 (function( $, undefined ) {
-
 $.effects.effect.slide = function( o, done ) {
-
 	// Create element
 	var el = $( this ),
 		props = [ "position", "top", "bottom", "left", "right", "width", "height" ],
@@ -39,26 +33,21 @@ $.effects.effect.slide = function( o, done ) {
 		positiveMotion = (direction === "up" || direction === "left"),
 		distance,
 		animation = {};
-
 	// Adjust
 	$.effects.save( el, props );
 	el.show();
 	distance = o.distance || el[ ref === "top" ? "outerHeight" : "outerWidth" ]( true );
-
 	$.effects.createWrapper( el ).css({
 		overflow: "hidden"
 	});
-
 	if ( show ) {
 		el.css( ref, positiveMotion ? (isNaN(distance) ? "-" + distance : -distance) : distance );
 	}
-
 	// Animation
 	animation[ ref ] = ( show ?
 		( positiveMotion ? "+=" : "-=") :
 		( positiveMotion ? "-=" : "+=")) +
 		distance;
-
 	// Animate
 	el.animate( animation, {
 		queue: false,
@@ -74,22 +63,15 @@ $.effects.effect.slide = function( o, done ) {
 		}
 	});
 };
-
 })(jQuery);
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
-}); 
+});
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("ui/effect-slide")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

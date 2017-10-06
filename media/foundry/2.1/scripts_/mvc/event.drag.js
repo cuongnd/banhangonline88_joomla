@@ -1,16 +1,12 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 $.require() 
  .script("mvc/lang.vector","mvc/event.livehack") 
  .done(function() { 
 var exports = function() { 
-
 
 	//modify live
 	//steal the live handler ....
@@ -96,7 +92,6 @@ var exports = function() {
 	 * The constructor is never called directly.
 	 */
 	$.Drag = function() {};
-
 	/**
 	 * @Static
 	 */
@@ -121,7 +116,6 @@ var exports = function() {
 				selector = ev.handleObj.selector,
 				self = this;
 			this.current = drag;
-
 			drag.setup({
 				element: element,
 				delegate: ev.delegateTarget || element,
@@ -142,7 +136,6 @@ var exports = function() {
 			}, ev);
 		}
 	});
-
 	/**
 	 * @Prototype
 	 */
@@ -158,12 +151,9 @@ var exports = function() {
 			this._mousemove = mousemove;
 			this._mouseup = mouseup;
 			this._distance = options.distance ? options.distance : 0;
-
 			this.mouseStartPosition = ev.vector(); //where the mouse is located
-
 			$(document).bind('mousemove', mousemove);
 			$(document).bind('mouseup', mouseup);
-
 			if (!this.callEvents('down', this.element, ev) ) {
 			    this.noSelection(this.delegate);
 				//this is for firefox
@@ -180,7 +170,6 @@ var exports = function() {
 			if (!this.moved ) {
 				this.event = this.element = null;
 			}
-
             this.selection(this.delegate);
 			this.destroyed();
 		},
@@ -190,11 +179,9 @@ var exports = function() {
 				if(dist < this._distance){
 					return false;
 				}
-
 				this.init(this.element, ev);
 				this.moved = true;
 			}
-
 			var pointer = ev.vector();
 			if ( this._start_position && this._start_position.equals(pointer) ) {
 				return;
@@ -202,7 +189,6 @@ var exports = function() {
 			//e.preventDefault();
 			this.draw(pointer, ev);
 		},
-
 		mouseup: function( docEl, event ) {
 			//if there is a current, we should call its dragstop
 			if ( this.moved ) {
@@ -210,7 +196,6 @@ var exports = function() {
 			}
 			this.destroy();
 		},
-
         /**
          * noSelection method turns off text selection during a drag event.
          * This method is called by default unless a event is listening to the 'dragdown' event.
@@ -225,7 +210,6 @@ var exports = function() {
          */
 		noSelection: function(elm) {
             elm = elm || this.delegate
-
 			document.documentElement.onselectstart = function() {
 				return false;
 			};
@@ -233,7 +217,6 @@ var exports = function() {
 			this.selectionDisabled = (this.selectionDisabled ? this.selectionDisabled.add(elm) : $(elm));
 			this.selectionDisabled.css('-moz-user-select', '-moz-none');
 		},
-
         /**
          * selection method turns on text selection that was previously turned off during the drag event.
          * This method is called by default in 'destroy' unless a event is listening to the 'dragdown' event.
@@ -251,14 +234,12 @@ var exports = function() {
                 this.selectionDisabled.css('-moz-user-select', '');
             }
 		},
-
 		init: function( element, event ) {
 			element = $(element);
 			var startElement = (this.movingElement = (this.element = $(element))); //the element that has been clicked on
 			//if a mousemove has come after the click
 			this._cancelled = false; //if the drag has been cancelled
 			this.event = event;
-
 			/**
 			 * @attribute mouseElementPosition
 			 * The position of start of the cursor on the element
@@ -266,7 +247,6 @@ var exports = function() {
 			this.mouseElementPosition = this.mouseStartPosition.minus(this.element.offsetv()); //where the mouse is on the Element
 			//this.callStart(element, event);
 			this.callEvents('init', element, event);
-
 			//Check what they have set and respond accordingly
 			//  if they canceled
 			if ( this._cancelled === true ) {
@@ -274,7 +254,6 @@ var exports = function() {
 			}
 			//if they set something else as the element
 			this.startPosition = startElement != this.movingElement ? this.movingElement.offsetv() : this.currentDelta();
-
 			this.makePositioned(this.movingElement);
 			this.oldZIndex = this.movingElement.css('zIndex');
 			this.movingElement.css('zIndex', 1000);
@@ -284,12 +263,10 @@ var exports = function() {
 		},
 		makePositioned: function( that ) {
 			var style, pos = that.css('position');
-
 			if (!pos || pos == 'static' ) {
 				style = {
 					position: 'relative'
 				};
-
 				if ( window.opera ) {
 					style.top = '0px';
 					style.left = '0px';
@@ -337,7 +314,6 @@ var exports = function() {
 			 */
 			this.location = pointer.minus(this.mouseElementPosition); // the offset between the mouse pointer and the representative that the user asked for
 			// position = mouse - (dragOffset - dragTopLeft) - mousePosition
-
 			// call move events
 			this.move(event);
 			if ( this._cancelled ) {
@@ -346,7 +322,6 @@ var exports = function() {
 			if (!event.isDefaultPrevented() ) {
 				this.position(this.location);
 			}
-
 			//fill in
 			if (!this._only && this.constructor.responder ) {
 				this.constructor.responder.show(pointer, this, event);
@@ -366,7 +341,6 @@ var exports = function() {
 				dragged_element_position_vector = // the vector between the movingElement's page and css positions
 				this.movingElement.offsetv().minus(dragged_element_css_offset); // this can be thought of as the original offset
 			this.required_css_position = newOffsetv.minus(dragged_element_position_vector);
-
 			this.offsetv = newOffsetv;
 			//dragged_element vector can probably be cached.
 			style = this.movingElement[0].style;
@@ -398,9 +372,7 @@ var exports = function() {
 			if (!this._only && this.constructor.responder ) {
 				this.constructor.responder.end(event, this);
 			}
-
 			this.callEvents('end', this.element, event);
-
 			if ( this._revert ) {
 				var self = this;
 				this.movingElement.animate({
@@ -433,7 +405,6 @@ var exports = function() {
 			if ( this._removeMovingElement ) {
 				this.movingElement.remove();
 			}
-
 			this.movingElement = this.element = this.event = null;
 		},
 		/**
@@ -446,7 +417,6 @@ var exports = function() {
 				this.constructor.responder.clear(this.event.vector(), this, this.event);
 			}
 			this.destroy();
-
 		},
 		/**
 		 * Clones the element and uses it as the moving element.
@@ -459,7 +429,6 @@ var exports = function() {
 			ghost.width(this.movingElement.width()).height(this.movingElement.height());
 			// put the ghost in the right location ...
 			ghost.offset(this.movingElement.offset())
-
 			// store the original element and make the ghost the dragged element
 			this.movingElement = ghost;
 			this.noSelection(ghost)
@@ -475,9 +444,7 @@ var exports = function() {
 		representative: function( element, offsetX, offsetY ) {
 			this._offsetX = offsetX || 0;
 			this._offsetY = offsetY || 0;
-
 			var p = this.mouseStartPosition;
-
 			this.movingElement = $(element);
 			this.movingElement.css({
 				top: (p.y() - this._offsetY) + "px",
@@ -521,7 +488,6 @@ var exports = function() {
 		only: function( only ) {
 			return (this._only = (only === undefined ? true : only));
 		},
-
 		/**
 		 * Sets the distance from the mouse before the item begins dragging.
 		 * @param {Number} val
@@ -535,7 +501,6 @@ var exports = function() {
 			}
 		}
 	});
-
 	/**
 	 * @add jQuery.event.special
 	 */
@@ -586,22 +551,15 @@ var exports = function() {
 	 */
 	'dragend'], "mousedown", function( e ) {
 		$.Drag.mousedown.call($.Drag, e, this);
-
 	});
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
-}); 
+});
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("mvc/event.drag")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

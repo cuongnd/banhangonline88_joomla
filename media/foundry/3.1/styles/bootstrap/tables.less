@@ -2,20 +2,16 @@
 // Tables
 // --------------------------------------------------
 
-
 // BASE TABLES
 // -----------------
-
 table {
   max-width: 100%;
   background-color: @tableBackground;
   border-collapse: collapse;
   border-spacing: 0;
 }
-
 // BASELINE STYLES
 // ---------------
-
 .table {
   width: 100%;
   margin-bottom: @baseLineHeight;
@@ -50,11 +46,8 @@ table {
   }
 }
 
-
-
 // CONDENSED TABLE W/ HALF PADDING
 // -------------------------------
-
 .table-condensed {
   th,
   td {
@@ -62,10 +55,8 @@ table {
   }
 }
 
-
 // BORDERED VERSION
 // ----------------
-
 .table-bordered {
   border: 1px solid @tableBorder;
   border-collapse: separate; // Done so we can round those corners!
@@ -108,7 +99,6 @@ table {
   tfoot:last-child tr:last-child td:last-child {
     .border-bottom-right-radius(@baseBorderRadius);
   }
-
   // Clear border-radius for first and last td in the last row in the last tbody for table with tfoot
   tfoot + tbody:last-child tr:last-child td:first-child {
     .border-bottom-left-radius(0);
@@ -116,7 +106,6 @@ table {
   tfoot + tbody:last-child tr:last-child td:last-child {
     .border-bottom-right-radius(0);
   }
-
 
   // Special fixes to round the left border on the first td/th
   caption + thead tr:first-child th:first-child,
@@ -131,15 +120,11 @@ table {
   colgroup + tbody tr:first-child td:last-child {
     .border-top-right-radius(@baseBorderRadius);
   }
-
 }
-
-
 
 
 // ZEBRA-STRIPING
 // --------------
-
 // Default zebra-stripe styles (alternating gray and transparent backgrounds)
 .table-striped {
   tbody {
@@ -149,7 +134,6 @@ table {
     }
   }
 }
-
 
 // HOVER EFFECT
 // ------------
@@ -163,10 +147,8 @@ table {
   }
 }
 
-
 // TABLE CELL SIZING
 // -----------------
-
 // Reset default grid behavior
 table td[class*="span"],
 table th[class*="span"],
@@ -176,7 +158,6 @@ table th[class*="span"],
   float: none; // undo default grid column styles
   margin-left: 0; // undo default grid column styles
 }
-
 // Change the column widths to account for td/th padding
 .table td,
 .table th {
@@ -194,12 +175,9 @@ table th[class*="span"],
   &.span12    { .tableColumns(12); }
 }
 
-
-
 // TABLE BACKGROUNDS
 // -----------------
 // Exact selectors below required to override .table-striped
-
 .table tbody tr {
   &.success td {
     background-color: @successBackground;
@@ -214,7 +192,6 @@ table th[class*="span"],
     background-color: @infoBackground;
   }
 }
-
 // Hover states for .table-hover
 .table-hover tbody tr {
   &.success:hover td {

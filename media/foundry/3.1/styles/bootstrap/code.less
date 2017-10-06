@@ -2,7 +2,6 @@
 // Code (inline and blocK)
 // --------------------------------------------------
 
-
 // Inline and block code styles
 code,
 pre {
@@ -12,7 +11,6 @@ pre {
   color: @grayDark;
   .border-radius(3px);
 }
-
 // Inline code
 code {
   padding: 2px 4px;
@@ -21,7 +19,6 @@ code {
   border: 1px solid #e1e1e8;
   white-space: nowrap;
 }
-
 // Blocks of code
 pre {
   display: block;
@@ -37,12 +34,10 @@ pre {
   border: 1px solid #ccc; // fallback for IE7-8
   border: 1px solid rgba(0,0,0,.15);
   .border-radius(@baseBorderRadius);
-
   // Make prettyprint styles more spaced out for readability
   &.prettyprint {
     margin-bottom: @baseLineHeight;
   }
-
   // Account for some code outputs that place code tags in pre tags
   code {
     padding: 0;
@@ -51,7 +46,6 @@ pre {
     border: 0;
   }
 }
-
 // Enable scrollable blocks of code
 .pre-scrollable {
   max-height: 340px;

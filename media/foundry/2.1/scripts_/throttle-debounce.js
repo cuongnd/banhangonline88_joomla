@@ -1,13 +1,9 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 var exports = function() { 
-
 /*!
  * jQuery throttle / debounce - v1.1 - 3/7/2010
  * http://benalman.com/projects/jquery-throttle-debounce-plugin/
@@ -16,7 +12,6 @@ var exports = function() {
  * Dual licensed under the MIT and GPL licenses.
  * http://benalman.com/about/license/
  */
-
 // Script: jQuery throttle / debounce: Sometimes, less is more!
 //
 // *Version: 1.1, Last updated: 3/7/2010*
@@ -69,17 +64,13 @@ var exports = function() {
 // when this plugin is loaded, the method described below will be created in
 // the `Cowboy` namespace. Usage will be exactly the same, but instead of
 // $.method() or jQuery.method(), you'll need to use Cowboy.method().
-
 (function(window,undefined){
   '$:nomunge'; // Used by YUI compressor.
-
   // Since jQuery really isn't required for this plugin, use `jQuery` as the
   // namespace only if it already exists, otherwise use the `Cowboy` namespace,
   // creating it if necessary.
-
   // Internal method reference.
   var jq_throttle;
-
   // Method: jQuery.throttle
   //
   // Throttle execution of a function. Especially useful for rate limiting
@@ -127,23 +118,19 @@ var exports = function() {
   // Returns:
   //
   //  (Function) A new, throttled, function.
-
   $.throttle = jq_throttle = function( delay, no_trailing, callback, debounce_mode ) {
     // After wrapper has stopped being called, this timeout ensures that
     // `callback` is executed at the proper times in `throttle` and `end`
     // debounce modes.
     var timeout_id,
-
       // Keep track of the last time `callback` was executed.
       last_exec = 0;
-
     // `no_trailing` defaults to falsy.
     if ( typeof no_trailing !== 'boolean' ) {
       debounce_mode = callback;
       callback = no_trailing;
       no_trailing = undefined;
     }
-
     // The `wrapper` function encapsulates all of the throttling / debouncing
     // functionality and when executed will limit the rate at which `callback`
     // is executed.
@@ -151,33 +138,27 @@ var exports = function() {
       var that = this,
         elapsed = +new Date() - last_exec,
         args = arguments;
-
       // Execute `callback` and update the `last_exec` timestamp.
       function exec() {
         last_exec = +new Date();
         callback.apply( that, args );
       };
-
       // If `debounce_mode` is true (at_begin) this is used to clear the flag
       // to allow future `callback` executions.
       function clear() {
         timeout_id = undefined;
       };
-
       if ( debounce_mode && !timeout_id ) {
         // Since `wrapper` is being called for the first time and
         // `debounce_mode` is true (at_begin), execute `callback`.
         exec();
       }
-
       // Clear any existing timeout.
       timeout_id && clearTimeout( timeout_id );
-
       if ( debounce_mode === undefined && elapsed > delay ) {
         // In throttle mode, if `delay` time has been exceeded, execute
         // `callback`.
         exec();
-
       } else if ( no_trailing !== true ) {
         // In trailing throttle mode, since `delay` time has not been
         // exceeded, schedule `callback` to execute `delay` ms after most
@@ -191,18 +172,15 @@ var exports = function() {
         timeout_id = setTimeout( debounce_mode ? clear : exec, debounce_mode === undefined ? delay - elapsed : delay );
       }
     };
-
     // Set the guid of `wrapper` function to the same of original callback, so
     // it can be removed in jQuery 1.4+ .unbind or .die by using the original
     // callback as a reference.
     if ( $.guid ) {
       wrapper.guid = callback.guid = callback.guid || $.guid++;
     }
-
     // Return the wrapper function.
     return wrapper;
   };
-
   // Method: jQuery.debounce
   //
   // Debounce execution of a function. Debouncing, unlike throttling,
@@ -251,27 +229,19 @@ var exports = function() {
   // Returns:
   //
   //  (Function) A new, debounced, function.
-
   $.debounce = function( delay, at_begin, callback ) {
     return callback === undefined
       ? jq_throttle( delay, at_begin, false )
       : jq_throttle( delay, callback, at_begin !== false );
   };
-
 })(window);
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("throttle-debounce")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

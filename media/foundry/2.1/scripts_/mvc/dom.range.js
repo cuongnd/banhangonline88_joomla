@@ -1,20 +1,15 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 $.require() 
  .script("mvc/dom.compare") 
  .done(function() { 
 var exports = function() { 
 
-
 // TODOS ...
 // Ad
-
 /**
  * @function jQuery.fn.range
  * @parent $.Range
@@ -26,7 +21,6 @@ var exports = function() {
 $.fn.range = function(){
 	return $.Range(this[0])
 }
-
 var convertType = function(type){
 	return  type.replace(/([a-z])([a-z]+)/gi, function(all,first,  next){
 			  return first+next.toLowerCase()	
@@ -144,8 +138,6 @@ current = function(el){
 		return  new $.Range( win.document.selection.createRange() );
 	}
 };
-
-
 
 
 $.extend($.Range.prototype,
@@ -611,9 +603,7 @@ $.extend($.Range.prototype,
 	
 })();
 
-
 // helpers  -----------------
-
 // iterates through a list of elements, calls cb on every text node
 // if cb returns false, exits the iteration
 var iterate = function(elems, cb){
@@ -634,8 +624,7 @@ var iterate = function(elems, cb){
 				}
 			}
 	}
-
-}, 
+},
 supportWhitespace,
 isWhitespace = function(el){
 	if(supportWhitespace == null){
@@ -643,11 +632,9 @@ isWhitespace = function(el){
 	}
 	return (supportWhitespace? el.isElementContentWhitespace : 
 			(el.nodeType === 3 && '' == el.data.trim()));
-
-}, 
+},
 // if a point is within a rectangle
 within = function(rect, point){
-
 	return rect.left <= point.clientX && rect.left + rect.width >= point.clientX &&
 	rect.top <= point.clientY &&
 	rect.top + rect.height >= point.clientY
@@ -682,24 +669,16 @@ scrollOffset = function( win){
 	};
 };
 
-
 support.moveToPoint = !!$.Range().range.moveToPoint
 
-
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
-}); 
+});
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("mvc/dom.range")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

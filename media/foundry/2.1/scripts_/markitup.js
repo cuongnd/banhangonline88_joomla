@@ -1,14 +1,10 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 var jQuery = $; 
 var exports = function() { 
-
 // ----------------------------------------------------------------------------
 // markItUp! Universal MarkUp Engine, JQuery plugin
 // v 1.1.x
@@ -35,16 +31,13 @@ var exports = function() {
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 // ----------------------------------------------------------------------------
-
 (function($) {
 	$.fn.markItUp = function(settings, extraSettings) {
 		var method, params, options, ctrlKey, shiftKey, altKey; ctrlKey = shiftKey = altKey = false;
-
 		if (typeof settings == 'string') {
 			method = settings;
 			params = extraSettings;
 		}
-
 		options = {	id:						'',
 					nameSpace:				'',
 					root:					'',
@@ -66,9 +59,7 @@ var exports = function() {
 					onTab:					{},
 					markupSet:			[	{ /* set */ } ]
 				};
-
 		$.extend(options, settings, $.markItUp.sets[(extraSettings || settings || {}).set], extraSettings);
-
 		// compute markItUp! path
 		if (!options.root) {
 			$('script').each(function(a, tag) {
@@ -78,7 +69,6 @@ var exports = function() {
 				}
 			});
 		}
-
 		return this.each(function() {
 			var $$, textarea, levels, scrollPosition, caretPosition, caretOffset,
 				clicked, hash, header, footer, previewWindow, template, iFrame, abort;
@@ -88,10 +78,8 @@ var exports = function() {
 			abort = false;
 			scrollPosition = caretPosition = 0;
 			caretOffset = -1;
-
 			options.previewParserPath = localize(options.previewParserPath);
 			options.previewTemplatePath = localize(options.previewTemplatePath);
-
 			if (method) {
 				switch(method) {
 					case 'remove':
@@ -105,7 +93,6 @@ var exports = function() {
 				}
 				return;
 			}
-
 			// apply the computed path to ~/
 			function localize(data, inText) {
 				if (inText) {
@@ -113,7 +100,6 @@ var exports = function() {
 				}
 				return 	data.replace(/^~\//, options.root);
 			}
-
 			// init and build editor
 			function init() {
 				id = ''; nameSpace = '';
@@ -121,7 +107,6 @@ var exports = function() {
 					id = 'id="'+options.id+'"';
 				} else if ($$.attr("id")) {
 					id = 'id="markItUp'+($$.attr("id").substr(0, 1).toUpperCase())+($$.attr("id").substr(1))+'"';
-
 				}
 				if (options.nameSpace) {
 					nameSpace = 'class="'+options.nameSpace+'"';
@@ -130,14 +115,11 @@ var exports = function() {
 				$$.wrap('<div '+id+' class="markItUp"></div>');
 				$$.wrap('<div class="markItUpContainer"></div>');
 				$$.addClass("markItUpEditor");
-
 				// add the header before the textarea
 				header = $('<div class="markItUpHeader"></div>').insertBefore($$);
 				$(dropMenus(options.markupSet)).appendTo(header);
-
 				// add the footer after the textarea
 				footer = $('<div class="markItUpFooter"></div>').insertAfter($$);
-
 				// add the resize handle after textarea
 				if (options.resizeHandle === true && $.browser.safari !== true) {
 					resizeHandle = $('<div class="markItUpResizeHandle"></div>')
@@ -156,10 +138,8 @@ var exports = function() {
 					});
 					footer.append(resizeHandle);
 				}
-
 				// listen key events
 				$$.bind('keydown.markItUp', keyPressed).bind('keyup', keyPressed);
-
 				// bind an event to catch external calls
 				$$.bind("insertion.markItUp", function(e, settings) {
 					if (settings.target !== false) {
@@ -169,17 +149,14 @@ var exports = function() {
 						markup(settings);
 					}
 				});
-
 				// remember the last focus
 				$$.bind('focus.markItUp', function() {
 					$.markItUp.focused = this;
 				});
-
 				if (options.previewInElement) {
 					refreshPreview();
 				}
 			}
-
 			// recursively build header with dropMenus from markupset
 			function dropMenus(markupSet) {
 				var ul = $('<ul></ul>'), i = 0;
@@ -226,7 +203,6 @@ var exports = function() {
 				levels.pop();
 				return ul;
 			}
-
 			// markItUp! markups
 			function magicMarkups(string) {
 				if (string) {
@@ -259,7 +235,6 @@ var exports = function() {
 				}
 				return "";
 			}
-
 			// prepare action
 			function prepare(action) {
 				if ($.isFunction(action)) {
@@ -267,7 +242,6 @@ var exports = function() {
 				}
 				return magicMarkups(action);
 			}
-
 			// build block to insert
 			function build(string) {
 				var openWith 			= prepare(clicked.openWith);
@@ -277,20 +251,16 @@ var exports = function() {
 				var openBlockWith 		= prepare(clicked.openBlockWith);
 				var closeBlockWith 		= prepare(clicked.closeBlockWith);
 				var multiline 			= clicked.multiline;
-
 				if (replaceWith !== "") {
 					block = openWith + replaceWith + closeWith;
 				} else if (selection === '' && placeHolder !== '') {
 					block = openWith + placeHolder + closeWith;
 				} else {
 					string = string || selection;
-
 					var lines = [string], blocks = [];
-
 					if (multiline === true) {
 						lines = string.split(/\r?\n/);
 					}
-
 					for (var l = 0; l < lines.length; l++) {
 						line = lines[l];
 						var trailingSpaces;
@@ -300,12 +270,9 @@ var exports = function() {
 							blocks.push(openWith + line + closeWith);
 						}
 					}
-
 					block = blocks.join("\n");
 				}
-
 				block = openBlockWith + block + closeBlockWith;
-
 				return {	block:block,
 							openWith:openWith,
 							replaceWith:replaceWith,
@@ -313,7 +280,6 @@ var exports = function() {
 							closeWith:closeWith
 					};
 			}
-
 			// define markup to insert
 			function markup(button) {
 				var len, j, n, i;
@@ -336,7 +302,6 @@ var exports = function() {
 					prepare(clicked.beforeMultiInsert);
 				}
 				$.extend(hash, { line:1 });
-
 				if ((ctrlKey === true && shiftKey === true)) {
 					lines = selection.split(/\r?\n/);
 					for (j = 0, n = lines.length, i = 0; i < n; i++) {
@@ -347,7 +312,6 @@ var exports = function() {
 							lines[i] = "";
 						}
 					}
-
 					string = { block:lines.join('\n')};
 					start = caretPosition;
 					len = string.block.length + (($.browser.opera) ? n-1 : 0);
@@ -370,15 +334,12 @@ var exports = function() {
 				}
 				if ((selection === '' && string.replaceWith === '')) {
 					caretOffset += fixOperaBug(string.block);
-
 					start = caretPosition + string.openWith.length;
 					len = string.block.length - string.openWith.length - string.closeWith.length;
-
 					caretOffset = $$.val().substring(caretPosition,  $$.val().length).length;
 					caretOffset -= fixOperaBug($$.val().substring(0, caretPosition));
 				}
 				$.extend(hash, { caretPosition:caretPosition, scrollPosition:scrollPosition } );
-
 				if (string.block !== selection && abort === false) {
 					insert(string.block);
 					set(start, len);
@@ -386,25 +347,20 @@ var exports = function() {
 					caretOffset = -1;
 				}
 				get();
-
 				$.extend(hash, { line:'', selection:selection });
-
 				// callbacks after insertion
 				if ((ctrlKey === true && shiftKey === true) || button.multiline === true) {
 					prepare(clicked.afterMultiInsert);
 				}
 				prepare(clicked.afterInsert);
 				prepare(options.afterInsert);
-
 				// refresh preview if opened
 				if (previewWindow && options.previewAutoRefresh) {
 					refreshPreview();
 				}
-
 				// reinit keyevent
 				shiftKey = altKey = ctrlKey = abort = false;
 			}
-
 			// Substract linefeed in Opera
 			function fixOperaBug(string) {
 				if ($.browser.opera) {
@@ -419,7 +375,6 @@ var exports = function() {
 				}
 				return 0;
 			}
-
 			// add markup
 			function insert(block) {
 				if (document.selection) {
@@ -429,7 +384,6 @@ var exports = function() {
 					textarea.value =  textarea.value.substring(0, caretPosition)  + block + textarea.value.substring(caretPosition + selection.length, textarea.value.length);
 				}
 			}
-
 			// set a selection
 			function set(start, len) {
 				if (textarea.createTextRange){
@@ -448,11 +402,9 @@ var exports = function() {
 				textarea.scrollTop = scrollPosition;
 				textarea.focus();
 			}
-
 			// get the selection
 			function get() {
 				textarea.focus();
-
 				scrollPosition = textarea.scrollTop;
 				if (document.selection) {
 					selection = document.selection.createRange().text;
@@ -469,12 +421,10 @@ var exports = function() {
 					}
 				} else { // gecko & webkit
 					caretPosition = textarea.selectionStart;
-
 					selection = textarea.value.substring(caretPosition, textarea.selectionEnd);
 				}
 				return selection;
 			}
-
 			// open preview window
 			function preview() {
 				if (typeof options.previewHandler === 'function') {
@@ -511,12 +461,10 @@ var exports = function() {
 					previewWindow.focus();
 				}
 			}
-
 			// refresh Preview window
 			function refreshPreview() {
  				renderPreview();
 			}
-
 			function renderPreview() {
 				var phtml;
 				if (options.previewHandler && typeof options.previewHandler === 'function') {
@@ -549,7 +497,6 @@ var exports = function() {
 				}
 				return false;
 			}
-
 			function writeInPreview(data) {
 				if (options.previewInElement) {
 					$(options.previewInElement).html(data);
@@ -565,13 +512,11 @@ var exports = function() {
 					previewWindow.document.documentElement.scrollTop = sp;
 				}
 			}
-
 			// set keys pressed
 			function keyPressed(e) {
 				shiftKey = e.shiftKey;
 				altKey = e.altKey;
 				ctrlKey = (!(e.altKey && e.ctrlKey)) ? (e.ctrlKey || e.metaKey) : false;
-
 				if (e.type === 'keydown') {
 					if (ctrlKey === true) {
 						li = $('a[accesskey="'+((e.keyCode == 13) ? '\\n' : String.fromCharCode(e.keyCode))+'"]', header).parent('li');
@@ -614,30 +559,24 @@ var exports = function() {
 					}
 				}
 			}
-
 			function remove() {
 				$$.unbind(".markItUp").removeClass('markItUpEditor');
 				$$.parent('div').parent('div.markItUp').parent('div').replaceWith($$);
 				$$.data('markItUp', null);
 			}
-
 			init();
 		});
 	};
-
 	$.fn.markItUpRemove = function() {
 		return this.each(function() {
 				$(this).markItUp('remove');
 			}
 		);
 	};
-
 	var sets;
-
 	if (typeof $.markItUp === "object") {
 		sets = $.markItUp.sets;
 	}
-
 	$.markItUp = function(settings) {
 		var options = { target:false };
 		$.extend(options, settings);
@@ -650,27 +589,18 @@ var exports = function() {
 			$('textarea').trigger('insertion', [options]);
 		}
 	};
-
 	$.markItUp.sets = {};
-
 	if (sets) {
 		$.extend($.markItUp.sets, sets);
 	}
-
 })(jQuery);
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("markitup")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

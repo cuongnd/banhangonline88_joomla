@@ -1,16 +1,12 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 $.require() 
  .script("mvc/model") 
  .done(function() { 
 var exports = function() { 
-
 
 var isArray = $.isArray,
 	propCount = function(obj){
@@ -67,37 +63,27 @@ var isArray = $.isArray,
 @plugin jquery/model/backup
 @test jquery/model/backup/qunit.html
 @download  http://jmvcsite.heroku.com/pluginify?plugins[]=jquery/model/backup/backup.js
-
 You can backup and restore instance data with the jquery/model/backup
 plugin.
-
 To backup a model instance call [jQuery.Model.prototype.backup backup] like:
-
 @codestart
 var recipe = new Recipe({name: "cheese"});
 recipe.backup()
 @codeend
-
 You can check if the instance is dirty with [jQuery.Model.prototype.isDirty isDirty]:
-
 @codestart
 recipe.name = 'blah'
 recipe.isDirty() //-> true
 @codeend
-
-Finally, you can restore the original attributes with 
+Finally, you can restore the original attributes with
 [jQuery.Model.prototype.backup backup].
-
 @codestart
 recipe.restore();
 recipe.name //-> "cheese"
 @codeend
-
 See this in action:
-
 @demo jquery/model/backup/backup.html
  */
-
 	$.extend($.Model.prototype,{
 		/**
 		 * @function jQuery.Model.prototype.backup
@@ -110,7 +96,6 @@ See this in action:
 			this._backupStore = this.serialize();
 			return this;
 		},
-
 	   /**
 	    * @function jQuery.Model.prototype.isDirty
 	    * @plugin jquery/model/backup
@@ -141,20 +126,14 @@ See this in action:
 		}
 	   
    })
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
-}); 
+});
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("mvc/model.backup")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

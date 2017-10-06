@@ -1,17 +1,13 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 var jQuery = $; 
 $.require() 
  .script("ui/effect") 
  .done(function() { 
 var exports = function() { 
-
 /*!
  * jQuery UI Effects Drop 1.9.0pre
  * http://jqueryui.com
@@ -26,9 +22,7 @@ var exports = function() {
  *	jquery.ui.effect.js
  */
 (function( $, undefined ) {
-
 $.effects.effect.drop = function( o, done ) {
-
 	var el = $( this ),
 		props = [ "position", "top", "bottom", "left", "right", "opacity", "height", "width" ],
 		mode = $.effects.setMode( el, o.mode || "hide" ),
@@ -40,26 +34,21 @@ $.effects.effect.drop = function( o, done ) {
 			opacity: show ? 1 : 0
 		},
 		distance;
-
 	// Adjust
 	$.effects.save( el, props );
 	el.show();
 	$.effects.createWrapper( el );
-
 	distance = o.distance || el[ ref === "top" ? "outerHeight": "outerWidth" ]( true ) / 2;
-
 	if ( show ) {
 		el
 			.css( "opacity", 0 )
 			.css( ref, motion === "pos" ? -distance : distance );
 	}
-
 	// Animation
 	animation[ ref ] = ( show ?
 		( motion === "pos" ? "+=" : "-=" ) :
 		( motion === "pos" ? "-=" : "+=" ) ) +
 		distance;
-
 	// Animate
 	el.animate( animation, {
 		queue: false,
@@ -75,22 +64,15 @@ $.effects.effect.drop = function( o, done ) {
 		}
 	});
 };
-
 })(jQuery);
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
-}); 
+});
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("ui/effect-drop")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

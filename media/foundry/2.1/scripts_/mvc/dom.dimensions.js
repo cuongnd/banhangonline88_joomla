@@ -1,16 +1,12 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 $.require() 
  .script("mvc/dom.cur_styles") 
  .done(function() { 
 var exports = function() { 
-
 
 /**
  * @page dimensions dimensions
@@ -43,7 +39,6 @@ var exports = function() {
  * 
  * @demo jquery/dom/dimensions/dimensions.html
  */
-
 var weird = /button|select/i, //margin is inside border
 	getBoxes = {},
     checks = {
@@ -58,7 +53,6 @@ var weird = /button|select/i, //margin is inside border
  *  @add jQuery.fn
  */
 $.each({ 
-
 /**
  * @function outerWidth
  * @parent dimensions
@@ -106,7 +100,6 @@ height:
  * @param {Number} [height] 
  */
 "Height" }, function(lower, Upper) {
-
     //used to get the padding and border for an element in a given direction
     getBoxes[lower] = function(el, boxes) {
         var val = 0;
@@ -126,7 +119,6 @@ height:
         }
         return val;
     }
-
     //getter / setter
     $.fn["outer" + Upper] = function(v, margin) {
         var first = this[0];
@@ -161,23 +153,16 @@ height:
 	$.fx.step["outer" + Upper+"Margin"] =  animate({padding: true, border: true, margin: true})
 	
 	$.fx.step["inner" + Upper] = animate({padding: true})
-
 })
 
-
 }; 
-
-exports(); 
+exports();
 module.resolveWith(exports); 
-
-}); 
+});
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("mvc/dom.dimensions")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

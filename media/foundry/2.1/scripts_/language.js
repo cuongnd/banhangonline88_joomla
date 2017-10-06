@@ -1,5 +1,4 @@
 dispatch.to("Foundry/2.1 Core Plugins").at(function($, manifest) {
-
 $.sprintf = function() {
     // http://kevin.vanzonneveld.net
     // +   original by: Ash Searle (http://hexmen.com/blog/)
@@ -20,7 +19,6 @@ $.sprintf = function() {
     var a = arguments,
         i = 0,
         format = a[i++];
-
     // pad()
     var pad = function (str, len, chr, leftJustify) {
         if (!chr) {
@@ -29,7 +27,6 @@ $.sprintf = function() {
         var padding = (str.length >= len) ? '' : Array(1 + len - str.length >>> 0).join(chr);
         return leftJustify ? str + padding : padding + str;
     };
-
     // justify()
     var justify = function (value, prefix, leftJustify, minWidth, zeroPad, customPadChar) {
         var diff = minWidth - value.length;
@@ -42,7 +39,6 @@ $.sprintf = function() {
         }
         return value;
     };
-
     // formatBaseX()
     var formatBaseX = function (value, base, prefix, leftJustify, minWidth, precision, zeroPad) {
         // Note: casts negative numbers to positive ones
@@ -55,7 +51,6 @@ $.sprintf = function() {
         value = prefix + pad(number.toString(base), precision || 0, '0', false);
         return justify(value, prefix, leftJustify, minWidth, zeroPad);
     };
-
     // formatString()
     var formatString = function (value, leftJustify, minWidth, precision, zeroPad, customPadChar) {
         if (precision != null) {
@@ -63,7 +58,6 @@ $.sprintf = function() {
         }
         return justify(value, '', leftJustify, minWidth, zeroPad, customPadChar);
     };
-
     // doFormat()
     var doFormat = function (substring, valueIndex, flags, minWidth, _, precision, type) {
         var number;
@@ -71,11 +65,9 @@ $.sprintf = function() {
         var method;
         var textTransform;
         var value;
-
         if (substring == '%%') {
             return '%';
         }
-
         // parse flags
         var leftJustify = false,
             positivePrefix = '',
@@ -105,7 +97,6 @@ $.sprintf = function() {
                 break;
             }
         }
-
         // parameters may be null, undefined, empty-string or real valued
         // we want to ignore null, undefined and empty-string values
         if (!minWidth) {
@@ -117,17 +108,14 @@ $.sprintf = function() {
         } else {
             minWidth = +minWidth;
         }
-
         // Note: undocumented perl feature:
         if (minWidth < 0) {
             minWidth = -minWidth;
             leftJustify = true;
         }
-
         if (!isFinite(minWidth)) {
             throw new Error('sprintf: (minimum-)width must be finite');
         }
-
         if (!precision) {
             precision = 'fFeE'.indexOf(type) > -1 ? 6 : (type == 'd') ? 0 : undefined;
         } else if (precision == '*') {
@@ -137,10 +125,8 @@ $.sprintf = function() {
         } else {
             precision = +precision;
         }
-
         // grab value using valueIndex if required?
         value = valueIndex ? a[valueIndex.slice(0, -1)] : a[i++];
-
         switch (type) {
         case 's':
             return formatString(String(value), leftJustify, minWidth, precision, zeroPad, customPadChar);
@@ -178,7 +164,6 @@ $.sprintf = function() {
             return substring;
         }
     };
-
     return format.replace(regex, doFormat);
 }
 /**
@@ -194,41 +179,32 @@ $.sprintf = function() {
  * http://www.gnu.org/licenses/gpl.html
  *
  */
-
 var self = $.language = $.JText = function(key) {
-
 	if (arguments.length < 2) {
 		return self._(key);
 	} else {
 		return self.sprintf.apply(null, arguments);
 	}
 };
-
 $.extend(self, {
 	lang: {},
-
 	add: function(key, val) {
-
 		if ($.isPlainObject(key)) {
 			$.extend(self.lang, key);
 		} else {
 			self.lang[key] = val;
 		}
 	},
-
 	remove: function(key) {
 		delete self.lang[key];
 	},
-
 	_: function(key) {
 		return self.lang[key] || "";
 	},
-
 	sprintf: function() {
 		var key = arguments[0];
 		arguments[0] = self.lang[key];
 		return $.sprintf.apply(null, arguments);
 	}
 });
-
 }); // dispatch: end

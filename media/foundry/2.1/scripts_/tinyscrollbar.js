@@ -1,13 +1,9 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 var exports = function() { 
-
 /*!
  * Tiny Scrollbar 1.65
  * http://www.baijs.nl/tinyscrollbar/
@@ -22,7 +18,6 @@ var exports = function() {
  *
  */
 var jQuery  = $;
-
 /*
  * Tiny Scrollbar 1.8
  * http://www.baijs.nl/tinyscrollbar/
@@ -39,7 +34,6 @@ var jQuery  = $;
 ( function( $ ) 
 {
     $.tiny = $.tiny || { };
-
     $.tiny.scrollbar = {
         options: {
                 axis       : 'y'    // vertical or horizontal scrollbar? ( x || y ).
@@ -50,7 +44,6 @@ var jQuery  = $;
             ,   sizethumb  : 'auto' // set the size of the thumb to auto or a fixed number.
         }
     };
-
     $.fn.tinyscrollbar = function( params )
     {
         var options = $.extend( {}, $.tiny.scrollbar.options, params );
@@ -59,15 +52,12 @@ var jQuery  = $;
         { 
             $( this ).data('tsb', new Scrollbar( $( this ), options ) ); 
         });
-
         return this;
     };
-
     $.fn.tinyscrollbar_update = function(sScroll)
     {
         return $( this ).data( 'tsb' ).update( sScroll ); 
     };
-
     function Scrollbar( root, options )
     {
         var oSelf       = this
@@ -85,23 +75,18 @@ var jQuery  = $;
         ,   iMouse      = {}
         ,   touchEvents = ( 'ontouchstart' in document.documentElement ) ? true : false
         ;
-
         function initialize()
         {
             oSelf.update();
             setEvents();
-
             return oSelf;
         }
-
         this.update = function( sScroll )
         {
             oViewport[ options.axis ] = oViewport.obj[0][ 'offset'+ sSize ];
             oContent[ options.axis ]  = oContent.obj[0][ 'scroll'+ sSize ];
             oContent.ratio            = oViewport[ options.axis ] / oContent[ options.axis ];
-
             oScrollbar.obj.toggleClass( 'disable', oContent.ratio >= 1 );
-
             oTrack[ options.axis ] = options.size === 'auto' ? oViewport[ options.axis ] : options.size;
             oThumb[ options.axis ] = Math.min( oTrack[ options.axis ], Math.max( 0, ( options.sizethumb === 'auto' ? ( oTrack[ options.axis ] * oContent.ratio ) : options.sizethumb ) ) );
         
@@ -112,20 +97,16 @@ var jQuery  = $;
             
             setSize();
         };
-
         function setSize()
         {
             var sCssSize = sSize.toLowerCase();
-
             oThumb.obj.css( sDirection, iScroll / oScrollbar.ratio );
             oContent.obj.css( sDirection, -iScroll );
             iMouse.start = oThumb.obj.offset()[ sDirection ];
-
             oScrollbar.obj.css( sCssSize, oTrack[ options.axis ] );
             oTrack.obj.css( sCssSize, oTrack[ options.axis ] );
             oThumb.obj.css( sCssSize, oThumb[ options.axis ] );
         }
-
         function setEvents()
         {
             if( ! touchEvents )
@@ -144,7 +125,6 @@ var jQuery  = $;
                     }
                 };
             }
-
             if( options.scroll && window.addEventListener )
             {
                 oWrapper[0].addEventListener( 'DOMMouseScroll', wheel, false );
@@ -155,7 +135,6 @@ var jQuery  = $;
                 oWrapper[0].onmousewheel = wheel;
             }
         }
-
         function start( event )
         {
             var oThumbDir   = parseInt( oThumb.obj.css( sDirection ), 10 );
@@ -178,7 +157,6 @@ var jQuery  = $;
                 document.ontouchend = end;        
             }
         }
-
         function wheel( event )
         {
             if( oContent.ratio < 1 )
@@ -186,13 +164,10 @@ var jQuery  = $;
                 var oEvent = event || window.event
                 ,   iDelta = oEvent.wheelDelta ? oEvent.wheelDelta / 120 : -oEvent.detail / 3
                 ;
-
                 iScroll -= iDelta * options.wheel;
                 iScroll = Math.min( ( oContent[ options.axis ] - oViewport[ options.axis ] ), Math.max( 0, iScroll ));
-
                 oThumb.obj.css( sDirection, iScroll / oScrollbar.ratio );
                 oContent.obj.css( sDirection, -iScroll );
-
                 if( options.lockscroll || ( iScroll !== ( oContent[ options.axis ] - oViewport[ options.axis ] ) && iScroll !== 0 ) )
                 {
                     oEvent = $.event.fix( oEvent );
@@ -200,7 +175,6 @@ var jQuery  = $;
                 }
             }
         }
-
         function drag( event )
         {
             if( oContent.ratio < 1 )
@@ -213,7 +187,6 @@ var jQuery  = $;
                 {
                     iPosition.now = Math.min( ( oTrack[ options.axis ] - oThumb[ options.axis ] ), Math.max( 0, ( iPosition.start + ( iMouse.start - ( sAxis ? event.pageX : event.pageY ) ))));
                 }
-
                 iScroll = iPosition.now * oScrollbar.ratio;
                 oContent.obj.css( sDirection, -iScroll );
                 oThumb.obj.css( sDirection, iPosition.now );
@@ -227,24 +200,16 @@ var jQuery  = $;
             oThumb.obj.unbind( 'mouseup', end );
             document.ontouchmove = document.ontouchend = null;
         }
-
         return initialize();
     }
-
 }(jQuery));
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("tinyscrollbar")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

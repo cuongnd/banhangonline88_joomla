@@ -1,16 +1,12 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 $.require() 
  .script("mvc/lang.string") 
  .done(function() { 
 var exports = function() { 
-
 
 	/**
 	 * @add jQuery.String
@@ -45,20 +41,14 @@ var exports = function() {
 		}
 		return retArr;
 	};
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
-}); 
+});
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("mvc/lang.string.rsplit")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

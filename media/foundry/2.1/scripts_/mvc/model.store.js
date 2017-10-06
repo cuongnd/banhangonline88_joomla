@@ -1,20 +1,14 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 $.require() 
  .script("mvc/model.list","mvc/lang.object") 
  .done(function() { 
 var exports = function() { 
 
-
-
 var same = $.Object.same;
-
 
 $.Class($.globalNamespace + '.Model.Store',
 {
@@ -28,7 +22,6 @@ $.Class($.globalNamespace + '.Model.Store',
 		this.sets = [];
 		this.data = {};
 		// listen on create and add ... listen on destroy and remove
-
 		this.namespace.bind('destroyed', this.callback('remove'))
 		this.namespace.bind('updated', this.callback('updated'))
 	},
@@ -36,12 +29,10 @@ $.Class($.globalNamespace + '.Model.Store',
 		// go through lists and remove this guy if he is in the list and should not be ...
 		var sets  = this.sets.slice(0),
 			report = ["Store - updating "];
-
 		for(var i=0; i < sets.length; i++){
 			var set = sets[i],
 				inSet = this.filter(item, set.params) !== false,
 				inList = set.list.get(item)[0];
-
 			if(inSet && !inList){
 				report.push("adding to", set.params, "; ");
 				set.list.push(item)
@@ -69,17 +60,14 @@ $.Class($.globalNamespace + '.Model.Store',
 		// need to unbind?  Of course lists should cause this to happen
 		delete this.data[id];
 		// go through sets ...
-
 		/*var sets  = this.sets.slice(0),
 			report = ["Store - removing from "];
 		for(var i=0; i < sets.length; i++){
 			var set = sets[i],
 				removed;
-
 			if(set.list){
 				removed = set.list.remove(item)
 			}
-
 			if(removed.length) {
 				report.push(set.params, "; ");
 			}
@@ -99,7 +87,6 @@ $.Class($.globalNamespace + '.Model.Store',
 	 */
 	add : function(items, params){
 		// need to check the filter rules, if we can even add this ...
-
 		var len = items.length,
 			i=0,
 			item,
@@ -115,7 +102,6 @@ $.Class($.globalNamespace + '.Model.Store',
 			} else {
 				added.push(this.data[id] = this.create(item))
 			}
-
 		}
 		// go through sets and add to them ...
 		//   slice so that if in callback, the number of sets increases, you are ok
@@ -124,7 +110,6 @@ $.Class($.globalNamespace + '.Model.Store',
 		for(var i=0; i < sets.length; i++){
 			var set = sets[i],
 				itemsForSet = [];
-
 			for(var j =0; j< added.length; j++){
 				item = added[j]
 				if( this.filter(item, set.params) !== false) {
@@ -136,15 +121,12 @@ $.Class($.globalNamespace + '.Model.Store',
 				set.list.push(itemsForSet);
 			}
 		}
-
 		/*if(report.length > 1) {
 			console.log.apply(console, report);
 		} else {
 			console.log("Store - Got new items, but no matches")
 		}*/
-
 		// check if item would be added to set
-
 		// make sure item isn't already in set?
 	},
 	/**
@@ -162,7 +144,6 @@ $.Class($.globalNamespace + '.Model.Store',
 	},
 	has : function(params){
 		// check if it has an evil param ...
-
 		return $.Object.subsets(params, this.sets).length
 	},
 	/**
@@ -180,7 +161,6 @@ $.Class($.globalNamespace + '.Model.Store',
 		for ( var param in params ) {
 			i=0;
 			paramValue = params[param];
-
 			// in fixtures we ignore null, I don't want to now
 			if ( paramValue !== undefined && item[param] !== undefined
 				 && !this._compare(param, item[param] ,paramValue) ) {
@@ -227,7 +207,6 @@ $.Class($.globalNamespace + '.Model.Store',
 	pagination : function(items, params){
 		var offset = parseInt(params.offset, 10) || 0,
 			limit = parseInt(params.limit, 10) || (items.length - offset);
-
 		return items.slice(offset, offset + limit);
 	},
 	get : function(id){
@@ -268,20 +247,17 @@ $.Class($.globalNamespace + '.Model.Store',
 			cb = function(){
 				ready(list)
 			};
-
 		if(typeof  register === 'function' ){
 			ready = register;
 			register = false;
 		}
 		ready  = ready || function(){};
-
 		for(var i =0; i < this.sets.length; i++){
 			var set = this.sets[i];
 			if( $.Object.subset(params, set.params, this.compare)  ){
 				parentLoadedSet = set;
 				//console.log($.Object.same( set.params, params), set.params, params );
 				if( $.Object.same( set.params, params, this.compare) ){
-
 					// what if it's not loaded
 					if(!set.def){
 						//console.log("Store - a listening list, but not loaded", params, ready);
@@ -303,12 +279,10 @@ $.Class($.globalNamespace + '.Model.Store',
 						}
 						//ready && ready(set.list);
 					}
-
 					return set.list;
 				}
 			}
 		}
-
 
 		// create a list, a set and add the set to our list of sets
 		list = new this.namespace.List();
@@ -316,17 +290,13 @@ $.Class($.globalNamespace + '.Model.Store',
 				params: $.extend({},params),
 				list: list
 			};
-
 		this.sets.push(sameSet);
-
 
 		// we have loaded or are loading what we need
 		if( parentLoadedSet ) {
 			// find the first set with a deferred
 			if( !parentLoadedSet.def ) {
-
 				// we need to load this ...
-
 			} else if( parentLoadedSet.def.isResolved() ){
 				// add right away
 				//console.log("Store - already loaded parent set",params);
@@ -344,32 +314,23 @@ $.Class($.globalNamespace + '.Model.Store',
 					cb();
 				})
 			}
-
 		} else {
-
 			if( register ) {
 				// do nothing ...
-
 
 			} else {
 				// we need to load it
 				//console.log("Store - loading data for the first time", params, ready);
 				var def = this.namespace.findAll(params);
 				sameSet.def = def;
-
 				def.done(function(items){
 					self.add(items, params);
 					cb();//ready && ready(sameSet.list);
 				})
-
 			}
-
 		}
 
-
-
 		// wait until the items are loaded, do the reset and pushing ...
-
 		// check later if no one is listening ...
 		setTimeout(function(){
 			//console.log('unbinding ...?')
@@ -379,12 +340,10 @@ $.Class($.globalNamespace + '.Model.Store',
 			}*/
 		},10);
 		return list;
-
 	},
 	findAllCached : function(params){
 		// remove anything not filtering ....
 		//   - sorting, grouping, limit, and offset
-
 		var list = [],
 			data = this.data,
 			item;
@@ -394,7 +353,6 @@ $.Class($.globalNamespace + '.Model.Store',
 				list.push(item)
 			}
 		}
-
 		// do sorting / grouping
 		list = this.pagination(this.sort(list, params), params);
 		// take limit and offset ...
@@ -402,21 +360,14 @@ $.Class($.globalNamespace + '.Model.Store',
 	}
 },{});
 
-
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
-}); 
+});
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("mvc/model.store")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

@@ -1,14 +1,10 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 var jQuery = $; 
 var exports = function() { 
-
 // ----------------------------------------------------------------------------
 // markItUp!
 // ----------------------------------------------------------------------------
@@ -21,7 +17,6 @@ var exports = function() {
 // Basic set. Feel free to add more tags
 // ----------------------------------------------------------------------------
 if ($.markItUp===undefined) { $.markItUp = { sets: {} } };
-
 $.markItUp.sets.html = {
 	onShiftEnter:  	{keepDefault:false, replaceWith:'<br />\n'},
 	onCtrlEnter:  	{keepDefault:false, openWith:'\n<p>', closeWith:'</p>'},
@@ -41,19 +36,13 @@ $.markItUp.sets.html = {
 		{name:'Preview', className:'preview',  call:'preview'}
 	]
 }
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("markitup/sets/html")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

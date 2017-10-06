@@ -1,16 +1,12 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 $.require() 
  .script("mvc/dom.route","mvc/controller") 
  .done(function() { 
 var exports = function() { 
-
 
 	/**
 	 *
@@ -27,12 +23,9 @@ var exports = function() {
 		var check = function(ev, attr, how){
 			if($.route.attr('route') === (selector||"") &&
 			 (ev.batchNum === undefined || ev.batchNum !== batchNum ) ){
-
 				batchNum = ev.batchNum;
-
 				var d = $.route.attrs();
 				delete d.route;
-
 				controller[funcName](d)
 			}
 		}
@@ -41,20 +34,14 @@ var exports = function() {
 			$.route.unbind('change',check)
 		}
 	}
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
-}); 
+});
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("mvc/controller.route")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

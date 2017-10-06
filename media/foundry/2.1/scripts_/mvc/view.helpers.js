@@ -1,17 +1,12 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 $.require() 
  .script("mvc/view.ejs") 
  .done(function() { 
 var exports = function() { 
-
-
 
 /**
  * @add jQuery.EJS.Helpers.prototype
@@ -26,10 +21,8 @@ $.extend($.EJS.Helpers.prototype, {
 		if ( input.toString ) return input.toString().replace(/\n/g, '<br />').replace(/''/g, "'");
 		return '';
 	},
-
 	// treyk 06/11/2009 - Pulled from old MVC.Date plugin for now.  Will look for a suitable jQuery Date plugin
 	 month_names: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-
     /**
      * Creates a check box tag
      * @plugin view/helpers
@@ -51,17 +44,14 @@ $.extend($.EJS.Helpers.prototype, {
      */
     date_tag: function( name, value , html_options ) {
 	    if(! (value instanceof Date)) value = new Date();
-
 		var years = [], months = [], days =[];
 		var year = value.getFullYear(), month = value.getMonth(), day = value.getDate();
 		for(var y = year - 15; y < year+15 ; y++) years.push({value: y, text: y});
 		for(var m = 0; m < 12; m++) months.push({value: (m), text: $View.Helpers.month_names[m]});
 		for(var d = 0; d < 31; d++) days.push({value: (d+1), text: (d+1)});
-
 		var year_select = this.select_tag(name+'[year]', year, years, {id: name+'[year]'} );
 		var month_select = this.select_tag(name+'[month]', month, months, {id: name+'[month]'});
 		var day_select = this.select_tag(name+'[day]', day, days, {id: name+'[day]'});
-
 	    return year_select+month_select+day_select;
 	},
     /**
@@ -73,17 +63,14 @@ $.extend($.EJS.Helpers.prototype, {
      */
 	time_tag: function( name, value, html_options, interval ) {
 		var times = [];
-
 		if (interval == null || interval == 0)
 			interval = 60;
-
 		for(var h = 0; h < 24 ; h++)
 			for(var m = 0; m < 60; m+=interval)
 			{
 				var time = (h < 10 ? '0' : '') + h + ':' + (m < 10 ? '0' : '') + m;
 				times.push({ text: time, value: time });
 			}
-
 		return this.select_tag(name, value, times, html_options );
 	},
     /**
@@ -235,7 +222,6 @@ $.extend($.EJS.Helpers.prototype, {
 	        if(typeof choice == 'string') choice = {value: choice};
 			if(!choice.text) choice.text = choice.value;
 			if(!choice.value) choice.text = choice.text;
-
 			var optionOptions = {value: choice.value};
 	        if(choice.value == value)
 	            optionOptions.selected ='selected';
@@ -279,7 +265,6 @@ $.extend($.EJS.Helpers.prototype, {
 	    for(var attr in html_options) {
 	       if(html_options.hasOwnProperty(attr)){
 			   value = html_options[attr] != null ? html_options[attr].toString() : '';
-
 		       if(attr == "Class" || attr == "klass") attr = "class";
 		       if( value.indexOf("'") != -1 )
 		            txt += attr+'=\"'+value+'\" ' ;
@@ -331,15 +316,11 @@ $.extend($.EJS.Helpers.prototype, {
 		options.src = steal.root.join("resources/images/"+image_location)+'';
 		return this.single_tag_for('img', options);
 	}
-
 });
-
 $.EJS.Helpers.prototype.text_tag = $.EJS.Helpers.prototype.text_area_tag;
-
 // Private variables (in the (function($){})(jQuery) scope)
 var data = {};
 var name = 0;
-
 $.EJS.Helpers.link_data = function(store){
 	var functionName = name++;
 	data[functionName] = store;
@@ -358,20 +339,14 @@ $.EJS.Helpers.prototype.get_data = function(el){
 	return $.EJS.Helpers.get_data(el)
 };
 
-
 }; 
-
-exports(); 
+exports();
 module.resolveWith(exports); 
-
-}); 
+});
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("mvc/view.helpers")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

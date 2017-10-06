@@ -1,16 +1,12 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 $.require() 
  .script("mvc/dom.range") 
  .done(function() { 
 var exports = function() { 
-
 
 var convertType = function(type){
 	return  type.replace(/([a-z])([a-z]+)/gi, function(all,first,  next){
@@ -59,8 +55,7 @@ getSelection = function(el){
 	var win = getWindow(el);
 	
 	if (el.selectionStart !== undefined) {
-
-		if(document.activeElement 
+		if(document.activeElement
 		 	&& document.activeElement != el 
 			&& el.selectionStart == el.selectionEnd 
 			&& el.selectionStart == 0){
@@ -70,7 +65,6 @@ getSelection = function(el){
 	} else if(win.getSelection){
 		return getElementsSelection(el, win)
 	} else{
-
 		try {
 			//try 2 different methods that work differently
 			// one should only work for input elements, but sometimes doesn't
@@ -153,7 +147,6 @@ select = function( el, start, end ) {
 		range.moveEnd('character', end !== undefined ? end : start)
         range.select();
 	}
-
 },
 /*
  * If one of the range values is within start and len, replace the range
@@ -252,20 +245,14 @@ $.fn.selection = function(start, end){
 // for testing
 $.fn.selection.getCharElement = getCharElement;
 
-
 }; 
-
-exports(); 
+exports();
 module.resolveWith(exports); 
-
-}); 
+});
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("mvc/dom.selection")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

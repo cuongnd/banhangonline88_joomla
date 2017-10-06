@@ -1,18 +1,14 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 var jQuery = $; 
 $.require() 
  .script("ui/core","ui/mouse","ui/widget") 
  .stylesheet("ui/selectable") 
  .done(function() { 
 var exports = function() { 
-
 /*!
  * jQuery UI Selectable 1.9.0pre
  * http://jqueryui.com
@@ -29,7 +25,6 @@ var exports = function() {
  *	jquery.ui.widget.js
  */
 (function( $, undefined ) {
-
 $.widget("ui.selectable", $.ui.mouse, {
 	version: "1.9.0pre",
 	options: {
@@ -41,11 +36,8 @@ $.widget("ui.selectable", $.ui.mouse, {
 	},
 	_create: function() {
 		var that = this;
-
 		this.element.addClass("ui-selectable");
-
 		this.dragged = false;
-
 		// cache selectee children based on filter
 		var selectees;
 		this.refresh = function() {
@@ -69,14 +61,10 @@ $.widget("ui.selectable", $.ui.mouse, {
 			});
 		};
 		this.refresh();
-
 		this.selectees = selectees.addClass("ui-selectee");
-
 		this._mouseInit();
-
 		this.helper = $("<div class='ui-selectable-helper'></div>");
 	},
-
 	_destroy: function() {
 		this.selectees
 			.removeClass("ui-selectee")
@@ -85,21 +73,14 @@ $.widget("ui.selectable", $.ui.mouse, {
 			.removeClass("ui-selectable ui-selectable-disabled");
 		this._mouseDestroy();
 	},
-
 	_mouseStart: function(event) {
 		var that = this;
-
 		this.opos = [event.pageX, event.pageY];
-
 		if (this.options.disabled)
 			return;
-
 		var options = this.options;
-
 		this.selectees = $(options.filter, this.element[0]);
-
 		this._trigger("start", event);
-
 		$(options.appendTo).append(this.helper);
 		// position helper (lasso)
 		this.helper.css({
@@ -108,11 +89,9 @@ $.widget("ui.selectable", $.ui.mouse, {
 			"width": 0,
 			"height": 0
 		});
-
 		if (options.autoRefresh) {
 			this.refresh();
 		}
-
 		this.selectees.filter('.ui-selected').each(function() {
 			var selectee = $.data(this, "selectable-item");
 			selectee.startselected = true;
@@ -127,7 +106,6 @@ $.widget("ui.selectable", $.ui.mouse, {
 				});
 			}
 		});
-
 		$(event.target).parents().andSelf().each(function() {
 			var selectee = $.data(this, "selectable-item");
 			if (selectee) {
@@ -151,23 +129,17 @@ $.widget("ui.selectable", $.ui.mouse, {
 				return false;
 			}
 		});
-
 	},
-
 	_mouseDrag: function(event) {
 		var that = this;
 		this.dragged = true;
-
 		if (this.options.disabled)
 			return;
-
 		var options = this.options;
-
 		var x1 = this.opos[0], y1 = this.opos[1], x2 = event.pageX, y2 = event.pageY;
 		if (x1 > x2) { var tmp = x2; x2 = x1; x1 = tmp; }
 		if (y1 > y2) { var tmp = y2; y2 = y1; y1 = tmp; }
 		this.helper.css({left: x1, top: y1, width: x2-x1, height: y2-y1});
-
 		this.selectees.each(function() {
 			var selectee = $.data(this, "selectable-item");
 			//prevent helper from being selected if appendTo: selectable
@@ -179,7 +151,6 @@ $.widget("ui.selectable", $.ui.mouse, {
 			} else if (options.tolerance == 'fit') {
 				hit = (selectee.left > x1 && selectee.right < x2 && selectee.top > y1 && selectee.bottom < y2);
 			}
-
 			if (hit) {
 				// SELECT
 				if (selectee.selected) {
@@ -223,7 +194,6 @@ $.widget("ui.selectable", $.ui.mouse, {
 					if (!event.metaKey && !event.ctrlKey && !selectee.startselected) {
 						selectee.$element.removeClass('ui-selected');
 						selectee.selected = false;
-
 						selectee.$element.addClass('ui-unselecting');
 						selectee.unselecting = true;
 						// selectable UNSELECTING callback
@@ -234,17 +204,12 @@ $.widget("ui.selectable", $.ui.mouse, {
 				}
 			}
 		});
-
 		return false;
 	},
-
 	_mouseStop: function(event) {
 		var that = this;
-
 		this.dragged = false;
-
 		var options = this.options;
-
 		$('.ui-unselecting', this.element[0]).each(function() {
 			var selectee = $.data(this, "selectable-item");
 			selectee.$element.removeClass('ui-unselecting');
@@ -265,29 +230,19 @@ $.widget("ui.selectable", $.ui.mouse, {
 			});
 		});
 		this._trigger("stop", event);
-
 		this.helper.remove();
-
 		return false;
 	}
-
 });
-
 })(jQuery);
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
-}); 
+});
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("ui/selectable")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

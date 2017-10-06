@@ -1,20 +1,14 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 $.require() 
  .script("mvc/lang.string") 
  .done(function() { 
 var exports = function() { 
 
-
-
 	// =============== HELPERS =================
-
 	    // if we are initializing a new class
 	var initializing = false,
 		makeArray = $.makeArray,
@@ -25,12 +19,10 @@ var exports = function() {
 		concatArgs = function(arr, args){
 			return arr.concat(makeArray(args));
 		},
-
 		// tests if we can get super in .toString()
 		fnTest = /xyz/.test(function() {
 			xyz;
 		}) ? /\b_super\b/ : /.*/,
-
 		// overwrites an object with methods, sets up _super
 		//   newProps - new properties
 		//   oldProps - where the old properties might be
@@ -45,11 +37,9 @@ var exports = function() {
 					return function() {
 						var tmp = this._super,
 							ret;
-
 						// Add a new ._super() method that is the same method
 						// but on the super-class
 						this._super = oldProps[name];
-
 						// The method only need to be bound temporarily, so we
 						// remove it when we're done executing
 						ret = fn.apply(this, arguments);
@@ -60,7 +50,6 @@ var exports = function() {
 			}
 		},
 		STR_PROTOTYPE = 'prototype'
-
 	/**
 	 * @class jQuery.Class
 	 * @plugin jquery/class
@@ -354,13 +343,11 @@ var exports = function() {
 	 * and [jQuery.Class.prototype.init init]  methods
 	 * are called.
 	 */
-
 	clss = $.Class = function() {
 		if (arguments.length) {
 			clss.extend.apply(clss, arguments);
 		}
 	};
-
 	/* @Static*/
 	extend(clss, {
 		/**
@@ -417,23 +404,18 @@ var exports = function() {
 		 * @return {Function} the callback function.
 		 */
 		proxy: function( funcs ) {
-
 			//args that should be curried
 			var args = makeArray(arguments),
 				self;
-
 			// get the functions to callback
 			funcs = args.shift();
-
 			// if there is only one function, make funcs into an array
 			if (!isArray(funcs) ) {
 				funcs = [funcs];
 			}
-
 			// keep a reference to us in self
 			self = this;
 
-			
 			return function class_cb() {
 				// add the arguments after the curried args
 				var cur = concatArgs(args, arguments),
@@ -441,23 +423,19 @@ var exports = function() {
 					length = funcs.length,
 					f = 0,
 					func;
-
 				// go through each function to call back
 				for (; f < length; f++ ) {
 					func = funcs[f];
 					if (!func ) {
 						continue;
 					}
-
 					// set called with the name of the function on self (this is how this.view works)
 					isString = typeof func == "string";
 					if ( isString && self._set_called ) {
 						self.called = func;
 					}
-
 					// call the function
 					cur = (isString ? self[func] : func).apply(self, cur || []);
-
 					// pass the result to the next function (if there is a next function)
 					if ( f < length - 1 ) {
 						cur = !isArray(cur) || cur._use_call ? [cur] : cur
@@ -481,7 +459,6 @@ var exports = function() {
 			// get a raw instance objet (init is not called)
 			var inst = this.rawInstance(),
 				args;
-
 			// call setup if there is a setup
 			if ( inst.setup ) {
 				args = inst.setup.apply(inst, arguments);
@@ -569,26 +546,21 @@ var exports = function() {
 				proto = klass;
 				klass = null;
 			}
-
 			proto = proto || {};
 			var _super_class = this,
 				_super = this[STR_PROTOTYPE],
 				name, shortName, namespace, prototype;
-
 			// Instantiate a base class (but only create the instance,
 			// don't run the init constructor)
 			initializing = true;
 			prototype = new this();
 			initializing = false;
-
 			// Copy the properties over onto the new prototype
 			inheritProps(proto, _super, prototype);
-
 			// The dummy class constructor
 			function Class() {
 				// All construction is actually done in the init method
 				if ( initializing ) return;
-
 				// we are being called w/o new, we are extending
 				if ( this.constructor !== Class && arguments.length ) {
 					return arguments.callee.extend.apply(arguments.callee, arguments)
@@ -602,27 +574,20 @@ var exports = function() {
 					Class[name] = this[name];
 				}
 			}
-
 			// copy new static props on class
 			inheritProps(klass, this, Class);
-
 			// do namespace stuff
 			if ( fullName ) {
-
 				var parts = fullName.split(/\./),
 					shortName = parts.pop(),
 					current = getObject(parts.join('.'), window, true),
 					namespace = current;
 
-				
-
 				// !-- FOUNDRY HACK --! //
 				// Inherit any existing properties from the namespace where Class is being assigned to.
 				extend(true, Class, current[shortName]);
-
 				current[shortName] = Class;
 			}
-
 			// set things that can't be overwritten
 			extend(Class, {
 				prototype: prototype,
@@ -657,20 +622,15 @@ var exports = function() {
 				 */
 				fullName: fullName
 			});
-
 			//make sure our prototype looks nice
 			Class[STR_PROTOTYPE].Class = Class[STR_PROTOTYPE].constructor = Class;
 
-
-
 			// call the class setup
 			var args = Class.setup.apply(Class, concatArgs([_super_class],arguments));
-
 			// call the class init
 			if ( Class.init ) {
 				Class.init.apply(Class, args || concatArgs([_super_class],arguments));
 			}
-
 			/* @Prototype*/
 			return Class;
 			/**
@@ -760,11 +720,7 @@ var exports = function() {
 			 *
 			 */
 		}
-
 	})
-
-
-
 
 
 	clss.callback = clss[STR_PROTOTYPE].callback = clss[STR_PROTOTYPE].
@@ -781,21 +737,14 @@ var exports = function() {
 	 */
 	proxy = clss.proxy;
 
-
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
-}); 
+});
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("mvc/class")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

@@ -2,7 +2,6 @@
 // Button groups
 // --------------------------------------------------
 
-
 // Make the div behave like a button
 .btn-group {
   position: relative;
@@ -13,12 +12,10 @@
   white-space: nowrap; // prevent buttons from wrapping when in tight spaces (e.g., the table on the tests page)
   .ie7-restore-left-whitespace();
 }
-
 // Space out series of button groups
 .btn-group + .btn-group {
   margin-left: 5px;
 }
-
 // Optional: Group multiple button groups together for a toolbar
 .btn-toolbar {
   font-size: 0; // Hack to remove whitespace that results from using inline-block
@@ -30,7 +27,6 @@
     margin-left: 5px;
   }
 }
-
 // Float them, remove border radius, then re-add to first and last elements
 .btn-group > .btn {
   position: relative;
@@ -43,7 +39,6 @@
 .btn-group > .dropdown-menu {
   font-size: @baseFontSize; // redeclare as part 2 of font-size inline-block hack
 }
-
 // Reset fonts for other sizes
 .btn-group > .btn-mini {
   font-size: 11px;
@@ -54,7 +49,6 @@
 .btn-group > .btn-large {
   font-size: 16px;
 }
-
 // Set corners individual because sometimes a single button can be in a .btn-group and we need :first-child and :last-child to both match
 .btn-group > .btn:first-child {
   margin-left: 0;
@@ -78,7 +72,6 @@
   .border-top-right-radius(@borderRadiusLarge);
   .border-bottom-right-radius(@borderRadiusLarge);
 }
-
 // On hover/focus/active, bring the proper btn to front
 .btn-group > .btn:hover,
 .btn-group > .btn:focus,
@@ -86,18 +79,14 @@
 .btn-group > .btn.active {
   z-index: 2;
 }
-
 // On active and open, don't show outline
 .btn-group .dropdown-toggle:active,
 .btn-group.open .dropdown-toggle {
   outline: 0;
 }
 
-
-
 // Split button dropdowns
 // ----------------------
-
 // Give the line between buttons some depth
 .btn-group > .btn + .dropdown-toggle {
   padding-left: 8px;
@@ -122,16 +111,13 @@
   *padding-top: 7px;
   *padding-bottom: 7px;
 }
-
 .btn-group.open {
-
   // The clickable button for toggling the menu
   // Remove the gradient and set the same inset shadow as the :active state
   .dropdown-toggle {
     background-image: none;
     .box-shadow(~"inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05)");
   }
-
   // Keep the hover's background when dropdown is open
   .btn.dropdown-toggle {
     background-color: @btnBackgroundHighlight;
@@ -156,7 +142,6 @@
   }
 }
 
-
 // Reposition the caret
 .btn .caret {
   margin-top: 8px;
@@ -178,8 +163,6 @@
   border-bottom-width: 5px;
 }
 
-
-
 // Account for other colors
 .btn-primary,
 .btn-warning,
@@ -193,11 +176,8 @@
   }
 }
 
-
-
 // Vertical button groups
 // ----------------------
-
 .btn-group-vertical {
   display: inline-block; // makes buttons only take up the width they need
   .ie7-inline-block();

@@ -1,13 +1,9 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 var exports = function() { 
-
 var jQuery 	= $;
 /*!
  * iButton jQuery Plug-in
@@ -46,8 +42,7 @@ var jQuery 	= $;
 		
 		// if a method is supplied, execute it for non-empty results
 		if( self && method && this.length ){
-
-			// if request a copy of the object, return it			
+			// if request a copy of the object, return it
 			if( method.toLowerCase() == "object" ) return self;
 			// if method is defined, run it and return either it's results or the chain
 			else if( self[method] ){
@@ -72,7 +67,6 @@ var jQuery 	= $;
 						result = result.add(r);
 					}
 				});
-
 				// return either the results (which could be a jQuery object) or the original chain
 				return result || this;
 			// everything else, return the chain
@@ -85,8 +79,7 @@ var jQuery 	= $;
 			});
 		};
 	};
-
-	// count instances	
+	// count instances
 	var counter = 0;
 	// detect iPhone
 	$.browser.iphone = (navigator.userAgent.toLowerCase().indexOf("iphone") > -1);
@@ -105,12 +98,10 @@ var jQuery 	= $;
 			, bDefaultLabelsUsed = (options.labelOn == ON && options.labelOff == OFF)
 			// set valid field types
 			, allow = ":checkbox, :radio";
-
 		// only do for checkboxes buttons, if matches inside that node
     if( !$input.is(allow) ) return $input.find(allow).iButton(options);
 		// if iButton already exists, stop processing
 		else if($.data($input[0], "iButton") ) return;
-
 		// store a reference to this marquee
 		$.data($input[0], "iButton", self);
 		
@@ -154,7 +145,6 @@ var jQuery 	= $;
 			// run callback
 			if( $.isFunction(options.destroy) ) options.destroy.apply(self, [$input, options]);
 		};
-
     $input
 			// create the wrapper code
 			.wrap('<div class="' + $.trim(options.classContainer + ' ' + options.className) + '" />')
@@ -164,14 +154,12 @@ var jQuery 	= $;
       	+ '<div class="' + options.classLabelOn + '"><span><label>' + options.labelOn   + '</label></span></div>'
       	+ '<div class="' + options.classPaddingLeft + '"></div><div class="' + options.classPaddingRight + '"></div>'
 			);
-
     var $container = $input.parent()
 			, $handle    = $input.siblings("." + options.classHandle)
 			, $offlabel  = $input.siblings("." + options.classLabelOff)
 			, $offspan   = $offlabel.children("span")
 			, $onlabel   = $input.siblings("." + options.classLabelOn)
 			, $onspan    = $onlabel.children("span");
-
 
 		// if we need to do some resizing, get the widths only once
 		if( options.resizeHandle || options.resizeContainer ){
@@ -186,7 +174,6 @@ var jQuery 	= $;
 		} else {
 			width.handle = $handle.width();
 		}
-
     // automatically resize the control
 		if( options.resizeContainer ){
 			width.container = (Math.max(width.onspan, width.offspan) + width.handle + 16);
@@ -196,14 +183,12 @@ var jQuery 	= $;
 		} else {
 			width.container = $container.width();
 		}
-
 		var handleRight = width.container - width.handle - 6;
     
 		var positionHandle = function (animate){
 			var checked = $input[0].checked
 				, x = (checked) ? handleRight : 0
 				, animate = (arguments.length > 0) ? arguments[0] : true;
-
 			if( animate && options.enableFx ){
 				$handle.stop().animate({left: x}, options.duration, options.easing);
 				$onlabel.stop().animate({width: x + 0}, options.duration, options.easing);
@@ -216,14 +201,12 @@ var jQuery 	= $;
 				$offspan.css("marginRight", -x);
 			}
 		};
-
-		// place the buttons in their default location	
+		// place the buttons in their default location
 		positionHandle(false);
 		
 		var getDragPos = function(e){
 			return e.pageX || ((e.originalEvent.changedTouches) ? e.originalEvent.changedTouches[0].pageX : 0);
 		};
-
 		// monitor mouse clicks in the container
 		$container.bind("mousedown.iButton touchstart.iButton", function(e) {
 			// abort if disabled or allow clicking the input to toggle the status (if input is visible)
@@ -236,8 +219,7 @@ var jQuery 	= $;
 			dragStart.time = (new Date()).getTime();
 			return false;
 		});
-
-		// make sure dragging support is enabled		
+		// make sure dragging support is enabled
 		if( options.enableDrag ){
 			// monitor mouse movement on the page
 			$(document).bind("mousemove.iButton_" + id + " touchmove.iButton_" + id, function(e) {
@@ -267,15 +249,12 @@ var jQuery 	= $;
 		$(document).bind("mouseup.iButton_" + id + " touchend.iButton_" + id, function(e) {
 			if( mouse.clicked != $handle ){ return false }
 			e.preventDefault();
-
-			// track if the value has changed			
+			// track if the value has changed
 			var changed = true;
-
-			// if not dragging or click time under a certain millisecond, then just toggle			
+			// if not dragging or click time under a certain millisecond, then just toggle
 			if( !mouse.dragging || (((new Date()).getTime() - dragStart.time) < options.clickOffset ) ){
 				var checked = $input[0].checked;
 				$input.attr("checked", !checked);
-
 				// run callback
 				if( $.isFunction(options.click) ) options.click.apply(self, [!checked, $input, options]);
 			} else {
@@ -286,7 +265,6 @@ var jQuery 	= $;
 				
 				// if the value is the same, don't run change event
 				if( $input[0].checked == checked ) changed = false;
-
 				$input.attr("checked", checked);
 			}
 			
@@ -307,18 +285,15 @@ var jQuery 	= $;
 			.bind("change.iButton", function (){
 				// move handle
 				positionHandle();
-
 				// if a radio element, then we must repaint the other elements in it's group to show them as not selected
 				if( $input.is(":radio") ){
 					var el = $input[0];
 	
 					// try to use the DOM to get the grouped elements, but if not in a form get by name attr
 					var $radio = $(el.form ? el.form[el.name] : ":radio[name=" + el.name + "]");
-
-					// repaint the radio elements that are not checked	
+					// repaint the radio elements that are not checked
 					$radio.filter(":not(:checked)").iButton("repaint");
 				}
-
 				// run callback
 				if( $.isFunction(options.change) ) options.change.apply(self, [$input, options]);
 			})
@@ -330,18 +305,15 @@ var jQuery 	= $;
 			.bind("blur.iButton", function (){
 				$container.removeClass(options.classFocus);
 			});
-
 		// if a click event is registered, we must register on the checkbox so it's fired if triggered on the checkbox itself
 		if( $.isFunction(options.click) ){
 			$input.bind("click.iButton", function (){
 				options.click.apply(self, [$input[0].checked, $input, options]);
 			});
 		}
-
 		// if the field is disabled, mark it as such
 		if( $input.is(":disabled") ) this.disable(true);
-
-		// special behaviors for IE    
+		// special behaviors for IE
 		if( $.browser.msie ){
 			// disable text selection in IE, other browsers are controlled via CSS
 			$container.find("*").andSelf().attr("unselectable", "on");
@@ -352,7 +324,6 @@ var jQuery 	= $;
 		// run the init callback
 		if( $.isFunction(options.init) ) options.init.apply(self, [$input, options]);
 	};
-
 	var defaults = {
 		  duration: 100                           // the speed of the animation
 		, easing: "swing"                         // the easing animation to use
@@ -364,7 +335,6 @@ var jQuery 	= $;
 		, enableFx: true                          // determines if we show animation
 		, allowRadioUncheck: false                // determine if a radio button should be able to be unchecked
 		, clickOffset: 120                        // if millseconds between a mousedown & mouseup event this value, then considered a mouse click
-
 		// define the class statements
 		, className:         ""
 		, classContainer:    "ibutton-container"
@@ -378,7 +348,6 @@ var jQuery 	= $;
 		, classHandleActive: "ibutton-active-handle"
 		, classPaddingLeft:  "ibutton-padding-left"
 		, classPaddingRight: "ibutton-padding-right"
-
 		// event handlers
 		, init: null                              // callback that occurs when a iButton is initialized
 		, change: null                            // callback that occurs when the button state is changed
@@ -386,21 +355,14 @@ var jQuery 	= $;
 		, disable: null                           // callback that occurs when the button is disabled/enabled
 		, destroy: null                           // callback that occurs when the button is destroyed
 	}, ON = defaults.labelOn, OFF = defaults.labelOff;
-
 })(jQuery);
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("ibutton")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

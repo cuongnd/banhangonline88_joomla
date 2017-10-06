@@ -1,19 +1,14 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 $.require() 
  .script("mvc/model") 
  .done(function() { 
 var exports = function() { 
 
-
 	var convert = function(method, func){
-
 		return typeof method == 'function' ? function(){
 			var old = this._service,
 				ret;
@@ -29,31 +24,22 @@ var exports = function() {
 	 * @param {Object} methods
 	 */
 	$.Model.service = function(properties){
-
 		var func = function(newProps){
 			return $.Model.service( $.extend({}, properties, newProps) );
 		};
-
 		for(var name in properties){
 			func[name] = convert(properties[name], func)
 		}
-
 		return func;
 	}
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
-}); 
+});
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("mvc/model.service")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

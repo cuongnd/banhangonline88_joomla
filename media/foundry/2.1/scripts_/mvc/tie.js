@@ -1,17 +1,12 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 $.require() 
  .script("mvc/controller") 
  .done(function() { 
 var exports = function() { 
-
-
 
 /**
  * @class jQuery.Tie
@@ -45,24 +40,19 @@ $.Controller($.globalNamespace + ".Tie",{
 				}
 			}
 		}
-
 		this.type = type;
 		this.attr = attr;
 		this.inst = inst;
 		this.bind(inst, attr, "attrChanged");
-
 		//destroy this controller if the model instance is destroyed
 		this.bind(inst, "destroyed", "modelDestroyed");
-
 		var value = inst.attr(attr);
 		//set the value
 		this.lastValue = value;
 		if(type){
-
 			//destroy this controller if the controller is destroyed
 			this.bind(this.element.data("controllers")[type],"destroyed","destroy");
 			this.element[type]("val",value);
-
 		}else{
 			this.element.val(value)
 		}
@@ -88,9 +78,7 @@ $.Controller($.globalNamespace + ".Tie",{
 		if(!this.type && val === undefined){
 			val = this.element.val();
 		}
-
 		this.inst.attr(this.attr, val, null, this.proxy('setBack'))
-
 	},
 	setBack : function(){
 		this.setVal(this.lastValue);
@@ -102,25 +90,17 @@ $.Controller($.globalNamespace + ".Tie",{
 			// problem and don't throw an error
 			this._super();
 		}
-
 	}
 });
 
-
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
-}); 
+});
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("mvc/tie")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

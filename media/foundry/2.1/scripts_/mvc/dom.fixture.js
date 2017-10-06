@@ -1,33 +1,23 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 $.require() 
  .script("mvc/lang.object","mvc/lang.string") 
  .done(function() { 
 var exports = function() { 
 
-
-
 	//used to check urls
 
-
-
 	// the pre-filter needs to re-route the url
-
 	$.ajaxPrefilter( function( settings, originalOptions, jqXHR ) {
 	  	// if fixtures are on
 		if(! $.fixture.on) {
 			return;
 		}
-
 		// add the fixture option if programmed in
 		var data = overwrite(settings);
-
 		// if we don't have a fixture, do nothing
 		if(!settings.fixture){
 			if(window.location.protocol === "file:"){
@@ -35,16 +25,13 @@ var exports = function() {
 			}
 			return;
 		}
-
 		//if referencing something else, update the fixture option
 		if ( typeof settings.fixture === "string" && $.fixture[settings.fixture] ) {
 			settings.fixture = $.fixture[settings.fixture];
 		}
-
 		// if a string, we just point to the right url
 		if ( typeof settings.fixture == "string" ) {
 			var url = settings.fixture;
-
 			if (/^\/\//.test(url) ) {
 				url = steal.root.mapJoin(settings.fixture.substr(2))+'';
 			}
@@ -57,43 +44,30 @@ var exports = function() {
 					throw "fixtures.js Error " + error + " " + message;
 				};
 			}
-
 		}else {
 			
-
 			//it's a function ... add the fixture datatype so our fixture transport handles it
 			// TODO: make everything go here for timing and other fun stuff
 			settings.dataTypes.splice(0,0,"fixture");
-
 			if(data){
 				$.extend(originalOptions.data, data)
 			}
 			// add to settings data from fixture ...
-
 		}
-
 	});
 
-
 	$.ajaxTransport( "fixture", function( s, original ) {
-
 		// remove the fixture from the datatype
 		s.dataTypes.shift();
-
 		//we'll return the result of the next data type
 		var next = s.dataTypes[0],
 			timeout;
-
 		return {
-
 			send: function( headers , callback ) {
-
 				// callback after a timeout
 				timeout = setTimeout(function() {
-
 					// get the callback data from the fixture function
 					var response = s.fixture(original, s, headers);
-
 					// normalize the fixture data into a response
 					if(!$.isArray(response)){
 						var tmp = [{}];
@@ -103,27 +77,21 @@ var exports = function() {
 					if(typeof response[0] != 'number'){
 						response.unshift(200,"success")
 					}
-
 					// make sure we provide a response type that matches the first datatype (typically json)
 					if(!response[2] || !response[2][next]){
 						var tmp = {}
 						tmp[next] = response[2];
 						response[2] = tmp;
 					}
-
 					// pass the fixture data back to $.ajax
 					callback.apply(null, response );
 				}, $.fixture.delay);
 			},
-
 			abort: function() {
 				clearTimeout(timeout)
 			}
 		};
-
 	});
-
-
 
 	var typeTest = /^(script|json|test|jsonp)$/,
 		// a list of 'overwrite' settings object
@@ -144,7 +112,6 @@ var exports = function() {
 				settings.fixture = overwrites[index].fixture;
 				return $fixture._getData(overwrites[index].url, settings.url)
 			}
-
 		},
 		/**
 		 * Makes an attempt to guess where the id is at in the url and returns it.
@@ -152,11 +119,9 @@ var exports = function() {
 		 */
 		getId = function(settings){
         	var id = settings.data.id;
-
 			if(id === undefined && typeof settings.data === "number") {
 				id = settings.data;
 			}
-
 			/*
 			Check for id in params(if query string)
 			If this is just a string representation of an id, parse
@@ -164,13 +129,11 @@ var exports = function() {
 				id = settings.data;
 			}
 			//*/
-
 			if(id === undefined){
                 settings.url.replace(/\/(\d+)(\/|$|\.)/g, function(all, num){
                     id = num;
                 });
             }
-
             if(id === undefined){
                 id = settings.url.replace(/\/(\w+)(\/|$|\.)/g, function(all, num){
                     if(num != 'update'){
@@ -178,14 +141,11 @@ var exports = function() {
                     }
                 })
             }
-
 			if(id === undefined){ // if still not set, guess a random number
                 id = Math.round(Math.random()*1000)
             }
-
 			return id;
 		};
-
 	/**
 	 * @function jQuery.fixture
 	 * @plugin jquery/dom/fixture
@@ -400,9 +360,7 @@ var exports = function() {
 						type: matches[1]
 					};
 				}
-
 			}
-
 			//handle removing.  An exact match if fixture was provided, otherwise, anything similar
 			var index = find(settings, !!fixture);
 			if(index > -1){
@@ -416,7 +374,6 @@ var exports = function() {
 		}
 	};
 	var replacer = $.String._regs.replacer;
-
 	$.extend($.fixture, {
 		// given ajax settings, find an overwrite
 		_similar : function(settings, overwrite, exact){
@@ -442,7 +399,6 @@ var exports = function() {
 			 		 return "([^\/]+)"
 				})+"$").exec(url),
 				data = {};
-
 			if(!res){
 				return null;
 			}
@@ -463,7 +419,6 @@ var exports = function() {
 					location: settings.url+"/"+getId(settings)
 				}];
 		},
-
 		/**
 		 * @hide
 		 * Provides a rest destroy fixture function
@@ -471,7 +426,6 @@ var exports = function() {
 		"-restDestroy": function( settings, cbType ) {
 			return {};
 		},
-
 		/**
 		 * @hide
 		 * Provides a rest create fixture function
@@ -484,7 +438,6 @@ var exports = function() {
 						location: settings.url+"/"+id
 					}];
 		},
-
 		/**
 		 * @function jQuery.fixture.make
 		 * @parent jQuery.fixture
@@ -545,11 +498,9 @@ var exports = function() {
 						}
 					}
 				};
-
 			for ( var i = 0; i < (count); i++ ) {
 				//call back provided make
 				var item = make(i, items);
-
 				if (!item.id ) {
 					item.id = i;
 				}
@@ -585,7 +536,6 @@ var exports = function() {
 						}
 					});
 				});
-
 				//group is just like a sort
 				$.each((settings.data.group || []).slice(0).reverse(), function( i, name ) {
 					var split = name.split(" ");
@@ -594,11 +544,9 @@ var exports = function() {
 					});
 				});
 
-
 				var offset = parseInt(settings.data.offset, 10) || 0,
 					limit = parseInt(settings.data.limit, 10) || (items.length - offset),
 					i = 0;
-
 				//filter results if someone added an attr like parentId
 				for ( var param in settings.data ) {
 					i=0;
@@ -614,7 +562,6 @@ var exports = function() {
 					}
 				}
 
-
 				if( filter ) {
 					i = 0;
 					while (i < retArr.length) {
@@ -625,7 +572,6 @@ var exports = function() {
 						}
 					}
 				}
-
 				//return data spliced with limit and offset
 				return [{
 					"count": retArr.length,
@@ -642,7 +588,6 @@ var exports = function() {
             // update
             $.fixture["-" + types[1]+"Update"] = function( settings, cbType ) {
                 var id = getId(settings);
-
                 // TODO: make it work with non-linear ids ..
                 $.extend(findOne(id), settings.data);
 				return $.fixture["-restUpdate"](settings, cbType)
@@ -655,25 +600,19 @@ var exports = function() {
 						break;
 					}
 				}
-
                 // TODO: make it work with non-linear ids ..
                 $.extend(findOne(id), settings.data);
 				return $.fixture["-restDestroy"](settings, cbType)
 			};
 			$.fixture["-" + types[1]+"Create"] = function( settings, cbType ) {
                 var item = make(items.length, items);
-
 				$.extend(item, settings.data);
-
 				if(!item.id){
 					item.id = items.length;
 				}
-
 				items.push(item);
-
 				return $.fixture["-restCreate"](settings, cbType, undefined, item.id );
 			};
-
 
 			return {
 				getId: getId,
@@ -729,7 +668,6 @@ var exports = function() {
 				} else {
 					return Math.floor(Math.random() * arr);
 				}
-
 			}
 			var rand = arguments.callee;
 			// get a random set
@@ -824,7 +762,6 @@ var exports = function() {
 	 * @codeend
 	 */
 	$.fixture.delay = 200;
-
 	$.fixture["-handleFunction"] = function( settings ) {
 		if ( typeof settings.fixture === "string" && $.fixture[settings.fixture] ) {
 			settings.fixture = $.fixture[settings.fixture];
@@ -842,8 +779,6 @@ var exports = function() {
 		}
 		return false;
 	};
-
-
 
     /**
   	 * @page jquery.fixture.0organizing Organizing Fixtures
@@ -907,20 +842,14 @@ var exports = function() {
 	 */
 	 //Expose this for fixture debugging
 	 $.fixture.overwrites = overwrites;
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
-}); 
+});
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("mvc/dom.fixture")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

@@ -1,19 +1,14 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 $.require() 
  .script("mvc/class","mvc/lang.string","mvc/event.destroyed") 
  .done(function() { 
 var exports = function() { 
 
-
 	// ------- HELPER FUNCTIONS  ------
-
 	// Binds an element, returns a function that unbinds
 	var bind = function( el, ev, callback ) {
 		var wrappedCallback,
@@ -41,34 +36,27 @@ var exports = function() {
 		extend = $.extend,
 		Str = $.String,
 		each = $.each,
-
 		STR_PROTOTYPE = 'prototype',
 		STR_CONSTRUCTOR = 'constructor',
 		slice = Array[STR_PROTOTYPE].slice,
-
 		// Binds an element, returns a function that unbinds
 		delegate = function( el, selector, ev, callback ) {
-
 			// !-- FOUNDRY HACK --! //
 			// Make event delegation work with direct child selector
 			if ( selector.indexOf(">") === 0 ) {
 				selector = (el.data("directSelector") + " " || "") + selector;
 			}
-
 			var binder = el.delegate && el.undelegate ? el : $(isFunction(el) ? [el] : el)
 			binder.delegate(selector, ev, callback);
-
 			return function() {
 				binder.undelegate(selector, ev, callback);
 				binder = el = ev = callback = selector = null;
 			};
 		},
-
 		// calls bind or unbind depending if there is a selector
 		binder = function( el, ev, callback, selector ) {
 			return selector ? delegate(el, selector, ev, callback) : bind(el, ev, callback);
 		},
-
 		// moves 'this' to the first argument, wraps it with jQuery if it's an element
 		shifter = function shifter(context, name) {
 			var method = typeof name == "string" ? context[name] : name;
@@ -87,12 +75,10 @@ var exports = function() {
 		},
 		// checks if it looks like an action
 		// actionMatcher = /[^\w]/,
-
 		// !-- FOUNDRY HACK --! //
 		// Prevent inclusion of single word property name that starts with a symbol, e.g. $family from MooTools.
 		// This is coming from an environment where jQuery and MooTools may coexist.
 		actionMatcher = /^\S(.*)\s(.*)/,
-
 		// handles parameterized action names
 		parameterReplacer = /\{([^\}]+)\}/g,
 		breaker = /^(?:(.*?)\s)?([\w\.\:>]+)$/,
@@ -364,35 +350,27 @@ var exports = function() {
 		setup: function() {
 			// Allow contollers to inherit "defaults" from superclasses as it done in $.Class
 			this._super.apply(this, arguments);
-
 			// if you didn't provide a name, or are controller, don't do anything
 			if (!this.shortName || this.fullName == $.globalNamespace + ".Controller" ) {
 				return;
 			}
-
 			// cache the underscored names
 			this._fullName = underscoreAndRemoveController(this.fullName);
 			this._shortName = underscoreAndRemoveController(this.shortName);
-
 			// !-- FOUNDRY HACK --! //
 			// If a prototype factory function was given instead of a prototype object,
 			// we expect the factory function to return the prototype object upon execution
 			// of the factory function. This factory function gets executed during the
 			// instantiation of the controller.
-
 			var _prototype = arguments[3],
 				proto;
-
 			if (isFunction(_prototype)) {
-
 				// Remap the factory function
 				this.protoFactory = _prototype;
-
 				// Attempt to execute the prototype factory once to get
 				// a list of actions that we can cache first.
 				proto = this.protoFactory.call(this, null);
 			}
-
 			var controller = this,
 				/**
 				 * @attribute pluginName
@@ -408,18 +386,14 @@ var exports = function() {
 				 *     $("#foo").fillWith();
 				 */
 				funcName, forLint;
-
 			// !-- FOUNDRY HACK --! //
 			// Make creation of jQuery plugin explicit.
 			// Use  {isPlugin: true} flag in controller's static prop to enable it.
-
 			if (this.isPlugin) {
 				var pluginname = this.pluginName || this._fullName;
-
 				// create jQuery plugin
 				if (!$.fn[pluginname] ) {
 					$.fn[pluginname] = function( options ) {
-
 						var args = makeArray(arguments),
 							//if the arg is a method on this controller
 							isMethod = typeof options == "string" && isFunction(controller[STR_PROTOTYPE][options]),
@@ -429,7 +403,6 @@ var exports = function() {
 							var controllers = data(this),
 								//plugin is actually the controller instance
 								plugin = controllers && controllers[pluginname];
-
 							if ( plugin ) {
 								if ( isMethod ) {
 									// call a method on the controller with the remaining args
@@ -438,7 +411,6 @@ var exports = function() {
 									// call the plugin's update method
 									plugin.update.apply(plugin, args);
 								}
-
 							} else {
 								//create a new controller instance
 								controller.newInstance.apply(controller, [this].concat(args));
@@ -447,17 +419,13 @@ var exports = function() {
 					};
 				}
 			}
-
 			// make sure listensTo is an array
 			
 			// calculate and cache actions
 			this.actions = {};
-
 			// !-- FOUNDRY HACK --! //
 			// Use prototype returned by prototype factory if exists.
-
 			proto = proto || this[STR_PROTOTYPE];
-
 			for ( funcName in proto ) {
 				if (funcName == 'constructor' || !isFunction(proto[funcName]) ) {
 					continue;
@@ -467,11 +435,9 @@ var exports = function() {
 				}
 			}
 		},
-
 		hookup: function( el ) {
 			return new this(el);
 		},
-
 		/**
 		 * @hide
 		 * @param {String} methodName a prototype function
@@ -483,7 +449,6 @@ var exports = function() {
 			} else {
 				return $.inArray(methodName, this.listensTo) > -1 || $.event.special[methodName] || processors[methodName];
 			}
-
 		},
 		/**
 		 * @hide
@@ -509,18 +474,14 @@ var exports = function() {
 		_action: function( methodName, options ) {
 			// reset the test index
 			parameterReplacer.lastIndex = 0;
-
 			//if we don't have options (a controller instance), we'll run this later
 			if (!options && parameterReplacer.test(methodName) ) {
 				return null;
 			}
-
 			// !-- FOUNDRY HACK --! //
 			// Ability to bind an event to multiple elements.
 			// "[{element1}, {element2}] click"
-
 			var ready = [], evt, parts;
-
 			if (methodName.match(/^\[.+\]/)) {
 				methodNames = methodName.replace(/^\[|\]/g,'').replace(', ',',').split(' ');
 				evt = methodNames.pop();
@@ -528,31 +489,25 @@ var exports = function() {
 			} else {
 				methodNames = [methodName];
 			}
-
 			$.each(methodNames, function(i, methodName) {
-
 				// !-- FOUNDRY HACK --! //
 				// Ability to bind custom event to self.
 				// "{self} customEvent"
 				methodName = methodName.replace("{self} ", "");
-
 				var convertedName = options ? Str.sub(methodName, [options, window]) : methodName,
 					arr = isArray(convertedName),
 					parts = (evt) ? [convertedName + ' ' + evt, convertedName, evt] :
 					                (arr ? convertedName[1] : convertedName).match(breaker),
 					event = evt || parts[2],
 					processor = processors[event] || basicProcessor;
-
 				ready.push({
 					processor: processor,
 					parts: parts,
 					delegate : arr ? convertedName[0] : undefined
 				});
 			});
-
 			return ready;
 		},
-
 		/**
 		 * @attribute processors
 		 * An object of {eventName : function} pairs that Controller uses to hook up events
@@ -688,55 +643,40 @@ var exports = function() {
 		 * default it is called with the element and options passed to the controller.
 		 */
 		setup: function( element, options ) {
-
 			var funcName, ready, cls = this[STR_CONSTRUCTOR];
-
 			// !-- FOUNDRY HACK --! //
 			// Execute factory function if exists, extends the properties
 			// of the returned object onto the instance.
 			if (cls.protoFactory) {
-
 				// This is where "self" keyword is passed as first argument.
 				var proto = cls.protoFactory.call(cls, this);
-
 				// Extend the properties of the prototype object onto the instance.
 				$.extend(true, this, proto);
 			}
-
 			// !-- FOUNDRY HACK --! //
 			// Restore this.bind from this_bind. Conflict with mootools.
 			this.bind = this._bind;
-
 			//want the raw element here
 			element = (typeof element == 'string' ? $(element) :
 				(element.jquery ? element : [element]) )[0];
-
 			//set element and className on element
 			var pluginname = cls.pluginName || cls._fullName;
-
 			// !-- FOUNDRY HACK --! //
 			// Removed adding of plugin name class
 			// this.element = $(element).addClass(pluginname);
 			this.element = $(element);
-
 			//set in data
 			(data(element) || data(element, {}))[pluginname] = this;
-
 			// !-- FOUNDRY HACK --! //
 			// Unique id for every controller instance.
 			this.instanceId = $.uid(cls._fullName+'_');
-
 			// !-- FOUNDRY HACK --~ //
 			// Add a unique direct selector for every controller instance.
 			if (this.element.data("directSelector")===undefined) {
-
 				var selector = $.uid("DS");
-
 				this.element.data("directSelector", "." + selector);
-
 				this.element.addClass(selector);
 			}
-
 			/**
 			 * @attribute options
 			 *
@@ -780,83 +720,59 @@ var exports = function() {
 			 * [jQuery.Controller.prototype.update update];
 			 *
 			 */
-
 			// !-- FOUNDRY HACK --! //
 			// Added defaultOptions as an alternative to defaults
 			this.options = extend(true, {}, cls.defaults, cls.defaultOptions, options);
-
 			// !-- FOUNDRY HACK --! //
 			// Augment selector properties into selector functions.
 			for (prop in this.options) {
-
 				if (prop.match(/^\{.+\}$/)) {
-
 					var selector = this.options[prop],
 						propFunc = prop.replace(/^\{|\}$/g,'');
-
 					this[propFunc] = (function(instance, selector, propFunc)
 					{
 						if (typeof selector!=="string") return selector;
-
 						// Selector shorthand for controllers
 						selector = /^(\.|\#)$/.test(selector) ? selector + propFunc : selector;
-
 						// Create selector function
 						var selectorFunc = function(filter)
 						{
 							return filter ? instance.element.find(selector).filter(filter) : instance.element.find(selector);
 						};
-
 						// Keep the selector as a property of the function
 						selectorFunc.selector = selector;
-
 						return selectorFunc;
-
 					})(this, selector, propFunc);
 				}
 			}
-
 			// !-- FOUNDRY HACK --! //
 			// Augment view properties into view functions.
 			// self.view.listItem(useHtml, data, callback);
-
 			var instance = this,
 				views = this.options.view;
-
 			// Prevent augmented functions from being
 			// extended onto the prototype view function.
 			var __view = instance.view;
-
 			instance.view = function() {
 				return __view.apply(this, arguments);
 			};
-
 			if ($.isPlainObject(views)) {
-
 				$.each(views, function(view) {
-
 					instance.view[view] = function() {
-
 						var args = $.makeArray(arguments),
 							useHtml = false;
-
 						if (typeof args[0] == "boolean") {
 							useHtml = args[0];
 							args = args.slice(1);
 						}
-
 						var options = [useHtml, view].concat(args);
-
 						return instance.view.apply(instance, options);
 					}
-
 				});
 			}
-
 			// !-- FOUNDRY HACK --! //
 			// Instance property override
 			$.extend(this, this.options.controller);
-
 			/**
 			 * @attribute called
 			 * String name of current function being called on controller instance.  This is
@@ -864,10 +780,8 @@ var exports = function() {
 			 * @hide
 			 */
 			this.called = "init";
-
 			// bind all event handlers
 			this.bind();
-
 			/**
 			 * @attribute element
 			 * The controller instance's delegated element. This
@@ -953,7 +867,6 @@ var exports = function() {
 		 * and second parameter.  Otherwise the function is called back like a normal bind.
 		 * @return {Integer} The id of the binding in this._bindings
 		 */
-
 		// !-- FOUNDRY HACK --! //
 		// Rename this.bind from this_bind. Conflict with mootools.
 		_bind: function( el, eventName, func ) {
@@ -961,21 +874,16 @@ var exports = function() {
 				//adds bindings
 				this._bindings = [];
 				//go through the cached list of actions and use the processor to bind
-
 				var cls = this[STR_CONSTRUCTOR],
 					bindings = this._bindings,
 					actions = cls.actions,
 					element = this.element;
-
 				for ( funcName in actions ) {
 					if ( actions.hasOwnProperty(funcName) ) {
-
 						// !-- FOUNDRY HACK --! //
 						// Ability to bind an event to multiple elements.
 						// "[{element1}, {element2}] click"
-
 						readyList = cls.actions[funcName] || cls._action(funcName, this.options);
-
 						var self = this;
 						$.each(readyList, function(i, ready) {
 							self._bindings.push(
@@ -988,7 +896,6 @@ var exports = function() {
 						});
 					}
 				}
-
 				//setup to be destroyed ... don't bind b/c we don't want to remove it
 				var destroyCB = shifter(this,"destroy");
 				element.bind("destroyed", destroyCB);
@@ -1188,22 +1095,16 @@ var exports = function() {
 			var self = this,
 				fname = this[STR_CONSTRUCTOR].pluginName || this[STR_CONSTRUCTOR]._fullName,
 				controllers;
-
 			// mark as destroyed
 			this._destroyed = true;
-
 			// remove the className
 			this.element.removeClass(fname);
-
 			// unbind bindings
 			this._unbind();
 			// clean up
 			delete this._actions;
-
 			delete this.element.data("controllers")[fname];
-
 			$(this).triggerHandler("destroyed"); //in case we want to know if the controller is removed
-
 			this.element = null;
 		},
 		/**
@@ -1219,11 +1120,9 @@ var exports = function() {
 		find: function( selector ) {
 			return this.element.find(selector);
 		},
-
 		// !-- FOUNDRY HACK --! //
 		// Quick acccess to views.
 		view: function() {
-
 			var args = $.makeArray(arguments),
 				name,
 				options = args,
@@ -1231,30 +1130,22 @@ var exports = function() {
 				context = this[STR_CONSTRUCTOR].component || $,
 				html = "",
 				view = this.options.view || {};
-
 			if (typeof args[0] == "boolean") {
 				useHtml = args[0];
 				options = args.slice(1);
 			}
-
 			name = options[0] = view[options[0]];
-
 			// If view is not assigned, return empty string.
 			if (name==undefined) {
 				return (useHtml) ? "" : $("");
 			}
-
 			html = context.View.apply(context, options);
-
 			return (useHtml) ? html : $(html);
 		},
-
 		//tells callback to set called on this.  I hate this.
 		_set_called: true
 	});
-
 	var processors = $.Controller.processors,
-
 	//------------- PROCESSSORS -----------------------------
 	//processors do the binding.  They return a function that
 	//unbinds when called.
@@ -1264,8 +1155,6 @@ var exports = function() {
 	};
 
 
-
-
 	//set common events to be processed as a basicProcessor
 	each("change click contextmenu dblclick keydown keyup keypress mousedown mousemove mouseout mouseover mouseup reset resize scroll select submit focusin focusout mouseenter mouseleave".split(" "), function( i, v ) {
 		processors[v] = basicProcessor;
@@ -1273,7 +1162,6 @@ var exports = function() {
 	/**
 	 *  @add jQuery.fn
 	 */
-
 	//used to determine if a controller instance is one of controllers
 	//controllers can be strings or classes
 	var i, isAControllerOf = function( instance, controllers ) {
@@ -1296,10 +1184,8 @@ var exports = function() {
 				controllers, c, cname;
 			//check if arguments
 			this.each(function() {
-
 				controllers = $.data(this, "controllers");
 				for ( cname in controllers ) {
-
 					if ( controllers.hasOwnProperty(cname) ) {
 						c = controllers[cname];
 						if (!controllerNames.length || isAControllerOf(c, controllerNames) ) {
@@ -1319,46 +1205,34 @@ var exports = function() {
 		controller: function( controller ) {
 			return this.controllers.apply(this, arguments)[0];
 		},
-
 		// !-- FOUNDRY HACK --! //
 		// Implement controller onto jQuery elements.
 		// $(el).implement(controller|controllerName);
 		implement: function( controller, options, callback ) {
-
 			var elements = this,
 				controllerName;
-
 			if (typeof controller === "string") {
 				controllerName = controller;
 				controller = $.String.getObject(controllerName);
 			};
-
 			if (controller !== undefined) {
 				$.each(elements, function() {
 					var instance = new controller(this, options);
 					callback && callback.apply(instance);
 				});
 			}
-
 			return this;
 		}
-
 	});
 
-
 }; 
-
-exports(); 
+exports();
 module.resolveWith(exports); 
-
-}); 
+});
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("mvc/controller")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

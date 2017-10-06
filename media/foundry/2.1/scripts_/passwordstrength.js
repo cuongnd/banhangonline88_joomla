@@ -1,13 +1,9 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 var exports = function() { 
-
 /*
  * Password Strength (0.1.2)
  * by Sagie Maoz (n0nick.net)
@@ -26,9 +22,7 @@ var exports = function() {
  *
  */
 jQuery	= $;
-
 (function($){
-
 var passwordStrength = new function()
 {
 	this.countRegexp = function(val, rex)
@@ -83,11 +77,9 @@ var passwordStrength = new function()
 		} else if (strength > 12) {
 			val = 5;
 		}
-
 		return val;
 	};
 };
-
 $.fn.password_strength = function(options)
 {
 	var settings = $.extend({
@@ -120,7 +112,6 @@ $.fn.password_strength = function(options)
 		{
 			var val = $(this).val(),
 					level = passwordStrength.getStrengthLevel(val, settings.minLength);
-
 			if (val.length > 0)
 			{
 				var _class = 'password_strength_' + level;
@@ -140,21 +131,14 @@ $.fn.password_strength = function(options)
 		});
 	});
 };
-
 })(jQuery);
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("passwordstrength")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

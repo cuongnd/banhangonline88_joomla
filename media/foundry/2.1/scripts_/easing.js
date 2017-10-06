@@ -1,14 +1,10 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 var jQuery = $; 
 var exports = function() { 
-
 /* ============================================================
  * jQuery Easing v1.3 - http://gsgd.co.uk/sandbox/jquery/easing/
  *
@@ -18,9 +14,7 @@ var exports = function() {
  * All rights reserved.
  * https://raw.github.com/danro/jquery-easing/master/LICENSE
  * ======================================================== */
-
 jQuery.easing['jswing'] = jQuery.easing['swing'];
-
 jQuery.extend( jQuery.easing,
 {
 	// t: current time, b: begInnIng value, c: change In value, d: duration
@@ -155,7 +149,6 @@ jQuery.extend( jQuery.easing,
 		return jQuery.easing.easeOutBounce (x, t*2-d, 0, c, d) * .5 + c*.5 + b;
 	}
 });
-
 /*
  *
  * TERMS OF USE - EASING EQUATIONS
@@ -189,17 +182,12 @@ jQuery.extend( jQuery.easing,
  *
  */
 }; 
-
-exports(); 
+exports();
 module.resolveWith(exports); 
-
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("easing")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

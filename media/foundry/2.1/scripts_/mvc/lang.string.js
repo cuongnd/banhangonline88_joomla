@@ -1,13 +1,9 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 var exports = function() { 
-
 
 	// Several of the methods in this plugin use code adapated from Prototype
 	//  Prototype JavaScript framework, version 1.6.0.1
@@ -56,7 +52,6 @@ var exports = function() {
 		 */
 		str = $.String = $.extend( $.String || {} , {
 
-
 			/**
 			 * @function getObject
 			 * Gets an object from a string.  It can also modify objects on the
@@ -74,7 +69,6 @@ var exports = function() {
 			 * @return {Object} The object.
 			 */
 			getObject : getObject = function( name, roots, add ) {
-
 				// the parts of the name we are looking up
 				// ['App','Models','Recipe']
 				var parts = name ? name.split(regs.dot) : [],
@@ -84,10 +78,8 @@ var exports = function() {
 					i,
 					r = 0,
 					type;
-
 				// make sure roots is an array
 				roots = $.isArray(roots) ? roots : [roots || window];
-
 				if(length == 0){
 					return roots[0];
 				}
@@ -100,10 +92,8 @@ var exports = function() {
 					}
 					// if we can get a property from the 2nd to last object
 					if( isContainer(current) ) {
-
 						// get (and possibly set) the property
 						ret = getNext(current, parts[i], add);
-
 						// if there is a value, we exit
 						if( ret !== undefined ) {
 							// if add is false, delete the property
@@ -111,7 +101,6 @@ var exports = function() {
 								delete current[parts[i]];
 							}
 							return ret;
-
 						}
 					}
 				}
@@ -148,7 +137,6 @@ var exports = function() {
 				for (; i < parts.length; i++ ) {
 					parts[i] = str.capitalize(parts[i]);
 				}
-
 				return parts.join(join || '');
 			},
 			/**
@@ -162,7 +150,6 @@ var exports = function() {
 			niceName: function( s ) {
 				return str.classize(s,' ');
 			},
-
 			/**
 			 * Underscores a string.
 			 * @codestart
@@ -188,15 +175,12 @@ var exports = function() {
 			sub: function( s, data, remove ) {
 				var obs = [];
 				obs.push(s.replace(regs.replacer, function( whole, inside ) {
-
 					// !-- FOUNDRY HACK --! //
 					// Prefer {foobar} over foobar
-
 					//convert inside to type
 					var ob = getObject(whole, data, typeof remove == 'boolean' ? !remove : remove) ||
 							 getObject(inside, data, typeof remove == 'boolean' ? !remove : remove),
 						type = typeof ob;
-
 					if ((type === 'object' || type === 'function') && type !== null) {
 						obs.push(ob);
 						return "";
@@ -208,19 +192,13 @@ var exports = function() {
 			},
 			_regs : regs
 		});
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("mvc/lang.string")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

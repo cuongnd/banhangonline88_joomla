@@ -1,17 +1,12 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 $.require() 
  .script("mvc/class") 
  .done(function() { 
 var exports = function() { 
-
-
 
 	// Alias helpful methods from jQuery
 	var isArray = $.isArray,
@@ -38,7 +33,6 @@ var exports = function() {
 			// attr (like target, how you (delegate) to get to the target)
             // currentAttr (how to get to you)
             // delegateAttr (hot to get to the delegated Attr)
-
 			//
 			//
 			//listen to all changes and trigger upwards
@@ -56,7 +50,6 @@ var exports = function() {
 				// the target should still be the original object ...
 				$.event.trigger(ev, args, parent)
 			});
-
 			return val;
 		},
 		unhookup = function(items, namespace){
@@ -117,7 +110,6 @@ var exports = function() {
 					batchNum : batchNum
 				}, cur.args, cur.t)
 			}
-
 		},
 		// a helper used to serialize an Observe or Observe.List where:
 		// observe - the observable
@@ -135,7 +127,6 @@ var exports = function() {
 			})
 			return where;
 		};
-
 	/**
 	 * @class jQuery.Observe
 	 * @parent jquerymx.lang
@@ -324,7 +315,6 @@ var exports = function() {
 		 *     o.attr('name',"Brian").attr('name') //-> Justin
 		 */
 		attr: function( attr, val ) {
-
 			if ( val === undefined ) {
 				// if we are getting a value
 				return this._get(attr)
@@ -382,7 +372,6 @@ var exports = function() {
 				prop = parts.shift(),
 				// the current value
 				current = this._data[prop];
-
 			// if we have more parts, call removeAttr on that part
 			if ( parts.length ) {
 				return current.removeAttr(parts)
@@ -420,7 +409,6 @@ var exports = function() {
 				prop = parts.shift(),
 				// its current value
 				current = this.__get(prop);
-
 			// if we have an object and remaining parts
 			if ( isObject(current) && parts.length ) {
 				// that object should set it (this might need to call attr)
@@ -430,11 +418,9 @@ var exports = function() {
 				// todo: check if value is object and transform
 				// are we changing the value
 				if ( value !== current ) {
-
 					// check if we are adding this for the first time
 					// if we are, we need to create an 'add' event
 					var changeType = this.__get().hasOwnProperty(prop) ? "set" : "add";
-
 					// set the value on data
 					this.__set(prop,
 					// if we are getting an object
@@ -444,15 +430,11 @@ var exports = function() {
 					// value is normal
 					value);
 
-
-
 					// trigger the change event
 					trigger(this, "change", [prop, changeType, value, current]);
-
 					// if we can stop listening to our old value, do it
 					current && unhookup([current], this._namespace);
 				}
-
 			} else {
 				throw "jQuery.Observe: set a property on an object that does not exist"
 			}
@@ -581,14 +563,11 @@ var exports = function() {
 			if ( props === undefined ) {
 				return serialize(this, 'attrs', {})
 			}
-
 			props = $.extend(true, {}, props);
 			var prop, collectingStarted = collect();
-
 			for ( prop in this._data ) {
 				var curVal = this._data[prop],
 					newVal = props[prop];
-
 				// if we are merging ...
 				if ( newVal === undefined ) {
 					remove && this.removeAttr(prop);
@@ -599,7 +578,6 @@ var exports = function() {
 				} else if ( curVal != newVal ) {
 					this._set(prop, newVal)
 				} else {
-
 				}
 				delete props[prop];
 			}
@@ -645,23 +623,18 @@ var exports = function() {
 			// detects an add, sorts it, re-adds?
 			//console.log("")
 
-
-
 			// if we are sorting, and an attribute inside us changed
 			if(this.comparator && /^\d+./.test(attr) ) {
-
 				// get the index
 				var index = +(/^\d+/.exec(attr)[0]),
 					// and item
 					item = this[index],
 					// and the new item
 					newIndex = this.sortedIndex(item);
-
 				if(newIndex !== index){
 					// move ...
 					[].splice.call(this, index, 1);
 					[].splice.call(this, newIndex, 0, item);
-
 					trigger(this, "move", [item, newIndex, index]);
 					ev.stopImmediatePropagation();
 					trigger(this,"change", [
@@ -674,19 +647,15 @@ var exports = function() {
 				}
 			}
 
-
 			// if we add items, we need to handle
 			// sorting and such
-
 			// trigger direct add and remove events ...
 			if(attr.indexOf('.') === -1){
-
 				if( how === 'add' ) {
 					trigger(this, how, [newVal,+attr]);
 				} else if( how === 'remove' ) {
 					trigger(this, how, [oldVal, +attr])
 				}
-
 			}
 			// issue add, remove, and move events ...
 		},
@@ -783,7 +752,6 @@ var exports = function() {
 		splice: function( index, count ) {
 			var args = makeArray(arguments),
 				i;
-
 			for ( i = 2; i < args.length; i++ ) {
 				var val = args[i];
 				if ( isObject(val) ) {
@@ -814,22 +782,18 @@ var exports = function() {
 			if ( props === undefined ) {
 				return serialize(this, 'attrs', []);
 			}
-
 			// copy
 			props = props.slice(0);
-
 			var len = Math.min(props.length, this.length),
 				collectingStarted = collect();
 			for ( var prop = 0; prop < len; prop++ ) {
 				var curVal = this[prop],
 					newVal = props[prop];
-
 				if ( isObject(curVal) && isObject(newVal) ) {
 					curVal.attrs(newVal, remove)
 				} else if ( curVal != newVal ) {
 					this._set(prop, newVal)
 				} else {
-
 				}
 			}
 			if ( props.length > this.length ) {
@@ -851,12 +815,9 @@ var exports = function() {
 					return a === b ? 0 : (a < b ? -1 : 1);
 				}] : [],
 				res = [].sort.apply(this, args);
-
 			!silent && trigger(this, "reset");
-
 		}
 	}),
-
 
 		// create push, pop, shift, and unshift
 		// converts to an array of arguments
@@ -903,14 +864,12 @@ var exports = function() {
 	// - name - method name
 	// - where - where items in the array should be added
 
-
 	function( name, where ) {
 		list.prototype[name] = function() {
 			// get the items being added
 			var args = getArgs(arguments),
 				// where we are going to add items
 				len = where ? this.length : 0;
-
 			// go through and convert anything to an observe that needs to be converted
 			for ( var i = 0; i < args.length; i++ ) {
 				var val = args[i];
@@ -918,7 +877,6 @@ var exports = function() {
 					args[i] = hookup(val, "*", this)
 				}
 			}
-
 			// if we have a sort item, add that
 			if( args.length == 1 && this.comparator ) {
 				// add each item ...
@@ -928,10 +886,8 @@ var exports = function() {
 				this.splice(index, 0, args[0]);
 				return this.length;
 			}
-
 			// call the original method
 			var res = [][name].apply(this, args)
-
 			// cause the change where the args are:
 			// len - where the additions happened
 			// add - items added
@@ -944,11 +900,9 @@ var exports = function() {
 				trigger(this, "change", [""+len, "add", args, undefined])
 			}
 
-
 			return res;
 		}
 	});
-
 	each({
 		/**
 		 * @function pop
@@ -984,16 +938,12 @@ var exports = function() {
 	},
 	// creates a 'remove' type method
 
-
 	function( name, where ) {
 		list.prototype[name] = function() {
-
 			var args = getArgs(arguments),
 				len = where && this.length ? this.length - 1 : 0;
 
-
 			var res = [][name].apply(this, args)
-
 			// create a change where the args are
 			// "*" - change on potentially multiple properties
 			// "remove" - items removed
@@ -1001,14 +951,12 @@ var exports = function() {
 			// res - the old, removed values (should these be unbound)
 			// len - where these items were removed
 			trigger(this, "change", [""+len, "remove", undefined, [res]])
-
 			if ( res && res.unbind ) {
 				res.unbind("change" + this._namespace)
 			}
 			return res;
 		}
 	});
-
 	list.prototype.
 	/**
 	 * @function indexOf
@@ -1020,7 +968,6 @@ var exports = function() {
 	indexOf = [].indexOf || function(item){
 		return $.inArray(item, this)
 	}
-
 	/**
 	 * @class $.O
 	 */
@@ -1031,20 +978,14 @@ var exports = function() {
 			return new $.Observe(data, options)
 		}
 	}
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
-}); 
+});
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("mvc/lang.observe")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

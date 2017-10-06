@@ -1,34 +1,24 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 var jQuery = $; 
 var exports = function() { 
-
 /*! http://mths.be/placeholder v2.0.7 by @mathias */
 ;(function(window, document, $) {
-
 	var isInputSupported = 'placeholder' in document.createElement('input'),
 	    isTextareaSupported = 'placeholder' in document.createElement('textarea'),
 	    prototype = $.fn,
 	    valHooks = $.valHooks,
 	    hooks,
 	    placeholder;
-
 	if (isInputSupported && isTextareaSupported) {
-
 		placeholder = prototype.placeholder = function() {
 			return this;
 		};
-
 		placeholder.input = placeholder.textarea = true;
-
 	} else {
-
 		placeholder = prototype.placeholder = function() {
 			var $this = this;
 			$this
@@ -42,10 +32,8 @@ var exports = function() {
 				.trigger('blur.placeholder');
 			return $this;
 		};
-
 		placeholder.input = isInputSupported;
 		placeholder.textarea = isTextareaSupported;
-
 		hooks = {
 			'get': function(element) {
 				var $element = $(element);
@@ -72,10 +60,8 @@ var exports = function() {
 				return $element;
 			}
 		};
-
 		isInputSupported || (valHooks.input = hooks);
 		isTextareaSupported || (valHooks.textarea = hooks);
-
 		$(function() {
 			// Look for forms
 			$(document).delegate('form', 'submit.placeholder', function() {
@@ -86,16 +72,13 @@ var exports = function() {
 				}, 10);
 			});
 		});
-
 		// Clear placeholder values upon page reload
 		$(window).bind('beforeunload.placeholder', function() {
 			$('.placeholder').each(function() {
 				this.value = '';
 			});
 		});
-
 	}
-
 	function args(elem) {
 		// Return an object of element attributes
 		var newAttrs = {},
@@ -107,7 +90,6 @@ var exports = function() {
 		});
 		return newAttrs;
 	}
-
 	function clearPlaceholder(event, value) {
 		var input = this,
 		    $input = $(input);
@@ -126,7 +108,6 @@ var exports = function() {
 			}
 		}
 	}
-
 	function setPlaceholder() {
 		var $replacement,
 		    input = this,
@@ -164,21 +145,14 @@ var exports = function() {
 			$input.removeClass('placeholder');
 		}
 	}
-
 }(window, document, jQuery));
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("placeholder")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

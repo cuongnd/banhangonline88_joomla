@@ -1,13 +1,9 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 var exports = function() { 
-
 
 	var getSetZero = function(v){ return v !== undefined ? (this.array[0] = v) : this.array[0] },
 		getSetOne = function(v){ return v !== undefined ? (this.array[1] = v) : this.array[1] }
@@ -34,7 +30,6 @@ var exports = function() {
 		 */
 		app: function( f ) {
 			var i, vec, newArr = [];
-
 			for ( i = 0; i < this.array.length; i++ ) {
 				newArr.push(f(this.array[i]));
 			}
@@ -142,7 +137,6 @@ var exports = function() {
 			return this;
 		}
 	};
-
 	$.Event.prototype.vector = function() {
 		if ( this.originalEvent.synthetic ) {
 			var doc = document.documentElement,
@@ -152,7 +146,6 @@ var exports = function() {
 			return new $.Vector(this.pageX, this.pageY);
 		}
 	};
-
 	$.fn.offsetv = function() {
 		if ( this[0] == window ) {
 			return new $.Vector(window.pageXOffset ? window.pageXOffset : document.documentElement.scrollLeft, window.pageYOffset ? window.pageYOffset : document.documentElement.scrollTop);
@@ -161,7 +154,6 @@ var exports = function() {
 			return new $.Vector(offset.left, offset.top);
 		}
 	};
-
 	$.fn.dimensionsv = function( which ) {
 		if ( this[0] == window || !which ) {
 			return new $.Vector(this.width(), this.height());
@@ -170,19 +162,13 @@ var exports = function() {
 			return new $.Vector(this[which + "Width"](), this[which + "Height"]());
 		}
 	};
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("mvc/lang.vector")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

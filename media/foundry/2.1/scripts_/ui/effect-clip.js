@@ -1,17 +1,13 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 var jQuery = $; 
 $.require() 
  .script("ui/effect") 
  .done(function() { 
 var exports = function() { 
-
 /*!
  * jQuery UI Effects Clip 1.9.0pre
  * http://jqueryui.com
@@ -26,7 +22,6 @@ var exports = function() {
  *	jquery.ui.effect.js
  */
 (function( $, undefined ) {
-
 $.effects.effect.clip = function( o, done ) {
 	// Create element
 	var el = $( this ),
@@ -39,28 +34,23 @@ $.effects.effect.clip = function( o, done ) {
 		position = vert ? "top" : "left",
 		animation = {},
 		wrapper, animate, distance;
-
 	// Save & Show
 	$.effects.save( el, props );
 	el.show();
-
 	// Create Wrapper
 	wrapper = $.effects.createWrapper( el ).css({
 		overflow: "hidden"
 	});
 	animate = ( el[0].tagName === "IMG" ) ? wrapper : el;
 	distance = animate[ size ]();
-
 	// Shift
 	if ( show ) {
 		animate.css( size, 0 );
 		animate.css( position, distance / 2 );
 	}
-
 	// Create Animation Object:
 	animation[ size ] = show ? distance : 0;
 	animation[ position ] = show ? 0 : distance / 2;
-
 	// Animate
 	animate.animate( animation, {
 		queue: false,
@@ -75,24 +65,16 @@ $.effects.effect.clip = function( o, done ) {
 			done();
 		}
 	});
-
 };
-
 })(jQuery);
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
-}); 
+});
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("ui/effect-clip")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

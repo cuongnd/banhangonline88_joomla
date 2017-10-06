@@ -1,13 +1,9 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 var exports = function() { 
-
 
 	/**
 	 * @attribute destroyed
@@ -32,9 +28,7 @@ var exports = function() {
 	 * <h2>More Involved Demo</h2>
 	 * @demo jquery/event/destroyed/destroyed_menu.html
 	 */
-
 	var oldClean = $.cleanData;
-
 	$.cleanData = function( elems ) {
 		for ( var i = 0, elem;
 		(elem = elems[i]) !== undefined; i++ ) {
@@ -44,19 +38,13 @@ var exports = function() {
 		oldClean(elems);
 	};
 
-
 }; 
-
-exports(); 
+exports();
 module.resolveWith(exports); 
-
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("mvc/event.destroyed")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

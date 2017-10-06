@@ -34,7 +34,6 @@ JHtml::_('dashboard.renderDashboard',true);
 		<div class="span4">
 			<div class="expand-filters" style="width:auto;float:right">
 <?php }
-
 if(!HIKASHOP_RESPONSIVE) { ?>
 			</td>
 		</tr>

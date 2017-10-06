@@ -1,30 +1,22 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 var exports = function() { 
-
 
 	var radioCheck = /radio|checkbox/i,
 		keyBreaker = /[^\[\]]+/g,
 		numberMatcher = /^[\-+]?[0-9]*\.?[0-9]+([eE][\-+]?[0-9]+)?$/;
-
 	var isNumber = function( value ) {
 		if ( typeof value == 'number' ) {
 			return true;
 		}
-
 		if ( typeof value != 'string' ) {
 			return false;
 		}
-
 		return value.match(numberMatcher);
 	};
-
 	$.fn.extend({
 		/**
 		 * @parent dom
@@ -61,13 +53,11 @@ var exports = function() {
 		 * @return {Object} An object of name-value pairs.
 		 */
 		formParams: function( params, convert ) {
-
 			// Quick way to determine if something is a boolean
 			if ( !! params === params ) {
 				convert = params;
 				params = null;
 			}
-
 			if ( params ) {
 				return this.setParams( params );
 			} else if ( this[0].nodeName.toLowerCase() == 'form' && this[0].elements ) {
@@ -76,17 +66,13 @@ var exports = function() {
 			return $("input[name], textarea[name], select[name]", this[0]).getParams(convert);
 		},
 		setParams: function( params ) {
-
 			// Find all the inputs
 			this.find("[name]").each(function() {
-
 				var value = params[ $(this).attr("name") ],
 					$this;
-
 				// Don't do all this work if there's no value
 				if ( value !== undefined ) {
 					$this = $(this);
-
 					// Nested these if statements for performance
 					if ( $this.is(":radio") ) {
 						if ( $this.val() == value ) {
@@ -108,9 +94,7 @@ var exports = function() {
 		getParams: function( convert ) {
 			var data = {},
 				current;
-
 			convert = convert === undefined ? false : convert;
-
 			this.each(function() {
 				var el = this,
 					type = el.type && el.type.toLowerCase();
@@ -118,7 +102,6 @@ var exports = function() {
 				if ((type == 'submit') || !el.name ) {
 					return;
 				}
-
 				var key = el.name,
 					value = $.data(el, "value") || $.fn.val.call([el]),
 					isRadioCheck = radioCheck.test(el.type),
@@ -126,7 +109,6 @@ var exports = function() {
 					write = !isRadioCheck || !! el.checked,
 					//make an array of values
 					lastPart;
-
 				if ( convert ) {
 					if ( isNumber(value) ) {
 						value = parseFloat(value);
@@ -139,7 +121,6 @@ var exports = function() {
 						value = undefined;
 					}
 				}
-
 				// go through and create nested objects
 				current = data;
 				for ( var i = 0; i < parts.length - 1; i++ ) {
@@ -149,7 +130,6 @@ var exports = function() {
 					current = current[parts[i]];
 				}
 				lastPart = parts[parts.length - 1];
-
 				//now we are on the last part, set the value
 				if (current[lastPart]) {
 					if (!$.isArray(current[lastPart]) ) {
@@ -159,28 +139,20 @@ var exports = function() {
 						current[lastPart].push(value);
 					}
 				} else if ( write || !current[lastPart] ) {
-
 					current[lastPart] = write ? value : undefined;
 				}
-
 			});
 			return data;
 		}
 	});
 
-
 }; 
-
-exports(); 
+exports();
 module.resolveWith(exports); 
-
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("mvc/dom.form_params")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

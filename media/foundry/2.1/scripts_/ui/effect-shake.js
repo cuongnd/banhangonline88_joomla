@@ -1,17 +1,13 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 var jQuery = $; 
 $.require() 
  .script("ui/effect") 
  .done(function() { 
 var exports = function() { 
-
 /*!
  * jQuery UI Effects Shake 1.9.0pre
  * http://jqueryui.com
@@ -26,9 +22,7 @@ var exports = function() {
  *	jquery.ui.effect.js
  */
 (function( $, undefined ) {
-
 $.effects.effect.shake = function( o, done ) {
-
 	var el = $( this ),
 		props = [ "position", "top", "bottom", "left", "right", "height", "width" ],
 		mode = $.effects.setMode( el, o.mode || "effect" ),
@@ -43,23 +37,18 @@ $.effects.effect.shake = function( o, done ) {
 		animation1 = {},
 		animation2 = {},
 		i,
-
 		// we will need to re-assemble the queue to stack our animations in place
 		queue = el.queue(),
 		queuelen = queue.length;
-
 	$.effects.save( el, props );
 	el.show();
 	$.effects.createWrapper( el );
-
 	// Animation
 	animation[ ref ] = ( positiveMotion ? "-=" : "+=" ) + distance;
 	animation1[ ref ] = ( positiveMotion ? "+=" : "-=" ) + distance * 2;
 	animation2[ ref ] = ( positiveMotion ? "-=" : "+=" ) + distance * 2;
-
 	// Animate
 	el.animate( animation, speed, o.easing );
-
 	// Shakes
 	for ( i = 1; i < times; i++ ) {
 		el.animate( animation1, speed, o.easing ).animate( animation2, speed, o.easing );
@@ -75,31 +64,22 @@ $.effects.effect.shake = function( o, done ) {
 			$.effects.removeWrapper( el );
 			done();
 		});
-
 	// inject all the animations we just queued to be first in line (after "inprogress")
 	if ( queuelen > 1) {
 		queue.splice.apply( queue,
 			[ 1, 0 ].concat( queue.splice( queuelen, anims + 1 ) ) );
 	}
 	el.dequeue();
-
 };
-
 })(jQuery);
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
-}); 
+});
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("ui/effect-shake")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());

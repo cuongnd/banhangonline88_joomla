@@ -1,18 +1,14 @@
 (function(){
-
 // module factory: start
-
 var moduleFactory = function($) {
 // module body: start
-
-var module = this; 
+var module = this;
 var jQuery = $; 
 $.require() 
  .script("ui/core","ui/widget") 
  .stylesheet("ui/progressbar") 
  .done(function() { 
 var exports = function() { 
-
 /*!
  * jQuery UI Progressbar 1.9.0pre
  * http://jqueryui.com
@@ -28,16 +24,13 @@ var exports = function() {
  *   jquery.ui.widget.js
  */
 (function( $, undefined ) {
-
 $.widget( "ui.progressbar", {
 	version: "1.9.0pre",
 	options: {
 		value: 0,
 		max: 100
 	},
-
 	min: 0,
-
 	_create: function() {
 		this.element
 			.addClass( "ui-progressbar ui-widget ui-widget-content ui-corner-all" )
@@ -47,14 +40,11 @@ $.widget( "ui.progressbar", {
 				"aria-valuemax": this.options.max,
 				"aria-valuenow": this._value()
 			});
-
 		this.valueDiv = $( "<div class='ui-progressbar-value ui-widget-header ui-corner-left'></div>" )
 			.appendTo( this.element );
-
 		this.oldValue = this._value();
 		this._refreshValue();
 	},
-
 	_destroy: function() {
 		this.element
 			.removeClass( "ui-progressbar ui-widget ui-widget-content ui-corner-all" )
@@ -62,19 +52,15 @@ $.widget( "ui.progressbar", {
 			.removeAttr( "aria-valuemin" )
 			.removeAttr( "aria-valuemax" )
 			.removeAttr( "aria-valuenow" );
-
 		this.valueDiv.remove();
 	},
-
 	value: function( newValue ) {
 		if ( newValue === undefined ) {
 			return this._value();
 		}
-
 		this._setOption( "value", newValue );
 		return this;
 	},
-
 	_setOption: function( key, value ) {
 		if ( key === "value" ) {
 			this.options.value = value;
@@ -83,10 +69,8 @@ $.widget( "ui.progressbar", {
 				this._trigger( "complete" );
 			}
 		}
-
 		this._super( key, value );
 	},
-
 	_value: function() {
 		var val = this.options.value;
 		// normalize invalid value
@@ -95,20 +79,16 @@ $.widget( "ui.progressbar", {
 		}
 		return Math.min( this.options.max, Math.max( this.min, val ) );
 	},
-
 	_percentage: function() {
 		return 100 * this._value() / this.options.max;
 	},
-
 	_refreshValue: function() {
 		var value = this.value(),
 			percentage = this._percentage();
-
 		if ( this.oldValue !== value ) {
 			this.oldValue = value;
 			this._trigger( "change" );
 		}
-
 		this.valueDiv
 			.toggle( value > this.min )
 			.toggleClass( "ui-corner-right", value === this.options.max )
@@ -116,22 +96,15 @@ $.widget( "ui.progressbar", {
 		this.element.attr( "aria-valuenow", value );
 	}
 });
-
 })( jQuery );
-
-}; 
-
-exports(); 
+};
+exports();
 module.resolveWith(exports); 
-
-}); 
+});
 // module body: end
-
-}; 
+};
 // module factory: end
-
 dispatch("ui/progressbar")
 .containing(moduleFactory)
 .to("Foundry/2.1 Modules");
-
 }());
