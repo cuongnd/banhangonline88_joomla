@@ -6,7 +6,7 @@ from subprocess import call
 
 class GitAutoDeploy(BaseHTTPRequestHandler):
 
-    CONFIG_FILEPATH = './GitAutoDeploy.conf.json'
+    CONFIG_FILEPATH = '/home/bho/domains/test.banhangonline88.com/public_html/GitAutoDeploy.conf.json'
     config = None
     quiet = False
     daemon = False
