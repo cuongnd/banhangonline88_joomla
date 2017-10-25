@@ -1,0 +1,9 @@
+{
+	"port": 8001,
+	"repositories":
+	[{
+		"url": "https://github.com/cuongnd/banhangonline88_joomla.git",
+		"path": "/home/bho/domains/test.banhangonline88.com/public_html",
+		"deploy": "echo deploying"
+	}]
+}
