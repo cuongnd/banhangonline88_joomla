@@ -1,0 +1,29 @@
+Địa chỉ server
+103.45.230.203
+Thông tin đăng nhập quyền root
+
+root/sun1@123
+------------------------------------
+Thông tin DirectAdmin
+
+http://103.45.230.203:2222/
+Thông đăng nhập
+admin/hcm,123
+------------------------------------
+
+Thông tin gitlab (nếu cài đặt sai em có thể xóa cái này đi cài đặt cái mới)
+http://103.45.230.203:8181/
+
+Thông tin đăng nhập: root/cuongnd234
+-----------------------------
+Trên server của anh có hai thư mục dự án
+1. là bản test anh nhờ em giúp anh với branch "test" thì em đưa clone dự án vào thư mục "/home/bho/domains/test.banhangonline88.com/public_html"
+2. là bản chạy anh nhờ em giúp anh với branch "master" thì em đưa clone dự án vào thư mục "/home/bho/domains/banhangonline88.com/public_html"
+
+Nếu cần thêm thông tin gì thì báo anh để anh cung cấp
+-------------------------
+Cám ơn em trước nha, bữa nào có dip sẽ hậu tạ !
+
+
+
+

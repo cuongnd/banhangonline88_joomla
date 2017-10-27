@@ -14,9 +14,9 @@ class JConfig {
 	public $debug_lang = '0';
 	public $dbtype = 'mysqli';
 	public $host = 'localhost';
-	public $user = 'banhangonl_bho';
-	public $password = 'w7a8GNPjXb';
-	public $db = 'banhangonl_bho2';
+	public $user = 'root';
+	public $password = '123456';
+	public $db = 'banhangonline88_joomla_test';
 	public $dbprefix = 'bho2_';
 	public $live_site = '';
 	public $secret = 'aSqZR4hP8HMNjOG2';
